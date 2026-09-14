@@ -1,0 +1,164 @@
+import type { Metadata } from "next";
+import PortfolioGrid from "@/components/molecules/PortfolioGrid";
+import PortfolioHero from "@/components/molecules/PortfolioHero";
+import { works as staticWorks } from "@/data/works";
+
+export const revalidate = 3600; // 1 órás ISR gyorsítótárazás
+
+export const metadata: Metadata = {
+  title: "Referenciák & Esettanulmányok | WebDude | Webfejlesztés Kecskemét",
+  description:
+    "Nézd meg a valós üzleti eredményeket hozó Next.js, WordPress és egyedi webfejlesztési projektjeimet. 26 év tapasztalat, prémium minőség, KKV-knak.",
+  keywords:
+    "webfejlesztő referenciák, esettanulmányok, Next.js projektek, WordPress fejlesztés, weboldal készítés Kecskemét, grafikai tervezés, arculattervezés",
+  alternates: {
+    canonical: "https://webdude.hu/munkak",
+  },
+  openGraph: {
+    title: "Referenciák & Esettanulmányok | WebDude | Webfejlesztés Kecskemét",
+    description:
+      "Nézd meg a valós üzleti eredményeket hozó Next.js, WordPress és egyedi webfejlesztési projektjeimet.",
+    url: "https://webdude.hu/munkak",
+    siteName: "WebDude",
+    images: [
+      {
+        url: "/og/webdude-portfolio-og.jpg",
+        width: 1200,
+        height: 630,
+        alt: "WebDude referenciák és esettanulmányok",
+      },
+    ],
+    locale: "hu_HU",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Referenciák & Esettanulmányok | WebDude | Webfejlesztés Kecskemét",
+    description:
+      "Nézd meg a valós üzleti eredményeket hozó Next.js, WordPress és egyedi webfejlesztési projektjeimet.",
+    images: ["/og/webdude-portfolio-og.jpg"],
+  },
+};
+
+export default async function MunkakPage() {
+  return (
+    <main className="min-h-screen bg-bg-base text-text-primary">
+      {/* Scroll Video Hero Section - Kliens molekula */}
+      <PortfolioHero />
+
+      {/* Text Content Below Video */}
+      <section className="py-20 bg-bg-surface">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <div className="inline-block relative pl-6 mb-8">
+            <span className="text-xs uppercase font-black tracking-[0.3em] text-[#00B5F1] mb-2 block">
+              Referenciák
+            </span>
+            <div className="absolute left-0 top-0 w-1 h-6 bg-[#00B5F1]" />
+          </div>
+
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold font-sans text-text-primary leading-tight tracking-tight mb-6">
+            Eredmények, nem csak{" "}
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#0095C7] italic pr-4">
+              Dizájn
+            </span>
+          </h1>
+
+          <p className="text-lg md:text-xl text-slate-400 max-w-lg leading-relaxed mb-8 mx-auto tracking-wide font-medium">
+            Minden projekt egy egyedi kihívás, amire kreatív és technológiai
+            választ adtam. Nézd meg a sikertörténeteket!
+          </p>
+
+          <a
+            href="/kapcsolat"
+            className="px-8 py-4 bg-linear-to-r from-[#00B5F1] to-[#0095C7] hover:from-[#0095C7] hover:to-[#007BA8] text-white rounded-full font-bold hover:scale-105 active:scale-95 transition-transform duration-300 shadow-[0_8px_24px_rgba(0,181,241,0.3)] hover:shadow-[0_18px_40px_rgba(0,181,241,0.4)] min-h-11 min-w-11 inline-block tracking-wide"
+          >
+            Kapcsolat
+          </a>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="py-24 bg-bg-surface border-y border-slate-800">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-sans text-text-primary leading-tight tracking-tight mb-4">
+              Számok, amik{" "}
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#0095C7] italic">
+                számítanak
+              </span>
+            </h2>
+            <p className="text-lg text-slate-400 max-w-2xl mx-auto">
+              Valós üzleti eredmények, amiket a projektekkel értünk el
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div className="bg-slate-900/80 border border-slate-700 rounded-2xl p-10 shadow-[0_8px_24px_rgba(15,23,42,0.3)] hover:border-[#00B5F1]/50 hover:shadow-[0_20px_60px_rgba(0,181,241,0.2)] hover:-translate-y-1 transition-all duration-300 group">
+              <span className="text-6xl font-black font-serif block mb-4 text-text-primary group-hover:text-[#00B5F1] tracking-tight">
+                200+
+              </span>
+              <p className="text-sm uppercase tracking-[0.2em] font-bold text-slate-400">
+                Projekt Készítve
+              </p>
+            </div>
+            <div className="bg-slate-900/80 border border-slate-700 rounded-2xl p-10 shadow-[0_8px_24px_rgba(15,23,42,0.3)] hover:border-[#00B5F1]/50 hover:shadow-[0_20px_60px_rgba(0,181,241,0.2)] hover:-translate-y-1 transition-all duration-300 group">
+              <span className="text-6xl font-black font-serif block mb-4 text-text-primary group-hover:text-[#00B5F1] tracking-tight">
+                500+
+              </span>
+              <p className="text-sm uppercase tracking-[0.2em] font-bold text-slate-400">
+                Lead Generált
+              </p>
+            </div>
+            <div className="bg-slate-900/80 border border-slate-700 rounded-2xl p-10 shadow-[0_8px_24px_rgba(15,23,42,0.3)] hover:border-[#00B5F1]/50 hover:shadow-[0_20px_60px_rgba(0,181,241,0.2)] hover:-translate-y-1 transition-all duration-300 group">
+              <span className="text-6xl font-black font-serif block mb-4 text-text-primary group-hover:text-[#00B5F1] tracking-tight">
+                +150%
+              </span>
+              <p className="text-sm uppercase tracking-[0.2em] font-bold text-slate-400">
+                Konverzió Növekedés
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="max-w-6xl mx-auto px-6 relative z-10 py-20">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-sans text-text-primary leading-tight tracking-tight mb-4">
+            Kiemelt{" "}
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#0095C7] italic">
+              Projektek
+            </span>
+          </h2>
+          <p className="text-lg text-slate-400 max-w-2xl mx-auto">
+            Válogatás a legfrissebb és legérdekesebb munkáimból
+          </p>
+        </div>
+        <PortfolioGrid projects={staticWorks} />
+
+        {/* CTA Section */}
+        <section className="mt-20 text-center bg-bg-surface border-t border-slate-800 py-40 relative overflow-hidden">
+          <div className="max-w-6xl mx-auto px-6 relative z-10">
+            <div className="max-w-3xl mx-auto space-y-10">
+              <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold font-sans text-text-primary leading-tight tracking-tight">
+                Készen állsz a{" "}
+                <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#0095C7] italic pr-4">
+                  következő
+                </span>{" "}
+                szintre?
+              </h2>
+              <p className="text-lg md:text-xl text-slate-400 max-w-lg leading-relaxed mx-auto tracking-wide font-medium">
+                Hogyan tudnám a te vállalkozásodat is a digitális élvonalba
+                repíteni? Beszéljük meg a részleteket!
+              </p>
+              <a
+                href="/kapcsolat"
+                className="inline-block px-10 py-5 bg-linear-to-r from-[#00B5F1] to-[#0095C7] hover:from-[#0095C7] hover:to-[#007BA8] text-white rounded-full font-bold text-lg shadow-[0_8px_24px_rgba(0,181,241,0.3)] hover:shadow-[0_18px_40px_rgba(0,181,241,0.4)] hover:scale-105 active:scale-95 transition-all duration-300 tracking-wide"
+              >
+                Ajánlatot kérek →
+              </a>
+            </div>
+          </div>
+        </section>
+      </section>
+    </main>
+  );
+}

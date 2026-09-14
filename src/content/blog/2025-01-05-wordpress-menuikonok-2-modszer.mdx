@@ -1,0 +1,99 @@
+---
+title: "WordPress menüikonok: 2 módszer"
+date: "2025-01-05"
+excerpt: "WordPress menüikonok: 2 módszer ikonok hozzáadásához a menühöz az egyszerű navigáció érdekében A WordPress-webhely egyik előnye, hogy szabadon testreszabhatja, ..."
+image: "/assets/banners/webdude-hero.webp"
+noindex: false
+---
+
+<h1>WordPress menüikonok: 2 módszer ikonok hozzáadásához a menühöz az egyszerű navigáció érdekében</h1>
+<a href="https://webdude.hu/category/wordpress/" rel="follow" data-wpel-link="internal">A WordPress-webhely</a> egyik előnye, hogy szabadon testreszabhatja, ha szükséges. Ez magában foglalja, de nem kizárólagosan, a navigációs menük megjelenésének javítását képikonokkal.
+
+Ikonok hozzáadása a WordPress navigációs menüjéhez vonzóbbá, hozzáférhetőbbé és könnyebben felismerhetőbbé teheti. A menüikonok segítenek a menü szerkezetének a nemzetközi közönséggel való megismerésében is.
+
+Kétféleképpen adhat hozzá ikonokat a WordPress webhelyéhez – manuálisan vagy menüikon-bővítmény használatával. Az első módszer rugalmasságot kínál az ideális terv megvalósításában, de CSS ismereteket igényel. Ha nem biztos a kódolási készségeiben, javasoljuk a második módszer használatát.
+
+Olvassa tovább, hogy megértse, hogyan működnek az egyes módszerek, és válassza ki az Ön igényeinek leginkább megfelelőt.
+<h2><span id="Method_1_Add_Menu_Icons_Using_CSS"></span>1. módszer. Menüikonok hozzáadása CSS használatával</h2>
+Ez a módszer magában foglalja egy ikontípus hozzáadását egy könyvtárból a WordPress webhelyéhez egyéni CSS használatával . Különféle ikontípusok állnak rendelkezésre, ami azt jelenti, hogy nem kell a semmiből megtervezni őket, mint például <strong>a Dashicons</strong> , <strong>az Elusive Icons</strong> , <strong>az Foundation Icons</strong> és <strong>a Font Awesome</strong> .
+
+Ebben az oktatóanyagban a Font Awesome ikontárat fogjuk használni. Így adhat hozzá WordPress <a href="https://webdude.hu/wordpress-menuikonok-2-modszer/" rel="follow" data-wpel-link="internal">menüikonokat CSS használatával</a> :
+* Nyissa meg a Font Awesome <a href="https://fontawesome.com/" target="_blank" rel="nofollow noopener noreferrer" data-wpel-link="external">kezdőlapját</a> , és válassza <strong>az Indítás ingyen lehetőséget</strong> .
+<div>
+
+<a href="https://webdude.hu/wp-content/uploads/2024/12/The-homepage-of-Font-Awesome-768x332-1.webp"><img className="aligncenter" src="https://webdude.hu/wp-content/uploads/2024/12/The-homepage-of-Font-Awesome-768x332-1.webp" alt="" width="768" height="332" /></a>
+<figure className="aligncenter"></figure>
+</div>
+
+* Adja meg e-mail-címét, hogy megkapja az ingyenes Kit kódot, amellyel lekérheti a Font Awesome ikonokat a könyvtárukból. Így kell kinéznie a könyvtár Kit kódjának:
+<div><a href="https://webdude.hu/wp-content/uploads/2024/12/The-Font-Awesome-Kit-Code-768x83-1.webp"><img className="aligncenter" src="https://webdude.hu/wp-content/uploads/2024/12/The-Font-Awesome-Kit-Code-768x83-1.webp" alt="" width="768" height="83" /></a></div>
+
+* Most, hogy megvan a könyvtár kódja, a következő lépés az, hogy megszerezze a használni kívánt Font Awesome ikonok CSS-osztályát. Nyissa meg a Font Awesome <a href="https://fontawesome.com/search" target="_blank" rel="nofollow noopener noreferrer" data-wpel-link="external">keresőoldalát</a> , és mentse el az igényeinek megfelelőket. Ebben a példában a „ <strong>ház</strong> ” ikont fogjuk használni kezdőlapunkhoz.
+<div>
+
+[caption id="attachment_7321" align="aligncenter" width="768"]<a href="https://webdude.hu/wp-content/uploads/2024/12/Obtaining-the-HTML-code-of-a-Font-Awesome-icon-768x449-1.webp"><img src="https://webdude.hu/wp-content/uploads/2024/12/Obtaining-the-HTML-code-of-a-Font-Awesome-icon-768x449-1.webp" alt="WordPress menüikonok - WordPress menu icons baner" width="768" height="449" /></a> WordPress menüikonok - WordPress menu icons baner[/caption]
+
+</div>
+
+* Nyissa meg a WordPress adminisztrátori irányítópultját, és lépjen <strong>a Megjelenés</strong> -&gt; <strong>Témafájlszerkesztő</strong> menüpontra .
+* Nyissa meg a <strong>header.php</strong> fájlt, és adja hozzá a Kit kódot a <strong>&lt;/head&gt;</strong> sor fölé. Kattintson <strong>a Fájl frissítése elemre</strong> .
+<div><a href="https://webdude.hu/wp-content/uploads/2024/12/Placing-the-Font-Awesome-Kit-code-inside-the-theme_s-header-file-768x390-1.webp"><img className="aligncenter" src="https://webdude.hu/wp-content/uploads/2024/12/Placing-the-Font-Awesome-Kit-code-inside-the-theme_s-header-file-768x390-1.webp" alt="" width="768" height="390" /></a></div>
+
+* Lépjen <strong>a Megjelenés</strong> -&gt; <strong>Menük</strong> elemre , és bontsa ki a testreszabni kívánt menüpontot. Adja hozzá a harmadik lépésben kapott CSS-osztályt a <strong>Navigációs címke</strong> szövegdobozhoz a <strong>Menüszerkezet</strong> részben. Tartsa meg az aktuális menüszöveget, ha a kép ikon mellett szeretné megjeleníteni.
+<div>
+
+[caption id="attachment_7319" align="aligncenter" width="768"]<a href="https://webdude.hu/wp-content/uploads/2024/12/Adding-the-HTML-code-of-a-Font-Awesome_s-icon-to-WordPress-menu-settings-768x369-1.webp"><img src="https://webdude.hu/wp-content/uploads/2024/12/Adding-the-HTML-code-of-a-Font-Awesome_s-icon-to-WordPress-menu-settings-768x369-1.webp" alt="WordPress menüikonok - WordPress menu icons baner" width="768" height="369" /></a> WordPress menüikonok - WordPress menu icons baner[/caption]
+
+Code:
+
+> `<i class="fa fa-home"></i>`
+
+</div>
+
+* Ismételje meg a harmadik és hatodik lépést, ha további ikonokat szeretne hozzáadni más menüpontokhoz, majd kattintson a <strong>Menü mentése</strong> gombra.
+* Ha a folyamat sikeres, a menü így fog kinézni:
+<div><a href="https://webdude.hu/wp-content/uploads/2024/12/The-appearance-of-a-Home-menu-with-a-Dashicons-icon-768x322-1.webp"><img className="aligncenter" src="https://webdude.hu/wp-content/uploads/2024/12/The-appearance-of-a-Home-menu-with-a-Dashicons-icon-768x322-1.webp" alt="" width="768" height="322" /></a></div>
+<div>
+
+A WordPress menüikonok hozzáadásának lépései az ikontípusoktól függően változnak. Használhatja például a Dashicons könyvtárat a téma fájljának szerkesztése nélkül, mivel ez a hivatalos WordPress rendszergazdai betűtípus a 3.8-as verzió óta. Egyes könyvtárak CSS-osztályokat használnak a képikonok implementálására a WordPress menüelemekben.
+
+</div>
+<h2><span id="Method_2_Add_Menu_Icons_Using_a_Plugin"></span>2. módszer. Menüikonok hozzáadása beépülő modul használatával</h2>
+Számos bővítmény nagyszerű menüikonokkal egyszerűsíti a navigációs menü testreszabásának folyamatát. A következő bővítményeket ajánljuk:
+* <a href="https://wordpress.org/plugins/menu-icons/" target="_blank" rel="nofollow noopener noreferrer" data-wpel-link="external"><strong>Menu Icons by ThemeIsle</strong></a> – egy ingyenes beépülő modul, amely különböző ikontípusokat támogat, beleértve a Font Awesome-ot, a Dashicons-t és az SVG-t.
+* <a href="https://wordpress.org/plugins/menu-image/" target="_blank" rel="nofollow noopener noreferrer" data-wpel-link="external"><strong>Menu Image</strong></a> ‒ egy freemium bővítmény, amely a menüelemeket cselekvésre ösztönző gombokká alakíthatja.
+* <a href="https://wordpress.org/plugins/wp-menu-icons/" target="_blank" rel="nofollow noopener noreferrer" data-wpel-link="external"><strong>WP Menu Icons</strong></a> – egy másik ingyenes bővítmény, amely többféle ikontípust támogat, és különféle testreszabási lehetőségeket kínál, beleértve az ikon helyzetét és színét.
+* <a href="https://wordpress.org/plugins/megamenu/" target="_blank" rel="nofollow noopener noreferrer" data-wpel-link="external">Max Mega Menu</a> ‒ egy bővítmény, amely lehetővé teszi a WordPress mega menü létrehozását és ikonok hozzáadását különböző platformokról.
+A következő oktatóanyag megmutatja, hogyan adhat hozzá ikonokat a <strong>Menu Icons by </strong><strong>ThemeIsle</strong> bővítmény használatával:
+* Telepítse és aktiválja a WordPress bővítményt .
+<div><a href="https://webdude.hu/wp-content/uploads/2024/12/The-Menu-Icons-by-ThemeIsle-plugin-banner-in-the-WordPress-plugin-directory-768x276-1.webp"><img className="aligncenter" src="https://webdude.hu/wp-content/uploads/2024/12/The-Menu-Icons-by-ThemeIsle-plugin-banner-in-the-WordPress-plugin-directory-768x276-1.webp" alt="" width="768" height="276" /></a></div>
+
+* Lépjen <strong>a Megjelenés</strong> -&gt; <strong>Menük</strong> elemre , és bontsa ki a testreszabni kívánt menüpontot. Megjelenik egy új menüelem, melynek neve <strong>Ikon: Válassza a </strong><strong>Navigációs címke</strong> szövegmező alatt .
+<div><a href="https://webdude.hu/wp-content/uploads/2024/12/A-new-button-labeled-Select-appears-inside-the-Menu-Structure-section-after-installing-the-ThemeIsle-plugin-768x527-1.webp"><img className="aligncenter" src="https://webdude.hu/wp-content/uploads/2024/12/A-new-button-labeled-Select-appears-inside-the-Menu-Structure-section-after-installing-the-ThemeIsle-plugin-768x527-1.webp" alt="" width="768" height="527" /></a></div>
+
+* Kattintson <strong>a Kiválasztás gombra</strong> , és válasszon egy Dashicons ikont a felugró menüből. Testreszabhatja az új ikon láthatóságát, helyzetét, függőleges igazítását és betűméretét a jobb oldali menüikonbeállítások segítségével. Ha elkészült, nyomja meg a <strong>Select</strong> gombot.
+<div>
+
+[caption id="attachment_7316" align="aligncenter" width="768"]<a href="https://webdude.hu/wp-content/uploads/2024/12/Picking-a-Dashicons-icon-and-configuring-its-look-through-the-ThemeIsle-plugin-768x363-1.webp"><img src="https://webdude.hu/wp-content/uploads/2024/12/Picking-a-Dashicons-icon-and-configuring-its-look-through-the-ThemeIsle-plugin-768x363-1.webp" alt="WordPress menüikonok - WordPress menu icons baner" width="768" height="363" /></a> WordPress menüikonok - WordPress menu icons baner[/caption]
+
+</div>
+
+* A kiválasztott új ikonnak meg kell jelennie a <strong>Menüszerkezet</strong> részben. Ismételje meg ugyanezt a folyamatot a többi menüelemnél, majd kattintson <strong>a Menü mentése</strong> gombra .
+<div>
+
+[caption id="attachment_7315" align="aligncenter" width="768"]<a href="https://webdude.hu/wp-content/uploads/2024/12/The-chosen-icon-appears-under-the-Navigation-Label-textbox-within-the-Menu-Structure-section-768x526-1.webp"><img src="https://webdude.hu/wp-content/uploads/2024/12/The-chosen-icon-appears-under-the-Navigation-Label-textbox-within-the-Menu-Structure-section-768x526-1.webp" alt="WordPress menüikonok - WordPress menu icons baner" width="768" height="526" /></a> WordPress menüikonok - WordPress menu icons baner[/caption]
+
+</div>
+
+* Íme egy példa egy WordPress menüre, amelyhez a Dashicons alapértelmezett ikonja van hozzáadva a bővítmény segítségével:
+<div>
+
+[caption id="attachment_7314" align="aligncenter" width="768"]<a href="https://webdude.hu/wp-content/uploads/2024/12/The-appearance-of-a-Home-menu-with-a-Dashicons-icon-768x322-1.webp"><img src="https://webdude.hu/wp-content/uploads/2024/12/The-appearance-of-a-Home-menu-with-a-Dashicons-icon-768x322-1.webp" alt="WordPress menüikonok - WordPress menu icons baner" width="768" height="322" /></a> WordPress menüikonok - WordPress menu icons baner[/caption]
+
+</div>
+<h2>Következtetés</h2>
+Menüikonok hozzáadása a WordPress webhelyéhez kiváló módja annak, hogy javítsa a navigációt és az esztétikát. A módosítás viszonylag egyszerű, így bárki megteheti a WordPress szakértőinek segítsége nélkül.
+
+Ebből a cikkből két módszert tanult meg, hogyan adhat hozzá menüikonokat a WordPress navigációs menüjéhez:
+* <strong>Manuális kódolás</strong> – ez a módszer nagyobb rugalmasságot biztosít, de némi CSS-ismeretet igényel.
+* <strong>Menüikon-bővítmény használata</strong> – kezdőbarátabb módszer, de ne feledje, hogy túl sok beépülő modul használata lelassíthatja a WordPress webhelyét.

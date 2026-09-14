@@ -1,0 +1,127 @@
+---
+title: "API hitelesítés – Szolgáltatási ügyfél API-kulcsok létrehozása"
+date: "2023-05-16"
+excerpt: "API hitelesítés – Szolgáltatási ügyfél API-kulcsok létrehozása Az első osztályú API-kat biztosító alkalmazások nem egyszerű hitelesítést igényelnek, hanem api-k..."
+image: "/assets/banners/webdude-hero.webp"
+noindex: false
+---
+
+<h2>API hitelesítés – Szolgáltatási ügyfél API-kulcsok létrehozása</h2>
+Az első osztályú API-kat biztosító alkalmazások nem egyszerű hitelesítést igényelnek, hanem api-kulcsokat igényelnek. A felhasználók által generált API-kulcsok lehetővé teszik programozott szolgáltatásaik számára, hogy interakcióba lépjenek az Ön API-jával. Ezeket biztonságos módon kell előállítani, és eltérő követelményeket kell támasztani, mint a felhasználói felület tokenek.
+
+A legtöbb esetben a hitelesítésnél JWT-kkel kell azonosítani és engedélyezni a felhasználót. Ezek a JWT-k a hitelesítési szolgáltatótól származnak. Belsőleg is rendelkezhet API-kulcsokkal a belső szolgáltatások hitelesítéséhez. Ha azonban a felhasználókat és a szolgáltatási klienst eltérően kell hitelesíteni, az problémákat okoz:
+* Az átlátszatlan api-kulcsoknak nincs lejárati ideje, így a feltárásuk azonnali elforgatást igényel
+* Az API-kulcsok nem tartalmaznak azonosító információkat a szolgáltatási kliens azonosításához, így lehetetlenné teszi annak megállapítását, hogy kinek kell lennie a hívónak, vagy melyik bérlőhöz vagy fiókhoz kell hozzáférni.
+* Az alkalmazásszolgáltatásoknak több hitelesítési stratégiát is meg kell érteniük, ami több szolgáltatás esetén még problémásabbá válik, mert akkor mindegyiknek meg kell értenie a jogkivonat érvényesítését és a nyilvános kulcsok adatbázisának megosztását.
+* A kulcsokat gyakran helytelenül tárolják egyszerű szövegben, amikor kivonatolni és sózni kell őket, akár egy jelszót, ami bonyolultabbá teszi a kulcsgenerálást.
+* Az API-kulcsok helytelenül kapcsolódnak ahhoz a felhasználóhoz, aki létrehozta őket, ahelyett, hogy velük együtt lenne megosztva. Sok API-felhasználó szeretné egyedileg azonosítani szolgáltatási ügyfeleit, ahelyett, hogy saját felhasználói identitásukhoz kapcsolná őket. (Családi fiókok és B2B alkalmazások).
+<h2>Szolgáltatási kliens</h2>
+Vagy szolgáltatási klienseket hoz létre, hogy belső szolgáltatásai hozzáférést biztosítsanak egymáshoz, vagy API-kulcsokat generál a felhasználók számára, hogy elérjék a szolgáltatás API-jait. A Service Client -et vagy az API-kulcsot felváltva használjuk az alábbiak szerint. De általában a Service Client a szolgáltatás, és az API-kulcs a kulcs, amelyet a szolgáltatási kliens használ önmaga azonosítására. Abban az esetben, ha könyvtárat vagy CLI-t biztosít, a szolgáltatási kliens a fejlesztő vagy a felhasználó, és futás közben átadja az API-kulcsot a könyvtárnak vagy a CLI-nek.
+
+Ennek legjobb módja az, ha a szolgáltató ügyfelek számára lehetőséget biztosítunk JWT-k létrehozására, és pontosabban identitásszolgáltatóként. A szolgáltatási kliens API-kulcsainak nyilvános/privát kulcsformátumba való konvertálásával és egy JWT aláírásával az alkalmazás API-k következetes módon ellenőrizhetik a tokeneket. Ezenkívül, mivel a szolgáltató kliensek JWT-ket használnak, azonosító információkat fognak tartalmazni. Ezenkívül az API-kulcs soha nem lesz elérhető a szolgáltatáson kívül, így a biztonság megnő.
+
+<img className="aligncenter" src="https://webdude.hu/wp-content/uploads/2023/05/generate-key-pair-b0456cd0f03eca1f833cf4ee166060e1.png" alt="" width="693" height="619" />
+* Az első lépés egy nyilvános/privát kulcspár létrehozása, a nyilvános kulcs tárolása az adatbázisban, és a privát kulcs szétosztása. A privát kulcsot biztosító ügyfél-azonosító adatokkal együtt, amelyeket a szolgáltatási ügyféltől elvárhat.
+* A szolgáltatási ügyfél a privát kulcsot használja egy JWT létrehozásához, amely visszaadható az API-nak, és ellenőrizhető az első lépésben létrehozott nyilvános kulcsú JWK-val.
+* Az alkalmazás API ezután a nyilvános kulccsal ellenőrzi a JWT tokent, és felhatalmazza a hívót a token használatával a művelet végrehajtására.
+* [Később] Amikor a hozzáférési jogkivonat lejár, az ügyfél létrehozhat egy új JWT-t.
+A JWT privát kulcs engedélyezése.
+<img className="aligncenter" src="https://webdude.hu/wp-content/uploads/2023/05/authorize-key-jwt-4dedaf20b5f2f391f75d347169a6a74e.png" alt="" width="513" height="444" />
+
+Ezzel elkerülhető az összes olyan probléma, amelyet a közös lapos API-kulcs használata generál, valamint növeli az alkalmazás API és az ügyfélhívó biztonságát.
+<h2>Alkalmazási</h2>
+A kulcspár létrehozása egyszerűen megtörténik az elérhető kriptográfiai könyvtárak használatával az Ön által preferált nyelven. Hogyan történik még bonyolultabb a JWK-k konfigurációja és az azonosító információk helyes felhasználása.
+
+```javascript
+generKeyPair.js
+const { generateKeyPair } = require('crypto');
+const clientKeyPair = generateKeyPair('rsa', {
+modulusLength: 1024,
+publicKeyEncoding: { type: 'spki', format: 'pem' },
+privateKeyEncoding: { type: 'pkcs8', format: 'pem' }
+});
+const accessKey = { keyId, privateKey, audience, clientId };
+```
+
+ 
+
+```javascript
+serviceClientTokenProvider.js
+// Source https://www.npmjs.com/package/authress-sdk
+const jwtManager = require('jsonwebtoken');
+
+module.exports = function(accessKey) {
+return async () => {
+if (this.cachedKeyData && this.cachedKeyData.token
+&& this.cachedKeyData.expires > Date.now() + 3600000) {
+return this.cachedKeyData.token;
+}
+
+const now = Math.round(Date.now() / 1000);
+const issuer = `https://api.authress.io/v1/clients/${encodeURIComponent(accessKey.clientId)}`;
+const jwt = {
+aud: accessKey.audience,
+iss: issuer,
+sub: accessKey.clientId,
+iat: now,
+// valid for 24 hours
+exp: now + 60 * 60 * 24,
+scope: 'openid'
+};
+const options = { algorithm: 'RS256', keyid: accessKey.keyId };
+const token = await jwtManager.sign(jwt, accessKey.privateKey, options);
+this.cachedKeyData = { token, expires: jwt.exp * 1000 };
+return token;
+};
+};
+```
+
+<h2>Biztonsági</h2>
+Ennek helyes megoldása kihívást jelenthet, és támadási felületeket hagyhat maga után a sebezhetőségek számára. E problémák elkerülése érdekében az engedélyezési API-ban elérhető a szervizkliens API-funkció.
+
+Az alkalmazásban az engedélyezési API segítségével hozzon létre egy szolgáltatási ügyfelet, majd kérjen hozzáférési jogkivonatot. Mivel ezek menedzsment API-hívások, az Authress használatával ingyenesek .
+
+<img className="aligncenter" src="https://webdude.hu/wp-content/uploads/2023/05/api-create-service-client-647191a3f65eaf80ae6744cd860d62e7.png" alt="" width="953" height="416" />
+
+Ugyanennek a műveletnek a kézi lépései a felhasználói felületen érhetők el:
+
+<img className="aligncenter" src="https://webdude.hu/wp-content/uploads/2023/05/ui-create-service-client-acbfc6c2530e6fd423df7a321c876e09.png" alt="" width="1032" height="934" />
+
+ 
+
+Ezután adjon hozzá egy hozzáférési kulcsot:
+
+<img className="aligncenter" src="https://webdude.hu/wp-content/uploads/2023/05/create-access-key-c2f2e0b0fb2f3233fc82ed59d2a0512b.png" alt="" width="969" height="682" />
+<h2>A hitelesítési</h2>
+Eddig az alkalmazási oldalt megoldottuk, de a szervizkliensnek még csatlakoznia kell. A hozzáférési kulcs szétszedése és a kliens JWT előállítása nem egyszerű, de a funkcionalitást az authress-sdk.js ( az összes elérhető sdk ) már biztosítja.
+
+Csomagolhatjuk a szolgáltatási jogkivonat-szolgáltató funkcionalitását, és biztosíthatunk egy alkalmazásspecifikus SDK-t, amely a beépített modult használja az összes bonyolultság kezelésére.
+
+> install-authress-sdk.sh
+> npm install authress-sdk
+
+```javascript
+myApplicationServiceClient.js
+const { ServiceClientTokenProvider } = require('authress-sdk');
+
+class myApplicationServiceClient {
+constructor(accessToken) {
+this.tokenProvider = new ServiceClientTokenProvider(accessToken);
+}
+
+/* Add in application service calls */
+async getResource() {
+const token = this.tokenProvider();
+const headers = { Authorization: `Bearer ${token}` };
+return httpClient.get(url, headers);
+}
+async createResource() {}
+/* ... */
+}
+
+module.exports = myApplicationServiceClient;
+```
+
+ 
+
+Forrás: authress.io

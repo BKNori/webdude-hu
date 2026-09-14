@@ -1,0 +1,27 @@
+# WebDude - robots.txt konfiguráció
+User-agent: *
+Allow: /
+
+# AI kereső botok engedélyezése (AEO)
+User-agent: GPTBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+# Technikai Next.js és API útvonalak tiltása
+Disallow: /_next/
+Disallow: /api/
+Disallow: /newsite/
+
+# Sitemaps elérhetősége
+Sitemap: https://webdude.hu/sitemap.xml
+
+# Crawl-delay beállítása (opcionális, ha túl sok bot terhelné a szervert)
+Crawl-delay: 10
+
+# Lokális SEO és Brand védelem
+# Szenvedélyem a design és a kód - Kecskemét, 2026

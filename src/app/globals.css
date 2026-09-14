@@ -1,0 +1,570 @@
+@import "tailwindcss";
+
+/* ── Tailwind v4 Design Tokens (SSOT: DESIGN_SYSTEM.md) ──────────────────── */
+@theme {
+  --color-bg-base: #020617; /* Főháttér — slate-950 */
+  --color-bg-card: #0f172a; /* Kártyák — slate-900 */
+  --color-text-primary: #e2e8f0; /* Fő szöveg — slate-200 */
+  --color-cyan-primary: #00b5f1; /* Electric Cyan brand */
+  --color-cyan-from: #00d4ff; /* Gradiens kezdet */
+  --color-cyan-to: #0095c7; /* Gradiens vége */
+}
+
+body {
+  background-color: rgb(2 6 23);
+  color: rgb(226 232 240);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: rgba(0 181 241 0.3);
+  color: rgb(253 230 138);
+}
+
+/* Ambient Cyber-Glow fények */
+@keyframes ambientGlowPrimary {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.25;
+  }
+  50% {
+    transform: translate(60px, -40px) scale(1.15);
+    opacity: 0.4;
+  }
+}
+
+@keyframes ambientGlowSecondary {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.15;
+  }
+  50% {
+    transform: translate(-50px, 30px) scale(1.2);
+    opacity: 0.3;
+  }
+}
+
+.bg-ambient-glow-1 {
+  animation: ambientGlowPrimary 18s ease-in-out infinite;
+}
+
+.bg-ambient-glow-2 {
+  animation: ambientGlowSecondary 22s ease-in-out infinite;
+}
+
+/* SVG Mesh Grid mintázat */
+.bg-mesh-grid {
+  background-image: radial-gradient(
+    rgba(0, 181, 241, 0.08) 1px,
+    transparent 1px
+  );
+  background-size: 32px 32px;
+}
+
+/* Liquid Gradient Háttér Animációk */
+body::before {
+  content: "";
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(139, 92, 246, 0.08) 0%,
+    transparent 50%
+  );
+  animation: liquid-move-1 20s ease-in-out infinite;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(
+    circle at 70% 70%,
+    rgba(6, 182, 212, 0.06) 0%,
+    transparent 50%
+  );
+  animation: liquid-move-2 25s ease-in-out infinite;
+}
+
+@keyframes liquid-move-1 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  33% {
+    transform: translate(30%, -30%) scale(1.1);
+  }
+
+  66% {
+    transform: translate(-20%, 20%) scale(0.9);
+  }
+}
+
+@keyframes liquid-move-2 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  33% {
+    transform: translate(-30%, 30%) scale(1.1);
+  }
+
+  66% {
+    transform: translate(20%, -20%) scale(0.9);
+  }
+}
+
+@keyframes liquid-move-3 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  33% {
+    transform: translate(20%, 20%) scale(1.15);
+  }
+
+  66% {
+    transform: translate(-15%, -25%) scale(0.95);
+  }
+}
+
+.animate-blob-1 {
+  animation: liquid-move-1 25s ease-in-out infinite;
+}
+
+.animate-blob-2 {
+  animation: liquid-move-2 30s ease-in-out infinite;
+}
+
+.animate-blob-3 {
+  animation: liquid-move-3 28s ease-in-out infinite;
+}
+
+/* Basic flex/grid reset */
+* {
+  box-sizing: border-box;
+}
+
+/* Mobil viewport optimalizáció */
+@media (max-width: 768px) {
+  body {
+    font-size: 16px;
+  }
+}
+
+/* Finom radial rácsháló háttér */
+.bg-grid-mesh {
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    rgba(0, 181, 241, 0.06) 1px,
+    transparent 0
+  );
+  background-size: 32px 32px;
+}
+
+.glow-blob-cyan {
+  position: absolute;
+  width: 40vw;
+  height: 40vw;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(0, 181, 241, 0.07) 0%,
+    transparent 70%
+  );
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.glow-blob-indigo {
+  position: absolute;
+  width: 50vw;
+  height: 50vw;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(147, 51, 234, 0.08) 0%,
+    transparent 70%
+  );
+  filter: blur(100px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Glassmorphism kártyák - Apple Style */
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(15, 23, 42, 0.08);
+  border-radius: 1.5rem;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.glass-card-hover {
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.glass-card-hover:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(0, 181, 241, 0.3);
+  box-shadow: 0 12px 48px rgba(0, 181, 241, 0.15);
+  transform: translateY(-4px);
+}
+
+/* Prémium Gradient Gombok - Apple Style */
+.premium-btn {
+  background: linear-gradient(
+    135deg,
+    var(--color-accent-from) 0%,
+    var(--color-accent-to) 100%
+  );
+  border: none;
+  border-radius: 1rem;
+  box-shadow: 0 4px 16px rgba(99, 102, 241, 0.2);
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.premium-btn:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 24px rgba(99, 102, 241, 0.3);
+  background: linear-gradient(135deg, #7c7ef6 0%, #16c6d4 100%);
+}
+
+.premium-btn:active {
+  transform: scale(0.98);
+}
+
+/* Glow effektek */
+.glow-cyan {
+  box-shadow:
+    0 0 20px rgba(0, 181, 241, 0.3),
+    0 0 40px rgba(0, 181, 241, 0.2);
+}
+
+.glow-cyan-hover:hover {
+  box-shadow:
+    0 0 30px rgba(0, 181, 241, 0.5),
+    0 0 60px rgba(0, 181, 241, 0.3);
+  transition: all 0.3s ease;
+}
+
+.glow-purple {
+  box-shadow:
+    0 0 20px rgba(139, 92, 246, 0.3),
+    0 0 40px rgba(139, 92, 246, 0.2);
+}
+
+.glow-purple-hover:hover {
+  box-shadow:
+    0 0 30px rgba(139, 92, 246, 0.5),
+    0 0 60px rgba(139, 92, 246, 0.3);
+  transition: all 0.3s ease;
+}
+
+.glow-blue {
+  box-shadow:
+    0 0 20px rgba(59, 130, 246, 0.3),
+    0 0 40px rgba(59, 130, 246, 0.2);
+}
+
+.glow-blue-hover:hover {
+  box-shadow:
+    0 0 30px rgba(59, 130, 246, 0.5),
+    0 0 60px rgba(59, 130, 246, 0.3);
+  transition: all 0.3s ease;
+}
+
+/* Gradient border-ek */
+.gradient-border-cyan {
+  position: relative;
+  background: linear-gradient(145deg, #1e293b, #0f172a);
+  border-radius: 1rem;
+}
+
+.gradient-border-cyan::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(45deg, #00b5f1, #00d4ff, #00b5f1);
+  border-radius: 1rem;
+  z-index: -1;
+  animation: gradient-rotate 3s linear infinite;
+}
+
+.gradient-border-purple {
+  position: relative;
+  background: linear-gradient(145deg, #1e293b, #0f172a);
+  border-radius: 1rem;
+}
+
+.gradient-border-purple::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(45deg, #8b5cf6, #a78bfa, #8b5cf6);
+  border-radius: 1rem;
+  z-index: -1;
+  animation: gradient-rotate 3s linear infinite;
+}
+
+.gradient-border-blue {
+  position: relative;
+  background: linear-gradient(145deg, #1e293b, #0f172a);
+  border-radius: 1rem;
+}
+
+.gradient-border-blue::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(45deg, #3b82f6, #60a5fa, #3b82f6);
+  border-radius: 1rem;
+  z-index: -1;
+  animation: gradient-rotate 3s linear infinite;
+}
+
+@keyframes gradient-rotate {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* 3D elemek */
+.perspective-container {
+  perspective: 1000px;
+}
+
+.transform-3d {
+  transform-style: preserve-3d;
+}
+
+.rotate-x {
+  transform: rotateX(var(--rotate-x, 0deg));
+}
+
+.rotate-y {
+  transform: rotateY(var(--rotate-y, 0deg));
+}
+
+.rotate-z {
+  transform: rotateZ(var(--rotate-z, 0deg));
+}
+
+.scale-3d {
+  transform: scale3d(var(--scale-x, 1), var(--scale-y, 1), var(--scale-z, 1));
+}
+
+.translate-3d {
+  transform: translate3d(
+    var(--translate-x, 0),
+    var(--translate-y, 0),
+    var(--translate-z, 0)
+  );
+}
+
+.card-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.card-3d:hover {
+  transform: rotateY(10deg) rotateX(5deg) scale(1.05);
+}
+
+.card-3d-reverse:hover {
+  transform: rotateY(-10deg) rotateX(-5deg) scale(1.05);
+}
+
+/* Parallax scroll effekt */
+.parallax-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.parallax-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.parallax-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+.parallax-slow {
+  transform: translateZ(-1px) scale(2);
+}
+
+.parallax-medium {
+  transform: translateZ(-0.5px) scale(1.5);
+}
+
+.parallax-fast {
+  transform: translateZ(0px) scale(1);
+}
+
+/* Tilt animációk képeken */
+.tilt-image {
+  transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  transform-style: preserve-3d;
+}
+
+.tilt-image:hover {
+  transform: perspective(1000px) rotateX(5deg) rotateY(5deg) scale(1.05);
+}
+
+.tilt-image-reverse:hover {
+  transform: perspective(1000px) rotateX(-5deg) rotateY(-5deg) scale(1.05);
+}
+
+.tilt-card {
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  transform-style: preserve-3d;
+}
+
+.tilt-card:hover {
+  transform: perspective(1000px) rotateX(10deg) rotateY(10deg) translateZ(20px);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+}
+
+/* Hover effektek erősítése */
+.hover-lift {
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.hover-scale {
+  transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.hover-scale:hover {
+  transform: scale(1.1);
+}
+
+.hover-glow-cyan:hover {
+  box-shadow:
+    0 0 30px rgba(0, 181, 241, 0.6),
+    0 0 60px rgba(0, 181, 241, 0.4);
+  transition: all 0.3s ease;
+}
+
+.hover-glow-purple:hover {
+  box-shadow:
+    0 0 30px rgba(139, 92, 246, 0.6),
+    0 0 60px rgba(139, 92, 246, 0.4);
+  transition: all 0.3s ease;
+}
+
+.hover-glow-blue:hover {
+  box-shadow:
+    0 0 30px rgba(59, 130, 246, 0.6),
+    0 0 60px rgba(59, 130, 246, 0.4);
+  transition: all 0.3s ease;
+}
+
+.hover-border-cyan:hover {
+  border-color: rgba(0, 181, 241, 0.6);
+  box-shadow: 0 0 20px rgba(0, 181, 241, 0.3);
+  transition: all 0.3s ease;
+}
+
+.hover-border-purple:hover {
+  border-color: rgba(139, 92, 246, 0.6);
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+  transition: all 0.3s ease;
+}
+
+.hover-border-blue:hover {
+  border-color: rgba(59, 130, 246, 0.6);
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+  transition: all 0.3s ease;
+}
+
+/* Fénygömb lebegési animációk */
+@keyframes float-glow-1 {
+  0%,
+  100% {
+    transform: translate(0px, 0px) scale(1);
+    opacity: 0.15;
+  }
+
+  50% {
+    transform: translate(80px, -50px) scale(1.2);
+    opacity: 0.25;
+  }
+}
+
+@keyframes float-glow-2 {
+  0%,
+  100% {
+    transform: translate(0px, 0px) scale(1.1);
+    opacity: 0.1;
+  }
+
+  50% {
+    transform: translate(-100px, 60px) scale(0.9);
+    opacity: 0.2;
+  }
+}
+
+.animate-glow-1 {
+  animation: float-glow-1 25s ease-in-out infinite;
+}
+
+.animate-glow-2 {
+  animation: float-glow-2 30s ease-in-out infinite;
+}
+
+/* Hide public site elements inside admin panel and client portal layouts */
+body:has(#admin-layout) .public-header,
+body:has(#admin-layout) .public-footer,
+body:has(#admin-layout) #chat-trigger-btn,
+body:has(#portal-layout) .public-header,
+body:has(#portal-layout) .public-footer,
+body:has(#portal-layout) #chat-trigger-btn {
+  display: none !important;
+}

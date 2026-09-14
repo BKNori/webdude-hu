@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Főoldalak -->
+  <url><loc>https://webdude.hu/</loc><priority>1.0</priority></url>
+  <url><loc>https://webdude.hu/szia-norbi-vagyok/</loc><priority>0.8</priority></url>
+  <url><loc>https://webdude.hu/kapcsolat/</loc><priority>0.8</priority></url>
+  
+  <!-- Szolgáltatások -->
+  <url><loc>https://webdude.hu/szolgaltatasok/wordpress-weboldal-keszites-kecskemet/</loc><priority>0.9</priority></url>
+  <url><loc>https://webdude.hu/szolgaltatasok/wordpress-webshop-keszites/</loc><priority>0.9</priority></url>
+  <url><loc>https://webdude.hu/szolgaltatasok/egyedi-arculattervezes-logo/</loc><priority>0.9</priority></url>
+  <url><loc>https://webdude.hu/szolgaltatasok/wordpress-virusirtas-es-biztonsag/</loc><priority>0.7</priority></url>
+  <url><loc>https://webdude.hu/szolgaltatasok/ai-kep-es-videogeneralas/</loc><priority>0.9</priority></url>
+
+  <!-- Portfólió Esettanulmányok (Példák a forrásokból) -->
+  <url><loc>https://webdude.hu/munkak/rimai-utepito-kft-arculat-es-weboldal/</loc><priority>0.7</priority></url>
+  <url><loc>https://webdude.hu/munkak/dr-danyi-weboldal-arculat-es-grafika/</loc><priority>0.7</priority></url>
+  <url><loc>https://webdude.hu/munkak/bt-shop-webshop-fejlesztes/</loc><priority>0.7</priority></url>
+  <url><loc>https://webdude.hu/munkak/hu-mago-arculatterv-es-web/</loc><priority>0.7</priority></url>
+
+  <!-- Hírek / Blog kategóriák -->
+  <url><loc>https://webdude.hu/hirek/ai-trendek/</loc><priority>0.6</priority></url>
+  <url><loc>https://webdude.hu/hirek/wordpress-tippek/</loc><priority>0.6</priority></url>
+  <url><loc>https://webdude.hu/hirek/grafikai-hirek/</loc><priority>0.6</priority></url>
+</urlset>

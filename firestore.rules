@@ -1,0 +1,174 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ─── Helper functions ──────────────────────────────────────────────────
+
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    // Admin check: Firebase Auth custom claim 'superadmin: true'
+    // (beállítva: firebase auth_update_user → claim: superadmin = true)
+    function isAdmin() {
+      return isAuthenticated() &&
+             request.auth.token.get('superadmin', false) == true;
+    }
+
+    function isHelloAdmin() {
+      return isAuthenticated() && request.auth.token.email == 'hello@webdude.hu';
+    }
+
+    // ─── Data validation ───────────────────────────────────────────────────
+
+    function isValidEmail(email) {
+      return email.matches('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$');
+    }
+
+    // Lead create validation (resource.data nem létezik create-nél, csak create)
+    function isValidLeadData() {
+      let d = request.resource.data;
+      return d.keys().hasAll(['name', 'email', 'projectType', 'summary']) &&
+             d.name is string && d.name.size() > 1 && d.name.size() <= 100 &&
+             d.email is string && isValidEmail(d.email) &&
+             d.projectType is string && d.projectType.size() > 0 && d.projectType.size() <= 100 &&
+             d.summary is string && d.summary.size() >= 10 && d.summary.size() <= 2000;
+    }
+
+    // ─── Collections ───────────────────────────────────────────────────────
+
+    // private_prompts — ZERO-PROMPT POLICY: KIZÁRÓLAG service_role
+    match /private_prompts/{docId} {
+      // Senki sem olvashatja a frontendből (kizárólag backend)
+      allow read: if false;
+      // Senki sem írhatja a frontendből (kizárólag backend)
+      allow write: if false;
+    }
+
+    // user_generations — Aszinkron generálási feladatok
+    match /user_generations/{docId} {
+      // Olvasás: csak a saját generálások
+      allow read: if isAdmin() || (isAuthenticated() && resource.data.userId == request.auth.uid);
+      // Írás: csak a saját generálások létrehozása
+      allow create: if isAuthenticated() && request.resource.data.userId == request.auth.uid;
+      // Frissítés: KIZÁRÓLAG backend (Cloud Functions / Server Actions)
+      allow update: if false;
+      // Törlés: csak a saját generálások
+      allow delete: if isAdmin() || (isAuthenticated() && resource.data.userId == request.auth.uid);
+    }
+
+    // generation_queue — Belső queue, KIZÁRÓLAG Cloud Functions (service account)
+    match /generation_queue/{queueId} {
+      // Csak Cloud Functions (service account) férhet hozzá
+      allow read, write: if false;
+    }
+
+    // Users — Zero-Prompt Policy: Szigorú írásvédelem
+    match /users/{userId} {
+      // Olvasás: csak a saját profil vagy admin
+      allow read: if isOwner(userId) || isAdmin() || isHelloAdmin();
+      // Írás: KIZÁRÓLAG backend (Cloud Functions / Server Actions) - frontend tiltva
+      allow write: if false;
+    }
+
+    // Workflows — superadmin has full access, authenticated client can only read/update approvals on their own workflows
+    match /workflows/{workflowId} {
+      allow read: if isAdmin() || (isAuthenticated() && resource.data.clientId == request.auth.uid);
+      allow create, delete: if isAdmin();
+      allow update: if isAdmin() || (
+        isAuthenticated() && 
+        resource.data.clientId == request.auth.uid && 
+        request.resource.data.diff(resource.data).affectedKeys().hasOnly(['approvedByClient', 'clientApprovedAt'])
+      );
+
+      // Workflow Comments sub-collection
+      match /comments/{commentId} {
+        allow read: if isAdmin() || (isAuthenticated() && get(/databases/$(database)/documents/workflows/$(workflowId)).data.clientId == request.auth.uid);
+        allow create: if isAuthenticated() && (isAdmin() || get(/databases/$(database)/documents/workflows/$(workflowId)).data.clientId == request.auth.uid) && request.resource.data.authorId == request.auth.uid;
+        allow update, delete: if isAdmin() || (isAuthenticated() && resource.data.authorId == request.auth.uid);
+      }
+    }
+
+    // Leads — nyilvános create (kontakt form), admin read/write
+    // Rate limit: Server Action (src/actions/contact.ts) kezeli
+    match /leads/{leadId} {
+      allow create: if isValidLeadData();
+      allow read, update, delete: if isAdmin();
+    }
+
+    // Portfolio munkák — publikus read, admin write
+    match /portfolio/{workId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Chat üzenetek
+    match /chats/{chatId} {
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated();
+      allow update, delete: if isOwner(request.auth.uid) || isAdmin();
+    }
+
+    // Blog bejegyzések — publikus read, admin write
+    match /posts/{postId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Client AI notes — users can read/write their own notes, admins can do everything
+    match /notes/{noteId} {
+      allow read, write: if isAuthenticated() && (resource == null || resource.data.clientId == request.auth.uid || request.resource.data.clientId == request.auth.uid || isAdmin());
+    }
+
+    // Settings — admin only
+    match /settings/{settingId} {
+      allow read, write: if isAdmin();
+    }
+
+    // Vault (fájlok metaadatai) — superadmin has full access, authenticated client can read/write their own file records
+    match /vault/{fileId} {
+      allow read: if isAdmin() || (isAuthenticated() && resource.data.clientId == request.auth.uid);
+      allow create: if isAuthenticated() && (isAdmin() || request.resource.data.clientId == request.auth.uid) && request.resource.data.uploadedBy in ['client', 'admin'];
+      allow delete: if isAdmin() || (isAuthenticated() && resource.data.clientId == request.auth.uid && resource.data.uploadedBy == 'client');
+      allow update: if false;
+    }
+
+    // Purchased Add-ons — admin has full access, authenticated client can read/create their own records
+    match /purchased_addons/{addonId} {
+      allow read: if isAdmin() || (isAuthenticated() && resource.data.clientId == request.auth.uid);
+      allow create: if isAuthenticated() && (isAdmin() || request.resource.data.clientId == request.auth.uid);
+      allow update, delete: if isAdmin();
+    }
+
+    // Addons (termékek) — read for all authenticated, write only for admin
+    match /addons/{addonId} {
+      allow read: if isAuthenticated() || isHelloAdmin();
+      allow write: if isAdmin() || isHelloAdmin();
+    }
+
+    // Orders (rendelések) — read/write for own records or admin
+    match /orders/{orderId} {
+      allow read: if isAdmin() || isHelloAdmin() || (isAuthenticated() && resource.data.clientId == request.auth.uid);
+      allow create: if isAuthenticated() && (isAdmin() || isHelloAdmin() || request.resource.data.clientId == request.auth.uid);
+      allow update: if isAdmin() || isHelloAdmin() || (isAuthenticated() && resource.data.clientId == request.auth.uid && request.resource.data.clientId == request.auth.uid);
+      allow delete: if isAdmin() || isHelloAdmin();
+    }
+
+    // AI Generations history — admin has full access, authenticated client can read/create/delete their own generations
+    match /ai_generations/{genId} {
+      allow read: if isAdmin() || (isAuthenticated() && resource.data.clientId == request.auth.uid);
+      allow create: if isAuthenticated() && (isAdmin() || request.resource.data.clientId == request.auth.uid);
+      allow delete: if isAdmin() || (isAuthenticated() && resource.data.clientId == request.auth.uid);
+      allow update: if false;
+    }
+
+    // Minden más: tiltva
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

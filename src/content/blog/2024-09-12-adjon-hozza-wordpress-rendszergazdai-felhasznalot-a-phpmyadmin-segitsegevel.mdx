@@ -1,0 +1,82 @@
+---
+title: "Adjon hozzá WordPress rendszergazdai felhasználót a phpMyAdmin segítségével"
+date: "2024-09-12"
+excerpt: "Adjon hozzá WordPress rendszergazdai felhasználót a phpMyAdmin segítségével  Közvetlenül az adatbázisból létrehozhat egy új WordPress rendszergazdai felhasználó..."
+image: "/assets/banners/webdude-hero.webp"
+noindex: false
+---
+
+<h1>Adjon hozzá WordPress rendszergazdai felhasználót a phpMyAdmin segítségével</h1>
+<div>
+
+Közvetlenül az adatbázisból létrehozhat egy új WordPress rendszergazdai felhasználót. Használja ezt a módszert, ha új felhasználót kell hozzáadnia a webhelyhez anélkül, hogy be kellene jelentkeznie a WordPress irányítópultjára.
+
+</div>
+<div data-smooth-scroll="1" data-smooth-scroll-offset="24" data-lwptoc-initialized="1">
+<div>
+<div>
+<div>
+<div></div>
+</div>
+</div>
+</div>
+</div>
+<h2><span id="Add_WordPress_Admin">Adja hozzá a WordPress adminisztrátort</span></h2>
+* Nyissa meg a felhasználói portált a <em>Webhelyek</em> oldalra
+* Válassza ki a szerkeszteni kívánt <strong>környezet nevét</strong>
+* Kattintson <strong>a phpMyAdmin</strong> elemre a tetején
+* Válassza ki az adatbázisát
+  * <strong>wp_environment</strong> — Elsődleges adatbázis ehhez a környezethez
+* Válassza ki a <strong>wp_users</strong> táblát
+  * Ha egyéni adatbázis-előtagja van , ez helyett a yourprefix_users lesz <strong>.</strong> Ezt mindenképpen vegyük figyelembe a későbbi lépésekben is.
+<a href="https://webdude.hu/wp-content/uploads/2024/09/database_users-464x1024-1.png"><img className="aligncenter" src="https://webdude.hu/wp-content/uploads/2024/09/database_users-464x1024-1.png" alt="" width="464" height="1024" /></a>
+* Kattintson felül a Beszúrás <strong>gombra</strong>
+* Töltse ki a szükséges új felhasználói adatokat
+  * <strong>ID</strong> — Adja meg az elérhető azonosítószámot. Ezt az azonosító számot később tudnia kell!
+  * <strong>user_login</strong> — A felhasználó felhasználóneve.
+  * <strong>user_pass</strong> – A nyers jelszó, amellyel a felhasználó bejelentkezik.
+  * <b>MEGJEGYZÉS:</b> A bal oldali funkció legördülő menüt MD5-re kell állítani, különben a jelszó NEM MŰKÖDIK.
+* <strong>user_nicename</strong> — A szerző slugja vagy neve (Pl.: a te neved).
+* <strong>user_email</strong> – A felhasználóhoz társított e-mail cím.
+* <strong>user_status</strong> – Állítsa ezt 0-ra
+* <strong>display_name</strong> — A felhasználó megjelenített neve (Például: az Ön neve)
+<a href="https://webdude.hu/wp-content/uploads/2024/09/database_userfields-1024x622-1.png"><img className="aligncenter" src="https://webdude.hu/wp-content/uploads/2024/09/database_userfields-1024x622-1.png" alt="" width="1024" height="622" /></a>
+* Kattintson az Ugrás <strong>gombra</strong> alul
+* Kattintson ismét az <strong>Ugrás gombra</strong> a lekérdezés oldalon
+* Zöld pipát és sikerszalagot kell kapnia.
+* Ha piros hibaüzenetet kap az alján, a felhasználó nincs beszúrva. A hiba kijavításához kövesse a hibaüzenetet, amíg sikeres nem lesz.
+* A bal oldali menüben kattintson <strong>a wp_usermeta elemre</strong>
+<a href="https://webdude.hu/wp-content/uploads/2024/09/database_usermeta-464x1024-1.png"><img className="aligncenter" src="https://webdude.hu/wp-content/uploads/2024/09/database_usermeta-464x1024-1.png" alt="" width="464" height="1024" /></a>
+* Kattintson felül a Beszúrás <strong>gombra</strong>
+* Töltse ki a következő kötelező mezőket a felhasználói képességekhez:
+* <strong>user_id</strong> – Ugyanaz az azonosító a 8. lépéstől
+* <strong>meta_key</strong> –`wp_capabilities`
+* <strong>meta_value</strong> —`a:1:{s:13:"administrator";b:1;}`
+* Kattintson az Ugrás <strong>gombra</strong> alul
+<a href="https://webdude.hu/wp-content/uploads/2024/09/database_usermeta_fields-1024x702-1.png"><img className="aligncenter" src="https://webdude.hu/wp-content/uploads/2024/09/database_usermeta_fields-1024x702-1.png" alt="" width="1024" height="702" /></a>
+* Kattintson ismét az <strong>Ugrás</strong> gombra a lekérdezésnél
+* Zöld pipát és sikerszalagot kell kapnia.
+* Ha piros hibaüzenetet kap az alján, a felhasználó nincs beszúrva. A hiba kijavításához kövesse a hibaüzenetet, amíg sikert nem ér el.
+* Kattintson ismét a tetején <strong>a Beszúrás gombra</strong>
+* <strong>user_id</strong> – Ugyanaz az azonosító a 8. lépéstől
+* <strong>meta_key</strong> –`wp_user_level`
+* <strong>meta_value</strong> –`10`
+* Kattintson az Ugrás <strong>gombra</strong> alul
+<a href="https://webdude.hu/wp-content/uploads/2024/09/database_usermeta_role-1024x697-1.png"><img className="aligncenter" src="https://webdude.hu/wp-content/uploads/2024/09/database_usermeta_role-1024x697-1.png" alt="" width="1024" height="697" /></a>
+Mostantól hozzá kell férnie az oldalhoz az új adminisztrátorral. Ha problémái vannak, ellenőrizze újra, hogy minden lépés pontosan a leírtak szerint történt-e.
+
+Ha egyéni adatbázis-előtaggal rendelkezik, győződjön meg arról, hogy minden lépést a megfelelő egyéni előtag-táblanévben hajtott végre.
+<h2><span id="Additional_Notes">További megjegyzések</span></h2>
+Ha az újonnan létrehozott felhasználó nem tudja használni a WordPress vizuális szerkesztőjét a létrehozás után, győződjön meg arról, hogy a vizuális szerkesztő nincs letiltva. Ezt kétféleképpen lehet beállítani:
+
+<strong>Az adminisztrációs irányítópultról:</strong>
+* Jelentkezzen be új felhasználójával a WordPress adminisztrátori irányítópultjára
+* A jobb felső sarokban kattintson a felhasználónevére
+* Kattintson <strong>a Profilom szerkesztése lehetőségre</strong>
+* Győződjön meg róla, <strong>hogy tiltsa le a vizuális szerkesztőt,</strong> ha az írás nincs bejelölve
+<strong>Vagy az adatbázisból:</strong>
+* Nyissa meg a <em>usermeta</em> adatbázistáblát
+* Kattintson <strong>a Beszúrás gombra</strong>
+  * <strong>user_id</strong> – Ugyanaz az azonosító, mint az előző 8. lépésben
+  * <strong>rich_editing</strong> –`true`
+* Kattintson <strong>az Indítás gombra</strong>

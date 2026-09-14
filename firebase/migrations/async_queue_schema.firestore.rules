@@ -1,0 +1,41 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // user_generations kollekció - Aszinkron generálási feladatok
+    match /user_generations/{docId} {
+      // Olvasási jogosultság: csak a saját generálások
+      allow read: if request.auth != null && 
+                     request.auth.uid == resource.data.userId;
+      
+      // Írási jogosultság: csak a saját generálások létrehozása
+      allow create: if request.auth != null && 
+                      request.auth.uid == request.resource.data.userId;
+      
+      // Frissítési jogosultság: csak a rendszer (service role) és a saját generálások
+      allow update: if request.auth != null && 
+                      request.auth.uid == resource.data.userId;
+      
+      // Törlési jogosultság: csak a saját generálások
+      allow delete: if request.auth != null && 
+                      request.auth.uid == resource.data.userId;
+    }
+    
+    // generation_queue kollekció - Aszinkron feladat sor (admin only)
+    match /generation_queue/{docId} {
+      // Csak adminisztrátor férhet hozzá
+      allow read, write: if request.auth != null && 
+                           request.auth.token.email == 'hello@webdude.hu';
+    }
+    
+    // users kollekció - Felhasználói profilok és jogosultságok
+    match /users/{userId} {
+      // Olvasási jogosultság: csak a saját profil
+      allow read: if request.auth != null && 
+                     request.auth.uid == userId;
+      
+      // Írási jogosultság: csak a rendszer (service role)
+      allow write: if false; // Kizárólag Cloud Functions írhatja
+    }
+  }
+}

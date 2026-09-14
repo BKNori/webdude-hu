@@ -1,0 +1,84 @@
+---
+title: "WooCommerce levelek promóciók mappába - Miért kerülnek a WooCommerce webshopod levelei a Promóciók mappába? (És hogyan javítsd ki!)"
+date: "2026-02-24"
+excerpt: "A megoldás: Így kerüld el, hogy a WooCommerce levelek a promóciók mappába kerüljenek Ismerős a helyzet? A vásárló panaszkodik, hogy nem kapta meg a rendelés vis..."
+image: "/assets/banners/webdude-hero.webp"
+noindex: false
+---
+
+<h2>A megoldás: Így kerüld el, hogy a WooCommerce levelek a promóciók mappába kerüljenek</h2>
+
+Ismerős a helyzet? A vásárló panaszkodik, hogy nem kapta meg a rendelés visszaigazolását, te pedig szabadkozva kéred, hogy nézze meg a Spam vagy a Promóciók mappát a Gmailben. Egy profi webshopnál ez bizalomvesztéshez vezethet.
+
+Több év webfejlesztői tapasztalattal a hátam mögött számtalanszor találkoztam már ezzel a problémával a különböző e-kereskedelmi projekteknél. A jó hír az, hogy a megoldás logikus, és a megfelelő beállításokkal orvosolható. Lássuk, mi okozza a galibát, és hogyan teheted rendbe!
+
+<h3>Miért utálja a Gmail a webshopod leveleit?</h3>
+
+A nagy levelezőrendszerek (mint a Gmail) hihetetlenül szigorú algoritmusokkal védik a felhasználókat. Ha egy WooCommerce által generált levél rossz mappában landol, annak általában az alábbi okai vannak:
+
+* 
+
+<b>Szerver oldali küldés (PHP Mail):</b> A WordPress alapból a tárhelyed szerverén keresztül küldi a leveleket. Ez a spam-szűrők első számú célpontja, mert a rendszer automatizált, tömeges üzenetként érzékeli.
+
+* 
+
+<b>A "személyi igazolvány" hiánya:</b> Ha a domained nincs megfelelően felkészítve az email küldésre (hiányoznak a DNS hitelesítések), a levelezők gyanúsnak, "gazdátlannak" találják a forrást.
+
+* 
+
+<b>Túl sok vizuális zaj:</b> A WooCommerce alapértelmezett sablonjai tele vannak HTML kóddal, táblázatokkal és lábléc linkekkel. Minél több a kód és a "rendelés", "akció" szó, annál biztosabb a Promóció mappa.
+
+<h3>A megoldás: Domain hitelesítés cPanelen (Lépésről lépésre)</h3>
+
+A legfontosabb feladat, hogy igazold a levelezőrendszerek felé: te vagy a domain valódi tulajdonosa, és jogod van onnan levelet küldeni. Ezt három apró, de annál fontosabb beállítással (SPF, DKIM és DMARC) tudod megtenni a webtárhelyed cPanel felületén.
+
+<b>1. Az SPF és a DKIM beállítása (A kulcsok legenerálása)</b> A cPanel szerencsére elvégzi helyettünk a nehezét.
+
+* 
+
+Lépj be a cPanelbe, és keresd meg az <b>Email Deliverability</b> (vagy <i>E-mail hitelesítés</i>) menüpontot.
+
+* 
+
+Ha a webshopod domainje mellett a "Problémák vannak" feliratot látod, kattints a <b>Kezelés</b> gombra.
+
+* 
+
+A rendszer megmutatja a javasolt SPF és DKIM rekordokat. Csak kattints a <b>Javasolt rekord telepítése</b> gombokra, és a cPanel elhelyezi őket a DNS zónádban.
+
+<b>2. A DMARC rekord beállítása (A szabályrendszer)</b> Ezt manuálisan kell felvenned a DNS rekordok közé. A DMARC mondja meg a Gmailnek, hogy mi a teendő azokkal a levelekkel, amik megbuknak a fenti ellenőrzéseken.
+
+* 
+
+A cPanel kezdőoldalán válaszd a <b>Zone Editor</b> (Zónaszerkesztő) ikont, majd a domained mellett a <b>Kezelés</b> gombot.
+
+* 
+
+Kattints a <b>Rekord hozzáadása</b> gombra.
+
+* 
+
+Töltsd ki az űrlapot:
+
+  * 
+
+<b>Név:</b> `_dmarc` (a rendszer kiegészíti a domaineddel).
+
+  * 
+
+<b>Típus:</b> TXT
+
+  * 
+
+<b>Rekord (Érték):</b> `v=DMARC1; p=none; rua=mailto:a_te_email_cimed@domain.hu` <i>(A `p=none` kezdetben a legbiztonságosabb, mert így nem pattannak vissza a levelek, csak monitorozod őket).</i>
+
+<b>3. Tesztelés és a következő szint</b> Adj a rendszernek pár órát, amíg a DNS szerverek frissülnek az interneten. Utána adj le egy teszt rendelést, és ellenőrizd a levelet a <b>Mail-Tester.com</b> oldalon, ami megmutatja a spampontszámodat.
+
+<b>Pro tipp:</b> Bár a fenti hitelesítés kötelező alaplépés, az igazán stabil megoldás az, ha a WordPress egy dedikált Tranzakcionális Email Szolgáltatón (SMTP) keresztül küldi a leveleket.
+
+<h3>Elakadtál a beállításokban?</h3>
+
+A webshop üzemeltetés nem csak a termékek feltöltéséből áll. Egy profi háttér nélkül a konverzió és a vásárlói bizalom is sérülhet. Ha nem szeretnél a DNS rekordokkal és szerverbeállításokkal bajlódni, vagy egy teljesen új, megbízható WooCommerce alapú webshopra van szükséged, vedd fel velem a kapcsolatot!
+
+<b>WebDude - Prémium WordPress webfejlesztés és karbantartás</b>
+

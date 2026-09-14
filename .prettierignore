@@ -1,0 +1,12 @@
+.next
+node_modules
+public
+dist
+build
+*.min.js
+*.min.css
+.env.local
+.env.*.local
+firebase.json
+.firebaserc
+deploy.bat

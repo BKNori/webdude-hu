@@ -1,0 +1,21 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    
+    // Helper function to check if user has 'admin' claim
+    function isAdmin() {
+      return request.auth != null && request.auth.token.role == 'admin';
+    }
+
+    // Helper function to check if user is authenticated
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    // Match files in client vaults
+    match /clients/{clientId}/{allPaths=**} {
+      allow read: if isAdmin() || (isAuthenticated() && request.auth.uid == clientId);
+      allow write: if isAdmin() || (isAuthenticated() && request.auth.uid == clientId);
+    }
+  }
+}

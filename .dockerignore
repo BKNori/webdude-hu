@@ -1,0 +1,12 @@
+node_modules
+.next
+.git
+.env.local
+.env.development
+.env.test
+firebase.json
+.firebaserc
+functions
+deploy.bat
+deploy.ps1
+.DS_Store
