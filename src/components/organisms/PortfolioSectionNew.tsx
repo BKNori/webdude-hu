@@ -5,8 +5,6 @@ import { motion } from "motion/react";
 import Link from "next/link";
 import Image from "next/image";
 
-import { projects } from "@/data/projects";
-
 const caseStudies = [
   {
     title: "btshop.hu • Webáruház & AI",
@@ -144,7 +142,7 @@ export default function PortfolioSectionNew() {
                     {study.testimonial && (
                       <div className="bg-[#F8FAFC] rounded-2xl p-6 mb-10 border border-[#E7ECF2]">
                         <p className="text-[#4B5563] italic mb-4">
-                          "{study.testimonial.text}"
+                          &ldquo;{study.testimonial.text}&rdquo;
                         </p>
                         <p className="text-sm font-bold text-[#111827]">
                           {study.testimonial.author}

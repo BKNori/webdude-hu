@@ -14,15 +14,7 @@ import { auth } from "@/lib/firebase";
 import { performSEOAuditAction } from "@/actions/ai";
 import { SEOAuditResult } from "@/lib/ai-tools";
 
-interface SEOAuditToolProps {
-  allowedTools: string[];
-  isAdmin: boolean;
-}
-
-export default function SEOAuditTool({
-  allowedTools,
-  isAdmin,
-}: SEOAuditToolProps) {
+export default function SEOAuditTool() {
   const [url, setUrl] = useState("");
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<SEOAuditResult | null>(null);
@@ -60,7 +52,7 @@ export default function SEOAuditTool({
       } else {
         setError(response.error || "Hiba történt az audit során.");
       }
-    } catch (err) {
+    } catch {
       setError("Hiba történt az audit során.");
     } finally {
       setLoading(false);

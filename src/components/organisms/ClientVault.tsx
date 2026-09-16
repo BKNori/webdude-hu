@@ -7,13 +7,12 @@ import {
   Trash2,
   FileText,
   File,
-  Image,
+  Image as ImageIcon,
   Archive,
   Loader2,
   CheckCircle2,
   AlertCircle,
   FolderOpen,
-  X,
   Eye,
 } from "lucide-react";
 import {
@@ -28,7 +27,7 @@ import {
   getClientFilesAction,
   deleteClientFileAction,
 } from "@/actions/vault";
-import { motion, AnimatePresence } from "motion/react";
+import DocumentPreviewModal from "@/components/molecules/DocumentPreviewModal";
 
 interface VaultFile {
   id: string;
@@ -59,6 +58,15 @@ export default function ClientVault() {
   const [dragActive, setDragActive] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
+  // Segédfüggvény: fájlnév alapján meghatározza a fájltípust a DocumentPreviewModalhoz
+  function getFileType(fileName: string): "pdf" | "image" | "docx" | "other" {
+    const ext = fileName.toLowerCase().split(".").pop()?.toLowerCase() || "";
+    if (ext === "pdf") return "pdf";
+    if (ext === "docx" || ext === "doc") return "docx";
+    if (["png", "jpg", "jpeg", "webp", "gif", "svg", "bmp"].includes(ext)) return "image";
+    return "other";
+  }
+
   const loadFiles = async (showLoadingSpinner = false) => {
     if (!auth?.currentUser) return;
     if (showLoadingSpinner) {
@@ -80,8 +88,32 @@ export default function ClientVault() {
   };
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    void loadFiles(false);
+    let isMounted = true;
+    const fetchFiles = async () => {
+      if (!auth?.currentUser) {
+        if (isMounted) setLoading(false);
+        return;
+      }
+      try {
+        const idToken = await auth.currentUser.getIdToken(true);
+        const res = await getClientFilesAction(idToken, auth.currentUser.uid);
+        if (isMounted) {
+          if (res.success && res.files) {
+            setFiles(res.files as VaultFile[]);
+          } else {
+            setError(res.error || "Nem sikerült letölteni a fájlokat.");
+          }
+        }
+      } catch {
+        if (isMounted) setError("Hiba a fájlok betöltése során.");
+      } finally {
+        if (isMounted) setLoading(false);
+      }
+    };
+    void fetchFiles();
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   const handleDrag = (e: React.DragEvent) => {
@@ -234,7 +266,7 @@ export default function ClientVault() {
   const getFileIcon = (fileName: string) => {
     const ext = fileName.split(".").pop()?.toLowerCase();
     if (["jpg", "jpeg", "png", "gif", "svg", "webp"].includes(ext || "")) {
-      return Image;
+      return ImageIcon;
     }
     if (["zip", "rar", "tar", "gz", "7z"].includes(ext || "")) {
       return Archive;
@@ -355,29 +387,24 @@ export default function ClientVault() {
       </div>
 
       {/* Uploading progress bar */}
-      <AnimatePresence>
-        {uploading && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="bg-transparent border border-amber-500/20 p-4 rounded-2xl space-y-2.5 font-mono"
-          >
-            <div className="flex justify-between items-center text-[10px] text-slate-400">
-              <span className="truncate max-w-62.5 font-bold text-amber-500">
-                {uploadName}
-              </span>
-              <span className="font-bold text-white">{progress}%</span>
-            </div>
-            <div className="h-1.5 w-full bg-gray-800 rounded-full overflow-hidden">
-              <div
-                className="h-full bg-linear-to-r from-amber-500 to-amber-600 rounded-full transition-all duration-150"
-                style={{ width: `${progress}%` }}
-              />
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {uploading && (
+        <div
+          className="bg-transparent border border-amber-500/20 p-4 rounded-2xl space-y-2.5 font-mono"
+        >
+          <div className="flex justify-between items-center text-[10px] text-slate-400">
+            <span className="truncate max-w-62.5 font-bold text-amber-500">
+              {uploadName}
+            </span>
+            <span className="font-bold text-white">{progress}%</span>
+          </div>
+          <div className="h-1.5 w-full bg-gray-800 rounded-full overflow-hidden">
+            <div
+              className="h-full bg-linear-to-r from-amber-500 to-amber-600 rounded-full transition-all duration-150"
+              style={{ width: `${progress}%` }}
+            />
+          </div>
+        </div>
+      )}
 
       {/* File List Grid */}
       <div className="space-y-3">
@@ -474,54 +501,16 @@ export default function ClientVault() {
         )}
       </div>
 
-      {/* Preview Modal */}
-      <AnimatePresence>
-        {previewFile && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
-            onClick={() => setPreviewFile(null)}
-          >
-            <motion.div
-              initial={{ scale: 0.95, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.95, opacity: 0 }}
-              className="bg-bg-surface border border-bg-elevated/80 rounded-3xl max-w-5xl w-full max-h-[90vh] overflow-hidden shadow-2xl"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <div className="flex items-center justify-between p-4 border-b border-bg-elevated/40">
-                <h3 className="text-sm font-bold text-white font-mono truncate max-w-md">
-                  {previewFile.name}
-                </h3>
-                <button
-                  type="button"
-                  onClick={() => setPreviewFile(null)}
-                  className="p-2 hover:bg-bg-elevated/50 text-slate-400 hover:text-white rounded-lg transition-colors"
-                >
-                  <X className="w-5 h-5" />
-                </button>
-              </div>
-              <div className="p-4 overflow-auto max-h-[calc(90vh-80px)]">
-                {previewFile.name.toLowerCase().endsWith(".pdf") ? (
-                  <iframe
-                    src={previewFile.url}
-                    className="w-full h-[70vh] rounded-xl"
-                    title={previewFile.name}
-                  />
-                ) : (
-                  <img
-                    src={previewFile.url}
-                    alt={previewFile.name}
-                    className="w-full h-auto rounded-xl"
-                  />
-                )}
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* Preview Modal — delegálva a DocumentPreviewModal molekulára */}
+      {previewFile && (
+        <DocumentPreviewModal
+          isOpen={true}
+          onClose={() => setPreviewFile(null)}
+          title={previewFile.name}
+          fileUrl={previewFile.url}
+          fileType={getFileType(previewFile.name)}
+        />
+      )}
     </div>
   );
 }

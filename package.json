@@ -1,6 +1,6 @@
 {
     "name":  "webdude-hu",
-    "version":  "0.1.128",
+    "version":  "0.1.132",
     "private":  true,
     "scripts":  {
                     "clean":  "node -e \"require(\u0027fs\u0027).rmSync(\u0027.next\u0027,{recursive:true,force:true});\"",

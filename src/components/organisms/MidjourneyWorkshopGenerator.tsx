@@ -16,7 +16,7 @@ import {
   Palette,
   Layers,
   Target,
-  Image,
+  Image as ImageIcon,
   Zap,
   Aperture,
   Lightbulb,
@@ -289,7 +289,7 @@ export default function MidjourneyWorkshopGenerator() {
                       {/* Style */}
                       <div className="space-y-2">
                         <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <Image className="w-4 h-4 text-amber-500" />
+                          <ImageIcon className="w-4 h-4 text-amber-500" />
                           Stílus
                         </label>
                         <select
@@ -430,7 +430,7 @@ export default function MidjourneyWorkshopGenerator() {
                         >
                           <div className="flex items-center justify-between">
                             <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                              <Image className="w-4 h-4 text-amber-500" />
+                              <ImageIcon className="w-4 h-4 text-amber-500" />
                               Vizuális Koncepció
                             </h3>
                           </div>

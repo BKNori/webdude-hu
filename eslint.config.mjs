@@ -5,7 +5,18 @@ import nextTs from "eslint-config-next/typescript";
 const eslintConfig = defineConfig([
   ...nextVitals,
   ...nextTs,
-  { ignores: ["coverage/**", "scripts/**", "_mentesek/**", "server.js"] },
+  {
+    ignores: [
+      "coverage/**",
+      "scripts/**",
+      "_mentesek/**",
+      "server.js",
+      "functions/dist/**",
+      "functions/node_modules/**",
+      "future-supabase-migration/**",
+      ".next/**",
+    ],
+  },
 ]);
 
 export default eslintConfig;

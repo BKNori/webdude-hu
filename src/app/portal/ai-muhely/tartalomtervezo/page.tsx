@@ -4,13 +4,10 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { Loader2 } from "lucide-react";
 import { auth } from "@/lib/firebase";
-import { getClientUserProfileAction } from "@/actions/portal";
 import ContentPlanner from "@/components/organisms/ContentPlanner";
 
 export default function ContentPlannerPage() {
   const router = useRouter();
-  const [isAdmin, setIsAdmin] = useState(false);
-  const [allowedTools, setAllowedTools] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -20,20 +17,7 @@ export default function ContentPlannerPage() {
         router.push("/admin/login");
         return;
       }
-      try {
-        const token = await user.getIdToken(true);
-        const res = await getClientUserProfileAction(token);
-        if (res.success && res.profile) {
-          setIsAdmin(
-            res.profile.role === "admin" || user.email === "hello@webdude.hu"
-          );
-          setAllowedTools(res.profile.allowedTools || []);
-        }
-      } catch {
-        // Ignored
-      } finally {
-        setLoading(false);
-      }
+      setLoading(false);
     });
     return unsub;
   }, [router]);
@@ -52,7 +36,7 @@ export default function ContentPlannerPage() {
   return (
     <div className="min-h-screen bg-transparent text-slate-200 py-12">
       <div className="max-w-6xl mx-auto px-6">
-        <ContentPlanner allowedTools={allowedTools} isAdmin={isAdmin} />
+        <ContentPlanner />
       </div>
     </div>
   );

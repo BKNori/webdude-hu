@@ -15,11 +15,6 @@ import {
 import { auth } from "@/lib/firebase";
 import { analyzeCompetitorsAction } from "@/actions/ai";
 
-interface CompetitorAnalyzerProps {
-  allowedTools: string[];
-  isAdmin: boolean;
-}
-
 interface AnalysisResult {
   targetUrl: string;
   targetScore: {
@@ -42,10 +37,7 @@ interface AnalysisResult {
   upsellOpportunity: string;
 }
 
-export default function CompetitorAnalyzer({
-  allowedTools,
-  isAdmin,
-}: CompetitorAnalyzerProps) {
+export default function CompetitorAnalyzer() {
   const [targetUrl, setTargetUrl] = useState("");
   const [competitorUrls, setCompetitorUrls] = useState<string[]>(["", ""]);
   const [loading, setLoading] = useState(false);
@@ -110,7 +102,7 @@ export default function CompetitorAnalyzer({
       } else {
         setError(response.error || "Hiba történt az elemzés során.");
       }
-    } catch (err) {
+    } catch {
       setError("Hiba történt az elemzés során.");
     } finally {
       setLoading(false);

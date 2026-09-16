@@ -6,8 +6,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { motion } from "motion/react";
 import {
-  Copy,
-  Check,
   Sparkles,
   Loader2,
   ArrowLeft,
@@ -72,7 +70,6 @@ export default function ContentWorkshopGenerator() {
   const [generatedOutput, setGeneratedOutput] =
     useState<ContentWorkshopOutput | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [copiedStates, setCopiedStates] = useState<Record<string, boolean>>({});
   const [isAdmin, setIsAdmin] = useState(false);
   const [allowedTools, setAllowedTools] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
@@ -116,18 +113,6 @@ export default function ContentWorkshopGenerator() {
       additionalRequirements: "",
     },
   });
-
-  const copyToClipboard = async (text: string, key: string) => {
-    try {
-      await navigator.clipboard.writeText(text);
-      setCopiedStates((prev) => ({ ...prev, [key]: true }));
-      setTimeout(() => {
-        setCopiedStates((prev) => ({ ...prev, [key]: false }));
-      }, 2000);
-    } catch (err) {
-      console.error("Failed to copy:", err);
-    }
-  };
 
   const onSubmit = async (data: ContentFormValues) => {
     // Check access

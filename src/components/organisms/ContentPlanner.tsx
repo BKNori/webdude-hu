@@ -15,11 +15,6 @@ import {
 import { auth } from "@/lib/firebase";
 import { generateContentPlanAction } from "@/actions/ai";
 
-interface ContentPlannerProps {
-  allowedTools: string[];
-  isAdmin: boolean;
-}
-
 interface ContentPlan {
   industry: string;
   targetAudience: string;
@@ -30,10 +25,7 @@ interface ContentPlan {
   suggestedKeywords: string[];
 }
 
-export default function ContentPlanner({
-  allowedTools,
-  isAdmin,
-}: ContentPlannerProps) {
+export default function ContentPlanner() {
   const [industry, setIndustry] = useState("");
   const [targetAudience, setTargetAudience] = useState("");
   const [mainProduct, setMainProduct] = useState("");
@@ -78,7 +70,7 @@ export default function ContentPlanner({
       } else {
         setError(response.error || "Hiba történt a tartalomtervezés során.");
       }
-    } catch (err) {
+    } catch {
       setError("Hiba történt a tartalomtervezés során.");
     } finally {
       setLoading(false);

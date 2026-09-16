@@ -2,6 +2,7 @@
 
 import { motion } from "motion/react";
 import { Shield, TrendingUp, Zap } from "lucide-react";
+import Image from "next/image";
 
 interface SEOAuditHeroBannerProps {
   heroVisual?: string;
@@ -96,10 +97,11 @@ export default function SEOAuditHeroBanner({
           >
             {heroVisual ? (
               <div className="aspect-video rounded-2xl overflow-hidden border border-gold-primary/20">
-                <img
+                <Image
                   src={heroVisual}
                   alt="SEO & AEO Audit Pro Dashboard"
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
                 />
               </div>
             ) : (

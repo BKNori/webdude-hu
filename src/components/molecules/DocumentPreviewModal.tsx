@@ -1,14 +1,22 @@
 "use client";
 
-import { motion, AnimatePresence } from "motion/react";
-import { X, Download, FileText, ExternalLink } from "lucide-react";
+import { motion, AnimatePresence, useReducedMotion } from "motion/react";
+import {
+  X,
+  Download,
+  FileText,
+  ExternalLink,
+  Copy,
+  RefreshCw,
+} from "lucide-react";
+import { useState } from "react";
 
 interface DocumentPreviewModalProps {
   isOpen: boolean;
   onClose: () => void;
   title: string;
   fileUrl: string;
-  fileType: "pdf" | "image" | "docx";
+  fileType: "pdf" | "image" | "docx" | "other";
 }
 
 export default function DocumentPreviewModal({
@@ -18,26 +26,62 @@ export default function DocumentPreviewModal({
   fileUrl,
   fileType,
 }: DocumentPreviewModalProps) {
+  const [isCopying, setIsCopying] = useState(false);
+  const reducedMotion = useReducedMotion();
+
+  const handleCopyLink = async () => {
+    try {
+      setIsCopying(true);
+      await navigator.clipboard.writeText(fileUrl);
+    } finally {
+      setIsCopying(false);
+    }
+  };
+
+  // Animation variants based on reduced motion preference
+  const wrapperVariants = reducedMotion
+    ? { initial: { opacity: 1 }, animate: { opacity: 1 }, exit: { opacity: 0 } }
+    : {
+        initial: { opacity: 0, y: 20 },
+        animate: { opacity: 1, y: 0 },
+        exit: { opacity: 0, y: 20 },
+      };
+
+  const cardVariants = reducedMotion
+    ? { initial: { scale: 1 }, animate: { scale: 1 }, exit: { scale: 0.95 } }
+    : {
+        initial: { scale: 0.95, opacity: 0, y: 15 },
+        animate: { scale: 1, opacity: 1, y: 0 },
+        exit: { scale: 0.95, opacity: 0, y: 15 },
+      };
+
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6">
+        <motion.div
+          variants={wrapperVariants}
+          initial="initial"
+          animate="animate"
+          exit="exit"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6"
+          onClick={onClose}
+        >
+          {/* Background overlay with premium glassmorphism */}
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={onClose}
-            className="absolute inset-0 bg-slate-950/80 backdrop-blur-md"
+            className="absolute inset-0 bg-slate-950/80 backdrop-blur-2xl"
+            transition={{ duration: 0.3 }}
           />
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 15 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 15 }}
-            className="relative w-full max-w-5xl h-[85vh] flex flex-col rounded-3xl bg-slate-900 border border-slate-800 shadow-2xl overflow-hidden z-10"
+            variants={cardVariants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            className="relative w-full max-w-5xl h-[85vh] mx-auto flex flex-col rounded-3xl bg-slate-900 border border-slate-800/50 shadow-2xl overflow-hidden z-10"
+            transition={{ duration: reducedMotion ? 0 : 0.5 }}
           >
             {/* Header */}
-            <div className="flex items-center justify-between px-6 py-4 border-b border-slate-800 bg-slate-900/90">
+            <div className="flex items-center justify-between px-6 py-4 border-b border-slate-800/40 bg-slate-900/90">
               <div className="flex items-center gap-3">
                 <FileText className="w-5 h-5 text-amber-500" />
                 <h3 className="font-semibold text-white tracking-tight truncate max-w-md">
@@ -50,7 +94,7 @@ export default function DocumentPreviewModal({
                   href={fileUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition-colors"
+                  className="p-2 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800/50 transition-colors"
                   title="Megnyitás új lapon"
                 >
                   <ExternalLink className="w-5 h-5" />
@@ -58,15 +102,28 @@ export default function DocumentPreviewModal({
                 <a
                   href={fileUrl}
                   download
-                  className="p-2 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition-colors"
+                  className="p-2 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800/50 transition-colors"
                   title="Letöltés"
                 >
                   <Download className="w-5 h-5" />
                 </a>
+                {/* Copy link */}
+                <button
+                  onClick={handleCopyLink}
+                  className="p-2 text-slate-400 hover:text-white rounded-lg hover:bg-amber-500/20 transition-colors"
+                  title="Link másolása"
+                  disabled={isCopying}
+                >
+                  {isCopying ? (
+                    <RefreshCw className="w-3.5 h-3.5 animate-spin" />
+                  ) : (
+                    <Copy className="w-3.5 h-3.5" />
+                  )}
+                </button>
                 <button
                   type="button"
                   onClick={onClose}
-                  className="p-2 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition-colors ml-2"
+                  className="p-2 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800/50 transition-colors"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -106,7 +163,7 @@ export default function DocumentPreviewModal({
               )}
             </div>
           </motion.div>
-        </div>
+        </motion.div>
       )}
     </AnimatePresence>
   );

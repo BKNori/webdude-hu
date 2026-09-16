@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="BTShop.hu hero placeholder">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#00B5F1" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#020617" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#00B5F1"/>
+      <stop offset="100%" stop-color="#0095C7"/>
+    </linearGradient>
+    <pattern id="mesh" width="64" height="64" patternUnits="userSpaceOnUse">
+      <path d="M 64 0 L 0 0 0 64" fill="none" stroke="#1e293b" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1600" height="900" fill="#020617"/>
+  <rect width="1600" height="900" fill="url(#mesh)" opacity="0.55"/>
+  <rect width="1600" height="900" fill="url(#glow)"/>
+  <circle cx="800" cy="380" r="230" fill="none" stroke="#00B5F1" stroke-opacity="0.25" stroke-width="2"/>
+  <circle cx="800" cy="380" r="310" fill="none" stroke="#00B5F1" stroke-opacity="0.12" stroke-width="1.5"/>
+  <text x="800" y="360" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="96" font-weight="800" fill="#e2e8f0" letter-spacing="6">BTSHOP.HU</text>
+  <text x="800" y="430" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="600" fill="#00B5F1" letter-spacing="10">3200+ TERMÉK • KULCS-SOFT SYNC</text>
+  <rect x="560" y="500" width="480" height="4" rx="2" fill="url(#accent)"/>
+  <text x="800" y="570" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#94a3b8">HERO PLACEHOLDER — cserélendő: btshop-hero-placeholder.webp</text>
+  <text x="800" y="840" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#475569">WebDude.hu • Soft Premium 2026</text>
+</svg>

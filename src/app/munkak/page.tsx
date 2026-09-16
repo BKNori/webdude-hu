@@ -78,7 +78,17 @@ export default async function MunkakPage() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-24 bg-bg-surface border-y border-slate-800">
+      <section className="py-24 bg-bg-surface border-y border-slate-800 relative overflow-hidden">
+        {/* Electric Cyan mesh grid */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 opacity-70 [mask-image:radial-gradient(ellipse_at_center,black,transparent_78%)]"
+          style={{
+            backgroundImage:
+              "linear-gradient(to right, rgba(0,181,241,0.07) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,181,241,0.07) 1px, transparent 1px)",
+            backgroundSize: "56px 56px",
+          }}
+        />
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-sans text-text-primary leading-tight tracking-tight mb-4">
@@ -92,27 +102,39 @@ export default async function MunkakPage() {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            <div className="bg-slate-900/80 border border-slate-700 rounded-2xl p-10 shadow-[0_8px_24px_rgba(15,23,42,0.3)] hover:border-[#00B5F1]/50 hover:shadow-[0_20px_60px_rgba(0,181,241,0.2)] hover:-translate-y-1 transition-all duration-300 group">
-              <span className="text-6xl font-black font-serif block mb-4 text-text-primary group-hover:text-[#00B5F1] tracking-tight">
+            <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-slate-950/80 backdrop-blur-2xl p-10 transition-colors duration-300 hover:border-amber-500/40 hover:shadow-[0_0_60px_-14px_rgba(0,181,241,0.55)]">
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-x-10 top-0 h-px bg-linear-to-r from-transparent via-[#00B5F1]/70 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+              />
+              <span className="relative text-6xl font-black font-serif block mb-4 text-text-primary group-hover:text-[#00B5F1] tracking-tight transition-colors duration-300">
                 200+
               </span>
-              <p className="text-sm uppercase tracking-[0.2em] font-bold text-slate-400">
+              <p className="relative text-sm uppercase tracking-[0.2em] font-bold text-slate-400">
                 Projekt Készítve
               </p>
             </div>
-            <div className="bg-slate-900/80 border border-slate-700 rounded-2xl p-10 shadow-[0_8px_24px_rgba(15,23,42,0.3)] hover:border-[#00B5F1]/50 hover:shadow-[0_20px_60px_rgba(0,181,241,0.2)] hover:-translate-y-1 transition-all duration-300 group">
-              <span className="text-6xl font-black font-serif block mb-4 text-text-primary group-hover:text-[#00B5F1] tracking-tight">
+            <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-slate-950/80 backdrop-blur-2xl p-10 transition-colors duration-300 hover:border-amber-500/40 hover:shadow-[0_0_60px_-14px_rgba(0,181,241,0.55)]">
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-x-10 top-0 h-px bg-linear-to-r from-transparent via-[#00B5F1]/70 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+              />
+              <span className="relative text-6xl font-black font-serif block mb-4 text-text-primary group-hover:text-[#00B5F1] tracking-tight transition-colors duration-300">
                 500+
               </span>
-              <p className="text-sm uppercase tracking-[0.2em] font-bold text-slate-400">
+              <p className="relative text-sm uppercase tracking-[0.2em] font-bold text-slate-400">
                 Lead Generált
               </p>
             </div>
-            <div className="bg-slate-900/80 border border-slate-700 rounded-2xl p-10 shadow-[0_8px_24px_rgba(15,23,42,0.3)] hover:border-[#00B5F1]/50 hover:shadow-[0_20px_60px_rgba(0,181,241,0.2)] hover:-translate-y-1 transition-all duration-300 group">
-              <span className="text-6xl font-black font-serif block mb-4 text-text-primary group-hover:text-[#00B5F1] tracking-tight">
+            <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-slate-950/80 backdrop-blur-2xl p-10 transition-colors duration-300 hover:border-amber-500/40 hover:shadow-[0_0_60px_-14px_rgba(0,181,241,0.55)]">
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-x-10 top-0 h-px bg-linear-to-r from-transparent via-[#00B5F1]/70 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+              />
+              <span className="relative text-6xl font-black font-serif block mb-4 text-text-primary group-hover:text-[#00B5F1] tracking-tight transition-colors duration-300">
                 +150%
               </span>
-              <p className="text-sm uppercase tracking-[0.2em] font-bold text-slate-400">
+              <p className="relative text-sm uppercase tracking-[0.2em] font-bold text-slate-400">
                 Konverzió Növekedés
               </p>
             </div>

@@ -55,13 +55,13 @@ service cloud.firestore {
       allow read: if isAdmin() || (isAuthenticated() && resource.data.userId == request.auth.uid);
       // Írás: csak a saját generálások létrehozása
       allow create: if isAuthenticated() && request.resource.data.userId == request.auth.uid;
-      // Frissítés: KIZÁRÓLAG backend (Cloud Functions / Server Actions)
+      // Frissítés: KIZÁRÓLAG backend (Server Action Admin SDK-val — Spark csomag, nincs Cloud Functions)
       allow update: if false;
       // Törlés: csak a saját generálások
       allow delete: if isAdmin() || (isAuthenticated() && resource.data.userId == request.auth.uid);
     }
 
-    // generation_queue — Belső queue, KIZÁRÓLAG Cloud Functions (service account)
+    // generation_queue — Belső queue, KIZÁRÓLAG backend (service account). Spark csomagon nincs Functions, nem használt.
     match /generation_queue/{queueId} {
       // Csak Cloud Functions (service account) férhet hozzá
       allow read, write: if false;

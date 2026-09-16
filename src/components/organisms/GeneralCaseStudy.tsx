@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { motion, useReducedMotion } from "motion/react";
 import { Work } from "@/types/work";
 
 interface GeneralCaseStudyProps {
@@ -9,6 +10,8 @@ interface GeneralCaseStudyProps {
 }
 
 export default function GeneralCaseStudy({ project }: GeneralCaseStudyProps) {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <main className="min-h-screen bg-bg-base text-text-primary">
       <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
@@ -27,69 +30,138 @@ export default function GeneralCaseStudy({ project }: GeneralCaseStudyProps) {
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-bg-base" />
         </div>
 
-        <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 32 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className="relative z-10 text-center px-6 max-w-5xl mx-auto"
+        >
           <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold leading-tight mb-6">
             {project.title}
           </h1>
           <p className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto">
             {project.description}
           </p>
-        </div>
+        </motion.div>
       </section>
 
-      {/* Gallery Section */}
+      {/* Gallery Section — Luminous Glassmorphism + Electric Cyan glow */}
       {project.gallery && project.gallery.length > 0 && (
-        <section className="py-20 px-6">
-          <div className="max-w-7xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">
+        <section className="relative py-20 px-6 overflow-hidden">
+          {/* Mesh grid háttér */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 opacity-60 [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]"
+            style={{
+              backgroundImage:
+                "linear-gradient(to right, rgba(0,181,241,0.07) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,181,241,0.07) 1px, transparent 1px)",
+              backgroundSize: "56px 56px",
+            }}
+          />
+
+          <div className="relative max-w-7xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold mb-10 text-center">
               Projekt <span className="text-[#00B5F1]">Galéria</span>
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {project.gallery.map((image, index) => (
-                <div
+                <motion.div
                   key={index}
-                  className="relative aspect-video rounded-2xl overflow-hidden border border-slate-700"
+                  initial={
+                    shouldReduceMotion
+                      ? { opacity: 0 }
+                      : { opacity: 0, y: 28, scale: 0.96 }
+                  }
+                  whileInView={
+                    shouldReduceMotion
+                      ? { opacity: 1 }
+                      : { opacity: 1, y: 0, scale: 1 }
+                  }
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 230,
+                    damping: 26,
+                    delay: shouldReduceMotion ? 0 : (index % 6) * 0.07,
+                  }}
+                  whileHover={
+                    shouldReduceMotion ? undefined : { y: -8, rotateX: 2, scale: 1.02 }
+                  }
+                  style={{ transformPerspective: 1200 }}
+                  className="group relative aspect-video overflow-hidden rounded-2xl border border-white/10 bg-slate-950/80 backdrop-blur-2xl ring-1 ring-white/5 transition-colors duration-300 hover:border-amber-500/40 hover:ring-[#00B5F1]/50 hover:shadow-[0_0_52px_-12px_rgba(0,181,241,0.55)]"
                 >
                   <Image
                     src={image}
                     alt={`${project.title} - ${index + 1}`}
                     fill
-                    className="object-cover"
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.07]"
                   />
-                </div>
+                  <div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-0 bg-linear-to-t from-slate-950/70 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                  />
+                </motion.div>
               ))}
             </div>
           </div>
         </section>
       )}
 
-      <section className="py-20 px-6">
+      <section className="relative py-20 px-6">
         <div className="max-w-5xl mx-auto">
           <div className="grid gap-12">
-            <div className="bg-bg-surface/50 border border-[#00B5F1]/20 rounded-2xl p-8">
-              <h3 className="text-xl font-bold text-[#00B5F1] mb-4">
+            <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-slate-950/80 backdrop-blur-2xl p-8 transition-colors duration-300 hover:border-amber-500/40 hover:shadow-[0_0_52px_-16px_rgba(0,181,241,0.5)]">
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                style={{
+                  background:
+                    "radial-gradient(520px circle at 12% 0%, rgba(0,181,241,0.14), transparent 62%)",
+                }}
+              />
+              <h3 className="relative text-xl font-bold text-[#00B5F1] mb-4">
                 A Kihívás
               </h3>
-              <p className="text-slate-400 leading-relaxed">
+              <p className="relative text-slate-400 leading-relaxed">
                 {project.challenge}
               </p>
             </div>
-            <div className="bg-bg-surface/50 border border-[#00B5F1]/20 rounded-2xl p-8">
-              <h3 className="text-xl font-bold text-[#00B5F1] mb-4">
+            <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-slate-950/80 backdrop-blur-2xl p-8 transition-colors duration-300 hover:border-amber-500/40 hover:shadow-[0_0_52px_-16px_rgba(0,181,241,0.5)]">
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                style={{
+                  background:
+                    "radial-gradient(520px circle at 12% 0%, rgba(0,181,241,0.14), transparent 62%)",
+                }}
+              />
+              <h3 className="relative text-xl font-bold text-[#00B5F1] mb-4">
                 A Megoldás
               </h3>
-              <p className="text-slate-400 leading-relaxed">
+              <p className="relative text-slate-400 leading-relaxed">
                 {project.solution}
               </p>
             </div>
-            <div className="bg-bg-surface/50 border border-[#00B5F1]/20 rounded-2xl p-8">
-              <h3 className="text-xl font-bold text-[#00B5F1] mb-4">
+            <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-slate-950/80 backdrop-blur-2xl p-8 transition-colors duration-300 hover:border-amber-500/40 hover:shadow-[0_0_52px_-16px_rgba(0,181,241,0.5)]">
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                style={{
+                  background:
+                    "radial-gradient(520px circle at 12% 0%, rgba(0,181,241,0.14), transparent 62%)",
+                }}
+              />
+              <h3 className="relative text-xl font-bold text-[#00B5F1] mb-4">
                 Az Eredmény
               </h3>
-              <div className="space-y-2">
+              <div className="relative space-y-3">
                 {project.results?.map((result, index) => (
-                  <div key={index} className="text-slate-400">
-                    {result}
+                  <div key={index} className="flex items-start gap-3 text-slate-400">
+                    <span
+                      aria-hidden="true"
+                      className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-400 shadow-[0_0_12px_2px_rgba(245,158,11,0.45)]"
+                    />
+                    <span>{result}</span>
                   </div>
                 ))}
               </div>

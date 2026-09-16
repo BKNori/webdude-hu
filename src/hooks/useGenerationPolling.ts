@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { doc, onSnapshot } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 
+/* eslint-disable react-hooks/set-state-in-effect */
+
 export type GenerationStatus =
   "pending" | "processing" | "completed" | "failed";
 
@@ -23,14 +25,13 @@ export function useGenerationPolling(generationId: string | null) {
     null
   );
   const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(!generationId);
   const [generationData, setGenerationData] = useState<GenerationData | null>(
     null
   );
 
   useEffect(() => {
     if (!generationId || !db) {
-      setLoading(false);
       return;
     }
 

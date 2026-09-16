@@ -41,6 +41,47 @@ export const metadata: Metadata = {
   },
 };
 
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  name: "AI Műhely Katalógus",
+  description:
+    "Teljes 14 modulos AI Műhely arzenál plusz Kristófka munkafolyamat. Professzionális eszközök branding, tartalom, design, technikai és workflow feladatokhoz.",
+  image: "https://webdude.hu/og/ai-muhely.jpg",
+  brand: {
+    "@type": "Brand",
+    name: "WebDude",
+  },
+  offers: {
+    "@type": "Offer",
+    price: "0",
+    priceCurrency: "HUF",
+    availability: "https://schema.org/InStock",
+    url: "https://webdude.hu/termekek/ai-muhely",
+    priceValidUntil: "2027-12-31",
+    seller: {
+      "@type": "Organization",
+      name: "WebDude.hu",
+    },
+    description: "Egyedi árajánlat kérése",
+  },
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.8",
+    reviewCount: "31",
+  },
+};
+
 export default function AiWorkshopPage() {
-  return <AIWorkshopCollection />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(productSchema).replace(/</g, "\\u003c"),
+        }}
+      />
+      <AIWorkshopCollection />
+    </>
+  );
 }

@@ -46,6 +46,7 @@ import { motion } from "motion/react";
 import OrderStatusCard from "@/components/molecules/OrderStatusCard";
 import OnboardingForm from "@/components/molecules/OnboardingForm";
 import WorkflowChat from "@/components/organisms/WorkflowChat";
+import ProjectTimelineGantt from "@/components/molecules/ProjectTimelineGantt";
 
 // Local Workflow definition
 interface Workflow {
@@ -850,6 +851,11 @@ export default function PortalDashboard() {
                 </div>
               </section>
             )}
+
+            {/* Projekt idővonal & Gantt */}
+            <div className="pt-8 border-t border-bg-elevated/40">
+              <ProjectTimelineGantt workflow={workflows[0]} />
+            </div>
 
             {/* Client Vault & AI Tools Section */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 pt-8 border-t border-bg-elevated/40 items-start">

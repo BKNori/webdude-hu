@@ -3,7 +3,6 @@ import Button from "@/components/atoms/Button";
 import Badge from "@/components/atoms/Badge";
 import Image from "next/image";
 import { Metadata } from "next";
-import PricingTable from "@/components/molecules/PricingTable";
 import { buildBreadcrumbSchema, BreadcrumbItem } from "@/lib/breadcrumb";
 import HeroCarousel from "@/components/molecules/HeroCarousel";
 

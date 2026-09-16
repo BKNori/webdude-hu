@@ -9,8 +9,6 @@ import SEOAuditTool from "@/components/organisms/SEOAuditTool";
 
 export default function SEOAuditToolPage() {
   const router = useRouter();
-  const [isAdmin, setIsAdmin] = useState(false);
-  const [allowedTools, setAllowedTools] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -22,13 +20,7 @@ export default function SEOAuditToolPage() {
       }
       try {
         const token = await user.getIdToken(true);
-        const res = await getClientUserProfileAction(token);
-        if (res.success && res.profile) {
-          setIsAdmin(
-            res.profile.role === "admin" || user.email === "hello@webdude.hu"
-          );
-          setAllowedTools(res.profile.allowedTools || []);
-        }
+        await getClientUserProfileAction(token);
       } catch {
         // Ignored
       } finally {
@@ -52,7 +44,7 @@ export default function SEOAuditToolPage() {
   return (
     <div className="min-h-screen bg-transparent text-slate-200 py-12">
       <div className="max-w-6xl mx-auto px-6">
-        <SEOAuditTool allowedTools={allowedTools} isAdmin={isAdmin} />
+        <SEOAuditTool />
       </div>
     </div>
   );

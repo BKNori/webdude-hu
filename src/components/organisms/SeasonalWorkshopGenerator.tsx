@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { motion } from "motion/react";
@@ -17,7 +17,7 @@ import {
   Palette,
   FileText,
   Mail,
-  Image,
+  Image as ImageIcon,
   Clock,
 } from "lucide-react";
 import Link from "next/link";
@@ -77,7 +77,6 @@ export default function SeasonalWorkshopGenerator() {
   const [generatedOutput, setGeneratedOutput] =
     useState<SeasonalWorkshopOutput | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [copiedStates, setCopiedStates] = useState<Record<string, boolean>>({});
   const [isAdmin, setIsAdmin] = useState(false);
   const [allowedTools, setAllowedTools] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
@@ -111,7 +110,7 @@ export default function SeasonalWorkshopGenerator() {
     register,
     handleSubmit,
     formState: { errors },
-    watch,
+    control,
   } = useForm<SeasonalFormValues>({
     resolver: zodResolver(seasonalFormSchema),
     defaultValues: {
@@ -123,18 +122,6 @@ export default function SeasonalWorkshopGenerator() {
       additionalRequirements: "",
     },
   });
-
-  const copyToClipboard = async (text: string, key: string) => {
-    try {
-      await navigator.clipboard.writeText(text);
-      setCopiedStates((prev) => ({ ...prev, [key]: true }));
-      setTimeout(() => {
-        setCopiedStates((prev) => ({ ...prev, [key]: false }));
-      }, 2000);
-    } catch (err) {
-      console.error("Failed to copy:", err);
-    }
-  };
 
   const onSubmit = async (data: SeasonalFormValues) => {
     // Check access
@@ -185,7 +172,7 @@ export default function SeasonalWorkshopGenerator() {
     }
   };
 
-  const selectedSeason = watch("season");
+  const selectedSeason = useWatch({ control, name: "season" });
 
   return (
     <div className="min-h-screen bg-transparent text-text-primary">
@@ -688,7 +675,7 @@ export default function SeasonalWorkshopGenerator() {
                           className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
                         >
                           <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <Image className="w-4 h-4 text-amber-500" />
+                            <ImageIcon className="w-4 h-4 text-amber-500" />
                             Midjourney Promptok
                           </h3>
                           <div className="space-y-3">

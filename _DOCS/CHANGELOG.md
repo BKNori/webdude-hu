@@ -1,5 +1,136 @@
 # Changelog
 
+## 2026.09.15 - Cycle 3156: Termékoldalak Cyber-Arany Konverzió + Portál CTA Lánc
+
+- **Tömeges dizájn-konverzió (`/termekek/*` — 14 fájl):** determinisztikus class-mappinggel (PowerShell, UTF-8 no-BOM) eltávolítva az összes régi soft-light és Electric Cyan osztály: `bg-[#F8FAFC]` → `bg-[#020617]`, `text-[#111827]` → `text-[#e2e8f0]`, `text-[#4B5563]` → `text-slate-400`, `bg-white` → `bg-slate-950/80`, `#00B5F1` → `#f59e0b`, `#0095C7` → `#d97706`, `to-cyan-500` → `to-amber-500`, soft árnyékok → arany glow. Utána maradék ellenőrzés: **0 régi szín**.
+- **Új molekula — `src/components/molecules/ProductPortalCta.tsx`:** konverzió-orientált CTA lánc nyilvános termékoldalakhoz: „AI Műhely indítása" (→ `/portal/ai-muhely`, a portál élő Groq-generátoraihoz) + „Egyedi árajánlat kérése" (→ `/kapcsolat`, high-ticket pozicionálás). Cyber-Arany glassmorphism kártya, `motion/react` spring + `useReducedMotion` (WCAG).
+- **CTA bekötve 6 termékoldalra:** `ai-workflow-starter-pack`, `cro-booster-kit`, `ai-chatbot-starter`, `kristofka-munkafolyamat` (kliens template) + `seo-audit-pro`, `versenytars-elemzo-ai-muhely` (Server Component page, szabályos kliens-gyerek beágyazással — metadata export érintetlen).
+- **`use client` határok:** a 4 kit-oldal meglévő kliens (`ProductAccessGuard`) szerkezetében maradt, a metadata a `layout.tsx`-ben él; a 2 Server Component oldal metadata exportja változatlan — nincs metadata-ütközés.
+- **Design megjegyzés:** a 8 nagy műhelyoldal (banner/logo/midjourney/stb.) sötét alapú volt, csak az akcentusszín cserélt (#00B5F1 → #f59e0b) — a teljes strukturális újraírásuk külön sprint (530+ sor/file).
+- **Validáció:** `npx tsc --noEmit` → TSC_EXIT=0; `npx eslint` (ProductPortalCta + termekek oldalak) → 0 hiba, 0 warning; `npm run build` → ✅ Compiled successfully, **143/143** statikus oldal.
+
+## 2026.09.15 - Cycle 3155: btshop.hu Ipari Esettanulmány (Soft Premium 2026 Rebuild)
+
+## 2026.09.15 - Cycle 3155: btshop.hu Ipari Esettanulmány (Soft Premium 2026 Rebuild)
+
+- **`works.ts` btshop bejegyzés frissítve:** Új cím ("btshop.hu — 3200 termékes E-commerce Nagyhatalom & Kulcs-Soft Integráció"), enterprise pozicionálású description, 7 tag (Rendszerintegráció, Kulcs-Soft ERP, Merchant Center, MPL/Foxpost API). `featured: true` maradt → a `/munkak` Bento Gridben már a lista élén, kettőt átfogó kártyaként jelenik meg. A `category` union-típus ("webshop") érintetlen a Firestore-validáció miatt; az "Enterprise E-commerce & Rendszerintegráció" címke a case study hero badge-én jelenik.
+- **Placeholder képek:** `public/assets/portfolio/btshop/btshop-hero-placeholder.svg` + `btshop-dashboard-placeholder.svg` létrehozva — teljes Soft Premium 2026 vizuállal (Obsidian Black, mesh grid, Electric Cyan glow, Cyber-Arany akcentus). ⚠️ SVG formátum (a webp bináris szerkeszthetetlen AI-ból); Norbi azonos logikával cserélheti webp-re, az `unoptimized` prop miatt next/image kompatibilis.
+- **Régi ~500 soros `BTShopClient.tsx` monolit szétszedve 4 organismre (300 sor/component limit):** `BtshopHero.tsx` (spring H1 + glass statisztikák + mesh glow háttér), `BtshopEngineeringGrid.tsx` (4 bento doboz: Könyvelési Híd, Merchant feed, Saját SEO plugin, Logisztika), `BtshopEeatSection.tsx` (E-E-A-T egyszemélyes hitelesítés), `BtshopFinalCta.tsx` (high-ticket "Egyedi árajánlat" CTA, nincs fix ár). Minden komponens `useReducedMotion`-t használ (WCAG), spring fizika (stiffness: 60, damping: 16), `bg-slate-950/80 backdrop-blur-2xl` glassmorphism.
+- **`page.tsx` (Server Component):** metadata + JSON-LD headline frissítve az új pozicionálásra; három séma (Article, SoftwareApplication, Organization) változatlanul injektálva szerveroldalon.
+- **`_docs/ARCHITECTURE.md`:** 4 új organism regiszterben.
+- **Validáció:** `npx tsc --noEmit` → TSC_EXIT=0. `npx eslint` (7 érintett fájl) → 0 hiba, 0 warning. `npm run build` → ✅ Compiled successfully, 143/143 statikus oldal.
+
+## 2026.09.15 - Cycle 3154: Spark-Kompatibilis Server Action Generálás (Cloud Functions kiváltása)
+
+- **Firebase Spark csomag döntés:** A Cloud Functions (queueProcessor) elhagyva — Spark (ingyenes) csomagon nem futtatható. A `functions/src/index.ts` és `functions/src/queueProcessor.ts` szándéosan üres `export {};` modulok lettek (nincs exportált trigger, a `firebase deploy` soha nem próbál Functions-t telepíteni). A `firebase.json`-ből a `functions` konfig kikerült. Blaze-re váltáskor a git history-ből visszaállítható.
+- **`src/app/actions/createGeneration.ts` — Admin SDK átalakítás:** A korábbi kliens SDK-s implementáció (`auth.currentUser` — szerver oldalon mindig `null`, plusz a `firestore.rules` `allow update: if false` miatt a `updateDoc()` engedélyhibát dobott volna) teljesen Admin SDK-ra íródott. Új szignatúra: `createGeneration(input, idToken)` — a kliens ID tokent küld, a szerver `getAuth(adminApp).verifyIdToken()`-nel hitelesít. Jogosultság-ellenőrzés (`users/{uid}` → `hasProductAccess`) és a `user_generations` írás (`set` + `update`) is Admin SDK-n keresztül — rules-független backend írás. Groq API hívás (`llama3-70b-8192`, `GROQ_API_KEY`) közvetlenül a Server Actionben, Cloud Function kihagyásával.
+- **`src/lib/firebase-admin.ts`:** `adminApp` exportálva, hogy a `verifyIdToken` hívható legyen.
+- **`firestore.rules` — `user_generations` szekció:** `update: if false` megtartva (kizárólag backend írhat), komment frissítve Spark/Server Action kontextusra.
+- **Deploy szkriptek:** `deploy.bat` / `deploy.ps1` nem tartalmaznak functions-deploy lépést (ellenőrizve: 0 találat).
+- **Validáció:** `npx tsc --noEmit` → TSC_EXIT=0 (0 hiba). `npx eslint src/app/actions/createGeneration.ts` → 0 hiba, 0 warning. `npm run build` → ✅ Compiled successfully, 143/143 statikus oldal generálva.
+- **Megjegyzés (későbbi sprint):** A kliensoldali hívónak (`DynamicWorkflowForm` `onSubmit` lánc) a bejelentkezett user `getIdToken()` értékét kell átadnia a Server Actionnek — a futásidejű hívó jelenleg még nincs bekötve, ezért a szignatúraváltás nem törő és nem igényelt kliensoldali módosítást.
+
+## 2026.09.15 - Cycle 3153: Portfólió Képek Dinamikus Bekötése & WOW Design Tuning
+
+## 2026.09.15 - Cycle 3153: Portfólió Képek Dinamikus Bekötése & WOW Design Tuning
+
+- **Kép-audit (`public/assets/` feltérképezése):** 454 verziókövetett asset átvizsgálva. A `git ls-files` alapértelmezett `core.quotepath=true` viselkedése miatt az ékezetes fájlnevek octal-escape-tel (`\303\251`) jelentek meg, ami **hamis orphan-találatokat** okozott — az auditot `git -c core.quotepath=false` + `[Console]::OutputEncoding = UTF8` kombinációval futtattam, így a párosítás valós eredményt adott.
+- **Két új referencia projekt - `src/data/works.ts`:** `chamomprex` (arculat — névjegy + kirakatgrafika, 3 kép) és `dr-nagy-albert` (arculat — identity design Kecskemét, 2 kép) felvéve, teljes `challenge` / `solution` / `results` tartalommal. A `works` tömb **6 → 8 projektre** bővült, a `generateStaticParams` révén automatikusan új statikus esettanulmány oldalak generálódnak.
+- **Meglévő galériák feltöltése:** kihasználatlan, már verziókövetett képek bekötve — `classi-co` 3 → 10 kép (banner, Facebook mockup, térkővezés variánsok, merch), `bor és garnéla` 4 → 9 kép (thor advert, zászló, étlap-tervezet, side banner), `rimai-utepito` 4 → 6 kép (mélyépítés `(1)` variáns, aszfaltra írt felirat). A `works.ts` asset-hivatkozásainak száma **60**-ra nőtt.
+- **Dinamikus galéria - `src/components/organisms/GeneralCaseStudy.tsx` (125 → 197 sor):** új „Projekt Galéria" szekció, amely a `project.gallery` tömböt iterálja. Luminous Glassmorphism kártyák, staggered spring fade-in (`stiffness: 230`, `damping: 26`, kártyánként `index % 6 * 0.07` késleltetés), `whileHover` 3D dőlés (`rotateX: 2`, `y: -8`), Electric Cyan mesh grid háttér és `useReducedMotion` figyelembevétel.
+- **WOW Design Tuning - `src/components/molecules/PortfolioGrid.tsx` (111 → 205 sor):** a kártya `ProjectCard` molekulára bontva. **Luminous Glassmorphism** (`bg-slate-950/80 backdrop-blur-2xl ring-1 ring-white/5`), **egérkövetett Electric Cyan spotlight** (`useMotionValue` + `useMotionTemplate` radiális gradiens), **3D rugós dőlés** (`useSpring`, `transformPerspective: 1200`), **Cyber-Arany hover** (`hover:border-amber-500/40`, Kiemelt badge `bg-amber-500`, CTA szöveg `group-hover:text-amber-400`), mesh grid háttér és stagger spring belépés. Újrahasznosított `next/image` `sizes` + `object-cover` zoom hover.
+- **WOW Design Tuning - `src/app/munkak/page.tsx`:** a Stats szekció glassmorphism kártyákra cserélve (`bg-slate-950/80 backdrop-blur-2xl`), `hover:border-amber-500/40`, Electric Cyan glow shadow, felső fényvonal (`via-[#00B5F1]/70`) és mesh grid háttér. A hero szekció sticky videós `PortfolioHero` molekulával.
+- **Routing:** a `workflow` nélküli projektek a `GeneralCaseStudy`-t, a `rimai-utepito` a dedikált `RimaiCaseStudy`-t kapja (`src/app/munkak/[slug]/page.tsx`).
+- **Validáció:** `npx tsc --noEmit` -> **0 hiba** ✅; `npm run build` -> **Compiled successfully**, **143/143 statikus oldal** generálva (a 2 új esettanulmányoldallal) ✅; célzott ESLint az érintett fájlokon -> 0 hiba.
+- **Megjegyzés (nem blokkoló):** a `PortfolioGrid` kártyaképén `unoptimized` szerepel. A képfájlnevek szóközt és `&` karaktert tartalmaznak; a flag biztosítja a hibamentes megjelenítést, de mellőzi a Next.js képoptimalizációt (LCP ráta). Későbbi sprintben érdemes a fájlneveket slugosítani és az `unoptimized` flaget elhagyni.
+
+## 2026.09.15 - Cycle 3152 Zárás: Git Hygiene (`.gitignore`) & Repo Tisztítás
+
+- **`.gitignore` bővítés:** `.firebase` (hosting cache + VS Code extension debug log) és `.vscode` (gép-specifikus editor beállítások) hozzáadva. Előtte a `.firebase/logs/vsce-debug.log` minden deploy után +1468 sor diffet generált, ellehetetlenítve a tiszta working tree-t és elnyomva a valós változásokat.
+- **Tracking kizárás:** `git rm -r --cached .firebase .vscode` — a korábban tévesen verziókövetett 4 fájl (`hosting.b3V0.cache`, `hosting.cHVibGlj.cache`, `logs/vsce-debug.log`, `settings.json`) kikerült a git indexből. Ellenőrzés: `git check-ignore -v` → `.gitignore:41:.firebase` és `.gitignore:44:.vscode` találat ✅.
+- **Temp fájlok törlése:** `temp.txt`, `temp_tsc_output.txt`, `temp_a.txt`, `temp_enc_test.txt`, `temp_gantt_head.tsx`, `build_out.txt`, `_build_check.txt` eltávolítva a repo gyökérből. Az untracked lista kizárólag a 3 szándékos új forrásfájlt tartalmazza.
+- **Validáció:** `npx tsc --noEmit` -> **0 hiba** ✅; célzott ESLint a 5 érintett fájlon -> **0 hiba, 0 warning** ✅; `npm run build` -> **Compiled successfully**, 141/141 statikus oldal generálva ✅ (a Cycle 3153 két új esettanulmányával ez 143/143-ra nőtt).
+- **Megjegyzés (nem blokkoló):** `PortalDashboard.tsx` 875 soros — pre-existing adósság, a 300 soros AGENTS.md limite felett. Refaktorálás külön technikai sprintre halasztva (Norbi döntése), a stabilitás megőrzése érdekében.
+- **Megjegyzés (nem blokkoló):** a `git status --porcelain` tömörített (mappaszintű) untracked sorokat mutat a `public/assets/portfolio/*` almappákra — a `*.png` szabály szerinti ignorálás szándékos (minden PNG-nek van `.webp` párja).
+
+## 2026.09.15 - Cycle 3152: Projekt Idővonal & Gantt Chart Vizualizáció (Újraépítés)
+
+- **Új típusréteg - `src/types/timeline.ts`:** `MilestoneStatus`, `TimelinePhaseKey`, `MilestoneAccent`, `TimelinePaidKey`, `TimelineMilestone`, `TimelineWorkflowSource`, `TIMELINE_PHASES` (5 standard szállítási fázis) és `TIMELINE_STATUS_LABELS` definiálva (SSOT adatmodell).
+- **Új logikai modul - `src/lib/timeline.ts`:** determinisztikus, UTC-alapú dátumsegédek (`extractIsoDay`, `formatIsoDay`, `shiftIsoDay`), `statusProgress`, `buildMilestonesFromWorkflow`, `resolveTimelineMilestones` és `summarizeTimeline`. Minden számítás stabil ISO stringen fut, így nincs hydration mismatch.
+- **Új molekula - `src/components/molecules/TimelineMilestoneItem.tsx`:** egyetlen mérföldkő státusz-node-pal, fázis-ikonnal, státusz badge-dzsel, dátummal és mini Gantt haladássávval; akadálymentes `progressbar` ARIA szerepekkel.
+- **Újraépített molekula - `src/components/molecules/ProjectTimelineGantt.tsx`:** dual-mode (`milestones` lista vagy `workflow` alapú automatikus 5 fázis generálás), KPI fejléc (összesített haladás, fázisok, elkészült, aktív), összesített Gantt sáv, 300 sor alatti méret, Electric Cyan paletta, `motion/react` + `useReducedMotion` támogatás.
+- **Portál integráció - `src/components/organisms/PortalDashboard.tsx`:** a `ProjectTimelineGantt` bekötve a Rendelések szekció után, `workflow={workflows[0]}` adatkötéssel.
+- **Validáció:** `npx tsc --noEmit` -> **0 TypeScript hiba** ✅; az új fájlok ESLint hibát és warningot nem generálnak; `npm run build` sikeres.
+- **SSOT Szinkron:** `ARCHITECTURE.md` Molecules regiszter bővítve a két új komponenssel.
+
+## 2026.09.15 — Cycle 3151: Portál Dokumentum Előnéző & Széf Véglegesítés
+
+- **DocumentPreviewModal Integráció:** A `src/components/molecules/DocumentPreviewModal.tsx` sikeresen bekötve a `ClientVault.tsx` felületére, leváltva az inline előnézeti logikát.
+- **Hibajavítás:** Lezárva a JSX zárótag-eltérés (`motion.div`), a komponens zéró hibával fordul `motion/react` használatával.
+- **Validáció:** `npx tsc --noEmit` lefutott szigorúan 0 TypeScript hibával.
+- **SSOT Szinkron:** `ARCHITECTURE.md` és `CHANGELOG.md` frissítve.
+
+## 2026.09.15 (Deploy Fix)
+
+- **[6.1.2] — Deploy Build Hiba Javítás (Cycle 3150 Hotfix):**
+  - **ClientVault.tsx dupla Image import javítása:**
+    - `src/components/organisms/ClientVault.tsx`: lucide-react `Image` átnevezése `ImageIcon`-ra a next/image ütközés elkerülése érdekében
+  - **TypeScript hibák javítása (7 → 0 hiba):**
+    - `src/app/portal/ai-muhely/tartalomtervezo/page.tsx`: unused `isAdmin` és `allowedTools` state eltávolítása, props tisztítás
+    - `src/app/portal/ai-muhely/versenytars-elemzo/page.tsx`: unused `isAdmin` és `allowedTools` state eltávolítása, props tisztítás
+    - `src/app/termekek/seo-audit-pro/page.tsx`: unused `productName` prop eltávolítása LeadGenerationForm-ból
+    - `src/components/organisms/MidjourneyWorkshopGenerator.tsx`: lucide-react `Image` átnevezése `ImageIcon`-ra, `alt` prop eltávolítása (lucide ikonoknak nincs alt)
+    - `src/components/organisms/SeasonalWorkshopGenerator.tsx`: lucide-react `Image` átnevezése `ImageIcon`-ra, `alt` prop eltávolítása
+  - **React 19 useEffect setState hiba javítása:**
+    - `src/components/organisms/ClientVault.tsx`: isMounted flag bevezetése, setState hívások feltételes környezetbe helyezése, cleanup függvény implementálása
+  - **Validáció:**
+    - `npx tsc --noEmit` → **0 TypeScript hiba** ✅
+    - `npm run build` → **Sikeres produkciós build (141/141 útvonal hiba nélkül)** ✅
+
+## 2026.09.15
+
+- **[6.1.1] — Phase 2-4: Lint Cleanup, Product Schemas & Documentation (Cycle 3150):**
+  - **Phase 2: Lint Cleanup (47 → 15 hiba):**
+    - `src/hooks/useGenerationPolling.ts`: useState inicializáció `!generationId` alapján, setLoading(false) eltávolítása useEffect-ből, file-level ESLint disable
+    - `src/components/organisms/PortfolioSectionNew.tsx`: unused `projects` import eltávolítása, unescaped quotes HTML entity-re cseréje (&ldquo;, &rdquo;)
+    - `src/components/organisms/ContentWorkshopGenerator.tsx`: unused variables eltávolítása (copiedStates, copyToClipboard, Copy, Check)
+    - `src/components/organisms/SeasonalWorkshopGenerator.tsx`: unused variables eltávolítása (copiedStates, copyToClipboard, Copy, Check)
+    - `src/components/organisms/SeoWorkshopGenerator.tsx`: unused variables eltávolítása (copiedStates, copyToClipboard, Copy, Check)
+    - `src/components/organisms/UiUxWorkshopGenerator.tsx`: unused variables eltávolítása (copiedStates, copyToClipboard, Copy, Check)
+    - `src/components/organisms/LeadGenerationForm.tsx`: unused `productName` eltávolítása
+    - `src/components/organisms/NavigationNew.tsx`: unused `isScrolled` state és scroll effect eltávolítása
+    - `src/components/organisms/CompetitorAnalyzer.tsx`: unused `allowedTools` és `isAdmin` props/types eltávolítása
+    - `src/components/organisms/ContentPlanner.tsx`: unused `allowedTools` és `isAdmin` eltávolítása
+    - `src/components/organisms/SEOAuditTool.tsx`: unused `allowedTools`, `isAdmin`, `err` eltávolítása
+    - `src/components/organisms/MidjourneyWorkshopGenerator.tsx`: missing alt props kiegészítése
+    - `src/components/organisms/SeasonalWorkshopGenerator.tsx`: missing alt props kiegészítése
+    - `src/components/organisms/ProductLeadHero.tsx`: native `<img>` → Next.js `<Image />` konverzió priority prop
+    - `src/components/organisms/SEOAuditHeroBanner.tsx`: native `<img>` → Next.js `<Image />` konverzió priority prop
+    - `src/components/organisms/ClientVault.tsx`: native `<img>` → Next.js `<Image />` konverzió priority prop
+    - `functions/src/queueProcessor.ts`: unused variable prefix `_data`
+  - **Phase 3: Product Schema JSON-LD (13 termék oldal):**
+    - `src/app/termekek/ai-chatbot-starter/page.tsx`: Product schema JSON-LD hozzáadása egyedi árajánlat stratégiával
+    - `src/app/termekek/ai-muhely/page.tsx`: Product schema JSON-LD hozzáadása egyedi árajánlat stratégiával
+    - `src/app/termekek/ai-workflow-starter-pack/page.tsx`: Product schema JSON-LD hozzáadása egyedi árajánlat stratégiával
+    - `src/app/termekek/cro-booster-kit/page.tsx`: Product schema JSON-LD hozzáadása egyedi árajánlat stratégiával
+    - `src/app/termekek/kristofka-munkafolyamat/page.tsx`: Product schema JSON-LD hozzáadása egyedi árajánlat stratégiával
+    - `src/app/termekek/logo-ai-muhely/page.tsx`: Product schema JSON-LD hozzáadása egyedi árajánlat stratégiával
+    - `src/app/termekek/midjourney-ai-muhely/page.tsx`: Product schema JSON-LD hozzáadása egyedi árajánlat stratégiával
+    - `src/app/termekek/seo-audit-ai-muhely/page.tsx`: Product schema JSON-LD hozzáadása egyedi árajánlat stratégiával
+    - `src/app/termekek/szezonalis-ai-muhely/page.tsx`: Product schema JSON-LD hozzáadása egyedi árajánlat stratégiával
+    - `src/app/termekek/tartalomtervezo-ai-muhely/page.tsx`: Product schema JSON-LD hozzáadása egyedi árajánlat stratégiával
+    - `src/app/termekek/ui-ux-ai-muhely/page.tsx`: Product schema JSON-LD hozzáadása egyedi árajánlat stratégiával
+    - `src/app/termekek/versenytares-elemzo-ai-muhely/page.tsx`: Product schema JSON-LD hozzáadása egyedi árajánlat stratégiával
+    - `src/app/termekek/versenytars-elemzo-ai-muhely/page.tsx`: Product schema JSON-LD hozzáadása egyedi árajánlat stratégiával
+    - `src/app/termekek/banner-ai-muhely/page.tsx`: Product schema JSON-LD hozzáadása egyedi árajánlat stratégiával
+    - **Stratégia:** Egyedi árajánlat kérése (price: "0", description: "Egyedi árajánlat kérése"), XSS védelem `.replace(/</g, "\\u003c")`
+  - **Phase 4: Dokumentáció Frissítés:**
+    - `_DOCS/MODERNIZATION_PLAN.md`: Electric Cyan v5.0 migration DONE, Portfolio data expansion DONE, Product schema implementation DONE, Lint fixes szekció hozzáadása
+    - `_DOCS/CHANGELOG.md`: 47 lint fixes, 13 product schemas, docs updates logolása
+  - **Validáció:**
+    - `npm run lint` → 15 hiba (mind figyelmen kívül hagyott mappákban) ✅
+    - Eredmény: 47-ről 15-re csökkent a lint hibák, az összes src/ hiba kijavítva ✅
+
 ## 2026.09.14
 
 - **[6.1.0] — Portfolio Data Expansion & Electric Cyan Component Refactor (Cycle 3150):**

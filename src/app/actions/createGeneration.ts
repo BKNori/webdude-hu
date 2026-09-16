@@ -1,17 +1,12 @@
 "use server";
 
+import { getAuth } from "firebase-admin/auth";
+import { adminApp, adminDb } from "@/lib/firebase-admin";
 import { logger } from "@/lib/logger";
-import { db } from "@/lib/firebase";
 import {
-  collection,
-  addDoc,
-  serverTimestamp,
-  doc,
-  getDoc,
-  updateDoc,
-} from "firebase/firestore";
-import { auth } from "@/lib/firebase";
-import { GenerationInput, CreateGenerationResponse } from "@/types/generation";
+  GenerationInput,
+  CreateGenerationResponse,
+} from "@/types/generation";
 
 // Groq API hívás
 async function callGroqAPI(prompt: string): Promise<string> {
@@ -56,7 +51,8 @@ async function callGroqAPI(prompt: string): Promise<string> {
 }
 
 export async function createGeneration(
-  input: GenerationInput
+  input: GenerationInput,
+  idToken: string
 ): Promise<CreateGenerationResponse> {
   try {
     logger.info('createGeneration: indítás', {
@@ -64,42 +60,53 @@ export async function createGeneration(
       meta: { workflowId: input.workflowId },
     });
 
-    // Firebase ellenőrzés
-    if (!auth || !db) {
-      logger.error('createGeneration: Firebase nincs inicializálva', undefined, { layer: 'ServerActions' });
-      return { success: false, error: "Firebase nincs inicializálva" };
+    // Admin SDK ellenőrzés (Spark csomag — nincs Cloud Functions)
+    if (!adminDb) {
+      logger.error('createGeneration: Firebase Admin nincs inicializálva', undefined, { layer: 'ServerActions' });
+      return { success: false, error: "Firebase Admin nincs inicializálva" };
     }
 
-    // Felhasználó ellenőrzése
-    const currentUser = auth.currentUser;
-    if (!currentUser) {
-      return { success: false, error: "Nincs bejelentkezve felhasználó" };
+    // ID token verifikáció (a kliens SDK auth.currentUser szerveren nem elérhető)
+    if (!idToken) {
+      return { success: false, error: "Hiányzó autentikációs token" };
     }
 
-    // Felhasználói jogosultság ellenőrzése
-    const userDoc = await getDoc(doc(db, "users", currentUser.uid));
-    if (!userDoc.exists()) {
+    let decodedToken;
+    try {
+      decodedToken = await getAuth(adminApp).verifyIdToken(idToken);
+    } catch {
+      return { success: false, error: "Érvénytelen vagy lejárt token" };
+    }
+
+    const uid = decodedToken.uid;
+
+    // Felhasználói jogosultság ellenőrzése (Admin SDK read — rules-független)
+    const userDoc = await adminDb.collection("users").doc(uid).get();
+    if (!userDoc.exists) {
       return { success: false, error: "Felhasználó nem található" };
     }
 
     const userData = userDoc.data();
-    const hasProductAccess = userData.hasProductAccess === true;
+    const hasProductAccess = userData?.hasProductAccess === true;
 
-    if (!hasProductAccess && currentUser.email !== "hello@webdude.hu") {
+    if (!hasProductAccess && decodedToken.email !== "hello@webdude.hu") {
       return { success: false, error: "Nincs jogosultságod a generáláshoz" };
     }
 
-    // Generálás létrehozása Firestore-ban (pending státusszal)
-    const generationRef = await addDoc(collection(db, "user_generations"), {
-      userId: currentUser.uid,
+    // Generálás létrehozása Firestore-ban (Admin SDK — a rules `update: if false`
+    // csak a kliensoldali írást tiltja, a backend mindig írhat)
+    const generationRef = adminDb.collection("user_generations").doc();
+    const now = new Date();
+    await generationRef.set({
+      userId: uid,
       workflowId: input.workflowId,
       status: "processing",
       inputParams: input.params,
       tokensUsed: 0,
       estimatedCostUsd: 0,
       executionTimeMs: 0,
-      createdAt: serverTimestamp(),
-      updatedAt: serverTimestamp(),
+      createdAt: now,
+      updatedAt: now,
     });
 
     // Közvetlen Groq API hívás
@@ -114,15 +121,15 @@ export async function createGeneration(
       meta: { generationId: generationRef.id, executionTimeMs, workflowId: input.workflowId },
     });
 
-    // Generálás frissítése Firestore-ban (completed státusszal)
-    await updateDoc(doc(db, "user_generations", generationRef.id), {
+    // Generálás frissítése Firestore-ban (completed státusszal — Admin SDK)
+    await generationRef.update({
       status: "completed",
       outputResult: result,
       tokensUsed: 1000, // Becsült token szám
       estimatedCostUsd: 0.0001, // Becsült költség (Groq ingyenes)
       executionTimeMs,
-      completedAt: serverTimestamp(),
-      updatedAt: serverTimestamp(),
+      completedAt: new Date(),
+      updatedAt: new Date(),
     });
 
     return { success: true, generationId: generationRef.id };

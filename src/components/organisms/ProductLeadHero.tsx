@@ -2,6 +2,7 @@
 
 import { motion } from "motion/react";
 import { Shield, Zap, ArrowRight, CheckCircle } from "lucide-react";
+import Image from "next/image";
 
 interface ProductLeadHeroProps {
   productName: string;
@@ -123,10 +124,11 @@ export default function ProductLeadHero({
           >
             {heroVisual ? (
               <div className="aspect-video rounded-2xl overflow-hidden border border-gold-primary/20">
-                <img
+                <Image
                   src={heroVisual}
                   alt={productName}
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
                 />
               </div>
             ) : (

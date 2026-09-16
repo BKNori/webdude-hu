@@ -3,11 +3,11 @@ import BTShopClient from "./BTShopClient";
 
 export const metadata: Metadata = {
   title:
-    "BTShop.hu Esettanulmány — 100%-ban Automatizált E-kereskedelmi Ökoszisztéma | WebDude",
+    "btshop.hu Esettanulmány — 3200 Termékes E-commerce Nagyhatalom | WebDude",
   description:
-    "BTShop.hu webshop fejlesztés: 3200+ termék, Kulcs-Soft ERP integráció, saját SEO plugin, automatizált logisztika. 100% automatizált rendelés- és készletkezelés.",
+    "btshop.hu webshop fejlesztés: 3200 termék, Kulcs-Soft ERP integráció, saját SEO plugin, automatizált logisztika. 100% automatizált rendelés- és készletkezelés.",
   keywords: [
-    "BTShop.hu",
+    "btshop.hu",
     "WooCommerce fejlesztés",
     "ERP integráció",
     "Kulcs-Soft",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     canonical: "https://webdude.hu/munkak/btshop",
   },
   openGraph: {
-    title: "BTShop.hu — 100%-ban Automatizált E-kereskedelmi Ökoszisztéma",
+    title: "btshop.hu — 3200 termékes E-commerce Nagyhatalom",
     description:
       "3200+ termék, zéró manuális adminisztráció. Egyedi Kulcs-Soft könyvelőprogram szinkron és saját fejlesztésű SEO motor.",
     url: "https://webdude.hu/munkak/btshop",
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "BTShop.hu — 100%-ban Automatizált E-kereskedelmi Ökoszisztéma",
+    title: "btshop.hu — 3200 termékes E-commerce Nagyhatalom",
     description:
       "3200+ termék, zéró manuális adminisztráció. Egyedi Kulcs-Soft könyvelőprogram szinkron és saját fejlesztésű SEO motor.",
     images: ["https://webdude.hu/assets/banners/webdude-hero.webp"],
@@ -50,7 +50,7 @@ export default function BTShopCaseStudy() {
   const caseStudySchema = {
     "@context": "https://schema.org",
     "@type": "Article",
-    headline: "BTShop.hu — 100%-ban Automatizált E-kereskedelmi Ökoszisztéma",
+    headline: "btshop.hu — 3200 termékes E-commerce Nagyhatalom & Kulcs-Soft Integráció",
     description:
       "BTShop.hu webshop fejlesztés: 3200+ termék, Kulcs-Soft ERP integráció, saját SEO plugin, automatizált logisztika.",
     image: "https://webdude.hu/assets/banners/webdude-hero.webp",

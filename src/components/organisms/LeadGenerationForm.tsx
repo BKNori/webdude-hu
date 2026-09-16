@@ -5,12 +5,10 @@ import { motion } from "motion/react";
 import { Send, CheckCircle, AlertCircle, Loader2 } from "lucide-react";
 
 interface LeadGenerationFormProps {
-  productName?: string;
   onSuccess?: () => void;
 }
 
 export default function LeadGenerationForm({
-  productName = "WebDude Audit",
   onSuccess,
 }: LeadGenerationFormProps) {
   const [formData, setFormData] = useState({
