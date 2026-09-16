@@ -1,17 +1,8 @@
 "use server";
 
-import {
-  collection,
-  doc,
-  getDoc,
-  getDocs,
-  setDoc,
-  updateDoc,
-  deleteDoc,
-} from "firebase/firestore";
-import { db } from "@/lib/firebase";
-import { z } from "zod";
+import { adminDb } from "@/lib/firebase-admin";
 import { verifyUserToken } from "./portal";
+import { z } from "zod";
 
 const EmailTemplateSchema = z.object({
   templateId: z.string().min(3, { message: "Template ID minimum 3 karakter" }),
@@ -26,59 +17,91 @@ const EmailTemplateSchema = z.object({
   }),
 });
 
-export async function getEmailTemplatesAction(idToken?: string) {
+interface EmailTemplate {
+  id: string;
+  templateId: string;
+  name: string;
+  subject: string;
+  htmlContent: string;
+  variables: string[];
+  category: "onboarding" | "milestone" | "notification";
+  updatedAt: string;
+}
+
+/**
+ * Szuperadmin ellenőrzés Firebase Admin SDK verifyIdToken-nel
+ * (hello@webdude.hu — az email_templates kollekció kliensolvasása tiltott,
+ * ezért minden művelet Admin SDK bypass-szal fut).
+ */
+async function requireSuperadmin(idToken: string): Promise<string | null> {
+  if (!idToken) return "Hiányzó autentikációs token.";
   try {
-    // Ha van idToken, ellenőrizzük a jogosultságot
-    if (idToken) {
-      const user = await verifyUserToken(idToken);
-      if (!user) {
-        return {
-          success: false,
-          error: "Jogosulatlan hozzáférés.",
-          templates: [],
-        };
-      }
-      // Email alapján is ellenőrizzük a superadmin státuszt
-      if (!user.isAdmin && user.email !== "hello@webdude.hu") {
-        return {
-          success: false,
-          error: "Missing or insufficient permissions.",
-          templates: [],
-        };
-      }
+    const { getAuth } = await import("firebase-admin/auth");
+    const { adminApp } = await import("@/lib/firebase-admin");
+    const decoded = await getAuth(adminApp).verifyIdToken(idToken);
+    if (decoded.email !== "hello@webdude.hu") {
+      return "Missing or insufficient permissions.";
+    }
+    // REST-alapú verifyUserToken fallback ellenőrzés (custom claim)
+    const user = await verifyUserToken(idToken);
+    if (user && !user.isAdmin && user.email !== "hello@webdude.hu") {
+      return "Missing or insufficient permissions.";
+    }
+    return null;
+  } catch {
+    return "Érvénytelen vagy lejárt token.";
+  }
+}
+
+export async function getEmailTemplatesAction(idToken?: string): Promise<{
+  success: boolean;
+  templates: EmailTemplate[];
+  error?: string;
+}> {
+  try {
+    const authError = await requireSuperadmin(idToken ?? "");
+    if (authError) {
+      return { success: false, templates: [], error: authError };
     }
 
-    if (!db) {
+    if (!adminDb) {
       throw new Error("Firestore nem elérhető");
     }
 
-    const templatesCol = collection(db, "email_templates");
-    const templatesSnap = await getDocs(templatesCol);
+    const snap = await adminDb
+      .collection("email_templates")
+      .orderBy("name")
+      .get();
 
-    const templates = templatesSnap.docs.map((doc) => ({
-      id: doc.id,
-      templateId: doc.data().templateId || "",
-      name: doc.data().name || "",
-      subject: doc.data().subject || "",
-      htmlContent: doc.data().htmlContent || "",
-      variables: doc.data().variables || [],
-      category: doc.data().category || "notification",
-      updatedAt: doc.data().updatedAt || "",
-    }));
+    const templates: EmailTemplate[] = snap.docs.map((docSnap) => {
+      const data = docSnap.data();
+      return {
+        id: docSnap.id,
+        templateId: (data.templateId as string) || "",
+        name: (data.name as string) || "",
+        subject: (data.subject as string) || "",
+        htmlContent: (data.htmlContent as string) || "",
+        variables: (data.variables as string[]) || [],
+        category:
+          (data.category as EmailTemplate["category"]) || "notification",
+        updatedAt:
+          data.updatedAt?.toDate?.()?.toISOString?.() ??
+          (typeof data.updatedAt === "string" ? data.updatedAt : ""),
+      };
+    });
 
     return {
       success: true,
       templates,
     };
   } catch (error) {
-    console.error("Email templates fetch error:", error);
     return {
       success: false,
+      templates: [],
       error:
         error instanceof Error
           ? error.message
           : "Hiba történt a sablonok lekérése során.",
-      templates: [],
     };
   }
 }
@@ -89,10 +112,16 @@ export async function saveEmailTemplateAction(
   subject: string,
   htmlContent: string,
   variables: string[],
-  category: "onboarding" | "milestone" | "notification"
+  category: "onboarding" | "milestone" | "notification",
+  idToken?: string
 ) {
   try {
-    if (!db) {
+    const authError = await requireSuperadmin(idToken ?? "");
+    if (authError) {
+      return { success: false, error: authError };
+    }
+
+    if (!adminDb) {
       throw new Error("Firestore nem elérhető");
     }
 
@@ -105,16 +134,18 @@ export async function saveEmailTemplateAction(
       category,
     });
 
-    const templateDocRef = doc(db, "email_templates", templateId);
-    const templateSnap = await getDoc(templateDocRef);
+    const templateDocRef = adminDb
+      .collection("email_templates")
+      .doc(templateId);
+    const templateSnap = await templateDocRef.get();
 
-    if (templateSnap.exists()) {
-      await updateDoc(templateDocRef, {
+    if (templateSnap.exists) {
+      await templateDocRef.update({
         ...validatedData,
         updatedAt: new Date().toISOString(),
       });
     } else {
-      await setDoc(templateDocRef, {
+      await templateDocRef.set({
         ...validatedData,
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
@@ -142,14 +173,21 @@ export async function saveEmailTemplateAction(
   }
 }
 
-export async function deleteEmailTemplateAction(templateId: string) {
+export async function deleteEmailTemplateAction(
+  templateId: string,
+  idToken?: string
+) {
   try {
-    if (!db) {
+    const authError = await requireSuperadmin(idToken ?? "");
+    if (authError) {
+      return { success: false, error: authError };
+    }
+
+    if (!adminDb) {
       throw new Error("Firestore nem elérhető");
     }
 
-    const templateDocRef = doc(db, "email_templates", templateId);
-    await deleteDoc(templateDocRef);
+    await adminDb.collection("email_templates").doc(templateId).delete();
 
     return {
       success: true,

@@ -2,18 +2,19 @@
 
 > **AI DIREKTÍVA:** Ez a fájl a rendszer "élő" memóriája. A 03-workflow.md 5. lépése alapján KÖTELEZŐ ezt a fájlt frissítened minden feladat befejezésekor, vagy mielőtt átadod a vezérlést a felhasználónak (Norbinak). Szigorúan tilos új feladatba kezdened, ha az "Aktuális Munkaterület Állapota" szekcióban hibák vagy félbehagyott fájlok vannak!
 
-## Aktuális állapot — 2026-09-16, 7.0.0 (Kék-Lila migráció)
+## Aktuális állapot — 2026-09-16, 7.2.0 (Admin fix sprint)
 
-- **Végső ellenőrzött eredmény:** TSC_EXIT=0; LINT_EXIT=0 (0 hiba / 24 figyelmeztetés); BUILD_EXIT=0. Cyan-audit: 6 kivételsor, 0 váratlan találat. A helyi indítás naplója standalone konfigurációt jelez; böngészős spot-check továbbra is manuális teendő.
+- **QA:** TSC_EXIT=0; LINT_EXIT=0; BUILD_EXIT=0, 142/142 statikus oldal.
+- **Statisztikák 404:** menü → `/admin/dashboard`; `src/app/admin/analytics/page.tsx` redirect elkészült.
+- **Email sablonok:** `email-templates.ts` Admin SDK-ra átírva (`requireSuperadmin`); editor idTokent ad át minden műveletnek; `firestore.rules` email_templates tiltó blokk kiegészítve — **rules deploy szükséges**.
+- **Portal Kezelő:** `updateClientToolsAction` (targetUid/allowedTools/hasPromptAccess, Admin SDK, hello@webdude.hu); kinyitható jogosultság-panel 9 AI modullal a Regisztrált Klienseknél; `listUsersAction` mostantól allowedTools + hasPromptAccess mezőket is visszaad.
+- Következő lépés: Norbi `firestore.rules` deploy, admin spot-check, commit + deploy.bat.
 
-- Fókusz: Cyber-Arany migráció dokumentációs lezárása; a lentebb szereplő szögletes zárójeles példák kitöltetlen sablonok, nem ellenőrzött projektállapotok.
-- Szinkron: DESIGN_SYSTEM v6.0, ARCHITECTURE, AGENTS és CHANGELOG frissítve.
-- Migrációs riport: 125 fájl / 1550 csere; kontrasztjavítás: 34 fájl / 59 sor és egy kézi CTA-javítás.
-- Kivételek: promptsablonok eredeti cyan tartalma; timeline `cyan` kompatibilitási alias. Az actions könyvtár kizárt.
-- QA: TSC korábban 0 hiba, lint 0 hiba / 24 figyelmeztetés, friss build EXIT=0 és 141/141 generálás. A prompt-visszaállítás utáni QA naplói: `_mentesek/20260916_amber-migration/_tsc-final.txt`, `_lint-final.txt`, `_build-final.txt`.
-- Git: korábbi nem commitolt változások is vannak; a teljes diff nem azonos a migrációval. Commit és deploy nem történt.
-- Következő lépés: Norbi böngészős spot-checkje, lint figyelmeztetések rendezése, majd kézi commit. A helyi böngészős próba kapcsolatmegtagadás miatt nem igazolt vizuális működést.
-- Záró színaudit: `_mentesek/20260916_amber-migration/_zaras-audit.txt`.
+- **Végső ellenőrzött eredmény:** TSC_EXIT=0; LINT_EXIT=0 (0 hiba / 0 figyelmeztetés); BUILD_EXIT=0, 141/141 statikus oldal.
+- **Cycle 3160:** `PortalNotificationBell` bekötve a `PortalDashboard` fejlécébe; `NotificationCenter.tsx` (30 mp polling) archiválva: `_mentesek/20260916_cycle3160/`; `usePortalNotifications` átírva `onAuthStateChanged` + cleanup logikára; badge Kék-Lila v7.0 (`bg-[#5B21B6]` + `text-white`, AAA); `firestore.indexes.json` bővítve (user_generations, vault) — deploykor index-építés kell.
+- **Token-lánc:** Cycle 3154 óta kész (`getIdToken(true)` → `createGeneration`), verifikálva, új kód nem kellett.
+- Szinkron: CHANGELOG [7.1.0], ARCHITECTURE regiszter frissítve.
+- Következő lépés: Norbi manuális spot-check (harang badge portálon bejelentkezve), Firestore-indexek deployja, kézi commit + deploy.bat.
 
 ## Korábbi sablon (nem aktuális állapot)
 

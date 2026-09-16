@@ -131,7 +131,8 @@ export default function EmailTemplateEditor() {
         formData.subject,
         formData.htmlContent,
         formData.variables,
-        formData.category
+        formData.category,
+        idToken
       );
 
       if (response.success) {
@@ -159,7 +160,7 @@ export default function EmailTemplateEditor() {
     setDeleting(templateId);
     setError("");
     try {
-      const response = await deleteEmailTemplateAction(templateId);
+      const response = await deleteEmailTemplateAction(templateId, idToken);
       if (response.success) {
         await loadTemplates();
       } else {

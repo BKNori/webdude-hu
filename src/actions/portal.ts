@@ -126,6 +126,8 @@ interface UserListItem {
   email: string;
   name: string;
   role: string;
+  allowedTools?: string[];
+  hasPromptAccess?: boolean;
 }
 
 /**
@@ -584,6 +586,11 @@ export async function listUsersAction(idToken: string) {
           email: fields.email?.stringValue || "",
           name: fields.name?.stringValue || "Névtelen Ügyfél",
           role: fields.role?.stringValue || "client",
+          allowedTools:
+            fields.allowedTools?.arrayValue?.values
+              ?.map((v) => v.stringValue ?? "")
+              .filter((s) => s.length > 0) ?? [],
+          hasPromptAccess: fields.hasPromptAccess?.booleanValue ?? false,
         });
       });
     }

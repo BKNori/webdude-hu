@@ -38,6 +38,7 @@ import {
   CheckCircle2,
   Copy,
   ShieldAlert,
+  ShieldCheck,
   MessageSquare,
   Send,
   FolderOpen,
@@ -47,6 +48,24 @@ import {
   Image as ImageIcon,
   Archive,
 } from "lucide-react";
+import { updateClientToolsAction } from "@/actions/admin";
+
+/**
+ * AI modul katalógus a portal-kezelo jogosultság-panelhez.
+ * Az azonosítók a generátorok `allowedTools.includes(...)` ellenőrzéseivel
+ * egyeznek; a `prompt_templates` kapcsolja a `hasPromptAccess` flaget is.
+ */
+const AI_TOOL_OPTIONS: Array<{ id: string; name: string }> = [
+  { id: "banner_ai_muhely", name: "Banner AI Műhely" },
+  { id: "logo_ai_muhely", name: "Logó AI Műhely" },
+  { id: "seo_audit_ai_muhely", name: "SEO Audit AI Műhely" },
+  { id: "tartalomtervezo_ai_muhely", name: "Tartalomtervező AI Műhely" },
+  { id: "kristofka_workflow", name: "Kristófka Munkafolyamat" },
+  { id: "ui_ux_ai_muhely", name: "UI/UX AI Műhely" },
+  { id: "midjourney_ai_muhely", name: "Midjourney AI Műhely" },
+  { id: "szezonalis_ai_muhely", name: "Szezonális AI Műhely" },
+  { id: "prompt_templates", name: "AI Prompt Sablonok (hasPromptAccess)" },
+];
 
 interface UserProfile {
   id: string;
@@ -54,6 +73,8 @@ interface UserProfile {
   email: string;
   name: string;
   role: string;
+  allowedTools?: string[];
+  hasPromptAccess?: boolean;
 }
 
 interface Comment {
@@ -109,6 +130,11 @@ export default function PortalKezeloPage() {
   const [actionLoading, setActionLoading] = useState<string | null>(null);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+
+  // Jogosultság-panel állapota (Regisztrált kliensek → kinyitható panel)
+  const [toolsPanelUid, setToolsPanelUid] = useState<string | null>(null);
+  const [toolsSelection, setToolsSelection] = useState<string[]>([]);
+  const [toolsSaving, setToolsSaving] = useState(false);
 
   // Comment & Chat states for Admin
   const [expandedComments, setExpandedComments] = useState<
@@ -279,17 +305,7 @@ export default function PortalKezeloPage() {
     return () => clearTimeout(timer);
   }, []);
 
-  const handleCreateClient = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError("");
-    setSuccess("");
-    setCreatedCredentials(null);
-
-    if (!newClientName || !newClientEmail) {
-      setError("Kérlek, töltsd ki az összes mezőt!");
-      return;
-    }
-
+  const handleCreateClient = async () => {
     setActionLoading("create_client");
     try {
       const idToken = await auth?.currentUser?.getIdToken(true);
@@ -325,6 +341,56 @@ export default function PortalKezeloPage() {
       );
     } finally {
       setActionLoading(null);
+    }
+  };
+
+  // Jogosultság-mentés: updateClientToolsAction meghívása friss ID tokennel.
+  const handleSaveClientTools = async (targetUser: UserProfile) => {
+    if (!targetUser.uid) return;
+    setToolsSaving(true);
+    setError("");
+    setSuccess("");
+    try {
+      const currentUser = auth?.currentUser;
+      if (!currentUser) {
+        setError("Nincs bejelentkezett admin felhasználó.");
+        setToolsSaving(false);
+        return;
+      }
+      const idToken = await currentUser.getIdToken(true);
+      const res = await updateClientToolsAction(
+        {
+          targetUid: targetUser.uid,
+          allowedTools: toolsSelection,
+          hasPromptAccess: toolsSelection.includes("prompt_templates"),
+        },
+        idToken
+      );
+      if (res.success) {
+        setSuccess(res.message ?? "Jogosultságok sikeresen mentve!");
+        // Lista frissítése lokálisan (azonnali visszajelzés)
+        setUsers((prev) =>
+          prev.map((usr) =>
+            usr.uid === targetUser.uid
+              ? {
+                  ...usr,
+                  allowedTools: toolsSelection,
+                  hasPromptAccess: toolsSelection.includes("prompt_templates"),
+                }
+              : usr
+          )
+        );
+      } else {
+        setError(res.error ?? "Hiba a jogosultságok mentése során.");
+      }
+    } catch (err) {
+      setError(
+        err instanceof Error
+          ? err.message
+          : "Váratlan hiba a jogosultságok mentésekor."
+      );
+    } finally {
+      setToolsSaving(false);
     }
   };
 
@@ -1536,6 +1602,34 @@ export default function PortalKezeloPage() {
                         <div className="flex items-center gap-3">
                           <button
                             onClick={() => {
+                              if (toolsPanelUid === u.uid) {
+                                setToolsPanelUid(null);
+                              } else {
+                                // Panelnyitás: meglévő jogosultságok betöltése
+                                const current = u.allowedTools ?? [];
+                                setToolsSelection(
+                                  u.hasPromptAccess &&
+                                    !current.includes("prompt_templates")
+                                    ? [...current, "prompt_templates"]
+                                    : current
+                                );
+                                setToolsPanelUid(u.uid);
+                              }
+                            }}
+                            aria-expanded={toolsPanelUid === u.uid}
+                            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-xs font-bold font-mono transition-all cursor-pointer ${
+                              toolsPanelUid === u.uid
+                                ? "bg-[#00B5F1]/10 border-[#00B5F1]/50 text-[#00B5F1]"
+                                : "border-gray-800 text-slate-400 hover:text-white hover:border-gray-700"
+                            }`}
+                          >
+                            <ShieldCheck className="w-3.5 h-3.5" />
+                            {toolsPanelUid === u.uid
+                              ? "Panel Bezárása"
+                              : "Jogosultságok kezelése"}
+                          </button>
+                          <button
+                            onClick={() => {
                               if (activeVaultClientId === u.uid) {
                                 setActiveVaultClientId(null);
                               } else {
@@ -1567,6 +1661,85 @@ export default function PortalKezeloPage() {
                           </div>
                         </div>
                       </div>
+
+                      {/* Expandable Vault Panel */}
+                      <AnimatePresence>
+                        {toolsPanelUid === u.uid && (
+                          <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: "auto" }}
+                            exit={{ opacity: 0, height: 0 }}
+                            className="bg-[#070e27]/40 border-t border-gray-800/80 px-6 py-5 space-y-4 overflow-hidden"
+                          >
+                            <div>
+                              <h5 className="text-[10px] uppercase font-bold tracking-widest text-[#00B5F1]/80 font-mono mb-2">
+                                AI modul jogosultságok
+                              </h5>
+                              <p className="text-[10px] text-slate-500 font-mono">
+                                A mentés azonnal frissíti a users/{u.uid}{" "}
+                                dokumentumot.
+                              </p>
+                            </div>
+
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                              {AI_TOOL_OPTIONS.map((tool) => {
+                                const checked = toolsSelection.includes(
+                                  tool.id
+                                );
+                                return (
+                                  <label
+                                    key={tool.id}
+                                    className={`flex items-center gap-3 px-3 py-2.5 rounded-xl border text-xs font-mono cursor-pointer transition-all ${
+                                      checked
+                                        ? "border-[#00B5F1]/50 bg-[#00B5F1]/5 text-white"
+                                        : "border-gray-800 text-slate-300 hover:border-gray-700"
+                                    }`}
+                                  >
+                                    <input
+                                      type="checkbox"
+                                      checked={checked}
+                                      onChange={(e) => {
+                                        setToolsSelection((prev) =>
+                                          e.target.checked
+                                            ? [...prev, tool.id]
+                                            : prev.filter(
+                                                (t) => t !== tool.id
+                                              )
+                                        );
+                                      }}
+                                      className="w-4 h-4 rounded accent-[#00B5F1]"
+                                    />
+                                    {tool.name}
+                                  </label>
+                                );
+                              })}
+                            </div>
+
+                            <div className="flex items-center gap-3">
+                              <button
+                                type="button"
+                                disabled={toolsSaving}
+                                onClick={() => void handleSaveClientTools(u)}
+                                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#00B5F1] hover:bg-[#5B21B6] disabled:opacity-50 text-white text-[10px] font-bold uppercase tracking-wider font-mono transition-all cursor-pointer"
+                              >
+                                {toolsSaving ? (
+                                  <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                                ) : (
+                                  <Check className="w-3.5 h-3.5" />
+                                )}
+                                Jogosultságok mentése
+                              </button>
+                              <button
+                                type="button"
+                                onClick={() => setToolsPanelUid(null)}
+                                className="px-4 py-2.5 rounded-xl border border-gray-800 text-slate-400 hover:text-white text-[10px] font-bold uppercase tracking-wider font-mono transition-all cursor-pointer"
+                              >
+                                Bezárás
+                              </button>
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
 
                       {/* Expandable Vault Panel */}
                       <AnimatePresence>

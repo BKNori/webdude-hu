@@ -36,9 +36,10 @@ const togglePromptAccessSchema = z.object({
   hasPromptAccess: z.boolean(),
 });
 
-const updateUserToolsSchema = z.object({
-  email: z.string().email({ message: "Érvénytelen e-mail cím formátum!" }),
+const updateClientToolsSchema = z.object({
+  targetUid: z.string().min(1, { message: "Érvénytelen ügyfél azonosító!" }),
   allowedTools: z.array(z.string()),
+  hasPromptAccess: z.boolean(),
 });
 
 interface FirestoreQueryDocument {
@@ -553,11 +554,11 @@ export async function togglePromptAccessAction(
   }
 }
 
-export async function updateUserToolsAction(
-  data: z.infer<typeof updateUserToolsSchema>,
+export async function updateClientToolsAction(
+  data: z.infer<typeof updateClientToolsSchema>,
   idToken: string
 ) {
-  // 1. Verify superadmin access
+  // 1. Szigorú szuperadmin ellenőrzés
   const adminUser = await verifyUserToken(idToken);
   if (
     !adminUser ||
@@ -567,8 +568,8 @@ export async function updateUserToolsAction(
     return { success: false, error: "Jogosulatlan hozzáférés." };
   }
 
-  // 2. Validate input
-  const validation = updateUserToolsSchema.safeParse(data);
+  // 2. Zod validáció
+  const validation = updateClientToolsSchema.safeParse(data);
   if (!validation.success) {
     return {
       success: false,
@@ -577,137 +578,80 @@ export async function updateUserToolsAction(
     };
   }
 
-  const { email, allowedTools } = validation.data;
+  const { targetUid, allowedTools, hasPromptAccess } = validation.data;
 
-  const projectId = process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID;
-  if (!projectId)
-    return { success: false, error: "Hiányzó projekt konfiguráció." };
-
-  let clientUid = "";
-
-  // 3. Lookup user in Firestore by email
+  // 3. Közvetlen Admin SDK frissítés a users/{uid} dokumentumon
+  // (a kliensoldali írás rules-ban tiltott: allow write if false)
   try {
-    let queryCompleted = false;
-    const currentApps = getApps();
-
-    if (currentApps.length > 0) {
-      try {
-        const userQuery = await getFirestore()
-          .collection("users")
-          .where("email", "==", email)
-          .limit(1)
-          .get();
-
-        if (!userQuery.empty) {
-          const userDoc = userQuery.docs[0];
-          clientUid = userDoc.id;
-          queryCompleted = true;
-        }
-      } catch (err) {
-        console.warn(
-          "Admin SDK firestore query failed, falling back to REST:",
-          err
-        );
-      }
+    const { adminDb } = await import("@/lib/firebase-admin");
+    if (!adminDb) {
+      return { success: false, error: "Adatbázis kapcsolat nem elérhető." };
     }
 
-    if (!queryCompleted) {
-      const url = `https://firestore.googleapis.com/v1/projects/${projectId}/databases/(default)/documents:runQuery`;
-      const queryBody = {
-        structuredQuery: {
-          from: [{ collectionId: "users" }],
-          where: {
-            fieldFilter: {
-              field: { fieldPath: "email" },
-              op: "EQUAL",
-              value: { stringValue: email },
-            },
-          },
-          limit: 1,
-        },
-      };
+    await adminDb.collection("users").doc(targetUid).update({
+      allowedTools,
+      hasPromptAccess,
+      updatedAt: new Date().toISOString(),
+    });
 
-      const res = await fetch(url, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${idToken}`,
-        },
-        body: JSON.stringify(queryBody),
-      });
+    return {
+      success: true,
+      message: "Ügyfél jogosultságok sikeresen mentve!",
+    };
+  } catch (err: unknown) {
+    const errMsg = err instanceof Error ? err.message : String(err);
+    return {
+      success: false,
+      error: "Adatbázis hiba a frissítés során: " + errMsg,
+    };
+  }
+}
 
-      if (res.ok) {
-        const rawData = (await res.json()) as Array<{
-          document?: FirestoreQueryDocument;
-        }>;
-        if (
-          Array.isArray(rawData) &&
-          rawData.length > 0 &&
-          rawData[0].document
-        ) {
-          const doc = rawData[0].document;
-          const parts = doc.name.split("/");
-          clientUid = parts[parts.length - 1];
-        }
-      }
+/**
+ * Visszafelé kompatibilis változat (email alapú): a régi AdminPanel
+ * eszközjogosultság-formja ezen keresztül hív. E-mail alapján feloldja
+ * az uid-t, majd a updateClientToolsAction logikát futtatja.
+ */
+export async function updateUserToolsAction(
+  data: { email: string; allowedTools: string[] },
+  idToken: string
+) {
+  const adminUser = await verifyUserToken(idToken);
+  if (
+    !adminUser ||
+    !adminUser.isAdmin ||
+    adminUser.email !== "hello@webdude.hu"
+  ) {
+    return { success: false, error: "Jogosulatlan hozzáférés." };
+  }
+
+  try {
+    const { adminDb } = await import("@/lib/firebase-admin");
+    if (!adminDb) {
+      return { success: false, error: "Adatbázis kapcsolat nem elérhető." };
     }
 
-    if (!clientUid) {
+    const snap = await adminDb
+      .collection("users")
+      .where("email", "==", data.email)
+      .limit(1)
+      .get();
+
+    if (snap.empty) {
       return {
         success: false,
         error: "Nem található ügyfél ezzel az e-mail címmel.",
       };
     }
 
-    // 4. Update user profile with allowedTools and auto-calculate hasPromptAccess
-    const hasPromptAccess = allowedTools.includes("prompt_templates");
-    let updated = false;
-    const finalApps = getApps();
+    const targetUid = snap.docs[0].id;
+    const hasPromptAccess = data.allowedTools.includes("prompt_templates");
 
-    if (finalApps.length > 0) {
-      try {
-        await getFirestore().collection("users").doc(clientUid).update({
-          allowedTools,
-          hasPromptAccess,
-        });
-        updated = true;
-      } catch (err) {
-        console.warn(
-          "Admin SDK firestore update failed, falling back to REST:",
-          err
-        );
-      }
-    }
-
-    if (!updated) {
-      const updateUrl = `https://firestore.googleapis.com/v1/projects/${projectId}/databases/(default)/documents/users/${clientUid}`;
-      const updateRes = await fetch(updateUrl, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${idToken}`,
-        },
-        body: JSON.stringify({
-          fields: {
-            allowedTools: {
-              arrayValue: {
-                values: allowedTools.map((tool) => ({
-                  stringValue: tool,
-                })),
-              },
-            },
-            hasPromptAccess: { booleanValue: hasPromptAccess },
-          },
-        }),
-      });
-
-      if (!updateRes.ok) {
-        return {
-          success: false,
-          error: "Sikertelen profil frissítés az adatbázisban.",
-        };
-      }
-    }
+    await adminDb.collection("users").doc(targetUid).update({
+      allowedTools: data.allowedTools,
+      hasPromptAccess,
+      updatedAt: new Date().toISOString(),
+    });
 
     return {
       success: true,

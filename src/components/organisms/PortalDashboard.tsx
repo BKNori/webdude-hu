@@ -47,6 +47,7 @@ import OrderStatusCard from "@/components/molecules/OrderStatusCard";
 import OnboardingForm from "@/components/molecules/OnboardingForm";
 import WorkflowChat from "@/components/organisms/WorkflowChat";
 import ProjectTimelineGantt from "@/components/molecules/ProjectTimelineGantt";
+import PortalNotificationBell from "@/components/molecules/PortalNotificationBell";
 
 // Local Workflow definition
 interface Workflow {
@@ -430,6 +431,7 @@ export default function PortalDashboard() {
           </div>
 
           <div className="flex items-center gap-4">
+            <PortalNotificationBell />
             <div className="hidden sm:flex items-center gap-2.5 px-3 py-1.5 rounded-lg bg-slate-900/80 border border-slate-700 text-xs">
               <UserCheck className="w-3.5 h-3.5 text-sky-500" />
               <span className="text-text-primary font-medium truncate max-w-37.5">

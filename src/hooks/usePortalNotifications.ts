@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { onAuthStateChanged, type User } from "firebase/auth";
 import {
   collection,
   limit,
@@ -35,16 +36,26 @@ export function usePortalNotifications() {
   const [files, setFiles] = useState<PortalNotification[]>([]);
   const [lastSeenMs, setLastSeenMs] = useState<number>(0);
   const [ready, setReady] = useState(false);
+  const [authUser, setAuthUser] = useState<User | null>(null);
 
   useEffect(() => {
     const stored = Number(window.localStorage.getItem(LAST_SEEN_KEY) ?? 0);
     setLastSeenMs(Number.isFinite(stored) ? stored : 0);
   }, []);
 
+  // Auth-készség: onAuthStateChanged figyelő tiszta leiratkozással.
+  useEffect(() => {
+    if (!auth) return;
+    const unsubAuth = onAuthStateChanged(auth, (u) => {
+      setAuthUser(u);
+    });
+    return () => unsubAuth();
+  }, []);
+
   // user_generations — csak a saját dokumentumok (rules: userId == auth.uid)
   useEffect(() => {
-    if (!auth?.currentUser || !db) return;
-    const uid = auth.currentUser.uid;
+    if (!authUser || !db) return;
+    const uid = authUser.uid;
     const q = query(
       collection(db, "user_generations"),
       where("userId", "==", uid),
@@ -74,12 +85,12 @@ export function usePortalNotifications() {
       setReady(true);
     });
     return () => unsub();
-  }, []);
+  }, [authUser]);
 
   // vault — csak a saját dokumentumok (rules: clientId == auth.uid)
   useEffect(() => {
-    if (!auth?.currentUser || !db) return;
-    const uid = auth.currentUser.uid;
+    if (!authUser || !db) return;
+    const uid = authUser.uid;
     const q = query(
       collection(db, "vault"),
       where("clientId", "==", uid),
@@ -101,7 +112,7 @@ export function usePortalNotifications() {
       setReady(true);
     });
     return () => unsub();
-  }, []);
+  }, [authUser]);
 
   const all = useMemo(
     () =>

@@ -166,6 +166,13 @@ service cloud.firestore {
       allow update: if false;
     }
 
+    // Email sablonok — dedikált Admin SDK bypass kollekció
+    match /email_templates/{docId} {
+      // Kliensoldali olvasás/írás tiltva (Zero-Prompt Policy):
+      // kizárólag Server Action Admin SDK-val (requireSuperadmin: hello@webdude.hu)
+      allow read, write: if false;
+    }
+
     // Minden más: tiltva
     match /{document=**} {
       allow read, write: if false;

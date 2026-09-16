@@ -8,7 +8,7 @@ import { usePortalNotifications } from "@/hooks/usePortalNotifications";
 
 /**
  * Portál harang — valós idejű értesítések (generálás státusz + vault dokumentum).
- * Cyber-Arany akcentus, motion/react spring, WCAG (aria-label, keyboard).
+ * Kék-Lila v7.0 akcentus, motion/react spring, WCAG (aria-label, keyboard).
  */
 export default function PortalNotificationBell() {
   const { notifications, unseenCount, ready, markAllSeen } =
@@ -40,7 +40,7 @@ export default function PortalNotificationBell() {
               animate={shouldReduceMotion ? {} : { scale: 1 }}
               exit={shouldReduceMotion ? {} : { scale: 0 }}
               transition={spring}
-              className="absolute -top-1.5 -right-1.5 min-w-5 h-5 px-1 rounded-full bg-[#00B5F1] text-black text-[11px] font-black flex items-center justify-center shadow-[0_0_12px_rgba(0, 181, 241,0.6)]"
+              className="absolute -top-1.5 -right-1.5 min-w-5 h-5 px-1 rounded-full bg-[#5B21B6] text-white text-[11px] font-black flex items-center justify-center shadow-[0_0_12px_rgba(91,33,182,0.6)]"
             >
               {unseenCount > 9 ? "9+" : unseenCount}
             </motion.span>

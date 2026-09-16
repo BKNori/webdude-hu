@@ -1,5 +1,25 @@
 # Changelog
 
+## [7.2.0] — 2026-09-16 — Admin fix sprint: Statisztikák 404, Email sablon jogosultság, Ügyfél AI-eszköz kezelő
+
+- **Statisztikák 404 javítva:** `src/app/admin/layout.tsx` menü `Statisztikák` linkje `/admin/analytics` → `/admin/dashboard`. Új `src/app/admin/analytics/page.tsx` szerveroldali redirect (`redirect('/admin/dashboard')`) a régi könyvjelzőknek — 142/142 oldal.
+- **Email sablonok `Missing or insufficient permissions` javítva:** `src/actions/email-templates.ts` teljes átírása kliens SDK-ról (`firebase/firestore` + `db`) Admin SDK-ra (`adminDb`); minden művelet (`getEmailTemplatesAction`, `saveEmailTemplateAction`, `deleteEmailTemplateAction`) szigorú `requireSuperadmin` ellenőrzéssel (`verifyIdToken` + `hello@webdude.hu`). Az `EmailTemplateEditor` az idTokent minden műveletnek átadja. `firestore.rules` kiegészítve explicit `email_templates` tiltó blokkal (Zero-Prompt Policy).
+- **Ügyfél AI-eszköz kezelő (`/admin/portal-kezelo`):** Új `updateClientToolsAction` (`src/actions/admin.ts`) — `targetUid`, `allowedTools`, `hasPromptAccess` Zod validációval, Admin SDK `users/{uid}` frissítéssel, szigorú szuperadmin ellenőrzéssel. A régi `updateUserToolsAction` email-alapú kompatibilis wrapperként megmaradt (AdminPanel). A "Regisztrált Kliensek" listában minden ügyfél mellett "Jogosultságok kezelése" gomb + kinyitható panel 9 AI modullal (banner, logo, seo-audit, tartalomtervezo, kristofka, ui-ux, midjourney, szezonalis, prompt-sablonok→hasPromptAccess). Azonnali mentés + visszajelzés (success/error state, lokális listafrissítés). `listUsersAction` mostantól `allowedTools` és `hasPromptAccess` mezőket is visszaad.
+- **QA:** `npx tsc --noEmit` TSC_EXIT=0; `npm run lint -- --max-warnings 0` LINT_EXIT=0; `npm run build` BUILD_EXIT=0, 142/142 statikus oldal.
+- **QA (utóellenőrzés):** `npm run build` újrafuttatva a módváltás után — ✅ Compiled successfully in 55s, 142/142 statikus oldal, BUILD_EXIT=0. A build naplója törölve (`_build721.txt`).
+- **Git-diff audit (lezáráskor):** a working tree 17 módosított fájlt tartalmaz (`git status --short`); mind a [7.1.0] + [7.2.0] bejegyzések műveleteiből származik — külső, nem rögzített stílusmódosítás nincs. A korábbi „stílusjavítás" megjegyzés érvénytelen, bejegyzése nem szükséges. A `package.json` verzióbump (`0.1.134`) a hivatalos QA-futtatások része.
+- **Ciklus LEZÁRVA (2026-09-16):** v7.0 (Kék-Lila migráció) → v7.1.0 (Cycle 3160: portál értesítések) → v7.2.0 (admin fix sprint) — teljes admin/portál fázis validált, dokumentált állapotban. Deploy előtt: `firestore.rules` + `firestore.indexes.json` deploy (kizárólag Norbi).
+- **Manuális teendő:** `firestore.rules` deployja (email_templates tiltás), majd admin spot-check.
+
+## [7.1.0] — 2026-09-16 — Cycle 3160: Portál valós idejű értesítések bekötése
+
+- **Bekötés:** `PortalNotificationBell` beágyazva a `PortalDashboard` fejlécébe (leaf Client Component, RSC-határ sértetlen); a 30 mp-es üres pollingot végző `NotificationCenter.tsx` a portálról kivezetve és `_mentesek/20260916_cycle3160/` mappába archiválva (Anti-Drain).
+- **Auth-készség:** `usePortalNotifications` átírva `onAuthStateChanged` figyelőre tiszta leiratkozással (cleanup); a `where + orderBy` listenerek csak bejelentkezett `uid` mellett indulnak.
+- **v7.0 szinkron:** „Cyber-Arany" komment → Kék-Lila; badge `bg-[#5B21B6]` + `text-white` (WCAG AAA fehér felirat), violet glow.
+- **Indexek:** `firestore.indexes.json` bővítve (`user_generations`: userId+createdAt; `vault`: clientId+createdAt) — deploykor index-építés szükséges.
+- **Token-lánc (megerősítve, Cycle 3154):** `useCreateGeneration` már tartalmazza a `getIdToken(true)` → `createGeneration(input, idToken)` átadást; új kód nem kellett.
+- **QA:** `npx tsc --noEmit` TSC_EXIT=0; `npm run lint -- --max-warnings 0` LINT_EXIT=0 (0 hiba, 0 figyelmeztetés); `npm run build` BUILD_EXIT=0, 141/141 statikus oldal.
+
 ## [7.0.0] — 2026-09-16 — Kék-Lila migráció (arany/amber kivezetése)
 
 - **Tokenek:** `@theme` bővítve (`--color-brand-primary: #00B5F1`, `--color-brand-secondary: #7C3AED`, `--color-cta-from: #075985`, `--color-cta-to: #5B21B6`, `--color-cta-hover: #6D28D9`, `--color-accent: #7C3AED`); `.premium-btn` javítva (`var(--color-cta-from)` → `var(--color-cta-to)`, hover `#075985` → `#5B21B6`). Glow/keret/animáció rétegek kék-lila fényhatásokra hangolva (`globals.css`).

@@ -2,7 +2,10 @@
 
 > **AI DIREKTÍVA:** Ez a dokumentum a projekt makro-szintű állapotát (Roadmap) és a minőségbiztosítási (QA) státuszt rögzíti. Ezt a fájlt minden sikeres ciklus (Sprint) lezárása után kötelezően frissítened kell a legújabb validációs eredményekkel és az áthelyezett backlog elemekkel.
 
-## 1. Minőségbiztosítási Státusz (QA Gates) — 2026-09-16
+## 1. Minőségbiztosítási Státusz (QA Gates) — 2026-09-16 (Cycle 3160)
+
+- **Cycle 3160 QA:** TSC_EXIT=0, LINT_EXIT=0 (0 hiba, 0 figyelmeztetés), BUILD_EXIT=0, 141/141 statikus oldal.
+- **Cycle 3160:** PortalNotificationBell bekötve a PortalDashboard fejlécébe; NotificationCenter polling archiválva; usePortalNotifications onAuthStateChanged + cleanup; badge Kék-Lila v7.0 AAA; firestore.indexes.json bővítve (deploykor index-építés kell).
 
 - **Végső QA a prompt visszaállítása után:** TSC_EXIT=0, LINT_EXIT=0 (24 figyelmeztetés), BUILD_EXIT=0. Záró audit: 0 váratlan cyan-találat, 6 engedélyezett kivételsor.
 
@@ -21,9 +24,9 @@
 - ✅ **Cycle 3152:** Projekt Idővonal & Gantt Chart (`ProjectTimelineGantt`), determinisztikus UTC-alapú dátumlogikával[cite: 19].
 - ✅ **Cycle 3155:** Esettanulmányok (btshop) és portfólió adatok dinamikus bekötése E-E-A-T + high-ticket CTA elemekkel[cite: 19].
 
-## 3. Aktuális Sprint (Folyamatban lévő feladatok)
-- 🔄 **Portál Értesítési Rendszer:** Valós idejű / polling-alapú értesítések (badge) bevezetése a portálon (Generálások és Vault dokumentumok figyelése)[cite: 19].
-- 🔄 **Token Átadás:** A `createGeneration` Server Action kliensoldali bekötése az ID token átadással a `DynamicWorkflowForm` láncban[cite: 19].
+## 3. Aktuális Sprint (Lezárva: Cycle 3160)
+- ✅ **Portál Értesítési Rendszer:** `PortalNotificationBell` bekötve a `PortalDashboard` fejlécébe (2× onSnapshot: user_generations + vault, localStorage lastSeen badge); a 30 mp-es `NotificationCenter` polling archiválva (`_mentesek/20260916_cycle3160/`).
+- ✅ **Token Átadás:** verifikálva — Cycle 3154 óta kész (`getIdToken(true)` → `createGeneration(input, idToken)` a `useCreateGeneration` hookban); új kód nem kellett.
 
 ## 4. Backlog / Tervezett Feladatok (Roadmap)
 - ⏳ **Admin Felület (Középtávú):** Részletesebb KPI dashboard bővítés (Revenue, Churn rate, LTV), valamint PDF export funkciók implementálása a meglévő CSV exportok mellé[cite: 19, 34].

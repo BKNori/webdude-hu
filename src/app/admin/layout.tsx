@@ -134,7 +134,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
     },
     {
       name: "Statisztikák",
-      href: "/admin/analytics",
+      href: "/admin/dashboard",
       icon: <BarChart3 className="w-4 h-4" />,
     },
     {
