@@ -163,8 +163,8 @@ export default function ImageUploader({
           onClick={onButtonClick}
           className={`border-2 border-dashed rounded-lg p-6 flex flex-col items-center justify-center cursor-pointer transition-all aspect-video max-w-md ${
             dragActive
-              ? "border-amber-500 bg-amber-500/5"
-              : "border-gray-800 hover:border-amber-500/50 bg-[#0a0a0f] hover:bg-[#0f0f1a]"
+              ? "border-sky-500 bg-sky-500/5"
+              : "border-gray-800 hover:border-sky-500/50 bg-[#0a0a0f] hover:bg-[#0f0f1a]"
           }`}
         >
           <input
@@ -180,18 +180,18 @@ export default function ImageUploader({
             <div className="flex flex-col items-center space-y-3 w-full px-4">
               <div className="relative w-full h-2 bg-gray-900 rounded-full overflow-hidden">
                 <div
-                  className="h-full bg-amber-500 transition-all duration-150 rounded-full"
+                  className="h-full bg-sky-500 transition-all duration-150 rounded-full"
                   style={{ width: `${progress}%` }}
                 />
               </div>
-              <span className="text-xs text-amber-500 font-bold uppercase tracking-wider">
+              <span className="text-xs text-sky-500 font-bold uppercase tracking-wider">
                 Feltöltés: {progress}%
               </span>
             </div>
           ) : (
             <div className="text-center space-y-2">
               <svg
-                className="w-10 h-10 text-gray-500 mx-auto transition-colors group-hover:text-amber-500"
+                className="w-10 h-10 text-gray-500 mx-auto transition-colors group-hover:text-sky-500"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"

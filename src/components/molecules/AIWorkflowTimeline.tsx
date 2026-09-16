@@ -91,7 +91,7 @@ export default function AIWorkflowTimeline() {
               <div
                 className={`w-full md:w-1/2 pl-20 md:pl-0 ${index % 2 === 0 ? "md:pr-12 md:text-right" : "md:pl-12"}`}
               >
-                <div className="bg-bg-surface/90 backdrop-blur-xl border border-slate-700/80 rounded-2xl p-6 shadow-xl hover:border-[#00B5F1]/50 hover:shadow-[0_0_25px_rgba(0,181,241,0.15)] transition-all duration-300 group-hover:scale-[1.02]">
+                <div className="bg-bg-surface/90 backdrop-blur-xl border border-slate-700/80 rounded-2xl p-6 shadow-xl hover:border-[#00B5F1]/50 hover:shadow-[0_0_25px_rgba(0, 181, 241,0.15)] transition-all duration-300 group-hover:scale-[1.02]">
                   <div className={`flex items-center gap-3 mb-3 ${index % 2 === 0 ? "md:justify-end" : "md:justify-start"}`}>
                     <div className="w-10 h-10 rounded-xl bg-[#00B5F1]/10 border border-[#00B5F1]/20 flex items-center justify-center group-hover:bg-[#00B5F1]/20 transition-colors">
                       <step.icon className="w-5 h-5 text-[#00B5F1]" />
@@ -107,7 +107,7 @@ export default function AIWorkflowTimeline() {
               </div>
 
               {/* Badge/Dot */}
-              <div className="absolute left-8 md:left-1/2 w-14 h-14 bg-bg-base border-2 border-[#00B5F1]/40 rounded-full flex items-center justify-center text-[#00B5F1] font-bold text-lg z-10 transform -translate-x-1/2 shadow-[0_0_20px_rgba(0,181,241,0.2)] group-hover:border-[#00B5F1] group-hover:shadow-[0_0_30px_rgba(0,181,241,0.4)] transition-all duration-300">
+              <div className="absolute left-8 md:left-1/2 w-14 h-14 bg-bg-base border-2 border-[#00B5F1]/40 rounded-full flex items-center justify-center text-[#00B5F1] font-bold text-lg z-10 transform -translate-x-1/2 shadow-[0_0_20px_rgba(0, 181, 241,0.2)] group-hover:border-[#00B5F1] group-hover:shadow-[0_0_30px_rgba(0, 181, 241,0.4)] transition-all duration-300">
                 {step.id}
               </div>
 

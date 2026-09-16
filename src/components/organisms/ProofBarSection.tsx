@@ -15,7 +15,7 @@ export default function ProofBarSection({
   lighthouseScore = 95,
 }: ProofBarSectionProps) {
   return (
-    <section className="py-16 border-t border-gold-primary/10 bg-bg-elevated/30">
+    <section className="py-16 border-t border-brand-primary/10 bg-bg-elevated/30">
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-8">
           {/* Experience Card */}
@@ -24,10 +24,10 @@ export default function ProofBarSection({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="bg-bg-base/50 border border-gold-primary/20 rounded-xl p-8"
+            className="bg-bg-base/50 border border-brand-primary/20 rounded-xl p-8"
           >
             <div className="flex items-start gap-4">
-              <div className="shrink-0 w-16 h-16 rounded-lg bg-gold-primary/10 border border-gold-primary/20 flex items-center justify-center text-gold-primary">
+              <div className="shrink-0 w-16 h-16 rounded-lg bg-brand-primary/10 border border-brand-primary/20 flex items-center justify-center text-brand-primary">
                 <Award className="w-8 h-8" />
               </div>
               <div className="flex-1">
@@ -53,10 +53,10 @@ export default function ProofBarSection({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="bg-bg-base/50 border border-gold-primary/20 rounded-xl p-8"
+            className="bg-bg-base/50 border border-brand-primary/20 rounded-xl p-8"
           >
             <div className="flex items-start gap-4">
-              <div className="shrink-0 w-16 h-16 rounded-lg bg-gold-primary/10 border border-gold-primary/20 flex items-center justify-center text-gold-primary">
+              <div className="shrink-0 w-16 h-16 rounded-lg bg-brand-primary/10 border border-brand-primary/20 flex items-center justify-center text-brand-primary">
                 <TrendingUp className="w-8 h-8" />
               </div>
               <div className="flex-1">
@@ -85,19 +85,19 @@ export default function ProofBarSection({
           className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4"
         >
           <div className="text-center p-4 bg-bg-base/30 rounded-lg">
-            <div className="text-2xl font-bold text-gold-primary mb-1">47+</div>
+            <div className="text-2xl font-bold text-brand-primary mb-1">47+</div>
             <div className="text-xs text-slate-400">Ügyfélvélemény</div>
           </div>
           <div className="text-center p-4 bg-bg-base/30 rounded-lg">
-            <div className="text-2xl font-bold text-gold-primary mb-1">4.9</div>
+            <div className="text-2xl font-bold text-brand-primary mb-1">4.9</div>
             <div className="text-xs text-slate-400">Értékelés</div>
           </div>
           <div className="text-center p-4 bg-bg-base/30 rounded-lg">
-            <div className="text-2xl font-bold text-gold-primary mb-1">24h</div>
+            <div className="text-2xl font-bold text-brand-primary mb-1">24h</div>
             <div className="text-xs text-slate-400">Audit válaszidő</div>
           </div>
           <div className="text-center p-4 bg-bg-base/30 rounded-lg">
-            <div className="text-2xl font-bold text-gold-primary mb-1">
+            <div className="text-2xl font-bold text-brand-primary mb-1">
               100%
             </div>
             <div className="text-xs text-slate-400">Siker garancia</div>

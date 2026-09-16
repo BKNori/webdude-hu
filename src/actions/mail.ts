@@ -37,7 +37,7 @@ export async function sendWelcomeEmailAction(
       margin: 40px auto;
       background-color: #0f172a;
       border: 1px solid #1e293b;
-      border-top: 4px solid #f59e0b;
+      border-top: 4px solid #00B5F1;
       border-radius: 16px;
       padding: 32px;
     }
@@ -47,7 +47,7 @@ export async function sendWelcomeEmailAction(
       border-bottom: 1px solid #1e293b;
     }
     .logo-text {
-      color: #f59e0b;
+      color: #00B5F1;
       font-size: 24px;
       font-weight: 800;
       letter-spacing: 2px;
@@ -86,7 +86,7 @@ export async function sendWelcomeEmailAction(
       font-weight: bold;
     }
     .value {
-      color: #f59e0b;
+      color: #00B5F1;
       font-weight: bold;
     }
     .btn-container {
@@ -94,7 +94,7 @@ export async function sendWelcomeEmailAction(
       margin-top: 32px;
     }
     .btn {
-      background-color: #f59e0b;
+      background-color: #00B5F1;
       color: bg-transparent !important;
       text-decoration: none;
       padding: 12px 32px;

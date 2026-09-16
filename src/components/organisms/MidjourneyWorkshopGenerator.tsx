@@ -180,7 +180,7 @@ export default function MidjourneyWorkshopGenerator() {
       {/* Loading State */}
       {loading && (
         <div className="min-h-screen bg-transparent flex flex-col items-center justify-center space-y-4">
-          <Loader2 className="w-8 h-8 animate-spin text-amber-500" />
+          <Loader2 className="w-8 h-8 animate-spin text-sky-500" />
           <p className="text-xs font-mono text-slate-400 uppercase tracking-widest animate-pulse font-bold">
             Generátor betöltése...
           </p>
@@ -198,7 +198,7 @@ export default function MidjourneyWorkshopGenerator() {
               </div>
               <Link
                 href="/portal"
-                className="px-6 py-3 rounded-xl bg-amber-500 text-bg-base font-bold hover:bg-amber-600 transition-colors"
+                className="px-6 py-3 rounded-xl bg-sky-500 text-bg-base font-bold hover:bg-violet-700 transition-colors"
               >
                 Bejelentkezés
               </Link>
@@ -211,12 +211,12 @@ export default function MidjourneyWorkshopGenerator() {
                   <div className="flex items-center gap-3">
                     <Link
                       href="/portal/ai-muhely"
-                      className="w-10 h-10 rounded-xl bg-linear-to-br from-amber-400 to-amber-600 flex items-center justify-center shadow-lg shadow-amber-500/10 cursor-pointer"
+                      className="w-10 h-10 rounded-xl bg-linear-to-br from-sky-400 to-violet-700 flex items-center justify-center shadow-lg shadow-sky-500/10 cursor-pointer"
                     >
                       <Layers className="w-5 h-5 text-bg-base" />
                     </Link>
                     <div>
-                      <span className="text-xs uppercase font-black tracking-widest text-amber-500 block">
+                      <span className="text-xs uppercase font-black tracking-widest text-sky-500 block">
                         WebDude AI Studio
                       </span>
                       <span className="text-sm font-bold text-white block -mt-0.5">
@@ -227,7 +227,7 @@ export default function MidjourneyWorkshopGenerator() {
 
                   <Link
                     href="/portal/ai-muhely"
-                    className="flex items-center gap-2 px-4 py-2 rounded-xl border border-gray-800 hover:border-amber-500/30 text-slate-400 hover:text-white transition-colors text-xs font-bold uppercase tracking-wider cursor-pointer"
+                    className="flex items-center gap-2 px-4 py-2 rounded-xl border border-gray-800 hover:border-sky-500/30 text-slate-400 hover:text-white transition-colors text-xs font-bold uppercase tracking-wider cursor-pointer"
                   >
                     <ArrowLeft className="w-4 h-4" />
                     Vissza
@@ -241,8 +241,8 @@ export default function MidjourneyWorkshopGenerator() {
                   {/* Input Form */}
                   <div className="space-y-6">
                     <div className="space-y-2 relative">
-                      <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 rounded-full bg-amber-500/5 blur-3xl pointer-events-none" />
-                      <span className="text-xs font-mono font-black uppercase tracking-widest text-amber-500">
+                      <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 rounded-full bg-sky-500/5 blur-3xl pointer-events-none" />
+                      <span className="text-xs font-mono font-black uppercase tracking-widest text-sky-500">
                         Midjourney Generátor
                       </span>
                       <h1 className="text-3xl md:text-4xl font-extrabold text-white tracking-tight leading-none font-mono">
@@ -270,14 +270,14 @@ export default function MidjourneyWorkshopGenerator() {
                       {/* Subject */}
                       <div className="space-y-2">
                         <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <Target className="w-4 h-4 text-amber-500" />
+                          <Target className="w-4 h-4 text-sky-500" />
                           Tárgy
                         </label>
                         <textarea
                           {...register("subject")}
                           rows={3}
                           placeholder="Pl. Egy futurisztikus cyberpunk városkép neon fényekkel éjjel..."
-                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-amber-500/50 focus:ring-2 focus:ring-amber-500/10 text-white placeholder-slate-500 transition-all text-sm resize-none"
+                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-sky-500/50 focus:ring-2 focus:ring-sky-500/10 text-white placeholder-slate-500 transition-all text-sm resize-none"
                         />
                         {errors.subject && (
                           <p className="text-red-400 text-xs font-mono">
@@ -289,12 +289,12 @@ export default function MidjourneyWorkshopGenerator() {
                       {/* Style */}
                       <div className="space-y-2">
                         <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <ImageIcon className="w-4 h-4 text-amber-500" />
+                          <ImageIcon className="w-4 h-4 text-sky-500" />
                           Stílus
                         </label>
                         <select
                           {...register("style")}
-                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-amber-500/50 focus:ring-2 focus:ring-amber-500/10 text-white transition-all text-sm"
+                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-sky-500/50 focus:ring-2 focus:ring-sky-500/10 text-white transition-all text-sm"
                         >
                           <option value="photorealistic">
                             Fotorealisztikus
@@ -311,12 +311,12 @@ export default function MidjourneyWorkshopGenerator() {
                       {/* Mood */}
                       <div className="space-y-2">
                         <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <Zap className="w-4 h-4 text-amber-500" />
+                          <Zap className="w-4 h-4 text-sky-500" />
                           Hangulat
                         </label>
                         <select
                           {...register("mood")}
-                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-amber-500/50 focus:ring-2 focus:ring-amber-500/10 text-white transition-all text-sm"
+                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-sky-500/50 focus:ring-2 focus:ring-sky-500/10 text-white transition-all text-sm"
                         >
                           <option value="dramatic">Drámai</option>
                           <option value="peaceful">Békés</option>
@@ -331,12 +331,12 @@ export default function MidjourneyWorkshopGenerator() {
                       {/* Lighting */}
                       <div className="space-y-2">
                         <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <Sun className="w-4 h-4 text-amber-500" />
+                          <Sun className="w-4 h-4 text-sky-500" />
                           Fényviszonyok
                         </label>
                         <select
                           {...register("lighting")}
-                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-amber-500/50 focus:ring-2 focus:ring-amber-500/10 text-white transition-all text-sm"
+                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-sky-500/50 focus:ring-2 focus:ring-sky-500/10 text-white transition-all text-sm"
                         >
                           <option value="natural">Természetes</option>
                           <option value="studio">Stúdió</option>
@@ -351,12 +351,12 @@ export default function MidjourneyWorkshopGenerator() {
                       {/* Aspect Ratio */}
                       <div className="space-y-2">
                         <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <Aperture className="w-4 h-4 text-amber-500" />
+                          <Aperture className="w-4 h-4 text-sky-500" />
                           Képarány
                         </label>
                         <select
                           {...register("aspectRatio")}
-                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-amber-500/50 focus:ring-2 focus:ring-amber-500/10 text-white transition-all text-sm"
+                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-sky-500/50 focus:ring-2 focus:ring-sky-500/10 text-white transition-all text-sm"
                         >
                           <option value="16:9">16:9 (Landscape)</option>
                           <option value="9:16">9:16 (Portrait)</option>
@@ -369,14 +369,14 @@ export default function MidjourneyWorkshopGenerator() {
                       {/* Additional Requirements */}
                       <div className="space-y-2">
                         <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <Lightbulb className="w-4 h-4 text-amber-500" />
+                          <Lightbulb className="w-4 h-4 text-sky-500" />
                           További Követelmények (opcionális)
                         </label>
                         <textarea
                           {...register("additionalRequirements")}
                           rows={3}
                           placeholder="Pl. Legyen benne egy futurisztikus autó és neon feliratok..."
-                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-amber-500/50 focus:ring-2 focus:ring-amber-500/10 text-white placeholder-slate-500 transition-all text-sm resize-none"
+                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-sky-500/50 focus:ring-2 focus:ring-sky-500/10 text-white placeholder-slate-500 transition-all text-sm resize-none"
                         />
                       </div>
 
@@ -386,7 +386,7 @@ export default function MidjourneyWorkshopGenerator() {
                         whileTap={{ scale: 0.98 }}
                         type="submit"
                         disabled={isGenerating}
-                        className="w-full px-6 py-4 rounded-xl bg-linear-to-r from-amber-500 to-amber-600 text-bg-base font-bold text-sm uppercase tracking-wider hover:from-amber-600 hover:to-amber-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg shadow-amber-500/20"
+                        className="w-full px-6 py-4 rounded-xl bg-linear-to-r from-sky-500 to-violet-700 text-bg-base font-bold text-sm uppercase tracking-wider hover:from-violet-700 hover:to-sky-800 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg shadow-sky-500/20"
                       >
                         {isGenerating ? (
                           <>
@@ -407,8 +407,8 @@ export default function MidjourneyWorkshopGenerator() {
                   <div className="space-y-6">
                     {!generatedOutput && (
                       <div className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-8 flex flex-col items-center justify-center min-h-100">
-                        <div className="w-16 h-16 rounded-full bg-amber-500/10 flex items-center justify-center mb-4">
-                          <Camera className="w-8 h-8 text-amber-500" />
+                        <div className="w-16 h-16 rounded-full bg-sky-500/10 flex items-center justify-center mb-4">
+                          <Camera className="w-8 h-8 text-sky-500" />
                         </div>
                         <h3 className="text-lg font-bold text-white mb-2">
                           Midjourney Koncepció
@@ -430,7 +430,7 @@ export default function MidjourneyWorkshopGenerator() {
                         >
                           <div className="flex items-center justify-between">
                             <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                              <ImageIcon className="w-4 h-4 text-amber-500" />
+                              <ImageIcon className="w-4 h-4 text-sky-500" />
                               Vizuális Koncepció
                             </h3>
                           </div>
@@ -468,7 +468,7 @@ export default function MidjourneyWorkshopGenerator() {
                                   (element, index) => (
                                     <span
                                       key={index}
-                                      className="px-3 py-1 rounded-lg bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-mono"
+                                      className="px-3 py-1 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-mono"
                                     >
                                       {element}
                                     </span>
@@ -488,7 +488,7 @@ export default function MidjourneyWorkshopGenerator() {
                         >
                           <div className="flex items-center justify-between">
                             <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                              <Sun className="w-4 h-4 text-amber-500" />
+                              <Sun className="w-4 h-4 text-sky-500" />
                               Fénybeállítás
                             </h3>
                           </div>
@@ -545,7 +545,7 @@ export default function MidjourneyWorkshopGenerator() {
                         >
                           <div className="flex items-center justify-between">
                             <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                              <Layers className="w-4 h-4 text-amber-500" />
+                              <Layers className="w-4 h-4 text-sky-500" />
                               Kompozíció
                             </h3>
                           </div>
@@ -594,7 +594,7 @@ export default function MidjourneyWorkshopGenerator() {
                         >
                           <div className="flex items-center justify-between">
                             <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                              <Palette className="w-4 h-4 text-amber-500" />
+                              <Palette className="w-4 h-4 text-sky-500" />
                               Szín Grading
                             </h3>
                           </div>
@@ -608,7 +608,7 @@ export default function MidjourneyWorkshopGenerator() {
                                   (color, index) => (
                                     <span
                                       key={index}
-                                      className="px-3 py-1 rounded-lg bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-mono"
+                                      className="px-3 py-1 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-mono"
                                     >
                                       {color}
                                     </span>
@@ -662,7 +662,7 @@ export default function MidjourneyWorkshopGenerator() {
                         >
                           <div className="flex items-center justify-between">
                             <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                              <Sparkles className="w-4 h-4 text-amber-500" />
+                              <Sparkles className="w-4 h-4 text-sky-500" />
                               Midjourney Prompt
                             </h3>
                             <button
@@ -672,7 +672,7 @@ export default function MidjourneyWorkshopGenerator() {
                                   "midjourney"
                                 )
                               }
-                              className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-mono hover:bg-amber-500/20 transition-colors"
+                              className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-mono hover:bg-sky-500/20 transition-colors"
                             >
                               {copiedStates["midjourney"] ? (
                                 <>
@@ -703,7 +703,7 @@ export default function MidjourneyWorkshopGenerator() {
                         >
                           <div className="flex items-center justify-between">
                             <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                              <Layers className="w-4 h-4 text-amber-500" />
+                              <Layers className="w-4 h-4 text-sky-500" />
                               Változatok
                             </h3>
                           </div>

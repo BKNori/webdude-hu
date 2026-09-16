@@ -32,7 +32,7 @@ export default function PerformanceGauge({
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.6 }}
-        className={`relative ${sizeClasses[size]} ${borderClasses[size]} border-gold-primary rounded-full flex items-center justify-center bg-bg-elevated/50`}
+        className={`relative ${sizeClasses[size]} ${borderClasses[size]} border-brand-primary rounded-full flex items-center justify-center bg-bg-elevated/50`}
       >
         <span
           className={`${sizeClasses[size].split(" ")[2]} text-white font-mono font-bold`}
@@ -46,7 +46,7 @@ export default function PerformanceGauge({
             transition={{ duration: 0.6, delay: 0.3 }}
             className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 text-center"
           >
-            <span className="text-xs text-gold-primary font-bold uppercase tracking-wider">
+            <span className="text-xs text-brand-primary font-bold uppercase tracking-wider">
               Lighthouse Score
             </span>
           </motion.div>

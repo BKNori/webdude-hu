@@ -31,7 +31,7 @@ export default function StickyCTA() {
           transition={{ duration: 0.3 }}
           className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50"
         >
-          <div className="bg-bg-surface/90 backdrop-blur-xl border border-amber-500/30 rounded-full px-6 py-3 shadow-[0_8px_32px_rgba(255,215,0,0.2)] flex items-center gap-4">
+          <div className="bg-bg-surface/90 backdrop-blur-xl border border-sky-500/30 rounded-full px-6 py-3 shadow-[0_8px_32px_rgba(255,215,0,0.2)] flex items-center gap-4">
             <span className="text-sm text-text-secondary hidden md:block">
               Készen állsz a projektre?
             </span>

@@ -183,7 +183,7 @@ export default function CipWorkshopGenerator() {
       {/* Loading State */}
       {loading && (
         <div className="min-h-screen bg-transparent flex flex-col items-center justify-center space-y-4">
-          <Loader2 className="w-8 h-8 animate-spin text-amber-500" />
+          <Loader2 className="w-8 h-8 animate-spin text-sky-500" />
           <p className="text-xs font-mono text-slate-400 uppercase tracking-widest animate-pulse font-bold">
             Generátor betöltése...
           </p>
@@ -201,7 +201,7 @@ export default function CipWorkshopGenerator() {
               </div>
               <Link
                 href="/portal"
-                className="px-6 py-3 rounded-xl bg-amber-500 text-bg-base font-bold hover:bg-amber-600 transition-colors"
+                className="px-6 py-3 rounded-xl bg-sky-500 text-bg-base font-bold hover:bg-violet-700 transition-colors"
               >
                 Bejelentkezés
               </Link>
@@ -214,12 +214,12 @@ export default function CipWorkshopGenerator() {
                   <div className="flex items-center gap-3">
                     <Link
                       href="/portal/ai-muhely"
-                      className="w-10 h-10 rounded-xl bg-linear-to-br from-amber-400 to-amber-600 flex items-center justify-center shadow-lg shadow-amber-500/10 cursor-pointer"
+                      className="w-10 h-10 rounded-xl bg-linear-to-br from-sky-400 to-violet-700 flex items-center justify-center shadow-lg shadow-sky-500/10 cursor-pointer"
                     >
                       <Layers className="w-5 h-5 text-bg-base" />
                     </Link>
                     <div>
-                      <span className="text-xs uppercase font-black tracking-widest text-amber-500 block">
+                      <span className="text-xs uppercase font-black tracking-widest text-sky-500 block">
                         WebDude AI Studio
                       </span>
                       <span className="text-sm font-bold text-white block -mt-0.5">
@@ -230,7 +230,7 @@ export default function CipWorkshopGenerator() {
 
                   <Link
                     href="/portal/ai-muhely"
-                    className="flex items-center gap-2 px-4 py-2 rounded-xl border border-gray-800 hover:border-amber-500/30 text-slate-400 hover:text-white transition-colors text-xs font-bold uppercase tracking-wider cursor-pointer"
+                    className="flex items-center gap-2 px-4 py-2 rounded-xl border border-gray-800 hover:border-sky-500/30 text-slate-400 hover:text-white transition-colors text-xs font-bold uppercase tracking-wider cursor-pointer"
                   >
                     <ArrowLeft className="w-4 h-4" />
                     Vissza
@@ -244,8 +244,8 @@ export default function CipWorkshopGenerator() {
                   {/* Input Form */}
                   <div className="space-y-6">
                     <div className="space-y-2 relative">
-                      <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 rounded-full bg-amber-500/5 blur-3xl pointer-events-none" />
-                      <span className="text-xs font-mono font-black uppercase tracking-widest text-amber-500">
+                      <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 rounded-full bg-sky-500/5 blur-3xl pointer-events-none" />
+                      <span className="text-xs font-mono font-black uppercase tracking-widest text-sky-500">
                         CIP Generátor
                       </span>
                       <h1 className="text-3xl md:text-4xl font-extrabold text-white tracking-tight leading-none font-mono">
@@ -273,13 +273,13 @@ export default function CipWorkshopGenerator() {
                       {/* Company Name */}
                       <div className="space-y-2">
                         <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <Building2 className="w-4 h-4 text-amber-500" />
+                          <Building2 className="w-4 h-4 text-sky-500" />
                           Cégnév
                         </label>
                         <input
                           {...register("companyName")}
                           placeholder="Példa: WebDude Kft."
-                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-bg-elevated text-white placeholder-slate-500 focus:border-amber-500/50 focus:outline-none focus:ring-2 focus:ring-amber-500/10 transition-all text-sm"
+                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-bg-elevated text-white placeholder-slate-500 focus:border-sky-500/50 focus:outline-none focus:ring-2 focus:ring-sky-500/10 transition-all text-sm"
                         />
                         {errors.companyName && (
                           <p className="text-red-400 text-xs">
@@ -291,13 +291,13 @@ export default function CipWorkshopGenerator() {
                       {/* Industry */}
                       <div className="space-y-2">
                         <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <Target className="w-4 h-4 text-amber-500" />
+                          <Target className="w-4 h-4 text-sky-500" />
                           Iparág
                         </label>
                         <input
                           {...register("industry")}
                           placeholder="Példa: Webfejlesztés, Grafikai Design, IT tanácsadás..."
-                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-bg-elevated text-white placeholder-slate-500 focus:border-amber-500/50 focus:outline-none focus:ring-2 focus:ring-amber-500/10 transition-all text-sm"
+                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-bg-elevated text-white placeholder-slate-500 focus:border-sky-500/50 focus:outline-none focus:ring-2 focus:ring-sky-500/10 transition-all text-sm"
                         />
                         {errors.industry && (
                           <p className="text-red-400 text-xs">
@@ -309,13 +309,13 @@ export default function CipWorkshopGenerator() {
                       {/* Target Audience */}
                       <div className="space-y-2">
                         <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <Type className="w-4 h-4 text-amber-500" />
+                          <Type className="w-4 h-4 text-sky-500" />
                           Célközönség
                         </label>
                         <textarea
                           {...register("targetAudience")}
                           placeholder="Példa: 25-45 éves vállalkozók, kis- és középvállalkozások..."
-                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-bg-elevated text-white placeholder-slate-500 focus:border-amber-500/50 focus:outline-none focus:ring-2 focus:ring-amber-500/10 transition-all text-sm resize-none"
+                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-bg-elevated text-white placeholder-slate-500 focus:border-sky-500/50 focus:outline-none focus:ring-2 focus:ring-sky-500/10 transition-all text-sm resize-none"
                           rows={3}
                         />
                         {errors.targetAudience && (
@@ -328,13 +328,13 @@ export default function CipWorkshopGenerator() {
                       {/* Brand Personality */}
                       <div className="space-y-2">
                         <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <Palette className="w-4 h-4 text-amber-500" />
+                          <Palette className="w-4 h-4 text-sky-500" />
                           Márka Személyiség
                         </label>
                         <textarea
                           {...register("brandPersonality")}
                           placeholder="Példa: Innovatív, megbízható, prémium, barátságos..."
-                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-bg-elevated text-white placeholder-slate-500 focus:border-amber-500/50 focus:outline-none focus:ring-2 focus:ring-amber-500/10 transition-all text-sm resize-none"
+                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-bg-elevated text-white placeholder-slate-500 focus:border-sky-500/50 focus:outline-none focus:ring-2 focus:ring-sky-500/10 transition-all text-sm resize-none"
                           rows={3}
                         />
                         {errors.brandPersonality && (
@@ -347,7 +347,7 @@ export default function CipWorkshopGenerator() {
                       {/* CIP Element */}
                       <div className="space-y-2">
                         <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <Layout className="w-4 h-4 text-amber-500" />
+                          <Layout className="w-4 h-4 text-sky-500" />
                           Arculati Elem
                         </label>
                         <div className="grid grid-cols-3 gap-2">
@@ -375,8 +375,8 @@ export default function CipWorkshopGenerator() {
                                 value={option.value}
                                 className="sr-only peer"
                               />
-                              <div className="px-3 py-2 rounded-xl bg-bg-elevated/50 border border-bg-elevated peer-checked:border-amber-500/50 peer-checked:bg-amber-500/10 text-center transition-all">
-                                <span className="text-xs font-bold text-slate-300 peer-checked:text-amber-500">
+                              <div className="px-3 py-2 rounded-xl bg-bg-elevated/50 border border-bg-elevated peer-checked:border-sky-500/50 peer-checked:bg-sky-500/10 text-center transition-all">
+                                <span className="text-xs font-bold text-slate-300 peer-checked:text-sky-500">
                                   {option.label}
                                 </span>
                               </div>
@@ -393,7 +393,7 @@ export default function CipWorkshopGenerator() {
                       {/* Design Style */}
                       <div className="space-y-2">
                         <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <Palette className="w-4 h-4 text-amber-500" />
+                          <Palette className="w-4 h-4 text-sky-500" />
                           Dizájn Stílus
                         </label>
                         <div className="grid grid-cols-4 gap-2">
@@ -416,8 +416,8 @@ export default function CipWorkshopGenerator() {
                                 value={option.value}
                                 className="sr-only peer"
                               />
-                              <div className="px-3 py-2 rounded-xl bg-bg-elevated/50 border border-bg-elevated peer-checked:border-amber-500/50 peer-checked:bg-amber-500/10 text-center transition-all">
-                                <span className="text-xs font-bold text-slate-300 peer-checked:text-amber-500">
+                              <div className="px-3 py-2 rounded-xl bg-bg-elevated/50 border border-bg-elevated peer-checked:border-sky-500/50 peer-checked:bg-sky-500/10 text-center transition-all">
+                                <span className="text-xs font-bold text-slate-300 peer-checked:text-sky-500">
                                   {option.label}
                                 </span>
                               </div>
@@ -434,42 +434,42 @@ export default function CipWorkshopGenerator() {
                       {/* Brand Colors */}
                       <div className="space-y-2">
                         <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <Palette className="w-4 h-4 text-amber-500" />
+                          <Palette className="w-4 h-4 text-sky-500" />
                           Brand Színek (Opcionális)
                         </label>
                         <input
                           {...register("brandColors")}
-                          placeholder="Példa: #f59e0b, #020617, #e2e8f0 (vesszővel elválasztva)"
-                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-bg-elevated text-white placeholder-slate-500 focus:border-amber-500/50 focus:outline-none focus:ring-2 focus:ring-amber-500/10 transition-all text-sm"
+                          placeholder="Példa: #00B5F1, #020617, #e2e8f0 (vesszővel elválasztva)"
+                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-bg-elevated text-white placeholder-slate-500 focus:border-sky-500/50 focus:outline-none focus:ring-2 focus:ring-sky-500/10 transition-all text-sm"
                         />
                       </div>
 
                       {/* Required Elements */}
                       <div className="space-y-4">
                         <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <Type className="w-4 h-4 text-amber-500" />
+                          <Type className="w-4 h-4 text-sky-500" />
                           Kötelező Elemek (Opcionális)
                         </label>
                         <div className="space-y-3">
                           <input
                             {...register("requiredElements.logo")}
                             placeholder="Logo leírás (opcionális)"
-                            className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-bg-elevated text-white placeholder-slate-500 focus:border-amber-500/50 focus:outline-none focus:ring-2 focus:ring-amber-500/10 transition-all text-sm"
+                            className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-bg-elevated text-white placeholder-slate-500 focus:border-sky-500/50 focus:outline-none focus:ring-2 focus:ring-sky-500/10 transition-all text-sm"
                           />
                           <input
                             {...register("requiredElements.tagline")}
                             placeholder="Slogan/Tagline (opcionális)"
-                            className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-bg-elevated text-white placeholder-slate-500 focus:border-amber-500/50 focus:outline-none focus:ring-2 focus:ring-amber-500/10 transition-all text-sm"
+                            className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-bg-elevated text-white placeholder-slate-500 focus:border-sky-500/50 focus:outline-none focus:ring-2 focus:ring-sky-500/10 transition-all text-sm"
                           />
                           <input
                             {...register("requiredElements.contactInfo")}
                             placeholder="Kapcsolat információ (opcionális)"
-                            className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-bg-elevated text-white placeholder-slate-500 focus:border-amber-500/50 focus:outline-none focus:ring-2 focus:ring-amber-500/10 transition-all text-sm"
+                            className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-bg-elevated text-white placeholder-slate-500 focus:border-sky-500/50 focus:outline-none focus:ring-2 focus:ring-sky-500/10 transition-all text-sm"
                           />
                           <input
                             {...register("requiredElements.address")}
                             placeholder="Cím (opcionális)"
-                            className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-bg-elevated text-white placeholder-slate-500 focus:border-amber-500/50 focus:outline-none focus:ring-2 focus:ring-amber-500/10 transition-all text-sm"
+                            className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-bg-elevated text-white placeholder-slate-500 focus:border-sky-500/50 focus:outline-none focus:ring-2 focus:ring-sky-500/10 transition-all text-sm"
                           />
                         </div>
                       </div>
@@ -477,13 +477,13 @@ export default function CipWorkshopGenerator() {
                       {/* Additional Requirements */}
                       <div className="space-y-2">
                         <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <Type className="w-4 h-4 text-amber-500" />
+                          <Type className="w-4 h-4 text-sky-500" />
                           További Követelmények (Opcionális)
                         </label>
                         <textarea
                           {...register("additionalRequirements")}
                           placeholder="Bármilyen egyéb követelmény vagy specifikáció..."
-                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-bg-elevated text-white placeholder-slate-500 focus:border-amber-500/50 focus:outline-none focus:ring-2 focus:ring-amber-500/10 transition-all text-sm resize-none"
+                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-bg-elevated text-white placeholder-slate-500 focus:border-sky-500/50 focus:outline-none focus:ring-2 focus:ring-sky-500/10 transition-all text-sm resize-none"
                           rows={2}
                         />
                       </div>
@@ -492,7 +492,7 @@ export default function CipWorkshopGenerator() {
                       <button
                         type="submit"
                         disabled={isGenerating}
-                        className="w-full flex items-center justify-center gap-2 px-8 py-4 bg-amber-500 text-bg-base font-bold rounded-xl hover:bg-amber-600 transition-all disabled:opacity-50 disabled:cursor-not-allowed text-sm uppercase tracking-wider"
+                        className="w-full flex items-center justify-center gap-2 px-8 py-4 bg-sky-500 text-bg-base font-bold rounded-xl hover:bg-violet-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed text-sm uppercase tracking-wider"
                       >
                         {isGenerating ? (
                           <>
@@ -524,7 +524,7 @@ export default function CipWorkshopGenerator() {
                           className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
                         >
                           <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <Building2 className="w-4 h-4 text-amber-500" />
+                            <Building2 className="w-4 h-4 text-sky-500" />
                             Márka Identitás
                           </h3>
                           <div className="space-y-3">
@@ -553,7 +553,7 @@ export default function CipWorkshopGenerator() {
                                   (element, index) => (
                                     <span
                                       key={index}
-                                      className="px-2 py-1 rounded bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs"
+                                      className="px-2 py-1 rounded bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs"
                                     >
                                       {element}
                                     </span>
@@ -572,7 +572,7 @@ export default function CipWorkshopGenerator() {
                           className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
                         >
                           <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <Target className="w-4 h-4 text-amber-500" />
+                            <Target className="w-4 h-4 text-sky-500" />
                             Specifikációk
                           </h3>
                           <div className="space-y-3">
@@ -648,7 +648,7 @@ export default function CipWorkshopGenerator() {
                           className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
                         >
                           <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <Palette className="w-4 h-4 text-amber-500" />
+                            <Palette className="w-4 h-4 text-sky-500" />
                             Szín Paletta (CMYK)
                           </h3>
                           <div className="grid grid-cols-5 gap-3">
@@ -664,7 +664,7 @@ export default function CipWorkshopGenerator() {
                               <p className="text-xs font-mono text-white">
                                 {generatedOutput.colorPalette.primary}
                               </p>
-                              <p className="text-xs font-mono text-amber-400">
+                              <p className="text-xs font-mono text-sky-400">
                                 {
                                   generatedOutput.colorPalette.cmykValues
                                     .primary
@@ -685,7 +685,7 @@ export default function CipWorkshopGenerator() {
                               <p className="text-xs font-mono text-white">
                                 {generatedOutput.colorPalette.secondary}
                               </p>
-                              <p className="text-xs font-mono text-amber-400">
+                              <p className="text-xs font-mono text-sky-400">
                                 {
                                   generatedOutput.colorPalette.cmykValues
                                     .secondary
@@ -704,7 +704,7 @@ export default function CipWorkshopGenerator() {
                               <p className="text-xs font-mono text-white">
                                 {generatedOutput.colorPalette.accent}
                               </p>
-                              <p className="text-xs font-mono text-amber-400">
+                              <p className="text-xs font-mono text-sky-400">
                                 {generatedOutput.colorPalette.cmykValues.accent}
                               </p>
                             </div>
@@ -755,7 +755,7 @@ export default function CipWorkshopGenerator() {
                           className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
                         >
                           <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <Type className="w-4 h-4 text-amber-500" />
+                            <Type className="w-4 h-4 text-sky-500" />
                             Tipográfia
                           </h3>
                           <div className="space-y-3">
@@ -825,7 +825,7 @@ export default function CipWorkshopGenerator() {
                           className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
                         >
                           <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <Layout className="w-4 h-4 text-amber-500" />
+                            <Layout className="w-4 h-4 text-sky-500" />
                             Elrendezés
                           </h3>
                           <div className="space-y-3">
@@ -872,7 +872,7 @@ export default function CipWorkshopGenerator() {
                           className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
                         >
                           <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <Building2 className="w-4 h-4 text-amber-500" />
+                            <Building2 className="w-4 h-4 text-sky-500" />
                             Névjegykártya
                           </h3>
                           <div className="space-y-3">
@@ -919,7 +919,7 @@ export default function CipWorkshopGenerator() {
                           className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
                         >
                           <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <Type className="w-4 h-4 text-amber-500" />
+                            <Type className="w-4 h-4 text-sky-500" />
                             Levélpapír
                           </h3>
                           <div className="space-y-3">
@@ -966,7 +966,7 @@ export default function CipWorkshopGenerator() {
                           className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
                         >
                           <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <Target className="w-4 h-4 text-amber-500" />
+                            <Target className="w-4 h-4 text-sky-500" />
                             Arculati Irányelvek
                           </h3>
                           <div className="space-y-3">
@@ -1025,7 +1025,7 @@ export default function CipWorkshopGenerator() {
                           className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
                         >
                           <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <Sparkles className="w-4 h-4 text-amber-500" />
+                            <Sparkles className="w-4 h-4 text-sky-500" />
                             Midjourney Promptok
                           </h3>
                           <div className="space-y-3">
@@ -1041,7 +1041,7 @@ export default function CipWorkshopGenerator() {
                                       "mj-primary"
                                     )
                                   }
-                                  className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-mono hover:bg-amber-500/20 transition-colors"
+                                  className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-mono hover:bg-sky-500/20 transition-colors"
                                 >
                                   {copiedStates["mj-primary"] ? (
                                     <>
@@ -1073,7 +1073,7 @@ export default function CipWorkshopGenerator() {
                                       "mj-alt1"
                                     )
                                   }
-                                  className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-mono hover:bg-amber-500/20 transition-colors"
+                                  className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-mono hover:bg-sky-500/20 transition-colors"
                                 >
                                   {copiedStates["mj-alt1"] ? (
                                     <>
@@ -1105,7 +1105,7 @@ export default function CipWorkshopGenerator() {
                                       "mj-alt2"
                                     )
                                   }
-                                  className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-mono hover:bg-amber-500/20 transition-colors"
+                                  className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-mono hover:bg-sky-500/20 transition-colors"
                                 >
                                   {copiedStates["mj-alt2"] ? (
                                     <>
@@ -1135,7 +1135,7 @@ export default function CipWorkshopGenerator() {
                           className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
                         >
                           <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <Layers className="w-4 h-4 text-amber-500" />
+                            <Layers className="w-4 h-4 text-sky-500" />
                             Export Formátumok
                           </h3>
                           <div className="space-y-3">
@@ -1172,13 +1172,13 @@ export default function CipWorkshopGenerator() {
                           className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
                         >
                           <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <Layers className="w-4 h-4 text-amber-500" />
+                            <Layers className="w-4 h-4 text-sky-500" />
                             Változatok
                           </h3>
                           <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                             <div className="bg-bg-base/50 rounded-xl p-4 border border-gray-800">
                               <div className="flex items-center gap-2 mb-2">
-                                <Sun className="w-3 h-3 text-amber-500" />
+                                <Sun className="w-3 h-3 text-sky-500" />
                                 <p className="text-xs text-slate-400">
                                   Light Mode
                                 </p>
@@ -1189,7 +1189,7 @@ export default function CipWorkshopGenerator() {
                             </div>
                             <div className="bg-bg-base/50 rounded-xl p-4 border border-gray-800">
                               <div className="flex items-center gap-2 mb-2">
-                                <Moon className="w-3 h-3 text-amber-500" />
+                                <Moon className="w-3 h-3 text-sky-500" />
                                 <p className="text-xs text-slate-400">
                                   Dark Mode
                                 </p>
@@ -1200,7 +1200,7 @@ export default function CipWorkshopGenerator() {
                             </div>
                             <div className="bg-bg-base/50 rounded-xl p-4 border border-gray-800">
                               <div className="flex items-center gap-2 mb-2">
-                                <Target className="w-3 h-3 text-amber-500" />
+                                <Target className="w-3 h-3 text-sky-500" />
                                 <p className="text-xs text-slate-400">
                                   Grayscale
                                 </p>
@@ -1214,8 +1214,8 @@ export default function CipWorkshopGenerator() {
                       </motion.div>
                     ) : (
                       <div className="bg-bg-elevated/30 backdrop-blur-xl border border-bg-elevated/80 rounded-2xl p-12 flex flex-col items-center justify-center space-y-4 text-center">
-                        <div className="w-16 h-16 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center">
-                          <Layout className="w-8 h-8 text-amber-500" />
+                        <div className="w-16 h-16 rounded-2xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center">
+                          <Layout className="w-8 h-8 text-sky-500" />
                         </div>
                         <div className="space-y-2">
                           <h3 className="text-lg font-bold text-white">

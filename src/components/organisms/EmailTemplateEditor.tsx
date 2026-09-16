@@ -200,7 +200,7 @@ export default function EmailTemplateEditor() {
   if (loading) {
     return (
       <div className="min-h-screen bg-bg-base flex flex-col items-center justify-center space-y-4">
-        <Loader2 className="w-8 h-8 animate-spin text-amber-500" />
+        <Loader2 className="w-8 h-8 animate-spin text-sky-500" />
         <p className="text-xs font-mono text-slate-400 uppercase tracking-widest animate-pulse font-bold">
           Email Template Editor betöltése...
         </p>
@@ -223,7 +223,7 @@ export default function EmailTemplateEditor() {
           </div>
           <button
             onClick={handleNewTemplate}
-            className="px-6 py-3 bg-amber-500 hover:bg-amber-600 text-bg-base font-bold rounded-xl transition-all duration-300 flex items-center gap-2"
+            className="px-6 py-3 bg-sky-500 hover:bg-violet-700 text-bg-base font-bold rounded-xl transition-all duration-300 flex items-center gap-2"
           >
             <Plus className="w-4 h-4" />
             Új Sablon
@@ -299,7 +299,7 @@ export default function EmailTemplateEditor() {
                       }
                       placeholder="pl. onboarding_welcome"
                       disabled={!!editingTemplate}
-                      className="w-full px-4 py-3 bg-bg-surface border border-bg-elevated rounded-xl text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500 disabled:opacity-50"
+                      className="w-full px-4 py-3 bg-bg-surface border border-bg-elevated rounded-xl text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-500 disabled:opacity-50"
                     />
                   </div>
 
@@ -314,7 +314,7 @@ export default function EmailTemplateEditor() {
                         setFormData({ ...formData, name: e.target.value })
                       }
                       placeholder="pl. Onboarding Üdvözlő"
-                      className="w-full px-4 py-3 bg-bg-surface border border-bg-elevated rounded-xl text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500"
+                      className="w-full px-4 py-3 bg-bg-surface border border-bg-elevated rounded-xl text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-500"
                     />
                   </div>
 
@@ -329,7 +329,7 @@ export default function EmailTemplateEditor() {
                         setFormData({ ...formData, subject: e.target.value })
                       }
                       placeholder="pl. Üdvözöljük a WebDude portálon!"
-                      className="w-full px-4 py-3 bg-bg-surface border border-bg-elevated rounded-xl text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500"
+                      className="w-full px-4 py-3 bg-bg-surface border border-bg-elevated rounded-xl text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-500"
                     />
                   </div>
 
@@ -346,7 +346,7 @@ export default function EmailTemplateEditor() {
                             "onboarding" | "milestone" | "notification",
                         })
                       }
-                      className="w-full px-4 py-3 bg-bg-surface border border-bg-elevated rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-amber-500"
+                      className="w-full px-4 py-3 bg-bg-surface border border-bg-elevated rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-sky-500"
                     >
                       <option value="notification">Értesítés</option>
                       <option value="onboarding">Onboarding</option>
@@ -361,7 +361,7 @@ export default function EmailTemplateEditor() {
                     <div className="flex gap-2">
                       <button
                         onClick={handleAddVariable}
-                        className="px-4 py-3 bg-amber-500/10 hover:bg-amber-500/20 text-amber-500 font-bold rounded-xl transition-all flex items-center gap-2"
+                        className="px-4 py-3 bg-sky-500/10 hover:bg-sky-500/20 text-sky-500 font-bold rounded-xl transition-all flex items-center gap-2"
                       >
                         <Plus className="w-4 h-4" />
                         Változó Hozzáadása
@@ -372,7 +372,7 @@ export default function EmailTemplateEditor() {
                         {formData.variables.map((variable, index) => (
                           <span
                             key={index}
-                            className="px-3 py-1 bg-amber-500/10 text-amber-500 rounded-full text-sm flex items-center gap-2"
+                            className="px-3 py-1 bg-sky-500/10 text-sky-500 rounded-full text-sm flex items-center gap-2"
                           >
                             {`{{${variable}}}`}
                             <button
@@ -400,7 +400,7 @@ export default function EmailTemplateEditor() {
                     }
                     placeholder="<html>...</html>"
                     rows={12}
-                    className="w-full px-4 py-3 bg-bg-surface border border-bg-elevated rounded-xl text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500 font-mono text-sm"
+                    className="w-full px-4 py-3 bg-bg-surface border border-bg-elevated rounded-xl text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-500 font-mono text-sm"
                   />
                 </div>
 
@@ -416,7 +416,7 @@ export default function EmailTemplateEditor() {
                         key={variable.name}
                         className="text-xs text-slate-400"
                       >
-                        <code className="text-amber-500">{`{{${variable.name}}}`}</code>
+                        <code className="text-sky-500">{`{{${variable.name}}}`}</code>
                         {" - "}
                         {variable.description}
                       </div>
@@ -463,17 +463,17 @@ export default function EmailTemplateEditor() {
         {/* Templates List */}
         <div className="space-y-4">
           <h2 className="text-2xl font-bold text-white flex items-center gap-2">
-            <Mail className="w-6 h-6 text-amber-500" />
+            <Mail className="w-6 h-6 text-sky-500" />
             Sablonok
           </h2>
 
           {templates.length === 0 ? (
             <div className="glass-card p-12 text-center">
-              <Mail className="w-16 h-16 text-slate-600 mx-auto mb-4" />
+              <Mail className="w-16 h-16 text-slate-500 mx-auto mb-4" />
               <p className="text-slate-400">Még nincsenek email sablonok.</p>
               <button
                 onClick={handleNewTemplate}
-                className="mt-4 px-6 py-3 bg-amber-500 hover:bg-amber-600 text-bg-base font-bold rounded-xl transition-all flex items-center gap-2 mx-auto"
+                className="mt-4 px-6 py-3 bg-sky-500 hover:bg-violet-700 text-bg-base font-bold rounded-xl transition-all flex items-center gap-2 mx-auto"
               >
                 <Plus className="w-4 h-4" />
                 Első Sablon Létrehozása
@@ -490,7 +490,7 @@ export default function EmailTemplateEditor() {
                 >
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
-                      <div className="text-xs font-mono text-amber-500 uppercase mb-1">
+                      <div className="text-xs font-mono text-sky-500 uppercase mb-1">
                         {template.category}
                       </div>
                       <h3 className="text-lg font-bold text-white">
@@ -526,7 +526,7 @@ export default function EmailTemplateEditor() {
                       {template.variables.map((variable, index) => (
                         <span
                           key={index}
-                          className="px-2 py-1 bg-amber-500/10 text-amber-500 rounded text-xs"
+                          className="px-2 py-1 bg-sky-500/10 text-sky-500 rounded text-xs"
                         >
                           {`{{${variable}}}`}
                         </span>

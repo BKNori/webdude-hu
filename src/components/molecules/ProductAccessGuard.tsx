@@ -85,7 +85,7 @@ export default function ProductAccessGuard({
         </div>
         <Link
           href="/admin/login"
-          className="px-6 py-3 rounded-xl bg-[#00B5F1] text-white font-bold hover:bg-[#0095C7] transition-colors"
+          className="px-6 py-3 rounded-xl bg-[#00B5F1] text-slate-950 font-bold hover:bg-[#5B21B6] transition-colors"
         >
           Bejelentkezés
         </Link>

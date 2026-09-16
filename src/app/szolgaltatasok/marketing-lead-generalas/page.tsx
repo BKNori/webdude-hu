@@ -1,4 +1,4 @@
-﻿import React from "react";
+import React from "react";
 import Link from "next/link";
 import { Metadata } from "next";
 import Script from "next/script";
@@ -241,7 +241,7 @@ export default async function MarketingLeadGenerationPage() {
               </h2>
               <Link
                 href="/kapcsolat"
-                className="inline-block px-12 py-6 bg-[#00B5F1] hover:bg-[#0095C7] text-bg-base font-bold rounded-xl uppercase tracking-wider transition-all duration-300"
+                className="inline-block px-12 py-6 bg-[#00B5F1] hover:bg-[#5B21B6] text-bg-base font-bold rounded-xl uppercase tracking-wider transition-all duration-300"
               >
                 Ingyenes Konzultáció
               </Link>

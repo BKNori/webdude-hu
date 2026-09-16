@@ -32,7 +32,6 @@ export function DynamicWorkflowForm({
   isProUser,
   dailyLimitReached,
 }: DynamicWorkflowFormProps) {
-  const [isGenerating, setIsGenerating] = useState(false);
   const [showProUpsell, setShowProUpsell] = useState(false);
   const [copied, setCopied] = useState(false);
 
@@ -100,7 +99,7 @@ export function DynamicWorkflowForm({
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="bg-linear-to-r from-[#00B5F1]/10 to-[#FF7A00]/10 border border-[#00B5F1]/20 rounded-2xl p-8"
+        className="bg-linear-to-r from-[#00B5F1]/10 to-[#7C3AED]/10 border border-[#00B5F1]/20 rounded-2xl p-8"
       >
         <div className="text-center space-y-4">
           <h3 className="text-2xl font-bold text-text-primary">
@@ -111,7 +110,7 @@ export function DynamicWorkflowForm({
           </p>
           <button
             onClick={() => setShowProUpsell(false)}
-            className="px-8 py-3 bg-linear-to-r from-[#00B5F1] to-[#FF7A00] text-white font-bold rounded-xl hover:shadow-[0_8px_32px_rgba(0,181,241,0.4)] transition-all"
+            className="px-8 py-3 bg-linear-to-r from-[#00B5F1] to-[#5B21B6] text-slate-950 font-bold rounded-xl hover:shadow-[0_8px_32px_rgba(0, 181, 241,0.4)] transition-all"
           >
             Frissítés most
           </button>
@@ -152,7 +151,7 @@ export function DynamicWorkflowForm({
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           type="submit"
-          className="w-full px-8 py-4 bg-linear-to-r from-[#00B5F1] to-[#FF7A00] text-white font-bold rounded-xl hover:shadow-[0_8px_32px_rgba(0,181,241,0.4)] transition-all"
+          className="w-full px-8 py-4 bg-linear-to-r from-[#075985] to-[#5B21B6] text-white font-bold rounded-xl hover:shadow-[0_8px_32px_rgba(91,33,182,0.45)] transition-all"
         >
           Generálás indítása
         </motion.button>

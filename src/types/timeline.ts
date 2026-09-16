@@ -15,7 +15,11 @@ export type TimelinePhaseKey =
   | "ai_integration"
   | "completed";
 
-export type MilestoneAccent = "cyan" | "gold" | "emerald" | "slate";
+/**
+ * Mérföldkő-cím kiemelő színkulcsok.
+ * A "cyan" legacy alias (v5.x adatok kompatibilitása) — új rekordnál "neutral" használandó.
+ */
+export type MilestoneAccent = "neutral" | "gold" | "emerald" | "slate" | "cyan";
 
 /** A workflow dokumentum fizetési jelzőmezői (fázis-alapú elszámolás). */
 export type TimelinePaidKey =

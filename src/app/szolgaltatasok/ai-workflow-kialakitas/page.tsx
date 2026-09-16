@@ -1,4 +1,4 @@
-﻿import Hero from "@/components/Hero";
+import Hero from "@/components/Hero";
 import Button from "@/components/atoms/Button";
 import Badge from "@/components/atoms/Badge";
 import { Metadata } from "next";
@@ -7,11 +7,14 @@ import { buildBreadcrumbSchema, BreadcrumbItem } from "@/lib/breadcrumb";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "AI Workflow Automatizálás és Kialakítás | WebDude Kecskemét",
+    title: "AI Workflow Automatizálás és Kialakítás | WebDude",
     description:
       "AI-powered workflow automatizálás vállalkozások számára: ChatGPT, Claude, és egyedi AI eszközök integrációja, konfigurációja és testreszabása a hatékonyság növeléséhez.",
     keywords:
-      "AI workflow automatizálás, ChatGPT integráció, Claude API, AI konfiguráció, munkafolyamat automatizálás, Kecskemét, ChatGPT támogatás",
+      "AI workflow automatizálás, ChatGPT integráció, Claude API, AI konfiguráció, munkafolyamat automatizálás, ChatGPT támogatás",
+    alternates: {
+      canonical: "https://webdude.hu/szolgaltatasok/ai-workflow-kialakitas",
+    },
     openGraph: {
       title: "AI Workflow Automatizálás és Kialakítás | WebDude",
       description:
@@ -36,11 +39,7 @@ const FAQ = [
   },
   {
     q: "Mennyibe kerül egy AI workflow projekt?",
-    a: "Egyszerű workflow automatizálás 100.000 Ft-tól, komplex rendszer 180.000 Ft-tól, vállalati infrastruktúra 250.000 Ft-tól indul. Kérjen személyre szabott ajánlatot.",
-  },
-  {
-    q: "Miért nem adok fix árat az oldalon?",
-    a: "Minden AI workflow projekt egyedi, és az ügyfelek többsége nem hoz pontos specifikációt a vállalati folyamatok automatizálásához. Én kell utána nyomoznom, kiderítenem az üzleti igényeket, ajánlatot adok, ajánlom a megoldást, és elmagyarázom az AI eszközök működését. Ez rengeteg írás és óra alapú munka, amit bele kell kalkulálni az árba. Magyarországon a piaci óradíjak AI/ML területen 15.000-40.000 Ft között mozognak, és a specifikáció hiánya miatt a konzultáció és tervezés fázis 5-15 óráig is eltarthat.",
+    a: "Egyedi árajánlat kérése a projekt igényei szerint. Ingyenes konzultáció a pontos árhoz.",
   },
   {
     q: "Mire kell figyelni az árajánlatkérésnél?",
@@ -69,7 +68,8 @@ export default async function AiWorkflowPage() {
     description:
       "AI-powered workflow automatizálás vállalkozások számára: ChatGPT, Claude, és egyedi AI eszközök integrációja, konfigurációja és testreszabása a hatékonyság növeléséhez.",
     provider: {
-      "@type": "LocalBusiness",
+      "@type": "Organization",
+      "@id": "https://webdude.hu/#organization",
       name: "WebDude",
       url: "https://webdude.hu",
     },
@@ -192,7 +192,7 @@ export default async function AiWorkflowPage() {
                         "Dokumentáció",
                         "1 hónap support",
                       ],
-                      ctaText: "Alap workflow kérése",
+                      ctaText: "Egyedi árajánlat kérése",
                       ctaLink: "/kapcsolat",
                     },
                     {
@@ -209,7 +209,7 @@ export default async function AiWorkflowPage() {
                         "3 hónap support",
                       ],
                       highlighted: true,
-                      ctaText: "Komplex rendszer kérése",
+                      ctaText: "Egyedi árajánlat kérése",
                       ctaLink: "/kapcsolat",
                     },
                     {
@@ -225,7 +225,7 @@ export default async function AiWorkflowPage() {
                         "Dedikált support",
                         "6 hónap karbantartás",
                       ],
-                      ctaText: "Vállalati infrastruktúra kérése",
+                      ctaText: "Egyedi árajánlat kérése",
                       ctaLink: "/kapcsolat",
                     },
                   ]}

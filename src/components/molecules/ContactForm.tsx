@@ -81,16 +81,16 @@ export default function ContactForm() {
   };
 
   return (
-    <div className="glass-card p-10 bg-bg-surface/80 backdrop-blur-xl border border-amber-500/20 rounded-3xl relative overflow-hidden shadow-2xl shadow-amber-500/10">
+    <div className="glass-card p-10 bg-bg-surface/80 backdrop-blur-xl border border-sky-500/20 rounded-3xl relative overflow-hidden shadow-2xl shadow-sky-500/10">
       {/* Decorative gradient */}
-      <div className="absolute top-0 right-0 w-64 h-64 bg-amber-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-      <div className="absolute bottom-0 left-0 w-64 h-64 bg-amber-500/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
+      <div className="absolute top-0 right-0 w-64 h-64 bg-sky-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+      <div className="absolute bottom-0 left-0 w-64 h-64 bg-sky-500/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
 
       {submitSuccess ? (
         <div className="text-center py-12 space-y-6 relative z-10">
-          <div className="w-20 h-20 mx-auto bg-amber-500/10 rounded-full flex items-center justify-center">
+          <div className="w-20 h-20 mx-auto bg-sky-500/10 rounded-full flex items-center justify-center">
             <svg
-              className="w-10 h-10 text-amber-500"
+              className="w-10 h-10 text-sky-500"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -103,7 +103,7 @@ export default function ContactForm() {
               />
             </svg>
           </div>
-          <h3 className="text-2xl font-black text-amber-500">
+          <h3 className="text-2xl font-black text-sky-500">
             Sikeres üzenetküldés!
           </h3>
           <p className="text-slate-300 max-w-sm mx-auto text-sm leading-relaxed">
@@ -113,7 +113,7 @@ export default function ContactForm() {
           <button
             type="button"
             onClick={() => setSubmitSuccess(null)}
-            className="mt-6 px-6 py-3 bg-amber-500/10 border border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-bg-base rounded-xl font-bold text-xs uppercase tracking-wider transition-all duration-300"
+            className="mt-6 px-6 py-3 bg-sky-500/10 border border-sky-500 text-sky-500 hover:bg-sky-500 hover:text-bg-base rounded-xl font-bold text-xs uppercase tracking-wider transition-all duration-300"
           >
             Új üzenet küldése
           </button>
@@ -144,7 +144,7 @@ export default function ContactForm() {
                 className={`w-full bg-transparent border rounded-xl px-5 py-4 text-text-primary placeholder:text-slate-500 outline-none transition-all duration-200 focus:ring-1 ${
                   errors.name
                     ? "border-red-500 focus:border-red-500 focus:ring-red-500"
-                    : "border-bg-elevated focus:border-amber-500 focus:ring-amber-500"
+                    : "border-bg-elevated focus:border-sky-500 focus:ring-sky-500"
                 }`}
               />
               {errors.name && (
@@ -171,7 +171,7 @@ export default function ContactForm() {
                 className={`w-full bg-transparent border rounded-xl px-5 py-4 text-text-primary placeholder:text-slate-500 outline-none transition-all duration-200 focus:ring-1 ${
                   errors.email
                     ? "border-red-500 focus:border-red-500 focus:ring-red-500"
-                    : "border-bg-elevated focus:border-amber-500 focus:ring-amber-500"
+                    : "border-bg-elevated focus:border-sky-500 focus:ring-sky-500"
                 }`}
               />
               {errors.email && (
@@ -196,7 +196,7 @@ export default function ContactForm() {
                 className={`w-full bg-transparent border rounded-xl px-5 py-4 text-text-primary outline-none transition-all duration-200 focus:ring-1 ${
                   errors.projectType
                     ? "border-red-500 focus:border-red-500 focus:ring-red-500"
-                    : "border-bg-elevated focus:border-amber-500 focus:ring-amber-500"
+                    : "border-bg-elevated focus:border-sky-500 focus:ring-sky-500"
                 }`}
               >
                 <option value="">Válassz projekt típust...</option>
@@ -231,7 +231,7 @@ export default function ContactForm() {
                 className={`w-full bg-transparent border rounded-xl px-5 py-4 text-text-primary placeholder:text-slate-500 outline-none transition-all duration-200 focus:ring-1 ${
                   errors.message
                     ? "border-red-500 focus:border-red-500 focus:ring-red-500"
-                    : "border-bg-elevated focus:border-amber-500 focus:ring-amber-500"
+                    : "border-bg-elevated focus:border-sky-500 focus:ring-sky-500"
                 }`}
               />
               {errors.message && (
@@ -245,7 +245,7 @@ export default function ContactForm() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-linear-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 disabled:from-slate-700 disabled:to-slate-800 text-bg-base disabled:text-slate-400 font-bold py-4 rounded-xl uppercase tracking-widest text-sm shadow-xl shadow-amber-500/20 hover:-translate-y-1 disabled:transform-none transition-all duration-300 flex items-center justify-center gap-2"
+              className="w-full bg-linear-to-r from-sky-500 to-violet-700 hover:from-violet-700 hover:to-sky-800 disabled:from-slate-700 disabled:to-slate-800 text-bg-base disabled:text-slate-400 font-bold py-4 rounded-xl uppercase tracking-widest text-sm shadow-xl shadow-sky-500/20 hover:-translate-y-1 disabled:transform-none transition-all duration-300 flex items-center justify-center gap-2"
             >
               {isSubmitting ? (
                 <>

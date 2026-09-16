@@ -19,7 +19,7 @@ export default function BannerHero({
   lighthouseScore = "95+ Lighthouse score-ral",
 }: BannerHeroProps) {
   return (
-    <section className="bg-bg-base p-24 flex items-center justify-between border-b-2 border-gold-primary">
+    <section className="bg-bg-base p-24 flex items-center justify-between border-b-2 border-brand-primary">
       <div className="max-w-3xl">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
@@ -36,9 +36,9 @@ export default function BannerHero({
           className="text-text-primary text-xl mb-10"
         >
           {description}
-          <span className="font-bold text-gold-primary">{authorityMetric}</span>
+          <span className="font-bold text-brand-primary">{authorityMetric}</span>
           és{" "}
-          <span className="font-bold text-gold-primary">{lighthouseScore}</span>
+          <span className="font-bold text-brand-primary">{lighthouseScore}</span>
           optimalizálom a webshopodat.
         </motion.p>
         <motion.a
@@ -46,7 +46,7 @@ export default function BannerHero({
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           href={ctaHref}
-          className="inline-flex items-center gap-2 bg-gold-primary text-bg-base px-8 py-4 font-bold rounded-sm hover:opacity-90 transition-opacity"
+          className="inline-flex items-center gap-2 bg-brand-primary text-bg-base px-8 py-4 font-bold rounded-sm hover:opacity-90 transition-opacity"
         >
           {ctaText}
           <ArrowRight className="w-4 h-4" />

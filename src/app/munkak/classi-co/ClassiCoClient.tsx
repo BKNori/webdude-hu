@@ -125,7 +125,7 @@ export default function ClassiCoClient() {
             </span>
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-text-primary leading-tight mb-8 tracking-tight">
               Classi-co.hu:{" "}
-              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#0095C7]">
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6]">
                 Teljes Körű
               </span>
               <br />
@@ -144,8 +144,8 @@ export default function ClassiCoClient() {
                 className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-white text-base uppercase tracking-wider transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#00B5F1] focus:ring-offset-2 focus:ring-offset-bg-base"
                 style={{
                   background:
-                    "linear-gradient(135deg, #00B5F1 0%, #0095C7 100%)",
-                  boxShadow: "0 0 32px rgba(0,181,241,0.35)",
+                    "linear-gradient(135deg, #00B5F1 0%, #5B21B6 100%)",
+                  boxShadow: "0 0 32px rgba(0, 181, 241,0.35)",
                 }}
               >
                 További projektek <ArrowRight className="w-4 h-4" />
@@ -397,8 +397,8 @@ export default function ClassiCoClient() {
               href="/kapcsolat"
               className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-white text-base uppercase tracking-wider transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#00B5F1] focus:ring-offset-2 focus:ring-offset-bg-base"
               style={{
-                background: "linear-gradient(135deg, #00B5F1 0%, #0095C7 100%)",
-                boxShadow: "0 0 32px rgba(0,181,241,0.35)",
+                background: "linear-gradient(135deg, #00B5F1 0%, #5B21B6 100%)",
+                boxShadow: "0 0 32px rgba(0, 181, 241,0.35)",
               }}
             >
               Ingyenes konzultáció <ArrowRight className="w-4 h-4" />

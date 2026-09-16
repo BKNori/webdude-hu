@@ -2,12 +2,25 @@
 
 /* ── Tailwind v4 Design Tokens (SSOT: DESIGN_SYSTEM.md) ──────────────────── */
 @theme {
-  --color-bg-base: #020617; /* Főháttér — slate-950 */
+  /* ── Alap háttérszintek (Z-hierarchia) ─────────────────────────────────── */
+  --color-bg-base: #020617; /* Level 0 — teljes oldal háttér */
   --color-bg-card: #0f172a; /* Kártyák — slate-900 */
-  --color-text-primary: #e2e8f0; /* Fő szöveg — slate-200 */
-  --color-cyan-primary: #00b5f1; /* Electric Cyan brand */
-  --color-cyan-from: #00d4ff; /* Gradiens kezdet */
-  --color-cyan-to: #0095c7; /* Gradiens vége */
+  --color-bg-surface: #0f172a; /* Level 1 — kártyák, panelek, formok */
+  --color-bg-elevated: #1e293b; /* Level 2 — hover, dropdown, modál */
+
+  /* ── Szöveg hierarchia (WCAG: mind világos sötét alapon) ───────────────── */
+  --color-text-primary: #e2e8f0; /* AAA — fő szöveg, heading */
+  --color-text-secondary: #94a3b8; /* AA — alcím, meta, leírás */
+  --color-text-muted: #64748b; /* AA (large) — placeholder, disabled */
+
+  /* ── Kék-lila brand (v7.0 SSOT) ─────────────────────────────────────────── */
+  --color-brand-primary: #00b5f1; /* Electric Cyan akcentus */
+  --color-brand-secondary: #7c3aed; /* Violet akcentus (WCAG AAA fehérrel) */
+  --color-cta-from: #075985; /* CTA gradiens kezdet — sky-800 */
+  --color-cta-to: #5b21b6; /* CTA gradiens vége — violet-800 */
+  --color-cta-hover: #6d28d9; /* CTA hover — violet-700 */
+  --color-accent: #7c3aed; /* Akcentus — violet-600, fehér szöveggel AAA */
+  --color-accent-hover: #6d28d9; /* Akcentus hover — violet-700 */
 }
 
 body {
@@ -19,8 +32,8 @@ body {
 }
 
 ::selection {
-  background-color: rgba(0 181 241 0.3);
-  color: rgb(253 230 138);
+  background-color: rgba(0, 181, 241, 0.3);
+  color: rgb(224, 242, 254);
 }
 
 /* Ambient Cyber-Glow fények */
@@ -77,7 +90,7 @@ body::before {
   z-index: 0;
   background: radial-gradient(
     circle at 30% 30%,
-    rgba(139, 92, 246, 0.08) 0%,
+    rgba(0, 181, 241, 0.08) 0%,
     transparent 50%
   );
   animation: liquid-move-1 20s ease-in-out infinite;
@@ -94,7 +107,7 @@ body::after {
   z-index: 0;
   background: radial-gradient(
     circle at 70% 70%,
-    rgba(6, 182, 212, 0.06) 0%,
+    rgba(0, 181, 241, 0.06) 0%,
     transparent 50%
   );
   animation: liquid-move-2 25s ease-in-out infinite;
@@ -179,7 +192,7 @@ body::after {
   background-size: 32px 32px;
 }
 
-.glow-blob-cyan {
+.glow-blob-brand {
   position: absolute;
   width: 40vw;
   height: 40vw;
@@ -194,14 +207,14 @@ body::after {
   z-index: 0;
 }
 
-.glow-blob-indigo {
+.glow-blob-brand-2 {
   position: absolute;
   width: 50vw;
   height: 50vw;
   border-radius: 50%;
   background: radial-gradient(
     circle,
-    rgba(147, 51, 234, 0.08) 0%,
+    rgba(0, 181, 241, 0.08) 0%,
     transparent 70%
   );
   filter: blur(100px);
@@ -235,19 +248,19 @@ body::after {
 .premium-btn {
   background: linear-gradient(
     135deg,
-    var(--color-accent-from) 0%,
-    var(--color-accent-to) 100%
+    var(--color-cta-from) 0%,
+    var(--color-cta-to) 100%
   );
   border: none;
   border-radius: 1rem;
-  box-shadow: 0 4px 16px rgba(99, 102, 241, 0.2);
+  box-shadow: 0 4px 16px rgba(7, 89, 133, 0.45);
   transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .premium-btn:hover {
   transform: scale(1.02);
-  box-shadow: 0 8px 24px rgba(99, 102, 241, 0.3);
-  background: linear-gradient(135deg, #7c7ef6 0%, #16c6d4 100%);
+  box-shadow: 0 8px 24px rgba(91, 33, 182, 0.5);
+  background: linear-gradient(135deg, #075985 0%, #5B21B6 100%);
 }
 
 .premium-btn:active {
@@ -255,89 +268,76 @@ body::after {
 }
 
 /* Glow effektek */
-.glow-cyan {
+.glow-brand {
   box-shadow:
     0 0 20px rgba(0, 181, 241, 0.3),
     0 0 40px rgba(0, 181, 241, 0.2);
 }
 
-.glow-cyan-hover:hover {
+.glow-brand-hover:hover {
   box-shadow:
     0 0 30px rgba(0, 181, 241, 0.5),
     0 0 60px rgba(0, 181, 241, 0.3);
   transition: all 0.3s ease;
 }
 
-.glow-purple {
+.glow-brand-2 {
   box-shadow:
-    0 0 20px rgba(139, 92, 246, 0.3),
-    0 0 40px rgba(139, 92, 246, 0.2);
+    0 0 20px rgba(0, 181, 241, 0.3),
+    0 0 40px rgba(0, 181, 241, 0.2);
 }
 
-.glow-purple-hover:hover {
+.glow-brand-2-hover:hover {
   box-shadow:
-    0 0 30px rgba(139, 92, 246, 0.5),
-    0 0 60px rgba(139, 92, 246, 0.3);
-  transition: all 0.3s ease;
-}
-
-.glow-blue {
-  box-shadow:
-    0 0 20px rgba(59, 130, 246, 0.3),
-    0 0 40px rgba(59, 130, 246, 0.2);
-}
-
-.glow-blue-hover:hover {
-  box-shadow:
-    0 0 30px rgba(59, 130, 246, 0.5),
-    0 0 60px rgba(59, 130, 246, 0.3);
+    0 0 30px rgba(0, 181, 241, 0.5),
+    0 0 60px rgba(0, 181, 241, 0.3);
   transition: all 0.3s ease;
 }
 
 /* Gradient border-ek */
-.gradient-border-cyan {
+.gradient-border-brand {
   position: relative;
   background: linear-gradient(145deg, #1e293b, #0f172a);
   border-radius: 1rem;
 }
 
-.gradient-border-cyan::before {
+.gradient-border-brand::before {
   content: "";
   position: absolute;
   inset: -2px;
-  background: linear-gradient(45deg, #00b5f1, #00d4ff, #00b5f1);
+  background: linear-gradient(45deg, #00B5F1, #38bdf8, #00B5F1);
   border-radius: 1rem;
   z-index: -1;
   animation: gradient-rotate 3s linear infinite;
 }
 
-.gradient-border-purple {
+.gradient-border-brand-2 {
   position: relative;
   background: linear-gradient(145deg, #1e293b, #0f172a);
   border-radius: 1rem;
 }
 
-.gradient-border-purple::before {
+.gradient-border-brand-2::before {
   content: "";
   position: absolute;
   inset: -2px;
-  background: linear-gradient(45deg, #8b5cf6, #a78bfa, #8b5cf6);
+  background: linear-gradient(45deg, #00B5F1, #38bdf8, #00B5F1);
   border-radius: 1rem;
   z-index: -1;
   animation: gradient-rotate 3s linear infinite;
 }
 
-.gradient-border-blue {
+.gradient-border-brand-3 {
   position: relative;
   background: linear-gradient(145deg, #1e293b, #0f172a);
   border-radius: 1rem;
 }
 
-.gradient-border-blue::before {
+.gradient-border-brand-3::before {
   content: "";
   position: absolute;
   inset: -2px;
-  background: linear-gradient(45deg, #3b82f6, #60a5fa, #3b82f6);
+  background: linear-gradient(45deg, #7C3AED, #00B5F1, #7C3AED);
   border-radius: 1rem;
   z-index: -1;
   animation: gradient-rotate 3s linear infinite;
@@ -485,42 +485,42 @@ body::after {
   transform: scale(1.1);
 }
 
-.hover-glow-cyan:hover {
+.hover-glow-brand:hover {
   box-shadow:
     0 0 30px rgba(0, 181, 241, 0.6),
     0 0 60px rgba(0, 181, 241, 0.4);
   transition: all 0.3s ease;
 }
 
-.hover-glow-purple:hover {
+.hover-glow-brand-2:hover {
   box-shadow:
-    0 0 30px rgba(139, 92, 246, 0.6),
-    0 0 60px rgba(139, 92, 246, 0.4);
+    0 0 30px rgba(0, 181, 241, 0.6),
+    0 0 60px rgba(0, 181, 241, 0.4);
   transition: all 0.3s ease;
 }
 
-.hover-glow-blue:hover {
+.hover-glow-brand-3:hover {
   box-shadow:
-    0 0 30px rgba(59, 130, 246, 0.6),
-    0 0 60px rgba(59, 130, 246, 0.4);
+    0 0 30px rgba(124, 58, 237, 0.6),
+    0 0 60px rgba(124, 58, 237, 0.4);
   transition: all 0.3s ease;
 }
 
-.hover-border-cyan:hover {
+.hover-border-brand:hover {
   border-color: rgba(0, 181, 241, 0.6);
   box-shadow: 0 0 20px rgba(0, 181, 241, 0.3);
   transition: all 0.3s ease;
 }
 
-.hover-border-purple:hover {
-  border-color: rgba(139, 92, 246, 0.6);
-  box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+.hover-border-brand-2:hover {
+  border-color: rgba(0, 181, 241, 0.6);
+  box-shadow: 0 0 20px rgba(0, 181, 241, 0.3);
   transition: all 0.3s ease;
 }
 
-.hover-border-blue:hover {
-  border-color: rgba(59, 130, 246, 0.6);
-  box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+.hover-border-brand-3:hover {
+  border-color: rgba(124, 58, 237, 0.6);
+  box-shadow: 0 0 20px rgba(124, 58, 237, 0.3);
   transition: all 0.3s ease;
 }
 
@@ -567,4 +567,142 @@ body:has(#portal-layout) .public-header,
 body:has(#portal-layout) .public-footer,
 body:has(#portal-layout) #chat-trigger-btn {
   display: none !important;
+}
+
+/* ── Soft Premium 2026 — Hero réteg animációk (főoldal) ─────────────────── */
+@keyframes hero-glow-1 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(80px, -60px) scale(1.15);
+  }
+}
+
+@keyframes hero-glow-2 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-100px, 70px) scale(1.2);
+  }
+}
+
+@keyframes hero-float-card {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-1deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(-1deg);
+  }
+}
+
+@keyframes hero-float-delayed {
+  0%,
+  100% {
+    transform: translateY(0) rotate(1deg);
+  }
+  50% {
+    transform: translateY(-16px) rotate(1deg);
+  }
+}
+
+@keyframes hero-shimmer-text {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes hero-pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.8);
+  }
+}
+
+.hero-blob-1 {
+  animation: hero-glow-1 20s ease-in-out infinite;
+}
+
+.hero-blob-2 {
+  animation: hero-glow-2 25s ease-in-out infinite;
+}
+
+.hero-float-main {
+  animation: hero-float-card 6s ease-in-out infinite;
+}
+
+.hero-float-delayed {
+  animation: hero-float-delayed 7s ease-in-out infinite;
+}
+
+.hero-float-sub {
+  animation: hero-float-card 8s ease-in-out infinite 1s;
+}
+
+.hero-pulse-dot {
+  animation: hero-pulse-dot 2s ease-in-out infinite;
+}
+
+.hero-shimmer-text {
+  background-size: 200% auto;
+  animation: hero-shimmer-text 4s linear infinite;
+}
+
+/* ── Végtelenített marquee szalagok (SocialProofStrip) ──────────────────── */
+@keyframes marquee-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.marquee-left {
+  animation: marquee-left 38s linear infinite;
+}
+
+.marquee-right {
+  animation: marquee-right 46s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* ── Motion akadálymentesítés: dekoratív animációk leállítása ───────────── */
+@media (prefers-reduced-motion: reduce) {
+  .hero-blob-1,
+  .hero-blob-2,
+  .hero-float-main,
+  .hero-float-delayed,
+  .hero-float-sub,
+  .hero-shimmer-text,
+  .hero-pulse-dot,
+  .marquee-left,
+  .marquee-right {
+    animation: none !important;
+    transform: none !important;
+  }
 }

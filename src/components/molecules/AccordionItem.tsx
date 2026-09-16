@@ -22,7 +22,7 @@ export default function AccordionItem({
         aria-expanded={open}
       >
         <span>{question}</span>
-        <span className="text-amber-500">{open ? "−" : "+"}</span>
+        <span className="text-sky-500">{open ? "−" : "+"}</span>
       </button>
       {open ? (
         <div className="px-6 pb-6 text-sm leading-relaxed text-text-secondary">

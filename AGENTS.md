@@ -1,7 +1,7 @@
-# AGENTS.md — WebDude.hu Project Operating System v6.0.8
+# AGENTS.md — WebDude.hu Project Operating System v7.0.0
 
 **webdude.hu | Next.js 16 · React 19 · TypeScript · Tailwind CSS v4 · Firebase**
-**Státusz: Produkciós (Production-Ready) | Utolsó frissítés: 2026-09-11**
+**Státusz: Produkciós (Production-Ready) | Utolsó frissítés: 2026-09-16 (Kék-Lila v7.0 migráció)**
 
 > Ez a fájl a projekt gyökerében él. Minden AI ügynök (Claude, Gemini, Copilot, Cursor, Codex) számára **KÖTELEZŐ** olvasmány minden munkamenet elején — mielőtt egyetlen sort is írnál. Ez a „README a gépeknek".
 > **Ipari standard:** Az AGENTS.md formátumot az OpenAI, Google Jules, GitHub Copilot, Cursor, Windsurf és más vezető AI fejlesztői eszközök natívan támogatják (2025 augusztusától szabvány).
@@ -78,7 +78,7 @@ webdude-hu/
 │   └── content/                    # MDX fájlok (blog bejegyzések)
 ├── _docs/
 │   ├── ARCHITECTURE.md             # Atomic Design fa, komponens regiszter
-│   ├── DESIGN_SYSTEM.md            # Electric Cyan paletta, Tailwind konvenciók
+│   ├── DESIGN_SYSTEM.md            # Cyber-Arany paletta, Tailwind konvenciók
 │   ├── CHANGELOG.md                # Deploy napló
 │   └── WORKFLOW_PROTOCOL.md        # Munkafolyamat szabályok
 ├── public/
@@ -159,7 +159,9 @@ export default function Page() {
 
 > Vizuális módosítás előtt kötelező: `_docs/DESIGN_SYSTEM.md` elolvasása.
 
-**WebDude Electric Cyan v5.0 színrendszer:**
+**WebDude Kék-Lila v7.0 színrendszer:**
+
+90% sötét alap, 8% üveg / slate felület, legfeljebb 2% kék-lila kiemelés. CTA gombokon (`#075985` → `#5B21B6`, akcentus `#7C3AED`) KÖTELEZŐEN `text-white` felirat (WCAG AAA); áttetsző háttér és hover esetén külön kontrasztellenőrzés kötelező. Arany/amber brand akcentusként TILOS.
 
 ```
 Háttér:           #020617  →  bg-[#020617] (bg-base)
@@ -167,8 +169,10 @@ Kártya/panel:     #0f172a  →  bg-[#0f172a] (bg-surface)
 Kiemelt felület:  #1e293b  →  bg-[#1e293b] (bg-elevated)
 Fő szöveg:        #e2e8f0  →  text-[#e2e8f0] (text-primary)
 Muted szöveg:     #94a3b8  →  text-slate-400 (text-secondary)
-Brand (Electric): #00B5F1  →  text-[#00B5F1] / bg-[#00B5F1]
-Brand Hover:      #0095C7  →  bg-[#0095C7]
+Brand (Arany):    #00B5F1  →  text-brand-primary / bg-brand-primary
+Brand Hover:      #5B21B6  →  hover:bg-cta-hover
+Gradiens kezdet:  #38bdf8  →  from-cta-from
+Gradiens vége:    #5B21B6  →  to-cta-to
 Siker:            #10b981  →  text-emerald-500
 Hiba:             #ef4444  →  text-red-500
 ```
@@ -284,7 +288,7 @@ FID:      < 100ms  (First Input Delay)
 **WCAG AA akadálymentesítés:**
 ```
 
-✅ Látható focus ring minden interaktív elemen (focus:ring-2 focus:ring-amber-500)
+✅ Látható focus ring minden interaktív elemen (focus:ring-2 focus:ring-sky-500)
 ✅ alt szöveg minden <Image> komponensen
 ✅ aria-label minden ikonos gombon
 ✅ Kontrasztarány: minimum 4.5:1 (szöveg), 3:1 (UI elemek)
@@ -457,6 +461,7 @@ Biztonság > Teljesítmény > SEO/AEO > UX > Vizuális Design
 | TypeScript `any` típus          | Gyors megoldás kísértése                    | Explicit típus vagy `unknown` + type guard                      |
 | `"use client"` page.tsx-en      | SEO és LCP romlik                           | Kiszervezni legkisebb Client Component-be                       |
 | Motion animáció SSR hiba        | `motion` Server Componenten                 | `"use client"` a motion komponensre + metadata export layout-ba |
+| Sötét felirat kék-lila CTA-n | Elégtelen kontraszt | `text-white` kötelező (`#075985`/`#5B21B6`/`#7C3AED` alapon AAA); gradiens és hover külön ellenőrzendő |
 | Tailwind osztály JIT miss       | Dinamikus class string                      | `safelist` vagy statikus konkatenáció                           |
 | Firebase cold start (Functions) | Hidegindítás                                | Minimális bundle, warm-up stratégia                             |
 | ISR stale data                  | `revalidate` érték túl magas                | Webhookos `revalidatePath()` admin felületről                   |
@@ -508,5 +513,5 @@ Biztonság > Teljesítmény > SEO/AEO > UX > Vizuális Design
 
 ---
 
-_AGENTS.md v3.2 — webdude.hu | Karbantartó: Norbi (WebDude)_
+_AGENTS.md v7.0 — webdude.hu | Karbantartó: Norbi (WebDude)_
 _Kompatibilis: Claude, Gemini, GitHub Copilot, Cursor, Codex, Windsurf_

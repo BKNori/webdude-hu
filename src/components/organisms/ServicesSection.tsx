@@ -108,7 +108,7 @@ export default function ServicesSection() {
       transition={{ duration: 0.7 }}
     >
       <section className="py-20 bg-transparent relative overflow-hidden">
-        <div className="absolute inset-0 bg-linear-to-b from-amber-500/5 via-transparent to-amber-500/5" />
+        <div className="absolute inset-0 bg-linear-to-b from-sky-500/5 via-transparent to-sky-500/5" />
         <div className="px-6 lg:px-8 max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <motion.div
@@ -116,10 +116,10 @@ export default function ServicesSection() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/20 mb-6"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sky-500/10 border border-sky-500/20 mb-6"
             >
-              <Sparkles className="w-4 h-4 text-amber-500" />
-              <span className="text-xs font-bold text-amber-500 uppercase tracking-wider">
+              <Sparkles className="w-4 h-4 text-sky-500" />
+              <span className="text-xs font-bold text-sky-500 uppercase tracking-wider">
                 Prémium Szolgáltatások
               </span>
             </motion.div>
@@ -142,20 +142,20 @@ export default function ServicesSection() {
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
               >
                 <Link href={service.href} className="block h-full">
-                  <div className="group h-full bg-bg-card border border-bg-elevated/40 rounded-2xl p-6 hover:border-amber-500/50 transition-all duration-300 shadow-xl hover:shadow-amber-500/10 cursor-pointer">
+                  <div className="group h-full bg-bg-card border border-bg-elevated/40 rounded-2xl p-6 hover:border-sky-500/50 transition-all duration-300 shadow-xl hover:shadow-sky-500/10 cursor-pointer">
                     <div className="flex items-start justify-between mb-4">
-                      <div className="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-500 group-hover:bg-amber-500/20 transition-colors">
+                      <div className="w-12 h-12 rounded-xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-500 group-hover:bg-sky-500/20 transition-colors">
                         <service.icon className="w-6 h-6" />
                       </div>
-                      <ArrowRight className="w-5 h-5 text-slate-500 group-hover:text-amber-500 transition-colors" />
+                      <ArrowRight className="w-5 h-5 text-slate-500 group-hover:text-sky-500 transition-colors" />
                     </div>
-                    <h3 className="text-xl font-bold text-white mb-3 group-hover:text-amber-500 transition-colors">
+                    <h3 className="text-xl font-bold text-white mb-3 group-hover:text-sky-500 transition-colors">
                       {service.title}
                     </h3>
                     <p className="text-white/80 text-sm leading-relaxed mb-4 line-clamp-3">
                       {service.description}
                     </p>
-                    <div className="inline-flex items-center gap-2 text-xs font-bold text-amber-500 uppercase tracking-wider mb-4">
+                    <div className="inline-flex items-center gap-2 text-xs font-bold text-sky-500 uppercase tracking-wider mb-4">
                       {service.cta}
                     </div>
 
@@ -165,7 +165,7 @@ export default function ServicesSection() {
                         e.stopPropagation();
                         toggleCard(idx);
                       }}
-                      className="w-full flex items-center justify-between gap-2 text-xs font-bold text-white/60 uppercase tracking-wider hover:text-amber-500 transition-colors mt-4 pt-4 border-t border-white/10"
+                      className="w-full flex items-center justify-between gap-2 text-xs font-bold text-white/60 uppercase tracking-wider hover:text-sky-500 transition-colors mt-4 pt-4 border-t border-white/10"
                     >
                       <span>{service.faq.question}</span>
                       {expandedCard === idx ? (
@@ -201,7 +201,7 @@ export default function ServicesSection() {
           >
             <Link
               href="/szolgaltatasok"
-              className="inline-flex items-center gap-2 px-8 py-3 rounded-xl bg-amber-500 text-bg-base font-bold hover:bg-amber-500/90 transition-all duration-300 shadow-lg shadow-amber-500/20"
+              className="inline-flex items-center gap-2 px-8 py-3 rounded-xl bg-sky-500 text-bg-base font-bold hover:bg-sky-500/90 transition-all duration-300 shadow-lg shadow-sky-500/20"
             >
               Összes Szolgáltatás
               <ArrowRight className="w-4 h-4" />

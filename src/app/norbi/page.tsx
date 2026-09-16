@@ -1,4 +1,4 @@
-﻿import React from "react";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Timeline from "@/components/molecules/Timeline";
@@ -230,7 +230,7 @@ export default function AboutPage() {
             <div className="pt-8">
               <Link
                 href="/kapcsolat"
-                className="px-8 py-4 bg-linear-to-r from-[#00B5F1] to-gold-hover text-bg-base rounded-full font-bold hover:scale-105 active:scale-95 transition-transform duration-300 shadow-[0_0_20px_rgba(245,158,11,0.3)] min-h-11 min-w-11 inline-block"
+                className="px-8 py-4 bg-linear-to-r from-[#00B5F1] to-cta-hover text-bg-base rounded-full font-bold hover:scale-105 active:scale-95 transition-transform duration-300 shadow-[0_0_20px_rgba(0, 181, 241,0.3)] min-h-11 min-w-11 inline-block"
               >
                 Kérj ajánlatot most!
               </Link>

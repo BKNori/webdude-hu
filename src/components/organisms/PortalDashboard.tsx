@@ -94,7 +94,7 @@ const categoryMap: Record<string, "cro" | "tech" | "ai" | "design"> = {
 const statusConfig = {
   planning: {
     label: "Tervezés / Audit",
-    color: "border-amber-500/30 text-amber-500 bg-amber-500/5",
+    color: "border-sky-500/30 text-sky-500 bg-sky-500/5",
     progress: 25,
     icon: Compass,
   },
@@ -113,7 +113,7 @@ const statusConfig = {
   ai_integration: {
     label: "AI Integráció & AEO Optimalizálás",
     color:
-      "border-amber-500/40 text-amber-500 bg-amber-500/10 shadow-[0_0_15px_rgba(245,158,11,0.05)]",
+      "border-sky-500/40 text-sky-500 bg-sky-500/10 shadow-[0_0_15px_rgba(0, 181, 241,0.05)]",
     progress: 90,
     icon: Sparkles,
   },
@@ -369,7 +369,7 @@ export default function PortalDashboard() {
   if (loading) {
     return (
       <div className="min-h-screen bg-bg-base flex flex-col items-center justify-center space-y-4">
-        <Loader2 className="w-8 h-8 animate-spin text-amber-500" />
+        <Loader2 className="w-8 h-8 animate-spin text-sky-500" />
         <p className="text-sm text-text-secondary font-mono">
           Biztonságos ügyfélkapu betöltése...
         </p>
@@ -385,11 +385,11 @@ export default function PortalDashboard() {
       className="min-h-screen bg-bg-base text-text-primary"
     >
       {/* Header / Navigation */}
-      <header className="border-b border-amber-500/20 bg-bg-surface/80 backdrop-blur-xl sticky top-0 z-50">
+      <header className="border-b border-sky-500/20 bg-bg-surface/80 backdrop-blur-xl sticky top-0 z-50">
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-6">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-linear-to-br from-amber-400 to-amber-600 flex items-center justify-center shadow-lg shadow-amber-500/10">
+              <div className="w-10 h-10 rounded-xl bg-linear-to-br from-sky-400 to-violet-700 flex items-center justify-center shadow-lg shadow-sky-500/10">
                 <Layers className="w-5 h-5 text-bg-base" />
               </div>
               <motion.div
@@ -406,13 +406,13 @@ export default function PortalDashboard() {
             <nav className="flex items-center gap-3 sm:gap-4 ml-3 sm:ml-6">
               <Link
                 href="/portal"
-                className="text-[10px] sm:text-xs font-mono font-bold uppercase tracking-wider text-slate-400 hover:text-amber-500 transition-colors"
+                className="text-[10px] sm:text-xs font-mono font-bold uppercase tracking-wider text-slate-400 hover:text-sky-500 transition-colors"
               >
                 Projektek
               </Link>
               <Link
                 href="/portal/ai-muhely"
-                className="text-[10px] sm:text-xs font-mono font-bold uppercase tracking-wider text-amber-500 hover:text-amber-400 transition-colors flex items-center gap-1"
+                className="text-[10px] sm:text-xs font-mono font-bold uppercase tracking-wider text-sky-500 hover:text-sky-400 transition-colors flex items-center gap-1"
               >
                 <Sparkles className="w-3 sm:w-3.5 h-3 sm:h-3.5" />
                 Műhely
@@ -420,7 +420,7 @@ export default function PortalDashboard() {
               {isAdmin && user?.email === "hello@webdude.hu" && (
                 <Link
                   href="/portal/prompt-sablonok"
-                  className="text-[10px] sm:text-xs font-mono font-bold uppercase tracking-wider text-slate-400 hover:text-amber-500 transition-colors flex items-center gap-1"
+                  className="text-[10px] sm:text-xs font-mono font-bold uppercase tracking-wider text-slate-400 hover:text-sky-500 transition-colors flex items-center gap-1"
                 >
                   <Copy className="w-3 sm:w-3.5 h-3 sm:h-3.5" />
                   Sablonok
@@ -431,7 +431,7 @@ export default function PortalDashboard() {
 
           <div className="flex items-center gap-4">
             <div className="hidden sm:flex items-center gap-2.5 px-3 py-1.5 rounded-lg bg-slate-900/80 border border-slate-700 text-xs">
-              <UserCheck className="w-3.5 h-3.5 text-amber-500" />
+              <UserCheck className="w-3.5 h-3.5 text-sky-500" />
               <span className="text-text-primary font-medium truncate max-w-37.5">
                 {user.email}
               </span>
@@ -451,7 +451,7 @@ export default function PortalDashboard() {
       <main className="max-w-6xl mx-auto px-6 py-12 space-y-12">
         {/* Title area */}
         <div className="space-y-2">
-          <span className="text-xs font-mono font-black uppercase tracking-widest text-amber-500">
+          <span className="text-xs font-mono font-black uppercase tracking-widest text-sky-500">
             Aktív Projektek & Workflow
           </span>
           <h1 className="text-3xl md:text-5xl font-extrabold text-text-primary tracking-tight font-mono">
@@ -469,8 +469,8 @@ export default function PortalDashboard() {
               onClick={() => setActiveTab("portal")}
               className={`pb-4 px-6 font-mono text-xs font-black uppercase tracking-wider cursor-pointer border-b-2 transition-all ${
                 activeTab === "portal"
-                  ? "border-amber-500 text-amber-500"
-                  : "border-transparent text-slate-500 hover:text-amber-500"
+                  ? "border-sky-500 text-sky-500"
+                  : "border-transparent text-slate-500 hover:text-sky-500"
               }`}
             >
               Kliens Nézet / Portál
@@ -479,8 +479,8 @@ export default function PortalDashboard() {
               onClick={() => setActiveTab("admin")}
               className={`pb-4 px-6 font-mono text-xs font-black uppercase tracking-wider cursor-pointer border-b-2 transition-all ${
                 activeTab === "admin"
-                  ? "border-amber-500 text-amber-500"
-                  : "border-transparent text-slate-500 hover:text-amber-500"
+                  ? "border-sky-500 text-sky-500"
+                  : "border-transparent text-slate-500 hover:text-sky-500"
               }`}
             >
               Rendszer Admin
@@ -504,7 +504,7 @@ export default function PortalDashboard() {
 
         {verifyingPayment && (
           <div className="fixed inset-0 bg-transparent backdrop-blur-md z-100 flex flex-col items-center justify-center space-y-4">
-            <Loader2 className="w-10 h-10 animate-spin text-amber-500" />
+            <Loader2 className="w-10 h-10 animate-spin text-sky-500" />
             <p className="text-sm font-bold font-mono text-white uppercase tracking-wider animate-pulse">
               Stripe tranzakció ellenőrzése...
             </p>
@@ -524,7 +524,7 @@ export default function PortalDashboard() {
           <>
             {/* Bento Grid */}
             {workflows.length === 0 ? (
-              <div className="bg-slate-900/80 border border-amber-500/20 rounded-3xl p-12 text-center max-w-2xl mx-auto space-y-4">
+              <div className="bg-slate-900/80 border border-sky-500/20 rounded-3xl p-12 text-center max-w-2xl mx-auto space-y-4">
                 <Clock className="w-12 h-12 text-slate-500 mx-auto animate-pulse" />
                 <h3 className="text-lg font-bold text-text-primary font-mono">
                   Nincs még hozzárendelt workflow
@@ -546,7 +546,7 @@ export default function PortalDashboard() {
                   return (
                     <div
                       key={wf.id}
-                      className="bg-slate-900/80 backdrop-blur-md border border-slate-700 rounded-2xl p-6 md:p-8 flex flex-col justify-between hover:border-amber-500/50 transition-all duration-300 shadow-xl group"
+                      className="bg-slate-900/80 backdrop-blur-md border border-slate-700 rounded-2xl p-6 md:p-8 flex flex-col justify-between hover:border-sky-500/50 transition-all duration-300 shadow-xl group"
                     >
                       <div className="space-y-6">
                         {/* Header */}
@@ -564,7 +564,7 @@ export default function PortalDashboard() {
                           </div>
 
                           <div className="w-10 h-10 rounded-xl bg-transparent border border-slate-700 flex items-center justify-center shrink-0">
-                            <Activity className="w-5 h-5 text-amber-500" />
+                            <Activity className="w-5 h-5 text-sky-500" />
                           </div>
                         </div>
 
@@ -578,7 +578,7 @@ export default function PortalDashboard() {
                           </div>
                           <div className="h-2 w-full bg-slate-800 rounded-full overflow-hidden border border-slate-700">
                             <motion.div
-                              className="h-full bg-linear-to-r from-amber-500 to-amber-600 rounded-full"
+                              className="h-full bg-linear-to-r from-sky-500 to-violet-700 rounded-full"
                               initial={{ width: 0 }}
                               animate={{ width: `${config.progress}%` }}
                               transition={{ duration: 1, ease: "easeOut" }}
@@ -635,12 +635,12 @@ export default function PortalDashboard() {
                                   </div>
                                 </div>
                               ) : (
-                                <div className="bg-amber-500/5 border border-amber-500/10 p-4 rounded-2xl flex flex-col md:flex-row md:items-center justify-between gap-3">
+                                <div className="bg-sky-500/5 border border-sky-500/10 p-4 rounded-2xl flex flex-col md:flex-row md:items-center justify-between gap-3">
                                   <div>
                                     <span className="text-xs font-bold text-slate-300 block">
                                       Aktuális mérföldkő kifizetése
                                     </span>
-                                    <span className="text-[10px] text-amber-500 font-mono font-bold block mt-0.5">
+                                    <span className="text-[10px] text-sky-500 font-mono font-bold block mt-0.5">
                                       Díj: {phasePrice.toLocaleString("hu-HU")}{" "}
                                       Ft (Fizetésre vár)
                                     </span>
@@ -654,7 +654,7 @@ export default function PortalDashboard() {
                                     onClick={() =>
                                       handlePayMilestone(wf.id, phase)
                                     }
-                                    className="flex items-center justify-center gap-1.5 px-4 py-2 bg-linear-to-r from-amber-500 to-amber-600 text-bg-base font-bold text-xs uppercase tracking-wider rounded-xl hover:scale-[1.02] transition-all cursor-pointer shrink-0 disabled:opacity-50"
+                                    className="flex items-center justify-center gap-1.5 px-4 py-2 bg-linear-to-r from-sky-500 to-violet-700 text-bg-base font-bold text-xs uppercase tracking-wider rounded-xl hover:scale-[1.02] transition-all cursor-pointer shrink-0 disabled:opacity-50"
                                   >
                                     {actionLoading ===
                                     `pay_${wf.id}_${phase}` ? (
@@ -692,7 +692,7 @@ export default function PortalDashboard() {
                               </div>
                             </div>
                           ) : (
-                            <div className="bg-amber-500/5 border border-amber-500/10 p-4 rounded-2xl flex flex-col md:flex-row md:items-center justify-between gap-3">
+                            <div className="bg-sky-500/5 border border-sky-500/10 p-4 rounded-2xl flex flex-col md:flex-row md:items-center justify-between gap-3">
                               <div>
                                 <span className="text-xs font-bold text-slate-300 block">
                                   Kérlek hagyd jóvá az aktuális fázist!
@@ -707,7 +707,7 @@ export default function PortalDashboard() {
                                 type="button"
                                 disabled={actionLoading === wf.id}
                                 onClick={() => handleApprovePhase(wf.id)}
-                                className="flex items-center justify-center gap-1.5 px-4 py-2 bg-linear-to-r from-amber-500 to-amber-600 text-bg-base font-bold text-xs uppercase tracking-wider rounded-xl hover:scale-[1.02] transition-all cursor-pointer shrink-0 disabled:opacity-50"
+                                className="flex items-center justify-center gap-1.5 px-4 py-2 bg-linear-to-r from-sky-500 to-violet-700 text-bg-base font-bold text-xs uppercase tracking-wider rounded-xl hover:scale-[1.02] transition-all cursor-pointer shrink-0 disabled:opacity-50"
                               >
                                 {actionLoading === wf.id ? (
                                   <Loader2 className="w-3.5 h-3.5 animate-spin" />
@@ -736,7 +736,7 @@ export default function PortalDashboard() {
                           <Calendar className="w-3.5 h-3.5 text-slate-500" />
                           <span>Létrehozva: {formatDate(wf.createdAt)}</span>
                         </div>
-                        <span className="text-amber-500/40">ID: {wf.id}</span>
+                        <span className="text-sky-500/40">ID: {wf.id}</span>
                       </div>
                     </div>
                   );
@@ -751,7 +751,7 @@ export default function PortalDashboard() {
               ) && (
                 <section className="mb-12 space-y-6">
                   <div className="space-y-1">
-                    <span className="text-xs font-mono font-black uppercase tracking-widest text-amber-500">
+                    <span className="text-xs font-mono font-black uppercase tracking-widest text-sky-500">
                       Kötelező lépések
                     </span>
                     <h2 className="text-2xl font-extrabold text-text-primary tracking-tight font-mono">
@@ -779,7 +779,7 @@ export default function PortalDashboard() {
                               <h3 className="font-bold text-text-primary text-base font-mono">
                                 {order.title}
                               </h3>
-                              <span className="px-2 py-0.5 rounded text-[10px] uppercase font-bold bg-amber-500/10 text-amber-500 border border-amber-500/20">
+                              <span className="px-2 py-0.5 rounded text-[10px] uppercase font-bold bg-sky-500/10 text-sky-500 border border-sky-500/20">
                                 Kitöltésre vár
                               </span>
                             </div>

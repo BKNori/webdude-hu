@@ -64,8 +64,8 @@ export default function SectionIndicator({ sections }: SectionIndicatorProps) {
           <motion.div
             className={`w-2 h-2 rounded-full transition-colors duration-300 ${
               activeSection === section.id
-                ? "bg-amber-500 scale-125"
-                : "bg-slate-600 group-hover:bg-amber-400"
+                ? "bg-sky-500 scale-125"
+                : "bg-slate-600 group-hover:bg-sky-400"
             }`}
             animate={{ scale: activeSection === section.id ? 1.25 : 1 }}
             transition={{ duration: 0.3 }}
@@ -73,8 +73,8 @@ export default function SectionIndicator({ sections }: SectionIndicatorProps) {
           <motion.span
             className={`text-sm font-medium transition-colors duration-300 ${
               activeSection === section.id
-                ? "text-amber-500"
-                : "text-slate-400 group-hover:text-amber-400"
+                ? "text-sky-500"
+                : "text-slate-400 group-hover:text-sky-400"
             }`}
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}

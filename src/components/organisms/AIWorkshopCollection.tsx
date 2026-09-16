@@ -311,8 +311,8 @@ export default function AIWorkshopCollection() {
     return (
       <div className="min-h-screen bg-bg-base flex flex-col items-center justify-center space-y-4">
         <div className="relative">
-          <div className="absolute inset-0 rounded-full bg-amber-500/20 blur-md animate-ping" />
-          <Loader2 className="w-10 h-10 animate-spin text-amber-500 relative" />
+          <div className="absolute inset-0 rounded-full bg-sky-500/20 blur-md animate-ping" />
+          <Loader2 className="w-10 h-10 animate-spin text-sky-500 relative" />
         </div>
         <p className="text-xs font-bold font-mono text-slate-400 uppercase tracking-widest animate-pulse">
           AI Stúdió betöltése...
@@ -329,12 +329,12 @@ export default function AIWorkshopCollection() {
           <div className="flex items-center gap-3">
             <Link
               href="/portal"
-              className="w-10 h-10 rounded-xl bg-linear-to-br from-amber-500 to-amber-600 flex items-center justify-center shadow-lg shadow-amber-500/10 cursor-pointer"
+              className="w-10 h-10 rounded-xl bg-linear-to-br from-sky-500 to-violet-700 flex items-center justify-center shadow-lg shadow-sky-500/10 cursor-pointer"
             >
               <Layers className="w-5 h-5 text-white" />
             </Link>
             <div>
-              <span className="text-xs uppercase font-black tracking-widest text-amber-500 block">
+              <span className="text-xs uppercase font-black tracking-widest text-sky-500 block">
                 WebDude AI Studio
               </span>
               <span className="text-sm font-bold text-text-primary block -mt-0.5">
@@ -351,7 +351,7 @@ export default function AIWorkshopCollection() {
               Projektek
             </Link>
             <div className="hidden sm:flex items-center gap-2.5 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-xs">
-              <UserCheck className="w-3.5 h-3.5 text-amber-500" />
+              <UserCheck className="w-3.5 h-3.5 text-sky-500" />
               <span className="text-slate-400 font-medium truncate max-w-37.5">
                 {user?.email}
               </span>
@@ -371,8 +371,8 @@ export default function AIWorkshopCollection() {
       <main className="max-w-6xl mx-auto px-6 py-12 space-y-12">
         {/* Title Block */}
         <div className="space-y-2 relative">
-          <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 rounded-full bg-amber-500/5 blur-3xl pointer-events-none" />
-          <span className="text-xs font-mono font-black uppercase tracking-widest text-amber-500">
+          <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 rounded-full bg-sky-500/5 blur-3xl pointer-events-none" />
+          <span className="text-xs font-mono font-black uppercase tracking-widest text-sky-500">
             Prémium AI Tervezők
           </span>
           <h1 className="text-3xl md:text-5xl font-extrabold text-text-primary tracking-tight leading-none font-mono">
@@ -403,13 +403,13 @@ export default function AIWorkshopCollection() {
                 key={tool.id}
                 className={`relative group bg-slate-900/80 backdrop-blur-md border transition-all duration-300 rounded-3xl p-6 flex flex-col justify-between overflow-hidden h-96 ${
                   hasAccess
-                    ? "border-slate-700 hover:border-amber-500/50 shadow-[0_8px_24px_rgba(15,23,42,0.3)] hover:shadow-[0_18px_40px_rgba(245,158,11,0.2)] hover:-translate-y-1"
+                    ? "border-slate-700 hover:border-sky-500/50 shadow-[0_8px_24px_rgba(15,23,42,0.3)] hover:shadow-[0_18px_40px_rgba(0, 181, 241,0.2)] hover:-translate-y-1"
                     : "border-slate-800 opacity-75"
                 }`}
               >
                 {/* Visual Glow behind active items */}
                 {hasAccess && (
-                  <div className="absolute -right-16 -top-16 w-32 h-32 rounded-full bg-amber-500/5 group-hover:bg-amber-500/10 transition-all duration-500 blur-2xl pointer-events-none" />
+                  <div className="absolute -right-16 -top-16 w-32 h-32 rounded-full bg-sky-500/5 group-hover:bg-sky-500/10 transition-all duration-500 blur-2xl pointer-events-none" />
                 )}
 
                 <div className="space-y-4">
@@ -418,7 +418,7 @@ export default function AIWorkshopCollection() {
                     <div
                       className={`w-12 h-12 rounded-2xl flex items-center justify-center border ${
                         hasAccess
-                          ? "bg-amber-500/10 border-amber-500/20 text-amber-500"
+                          ? "bg-sky-500/10 border-sky-500/20 text-sky-500"
                           : "bg-slate-800/40 border-slate-700/30 text-slate-500"
                       }`}
                     >
@@ -443,7 +443,7 @@ export default function AIWorkshopCollection() {
                     <h3
                       className={`text-base font-bold font-mono transition-colors ${
                         hasAccess
-                          ? "text-text-primary group-hover:text-amber-500"
+                          ? "text-text-primary group-hover:text-sky-500"
                           : "text-slate-400"
                       }`}
                     >
@@ -462,7 +462,7 @@ export default function AIWorkshopCollection() {
                         className="flex items-center gap-2 text-[10px] text-slate-400 font-mono"
                       >
                         <div
-                          className={`w-1 h-1 rounded-full ${hasAccess ? "bg-amber-500/60" : "bg-slate-600"}`}
+                          className={`w-1 h-1 rounded-full ${hasAccess ? "bg-sky-500/60" : "bg-slate-600"}`}
                         />
                         {feature}
                       </li>
@@ -475,7 +475,7 @@ export default function AIWorkshopCollection() {
                   {hasAccess ? (
                     <Link
                       href={`/portal/ai-muhely/${tool.slug}`}
-                      className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/25 text-amber-500 font-bold transition-all text-xs uppercase tracking-wider font-mono cursor-pointer"
+                      className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-sky-500/10 hover:bg-sky-500/20 border border-sky-500/25 text-sky-500 font-bold transition-all text-xs uppercase tracking-wider font-mono cursor-pointer"
                     >
                       Generátor megnyitása
                       <ArrowRight className="w-3.5 h-3.5" />

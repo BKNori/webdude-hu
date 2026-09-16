@@ -25,7 +25,7 @@ export default function TrustSectionNew() {
           transition={{ duration: 0.4 }}
           className="text-center mb-12"
         >
-          <span className="inline-block px-5 py-2.5 rounded-full bg-amber-500/10 text-amber-500 text-sm font-bold tracking-[0.2em] uppercase mb-5 leading-none">
+          <span className="inline-block px-5 py-2.5 rounded-full bg-sky-500/10 text-sky-500 text-sm font-bold tracking-[0.2em] uppercase mb-5 leading-none">
             Technológiák
           </span>
           <h2
@@ -50,7 +50,7 @@ export default function TrustSectionNew() {
                 y: -5,
                 transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] },
               }}
-              className="flex items-center gap-4 px-8 py-5 rounded-2xl bg-slate-900/80 border border-slate-700 shadow-[0_4px_12px_rgba(15,23,42,0.3)] hover:shadow-[0_20px_40px_rgba(245,158,11,0.2)] hover:border-amber-500/50 transition-all duration-300 cursor-default group"
+              className="flex items-center gap-4 px-8 py-5 rounded-2xl bg-slate-900/80 border border-slate-700 shadow-[0_4px_12px_rgba(15,23,42,0.3)] hover:shadow-[0_20px_40px_rgba(0, 181, 241,0.2)] hover:border-sky-500/50 transition-all duration-300 cursor-default group"
             >
               <motion.span
                 className="text-3xl md:text-4xl filter grayscale group-hover:grayscale-0 transition-all duration-300"
@@ -59,7 +59,7 @@ export default function TrustSectionNew() {
               >
                 {logo.icon}
               </motion.span>
-              <span className="text-base md:text-lg font-semibold text-slate-400 group-hover:text-amber-500 transition-colors duration-300 tracking-wide">
+              <span className="text-base md:text-lg font-semibold text-slate-400 group-hover:text-sky-500 transition-colors duration-300 tracking-wide">
                 {logo.name}
               </span>
             </motion.div>

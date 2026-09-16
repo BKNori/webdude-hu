@@ -206,7 +206,7 @@ export default function AdminDashboard() {
   if (loading) {
     return (
       <div className="min-h-screen bg-bg-base flex flex-col items-center justify-center space-y-4">
-        <Loader2 className="w-8 h-8 animate-spin text-amber-500" />
+        <Loader2 className="w-8 h-8 animate-spin text-sky-500" />
         <p className="text-xs font-mono text-slate-400 uppercase tracking-widest animate-pulse font-bold">
           Dashboard betöltése...
         </p>
@@ -365,8 +365,8 @@ export default function AdminDashboard() {
                 className="glass-card p-6 space-y-4"
               >
                 <div className="flex items-center justify-between">
-                  <div className="p-3 bg-amber-500/10 rounded-xl">
-                    <TrendingUp className="w-6 h-6 text-amber-500" />
+                  <div className="p-3 bg-sky-500/10 rounded-xl">
+                    <TrendingUp className="w-6 h-6 text-sky-500" />
                   </div>
                   <span className="text-xs font-mono text-slate-400 uppercase">
                     Konverzió
@@ -442,7 +442,7 @@ export default function AdminDashboard() {
               className="glass-card p-6 space-y-4"
             >
               <h3 className="text-xl font-bold text-white flex items-center gap-2">
-                <FileText className="w-5 h-5 text-amber-500" />
+                <FileText className="w-5 h-5 text-sky-500" />
                 AI Eszköz Aktivitás (30 nap)
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -542,7 +542,7 @@ export default function AdminDashboard() {
                         borderRadius: "8px",
                       }}
                     />
-                    <Bar dataKey="value" fill="#f59e0b" />
+                    <Bar dataKey="value" fill="#00B5F1" />
                   </BarChart>
                 </ResponsiveContainer>
               </motion.div>
@@ -607,9 +607,9 @@ export default function AdminDashboard() {
                     <Line
                       type="monotone"
                       dataKey="revenue"
-                      stroke="#f59e0b"
+                      stroke="#00B5F1"
                       strokeWidth={2}
-                      dot={{ fill: "#f59e0b" }}
+                      dot={{ fill: "#00B5F1" }}
                     />
                   </LineChart>
                 </ResponsiveContainer>
@@ -624,7 +624,7 @@ export default function AdminDashboard() {
               className="glass-card p-6 space-y-4"
             >
               <h3 className="text-xl font-bold text-white flex items-center gap-2">
-                <ArrowRight className="w-5 h-5 text-amber-500" />
+                <ArrowRight className="w-5 h-5 text-sky-500" />
                 Gyors Műveletek
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -632,7 +632,7 @@ export default function AdminDashboard() {
                   onClick={() => (window.location.href = "/admin/leadek")}
                   className="px-6 py-4 bg-bg-elevated/50 hover:bg-bg-elevated rounded-xl transition-all text-left group"
                 >
-                  <div className="text-white font-bold group-hover:text-amber-500 transition-colors">
+                  <div className="text-white font-bold group-hover:text-sky-500 transition-colors">
                     Lead-ek Kezelése
                   </div>
                   <div className="text-sm text-slate-400">
@@ -643,7 +643,7 @@ export default function AdminDashboard() {
                   onClick={() => (window.location.href = "/admin/portfolio")}
                   className="px-6 py-4 bg-bg-elevated/50 hover:bg-bg-elevated rounded-xl transition-all text-left group"
                 >
-                  <div className="text-white font-bold group-hover:text-amber-500 transition-colors">
+                  <div className="text-white font-bold group-hover:text-sky-500 transition-colors">
                     Portfolio Menedzsment
                   </div>
                   <div className="text-sm text-slate-400">
@@ -656,7 +656,7 @@ export default function AdminDashboard() {
                   }
                   className="px-6 py-4 bg-bg-elevated/50 hover:bg-bg-elevated rounded-xl transition-all text-left group"
                 >
-                  <div className="text-white font-bold group-hover:text-amber-500 transition-colors">
+                  <div className="text-white font-bold group-hover:text-sky-500 transition-colors">
                     Portál Kezelő
                   </div>
                   <div className="text-sm text-slate-400">
@@ -669,7 +669,7 @@ export default function AdminDashboard() {
                   }
                   className="px-6 py-4 bg-bg-elevated/50 hover:bg-bg-elevated rounded-xl transition-all text-left group"
                 >
-                  <div className="text-white font-bold group-hover:text-amber-500 transition-colors">
+                  <div className="text-white font-bold group-hover:text-sky-500 transition-colors">
                     Kreatív Stúdió
                   </div>
                   <div className="text-sm text-slate-400">

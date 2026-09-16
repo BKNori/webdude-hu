@@ -26,7 +26,7 @@ const services = [
     tags: ["Next.js 16", "TypeScript", "Firebase", "Lighthouse 95+"],
     href: "/szolgaltatasok/weboldal-keszites",
     color: "#00B5F1",
-    bgGlow: "rgba(0,181,241,0.08)",
+    bgGlow: "rgba(0, 181, 241,0.08)",
     accent: "from-[#00B5F1]/15 to-transparent",
     large: true, // 2-oszlopos
     features: [
@@ -60,7 +60,7 @@ const services = [
     tags: ["Figma", "Adobe CC", "Brand Identity", "UI/UX"],
     href: "/munkak",
     color: "#00B5F1",
-    bgGlow: "rgba(0,181,241,0.08)",
+    bgGlow: "rgba(0, 181, 241,0.08)",
     accent: "from-[#00B5F1]/15 to-transparent",
     large: false,
     features: [{ icon: Palette, text: "26 év grafikai rutin" }],
@@ -78,7 +78,7 @@ export default function FeaturedServicesNew() {
         className="absolute inset-0 pointer-events-none"
         aria-hidden="true"
         style={{
-          backgroundImage: `radial-gradient(rgba(0,181,241,0.04) 1px, transparent 1px)`,
+          backgroundImage: `radial-gradient(rgba(0, 181, 241,0.04) 1px, transparent 1px)`,
           backgroundSize: "32px 32px",
         }}
       />
@@ -100,7 +100,7 @@ export default function FeaturedServicesNew() {
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
             <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-white leading-tight max-w-2xl">
               Értékteremtő{" "}
-              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#0095C7]">
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6]">
                 szolgáltatások
               </span>
               ,
@@ -150,7 +150,7 @@ export default function FeaturedServicesNew() {
                     stiffness: 100,
                     damping: 20,
                   }}
-                  className="group h-full flex flex-col p-8 rounded-3xl border border-white/8 hover:border-amber-500/50 relative overflow-hidden cursor-pointer transition-colors duration-300"
+                  className="group h-full flex flex-col p-8 rounded-3xl border border-white/8 hover:border-sky-500/50 relative overflow-hidden cursor-pointer transition-colors duration-300"
                   style={{
                     background:
                       "linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)",
@@ -196,7 +196,7 @@ export default function FeaturedServicesNew() {
                       </div>
                       <Link
                         href={service.href}
-                        className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-slate-500 hover:text-white hover:border-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-amber-500"
+                        className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-slate-500 hover:text-white hover:border-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-sky-500"
                         aria-label={`${service.title} részletei`}
                         tabIndex={0}
                       >

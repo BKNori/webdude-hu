@@ -1,4 +1,4 @@
-﻿import Hero from "@/components/Hero";
+import Hero from "@/components/Hero";
 import Button from "@/components/atoms/Button";
 import Badge from "@/components/atoms/Badge";
 import { Metadata } from "next";
@@ -7,11 +7,11 @@ import { buildBreadcrumbSchema, BreadcrumbItem } from "@/lib/breadcrumb";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "WooCommerce Webshop Készítés és Fejlesztés | WebDude Kecskemét",
+    title: "WooCommerce Webshop Készítés és Fejlesztés | WebDude",
     description:
       "16 év tapasztalattal WooCommerce webshop készítés, fejlesztés és optimalizálás. Konverzió-fókuszú e-kereskedelmi rendszerek, fizetési integrációk és teljes körű támogatás.",
     keywords:
-      "WooCommerce webshop, WooCommerce fejlesztés, e-kereskedelmi rendszer, webshop készítés, WooCommerce optimalizálás, Kecskemét, WordPress webshop",
+      "WooCommerce webshop, WooCommerce fejlesztés, e-kereskedelmi rendszer, webshop készítés, WooCommerce optimalizálás, WordPress webshop",
     openGraph: {
       title: "WooCommerce Webshop Készítés és Fejlesztés | WebDude",
       description:
@@ -36,7 +36,7 @@ const FAQ = [
   },
   {
     q: "Mennyibe kerül egy WooCommerce webshop?",
-    a: "Egyszerű webshop 100.000 Ft-tól, komplex e-kereskedelmi rendszer 300.000 Ft-tól indul. Kérjen személyre szabott ajánlatot.",
+    a: "Egyedi árajánlat kérése a projekt igényei szerint. Ingyenes konzultáció a pontos árhoz.",
   },
 ];
 
@@ -66,12 +66,6 @@ export default async function WooCommercePage() {
       url: "https://webdude.hu",
     },
     areaServed: { "@type": "Country", name: "Hungary" },
-    offers: {
-      "@type": "Offer",
-      price: "250.000",
-      priceCurrency: "HUF",
-      availability: "https://schema.org/InStock",
-    },
   };
 
   return (
@@ -180,7 +174,6 @@ export default async function WooCommercePage() {
                     {
                       id: "basic",
                       name: "Alap Webshop",
-                      price: "250.000",
                       description: "Egyszerű WooCommerce webshop 3-4 hét alatt",
                       features: [
                         "WooCommerce telepítés és konfiguráció",
@@ -191,13 +184,12 @@ export default async function WooCommercePage() {
                         "Mobil optimalizált design",
                         "1 hónap karbantartás",
                       ],
-                      ctaText: "Alap webshop kérése",
+                      ctaText: "WordPress árajánlat kérése",
                       ctaLink: "/kapcsolat",
                     },
                     {
                       id: "professional",
                       name: "Komplett Webshop",
-                      price: "450.000",
                       description: "Komplex WooCommerce webshop 4-6 hét alatt",
                       features: [
                         "WooCommerce fejlett konfiguráció",
@@ -210,13 +202,12 @@ export default async function WooCommercePage() {
                         "3 hónap karbantartás",
                       ],
                       highlighted: true,
-                      ctaText: "Komplett webshop kérése",
+                      ctaText: "WordPress árajánlat kérése",
                       ctaLink: "/kapcsolat",
                     },
                     {
                       id: "enterprise",
                       name: "Vállalati Webshop",
-                      price: "800.000",
                       description: "E-kereskedelmi rendszer 6-10 hét alatt",
                       features: [
                         "Komplex WooCommerce rendszer",
@@ -228,13 +219,12 @@ export default async function WooCommercePage() {
                         "Performance optimalizálás",
                         "6 hónap karbantartás",
                       ],
-                      ctaText: "Vállalati webshop kérése",
+                      ctaText: "WordPress árajánlat kérése",
                       ctaLink: "/kapcsolat",
                     },
                   ]}
-                  title="Válassza ki a megfelelő WooCommerce csomagot"
-                  description="Minden csomag tartalmazza a fejlesztést, konfigurációt, adatkezelést és karbantartást"
-                  currency="Ft"
+                  title="Egyedi árajánlat kérése"
+                  description="Minden projekt egyedi igények alapján kerül árazásra. Ingyenes konzultáció a pontos árhoz és a specifikáció kialakításához."
                 />
               </div>
             </section>

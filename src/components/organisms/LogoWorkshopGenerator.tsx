@@ -169,7 +169,7 @@ export default function LogoWorkshopGenerator() {
       {/* Loading State */}
       {loading && (
         <div className="min-h-screen bg-transparent flex flex-col items-center justify-center space-y-4">
-          <Loader2 className="w-8 h-8 animate-spin text-amber-500" />
+          <Loader2 className="w-8 h-8 animate-spin text-sky-500" />
           <p className="text-xs font-mono text-slate-400 uppercase tracking-widest animate-pulse font-bold">
             Generátor betöltése...
           </p>
@@ -187,7 +187,7 @@ export default function LogoWorkshopGenerator() {
               </div>
               <Link
                 href="/portal"
-                className="px-6 py-3 rounded-xl bg-amber-500 text-bg-base font-bold hover:bg-amber-600 transition-colors"
+                className="px-6 py-3 rounded-xl bg-sky-500 text-bg-base font-bold hover:bg-violet-700 transition-colors"
               >
                 Bejelentkezés
               </Link>
@@ -200,12 +200,12 @@ export default function LogoWorkshopGenerator() {
                   <div className="flex items-center gap-3">
                     <Link
                       href="/portal/ai-muhely"
-                      className="w-10 h-10 rounded-xl bg-linear-to-br from-amber-400 to-amber-600 flex items-center justify-center shadow-lg shadow-amber-500/10 cursor-pointer"
+                      className="w-10 h-10 rounded-xl bg-linear-to-br from-sky-400 to-violet-700 flex items-center justify-center shadow-lg shadow-sky-500/10 cursor-pointer"
                     >
                       <Layers className="w-5 h-5 text-bg-base" />
                     </Link>
                     <div>
-                      <span className="text-xs uppercase font-black tracking-widest text-amber-500 block">
+                      <span className="text-xs uppercase font-black tracking-widest text-sky-500 block">
                         WebDude AI Studio
                       </span>
                       <span className="text-sm font-bold text-white block -mt-0.5">
@@ -216,7 +216,7 @@ export default function LogoWorkshopGenerator() {
 
                   <Link
                     href="/portal/ai-muhely"
-                    className="flex items-center gap-2 px-4 py-2 rounded-xl border border-gray-800 hover:border-amber-500/30 text-slate-400 hover:text-white transition-colors text-xs font-bold uppercase tracking-wider cursor-pointer"
+                    className="flex items-center gap-2 px-4 py-2 rounded-xl border border-gray-800 hover:border-sky-500/30 text-slate-400 hover:text-white transition-colors text-xs font-bold uppercase tracking-wider cursor-pointer"
                   >
                     <ArrowLeft className="w-4 h-4" />
                     Vissza
@@ -230,8 +230,8 @@ export default function LogoWorkshopGenerator() {
                   {/* Input Form */}
                   <div className="space-y-6">
                     <div className="space-y-2 relative">
-                      <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 rounded-full bg-amber-500/5 blur-3xl pointer-events-none" />
-                      <span className="text-xs font-mono font-black uppercase tracking-widest text-amber-500">
+                      <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 rounded-full bg-sky-500/5 blur-3xl pointer-events-none" />
+                      <span className="text-xs font-mono font-black uppercase tracking-widest text-sky-500">
                         Logo Generátor
                       </span>
                       <h1 className="text-3xl md:text-4xl font-extrabold text-white tracking-tight leading-none font-mono">
@@ -256,8 +256,8 @@ export default function LogoWorkshopGenerator() {
                       className="space-y-6"
                     >
                       {/* Brand Name - Prominent */}
-                      <div className="space-y-3 p-6 rounded-2xl bg-amber-500/5 border border-amber-500/20">
-                        <label className="flex items-center gap-2 text-sm font-bold text-amber-400 uppercase tracking-wider">
+                      <div className="space-y-3 p-6 rounded-2xl bg-sky-500/5 border border-sky-500/20">
+                        <label className="flex items-center gap-2 text-sm font-bold text-sky-400 uppercase tracking-wider">
                           <Target className="w-5 h-5" />
                           Logó Neve / Márkanév
                         </label>
@@ -265,7 +265,7 @@ export default function LogoWorkshopGenerator() {
                           {...register("brandName")}
                           type="text"
                           placeholder="Pl. WebDude"
-                          className="w-full px-5 py-4 rounded-xl bg-bg-elevated/80 border-2 border-amber-500/30 focus:border-amber-500 focus:ring-4 focus:ring-amber-500/20 text-white placeholder-slate-500 transition-all text-base font-bold"
+                          className="w-full px-5 py-4 rounded-xl bg-bg-elevated/80 border-2 border-sky-500/30 focus:border-sky-500 focus:ring-4 focus:ring-sky-500/20 text-white placeholder-slate-500 transition-all text-base font-bold"
                         />
                         {errors.brandName && (
                           <p className="text-red-400 text-sm font-mono">
@@ -277,14 +277,14 @@ export default function LogoWorkshopGenerator() {
                       {/* Industry */}
                       <div className="space-y-2">
                         <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <Hexagon className="w-4 h-4 text-amber-500" />
+                          <Hexagon className="w-4 h-4 text-sky-500" />
                           Iparág
                         </label>
                         <input
                           {...register("industry")}
                           type="text"
                           placeholder="Pl. Webfejlesztés"
-                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-amber-500/50 focus:ring-2 focus:ring-amber-500/10 text-white placeholder-slate-500 transition-all text-sm"
+                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-sky-500/50 focus:ring-2 focus:ring-sky-500/10 text-white placeholder-slate-500 transition-all text-sm"
                         />
                         {errors.industry && (
                           <p className="text-red-400 text-xs font-mono">
@@ -296,14 +296,14 @@ export default function LogoWorkshopGenerator() {
                       {/* Target Audience */}
                       <div className="space-y-2">
                         <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <Target className="w-4 h-4 text-amber-500" />
+                          <Target className="w-4 h-4 text-sky-500" />
                           Célközönség
                         </label>
                         <textarea
                           {...register("targetAudience")}
                           rows={3}
                           placeholder="Pl. Kis- és középvállalkozások, startupok"
-                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-amber-500/50 focus:ring-2 focus:ring-amber-500/10 text-white placeholder-slate-500 transition-all text-sm resize-none"
+                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-sky-500/50 focus:ring-2 focus:ring-sky-500/10 text-white placeholder-slate-500 transition-all text-sm resize-none"
                         />
                         {errors.targetAudience && (
                           <p className="text-red-400 text-xs font-mono">
@@ -315,12 +315,12 @@ export default function LogoWorkshopGenerator() {
                       {/* Logo Style */}
                       <div className="space-y-2">
                         <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <PenTool className="w-4 h-4 text-amber-500" />
+                          <PenTool className="w-4 h-4 text-sky-500" />
                           Logo Stílus
                         </label>
                         <select
                           {...register("logoStyle")}
-                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-amber-500/50 focus:ring-2 focus:ring-amber-500/10 text-white transition-all text-sm"
+                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-sky-500/50 focus:ring-2 focus:ring-sky-500/10 text-white transition-all text-sm"
                         >
                           <option value="minimalist">Minimalista</option>
                           <option value="modern">Modern</option>
@@ -335,12 +335,12 @@ export default function LogoWorkshopGenerator() {
                       {/* Color Preference */}
                       <div className="space-y-2">
                         <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <Palette className="w-4 h-4 text-amber-500" />
+                          <Palette className="w-4 h-4 text-sky-500" />
                           Szín Preferencia
                         </label>
                         <select
                           {...register("colorPreference")}
-                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-amber-500/50 focus:ring-2 focus:ring-amber-500/10 text-white transition-all text-sm"
+                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-sky-500/50 focus:ring-2 focus:ring-sky-500/10 text-white transition-all text-sm"
                         >
                           <option value="monochrome">Monokróm</option>
                           <option value="duotone">Duotón</option>
@@ -353,14 +353,14 @@ export default function LogoWorkshopGenerator() {
                       {/* Additional Requirements */}
                       <div className="space-y-2">
                         <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <Star className="w-4 h-4 text-amber-500" />
+                          <Star className="w-4 h-4 text-sky-500" />
                           További Követelmények (opcionális)
                         </label>
                         <textarea
                           {...register("additionalRequirements")}
                           rows={3}
                           placeholder="Pl. Legyen benne egy kör alakú elem..."
-                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-amber-500/50 focus:ring-2 focus:ring-amber-500/10 text-white placeholder-slate-500 transition-all text-sm resize-none"
+                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-sky-500/50 focus:ring-2 focus:ring-sky-500/10 text-white placeholder-slate-500 transition-all text-sm resize-none"
                         />
                       </div>
 
@@ -370,7 +370,7 @@ export default function LogoWorkshopGenerator() {
                         whileTap={{ scale: 0.98 }}
                         type="submit"
                         disabled={isGenerating}
-                        className="w-full px-6 py-4 rounded-xl bg-linear-to-r from-amber-500 to-amber-600 text-bg-base font-bold text-sm uppercase tracking-wider hover:from-amber-600 hover:to-amber-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg shadow-amber-500/20"
+                        className="w-full px-6 py-4 rounded-xl bg-linear-to-r from-sky-500 to-violet-700 text-bg-base font-bold text-sm uppercase tracking-wider hover:from-violet-700 hover:to-sky-800 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg shadow-sky-500/20"
                       >
                         {isGenerating ? (
                           <>
@@ -391,8 +391,8 @@ export default function LogoWorkshopGenerator() {
                   <div className="space-y-6">
                     {!generatedOutput && (
                       <div className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-8 flex flex-col items-center justify-center min-h-100">
-                        <div className="w-16 h-16 rounded-full bg-amber-500/10 flex items-center justify-center mb-4">
-                          <Palette className="w-8 h-8 text-amber-500" />
+                        <div className="w-16 h-16 rounded-full bg-sky-500/10 flex items-center justify-center mb-4">
+                          <Palette className="w-8 h-8 text-sky-500" />
                         </div>
                         <h3 className="text-lg font-bold text-white mb-2">
                           Logo Koncepció
@@ -414,7 +414,7 @@ export default function LogoWorkshopGenerator() {
                         >
                           <div className="flex items-center justify-between">
                             <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                              <PenTool className="w-4 h-4 text-amber-500" />
+                              <PenTool className="w-4 h-4 text-sky-500" />
                               Logo Koncepció
                             </h3>
                           </div>
@@ -444,7 +444,7 @@ export default function LogoWorkshopGenerator() {
                                   (element, index) => (
                                     <span
                                       key={index}
-                                      className="px-3 py-1 rounded-lg bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-mono"
+                                      className="px-3 py-1 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-mono"
                                     >
                                       {element}
                                     </span>
@@ -463,7 +463,7 @@ export default function LogoWorkshopGenerator() {
                         >
                           <div className="flex items-center justify-between">
                             <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                              <Layers className="w-4 h-4 text-amber-500" />
+                              <Layers className="w-4 h-4 text-sky-500" />
                               Logo Változatok
                             </h3>
                           </div>
@@ -511,7 +511,7 @@ export default function LogoWorkshopGenerator() {
                           className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
                         >
                           <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <Palette className="w-4 h-4 text-amber-500" />
+                            <Palette className="w-4 h-4 text-sky-500" />
                             Alternatív Szín Paletták
                           </h3>
                           <div className="space-y-3">
@@ -533,7 +533,7 @@ export default function LogoWorkshopGenerator() {
                                     {palette.colors.map((color, colorIndex) => (
                                       <span
                                         key={colorIndex}
-                                        className="px-2 py-1 rounded bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-mono"
+                                        className="px-2 py-1 rounded bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-mono"
                                       >
                                         {color}
                                       </span>
@@ -552,7 +552,7 @@ export default function LogoWorkshopGenerator() {
                         >
                           <div className="flex items-center justify-between">
                             <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                              <Palette className="w-4 h-4 text-amber-500" />
+                              <Palette className="w-4 h-4 text-sky-500" />
                               Szín Paletta
                             </h3>
                           </div>
@@ -613,7 +613,7 @@ export default function LogoWorkshopGenerator() {
                         >
                           <div className="flex items-center justify-between">
                             <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                              <Type className="w-4 h-4 text-amber-500" />
+                              <Type className="w-4 h-4 text-sky-500" />
                               Tipográfia
                             </h3>
                           </div>
@@ -664,7 +664,7 @@ export default function LogoWorkshopGenerator() {
                         >
                           <div className="flex items-center justify-between">
                             <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                              <Hexagon className="w-4 h-4 text-amber-500" />
+                              <Hexagon className="w-4 h-4 text-sky-500" />
                               Ikonográfia
                             </h3>
                           </div>
@@ -704,7 +704,7 @@ export default function LogoWorkshopGenerator() {
                           className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
                         >
                           <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <Sparkles className="w-4 h-4 text-amber-500" />
+                            <Sparkles className="w-4 h-4 text-sky-500" />
                             Midjourney Promptok
                           </h3>
                           <div className="space-y-3">
@@ -720,7 +720,7 @@ export default function LogoWorkshopGenerator() {
                                       "mj-primary"
                                     )
                                   }
-                                  className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-mono hover:bg-amber-500/20 transition-colors"
+                                  className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-mono hover:bg-sky-500/20 transition-colors"
                                 >
                                   {copiedStates["mj-primary"] ? (
                                     <>
@@ -752,7 +752,7 @@ export default function LogoWorkshopGenerator() {
                                       "mj-secondary"
                                     )
                                   }
-                                  className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-mono hover:bg-amber-500/20 transition-colors"
+                                  className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-mono hover:bg-sky-500/20 transition-colors"
                                 >
                                   {copiedStates["mj-secondary"] ? (
                                     <>
@@ -784,7 +784,7 @@ export default function LogoWorkshopGenerator() {
                                       "mj-icon"
                                     )
                                   }
-                                  className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-mono hover:bg-amber-500/20 transition-colors"
+                                  className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-mono hover:bg-sky-500/20 transition-colors"
                                 >
                                   {copiedStates["mj-icon"] ? (
                                     <>
@@ -816,7 +816,7 @@ export default function LogoWorkshopGenerator() {
                                       "mj-wordmark"
                                     )
                                   }
-                                  className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-mono hover:bg-amber-500/20 transition-colors"
+                                  className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-mono hover:bg-sky-500/20 transition-colors"
                                 >
                                   {copiedStates["mj-wordmark"] ? (
                                     <>
@@ -846,7 +846,7 @@ export default function LogoWorkshopGenerator() {
                           className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
                         >
                           <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <Target className="w-4 h-4 text-amber-500" />
+                            <Target className="w-4 h-4 text-sky-500" />
                             Brand Guidelines
                           </h3>
                           <div className="space-y-3">
@@ -919,7 +919,7 @@ export default function LogoWorkshopGenerator() {
                           className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
                         >
                           <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <Layers className="w-4 h-4 text-amber-500" />
+                            <Layers className="w-4 h-4 text-sky-500" />
                             Export Formátumok
                           </h3>
                           <div className="space-y-3">
@@ -961,14 +961,14 @@ export default function LogoWorkshopGenerator() {
                         >
                           <div className="flex items-center justify-between">
                             <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                              <Droplets className="w-4 h-4 text-amber-500" />
+                              <Droplets className="w-4 h-4 text-sky-500" />
                               Változatok
                             </h3>
                           </div>
                           <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                             <div className="bg-bg-base/50 rounded-xl p-4 border border-gray-800">
                               <div className="flex items-center gap-2 mb-2">
-                                <Sun className="w-3 h-3 text-amber-500" />
+                                <Sun className="w-3 h-3 text-sky-500" />
                                 <p className="text-xs text-slate-400">
                                   Light Mode
                                 </p>
@@ -979,7 +979,7 @@ export default function LogoWorkshopGenerator() {
                             </div>
                             <div className="bg-bg-base/50 rounded-xl p-4 border border-gray-800">
                               <div className="flex items-center gap-2 mb-2">
-                                <Moon className="w-3 h-3 text-amber-500" />
+                                <Moon className="w-3 h-3 text-sky-500" />
                                 <p className="text-xs text-slate-400">
                                   Dark Mode
                                 </p>
@@ -990,7 +990,7 @@ export default function LogoWorkshopGenerator() {
                             </div>
                             <div className="bg-bg-base/50 rounded-xl p-4 border border-gray-800">
                               <div className="flex items-center gap-2 mb-2">
-                                <Star className="w-3 h-3 text-amber-500" />
+                                <Star className="w-3 h-3 text-sky-500" />
                                 <p className="text-xs text-slate-400">
                                   Monochrome
                                 </p>

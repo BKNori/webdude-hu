@@ -48,7 +48,7 @@ export default function NavigationNew() {
             ))}
             <Link
               href="/kapcsolat"
-              className="px-6 py-2.5 rounded-full bg-[#00B5F1] hover:bg-[#0095C7] text-white text-sm font-semibold transition-all duration-300 shadow-[0_4px_12px_rgba(15,23,42,0.04)] hover:shadow-[0_8px_24px_rgba(15,23,42,0.06)]"
+              className="px-6 py-2.5 rounded-full bg-[#00B5F1] hover:bg-[#5B21B6] text-slate-950 text-sm font-semibold transition-all duration-300 shadow-[0_4px_12px_rgba(15,23,42,0.04)] hover:shadow-[0_8px_24px_rgba(15,23,42,0.06)]"
             >
               Kapcsolat
             </Link>
@@ -122,7 +122,7 @@ export default function NavigationNew() {
                 <Link
                   href="/kapcsolat"
                   onClick={() => setIsOpen(false)}
-                  className="block w-full px-6 py-3 rounded-full bg-[#00B5F1] hover:bg-[#0095C7] text-white text-center font-semibold transition-all duration-300"
+                  className="block w-full px-6 py-3 rounded-full bg-[#00B5F1] hover:bg-[#5B21B6] text-slate-950 text-center font-semibold transition-all duration-300"
                 >
                   Kapcsolat
                 </Link>

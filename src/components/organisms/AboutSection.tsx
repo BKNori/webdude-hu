@@ -19,7 +19,7 @@ export default function AboutSection() {
           viewport={{ once: true, margin: "-100px" }}
           transition={motionPreset}
         >
-          <GeometricIcon type="circle" size={32} color="text-amber-500" />
+          <GeometricIcon type="circle" size={32} color="text-sky-500" />
         </motion.div>
 
         <div className="grid gap-12 lg:grid-cols-2 items-center">
@@ -39,11 +39,11 @@ export default function AboutSection() {
               {/* Arany bal szegély */}
               <span
                 aria-hidden="true"
-                className="absolute left-0 top-0 bottom-0 w-1 rounded-full bg-linear-to-b from-amber-400 to-amber-600"
+                className="absolute left-0 top-0 bottom-0 w-1 rounded-full bg-linear-to-b from-sky-400 to-violet-700"
               />
               <p className="text-[clamp(1.5rem,4vw,2.5rem)] font-extrabold tracking-tight text-text-primary leading-tight">
                 Nem egy ügynökség vagyok.{" "}
-                <span className="text-amber-500">Én vagyok a WebDude.</span>
+                <span className="text-sky-500">Én vagyok a WebDude.</span>
               </p>
             </blockquote>
 
@@ -56,7 +56,7 @@ export default function AboutSection() {
             <ul className="space-y-4 text-slate-400">
               <li className="flex items-start gap-3">
                 <span
-                  className="text-amber-500 font-bold mt-0.5"
+                  className="text-sky-500 font-bold mt-0.5"
                   aria-hidden="true"
                 >
                   ✓
@@ -68,7 +68,7 @@ export default function AboutSection() {
               </li>
               <li className="flex items-start gap-3">
                 <span
-                  className="text-amber-500 font-bold mt-0.5"
+                  className="text-sky-500 font-bold mt-0.5"
                   aria-hidden="true"
                 >
                   ✓
@@ -80,7 +80,7 @@ export default function AboutSection() {
               </li>
               <li className="flex items-start gap-3">
                 <span
-                  className="text-amber-500 font-bold mt-0.5"
+                  className="text-sky-500 font-bold mt-0.5"
                   aria-hidden="true"
                 >
                   ✓
@@ -92,7 +92,7 @@ export default function AboutSection() {
               </li>
               <li className="flex items-start gap-3">
                 <span
-                  className="text-amber-500 font-bold mt-0.5"
+                  className="text-sky-500 font-bold mt-0.5"
                   aria-hidden="true"
                 >
                   ✓
@@ -123,9 +123,9 @@ export default function AboutSection() {
             className="relative"
           >
             {/* Glow háttér */}
-            <div className="absolute -inset-4 bg-amber-500/5 rounded-[3rem] blur-2xl z-0" />
+            <div className="absolute -inset-4 bg-sky-500/5 rounded-[3rem] blur-2xl z-0" />
             {/* Glassmorphism keret */}
-            <div className="relative z-10 rounded-[2.5rem] border border-amber-500/20 bg-slate-900/80 backdrop-blur-md p-5 shadow-[0_40px_120px_rgba(0,0,0,0.5)] w-full max-w-md mx-auto">
+            <div className="relative z-10 rounded-[2.5rem] border border-sky-500/20 bg-slate-900/80 backdrop-blur-md p-5 shadow-[0_40px_120px_rgba(0,0,0,0.5)] w-full max-w-md mx-auto">
               <div className="aspect-square overflow-hidden rounded-4xl border border-slate-700 bg-transparent relative">
                 <Image
                   src="/assets/personal/Webdude_old_fashion.webp"
@@ -137,7 +137,7 @@ export default function AboutSection() {
                 />
               </div>
               {/* Felirat a kép alatt */}
-              <p className="mt-4 text-center text-xs font-bold uppercase tracking-[0.3em] text-amber-500/70">
+              <p className="mt-4 text-center text-xs font-bold uppercase tracking-[0.3em] text-sky-500/70">
                 Norbi • WebDude • Kecskemét
               </p>
             </div>

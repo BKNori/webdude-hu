@@ -56,7 +56,7 @@ export default function CaseStudiesBento() {
         aria-hidden="true"
         style={{
           background:
-            "radial-gradient(ellipse 80% 40% at 50% 100%, rgba(0,181,241,0.04) 0%, transparent 70%)",
+            "radial-gradient(ellipse 80% 40% at 50% 100%, rgba(0, 181, 241,0.04) 0%, transparent 70%)",
         }}
       />
 
@@ -81,7 +81,7 @@ export default function CaseStudiesBento() {
             </div>
             <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-white leading-tight">
               Nem ígéret —{" "}
-              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#0095C7]">
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6]">
                 bizonyíték
               </span>
             </h2>
@@ -117,7 +117,7 @@ export default function CaseStudiesBento() {
                 y: -4,
                 scale: 1.02,
               }}
-              className="group relative overflow-hidden rounded-3xl border border-white/8 hover:border-amber-500/50 flex flex-col transition-colors duration-300"
+              className="group relative overflow-hidden rounded-3xl border border-white/8 hover:border-sky-500/50 flex flex-col transition-colors duration-300"
               style={{
                 background:
                   "linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)",
@@ -225,7 +225,7 @@ export default function CaseStudiesBento() {
                   </div>
                   <Link
                     href={cs.href}
-                    className="inline-flex items-center gap-1.5 text-xs font-bold transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-amber-500 rounded-lg px-1 py-0.5"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-sky-500 rounded-lg px-1 py-0.5"
                     style={{ color: cs.accentColor }}
                     aria-label={`${cs.title} — részletek`}
                   >

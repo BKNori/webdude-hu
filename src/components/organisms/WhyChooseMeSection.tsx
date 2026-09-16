@@ -24,7 +24,7 @@ const advantages = [
     title: "26 Éves Tapasztalat",
     description:
       "Grafikai és 16 éves webfejlesztői rutinnal, amit csak a gyakorlat adhat.",
-    color: "from-[#00B5F1]/20 to-[#0095C7]/20",
+    color: "from-[#00B5F1]/20 to-[#5B21B6]/20",
     iconColor: "text-[#00B5F1]",
     stat: "26+",
     statLabel: "Év tapasztalat",
@@ -33,7 +33,7 @@ const advantages = [
     icon: Users,
     title: "Közvetlen Kommunikáció",
     description: "Nincs projektmenedzser réteg - közvetlenül veled dolgozom.",
-    color: "from-[#00B5F1]/20 to-[#0095C7]/20",
+    color: "from-[#00B5F1]/20 to-[#5B21B6]/20",
     iconColor: "text-[#00B5F1]",
     stat: "1:1",
     statLabel: "Kommunikáció",
@@ -42,7 +42,7 @@ const advantages = [
     icon: Zap,
     title: "Modern Tech Stack",
     description: "Next.js 16, React 19, TypeScript - jövőálló technológiák.",
-    color: "from-[#00B5F1]/20 to-[#0095C7]/20",
+    color: "from-[#00B5F1]/20 to-[#5B21B6]/20",
     iconColor: "text-[#00B5F1]",
     stat: "100%",
     statLabel: "Modern stack",
@@ -52,7 +52,7 @@ const advantages = [
     title: "30 Napos Garancia",
     description:
       "Átadást követően hibajavítási garancia és folyamatos támogatás.",
-    color: "from-[#00B5F1]/20 to-[#0095C7]/20",
+    color: "from-[#00B5F1]/20 to-[#5B21B6]/20",
     iconColor: "text-[#00B5F1]",
     stat: "30",
     statLabel: "Nap garancia",
@@ -62,7 +62,7 @@ const advantages = [
     title: "Gyors Átfutás",
     description:
       "Nincs bürokrácia, azonnali indulás és hatékony munkafolyamat.",
-    color: "from-[#00B5F1]/20 to-[#0095C7]/20",
+    color: "from-[#00B5F1]/20 to-[#5B21B6]/20",
     iconColor: "text-[#00B5F1]",
     stat: "2x",
     statLabel: "Gyorsabb",
@@ -72,7 +72,7 @@ const advantages = [
     title: "Transzparens Árazás",
     description:
       "Rejtett költségek nélkül, előre egyeztetett árak és határidők.",
-    color: "from-[#00B5F1]/20 to-[#0095C7]/20",
+    color: "from-[#00B5F1]/20 to-[#5B21B6]/20",
     iconColor: "text-[#00B5F1]",
     stat: "0",
     statLabel: "Rejtett költség",
@@ -143,7 +143,7 @@ export default function WhyChooseMeSection() {
           </motion.div>
           <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
             Egy Ember,{" "}
-            <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#0095C7]">
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6]">
               Teljes Elkötelezettség
             </span>
           </h2>
@@ -215,11 +215,11 @@ export default function WhyChooseMeSection() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="bg-slate-900/60 border border-[#00B5F1]/20 rounded-3xl p-12 backdrop-blur-md relative overflow-hidden mb-12"
         >
-          <div className="absolute inset-0 bg-linear-to-r from-[#00B5F1]/5 to-[#0095C7]/5" />
+          <div className="absolute inset-0 bg-linear-to-r from-[#00B5F1]/5 to-[#5B21B6]/5" />
           <div className="relative z-10">
             <h3 className="text-3xl md:text-4xl font-bold text-white text-center mb-12">
               Ami Tényleg{" "}
-              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#0095C7]">
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6]">
                 Megkülönböztet
               </span>
             </h3>
@@ -258,7 +258,7 @@ export default function WhyChooseMeSection() {
         >
           <Link
             href="/szia-norbi-vagyok"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-linear-to-r from-[#00B5F1] to-[#0095C7] text-white font-bold hover:shadow-lg hover:shadow-[#00B5F1]/30 transition-all duration-300 shadow-lg shadow-[#00B5F1]/20 hover:scale-105"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-linear-to-r from-[#00B5F1] to-[#5B21B6] text-slate-950 font-bold hover:shadow-lg hover:shadow-[#00B5F1]/30 transition-all duration-300 shadow-lg shadow-[#00B5F1]/20 hover:scale-105"
           >
             <span>Ismerj Meg Jobban</span>
             <ArrowRight className="w-5 h-5" />

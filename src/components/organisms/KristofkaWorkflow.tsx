@@ -245,10 +245,10 @@ ${result.roi}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.7 }}
-      className="bg-bg-surface/40 backdrop-blur-xl border border-bg-elevated/80 rounded-3xl p-6 md:p-8 shadow-2xl relative overflow-hidden space-y-6 hover:border-amber-500/50 hover:shadow-amber-500/10 transition-all duration-300"
+      className="bg-bg-surface/40 backdrop-blur-xl border border-bg-elevated/80 rounded-3xl p-6 md:p-8 shadow-2xl relative overflow-hidden space-y-6 hover:border-sky-500/50 hover:shadow-sky-500/10 transition-all duration-300"
     >
       {/* Background glow decorator */}
-      <div className="absolute -left-24 -bottom-24 w-48 h-48 rounded-full bg-amber-500/5 blur-3xl pointer-events-none" />
+      <div className="absolute -left-24 -bottom-24 w-48 h-48 rounded-full bg-sky-500/5 blur-3xl pointer-events-none" />
 
       {/* Header */}
       <motion.div
@@ -258,11 +258,11 @@ ${result.roi}
         transition={{ duration: 0.5 }}
         className="flex items-center gap-3 border-b border-bg-elevated/40 pb-4"
       >
-        <div className="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-500 hover:bg-amber-500/20 transition-colors">
+        <div className="w-10 h-10 rounded-xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-500 hover:bg-sky-500/20 transition-colors">
           <Building2 className="w-5 h-5" />
         </div>
         <div>
-          <span className="text-[10px] uppercase font-black tracking-widest text-amber-500 block">
+          <span className="text-[10px] uppercase font-black tracking-widest text-sky-500 block">
             Strategist-Pro
           </span>
           <h3 className="text-lg font-bold text-white font-mono -mt-0.5">
@@ -277,7 +277,7 @@ ${result.roi}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.1 }}
-        className="text-xs text-slate-400 leading-relaxed font-mono border-l-2 border-amber-500/30 pl-3"
+        className="text-xs text-slate-400 leading-relaxed font-mono border-l-2 border-sky-500/30 pl-3"
       >
         Az ipari ingatlanok hasznosításának és befektetői prezentációjának
         mesterműve. Nyers alaprajzokból professzionális befektetői pitch
@@ -322,7 +322,7 @@ ${result.roi}
             <select
               value={targetAudience}
               onChange={(e) => setTargetAudience(e.target.value)}
-              className="w-full bg-bg-base border border-bg-elevated/50 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-500/50 font-mono"
+              className="w-full bg-bg-base border border-bg-elevated/50 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-sky-500/50 font-mono"
             >
               <option value="">Válassz célcsoportot...</option>
               {targetAudienceOptions.map((opt) => (
@@ -342,7 +342,7 @@ ${result.roi}
             <select
               value={narrative}
               onChange={(e) => setNarrative(e.target.value)}
-              className="w-full bg-bg-base border border-bg-elevated/50 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-500/50 font-mono"
+              className="w-full bg-bg-base border border-bg-elevated/50 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-sky-500/50 font-mono"
             >
               <option value="">Válassz narratívát...</option>
               {narrativeOptions.map((opt) => (
@@ -362,7 +362,7 @@ ${result.roi}
             <select
               value={tone}
               onChange={(e) => setTone(e.target.value)}
-              className="w-full bg-bg-base border border-bg-elevated/50 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-500/50 font-mono"
+              className="w-full bg-bg-base border border-bg-elevated/50 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-sky-500/50 font-mono"
             >
               <option value="">Válassz hangvételt...</option>
               {toneOptions.map((opt) => (
@@ -382,7 +382,7 @@ ${result.roi}
             <select
               value={energetikaiBesorolas}
               onChange={(e) => setEnergetikaiBesorolas(e.target.value)}
-              className="w-full bg-bg-base border border-bg-elevated/50 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-500/50 font-mono"
+              className="w-full bg-bg-base border border-bg-elevated/50 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-sky-500/50 font-mono"
             >
               <option value="unknown">Ismeretlen</option>
               {energetikaiBesorolasOptions.map((opt) => (
@@ -397,7 +397,7 @@ ${result.roi}
           <button
             onClick={handleGenerate}
             disabled={loading}
-            className="w-full py-4 bg-amber-500 hover:bg-amber-600 text-bg-base font-bold rounded-xl transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full py-4 bg-sky-500 hover:bg-violet-700 text-bg-base font-bold rounded-xl transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {loading ? (
               <>
@@ -432,7 +432,7 @@ ${result.roi}
             {/* Legacy */}
             <div className="bg-bg-base/50 border border-bg-elevated/50 rounded-xl p-4 space-y-2">
               <div className="flex items-center justify-between">
-                <h5 className="text-xs font-bold text-amber-500 font-mono">
+                <h5 className="text-xs font-bold text-sky-500 font-mono">
                   1. Az épület öröksége
                 </h5>
                 <button
@@ -450,7 +450,7 @@ ${result.roi}
             {/* Vision */}
             <div className="bg-bg-base/50 border border-bg-elevated/50 rounded-xl p-4 space-y-2">
               <div className="flex items-center justify-between">
-                <h5 className="text-xs font-bold text-amber-500 font-mono">
+                <h5 className="text-xs font-bold text-sky-500 font-mono">
                   2. A konverziós vízió
                 </h5>
                 <button
@@ -468,7 +468,7 @@ ${result.roi}
             {/* Financial */}
             <div className="bg-bg-base/50 border border-bg-elevated/50 rounded-xl p-4 space-y-2">
               <div className="flex items-center justify-between">
-                <h5 className="text-xs font-bold text-amber-500 font-mono">
+                <h5 className="text-xs font-bold text-sky-500 font-mono">
                   3. Pénzügyi potenciál
                 </h5>
                 <button
@@ -486,7 +486,7 @@ ${result.roi}
             {/* ROI */}
             <div className="bg-bg-base/50 border border-bg-elevated/50 rounded-xl p-4 space-y-2">
               <div className="flex items-center justify-between">
-                <h5 className="text-xs font-bold text-amber-500 font-mono">
+                <h5 className="text-xs font-bold text-sky-500 font-mono">
                   4. Befektetői megtérülési kilátások
                 </h5>
                 <button
@@ -542,14 +542,14 @@ ${result.roi}
             <div className="flex gap-3">
               <button
                 onClick={handlePDFExport}
-                className="flex-1 py-3 bg-bg-base border border-bg-elevated/50 rounded-xl text-xs font-bold text-white hover:border-amber-500/50 transition-colors flex items-center justify-center gap-2"
+                className="flex-1 py-3 bg-bg-base border border-bg-elevated/50 rounded-xl text-xs font-bold text-white hover:border-sky-500/50 transition-colors flex items-center justify-center gap-2"
               >
                 <Download className="w-4 h-4" />
                 PDF Letöltés
               </button>
               <button
                 onClick={handleNotebookLMExport}
-                className="flex-1 py-3 bg-bg-base border border-bg-elevated/50 rounded-xl text-xs font-bold text-white hover:border-amber-500/50 transition-colors flex items-center justify-center gap-2"
+                className="flex-1 py-3 bg-bg-base border border-bg-elevated/50 rounded-xl text-xs font-bold text-white hover:border-sky-500/50 transition-colors flex items-center justify-center gap-2"
               >
                 <BookOpen className="w-4 h-4" />
                 NotebookLM Adatcsomag
@@ -557,10 +557,10 @@ ${result.roi}
             </div>
 
             {/* NotebookLM Instrukció Kisokos */}
-            <div className="bg-amber-500/5 border border-amber-500/20 rounded-xl p-4 space-y-3">
+            <div className="bg-sky-500/5 border border-sky-500/20 rounded-xl p-4 space-y-3">
               <div className="flex items-center gap-2">
-                <BookOpen className="w-4 h-4 text-amber-500" />
-                <h5 className="text-xs font-bold text-amber-500 font-mono">
+                <BookOpen className="w-4 h-4 text-sky-500" />
+                <h5 className="text-xs font-bold text-sky-500 font-mono">
                   NotebookLM Használati Instrukció
                 </h5>
               </div>

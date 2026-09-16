@@ -45,7 +45,7 @@ const TemplateSelector: React.FC<Props> = ({
         id="templateSelect"
         value={selectedIdx}
         onChange={(e) => setSelectedIdx(Number(e.target.value))}
-        className="w-48 bg-transparent border border-bg-elevated/80 rounded-xl px-2 py-1 text-slate-200 focus:outline-none focus:border-amber-500 text-xs font-mono"
+        className="w-48 bg-transparent border border-bg-elevated/80 rounded-xl px-2 py-1 text-slate-200 focus:outline-none focus:border-sky-500 text-xs font-mono"
       >
         <option value={-1}>-- Válassz --</option>
         {templates.map((t, idx) => (
@@ -58,7 +58,7 @@ const TemplateSelector: React.FC<Props> = ({
         type="button"
         onClick={applyTemplate}
         disabled={selectedIdx < 0 || loading}
-        className="flex items-center gap-1 px-3 py-1 bg-amber-500/20 hover:bg-amber-500/30 text-amber-500 rounded-md text-xs transition-colors disabled:opacity-40"
+        className="flex items-center gap-1 px-3 py-1 bg-sky-500/20 hover:bg-sky-500/30 text-sky-500 rounded-md text-xs transition-colors disabled:opacity-40"
       >
         <Check className="w-3 h-3" />
         Alkalmaz

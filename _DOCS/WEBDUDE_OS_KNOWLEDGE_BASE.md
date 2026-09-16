@@ -21,7 +21,7 @@ Háttér:           #020617  →  bg-[#020617]
 Kártya/panel:     #0f172a  →  bg-[#0f172a]
 Fő szöveg:        #e2e8f0  →  text-[#e2e8f0]
 Muted szöveg:     #94a3b8  →  text-slate-400
-Arany (brand GOLD): #f59e0b  →  text-amber-500 / bg-amber-500
+Arany (brand GOLD): #00B5F1  →  text-sky-500 / bg-sky-500
 Siker (SUCCESS):  #10b981  →  text-emerald-500
 Hiba (ERROR):     #ef4444  →  text-red-500
 ```
@@ -38,10 +38,10 @@ Hiba (ERROR):     #ef4444  →  text-red-500
 - **Reszponzív töréspontok:** sm:640px, md:768px, lg:1024px, xl:1280px
 
 ### 1.5 Vizuális WOW Elemek
-- **hover:border-amber-500:** Arany csillogás hover állapotban
+- **hover:border-sky-500:** Arany csillogás hover állapotban
 - **shadow-xl:** Térbeli hatás a sötét háttérből való kiemelkedéshez
 - **line-clamp-3:** Egyforma szöveghossz a grid rácsának stabilitásához
-- **Cyber-Arany szegély:** border-2 border-amber-500/50 shadow-lg shadow-amber-500/10 (AI válaszokhoz)
+- **Cyber-Arany szegély:** border-2 border-sky-500/50 shadow-lg shadow-sky-500/10 (AI válaszokhoz)
 
 ---
 
@@ -108,7 +108,7 @@ atoms → molecules → organisms → pages
 - **Cél:** Automatikus case study generálás workflow végrehajtása után
 - **Adatstruktúra:** title, clientName, workflowType, impactMetrics, summary, status, createdAt
 - **Megjelenítés:** CaseStudyCarousel komponens (Server Component, Bento Grid)
-- **Vizuális:** hover:border-amber-500, shadow-xl, line-clamp-3
+- **Vizuális:** hover:border-sky-500, shadow-xl, line-clamp-3
 
 ### 3.5 Kristófka Workflow (Strategist Pro)
 - **Cél:** Ingatlanbefektetői pitch generálás PDF alaprajzokból
@@ -287,7 +287,7 @@ FID:      < 100ms  (First Input Delay)
 
 ### 7.3 WCAG AA akadálymentesítés
 ```
-✅ Látható focus ring minden interaktív elemen (focus:ring-2 focus:ring-amber-500)
+✅ Látható focus ring minden interaktív elemen (focus:ring-2 focus:ring-sky-500)
 ✅ alt szöveg minden <Image> komponensen
 ✅ aria-label minden ikonos gombon
 ✅ Kontrasztarány: minimum 4.5:1 (szöveg), 3:1 (UI elemek)

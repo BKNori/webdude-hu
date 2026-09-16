@@ -25,7 +25,7 @@ const statusColumns: { key: Lead["status"]; label: string; color: string }[] = [
   {
     key: "new",
     label: "Új leadek",
-    color: "border-amber-500/30 text-amber-500 bg-amber-500/5",
+    color: "border-sky-500/30 text-sky-500 bg-sky-500/5",
   },
   {
     key: "contacted",
@@ -196,7 +196,7 @@ export default function LeadKanbanBoard({
           value={newLeadsCount}
           icon={Clock}
           description="Feldolgozásra váró friss megkeresések"
-          iconColorClass="text-amber-500"
+          iconColorClass="text-sky-500"
         />
         <StatItem
           label="Aktív Értékesítési Tölcsér"
@@ -232,7 +232,7 @@ export default function LeadKanbanBoard({
         <button
           onClick={fetchLeadsClient}
           disabled={loading}
-          className="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-bg-elevated hover:border-amber-500/40 hover:text-amber-500 text-xs font-bold uppercase tracking-wider transition-all cursor-pointer disabled:opacity-50"
+          className="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-bg-elevated hover:border-sky-500/40 hover:text-sky-500 text-xs font-bold uppercase tracking-wider transition-all cursor-pointer disabled:opacity-50"
         >
           {loading ? (
             <Loader2 className="w-3.5 h-3.5 animate-spin" />
@@ -269,10 +269,10 @@ export default function LeadKanbanBoard({
               <div className="space-y-4 overflow-y-auto flex-1 max-h-150 pr-1">
                 {loading && leads.length === 0 ? (
                   <div className="flex flex-col items-center justify-center py-12 text-slate-500">
-                    <Loader2 className="w-6 h-6 animate-spin text-amber-500/60" />
+                    <Loader2 className="w-6 h-6 animate-spin text-sky-500/60" />
                   </div>
                 ) : colLeads.length === 0 ? (
-                  <div className="flex flex-col items-center justify-center py-12 border border-dashed border-gray-800/40 rounded-xl text-slate-600">
+                  <div className="flex flex-col items-center justify-center py-12 border border-dashed border-gray-800/40 rounded-xl text-slate-400">
                     <span className="text-[9px] uppercase tracking-wider font-bold">
                       Nincs lead
                     </span>

@@ -21,7 +21,7 @@ const auditTypes = [
     description: "Technikai elemzés",
     prompt:
       "technical SEO audit, site speed analysis, mobile optimization, crawlability, indexability, technical performance review",
-    color: "from-blue-500 to-amber-500",
+    color: "from-blue-500 to-sky-500",
   },
   {
     id: "content",
@@ -37,7 +37,7 @@ const auditTypes = [
     description: "AI válasz motor",
     prompt:
       "AEO optimization, AI answer engine optimization, schema.org implementation, structured data, featured snippets",
-    color: "from-[#f59e0b] to-orange-500",
+    color: "from-[#00B5F1] to-orange-500",
   },
   {
     id: "local",
@@ -53,7 +53,7 @@ const auditTypes = [
     description: "Lighthouse score",
     prompt:
       "performance SEO audit, Lighthouse score optimization, Core Web Vitals, page speed, loading time analysis",
-    color: "from-yellow-500 to-[#f59e0b]",
+    color: "from-yellow-500 to-[#00B5F1]",
   },
   {
     id: "backlink",
@@ -162,17 +162,17 @@ export default function SEOAuditAIMuhelyPage() {
       <div className="min-h-screen bg-bg-base">
         {/* Hero Section */}
         <section className="relative py-24 overflow-hidden">
-          <div className="absolute inset-0 bg-linear-to-b from-[#f59e0b]/5 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-b from-[#00B5F1]/5 via-transparent to-transparent" />
           <div className="max-w-6xl mx-auto px-6 relative z-10">
             <div className="text-center space-y-6">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#f59e0b]/10 border border-[#f59e0b]/20"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#00B5F1]/10 border border-[#00B5F1]/20"
               >
-                <Sparkles className="w-4 h-4 text-[#f59e0b]" />
-                <span className="text-xs font-bold text-[#f59e0b] uppercase tracking-[0.2em]">
+                <Sparkles className="w-4 h-4 text-[#00B5F1]" />
+                <span className="text-xs font-bold text-[#00B5F1] uppercase tracking-[0.2em]">
                   AI Műhely
                 </span>
               </motion.div>
@@ -183,7 +183,7 @@ export default function SEOAuditAIMuhelyPage() {
                 className="text-4xl md:text-6xl font-bold text-text-primary tracking-tight"
               >
                 SEO Audit AI{" "}
-                <span className="text-transparent bg-clip-text bg-linear-to-r from-[#f59e0b] to-[#FF7A00]">
+                <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6]">
                   Műhely
                 </span>
               </motion.h1>
@@ -210,8 +210,8 @@ export default function SEOAuditAIMuhelyPage() {
               className="bg-bg-surface border border-bg-elevated rounded-2xl p-8 shadow-[0_8px_32px_rgba(0,0,0,0.4)]"
             >
               <div className="flex items-center gap-3 mb-8">
-                <div className="w-12 h-12 rounded-xl bg-linear-to-br from-[#f59e0b]/10 to-[#FF7A00]/10 border border-[#f59e0b]/20 flex items-center justify-center">
-                  <Search className="w-6 h-6 text-[#f59e0b]" />
+                <div className="w-12 h-12 rounded-xl bg-linear-to-br from-[#00B5F1]/10 to-[#5B21B6]/10 border border-[#00B5F1]/20 flex items-center justify-center">
+                  <Search className="w-6 h-6 text-[#00B5F1]" />
                 </div>
                 <div>
                   <h2 className="text-2xl font-bold text-text-primary">
@@ -225,7 +225,7 @@ export default function SEOAuditAIMuhelyPage() {
 
               {/* Audit Type Selection */}
               <div className="mb-8">
-                <label className="text-sm font-bold text-[#f59e0b] uppercase tracking-[0.2em] mb-4 block">
+                <label className="text-sm font-bold text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
                   Audit típus
                 </label>
                 <div className="grid md:grid-cols-3 gap-4">
@@ -237,8 +237,8 @@ export default function SEOAuditAIMuhelyPage() {
                       whileTap={{ scale: 0.98 }}
                       className={`p-4 rounded-xl border-2 transition-all ${
                         selectedAudit.id === audit.id
-                          ? "border-[#f59e0b] bg-[#f59e0b]/10"
-                          : "border-bg-elevated bg-bg-surface hover:border-[#f59e0b]/50"
+                          ? "border-[#00B5F1] bg-[#00B5F1]/10"
+                          : "border-bg-elevated bg-bg-surface hover:border-[#00B5F1]/50"
                       }`}
                     >
                       <div className="w-8 h-8 rounded-lg bg-linear-to-br ${audit.color} mb-3" />
@@ -256,7 +256,7 @@ export default function SEOAuditAIMuhelyPage() {
               {/* Focus Area & Depth */}
               <div className="grid md:grid-cols-2 gap-6 mb-8">
                 <div>
-                  <label className="text-sm font-bold text-[#f59e0b] uppercase tracking-[0.2em] mb-4 block">
+                  <label className="text-sm font-bold text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
                     Fókusz terület
                   </label>
                   <div className="space-y-2">
@@ -266,8 +266,8 @@ export default function SEOAuditAIMuhelyPage() {
                         onClick={() => setSelectedFocus(focus)}
                         className={`w-full p-3 rounded-lg border-2 transition-all flex items-center justify-between ${
                           selectedFocus.id === focus.id
-                            ? "border-[#f59e0b] bg-[#f59e0b]/10"
-                            : "border-bg-elevated bg-bg-surface hover:border-[#f59e0b]/50"
+                            ? "border-[#00B5F1] bg-[#00B5F1]/10"
+                            : "border-bg-elevated bg-bg-surface hover:border-[#00B5F1]/50"
                         }`}
                       >
                         <span className="text-sm font-medium text-text-primary">
@@ -282,7 +282,7 @@ export default function SEOAuditAIMuhelyPage() {
                 </div>
 
                 <div>
-                  <label className="text-sm font-bold text-[#f59e0b] uppercase tracking-[0.2em] mb-4 block">
+                  <label className="text-sm font-bold text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
                     Audit mélység
                   </label>
                   <div className="space-y-2">
@@ -292,8 +292,8 @@ export default function SEOAuditAIMuhelyPage() {
                         onClick={() => setSelectedDepth(depth)}
                         className={`w-full p-3 rounded-lg border-2 transition-all ${
                           selectedDepth.id === depth.id
-                            ? "border-[#f59e0b] bg-[#f59e0b]/10"
-                            : "border-bg-elevated bg-bg-surface hover:border-[#f59e0b]/50"
+                            ? "border-[#00B5F1] bg-[#00B5F1]/10"
+                            : "border-bg-elevated bg-bg-surface hover:border-[#00B5F1]/50"
                         }`}
                       >
                         <div className="flex items-center justify-between">
@@ -313,7 +313,7 @@ export default function SEOAuditAIMuhelyPage() {
               {/* Text Input Fields */}
               <div className="space-y-6 mb-8">
                 <div>
-                  <label className="text-sm font-bold text-[#f59e0b] uppercase tracking-[0.2em] mb-4 block">
+                  <label className="text-sm font-bold text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
                     Weboldal URL (opcionális)
                   </label>
                   <input
@@ -321,12 +321,12 @@ export default function SEOAuditAIMuhelyPage() {
                     value={websiteUrl}
                     onChange={(e) => setWebsiteUrl(e.target.value)}
                     placeholder="pl. https://example.com"
-                    className="w-full p-3 rounded-lg border-2 border-bg-elevated bg-bg-base text-text-primary placeholder:text-text-secondary focus:border-[#f59e0b] focus:outline-none transition-all"
+                    className="w-full p-3 rounded-lg border-2 border-bg-elevated bg-bg-base text-text-primary placeholder:text-text-secondary focus:border-[#00B5F1] focus:outline-none transition-all"
                   />
                 </div>
 
                 <div>
-                  <label className="text-sm font-bold text-[#f59e0b] uppercase tracking-[0.2em] mb-4 block">
+                  <label className="text-sm font-bold text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
                     Cél kulcsszavak (opcionális)
                   </label>
                   <input
@@ -334,12 +334,12 @@ export default function SEOAuditAIMuhelyPage() {
                     value={targetKeywords}
                     onChange={(e) => setTargetKeywords(e.target.value)}
                     placeholder="pl. webfejlesztés, SEO, marketing"
-                    className="w-full p-3 rounded-lg border-2 border-bg-elevated bg-bg-base text-text-primary placeholder:text-text-secondary focus:border-[#f59e0b] focus:outline-none transition-all"
+                    className="w-full p-3 rounded-lg border-2 border-bg-elevated bg-bg-base text-text-primary placeholder:text-text-secondary focus:border-[#00B5F1] focus:outline-none transition-all"
                   />
                 </div>
 
                 <div>
-                  <label className="text-sm font-bold text-[#f59e0b] uppercase tracking-[0.2em] mb-4 block">
+                  <label className="text-sm font-bold text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
                     Üzleti célok (opcionális)
                   </label>
                   <input
@@ -347,12 +347,12 @@ export default function SEOAuditAIMuhelyPage() {
                     value={businessGoals}
                     onChange={(e) => setBusinessGoals(e.target.value)}
                     placeholder="pl. organikus forgalom növelése, konverzió optimalizálás"
-                    className="w-full p-3 rounded-lg border-2 border-bg-elevated bg-bg-base text-text-primary placeholder:text-text-secondary focus:border-[#f59e0b] focus:outline-none transition-all"
+                    className="w-full p-3 rounded-lg border-2 border-bg-elevated bg-bg-base text-text-primary placeholder:text-text-secondary focus:border-[#00B5F1] focus:outline-none transition-all"
                   />
                 </div>
 
                 <div>
-                  <label className="text-sm font-bold text-[#f59e0b] uppercase tracking-[0.2em] mb-4 block">
+                  <label className="text-sm font-bold text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
                     Egyedi utasítások (opcionális)
                   </label>
                   <textarea
@@ -360,7 +360,7 @@ export default function SEOAuditAIMuhelyPage() {
                     onChange={(e) => setCustomInstructions(e.target.value)}
                     placeholder="pl. hangsúly a technikai SEO-ra, helyi keresés optimalizálás, AEO fókusz"
                     rows={3}
-                    className="w-full p-3 rounded-lg border-2 border-bg-elevated bg-bg-base text-text-primary placeholder:text-text-secondary focus:border-[#f59e0b] focus:outline-none transition-all resize-none"
+                    className="w-full p-3 rounded-lg border-2 border-bg-elevated bg-bg-base text-text-primary placeholder:text-text-secondary focus:border-[#00B5F1] focus:outline-none transition-all resize-none"
                   />
                 </div>
               </div>
@@ -371,7 +371,7 @@ export default function SEOAuditAIMuhelyPage() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 disabled={isGenerating}
-                className="w-full py-4 bg-linear-to-r from-[#f59e0b] to-[#FF7A00] text-white font-bold rounded-xl hover:shadow-[0_8px_32px_rgba(0,181,241,0.4)] transition-all flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full py-4 bg-linear-to-r from-[#00B5F1] to-[#5B21B6] text-slate-950 font-bold rounded-xl hover:shadow-[0_8px_32px_rgba(0, 181, 241,0.4)] transition-all flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isGenerating ? (
                   <>
@@ -403,7 +403,7 @@ export default function SEOAuditAIMuhelyPage() {
                         onClick={copyPrompt}
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
-                        className="p-2 rounded-lg bg-[#f59e0b]/10 border border-[#f59e0b]/20 text-[#f59e0b] hover:bg-[#f59e0b]/20 transition-all"
+                        className="p-2 rounded-lg bg-[#00B5F1]/10 border border-[#00B5F1]/20 text-[#00B5F1] hover:bg-[#00B5F1]/20 transition-all"
                       >
                         <Copy className="w-4 h-4" />
                       </motion.button>
@@ -428,7 +428,7 @@ export default function SEOAuditAIMuhelyPage() {
               className="text-3xl font-bold text-text-primary mb-8 text-center tracking-tight"
             >
               Funkciók és{" "}
-              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#f59e0b] to-[#FF7A00]">
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6]">
                 Előnyök
               </span>
             </motion.h2>
@@ -462,10 +462,10 @@ export default function SEOAuditAIMuhelyPage() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="bg-bg-surface border border-bg-elevated rounded-xl p-6 hover:border-[#f59e0b]/50 transition-all group"
+                    className="bg-bg-surface border border-bg-elevated rounded-xl p-6 hover:border-[#00B5F1]/50 transition-all group"
                   >
-                    <div className="w-12 h-12 rounded-xl bg-linear-to-br from-[#f59e0b]/10 to-[#FF7A00]/10 border border-[#f59e0b]/20 flex items-center justify-center mb-4 group-hover:border-[#f59e0b]/50 transition-colors">
-                      <FeatureIcon className="w-6 h-6 text-[#f59e0b]" />
+                    <div className="w-12 h-12 rounded-xl bg-linear-to-br from-[#00B5F1]/10 to-[#5B21B6]/10 border border-[#00B5F1]/20 flex items-center justify-center mb-4 group-hover:border-[#00B5F1]/50 transition-colors">
+                      <FeatureIcon className="w-6 h-6 text-[#00B5F1]" />
                     </div>
                     <h3 className="text-lg font-bold text-text-primary mb-2">
                       {feature.title}
@@ -490,7 +490,7 @@ export default function SEOAuditAIMuhelyPage() {
               className="text-3xl font-bold text-text-primary mb-4 tracking-tight"
             >
               Készen állsz az{" "}
-              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#f59e0b] to-[#FF7A00]">
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6]">
                 SEO Auditra
               </span>
               ?
@@ -510,7 +510,7 @@ export default function SEOAuditAIMuhelyPage() {
               transition={{ duration: 0.5, delay: 0.2 }}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center gap-2 px-8 py-4 bg-linear-to-r from-[#f59e0b] to-[#FF7A00] text-white font-bold rounded-xl hover:shadow-[0_8px_32px_rgba(0,181,241,0.4)] transition-all"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-linear-to-r from-[#00B5F1] to-[#5B21B6] text-slate-950 font-bold rounded-xl hover:shadow-[0_8px_32px_rgba(0, 181, 241,0.4)] transition-all"
             >
               Kezdés most
               <ArrowRight className="w-4 h-4" />

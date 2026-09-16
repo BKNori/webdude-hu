@@ -33,7 +33,7 @@ export default function ServiceCard({
 
       {href ? (
         <Link href={href} className="block">
-          <div className="bg-slate-900/80 border border-slate-700 rounded-3xl p-8 h-full flex flex-col shadow-[0_8px_24px_rgba(15,23,42,0.3)] hover:border-[#00B5F1]/50 hover:shadow-[0_18px_40px_rgba(0,181,241,0.2)] hover:-translate-y-1 transition-all duration-300 backdrop-blur-md">
+          <div className="bg-slate-900/80 border border-slate-700 rounded-3xl p-8 h-full flex flex-col shadow-[0_8px_24px_rgba(15,23,42,0.3)] hover:border-[#00B5F1]/50 hover:shadow-[0_18px_40px_rgba(0, 181, 241,0.2)] hover:-translate-y-1 transition-all duration-300 backdrop-blur-md">
             <div className="flex items-center gap-4 mb-4">
               <div className="w-14 h-14 rounded-lg bg-slate-800/50 border border-slate-700 flex items-center justify-center group-hover:border-[#00B5F1]/50 transition-colors">
                 {icon && (
@@ -62,7 +62,7 @@ export default function ServiceCard({
           </div>
         </Link>
       ) : (
-        <div className="bg-slate-900/80 border border-slate-700 rounded-3xl p-8 h-full flex flex-col shadow-[0_8px_24px_rgba(15,23,42,0.3)] hover:border-[#00B5F1]/50 hover:shadow-[0_18px_40px_rgba(0,181,241,0.2)] hover:-translate-y-1 transition-all duration-300 backdrop-blur-md">
+        <div className="bg-slate-900/80 border border-slate-700 rounded-3xl p-8 h-full flex flex-col shadow-[0_8px_24px_rgba(15,23,42,0.3)] hover:border-[#00B5F1]/50 hover:shadow-[0_18px_40px_rgba(0, 181, 241,0.2)] hover:-translate-y-1 transition-all duration-300 backdrop-blur-md">
           <div className="flex items-center gap-4 mb-4">
             <div className="w-14 h-14 rounded-lg bg-slate-800/50 border border-slate-700 flex items-center justify-center group-hover:border-[#00B5F1]/50 transition-colors">
               {icon && (

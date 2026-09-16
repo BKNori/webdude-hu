@@ -1,67 +1,54 @@
 "use client";
 
-import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "motion/react";
-import { Trophy, Users, Clock, Star } from "lucide-react";
+import React from "react";
+import { motion } from "motion/react";
+import { Award, Clock, Palette, Star } from "lucide-react";
+
+/**
+ * SocialProofStrip — E-E-A-T autoritás sáv
+ *
+ * - Végtelenített CSS marquee (marquee-left / marquee-right) a globals.css-ből
+ * - Minden szöveg világos (WCAG AA): text-slate-400 a #020617 alapon
+ * - Amber kizárólag fémjelzésként (micro badge)
+ */
 
 const stats = [
-  { icon: Trophy, value: "26+", label: "Év tapasztalat" },
-  { icon: Users, value: "47+", label: "Elégedett ügyfél" },
-  { icon: Star, value: "4.9", label: "Átlagos értékelés" },
+  { icon: Palette, value: "26+", label: "Év grafikai tervezés" },
+  { icon: Award, value: "16+", label: "Év webfejlesztés" },
+  { icon: Star, value: "4.9/5", label: "Átlagos értékelés" },
   { icon: Clock, value: "24h", label: "Átlagos válaszidő" },
 ];
 
-// Logók / partnerek (szövegesen, ikonként)
 const clients = [
   "btshop.hu",
   "Rimai Kft.",
   "B2B Logisztika",
   "AI-Prompt.hu",
-  "Next.js Projects",
-  "Firebase Apps",
+  "Next.js Projektek",
+  "Firebase Appok",
   "WooCommerce",
-  "Figma Designs",
+  "Figma Design",
 ];
 
 export default function SocialProofStrip() {
-  const stripRef = useRef<HTMLDivElement>(null);
-
-  const { scrollYProgress } = useScroll({
-    target: stripRef,
-    offset: ["start end", "end start"],
-  });
-
-  // Scroll-velocity marquee sebesség
-  const x1 = useTransform(scrollYProgress, [0, 1], [0, -120]);
-  const x2 = useTransform(scrollYProgress, [0, 1], [-120, 0]);
-
-  const reversedClients = [...clients].reverse();
-
   return (
     <section
-      ref={stripRef}
       className="relative py-16 md:py-20 bg-[#020617] border-y border-white/5 overflow-hidden"
       aria-label="Statisztikák és referenciák"
     >
-      {/* Halvány elválasztó vonal effekt */}
+      {/* Halvány elválasztó fény */}
       <div
         className="absolute inset-0 pointer-events-none"
         aria-hidden="true"
         style={{
           background:
-            "linear-gradient(90deg, transparent 0%, rgba(0,181,241,0.04) 50%, transparent 100%)",
+            "linear-gradient(90deg, transparent 0%, rgba(0, 181, 241,0.05) 50%, transparent 100%)",
         }}
       />
 
-      <div className="max-w-[1440px] mx-auto px-6 lg:px-12 xl:px-16">
-        {/* KPI statisztikák */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ type: "spring", stiffness: 80, damping: 20 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mb-12"
-        >
+      <div className="relative max-w-360 mx-auto px-6 lg:px-12 xl:px-16">
+        {/* KPI statisztikák — E-E-A-T */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mb-12">
           {stats.map((stat, idx) => {
             const Icon = stat.icon;
             return (
@@ -69,7 +56,7 @@ export default function SocialProofStrip() {
                 key={stat.label}
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: "-80px" }}
                 transition={{
                   type: "spring",
                   stiffness: 100,
@@ -78,64 +65,63 @@ export default function SocialProofStrip() {
                 }}
                 className="flex flex-col items-center text-center"
               >
-                <div className="w-12 h-12 rounded-2xl bg-[#00B5F1]/10 border border-[#00B5F1]/20 flex items-center justify-center mb-3">
+                <div className="w-12 h-12 rounded-2xl bg-[#0f172a] border border-[#00B5F1]/20 flex items-center justify-center mb-3">
                   <Icon className="w-6 h-6 text-[#00B5F1]" aria-hidden="true" />
                 </div>
                 <div className="text-3xl md:text-4xl font-extrabold text-white tabular-nums">
                   {stat.value}
                 </div>
-                <div className="text-xs text-slate-500 font-medium uppercase tracking-wider mt-1">
+                <div className="text-xs text-slate-400 font-medium uppercase tracking-wider mt-1">
                   {stat.label}
                 </div>
               </motion.div>
             );
           })}
-        </motion.div>
+        </div>
 
-        {/* Elválasztó */}
-        <div className="border-t border-white/5 mb-8" aria-hidden="true" />
+        {/* Fémjelzés sor */}
+        <div
+          className="flex items-center justify-center gap-3 mb-8"
+          aria-hidden="true"
+        >
+          <span className="h-px w-12 bg-white/10" />
+          <span className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.25em] text-sky-400/90">
+            <span className="w-1.5 h-1.5 rotate-45 bg-sky-500" />
+            47+ leszállított projekt
+          </span>
+          <span className="h-px w-12 bg-white/10" />
+        </div>
 
-        {/* Feliratok */}
-        <p className="text-center text-xs text-slate-600 uppercase tracking-widest font-medium mb-6">
+        <p className="text-center text-xs text-slate-400 uppercase tracking-widest font-medium mb-6">
           Eddig együttműködtem
         </p>
 
-        {/* Marquee szalag 1 — balra */}
+        {/* Marquee 1 — balra (végtelenített) */}
         <div className="relative overflow-hidden mb-4" aria-hidden="true">
-          <motion.div
-            style={{ x: x1 }}
-            className="flex gap-8 whitespace-nowrap"
-            aria-hidden="true"
-          >
-            {[...clients, ...clients, ...clients].map((client, i) => (
+          <div className="marquee-track marquee-left flex w-max gap-8">
+            {[...clients, ...clients].map((client, i) => (
               <span
-                key={`${client}-${i}`}
-                className="text-slate-600 text-sm font-semibold uppercase tracking-widest px-4 py-2 rounded-full border border-white/5 bg-white/2"
+                key={`mq-a-${client}-${i}`}
+                className="text-slate-400 text-sm font-semibold uppercase tracking-widest px-4 py-2 rounded-full border border-white/8 bg-white/4"
               >
                 {client}
               </span>
             ))}
-          </motion.div>
+          </div>
         </div>
 
-        {/* Marquee szalag 2 — jobbra (scroll velocity ellentétes) */}
+        {/* Marquee 2 — jobbra (ellentétes irány) */}
         <div className="relative overflow-hidden" aria-hidden="true">
-          <motion.div
-            style={{ x: x2 }}
-            className="flex gap-8 whitespace-nowrap"
-            aria-hidden="true"
-          >
-            {[...reversedClients, ...reversedClients, ...reversedClients].map(
-              (client, i) => (
-                <span
-                  key={`rev-${client}-${i}`}
-                  className="text-slate-700 text-xs font-medium uppercase tracking-widest px-4 py-2 rounded-full border border-white/4 bg-white/1"
-                >
-                  {client}
-                </span>
-              )
-            )}
-          </motion.div>
+          <div className="marquee-track marquee-right flex w-max gap-8">
+            {[...clients, ...clients].reverse().map((client, i) => (
+              <span
+                key={`mq-b-${client}-${i}`}
+                className="text-slate-400 text-xs font-medium uppercase tracking-widest px-4 py-2 rounded-full border border-white/6 bg-white/2"
+              >
+                {client}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     </section>

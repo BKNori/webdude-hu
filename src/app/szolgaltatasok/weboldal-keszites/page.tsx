@@ -1,4 +1,4 @@
-﻿import Button from "@/components/atoms/Button";
+import Button from "@/components/atoms/Button";
 import Badge from "@/components/atoms/Badge";
 import { Metadata } from "next";
 import BentoCard from "@/components/molecules/BentoCard";
@@ -13,7 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
     description:
       "Egyedi weboldal fejlesztés React, Next.js, WordPress, Node.js, HTML, JavaScript technológiákkal. Mobilbarát, SEO-optimalizált és konverzió-fókuszú megoldások az ügyfél igénye szerint. Landing page, vállalati weboldal, webshop és alkalmazás fejlesztés.",
     keywords:
-      "weboldal készítés, React fejlesztés, Next.js, WordPress, Node.js, HTML, JavaScript, egyedi weboldal, responsive design, Kecskemét, landing page, vállalati weboldal, webshop fejlesztés, SaaS platform",
+      "weboldal készítés, React fejlesztés, Next.js, WordPress, Node.js, HTML, JavaScript, egyedi weboldal, responsive design, landing page, vállalati weboldal, webshop fejlesztés, SaaS platform",
     alternates: {
       canonical: "https://webdude.hu/szolgaltatasok/weboldal-keszites",
     },
@@ -60,7 +60,7 @@ const FAQ = [
   },
   {
     q: "Mennyibe kerül egy weboldal?",
-    a: "Egyszerű landing page 120.000 Ft-tól, vállalati weboldal 250.000 Ft-tól, webshop 350.000 Ft-tól indul. Az ár tartalmazza a webspecifikáció kialakítást, konzultációt, fejlesztést, tesztelést és deploy-ot. Kérjen személyre szabott ajánlatot.",
+    a: "Egyedi árajánlat kérése a projekt igényei szerint. Ingyenes konzultáció a pontos árhoz.",
   },
   {
     q: "Miért a WordPress a legjobb választás?",
@@ -94,7 +94,8 @@ export default async function WeboldalKeszitesPage() {
     description:
       "Egyedi weboldal fejlesztés React, Next.js, WordPress, Node.js, HTML, JavaScript technológiákkal. Mobilbarát, SEO-optimalizált és konverzió-fókuszú megoldások az ügyfél igénye szerint.",
     provider: {
-      "@type": "LocalBusiness",
+      "@type": "Organization",
+      "@id": "https://webdude.hu/#organization",
       name: "WebDude",
       url: "https://webdude.hu",
     },

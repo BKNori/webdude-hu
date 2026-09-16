@@ -61,13 +61,13 @@ export default function SEOAuditTool() {
 
   const getScoreColor = (score: number) => {
     if (score >= 80) return "text-emerald-500";
-    if (score >= 60) return "text-amber-500";
+    if (score >= 60) return "text-sky-500";
     return "text-red-500";
   };
 
   const getScoreBg = (score: number) => {
     if (score >= 80) return "bg-emerald-500/10 border-emerald-500/20";
-    if (score >= 60) return "bg-amber-500/10 border-amber-500/20";
+    if (score >= 60) return "bg-sky-500/10 border-sky-500/20";
     return "bg-red-500/10 border-red-500/20";
   };
 
@@ -78,10 +78,10 @@ export default function SEOAuditTool() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/20"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sky-500/10 border border-sky-500/20"
         >
-          <Search className="w-4 h-4 text-amber-500" />
-          <span className="text-xs font-mono font-bold uppercase tracking-widest text-amber-500">
+          <Search className="w-4 h-4 text-sky-500" />
+          <span className="text-xs font-mono font-bold uppercase tracking-widest text-sky-500">
             AI SEO Audit
           </span>
         </motion.div>
@@ -124,7 +124,7 @@ export default function SEOAuditTool() {
               value={url}
               onChange={(e) => setUrl(e.target.value)}
               placeholder="https://pelda.hu"
-              className="w-full px-4 py-3 bg-bg-surface border border-bg-elevated rounded-xl text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all"
+              className="w-full px-4 py-3 bg-bg-surface border border-bg-elevated rounded-xl text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all"
             />
           </div>
 
@@ -138,7 +138,7 @@ export default function SEOAuditTool() {
           <button
             onClick={handleAudit}
             disabled={loading}
-            className="w-full px-6 py-3 bg-amber-500 hover:bg-amber-600 text-bg-base font-bold rounded-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            className="w-full px-6 py-3 bg-sky-500 hover:bg-violet-700 text-bg-base font-bold rounded-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
           >
             {loading ? (
               <>
@@ -179,7 +179,7 @@ export default function SEOAuditTool() {
                 initial={{ width: 0 }}
                 animate={{ width: `${result.score}%` }}
                 transition={{ duration: 1, ease: "easeOut" }}
-                className={`h-full ${result.score >= 80 ? "bg-emerald-500" : result.score >= 60 ? "bg-amber-500" : "bg-red-500"}`}
+                className={`h-full ${result.score >= 80 ? "bg-emerald-500" : result.score >= 60 ? "bg-sky-500" : "bg-red-500"}`}
               />
             </div>
           </div>
@@ -187,12 +187,12 @@ export default function SEOAuditTool() {
           {/* JSON-LD Schema Analysis */}
           <div className="glass-card p-6 space-y-4">
             <h3 className="text-xl font-bold text-white flex items-center gap-2">
-              <TrendingUp className="w-5 h-5 text-amber-500" />
+              <TrendingUp className="w-5 h-5 text-sky-500" />
               JSON-LD Schema (AEO)
             </h3>
             <div className="grid md:grid-cols-2 gap-4">
               <div className="bg-bg-elevated/50 p-4 rounded-xl">
-                <div className="text-2xl font-bold text-amber-500">
+                <div className="text-2xl font-bold text-sky-500">
                   {result.jsonLdSchema.schemaCount}
                 </div>
                 <div className="text-xs text-slate-400 uppercase">
@@ -253,7 +253,7 @@ export default function SEOAuditTool() {
           {/* Meta Tags */}
           <div className="glass-card p-6 space-y-4">
             <h3 className="text-xl font-bold text-white flex items-center gap-2">
-              <TrendingUp className="w-5 h-5 text-amber-500" />
+              <TrendingUp className="w-5 h-5 text-sky-500" />
               Meta Tagok
             </h3>
             <div className="space-y-3">
@@ -300,24 +300,24 @@ export default function SEOAuditTool() {
           {/* Heading Structure */}
           <div className="glass-card p-6 space-y-4">
             <h3 className="text-xl font-bold text-white flex items-center gap-2">
-              <TrendingUp className="w-5 h-5 text-amber-500" />
+              <TrendingUp className="w-5 h-5 text-sky-500" />
               Fejlec Struktúra
             </h3>
             <div className="grid md:grid-cols-3 gap-4">
               <div className="bg-bg-elevated/50 p-4 rounded-xl">
-                <div className="text-2xl font-bold text-amber-500">
+                <div className="text-2xl font-bold text-sky-500">
                   {result.headingStructure.h1.length}
                 </div>
                 <div className="text-xs text-slate-400 uppercase">H1</div>
               </div>
               <div className="bg-bg-elevated/50 p-4 rounded-xl">
-                <div className="text-2xl font-bold text-amber-500">
+                <div className="text-2xl font-bold text-sky-500">
                   {result.headingStructure.h2.length}
                 </div>
                 <div className="text-xs text-slate-400 uppercase">H2</div>
               </div>
               <div className="bg-bg-elevated/50 p-4 rounded-xl">
-                <div className="text-2xl font-bold text-amber-500">
+                <div className="text-2xl font-bold text-sky-500">
                   {result.headingStructure.h3.length}
                 </div>
                 <div className="text-xs text-slate-400 uppercase">H3</div>
@@ -346,7 +346,7 @@ export default function SEOAuditTool() {
           {/* Gap Analysis */}
           <div className="glass-card p-6 space-y-4">
             <h3 className="text-xl font-bold text-white flex items-center gap-2">
-              <AlertCircle className="w-5 h-5 text-amber-500" />
+              <AlertCircle className="w-5 h-5 text-sky-500" />
               Gap Analysis
             </h3>
             <div className="grid md:grid-cols-2 gap-6">
@@ -382,7 +382,7 @@ export default function SEOAuditTool() {
                         key={i}
                         className="text-slate-300 text-sm flex items-start gap-2"
                       >
-                        <span className="text-amber-500">→</span>
+                        <span className="text-sky-500">→</span>
                         {adv}
                       </li>
                     ))
@@ -402,7 +402,7 @@ export default function SEOAuditTool() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="glass-card p-8 border border-amber-500/30 bg-gradient-to-br from-amber-500/5 to-transparent text-center"
+              className="glass-card p-8 border border-sky-500/30 bg-gradient-to-br from-sky-500/5 to-transparent text-center"
             >
               <div className="space-y-4">
                 <h3 className="text-2xl font-bold text-white">
@@ -417,7 +417,7 @@ export default function SEOAuditTool() {
                 </p>
                 <button
                   onClick={() => (window.location.href = "/kapcsolat")}
-                  className="px-8 py-4 bg-amber-500 hover:bg-amber-600 text-bg-base font-bold rounded-xl transition-all duration-300 flex items-center justify-center gap-2 mx-auto"
+                  className="px-8 py-4 bg-sky-500 hover:bg-violet-700 text-bg-base font-bold rounded-xl transition-all duration-300 flex items-center justify-center gap-2 mx-auto"
                 >
                   {result.jsonLdSchema.missingTypes.length > 3
                     ? "Kérd a WebDude AEO Auditot"

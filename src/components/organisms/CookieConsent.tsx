@@ -77,7 +77,7 @@ export default function CookieConsent() {
       transition={{ duration: 0.5 }}
       className="fixed bottom-4 left-4 right-4 md:left-8 md:right-8 z-50 pointer-events-none"
     >
-      <div className="bg-bg-surface border border-amber-500/50 rounded-2xl p-6 md:p-8 shadow-2xl backdrop-blur-xl bg-opacity-95 pointer-events-auto">
+      <div className="bg-bg-surface border border-sky-500/50 rounded-2xl p-6 md:p-8 shadow-2xl backdrop-blur-xl bg-opacity-95 pointer-events-auto">
         <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6">
           <div className="flex-1">
             <h3 className="text-lg font-bold text-text-primary mb-2">
@@ -92,7 +92,7 @@ export default function CookieConsent() {
               További információ:{" "}
               <a
                 href="/adatvedelmi-szabalyzat"
-                className="text-amber-500 hover:text-amber-600 underline"
+                className="text-sky-500 hover:text-violet-700 underline"
               >
                 Adatvédelmi Szabályzat
               </a>

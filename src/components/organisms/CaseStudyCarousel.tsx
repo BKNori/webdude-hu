@@ -45,10 +45,10 @@ export default function CaseStudyCarousel() {
         {studies.map((study) => (
           <div
             key={study.id}
-            className="bg-bg-card p-6 rounded-xl border border-amber-500/20 hover:border-amber-500 transition-all duration-300 shadow-xl cursor-pointer group"
+            className="bg-bg-card p-6 rounded-xl border border-sky-500/20 hover:border-sky-500 transition-all duration-300 shadow-xl cursor-pointer group"
           >
             <div className="flex items-center justify-between mb-4">
-              <div className="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-500 group-hover:bg-amber-500/20 transition-colors">
+              <div className="w-12 h-12 rounded-xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-500 group-hover:bg-sky-500/20 transition-colors">
                 <Sparkles className="w-6 h-6" />
               </div>
               <span className="text-[10px] uppercase font-bold text-slate-400 font-mono">
@@ -64,7 +64,7 @@ export default function CaseStudyCarousel() {
             <div className="mt-4 flex gap-4">
               {study.impactMetrics.efficiencyGain && (
                 <div className="text-center">
-                  <p className="text-amber-500 font-bold">
+                  <p className="text-sky-500 font-bold">
                     {study.impactMetrics.efficiencyGain}
                   </p>
                   <p className="text-[10px] text-slate-400 uppercase">
@@ -74,7 +74,7 @@ export default function CaseStudyCarousel() {
               )}
               {study.impactMetrics.timeSaved && (
                 <div className="text-center">
-                  <p className="text-amber-500 font-bold">
+                  <p className="text-sky-500 font-bold">
                     {study.impactMetrics.timeSaved}
                   </p>
                   <p className="text-[10px] text-slate-400 uppercase">

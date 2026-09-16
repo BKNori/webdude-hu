@@ -49,7 +49,7 @@ export default function CaseStudies() {
   return (
     <section className="py-24 md:py-32 bg-transparent border-t border-slate-200 relative overflow-hidden">
       {/* Background glow effects for premium look */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-125 h-125 bg-amber-500/5 rounded-full blur-[120px] pointer-events-none z-0" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-125 h-125 bg-sky-500/5 rounded-full blur-[120px] pointer-events-none z-0" />
 
       <div className="px-6 lg:px-8 max-w-6xl mx-auto relative z-10">
         <motion.div

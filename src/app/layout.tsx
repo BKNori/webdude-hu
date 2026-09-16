@@ -160,16 +160,16 @@ export default function RootLayout({ children }: RootLayoutProps) {
           {/* Skip link for accessibility */}
           <a
             href="#main-content"
-            className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-amber-500 focus:text-bg-base focus:px-4 focus:py-2 focus:rounded-md"
+            className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-[#00B5F1] focus:text-bg-base focus:px-4 focus:py-2 focus:rounded-md"
           >
             Ugrás a fő tartalomra
           </a>
 
           {/* Globális CSS Háttérréteg */}
           <div className="fixed inset-0 pointer-events-none -z-10 overflow-hidden">
-            <div className="absolute top-[-10%] left-[15%] w-150 h-150 rounded-full bg-amber-500/15 blur-[140px] bg-ambient-glow-1" />
-            <div className="absolute top-[40%] right-[10%] w-125 h-125 rounded-full bg-yellow-600/10 blur-[150px] bg-ambient-glow-2" />
-            <div className="absolute bottom-[-10%] left-[20%] w-[162.5] h-[162.5] rounded-full bg-amber-600/10 blur-[160px] bg-ambient-glow-1" />
+            <div className="absolute top-[-10%] left-[15%] w-150 h-150 rounded-full bg-[#00B5F1]/15 blur-[140px] bg-ambient-glow-1" />
+            <div className="absolute top-[40%] right-[10%] w-125 h-125 rounded-full bg-[#00B5F1]/10 blur-[150px] bg-ambient-glow-2" />
+            <div className="absolute bottom-[-10%] left-[20%] w-[162.5] h-[162.5] rounded-full bg-[#00B5F1]/10 blur-[160px] bg-ambient-glow-1" />
             <div className="absolute inset-0 bg-mesh-grid opacity-60" />
           </div>
 

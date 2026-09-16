@@ -99,9 +99,9 @@ export default function AdminPanel({ users = [], addons = [] }: AdminPanelProps)
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto px-6 py-12">
       {/* 1. Form: Ügyfél Regisztráció */}
-      <div className="bg-[#0f172a]/30 border border-slate-800/50 backdrop-blur-md rounded-2xl p-8 hover:border-amber-500/10 transition-colors duration-300">
+      <div className="bg-[#0f172a]/30 border border-slate-800/50 backdrop-blur-md rounded-2xl p-8 hover:border-sky-500/10 transition-colors duration-300">
         <h2 className="text-2xl font-bold text-[#e2e8f0] mb-6 flex items-center gap-2">
-          <span className="w-1.5 h-6 bg-amber-500 rounded-full"></span>
+          <span className="w-1.5 h-6 bg-sky-500 rounded-full"></span>
           Új Ügyfél Regisztrációja
         </h2>
         
@@ -114,7 +114,7 @@ export default function AdminPanel({ users = [], addons = [] }: AdminPanelProps)
               type="text"
               {...registerForm.register("name")}
               placeholder="Pl. Kis Péter"
-              className="w-full bg-[#1e293b]/30 border border-slate-800 focus:border-amber-500/50 rounded-xl px-4 py-3 text-[#e2e8f0] outline-none transition-all"
+              className="w-full bg-[#1e293b]/30 border border-slate-800 focus:border-sky-500/50 rounded-xl px-4 py-3 text-[#e2e8f0] outline-none transition-all"
             />
             {registerForm.formState.errors.name && (
               <p className="text-red-500 text-sm mt-1">{registerForm.formState.errors.name.message}</p>
@@ -129,7 +129,7 @@ export default function AdminPanel({ users = [], addons = [] }: AdminPanelProps)
               type="email"
               {...registerForm.register("email")}
               placeholder="peter@pelda.hu"
-              className="w-full bg-[#1e293b]/30 border border-slate-800 focus:border-amber-500/50 rounded-xl px-4 py-3 text-[#e2e8f0] outline-none transition-all"
+              className="w-full bg-[#1e293b]/30 border border-slate-800 focus:border-sky-500/50 rounded-xl px-4 py-3 text-[#e2e8f0] outline-none transition-all"
             />
             {registerForm.formState.errors.email && (
               <p className="text-red-500 text-sm mt-1">{registerForm.formState.errors.email.message}</p>
@@ -139,7 +139,7 @@ export default function AdminPanel({ users = [], addons = [] }: AdminPanelProps)
           <button
             type="submit"
             disabled={isPendingRegister}
-            className="w-full py-4 px-6 rounded-xl bg-amber-500 hover:bg-amber-600 disabled:bg-amber-500/30 text-[#020617] font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2"
+            className="w-full py-4 px-6 rounded-xl bg-sky-500 hover:bg-violet-700 disabled:bg-sky-500/30 text-[#020617] font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2"
           >
             {isPendingRegister ? "Mentés folyamatban..." : "Ügyfél Létrehozása"}
           </button>
@@ -153,9 +153,9 @@ export default function AdminPanel({ users = [], addons = [] }: AdminPanelProps)
       </div>
 
       {/* 2. Form: Addon Hozzárendelés */}
-      <div className="bg-[#0f172a]/30 border border-slate-800/50 backdrop-blur-md rounded-2xl p-8 hover:border-amber-500/10 transition-colors duration-300">
+      <div className="bg-[#0f172a]/30 border border-slate-800/50 backdrop-blur-md rounded-2xl p-8 hover:border-sky-500/10 transition-colors duration-300">
         <h2 className="text-2xl font-bold text-[#e2e8f0] mb-6 flex items-center gap-2">
-          <span className="w-1.5 h-6 bg-amber-500 rounded-full"></span>
+          <span className="w-1.5 h-6 bg-sky-500 rounded-full"></span>
           Szolgáltatás Hozzárendelése
         </h2>
 
@@ -166,7 +166,7 @@ export default function AdminPanel({ users = [], addons = [] }: AdminPanelProps)
             </label>
             <select
               {...assignForm.register("userId")}
-              className="w-full bg-[#1e293b]/50 border border-slate-800 focus:border-amber-500/50 rounded-xl px-4 py-3 text-[#e2e8f0] outline-none transition-all"
+              className="w-full bg-[#1e293b]/50 border border-slate-800 focus:border-sky-500/50 rounded-xl px-4 py-3 text-[#e2e8f0] outline-none transition-all"
             >
               <option value="">-- Válassz az aktív kliensek közül --</option>
               {users.map((u) => (
@@ -186,7 +186,7 @@ export default function AdminPanel({ users = [], addons = [] }: AdminPanelProps)
             </label>
             <select
               {...assignForm.register("addonId")}
-              className="w-full bg-[#1e293b]/50 border border-slate-800 focus:border-amber-500/50 rounded-xl px-4 py-3 text-[#e2e8f0] outline-none transition-all"
+              className="w-full bg-[#1e293b]/50 border border-slate-800 focus:border-sky-500/50 rounded-xl px-4 py-3 text-[#e2e8f0] outline-none transition-all"
             >
               <option value="">-- Válassz szolgáltatást --</option>
               {addons.map((a) => (
@@ -203,7 +203,7 @@ export default function AdminPanel({ users = [], addons = [] }: AdminPanelProps)
           <button
             type="submit"
             disabled={isPendingAssign}
-            className="w-full py-4 px-6 rounded-xl bg-amber-500 hover:bg-amber-600 disabled:bg-amber-500/30 text-[#020617] font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2"
+            className="w-full py-4 px-6 rounded-xl bg-sky-500 hover:bg-violet-700 disabled:bg-sky-500/30 text-[#020617] font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2"
           >
             {isPendingAssign ? "Hozzárendelés folyamatban..." : "Szolgáltatás Hozzáadása"}
           </button>
@@ -305,9 +305,9 @@ export default function QuoteRequestForm() {
 
   if (isSubmitted) {
     return (
-      <div className="bg-[#0f172a]/30 border border-amber-500/30 backdrop-blur-md rounded-2xl p-8 md:p-12 text-center max-w-2xl mx-auto shadow-[0_0_50px_rgba(245,158,11,0.15)] animate-fade-in animate-duration-500">
-        <div className="w-16 h-16 bg-amber-500/10 border border-amber-500/30 rounded-full flex items-center justify-center mx-auto mb-6">
-          <svg className="w-8 h-8 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <div className="bg-[#0f172a]/30 border border-sky-500/30 backdrop-blur-md rounded-2xl p-8 md:p-12 text-center max-w-2xl mx-auto shadow-[0_0_50px_rgba(0, 181, 241,0.15)] animate-fade-in animate-duration-500">
+        <div className="w-16 h-16 bg-sky-500/10 border border-sky-500/30 rounded-full flex items-center justify-center mx-auto mb-6">
+          <svg className="w-8 h-8 text-sky-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
           </svg>
         </div>
@@ -320,7 +320,7 @@ export default function QuoteRequestForm() {
             setIsSubmitted(false);
             setStep(1);
           }}
-          className="px-8 py-3 bg-amber-500 hover:bg-amber-600 text-[#020617] font-semibold uppercase tracking-wider rounded-xl transition-all"
+          className="px-8 py-3 bg-sky-500 hover:bg-violet-700 text-[#020617] font-semibold uppercase tracking-wider rounded-xl transition-all"
         >
           Új Ajánlatkérés Indítása
         </button>
@@ -329,7 +329,7 @@ export default function QuoteRequestForm() {
   }
 
   return (
-    <div className="bg-[#0f172a]/30 border border-slate-800/50 backdrop-blur-md rounded-2xl p-8 max-w-3xl mx-auto hover:border-amber-500/10 transition-all duration-300">
+    <div className="bg-[#0f172a]/30 border border-slate-800/50 backdrop-blur-md rounded-2xl p-8 max-w-3xl mx-auto hover:border-sky-500/10 transition-all duration-300">
       {/* Progress Bar */}
       <div className="mb-8">
         <div className="flex justify-between items-center text-xs uppercase tracking-widest text-slate-500 font-bold mb-3">
@@ -338,7 +338,7 @@ export default function QuoteRequestForm() {
         </div>
         <div className="w-full bg-slate-900/50 h-1.5 rounded-full overflow-hidden border border-slate-800/20">
           <div
-            className="bg-amber-500 h-full rounded-full transition-all duration-500"
+            className="bg-sky-500 h-full rounded-full transition-all duration-500"
             style={{ width: `${(step / 3) * 100}%` }}
           ></div>
         </div>
@@ -354,7 +354,7 @@ export default function QuoteRequestForm() {
                 type="text"
                 {...register("name")}
                 placeholder="Pl. Kovács Gábor"
-                className="w-full bg-[#1e293b]/30 border border-slate-800 focus:border-amber-500/50 rounded-xl px-4 py-3 text-[#e2e8f0] outline-none transition-all"
+                className="w-full bg-[#1e293b]/30 border border-slate-800 focus:border-sky-500/50 rounded-xl px-4 py-3 text-[#e2e8f0] outline-none transition-all"
               />
               {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>}
             </div>
@@ -365,7 +365,7 @@ export default function QuoteRequestForm() {
                 type="email"
                 {...register("email")}
                 placeholder="gabor@kovacs.hu"
-                className="w-full bg-[#1e293b]/30 border border-slate-800 focus:border-amber-500/50 rounded-xl px-4 py-3 text-[#e2e8f0] outline-none transition-all"
+                className="w-full bg-[#1e293b]/30 border border-slate-800 focus:border-sky-500/50 rounded-xl px-4 py-3 text-[#e2e8f0] outline-none transition-all"
               />
               {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
             </div>
@@ -375,7 +375,7 @@ export default function QuoteRequestForm() {
                 type="button"
                 onClick={nextStep}
                 disabled={!watchedValues.name || !watchedValues.email}
-                className="px-8 py-3 bg-amber-500 hover:bg-amber-600 disabled:opacity-50 text-[#020617] font-bold uppercase tracking-wider rounded-xl transition-all"
+                className="px-8 py-3 bg-sky-500 hover:bg-violet-700 disabled:opacity-50 text-[#020617] font-bold uppercase tracking-wider rounded-xl transition-all"
               >
                 Tovább
               </button>
@@ -390,7 +390,7 @@ export default function QuoteRequestForm() {
               <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Projekt Típusa</label>
               <select
                 {...register("projectType")}
-                className="w-full bg-[#1e293b]/50 border border-slate-800 focus:border-amber-500/50 rounded-xl px-4 py-3 text-[#e2e8f0] outline-none transition-all"
+                className="w-full bg-[#1e293b]/50 border border-slate-800 focus:border-sky-500/50 rounded-xl px-4 py-3 text-[#e2e8f0] outline-none transition-all"
               >
                 <option value="">-- Válassz típust --</option>
                 <option value="webdevelopment">Egyedi Next.js Webfejlesztés</option>
@@ -406,7 +406,7 @@ export default function QuoteRequestForm() {
               <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Hozzávetőleges Költségkeret</label>
               <select
                 {...register("budget")}
-                className="w-full bg-[#1e293b]/50 border border-slate-800 focus:border-amber-500/50 rounded-xl px-4 py-3 text-[#e2e8f0] outline-none transition-all"
+                className="w-full bg-[#1e293b]/50 border border-slate-800 focus:border-sky-500/50 rounded-xl px-4 py-3 text-[#e2e8f0] outline-none transition-all"
               >
                 <option value="">-- Válassz keretet --</option>
                 <option value="150k-300k">150 000 Ft - 300 000 Ft</option>
@@ -429,7 +429,7 @@ export default function QuoteRequestForm() {
                 type="button"
                 onClick={nextStep}
                 disabled={!watchedValues.projectType || !watchedValues.budget}
-                className="px-8 py-3 bg-amber-500 hover:bg-amber-600 disabled:opacity-50 text-[#020617] font-bold uppercase tracking-wider rounded-xl transition-all"
+                className="px-8 py-3 bg-sky-500 hover:bg-violet-700 disabled:opacity-50 text-[#020617] font-bold uppercase tracking-wider rounded-xl transition-all"
               >
                 Tovább
               </button>
@@ -446,7 +446,7 @@ export default function QuoteRequestForm() {
                 {...register("summary")}
                 rows={5}
                 placeholder="Pl. szeretnék egy modern Next.js weboldalt kecskeméti kkv vállalkozásomnak, ami automatikusan gyűjti az ajánlatkéréseket..."
-                className="w-full bg-[#1e293b]/30 border border-slate-800 focus:border-amber-500/50 rounded-xl px-4 py-3 text-[#e2e8f0] outline-none transition-all resize-none"
+                className="w-full bg-[#1e293b]/30 border border-slate-800 focus:border-sky-500/50 rounded-xl px-4 py-3 text-[#e2e8f0] outline-none transition-all resize-none"
               />
               {errors.summary && <p className="text-red-500 text-sm mt-1">{errors.summary.message}</p>}
             </div>
@@ -465,8 +465,8 @@ export default function QuoteRequestForm() {
                 disabled={isSubmitting || !watchedValues.summary}
                 className={`px-8 py-3 text-[#020617] font-bold uppercase tracking-wider rounded-xl transition-all duration-300 ${
                   isSubmitting
-                    ? "bg-amber-500/30 cursor-not-allowed"
-                    : "bg-amber-500 hover:bg-amber-600 animate-pulse shadow-[0_0_30px_rgba(245,158,11,0.6)]"
+                    ? "bg-sky-500/30 cursor-not-allowed"
+                    : "bg-sky-500 hover:bg-violet-700 animate-pulse shadow-[0_0_30px_rgba(0, 181, 241,0.6)]"
                 }`}
               >
                 {isSubmitting ? "Beküldés..." : "Ajánlatkérés Elküldése"}
@@ -613,7 +613,7 @@ export default function SingleAITool({ toolId, toolName, description, systemProm
   };
 
   return (
-    <div className="bg-[#0f172a]/30 border border-slate-800/50 backdrop-blur-md rounded-2xl p-8 max-w-4xl mx-auto hover:border-amber-500/10 transition-all duration-300">
+    <div className="bg-[#0f172a]/30 border border-slate-800/50 backdrop-blur-md rounded-2xl p-8 max-w-4xl mx-auto hover:border-sky-500/10 transition-all duration-300">
       <div className="mb-6">
         <h2 className="text-2xl font-bold text-[#e2e8f0] mb-2">{toolName}</h2>
         <p className="text-slate-400 text-sm leading-relaxed">{description}</p>
@@ -628,7 +628,7 @@ export default function SingleAITool({ toolId, toolName, description, systemProm
               type="text"
               {...register("topic")}
               placeholder="Pl. prémium bútor webshop akciók"
-              className="w-full bg-[#1e293b]/30 border border-slate-800 focus:border-amber-500/50 rounded-xl px-4 py-3 text-[#e2e8f0] outline-none transition-all"
+              className="w-full bg-[#1e293b]/30 border border-slate-800 focus:border-sky-500/50 rounded-xl px-4 py-3 text-[#e2e8f0] outline-none transition-all"
             />
             {errors.topic && <p className="text-red-500 text-sm mt-1">{errors.topic.message}</p>}
           </div>
@@ -637,7 +637,7 @@ export default function SingleAITool({ toolId, toolName, description, systemProm
             <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Márkahangvétel (Tone)</label>
             <select
               {...register("tone")}
-              className="w-full bg-[#1e293b]/50 border border-slate-800 focus:border-amber-500/50 rounded-xl px-4 py-3 text-[#e2e8f0] outline-none transition-all"
+              className="w-full bg-[#1e293b]/50 border border-slate-800 focus:border-sky-500/50 rounded-xl px-4 py-3 text-[#e2e8f0] outline-none transition-all"
             >
               <option value="">-- Válassz hangnemet --</option>
               <option value="professional">Szakmai és hiteles (E-E-A-T)</option>
@@ -654,14 +654,14 @@ export default function SingleAITool({ toolId, toolName, description, systemProm
               type="text"
               {...register("keywords")}
               placeholder="Pl. ingyenes szállítás, limitált darabszám"
-              className="w-full bg-[#1e293b]/30 border border-slate-800 focus:border-amber-500/50 rounded-xl px-4 py-3 text-[#e2e8f0] outline-none transition-all"
+              className="w-full bg-[#1e293b]/30 border border-slate-800 focus:border-sky-500/50 rounded-xl px-4 py-3 text-[#e2e8f0] outline-none transition-all"
             />
           </div>
 
           <button
             type="submit"
             disabled={isGenerating}
-            className="w-full py-4 px-6 rounded-xl bg-amber-500 hover:bg-amber-600 disabled:bg-amber-500/30 text-[#020617] font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2"
+            className="w-full py-4 px-6 rounded-xl bg-sky-500 hover:bg-violet-700 disabled:bg-sky-500/30 text-[#020617] font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2"
           >
             {isGenerating ? (
               <span className="flex items-center gap-2">
@@ -683,7 +683,7 @@ export default function SingleAITool({ toolId, toolName, description, systemProm
                 <button
                   type="button"
                   onClick={handleCopyToClipboard}
-                  className="text-xs text-amber-500 hover:text-amber-600 font-bold uppercase tracking-wider transition-colors"
+                  className="text-xs text-sky-500 hover:text-violet-700 font-bold uppercase tracking-wider transition-colors"
                 >
                   {isCopied ? "Másolva! ✓" : "Másolás"}
                 </button>
@@ -702,7 +702,7 @@ export default function SingleAITool({ toolId, toolName, description, systemProm
               <button
                 type="button"
                 onClick={handleSaveToProject}
-                className="flex-1 py-3 px-4 rounded-xl border border-amber-500/30 hover:border-amber-500/50 text-[#e2e8f0] font-semibold text-xs uppercase tracking-wider text-center transition-all"
+                className="flex-1 py-3 px-4 rounded-xl border border-sky-500/30 hover:border-sky-500/50 text-[#e2e8f0] font-semibold text-xs uppercase tracking-wider text-center transition-all"
               >
                 Mentés a Projekthez (notes)
               </button>

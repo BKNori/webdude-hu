@@ -1,4 +1,4 @@
-﻿import Hero from "@/components/Hero";
+import Hero from "@/components/Hero";
 import Button from "@/components/atoms/Button";
 import Badge from "@/components/atoms/Badge";
 import { Metadata } from "next";
@@ -11,16 +11,13 @@ import { buildBreadcrumbSchema, BreadcrumbItem } from "@/lib/breadcrumb";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "AI Prompt Engineering | WebDude Kecskemét",
+    title: "AI Prompt Engineering | WebDude",
     description:
       "Professzionális AI prompt engineering szolgáltatás: ChatGPT, Claude és egyedi AI modellek prompt fejlesztése, optimalizálása és konfigurációja a maximális hatékonyságért.",
     keywords:
-      "AI prompt engineering, ChatGPT prompt, Claude prompt, prompt fejlesztés, AI konfiguráció, ChatGPT optimalizálás, Kecskemét, prompt szakértő",
-    openGraph: {
-      title: "AI Prompt Engineering | WebDude",
-      description:
-        "Professzionális AI prompt engineering szolgáltatás: ChatGPT, Claude és egyedi AI modellek prompt fejlesztése, optimalizálása és konfigurációja a maximális hatékonyságért.",
-      type: "website",
+      "AI prompt engineering, ChatGPT prompt, Claude prompt, prompt fejlesztés, AI konfiguráció, ChatGPT optimalizálás, prompt szakértő",
+    alternates: {
+      canonical: "https://webdude.hu/szolgaltatasok/ai-prompt-engineering",
     },
   };
 }
@@ -40,11 +37,7 @@ const FAQ = [
   },
   {
     q: "Mennyibe kerül a prompt engineering?",
-    a: "Egyszerű prompt fejlesztés 30.000 Ft-tól, komplex prompt rendszer 75.000 Ft-tól, vállalati infrastruktúra 120.000 Ft-tól indul. Kérjen személyre szabott ajánlatot.",
-  },
-  {
-    q: "Miért nem adok fix árat az oldalon?",
-    a: "Minden AI projekt egyedi, és az ügyfelek többsége nem hoz pontos specifikációt az AI eszközök használatához. Én kell utána nyomoznom, kiderítenem az üzleti igényeket, ajánlatot adok, ajánlom a megoldást, és elmagyarázom az AI működését. Ez rengeteg írás és óra alapú munka, amit bele kell kalkulálni az árba. Magyarországon a piaci óradíjak AI/ML területen 15.000-40.000 Ft között mozognak, és a specifikáció hiánya miatt a konzultáció és tervezés fázis 5-15 óráig is eltarthat.",
+    a: "Egyedi árajánlat kérése a projekt igényei szerint. Ingyenes konzultáció a pontos árhoz.",
   },
   {
     q: "Mire kell figyelni az árajánlatkérésnél?",
@@ -73,17 +66,12 @@ export default async function AiPromptEngineeringPage() {
     description:
       "Professzionális AI prompt engineering szolgáltatás: ChatGPT, Claude és egyedi AI modellek prompt fejlesztése, optimalizálása és konfigurációja a maximális hatékonyságért.",
     provider: {
-      "@type": "LocalBusiness",
+      "@type": "Organization",
+      "@id": "https://webdude.hu/#organization",
       name: "WebDude",
       url: "https://webdude.hu",
     },
     areaServed: { "@type": "Country", name: "Hungary" },
-    offers: {
-      "@type": "Offer",
-      price: "30.000",
-      priceCurrency: "HUF",
-      availability: "https://schema.org/InStock",
-    },
   };
 
   return (
@@ -297,7 +285,6 @@ export default async function AiPromptEngineeringPage() {
                     {
                       id: "basic",
                       name: "Alap Prompt Fejlesztés",
-                      price: "30.000",
                       description:
                         "Egyszerű prompt template-ek 1-2 nap alatt (specifikáció kialakítással)",
                       features: [
@@ -308,13 +295,12 @@ export default async function AiPromptEngineeringPage() {
                         "1 korrekciós kör",
                         "Email support",
                       ],
-                      ctaText: "Alap csomag kérése",
+                      ctaText: "Egyedi árajánlat kérése",
                       ctaLink: "/kapcsolat",
                     },
                     {
                       id: "professional",
                       name: "Prompt Rendszer",
-                      price: "75.000",
                       description:
                         "Komplex prompt architektúra 3-5 nap alatt (specifikáció kialakítással)",
                       features: [
@@ -328,13 +314,12 @@ export default async function AiPromptEngineeringPage() {
                         "Prioritás support",
                       ],
                       highlighted: true,
-                      ctaText: "Prompt rendszer kérése",
+                      ctaText: "Egyedi árajánlat kérése",
                       ctaLink: "/kapcsolat",
                     },
                     {
                       id: "enterprise",
                       name: "Vállalati Prompt Infrastruktúra",
-                      price: "120.000",
                       description:
                         "Teljes prompt rendszer 1-2 hét alatt (specifikáció kialakítással)",
                       features: [
@@ -347,13 +332,12 @@ export default async function AiPromptEngineeringPage() {
                         "Dedikált support",
                         "3 hónap karbantartás",
                       ],
-                      ctaText: "Vállalati csomag kérése",
+                      ctaText: "Egyedi árajánlat kérése",
                       ctaLink: "/kapcsolat",
                     },
                   ]}
-                  title="Válassza ki a megfelelő prompt csomagot"
-                  description="Minden csomag tartalmazza a konzultációt, specifikáció kialakítást, fejlesztést, tesztelést és dokumentációt. Az árak a specifikáció hiányának kezelésével és a konzultációs munkával vannak kalkulálva."
-                  currency="Ft"
+                  title="Egyedi árajánlat kérése"
+                  description="Minden projekt egyedi igények alapján kerül árazásra. Ingyenes konzultáció a pontos árhoz és a specifikáció kialakításához."
                 />
               </div>
             </section>

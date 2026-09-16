@@ -72,7 +72,7 @@ export default function LeadGenerationForm({
       transition={{ duration: 0.6 }}
       className="max-w-2xl mx-auto"
     >
-      <div className="bg-bg-elevated/50 border border-gold-primary/20 rounded-2xl p-8">
+      <div className="bg-bg-elevated/50 border border-brand-primary/20 rounded-2xl p-8">
         {/* Header */}
         <div className="text-center mb-8">
           <h2 className="text-2xl font-bold text-white mb-3">
@@ -119,7 +119,7 @@ export default function LeadGenerationForm({
                 value={formData.name}
                 onChange={handleChange}
                 disabled={status === "loading"}
-                className="w-full px-4 py-3 bg-bg-base border border-gold-primary/20 rounded-xl text-white placeholder-slate-500 focus:border-gold-primary focus:outline-none transition-colors disabled:opacity-50"
+                className="w-full px-4 py-3 bg-bg-base border border-brand-primary/20 rounded-xl text-white placeholder-slate-500 focus:border-brand-primary focus:outline-none transition-colors disabled:opacity-50"
                 placeholder="Teljes név"
               />
             </div>
@@ -139,7 +139,7 @@ export default function LeadGenerationForm({
                 value={formData.email}
                 onChange={handleChange}
                 disabled={status === "loading"}
-                className="w-full px-4 py-3 bg-bg-base border border-gold-primary/20 rounded-xl text-white placeholder-slate-500 focus:border-gold-primary focus:outline-none transition-colors disabled:opacity-50"
+                className="w-full px-4 py-3 bg-bg-base border border-brand-primary/20 rounded-xl text-white placeholder-slate-500 focus:border-brand-primary focus:outline-none transition-colors disabled:opacity-50"
                 placeholder="email@pelda.hu"
               />
             </div>
@@ -159,7 +159,7 @@ export default function LeadGenerationForm({
                 value={formData.website}
                 onChange={handleChange}
                 disabled={status === "loading"}
-                className="w-full px-4 py-3 bg-bg-base border border-gold-primary/20 rounded-xl text-white placeholder-slate-500 focus:border-gold-primary focus:outline-none transition-colors disabled:opacity-50"
+                className="w-full px-4 py-3 bg-bg-base border border-brand-primary/20 rounded-xl text-white placeholder-slate-500 focus:border-brand-primary focus:outline-none transition-colors disabled:opacity-50"
                 placeholder="https://weboldalad.hu"
               />
             </div>
@@ -179,7 +179,7 @@ export default function LeadGenerationForm({
                 onChange={handleChange}
                 disabled={status === "loading"}
                 rows={4}
-                className="w-full px-4 py-3 bg-bg-base border border-gold-primary/20 rounded-xl text-white placeholder-slate-500 focus:border-gold-primary focus:outline-none transition-colors disabled:opacity-50 resize-none"
+                className="w-full px-4 py-3 bg-bg-base border border-brand-primary/20 rounded-xl text-white placeholder-slate-500 focus:border-brand-primary focus:outline-none transition-colors disabled:opacity-50 resize-none"
                 placeholder="Milyen konkrét problémát szeretnél megoldani?"
               />
             </div>
@@ -200,7 +200,7 @@ export default function LeadGenerationForm({
             <button
               type="submit"
               disabled={status === "loading"}
-              className="w-full py-4 bg-gold-primary text-bg-base font-bold rounded-xl hover:bg-gold-primary/90 transition-all disabled:opacity-50 flex items-center justify-center gap-2"
+              className="w-full py-4 bg-brand-primary text-bg-base font-bold rounded-xl hover:bg-brand-primary/90 transition-all disabled:opacity-50 flex items-center justify-center gap-2"
             >
               {status === "loading" ? (
                 <>

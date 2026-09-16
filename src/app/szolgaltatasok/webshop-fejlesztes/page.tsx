@@ -226,12 +226,12 @@ export default async function WebshopDevelopmentPage() {
             <div className="max-w-6xl mx-auto px-6">
               <h2 className="text-5xl md:text-7xl font-bold text-text-primary mb-8">
                 Készen áll a{" "}
-                <span className="text-gold-primary italic">webshop</span>{" "}
+                <span className="text-brand-primary italic">webshop</span>{" "}
                 fejlesztésére?
               </h2>
               <Link
                 href="/kapcsolat"
-                className="inline-block px-12 py-6 bg-amber-500 hover:bg-amber-600 text-bg-base font-bold rounded-xl uppercase tracking-wider transition-all duration-300"
+                className="inline-block px-12 py-6 bg-sky-500 hover:bg-violet-700 text-bg-base font-bold rounded-xl uppercase tracking-wider transition-all duration-300"
               >
                 Ingyenes Konzultáció
               </Link>

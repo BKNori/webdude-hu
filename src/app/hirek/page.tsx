@@ -63,7 +63,7 @@ export default async function HirekPage() {
         title={
           <>
             Szakmai{" "}
-            <span className="bg-clip-text text-transparent bg-linear-to-r from-[#00B5F1] to-[#FF7A00] italic">
+            <span className="bg-clip-text text-transparent bg-linear-to-r from-[#00B5F1] to-[#5B21B6] italic">
               Hírek & Insightok
             </span>
           </>

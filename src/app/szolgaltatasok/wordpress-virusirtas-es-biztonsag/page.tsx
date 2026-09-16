@@ -1,5 +1,5 @@
-﻿import SectionTitle from "@/components/atoms/SectionTitle";
-import PricingTable from "@/components/molecules/PricingTable";
+import SectionTitle from "@/components/atoms/SectionTitle";
+import Button from "@/components/atoms/Button";
 import { Metadata } from "next";
 import { buildBreadcrumbSchema, BreadcrumbItem } from "@/lib/breadcrumb";
 
@@ -9,7 +9,7 @@ export async function generateMetadata(): Promise<Metadata> {
     description:
       "Gyors víruseltávolítás, patching és folyamatos karbantartás WordPress rendszerekre.",
     keywords:
-      "WordPress vírusírtás, WordPress biztonság, WordPress karbantartás, víruseltávolítás, biztonsági audit, Kecskemét",
+      "WordPress vírusírtás, WordPress biztonság, WordPress karbantartás, víruseltávolítás, biztonsági audit",
     openGraph: {
       title: "WordPress Vírusírtás & Biztonság – WebDude",
       description:
@@ -45,64 +45,7 @@ export default async function SecurityPage() {
       url: "https://webdude.hu",
     },
     areaServed: { "@type": "Country", name: "Hungary" },
-    offers: {
-      "@type": "Offer",
-      price: "30.000",
-      priceCurrency: "HUF",
-      availability: "https://schema.org/InStock",
-    },
   };
-
-  const pricingTiers = [
-    {
-      id: "basic",
-      name: "Vírusirtás",
-      price: "30.000",
-      description: "Egy alkalmas víruseltávolítás és biztonsági audit",
-      features: [
-        "Teljes víruseltávolítás és tisztítás",
-        "Biztonsági audit és javítások",
-        "Biztonsági mentés készítése",
-        "SSL certifikátus ellenőrzés",
-        "Plugins és téma frissítése",
-      ],
-      ctaText: "Vírusirtás kérése",
-      ctaLink: "/kapcsolat",
-    },
-    {
-      id: "maintenance",
-      name: "Havi Karbantartás",
-      price: "15.000",
-      description: "Folyamatos védelem és optimalizáció",
-      features: [
-        "Napi biztonsági mentések",
-        "Havi biztonsági audit",
-        "Automatikus plugin és frissítések",
-        "Teljesítmény optimalizálás",
-        "24 órás hibajelentés",
-        "Prioritási támogatás",
-      ],
-      highlighted: true,
-      ctaText: "Karbantartás igénylése",
-      ctaLink: "/kapcsolat",
-    },
-    {
-      id: "enterprise",
-      name: "Prémium Csomag",
-      price: "25.000",
-      description: "Teljes körű biztonsági és teljesítmény szolgáltatás",
-      features: [
-        "Minden havi karbantartás funkció",
-        "Vírusirtás és biztonsági audit",
-        "SEO optimalizálás",
-        "Tartalom frissítések",
-        "WordPress optimalizálás",
-        "Personalizált konzultáció",
-      ],
-      ctaText: "Prémium csomag",
-      ctaLink: "/kapcsolat",
-    },
-  ];
 
   return (
     <>
@@ -132,12 +75,18 @@ export default async function SecurityPage() {
             />
 
             <div className="mt-20">
-              <PricingTable
-                tiers={pricingTiers}
-                title="Válassza ki a megfelelő biztonsági szintet"
-                description="Havi vagy egyedi szolgáltatások, minden csomag garantált védelmet és optimalizált teljesítményt biztosít"
-                currency="Ft"
-              />
+              <div className="bg-bg-elevated/30 border border-[#00B5F1]/30 rounded-2xl p-8 text-center">
+                <h3 className="text-2xl font-bold text-text-primary mb-4">
+                  WordPress árajánlat kérése
+                </h3>
+                <p className="text-slate-400 mb-6">
+                  Minden projekt egyedi igények alapján kerül árazásra. Ingyenes
+                  konzultáció a pontos árhoz és a specifikáció kialakításához.
+                </p>
+                <Button variant="primary" href="/kapcsolat">
+                  WordPress árajánlat kérése
+                </Button>
+              </div>
             </div>
           </div>
         </div>

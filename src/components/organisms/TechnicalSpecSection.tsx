@@ -72,7 +72,7 @@ export default function TechnicalSpecSection({
   specs = defaultSpecs,
 }: TechnicalSpecSectionProps) {
   return (
-    <section className="py-16 bg-bg-elevated/30 border-t border-gold-primary/10">
+    <section className="py-16 bg-bg-elevated/30 border-t border-brand-primary/10">
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <motion.div
@@ -101,10 +101,10 @@ export default function TechnicalSpecSection({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-bg-base/50 border border-gold-primary/10 rounded-xl p-6 hover:border-gold-primary/30 transition-all hover:scale-105"
+              className="bg-bg-base/50 border border-brand-primary/10 rounded-xl p-6 hover:border-brand-primary/30 transition-all hover:scale-105"
             >
               <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-gold-primary/10 border border-gold-primary/20 flex items-center justify-center text-gold-primary">
+                <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-brand-primary/10 border border-brand-primary/20 flex items-center justify-center text-brand-primary">
                   {spec.icon}
                 </div>
                 <div className="flex-1">
@@ -130,10 +130,10 @@ export default function TechnicalSpecSection({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-12 p-6 bg-gradient-to-r from-gold-primary/10 to-transparent border border-gold-primary/20 rounded-xl"
+          className="mt-12 p-6 bg-gradient-to-r from-brand-primary/10 to-transparent border border-brand-primary/20 rounded-xl"
         >
           <div className="flex items-center gap-4">
-            <Shield className="w-8 h-8 text-gold-primary" />
+            <Shield className="w-8 h-8 text-brand-primary" />
             <div>
               <h4 className="text-lg font-bold text-white mb-1">
                 26 év tapasztalat a háttérben

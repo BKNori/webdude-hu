@@ -52,29 +52,30 @@ const STATUS_ICONS: Record<MilestoneStatus, LucideIcon> = {
 /** Idővonal-pont (node) stílusok státusz szerint. */
 const NODE_STYLES: Record<MilestoneStatus, string> = {
   completed:
-    "border-[#00B5F1] bg-[#00B5F1]/15 text-[#00B5F1] shadow-[0_0_18px_rgba(0,181,241,0.35)]",
-  in_progress: "border-amber-400 bg-amber-500/10 text-amber-300 animate-pulse",
+    "border-[#00B5F1] bg-[#00B5F1]/15 text-[#00B5F1] shadow-[0_0_18px_rgba(0, 181, 241,0.35)]",
+  in_progress: "border-sky-400 bg-sky-500/10 text-sky-300 animate-pulse",
   pending: "border-slate-800 bg-slate-950 text-slate-500",
 };
 
 /** Gantt sáv kitöltés státusz szerint. */
 const BAR_FILL: Record<MilestoneStatus, string> = {
-  completed: "bg-gradient-to-r from-[#0095C7] to-[#00B5F1]",
-  in_progress: "bg-gradient-to-r from-amber-500 to-amber-300",
+  completed: "bg-gradient-to-r from-[#5B21B6] to-[#00B5F1]",
+  in_progress: "bg-gradient-to-r from-sky-500 to-sky-300",
   pending: "bg-slate-700",
 };
 
 /** Státusz badge stílusok. */
 const STATUS_BADGES: Record<MilestoneStatus, string> = {
   completed: "border-[#00B5F1]/30 bg-[#00B5F1]/10 text-[#00B5F1]",
-  in_progress: "border-amber-400/30 bg-amber-500/10 text-amber-300",
+  in_progress: "border-sky-400/30 bg-sky-500/10 text-sky-300",
   pending: "border-slate-800 bg-slate-900/70 text-slate-400",
 };
 
 /** Opcionális szín-felülírás a mérföldkő címéhez. */
 const ACCENT_TITLE: Record<MilestoneAccent, string> = {
-  cyan: "text-[#e2e8f0]",
-  gold: "text-amber-200",
+  neutral: "text-[#e2e8f0]",
+  cyan: "text-[#e2e8f0]", // legacy alias — v5.x adatok kompatibilitása
+  gold: "text-[#e2e8f0]", // v7.0: semlegesítve — arany brand tiltva
   emerald: "text-emerald-300",
   slate: "text-slate-300",
 };
@@ -137,7 +138,7 @@ export default function TimelineMilestoneItem({
               <h4
                 className={cn(
                   "text-sm font-semibold tracking-tight md:text-base",
-                  ACCENT_TITLE[milestone.accent ?? "cyan"]
+                  ACCENT_TITLE[milestone.accent ?? "neutral"]
                 )}
               >
                 {milestone.title}

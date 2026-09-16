@@ -13,7 +13,7 @@ const steps = [
     description:
       "Ingyenes weboldal audit — sebességmérés, SEO elemzés, konverzió diagnózis. Ezek alapján születik a precíz fejlesztési terv.",
     color: "#00B5F1",
-    bgGlow: "rgba(0,181,241,0.12)",
+    bgGlow: "rgba(0, 181, 241,0.12)",
   },
   {
     id: "design",
@@ -33,7 +33,7 @@ const steps = [
     description:
       "React 19, TypeScript, Tailwind CSS v4 — villámgyors, skálázható architektúra, beépített SEO, Schema.org és Firebase backend.",
     color: "#00B5F1",
-    bgGlow: "rgba(0,181,241,0.12)",
+    bgGlow: "rgba(0, 181, 241,0.12)",
   },
   {
     id: "launch",
@@ -43,7 +43,7 @@ const steps = [
     description:
       "Firebase Hosting, automatizált CI/CD, Lighthouse 95+ garantálva. Átadás után sem hagylak magadra — havi support opcionálisan.",
     color: "#00B5F1",
-    bgGlow: "rgba(0,181,241,0.12)",
+    bgGlow: "rgba(0, 181, 241,0.12)",
   },
 ];
 
@@ -78,7 +78,7 @@ export default function SystemShowcase() {
         aria-hidden="true"
         style={{
           background:
-            "radial-gradient(circle, rgba(0,181,241,0.04) 0%, transparent 70%)",
+            "radial-gradient(circle, rgba(0, 181, 241,0.04) 0%, transparent 70%)",
           filter: "blur(80px)",
         }}
       />
@@ -92,14 +92,14 @@ export default function SystemShowcase() {
           transition={{ type: "spring", stiffness: 80, damping: 20 }}
           className="text-center mb-16 md:mb-20"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/20 mb-6">
-            <span className="text-amber-400 text-xs font-bold uppercase tracking-widest">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#00B5F1]/10 border border-[#00B5F1]/20 mb-6">
+            <span className="text-[#00B5F1] text-xs font-bold uppercase tracking-widest">
               A rendszer, nem a személyem
             </span>
           </div>
           <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-white mb-4 leading-tight">
             Hogyan születik egy{" "}
-            <span className="text-transparent bg-clip-text bg-linear-to-r from-amber-400 to-amber-600">
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6]">
               eredményes
             </span>{" "}
             weboldal?
@@ -119,7 +119,7 @@ export default function SystemShowcase() {
           />
           {/* Animált töltési vonal */}
           <motion.div
-            className="absolute top-16 left-[12.5%] h-0.5 bg-linear-to-r from-amber-500 via-amber-400 to-[#FF7A00] hidden lg:block origin-left"
+            className="absolute top-16 left-[12.5%] h-0.5 bg-linear-to-r from-[#00B5F1] via-[#00B5F1]/80 to-sky-400 hidden lg:block origin-left"
             style={{ scaleX: lineProgress, width: "75%" }}
             aria-hidden="true"
           />
@@ -196,7 +196,7 @@ export default function SystemShowcase() {
                       stiffness: 100,
                       damping: 20,
                     }}
-                    className="flex-1 p-6 rounded-3xl border border-white/8 hover:border-amber-500/50 backdrop-blur-sm transition-colors duration-300"
+                    className="flex-1 p-6 rounded-3xl border border-white/8 hover:border-sky-500/50 backdrop-blur-sm transition-colors duration-300"
                     style={{
                       background:
                         "linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%)",
@@ -235,15 +235,11 @@ export default function SystemShowcase() {
             href="/kapcsolat"
             whileHover={{
               scale: 1.03,
-              boxShadow: "0 0 40px rgba(245,158,11,0.4)",
+              boxShadow: "0 0 40px rgba(0, 181, 241,0.4)",
             }}
             whileTap={{ scale: 0.97 }}
             transition={{ type: "spring", stiffness: 400, damping: 20 }}
-            className="inline-flex items-center gap-3 px-8 py-4 rounded-full font-bold text-slate-950 text-base uppercase tracking-wider focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 focus:ring-offset-bg-base"
-            style={{
-              background: "linear-gradient(135deg, #fbbf24 0%, #d97706 100%)",
-              boxShadow: "0 0 28px rgba(245,158,11,0.3)",
-            }}
+            className="inline-flex items-center gap-3 px-8 py-4 rounded-full font-semibold text-[#00B5F1] text-base uppercase tracking-wider border border-[#00B5F1]/40 hover:border-sky-500/50 hover:bg-[#00B5F1]/10 hover:shadow-[0_0_32px_rgba(0, 181, 241,0.25)] transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 focus:ring-offset-[#020617]"
             aria-label="Egyedi árajánlat kérése"
           >
             Egyedi árajánlat kérése

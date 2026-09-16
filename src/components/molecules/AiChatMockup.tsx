@@ -26,7 +26,7 @@ export default function AiChatMockup() {
             <div className="mr-3 w-8 h-8 rounded-full bg-[#00B5F1] flex items-center justify-center text-bg-base font-bold">
               AI
             </div>
-            <div className="rounded-xl bg-linear-to-r from-[#00B5F1]/15 to-[#0095C7]/10 p-3 text-text-primary border border-[#00B5F1]/30">
+            <div className="rounded-xl bg-linear-to-r from-[#00B5F1]/15 to-[#5B21B6]/10 p-3 text-text-primary border border-[#00B5F1]/30">
               <p className="font-semibold text-white">
                 Javaslatok a konverzió növelésére:
               </p>

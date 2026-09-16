@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
@@ -310,7 +310,7 @@ export default function PromptTemplatesClient() {
   if (loading) {
     return (
       <div className="min-h-screen bg-bg-base flex flex-col items-center justify-center space-y-4">
-        <div className="w-8 h-8 border-2 border-[#00B5F1] border-t-transparent rounded-full animate-spin" />
+        <div className="w-8 h-8 border-2 border-[#f59e0b] border-t-transparent rounded-full animate-spin" />
         <p className="text-sm text-text-secondary font-mono">
           Biztonságos betöltés...
         </p>
@@ -339,18 +339,18 @@ export default function PromptTemplatesClient() {
   return (
     <div className="min-h-screen bg-bg-base text-text-primary">
       {/* Header */}
-      <header className="border-b border-[#00B5F1]/20 bg-bg-card/80 backdrop-blur-xl sticky top-0 z-50">
+      <header className="border-b border-[#f59e0b]/20 bg-bg-card/80 backdrop-blur-xl sticky top-0 z-50">
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-6">
             <Link
               href="/portal"
-              className="flex items-center gap-3 text-text-secondary hover:text-[#00B5F1] transition-colors"
+              className="flex items-center gap-3 text-text-secondary hover:text-[#f59e0b] transition-colors"
             >
-              <div className="w-10 h-10 rounded-xl bg-linear-to-br from-[#00B5F1]/400 to-[#0095C7] flex items-center justify-center shadow-lg shadow-[#00B5F1]/10">
+              <div className="w-10 h-10 rounded-xl bg-linear-to-br from-[#f59e0b]/400 to-[#d97706] flex items-center justify-center shadow-lg shadow-[#f59e0b]/10">
                 <span className="text-bg-base font-bold text-lg">←</span>
               </div>
               <div>
-                <span className="text-xs uppercase font-black tracking-widest text-[#00B5F1] block">
+                <span className="text-xs uppercase font-black tracking-widest text-[#f59e0b] block">
                   WebDude 2026
                 </span>
                 <span className="text-sm font-bold block -mt-0.5">
@@ -373,7 +373,7 @@ export default function PromptTemplatesClient() {
           <div className="text-center">
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight">
               AI{" "}
-              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#0095C7]">
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#f59e0b] to-[#d97706]">
                 Prompt
               </span>{" "}
               Sablonok
@@ -392,7 +392,7 @@ export default function PromptTemplatesClient() {
             {promptTemplates.map((template) => (
               <div
                 key={template.id}
-                className="bg-bg-card/80 backdrop-blur-xl rounded-2xl border border-slate-700/80 p-8 hover:border-[#00B5F1]/50 transition-all duration-300"
+                className="bg-bg-card/80 backdrop-blur-xl rounded-2xl border border-slate-700/80 p-8 hover:border-[#f59e0b]/50 transition-all duration-300"
               >
                 <h2 className="text-2xl font-bold text-text-primary mb-4">
                   {template.title}
@@ -418,7 +418,7 @@ function CopyButton({ text }: { text: string }) {
       onClick={() => {
         navigator.clipboard.writeText(text);
       }}
-      className="absolute top-4 right-4 flex items-center gap-2 px-4 py-2 rounded-lg bg-[#00B5F1] hover:bg-[#0095C7] text-white text-sm font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#00B5F1] focus:ring-offset-2 focus:ring-offset-bg-base"
+      className="absolute top-4 right-4 flex items-center gap-2 px-4 py-2 rounded-lg bg-[#f59e0b] hover:bg-[#d97706] text-slate-950 text-sm font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#f59e0b] focus:ring-offset-2 focus:ring-offset-bg-base"
     >
       <Copy className="w-4 h-4" />
       Másolás

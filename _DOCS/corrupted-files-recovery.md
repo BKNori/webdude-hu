@@ -95,7 +95,7 @@ export default function AdminPanel({ clients, addons, onRegisterUser, onAssignAd
         className="bg-slate-900/30 border border-slate-800/50 backdrop-blur-md p-8 rounded-2xl"
       >
         <div className="flex items-center gap-3 mb-6">
-          <UserPlus className="text-amber-500 w-6 h-6" />
+          <UserPlus className="text-sky-500 w-6 h-6" />
           <h2 className="text-2xl font-bold text-slate-100">Új Ügyfél Regisztrációja</h2>
         </div>
 
@@ -106,7 +106,7 @@ export default function AdminPanel({ clients, addons, onRegisterUser, onAssignAd
               type="text"
               {...regRegister("name")}
               placeholder="Pl. Kis Kovács Bt."
-              className="w-full bg-slate-950/50 border border-slate-800 focus:border-amber-500/50 rounded-xl px-4 py-3 text-slate-200 outline-none transition-all duration-300"
+              className="w-full bg-slate-950/50 border border-slate-800 focus:border-sky-500/50 rounded-xl px-4 py-3 text-slate-200 outline-none transition-all duration-300"
             />
             {regErrors.name && <p className="text-red-500 text-xs mt-1">{regErrors.name.message}</p>}
           </div>
@@ -117,7 +117,7 @@ export default function AdminPanel({ clients, addons, onRegisterUser, onAssignAd
               type="email"
               {...regRegister("email")}
               placeholder="partner@cegnev.hu"
-              className="w-full bg-slate-950/50 border border-slate-800 focus:border-amber-500/50 rounded-xl px-4 py-3 text-slate-200 outline-none transition-all duration-300"
+              className="w-full bg-slate-950/50 border border-slate-800 focus:border-sky-500/50 rounded-xl px-4 py-3 text-slate-200 outline-none transition-all duration-300"
             />
             {regErrors.email && <p className="text-red-500 text-xs mt-1">{regErrors.email.message}</p>}
           </div>
@@ -132,7 +132,7 @@ export default function AdminPanel({ clients, addons, onRegisterUser, onAssignAd
           <button
             type="submit"
             disabled={isRegSubmitting}
-            className="w-full bg-amber-500 hover:bg-amber-600 disabled:bg-amber-800/40 text-slate-950 font-bold uppercase tracking-wider py-4 px-6 rounded-xl flex items-center justify-center gap-2 cursor-pointer transition-all duration-300"
+            className="w-full bg-sky-500 hover:bg-violet-700 disabled:bg-amber-800/40 text-slate-950 font-bold uppercase tracking-wider py-4 px-6 rounded-xl flex items-center justify-center gap-2 cursor-pointer transition-all duration-300"
           >
             {isRegSubmitting ? <Loader2 className="w-5 h-5 animate-spin" /> : "Ügyfél Aktiválása"}
           </button>
@@ -147,7 +147,7 @@ export default function AdminPanel({ clients, addons, onRegisterUser, onAssignAd
         className="bg-slate-900/30 border border-slate-800/50 backdrop-blur-md p-8 rounded-2xl"
       >
         <div className="flex items-center gap-3 mb-6">
-          <FolderPlus className="text-amber-500 w-6 h-6" />
+          <FolderPlus className="text-sky-500 w-6 h-6" />
           <h2 className="text-2xl font-bold text-slate-100">Kiegészítő Hozzárendelése</h2>
         </div>
 
@@ -156,7 +156,7 @@ export default function AdminPanel({ clients, addons, onRegisterUser, onAssignAd
             <label className="block text-sm font-semibold text-slate-400 mb-2 uppercase tracking-wider">Cél Ügyfél</label>
             <select
               {...assignRegister("clientId")}
-              className="w-full bg-slate-950/50 border border-slate-800 focus:border-amber-500/50 rounded-xl px-4 py-3 text-slate-200 outline-none cursor-pointer transition-all duration-300"
+              className="w-full bg-slate-950/50 border border-slate-800 focus:border-sky-500/50 rounded-xl px-4 py-3 text-slate-200 outline-none cursor-pointer transition-all duration-300"
             >
               <option value="">Válassz partnert...</option>
               {clients.map((client) => (
@@ -172,7 +172,7 @@ export default function AdminPanel({ clients, addons, onRegisterUser, onAssignAd
             <label className="block text-sm font-semibold text-slate-400 mb-2 uppercase tracking-wider">Kiegészítő / Szolgáltatás</label>
             <select
               {...assignRegister("addonId")}
-              className="w-full bg-slate-950/50 border border-slate-800 focus:border-amber-500/50 rounded-xl px-4 py-3 text-slate-200 outline-none cursor-pointer transition-all duration-300"
+              className="w-full bg-slate-950/50 border border-slate-800 focus:border-sky-500/50 rounded-xl px-4 py-3 text-slate-200 outline-none cursor-pointer transition-all duration-300"
             >
               <option value="">Válassz kiegészítőt...</option>
               {addons.map((addon) => (
@@ -194,7 +194,7 @@ export default function AdminPanel({ clients, addons, onRegisterUser, onAssignAd
           <button
             type="submit"
             disabled={isAssignSubmitting}
-            className="w-full bg-amber-500 hover:bg-amber-600 disabled:bg-amber-800/40 text-slate-950 font-bold uppercase tracking-wider py-4 px-6 rounded-xl flex items-center justify-center gap-2 cursor-pointer transition-all duration-300"
+            className="w-full bg-sky-500 hover:bg-violet-700 disabled:bg-amber-800/40 text-slate-950 font-bold uppercase tracking-wider py-4 px-6 rounded-xl flex items-center justify-center gap-2 cursor-pointer transition-all duration-300"
           >
             {isAssignSubmitting ? <Loader2 className="w-5 h-5 animate-spin" /> : "Kiegészítő Hozzáadása"}
           </button>
@@ -286,10 +286,10 @@ export default function QuoteRequestForm({ onSubmitAction }: QuoteRequestFormPro
         <div className="flex justify-between items-center mb-10 max-w-md mx-auto">
           {[1, 2, 3].map((s) => (
             <div key={s} className="flex items-center">
-              <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm transition-all duration-300 ${step >= s ? "bg-amber-500 text-slate-950 shadow-[0_0_15px_rgba(245,158,11,0.3)]" : "bg-slate-900 border border-slate-800 text-slate-500"}`}>
+              <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm transition-all duration-300 ${step >= s ? "bg-sky-500 text-slate-950 shadow-[0_0_15px_rgba(0, 181, 241,0.3)]" : "bg-slate-900 border border-slate-800 text-slate-500"}`}>
                 {step > s ? <Check className="w-5 h-5" /> : s}
               </div>
-              {s < 3 && <div className={`h-0.5 w-16 md:w-24 transition-all duration-300 ${step > s ? "bg-amber-500" : "bg-slate-800"}`} />}
+              {s < 3 && <div className={`h-0.5 w-16 md:w-24 transition-all duration-300 ${step > s ? "bg-sky-500" : "bg-slate-800"}`} />}
             </div>
           ))}
         </div>
@@ -323,13 +323,13 @@ export default function QuoteRequestForm({ onSubmitAction }: QuoteRequestFormPro
                     key={item.id}
                     type="button"
                     onClick={() => setValue("projectType", item.id as any)}
-                    className={`cursor-pointer p-6 rounded-2xl border text-left transition-all duration-300 flex flex-col justify-between h-40 ${selectedType === item.id ? "bg-amber-500/5 border-amber-500 shadow-[0_0_20px_rgba(245,158,11,0.15)] text-slate-100" : "bg-slate-900/30 border-slate-800/80 hover:border-slate-700 text-slate-300"}`}
+                    className={`cursor-pointer p-6 rounded-2xl border text-left transition-all duration-300 flex flex-col justify-between h-40 ${selectedType === item.id ? "bg-sky-500/5 border-sky-500 shadow-[0_0_20px_rgba(0, 181, 241,0.15)] text-slate-100" : "bg-slate-900/30 border-slate-800/80 hover:border-slate-700 text-slate-300"}`}
                   >
                     <div>
                       <h3 className="font-bold text-lg mb-1">{item.title}</h3>
                       <p className="text-sm text-slate-400 leading-snug">{item.desc}</p>
                     </div>
-                    {selectedType === item.id && <Check className="text-amber-500 w-5 h-5 self-end" />}
+                    {selectedType === item.id && <Check className="text-sky-500 w-5 h-5 self-end" />}
                   </button>
                 ))}
               </div>
@@ -340,7 +340,7 @@ export default function QuoteRequestForm({ onSubmitAction }: QuoteRequestFormPro
                   type="button"
                   onClick={nextStep}
                   disabled={!selectedType}
-                  className="bg-amber-500 hover:bg-amber-600 disabled:bg-slate-800 disabled:text-slate-600 text-slate-950 font-bold uppercase tracking-wider py-4 px-8 rounded-xl flex items-center gap-2 cursor-pointer transition-all duration-300"
+                  className="bg-sky-500 hover:bg-violet-700 disabled:bg-slate-800 disabled:text-slate-600 text-slate-950 font-bold uppercase tracking-wider py-4 px-8 rounded-xl flex items-center gap-2 cursor-pointer transition-all duration-300"
                 >
                   Tovább <ArrowRight className="w-5 h-5" />
                 </button>
@@ -373,13 +373,13 @@ export default function QuoteRequestForm({ onSubmitAction }: QuoteRequestFormPro
                     key={item.id}
                     type="button"
                     onClick={() => setValue("budget", item.id as any)}
-                    className={`cursor-pointer p-6 rounded-2xl border text-left transition-all duration-300 flex flex-col justify-between h-36 ${selectedBudget === item.id ? "bg-amber-500/5 border-amber-500 shadow-[0_0_20px_rgba(245,158,11,0.15)] text-slate-100" : "bg-slate-900/30 border-slate-800/80 hover:border-slate-700 text-slate-300"}`}
+                    className={`cursor-pointer p-6 rounded-2xl border text-left transition-all duration-300 flex flex-col justify-between h-36 ${selectedBudget === item.id ? "bg-sky-500/5 border-sky-500 shadow-[0_0_20px_rgba(0, 181, 241,0.15)] text-slate-100" : "bg-slate-900/30 border-slate-800/80 hover:border-slate-700 text-slate-300"}`}
                   >
                     <div>
                       <h3 className="font-bold text-lg mb-1">{item.title}</h3>
                       <p className="text-sm text-slate-400 leading-snug">{item.desc}</p>
                     </div>
-                    {selectedBudget === item.id && <Check className="text-amber-500 w-5 h-5 self-end" />}
+                    {selectedBudget === item.id && <Check className="text-sky-500 w-5 h-5 self-end" />}
                   </button>
                 ))}
               </div>
@@ -397,7 +397,7 @@ export default function QuoteRequestForm({ onSubmitAction }: QuoteRequestFormPro
                   type="button"
                   onClick={nextStep}
                   disabled={!selectedBudget}
-                  className="bg-amber-500 hover:bg-amber-600 disabled:bg-slate-800 disabled:text-slate-600 text-slate-950 font-bold uppercase tracking-wider py-4 px-8 rounded-xl flex items-center gap-2 cursor-pointer transition-all duration-300"
+                  className="bg-sky-500 hover:bg-violet-700 disabled:bg-slate-800 disabled:text-slate-600 text-slate-950 font-bold uppercase tracking-wider py-4 px-8 rounded-xl flex items-center gap-2 cursor-pointer transition-all duration-300"
                 >
                   Tovább <ArrowRight className="w-5 h-5" />
                 </button>
@@ -426,7 +426,7 @@ export default function QuoteRequestForm({ onSubmitAction }: QuoteRequestFormPro
                     type="text"
                     {...register("name")}
                     placeholder="Minta János"
-                    className="w-full bg-slate-950/50 border border-slate-800 focus:border-amber-500/50 rounded-xl px-4 py-3 text-slate-200 outline-none transition-all duration-300"
+                    className="w-full bg-slate-950/50 border border-slate-800 focus:border-sky-500/50 rounded-xl px-4 py-3 text-slate-200 outline-none transition-all duration-300"
                   />
                   {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name.message}</p>}
                 </div>
@@ -437,7 +437,7 @@ export default function QuoteRequestForm({ onSubmitAction }: QuoteRequestFormPro
                     type="email"
                     {...register("email")}
                     placeholder="janos@cegnev.hu"
-                    className="w-full bg-slate-950/50 border border-slate-800 focus:border-amber-500/50 rounded-xl px-4 py-3 text-slate-200 outline-none transition-all duration-300"
+                    className="w-full bg-slate-950/50 border border-slate-800 focus:border-sky-500/50 rounded-xl px-4 py-3 text-slate-200 outline-none transition-all duration-300"
                   />
                   {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>}
                 </div>
@@ -448,7 +448,7 @@ export default function QuoteRequestForm({ onSubmitAction }: QuoteRequestFormPro
                     {...register("summary")}
                     rows={4}
                     placeholder="Írd le röviden a projekt célját, elvárásait és funkcióit..."
-                    className="w-full bg-slate-950/50 border border-slate-800 focus:border-amber-500/50 rounded-xl px-4 py-3 text-slate-200 outline-none resize-none transition-all duration-300"
+                    className="w-full bg-slate-950/50 border border-slate-800 focus:border-sky-500/50 rounded-xl px-4 py-3 text-slate-200 outline-none resize-none transition-all duration-300"
                   />
                   {errors.summary && <p className="text-red-500 text-xs mt-1">{errors.summary.message}</p>}
                 </div>
@@ -474,7 +474,7 @@ export default function QuoteRequestForm({ onSubmitAction }: QuoteRequestFormPro
                   type="button"
                   onClick={handleSubmit(handleFormSubmit)}
                   disabled={isSubmitting}
-                  className={`bg-amber-500 hover:bg-amber-600 disabled:bg-amber-800/40 text-slate-950 font-bold uppercase tracking-wider py-4 px-8 rounded-xl flex items-center justify-center gap-2 cursor-pointer transition-all duration-300 ${isSubmitting ? "animate-pulse shadow-[0_0_30px_rgba(245,158,11,0.6)]" : ""}`}
+                  className={`bg-sky-500 hover:bg-violet-700 disabled:bg-amber-800/40 text-slate-950 font-bold uppercase tracking-wider py-4 px-8 rounded-xl flex items-center justify-center gap-2 cursor-pointer transition-all duration-300 ${isSubmitting ? "animate-pulse shadow-[0_0_30px_rgba(0, 181, 241,0.6)]" : ""}`}
                 >
                   {isSubmitting ? <Loader2 className="w-5 h-5 animate-spin" /> : "Összegzés Küldése"}
                 </button>
@@ -488,9 +488,9 @@ export default function QuoteRequestForm({ onSubmitAction }: QuoteRequestFormPro
               key="step4"
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="bg-amber-500/5 border border-amber-500/30 backdrop-blur-md p-10 rounded-3xl text-center space-y-6 max-w-xl mx-auto shadow-[0_0_50px_rgba(245,158,11,0.1)]"
+              className="bg-sky-500/5 border border-sky-500/30 backdrop-blur-md p-10 rounded-3xl text-center space-y-6 max-w-xl mx-auto shadow-[0_0_50px_rgba(0, 181, 241,0.1)]"
             >
-              <div className="w-16 h-16 bg-amber-500 text-slate-950 rounded-full flex items-center justify-center mx-auto shadow-[0_0_30px_rgba(245,158,11,0.4)]">
+              <div className="w-16 h-16 bg-sky-500 text-slate-950 rounded-full flex items-center justify-center mx-auto shadow-[0_0_30px_rgba(0, 181, 241,0.4)]">
                 <Sparkles className="w-8 h-8" />
               </div>
               <div className="space-y-2">
@@ -612,7 +612,7 @@ export default function SingleAITool({ toolId, toolName, description, inputField
       <div className="lg:col-span-5 space-y-6">
         <div className="space-y-2">
           <div className="flex items-center gap-2">
-            <Cpu className="text-amber-500 w-5 h-5" />
+            <Cpu className="text-sky-500 w-5 h-5" />
             <h1 className="text-2xl font-extrabold text-slate-100 tracking-tight">{toolName}</h1>
           </div>
           <p className="text-slate-400 text-sm leading-relaxed">{description}</p>
@@ -625,7 +625,7 @@ export default function SingleAITool({ toolId, toolName, description, inputField
               {field.type === "select" ? (
                 <select
                   {...register(field.id)}
-                  className="w-full bg-slate-950/50 border border-slate-800 focus:border-amber-500/50 rounded-xl px-4 py-3 text-slate-200 outline-none cursor-pointer transition-all duration-300"
+                  className="w-full bg-slate-950/50 border border-slate-800 focus:border-sky-500/50 rounded-xl px-4 py-3 text-slate-200 outline-none cursor-pointer transition-all duration-300"
                 >
                   {field.options?.map((opt) => (
                     <option key={opt.value} value={opt.value}>{opt.label}</option>
@@ -636,14 +636,14 @@ export default function SingleAITool({ toolId, toolName, description, inputField
                   {...register(field.id)}
                   rows={4}
                   placeholder={field.placeholder}
-                  className="w-full bg-slate-950/50 border border-slate-800 focus:border-amber-500/50 rounded-xl px-4 py-3 text-slate-200 outline-none resize-none transition-all duration-300"
+                  className="w-full bg-slate-950/50 border border-slate-800 focus:border-sky-500/50 rounded-xl px-4 py-3 text-slate-200 outline-none resize-none transition-all duration-300"
                 />
               ) : (
                 <input
                   type="text"
                   {...register(field.id)}
                   placeholder={field.placeholder}
-                  className="w-full bg-slate-950/50 border border-slate-800 focus:border-amber-500/50 rounded-xl px-4 py-3 text-slate-200 outline-none transition-all duration-300"
+                  className="w-full bg-slate-950/50 border border-slate-800 focus:border-sky-500/50 rounded-xl px-4 py-3 text-slate-200 outline-none transition-all duration-300"
                 />
               )}
               {errors[field.id] && <p className="text-red-500 text-xs mt-1">{errors[field.id]?.message as string}</p>}
@@ -653,7 +653,7 @@ export default function SingleAITool({ toolId, toolName, description, inputField
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full bg-amber-500 hover:bg-amber-600 disabled:bg-amber-800/40 text-slate-950 font-bold uppercase tracking-wider py-4 px-6 rounded-xl flex items-center justify-center gap-2 cursor-pointer transition-all duration-300"
+            className="w-full bg-sky-500 hover:bg-violet-700 disabled:bg-amber-800/40 text-slate-950 font-bold uppercase tracking-wider py-4 px-6 rounded-xl flex items-center justify-center gap-2 cursor-pointer transition-all duration-300"
           >
             {isSubmitting ? <Loader2 className="w-5 h-5 animate-spin" /> : <><Send className="w-4 h-4" /> Generálás indítása</>}
           </button>
@@ -662,11 +662,11 @@ export default function SingleAITool({ toolId, toolName, description, inputField
 
       {/* Jobb Oldal: AI Kimeneti Lap (Grid: 7 oszlop) */}
       <div className="lg:col-span-7 flex flex-col h-full min-h-[450px]">
-        <div className="flex-1 bg-amber-500/5 border border-amber-500/10 backdrop-blur-md rounded-2xl p-6 flex flex-col justify-between">
+        <div className="flex-1 bg-sky-500/5 border border-sky-500/10 backdrop-blur-md rounded-2xl p-6 flex flex-col justify-between">
           <div className="space-y-4">
             <div className="flex items-center justify-between border-b border-slate-800/50 pb-4">
-              <span className="text-xs font-bold text-amber-500 uppercase tracking-widest flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-amber-500 animate-ping" /> AI Konzol Kimenet
+              <span className="text-xs font-bold text-sky-500 uppercase tracking-widest flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full bg-sky-500 animate-ping" /> AI Konzol Kimenet
               </span>
               {output && (
                 <div className="flex gap-2">

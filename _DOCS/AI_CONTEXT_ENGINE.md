@@ -56,7 +56,7 @@ Háttér:           #020617  →  bg-[#020617]
 Kártya/panel:     #0f172a  →  bg-[#0f172a]
 Fő szöveg:        #e2e8f0  →  text-[#e2e8f0]
 Muted szöveg:     #94a3b8  →  text-slate-400
-Arany (brand):    #f59e0b  →  text-amber-500 / bg-amber-500
+Arany (brand):    #00B5F1  →  text-sky-500 / bg-sky-500
 Siker:            #10b981  →  text-emerald-500
 Hiba:             #ef4444  →  text-red-500
 ```
@@ -134,7 +134,7 @@ FID:      < 100ms  (First Input Delay)
 
 ### 6.3 WCAG AA akadálymentesítés
 ```
-✅ Látható focus ring minden interaktív elemen (focus:ring-2 focus:ring-amber-500)
+✅ Látható focus ring minden interaktív elemen (focus:ring-2 focus:ring-sky-500)
 ✅ alt szöveg minden <Image> komponensen
 ✅ aria-label minden ikonos gombon
 ✅ Kontrasztarány: minimum 4.5:1 (szöveg), 3:1 (UI elemek)
@@ -156,7 +156,7 @@ FID:      < 100ms  (First Input Delay)
 - **Cél**: Automatikus case study generálás workflow végrehajtása után
 - **Adatstruktúra**: title, clientName, workflowType, impactMetrics, summary, status, createdAt
 - **Megjelenítés**: CaseStudyCarousel komponens (Server Component, Bento Grid)
-- **Vizuális**: hover:border-amber-500, shadow-xl, line-clamp-3
+- **Vizuális**: hover:border-sky-500, shadow-xl, line-clamp-3
 
 ---
 

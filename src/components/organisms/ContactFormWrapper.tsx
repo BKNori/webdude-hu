@@ -18,7 +18,7 @@ export default function ContactFormWrapper() {
           onClick={() => setActiveForm("quote")}
           className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-xl transition-all duration-300 text-xs font-bold uppercase tracking-wider ${
             activeForm === "quote"
-              ? "bg-amber-500 text-bg-base shadow-[0_4px_12px_rgba(245,158,11,0.2)]"
+              ? "bg-sky-500 text-bg-base shadow-[0_4px_12px_rgba(0, 181, 241,0.2)]"
               : "text-slate-400 hover:text-white hover:bg-bg-elevated/30"
           }`}
         >
@@ -30,7 +30,7 @@ export default function ContactFormWrapper() {
           onClick={() => setActiveForm("simple")}
           className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-xl transition-all duration-300 text-xs font-bold uppercase tracking-wider ${
             activeForm === "simple"
-              ? "bg-amber-500 text-bg-base shadow-[0_4px_12px_rgba(245,158,11,0.2)]"
+              ? "bg-sky-500 text-bg-base shadow-[0_4px_12px_rgba(0, 181, 241,0.2)]"
               : "text-slate-400 hover:text-white hover:bg-bg-elevated/30"
           }`}
         >

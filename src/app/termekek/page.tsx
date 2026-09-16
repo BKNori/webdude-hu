@@ -35,7 +35,7 @@ const products = [
       "1 év ingyenes frissítés",
     ],
     icon: Zap,
-    color: "from-[#f59e0b] to-orange-500",
+    color: "from-[#00B5F1] to-orange-500",
     href: "/termekek/ai-workflow-starter-pack",
   },
   {
@@ -55,7 +55,7 @@ const products = [
       "Schema.org JSON-LD implementáció",
     ],
     icon: Shield,
-    color: "from-blue-500 to-amber-500",
+    color: "from-blue-500 to-sky-500",
     href: "/termekek/seo-audit-pro",
   },
   {
@@ -115,7 +115,7 @@ const products = [
       "Strategist-Pro AI workflow",
     ],
     icon: Zap,
-    color: "from-[#f59e0b] to-orange-500",
+    color: "from-[#00B5F1] to-orange-500",
     href: "/termekek/kristofka-munkafolyamat",
   },
   {
@@ -135,7 +135,7 @@ const products = [
       "Midjourney v6 Master promptok",
     ],
     icon: Shield,
-    color: "from-blue-500 to-amber-500",
+    color: "from-blue-500 to-sky-500",
     href: "/termekek/banner-ai-muhely",
   },
   {
@@ -195,7 +195,7 @@ const products = [
       "AI válasz motor optimalizáció",
     ],
     icon: Shield,
-    color: "from-blue-500 to-amber-500",
+    color: "from-blue-500 to-sky-500",
     href: "/termekek/seo-audit-ai-muhely",
   },
   {
@@ -215,7 +215,7 @@ const products = [
       "Midjourney v6 Master promptok",
     ],
     icon: Shield,
-    color: "from-blue-500 to-amber-500",
+    color: "from-blue-500 to-sky-500",
     href: "/termekek/szezonalis-ai-muhely",
   },
   {
@@ -314,7 +314,7 @@ export default function ProductsPage() {
   if (loading) {
     return (
       <div className="min-h-screen bg-bg-base flex flex-col items-center justify-center space-y-4">
-        <Loader2 className="w-8 h-8 animate-spin text-[#f59e0b]" />
+        <Loader2 className="w-8 h-8 animate-spin text-[#00B5F1]" />
         <p className="text-xs font-mono text-slate-400 uppercase tracking-widest animate-pulse font-bold">
           Betöltés...
         </p>
@@ -331,7 +331,7 @@ export default function ProductsPage() {
         </div>
         <Link
           href="/admin/login"
-          className="px-6 py-3 rounded-xl bg-[#f59e0b] text-white font-bold hover:bg-[#f59e0b]/400 transition-colors"
+          className="px-6 py-3 rounded-xl bg-[#00B5F1] text-slate-950 font-bold hover:bg-[#00B5F1]/400 transition-colors"
         >
           Bejelentkezés
         </Link>
@@ -349,10 +349,10 @@ export default function ProductsPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#f59e0b]/10 border border-[#f59e0b]/20"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#00B5F1]/10 border border-[#00B5F1]/20"
             >
-              <ShoppingBag className="w-4 h-4 text-[#f59e0b]" />
-              <span className="text-xs font-bold text-[#f59e0b] uppercase tracking-[0.2em]">
+              <ShoppingBag className="w-4 h-4 text-[#00B5F1]" />
+              <span className="text-xs font-bold text-[#00B5F1] uppercase tracking-[0.2em]">
                 AI & Automatizáció
               </span>
             </motion.div>
@@ -363,7 +363,7 @@ export default function ProductsPage() {
               className="text-4xl md:text-6xl font-bold text-text-primary tracking-tight"
             >
               Prémium AI &{" "}
-              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#f59e0b]/400 to-[#d97706]">
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1]/400 to-[#5B21B6]">
                 Automatizációs Megoldások
               </span>
             </motion.h1>
@@ -387,7 +387,7 @@ export default function ProductsPage() {
             {categories.map((category) => (
               <button
                 key={category.name}
-                className="px-4 py-2 rounded-lg bg-slate-900/80 border border-slate-700 text-slate-400 hover:border-[#f59e0b]/50 hover:text-[#f59e0b] transition-all text-sm font-medium shadow-[0_4px_12px_rgba(15,23,42,0.3)]"
+                className="px-4 py-2 rounded-lg bg-slate-900/80 border border-slate-700 text-slate-400 hover:border-[#00B5F1]/50 hover:text-[#00B5F1] transition-all text-sm font-medium shadow-[0_4px_12px_rgba(15,23,42,0.3)]"
               >
                 {category.name} ({category.count})
               </button>
@@ -408,15 +408,15 @@ export default function ProductsPage() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="group bg-slate-900/80 backdrop-blur-md border border-slate-700 rounded-2xl overflow-hidden hover:border-[#f59e0b]/50 transition-all duration-300 shadow-[0_8px_24px_rgba(15,23,42,0.3)] hover:shadow-[0_18px_40px_rgba(245,158,11,0.2)] hover:-translate-y-1"
+                  className="group bg-slate-900/80 backdrop-blur-md border border-slate-700 rounded-2xl overflow-hidden hover:border-[#00B5F1]/50 transition-all duration-300 shadow-[0_8px_24px_rgba(15,23,42,0.3)] hover:shadow-[0_18px_40px_rgba(0, 181, 241,0.2)] hover:-translate-y-1"
                 >
                   <div className="p-6">
                     {/* Header */}
                     <div className="flex items-start justify-between mb-4">
-                      <div className="w-14 h-14 rounded-xl bg-linear-to-br from-[#f59e0b]/10 to-[#d97706]/10 border border-[#f59e0b]/20 flex items-center justify-center group-hover:border-[#f59e0b]/50 transition-colors">
-                        <ProductIcon className="w-7 h-7 text-[#f59e0b]" />
+                      <div className="w-14 h-14 rounded-xl bg-linear-to-br from-[#00B5F1]/10 to-[#5B21B6]/10 border border-[#00B5F1]/20 flex items-center justify-center group-hover:border-[#00B5F1]/50 transition-colors">
+                        <ProductIcon className="w-7 h-7 text-[#00B5F1]" />
                       </div>
-                      <div className="flex items-center gap-1 text-[#f59e0b]">
+                      <div className="flex items-center gap-1 text-[#00B5F1]">
                         <Star className="w-4 h-4 fill-current" />
                         <span className="text-sm font-medium">
                           {product.rating}
@@ -428,12 +428,12 @@ export default function ProductsPage() {
                     </div>
 
                     {/* Category */}
-                    <span className="text-xs font-bold text-[#f59e0b] uppercase tracking-wider mb-2 block">
+                    <span className="text-xs font-bold text-[#00B5F1] uppercase tracking-wider mb-2 block">
                       {product.category}
                     </span>
 
                     {/* Title */}
-                    <h3 className="text-xl font-bold text-text-primary mb-3 group-hover:text-[#f59e0b] transition-colors">
+                    <h3 className="text-xl font-bold text-text-primary mb-3 group-hover:text-[#00B5F1] transition-colors">
                       {product.name}
                     </h3>
 
@@ -449,7 +449,7 @@ export default function ProductsPage() {
                           key={idx}
                           className="flex items-center gap-2 text-sm text-slate-400"
                         >
-                          <CheckCircle className="w-4 h-4 text-[#f59e0b]" />
+                          <CheckCircle className="w-4 h-4 text-[#00B5F1]" />
                           <span>{feature}</span>
                         </div>
                       ))}
@@ -465,7 +465,7 @@ export default function ProductsPage() {
                     {/* CTA */}
                     <Link
                       href="/kapcsolat"
-                      className="flex items-center justify-center gap-2 w-full py-3 bg-linear-to-r from-[#f59e0b] to-[#d97706] text-white font-bold rounded-xl hover:shadow-[0_8px_24px_rgba(245,158,11,0.3)] transition-all group-hover:scale-[1.02]"
+                      className="flex items-center justify-center gap-2 w-full py-3 bg-linear-to-r from-[#00B5F1] to-[#5B21B6] text-slate-950 font-bold rounded-xl hover:shadow-[0_8px_24px_rgba(0, 181, 241,0.3)] transition-all group-hover:scale-[1.02]"
                     >
                       <span>Egyedi árajánlat kérése</span>
                       <ArrowRight className="w-4 h-4" />
@@ -490,7 +490,7 @@ export default function ProductsPage() {
           </p>
           <Link
             href="/kapcsolat"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-linear-to-r from-[#f59e0b] to-[#d97706] text-white font-bold rounded-xl hover:shadow-[0_8px_24px_rgba(245,158,11,0.3)] transition-all"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-linear-to-r from-[#00B5F1] to-[#5B21B6] text-slate-950 font-bold rounded-xl hover:shadow-[0_8px_24px_rgba(0, 181, 241,0.3)] transition-all"
           >
             Kapcsolatfelvétel
             <ArrowRight className="w-4 h-4" />

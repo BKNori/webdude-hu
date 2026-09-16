@@ -145,10 +145,10 @@ export async function generateWorkflowAiResponseAction({
 A `WorkflowChat.tsx` felületén az AI Copilot válaszait elegánsan, a **90-8-2-es dizájn-szabály** szerint különítjük el a humán üzenetektől:
 
 * **Izzó Cyber-Arany Keret:** Az AI üzenetei kapnak egy vékony arany szegélyt és egy nagyon szoft, áttetsző arany háttérfényt:
-  `bg-amber-500/5 border border-amber-500/20 backdrop-blur-md`
+  `bg-sky-500/5 border border-sky-500/20 backdrop-blur-md`
 * **Premium Badge:** A név mellett megjelenik egy dizájnos jelvény:
   ```tsx
-  <span className="bg-amber-500/10 text-amber-500 text-[10px] px-2 py-0.5 rounded-full font-mono tracking-wider uppercase border border-amber-500/20">
+  <span className="bg-sky-500/10 text-sky-500 text-[10px] px-2 py-0.5 rounded-full font-mono tracking-wider uppercase border border-sky-500/20">
     AI Copilot
   </span>
   ```

@@ -13,7 +13,7 @@ export default function AEOImpactSection({
   afterScore = 95,
 }: AEOImpactSectionProps) {
   return (
-    <section className="py-16 border-t border-gold-primary/10 bg-bg-elevated/30">
+    <section className="py-16 border-t border-brand-primary/10 bg-bg-elevated/30">
       <div className="max-w-6xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -183,9 +183,9 @@ export default function AEOImpactSection({
           transition={{ duration: 0.6, delay: 0.4 }}
           className="flex justify-center mt-8"
         >
-          <div className="flex items-center gap-4 bg-gold-primary/10 border border-gold-primary/20 rounded-full px-6 py-3">
+          <div className="flex items-center gap-4 bg-brand-primary/10 border border-brand-primary/20 rounded-full px-6 py-3">
             <span className="text-sm text-slate-400">WebDude Audit</span>
-            <ArrowRight className="w-5 h-5 text-gold-primary" />
+            <ArrowRight className="w-5 h-5 text-brand-primary" />
             <span className="text-sm font-bold text-white">
               +{afterScore - beforeScore}% Lighthouse javulás
             </span>

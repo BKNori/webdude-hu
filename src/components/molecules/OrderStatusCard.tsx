@@ -40,7 +40,7 @@ export default function OrderStatusCard({ order, isAdmin, onDeliver }: Props) {
 
   return (
     <motion.div
-      className="bg-bg-surface/40 backdrop-blur-xl border border-bg-elevated/80 rounded-2xl p-4 hover:border-amber-500/20 transition-all"
+      className="bg-bg-surface/40 backdrop-blur-xl border border-bg-elevated/80 rounded-2xl p-4 hover:border-sky-500/20 transition-all"
       initial={{ opacity: 0, y: 10 }}
       animate={{
         opacity: 1,
@@ -51,7 +51,7 @@ export default function OrderStatusCard({ order, isAdmin, onDeliver }: Props) {
       <div className="flex items-center justify-between mb-2">
         <h3 className="font-medium text-white">{order.title || "Add‑on"}</h3>
         <span
-          className={`px-2 py-0.5 rounded text-xs ${order.status === "delivered" ? "bg-emerald-500/10 text-emerald-500" : "bg-amber-500/10 text-amber-500"}`}
+          className={`px-2 py-0.5 rounded text-xs ${order.status === "delivered" ? "bg-emerald-500/10 text-emerald-500" : "bg-sky-500/10 text-sky-500"}`}
         >
           ${order.status}
         </span>
@@ -66,14 +66,14 @@ export default function OrderStatusCard({ order, isAdmin, onDeliver }: Props) {
             placeholder="Kézbesítési megjegyzés"
             value={notes}
             onChange={(e) => setNotes(e.target.value)}
-            className="w-full px-3 py-1.5 bg-[#0a0f26]/80 border border-bg-elevated/80 rounded focus:outline-none focus:border-amber-500 text-sm text-white placeholder-slate-600"
+            className="w-full px-3 py-1.5 bg-[#0a0f26]/80 border border-bg-elevated/80 rounded focus:outline-none focus:border-sky-500 text-sm text-white placeholder-slate-600"
           />
           <input
             type="url"
             placeholder="Kézbesítési URL"
             value={url}
             onChange={(e) => setUrl(e.target.value)}
-            className="w-full px-3 py-1.5 bg-[#0a0f26]/80 border border-bg-elevated/80 rounded focus:outline-none focus:border-amber-500 text-sm text-white placeholder-slate-600"
+            className="w-full px-3 py-1.5 bg-[#0a0f26]/80 border border-bg-elevated/80 rounded focus:outline-none focus:border-sky-500 text-sm text-white placeholder-slate-600"
           />
           {error && (
             <div className="flex items-center text-xs text-red-400">
@@ -91,7 +91,7 @@ export default function OrderStatusCard({ order, isAdmin, onDeliver }: Props) {
             type="button"
             disabled={delivering}
             onClick={handleDeliver}
-            className="flex items-center justify-center gap-1.5 px-3 py-1.5 bg-linear-to-r from-amber-500 to-amber-600 text-bg-base text-xs font-bold rounded hover:scale-[1.02] transition-transform disabled:opacity-50"
+            className="flex items-center justify-center gap-1.5 px-3 py-1.5 bg-linear-to-r from-sky-500 to-violet-700 text-bg-base text-xs font-bold rounded hover:scale-[1.02] transition-transform disabled:opacity-50"
           >
             {delivering ? (
               <span className="animate-pulse">Kézbesítés...</span>

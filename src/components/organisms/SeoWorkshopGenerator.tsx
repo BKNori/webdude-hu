@@ -156,7 +156,7 @@ export default function SeoWorkshopGenerator() {
       {/* Loading State */}
       {loading && (
         <div className="min-h-screen bg-transparent flex flex-col items-center justify-center space-y-4">
-          <Loader2 className="w-8 h-8 animate-spin text-amber-500" />
+          <Loader2 className="w-8 h-8 animate-spin text-sky-500" />
           <p className="text-xs font-mono text-slate-400 uppercase tracking-widest animate-pulse font-bold">
             Audit betöltése...
           </p>
@@ -174,7 +174,7 @@ export default function SeoWorkshopGenerator() {
               </div>
               <Link
                 href="/portal"
-                className="px-6 py-3 rounded-xl bg-amber-500 text-bg-base font-bold hover:bg-amber-600 transition-colors"
+                className="px-6 py-3 rounded-xl bg-sky-500 text-bg-base font-bold hover:bg-violet-700 transition-colors"
               >
                 Bejelentkezés
               </Link>
@@ -187,12 +187,12 @@ export default function SeoWorkshopGenerator() {
                   <div className="flex items-center gap-3">
                     <Link
                       href="/portal/ai-muhely"
-                      className="w-10 h-10 rounded-xl bg-linear-to-br from-amber-400 to-amber-600 flex items-center justify-center shadow-lg shadow-amber-500/10 cursor-pointer"
+                      className="w-10 h-10 rounded-xl bg-linear-to-br from-sky-400 to-violet-700 flex items-center justify-center shadow-lg shadow-sky-500/10 cursor-pointer"
                     >
                       <Search className="w-5 h-5 text-bg-base" />
                     </Link>
                     <div>
-                      <span className="text-xs uppercase font-black tracking-widest text-amber-500 block">
+                      <span className="text-xs uppercase font-black tracking-widest text-sky-500 block">
                         WebDude AI Studio
                       </span>
                       <span className="text-sm font-bold text-white block -mt-0.5">
@@ -203,7 +203,7 @@ export default function SeoWorkshopGenerator() {
 
                   <Link
                     href="/portal/ai-muhely"
-                    className="flex items-center gap-2 px-4 py-2 rounded-xl border border-gray-800 hover:border-amber-500/30 text-slate-400 hover:text-white transition-colors text-xs font-bold uppercase tracking-wider cursor-pointer"
+                    className="flex items-center gap-2 px-4 py-2 rounded-xl border border-gray-800 hover:border-sky-500/30 text-slate-400 hover:text-white transition-colors text-xs font-bold uppercase tracking-wider cursor-pointer"
                   >
                     <ArrowLeft className="w-4 h-4" />
                     Vissza
@@ -217,8 +217,8 @@ export default function SeoWorkshopGenerator() {
                   {/* Input Form */}
                   <div className="space-y-6">
                     <div className="space-y-2 relative">
-                      <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 rounded-full bg-amber-500/5 blur-3xl pointer-events-none" />
-                      <span className="text-xs font-mono font-black uppercase tracking-widest text-amber-500">
+                      <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 rounded-full bg-sky-500/5 blur-3xl pointer-events-none" />
+                      <span className="text-xs font-mono font-black uppercase tracking-widest text-sky-500">
                         SEO Audit Generátor
                       </span>
                       <h1 className="text-3xl md:text-4xl font-extrabold text-white tracking-tight leading-none font-mono">
@@ -245,14 +245,14 @@ export default function SeoWorkshopGenerator() {
                       {/* URL */}
                       <div className="space-y-2">
                         <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <Globe className="w-4 h-4 text-amber-500" />
+                          <Globe className="w-4 h-4 text-sky-500" />
                           Weboldal URL
                         </label>
                         <input
                           {...register("url")}
                           type="url"
                           placeholder="https://pelda.hu"
-                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-amber-500/50 focus:ring-2 focus:ring-amber-500/10 text-white placeholder-slate-500 transition-all text-sm"
+                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-sky-500/50 focus:ring-2 focus:ring-sky-500/10 text-white placeholder-slate-500 transition-all text-sm"
                         />
                         {errors.url && (
                           <p className="text-red-400 text-xs font-mono">
@@ -264,13 +264,13 @@ export default function SeoWorkshopGenerator() {
                       {/* Target Keywords */}
                       <div className="space-y-2">
                         <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <Target className="w-4 h-4 text-amber-500" />
+                          <Target className="w-4 h-4 text-sky-500" />
                           Cél Kulcsszavak
                         </label>
                         <input
                           {...register("targetKeywords")}
                           placeholder="webfejlesztés, AI automatizáció, Next.js"
-                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-amber-500/50 focus:ring-2 focus:ring-amber-500/10 text-white placeholder-slate-500 transition-all text-sm"
+                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-sky-500/50 focus:ring-2 focus:ring-sky-500/10 text-white placeholder-slate-500 transition-all text-sm"
                         />
                         {errors.targetKeywords && (
                           <p className="text-red-400 text-xs font-mono">
@@ -282,12 +282,12 @@ export default function SeoWorkshopGenerator() {
                       {/* Industry */}
                       <div className="space-y-2">
                         <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <BarChart className="w-4 h-4 text-amber-500" />
+                          <BarChart className="w-4 h-4 text-sky-500" />
                           Iparág
                         </label>
                         <select
                           {...register("industry")}
-                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-amber-500/50 focus:ring-2 focus:ring-amber-500/10 text-white transition-all text-sm"
+                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-sky-500/50 focus:ring-2 focus:ring-sky-500/10 text-white transition-all text-sm"
                         >
                           <option value="ecommerce">E-kereskedelem</option>
                           <option value="saas">SaaS szoftver</option>
@@ -304,13 +304,13 @@ export default function SeoWorkshopGenerator() {
                       {/* Target Audience */}
                       <div className="space-y-2">
                         <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <Users className="w-4 h-4 text-amber-500" />
+                          <Users className="w-4 h-4 text-sky-500" />
                           Célközönség
                         </label>
                         <input
                           {...register("targetAudience")}
                           placeholder="Kis- és középvállalkozások, startupok"
-                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-amber-500/50 focus:ring-2 focus:ring-amber-500/10 text-white placeholder-slate-500 transition-all text-sm"
+                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-sky-500/50 focus:ring-2 focus:ring-sky-500/10 text-white placeholder-slate-500 transition-all text-sm"
                         />
                         {errors.targetAudience && (
                           <p className="text-red-400 text-xs font-mono">
@@ -322,12 +322,12 @@ export default function SeoWorkshopGenerator() {
                       {/* Primary Goal */}
                       <div className="space-y-2">
                         <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <TrendingUp className="w-4 h-4 text-amber-500" />
+                          <TrendingUp className="w-4 h-4 text-sky-500" />
                           Elsődleges Cél
                         </label>
                         <select
                           {...register("primaryGoal")}
-                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-amber-500/50 focus:ring-2 focus:ring-amber-500/10 text-white transition-all text-sm"
+                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-sky-500/50 focus:ring-2 focus:ring-sky-500/10 text-white transition-all text-sm"
                         >
                           <option value="organic-traffic">
                             Organikus forgalom
@@ -346,27 +346,27 @@ export default function SeoWorkshopGenerator() {
                       {/* Competitors */}
                       <div className="space-y-2">
                         <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <Shield className="w-4 h-4 text-amber-500" />
+                          <Shield className="w-4 h-4 text-sky-500" />
                           Versenytársak (opcionális)
                         </label>
                         <input
                           {...register("competitors")}
                           placeholder="pelda1.hu, pelda2.hu"
-                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-amber-500/50 focus:ring-2 focus:ring-amber-500/10 text-white placeholder-slate-500 transition-all text-sm"
+                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-sky-500/50 focus:ring-2 focus:ring-sky-500/10 text-white placeholder-slate-500 transition-all text-sm"
                         />
                       </div>
 
                       {/* Additional Requirements */}
                       <div className="space-y-2">
                         <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <Lightbulb className="w-4 h-4 text-amber-500" />
+                          <Lightbulb className="w-4 h-4 text-sky-500" />
                           További Követelmények (opcionális)
                         </label>
                         <textarea
                           {...register("additionalRequirements")}
                           rows={3}
                           placeholder="Pl. Fókusz a helyi SEO-ra, Kecskemét régió..."
-                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-amber-500/50 focus:ring-2 focus:ring-amber-500/10 text-white placeholder-slate-500 transition-all text-sm resize-none"
+                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-sky-500/50 focus:ring-2 focus:ring-sky-500/10 text-white placeholder-slate-500 transition-all text-sm resize-none"
                         />
                       </div>
 
@@ -376,7 +376,7 @@ export default function SeoWorkshopGenerator() {
                         whileTap={{ scale: 0.98 }}
                         type="submit"
                         disabled={isGenerating}
-                        className="w-full px-6 py-4 rounded-xl bg-linear-to-r from-amber-500 to-amber-600 text-bg-base font-bold text-sm uppercase tracking-wider hover:from-amber-600 hover:to-amber-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg shadow-amber-500/20"
+                        className="w-full px-6 py-4 rounded-xl bg-linear-to-r from-sky-500 to-violet-700 text-bg-base font-bold text-sm uppercase tracking-wider hover:from-violet-700 hover:to-sky-800 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg shadow-sky-500/20"
                       >
                         {isGenerating ? (
                           <>
@@ -397,8 +397,8 @@ export default function SeoWorkshopGenerator() {
                   <div className="space-y-6">
                     {!generatedOutput && (
                       <div className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-8 flex flex-col items-center justify-center min-h-100">
-                        <div className="w-16 h-16 rounded-full bg-amber-500/10 flex items-center justify-center mb-4">
-                          <Search className="w-8 h-8 text-amber-500" />
+                        <div className="w-16 h-16 rounded-full bg-sky-500/10 flex items-center justify-center mb-4">
+                          <Search className="w-8 h-8 text-sky-500" />
                         </div>
                         <h3 className="text-lg font-bold text-white mb-2">
                           SEO Audit Eredmény
@@ -420,7 +420,7 @@ export default function SeoWorkshopGenerator() {
                         >
                           <div className="flex items-center justify-between">
                             <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                              <FileText className="w-4 h-4 text-amber-500" />
+                              <FileText className="w-4 h-4 text-sky-500" />
                               Vezetői Összefoglaló
                             </h3>
                             <div className="flex items-center gap-2">
@@ -470,7 +470,7 @@ export default function SeoWorkshopGenerator() {
                                     key={index}
                                     className="text-xs text-white flex items-start gap-2"
                                   >
-                                    <CheckCircle className="w-3 h-3 text-amber-500 mt-0.5 flex-shrink-0" />
+                                    <CheckCircle className="w-3 h-3 text-sky-500 mt-0.5 flex-shrink-0" />
                                     {action}
                                   </li>
                                 )
@@ -487,7 +487,7 @@ export default function SeoWorkshopGenerator() {
                           className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
                         >
                           <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <Shield className="w-4 h-4 text-amber-500" />
+                            <Shield className="w-4 h-4 text-sky-500" />
                             Technikai SEO
                           </h3>
                           <div className="space-y-3">
@@ -539,7 +539,7 @@ export default function SeoWorkshopGenerator() {
                                       key={index}
                                       className="text-xs text-white flex items-start gap-2"
                                     >
-                                      <AlertTriangle className="w-3 h-3 text-amber-500 mt-0.5 flex-shrink-0" />
+                                      <AlertTriangle className="w-3 h-3 text-sky-500 mt-0.5 flex-shrink-0" />
                                       {rec}
                                     </li>
                                   )
@@ -557,7 +557,7 @@ export default function SeoWorkshopGenerator() {
                           className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
                         >
                           <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <FileText className="w-4 h-4 text-amber-500" />
+                            <FileText className="w-4 h-4 text-sky-500" />
                             Tartalom Elemzés
                           </h3>
                           <div className="space-y-3">
@@ -581,7 +581,7 @@ export default function SeoWorkshopGenerator() {
                                   (keyword, index) => (
                                     <span
                                       key={index}
-                                      className="px-2 py-1 rounded bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-mono"
+                                      className="px-2 py-1 rounded bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-mono"
                                     >
                                       {keyword}
                                     </span>
@@ -600,7 +600,7 @@ export default function SeoWorkshopGenerator() {
                                       key={index}
                                       className="text-xs text-white flex items-start gap-2"
                                     >
-                                      <Lightbulb className="w-3 h-3 text-amber-500 mt-0.5 flex-shrink-0" />
+                                      <Lightbulb className="w-3 h-3 text-sky-500 mt-0.5 flex-shrink-0" />
                                       {gap}
                                     </li>
                                   )
@@ -618,7 +618,7 @@ export default function SeoWorkshopGenerator() {
                           className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
                         >
                           <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <TrendingUp className="w-4 h-4 text-amber-500" />
+                            <TrendingUp className="w-4 h-4 text-sky-500" />
                             AEO Optimalizáció
                           </h3>
                           <div className="space-y-3">
@@ -631,7 +631,7 @@ export default function SeoWorkshopGenerator() {
                                   (entity, index) => (
                                     <span
                                       key={index}
-                                      className="px-2 py-1 rounded bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-mono"
+                                      className="px-2 py-1 rounded bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-mono"
                                     >
                                       {entity}
                                     </span>
@@ -648,7 +648,7 @@ export default function SeoWorkshopGenerator() {
                                   (schema, index) => (
                                     <span
                                       key={index}
-                                      className="px-2 py-1 rounded bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-mono"
+                                      className="px-2 py-1 rounded bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-mono"
                                     >
                                       {schema}
                                     </span>
@@ -667,7 +667,7 @@ export default function SeoWorkshopGenerator() {
                                       key={index}
                                       className="text-xs text-white flex items-start gap-2"
                                     >
-                                      <CheckCircle className="w-3 h-3 text-amber-500 mt-0.5 flex-shrink-0" />
+                                      <CheckCircle className="w-3 h-3 text-sky-500 mt-0.5 flex-shrink-0" />
                                       {rec}
                                     </li>
                                   )
@@ -685,7 +685,7 @@ export default function SeoWorkshopGenerator() {
                           className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
                         >
                           <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <CheckCircle className="w-4 h-4 text-amber-500" />
+                            <CheckCircle className="w-4 h-4 text-sky-500" />
                             Akcióterv
                           </h3>
                           <div className="space-y-3">

@@ -1,4 +1,4 @@
-﻿import { Metadata } from "next";
+import { Metadata } from "next";
 import Link from "next/link";
 import { Building2, Upload, Target, Sparkles, ArrowRight } from "lucide-react";
 import Button from "@/components/atoms/Button";

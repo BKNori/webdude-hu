@@ -179,7 +179,7 @@ export default function SeasonalWorkshopGenerator() {
       {/* Loading State */}
       {loading && (
         <div className="min-h-screen bg-transparent flex flex-col items-center justify-center space-y-4">
-          <Loader2 className="w-8 h-8 animate-spin text-amber-500" />
+          <Loader2 className="w-8 h-8 animate-spin text-sky-500" />
           <p className="text-xs font-mono text-slate-400 uppercase tracking-widest animate-pulse font-bold">
             Generátor betöltése...
           </p>
@@ -197,7 +197,7 @@ export default function SeasonalWorkshopGenerator() {
               </div>
               <Link
                 href="/portal"
-                className="px-6 py-3 rounded-xl bg-amber-500 text-bg-base font-bold hover:bg-amber-600 transition-colors"
+                className="px-6 py-3 rounded-xl bg-sky-500 text-bg-base font-bold hover:bg-violet-700 transition-colors"
               >
                 Bejelentkezés
               </Link>
@@ -210,12 +210,12 @@ export default function SeasonalWorkshopGenerator() {
                   <div className="flex items-center gap-3">
                     <Link
                       href="/portal/ai-muhely"
-                      className="w-10 h-10 rounded-xl bg-linear-to-br from-amber-400 to-amber-600 flex items-center justify-center shadow-lg shadow-amber-500/10 cursor-pointer"
+                      className="w-10 h-10 rounded-xl bg-linear-to-br from-sky-400 to-violet-700 flex items-center justify-center shadow-lg shadow-sky-500/10 cursor-pointer"
                     >
                       <Calendar className="w-5 h-5 text-bg-base" />
                     </Link>
                     <div>
-                      <span className="text-xs uppercase font-black tracking-widest text-amber-500 block">
+                      <span className="text-xs uppercase font-black tracking-widest text-sky-500 block">
                         WebDude AI Studio
                       </span>
                       <span className="text-sm font-bold text-white block -mt-0.5">
@@ -226,7 +226,7 @@ export default function SeasonalWorkshopGenerator() {
 
                   <Link
                     href="/portal/ai-muhely"
-                    className="flex items-center gap-2 px-4 py-2 rounded-xl border border-gray-800 hover:border-amber-500/30 text-slate-400 hover:text-white transition-colors text-xs font-bold uppercase tracking-wider cursor-pointer"
+                    className="flex items-center gap-2 px-4 py-2 rounded-xl border border-gray-800 hover:border-sky-500/30 text-slate-400 hover:text-white transition-colors text-xs font-bold uppercase tracking-wider cursor-pointer"
                   >
                     <ArrowLeft className="w-4 h-4" />
                     Vissza
@@ -240,8 +240,8 @@ export default function SeasonalWorkshopGenerator() {
                   {/* Input Form */}
                   <div className="space-y-6">
                     <div className="space-y-2 relative">
-                      <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 rounded-full bg-amber-500/5 blur-3xl pointer-events-none" />
-                      <span className="text-xs font-mono font-black uppercase tracking-widest text-amber-500">
+                      <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 rounded-full bg-sky-500/5 blur-3xl pointer-events-none" />
+                      <span className="text-xs font-mono font-black uppercase tracking-widest text-sky-500">
                         Szezonalis Generátor
                       </span>
                       <h1 className="text-3xl md:text-4xl font-extrabold text-white tracking-tight leading-none font-mono">
@@ -268,12 +268,12 @@ export default function SeasonalWorkshopGenerator() {
                       {/* Season */}
                       <div className="space-y-2">
                         <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <Calendar className="w-4 h-4 text-amber-500" />
+                          <Calendar className="w-4 h-4 text-sky-500" />
                           Szezon
                         </label>
                         <select
                           {...register("season")}
-                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-amber-500/50 focus:ring-2 focus:ring-amber-500/10 text-white transition-all text-sm"
+                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-sky-500/50 focus:ring-2 focus:ring-sky-500/10 text-white transition-all text-sm"
                         >
                           <option value="christmas">Karácsony</option>
                           <option value="new-year">Újév</option>
@@ -292,13 +292,13 @@ export default function SeasonalWorkshopGenerator() {
                       {selectedSeason === "custom" && (
                         <div className="space-y-2">
                           <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                            <Calendar className="w-4 h-4 text-amber-500" />
+                            <Calendar className="w-4 h-4 text-sky-500" />
                             Egyedi Szezon
                           </label>
                           <input
                             {...register("customSeason")}
                             placeholder="Pl. Anyák napja, Apák napja..."
-                            className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-amber-500/50 focus:ring-2 focus:ring-amber-500/10 text-white placeholder-slate-500 transition-all text-sm"
+                            className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-sky-500/50 focus:ring-2 focus:ring-sky-500/10 text-white placeholder-slate-500 transition-all text-sm"
                           />
                         </div>
                       )}
@@ -306,12 +306,12 @@ export default function SeasonalWorkshopGenerator() {
                       {/* Campaign Type */}
                       <div className="space-y-2">
                         <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <Target className="w-4 h-4 text-amber-500" />
+                          <Target className="w-4 h-4 text-sky-500" />
                           Kampány Típus
                         </label>
                         <select
                           {...register("campaignType")}
-                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-amber-500/50 focus:ring-2 focus:ring-amber-500/10 text-white transition-all text-sm"
+                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-sky-500/50 focus:ring-2 focus:ring-sky-500/10 text-white transition-all text-sm"
                         >
                           <option value="social-media">Social media</option>
                           <option value="email">Email kampány</option>
@@ -327,13 +327,13 @@ export default function SeasonalWorkshopGenerator() {
                       {/* Target Audience */}
                       <div className="space-y-2">
                         <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <Users className="w-4 h-4 text-amber-500" />
+                          <Users className="w-4 h-4 text-sky-500" />
                           Célközönség
                         </label>
                         <input
                           {...register("targetAudience")}
                           placeholder="Kis- és középvállalkozások, startupok"
-                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-amber-500/50 focus:ring-2 focus:ring-amber-500/10 text-white placeholder-slate-500 transition-all text-sm"
+                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-sky-500/50 focus:ring-2 focus:ring-sky-500/10 text-white placeholder-slate-500 transition-all text-sm"
                         />
                         {errors.targetAudience && (
                           <p className="text-red-400 text-xs font-mono">
@@ -345,12 +345,12 @@ export default function SeasonalWorkshopGenerator() {
                       {/* Brand Voice */}
                       <div className="space-y-2">
                         <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <MessageSquare className="w-4 h-4 text-amber-500" />
+                          <MessageSquare className="w-4 h-4 text-sky-500" />
                           Márka Hang
                         </label>
                         <select
                           {...register("brandVoice")}
-                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-amber-500/50 focus:ring-2 focus:ring-amber-500/10 text-white transition-all text-sm"
+                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-sky-500/50 focus:ring-2 focus:ring-sky-500/10 text-white transition-all text-sm"
                         >
                           <option value="professional">Professzionális</option>
                           <option value="friendly">Barátságos</option>
@@ -364,12 +364,12 @@ export default function SeasonalWorkshopGenerator() {
                       {/* Primary Goal */}
                       <div className="space-y-2">
                         <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <TrendingUp className="w-4 h-4 text-amber-500" />
+                          <TrendingUp className="w-4 h-4 text-sky-500" />
                           Elsődleges Cél
                         </label>
                         <select
                           {...register("primaryGoal")}
-                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-amber-500/50 focus:ring-2 focus:ring-amber-500/10 text-white transition-all text-sm"
+                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-sky-500/50 focus:ring-2 focus:ring-sky-500/10 text-white transition-all text-sm"
                         >
                           <option value="sales">Eladás növelés</option>
                           <option value="brand-awareness">
@@ -388,14 +388,14 @@ export default function SeasonalWorkshopGenerator() {
                       {/* Additional Requirements */}
                       <div className="space-y-2">
                         <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <Sparkles className="w-4 h-4 text-amber-500" />
+                          <Sparkles className="w-4 h-4 text-sky-500" />
                           További Követelmények (opcionális)
                         </label>
                         <textarea
                           {...register("additionalRequirements")}
                           rows={3}
                           placeholder="Pl. Fókusz a Cyber-Gold identitásra, Kecskemét régió..."
-                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-amber-500/50 focus:ring-2 focus:ring-amber-500/10 text-white placeholder-slate-500 transition-all text-sm resize-none"
+                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-sky-500/50 focus:ring-2 focus:ring-sky-500/10 text-white placeholder-slate-500 transition-all text-sm resize-none"
                         />
                       </div>
 
@@ -405,7 +405,7 @@ export default function SeasonalWorkshopGenerator() {
                         whileTap={{ scale: 0.98 }}
                         type="submit"
                         disabled={isGenerating}
-                        className="w-full px-6 py-4 rounded-xl bg-linear-to-r from-amber-500 to-amber-600 text-bg-base font-bold text-sm uppercase tracking-wider hover:from-amber-600 hover:to-amber-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg shadow-amber-500/20"
+                        className="w-full px-6 py-4 rounded-xl bg-linear-to-r from-sky-500 to-violet-700 text-bg-base font-bold text-sm uppercase tracking-wider hover:from-violet-700 hover:to-sky-800 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg shadow-sky-500/20"
                       >
                         {isGenerating ? (
                           <>
@@ -426,8 +426,8 @@ export default function SeasonalWorkshopGenerator() {
                   <div className="space-y-6">
                     {!generatedOutput && (
                       <div className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-8 flex flex-col items-center justify-center min-h-100">
-                        <div className="w-16 h-16 rounded-full bg-amber-500/10 flex items-center justify-center mb-4">
-                          <Calendar className="w-8 h-8 text-amber-500" />
+                        <div className="w-16 h-16 rounded-full bg-sky-500/10 flex items-center justify-center mb-4">
+                          <Calendar className="w-8 h-8 text-sky-500" />
                         </div>
                         <h3 className="text-lg font-bold text-white mb-2">
                           Szezonalis Kampány Terv
@@ -449,7 +449,7 @@ export default function SeasonalWorkshopGenerator() {
                         >
                           <div className="flex items-center justify-between">
                             <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                              <Target className="w-4 h-4 text-amber-500" />
+                              <Target className="w-4 h-4 text-sky-500" />
                               Kampány Stratégia
                             </h3>
                           </div>
@@ -506,7 +506,7 @@ export default function SeasonalWorkshopGenerator() {
                           className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
                         >
                           <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <Palette className="w-4 h-4 text-amber-500" />
+                            <Palette className="w-4 h-4 text-sky-500" />
                             Vizuális Irányelvek
                           </h3>
                           <div className="space-y-3">
@@ -519,7 +519,7 @@ export default function SeasonalWorkshopGenerator() {
                                   (color, index) => (
                                     <span
                                       key={index}
-                                      className="px-2 py-1 rounded bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-mono"
+                                      className="px-2 py-1 rounded bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-mono"
                                     >
                                       {color}
                                     </span>
@@ -555,7 +555,7 @@ export default function SeasonalWorkshopGenerator() {
                           className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
                         >
                           <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <FileText className="w-4 h-4 text-amber-500" />
+                            <FileText className="w-4 h-4 text-sky-500" />
                             Szövegírás
                           </h3>
                           <div className="space-y-3">
@@ -585,7 +585,7 @@ export default function SeasonalWorkshopGenerator() {
                                   (tag, index) => (
                                     <span
                                       key={index}
-                                      className="px-2 py-1 rounded bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-mono"
+                                      className="px-2 py-1 rounded bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-mono"
                                     >
                                       {tag}
                                     </span>
@@ -604,7 +604,7 @@ export default function SeasonalWorkshopGenerator() {
                           className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
                         >
                           <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <MessageSquare className="w-4 h-4 text-amber-500" />
+                            <MessageSquare className="w-4 h-4 text-sky-500" />
                             Social Media Tartalom
                           </h3>
                           <div className="space-y-3">
@@ -643,7 +643,7 @@ export default function SeasonalWorkshopGenerator() {
                           className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
                         >
                           <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <Mail className="w-4 h-4 text-amber-500" />
+                            <Mail className="w-4 h-4 text-sky-500" />
                             Email Kampány
                           </h3>
                           <div className="space-y-3">
@@ -675,7 +675,7 @@ export default function SeasonalWorkshopGenerator() {
                           className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
                         >
                           <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <ImageIcon className="w-4 h-4 text-amber-500" />
+                            <ImageIcon className="w-4 h-4 text-sky-500" />
                             Midjourney Promptok
                           </h3>
                           <div className="space-y-3">
@@ -706,7 +706,7 @@ export default function SeasonalWorkshopGenerator() {
                           className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
                         >
                           <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <Clock className="w-4 h-4 text-amber-500" />
+                            <Clock className="w-4 h-4 text-sky-500" />
                             Promóciós Naptár
                           </h3>
                           <div className="space-y-3">

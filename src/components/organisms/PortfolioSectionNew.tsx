@@ -180,7 +180,7 @@ export default function PortfolioSectionNew() {
         >
           <Link
             href="/munkak"
-            className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-[#00B5F1] hover:bg-[#0095C7] text-white font-semibold transition-all duration-300 shadow-[0_8px_24px_rgba(0,181,241,0.2)] hover:shadow-[0_18px_40px_rgba(0,181,241,0.3)]"
+            className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-[#00B5F1] hover:bg-[#5B21B6] text-slate-950 font-semibold transition-all duration-300 shadow-[0_8px_24px_rgba(0, 181, 241,0.2)] hover:shadow-[0_18px_40px_rgba(0, 181, 241,0.3)]"
           >
             Összes projekt megtekintése
           </Link>

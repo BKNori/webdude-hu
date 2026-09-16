@@ -25,7 +25,7 @@ export default function AiAssistantDemo() {
               title="Értékesítőd, aki sosem alszik"
               description="Interaktív AI demo: lássuk, hogyan segíti a WebDude AI Platform az ajánlatkészítést és a lead minősítést valós idejű javaslatokkal."
             />
-            <p className="mt-6 text-slate-600">
+            <p className="mt-6 text-slate-400">
               Próbáld ki az alábbi demót: írd be kérdésed, és nézd meg, hogyan
               válaszol az AI egy rövid, hasznos útmutatóval.
             </p>

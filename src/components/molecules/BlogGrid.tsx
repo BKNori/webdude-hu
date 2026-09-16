@@ -49,7 +49,7 @@ export default function BlogGrid({ posts }: BlogGridProps) {
           key={post.slug}
           variants={cardVariants}
           whileHover={{ y: -4, scale: 1.01 }}
-          className="group relative flex flex-col rounded-3xl bg-slate-900/60 border border-slate-800/80 p-6 backdrop-blur-xl transition-colors hover:border-amber-500/40"
+          className="group relative flex flex-col rounded-3xl bg-slate-900/60 border border-slate-800/80 p-6 backdrop-blur-xl transition-colors hover:border-sky-500/40"
         >
           {post.coverImage && (
             <div className="relative aspect-video w-full overflow-hidden rounded-2xl mb-5 bg-slate-950">
@@ -65,7 +65,7 @@ export default function BlogGrid({ posts }: BlogGridProps) {
 
           <div className="flex items-center justify-between gap-2 mb-3">
             {post.category && (
-              <span className="text-xs font-semibold uppercase tracking-wider text-amber-500">
+              <span className="text-xs font-semibold uppercase tracking-wider text-sky-500">
                 {post.category}
               </span>
             )}
@@ -78,7 +78,7 @@ export default function BlogGrid({ posts }: BlogGridProps) {
             </span>
           </div>
 
-          <h2 className="text-xl font-bold tracking-tight text-white group-hover:text-amber-400 transition-colors line-clamp-2 mb-3">
+          <h2 className="text-xl font-bold tracking-tight text-white group-hover:text-sky-400 transition-colors line-clamp-2 mb-3">
             <Link href={`/hirek/${post.slug}`} className="focus:outline-none">
               <span className="absolute inset-0 z-10" />
               {post.title}
@@ -89,7 +89,7 @@ export default function BlogGrid({ posts }: BlogGridProps) {
             {post.excerpt}
           </p>
 
-          <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-amber-500 pt-4 border-t border-slate-800/60">
+          <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-sky-500 pt-4 border-t border-slate-800/60">
             <span>Elolvasom</span>
             <span>{post.readingTime || "3 perc"} &rarr;</span>
           </div>

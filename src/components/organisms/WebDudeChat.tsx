@@ -154,7 +154,7 @@ export default function WebDudeChat() {
       <motion.button
         id="chat-trigger-btn"
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-amber-500 text-bg-base border border-bg-elevated shadow-lg shadow-amber-500/10 transition-all focus:outline-none focus:ring-2 focus:ring-amber-500/50 cursor-pointer"
+        className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-sky-500 text-bg-base border border-bg-elevated shadow-lg shadow-sky-500/10 transition-all focus:outline-none focus:ring-2 focus:ring-sky-500/50 cursor-pointer"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
         aria-label="WebDude AI Asszisztens megnyitása"
@@ -203,8 +203,8 @@ export default function WebDudeChat() {
               </svg>
               {/* Pulse notification dot */}
               <span className="absolute -top-1 -right-1 flex h-3 w-3">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-amber-400 opacity-75"></span>
-                <span className="relative inline-flex h-3 w-3 rounded-full bg-amber-500"></span>
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75"></span>
+                <span className="relative inline-flex h-3 w-3 rounded-full bg-sky-500"></span>
               </span>
             </div>
           )}
@@ -220,12 +220,12 @@ export default function WebDudeChat() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 40, scale: 0.95 }}
             transition={cinematicTransition}
-            className="fixed bottom-24 right-6 z-50 flex h-150 w-[92vw] max-w-110 flex-col overflow-hidden rounded-3xl bg-bg-surface border border-bg-elevated shadow-2xl shadow-amber-500/5 focus:outline-none"
+            className="fixed bottom-24 right-6 z-50 flex h-150 w-[92vw] max-w-110 flex-col overflow-hidden rounded-3xl bg-bg-surface border border-bg-elevated shadow-2xl shadow-sky-500/5 focus:outline-none"
           >
             {/* Header */}
             <div className="flex items-center justify-between border-b border-bg-elevated/60 bg-transparent px-6 py-4">
               <div className="flex items-center gap-3">
-                <div className="relative flex h-10 w-10 items-center justify-center rounded-full border border-amber-500/30 bg-bg-surface text-amber-500">
+                <div className="relative flex h-10 w-10 items-center justify-center rounded-full border border-sky-500/30 bg-bg-surface text-sky-500">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -283,7 +283,7 @@ export default function WebDudeChat() {
                         ? "Szia! Látom, a WordPress karbantartás érdekel. Szeretnéd, ha átnézném a weboldalad biztonságát?"
                         : "Szia! Én vagyok Norbi mesterséges projekt-előkészítő asszisztense. Segíthetek megismerni a korábbi munkáinkat és rögzíteni a projekttervedet."}
                     </p>
-                    <p className="text-xs text-amber-500/80 font-medium">
+                    <p className="text-xs text-sky-500/80 font-medium">
                       {isWordPressPage
                         ? "Miben segíthetek a WordPress oldalad kapcsán?"
                         : "Milyen terület iránt érdeklődsz leginkább?"}
@@ -296,7 +296,7 @@ export default function WebDudeChat() {
                       <button
                         key={index}
                         onClick={() => handleQuickReply(reply.text)}
-                        className="w-full text-left bg-transparent border border-bg-elevated hover:border-amber-500/50 hover:text-amber-500 rounded-2xl px-4 py-3 text-xs text-slate-300 font-medium transition-all duration-300"
+                        className="w-full text-left bg-transparent border border-bg-elevated hover:border-sky-500/50 hover:text-sky-500 rounded-2xl px-4 py-3 text-xs text-slate-300 font-medium transition-all duration-300"
                       >
                         {reply.text}
                       </button>
@@ -317,7 +317,7 @@ export default function WebDudeChat() {
                     <div
                       className={`rounded-2xl px-4 py-3 text-sm leading-relaxed ${
                         isUser
-                          ? "bg-amber-500/10 text-amber-500 border border-amber-500/20 rounded-tr-none"
+                          ? "bg-sky-500/10 text-sky-500 border border-sky-500/20 rounded-tr-none"
                           : "bg-bg-elevated/50 text-text-primary border border-bg-elevated/40 rounded-tl-none"
                       } max-w-[88%]`}
                     >
@@ -355,7 +355,7 @@ export default function WebDudeChat() {
                                 {toolPart.state !== "output-available" ? (
                                   <div className="flex items-center gap-2 text-xs text-slate-400">
                                     <svg
-                                      className="animate-spin h-3.5 w-3.5 text-amber-500"
+                                      className="animate-spin h-3.5 w-3.5 text-sky-500"
                                       viewBox="0 0 24 24"
                                       fill="none"
                                     >
@@ -377,7 +377,7 @@ export default function WebDudeChat() {
                                   </div>
                                 ) : (
                                   <div className="space-y-2">
-                                    <span className="text-[11px] uppercase tracking-wider font-bold text-amber-500/80 block">
+                                    <span className="text-[11px] uppercase tracking-wider font-bold text-sky-500/80 block">
                                       Kiemelt Referenciák:
                                     </span>
                                     {toolPart.output?.items &&
@@ -397,10 +397,10 @@ export default function WebDudeChat() {
                                             ) => (
                                               <div
                                                 key={idx}
-                                                className="bg-transparent border border-bg-elevated rounded-xl p-3 hover:border-amber-500/40 transition-colors"
+                                                className="bg-transparent border border-bg-elevated rounded-xl p-3 hover:border-sky-500/40 transition-colors"
                                               >
                                                 <div className="flex justify-between items-start">
-                                                  <h4 className="text-amber-500 font-bold text-xs">
+                                                  <h4 className="text-sky-500 font-bold text-xs">
                                                     {item.title}
                                                   </h4>
                                                   <span className="text-[9px] px-1.5 py-0.5 rounded bg-bg-elevated text-slate-400">
@@ -413,7 +413,7 @@ export default function WebDudeChat() {
                                                 {item.slug && (
                                                   <a
                                                     href={`/munkak#${item.slug}`}
-                                                    className="inline-flex items-center gap-1 text-[10px] text-amber-500 font-semibold mt-2 hover:underline"
+                                                    className="inline-flex items-center gap-1 text-[10px] text-sky-500 font-semibold mt-2 hover:underline"
                                                   >
                                                     Megtekintés
                                                     <svg
@@ -469,7 +469,7 @@ export default function WebDudeChat() {
                                 {toolPart.state !== "output-available" ? (
                                   <div className="flex items-center gap-2 text-xs text-slate-400">
                                     <svg
-                                      className="animate-spin h-3.5 w-3.5 text-amber-500"
+                                      className="animate-spin h-3.5 w-3.5 text-sky-500"
                                       viewBox="0 0 24 24"
                                       fill="none"
                                     >
@@ -531,9 +531,9 @@ export default function WebDudeChat() {
                 <div className="flex justify-start">
                   <div className="rounded-2xl rounded-tl-none bg-bg-elevated/50 border border-bg-elevated/40 px-4 py-3 max-w-[88%]">
                     <div className="flex gap-1.5 py-1">
-                      <span className="h-2 w-2 animate-bounce rounded-full bg-amber-500/80 [animation-delay:-0.3s]" />
-                      <span className="h-2 w-2 animate-bounce rounded-full bg-amber-500/80 [animation-delay:-0.15s]" />
-                      <span className="h-2 w-2 animate-bounce rounded-full bg-amber-500/80" />
+                      <span className="h-2 w-2 animate-bounce rounded-full bg-sky-500/80 [animation-delay:-0.3s]" />
+                      <span className="h-2 w-2 animate-bounce rounded-full bg-sky-500/80 [animation-delay:-0.15s]" />
+                      <span className="h-2 w-2 animate-bounce rounded-full bg-sky-500/80" />
                     </div>
                   </div>
                 </div>
@@ -564,12 +564,12 @@ export default function WebDudeChat() {
                     isLoading ? "Válasz küldése..." : "Írj egy üzenetet..."
                   }
                   disabled={isLoading}
-                  className="w-full rounded-xl bg-transparent border border-bg-elevated text-text-primary px-4 py-3 pr-12 text-sm focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/50 outline-none transition-all disabled:opacity-55"
+                  className="w-full rounded-xl bg-transparent border border-bg-elevated text-text-primary px-4 py-3 pr-12 text-sm focus:border-sky-500/50 focus:ring-1 focus:ring-sky-500/50 outline-none transition-all disabled:opacity-55"
                 />
                 <button
                   type="submit"
                   disabled={!input.trim() || isLoading}
-                  className="absolute right-2.5 top-1/2 -translate-y-1/2 flex h-8 w-8 items-center justify-center rounded-lg bg-amber-500 text-bg-base font-bold uppercase transition-all duration-300 hover:bg-amber-600 disabled:bg-bg-elevated disabled:text-slate-500"
+                  className="absolute right-2.5 top-1/2 -translate-y-1/2 flex h-8 w-8 items-center justify-center rounded-lg bg-sky-500 text-bg-base font-bold uppercase transition-all duration-300 hover:bg-violet-700 disabled:bg-bg-elevated disabled:text-slate-500"
                   aria-label="Küldés"
                 >
                   <svg

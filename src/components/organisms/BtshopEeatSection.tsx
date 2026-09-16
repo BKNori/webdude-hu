@@ -40,7 +40,7 @@ export default function BtshopEeatSection() {
           transition={spring}
           className="lg:col-span-2"
         >
-          <div className="relative rounded-3xl overflow-hidden border border-[#00B5F1]/25 shadow-[0_0_60px_rgba(0,181,241,0.14)]">
+          <div className="relative rounded-3xl overflow-hidden border border-[#00B5F1]/25 shadow-[0_0_60px_rgba(0, 181, 241,0.14)]">
             <div className="relative aspect-4/3 w-full bg-[#020617]">
               <Image
                 src="/assets/portfolio/btshop/btshop-dashboard-placeholder.svg"
@@ -62,9 +62,9 @@ export default function BtshopEeatSection() {
           transition={{ ...spring, delay: 0.12 }}
           className="lg:col-span-3"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-950/80 backdrop-blur-2xl border border-amber-500/30 mb-6">
-            <Fingerprint className="w-4 h-4 text-amber-400" aria-hidden />
-            <span className="text-xs font-bold uppercase tracking-[0.25em] text-amber-400">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-950/80 backdrop-blur-2xl border border-sky-500/30 mb-6">
+            <Fingerprint className="w-4 h-4 text-sky-400" aria-hidden />
+            <span className="text-xs font-bold uppercase tracking-[0.25em] text-sky-400">
               E-E-A-T — Egy kéz, egy felelősség
             </span>
           </div>
@@ -88,9 +88,9 @@ export default function BtshopEeatSection() {
                 whileInView={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ ...spring, delay: 0.15 + i * 0.07 }}
-                className="bg-slate-950/80 backdrop-blur-2xl border border-slate-800/80 rounded-2xl p-6 hover:border-amber-500/40 transition-colors"
+                className="bg-slate-950/80 backdrop-blur-2xl border border-slate-800/80 rounded-2xl p-6 hover:border-sky-500/40 transition-colors"
               >
-                <dt className="text-sm font-bold uppercase tracking-wider text-amber-400 mb-2">
+                <dt className="text-sm font-bold uppercase tracking-wider text-sky-400 mb-2">
                   {p.k}
                 </dt>
                 <dd className="text-sm text-slate-400 leading-relaxed">

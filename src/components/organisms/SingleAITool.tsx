@@ -167,7 +167,7 @@ export default function SingleAITool({
   };
 
   return (
-    <div className="bg-bg-surface/30 border border-slate-800/50 backdrop-blur-md rounded-2xl p-8 max-w-4xl mx-auto hover:border-amber-500/10 transition-all duration-300">
+    <div className="bg-bg-surface/30 border border-slate-800/50 backdrop-blur-md rounded-2xl p-8 max-w-4xl mx-auto hover:border-sky-500/10 transition-all duration-300">
       <div className="mb-6">
         <h2 className="text-2xl font-bold text-text-primary mb-2">
           {effectiveToolName}
@@ -188,7 +188,7 @@ export default function SingleAITool({
               type="text"
               {...register("topic")}
               placeholder="Pl. prémium bútor webshop akciók"
-              className="w-full bg-bg-elevated/30 border border-slate-800 focus:border-amber-500/50 rounded-xl px-4 py-3 text-text-primary outline-none transition-all"
+              className="w-full bg-bg-elevated/30 border border-slate-800 focus:border-sky-500/50 rounded-xl px-4 py-3 text-text-primary outline-none transition-all"
             />
             {errors.topic && (
               <p className="text-red-500 text-sm mt-1">
@@ -203,7 +203,7 @@ export default function SingleAITool({
             </label>
             <select
               {...register("tone")}
-              className="w-full bg-bg-elevated/50 border border-slate-800 focus:border-amber-500/50 rounded-xl px-4 py-3 text-text-primary outline-none transition-all"
+              className="w-full bg-bg-elevated/50 border border-slate-800 focus:border-sky-500/50 rounded-xl px-4 py-3 text-text-primary outline-none transition-all"
             >
               <option value="">-- Válassz hangnemet --</option>
               <option value="professional">Szakmai és hiteles (E-E-A-T)</option>
@@ -224,14 +224,14 @@ export default function SingleAITool({
               type="text"
               {...register("keywords")}
               placeholder="Pl. ingyenes szállítás, limitált darabszám"
-              className="w-full bg-bg-elevated/30 border border-slate-800 focus:border-amber-500/50 rounded-xl px-4 py-3 text-text-primary outline-none transition-all"
+              className="w-full bg-bg-elevated/30 border border-slate-800 focus:border-sky-500/50 rounded-xl px-4 py-3 text-text-primary outline-none transition-all"
             />
           </div>
 
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full py-4 px-6 rounded-xl bg-amber-500 hover:bg-amber-600 disabled:bg-amber-500/30 text-bg-base font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2"
+            className="w-full py-4 px-6 rounded-xl bg-sky-500 hover:bg-violet-700 disabled:bg-sky-500/30 text-bg-base font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2"
           >
             {isSubmitting ? (
               <span className="flex items-center gap-2">
@@ -255,7 +255,7 @@ export default function SingleAITool({
                 <button
                   type="button"
                   onClick={handleCopyToClipboard}
-                  className="text-xs text-amber-500 hover:text-amber-600 font-bold uppercase tracking-wider transition-colors"
+                  className="text-xs text-sky-500 hover:text-violet-700 font-bold uppercase tracking-wider transition-colors"
                 >
                   {isCopied ? "Másolva! ✓" : "Másolás"}
                 </button>
@@ -272,7 +272,7 @@ export default function SingleAITool({
                   {displayedText}
                 </span>
               ) : (
-                <span className="text-slate-600 italic">
+                <span className="text-slate-400 italic">
                   Add meg a paramétereket bal oldalon a generáláshoz...
                 </span>
               )}
@@ -286,7 +286,7 @@ export default function SingleAITool({
                 <button
                   type="button"
                   onClick={handleSaveToProject}
-                  className="flex-1 py-3 px-4 rounded-xl border border-amber-500/30 hover:border-amber-500/50 text-text-primary font-semibold text-xs uppercase tracking-wider text-center transition-all"
+                  className="flex-1 py-3 px-4 rounded-xl border border-sky-500/30 hover:border-sky-500/50 text-text-primary font-semibold text-xs uppercase tracking-wider text-center transition-all"
                 >
                   Mentés a Projekthez (notes)
                 </button>

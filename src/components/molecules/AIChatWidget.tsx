@@ -36,7 +36,7 @@ export default function AIChatWidget() {
       {/* Chat gomb */}
       <motion.button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 right-6 sm:bottom-24 sm:right-6 w-14 h-14 bg-linear-to-r from-amber-500 to-amber-600 rounded-full shadow-[0_0_20px_rgba(255,215,0,0.4)] flex items-center justify-center z-40 hover:scale-110 transition-transform"
+        className="fixed bottom-6 right-6 sm:bottom-24 sm:right-6 w-14 h-14 bg-linear-to-r from-sky-500 to-violet-700 rounded-full shadow-[0_0_20px_rgba(255,215,0,0.4)] flex items-center justify-center z-40 hover:scale-110 transition-transform"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
       >
@@ -51,7 +51,7 @@ export default function AIChatWidget() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: 20 }}
             transition={{ duration: 0.3 }}
-            className="fixed bottom-20 right-4 sm:bottom-40 sm:right-6 w-[calc(100vw-2rem)] sm:w-80 max-w-[calc(100vw-2rem)] sm:max-w-[calc(100vw-3rem)] bg-bg-surface/95 backdrop-blur-xl border border-amber-500/30 rounded-2xl shadow-[0_8px_32px_rgba(255,215,0,0.2)] z-50"
+            className="fixed bottom-20 right-4 sm:bottom-40 sm:right-6 w-[calc(100vw-2rem)] sm:w-80 max-w-[calc(100vw-2rem)] sm:max-w-[calc(100vw-3rem)] bg-bg-surface/95 backdrop-blur-xl border border-sky-500/30 rounded-2xl shadow-[0_8px_32px_rgba(255,215,0,0.2)] z-50"
           >
             <div className="p-4 border-b border-bg-elevated">
               <div className="flex items-center justify-between">
@@ -79,7 +79,7 @@ export default function AIChatWidget() {
                   <div
                     className={`max-w-[80%] p-3 rounded-lg ${
                       msg.role === "user"
-                        ? "bg-amber-500 text-bg-base"
+                        ? "bg-sky-500 text-bg-base"
                         : "bg-bg-elevated text-text-primary"
                     }`}
                   >
@@ -97,11 +97,11 @@ export default function AIChatWidget() {
                   onChange={(e) => setInput(e.target.value)}
                   onKeyPress={(e) => e.key === "Enter" && handleSend()}
                   placeholder="Írj üzenetet..."
-                  className="flex-1 bg-transparent border border-bg-elevated rounded-lg px-3 py-2 text-white placeholder-text-secondary focus:outline-none focus:border-amber-500"
+                  className="flex-1 bg-transparent border border-bg-elevated rounded-lg px-3 py-2 text-white placeholder-text-secondary focus:outline-none focus:border-sky-500"
                 />
                 <button
                   onClick={handleSend}
-                  className="bg-amber-500 hover:bg-amber-600 text-bg-base px-4 py-2 rounded-lg transition-colors"
+                  className="bg-sky-500 hover:bg-violet-700 text-bg-base px-4 py-2 rounded-lg transition-colors"
                 >
                   Küldés
                 </button>

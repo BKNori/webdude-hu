@@ -30,7 +30,7 @@ export const mdxComponents = {
   a: ({ href, children }: { href?: string; children: React.ReactNode }) => (
     <Link
       href={href || "#"}
-      className="text-amber-500 hover:text-amber-400 underline underline-offset-4 hover:underline-offset-2 transition-all duration-300"
+      className="text-sky-500 hover:text-sky-400 underline underline-offset-4 hover:underline-offset-2 transition-all duration-300"
     >
       {children}
     </Link>
@@ -49,12 +49,12 @@ export const mdxComponents = {
     <li className="text-base leading-relaxed">{children}</li>
   ),
   blockquote: ({ children }: { children: React.ReactNode }) => (
-    <blockquote className="border-l-4 border-amber-500/50 pl-6 py-4 my-6 bg-bg-surface/50 rounded-r-xl">
+    <blockquote className="border-l-4 border-sky-500/50 pl-6 py-4 my-6 bg-bg-surface/50 rounded-r-xl">
       <p className="text-lg italic text-text-primary">{children}</p>
     </blockquote>
   ),
   code: ({ children }: { children: React.ReactNode }) => (
-    <code className="bg-bg-surface text-amber-500 px-2 py-1 rounded font-mono text-sm">
+    <code className="bg-bg-surface text-sky-500 px-2 py-1 rounded font-mono text-sm">
       {children}
     </code>
   ),

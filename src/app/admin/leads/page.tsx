@@ -1,4 +1,4 @@
-﻿import React from "react";
+import React from "react";
 import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import LeadKanbanBoard from "@/components/organisms/LeadKanbanBoard";

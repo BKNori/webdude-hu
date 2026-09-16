@@ -178,7 +178,7 @@ Generate a complete Midjourney v6 concept with the following structure:
 
 COLOR PSYCHOLOGY & HEX PALETTES:
 - Trust/Professional: #00B5F1 (Primary Blue), #1E293B (Slate Dark), #F8FAFC (Light Gray)
-- Cinematic/Dramatic: #0F172A (Deep Navy), #F59E0B (Gold), #E2E8F0 (Silver)
+- Cinematic/Dramatic: #0F172A (Deep Navy), #00B5F1 (Gold), #E2E8F0 (Silver)
 - Nature/Peaceful: #10B981 (Emerald), #064E3B (Forest), #ECFDF5 (Mint)
 - Energy/Dynamic: #FF7A00 (Orange), #EF4444 (Red), #FCA5A5 (Coral)
 - Mystery/Dark: #1E1B4B (Indigo), #312E81 (Purple), #4C1D95 (Deep Purple)

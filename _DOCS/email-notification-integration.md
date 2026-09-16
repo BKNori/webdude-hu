@@ -105,7 +105,7 @@ export async function sendResendEmailAction(payload: EmailPayload): Promise<{ su
 
 ### 4. Cyber-Arany HTML Sablonok (The 90-8-2 Rule)
 
-A levelek dizájnja szigorúan követi a **DESIGN_SYSTEM.md** előírásait [127]: sötét háttér (~90%), szürke/fehér tiszta szövegek (~8%) és a ragyogó Cyber-Arany (#f59e0b) kiemelések (~2%) [356, 357].
+A levelek dizájnja szigorúan követi a **DESIGN_SYSTEM.md** előírásait [127]: sötét háttér (~90%), szürke/fehér tiszta szövegek (~8%) és a ragyogó Cyber-Arany (#00B5F1) kiemelések (~2%) [356, 357].
 
 #### A. Ügyfél Üdvözlő Sablon Generátor (`src/actions/mail.ts` folytatása)
 
@@ -127,7 +127,7 @@ export async function sendWelcomeEmailAction(params: WelcomeEmailParams): Promis
         
         <!-- Header / Logo -->
         <div style="text-align: center; margin-bottom: 30px; border-bottom: 1px solid #1e293b; padding-bottom: 20px;">
-          <h1 style="color: #f59e0b; margin: 0; font-size: 28px; font-weight: 800; letter-spacing: -0.05em;">WebDude</h1>
+          <h1 style="color: #00B5F1; margin: 0; font-size: 28px; font-weight: 800; letter-spacing: -0.05em;">WebDude</h1>
           <p style="color: #94a3b8; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; margin: 5px 0 0 0;">Zárt Ügyfélportál</p>
         </div>
 
@@ -140,15 +140,15 @@ export async function sendWelcomeEmailAction(params: WelcomeEmailParams): Promis
 
         <!-- Credentials Card -->
         <div style="background-color: #1e293b/30; border: 1px solid #1e293b; border-radius: 12px; padding: 20px; margin-bottom: 30px;">
-          <h3 style="color: #f59e0b; margin-top: 0; margin-bottom: 15px; font-size: 14px; text-transform: uppercase; letter-spacing: 0.05em;">Belépési adatok</h3>
+          <h3 style="color: #00B5F1; margin-top: 0; margin-bottom: 15px; font-size: 14px; text-transform: uppercase; letter-spacing: 0.05em;">Belépési adatok</h3>
           <p style="margin: 5px 0; font-size: 15px;"><strong style="color: #94a3b8;">E-mail cím:</strong> ${params.clientEmail}</p>
-          ${params.temporaryPassword ? `<p style="margin: 5px 0; font-size: 15px;"><strong style="color: #94a3b8;">Ideiglenes jelszó:</strong> <code style="background-color: #0f172a; padding: 2px 6px; border-radius: 4px; color: #f59e0b;">${params.temporaryPassword}</code></p>` : ''}
+          ${params.temporaryPassword ? `<p style="margin: 5px 0; font-size: 15px;"><strong style="color: #94a3b8;">Ideiglenes jelszó:</strong> <code style="background-color: #0f172a; padding: 2px 6px; border-radius: 4px; color: #00B5F1;">${params.temporaryPassword}</code></p>` : ''}
           <p style="margin: 10px 0 0 0; font-size: 12px; color: #64748b; font-style: italic;">Biztonsági okokból kérlek, hogy az első belépés után változtasd meg a jelszavadat!</p>
         </div>
 
         <!-- Action Button (2% Gold) -->
         <div style="text-align: center; margin-bottom: 35px;">
-          <a href="${params.portalUrl}" style="display: inline-block; background-color: #f59e0b; color: #020617; font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 0.1em; text-decoration: none; padding: 16px 32px; border-radius: 8px; box-shadow: 0 0 20px rgba(245,158,11,0.3); transition: background-color 0.2s;">
+          <a href="${params.portalUrl}" style="display: inline-block; background-color: #00B5F1; color: #020617; font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 0.1em; text-decoration: none; padding: 16px 32px; border-radius: 8px; box-shadow: 0 0 20px rgba(0, 181, 241,0.3); transition: background-color 0.2s;">
             Belépés a Portálra →
           </a>
         </div>
@@ -211,7 +211,7 @@ export async function sendOnboardingNotificationAction(params: OnboardingNotific
         
         <!-- Header -->
         <div style="margin-bottom: 30px; border-bottom: 1px solid #1e293b; padding-bottom: 20px;">
-          <span style="background-color: rgba(245,158,11,0.1); color: #f59e0b; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; padding: 4px 10px; border-radius: 20px;">
+          <span style="background-color: rgba(0, 181, 241,0.1); color: #00B5F1; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; padding: 4px 10px; border-radius: 20px;">
             Rendszer Értesítés
           </span>
           <h1 style="color: #e2e8f0; margin: 15px 0 0 0; font-size: 24px; font-weight: 800; letter-spacing: -0.03em;">Új Onboarding Kitöltés!</h1>
@@ -221,14 +221,14 @@ export async function sendOnboardingNotificationAction(params: OnboardingNotific
         <div style="background-color: #1e293b/30; border: 1px solid #1e293b; border-radius: 12px; padding: 20px; margin-bottom: 25px;">
           <p style="margin: 5px 0; font-size: 15px;"><strong style="color: #94a3b8;">Ügyfél:</strong> ${params.clientName} (${params.clientEmail})</p>
           <p style="margin: 5px 0; font-size: 15px;"><strong style="color: #94a3b8;">Szolgáltatás:</strong> ${params.addonTitle}</p>
-          <p style="margin: 5px 0; font-size: 15px;"><strong style="color: #94a3b8;">Kategória:</strong> <code style="text-transform: uppercase; color: #f59e0b;">${params.category}</code></p>
+          <p style="margin: 5px 0; font-size: 15px;"><strong style="color: #94a3b8;">Kategória:</strong> <code style="text-transform: uppercase; color: #00B5F1;">${params.category}</code></p>
         </div>
 
         <!-- Google Drive Link Highlight (2% Gold Accent CTA) -->
-        <div style="text-align: center; margin-bottom: 30px; background-color: rgba(245,158,11,0.03); border: 1px dashed rgba(245,158,11,0.3); border-radius: 12px; padding: 25px;">
-          <h3 style="color: #f59e0b; margin-top: 0; margin-bottom: 10px; font-size: 14px; text-transform: uppercase; letter-spacing: 0.05em;">Google Drive / Megosztási Link</h3>
+        <div style="text-align: center; margin-bottom: 30px; background-color: rgba(0, 181, 241,0.03); border: 1px dashed rgba(0, 181, 241,0.3); border-radius: 12px; padding: 25px;">
+          <h3 style="color: #00B5F1; margin-top: 0; margin-bottom: 10px; font-size: 14px; text-transform: uppercase; letter-spacing: 0.05em;">Google Drive / Megosztási Link</h3>
           <p style="color: #94a3b8; font-size: 13px; margin-bottom: 15px;">Kattints az alábbi gombra az ügyfél által megosztott arculati assetek és hozzáférések azonnali megnyitásához:</p>
-          <a href="${params.driveLink}" target="_blank" style="display: inline-block; background-color: #f59e0b; color: #020617; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; text-decoration: none; padding: 12px 24px; border-radius: 6px; box-shadow: 0 0 15px rgba(245,158,11,0.2);">
+          <a href="${params.driveLink}" target="_blank" style="display: inline-block; background-color: #00B5F1; color: #020617; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; text-decoration: none; padding: 12px 24px; border-radius: 6px; box-shadow: 0 0 15px rgba(0, 181, 241,0.2);">
             📂 Mappa Megnyitása
           </a>
         </div>

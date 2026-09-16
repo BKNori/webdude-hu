@@ -1,4 +1,4 @@
-﻿import React from "react";
+import React from "react";
 import Link from "next/link";
 import { Metadata } from "next";
 import Script from "next/script";
@@ -23,6 +23,9 @@ export const metadata: Metadata = {
     locale: "hu_HU",
     siteName: "WebDude",
   },
+  alternates: {
+    canonical: "https://webdude.hu/szolgaltatasok/seo-optimalizalas",
+  },
 };
 
 export const revalidate = 3600;
@@ -43,7 +46,8 @@ export default async function SEOOptimizationPage() {
     description:
       "Professzionális SEO optimalizálás és tartalomstratégia kis- és középvállalkozásoknak. Növelje a Google helyezéseket és organikus forgalmat szakértői segítséggel.",
     provider: {
-      "@type": "LocalBusiness",
+      "@type": "Organization",
+      "@id": "https://webdude.hu/#organization",
       name: "WebDude",
       url: "https://webdude.hu",
     },
@@ -235,14 +239,14 @@ export default async function SEOOptimizationPage() {
             <div className="max-w-6xl mx-auto px-6">
               <h2 className="text-5xl md:text-7xl font-bold text-text-primary mb-8">
                 Készen áll a{" "}
-                <span className="text-gold-primary italic">
+                <span className="text-brand-primary italic">
                   SEO optimalizálásra
                 </span>
                 ?
               </h2>
               <Link
                 href="/kapcsolat"
-                className="inline-block px-12 py-6 bg-[#00B5F1] hover:bg-[#0095C7] text-bg-base font-bold rounded-xl uppercase tracking-wider transition-all duration-300"
+                className="inline-block px-12 py-6 bg-[#00B5F1] hover:bg-[#5B21B6] text-bg-base font-bold rounded-xl uppercase tracking-wider transition-all duration-300"
               >
                 Ingyenes Konzultáció
               </Link>

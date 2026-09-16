@@ -8,7 +8,7 @@ export const revalidate = 3600; // 1 órás ISR gyorsítótárazás
 export const metadata: Metadata = {
   title: "Referenciák & Esettanulmányok | WebDude | Webfejlesztés Kecskemét",
   description:
-    "Nézd meg a valós üzleti eredményeket hozó Next.js, WordPress és egyedi webfejlesztési projektjeimet. 26 év tapasztalat, prémium minőség, KKV-knak.",
+    "Valós ügyféleredmények, konverzió-optimalizált Next.js weboldalak és egyedi digitális rendszerek. 26 év tapasztalat, mérhető növekedés.",
   keywords:
     "webfejlesztő referenciák, esettanulmányok, Next.js projektek, WordPress fejlesztés, weboldal készítés Kecskemét, grafikai tervezés, arculattervezés",
   alternates: {
@@ -58,7 +58,7 @@ export default async function MunkakPage() {
 
           <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold font-sans text-text-primary leading-tight tracking-tight mb-6">
             Eredmények, nem csak{" "}
-            <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#0095C7] italic pr-4">
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6] italic pr-4">
               Dizájn
             </span>
           </h1>
@@ -70,7 +70,7 @@ export default async function MunkakPage() {
 
           <a
             href="/kapcsolat"
-            className="px-8 py-4 bg-linear-to-r from-[#00B5F1] to-[#0095C7] hover:from-[#0095C7] hover:to-[#007BA8] text-white rounded-full font-bold hover:scale-105 active:scale-95 transition-transform duration-300 shadow-[0_8px_24px_rgba(0,181,241,0.3)] hover:shadow-[0_18px_40px_rgba(0,181,241,0.4)] min-h-11 min-w-11 inline-block tracking-wide"
+            className="px-8 py-4 bg-linear-to-r from-[#00B5F1] to-[#5B21B6] hover:from-[#5B21B6] hover:to-[#5B21B6] text-slate-950 rounded-full font-bold hover:scale-105 active:scale-95 transition-transform duration-300 shadow-[0_8px_24px_rgba(0, 181, 241,0.3)] hover:shadow-[0_18px_40px_rgba(0, 181, 241,0.4)] min-h-11 min-w-11 inline-block tracking-wide"
           >
             Kapcsolat
           </a>
@@ -79,13 +79,13 @@ export default async function MunkakPage() {
 
       {/* Stats Section */}
       <section className="py-24 bg-bg-surface border-y border-slate-800 relative overflow-hidden">
-        {/* Electric Cyan mesh grid */}
+        {/* Cyber-Arany mesh grid */}
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 opacity-70 [mask-image:radial-gradient(ellipse_at_center,black,transparent_78%)]"
           style={{
             backgroundImage:
-              "linear-gradient(to right, rgba(0,181,241,0.07) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,181,241,0.07) 1px, transparent 1px)",
+              "linear-gradient(to right, rgba(0, 181, 241,0.07) 1px, transparent 1px), linear-gradient(to bottom, rgba(0, 181, 241,0.07) 1px, transparent 1px)",
             backgroundSize: "56px 56px",
           }}
         />
@@ -93,7 +93,7 @@ export default async function MunkakPage() {
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-sans text-text-primary leading-tight tracking-tight mb-4">
               Számok, amik{" "}
-              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#0095C7] italic">
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6] italic">
                 számítanak
               </span>
             </h2>
@@ -102,7 +102,7 @@ export default async function MunkakPage() {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-slate-950/80 backdrop-blur-2xl p-10 transition-colors duration-300 hover:border-amber-500/40 hover:shadow-[0_0_60px_-14px_rgba(0,181,241,0.55)]">
+            <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-slate-950/80 backdrop-blur-2xl p-10 transition-colors duration-300 hover:border-sky-500/40 hover:shadow-[0_0_60px_-14px_rgba(0, 181, 241,0.55)]">
               <div
                 aria-hidden="true"
                 className="pointer-events-none absolute inset-x-10 top-0 h-px bg-linear-to-r from-transparent via-[#00B5F1]/70 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
@@ -114,7 +114,7 @@ export default async function MunkakPage() {
                 Projekt Készítve
               </p>
             </div>
-            <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-slate-950/80 backdrop-blur-2xl p-10 transition-colors duration-300 hover:border-amber-500/40 hover:shadow-[0_0_60px_-14px_rgba(0,181,241,0.55)]">
+            <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-slate-950/80 backdrop-blur-2xl p-10 transition-colors duration-300 hover:border-sky-500/40 hover:shadow-[0_0_60px_-14px_rgba(0, 181, 241,0.55)]">
               <div
                 aria-hidden="true"
                 className="pointer-events-none absolute inset-x-10 top-0 h-px bg-linear-to-r from-transparent via-[#00B5F1]/70 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
@@ -126,7 +126,7 @@ export default async function MunkakPage() {
                 Lead Generált
               </p>
             </div>
-            <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-slate-950/80 backdrop-blur-2xl p-10 transition-colors duration-300 hover:border-amber-500/40 hover:shadow-[0_0_60px_-14px_rgba(0,181,241,0.55)]">
+            <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-slate-950/80 backdrop-blur-2xl p-10 transition-colors duration-300 hover:border-sky-500/40 hover:shadow-[0_0_60px_-14px_rgba(0, 181, 241,0.55)]">
               <div
                 aria-hidden="true"
                 className="pointer-events-none absolute inset-x-10 top-0 h-px bg-linear-to-r from-transparent via-[#00B5F1]/70 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
@@ -146,7 +146,7 @@ export default async function MunkakPage() {
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-sans text-text-primary leading-tight tracking-tight mb-4">
             Kiemelt{" "}
-            <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#0095C7] italic">
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6] italic">
               Projektek
             </span>
           </h2>
@@ -162,7 +162,7 @@ export default async function MunkakPage() {
             <div className="max-w-3xl mx-auto space-y-10">
               <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold font-sans text-text-primary leading-tight tracking-tight">
                 Készen állsz a{" "}
-                <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#0095C7] italic pr-4">
+                <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6] italic pr-4">
                   következő
                 </span>{" "}
                 szintre?
@@ -173,7 +173,7 @@ export default async function MunkakPage() {
               </p>
               <a
                 href="/kapcsolat"
-                className="inline-block px-10 py-5 bg-linear-to-r from-[#00B5F1] to-[#0095C7] hover:from-[#0095C7] hover:to-[#007BA8] text-white rounded-full font-bold text-lg shadow-[0_8px_24px_rgba(0,181,241,0.3)] hover:shadow-[0_18px_40px_rgba(0,181,241,0.4)] hover:scale-105 active:scale-95 transition-all duration-300 tracking-wide"
+                className="inline-block px-10 py-5 bg-linear-to-r from-[#00B5F1] to-[#5B21B6] hover:from-[#5B21B6] hover:to-[#5B21B6] text-slate-950 rounded-full font-bold text-lg shadow-[0_8px_24px_rgba(0, 181, 241,0.3)] hover:shadow-[0_18px_40px_rgba(0, 181, 241,0.4)] hover:scale-105 active:scale-95 transition-all duration-300 tracking-wide"
               >
                 Ajánlatot kérek →
               </a>

@@ -27,7 +27,7 @@ export default function HeroStaticBanner() {
       {/* Content */}
       <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
         <motion.h1
-          className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#f59e0b] mb-6"
+          className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#00B5F1] mb-6"
           initial={{ opacity: 0, y: -30 }}
           animate={shouldReduce ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -51,7 +51,7 @@ export default function HeroStaticBanner() {
         >
           <Link
             href={ctaHref}
-            className="inline-block bg-[#f59e0b] text-[#090a16] font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-[#ffd700] transition-colors"
+            className="inline-block bg-[#00B5F1] text-[#090a16] font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-[#ffd700] transition-colors"
           >
             {ctaText}
           </Link>

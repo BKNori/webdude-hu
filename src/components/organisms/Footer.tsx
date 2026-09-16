@@ -83,8 +83,8 @@ export default function Footer() {
             transition={{ duration: 0.5 }}
             className="md:col-span-2 lg:col-span-1"
           >
-            <Link href="/" className="inline-block mb-4">
-              <span className="text-2xl font-black font-serif tracking-tighter text-text-primary">
+            <Link href="/" className="inline-block mb-4 group">
+              <span className="text-2xl font-black font-serif tracking-tighter text-text-primary group-hover:text-[#00B5F1] transition-colors duration-300">
                 <span className="text-[#00B5F1]">Web</span>Dude
               </span>
             </Link>
@@ -599,7 +599,7 @@ export default function Footer() {
                 whileHover={{ opacity: 1, scale: 1.15 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.3 }}
-                className="shrink-0 flex items-center gap-2 transition-all duration-500 group/item grayscale hover:grayscale-0 hover:shadow-[0_0_20px_rgba(0,181,241,0.5)]"
+                className="shrink-0 flex items-center gap-2 transition-all duration-500 group/item grayscale hover:grayscale-0 hover:shadow-[0_0_20px_rgba(0, 181, 241,0.5)]"
               >
                 <div className="w-4 h-4 flex items-center justify-center group-hover/item:scale-110 transition-transform duration-500">
                   {ai.icon}
@@ -629,13 +629,13 @@ export default function Footer() {
             <div className="flex items-center gap-6 text-xs">
               <Link
                 href="/adatvedelmi-szabalyzat"
-                className="text-slate-400 hover:text-amber-500 transition-colors hover:translate-x-1 transform duration-300 inline-block"
+                className="text-slate-400 hover:text-sky-500 transition-colors hover:translate-x-1 transform duration-300 inline-block"
               >
                 Adatvédelmi nyilatkozat
               </Link>
               <Link
                 href="/felhasznalasi-feltetelek"
-                className="text-slate-400 hover:text-amber-500 transition-colors hover:translate-x-1 transform duration-300 inline-block"
+                className="text-slate-400 hover:text-sky-500 transition-colors hover:translate-x-1 transform duration-300 inline-block"
               >
                 Felhasználási feltételek
               </Link>

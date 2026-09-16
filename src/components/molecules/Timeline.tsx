@@ -147,12 +147,12 @@ export default function Timeline() {
               className={`relative flex flex-col md:flex-row items-center gap-12 group ${i % 2 === 0 ? "" : "md:flex-row-reverse"}`}
             >
               {/* Animated Dot */}
-              <div className="absolute left-8 md:left-1/2 w-8 h-8 bg-bg-base border-4 border-[#00B5F1] rounded-full transform -translate-x-1/2 z-10 transition-all duration-500 shadow-[0_0_15px_rgba(0,181,241,0.2)] group-hover:scale-125 group-hover:bg-[#00B5F1]" />
+              <div className="absolute left-8 md:left-1/2 w-8 h-8 bg-bg-base border-4 border-[#00B5F1] rounded-full transform -translate-x-1/2 z-10 transition-all duration-500 shadow-[0_0_15px_rgba(0, 181, 241,0.2)] group-hover:scale-125 group-hover:bg-[#00B5F1]" />
 
               <div
                 className={`w-full md:w-1/2 pl-16 md:pl-0 ${i % 2 === 0 ? "md:pr-16 md:text-right" : "md:pl-16"}`}
               >
-                <div className="glass-card p-8 bg-bg-surface/90 hover:-translate-y-2 transition-transform duration-500 border border-slate-700/60 shadow-[0_8px_24px_rgba(0,181,241,0.06)] hover:border-[#00B5F1]/50 hover:shadow-[0_18px_40px_rgba(0,181,241,0.15)] rounded-2xl">
+                <div className="glass-card p-8 bg-bg-surface/90 hover:-translate-y-2 transition-transform duration-500 border border-slate-700/60 shadow-[0_8px_24px_rgba(0, 181, 241,0.06)] hover:border-[#00B5F1]/50 hover:shadow-[0_18px_40px_rgba(0, 181, 241,0.15)] rounded-2xl">
                   <span className="text-[#00B5F1] font-black text-sm tracking-[0.2em] block mb-2 uppercase">
                     {e.year}
                   </span>
@@ -183,7 +183,7 @@ export default function Timeline() {
         initial={{ opacity: 0, scale: 0.9 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
-        className="mt-32 text-center max-w-2xl mx-auto glass-card p-10 relative overflow-hidden bg-bg-surface/80 border border-slate-700/60 rounded-3xl shadow-[0_10px_30px_rgba(0,181,241,0.08)] hover:border-[#00B5F1]/30 transition-all text-text-primary"
+        className="mt-32 text-center max-w-2xl mx-auto glass-card p-10 relative overflow-hidden bg-bg-surface/80 border border-slate-700/60 rounded-3xl shadow-[0_10px_30px_rgba(0, 181, 241,0.08)] hover:border-[#00B5F1]/30 transition-all text-text-primary"
       >
         <p className="text-2xl md:text-3xl font-serif italic relative z-10 leading-relaxed font-black text-text-primary">
           {

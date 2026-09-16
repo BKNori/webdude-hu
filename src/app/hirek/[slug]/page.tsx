@@ -1,4 +1,4 @@
-﻿import React from "react";
+import React from "react";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
@@ -56,178 +56,43 @@ export default async function BlogPost({ params }: PageProps) {
 
   const breadcrumbSchema = buildBreadcrumbSchema(breadcrumbItems);
 
-  // Generate structured data
+  // Generate structured data — TechArticle séma minden cikknek (WebDude AEO szabvány)
   const baseUrl = "https://webdude.hu";
-  let jsonLd = {};
-
-  if (
-    slug ===
-    "kristofka-workflow-szuletese-amikor-a-26-eves-tervezoi-rutin-talalkozik-az-ai-val"
-  ) {
-    jsonLd = {
-      "@context": "https://schema.org",
-      "@type": "TechArticle",
-      headline: post.title,
-      description: post.excerpt,
-      image: `${baseUrl}${post.image || "/assets/banners/webdude-hero.webp"}`,
-      author: {
-        "@type": "Person",
-        name: "Balog Norbert",
-        url: "https://webdude.hu/szia-norbi-vagyok",
-        jobTitle: "Webfejlesztő & AI Automatizációs Szakértő",
-      },
-      publisher: {
-        "@type": "Organization",
-        name: "WebDude",
-        logo: {
-          "@type": "ImageObject",
-          url: `${baseUrl}/logo.png`,
-        },
-      },
-      datePublished: post.date,
-      dateModified: post.date,
-      mainEntityOfPage: {
-        "@type": "WebPage",
-        "@id": `${baseUrl}/hirek/${slug}`,
-      },
-    };
-  } else if (
-    slug ===
-    "wordpress-karbantartas-webhely-karbantartas-13-kotelezo-feladat-2023-ban"
-  ) {
-    jsonLd = {
-      "@context": "https://schema.org",
-      "@type": "HowTo",
-      name: post.title,
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    headline: post.title,
+    description: post.excerpt,
+    image: `${baseUrl}${post.image || "/assets/banners/webdude-hero.webp"}`,
+    author: {
+      "@type": "Person",
+      name: "Balog Norbert",
+      url: "https://webdude.hu/szia-norbi-vagyok",
+      jobTitle: "Webfejlesztő & AI Automatizációs Szakértő",
       description:
-        "13 kritikus WordPress karbantartási feladat, amivel megelőzheted a weboldalad feltörését és javíthatod a sebességét.",
-      totalTime: "PT2H",
-      estimatedCost: {
-        "@type": "MonetaryAmount",
-        currency: "HUF",
-        value: "25000",
-      },
-      image: {
+        "26 év grafikai és 16 év webfejlesztői (WordPress, Next.js) tapasztalattal rendelkező digitális szakember. Kecskemét.",
+    },
+    publisher: {
+      "@type": "Organization",
+      "@id": "https://webdude.hu/#organization",
+      name: "WebDude",
+      url: "https://webdude.hu",
+      logo: {
         "@type": "ImageObject",
-        url: `${baseUrl}${post.image || "/assets/banners/webdude-hero.webp"}`,
+        url: `${baseUrl}/assets/logos/webdude-logo.webp`,
       },
-      author: {
-        "@type": "Person",
-        name: "Balog Norbert",
-        url: "https://webdude.hu/szia-norbi-vagyok",
-        jobTitle: "Webfejlesztő & AI Automatizációs Szakértő",
-      },
-      step: [
-        {
-          "@type": "HowToStep",
-          name: "Rendszeresen készítsen biztonsági másolatot webhelyéről",
-          text: "A rendszeres biztonsági mentés a legfontosabb WordPress karbantartási feladat. Mindig mentsd a teljes adatbázist és a fájlokat.",
-          url: `${baseUrl}/hirek/${slug}#step-1`,
-        },
-        {
-          "@type": "HowToStep",
-          name: "Szoftver frissítése",
-          text: "Tartsd naprakészen a WordPress magot, a témákat és az összes beépülő modult a biztonsági rések kiküszöbölésére.",
-          url: `${baseUrl}/hirek/${slug}#step-2`,
-        },
-        {
-          "@type": "HowToStep",
-          name: "Tesztelje az összes WordPress űrlapját",
-          text: "Rendszeresen teszteld az űrlapok működését, hogy az érdeklődők és ügyfelek üzenetei biztosan megérkezzenek.",
-          url: `${baseUrl}/hirek/${slug}#step-3`,
-        },
-        {
-          "@type": "HowToStep",
-          name: "Optimalizálja a WordPress adatbázist",
-          text: "Tisztítsd meg az adatbázist a felesleges revízióktól és szeméttől a gyorsabb oldalletöltésért.",
-          url: `${baseUrl}/hirek/${slug}#step-4`,
-        },
-        {
-          "@type": "HowToStep",
-          name: "Futtasson teljesítményteszteket",
-          text: "Mérd az oldal sebességét (LCP, CLS, FID) Google PageSpeed Insights-szal minden tartalomfrissítés után.",
-          url: `${baseUrl}/hirek/${slug}#step-5`,
-        },
-        {
-          "@type": "HowToStep",
-          name: "Módosítsa az összes jelszót",
-          text: "Védd meg a weboldalad a brute force támadásoktól erős, rendszeresen frissített jelszavakkal.",
-          url: `${baseUrl}/hirek/${slug}#step-6`,
-        },
-        {
-          "@type": "HowToStep",
-          name: "Keresse meg és javítsa ki a 404-es hibákat",
-          text: "Kövesd nyomon és irányítsd át a hibás (404) oldalakat a jó felhasználói élmény és SEO érdekében.",
-          url: `${baseUrl}/hirek/${slug}#step-7`,
-        },
-        {
-          "@type": "HowToStep",
-          name: "Keresse meg és javítsa ki a megszakadt hivatkozásokat",
-          text: "Javítsd ki a megsérült külső és belső linkeket, nehogy csorbuljon a keresőoptimalizálás.",
-          url: `${baseUrl}/hirek/${slug}#step-8`,
-        },
-        {
-          "@type": "HowToStep",
-          name: "SEO Audit",
-          text: "Elemezd a Google Analytics és Search Console adatokat a látogatói trendek és kulcsszavak nyomon követésére.",
-          url: `${baseUrl}/hirek/${slug}#step-9`,
-        },
-        {
-          "@type": "HowToStep",
-          name: "Képoptimalizálás",
-          text: "Tömörítsd a feltöltött képeket és használj WebP formátumot a gyors betöltési sebesség fenntartásához.",
-          url: `${baseUrl}/hirek/${slug}#step-10`,
-        },
-        {
-          "@type": "HowToStep",
-          name: "Tekintse át a WordPress biztonsági naplóit",
-          text: "Kövesd nyomon a gyanús bejelentkezéseket és módosításokat a tevékenységi naplókban.",
-          url: `${baseUrl}/hirek/${slug}#step-11`,
-        },
-        {
-          "@type": "HowToStep",
-          name: "Karbantartási feladatok hibaelhárítása",
-          text: "A nehezebb beállításokat és frissítéseket végezd staging (másolat) környezetben vagy látogatottsági völgyidőszakban.",
-          url: `${baseUrl}/hirek/${slug}#step-12`,
-        },
-        {
-          "@type": "HowToStep",
-          name: "Ellenőrizze, hogy a WordPress tárhely frissítésre szorul-e",
-          text: "Évente egyszer vizsgáld felül a szerver erőforrásait és a PHP verziót, szükség esetén válts nagyobb csomagra.",
-          url: `${baseUrl}/hirek/${slug}#step-13`,
-        },
-      ],
-    };
-  } else {
-    jsonLd = {
-      "@context": "https://schema.org",
-      "@type": "TechArticle",
-      headline: post.title,
-      description: post.excerpt,
-      image: `${baseUrl}${post.image || "/assets/banners/webdude-hero.webp"}`,
-      author: {
-        "@type": "Person",
-        name: "Balog Norbert",
-        url: "https://webdude.hu/szia-norbi-vagyok",
-        jobTitle: "Webfejlesztő & AI Automatizációs Szakértő",
-      },
-      publisher: {
-        "@type": "Organization",
-        "@id": "https://webdude.hu/#organization",
-        name: "WebDude.hu",
-        logo: {
-          "@type": "ImageObject",
-          url: `${baseUrl}/assets/banners/webdude-hero.webp`,
-        },
-      },
-      datePublished: post.date,
-      dateModified: post.date,
-      mainEntityOfPage: {
-        "@type": "WebPage",
-        "@id": `${baseUrl}/hirek/${slug}`,
-      },
-    };
-  }
+    },
+    datePublished: post.date,
+    dateModified: post.date,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${baseUrl}/hirek/${slug}`,
+    },
+    about: {
+      "@type": "Thing",
+      articleSection: "Webfejlesztés",
+    },
+  };
 
   // Use MDX content from file system
   let processedContent = post.content || "";
@@ -281,7 +146,7 @@ export default async function BlogPost({ params }: PageProps) {
   <p class="text-slate-400 mb-6 text-sm">A weboldal biztonsága és frissítése folyamatos odafigyelést igényel. Ne pazarold az időd bonyolult beállításokra!</p>
   <button 
     onclick="window.dispatchEvent(new CustomEvent('open-webdude-chat', { detail: { initialMessage: 'Szeretnék egy egyedi WordPress karbantartási ütemtervet kérni' } }))"
-    class="px-6 py-3 bg-[#00B5F1] hover:bg-[#0095C7] text-bg-base font-bold rounded-xl transition-all duration-300 cursor-pointer shadow-[0_0_15px_rgba(245,158,11,0.2)] hover:scale-102"
+    class="px-6 py-3 bg-[#00B5F1] hover:bg-[#5B21B6] text-bg-base font-bold rounded-xl transition-all duration-300 cursor-pointer shadow-[0_0_15px_rgba(0, 181, 241,0.2)] hover:scale-102"
   >
     Kérd meg a WebDude AI asszisztensét, hogy készítsen neked egy egyedi karbantartási ütemtervet!
   </button>
@@ -302,7 +167,7 @@ export default async function BlogPost({ params }: PageProps) {
   <p class="text-slate-300 mb-6 max-w-lg mx-auto text-sm">Bízd a biztonsági mentéseket, a WordPress vírusirtást és a rendszeres frissítéseket egy megbízható szakértőre.</p>
   <button 
     onclick="window.dispatchEvent(new CustomEvent('open-webdude-chat', { detail: { initialMessage: 'Szeretnék egy egyedi WordPress karbantartási ütemtervet kérni' } }))"
-    class="px-8 py-4 bg-[#00B5F1] hover:bg-[#0095C7] text-bg-base font-bold rounded-xl transition-all duration-300 cursor-pointer shadow-[0_0_20px_rgba(245,158,11,0.3)] hover:scale-105"
+    class="px-8 py-4 bg-[#00B5F1] hover:bg-[#5B21B6] text-bg-base font-bold rounded-xl transition-all duration-300 cursor-pointer shadow-[0_0_20px_rgba(0, 181, 241,0.3)] hover:scale-105"
   >
     Egyedi karbantartási ütemterv kérése az AI asszisztenstől →
   </button>
@@ -328,12 +193,12 @@ export default async function BlogPost({ params }: PageProps) {
       <main className="min-h-screen py-32 bg-bg-base text-text-primary">
         {/* Ambient backgrounds */}
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#00B5F1]/5 rounded-full blur-[120px] pointer-events-none" />
-        <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-[#0095C7]/5 rounded-full blur-[140px] pointer-events-none" />
+        <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-[#5B21B6]/5 rounded-full blur-[140px] pointer-events-none" />
 
         <div className="max-w-4xl mx-auto px-6 relative z-10">
           <Link
             href="/hirek"
-            className="inline-flex items-center gap-2 text-[#00B5F1] hover:text-gold-hover font-bold mb-10 group transition-colors"
+            className="inline-flex items-center gap-2 text-[#00B5F1] hover:text-cta-hover font-bold mb-10 group transition-colors"
           >
             <span className="group-hover:-translate-x-1 transition-transform">
               ←
@@ -396,7 +261,7 @@ export default async function BlogPost({ params }: PageProps) {
               </p>
               <Link
                 href="/kapcsolat"
-                className="px-10 py-5 bg-linear-to-r from-[#00B5F1] to-[#0095C7] text-bg-base font-bold text-lg rounded-xl inline-block hover:scale-105 transition-transform shadow-[0_0_20px_rgba(245,158,11,0.2)]"
+                className="px-10 py-5 bg-linear-to-r from-[#00B5F1] to-[#5B21B6] text-bg-base font-bold text-lg rounded-xl inline-block hover:scale-105 transition-transform shadow-[0_0_20px_rgba(0, 181, 241,0.2)]"
               >
                 Kérj ajánlatot most!
               </Link>

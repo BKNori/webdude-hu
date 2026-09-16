@@ -84,10 +84,10 @@ export default function ContentPlanner() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/20"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sky-500/10 border border-sky-500/20"
         >
-          <Calendar className="w-4 h-4 text-amber-500" />
-          <span className="text-xs font-mono font-bold uppercase tracking-widest text-amber-500">
+          <Calendar className="w-4 h-4 text-sky-500" />
+          <span className="text-xs font-mono font-bold uppercase tracking-widest text-sky-500">
             AI Tartalomtervező
           </span>
         </motion.div>
@@ -128,7 +128,7 @@ export default function ContentPlanner() {
               value={industry}
               onChange={(e) => setIndustry(e.target.value)}
               placeholder="pl. E-kereskedelem, SaaS, Szolgáltatás"
-              className="w-full px-4 py-3 bg-bg-surface border border-bg-elevated rounded-xl text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all"
+              className="w-full px-4 py-3 bg-bg-surface border border-bg-elevated rounded-xl text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all"
             />
           </div>
 
@@ -141,7 +141,7 @@ export default function ContentPlanner() {
               value={targetAudience}
               onChange={(e) => setTargetAudience(e.target.value)}
               placeholder="pl. 25-45 éves vállalkozók, IT döntéshozók"
-              className="w-full px-4 py-3 bg-bg-surface border border-bg-elevated rounded-xl text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all"
+              className="w-full px-4 py-3 bg-bg-surface border border-bg-elevated rounded-xl text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all"
             />
           </div>
 
@@ -154,7 +154,7 @@ export default function ContentPlanner() {
               value={mainProduct}
               onChange={(e) => setMainProduct(e.target.value)}
               placeholder="pl. Webfejlesztés, CRM szoftver, Online tanácsadás"
-              className="w-full px-4 py-3 bg-bg-surface border border-bg-elevated rounded-xl text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all"
+              className="w-full px-4 py-3 bg-bg-surface border border-bg-elevated rounded-xl text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all"
             />
           </div>
 
@@ -168,7 +168,7 @@ export default function ContentPlanner() {
           <button
             onClick={handleGenerate}
             disabled={loading}
-            className="w-full px-6 py-3 bg-amber-500 hover:bg-amber-600 text-bg-base font-bold rounded-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            className="w-full px-6 py-3 bg-sky-500 hover:bg-violet-700 text-bg-base font-bold rounded-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
           >
             {loading ? (
               <>
@@ -196,13 +196,13 @@ export default function ContentPlanner() {
           {/* Blog Topics */}
           <div className="glass-card p-6 space-y-4">
             <h3 className="text-xl font-bold text-white flex items-center gap-2">
-              <FileText className="w-5 h-5 text-amber-500" />
+              <FileText className="w-5 h-5 text-sky-500" />
               Blog Témák (10 db)
             </h3>
             <ul className="space-y-3">
               {result.blogTopics.map((topic, i) => (
                 <li key={i} className="flex items-start gap-3 text-slate-300">
-                  <span className="w-6 h-6 rounded-full bg-amber-500/20 text-amber-500 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">
+                  <span className="w-6 h-6 rounded-full bg-sky-500/20 text-sky-500 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">
                     {i + 1}
                   </span>
                   {topic}
@@ -257,7 +257,7 @@ export default function ContentPlanner() {
               {result.suggestedKeywords.map((keyword, i) => (
                 <span
                   key={i}
-                  className="px-4 py-2 bg-bg-elevated rounded-full text-sm text-slate-300 border border-amber-500/20"
+                  className="px-4 py-2 bg-bg-elevated rounded-full text-sm text-slate-300 border border-sky-500/20"
                 >
                   {keyword}
                 </span>
@@ -269,7 +269,7 @@ export default function ContentPlanner() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="glass-card p-8 border border-amber-500/30 bg-gradient-to-br from-amber-500/5 to-transparent text-center"
+            className="glass-card p-8 border border-sky-500/30 bg-gradient-to-br from-sky-500/5 to-transparent text-center"
           >
             <div className="space-y-4">
               <h3 className="text-2xl font-bold text-white">
@@ -282,7 +282,7 @@ export default function ContentPlanner() {
               </p>
               <button
                 onClick={() => (window.location.href = "/kapcsolat")}
-                className="px-8 py-4 bg-amber-500 hover:bg-amber-600 text-bg-base font-bold rounded-xl transition-all duration-300 flex items-center justify-center gap-2 mx-auto"
+                className="px-8 py-4 bg-sky-500 hover:bg-violet-700 text-bg-base font-bold rounded-xl transition-all duration-300 flex items-center justify-center gap-2 mx-auto"
               >
                 Rendeld meg a WebDude AI+Emberi Blogcikk Csomagot
                 <ArrowRight className="w-5 h-5" />

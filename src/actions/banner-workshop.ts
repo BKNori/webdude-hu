@@ -172,7 +172,7 @@ JSON Structure:
 COLOR PSYCHOLOGY & HEX PALETTES:
 - Trust/Professional: #00B5F1 (Primary Blue), #1E293B (Slate Dark), #F8FAFC (Light Gray)
 - Conversion/Action: #FF7A00 (Accent Orange), #EF4444 (Urgency Red), #10B981 (Success Green)
-- Luxury/Premium: #F59E0B (Gold), #0F172A (Deep Navy), #E2E8F0 (Silver)
+- Luxury/Premium: #00B5F1 (Gold), #0F172A (Deep Navy), #E2E8F0 (Silver)
 - Innovation/Tech: #8B5CF6 (Purple), #3B82F6 (Blue), #06B6D4 (Cyan)
 
 MIDJOURNEY PARAMETERS (v6.0):

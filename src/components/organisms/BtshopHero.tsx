@@ -17,7 +17,7 @@ export default function BtshopHero() {
 
   return (
     <section className="relative overflow-hidden pt-32 pb-20 px-6">
-      {/* Mesh grid + cyan glow háttér */}
+      {/* Mesh grid + arany glow háttér */}
       <div
         aria-hidden
         className="absolute inset-0 pointer-events-none opacity-40"
@@ -36,7 +36,7 @@ export default function BtshopHero() {
         className="absolute top-0 left-1/2 -translate-x-1/2 w-[720px] h-[720px] rounded-full pointer-events-none"
         style={{
           background:
-            "radial-gradient(circle, rgba(0,181,241,0.14) 0%, transparent 65%)",
+            "radial-gradient(circle, rgba(0, 181, 241,0.14) 0%, transparent 65%)",
         }}
       />
 
@@ -45,7 +45,7 @@ export default function BtshopHero() {
           initial={shouldReduceMotion ? {} : { opacity: 0, y: 24 }}
           animate={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
           transition={spring}
-          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-slate-950/80 backdrop-blur-2xl border border-[#00B5F1]/30 shadow-[0_0_40px_rgba(0,181,241,0.15)] mb-8"
+          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-slate-950/80 backdrop-blur-2xl border border-[#00B5F1]/30 shadow-[0_0_40px_rgba(0, 181, 241,0.15)] mb-8"
         >
           <span className="w-2 h-2 rounded-full bg-[#00B5F1] shadow-[0_0_12px_#00B5F1]" />
           <span className="text-xs font-bold uppercase tracking-[0.25em] text-[#00B5F1]">
@@ -60,7 +60,7 @@ export default function BtshopHero() {
           className="text-4xl sm:text-5xl md:text-7xl font-black leading-[1.08] tracking-tight text-[#e2e8f0]"
         >
           Amikor a weboldal nemcsak elad, hanem a{" "}
-          <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#0095C7]">
+          <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6]">
             teljes céges infrastruktúrát
           </span>{" "}
           mozgatja.
@@ -107,7 +107,7 @@ export default function BtshopHero() {
           whileInView={shouldReduceMotion ? {} : { opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ ...spring, delay: 0.45 }}
-          className="mt-16 relative rounded-3xl overflow-hidden border border-[#00B5F1]/25 shadow-[0_0_80px_rgba(0,181,241,0.18)]"
+          className="mt-16 relative rounded-3xl overflow-hidden border border-[#00B5F1]/25 shadow-[0_0_80px_rgba(0, 181, 241,0.18)]"
         >
           <div className="relative aspect-video w-full bg-[#020617]">
             <Image

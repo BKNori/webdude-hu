@@ -65,7 +65,7 @@ export default function VersenytarsElemzoAIMuhelyPage() {
       />
       <div className="min-h-screen bg-bg-base">
         <section className="relative py-24 overflow-hidden">
-          <div className="absolute inset-0 bg-linear-to-b from-gold-primary/5 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-b from-brand-primary/5 via-transparent to-transparent" />
           <div className="max-w-6xl mx-auto px-6 relative z-10">
             <div className="text-center space-y-6">
               <h1 className="text-4xl md:text-6xl font-bold text-white">
@@ -79,13 +79,13 @@ export default function VersenytarsElemzoAIMuhelyPage() {
           </div>
         </section>
 
-        <section className="py-16 border-t border-gold-primary/10">
+        <section className="py-16 border-t border-brand-primary/10">
           <div className="max-w-4xl mx-auto px-6">
             <h2 className="text-3xl font-bold text-white mb-8 text-center">
               Funkciók
             </h2>
             <div className="grid md:grid-cols-2 gap-4">
-              <div className="bg-bg-elevated/50 border border-gold-primary/20 rounded-lg p-4">
+              <div className="bg-bg-elevated/50 border border-brand-primary/20 rounded-lg p-4">
                 <h3 className="text-lg font-bold text-white mb-2">
                   Versenytárs vizuális elemzés
                 </h3>
@@ -93,7 +93,7 @@ export default function VersenytarsElemzoAIMuhelyPage() {
                   Automatikus versenytárs elemzés
                 </p>
               </div>
-              <div className="bg-bg-elevated/50 border border-gold-primary/20 rounded-lg p-4">
+              <div className="bg-bg-elevated/50 border border-brand-primary/20 rounded-lg p-4">
                 <h3 className="text-lg font-bold text-white mb-2">
                   Design audit
                 </h3>
@@ -101,13 +101,13 @@ export default function VersenytarsElemzoAIMuhelyPage() {
                   Versenytárs design audit
                 </p>
               </div>
-              <div className="bg-bg-elevated/50 border border-gold-primary/20 rounded-lg p-4">
+              <div className="bg-bg-elevated/50 border border-brand-primary/20 rounded-lg p-4">
                 <h3 className="text-lg font-bold text-white mb-2">
                   Trend elemzés
                 </h3>
                 <p className="text-sm text-slate-400">AI trend elemzés</p>
               </div>
-              <div className="bg-bg-elevated/50 border border-gold-primary/20 rounded-lg p-4">
+              <div className="bg-bg-elevated/50 border border-brand-primary/20 rounded-lg p-4">
                 <h3 className="text-lg font-bold text-white mb-2">
                   Versenytárs stratégia
                 </h3>
@@ -117,7 +117,7 @@ export default function VersenytarsElemzoAIMuhelyPage() {
           </div>
         </section>
 
-        <section className="py-16 border-t border-gold-primary/10">
+        <section className="py-16 border-t border-brand-primary/10">
           <div className="max-w-4xl mx-auto px-6 text-center">
             <h2 className="text-3xl font-bold text-white mb-4">
               Kérj egy ingyenes Versenytárs Elemző AI Műhely Auditot
@@ -125,7 +125,7 @@ export default function VersenytarsElemzoAIMuhelyPage() {
             <p className="text-slate-400 mb-8">
               24 órán belül megkapod a weboldalad versenytárs elemzési tervét.
             </p>
-            <button className="inline-flex items-center gap-2 px-8 py-4 bg-gold-primary text-bg-base font-bold rounded-xl hover:bg-gold-primary/90 transition-all">
+            <button className="inline-flex items-center gap-2 px-8 py-4 bg-brand-primary text-bg-base font-bold rounded-xl hover:bg-brand-primary/90 transition-all">
               Ingyenes Weboldal Audit
             </button>
           </div>

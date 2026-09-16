@@ -60,15 +60,15 @@ export default function PricingTable({
               relative rounded-3xl border p-8 transition-all duration-300
               ${
                 tier.highlighted
-                  ? "bg-linear-to-b from-amber-500/10 to-amber-500/5 border-amber-500/50 shadow-2xl shadow-amber-500/20 scale-105"
+                  ? "bg-linear-to-b from-sky-500/10 to-sky-500/5 border-sky-500/50 shadow-2xl shadow-sky-500/20 scale-105"
                   : "glass-card border border-white/5"
               }
-              ${hoveredTier === tier.id ? "scale-[1.03] border-amber-500/30 shadow-2xl shadow-amber-500/5" : ""}
+              ${hoveredTier === tier.id ? "scale-[1.03] border-sky-500/30 shadow-2xl shadow-sky-500/5" : ""}
             `}
           >
             {tier.highlighted && (
               <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                <div className="inline-flex items-center rounded-full bg-amber-500 text-[bg-transparent] px-6 py-2 text-sm font-bold">
+                <div className="inline-flex items-center rounded-full bg-sky-500 text-[bg-transparent] px-6 py-2 text-sm font-bold">
                   Népszerű
                 </div>
               </div>
@@ -81,14 +81,14 @@ export default function PricingTable({
               <p className="text-sm text-slate-400 mb-6">{tier.description}</p>
               {tier.price ? (
                 <div className="flex items-baseline justify-center gap-2">
-                  <span className="text-5xl font-black text-gold-primary">
+                  <span className="text-5xl font-black text-brand-primary">
                     {tier.price}
                   </span>
                   <span className="text-lg text-slate-400">{currency}</span>
                 </div>
               ) : (
                 <div className="flex items-center justify-center">
-                  <span className="text-2xl font-bold text-gold-primary">
+                  <span className="text-2xl font-bold text-brand-primary">
                     Kérjen árajánlatot
                   </span>
                 </div>
@@ -98,9 +98,9 @@ export default function PricingTable({
             <ul className="space-y-4 mb-8">
               {tier.features.map((feature, featureIndex) => (
                 <li key={featureIndex} className="flex items-start gap-3">
-                  <div className="shrink-0 w-6 h-6 rounded-full bg-amber-500/20 flex items-center justify-center mt-0.5">
+                  <div className="shrink-0 w-6 h-6 rounded-full bg-sky-500/20 flex items-center justify-center mt-0.5">
                     <svg
-                      className="w-4 h-4 text-amber-500"
+                      className="w-4 h-4 text-sky-500"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"

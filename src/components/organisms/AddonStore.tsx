@@ -91,7 +91,7 @@ export default function AddonStore({ idToken, onOrderError }: AddonStoreProps) {
       case "delivered":
         return "bg-blue-500/10 border-blue-500/20 text-blue-400";
       default:
-        return "bg-amber-500/10 border-amber-500/20 text-amber-400";
+        return "bg-sky-500/10 border-sky-500/20 text-sky-400";
     }
   };
 
@@ -109,7 +109,7 @@ export default function AddonStore({ idToken, onOrderError }: AddonStoreProps) {
   if (loading) {
     return (
       <div className="glass-card border border-white/5 p-12 text-center flex flex-col items-center justify-center space-y-4">
-        <Loader2 className="w-8 h-8 animate-spin text-amber-500" />
+        <Loader2 className="w-8 h-8 animate-spin text-sky-500" />
         <p className="text-xs text-slate-400 font-mono">
           Add-on áruház betöltése...
         </p>
@@ -118,13 +118,13 @@ export default function AddonStore({ idToken, onOrderError }: AddonStoreProps) {
   }
 
   return (
-    <div className="bg-bg-elevated/30 backdrop-blur-md border border-bg-elevated/50 rounded-2xl p-6 md:p-8 space-y-8 relative overflow-hidden transition-all duration-300 hover:border-amber-500/10 shadow-xl">
+    <div className="bg-bg-elevated/30 backdrop-blur-md border border-bg-elevated/50 rounded-2xl p-6 md:p-8 space-y-8 relative overflow-hidden transition-all duration-300 hover:border-sky-500/10 shadow-xl">
       {/* Visual background accents */}
-      <div className="absolute top-0 right-0 w-80 h-80 bg-amber-500/2 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute top-0 right-0 w-80 h-80 bg-sky-500/2 rounded-full blur-[100px] pointer-events-none" />
 
       {/* Header */}
       <div className="space-y-1">
-        <span className="text-xs font-mono font-black uppercase tracking-widest text-amber-500">
+        <span className="text-xs font-mono font-black uppercase tracking-widest text-sky-500">
           Mikro-szolgáltatások & Extrák
         </span>
         <h2 className="text-2xl md:text-3xl font-extrabold text-text-primary tracking-tight leading-none font-mono">
@@ -152,7 +152,7 @@ export default function AddonStore({ idToken, onOrderError }: AddonStoreProps) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-bg-elevated/30 backdrop-blur-md border border-bg-elevated/50 rounded-2xl p-6 flex flex-col justify-between hover:border-amber-500/20 transition-all duration-300 shadow-lg group"
+              className="bg-bg-elevated/30 backdrop-blur-md border border-bg-elevated/50 rounded-2xl p-6 flex flex-col justify-between hover:border-sky-500/20 transition-all duration-300 shadow-lg group"
             >
               <div className="space-y-4">
                 {/* Badge and Icon */}
@@ -161,7 +161,7 @@ export default function AddonStore({ idToken, onOrderError }: AddonStoreProps) {
                     {addon.category}
                   </span>
                   <Icon
-                    className="w-5 h-5 text-slate-500 group-hover:text-amber-500 transition-colors"
+                    className="w-5 h-5 text-slate-500 group-hover:text-sky-500 transition-colors"
                     strokeWidth={1.5}
                   />
                 </div>
@@ -184,7 +184,7 @@ export default function AddonStore({ idToken, onOrderError }: AddonStoreProps) {
                       className="flex items-start gap-2 text-xs text-slate-300"
                     >
                       <Check
-                        className="w-3.5 h-3.5 text-amber-500 shrink-0 mt-0.5"
+                        className="w-3.5 h-3.5 text-sky-500 shrink-0 mt-0.5"
                         strokeWidth={2}
                       />
                       <span>{feat}</span>
@@ -199,7 +199,7 @@ export default function AddonStore({ idToken, onOrderError }: AddonStoreProps) {
                   <span className="text-[10px] uppercase font-mono text-slate-500">
                     Egyszeri díj
                   </span>
-                  <span className="text-amber-500 font-bold text-lg font-mono">
+                  <span className="text-sky-500 font-bold text-lg font-mono">
                     {addon.price.toLocaleString("hu-HU")} Ft
                   </span>
                 </div>
@@ -214,9 +214,9 @@ export default function AddonStore({ idToken, onOrderError }: AddonStoreProps) {
                     type="button"
                     disabled={actionLoading !== null}
                     onClick={() => handlePurchase(addon.id)}
-                    className={`w-full py-3 rounded-xl bg-amber-500 text-bg-base font-bold text-xs uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-1.5 cursor-pointer hover:bg-amber-600 disabled:opacity-50 ${
+                    className={`w-full py-3 rounded-xl bg-sky-500 text-bg-base font-bold text-xs uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-1.5 cursor-pointer hover:bg-violet-700 disabled:opacity-50 ${
                       isPending
-                        ? "animate-pulse shadow-[0_0_30px_rgba(245,158,11,0.6)]"
+                        ? "animate-pulse shadow-[0_0_30px_rgba(0, 181, 241,0.6)]"
                         : ""
                     }`}
                   >

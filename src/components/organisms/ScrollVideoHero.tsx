@@ -60,7 +60,7 @@ export default function ScrollVideoHero({
         {/* Loading overlay */}
         {!isVideoLoaded && (
           <div className="absolute inset-0 flex items-center justify-center bg-bg-surface">
-            <div className="w-12 h-12 border-4 border-amber-500 border-t-transparent rounded-full animate-spin" />
+            <div className="w-12 h-12 border-4 border-sky-500 border-t-transparent rounded-full animate-spin" />
           </div>
         )}
 

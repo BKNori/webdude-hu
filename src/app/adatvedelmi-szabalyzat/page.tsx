@@ -65,7 +65,7 @@ export default function AdatvedelmiSzabalyzat() {
                   <strong>Email:</strong>{" "}
                   <a
                     href="mailto:hello@webdude.hu"
-                    className="text-[#00B5F1] hover:text-[#00D4FF] transition-colors underline decoration-dotted"
+                    className="text-[#00B5F1] hover:text-[#38bdf8] transition-colors underline decoration-dotted"
                   >
                     hello@webdude.hu
                   </a>
@@ -189,7 +189,7 @@ export default function AdatvedelmiSzabalyzat() {
                   <strong>Email:</strong>{" "}
                   <a
                     href="mailto:hello@webdude.hu"
-                    className="text-[#00B5F1] hover:text-[#00D4FF] transition-colors underline decoration-dotted"
+                    className="text-[#00B5F1] hover:text-[#38bdf8] transition-colors underline decoration-dotted"
                   >
                     hello@webdude.hu
                   </a>
@@ -198,7 +198,7 @@ export default function AdatvedelmiSzabalyzat() {
                   <strong>Weboldal:</strong>{" "}
                   <a
                     href="https://webdude.hu"
-                    className="text-[#00B5F1] hover:text-[#00D4FF] transition-colors underline decoration-dotted"
+                    className="text-[#00B5F1] hover:text-[#38bdf8] transition-colors underline decoration-dotted"
                   >
                     https://webdude.hu
                   </a>

@@ -6,7 +6,7 @@
 
 - 90% #020617 (Cyber-Dark)
 - 8% #e2e8f0 (Slate)
-- Max 2% #f59e0b (Arany)
+- Max 2% #00B5F1 (Arany)
 
 ## Midjourney v6 Master Paraméterek
 
@@ -46,23 +46,23 @@
 ### BannerHero Komponens
 
 ```tsx
-<section className="bg-bg-base p-24 flex items-center justify-between border-b-2 border-gold-primary">
+<section className="bg-bg-base p-24 flex items-center justify-between border-b-2 border-brand-primary">
   <div className="max-w-3xl">
     <h1 className="text-white text-6xl font-bold mb-6">
       Weboldalad lassú? A konverzió elmarad?
     </h1>
     <p className="text-text-primary text-xl mb-10">
       Ne hagyd, hogy az ügyfeleid a versenytársnál kössenek ki.
-      <span className="font-bold text-gold-primary">
+      <span className="font-bold text-brand-primary">
         26 év design tapasztalattal
       </span>
       és
-      <span className="font-bold text-gold-primary">
+      <span className="font-bold text-brand-primary">
         95+ Lighthouse score-ral
       </span>
       optimalizálom a webshopodat.
     </p>
-    <button className="bg-gold-primary text-bg-base px-8 py-4 font-bold rounded-sm hover:opacity-90 transition-opacity">
+    <button className="bg-brand-primary text-bg-base px-8 py-4 font-bold rounded-sm hover:opacity-90 transition-opacity">
       Kérem a UX Roast-ot
     </button>
   </div>
@@ -71,7 +71,7 @@
 
 **Implementációs Megjegyzések:**
 
-- **Színkezelés:** A gomb (#f59e0b) a teljes banner legszembetűnőbb eleme, a 2%-os szabálynak megfelelően.
+- **Színkezelés:** A gomb (#00B5F1) a teljes banner legszembetűnőbb eleme, a 2%-os szabálynak megfelelően.
 - **Hierarchia:** A "26 év" és "95+ score" a vizuális figyelem középpontjában van, a "UX Roast" gomb alatt.
 - **Technikai elvárás:** A Tailwind v4 osztályok (pl. rounded-sm) a WebDude minimalista, mérnöki szemléletét tükrözik.
 
@@ -129,7 +129,7 @@ export default function LighthousePerformanceSection() {
     <section
       id="lighthouse-performance"
       ref={sectionRef}
-      className="bg-bg-base py-24 border-t border-gold-primary/20"
+      className="bg-bg-base py-24 border-t border-brand-primary/20"
     >
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-12">
@@ -166,7 +166,7 @@ export default function LighthousePerformanceSection() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="relative"
             >
-              <div className="w-64 h-64 border-8 border-gold-primary rounded-full flex items-center justify-center bg-bg-elevated/50">
+              <div className="w-64 h-64 border-8 border-brand-primary rounded-full flex items-center justify-center bg-bg-elevated/50">
                 <span className="text-6xl text-white font-mono font-bold">
                   {displayScore}+
                 </span>
@@ -178,7 +178,7 @@ export default function LighthousePerformanceSection() {
                 transition={{ duration: 0.6, delay: 0.6 }}
                 className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 text-center"
               >
-                <span className="text-sm text-gold-primary font-bold uppercase tracking-wider">
+                <span className="text-sm text-brand-primary font-bold uppercase tracking-wider">
                   Lighthouse Score
                 </span>
               </motion.div>
@@ -241,7 +241,7 @@ export default function LighthousePerformanceSection() {
 
 - **Cyber-Dark (#020617):** Háttér és elsődleges formák (90%)
 - **Slate (#e2e8f0):** Szekunder elemek és szöveg (8%)
-- **Arany (#f59e0b):** Brand kiemelések és CTA elemek (max 2%)
+- **Arany (#00B5F1):** Brand kiemelések és CTA elemek (max 2%)
 
 **Technikai Elvárások:**
 
@@ -277,7 +277,7 @@ export default function LighthousePerformanceSection() {
 
 - **Cyber-Dark Háttér:** #020617 alap (90%)
 - **Slate Tónusok:** #e2e8f0 szekunder elemek (8%)
-- **Arany Accents:** #f59e0b kiemelések (max 2%)
+- **Arany Accents:** #00B5F1 kiemelések (max 2%)
 - **Prémium Digitális Tér:** High-end stúdió környezet
 
 **Technikai Elvárások:**

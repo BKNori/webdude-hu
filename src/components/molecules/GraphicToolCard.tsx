@@ -37,9 +37,9 @@ const GraphicToolCard: React.FC<Props> = ({
   const baseClasses =
     "flex items-center gap-2 p-3 rounded-xl border text-left transition-all duration-300 cursor-pointer disabled:opacity-50";
   const selectedClasses =
-    "border-amber-500 bg-amber-500/5 text-amber-500 shadow-[0_0_15px_rgba(245,158,11,0.05)]";
+    "border-sky-500 bg-sky-500/5 text-sky-500 shadow-[0_0_15px_rgba(0, 181, 241,0.05)]";
   const unselectedClasses =
-    "border-bg-elevated/60 bg-transparent text-slate-400 hover:border-amber-500/30 hover:text-slate-300";
+    "border-bg-elevated/60 bg-transparent text-slate-400 hover:border-sky-500/30 hover:text-slate-300";
 
   return (
     <button

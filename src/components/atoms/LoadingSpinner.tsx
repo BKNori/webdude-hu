@@ -7,12 +7,12 @@ export default function LoadingSpinner() {
     <div className="flex items-center justify-center min-h-screen bg-transparent">
       <div className="relative">
         <motion.div
-          className="w-16 h-16 border-4 border-amber-500/30 rounded-full"
+          className="w-16 h-16 border-4 border-sky-500/30 rounded-full"
           animate={{ rotate: 360 }}
           transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
         />
         <motion.div
-          className="absolute top-0 left-0 w-16 h-16 border-4 border-transparent border-t-amber-500 rounded-full"
+          className="absolute top-0 left-0 w-16 h-16 border-4 border-transparent border-t-sky-500 rounded-full"
           animate={{ rotate: 360 }}
           transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}
         />

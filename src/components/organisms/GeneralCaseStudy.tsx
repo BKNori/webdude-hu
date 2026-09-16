@@ -45,7 +45,7 @@ export default function GeneralCaseStudy({ project }: GeneralCaseStudyProps) {
         </motion.div>
       </section>
 
-      {/* Gallery Section — Luminous Glassmorphism + Electric Cyan glow */}
+      {/* Gallery Section — Luminous Glassmorphism + Cyber-Arany glow */}
       {project.gallery && project.gallery.length > 0 && (
         <section className="relative py-20 px-6 overflow-hidden">
           {/* Mesh grid háttér */}
@@ -54,7 +54,7 @@ export default function GeneralCaseStudy({ project }: GeneralCaseStudyProps) {
             className="pointer-events-none absolute inset-0 opacity-60 [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]"
             style={{
               backgroundImage:
-                "linear-gradient(to right, rgba(0,181,241,0.07) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,181,241,0.07) 1px, transparent 1px)",
+                "linear-gradient(to right, rgba(0, 181, 241,0.07) 1px, transparent 1px), linear-gradient(to bottom, rgba(0, 181, 241,0.07) 1px, transparent 1px)",
               backgroundSize: "56px 56px",
             }}
           />
@@ -88,7 +88,7 @@ export default function GeneralCaseStudy({ project }: GeneralCaseStudyProps) {
                     shouldReduceMotion ? undefined : { y: -8, rotateX: 2, scale: 1.02 }
                   }
                   style={{ transformPerspective: 1200 }}
-                  className="group relative aspect-video overflow-hidden rounded-2xl border border-white/10 bg-slate-950/80 backdrop-blur-2xl ring-1 ring-white/5 transition-colors duration-300 hover:border-amber-500/40 hover:ring-[#00B5F1]/50 hover:shadow-[0_0_52px_-12px_rgba(0,181,241,0.55)]"
+                  className="group relative aspect-video overflow-hidden rounded-2xl border border-white/10 bg-slate-950/80 backdrop-blur-2xl ring-1 ring-white/5 transition-colors duration-300 hover:border-sky-500/40 hover:ring-[#00B5F1]/50 hover:shadow-[0_0_52px_-12px_rgba(0, 181, 241,0.55)]"
                 >
                   <Image
                     src={image}
@@ -110,13 +110,13 @@ export default function GeneralCaseStudy({ project }: GeneralCaseStudyProps) {
       <section className="relative py-20 px-6">
         <div className="max-w-5xl mx-auto">
           <div className="grid gap-12">
-            <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-slate-950/80 backdrop-blur-2xl p-8 transition-colors duration-300 hover:border-amber-500/40 hover:shadow-[0_0_52px_-16px_rgba(0,181,241,0.5)]">
+            <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-slate-950/80 backdrop-blur-2xl p-8 transition-colors duration-300 hover:border-sky-500/40 hover:shadow-[0_0_52px_-16px_rgba(0, 181, 241,0.5)]">
               <div
                 aria-hidden="true"
                 className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
                 style={{
                   background:
-                    "radial-gradient(520px circle at 12% 0%, rgba(0,181,241,0.14), transparent 62%)",
+                    "radial-gradient(520px circle at 12% 0%, rgba(0, 181, 241,0.14), transparent 62%)",
                 }}
               />
               <h3 className="relative text-xl font-bold text-[#00B5F1] mb-4">
@@ -126,13 +126,13 @@ export default function GeneralCaseStudy({ project }: GeneralCaseStudyProps) {
                 {project.challenge}
               </p>
             </div>
-            <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-slate-950/80 backdrop-blur-2xl p-8 transition-colors duration-300 hover:border-amber-500/40 hover:shadow-[0_0_52px_-16px_rgba(0,181,241,0.5)]">
+            <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-slate-950/80 backdrop-blur-2xl p-8 transition-colors duration-300 hover:border-sky-500/40 hover:shadow-[0_0_52px_-16px_rgba(0, 181, 241,0.5)]">
               <div
                 aria-hidden="true"
                 className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
                 style={{
                   background:
-                    "radial-gradient(520px circle at 12% 0%, rgba(0,181,241,0.14), transparent 62%)",
+                    "radial-gradient(520px circle at 12% 0%, rgba(0, 181, 241,0.14), transparent 62%)",
                 }}
               />
               <h3 className="relative text-xl font-bold text-[#00B5F1] mb-4">
@@ -142,13 +142,13 @@ export default function GeneralCaseStudy({ project }: GeneralCaseStudyProps) {
                 {project.solution}
               </p>
             </div>
-            <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-slate-950/80 backdrop-blur-2xl p-8 transition-colors duration-300 hover:border-amber-500/40 hover:shadow-[0_0_52px_-16px_rgba(0,181,241,0.5)]">
+            <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-slate-950/80 backdrop-blur-2xl p-8 transition-colors duration-300 hover:border-sky-500/40 hover:shadow-[0_0_52px_-16px_rgba(0, 181, 241,0.5)]">
               <div
                 aria-hidden="true"
                 className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
                 style={{
                   background:
-                    "radial-gradient(520px circle at 12% 0%, rgba(0,181,241,0.14), transparent 62%)",
+                    "radial-gradient(520px circle at 12% 0%, rgba(0, 181, 241,0.14), transparent 62%)",
                 }}
               />
               <h3 className="relative text-xl font-bold text-[#00B5F1] mb-4">
@@ -159,7 +159,7 @@ export default function GeneralCaseStudy({ project }: GeneralCaseStudyProps) {
                   <div key={index} className="flex items-start gap-3 text-slate-400">
                     <span
                       aria-hidden="true"
-                      className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-400 shadow-[0_0_12px_2px_rgba(245,158,11,0.45)]"
+                      className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-sky-400 shadow-[0_0_12px_2px_rgba(0, 181, 241,0.45)]"
                     />
                     <span>{result}</span>
                   </div>
@@ -179,7 +179,7 @@ export default function GeneralCaseStudy({ project }: GeneralCaseStudyProps) {
           <div className="flex flex-wrap justify-center gap-6">
             <Link
               href="/kapcsolat"
-              className="px-8 py-4 bg-[#00B5F1] hover:bg-[#0095C7] text-white font-bold rounded-full transition-all duration-300 hover:scale-105"
+              className="px-8 py-4 bg-[#00B5F1] hover:bg-[#5B21B6] text-slate-950 font-bold rounded-full transition-all duration-300 hover:scale-105"
             >
               Ajánlatot kérek →
             </Link>

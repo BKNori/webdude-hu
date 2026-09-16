@@ -69,9 +69,9 @@ export default function TaskCaptureForm() {
   };
 
   return (
-    <div className="bg-[#0f0f1a] border border-gray-800 rounded-2xl p-6 hover:border-amber-500/20 transition-all">
+    <div className="bg-[#0f0f1a] border border-gray-800 rounded-2xl p-6 hover:border-sky-500/20 transition-all">
       <div className="flex items-center gap-2 mb-6">
-        <Plus className="w-5 h-5 text-amber-500" />
+        <Plus className="w-5 h-5 text-sky-500" />
         <h2 className="text-lg font-bold text-white">Gyors-rögzítő</h2>
       </div>
 
@@ -96,7 +96,7 @@ export default function TaskCaptureForm() {
           </label>
           <textarea
             {...register("description", { required: "Kötelező mező" })}
-            className="w-full px-4 py-3 bg-[#0a0a0f] border border-gray-700 rounded-lg text-white focus:border-amber-500 focus:outline-none resize-none"
+            className="w-full px-4 py-3 bg-[#0a0a0f] border border-gray-700 rounded-lg text-white focus:border-sky-500 focus:outline-none resize-none"
             rows={3}
             placeholder="Írd be a feladat leírását..."
           />
@@ -116,7 +116,7 @@ export default function TaskCaptureForm() {
             <input
               {...register("email_url")}
               type="url"
-              className="w-full pl-10 px-4 py-3 bg-[#0a0a0f] border border-gray-700 rounded-lg text-white focus:border-amber-500 focus:outline-none"
+              className="w-full pl-10 px-4 py-3 bg-[#0a0a0f] border border-gray-700 rounded-lg text-white focus:border-sky-500 focus:outline-none"
               placeholder="https://mail.google.com/mail/u/0/#inbox/..."
             />
           </div>
@@ -131,7 +131,7 @@ export default function TaskCaptureForm() {
             <input
               {...register("due_date")}
               type="date"
-              className="w-full pl-10 px-4 py-3 bg-[#0a0a0f] border border-gray-700 rounded-lg text-white focus:border-amber-500 focus:outline-none"
+              className="w-full pl-10 px-4 py-3 bg-[#0a0a0f] border border-gray-700 rounded-lg text-white focus:border-sky-500 focus:outline-none"
             />
           </div>
         </div>
@@ -141,7 +141,7 @@ export default function TaskCaptureForm() {
             {...register("is_critical")}
             type="checkbox"
             id="is_critical"
-            className="w-4 h-4 bg-[#0a0a0f] border-gray-700 rounded focus:border-amber-500"
+            className="w-4 h-4 bg-[#0a0a0f] border-gray-700 rounded focus:border-sky-500"
           />
           <label
             htmlFor="is_critical"
@@ -155,7 +155,7 @@ export default function TaskCaptureForm() {
         <button
           type="submit"
           disabled={loading}
-          className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-amber-500 hover:bg-amber-600 disabled:bg-amber-500/50 text-black font-bold rounded-lg transition-colors"
+          className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-sky-500 hover:bg-violet-700 disabled:bg-sky-500/50 text-black font-bold rounded-lg transition-colors"
         >
           {loading ? (
             <>

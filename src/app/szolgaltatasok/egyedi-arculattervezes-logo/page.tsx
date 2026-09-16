@@ -1,4 +1,4 @@
-﻿import SectionTitle from "@/components/atoms/SectionTitle";
+import SectionTitle from "@/components/atoms/SectionTitle";
 import Button from "@/components/atoms/Button";
 import { Metadata } from "next";
 import Badge from "@/components/atoms/Badge";
@@ -8,21 +8,19 @@ import Image from "next/image";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title:
-      "Egyedi Arculattervezés & Logó – Branding Szolgáltatás | WebDude Kecskemét",
+    title: "Egyedi Arculattervezés & Logó – Branding Szolgáltatás | WebDude",
     description:
-      "Professzionális logó tervezés és teljes vállalati arculat kialakítása Kecskemétről. 26 éves grafikai tapasztalattal, vektorgrafikus elemek, branding stratégia és konverzió-fókuszú dizájn. Esküvői dekoráció, orvosi arculat és kávézó branding referenciákkal.",
+      "Professzionális logó tervezés és teljes vállalati arculat kialakítása. 26 éves grafikai tapasztalattal, vektorgrafikus elemek, branding stratégia és konverzió-fókuszú dizájn. Esküvői dekoráció, orvosi arculat és kávézó branding referenciákkal.",
     keywords:
-      "logó tervezés Kecskemét, arculattervezés, branding, vállalati arculat, vektorgrafika, vizuális identitás, grafikai tervezés, logo design, cégarculat, esküvői dekoráció branding, orvosi arculat, kávézó branding",
+      "logó tervezés, arculattervezés, branding, vállalati arculat, vektorgrafika, vizuális identitás, grafikai tervezés, logo design, cégarculat, esküvői dekoráció branding, orvosi arculat, kávézó branding",
     alternates: {
       canonical:
         "https://webdude.hu/szolgaltatasok/egyedi-arculattervezes-logo",
     },
     openGraph: {
-      title:
-        "Egyedi Arculattervezés & Logó – Branding Szolgáltatás | WebDude Kecskemét",
+      title: "Egyedi Arculattervezés & Logó – Branding Szolgáltatás | WebDude",
       description:
-        "Professzionális logó tervezés és teljes vállalati arculat kialakítása Kecskemétről. 26 éves grafikai tapasztalattal, vektorgrafikus elemek, branding stratégia és konverzió-fókuszú dizájn.",
+        "Professzionális logó tervezés és teljes vállalati arculat kialakítása. 26 éves grafikai tapasztalattal, vektorgrafikus elemek, branding stratégia és konverzió-fókuszú dizájn.",
       type: "website",
       locale: "hu_HU",
       siteName: "WebDude",
@@ -50,10 +48,9 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     twitter: {
       card: "summary_large_image",
-      title:
-        "Egyedi Arculattervezés & Logó – Branding Szolgáltatás | WebDude Kecskemét",
+      title: "Egyedi Arculattervezés & Logó – Branding Szolgáltatás | WebDude",
       description:
-        "Professzionális logó tervezés és teljes vállalati arculat kialakítása Kecskemétről. 26 éves grafikai tapasztalattal, vektorgrafikus elemek, branding stratégia és konverzió-fókuszú dizájn.",
+        "Professzionális logó tervezés és teljes vállalati arculat kialakítása. 26 éves grafikai tapasztalattal, vektorgrafikus elemek, branding stratégia és konverzió-fókuszú dizájn.",
       images: ["/assets/banners/eskuvodekoracio_nejegykartya.webp"],
     },
     robots: {
@@ -89,61 +86,14 @@ export default async function BrandingPage() {
     "@type": "Service",
     name: "Egyedi Arculattervezés & Logó",
     description:
-      "Professzionális logó tervezés és teljes vállalati arculat kialakítása Kecskemétről. 26 éves grafikai tapasztalattal, vektorgrafikus elemek, branding stratégia és konverzió-fókuszú dizájn.",
+      "Professzionális logó tervezés és teljes vállalati arculat kialakítása. 26 éves grafikai tapasztalattal, vektorgrafikus elemek, branding stratégia és konverzió-fókuszú dizájn.",
     provider: {
-      "@type": "Person",
-      name: "Norbi (WebDude)",
+      "@type": "Organization",
+      "@id": "https://webdude.hu/#organization",
+      name: "WebDude",
       url: "https://webdude.hu",
     },
-    areaServed: {
-      "@type": "City",
-      name: "Kecskemét",
-    },
-    offers: {
-      "@type": "Offer",
-      price: "80.000",
-      priceCurrency: "HUF",
-      availability: "https://schema.org/InStock",
-    },
-    hasOfferCatalog: {
-      "@type": "OfferCatalog",
-      name: "Branding Szolgáltatások",
-      itemListElement: [
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "Logó Tervezés",
-            description:
-              "Egyedi logó tervezés 3-5 munkanap alatt (specifikáció kialakítással)",
-          },
-          price: "80.000",
-          priceCurrency: "HUF",
-        },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "Vállalati Arculat",
-            description:
-              "Komplett arculati tervezés 1-2 hét alatt (specifikáció kialakítással)",
-          },
-          price: "180.000",
-          priceCurrency: "HUF",
-        },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "Premium Branding",
-            description:
-              "Teljes branding stratégia 2-3 hét alatt (specifikáció kialakítással)",
-          },
-          price: "300.000",
-          priceCurrency: "HUF",
-        },
-      ],
-    },
+    areaServed: { "@type": "Country", name: "Hungary" },
   };
 
   return (
@@ -384,7 +334,6 @@ export default async function BrandingPage() {
                     {
                       id: "logo",
                       name: "Logó Tervezés",
-                      price: "80.000",
                       description:
                         "Egyedi logó tervezés 3-5 munkanap alatt (specifikáció kialakítással)",
                       features: [
@@ -395,13 +344,12 @@ export default async function BrandingPage() {
                         "2 korrekciós kör",
                         "Használati útmutató",
                       ],
-                      ctaText: "Logo tervezés kérése",
+                      ctaText: "Egyedi árajánlat kérése",
                       ctaLink: "/kapcsolat",
                     },
                     {
                       id: "branding",
                       name: "Vállalati Arculat",
-                      price: "180.000",
                       description:
                         "Komplett arculati tervezés 1-2 hét alatt (specifikáció kialakítással)",
                       features: [
@@ -414,13 +362,12 @@ export default async function BrandingPage() {
                         "1 hónap support",
                       ],
                       highlighted: true,
-                      ctaText: "Arculat csomag kérése",
+                      ctaText: "Egyedi árajánlat kérése",
                       ctaLink: "/kapcsolat",
                     },
                     {
                       id: "premium",
                       name: "Premium Branding",
-                      price: "300.000",
                       description:
                         "Teljes branding stratégia 2-3 hét alatt (specifikáció kialakítással)",
                       features: [
@@ -433,13 +380,12 @@ export default async function BrandingPage() {
                         "5 korrekciós kör",
                         "3 hónap support",
                       ],
-                      ctaText: "Premium csomag kérése",
+                      ctaText: "Egyedi árajánlat kérése",
                       ctaLink: "/kapcsolat",
                     },
                   ]}
-                  title="Válassza ki a megfelelő branding csomagot"
-                  description="Minden csomag tartalmazza a konzultációt, specifikáció kialakítást, tervezést, korrekciókat és a fájlok átadását. Az árak a specifikáció hiányának kezelésével és a konzultációs munkával vannak kalkulálva."
-                  currency="Ft"
+                  title="Egyedi árajánlat kérése"
+                  description="Minden projekt egyedi igények alapján kerül árazásra. Ingyenes konzultáció a pontos árhoz és a specifikáció kialakításához."
                 />
               </div>
             </section>
@@ -530,18 +476,11 @@ export default async function BrandingPage() {
                   </details>
                   <details className="bg-transparent border border-[#00B5F1]/30 p-6 rounded-lg group">
                     <summary className="cursor-pointer font-semibold text-text-primary group-hover:text-[#00B5F1] transition-colors">
-                      Miért nem adok fix árat az oldalon?
+                      Mennyibe kerül egy arculattervezés projekt?
                     </summary>
                     <p className="mt-4 text-slate-400">
-                      Minden projekt egyedi, és az ügyfelek többsége nem hoz
-                      pontos design specifikációt. Én kell utána nyomoznom,
-                      kiderítenem az igényeket, ajánlatot adok, ajánlom a
-                      megoldást, és elmagyarázom a design folyamatot. Ez
-                      rengeteg írás és óra alapú munka, amit bele kell
-                      kalkulálni az árba. Magyarországon a piaci óradíjak
-                      10.000-25.000 Ft között mozognak, és a specifikáció hiánya
-                      miatt a konzultáció és tervezés fázis 5-15 óráig is
-                      eltarthat.
+                      Egyedi árajánlat kérése a projekt igényei szerint.
+                      Ingyenes konzultáció a pontos árhoz.
                     </p>
                   </details>
                   <details className="bg-transparent border border-slate-700/60 p-6 rounded-lg group">

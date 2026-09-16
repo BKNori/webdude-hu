@@ -85,9 +85,9 @@ export default function HeroSection() {
   return (
     <section className="relative w-full pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden flex flex-col items-center justify-center text-center px-4">
       {/* Liquid Gradient Background Blobs */}
-      <div className="absolute top-[-20%] left-[-10%] w-[50vw] h-[50vw] bg-linear-to-br from-[#00B5F1]/20 to-[#FF7A00]/20 rounded-full blur-3xl animate-blob-1 pointer-events-none" />
-      <div className="absolute top-[30%] right-[-15%] w-[40vw] h-[40vw] bg-linear-to-br from-[#00B5F1]/15 to-[#FF7A00]/15 rounded-full blur-3xl animate-blob-2 pointer-events-none" />
-      <div className="absolute bottom-[-10%] left-[20%] w-[45vw] h-[45vw] bg-linear-to-br from-[#00B5F1]/15 to-[#FF7A00]/15 rounded-full blur-3xl animate-blob-3 pointer-events-none" />
+      <div className="absolute top-[-20%] left-[-10%] w-[50vw] h-[50vw] bg-linear-to-br from-[#00B5F1]/20 to-[#5B21B6]/20 rounded-full blur-3xl animate-blob-1 pointer-events-none" />
+      <div className="absolute top-[30%] right-[-15%] w-[40vw] h-[40vw] bg-linear-to-br from-[#00B5F1]/15 to-[#5B21B6]/15 rounded-full blur-3xl animate-blob-2 pointer-events-none" />
+      <div className="absolute bottom-[-10%] left-[20%] w-[45vw] h-[45vw] bg-linear-to-br from-[#00B5F1]/15 to-[#5B21B6]/15 rounded-full blur-3xl animate-blob-3 pointer-events-none" />
 
       <AnimatePresence mode="wait">
         <motion.div
@@ -115,13 +115,13 @@ export default function HeroSection() {
       {/* Navigation Arrows */}
       <button
         onClick={prevHero}
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/80 backdrop-blur-md border border-[#E7ECF2] text-[#111827] hover:bg-[#00B5F1] hover:border-[#00B5F1] hover:text-white transition-all duration-300 flex items-center justify-center"
+        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/80 backdrop-blur-md border border-[#E7ECF2] text-[#111827] hover:bg-[#00B5F1] hover:border-[#00B5F1] hover:text-slate-950 transition-all duration-300 flex items-center justify-center"
       >
         <ChevronLeft className="w-6 h-6" />
       </button>
       <button
         onClick={nextHero}
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/80 backdrop-blur-md border border-[#E7ECF2] text-[#111827] hover:bg-[#00B5F1] hover:border-[#00B5F1] hover:text-white transition-all duration-300 flex items-center justify-center"
+        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/80 backdrop-blur-md border border-[#E7ECF2] text-[#111827] hover:bg-[#00B5F1] hover:border-[#00B5F1] hover:text-slate-950 transition-all duration-300 flex items-center justify-center"
       >
         <ChevronRight className="w-6 h-6" />
       </button>
@@ -151,7 +151,7 @@ export default function HeroSection() {
             transition={{ duration: 0.5 }}
           >
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 leading-tight">
-              <span className="bg-clip-text text-transparent bg-linear-to-r from-[#00B5F1] to-[#FF7A00]">
+              <span className="bg-clip-text text-transparent bg-linear-to-r from-[#00B5F1] to-[#5B21B6]">
                 {heroes[currentHero].title}
               </span>
               <br className="hidden md:block" />
@@ -168,7 +168,7 @@ export default function HeroSection() {
               {/* Elsődleges CTA */}
               <Link
                 href={heroes[currentHero].primaryHref}
-                className="w-full sm:w-auto bg-[#00B5F1] hover:bg-[#0095C7] text-white font-bold text-lg py-4 px-8 rounded-full hover:shadow-[0_12px_32px_rgba(0,181,241,0.3)] transition-all duration-300 transform hover:scale-105"
+                className="w-full sm:w-auto bg-[#00B5F1] hover:bg-[#5B21B6] text-slate-950 font-bold text-lg py-4 px-8 rounded-full hover:shadow-[0_12px_32px_rgba(0, 181, 241,0.3)] transition-all duration-300 transform hover:scale-105"
               >
                 {heroes[currentHero].primaryCta}
               </Link>

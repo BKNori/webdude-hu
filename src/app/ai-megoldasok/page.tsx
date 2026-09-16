@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
@@ -88,7 +88,7 @@ const aiSolutions = [
     description:
       "Professzionális prompt engineering szolgáltatás, amely optimalizálja az AI modellek teljesítményét és biztosítja a konzisztens kimeneteket.",
     icon: Bot,
-    color: "from-blue-500 to-cyan-500",
+    color: "from-blue-500 to-sky-500",
     features: [
       "Prompt optimalizálás",
       "AI model tuning",
@@ -215,7 +215,7 @@ export default function AIMSolutionsPage() {
                               ? "noopener noreferrer"
                               : undefined
                           }
-                          className="inline-flex items-center gap-2 px-8 py-4 bg-[#00B5F1] text-white font-bold rounded-xl hover:bg-[#0095C7] transition-all border border-[#00B5F1]/30"
+                          className="inline-flex items-center gap-2 px-8 py-4 bg-[#00B5F1] text-slate-950 font-bold rounded-xl hover:bg-[#5B21B6] transition-all border border-[#00B5F1]/30"
                         >
                           {slide.cta}
                           <ArrowRight className="w-4 h-4" />
@@ -292,7 +292,7 @@ export default function AIMSolutionsPage() {
           <div className="text-center mb-12">
             <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold font-sans text-[#111827] leading-tight tracking-tight mb-6">
               AI Megoldások{" "}
-              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#FF7A00] italic">
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6] italic">
                 Vállalkozásoknak
               </span>
             </h2>
@@ -350,7 +350,7 @@ export default function AIMSolutionsPage() {
                     {/* CTA */}
                     <Link
                       href={solution.href}
-                      className="flex items-center justify-center gap-2 w-full py-3 bg-linear-to-r from-[#00B5F1] to-[#FF7A00] text-white font-bold rounded-xl hover:shadow-[0_8px_24px_rgba(0,181,241,0.3)] transition-all group-hover:scale-[1.02]"
+                      className="flex items-center justify-center gap-2 w-full py-3 bg-linear-to-r from-[#00B5F1] to-[#5B21B6] text-slate-950 font-bold rounded-xl hover:shadow-[0_8px_24px_rgba(0, 181, 241,0.3)] transition-all group-hover:scale-[1.02]"
                     >
                       <span>Részletek</span>
                       <ArrowRight className="w-4 h-4" />
@@ -375,7 +375,7 @@ export default function AIMSolutionsPage() {
           </p>
           <Link
             href="/kapcsolat"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-[#00B5F1] text-white font-bold rounded-xl hover:bg-[#0095C7] transition-all tracking-wide"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-[#00B5F1] text-slate-950 font-bold rounded-xl hover:bg-[#5B21B6] transition-all tracking-wide"
           >
             Ingyenes Konzultáció
             <ArrowRight className="w-4 h-4" />

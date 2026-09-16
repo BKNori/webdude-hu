@@ -30,7 +30,7 @@ export default function PortalNotificationBell() {
           setOpen((o) => !o);
           if (!open) markAllSeen();
         }}
-        className="relative p-2.5 rounded-xl border border-slate-700/80 bg-slate-950/80 backdrop-blur-xl text-slate-300 hover:text-[#f59e0b] hover:border-[#f59e0b]/50 transition-colors focus:outline-none focus:ring-2 focus:ring-amber-500"
+        className="relative p-2.5 rounded-xl border border-slate-700/80 bg-slate-950/80 backdrop-blur-xl text-slate-300 hover:text-[#00B5F1] hover:border-[#00B5F1]/50 transition-colors focus:outline-none focus:ring-2 focus:ring-sky-500"
       >
         <Bell className="w-5 h-5" aria-hidden />
         <AnimatePresence>
@@ -40,7 +40,7 @@ export default function PortalNotificationBell() {
               animate={shouldReduceMotion ? {} : { scale: 1 }}
               exit={shouldReduceMotion ? {} : { scale: 0 }}
               transition={spring}
-              className="absolute -top-1.5 -right-1.5 min-w-5 h-5 px-1 rounded-full bg-[#f59e0b] text-black text-[11px] font-black flex items-center justify-center shadow-[0_0_12px_rgba(245,158,11,0.6)]"
+              className="absolute -top-1.5 -right-1.5 min-w-5 h-5 px-1 rounded-full bg-[#00B5F1] text-black text-[11px] font-black flex items-center justify-center shadow-[0_0_12px_rgba(0, 181, 241,0.6)]"
             >
               {unseenCount > 9 ? "9+" : unseenCount}
             </motion.span>
@@ -70,7 +70,7 @@ export default function PortalNotificationBell() {
                 <div key={`${n.kind}-${n.id}`} className="flex gap-3 px-4 py-3">
                   {n.kind === "generation" ? (
                     <Sparkles
-                      className="w-4 h-4 mt-0.5 text-[#f59e0b] shrink-0"
+                      className="w-4 h-4 mt-0.5 text-[#00B5F1] shrink-0"
                       aria-hidden
                     />
                   ) : (

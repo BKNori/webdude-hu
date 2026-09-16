@@ -16,12 +16,12 @@ export default function StatItem({
   value,
   icon: Icon,
   description,
-  iconColorClass = "text-amber-500",
+  iconColorClass = "text-sky-500",
 }: StatItemProps) {
   return (
-    <div className="bg-bg-surface/60 backdrop-blur-md border border-bg-elevated p-6 flex flex-col group relative overflow-hidden rounded-3xl hover:border-amber-500/30 shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 h-full">
+    <div className="bg-bg-surface/60 backdrop-blur-md border border-bg-elevated p-6 flex flex-col group relative overflow-hidden rounded-3xl hover:border-sky-500/30 shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 h-full">
       {/* Glow Effect */}
-      <div className="absolute -right-12 -top-12 w-24 h-24 rounded-full bg-amber-500/5 blur-2xl group-hover:bg-amber-500/10 transition-all duration-500" />
+      <div className="absolute -right-12 -top-12 w-24 h-24 rounded-full bg-sky-500/5 blur-2xl group-hover:bg-sky-500/10 transition-all duration-500" />
 
       <div className="space-y-1.5 flex-1 min-w-0">
         <p className="text-[10px] uppercase tracking-widest font-black text-slate-400 truncate">

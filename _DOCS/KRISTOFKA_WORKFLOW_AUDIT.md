@@ -35,7 +35,7 @@
 - **Probléma:** Nincs motion animáció, nincs Cyber-Arany hover, nincs prémium érzet
 - **Javítás:**
   - Motion animációk hozzáadása (fade-in, slide-up, stagger)
-  - Cyber-Arany hover effektek (hover:border-amber-500/50, hover:shadow-amber-500/10)
+  - Cyber-Arany hover effektek (hover:border-sky-500/50, hover:shadow-sky-500/10)
   - Prémium badge hozzáadása (Sparkles ikon, "Strategist-Pro" felirat)
   - Glassmorphism hatás erősítése
 

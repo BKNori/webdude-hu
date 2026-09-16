@@ -24,7 +24,7 @@ export default function ProductLeadHero({
   return (
     <section className="relative py-24 overflow-hidden bg-bg-base">
       {/* Background Pattern */}
-      <div className="absolute inset-0 bg-linear-to-b from-gold-primary/5 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-linear-to-b from-brand-primary/5 via-transparent to-transparent" />
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -35,10 +35,10 @@ export default function ProductLeadHero({
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gold-primary/10 border border-gold-primary/20"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-primary/10 border border-brand-primary/20"
             >
-              <Shield className="w-4 h-4 text-gold-primary" />
-              <span className="text-xs font-bold text-gold-primary uppercase tracking-wider">
+              <Shield className="w-4 h-4 text-brand-primary" />
+              <span className="text-xs font-bold text-brand-primary uppercase tracking-wider">
                 {category}
               </span>
             </motion.div>
@@ -96,7 +96,7 @@ export default function ProductLeadHero({
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
               onClick={ctaAction}
-              className="inline-flex items-center gap-2 px-8 py-4 bg-gold-primary text-bg-base font-bold rounded-xl hover:bg-gold-primary/90 transition-all hover:scale-105"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-brand-primary text-bg-base font-bold rounded-xl hover:bg-brand-primary/90 transition-all hover:scale-105"
             >
               <Zap className="w-4 h-4" />
               <span>{ctaText}</span>
@@ -123,7 +123,7 @@ export default function ProductLeadHero({
             className="relative"
           >
             {heroVisual ? (
-              <div className="aspect-video rounded-2xl overflow-hidden border border-gold-primary/20">
+              <div className="aspect-video rounded-2xl overflow-hidden border border-brand-primary/20">
                 <Image
                   src={heroVisual}
                   alt={productName}
@@ -132,8 +132,8 @@ export default function ProductLeadHero({
                 />
               </div>
             ) : (
-              <div className="aspect-video rounded-2xl bg-linear-to-br from-gold-primary/20 to-transparent border border-gold-primary/20 flex items-center justify-center">
-                <Shield className="w-24 h-24 text-gold-primary/50" />
+              <div className="aspect-video rounded-2xl bg-linear-to-br from-brand-primary/20 to-transparent border border-brand-primary/20 flex items-center justify-center">
+                <Shield className="w-24 h-24 text-brand-primary/50" />
               </div>
             )}
           </motion.div>

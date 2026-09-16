@@ -115,7 +115,7 @@ export default function ServiceSectionNew() {
           transition={{ duration: 0.4 }}
           className="text-center mb-20"
         >
-          <span className="inline-block px-4 py-2 rounded-full bg-amber-500/10 text-amber-500 text-sm font-semibold tracking-wider uppercase mb-4">
+          <span className="inline-block px-4 py-2 rounded-full bg-sky-500/10 text-sky-500 text-sm font-semibold tracking-wider uppercase mb-4">
             Szolgáltatások
           </span>
           <h2
@@ -140,12 +140,12 @@ export default function ServiceSectionNew() {
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
               whileHover={{ scale: 1.02, y: -4 }}
-              className={`${service.span} ${service.featured ? "bg-slate-900/80" : "bg-slate-900/80"} backdrop-blur-md rounded-4xl p-10 shadow-[0_8px_24px_rgba(15,23,42,0.3)] hover:border-amber-500/50 hover:shadow-[0_20px_60px_rgba(245,158,11,0.2)] hover:-translate-y-1 transition-all duration-300 border border-slate-700`}
+              className={`${service.span} ${service.featured ? "bg-slate-900/80" : "bg-slate-900/80"} backdrop-blur-md rounded-4xl p-10 shadow-[0_8px_24px_rgba(15,23,42,0.3)] hover:border-sky-500/50 hover:shadow-[0_20px_60px_rgba(0, 181, 241,0.2)] hover:-translate-y-1 transition-all duration-300 border border-slate-700`}
             >
               {/* 3D Clay Icon */}
               <div className="relative mb-8">
                 <motion.div
-                  className="w-20 h-20 rounded-3xl bg-linear-to-br from-amber-500/20 to-amber-600/20 flex items-center justify-center text-amber-500 shadow-[0_4px_12px_rgba(245,158,11,0.2)]"
+                  className="w-20 h-20 rounded-3xl bg-linear-to-br from-sky-500/20 to-violet-700/20 flex items-center justify-center text-sky-500 shadow-[0_4px_12px_rgba(0, 181, 241,0.2)]"
                   whileHover={{ rotate: [0, -5, 5, -5, 5, 0] }}
                   transition={{ duration: 0.5 }}
                 >
@@ -153,7 +153,7 @@ export default function ServiceSectionNew() {
                 </motion.div>
               </div>
 
-              <h3 className="text-2xl md:text-3xl font-bold text-[#e2e8f0] mb-5 group-hover:text-amber-500 transition-colors duration-300 tracking-tight leading-tight">
+              <h3 className="text-2xl md:text-3xl font-bold text-[#e2e8f0] mb-5 group-hover:text-sky-500 transition-colors duration-300 tracking-tight leading-tight">
                 {service.title}
               </h3>
               <p className="text-base md:text-lg leading-relaxed text-slate-400 mb-8 tracking-wide font-medium">
@@ -166,7 +166,7 @@ export default function ServiceSectionNew() {
                   e.stopPropagation();
                   toggleCard(index);
                 }}
-                className="w-full flex items-center justify-between gap-2 text-xs font-bold text-slate-500 uppercase tracking-[0.15em] hover:text-amber-500 transition-colors mt-4 pt-4 border-t border-slate-700 hover:border-amber-500/30"
+                className="w-full flex items-center justify-between gap-2 text-xs font-bold text-slate-500 uppercase tracking-[0.15em] hover:text-sky-500 transition-colors mt-4 pt-4 border-t border-slate-700 hover:border-sky-500/30"
               >
                 <span>{service.faq.question}</span>
                 {expandedCard === index ? (
@@ -195,7 +195,7 @@ export default function ServiceSectionNew() {
                 >
                   <Link
                     href={service.href}
-                    className="inline-flex items-center text-amber-500 font-semibold hover:text-amber-400 transition-colors mt-4"
+                    className="inline-flex items-center text-sky-500 font-semibold hover:text-sky-400 transition-colors mt-4"
                   >
                     Részletek
                     <svg
@@ -228,7 +228,7 @@ export default function ServiceSectionNew() {
         >
           <Link
             href="/szolgaltatasok"
-            className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-linear-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-semibold transition-all duration-300 shadow-[0_8px_24px_rgba(245,158,11,0.3)] hover:shadow-[0_18px_40px_rgba(245,158,11,0.4)]"
+            className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-linear-to-r from-sky-500 to-violet-700 hover:from-violet-700 hover:to-sky-800 text-slate-950 font-semibold transition-all duration-300 shadow-[0_8px_24px_rgba(0, 181, 241,0.3)] hover:shadow-[0_18px_40px_rgba(0, 181, 241,0.4)]"
           >
             Összes szolgáltatás megtekintése
           </Link>

@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import React, { useState } from "react";
 import { motion } from "motion/react";
@@ -27,7 +27,7 @@ const services = [
       "Next.js 16 és React 19 alapú ultragyors, SEO-optimalizált weboldalak, amelyek konvertálnak és skálázhatóak.",
     icon: Globe,
     href: "/szolgaltatasok/weboldal-keszites",
-    color: "from-blue-500/20 to-cyan-500/20",
+    color: "from-blue-500/20 to-sky-500/20",
     iconColor: "text-blue-400",
     benefits: ["LCP < 2.5s", "SEO optimalizált", "Mobil-barát"],
   },
@@ -78,7 +78,7 @@ const services = [
     icon: Layout,
     href: "/szolgaltatasok/egyedi-arculattervezes-logo",
     color: "from-[#00B5F1]/20 to-yellow-500/20",
-    iconColor: "text-amber-400",
+    iconColor: "text-sky-400",
     benefits: ["Stratégiai tervezés", "Design rendszer", "Márkaépítés"],
   },
 ];
@@ -129,7 +129,7 @@ export default function ModernServicesSection() {
           </motion.div>
           <h2 className="text-4xl md:text-6xl font-bold text-text-primary mb-6">
             Modern Megoldások,{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-[#0095C7]">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-[#5B21B6]">
               Valós Eredmények
             </span>
           </h2>
@@ -235,7 +235,7 @@ export default function ModernServicesSection() {
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       whileHover={{ opacity: 1, y: 0 }}
-                      className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-yellow-400/10 to-[#00B5F1]/10 border border-[#00B5F1]/20 text-[#00B5F1] text-sm font-bold hover:bg-gradient-to-r hover:from-yellow-400 hover:to-[#0095C7] hover:text-white transition-all duration-300"
+                      className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-yellow-400/10 to-[#00B5F1]/10 border border-[#00B5F1]/20 text-[#00B5F1] text-sm font-bold hover:bg-gradient-to-r hover:from-yellow-400 hover:to-[#5B21B6] hover:text-slate-950 transition-all duration-300"
                     >
                       <Zap className="w-4 h-4" />
                       <span>Részletek</span>
@@ -272,7 +272,7 @@ export default function ModernServicesSection() {
               </motion.div>
               <h3 className="text-3xl md:text-4xl font-bold text-text-primary mb-4">
                 Készítsünk Együtt Valami
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-[#0095C7]">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-[#5B21B6]">
                   {" "}
                   Hatalmasat
                 </span>
@@ -285,7 +285,7 @@ export default function ModernServicesSection() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
                   href="/szolgaltatasok"
-                  className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-yellow-400 to-[#0095C7] text-white font-bold hover:shadow-lg hover:shadow-[#00B5F1]/30 transition-all duration-300 shadow-lg shadow-[#00B5F1]/20 hover:scale-105"
+                  className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-yellow-400 to-[#5B21B6] text-slate-950 font-bold hover:shadow-lg hover:shadow-[#00B5F1]/30 transition-all duration-300 shadow-lg shadow-[#00B5F1]/20 hover:scale-105"
                 >
                   <span>Összes Szolgáltatás</span>
                   <ArrowRight className="w-5 h-5" />

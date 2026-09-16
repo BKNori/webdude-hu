@@ -1,4 +1,4 @@
-﻿import SectionTitle from "@/components/atoms/SectionTitle";
+import SectionTitle from "@/components/atoms/SectionTitle";
 import Button from "@/components/atoms/Button";
 import Badge from "@/components/atoms/Badge";
 import Image from "next/image";
@@ -9,11 +9,11 @@ import HeroCarousel from "@/components/molecules/HeroCarousel";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Professzionális Grafikai Tervezés és Branding | WebDude Kecskemét",
+    title: "Professzionális Grafikai Tervezés és Branding | WebDude",
     description:
       "26 év tapasztalattal: vektoros logók, prospektusok, marketing anyagok és teljes vizuális arculati tervezés. Értékesítés-fókuszú grafikák webshopok és vállalkozások számára.",
     keywords:
-      "grafikai tervezés, logo tervezés, vektoros grafika, prospektus tervezés, vizuális arculat, marketing grafika, Kecskemét",
+      "grafikai tervezés, logo tervezés, vektoros grafika, prospektus tervezés, vizuális arculat, marketing grafika",
     alternates: {
       canonical: "https://webdude.hu/szolgaltatasok/grafikai-tervezes",
     },
@@ -60,11 +60,7 @@ const FAQ = [
   },
   {
     q: "Mennyibe kerül egy grafikai projekt?",
-    a: "A projekt komplexitásától függ. Egy egyszerű logó tervezése 25.000 Ft-tól, marketing anyagok 40.000 Ft-tól, komplex arculati tervezés 120.000 Ft-tól indul. Kérjen személyre szabott ajánlatot.",
-  },
-  {
-    q: "Miért nem adok fix árat az oldalon?",
-    a: "Minden projekt egyedi, és az ügyfelek többsége nem hoz pontos design specifikációt. Én kell utána nyomoznom, kiderítenem az igényeket, ajánlatot adok, ajánlom a megoldást, és elmagyarázom a design folyamatot. Ez rengeteg írás és óra alapú munka, amit bele kell kalkulálni az árba. Magyarországon a piaci óradíjak 10.000-25.000 Ft között mozognak, és a specifikáció hiánya miatt a konzultáció és tervezés fázis 5-15 óráig is eltarthat.",
+    a: "Egyedi árajánlat kérése a projekt igényei szerint. Ingyenes konzultáció a pontos árhoz.",
   },
   {
     q: "Mire kell figyelni az árajánlatkérésnél?",
@@ -91,7 +87,8 @@ export default async function GraphicDesignPage() {
     description:
       "26 év tapasztalattal: vektoros logók, prospektusok, marketing anyagok és teljes vizuális arculati tervezés. Értékesítés-fókuszú grafikák webshopok és vállalkozások számára.",
     provider: {
-      "@type": "LocalBusiness",
+      "@type": "Organization",
+      "@id": "https://webdude.hu/#organization",
       name: "WebDude",
       url: "https://webdude.hu",
     },

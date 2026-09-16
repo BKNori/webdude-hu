@@ -48,9 +48,9 @@ export default function FeaturedServices() {
     <section className="py-24 md:py-32 bg-linear-to-br from-bg-surface via-bg-elevated to-bg-surface border-t border-slate-800 relative overflow-hidden">
       {/* Ötletes háttér effektek */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 right-20 w-96 h-96 bg-linear-to-br from-cyan-400/10 to-blue-500/10 rounded-full blur-[120px] animate-pulse" />
+        <div className="absolute top-20 right-20 w-96 h-96 bg-linear-to-br from-sky-400/10 to-blue-500/10 rounded-full blur-[120px] animate-pulse" />
         <div className="absolute bottom-20 left-20 w-80 h-80 bg-linear-to-br from-purple-400/10 to-pink-500/10 rounded-full blur-[100px] animate-pulse delay-1000" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-150 bg-linear-to-br from-blue-300/5 to-cyan-300/5 rounded-full blur-[150px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-150 bg-linear-to-br from-blue-300/5 to-sky-300/5 rounded-full blur-[150px]" />
       </div>
 
       <script
@@ -82,7 +82,7 @@ export default function FeaturedServices() {
                 description={services[0].description}
                 metric={services[0].metric}
                 highlight={services[0].highlight}
-                className="lg:row-span-2 flex flex-col justify-between min-h-87.5 border-cyan-500/30 shadow-[0_0_40px_rgba(6,182,212,0.06)] hover:shadow-[0_0_60px_rgba(6,182,212,0.2)] transition-all duration-300"
+                className="lg:row-span-2 flex flex-col justify-between min-h-87.5 border-sky-500/30 shadow-[0_0_40px_rgba(6,182,212,0.06)] hover:shadow-[0_0_60px_rgba(6,182,212,0.2)] transition-all duration-300"
               />
             </motion.div>
           </ScaleMotion>

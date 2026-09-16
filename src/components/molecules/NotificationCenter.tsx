@@ -32,12 +32,12 @@ export default function NotificationCenter({ clientId }: { clientId: string }) {
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="relative p-2.5 rounded-2xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-amber-400 hover:border-amber-500/30 transition-colors"
+        className="relative p-2.5 rounded-2xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-sky-400 hover:border-sky-500/30 transition-colors"
         aria-label="Értesítések megnyitása"
       >
         <Bell className="w-5 h-5" />
         {unreadCount > 0 && (
-          <span className="absolute -top-1 -right-1 w-5 h-5 bg-amber-500 text-slate-950 text-xs font-bold rounded-full flex items-center justify-center shadow-lg shadow-amber-500/20">
+          <span className="absolute -top-1 -right-1 w-5 h-5 bg-sky-500 text-slate-950 text-xs font-bold rounded-full flex items-center justify-center shadow-lg shadow-sky-500/20">
             {unreadCount}
           </span>
         )}
@@ -73,7 +73,7 @@ export default function NotificationCenter({ clientId }: { clientId: string }) {
                     className="flex gap-3 p-3 rounded-2xl bg-slate-950/60 border border-slate-800/80 text-xs text-slate-300"
                   >
                     {n.type === "success" && <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />}
-                    {n.type === "warning" && <AlertTriangle className="w-4 h-4 text-amber-400 shrink-0" />}
+                    {n.type === "warning" && <AlertTriangle className="w-4 h-4 text-sky-400 shrink-0" />}
                     {n.type === "info" && <Info className="w-4 h-4 text-blue-400 shrink-0" />}
                     <div>
                       <p className="font-semibold text-white mb-0.5">{n.title}</p>

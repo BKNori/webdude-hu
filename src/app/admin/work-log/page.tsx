@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import React, { useState, useEffect } from "react";
 import {
@@ -236,7 +236,7 @@ export default function WorkLogPage() {
           </button>
           <button
             onClick={() => setShowForm(!showForm)}
-            className="flex items-center gap-2 px-6 py-3 bg-[#00B5F1] hover:bg-[#0095C7] text-black font-bold rounded-lg transition-colors"
+            className="flex items-center gap-2 px-6 py-3 bg-[#00B5F1] hover:bg-[#5B21B6] text-black font-bold rounded-lg transition-colors"
           >
             <Plus className="w-5 h-5" />
             Új Feladat

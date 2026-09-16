@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import React, { useEffect, useState } from "react";
 import { collection, getCountFromServer } from "firebase/firestore";
@@ -289,7 +289,7 @@ export default function AdminDashboard() {
                       </div>
                       <div className="w-full bg-transparent h-1.5 rounded-full overflow-hidden">
                         <div
-                          className="bg-linear-to-r from-[#00B5F1] to-[#0095C7] h-full rounded-full"
+                          className="bg-linear-to-r from-[#00B5F1] to-[#5B21B6] h-full rounded-full"
                           style={{ width: `${percentage}%` }}
                         />
                       </div>

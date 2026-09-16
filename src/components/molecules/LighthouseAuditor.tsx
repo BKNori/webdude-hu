@@ -145,7 +145,7 @@ export default function LighthouseAuditor() {
                 onChange={(e) => setUrl(e.target.value)}
                 disabled={loading || checkoutLoading}
                 aria-label="Weboldal URL címe"
-                className="w-full pl-11 pr-4 py-3 bg-slate-900/40 border border-slate-700/50 rounded-full text-slate-200 placeholder-slate-500 text-sm focus:outline-none focus:border-amber-500/50 focus:ring-2 focus:ring-amber-500/10 focus:ring-offset-0 transition-all disabled:opacity-50"
+                className="w-full pl-11 pr-4 py-3 bg-slate-900/40 border border-slate-700/50 rounded-full text-slate-200 placeholder-slate-500 text-sm focus:outline-none focus:border-sky-500/50 focus:ring-2 focus:ring-sky-500/10 focus:ring-offset-0 transition-all disabled:opacity-50"
               />
             </div>
             <Button
@@ -153,7 +153,7 @@ export default function LighthouseAuditor() {
               disabled={loading || !url || checkoutLoading}
               loading={loading}
               variant="primary"
-              className="sm:min-w-40 text-xs font-mono tracking-wider py-3 focus:ring-2 focus:ring-amber-500"
+              className="sm:min-w-40 text-xs font-mono tracking-wider py-3 focus:ring-2 focus:ring-sky-500"
               ariaLabel="Lighthouse audit elindítása"
             >
               Mérés indítása
@@ -171,7 +171,7 @@ export default function LighthouseAuditor() {
 
         {loading && (
           <div className="flex flex-col items-center justify-center py-8 space-y-4">
-            <Spinner className="w-8 h-8 text-amber-500" />
+            <Spinner className="w-8 h-8 text-sky-500" />
             <p className="text-xs text-slate-400 uppercase tracking-widest font-mono animate-pulse">
               Google PageSpeed Audit futtatása... Ez eltarthat 15-30
               másodpercig.
@@ -227,7 +227,7 @@ export default function LighthouseAuditor() {
                       className="w-5 h-5 text-slate-500 mb-2"
                       strokeWidth={1.5}
                     />
-                    <span className="text-amber-500 text-4xl font-black font-mono tracking-tight">
+                    <span className="text-sky-500 text-4xl font-black font-mono tracking-tight">
                       {item.score}
                     </span>
                     <span className="text-[10px] text-slate-400 font-bold mt-2 uppercase tracking-widest">
@@ -269,14 +269,14 @@ export default function LighthouseAuditor() {
                       disabled={checkoutLoading || loading}
                       loading={checkoutLoading}
                       variant="primary"
-                      className="w-full text-xs font-mono py-3 shadow-[0_0_20px_rgba(245,158,11,0.3)] hover:shadow-[0_0_30px_rgba(245,158,11,0.5)] animate-pulse"
+                      className="w-full text-xs font-mono py-3 shadow-[0_0_20px_rgba(0, 181, 241,0.3)] hover:shadow-[0_0_30px_rgba(0, 181, 241,0.5)] animate-pulse"
                       ariaLabel="Sebesség optimalizálás kiegészítő megrendelése"
                     >
                       Kérem a 95+ Sebesség-optimalizálást!
                     </Button>
                   ) : (
                     <div className="space-y-3">
-                      <p className="text-amber-500/90 text-xs font-bold font-mono">
+                      <p className="text-sky-500/90 text-xs font-bold font-mono">
                         ⚠️ Megrendeléshez kérlek előbb jelentkezz be az
                         Ügyfélkapuba!
                       </p>

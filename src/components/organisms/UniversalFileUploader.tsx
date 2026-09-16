@@ -153,11 +153,11 @@ export default function UniversalFileUploader({
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          className="relative group bg-bg-card border border-bg-elevated/50 rounded-xl p-4 hover:border-amber-500/50 transition-all duration-300 shadow-xl"
+          className="relative group bg-bg-card border border-bg-elevated/50 rounded-xl p-4 hover:border-sky-500/50 transition-all duration-300 shadow-xl"
         >
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-500">
+              <div className="w-10 h-10 rounded-lg bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-500">
                 {getFileIcon()}
               </div>
               <div className="flex-1 min-w-0">
@@ -189,12 +189,12 @@ export default function UniversalFileUploader({
           onClick={onButtonClick}
           className={`border-2 border-dashed rounded-xl p-8 flex flex-col items-center justify-center cursor-pointer transition-all duration-300 relative overflow-hidden ${
             dragActive
-              ? "border-amber-500 bg-amber-500/5"
-              : "border-bg-elevated/50 hover:border-amber-500/50 bg-bg-card hover:bg-bg-elevated/30"
+              ? "border-sky-500 bg-sky-500/5"
+              : "border-bg-elevated/50 hover:border-sky-500/50 bg-bg-card hover:bg-bg-elevated/30"
           }`}
         >
           {/* Background glow decorator */}
-          <div className="absolute inset-0 bg-linear-to-b from-amber-500/5 via-transparent to-amber-500/5 opacity-0 hover:opacity-100 transition-opacity duration-300" />
+          <div className="absolute inset-0 bg-linear-to-b from-sky-500/5 via-transparent to-sky-500/5 opacity-0 hover:opacity-100 transition-opacity duration-300" />
 
           <input
             ref={fileInputRef}
@@ -209,15 +209,15 @@ export default function UniversalFileUploader({
             <div className="flex flex-col items-center space-y-4 w-full px-4 z-10">
               <div className="relative w-full h-2 bg-bg-elevated rounded-full overflow-hidden">
                 <motion.div
-                  className="h-full bg-amber-500 rounded-full"
+                  className="h-full bg-sky-500 rounded-full"
                   initial={{ width: 0 }}
                   animate={{ width: `${progress}%` }}
                   transition={{ duration: 0.3 }}
                 />
               </div>
               <div className="flex items-center gap-2">
-                <Loader2 className="w-4 h-4 text-amber-500 animate-spin" />
-                <span className="text-xs text-amber-500 font-bold uppercase tracking-wider">
+                <Loader2 className="w-4 h-4 text-sky-500 animate-spin" />
+                <span className="text-xs text-sky-500 font-bold uppercase tracking-wider">
                   Feltöltés: {progress}%
                 </span>
               </div>
@@ -225,7 +225,7 @@ export default function UniversalFileUploader({
           ) : (
             <div className="text-center space-y-3 z-10">
               <motion.div
-                className="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-500 mx-auto"
+                className="w-12 h-12 rounded-xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-500 mx-auto"
                 whileHover={{ scale: 1.1, rotate: 5 }}
                 transition={{ duration: 0.2 }}
               >

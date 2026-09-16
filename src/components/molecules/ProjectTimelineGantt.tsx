@@ -103,7 +103,7 @@ export default function ProjectTimelineGantt({
               </div>
               <div className="flex items-center justify-between gap-4">
                 <dt className="text-slate-500">Aktív</dt>
-                <dd className="font-mono font-bold text-amber-300">
+                <dd className="font-mono font-bold text-sky-300">
                   {summary.active}
                 </dd>
               </div>
@@ -140,7 +140,7 @@ export default function ProjectTimelineGantt({
                     duration: shouldReduceMotion ? 0 : 0.9,
                     ease: "easeOut",
                   }}
-                  className="h-full rounded-full bg-gradient-to-r from-[#0095C7] to-[#00B5F1]"
+                  className="h-full rounded-full bg-gradient-to-r from-[#5B21B6] to-[#00B5F1]"
                 />
               </div>
             </div>

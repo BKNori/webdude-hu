@@ -8,7 +8,7 @@ export default function ProblemSolution() {
   return (
     <section className="py-24 md:py-32 relative overflow-hidden bg-[#020617]">
       {/* Background gradient */}
-      <div className="absolute inset-0 bg-linear-to-b from-transparent via-amber-500/5 to-transparent" />
+      <div className="absolute inset-0 bg-linear-to-b from-transparent via-sky-500/5 to-transparent" />
 
       <div className="px-6 lg:px-8 relative z-10 max-w-6xl mx-auto">
         <motion.div

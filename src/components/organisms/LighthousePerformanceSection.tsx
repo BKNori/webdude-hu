@@ -23,7 +23,7 @@ export default function LighthousePerformanceSection() {
     <section
       id="lighthouse-performance"
       ref={sectionRef}
-      className="bg-bg-base py-24 border-t border-gold-primary/20"
+      className="bg-bg-base py-24 border-t border-brand-primary/20"
     >
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-12">
@@ -60,7 +60,7 @@ export default function LighthousePerformanceSection() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="relative"
             >
-              <div className="w-64 h-64 border-8 border-gold-primary rounded-full flex items-center justify-center bg-bg-elevated/50">
+              <div className="w-64 h-64 border-8 border-brand-primary rounded-full flex items-center justify-center bg-bg-elevated/50">
                 <span className="text-6xl text-white font-mono font-bold">
                   {displayScore}+
                 </span>
@@ -72,7 +72,7 @@ export default function LighthousePerformanceSection() {
                 transition={{ duration: 0.6, delay: 0.6 }}
                 className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 text-center"
               >
-                <span className="text-sm text-gold-primary font-bold uppercase tracking-wider">
+                <span className="text-sm text-brand-primary font-bold uppercase tracking-wider">
                   Lighthouse Score
                 </span>
               </motion.div>

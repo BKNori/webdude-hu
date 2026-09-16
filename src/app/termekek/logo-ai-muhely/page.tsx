@@ -53,7 +53,7 @@ const logoStyles = [
     description: "Tiszta, egyszerű vonalvezetés",
     prompt:
       "minimalist logo design, clean lines, geometric shapes, modern typography, professional aesthetic, scalable vector style",
-    color: "from-[#f59e0b] to-amber-500",
+    color: "from-[#00B5F1] to-sky-500",
   },
   {
     id: "modern",
@@ -69,7 +69,7 @@ const logoStyles = [
     description: "Professzionális, üzleti",
     prompt:
       "corporate logo design, professional business aesthetic, trustworthy colors, clean typography, established brand feel",
-    color: "from-[#f59e0b] to-[#FF7A00]",
+    color: "from-[#00B5F1] to-[#5B21B6]",
   },
   {
     id: "creative",
@@ -85,7 +85,7 @@ const logoStyles = [
     description: "Elegáns, prémium",
     prompt:
       "luxury logo design, elegant aesthetic, premium feel, sophisticated colors, high-end visual identity",
-    color: "from-yellow-500 to-[#f59e0b]",
+    color: "from-yellow-500 to-[#00B5F1]",
   },
   {
     id: "tech",
@@ -173,17 +173,17 @@ export default function LogoAIMuhelyPage() {
         <div className="min-h-screen bg-bg-base">
           {/* Hero Section */}
           <section className="relative py-24 overflow-hidden">
-            <div className="absolute inset-0 bg-linear-to-b from-[#f59e0b]/5 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-linear-to-b from-[#00B5F1]/5 via-transparent to-transparent" />
             <div className="max-w-6xl mx-auto px-6 relative z-10">
               <div className="text-center space-y-6">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5 }}
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#f59e0b]/10 border border-[#f59e0b]/20"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#00B5F1]/10 border border-[#00B5F1]/20"
                 >
-                  <Sparkles className="w-4 h-4 text-[#f59e0b]" />
-                  <span className="text-xs font-bold text-[#f59e0b] uppercase tracking-[0.2em]">
+                  <Sparkles className="w-4 h-4 text-[#00B5F1]" />
+                  <span className="text-xs font-bold text-[#00B5F1] uppercase tracking-[0.2em]">
                     AI Műhely
                   </span>
                 </motion.div>
@@ -194,7 +194,7 @@ export default function LogoAIMuhelyPage() {
                   className="text-4xl md:text-6xl font-bold text-text-primary tracking-tight"
                 >
                   Logo AI{" "}
-                  <span className="text-transparent bg-clip-text bg-linear-to-r from-[#f59e0b] to-[#FF7A00]">
+                  <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6]">
                     Műhely
                   </span>
                 </motion.h1>
@@ -218,8 +218,8 @@ export default function LogoAIMuhelyPage() {
                 className="bg-bg-surface border border-bg-elevated rounded-2xl p-8 shadow-[0_8px_32px_rgba(0,0,0,0.4)]"
               >
                 <div className="flex items-center gap-3 mb-8">
-                  <div className="w-12 h-12 rounded-xl bg-linear-to-br from-[#f59e0b]/10 to-[#FF7A00]/10 border border-[#f59e0b]/20 flex items-center justify-center">
-                    <PenTool className="w-6 h-6 text-[#f59e0b]" />
+                  <div className="w-12 h-12 rounded-xl bg-linear-to-br from-[#00B5F1]/10 to-[#5B21B6]/10 border border-[#00B5F1]/20 flex items-center justify-center">
+                    <PenTool className="w-6 h-6 text-[#00B5F1]" />
                   </div>
                   <div>
                     <h2 className="text-2xl font-bold text-text-primary">
@@ -233,7 +233,7 @@ export default function LogoAIMuhelyPage() {
 
                 {/* Style Selection */}
                 <div className="mb-8">
-                  <label className="text-sm font-bold text-[#f59e0b] uppercase tracking-[0.2em] mb-4 block">
+                  <label className="text-sm font-bold text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
                     Stílus választás
                   </label>
                   <div className="grid md:grid-cols-3 gap-4">
@@ -245,8 +245,8 @@ export default function LogoAIMuhelyPage() {
                         whileTap={{ scale: 0.98 }}
                         className={`p-4 rounded-xl border-2 transition-all ${
                           selectedStyle.id === style.id
-                            ? "border-[#f59e0b] bg-[#f59e0b]/10"
-                            : "border-bg-elevated bg-bg-surface hover:border-[#f59e0b]/50"
+                            ? "border-[#00B5F1] bg-[#00B5F1]/10"
+                            : "border-bg-elevated bg-bg-surface hover:border-[#00B5F1]/50"
                         }`}
                       >
                         <div className="w-8 h-8 rounded-lg bg-linear-to-br ${style.color} mb-3" />
@@ -264,7 +264,7 @@ export default function LogoAIMuhelyPage() {
                 {/* Logo Type & Color Scheme */}
                 <div className="grid md:grid-cols-2 gap-6 mb-8">
                   <div>
-                    <label className="text-sm font-bold text-[#f59e0b] uppercase tracking-[0.2em] mb-4 block">
+                    <label className="text-sm font-bold text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
                       Logo típus
                     </label>
                     <div className="space-y-2">
@@ -274,8 +274,8 @@ export default function LogoAIMuhelyPage() {
                           onClick={() => setSelectedType(type)}
                           className={`w-full p-3 rounded-lg border-2 transition-all flex items-center justify-between ${
                             selectedType.id === type.id
-                              ? "border-[#f59e0b] bg-[#f59e0b]/10"
-                              : "border-bg-elevated bg-bg-surface hover:border-[#f59e0b]/50"
+                              ? "border-[#00B5F1] bg-[#00B5F1]/10"
+                              : "border-bg-elevated bg-bg-surface hover:border-[#00B5F1]/50"
                           }`}
                         >
                           <span className="text-sm font-medium text-text-primary">
@@ -290,7 +290,7 @@ export default function LogoAIMuhelyPage() {
                   </div>
 
                   <div>
-                    <label className="text-sm font-bold text-[#f59e0b] uppercase tracking-[0.2em] mb-4 block">
+                    <label className="text-sm font-bold text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
                       Szín séma
                     </label>
                     <div className="space-y-2">
@@ -300,8 +300,8 @@ export default function LogoAIMuhelyPage() {
                           onClick={() => setSelectedScheme(scheme)}
                           className={`w-full p-3 rounded-lg border-2 transition-all ${
                             selectedScheme.id === scheme.id
-                              ? "border-[#f59e0b] bg-[#f59e0b]/10"
-                              : "border-bg-elevated bg-bg-surface hover:border-[#f59e0b]/50"
+                              ? "border-[#00B5F1] bg-[#00B5F1]/10"
+                              : "border-bg-elevated bg-bg-surface hover:border-[#00B5F1]/50"
                           }`}
                         >
                           <div className="flex items-center justify-between">
@@ -321,7 +321,7 @@ export default function LogoAIMuhelyPage() {
                 {/* Text Input Fields */}
                 <div className="space-y-6 mb-8">
                   <div>
-                    <label className="text-sm font-bold text-[#f59e0b] uppercase tracking-[0.2em] mb-4 block">
+                    <label className="text-sm font-bold text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
                       Cégnév (opcionális)
                     </label>
                     <input
@@ -329,12 +329,12 @@ export default function LogoAIMuhelyPage() {
                       value={companyName}
                       onChange={(e) => setCompanyName(e.target.value)}
                       placeholder="pl. WebDude, TechStart, Innovate"
-                      className="w-full p-3 rounded-lg border-2 border-bg-elevated bg-bg-base text-text-primary placeholder:text-text-secondary focus:border-[#f59e0b] focus:outline-none transition-all"
+                      className="w-full p-3 rounded-lg border-2 border-bg-elevated bg-bg-base text-text-primary placeholder:text-text-secondary focus:border-[#00B5F1] focus:outline-none transition-all"
                     />
                   </div>
 
                   <div>
-                    <label className="text-sm font-bold text-[#f59e0b] uppercase tracking-[0.2em] mb-4 block">
+                    <label className="text-sm font-bold text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
                       Iparág (opcionális)
                     </label>
                     <input
@@ -342,12 +342,12 @@ export default function LogoAIMuhelyPage() {
                       value={industry}
                       onChange={(e) => setIndustry(e.target.value)}
                       placeholder="pl. webfejlesztés, e-kereskedelem, pénzügy"
-                      className="w-full p-3 rounded-lg border-2 border-bg-elevated bg-bg-base text-text-primary placeholder:text-text-secondary focus:border-[#f59e0b] focus:outline-none transition-all"
+                      className="w-full p-3 rounded-lg border-2 border-bg-elevated bg-bg-base text-text-primary placeholder:text-text-secondary focus:border-[#00B5F1] focus:outline-none transition-all"
                     />
                   </div>
 
                   <div>
-                    <label className="text-sm font-bold text-[#f59e0b] uppercase tracking-[0.2em] mb-4 block">
+                    <label className="text-sm font-bold text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
                       Szlogen (opcionális)
                     </label>
                     <input
@@ -355,12 +355,12 @@ export default function LogoAIMuhelyPage() {
                       value={slogan}
                       onChange={(e) => setSlogan(e.target.value)}
                       placeholder="pl. Innováció a jövőben, Minőség mindenek felett"
-                      className="w-full p-3 rounded-lg border-2 border-bg-elevated bg-bg-base text-text-primary placeholder:text-text-secondary focus:border-[#f59e0b] focus:outline-none transition-all"
+                      className="w-full p-3 rounded-lg border-2 border-bg-elevated bg-bg-base text-text-primary placeholder:text-text-secondary focus:border-[#00B5F1] focus:outline-none transition-all"
                     />
                   </div>
 
                   <div>
-                    <label className="text-sm font-bold text-[#f59e0b] uppercase tracking-[0.2em] mb-4 block">
+                    <label className="text-sm font-bold text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
                       Szín preferenciák (opcionális)
                     </label>
                     <input
@@ -368,12 +368,12 @@ export default function LogoAIMuhelyPage() {
                       value={colorPreferences}
                       onChange={(e) => setColorPreferences(e.target.value)}
                       placeholder="pl. kék és narancs, monokróm, pasztell színek"
-                      className="w-full p-3 rounded-lg border-2 border-bg-elevated bg-bg-base text-text-primary placeholder:text-text-secondary focus:border-[#f59e0b] focus:outline-none transition-all"
+                      className="w-full p-3 rounded-lg border-2 border-bg-elevated bg-bg-base text-text-primary placeholder:text-text-secondary focus:border-[#00B5F1] focus:outline-none transition-all"
                     />
                   </div>
 
                   <div>
-                    <label className="text-sm font-bold text-[#f59e0b] uppercase tracking-[0.2em] mb-4 block">
+                    <label className="text-sm font-bold text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
                       Egyedi utasítások (opcionális)
                     </label>
                     <textarea
@@ -381,7 +381,7 @@ export default function LogoAIMuhelyPage() {
                       onChange={(e) => setCustomInstructions(e.target.value)}
                       placeholder="pl. minimalista design, geometrikus formák, modern tipográfia"
                       rows={3}
-                      className="w-full p-3 rounded-lg border-2 border-bg-elevated bg-bg-base text-text-primary placeholder:text-text-secondary focus:border-[#f59e0b] focus:outline-none transition-all resize-none"
+                      className="w-full p-3 rounded-lg border-2 border-bg-elevated bg-bg-base text-text-primary placeholder:text-text-secondary focus:border-[#00B5F1] focus:outline-none transition-all resize-none"
                     />
                   </div>
                 </div>
@@ -392,7 +392,7 @@ export default function LogoAIMuhelyPage() {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   disabled={isGenerating}
-                  className="w-full py-4 bg-linear-to-r from-[#f59e0b] to-[#FF7A00] text-white font-bold rounded-xl hover:shadow-[0_8px_32px_rgba(0,181,241,0.4)] transition-all flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full py-4 bg-linear-to-r from-[#00B5F1] to-[#5B21B6] text-slate-950 font-bold rounded-xl hover:shadow-[0_8px_32px_rgba(0, 181, 241,0.4)] transition-all flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isGenerating ? (
                     <>
@@ -424,7 +424,7 @@ export default function LogoAIMuhelyPage() {
                           onClick={copyPrompt}
                           whileHover={{ scale: 1.1 }}
                           whileTap={{ scale: 0.9 }}
-                          className="p-2 rounded-lg bg-[#f59e0b]/10 border border-[#f59e0b]/20 text-[#f59e0b] hover:bg-[#f59e0b]/20 transition-all"
+                          className="p-2 rounded-lg bg-[#00B5F1]/10 border border-[#00B5F1]/20 text-[#00B5F1] hover:bg-[#00B5F1]/20 transition-all"
                         >
                           <Copy className="w-4 h-4" />
                         </motion.button>
@@ -449,7 +449,7 @@ export default function LogoAIMuhelyPage() {
                 className="text-3xl font-bold text-text-primary mb-8 text-center tracking-tight"
               >
                 Funkciók és{" "}
-                <span className="text-transparent bg-clip-text bg-linear-to-r from-[#f59e0b] to-[#FF7A00]">
+                <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6]">
                   Előnyök
                 </span>
               </motion.h2>
@@ -484,10 +484,10 @@ export default function LogoAIMuhelyPage() {
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: index * 0.1 }}
-                      className="bg-bg-surface border border-bg-elevated rounded-xl p-6 hover:border-[#f59e0b]/50 transition-all group"
+                      className="bg-bg-surface border border-bg-elevated rounded-xl p-6 hover:border-[#00B5F1]/50 transition-all group"
                     >
-                      <div className="w-12 h-12 rounded-xl bg-linear-to-br from-[#f59e0b]/10 to-[#FF7A00]/10 border border-[#f59e0b]/20 flex items-center justify-center mb-4 group-hover:border-[#f59e0b]/50 transition-colors">
-                        <FeatureIcon className="w-6 h-6 text-[#f59e0b]" />
+                      <div className="w-12 h-12 rounded-xl bg-linear-to-br from-[#00B5F1]/10 to-[#5B21B6]/10 border border-[#00B5F1]/20 flex items-center justify-center mb-4 group-hover:border-[#00B5F1]/50 transition-colors">
+                        <FeatureIcon className="w-6 h-6 text-[#00B5F1]" />
                       </div>
                       <h3 className="text-lg font-bold text-text-primary mb-2">
                         {feature.title}
@@ -512,7 +512,7 @@ export default function LogoAIMuhelyPage() {
                 className="text-3xl font-bold text-text-primary mb-4 tracking-tight"
               >
                 Készen állsz az{" "}
-                <span className="text-transparent bg-clip-text bg-linear-to-r from-[#f59e0b] to-[#FF7A00]">
+                <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6]">
                   Arculattervezésre
                 </span>
                 ?
@@ -532,7 +532,7 @@ export default function LogoAIMuhelyPage() {
                 transition={{ duration: 0.5, delay: 0.2 }}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="inline-flex items-center gap-2 px-8 py-4 bg-linear-to-r from-[#f59e0b] to-[#FF7A00] text-white font-bold rounded-xl hover:shadow-[0_8px_32px_rgba(0,181,241,0.4)] transition-all"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-linear-to-r from-[#00B5F1] to-[#5B21B6] text-slate-950 font-bold rounded-xl hover:shadow-[0_8px_32px_rgba(0, 181, 241,0.4)] transition-all"
               >
                 Kezdés most
                 <ArrowRight className="w-4 h-4" />

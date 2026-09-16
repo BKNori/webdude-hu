@@ -71,11 +71,11 @@ export default function ArchitectViewSection({
       initial={{ opacity: 0, x: 20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.6 }}
-      className="fixed right-4 top-24 w-80 bg-bg-elevated/90 backdrop-blur-md border border-gold-primary/20 rounded-xl p-4 shadow-2xl z-50"
+      className="fixed right-4 top-24 w-80 bg-bg-elevated/90 backdrop-blur-md border border-brand-primary/20 rounded-xl p-4 shadow-2xl z-50"
     >
       {/* Header */}
-      <div className="flex items-center gap-2 mb-4 pb-3 border-b border-gold-primary/20">
-        <Shield className="w-5 h-5 text-gold-primary" />
+      <div className="flex items-center gap-2 mb-4 pb-3 border-b border-brand-primary/20">
+        <Shield className="w-5 h-5 text-brand-primary" />
         <div>
           <h3 className="text-sm font-bold text-white">
             WebDude Minőségbiztosítás
@@ -99,7 +99,7 @@ export default function ArchitectViewSection({
                 step.status === "completed"
                   ? "text-emerald-500"
                   : step.status === "in-progress"
-                    ? "text-amber-500"
+                    ? "text-sky-500"
                     : "text-slate-500"
               }`}
             >
@@ -115,7 +115,7 @@ export default function ArchitectViewSection({
                   {step.title}
                 </h4>
                 {step.status === "in-progress" && (
-                  <span className="px-1.5 py-0.5 bg-amber-500/10 text-amber-500 text-[10px] font-bold rounded">
+                  <span className="px-1.5 py-0.5 bg-sky-500/10 text-sky-500 text-[10px] font-bold rounded">
                     Folyamatban
                   </span>
                 )}
@@ -129,7 +129,7 @@ export default function ArchitectViewSection({
       </div>
 
       {/* Footer */}
-      <div className="mt-4 pt-3 border-t border-gold-primary/20">
+      <div className="mt-4 pt-3 border-t border-brand-primary/20">
         <div className="flex items-center justify-between text-xs">
           <span className="text-slate-400">Audit státusz</span>
           <span className="text-emerald-500 font-bold">
@@ -148,7 +148,7 @@ export default function ArchitectViewSection({
               }%`,
             }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="h-full bg-gradient-to-r from-gold-primary to-emerald-500"
+            className="h-full bg-gradient-to-r from-brand-primary to-emerald-500"
           />
         </div>
       </div>

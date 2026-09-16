@@ -312,15 +312,15 @@ export default function ClientVault() {
   return (
     <div className="bg-bg-surface/40 backdrop-blur-xl border border-bg-elevated/80 rounded-3xl p-6 md:p-8 shadow-2xl relative overflow-hidden space-y-6">
       {/* Background glow decorator */}
-      <div className="absolute -left-24 -bottom-24 w-48 h-48 rounded-full bg-amber-500/5 blur-3xl pointer-events-none" />
+      <div className="absolute -left-24 -bottom-24 w-48 h-48 rounded-full bg-sky-500/5 blur-3xl pointer-events-none" />
 
       {/* Header */}
       <div className="flex items-center gap-3 border-b border-bg-elevated/40 pb-4">
-        <div className="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-500">
+        <div className="w-10 h-10 rounded-xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-500">
           <FolderOpen className="w-5 h-5" />
         </div>
         <div>
-          <span className="text-[10px] uppercase font-black tracking-widest text-amber-500 block">
+          <span className="text-[10px] uppercase font-black tracking-widest text-sky-500 block">
             Digitális Széf
           </span>
           <h3 className="text-lg font-bold text-white font-mono -mt-0.5">
@@ -330,7 +330,7 @@ export default function ClientVault() {
       </div>
 
       {/* Description */}
-      <p className="text-xs text-slate-400 leading-relaxed font-mono border-l-2 border-amber-500/30 pl-3">
+      <p className="text-xs text-slate-400 leading-relaxed font-mono border-l-2 border-sky-500/30 pl-3">
         Töltsd fel a logókat, szöveges anyagokat, vagy töltsd le az elkészült
         terveket és mockupokat közvetlenül innen. A fájlok biztonságosan
         titkosítottak.
@@ -360,8 +360,8 @@ export default function ClientVault() {
         onClick={triggerSelectFile}
         className={`border-2 border-dashed rounded-2xl p-8 text-center cursor-pointer transition-all duration-300 ${
           dragActive
-            ? "border-amber-500 bg-amber-500/5"
-            : "border-bg-elevated hover:border-amber-500/40 hover:bg-transparent"
+            ? "border-sky-500 bg-sky-500/5"
+            : "border-bg-elevated hover:border-sky-500/40 hover:bg-transparent"
         }`}
       >
         <input
@@ -372,7 +372,7 @@ export default function ClientVault() {
           disabled={uploading}
         />
         <div className="flex flex-col items-center justify-center space-y-3">
-          <div className="w-12 h-12 rounded-full bg-bg-elevated/40 flex items-center justify-center text-slate-400 group-hover:text-amber-500 transition-colors">
+          <div className="w-12 h-12 rounded-full bg-bg-elevated/40 flex items-center justify-center text-slate-400 group-hover:text-sky-500 transition-colors">
             <Upload className="w-6 h-6" />
           </div>
           <div>
@@ -389,17 +389,17 @@ export default function ClientVault() {
       {/* Uploading progress bar */}
       {uploading && (
         <div
-          className="bg-transparent border border-amber-500/20 p-4 rounded-2xl space-y-2.5 font-mono"
+          className="bg-transparent border border-sky-500/20 p-4 rounded-2xl space-y-2.5 font-mono"
         >
           <div className="flex justify-between items-center text-[10px] text-slate-400">
-            <span className="truncate max-w-62.5 font-bold text-amber-500">
+            <span className="truncate max-w-62.5 font-bold text-sky-500">
               {uploadName}
             </span>
             <span className="font-bold text-white">{progress}%</span>
           </div>
           <div className="h-1.5 w-full bg-gray-800 rounded-full overflow-hidden">
             <div
-              className="h-full bg-linear-to-r from-amber-500 to-amber-600 rounded-full transition-all duration-150"
+              className="h-full bg-linear-to-r from-sky-500 to-violet-700 rounded-full transition-all duration-150"
               style={{ width: `${progress}%` }}
             />
           </div>
@@ -414,7 +414,7 @@ export default function ClientVault() {
 
         {loading && files.length === 0 ? (
           <div className="flex items-center justify-center py-8">
-            <Loader2 className="w-6 h-6 animate-spin text-amber-500" />
+            <Loader2 className="w-6 h-6 animate-spin text-sky-500" />
           </div>
         ) : files.length === 0 ? (
           <div className="bg-transparent border border-bg-elevated/40 rounded-2xl p-8 text-center text-slate-500 font-mono text-xs">
@@ -430,10 +430,10 @@ export default function ClientVault() {
               return (
                 <div
                   key={file.id}
-                  className="bg-transparent border border-bg-elevated/50 hover:border-amber-500/30 rounded-2xl p-4 flex items-center justify-between gap-4 transition-all duration-300 group"
+                  className="bg-transparent border border-bg-elevated/50 hover:border-sky-500/30 rounded-2xl p-4 flex items-center justify-between gap-4 transition-all duration-300 group"
                 >
                   <div className="flex items-center gap-3 min-w-0">
-                    <div className="w-10 h-10 rounded-xl bg-bg-elevated/40 flex items-center justify-center text-amber-500/80 shrink-0">
+                    <div className="w-10 h-10 rounded-xl bg-bg-elevated/40 flex items-center justify-center text-sky-500/80 shrink-0">
                       <FileIcon className="w-5 h-5" />
                     </div>
                     <div className="min-w-0 font-mono">
@@ -451,7 +451,7 @@ export default function ClientVault() {
                         <span
                           className={
                             isAdminUpload
-                              ? "text-amber-500/80 font-bold"
+                              ? "text-sky-500/80 font-bold"
                               : "text-slate-400"
                           }
                         >
@@ -466,7 +466,7 @@ export default function ClientVault() {
                       <button
                         type="button"
                         onClick={() => setPreviewFile(file)}
-                        className="p-2 bg-bg-elevated/50 hover:bg-amber-500/10 text-slate-400 hover:text-amber-500 rounded-lg transition-colors cursor-pointer"
+                        className="p-2 bg-bg-elevated/50 hover:bg-sky-500/10 text-slate-400 hover:text-sky-500 rounded-lg transition-colors cursor-pointer"
                         title="Előnézet"
                       >
                         <Eye className="w-3.5 h-3.5" />
@@ -476,7 +476,7 @@ export default function ClientVault() {
                       href={file.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-2 bg-bg-elevated/50 hover:bg-amber-500/10 text-slate-400 hover:text-amber-500 rounded-lg transition-colors cursor-pointer"
+                      className="p-2 bg-bg-elevated/50 hover:bg-sky-500/10 text-slate-400 hover:text-sky-500 rounded-lg transition-colors cursor-pointer"
                       title="Letöltés"
                     >
                       <Download className="w-3.5 h-3.5" />

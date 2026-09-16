@@ -1,4 +1,4 @@
-﻿// src/app/szolgaltatasok/add-onok/page.tsx
+// src/app/szolgaltatasok/add-onok/page.tsx
 import { Metadata } from "next";
 import Link from "next/link";
 import {
@@ -237,7 +237,6 @@ export default async function AddonsPage() {
         email: "hello@webdude.hu",
         address: {
           "@type": "PostalAddress",
-          addressLocality: "Kecskemét",
           addressCountry: "HU",
         },
         founder: {
@@ -317,7 +316,7 @@ export default async function AddonsPage() {
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-tight mb-8 font-sans">
             Azonnali Kiegészítő Szolgáltatások{" "}
             <br className="hidden md:inline" />
-            <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1]/400 to-[#0095C7]">
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1]/400 to-[#5B21B6]">
               Vállalkozásod Növekedéséért
             </span>
           </h1>
@@ -331,7 +330,7 @@ export default async function AddonsPage() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
               href="#catalog"
-              className="px-8 py-4 bg-[#00B5F1] hover:bg-[#0095C7] text-bg-base font-bold rounded-xl uppercase tracking-wider text-xs transition-all duration-300 shadow-lg shadow-[#00B5F1]/10 hover:scale-102 flex items-center gap-2 cursor-pointer"
+              className="px-8 py-4 bg-[#00B5F1] hover:bg-[#5B21B6] text-bg-base font-bold rounded-xl uppercase tracking-wider text-xs transition-all duration-300 shadow-lg shadow-[#00B5F1]/10 hover:scale-102 flex items-center gap-2 cursor-pointer"
             >
               Böngéssz az Add-onok között
               <ArrowDown className="w-4 h-4 animate-bounce" />
@@ -433,7 +432,7 @@ export default async function AddonsPage() {
                     </div>
                     <Link
                       href="/portal"
-                      className="px-6 py-3 bg-[#00B5F1] hover:bg-[#0095C7] text-bg-base font-bold rounded-xl uppercase tracking-wider text-xs transition-all duration-300 text-center flex items-center justify-center gap-1.5"
+                      className="px-6 py-3 bg-[#00B5F1] hover:bg-[#5B21B6] text-bg-base font-bold rounded-xl uppercase tracking-wider text-xs transition-all duration-300 text-center flex items-center justify-center gap-1.5"
                     >
                       <ShoppingBag className="w-4 h-4" />
                       Megrendelés

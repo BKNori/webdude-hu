@@ -36,7 +36,7 @@ interface ProjectCardProps {
 }
 
 /**
- * Egyetlen portfólió kártya — Luminous Glassmorphism, Electric Cyan spotlight,
+ * Egyetlen portfólió kártya — Luminous Glassmorphism, Cyber-Arany spotlight,
  * Cyber-Arany hover és 3D dőlés (mouse-tracked tilt).
  */
 function ProjectCard({ project, index, isSpanned }: ProjectCardProps) {
@@ -46,7 +46,7 @@ function ProjectCard({ project, index, isSpanned }: ProjectCardProps) {
   // Egérkövetett fényfolt (spotlight) pozíció
   const pointerX = useMotionValue(0);
   const pointerY = useMotionValue(0);
-  const spotlight = useMotionTemplate`radial-gradient(460px circle at ${pointerX}px ${pointerY}px, rgba(0,181,241,0.16), transparent 68%)`;
+  const spotlight = useMotionTemplate`radial-gradient(460px circle at ${pointerX}px ${pointerY}px, rgba(0, 181, 241,0.16), transparent 68%)`;
 
   // 3D dőlés rugós (spring) interpolációval
   const tiltXTarget = useMotionValue(0);
@@ -89,11 +89,11 @@ function ProjectCard({ project, index, isSpanned }: ProjectCardProps) {
       style={
         shouldReduceMotion ? undefined : { rotateX, rotateY, transformPerspective: 1200 }
       }
-      className={`group relative overflow-hidden rounded-3xl border border-white/10 bg-slate-950/80 backdrop-blur-2xl ring-1 ring-white/5 p-6 md:p-8 flex flex-col justify-between transition-colors duration-300 hover:border-amber-500/40 hover:ring-[#00B5F1]/40 hover:shadow-[0_0_60px_-14px_rgba(0,181,241,0.55)] ${
+      className={`group relative overflow-hidden rounded-3xl border border-white/10 bg-slate-950/80 backdrop-blur-2xl ring-1 ring-white/5 p-6 md:p-8 flex flex-col justify-between transition-colors duration-300 hover:border-sky-500/40 hover:ring-[#00B5F1]/40 hover:shadow-[0_0_60px_-14px_rgba(0, 181, 241,0.55)] ${
         isSpanned ? "md:col-span-2" : "col-span-1"
       }`}
     >
-      {/* Electric Cyan spotlight — egérkövetett */}
+      {/* Cyber-Arany spotlight — egérkövetett */}
       <motion.div
         aria-hidden="true"
         style={{ background: spotlight }}
@@ -110,7 +110,7 @@ function ProjectCard({ project, index, isSpanned }: ProjectCardProps) {
               <span className="block text-xs uppercase tracking-wider text-slate-400 font-semibold">
                 Eredmény
               </span>
-              <span className="text-sm md:text-base font-bold text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-amber-400">
+              <span className="text-sm md:text-base font-bold text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-sky-400">
                 {project.kpiHighlight}
               </span>
             </div>
@@ -135,7 +135,7 @@ function ProjectCard({ project, index, isSpanned }: ProjectCardProps) {
             className="pointer-events-none absolute inset-0 bg-linear-to-t from-slate-950/80 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
           />
           {project.isFeatured && (
-            <span className="absolute top-4 right-4 rounded-full bg-amber-500 px-3 py-1 text-xs font-bold uppercase tracking-wider text-slate-950 shadow-[0_0_24px_rgba(245,158,11,0.45)]">
+            <span className="absolute top-4 right-4 rounded-full bg-sky-500 px-3 py-1 text-xs font-bold uppercase tracking-wider text-slate-950 shadow-[0_0_24px_rgba(0, 181, 241,0.45)]">
               Kiemelt
             </span>
           )}
@@ -153,7 +153,7 @@ function ProjectCard({ project, index, isSpanned }: ProjectCardProps) {
         </p>
       </div>
 
-      <div className="relative flex items-center justify-between pt-4 border-t border-white/10 text-xs font-semibold uppercase tracking-wider text-[#00B5F1] transition-colors duration-300 group-hover:text-amber-400">
+      <div className="relative flex items-center justify-between pt-4 border-t border-white/10 text-xs font-semibold uppercase tracking-wider text-[#00B5F1] transition-colors duration-300 group-hover:text-sky-400">
         <span>Esettanulmány megtekintése</span>
         <span className="transition-transform duration-300 group-hover:translate-x-1">
           &rarr;
@@ -179,13 +179,13 @@ export default function PortfolioGrid({ projects }: PortfolioGridProps) {
 
   return (
     <div className="relative">
-      {/* Mesh grid háttér — Electric Cyan */}
+      {/* Mesh grid háttér — Cyber-Arany */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 opacity-60 [mask-image:radial-gradient(ellipse_at_center,black,transparent_78%)]"
         style={{
           backgroundImage:
-            "linear-gradient(to right, rgba(0,181,241,0.07) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,181,241,0.07) 1px, transparent 1px)",
+            "linear-gradient(to right, rgba(0, 181, 241,0.07) 1px, transparent 1px), linear-gradient(to bottom, rgba(0, 181, 241,0.07) 1px, transparent 1px)",
           backgroundSize: "56px 56px",
         }}
       />

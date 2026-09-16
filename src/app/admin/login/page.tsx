@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
@@ -255,7 +255,7 @@ export default function AdminLogin() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full px-4 py-3 bg-[#00B5F1] text-gray-900 font-bold rounded-lg hover:bg-[#0095C7] transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm uppercase tracking-wider"
+              className="w-full px-4 py-3 bg-[#00B5F1] text-gray-900 font-bold rounded-lg hover:bg-[#5B21B6] transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm uppercase tracking-wider"
             >
               {loading ? "Küldés..." : "E-mail küldése"}
             </button>
@@ -297,7 +297,7 @@ export default function AdminLogin() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full px-4 py-3 bg-[#00B5F1] text-gray-900 font-bold rounded-lg hover:bg-[#0095C7] transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm uppercase tracking-wider"
+              className="w-full px-4 py-3 bg-[#00B5F1] text-gray-900 font-bold rounded-lg hover:bg-[#5B21B6] transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm uppercase tracking-wider"
             >
               {loading ? "Küldés..." : "Magic Link küldése"}
             </button>
@@ -370,7 +370,7 @@ export default function AdminLogin() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full px-4 py-3 bg-[#00B5F1] text-gray-900 font-bold rounded-lg hover:bg-[#0095C7] transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm uppercase tracking-wider"
+              className="w-full px-4 py-3 bg-[#00B5F1] text-gray-900 font-bold rounded-lg hover:bg-[#5B21B6] transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm uppercase tracking-wider"
             >
               {loading ? "Bejelentkezés..." : "Bejelentkezés"}
             </button>
@@ -390,7 +390,7 @@ export default function AdminLogin() {
                 setResetSuccessMessage("");
                 setMagicSuccessMessage("");
               }}
-              className="w-full px-4 py-3 bg-transparent border border-[#00B5F1]/30 text-[#00B5F1] font-bold rounded-lg hover:bg-[#00B5F1]/10 hover:border-[#00B5F1]/50 transition-all text-sm uppercase tracking-wider font-mono shadow-[0_0_15px_rgba(245,158,11,0.02)]"
+              className="w-full px-4 py-3 bg-transparent border border-[#00B5F1]/30 text-[#00B5F1] font-bold rounded-lg hover:bg-[#00B5F1]/10 hover:border-[#00B5F1]/50 transition-all text-sm uppercase tracking-wider font-mono shadow-[0_0_15px_rgba(0, 181, 241,0.02)]"
             >
               Belépés Magic Linkkel
             </button>

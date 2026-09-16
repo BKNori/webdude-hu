@@ -13,12 +13,12 @@ const faqs: FaqItem[] = [
   {
     question: "Mennyi idő alatt készül el egy weboldal?",
     answer:
-      "Egy egyszerű bemutatkozó oldal általában 1–3 hét, egy komplexebb webshop vagy portál 4–12 hét. Az első konzultáción pontosan meghatározzuk a határidőt — amit megígérek, azt tartom.",
+      "Egy egyszerű bemutatkozó oldal általában 1–3 hét, egy komplexebb webshop vagy portál 4–12 hét. Az első konzultáción pontosan meghatározom a határidőt — amit megígérek, azt tartom.",
   },
   {
     question: "Mennyibe kerül egy weboldal vagy webshop?",
     answer:
-      "Az árak a projekt komplexitásától függenek. Egy bemutatkozó oldal 300.000–600.000 Ft, egy e-commerce webshop 800.000–2.000.000 Ft között indul. A munkakezdéshez 30% előleget kérek, a fennmaradó összeg átadáskor esedékes. Kérj személyre szabott ajánlatot!",
+      "Az árajánlat mindig a projekt valós komplexitásához igazodik — a felmérés után fix, előre egyeztetett összeget és határidőt kapsz, rejtett költségek nélkül. Nincs dobozos csomag és nincs nyilvános árlista: minden rendszer más, ezért egyedileg tervezem meg. Kérj személyre szabott ajánlatot!",
   },
   {
     question: "Miért válasszak téged ügynökség helyett?",
@@ -74,7 +74,7 @@ function AccordionItem({ item, index, isOpen, onToggle }: AccordionItemProps) {
       className="border border-white/8 rounded-2xl overflow-hidden"
       style={{
         background: isOpen
-          ? "linear-gradient(135deg, rgba(0,181,241,0.06) 0%, rgba(255,255,255,0.03) 100%)"
+          ? "linear-gradient(135deg, rgba(0, 181, 241,0.06) 0%, rgba(255,255,255,0.03) 100%)"
           : "linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%)",
         transition: "background 0.3s ease",
       }}
@@ -168,7 +168,7 @@ export default function FaqSectionAEO() {
         aria-hidden="true"
         style={{
           background:
-            "radial-gradient(ellipse 60% 50% at 50% 0%, rgba(0,181,241,0.04) 0%, transparent 70%)",
+            "radial-gradient(ellipse 60% 50% at 50% 0%, rgba(0, 181, 241,0.04) 0%, transparent 70%)",
         }}
       />
 
@@ -193,7 +193,7 @@ export default function FaqSectionAEO() {
             </div>
             <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-white mb-4 leading-tight">
               Amire{" "}
-              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#0095C7]">
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6]">
                 tudni akarod
               </span>{" "}
               a választ

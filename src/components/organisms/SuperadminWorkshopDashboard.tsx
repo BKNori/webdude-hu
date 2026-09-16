@@ -57,7 +57,7 @@ const categoryLabels: Record<string, string> = {
 };
 
 const categoryColors: Record<string, string> = {
-  branding: "bg-amber-500/10 border-amber-500/20 text-amber-400",
+  branding: "bg-sky-500/10 border-sky-500/20 text-sky-400",
   content: "bg-blue-500/10 border-blue-500/20 text-blue-400",
   design: "bg-purple-500/10 border-purple-500/20 text-purple-400",
   technical: "bg-green-500/10 border-green-500/20 text-green-400",
@@ -86,7 +86,7 @@ export default function SuperadminWorkshopDashboard() {
   if (loading) {
     return (
       <div className="min-h-screen bg-transparent flex flex-col items-center justify-center space-y-4">
-        <div className="w-8 h-8 rounded-full border-2 border-amber-500 border-t-transparent animate-spin" />
+        <div className="w-8 h-8 rounded-full border-2 border-sky-500 border-t-transparent animate-spin" />
         <p className="text-xs font-mono text-slate-400 uppercase tracking-widest animate-pulse font-bold">
           Dashboard betöltése...
         </p>
@@ -110,7 +110,7 @@ export default function SuperadminWorkshopDashboard() {
         </div>
         <Link
           href="/portal"
-          className="px-6 py-3 rounded-xl bg-amber-500 text-bg-base font-bold hover:bg-amber-600 transition-colors"
+          className="px-6 py-3 rounded-xl bg-sky-500 text-bg-base font-bold hover:bg-violet-700 transition-colors"
         >
           Vissza a portálhoz
         </Link>
@@ -124,11 +124,11 @@ export default function SuperadminWorkshopDashboard() {
       <div className="max-w-7xl mx-auto px-6 py-8">
         <div className="flex items-center justify-between mb-8">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-xl bg-linear-to-br from-amber-400 to-amber-600 flex items-center justify-center shadow-lg shadow-amber-500/10">
+            <div className="w-12 h-12 rounded-xl bg-linear-to-br from-sky-400 to-violet-700 flex items-center justify-center shadow-lg shadow-sky-500/10">
               <Sparkles className="w-6 h-6 text-bg-base" />
             </div>
             <div>
-              <span className="text-xs uppercase font-black tracking-widest text-amber-500 block">
+              <span className="text-xs uppercase font-black tracking-widest text-sky-500 block">
                 Szuperadmin
               </span>
               <span className="text-2xl font-extrabold text-white tracking-tight leading-none font-mono">
@@ -143,7 +143,7 @@ export default function SuperadminWorkshopDashboard() {
             </div>
             <Link
               href="/portal"
-              className="px-4 py-2 rounded-xl border border-gray-800 hover:border-amber-500/30 text-slate-400 hover:text-white transition-colors text-xs font-bold uppercase tracking-wider flex items-center gap-2"
+              className="px-4 py-2 rounded-xl border border-gray-800 hover:border-sky-500/30 text-slate-400 hover:text-white transition-colors text-xs font-bold uppercase tracking-wider flex items-center gap-2"
             >
               <LogOut className="w-4 h-4" />
               Kilépés
@@ -155,7 +155,7 @@ export default function SuperadminWorkshopDashboard() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
           <div className="bg-bg-elevated/30 border border-gray-800 rounded-xl p-4">
             <div className="flex items-center gap-2 mb-2">
-              <Activity className="w-4 h-4 text-amber-500" />
+              <Activity className="w-4 h-4 text-sky-500" />
               <p className="text-xs text-slate-400">Összes Modul</p>
             </div>
             <p className="text-2xl font-bold text-white">14</p>
@@ -189,7 +189,7 @@ export default function SuperadminWorkshopDashboard() {
             <h2 className="text-lg font-bold text-white">AI Műhely Modulok</h2>
             <Link
               href="/portal/ai-muhely"
-              className="flex items-center gap-2 px-4 py-2 rounded-xl border border-gray-800 hover:border-amber-500/30 text-slate-400 hover:text-white transition-colors text-xs font-bold uppercase tracking-wider"
+              className="flex items-center gap-2 px-4 py-2 rounded-xl border border-gray-800 hover:border-sky-500/30 text-slate-400 hover:text-white transition-colors text-xs font-bold uppercase tracking-wider"
             >
               <ExternalLink className="w-4 h-4" />
               Nyilvános Nézet
@@ -210,11 +210,11 @@ export default function SuperadminWorkshopDashboard() {
                 >
                   <Link
                     href={workshop.route}
-                    className="block bg-bg-elevated/30 border border-gray-800 rounded-xl p-4 hover:border-amber-500/30 transition-all group"
+                    className="block bg-bg-elevated/30 border border-gray-800 rounded-xl p-4 hover:border-sky-500/30 transition-all group"
                   >
                     <div className="flex items-start justify-between mb-3">
                       <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-lg bg-linear-to-br from-amber-400 to-amber-600 flex items-center justify-center">
+                        <div className="w-8 h-8 rounded-lg bg-linear-to-br from-sky-400 to-violet-700 flex items-center justify-center">
                           <IconComponent className="w-4 h-4 text-bg-base" />
                         </div>
                         <div>
@@ -229,9 +229,9 @@ export default function SuperadminWorkshopDashboard() {
                         </div>
                       </div>
                       {workshop.isPro && (
-                        <div className="flex items-center gap-1 px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/20">
-                          <Star className="w-3 h-3 text-amber-400 fill-amber-400" />
-                          <span className="text-xs font-bold text-amber-400">
+                        <div className="flex items-center gap-1 px-2 py-0.5 rounded bg-sky-500/10 border border-sky-500/20">
+                          <Star className="w-3 h-3 text-sky-400 fill-sky-400" />
+                          <span className="text-xs font-bold text-sky-400">
                             PRO
                           </span>
                         </div>
@@ -246,7 +246,7 @@ export default function SuperadminWorkshopDashboard() {
                       <p className="text-xs font-bold text-white">
                         {workshop.price}
                       </p>
-                      <div className="flex items-center gap-1 text-amber-500 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <div className="flex items-center gap-1 text-sky-500 opacity-0 group-hover:opacity-100 transition-opacity">
                         <span className="text-xs font-bold uppercase tracking-wider">
                           Megnyitás
                         </span>
@@ -266,7 +266,7 @@ export default function SuperadminWorkshopDashboard() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <Link
               href="/admin/super-control"
-              className="bg-bg-elevated/30 border border-gray-800 rounded-xl p-4 hover:border-amber-500/30 transition-all flex items-center gap-3"
+              className="bg-bg-elevated/30 border border-gray-800 rounded-xl p-4 hover:border-sky-500/30 transition-all flex items-center gap-3"
             >
               <div className="w-10 h-10 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center">
                 <Settings className="w-5 h-5 text-blue-400" />
@@ -282,7 +282,7 @@ export default function SuperadminWorkshopDashboard() {
             </Link>
             <Link
               href="/admin/portal-kezelo"
-              className="bg-bg-elevated/30 border border-gray-800 rounded-xl p-4 hover:border-amber-500/30 transition-all flex items-center gap-3"
+              className="bg-bg-elevated/30 border border-gray-800 rounded-xl p-4 hover:border-sky-500/30 transition-all flex items-center gap-3"
             >
               <div className="w-10 h-10 rounded-lg bg-green-500/10 border border-green-500/20 flex items-center justify-center">
                 <Users className="w-5 h-5 text-green-400" />
@@ -298,7 +298,7 @@ export default function SuperadminWorkshopDashboard() {
             </Link>
             <Link
               href="/admin/work-log"
-              className="bg-bg-elevated/30 border border-gray-800 rounded-xl p-4 hover:border-amber-500/30 transition-all flex items-center gap-3"
+              className="bg-bg-elevated/30 border border-gray-800 rounded-xl p-4 hover:border-sky-500/30 transition-all flex items-center gap-3"
             >
               <div className="w-10 h-10 rounded-lg bg-purple-500/10 border border-purple-500/20 flex items-center justify-center">
                 <Activity className="w-5 h-5 text-purple-400" />

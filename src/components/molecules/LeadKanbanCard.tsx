@@ -84,11 +84,11 @@ export default function LeadKanbanCard({
   return (
     <motion.div
       layoutId={`lead-${lead.id}`}
-      className="bg-bg-surface/60 backdrop-blur-md border border-gray-800 hover:border-amber-500/30 rounded-xl p-5 space-y-4 transition-all duration-300 shadow-lg group relative overflow-hidden"
+      className="bg-bg-surface/60 backdrop-blur-md border border-gray-800 hover:border-sky-500/30 rounded-xl p-5 space-y-4 transition-all duration-300 shadow-lg group relative overflow-hidden"
       whileHover={{ scale: 1.01, translateY: -2 }}
     >
       {/* Top Decorator Line */}
-      <div className="absolute top-0 left-0 right-0 h-0.5 bg-linear-to-r from-amber-500/0 via-amber-500/20 to-amber-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      <div className="absolute top-0 left-0 right-0 h-0.5 bg-linear-to-r from-sky-500/0 via-sky-500/20 to-sky-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
       {/* Name and Type */}
       <div className="space-y-1">
@@ -96,13 +96,13 @@ export default function LeadKanbanCard({
           <h4 className="font-bold text-white text-sm leading-tight tracking-wide truncate max-w-[70%]">
             {lead.name}
           </h4>
-          <span className="text-[9px] bg-amber-500/10 border border-amber-500/20 text-amber-500 font-bold px-2 py-0.5 rounded-md shrink-0 uppercase tracking-wider">
+          <span className="text-[9px] bg-sky-500/10 border border-sky-500/20 text-sky-500 font-bold px-2 py-0.5 rounded-md shrink-0 uppercase tracking-wider">
             {projectTypeMap[lead.projectType] || lead.projectType}
           </span>
         </div>
         <a
           href={`mailto:${lead.email}`}
-          className="text-xs text-slate-400 hover:text-amber-500 transition-colors flex items-center gap-1.5 pt-1"
+          className="text-xs text-slate-400 hover:text-sky-500 transition-colors flex items-center gap-1.5 pt-1"
         >
           <Mail
             className="w-3.5 h-3.5 text-slate-500 shrink-0"
@@ -115,7 +115,7 @@ export default function LeadKanbanCard({
       {/* Budget & Date */}
       <div className="grid grid-cols-2 gap-2 text-[10px] text-slate-400 font-mono bg-transparent p-2.5 rounded-lg border border-gray-800/60">
         <div className="flex items-center gap-1">
-          <Coins className="w-3 h-3 text-amber-500/60" strokeWidth={1.5} />
+          <Coins className="w-3 h-3 text-sky-500/60" strokeWidth={1.5} />
           <span className="truncate">
             {lead.budget
               ? budgetMap[lead.budget] || lead.budget
@@ -159,7 +159,7 @@ export default function LeadKanbanCard({
           <button
             type="button"
             onClick={() => router.push("/admin/portal-kezelo")}
-            className="flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg bg-linear-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-bg-base text-[10px] font-bold uppercase tracking-wider hover:scale-[1.01] active:scale-98 transition-all shadow-[0_0_15px_rgba(245,158,11,0.1)] cursor-pointer"
+            className="flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg bg-linear-to-r from-sky-500 to-violet-700 hover:from-violet-700 hover:to-sky-800 text-bg-base text-[10px] font-bold uppercase tracking-wider hover:scale-[1.01] active:scale-98 transition-all shadow-[0_0_15px_rgba(0, 181, 241,0.1)] cursor-pointer"
           >
             <Rocket className="w-3.5 h-3.5" strokeWidth={1.5} />
             Projekt Indítása
@@ -174,7 +174,7 @@ export default function LeadKanbanCard({
             type="button"
             disabled={isLoading}
             onClick={() => onStatusChange(lead.id, flow.next!)}
-            className="p-2 rounded-lg bg-bg-elevated hover:bg-bg-surface border border-gray-800 hover:border-amber-500/40 text-slate-400 hover:text-amber-500 transition-all disabled:opacity-55 ml-auto cursor-pointer"
+            className="p-2 rounded-lg bg-bg-elevated hover:bg-bg-surface border border-gray-800 hover:border-sky-500/40 text-slate-400 hover:text-sky-500 transition-all disabled:opacity-55 ml-auto cursor-pointer"
             aria-label="Előreléptetés"
           >
             {isLoading ? (

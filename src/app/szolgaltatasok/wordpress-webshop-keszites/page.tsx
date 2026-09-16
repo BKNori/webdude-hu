@@ -1,4 +1,4 @@
-﻿import SectionTitle from "@/components/atoms/SectionTitle";
+import SectionTitle from "@/components/atoms/SectionTitle";
 import Button from "@/components/atoms/Button";
 import { Metadata } from "next";
 import PricingTable from "@/components/molecules/PricingTable";
@@ -10,12 +10,34 @@ export async function generateMetadata(): Promise<Metadata> {
     description:
       "Testreszabott WordPress webshopok, gyors checkout és SEO-optimalizált struktúra WooCommerce alapú e-kereskedelmi megoldásokhoz.",
     keywords:
-      "WordPress webshop, WooCommerce fejlesztés, e-kereskedelmi rendszer, webshop készítés, WooCommerce optimalizálás, Kecskemét",
+      "WordPress webshop, WooCommerce fejlesztés, e-kereskedelmi rendszer, webshop készítés, WooCommerce optimalizálás",
+    alternates: {
+      canonical: "https://webdude.hu/szolgaltatasok/wordpress-webshop-keszites",
+    },
     openGraph: {
       title: "WordPress Webshop Készítés – WebDude",
       description:
         "Testreszabott WordPress webshopok, gyors checkout és SEO-optimalizált struktúra WooCommerce alapú e-kereskedelmi megoldásokhoz.",
+      url: "https://webdude.hu/szolgaltatasok/wordpress-webshop-keszites",
       type: "website",
+      siteName: "WebDude",
+      images: [
+        {
+          url: "/banners/wordpress-weboldalak-keszitese-grafikai-tervezes.webp",
+          width: 1920,
+          height: 1080,
+          alt: "WordPress webshop készítés WebDude",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "WordPress Webshop Készítés – WebDude",
+      description:
+        "Testreszabott WordPress webshopok, gyors checkout és SEO-optimalizált struktúra WooCommerce alapú e-kereskedelmi megoldásokhoz.",
+      images: [
+        "/banners/wordpress-weboldalak-keszitese-grafikai-tervezes.webp",
+      ],
     },
   };
 }
@@ -41,7 +63,8 @@ export default async function WebshopPage() {
     description:
       "Testreszabott WordPress webshopok, gyors checkout és SEO-optimalizált struktúra WooCommerce alapú e-kereskedelmi megoldásokhoz.",
     provider: {
-      "@type": "LocalBusiness",
+      "@type": "Organization",
+      "@id": "https://webdude.hu/#organization",
       name: "WebDude",
       url: "https://webdude.hu",
     },
@@ -75,12 +98,12 @@ export default async function WebshopPage() {
               className="mx-auto"
             />
             <div className="mt-12 max-w-3xl mx-auto">
-              <p className="text-xl text-slate-700 leading-relaxed mb-8">
+              <p className="text-xl text-slate-400 leading-relaxed mb-8">
                 16 éves WordPress tapasztalattal olyan e-kereskedelmi
                 rendszereket építek, amelyek nem csak termékeket árulnak, hanem
                 ügyfeleket szereznek automatizált folyamattal.
               </p>
-              <ul className="space-y-4 mb-8 text-slate-600">
+              <ul className="space-y-4 mb-8 text-slate-400">
                 <li className="flex items-center gap-3">
                   <span className="w-2 h-2 bg-[#00B5F1] rounded-full" />
                   <span>WooCommerce fejlesztés és optimalizálás</span>

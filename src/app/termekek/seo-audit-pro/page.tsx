@@ -77,14 +77,14 @@ export default function SEOAuditProPage() {
         <AEOImpactSection />
 
         {/* Konverziós Copy Section */}
-        <section className="py-16 border-t border-[#f59e0b]/10 bg-bg-elevated/30">
+        <section className="py-16 border-t border-[#00B5F1]/10 bg-bg-elevated/30">
           <div className="max-w-4xl mx-auto px-6">
             <h2 className="text-3xl font-bold text-white mb-6 text-center">
               Miért a WebDude.hu?
             </h2>
             <div className="space-y-6 text-slate-300">
               <p className="text-lg leading-relaxed">
-                <strong className="text-[#f59e0b]">
+                <strong className="text-[#00B5F1]">
                   26 év grafikai és 16 év webfejlesztői rutin
                 </strong>{" "}
                 - minden auditunk a gyakorlati tapasztalatunkon alapul. Nem
@@ -96,7 +96,7 @@ export default function SEOAuditProPage() {
                 rangsorolunk, mi domináljuk a válaszokat.
               </p>
               <div className="grid md:grid-cols-2 gap-4 mt-8">
-                <div className="bg-bg-base/50 border border-[#f59e0b]/20 rounded-lg p-4">
+                <div className="bg-bg-base/50 border border-[#00B5F1]/20 rounded-lg p-4">
                   <h3 className="text-lg font-bold text-white mb-2">
                     95+ Lighthouse score
                   </h3>
@@ -104,7 +104,7 @@ export default function SEOAuditProPage() {
                     Alapú technikai alapok
                   </p>
                 </div>
-                <div className="bg-bg-base/50 border border-[#f59e0b]/20 rounded-lg p-4">
+                <div className="bg-bg-base/50 border border-[#00B5F1]/20 rounded-lg p-4">
                   <h3 className="text-lg font-bold text-white mb-2">
                     16 év CMS szakértelem
                   </h3>
@@ -118,7 +118,7 @@ export default function SEOAuditProPage() {
         </section>
 
         {/* Lead Generation Form */}
-        <section className="py-16 border-t border-[#f59e0b]/10">
+        <section className="py-16 border-t border-[#00B5F1]/10">
           <div className="max-w-4xl mx-auto px-6">
             <LeadGenerationForm />
           </div>

@@ -614,15 +614,15 @@ export default function ClientAITools({
   return (
     <div className="bg-linear-to-br from-bg-base via-[#041356] to-[#090a16] backdrop-blur-xl border border-bg-elevated/80 rounded-3xl p-6 md:p-8 shadow-2xl relative overflow-hidden space-y-6">
       {/* Decorative glow */}
-      <div className="absolute -right-24 -top-24 w-48 h-48 rounded-full bg-amber-500/5 blur-3xl pointer-events-none" />
+      <div className="absolute -right-24 -top-24 w-48 h-48 rounded-full bg-sky-500/5 blur-3xl pointer-events-none" />
 
       {/* Header */}
       <div className="flex items-center gap-3 border-b border-bg-elevated/40 pb-4">
-        <div className="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-500">
+        <div className="w-10 h-10 rounded-xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-500">
           <Bot className="w-5 h-5" />
         </div>
         <div>
-          <span className="text-[10px] uppercase font-black tracking-widest text-amber-500 block">
+          <span className="text-[10px] uppercase font-black tracking-widest text-sky-500 block">
             BT-Shop AI Blueprint
           </span>
           <h3 className="text-lg font-bold text-white font-mono -mt-0.5">
@@ -638,7 +638,7 @@ export default function ClientAITools({
           onClick={() => changeCategory("marketing")}
           className={`pb-2 px-1 font-mono text-xs font-black uppercase tracking-wider cursor-pointer border-b-2 transition-all ${
             activeCategory === "marketing"
-              ? "border-amber-500 text-amber-500"
+              ? "border-sky-500 text-sky-500"
               : "border-transparent text-slate-500 hover:text-slate-300"
           }`}
         >
@@ -649,7 +649,7 @@ export default function ClientAITools({
           onClick={() => changeCategory("graphics")}
           className={`pb-2 px-1 font-mono text-xs font-black uppercase tracking-wider cursor-pointer border-b-2 transition-all ${
             activeCategory === "graphics"
-              ? "border-amber-500 text-amber-500"
+              ? "border-sky-500 text-sky-500"
               : "border-transparent text-slate-500 hover:text-slate-300"
           }`}
         >
@@ -660,7 +660,7 @@ export default function ClientAITools({
           onClick={() => changeCategory("strategist")}
           className={`pb-2 px-1 font-mono text-xs font-black uppercase tracking-wider cursor-pointer border-b-2 transition-all ${
             activeCategory === "strategist"
-              ? "border-amber-500 text-amber-500"
+              ? "border-sky-500 text-sky-500"
               : "border-transparent text-slate-500 hover:text-slate-300"
           }`}
         >
@@ -703,7 +703,7 @@ export default function ClientAITools({
       </div>
 
       {/* Description of active tool */}
-      <p className="text-xs text-slate-400 leading-relaxed font-mono border-l-2 border-amber-500/30 pl-3">
+      <p className="text-xs text-slate-400 leading-relaxed font-mono border-l-2 border-sky-500/30 pl-3">
         {tools[activeTool].description}
       </p>
 
@@ -723,7 +723,7 @@ export default function ClientAITools({
         if (isLocked) {
           return (
             <div className="bg-bg-elevated/20 border border-bg-elevated/50 backdrop-blur-md rounded-2xl p-8 text-center space-y-6 max-w-xl mx-auto shadow-xl">
-              <div className="w-16 h-16 rounded-full bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-500 mx-auto animate-pulse">
+              <div className="w-16 h-16 rounded-full bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-500 mx-auto animate-pulse">
                 <Lock className="w-8 h-8" strokeWidth={1.5} />
               </div>
               <div className="space-y-2">
@@ -737,7 +737,7 @@ export default function ClientAITools({
               </div>
               <Link
                 href="/kapcsolat"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-amber-500 text-bg-base font-bold text-xs uppercase tracking-wider hover:bg-amber-600 transition-all cursor-pointer font-mono"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-sky-500 text-bg-base font-bold text-xs uppercase tracking-wider hover:bg-violet-700 transition-all cursor-pointer font-mono"
               >
                 Hozzáférés igénylése
               </Link>
@@ -784,7 +784,7 @@ export default function ClientAITools({
                           placeholder="pl. Férfi Bőr Pénztárca (RFID)"
                           value={prodName}
                           onChange={(e) => setProdName(e.target.value)}
-                          className="w-full bg-transparent border border-bg-elevated/80 rounded-xl px-4 py-2.5 text-white placeholder-slate-600 focus:outline-none focus:border-amber-500 transition-colors text-xs font-mono"
+                          className="w-full bg-transparent border border-bg-elevated/80 rounded-xl px-4 py-2.5 text-white placeholder-slate-600 focus:outline-none focus:border-sky-500 transition-colors text-xs font-mono"
                           required
                           disabled={loading}
                         />
@@ -802,7 +802,7 @@ export default function ClientAITools({
                           placeholder="pl. valódi marhabőr, RFID védelemmel, fekete szín, 8 kártyahely, díszdobozban"
                           value={prodSpecs}
                           onChange={(e) => setProdSpecs(e.target.value)}
-                          className="w-full bg-transparent border border-bg-elevated/80 rounded-xl px-4 py-2.5 text-white placeholder-slate-600 focus:outline-none focus:border-amber-500 transition-colors text-xs resize-none font-mono"
+                          className="w-full bg-transparent border border-bg-elevated/80 rounded-xl px-4 py-2.5 text-white placeholder-slate-600 focus:outline-none focus:border-sky-500 transition-colors text-xs resize-none font-mono"
                           disabled={loading}
                         />
                       </div>
@@ -831,7 +831,7 @@ export default function ClientAITools({
                           placeholder="Másold be a kapott panaszlevelet vagy a Google/Facebook értékelés szövegét..."
                           value={customerMsg}
                           onChange={(e) => setCustomerMsg(e.target.value)}
-                          className="w-full bg-transparent border border-bg-elevated/80 rounded-xl px-4 py-2.5 text-white placeholder-slate-600 focus:outline-none focus:border-amber-500 transition-colors text-xs resize-none font-mono"
+                          className="w-full bg-transparent border border-bg-elevated/80 rounded-xl px-4 py-2.5 text-white placeholder-slate-600 focus:outline-none focus:border-sky-500 transition-colors text-xs resize-none font-mono"
                           required
                           disabled={loading}
                         />
@@ -843,7 +843,7 @@ export default function ClientAITools({
                         <select
                           value={tone}
                           onChange={(e) => setTone(e.target.value)}
-                          className="w-full bg-transparent border border-bg-elevated/80 rounded-xl px-4 py-2.5 text-slate-200 focus:outline-none focus:border-amber-500 transition-colors text-xs font-mono"
+                          className="w-full bg-transparent border border-bg-elevated/80 rounded-xl px-4 py-2.5 text-slate-200 focus:outline-none focus:border-sky-500 transition-colors text-xs font-mono"
                           disabled={loading}
                         >
                           <option value="profi">
@@ -879,7 +879,7 @@ export default function ClientAITools({
                           placeholder="pl. Tavaszi leárazás a táskákra, 20% kedvezmény minden termékre péntek éjfélig, kuponkód: SPRING20"
                           value={campaignTheme}
                           onChange={(e) => setCampaignTheme(e.target.value)}
-                          className="w-full bg-transparent border border-bg-elevated/80 rounded-xl px-4 py-2.5 text-white placeholder-slate-600 focus:outline-none focus:border-amber-500 transition-colors text-xs resize-none font-mono"
+                          className="w-full bg-transparent border border-bg-elevated/80 rounded-xl px-4 py-2.5 text-white placeholder-slate-600 focus:outline-none focus:border-sky-500 transition-colors text-xs resize-none font-mono"
                           required
                           disabled={loading}
                         />
@@ -903,7 +903,7 @@ export default function ClientAITools({
                         <select
                           value={offerType}
                           onChange={(e) => setOfferType(e.target.value)}
-                          className="w-full bg-transparent border border-bg-elevated/80 rounded-xl px-4 py-2.5 text-slate-200 focus:outline-none focus:border-amber-500 transition-colors text-xs font-mono"
+                          className="w-full bg-transparent border border-bg-elevated/80 rounded-xl px-4 py-2.5 text-slate-200 focus:outline-none focus:border-sky-500 transition-colors text-xs font-mono"
                           disabled={loading}
                         >
                           <option value="free_shipping">
@@ -948,7 +948,7 @@ export default function ClientAITools({
                           placeholder="pl. egy futurisztikus arany‑cyberpunk kávézó terasza, holografikus robot..."
                           value={imgSubject}
                           onChange={(e) => setImgSubject(e.target.value)}
-                          className="w-full bg-transparent border border-bg-elevated/80 rounded-xl px-4 py-2.5 text-white placeholder-slate-600 focus:outline-none focus:border-amber-500 transition-colors text-xs resize-none font-mono"
+                          className="w-full bg-transparent border border-bg-elevated/80 rounded-xl px-4 py-2.5 text-white placeholder-slate-600 focus:outline-none focus:border-sky-500 transition-colors text-xs resize-none font-mono"
                           required
                           disabled={loading}
                         />
@@ -961,7 +961,7 @@ export default function ClientAITools({
                           <select
                             value={imgStyle}
                             onChange={(e) => setImgStyle(e.target.value)}
-                            className="w-full bg-transparent border border-bg-elevated/80 rounded-xl px-4 py-2.5 text-slate-200 focus:outline-none focus:border-amber-500 transition-colors text-xs font-mono"
+                            className="w-full bg-transparent border border-bg-elevated/80 rounded-xl px-4 py-2.5 text-slate-200 focus:outline-none focus:border-sky-500 transition-colors text-xs font-mono"
                             disabled={loading}
                           >
                             <option value="cinematic">Cinematic (Fotó)</option>
@@ -989,7 +989,7 @@ export default function ClientAITools({
                           <select
                             value={imgAspectRatio}
                             onChange={(e) => setImgAspectRatio(e.target.value)}
-                            className="w-full bg-transparent border border-bg-elevated/80 rounded-xl px-4 py-2.5 text-slate-200 focus:outline-none focus:border-amber-500 transition-colors text-xs font-mono"
+                            className="w-full bg-transparent border border-bg-elevated/80 rounded-xl px-4 py-2.5 text-slate-200 focus:outline-none focus:border-sky-500 transition-colors text-xs font-mono"
                             disabled={loading}
                           >
                             <option value="16:9">
@@ -1010,7 +1010,7 @@ export default function ClientAITools({
                           <select
                             value={imgMood}
                             onChange={(e) => setImgMood(e.target.value)}
-                            className="w-full bg-transparent border border-bg-elevated/80 rounded-xl px-4 py-2.5 text-slate-200 focus:outline-none focus:border-amber-500 transition-colors text-xs font-mono"
+                            className="w-full bg-transparent border border-bg-elevated/80 rounded-xl px-4 py-2.5 text-slate-200 focus:outline-none focus:border-sky-500 transition-colors text-xs font-mono"
                             disabled={loading}
                           >
                             <option value="dramatic">
@@ -1056,7 +1056,7 @@ export default function ClientAITools({
                           placeholder="pl. 10% kedvezmény minden AI fejlesztési tanácsadásra a hétvégén a CYBER10 kóddal..."
                           value={bannerTopic}
                           onChange={(e) => setBannerTopic(e.target.value)}
-                          className="w-full bg-transparent border border-bg-elevated/80 rounded-xl px-4 py-2.5 text-white placeholder-slate-600 focus:outline-none focus:border-amber-500 transition-colors text-xs resize-none font-mono"
+                          className="w-full bg-transparent border border-bg-elevated/80 rounded-xl px-4 py-2.5 text-white placeholder-slate-600 focus:outline-none focus:border-sky-500 transition-colors text-xs resize-none font-mono"
                           required
                           disabled={loading}
                         />
@@ -1069,7 +1069,7 @@ export default function ClientAITools({
                           <select
                             value={bannerPlatform}
                             onChange={(e) => setBannerPlatform(e.target.value)}
-                            className="w-full bg-transparent border border-bg-elevated/80 rounded-xl px-4 py-2.5 text-slate-200 focus:outline-none focus:border-amber-500 transition-colors text-xs font-mono"
+                            className="w-full bg-transparent border border-bg-elevated/80 rounded-xl px-4 py-2.5 text-slate-200 focus:outline-none focus:border-sky-500 transition-colors text-xs font-mono"
                             disabled={loading}
                           >
                             <option value="Facebook Cover">
@@ -1093,7 +1093,7 @@ export default function ClientAITools({
                           <select
                             value={bannerBrandVibe}
                             onChange={(e) => setBannerBrandVibe(e.target.value)}
-                            className="w-full bg-transparent border border-bg-elevated/80 rounded-xl px-4 py-2.5 text-slate-200 focus:outline-none focus:border-amber-500 transition-colors text-xs font-mono"
+                            className="w-full bg-transparent border border-bg-elevated/80 rounded-xl px-4 py-2.5 text-slate-200 focus:outline-none focus:border-sky-500 transition-colors text-xs font-mono"
                             disabled={loading}
                           >
                             <option value="cyber_gold">
@@ -1136,7 +1136,7 @@ export default function ClientAITools({
                           placeholder="pl. WebDude AI"
                           value={logoBrandName}
                           onChange={(e) => setLogoBrandName(e.target.value)}
-                          className="w-full bg-transparent border border-bg-elevated/80 rounded-xl px-4 py-2.5 text-white placeholder-slate-600 focus:outline-none focus:border-amber-500 transition-colors text-xs font-mono"
+                          className="w-full bg-transparent border border-bg-elevated/80 rounded-xl px-4 py-2.5 text-white placeholder-slate-600 focus:outline-none focus:border-sky-500 transition-colors text-xs font-mono"
                           required
                           disabled={loading}
                         />
@@ -1154,7 +1154,7 @@ export default function ClientAITools({
                           placeholder="pl. AI szoftverfejlesztés és automatizáció"
                           value={logoIndustry}
                           onChange={(e) => setLogoIndustry(e.target.value)}
-                          className="w-full bg-transparent border border-bg-elevated/80 rounded-xl px-4 py-2.5 text-white placeholder-slate-600 focus:outline-none focus:border-amber-500 transition-colors text-xs font-mono"
+                          className="w-full bg-transparent border border-bg-elevated/80 rounded-xl px-4 py-2.5 text-white placeholder-slate-600 focus:outline-none focus:border-sky-500 transition-colors text-xs font-mono"
                           required
                           disabled={loading}
                         />
@@ -1172,7 +1172,7 @@ export default function ClientAITools({
                           placeholder="pl. innováció, precizitás, bizalom"
                           value={logoCoreValues}
                           onChange={(e) => setLogoCoreValues(e.target.value)}
-                          className="w-full bg-transparent border border-bg-elevated/80 rounded-xl px-4 py-2.5 text-white placeholder-slate-600 focus:outline-none focus:border-amber-500 transition-colors text-xs font-mono"
+                          className="w-full bg-transparent border border-bg-elevated/80 rounded-xl px-4 py-2.5 text-white placeholder-slate-600 focus:outline-none focus:border-sky-500 transition-colors text-xs font-mono"
                           required
                           disabled={loading}
                         />
@@ -1198,7 +1198,7 @@ export default function ClientAITools({
                           placeholder="pl. kis- és középvállalkozások, akik automatizációt keresnek"
                           value={uiTargetAudience}
                           onChange={(e) => setUiTargetAudience(e.target.value)}
-                          className="w-full bg-transparent border border-bg-elevated/80 rounded-xl px-4 py-2.5 text-white placeholder-slate-600 focus:outline-none focus:border-amber-500 transition-colors text-xs font-mono"
+                          className="w-full bg-transparent border border-bg-elevated/80 rounded-xl px-4 py-2.5 text-white placeholder-slate-600 focus:outline-none focus:border-sky-500 transition-colors text-xs font-mono"
                           required
                           disabled={loading}
                         />
@@ -1210,7 +1210,7 @@ export default function ClientAITools({
                         <select
                           value={uiPageType}
                           onChange={(e) => setUiPageType(e.target.value)}
-                          className="w-full bg-transparent border border-bg-elevated/80 rounded-xl px-4 py-2.5 text-slate-200 focus:outline-none focus:border-amber-500 transition-colors text-xs font-mono"
+                          className="w-full bg-transparent border border-bg-elevated/80 rounded-xl px-4 py-2.5 text-slate-200 focus:outline-none focus:border-sky-500 transition-colors text-xs font-mono"
                           disabled={loading}
                         >
                           <option value="Landing Page">Landing Page</option>
@@ -1240,7 +1240,7 @@ export default function ClientAITools({
                           placeholder="pl. Karácsony, Black Friday, Nyári akció"
                           value={campaignSeason}
                           onChange={(e) => setCampaignSeason(e.target.value)}
-                          className="w-full bg-transparent border border-bg-elevated/80 rounded-xl px-4 py-2.5 text-white placeholder-slate-600 focus:outline-none focus:border-amber-500 transition-colors text-xs font-mono"
+                          className="w-full bg-transparent border border-bg-elevated/80 rounded-xl px-4 py-2.5 text-white placeholder-slate-600 focus:outline-none focus:border-sky-500 transition-colors text-xs font-mono"
                           required
                           disabled={loading}
                         />
@@ -1254,7 +1254,7 @@ export default function ClientAITools({
                           placeholder="pl. luxus óra, nyári ruha, digitális termék"
                           value={campaignProduct}
                           onChange={(e) => setCampaignProduct(e.target.value)}
-                          className="w-full bg-transparent border border-bg-elevated/80 rounded-xl px-4 py-2.5 text-white placeholder-slate-600 focus:outline-none focus:border-amber-500 transition-colors text-xs font-mono"
+                          className="w-full bg-transparent border border-bg-elevated/80 rounded-xl px-4 py-2.5 text-white placeholder-slate-600 focus:outline-none focus:border-sky-500 transition-colors text-xs font-mono"
                           required
                           disabled={loading}
                         />
@@ -1281,7 +1281,7 @@ export default function ClientAITools({
                   <button
                     type="submit"
                     disabled={loading}
-                    className="flex items-center gap-1 px-4 py-2 bg-amber-500/20 hover:bg-amber-500/30 text-amber-500 rounded-md text-sm font-medium transition-colors disabled:opacity-40"
+                    className="flex items-center gap-1 px-4 py-2 bg-sky-500/20 hover:bg-sky-500/30 text-sky-500 rounded-md text-sm font-medium transition-colors disabled:opacity-40"
                     onClick={handleGenerate}
                   >
                     {loading ? (
@@ -1342,7 +1342,7 @@ export default function ClientAITools({
 
       {/* History Section */}
       <div className="mt-8">
-        <h4 className="text-sm font-bold text-amber-500 mb-2">
+        <h4 className="text-sm font-bold text-sky-500 mb-2">
           Generáció Előzmények
         </h4>
         {historyLoading ? (
@@ -1358,7 +1358,7 @@ export default function ClientAITools({
                   <Button
                     variant="ghost"
                     size="sm"
-                    className="text-xs text-amber-500"
+                    className="text-xs text-sky-500"
                     onClick={() => handleLoadFromHistory(gen)}
                   >
                     {tools[gen.toolId as ToolType]?.name || gen.toolId}
@@ -1373,7 +1373,7 @@ export default function ClientAITools({
                     onClick={() =>
                       handleCopyHistoryText(gen.id, gen.outputText)
                     }
-                    className={`text-xs ${copiedGenId === gen.id ? "text-emerald-500" : "text-slate-400"} hover:text-amber-500`}
+                    className={`text-xs ${copiedGenId === gen.id ? "text-emerald-500" : "text-slate-400"} hover:text-sky-500`}
                   >
                     {copiedGenId === gen.id ? (
                       <Check className="w-3 h-3" />

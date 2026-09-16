@@ -56,7 +56,7 @@ export default function LucideIcon({
 
   return (
     <IconComponent
-      className={`${className} text-cyan-400`}
+      className={`${className} text-sky-400`}
       strokeWidth={strokeWidth}
     />
   );

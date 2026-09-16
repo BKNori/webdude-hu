@@ -165,7 +165,7 @@ export default function UiUxWorkshopGenerator() {
       {/* Loading State */}
       {loading && (
         <div className="min-h-screen bg-transparent flex flex-col items-center justify-center space-y-4">
-          <Loader2 className="w-8 h-8 animate-spin text-amber-500" />
+          <Loader2 className="w-8 h-8 animate-spin text-sky-500" />
           <p className="text-xs font-mono text-slate-400 uppercase tracking-widest animate-pulse font-bold">
             Generátor betöltése...
           </p>
@@ -183,7 +183,7 @@ export default function UiUxWorkshopGenerator() {
               </div>
               <Link
                 href="/portal"
-                className="px-6 py-3 rounded-xl bg-amber-500 text-bg-base font-bold hover:bg-amber-600 transition-colors"
+                className="px-6 py-3 rounded-xl bg-sky-500 text-bg-base font-bold hover:bg-violet-700 transition-colors"
               >
                 Bejelentkezés
               </Link>
@@ -196,12 +196,12 @@ export default function UiUxWorkshopGenerator() {
                   <div className="flex items-center gap-3">
                     <Link
                       href="/portal/ai-muhely"
-                      className="w-10 h-10 rounded-xl bg-linear-to-br from-amber-400 to-amber-600 flex items-center justify-center shadow-lg shadow-amber-500/10 cursor-pointer"
+                      className="w-10 h-10 rounded-xl bg-linear-to-br from-sky-400 to-violet-700 flex items-center justify-center shadow-lg shadow-sky-500/10 cursor-pointer"
                     >
                       <Layout className="w-5 h-5 text-bg-base" />
                     </Link>
                     <div>
-                      <span className="text-xs uppercase font-black tracking-widest text-amber-500 block">
+                      <span className="text-xs uppercase font-black tracking-widest text-sky-500 block">
                         WebDude AI Studio
                       </span>
                       <span className="text-sm font-bold text-white block -mt-0.5">
@@ -212,7 +212,7 @@ export default function UiUxWorkshopGenerator() {
 
                   <Link
                     href="/portal/ai-muhely"
-                    className="flex items-center gap-2 px-4 py-2 rounded-xl border border-gray-800 hover:border-amber-500/30 text-slate-400 hover:text-white transition-colors text-xs font-bold uppercase tracking-wider cursor-pointer"
+                    className="flex items-center gap-2 px-4 py-2 rounded-xl border border-gray-800 hover:border-sky-500/30 text-slate-400 hover:text-white transition-colors text-xs font-bold uppercase tracking-wider cursor-pointer"
                   >
                     <ArrowLeft className="w-4 h-4" />
                     Vissza
@@ -226,8 +226,8 @@ export default function UiUxWorkshopGenerator() {
                   {/* Input Form */}
                   <div className="space-y-6">
                     <div className="space-y-2 relative">
-                      <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 rounded-full bg-amber-500/5 blur-3xl pointer-events-none" />
-                      <span className="text-xs font-mono font-black uppercase tracking-widest text-amber-500">
+                      <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 rounded-full bg-sky-500/5 blur-3xl pointer-events-none" />
+                      <span className="text-xs font-mono font-black uppercase tracking-widest text-sky-500">
                         UI/UX Generátor
                       </span>
                       <h1 className="text-3xl md:text-4xl font-extrabold text-white tracking-tight leading-none font-mono">
@@ -254,12 +254,12 @@ export default function UiUxWorkshopGenerator() {
                       {/* Project Type */}
                       <div className="space-y-2">
                         <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <Monitor className="w-4 h-4 text-amber-500" />
+                          <Monitor className="w-4 h-4 text-sky-500" />
                           Projekt Típus
                         </label>
                         <select
                           {...register("projectType")}
-                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-amber-500/50 focus:ring-2 focus:ring-amber-500/10 text-white transition-all text-sm"
+                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-sky-500/50 focus:ring-2 focus:ring-sky-500/10 text-white transition-all text-sm"
                         >
                           <option value="landing-page">Landing oldal</option>
                           <option value="dashboard">Dashboard</option>
@@ -274,12 +274,12 @@ export default function UiUxWorkshopGenerator() {
                       {/* Primary Goal */}
                       <div className="space-y-2">
                         <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <Target className="w-4 h-4 text-amber-500" />
+                          <Target className="w-4 h-4 text-sky-500" />
                           Elsődleges Cél
                         </label>
                         <select
                           {...register("primaryGoal")}
-                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-amber-500/50 focus:ring-2 focus:ring-amber-500/10 text-white transition-all text-sm"
+                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-sky-500/50 focus:ring-2 focus:ring-sky-500/10 text-white transition-all text-sm"
                         >
                           <option value="conversions">Konverzió</option>
                           <option value="user-engagement">
@@ -298,13 +298,13 @@ export default function UiUxWorkshopGenerator() {
                       {/* Target Audience */}
                       <div className="space-y-2">
                         <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <Users className="w-4 h-4 text-amber-500" />
+                          <Users className="w-4 h-4 text-sky-500" />
                           Célközönség
                         </label>
                         <input
                           {...register("targetAudience")}
                           placeholder="Kis- és középvállalkozások, startupok"
-                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-amber-500/50 focus:ring-2 focus:ring-amber-500/10 text-white placeholder-slate-500 transition-all text-sm"
+                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-sky-500/50 focus:ring-2 focus:ring-sky-500/10 text-white placeholder-slate-500 transition-all text-sm"
                         />
                         {errors.targetAudience && (
                           <p className="text-red-400 text-xs font-mono">
@@ -316,14 +316,14 @@ export default function UiUxWorkshopGenerator() {
                       {/* Key Features */}
                       <div className="space-y-2">
                         <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <Zap className="w-4 h-4 text-amber-500" />
+                          <Zap className="w-4 h-4 text-sky-500" />
                           Kulcs Funkciók
                         </label>
                         <textarea
                           {...register("keyFeatures")}
                           rows={3}
                           placeholder="Pl. Termék bemutatás, árazás, kapcsolatfelvétel..."
-                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-amber-500/50 focus:ring-2 focus:ring-amber-500/10 text-white placeholder-slate-500 transition-all text-sm resize-none"
+                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-sky-500/50 focus:ring-2 focus:ring-sky-500/10 text-white placeholder-slate-500 transition-all text-sm resize-none"
                         />
                         {errors.keyFeatures && (
                           <p className="text-red-400 text-xs font-mono">
@@ -335,12 +335,12 @@ export default function UiUxWorkshopGenerator() {
                       {/* Design Style */}
                       <div className="space-y-2">
                         <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <Palette className="w-4 h-4 text-amber-500" />
+                          <Palette className="w-4 h-4 text-sky-500" />
                           Dizájn Stílus
                         </label>
                         <select
                           {...register("designStyle")}
-                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-amber-500/50 focus:ring-2 focus:ring-amber-500/10 text-white transition-all text-sm"
+                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-sky-500/50 focus:ring-2 focus:ring-sky-500/10 text-white transition-all text-sm"
                         >
                           <option value="minimalist">Minimalista</option>
                           <option value="modern">Modern</option>
@@ -356,12 +356,12 @@ export default function UiUxWorkshopGenerator() {
                       {/* Color Preference */}
                       <div className="space-y-2">
                         <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <Layers className="w-4 h-4 text-amber-500" />
+                          <Layers className="w-4 h-4 text-sky-500" />
                           Szín Preferencia
                         </label>
                         <select
                           {...register("colorPreference")}
-                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-amber-500/50 focus:ring-2 focus:ring-amber-500/10 text-white transition-all text-sm"
+                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-sky-500/50 focus:ring-2 focus:ring-sky-500/10 text-white transition-all text-sm"
                         >
                           <option value="dark">Sötét</option>
                           <option value="light">Világos</option>
@@ -372,14 +372,14 @@ export default function UiUxWorkshopGenerator() {
                       {/* Additional Requirements */}
                       <div className="space-y-2">
                         <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <Smartphone className="w-4 h-4 text-amber-500" />
+                          <Smartphone className="w-4 h-4 text-sky-500" />
                           További Követelmények (opcionális)
                         </label>
                         <textarea
                           {...register("additionalRequirements")}
                           rows={3}
                           placeholder="Pl. Fókusz a mobil optimalizációra, Cyber-Gold identitás..."
-                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-amber-500/50 focus:ring-2 focus:ring-amber-500/10 text-white placeholder-slate-500 transition-all text-sm resize-none"
+                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-sky-500/50 focus:ring-2 focus:ring-sky-500/10 text-white placeholder-slate-500 transition-all text-sm resize-none"
                         />
                       </div>
 
@@ -389,7 +389,7 @@ export default function UiUxWorkshopGenerator() {
                         whileTap={{ scale: 0.98 }}
                         type="submit"
                         disabled={isGenerating}
-                        className="w-full px-6 py-4 rounded-xl bg-linear-to-r from-amber-500 to-amber-600 text-bg-base font-bold text-sm uppercase tracking-wider hover:from-amber-600 hover:to-amber-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg shadow-amber-500/20"
+                        className="w-full px-6 py-4 rounded-xl bg-linear-to-r from-sky-500 to-violet-700 text-bg-base font-bold text-sm uppercase tracking-wider hover:from-violet-700 hover:to-sky-800 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg shadow-sky-500/20"
                       >
                         {isGenerating ? (
                           <>
@@ -410,8 +410,8 @@ export default function UiUxWorkshopGenerator() {
                   <div className="space-y-6">
                     {!generatedOutput && (
                       <div className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-8 flex flex-col items-center justify-center min-h-100">
-                        <div className="w-16 h-16 rounded-full bg-amber-500/10 flex items-center justify-center mb-4">
-                          <Layout className="w-8 h-8 text-amber-500" />
+                        <div className="w-16 h-16 rounded-full bg-sky-500/10 flex items-center justify-center mb-4">
+                          <Layout className="w-8 h-8 text-sky-500" />
                         </div>
                         <h3 className="text-lg font-bold text-white mb-2">
                           UI/UX Terv
@@ -433,7 +433,7 @@ export default function UiUxWorkshopGenerator() {
                         >
                           <div className="flex items-center justify-between">
                             <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                              <Target className="w-4 h-4 text-amber-500" />
+                              <Target className="w-4 h-4 text-sky-500" />
                               Dizájn Stratégia
                             </h3>
                           </div>
@@ -491,7 +491,7 @@ export default function UiUxWorkshopGenerator() {
                           className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
                         >
                           <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <Layout className="w-4 h-4 text-amber-500" />
+                            <Layout className="w-4 h-4 text-sky-500" />
                             Wireframe Struktúra
                           </h3>
                           <div className="space-y-3">
@@ -528,7 +528,7 @@ export default function UiUxWorkshopGenerator() {
                                       <p className="text-xs text-slate-400">
                                         {section.purpose}
                                       </p>
-                                      <p className="text-xs text-amber-400 mt-1">
+                                      <p className="text-xs text-sky-400 mt-1">
                                         Prioritás: {section.priority}
                                       </p>
                                     </li>
@@ -547,7 +547,7 @@ export default function UiUxWorkshopGenerator() {
                           className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
                         >
                           <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <Layers className="w-4 h-4 text-amber-500" />
+                            <Layers className="w-4 h-4 text-sky-500" />
                             Komponens Könyvtár
                           </h3>
                           <div className="space-y-3">
@@ -560,7 +560,7 @@ export default function UiUxWorkshopGenerator() {
                                   (component, index) => (
                                     <span
                                       key={index}
-                                      className="px-2 py-1 rounded bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-mono"
+                                      className="px-2 py-1 rounded bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-mono"
                                     >
                                       {component}
                                     </span>
@@ -577,7 +577,7 @@ export default function UiUxWorkshopGenerator() {
                                   (component, index) => (
                                     <span
                                       key={index}
-                                      className="px-2 py-1 rounded bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-mono"
+                                      className="px-2 py-1 rounded bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-mono"
                                     >
                                       {component}
                                     </span>
@@ -594,7 +594,7 @@ export default function UiUxWorkshopGenerator() {
                                   (element, index) => (
                                     <span
                                       key={index}
-                                      className="px-2 py-1 rounded bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-mono"
+                                      className="px-2 py-1 rounded bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-mono"
                                     >
                                       {element}
                                     </span>
@@ -613,7 +613,7 @@ export default function UiUxWorkshopGenerator() {
                           className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
                         >
                           <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <Palette className="w-4 h-4 text-amber-500" />
+                            <Palette className="w-4 h-4 text-sky-500" />
                             Figma Promptok
                           </h3>
                           <div className="space-y-3">
@@ -660,7 +660,7 @@ export default function UiUxWorkshopGenerator() {
                           className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
                         >
                           <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <Layers className="w-4 h-4 text-amber-500" />
+                            <Layers className="w-4 h-4 text-sky-500" />
                             Dizájn Rendszer
                           </h3>
                           <div className="space-y-3">
@@ -673,7 +673,7 @@ export default function UiUxWorkshopGenerator() {
                                   (color, index) => (
                                     <span
                                       key={index}
-                                      className="px-2 py-1 rounded bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-mono"
+                                      className="px-2 py-1 rounded bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-mono"
                                     >
                                       {color}
                                     </span>
@@ -732,7 +732,7 @@ export default function UiUxWorkshopGenerator() {
                           className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
                         >
                           <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <Shield className="w-4 h-4 text-amber-500" />
+                            <Shield className="w-4 h-4 text-sky-500" />
                             UX Javaslatok
                           </h3>
                           <div className="space-y-3">
@@ -798,7 +798,7 @@ export default function UiUxWorkshopGenerator() {
                           className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
                         >
                           <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <TrendingUp className="w-4 h-4 text-amber-500" />
+                            <TrendingUp className="w-4 h-4 text-sky-500" />
                             Konverzió Optimalizálás
                           </h3>
                           <div className="space-y-3">

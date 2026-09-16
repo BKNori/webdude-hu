@@ -111,13 +111,13 @@ export default function CompetitorAnalyzer() {
 
   const getScoreColor = (score: number) => {
     if (score >= 80) return "text-emerald-500";
-    if (score >= 60) return "text-amber-500";
+    if (score >= 60) return "text-sky-500";
     return "text-red-500";
   };
 
   const getScoreBg = (score: number) => {
     if (score >= 80) return "bg-emerald-500/10 border-emerald-500/20";
-    if (score >= 60) return "bg-amber-500/10 border-amber-500/20";
+    if (score >= 60) return "bg-sky-500/10 border-sky-500/20";
     return "bg-red-500/10 border-red-500/20";
   };
 
@@ -134,10 +134,10 @@ export default function CompetitorAnalyzer() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/20"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sky-500/10 border border-sky-500/20"
         >
-          <BarChart3 className="w-4 h-4 text-amber-500" />
-          <span className="text-xs font-mono font-bold uppercase tracking-widest text-amber-500">
+          <BarChart3 className="w-4 h-4 text-sky-500" />
+          <span className="text-xs font-mono font-bold uppercase tracking-widest text-sky-500">
             AI Versenytárs-elemző
           </span>
         </motion.div>
@@ -173,7 +173,7 @@ export default function CompetitorAnalyzer() {
         <div className="glass-card p-6 space-y-6">
           <div className="space-y-2">
             <label className="text-sm font-bold text-slate-300 flex items-center gap-2">
-              <Target className="w-4 h-4 text-amber-500" />
+              <Target className="w-4 h-4 text-sky-500" />
               Saját Weboldal URL
             </label>
             <input
@@ -181,20 +181,20 @@ export default function CompetitorAnalyzer() {
               value={targetUrl}
               onChange={(e) => setTargetUrl(e.target.value)}
               placeholder="https://pelda.hu"
-              className="w-full px-4 py-3 bg-bg-surface border border-bg-elevated rounded-xl text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all"
+              className="w-full px-4 py-3 bg-bg-surface border border-bg-elevated rounded-xl text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all"
             />
           </div>
 
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <label className="text-sm font-bold text-slate-300 flex items-center gap-2">
-                <Users className="w-4 h-4 text-amber-500" />
+                <Users className="w-4 h-4 text-sky-500" />
                 Versenytársak URL (max 3)
               </label>
               {competitorUrls.length < 3 && (
                 <button
                   onClick={addCompetitor}
-                  className="text-xs px-3 py-1 bg-amber-500/10 text-amber-500 rounded-full hover:bg-amber-500/20 transition-colors flex items-center gap-1"
+                  className="text-xs px-3 py-1 bg-sky-500/10 text-sky-500 rounded-full hover:bg-sky-500/20 transition-colors flex items-center gap-1"
                 >
                   <Plus className="w-3 h-3" />
                   Hozzáadás
@@ -208,7 +208,7 @@ export default function CompetitorAnalyzer() {
                   value={url}
                   onChange={(e) => updateCompetitorUrl(index, e.target.value)}
                   placeholder={`Versenytárs ${index + 1}`}
-                  className="flex-1 px-4 py-3 bg-bg-surface border border-bg-elevated rounded-xl text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all"
+                  className="flex-1 px-4 py-3 bg-bg-surface border border-bg-elevated rounded-xl text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all"
                 />
                 {competitorUrls.length > 1 && (
                   <button
@@ -232,7 +232,7 @@ export default function CompetitorAnalyzer() {
           <button
             onClick={handleAnalysis}
             disabled={loading}
-            className="w-full px-6 py-3 bg-amber-500 hover:bg-amber-600 text-bg-base font-bold rounded-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            className="w-full px-6 py-3 bg-sky-500 hover:bg-violet-700 text-bg-base font-bold rounded-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
           >
             {loading ? (
               <>
@@ -395,7 +395,7 @@ export default function CompetitorAnalyzer() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="glass-card p-8 border border-amber-500/30 bg-gradient-to-br from-amber-500/5 to-transparent text-center"
+              className="glass-card p-8 border border-sky-500/30 bg-gradient-to-br from-sky-500/5 to-transparent text-center"
             >
               <div className="space-y-4">
                 <h3 className="text-2xl font-bold text-white">
@@ -404,7 +404,7 @@ export default function CompetitorAnalyzer() {
                 <p className="text-slate-300">{result.upsellOpportunity}</p>
                 <button
                   onClick={() => (window.location.href = "/kapcsolat")}
-                  className="px-8 py-4 bg-amber-500 hover:bg-amber-600 text-bg-base font-bold rounded-xl transition-all duration-300 flex items-center justify-center gap-2 mx-auto"
+                  className="px-8 py-4 bg-sky-500 hover:bg-violet-700 text-bg-base font-bold rounded-xl transition-all duration-300 flex items-center justify-center gap-2 mx-auto"
                 >
                   Kérem a WebDude UX/UI Roast Auditot
                   <ArrowRight className="w-5 h-5" />

@@ -4,9 +4,9 @@ import { Metadata } from "next";
 import { Mail, Phone, MapPin } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Kapcsolat – WebDude | Grafika, Vektor, AI & WordPress Fejlesztés",
+  title: "Kapcsolat & Konzultáció | WebDude | Közvetlen Megbeszélés",
   description:
-    "Lépj kapcsolatba velem! 16 év WordPress és 26 év grafikai tapasztalattal. Ingyenes konzultáció, weboldal készítés, arculattervezés és AI megoldások Kecskemétről.",
+    "Kérj ajánlatot közvetlenül Norbitól! Nincs projektmenedzseri réteg: 26 év tapasztalattal tervezünk és fejlesztünk Next.js rendszereket Kecskemétről.",
   keywords:
     "kapcsolat, weboldal készítés, grafikai tervezés, WordPress fejlesztés, AI megoldások, Kecskemét, konzultáció",
   alternates: {
@@ -68,7 +68,7 @@ export default function ContactPage() {
               </div>
               <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold font-sans text-text-primary leading-tight tracking-tight mb-6">
                 Dolgozzunk{" "}
-                <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#0095C7] italic pr-4">
+                <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6] italic pr-4">
                   Együtt!
                 </span>
               </h2>
@@ -81,7 +81,7 @@ export default function ContactPage() {
               <h3 className="text-2xl font-bold text-text-primary mb-4">
                 Kapcsolati lehetőségek
               </h3>
-              <div className="bg-slate-900/80 backdrop-blur-md border border-slate-700 rounded-2xl p-6 flex items-center gap-6 group shadow-[0_8px_24px_rgba(15,23,42,0.3)] hover:border-[#00B5F1]/50 hover:shadow-[0_20px_60px_rgba(0,181,241,0.2)] hover:-translate-y-1 transition-all duration-300">
+              <div className="bg-slate-900/80 backdrop-blur-md border border-slate-700 rounded-2xl p-6 flex items-center gap-6 group shadow-[0_8px_24px_rgba(15,23,42,0.3)] hover:border-[#00B5F1]/50 hover:shadow-[0_20px_60px_rgba(0, 181, 241,0.2)] hover:-translate-y-1 transition-all duration-300">
                 <div className="w-12 h-12 rounded-xl bg-[#00B5F1]/10 flex items-center justify-center group-hover:bg-[#00B5F1]/20 transition-colors">
                   <Mail className="w-6 h-6 text-[#00B5F1] group-hover:scale-110 transition-transform" />
                 </div>
@@ -91,13 +91,13 @@ export default function ContactPage() {
                   </span>
                   <a
                     href="mailto:hello@webdude.hu"
-                    className="text-lg font-black text-[#00B5F1] hover:text-[#0095C7] transition-colors tracking-tight"
+                    className="text-lg font-black text-[#00B5F1] hover:text-[#5B21B6] transition-colors tracking-tight"
                   >
                     hello@webdude.hu
                   </a>
                 </div>
               </div>
-              <div className="bg-slate-900/80 backdrop-blur-md border border-slate-700 rounded-2xl p-6 flex items-center gap-6 group shadow-[0_8px_24px_rgba(15,23,42,0.3)] hover:border-[#00B5F1]/50 hover:shadow-[0_20px_60px_rgba(0,181,241,0.2)] hover:-translate-y-1 transition-all duration-300">
+              <div className="bg-slate-900/80 backdrop-blur-md border border-slate-700 rounded-2xl p-6 flex items-center gap-6 group shadow-[0_8px_24px_rgba(15,23,42,0.3)] hover:border-[#00B5F1]/50 hover:shadow-[0_20px_60px_rgba(0, 181, 241,0.2)] hover:-translate-y-1 transition-all duration-300">
                 <div className="w-12 h-12 rounded-xl bg-[#00B5F1]/10 flex items-center justify-center group-hover:bg-[#00B5F1]/20 transition-colors">
                   <Phone className="w-6 h-6 text-[#00B5F1] group-hover:scale-110 transition-transform" />
                 </div>
@@ -107,13 +107,13 @@ export default function ContactPage() {
                   </span>
                   <a
                     href="tel:+36703238003"
-                    className="text-lg font-black text-[#00B5F1] hover:text-[#0095C7] transition-colors tracking-tight"
+                    className="text-lg font-black text-[#00B5F1] hover:text-[#5B21B6] transition-colors tracking-tight"
                   >
                     +36 70 323 8003
                   </a>
                 </div>
               </div>
-              <div className="bg-slate-900/80 backdrop-blur-md border border-slate-700 rounded-2xl p-6 flex items-center gap-6 group shadow-[0_8px_24px_rgba(15,23,42,0.3)] hover:border-[#00B5F1]/50 hover:shadow-[0_20px_60px_rgba(0,181,241,0.2)] hover:-translate-y-1 transition-all duration-300">
+              <div className="bg-slate-900/80 backdrop-blur-md border border-slate-700 rounded-2xl p-6 flex items-center gap-6 group shadow-[0_8px_24px_rgba(15,23,42,0.3)] hover:border-[#00B5F1]/50 hover:shadow-[0_20px_60px_rgba(0, 181, 241,0.2)] hover:-translate-y-1 transition-all duration-300">
                 <div className="w-12 h-12 rounded-xl bg-[#00B5F1]/10 flex items-center justify-center group-hover:bg-[#00B5F1]/20 transition-colors">
                   <MapPin className="w-6 h-6 text-[#00B5F1] group-hover:scale-110 transition-transform" />
                 </div>

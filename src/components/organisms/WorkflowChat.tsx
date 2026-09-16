@@ -169,7 +169,7 @@ export default function WorkflowChat({
       >
         <span className="flex items-center gap-2">
           <MessageSquare
-            className="w-3.5 h-3.5 text-amber-500"
+            className="w-3.5 h-3.5 text-sky-500"
             strokeWidth={1.5}
           />
           Megbeszélés / Chat (
@@ -197,7 +197,7 @@ export default function WorkflowChat({
             <div className="space-y-3 max-h-64 overflow-y-auto pr-1 bg-transparent rounded-2xl p-4 border border-bg-elevated/40 flex flex-col">
               {loading ? (
                 <div className="flex justify-center py-8">
-                  <Loader2 className="w-6 h-6 animate-spin text-amber-500" />
+                  <Loader2 className="w-6 h-6 animate-spin text-sky-500" />
                 </div>
               ) : messages.length === 0 ? (
                 <p className="text-[10px] text-slate-500 italic text-center py-6 font-mono">
@@ -220,16 +220,16 @@ export default function WorkflowChat({
                       >
                         <span className="text-[9px] text-slate-500 font-mono mb-0.5 flex items-center gap-1">
                           {isSystem && (
-                            <UserCheck className="w-2.5 h-2.5 text-amber-500" />
+                            <UserCheck className="w-2.5 h-2.5 text-sky-500" />
                           )}
                           {msg.authorName} • {formatDate(msg.createdAt)}
                         </span>
                         <div
                           className={`rounded-2xl px-4 py-2.5 text-xs leading-relaxed wrap-break-word ${
                             isSelf
-                              ? "bg-amber-500 text-bg-base font-medium rounded-tr-none"
+                              ? "bg-sky-500 text-bg-base font-medium rounded-tr-none"
                               : isSystem
-                                ? "bg-bg-surface border-2 border-amber-500/50 text-slate-200 rounded-tl-none shadow-lg shadow-amber-500/10"
+                                ? "bg-bg-surface border-2 border-sky-500/50 text-slate-200 rounded-tl-none shadow-lg shadow-sky-500/10"
                                 : "bg-bg-surface border border-bg-elevated/80 text-slate-200 rounded-tl-none"
                           }`}
                         >
@@ -251,13 +251,13 @@ export default function WorkflowChat({
                   placeholder="Írj egy üzenetet..."
                   disabled={sending}
                   {...register("text")}
-                  className="flex-1 bg-transparent border border-bg-elevated/80 rounded-xl px-4 py-2.5 text-white placeholder-slate-600 focus:outline-none focus:border-amber-500 transition-colors text-xs font-mono disabled:opacity-50"
+                  className="flex-1 bg-transparent border border-bg-elevated/80 rounded-xl px-4 py-2.5 text-white placeholder-slate-600 focus:outline-none focus:border-sky-500 transition-colors text-xs font-mono disabled:opacity-50"
                   required
                 />
                 <button
                   type="submit"
                   disabled={sending}
-                  className="w-10 h-10 rounded-xl bg-linear-to-br from-amber-400 to-amber-600 flex items-center justify-center text-bg-base hover:scale-[1.02] transition-all cursor-pointer shrink-0 shadow-lg shadow-amber-500/10 disabled:opacity-50"
+                  className="w-10 h-10 rounded-xl bg-linear-to-br from-sky-400 to-violet-700 flex items-center justify-center text-bg-base hover:scale-[1.02] transition-all cursor-pointer shrink-0 shadow-lg shadow-sky-500/10 disabled:opacity-50"
                   aria-label="Üzenet küldése"
                 >
                   {sending ? (

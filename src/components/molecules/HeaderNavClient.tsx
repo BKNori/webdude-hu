@@ -93,7 +93,7 @@ export default function HeaderNavClient() {
                 alt="WebDude — Prémium webfejlesztés és AI automatizáció"
                 width={130}
                 height={32}
-                className="h-7 w-auto object-contain"
+                className="h-7 w-auto object-contain transition-all duration-300 group-hover:drop-shadow-[0_0_12px_#00B5F1] group-hover:brightness-125"
                 priority
               />
             </div>
@@ -167,8 +167,8 @@ export default function HeaderNavClient() {
               href="/kapcsolat"
               className="relative px-6 py-2.5 rounded-full font-bold text-sm text-white transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#00B5F1] focus:ring-offset-2 focus:ring-offset-bg-base"
               style={{
-                background: "linear-gradient(135deg, #00B5F1 0%, #0095C7 100%)",
-                boxShadow: "0 8px 24px rgba(0,181,241,0.35)",
+                background: "linear-gradient(135deg, #00B5F1 0%, #5B21B6 100%)",
+                boxShadow: "0 8px 24px rgba(0, 181, 241,0.35)",
               }}
               aria-label="Kapcsolatfelvétel"
             >
@@ -274,8 +274,8 @@ export default function HeaderNavClient() {
                   className="block w-full max-w-xs mx-auto px-6 py-3 rounded-full font-bold text-center text-white transition-all focus:outline-none focus:ring-2 focus:ring-[#00B5F1]"
                   style={{
                     background:
-                      "linear-gradient(135deg, #00B5F1 0%, #0095C7 100%)",
-                    boxShadow: "0 4px 16px rgba(0,181,241,0.3)",
+                      "linear-gradient(135deg, #00B5F1 0%, #5B21B6 100%)",
+                    boxShadow: "0 4px 16px rgba(0, 181, 241,0.3)",
                   }}
                   aria-label="Kapcsolatfelvétel"
                 >

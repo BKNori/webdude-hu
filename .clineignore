@@ -1,0 +1,55 @@
+# ==========================================
+# WEBDUDE OS ENTERPRISE - .clineignore
+# ==========================================
+
+# 1. BIZTONSÁG ÉS TITKOS KULCSOK (Kritikus! Soha ne olvassa/írja az AI)
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+*secret*.json
+firebase-adminsdk*.json
+
+# 2. NEXT.JS & BUILD CACHE (Lefordított kódok, amik csak összezavarják az AI-t)
+.next/
+out/
+dist/
+build/
+.vercel/
+.turbo/
+
+# 3. FÜGGŐSÉGEK (Ne olvassa be a több ezer külső csomag kódját)
+node_modules/
+.pnpm-store/
+
+# 4. FIREBASE & SUPABASE LOKÁLIS FÁJLOK (Cache és logok)
+.firebase/
+.supabase/
+firebase-debug.log
+firestore-debug.log
+ui-debug.log
+
+# 5. BINÁRIS ÉS MÉDIA FÁJLOK (Token-védelem: az AI ne akarja szövegként olvasni a képeket!)
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.webp
+*.avif
+*.ico
+*.svg
+*.mp4
+*.webm
+*.zip
+*.pdf
+
+# 6. NAPLÓZÁS, TESZTEK ÉS OS FÁJLOK
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+coverage/
+.DS_Store
+Thumbs.db
+.git/

@@ -208,9 +208,9 @@ export default function AdminPanel({
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto px-6 py-12">
       {/* 1. Form: Ügyfél Regisztráció */}
-      <div className="bg-bg-surface/30 border border-slate-800/50 backdrop-blur-md rounded-2xl p-8 hover:border-amber-500/10 transition-colors duration-300">
+      <div className="bg-bg-surface/30 border border-slate-800/50 backdrop-blur-md rounded-2xl p-8 hover:border-sky-500/10 transition-colors duration-300">
         <h2 className="text-2xl font-bold text-text-primary mb-6 flex items-center gap-2">
-          <span className="w-1.5 h-6 bg-amber-500 rounded-full"></span>
+          <span className="w-1.5 h-6 bg-sky-500 rounded-full"></span>
           Új Ügyfél Regisztrációja
         </h2>
 
@@ -223,7 +223,7 @@ export default function AdminPanel({
               type="text"
               {...register("name")}
               placeholder="Pl. Kis Péter"
-              className="w-full bg-bg-elevated/30 border border-slate-800 focus:border-amber-500/50 rounded-xl px-4 py-3 text-text-primary outline-none transition-all"
+              className="w-full bg-bg-elevated/30 border border-slate-800 focus:border-sky-500/50 rounded-xl px-4 py-3 text-text-primary outline-none transition-all"
             />
             {errors.name && (
               <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>
@@ -238,7 +238,7 @@ export default function AdminPanel({
               type="email"
               {...register("email")}
               placeholder="peter@pelda.hu"
-              className="w-full bg-bg-elevated/30 border border-slate-800 focus:border-amber-500/50 rounded-xl px-4 py-3 text-text-primary outline-none transition-all"
+              className="w-full bg-bg-elevated/30 border border-slate-800 focus:border-sky-500/50 rounded-xl px-4 py-3 text-text-primary outline-none transition-all"
             />
             {errors.email && (
               <p className="text-red-500 text-sm mt-1">
@@ -250,7 +250,7 @@ export default function AdminPanel({
           <button
             type="submit"
             disabled={isPendingRegister}
-            className="w-full py-4 px-6 rounded-xl bg-amber-500 hover:bg-amber-600 disabled:bg-amber-500/30 text-bg-base font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2"
+            className="w-full py-4 px-6 rounded-xl bg-sky-500 hover:bg-violet-700 disabled:bg-sky-500/30 text-bg-base font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2"
           >
             {isPendingRegister ? "Mentés folyamatban..." : "Ügyfél Létrehozása"}
           </button>
@@ -266,9 +266,9 @@ export default function AdminPanel({
       </div>
 
       {/* 2. Form: Addon Hozzárendelés */}
-      <div className="bg-bg-surface/30 border border-slate-800/50 backdrop-blur-md rounded-2xl p-8 hover:border-amber-500/10 transition-colors duration-300">
+      <div className="bg-bg-surface/30 border border-slate-800/50 backdrop-blur-md rounded-2xl p-8 hover:border-sky-500/10 transition-colors duration-300">
         <h2 className="text-2xl font-bold text-text-primary mb-6 flex items-center gap-2">
-          <span className="w-1.5 h-6 bg-amber-500 rounded-full"></span>
+          <span className="w-1.5 h-6 bg-sky-500 rounded-full"></span>
           Szolgáltatás Hozzárendelése
         </h2>
 
@@ -282,7 +282,7 @@ export default function AdminPanel({
             </label>
             <select
               {...assignForm.register("userId")}
-              className="w-full bg-bg-elevated/50 border border-slate-800 focus:border-amber-500/50 rounded-xl px-4 py-3 text-text-primary outline-none transition-all"
+              className="w-full bg-bg-elevated/50 border border-slate-800 focus:border-sky-500/50 rounded-xl px-4 py-3 text-text-primary outline-none transition-all"
             >
               <option value="">-- Válassz az aktív kliensek közül --</option>
               {users.map((u) => (
@@ -304,7 +304,7 @@ export default function AdminPanel({
             </label>
             <select
               {...assignForm.register("addonId")}
-              className="w-full bg-bg-elevated/50 border border-slate-800 focus:border-amber-500/50 rounded-xl px-4 py-3 text-text-primary outline-none transition-all"
+              className="w-full bg-bg-elevated/50 border border-slate-800 focus:border-sky-500/50 rounded-xl px-4 py-3 text-text-primary outline-none transition-all"
             >
               <option value="">-- Válassz szolgáltatást --</option>
               {addons.map((a) => (
@@ -323,7 +323,7 @@ export default function AdminPanel({
           <button
             type="submit"
             disabled={isPendingAssign}
-            className="w-full py-4 px-6 rounded-xl bg-amber-500 hover:bg-amber-600 disabled:bg-amber-500/30 text-bg-base font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2"
+            className="w-full py-4 px-6 rounded-xl bg-sky-500 hover:bg-violet-700 disabled:bg-sky-500/30 text-bg-base font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2"
           >
             {isPendingAssign
               ? "Hozzárendelés folyamatban..."
@@ -341,9 +341,9 @@ export default function AdminPanel({
       </div>
 
       {/* 3. Form: Eszközjogosultság Kezelés */}
-      <div className="bg-bg-surface/30 border border-slate-800/50 backdrop-blur-md rounded-2xl p-8 hover:border-amber-500/10 transition-colors duration-300 md:col-span-2 lg:col-span-1">
+      <div className="bg-bg-surface/30 border border-slate-800/50 backdrop-blur-md rounded-2xl p-8 hover:border-sky-500/10 transition-colors duration-300 md:col-span-2 lg:col-span-1">
         <h2 className="text-2xl font-bold text-text-primary mb-6 flex items-center gap-2">
-          <span className="w-1.5 h-6 bg-amber-500 rounded-full"></span>
+          <span className="w-1.5 h-6 bg-sky-500 rounded-full"></span>
           Eszközjogosultság Kezelés
         </h2>
 
@@ -363,7 +363,7 @@ export default function AdminPanel({
                 const existingTools = userTools[e.target.value] || [];
                 toolsForm.setValue("allowedTools", existingTools);
               }}
-              className="w-full bg-bg-elevated/50 border border-slate-800 focus:border-amber-500/50 rounded-xl px-4 py-3 text-text-primary outline-none transition-all"
+              className="w-full bg-bg-elevated/50 border border-slate-800 focus:border-sky-500/50 rounded-xl px-4 py-3 text-text-primary outline-none transition-all"
             >
               <option value="">-- Válassz az aktív kliensek közül --</option>
               {users.map((u) => (
@@ -393,7 +393,7 @@ export default function AdminPanel({
                     type="checkbox"
                     {...toolsForm.register("allowedTools")}
                     value={tool.id}
-                    className="w-4 h-4 rounded border-slate-600 text-amber-500 focus:ring-amber-500 bg-bg-elevated"
+                    className="w-4 h-4 rounded border-slate-600 text-sky-500 focus:ring-sky-500 bg-bg-elevated"
                   />
                   <span className="text-sm text-text-primary">{tool.name}</span>
                 </label>
@@ -409,7 +409,7 @@ export default function AdminPanel({
           <button
             type="submit"
             disabled={isPendingTools}
-            className="w-full py-4 px-6 rounded-xl bg-amber-500 hover:bg-amber-600 disabled:bg-amber-500/30 text-bg-base font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2"
+            className="w-full py-4 px-6 rounded-xl bg-sky-500 hover:bg-violet-700 disabled:bg-sky-500/30 text-bg-base font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2"
           >
             {isPendingTools
               ? "Frissítés folyamatban..."

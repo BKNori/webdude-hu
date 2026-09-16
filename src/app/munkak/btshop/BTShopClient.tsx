@@ -7,7 +7,7 @@ import BtshopFinalCta from "@/components/organisms/BtshopFinalCta";
 
 /**
  * BTShop.hu esettanulmány — kliens oldali kompozíciós réteg.
- * Soft Premium 2026 design-nyelv: Obsidian Black, Electric Cyan,
+ * Soft Premium 2026 design-nyelv: Obsidian Black, Cyber-Arany,
  * Luminous Glassmorphism, motion/react spring fizika.
  * (A régi ~500 soros monolit organismsekre bontva — 300 sor/component limit.)
  */

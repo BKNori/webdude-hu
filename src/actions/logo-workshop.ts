@@ -163,7 +163,7 @@ JSON Structure:
 COLOR PSYCHOLOGY & HEX PALETTES:
 - Trust/Professional: #00B5F1 (Primary Blue), #1E293B (Slate Dark), #F8FAFC (Light Gray)
 - Innovation/Tech: #8B5CF6 (Purple), #3B82F6 (Blue), #06B6D4 (Cyan)
-- Luxury/Premium: #F59E0B (Gold), #0F172A (Deep Navy), #E2E8F0 (Silver)
+- Luxury/Premium: #00B5F1 (Gold), #0F172A (Deep Navy), #E2E8F0 (Silver)
 - Growth/Nature: #10B981 (Emerald), #064E3B (Forest), #ECFDF5 (Mint)
 - Energy/Action: #FF7A00 (Orange), #EF4444 (Red), #FCA5A5 (Coral)
 

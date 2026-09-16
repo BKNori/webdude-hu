@@ -83,7 +83,7 @@ export default function DocumentPreviewModal({
             {/* Header */}
             <div className="flex items-center justify-between px-6 py-4 border-b border-slate-800/40 bg-slate-900/90">
               <div className="flex items-center gap-3">
-                <FileText className="w-5 h-5 text-amber-500" />
+                <FileText className="w-5 h-5 text-sky-500" />
                 <h3 className="font-semibold text-white tracking-tight truncate max-w-md">
                   {title}
                 </h3>
@@ -110,7 +110,7 @@ export default function DocumentPreviewModal({
                 {/* Copy link */}
                 <button
                   onClick={handleCopyLink}
-                  className="p-2 text-slate-400 hover:text-white rounded-lg hover:bg-amber-500/20 transition-colors"
+                  className="p-2 text-slate-400 hover:text-slate-950 rounded-lg hover:bg-sky-500/20 transition-colors"
                   title="Link másolása"
                   disabled={isCopying}
                 >
@@ -155,7 +155,7 @@ export default function DocumentPreviewModal({
                   <a
                     href={fileUrl}
                     download
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-amber-500 text-slate-950 font-bold hover:bg-amber-400 transition-colors"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-sky-500 text-slate-950 font-bold hover:bg-sky-400 transition-colors"
                   >
                     <Download className="w-4 h-4" /> Letöltés indítása
                   </a>

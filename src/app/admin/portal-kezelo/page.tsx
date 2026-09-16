@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import React, { useEffect, useState } from "react";
 import { auth } from "@/lib/firebase";
@@ -914,7 +914,7 @@ export default function PortalKezeloPage() {
               <button
                 type="submit"
                 disabled={actionLoading === "create_workflow"}
-                className="w-full flex items-center justify-center gap-1.5 py-3 rounded-xl bg-[#00B5F1] hover:bg-[#0095C7] text-gray-900 font-bold text-xs uppercase tracking-wider transition-all disabled:opacity-50"
+                className="w-full flex items-center justify-center gap-1.5 py-3 rounded-xl bg-[#00B5F1] hover:bg-[#5B21B6] text-gray-900 font-bold text-xs uppercase tracking-wider transition-all disabled:opacity-50"
               >
                 {actionLoading === "create_workflow" ? (
                   <Loader2 className="w-4 h-4 animate-spin" />
@@ -1437,7 +1437,7 @@ export default function PortalKezeloPage() {
               <button
                 type="submit"
                 disabled={actionLoading === "create_client"}
-                className="w-full flex items-center justify-center gap-1.5 py-3 rounded-xl bg-[#00B5F1] hover:bg-[#0095C7] text-gray-900 font-bold text-xs uppercase tracking-wider transition-all disabled:opacity-50"
+                className="w-full flex items-center justify-center gap-1.5 py-3 rounded-xl bg-[#00B5F1] hover:bg-[#5B21B6] text-gray-900 font-bold text-xs uppercase tracking-wider transition-all disabled:opacity-50"
               >
                 {actionLoading === "create_client" ? (
                   <Loader2 className="w-4 h-4 animate-spin" />
@@ -1583,7 +1583,7 @@ export default function PortalKezeloPage() {
                                 Fájlok a széfben
                               </h5>
 
-                              <label className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#00B5F1] hover:bg-[#0095C7] text-gray-900 font-bold text-[10px] uppercase tracking-wider font-mono cursor-pointer transition-all">
+                              <label className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#00B5F1] hover:bg-[#5B21B6] text-gray-900 font-bold text-[10px] uppercase tracking-wider font-mono cursor-pointer transition-all">
                                 <Upload className="w-3 h-3" />
                                 Új fájl feltöltése
                                 <input

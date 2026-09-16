@@ -39,7 +39,7 @@ export function generateOGImage(props: OGTemplateProps) {
           style={{
             width: "32px",
             height: "32px",
-            backgroundColor: "#f59e0b",
+            backgroundColor: "#00B5F1",
             borderRadius: "8px",
           }}
         />
@@ -101,7 +101,7 @@ export function generateOGImage(props: OGTemplateProps) {
               key={tag}
               style={{
                 padding: "8px 16px",
-                backgroundColor: "#f59e0b",
+                backgroundColor: "#00B5F1",
                 color: "bg-transparent",
                 borderRadius: "9999px",
                 fontSize: "16px",

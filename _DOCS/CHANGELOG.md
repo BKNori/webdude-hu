@@ -1,5 +1,108 @@
 # Changelog
 
+## [7.0.0] — 2026-09-16 — Kék-Lila migráció (arany/amber kivezetése)
+
+- **Tokenek:** `@theme` bővítve (`--color-brand-primary: #00B5F1`, `--color-brand-secondary: #7C3AED`, `--color-cta-from: #075985`, `--color-cta-to: #5B21B6`, `--color-cta-hover: #6D28D9`, `--color-accent: #7C3AED`); `.premium-btn` javítva (`var(--color-cta-from)` → `var(--color-cta-to)`, hover `#075985` → `#5B21B6`). Glow/keret/animáció rétegek kék-lila fényhatásokra hangolva (`globals.css`).
+- **CTA-k:** `Button.tsx` primary `#075985` → `#5B21B6` gradiens fehér szöveggel; accent `#7C3AED` fehér szöveggel (WCAG AAA); `DynamicWorkflowForm.tsx` gombjai és eredménypanelje kék-lila rendszerre állítva.
+- **Bulk csere:** arany/amber → kék-lila cserék 217 fájlban (hexek, rgba, `amber-*` → `sky-*`/`violet-*`, `gold-*` → `brand-*`/`cta-*`, glow/gradient osztályátnevezések). Kivételek: promptszövegek, mentések (`_mentesek/`), OG-képek, történeti changelog-bejegyzések.
+- **[DOCS]:** DESIGN_SYSTEM v7.0 (arany tiltása, mért WCAG-tábla, fehér CTA-feliratok); AGENTS.md 7. és 15. szekció; ARCHITECTURE; memory-bank szinkron.
+- **QA:** `npx tsc --noEmit` TSC_EXIT=0; `npm run lint -- --max-warnings 0` LINT_EXIT=0 (0 hiba, 0 figyelmeztetés); `npm run build` BUILD_EXIT=0, 141/141 statikus oldal.
+
+## [6.2.0] — 2026-09-16 — Cyber-Arany migráció és dokumentációs szinkron
+
+- **Végső QA (prompt-visszaállítás után):** `TSC_EXIT=0`, `LINT_EXIT=0` (0 hiba, 24 figyelmeztetés), `BUILD_EXIT=0`. Záró cyan-audit: 6 engedélyezett kivételsor, 0 váratlan találat.
+
+
+- **Színmigráció:** a migrációs riport szerint 125 fájlban 1550 csere; arany brandtokenek, árnyékok, Tailwind-osztályok és portfólió SVG-k. Az `src/actions` nem része a színcserének.
+- **Kontrasztjavítás:** az automatizált WCAG-javítás 34 fájl 59 sorát érintette, ezen felül egy kézi javítás készült a szolgáltatások oldal CTA-ján. Ez nem teljes körű WCAG-tanúsítás.
+- **Timeline:** `neutral` alapérték; a `cyan` semleges színű kompatibilitási alias megmarad.
+- **Promptvédelem:** a tömeges csere által érintett logó-promptsablon eredeti szövege a mentés alapján visszaállítva. A promptok cyan-említései nem UI-brandhibák.
+- **[DOCS]:** DESIGN_SYSTEM v6.0, 90–8–2 szabály, tényleges `gold-from` / `gold-to` tokenértékek, sötét CTA-feliratok; ARCHITECTURE, AGENTS és memory-bank szinkron.
+- **Ellenőrzés:** korábbi TSC 0 hiba; lint 0 hiba és 24 unused-vars figyelmeztetés; friss build `BUILD_EXIT=0`, 141/141 statikus generálás. A prompt-visszaállítás utáni végső QA eredményeit a `_tsc-final.txt`, `_lint-final.txt`, `_build-final.txt` naplók rögzítik.
+- **Audit és mentés:** `_mentesek/20260916_amber-migration/`; záró riport: `_zaras-audit.txt`. A történeti changelog-bejegyzések és a mentések változatlanok.
+- **Nyitott QA:** lint figyelmeztetések; manuális böngészős spot-check (CTA alap/hover, mobil, timeline). A helyi böngészős próbálkozás kapcsolatmegtagadással zárult, nem igazolt vizuális teszt. Deploy és commit nem történt.
+
+## 2026.09.16 (Electric Cyan v5.0 Cleanup & Service Pricing)
+
+- **[6.1.3] — Electric Cyan Glow Effektek Tisztítása & Árak Kivezetése (Cycle 3150):**
+  - **globals.css glow effektek tisztítása:**
+    - Lila és kék glow effektek eltávolítása, minden Electric Cyan palettára cserélve
+    - `body::before`: `rgba(139, 92, 246, 0.08)` → `rgba(0, 181, 241, 0.08)`
+    - `body::after`: `rgba(6, 182, 212, 0.06)` → `rgba(0, 181, 241, 0.06)`
+    - `glow-blob-indigo` → `glow-blob-cyan-2`, `glow-purple` → `glow-cyan-2`, `glow-blue` → `glow-cyan-2`
+    - `gradient-border-purple` → `gradient-border-cyan-2`, `gradient-border-blue` → `gradient-border-cyan-3`
+    - `hover-glow-purple` → `hover-glow-cyan-2`, `hover-glow-blue` → `hover-glow-cyan-3`
+    - `hover-border-purple` → `hover-border-cyan-2`, `hover-border-blue` → `hover-border-cyan-3`
+  - **szolgaltatasok/page.tsx lokáció eltávolítása:**
+    - "Kecskemét" szó eltávolítása title, description, keywords, OG tags, JSON-LD és FAQ-ból
+    - "WordPress Kecskemét" szolgáltatás eltávolítása a listából
+    - `areaServed` JSON-LD mező eltávolítása
+  - **wordpress-weboldal-keszites-kecskemet oldal teljes eltávolítása:**
+    - Lokáció-specifikus oldal teljes törlése a rendszerből
+  - **Szolgáltatás oldalak fix árainak eltávolítása:**
+    - `grafikai-tervezes/page.tsx`: Fix árak → "Egyedi árajánlat kérése"
+    - `ai-prompt-engineering/page.tsx`: Fix árak → "Egyedi árajánlat kérése", currency prop eltávolítása
+    - `ai-workflow-kialakitas/page.tsx`: Fix árak → "Egyedi árajánlat kérése"
+    - `weboldal-keszites/page.tsx`: Fix árak → "Egyedi árajánlat kérése"
+    - `woocommerce-webshop-keszites/page.tsx`: Fix árak → "Egyedi árajánlat kérése", currency prop eltávolítása
+    - `ai-kep-es-videogeneralas/page.tsx`: Fix árak → "Egyedi árajánlat kérése"
+    - `egyedi-arculattervezes-logo/page.tsx`: Fix árak → "Egyedi árajánlat kérése", currency prop eltávolítása
+    - `wordpress-virusirtas-es-biztonsag/page.tsx`: PricingTable → CTA blokk, currency prop eltávolítása
+  - **Rendszerfejlesztés szolgáltatás hozzáadása:**
+    - `szolgaltatasok/page.tsx`: "Rendszerfejlesztés" szolgáltatás hozzáadása a listához
+  - **Validáció:**
+    - `npx tsc --noEmit` → **0 TypeScript hiba** ✅
+    - `npm run build` → **Sikeres produkciós build (141/141 útvonal hiba nélkül)** ✅
+
+## 2026.09.16 - Cycle 3159: SEO/AEO Canonical URL & Organization Schema - 2. Batch
+
+- **AI Workflow Kialakítás oldal (`/szolgaltatasok/ai-workflow-kialakitas`):**
+  - Canonical URL: `https://webdude.hu/szolgaltatasok/ai-workflow-kialakitas`
+  - JSON-LD `Service` típus, központi Organization provider (`@id: "https://webdude.hu/#organization"`)
+  - 0 TypeScript hiba ✅
+
+- **Egyedi Arculattervezés & Logó oldal (`/szolgaltatasok/egyedi-arculattervezes-logo`):**
+  - `jsonLd.provider` javítva: `Person` → `Organization`, `@id: "https://webdude.hu/#organization"` hozzáadva
+  - Canonical URL: `https://webdude.hu/szolgaltatasok/egyedi-arculattervezes-logo`
+  - JSON-LD `Service` típus, központi Organization provider
+  - 0 TypeScript hiba ✅
+
+- **Grafikai Tervezés oldal (`/szolgaltatasok/grafikai-tervezes`):**
+  - `serviceSchema.provider` javítva: `LocalBusiness` → `Organization`, `@id: "https://webdude.hu/#organization"` hozzáadva
+  - Canonical URL: `https://webdude.hu/szolgaltatasok/grafikai-tervezes`
+  - JSON-LD `Service` típus, központi Organization provider
+  - 0 TypeScript hiba ✅
+
+- **Batch összege:** 3 szolgáltatási aloldal canonical URL-vel és központi Organization sémával felépítve, `tsc --noEmit` 0 hibát jelez az egész projektben.
+
+## 2026.09.16 - Cycle 3158: SEO/AEO Canonical URL & Organization Schema - 1. Batch
+
+- **AI Kép és Videógenerálás oldal (`/szolgaltatasok/ai-kep-es-videogeneralas`):**
+  - `generateMetadata()` függvény javítva: hiányzó `};` zárójel beszúrva a 19. sorba
+  - Canonical URL implementálva: `https://webdude.hu/szolgaltatasok/ai-kep-es-videogeneralas`
+  - JSON-LD Schema.org struktúrált adatok: `Service` típus, központi Organization provider (`@id: "https://webdude.hu/#organization"`)
+  - 0 TypeScript hiba, 0 lint hiba, sikeres production build ✅
+
+- **AI Prompt Engineering oldal (`/szolgaltatasok/ai-prompt-engineering`):**
+  - `generateMetadata()` függvény javítva: hiányzó `};` zárójel beszúrva a 22. sorba
+  - Canonical URL implementálva: `https://webdude.hu/szolgaltatasok/ai-prompt-engineering`
+  - JSON-LD Schema.org struktúrált adatok: `Service` típus, központi Organization provider (`@id: "https://webdude.hu/#organization"`)
+  - 0 TypeScript hiba, 0 lint hiba, sikeres production build ✅
+
+- **Batch összege:** 2 szolgáltatási aloldal canonical URL-vel és központi Organization sémával felépítve, a tsc --noEmit 0 hibát jelez az egész projektben.
+
+## 2026.09.16 - Cycle 3157: SEO/AEO Optimalizáció — 1. Fázis (Szia Norbi Vagyok & Termékek)
+
+- **Szia Norbi Vagyok oldal (`/szia-norbi-vagyok`):**
+  - `layout.tsx` metadata export frissítve: title `"Norbi – WebDude | 26 év tapasztalat, egyenes kommunikáció"` + description + canonical URL `https://webdude.hu/szia-norbi-vagyok`
+  - Page fájl kliens komponens maradt (`"use client"`) — a metaadatok szerveroldali `layout.tsx`-ben élnek, Next.js 16 konvenció szerint
+  - 0 TypeScript hiba, 0 lint hiba
+
+- **Termékek oldal (`/termekek`):**
+  - `layout.tsx` metadata export frissítve: title `"Prémium AI & Automatizációs Megoldások | WebDude"` + description + canonical URL `https://webdude.hu/termekek`
+  - Page fájl kliens komponens maradt (`"use client"`) — a metaadatok szerveroldali `layout.tsx`-ben élnek, Next.js 16 konvenció szerint
+  - 0 TypeScript hiba, 0 lint hiba
+
 ## 2026.09.15 - Cycle 3156: Termékoldalak Cyber-Arany Konverzió + Portál CTA Lánc
 
 - **Tömeges dizájn-konverzió (`/termekek/*` — 14 fájl):** determinisztikus class-mappinggel (PowerShell, UTF-8 no-BOM) eltávolítva az összes régi soft-light és Electric Cyan osztály: `bg-[#F8FAFC]` → `bg-[#020617]`, `text-[#111827]` → `text-[#e2e8f0]`, `text-[#4B5563]` → `text-slate-400`, `bg-white` → `bg-slate-950/80`, `#00B5F1` → `#f59e0b`, `#0095C7` → `#d97706`, `to-cyan-500` → `to-amber-500`, soft árnyékok → arany glow. Utána maradék ellenőrzés: **0 régi szín**.
@@ -28,7 +131,7 @@
 - **`firestore.rules` — `user_generations` szekció:** `update: if false` megtartva (kizárólag backend írhat), komment frissítve Spark/Server Action kontextusra.
 - **Deploy szkriptek:** `deploy.bat` / `deploy.ps1` nem tartalmaznak functions-deploy lépést (ellenőrizve: 0 találat).
 - **Validáció:** `npx tsc --noEmit` → TSC_EXIT=0 (0 hiba). `npx eslint src/app/actions/createGeneration.ts` → 0 hiba, 0 warning. `npm run build` → ✅ Compiled successfully, 143/143 statikus oldal generálva.
-- **Megjegyzés (későbbi sprint):** A kliensoldali hívónak (`DynamicWorkflowForm` `onSubmit` lánc) a bejelentkezett user `getIdToken()` értékét kell átadnia a Server Actionnek — a futásidejű hívó jelenleg még nincs bekötve, ezért a szignatúraváltás nem törő és nem igényelt kliensoldali módosítást.
+- **Cycle 3154 lezárva:** A kliensoldali `useCreateGeneration` hook (`src/hooks/useCreateGeneration.ts`) már tartalmazza a `auth.currentUser.getIdToken(true)` átadást és `createGeneration(input, idToken)` hívást (vonal 32-33). A `createGeneration` Server Action (`src/app/actions/createGeneration.ts`) `idToken: string` paraméterét a kliens átadja, a Firebase Admin SDK `verifyIdToken`-nel hitelesítve. A Cycle 3154 CHANGELOG megjegyzése („futásidejű hívó nincs bekötve, szignatúraváltás nem tör és nem igényel kliensoldali módosítást") elavult; a funkció már teljesen működik a `getIdToken()` átadással és a `DynamicWorkflowForm` láncban. ✅
 
 ## 2026.09.15 - Cycle 3153: Portfólió Képek Dinamikus Bekötése & WOW Design Tuning
 

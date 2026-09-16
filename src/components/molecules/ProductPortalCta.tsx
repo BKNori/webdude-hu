@@ -13,7 +13,7 @@ interface ProductPortalCtaProps {
 /**
  * Konverzió-orientált CTA szekció nyilvános termékoldalakhoz.
  * Lánc: termékoldal → portál AI Műhely (bejelentkezett demó) → /kapcsolat egyedi árajánlat.
- * Cyber-Arany dizájnnyelv: #020617 alap, #f59e0b akcentus, glassmorphism.
+ * Cyber-Arany dizájnnyelv: #020617 alap, #00B5F1 akcentus, glassmorphism.
  */
 export default function ProductPortalCta({ productName }: ProductPortalCtaProps) {
   const shouldReduceMotion = useReducedMotion();
@@ -26,7 +26,7 @@ export default function ProductPortalCta({ productName }: ProductPortalCtaProps)
         className="absolute inset-x-0 top-1/2 -translate-y-1/2 mx-auto w-[560px] h-[560px] rounded-full pointer-events-none"
         style={{
           background:
-            "radial-gradient(circle, rgba(245,158,11,0.10) 0%, transparent 65%)",
+            "radial-gradient(circle, rgba(0, 181, 241,0.10) 0%, transparent 65%)",
         }}
       />
       <motion.div
@@ -34,16 +34,16 @@ export default function ProductPortalCta({ productName }: ProductPortalCtaProps)
         whileInView={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={spring}
-        className="relative z-10 max-w-3xl mx-auto text-center bg-slate-950/80 backdrop-blur-2xl border border-[#f59e0b]/25 rounded-3xl p-10 md:p-12 shadow-[0_0_64px_rgba(245,158,11,0.12)]"
+        className="relative z-10 max-w-3xl mx-auto text-center bg-slate-950/80 backdrop-blur-2xl border border-[#00B5F1]/25 rounded-3xl p-10 md:p-12 shadow-[0_0_64px_rgba(0, 181, 241,0.12)]"
       >
-        <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#f59e0b]/30 bg-[#f59e0b]/10 text-xs font-bold uppercase tracking-[0.25em] text-[#f59e0b]">
+        <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#00B5F1]/30 bg-[#00B5F1]/10 text-xs font-bold uppercase tracking-[0.25em] text-[#00B5F1]">
           <Sparkles className="w-4 h-4" aria-hidden />
           Élő AI demó
         </span>
 
         <h2 className="mt-6 text-2xl md:text-4xl font-bold tracking-tight text-[#e2e8f0] leading-tight">
           Próbáld ki a{" "}
-          <span className="text-[#f59e0b]">{productName}</span> műhelyt a
+          <span className="text-[#00B5F1]">{productName}</span> műhelyt a
           portálon
         </h2>
         <p className="mt-4 text-slate-400 leading-relaxed max-w-xl mx-auto">
@@ -59,7 +59,7 @@ export default function ProductPortalCta({ productName }: ProductPortalCtaProps)
           >
             <Link
               href="/portal/ai-muhely"
-              className="group inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-black bg-[#f59e0b] hover:bg-amber-400 shadow-[0_8px_28px_rgba(245,158,11,0.35)] hover:shadow-[0_14px_40px_rgba(245,158,11,0.45)] transition-all"
+              className="group inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-black bg-[#00B5F1] hover:bg-sky-400 shadow-[0_8px_28px_rgba(0, 181, 241,0.35)] hover:shadow-[0_14px_40px_rgba(0, 181, 241,0.45)] transition-all"
             >
               AI Műhely indítása
               <ArrowRight
@@ -74,7 +74,7 @@ export default function ProductPortalCta({ productName }: ProductPortalCtaProps)
           >
             <Link
               href="/kapcsolat"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-[#f59e0b] border border-[#f59e0b]/40 hover:border-[#f59e0b] hover:bg-[#f59e0b]/10 transition-all"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-[#00B5F1] border border-[#00B5F1]/40 hover:border-[#00B5F1] hover:bg-[#00B5F1]/10 transition-all"
             >
               Egyedi árajánlat kérése
             </Link>

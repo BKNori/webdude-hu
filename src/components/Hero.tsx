@@ -71,7 +71,7 @@ export default function Hero({
       {/* Background radial glow elements */}
       <div className="absolute top-0 right-0 w-1/2 h-full opacity-20 pointer-events-none z-0">
         <div className="absolute top-20 right-20 w-100 h-100 bg-[#00B5F1]/10 rounded-full blur-[120px] animate-pulse" />
-        <div className="absolute bottom-20 right-40 w-112.5 h-112.5 bg-[#0095C7]/10 rounded-full blur-[140px] animate-pulse delay-700" />
+        <div className="absolute bottom-20 right-40 w-112.5 h-112.5 bg-[#5B21B6]/10 rounded-full blur-[140px] animate-pulse delay-700" />
       </div>
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
@@ -103,7 +103,7 @@ export default function Hero({
               {cta1 && cta1Link && (
                 <Link
                   href={cta1Link}
-                  className="px-8 py-4 bg-linear-to-r from-[#00B5F1] to-[#0095C7] text-white rounded-full font-bold hover:scale-105 active:scale-95 transition-transform duration-300 shadow-[0_0_20px_rgba(0,181,241,0.3)] min-h-11 min-w-11"
+                  className="px-8 py-4 bg-linear-to-r from-[#00B5F1] to-[#5B21B6] text-slate-950 rounded-full font-bold hover:scale-105 active:scale-95 transition-transform duration-300 shadow-[0_0_20px_rgba(0, 181, 241,0.3)] min-h-11 min-w-11"
                 >
                   {cta1}
                 </Link>

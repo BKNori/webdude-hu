@@ -258,7 +258,7 @@ export default function SuperAdminDashboard() {
     return (
       <div className="min-h-screen bg-bg-base flex items-center justify-center">
         <div className="text-center space-y-4">
-          <Loader2 className="w-16 h-16 animate-spin text-amber-500 mx-auto" />
+          <Loader2 className="w-16 h-16 animate-spin text-sky-500 mx-auto" />
           <p className="text-slate-400">Betöltés...</p>
         </div>
       </div>
@@ -312,7 +312,7 @@ export default function SuperAdminDashboard() {
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-4xl font-bold text-white flex items-center gap-3">
-              <Shield className="w-8 h-8 text-gold-primary" />
+              <Shield className="w-8 h-8 text-brand-primary" />
               Szuperadmin Dashboard
             </h1>
             <p className="text-slate-400 mt-2">
@@ -333,7 +333,7 @@ export default function SuperAdminDashboard() {
               animate={{ opacity: 1, y: 0 }}
               className="glass-card p-6 space-y-4"
             >
-              <div className="flex items-center gap-3 text-gold-primary font-bold text-lg">
+              <div className="flex items-center gap-3 text-brand-primary font-bold text-lg">
                 {categoryIcons[category]}
                 <h2>{category}</h2>
               </div>
@@ -345,7 +345,7 @@ export default function SuperAdminDashboard() {
                     disabled={module.status === "Locked"}
                     className={`w-full text-left p-4 rounded-xl transition-all flex items-center justify-between ${
                       selectedModule?.mod === module.mod
-                        ? "bg-gold-primary/20 border-2 border-gold-primary"
+                        ? "bg-brand-primary/20 border-2 border-brand-primary"
                         : "bg-bg-elevated/50 hover:bg-bg-elevated border-2 border-transparent"
                     } ${module.status === "Locked" ? "opacity-50 cursor-not-allowed" : ""}`}
                   >
@@ -424,7 +424,7 @@ export default function SuperAdminDashboard() {
                   <button
                     onClick={handleDeploy}
                     disabled={deploying}
-                    className="px-6 py-3 bg-gold-primary text-bg-base font-bold rounded-xl transition-all disabled:opacity-50 flex items-center gap-2"
+                    className="px-6 py-3 bg-brand-primary text-bg-base font-bold rounded-xl transition-all disabled:opacity-50 flex items-center gap-2"
                   >
                     {deploying ? (
                       <>
@@ -476,7 +476,7 @@ export default function SuperAdminDashboard() {
           className="glass-card p-6"
         >
           <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
-            <FileText className="w-6 h-6 text-gold-primary" />
+            <FileText className="w-6 h-6 text-brand-primary" />
             Workflow Integráció
           </h2>
           <div className="overflow-x-auto">

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import ProductAccessGuard from "@/components/molecules/ProductAccessGuard";
 import ProductPortalCta from "@/components/molecules/ProductPortalCta";
 
@@ -46,7 +47,7 @@ export default function AIChatbotStarterPage() {
       <ProductAccessGuard>
         <div className="min-h-screen bg-[#020617]">
           <section className="relative py-24 md:py-32 overflow-hidden">
-            <div className="absolute inset-0 bg-linear-to-b from-[#f59e0b]/5 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-linear-to-b from-[#00B5F1]/5 via-transparent to-transparent" />
             <div className="max-w-6xl mx-auto px-6 relative z-10">
               <div className="text-center space-y-6">
                 <h1 className="text-4xl md:text-6xl font-bold text-[#e2e8f0] tracking-tight">
@@ -68,7 +69,7 @@ export default function AIChatbotStarterPage() {
                 Üzleti Eredmények
               </h2>
               <div className="grid md:grid-cols-2 gap-6">
-                <div className="bg-slate-950/80 border border-slate-800/80 rounded-3xl p-6 shadow-[0_8px_24px_rgba(0,0,0,0.35)] hover:shadow-[0_16px_48px_rgba(245,158,11,0.18)] transition-all duration-300">
+                <div className="bg-slate-950/80 border border-slate-800/80 rounded-3xl p-6 shadow-[0_8px_24px_rgba(0,0,0,0.35)] hover:shadow-[0_16px_48px_rgba(0, 181, 241,0.18)] transition-all duration-300">
                   <h3 className="text-lg font-bold text-[#e2e8f0] mb-2">
                     85% support költség csökkenés
                   </h3>
@@ -76,7 +77,7 @@ export default function AIChatbotStarterPage() {
                     Automatizált ügyfélszolgálat 24/7 elérhetőséggel
                   </p>
                 </div>
-                <div className="bg-slate-950/80 border border-slate-800/80 rounded-3xl p-6 shadow-[0_8px_24px_rgba(0,0,0,0.35)] hover:shadow-[0_16px_48px_rgba(245,158,11,0.18)] transition-all duration-300">
+                <div className="bg-slate-950/80 border border-slate-800/80 rounded-3xl p-6 shadow-[0_8px_24px_rgba(0,0,0,0.35)] hover:shadow-[0_16px_48px_rgba(0, 181, 241,0.18)] transition-all duration-300">
                   <h3 className="text-lg font-bold text-[#e2e8f0] mb-2">
                     3.2x ügyfél elégedettség
                   </h3>
@@ -84,7 +85,7 @@ export default function AIChatbotStarterPage() {
                     Azonnali válaszidő és magyar nyelvű AI válaszok
                   </p>
                 </div>
-                <div className="bg-slate-950/80 border border-slate-800/80 rounded-3xl p-6 shadow-[0_8px_24px_rgba(0,0,0,0.35)] hover:shadow-[0_16px_48px_rgba(245,158,11,0.18)] transition-all duration-300">
+                <div className="bg-slate-950/80 border border-slate-800/80 rounded-3xl p-6 shadow-[0_8px_24px_rgba(0,0,0,0.35)] hover:shadow-[0_16px_48px_rgba(0, 181, 241,0.18)] transition-all duration-300">
                   <h3 className="text-lg font-bold text-[#e2e8f0] mb-2">
                     Egyedi knowledge base
                   </h3>
@@ -92,7 +93,7 @@ export default function AIChatbotStarterPage() {
                     Saját tudásbázis feltöltése és testreszabás
                   </p>
                 </div>
-                <div className="bg-slate-950/80 border border-slate-800/80 rounded-3xl p-6 shadow-[0_8px_24px_rgba(0,0,0,0.35)] hover:shadow-[0_16px_48px_rgba(245,158,11,0.18)] transition-all duration-300">
+                <div className="bg-slate-950/80 border border-slate-800/80 rounded-3xl p-6 shadow-[0_8px_24px_rgba(0,0,0,0.35)] hover:shadow-[0_16px_48px_rgba(0, 181, 241,0.18)] transition-all duration-300">
                   <h3 className="text-lg font-bold text-[#e2e8f0] mb-2">
                     Egyszerű weboldal integráció
                   </h3>
@@ -107,23 +108,25 @@ export default function AIChatbotStarterPage() {
           <section className="py-16 md:py-24 border-t border-slate-800/80">
             <div className="max-w-4xl mx-auto px-6 text-center">
               <h2 className="text-3xl font-bold text-[#e2e8f0] mb-4 tracking-tight">
-                Árazás és Megrendelés
+                Egyedi árajánlat
               </h2>
               <p className="text-slate-400 mb-8">
-                Azonnali hozzáférés a teljes AI Chatbot Starter csomaghoz.
+                Az árajánlat a projektméretedhez és az integrációs igényekhez
+                igazodik — nincs dobozos csomag, nincs rejtett költség.
               </p>
-              <div className="bg-slate-950/80 border border-slate-800/80 rounded-3xl p-8 shadow-[0_16px_48px_rgba(245,158,11,0.18)] max-w-md mx-auto">
-                <div className="mb-6">
-                  <span className="text-4xl font-bold text-[#e2e8f0]">
-                    129 000 Ft
-                  </span>
-                  <span className="text-slate-400"> / egyszeri díj</span>
-                </div>
-                <button className="w-full inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#f59e0b] hover:bg-[#d97706] text-white font-bold rounded-full uppercase tracking-wider text-sm transition-all duration-300 hover:scale-[1.02] active:scale-95">
-                  Megrendelés Stripe-al
-                </button>
-                <p className="text-xs text-slate-500 mt-4">
-                  Biztonságos fizetés Stripe-on keresztül
+              <div className="bg-[#0f172a] border border-slate-700 rounded-3xl p-8 shadow-[0_16px_48px_rgba(0, 181, 241,0.12)] max-w-md mx-auto">
+                <p className="text-slate-400 mb-6">
+                  Projektszintű felmérés és előre egyeztetett, fix határidő — a
+                  munkakezdés előtt.
+                </p>
+                <Link
+                  href="/kapcsolat"
+                  className="w-full inline-flex items-center justify-center gap-2 px-8 py-4 bg-linear-to-r from-[#00B5F1] to-[#5B21B6] hover:from-[#5B21B6] hover:to-[#5B21B6] text-slate-950 font-bold rounded-full uppercase tracking-wider text-sm transition-all duration-300 hover:scale-[1.02] active:scale-95 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 focus:ring-offset-[#020617]"
+                >
+                  Egyedi árajánlat kérése
+                </Link>
+                <p className="text-xs text-slate-400 mt-4">
+                  Válasz 24 órán belül — közvetlenül tőlem
                 </p>
               </div>
             </div>

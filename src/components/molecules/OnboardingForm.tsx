@@ -162,7 +162,7 @@ export default function OnboardingForm({
                   placeholder="pl. https://pelda.hu"
                   disabled={loading}
                   {...register("websiteUrl")}
-                  className="w-full pl-11 pr-4 py-2.5 bg-transparent/50 border border-bg-elevated/80 rounded-xl text-slate-200 placeholder-slate-600 text-sm focus:outline-none focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/20 transition-all disabled:opacity-50"
+                  className="w-full pl-11 pr-4 py-2.5 bg-transparent/50 border border-bg-elevated/80 rounded-xl text-slate-200 placeholder-slate-600 text-sm focus:outline-none focus:border-sky-500/50 focus:ring-1 focus:ring-sky-500/20 transition-all disabled:opacity-50"
                 />
               </div>
               {errors.websiteUrl && (
@@ -190,7 +190,7 @@ export default function OnboardingForm({
                   placeholder="pl. Sötétkék és arany, modern sötét téma"
                   disabled={loading}
                   {...register("brandColors")}
-                  className="w-full pl-11 pr-4 py-2.5 bg-transparent/50 border border-bg-elevated/80 rounded-xl text-slate-200 placeholder-slate-600 text-sm focus:outline-none focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/20 transition-all disabled:opacity-50"
+                  className="w-full pl-11 pr-4 py-2.5 bg-transparent/50 border border-bg-elevated/80 rounded-xl text-slate-200 placeholder-slate-600 text-sm focus:outline-none focus:border-sky-500/50 focus:ring-1 focus:ring-sky-500/20 transition-all disabled:opacity-50"
                 />
               </div>
               {errors.brandColors && (
@@ -218,7 +218,7 @@ export default function OnboardingForm({
                   placeholder="Milyen stílust szeretnél követni? Küldhetsz linkeket is."
                   disabled={loading}
                   {...register("designGuidelines")}
-                  className="w-full pl-11 pr-4 py-2.5 bg-transparent/50 border border-bg-elevated/80 rounded-xl text-slate-200 placeholder-slate-600 text-sm focus:outline-none focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/20 transition-all disabled:opacity-50 resize-none"
+                  className="w-full pl-11 pr-4 py-2.5 bg-transparent/50 border border-bg-elevated/80 rounded-xl text-slate-200 placeholder-slate-600 text-sm focus:outline-none focus:border-sky-500/50 focus:ring-1 focus:ring-sky-500/20 transition-all disabled:opacity-50 resize-none"
                 />
               </div>
               {errors.designGuidelines && (
@@ -251,7 +251,7 @@ export default function OnboardingForm({
                   placeholder="pl. https://pelda.hu"
                   disabled={loading}
                   {...register("websiteUrl")}
-                  className="w-full pl-11 pr-4 py-2.5 bg-transparent/50 border border-bg-elevated/80 rounded-xl text-slate-200 placeholder-slate-600 text-sm focus:outline-none focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/20 transition-all disabled:opacity-50"
+                  className="w-full pl-11 pr-4 py-2.5 bg-transparent/50 border border-bg-elevated/80 rounded-xl text-slate-200 placeholder-slate-600 text-sm focus:outline-none focus:border-sky-500/50 focus:ring-1 focus:ring-sky-500/20 transition-all disabled:opacity-50"
                 />
               </div>
               {errors.websiteUrl && (
@@ -279,7 +279,7 @@ export default function OnboardingForm({
                   placeholder="pl. Sybell cPanel"
                   disabled={loading}
                   {...register("hostingProvider")}
-                  className="w-full pl-11 pr-4 py-2.5 bg-transparent/50 border border-bg-elevated/80 rounded-xl text-slate-200 placeholder-slate-600 text-sm focus:outline-none focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/20 transition-all disabled:opacity-50"
+                  className="w-full pl-11 pr-4 py-2.5 bg-transparent/50 border border-bg-elevated/80 rounded-xl text-slate-200 placeholder-slate-600 text-sm focus:outline-none focus:border-sky-500/50 focus:ring-1 focus:ring-sky-500/20 transition-all disabled:opacity-50"
                 />
               </div>
               {errors.hostingProvider && (
@@ -307,7 +307,7 @@ export default function OnboardingForm({
                   placeholder="pl. WordPress 6.x + Elementor"
                   disabled={loading}
                   {...register("techStack")}
-                  className="w-full pl-11 pr-4 py-2.5 bg-transparent/50 border border-bg-elevated/80 rounded-xl text-slate-200 placeholder-slate-600 text-sm focus:outline-none focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/20 transition-all disabled:opacity-50"
+                  className="w-full pl-11 pr-4 py-2.5 bg-transparent/50 border border-bg-elevated/80 rounded-xl text-slate-200 placeholder-slate-600 text-sm focus:outline-none focus:border-sky-500/50 focus:ring-1 focus:ring-sky-500/20 transition-all disabled:opacity-50"
                 />
               </div>
               {errors.techStack && (
@@ -340,7 +340,7 @@ export default function OnboardingForm({
                   placeholder="pl. Hazai KKV döntéshozók, akik automatizálni szeretnének"
                   disabled={loading}
                   {...register("targetAudience")}
-                  className="w-full pl-11 pr-4 py-2.5 bg-transparent/50 border border-bg-elevated/80 rounded-xl text-slate-200 placeholder-slate-600 text-sm focus:outline-none focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/20 transition-all disabled:opacity-50 resize-none"
+                  className="w-full pl-11 pr-4 py-2.5 bg-transparent/50 border border-bg-elevated/80 rounded-xl text-slate-200 placeholder-slate-600 text-sm focus:outline-none focus:border-sky-500/50 focus:ring-1 focus:ring-sky-500/20 transition-all disabled:opacity-50 resize-none"
                 />
               </div>
               {errors.targetAudience && (
@@ -368,7 +368,7 @@ export default function OnboardingForm({
                   placeholder="pl. AI chatbotok, cPanel beállítások, SEO optimalizálás árak"
                   disabled={loading}
                   {...register("preferredTopics")}
-                  className="w-full pl-11 pr-4 py-2.5 bg-transparent/50 border border-bg-elevated/80 rounded-xl text-slate-200 placeholder-slate-600 text-sm focus:outline-none focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/20 transition-all disabled:opacity-50 resize-none"
+                  className="w-full pl-11 pr-4 py-2.5 bg-transparent/50 border border-bg-elevated/80 rounded-xl text-slate-200 placeholder-slate-600 text-sm focus:outline-none focus:border-sky-500/50 focus:ring-1 focus:ring-sky-500/20 transition-all disabled:opacity-50 resize-none"
                 />
               </div>
               {errors.preferredTopics && (
@@ -396,7 +396,7 @@ export default function OnboardingForm({
                   placeholder="pl. Azonnali válaszadás az oldalon, ügyfélszerzési konverzió növelése"
                   disabled={loading}
                   {...register("aiObjectives")}
-                  className="w-full pl-11 pr-4 py-2.5 bg-transparent/50 border border-bg-elevated/80 rounded-xl text-slate-200 placeholder-slate-600 text-sm focus:outline-none focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/20 transition-all disabled:opacity-50 resize-none"
+                  className="w-full pl-11 pr-4 py-2.5 bg-transparent/50 border border-bg-elevated/80 rounded-xl text-slate-200 placeholder-slate-600 text-sm focus:outline-none focus:border-sky-500/50 focus:ring-1 focus:ring-sky-500/20 transition-all disabled:opacity-50 resize-none"
                 />
               </div>
               {errors.aiObjectives && (
@@ -429,7 +429,7 @@ export default function OnboardingForm({
                   placeholder="pl. https://pelda.hu/landing"
                   disabled={loading}
                   {...register("websiteUrl")}
-                  className="w-full pl-11 pr-4 py-2.5 bg-transparent/50 border border-bg-elevated/80 rounded-xl text-slate-200 placeholder-slate-600 text-sm focus:outline-none focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/20 transition-all disabled:opacity-50"
+                  className="w-full pl-11 pr-4 py-2.5 bg-transparent/50 border border-bg-elevated/80 rounded-xl text-slate-200 placeholder-slate-600 text-sm focus:outline-none focus:border-sky-500/50 focus:ring-1 focus:ring-sky-500/20 transition-all disabled:opacity-50"
                 />
               </div>
               {errors.websiteUrl && (
@@ -457,7 +457,7 @@ export default function OnboardingForm({
                   placeholder="pl. Ingyenes konzultáció regisztráció"
                   disabled={loading}
                   {...register("primaryGoal")}
-                  className="w-full pl-11 pr-4 py-2.5 bg-transparent/50 border border-bg-elevated/80 rounded-xl text-slate-200 placeholder-slate-600 text-sm focus:outline-none focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/20 transition-all disabled:opacity-50"
+                  className="w-full pl-11 pr-4 py-2.5 bg-transparent/50 border border-bg-elevated/80 rounded-xl text-slate-200 placeholder-slate-600 text-sm focus:outline-none focus:border-sky-500/50 focus:ring-1 focus:ring-sky-500/20 transition-all disabled:opacity-50"
                 />
               </div>
               {errors.primaryGoal && (
@@ -485,7 +485,7 @@ export default function OnboardingForm({
                   placeholder="pl. versenytars1.hu, versenytars2.hu"
                   disabled={loading}
                   {...register("competitors")}
-                  className="w-full pl-11 pr-4 py-2.5 bg-transparent/50 border border-bg-elevated/80 rounded-xl text-slate-200 placeholder-slate-600 text-sm focus:outline-none focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/20 transition-all disabled:opacity-50"
+                  className="w-full pl-11 pr-4 py-2.5 bg-transparent/50 border border-bg-elevated/80 rounded-xl text-slate-200 placeholder-slate-600 text-sm focus:outline-none focus:border-sky-500/50 focus:ring-1 focus:ring-sky-500/20 transition-all disabled:opacity-50"
                 />
               </div>
               {errors.competitors && (
@@ -503,7 +503,7 @@ export default function OnboardingForm({
         disabled={loading}
         loading={loading}
         variant="primary"
-        className="w-full py-3 text-xs font-mono tracking-wider focus:ring-2 focus:ring-amber-500"
+        className="w-full py-3 text-xs font-mono tracking-wider focus:ring-2 focus:ring-sky-500"
       >
         Onboarding beküldése
       </Button>
