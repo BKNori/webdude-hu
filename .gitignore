@@ -43,6 +43,9 @@ yarn-error.log*
 # editor settings (lokalis, gep-specifikus)
 .vscode
 
+# ideiglenes deployment és archív állományok
+deploy_dist/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
