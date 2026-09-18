@@ -138,6 +138,8 @@ atoms  →  molecules  →  organisms  →  pages
 | `PresentationWorkshopGenerator` | `src/components/organisms/PresentationWorkshopGenerator.tsx` | Presentation AI Műhely generátor pitch deck, sales prezentáció és investor deck narratív struktúrával, dia sablonokkal és vizuális hierarchiával                                                                                                                                           | `"use client"` (motion/react)          |
 | `IconWorkshopGenerator`         | `src/components/organisms/IconWorkshopGenerator.tsx`         | Icon Design AI Műhely generátor SVG vektor ikonokkal, icon szettekkel (15 stílus), minimalista szimbólumokkal és optimalizált SVG útvonalakkal                                                                                                                                             | `"use client"` (motion/react)          |
 | `DesignSystemWorkshopGenerator` | `src/components/organisms/DesignSystemWorkshopGenerator.tsx` | Design System AI Műhely generátor design tokens, komponens könyvtár, Tailwind CSS v4 integrációval és Zod validációval                                                                                                                                                                     | `"use client"` (motion/react)          |
+| `HeroSlider`                    | `src/components/organisms/HeroSlider.tsx`                    | Kék-Lila v7.0 hero diavetítés 3 diával (Weboldal/webshop, AI-Prompt.hu, AI automatizáció) — `AnimatePresence` + spring physics, trust indikátorok, 6 mp auto-rotate (`useReducedMotion` védelemmel), nyíl- és pontvezérlés, `next/image` háttérrel. Page-be bekötés még hátravan.                | `"use client"` (motion/react)          |
+
 
 ### 2.4 Pages
 
