@@ -7,6 +7,12 @@
 - **PortalDashboard.tsx:** 878 → **794 sor** (−84); a 77 soros lokális interface/konstans blokk eltávolítva, `[...SUPERADMIN_TOOLS]` használat, `PortalTab` típus, a feleslegessé vált `Compass` és `Play` import törölve.
 - **QA:** `npx tsc --noEmit` TSC_EXIT=0; `npm run lint` LINT_EXIT=0.
 - **Következő fázis:** Phase 2 — 3 hook kiszervezése (`usePortalSession`, `usePortalData`, `useStripePaymentVerification`).
+
+## [7.4.1] — 2026-09-18 — PortalDashboard refaktor (Phase 2: usePortalData async cleanup + session/data hookok véglegesítése)
+
+- Refactor: `src/hooks/usePortalData.ts` — Inline async effect pattern bevezetve a `loadWorkflowsAndOrders` számára.
+- Fix: ESLint `react-hooks/set-state-in-effect` kizárása tiszta `isMounted` cleanup-guarddal.
+- Improvement: Felesleges `auth` singleton eltávolítva a dependency array-ből.
 ## [7.3.1] — 2026-09-18 — Törött asset-hivatkozások javítása (9 db → 0 db)
 
 - **Hivatkozás-javítások (7 db):** `src/app/szolgaltatasok/add-onok/page.tsx` — openGraph kép és JSON-LD `image` → `/og/webdude-og.jpg` (projekt-szintű konvenció), JSON-LD `Organization.logo` → `https://webdude.hu/assets/logos/webdude-logo.webp`; `src/app/szolgaltatasok/grafikai-tervezes/page.tsx` — hero illusztráció → `/assets/banners/webdue-branding_mockup_05-copy copy.webp`; `src/data/projects.ts` — RIMAI hero → `/assets/portfolio/Rimai/rimai-3d-glass-window-logo-mockup-copy.webp`, Dr. Danyi mockup → `/assets/szolgaltatasok/laptop-DeviceMockup-copy.webp`, Bt Shop mockup → `/assets/portfolio/Weboldalak/bt-shop-weboldal3.webp`.
