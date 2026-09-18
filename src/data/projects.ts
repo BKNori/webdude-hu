@@ -24,7 +24,7 @@ export const projects: readonly Project[] = [
     result:
       "A weboldal nagy sikert aratott: a látogatottság jelentősen megnőtt, a cég online megkeresései pedig emelkedtek.",
     assets: {
-      hero: "/assets/projects/rimai-mockup.webp",
+      hero: "/assets/portfolio/Rimai/rimai-3d-glass-window-logo-mockup-copy.webp",
       videoMac:
         "https://webdude.hu/wp-content/uploads/2024/06/Macbook-Air-rimaiutepito.hu-M7E2QQtk8h.webm",
       videoIphone:
@@ -51,7 +51,7 @@ export const projects: readonly Project[] = [
       "Elegáns, könnyen kezelhető felület, amely sikeresen csatornázza be a prémium szolgáltatásokat kereső pácienseket. Az első hónapban 45%-kal nőttek az online bejelentkezések.",
     assets: {
       hero: "/assets/projects/dr-danyi.webp",
-      mockup: "/assets/personal/laptop-mockup.webp",
+      mockup: "/assets/szolgaltatasok/laptop-DeviceMockup-copy.webp",
     },
     keywords: [
       "Szájsebészet weboldal",
@@ -73,7 +73,7 @@ export const projects: readonly Project[] = [
       "Áttekinthető, modern e-kereskedelmi platform, amely az indulást követő első negyedévben 35%-kal növelte az online eladások számát.",
     assets: {
       hero: "/assets/banners/pro-web-design.jpg",
-      mockup: "/assets/projects/bt-shop-xml.webp",
+      mockup: "/assets/portfolio/Weboldalak/bt-shop-weboldal3.webp",
     },
     keywords: [
       "Webshop készítés",

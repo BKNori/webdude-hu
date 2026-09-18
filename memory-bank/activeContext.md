@@ -10,7 +10,7 @@
 - **Kód-hivatkozások frissítve:** `src/data/works.ts` (9 bor-es-garnela + 1 marina-lakopark), `src/data/projects.ts` (wordpress hero → `/assets/banners/`), `src/app/szolgaltatasok/grafikai-tervezes/page.tsx` (2 OG/Twitter kép).
 - **Visszaállított assetek:** `2025/01/A-25-...AI-Art-Prompt-Ideas-copy.webp` és `2025/01/image-78.webp` (`git checkout HEAD --`), mert élő kód hivatkozik rájuk.
 - **Következő lépés (Norbi):** `firestore.rules` + `firestore.indexes.json` deploy, admin/portál spot-check, majd `deploy.bat` (kizárólag Norbi futtatja).
-- **Nyitott technikai adósság:** 9 törött `/assets/` hivatkozás (már a HEAD-ben sem létezett) — og-image.jpg, logo.png, graphic-sample.jpg, banner-webdde-copy-2-1536x857.webp, projects/{btshop,solar-system-ai,rimai-mockup,bt-shop-xml}.webp, personal/laptop-mockup.webp; valamint a `projects.ts`-ben az A-25 kép 4 projekten azonos placeholder hero.
+- **7.3.1 (2026-09-18) — asset-hivatkozások javítva:** mind a 9 törött `/assets/` hivatkozás rendben, audit: **0 törött / 210 hivatkozás**. `PortfolioSectionNew.tsx` archiválva (`_mentesek/20260918_asset-fix/`): halott kód + világos téma, ARCHITECTURE regiszterben jelölve. Nyitott: az A-25 kép 4 projekten azonos placeholder hero a `projects.ts`-ben; a `btshop-*-placeholder.svg` fájlok még amber színt (`#f59e0b`) használnak (v7.0 szabálysértés).
 
 ## Korábbi sablon (nem aktuális állapot)
 

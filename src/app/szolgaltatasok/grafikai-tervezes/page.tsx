@@ -158,7 +158,7 @@ export default async function GraphicDesignPage() {
 
               <div className="rounded-2xl overflow-hidden border border-slate-700/60">
                 <Image
-                  src="/assets/banners/graphic-sample.jpg"
+                  src="/assets/banners/webdue-branding_mockup_05-copy copy.webp"
                   alt="Grafikai tervezési példa - vektoros logók és marketing anyagok"
                   width={1200}
                   height={800}

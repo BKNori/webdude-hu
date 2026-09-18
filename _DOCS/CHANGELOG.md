@@ -1,5 +1,12 @@
 # Changelog
 
+## [7.3.1] — 2026-09-18 — Törött asset-hivatkozások javítása (9 db → 0 db)
+
+- **Hivatkozás-javítások (7 db):** `src/app/szolgaltatasok/add-onok/page.tsx` — openGraph kép és JSON-LD `image` → `/og/webdude-og.jpg` (projekt-szintű konvenció), JSON-LD `Organization.logo` → `https://webdude.hu/assets/logos/webdude-logo.webp`; `src/app/szolgaltatasok/grafikai-tervezes/page.tsx` — hero illusztráció → `/assets/banners/webdue-branding_mockup_05-copy copy.webp`; `src/data/projects.ts` — RIMAI hero → `/assets/portfolio/Rimai/rimai-3d-glass-window-logo-mockup-copy.webp`, Dr. Danyi mockup → `/assets/szolgaltatasok/laptop-DeviceMockup-copy.webp`, Bt Shop mockup → `/assets/portfolio/Weboldalak/bt-shop-weboldal3.webp`.
+- **Fájl-áthelyezés:** `public/banner-webdde-copy-2-1536x857.webp` (public gyökér) → `public/assets/banners/` — a `src/app/hirek/page.tsx` hero hivatkozása így kódváltozás nélkül működik.
+- **Archiválás:** `PortfolioSectionNew.tsx` → `_mentesek/20260918_asset-fix/` (`git mv`). Indok: sehol nincs importálva (halott kód), világos témát használt (`bg-white`, `text-[#111827]`), a v7.0 sötét migrációból kimaradt, és 2 törött asset-hivatkozást tartalmazott. A `_DOCS/ARCHITECTURE.md` regiszterben ARCHIVÁLT státusszal jelölve.
+- **Audit:** 210 `/assets/` hivatkozás vizsgálva → **0 valóban törött** (a zárójeles `Rimai-melyepites-copy (1).webp` létezik; a jelzés regex-hamis pozitív volt).
+- **QA:** `npx tsc --noEmit` TSC_EXIT=0; `npm run lint` LINT_EXIT=0.
 ## [7.3.0] — 2026-09-18 — HeroSlider (Kék-Lila v7.0) + portfólió asset-struktúra rendszerezése
 
 - **Új organismus:** `src/components/organisms/HeroSlider.tsx` (230 sor, `"use client"`) — 3 diás hero diavetítés (Weboldal/webshop, AI-Prompt.hu, AI automatizáció), `AnimatePresence` + spring physics (`stiffness: 100, damping: 20`), trust indikátorok, 6 mp auto-rotate `useReducedMotion` védelemmel, nyíl- és pontvezérlés (`aria-label`, `aria-current`), `next/image` háttér, WCAG focus ring. **Egyetlen page-be sincs bekötve** — bekötés külön ciklusban.

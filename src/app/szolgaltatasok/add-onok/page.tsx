@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     title: "Azonnali Kiegészítő Szolgáltatások (Add-onok) | WebDude",
     description:
       "Fix áras mikromegoldások azonnali indítással. Weboldal audit, SEO cikk, Lighthouse gyorsítás, banner csomag és Schema integráció.",
-    images: [{ url: "/assets/og-image.jpg", width: 1200, height: 630 }],
+    images: [{ url: "/og/webdude-og.jpg", width: 1200, height: 630 }],
   },
 };
 
@@ -229,8 +229,8 @@ export default async function AddonsPage() {
         "@id": "https://webdude.hu/#organization",
         name: "WebDude",
         url: "https://webdude.hu",
-        logo: "https://webdude.hu/assets/logo.png",
-        image: "https://webdude.hu/assets/og-image.jpg",
+        logo: "https://webdude.hu/assets/logos/webdude-logo.webp",
+        image: "https://webdude.hu/og/webdude-og.jpg",
         description:
           "Prémium webfejlesztési, grafikai és AI-automatizációs szolgáltatások Norbitól.",
         telephone: "+36703238003",
