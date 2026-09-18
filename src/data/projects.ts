@@ -356,7 +356,7 @@ export const projects: readonly Project[] = [
     result:
       "A megújult felületnek köszönhetően nőtt a konverziós ráta, az organikus Google helyezések javultak, a látogatók pedig hosszabb időt töltenek az oldalon.",
     assets: {
-      hero: "/assets/portfolio/2025/01/wordpress-weboldalak-keszitese-grafikai-tervezes.webp",
+      hero: "/assets/banners/wordpress-weboldalak-keszitese-grafikai-tervezes.webp",
     },
     keywords: ["Weboldal készítés", "Grafikai tervezés", "Arculattervezés"],
   },

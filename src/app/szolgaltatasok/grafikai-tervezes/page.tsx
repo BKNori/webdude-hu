@@ -26,7 +26,7 @@ export async function generateMetadata(): Promise<Metadata> {
       siteName: "WebDude",
       images: [
         {
-          url: "https://webdude.hu/assets/portfolio/2025/01/marina-nagytabla-copy-2.webp",
+          url: "https://webdude.hu/assets/portfolio/marina-lakopark/marina-nagytabla-copy-2.webp",
           width: 1920,
           height: 1280,
           alt: "Grafikai tervezési példa - Marina nagy tábla projekt",
@@ -39,7 +39,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description:
         "26 év tapasztalattal: vektoros logók, prospektusok, marketing anyagok és teljes vizuális arculati tervezés. Értékesítés-fókuszú grafikák webshopok és vállalkozások számára.",
       images: [
-        "https://webdude.hu/assets/portfolio/2025/01/marina-nagytabla-copy-2.webp",
+        "https://webdude.hu/assets/portfolio/marina-lakopark/marina-nagytabla-copy-2.webp",
       ],
     },
   };
