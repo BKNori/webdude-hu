@@ -1,5 +1,12 @@
 # Changelog
 
+## [7.4.0] — 2026-09-18 — PortalDashboard refaktor (Phase 1: típusok + konfiguráció)
+
+- **Új SSOT típusfájl:** `src/types/portal.ts` — `Workflow` (a Firestore `workflows` kollekció teljes vetülete: fázis-státusz, munkanapló, jóváhagyás, 5 fázis-ár + fizetési jelző), `PortalUser`, `PortalTab`. A `Workflow.status` mostantól a `TimelinePhaseKey` uniót használja, így a Gantt-tel **közös az egyetlen igazságforrás** (megszűnt a duplikált unió).
+- **Új konfigurációs SSOT:** `src/lib/portalConfig.ts` — `statusConfig` (`Record<TimelinePhaseKey, WorkflowStatusConfig>`, `LucideIcon`-nal típusosítva), `categoryMap`, `SUPERADMIN_TOOLS` (a korábban inline, 209-220. sorban lévő 10 elemű lista).
+- **PortalDashboard.tsx:** 878 → **794 sor** (−84); a 77 soros lokális interface/konstans blokk eltávolítva, `[...SUPERADMIN_TOOLS]` használat, `PortalTab` típus, a feleslegessé vált `Compass` és `Play` import törölve.
+- **QA:** `npx tsc --noEmit` TSC_EXIT=0; `npm run lint` LINT_EXIT=0.
+- **Következő fázis:** Phase 2 — 3 hook kiszervezése (`usePortalSession`, `usePortalData`, `useStripePaymentVerification`).
 ## [7.3.1] — 2026-09-18 — Törött asset-hivatkozások javítása (9 db → 0 db)
 
 - **Hivatkozás-javítások (7 db):** `src/app/szolgaltatasok/add-onok/page.tsx` — openGraph kép és JSON-LD `image` → `/og/webdude-og.jpg` (projekt-szintű konvenció), JSON-LD `Organization.logo` → `https://webdude.hu/assets/logos/webdude-logo.webp`; `src/app/szolgaltatasok/grafikai-tervezes/page.tsx` — hero illusztráció → `/assets/banners/webdue-branding_mockup_05-copy copy.webp`; `src/data/projects.ts` — RIMAI hero → `/assets/portfolio/Rimai/rimai-3d-glass-window-logo-mockup-copy.webp`, Dr. Danyi mockup → `/assets/szolgaltatasok/laptop-DeviceMockup-copy.webp`, Bt Shop mockup → `/assets/portfolio/Weboldalak/bt-shop-weboldal3.webp`.

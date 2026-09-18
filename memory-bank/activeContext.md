@@ -2,7 +2,9 @@
 
 > **AI DIREKTÍVA:** Ez a fájl a rendszer "élő" memóriája. A 03-workflow.md 5. lépése alapján KÖTELEZŐ ezt a fájlt frissítened minden feladat befejezésekor, vagy mielőtt átadod a vezérlést a felhasználónak (Norbinak). Szigorúan tilos új feladatba kezdened, ha az "Aktuális Munkaterület Állapota" szekcióban hibák vagy félbehagyott fájlok vannak!
 
-## Aktuális állapot — 2026-09-18, 7.3.0 (HeroSlider + asset-struktúra rendszerezés)
+## Aktuális állapot — 2026-09-18, 7.4.0 (PortalDashboard refaktor — Phase 1 kész)
+
+- **7.4.0 Phase 1 (2026-09-18):** kiszervezve `src/types/portal.ts` (Workflow, PortalUser, PortalTab) és `src/lib/portalConfig.ts` (statusConfig, categoryMap, SUPERADMIN_TOOLS). PortalDashboard: **878 → 794 sor**. Workflow.status mostantól TimelinePhaseKey (közös SSOT a Gantt-tel). QA: TSC_EXIT=0, LINT_EXIT=0. **Következő: Phase 2** — 3 hook (usePortalSession, usePortalData, useStripePaymentVerification), utána portál login smoke test.
 
 - **QA:** `npx tsc --noEmit` TSC_EXIT=0; working tree 100%-ban tiszta (`git status --porcelain -uall` = 0 sor).
 - **1. commit `39bcc5c`:** `HeroSlider.tsx` (230 sor, kliens komponens, 3 diás hero diavetítés, spring physics, useReducedMotion) + `package.json` 0.1.135 + CHANGELOG + ARCHITECTURE (Organisms regiszter bővítve). A komponens **nincs page-be bekötve**.

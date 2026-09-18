@@ -32,8 +32,6 @@ import {
   Calendar,
   Activity,
   CheckCircle2,
-  Play,
-  Compass,
   AlertCircle,
   Clock,
   UserCheck,
@@ -48,83 +46,12 @@ import OnboardingForm from "@/components/molecules/OnboardingForm";
 import WorkflowChat from "@/components/organisms/WorkflowChat";
 import ProjectTimelineGantt from "@/components/molecules/ProjectTimelineGantt";
 import PortalNotificationBell from "@/components/molecules/PortalNotificationBell";
-
-// Local Workflow definition
-interface Workflow {
-  id: string;
-  title: string;
-  description: string;
-  clientId: string;
-  status:
-    "planning" | "development" | "testing" | "ai_integration" | "completed";
-  content: string;
-  createdAt: string;
-  approvedByClient?: boolean;
-  clientApprovedAt?: string;
-
-  // Pricing & payment fields
-  planningPrice?: number;
-  planningPaid?: boolean;
-  developmentPrice?: number;
-  developmentPaid?: boolean;
-  testingPrice?: number;
-  testingPaid?: boolean;
-  ai_integrationPrice?: number;
-  ai_integrationPaid?: boolean;
-  completedPrice?: number;
-  completedPaid?: boolean;
-}
-
-interface PortalUser {
-  id: string;
-  uid: string;
-  email: string;
-  name: string;
-  role: string;
-}
-
-const categoryMap: Record<string, "cro" | "tech" | "ai" | "design"> = {
-  addon_ux_roast: "design",
-  addon_speed_opt: "tech",
-  addon_seo_article: "ai",
-  addon_cro_audit: "cro",
-  addon_security_pack: "tech",
-  addon_ai_chatbot: "ai",
-};
-
-const statusConfig = {
-  planning: {
-    label: "Tervezés / Audit",
-    color: "border-sky-500/30 text-sky-500 bg-sky-500/5",
-    progress: 25,
-    icon: Compass,
-  },
-  development: {
-    label: "Fejlesztés alatt",
-    color: "border-blue-500/30 text-blue-400 bg-blue-500/5",
-    progress: 50,
-    icon: Play,
-  },
-  testing: {
-    label: "Tesztelés / QA",
-    color: "border-purple-500/30 text-purple-400 bg-purple-500/5",
-    progress: 75,
-    icon: Activity,
-  },
-  ai_integration: {
-    label: "AI Integráció & AEO Optimalizálás",
-    color:
-      "border-sky-500/40 text-sky-500 bg-sky-500/10 shadow-[0_0_15px_rgba(0, 181, 241,0.05)]",
-    progress: 90,
-    icon: Sparkles,
-  },
-  completed: {
-    label: "Átadva / Kész",
-    color: "border-emerald-500/30 text-emerald-400 bg-emerald-500/5",
-    progress: 100,
-    icon: CheckCircle2,
-  },
-};
+import type { PortalTab, PortalUser, Workflow } from "@/types/portal";
+import {
+  categoryMap,
+  statusConfig,
+  SUPERADMIN_TOOLS,
+} from "@/lib/portalConfig";
 
 export default function PortalDashboard() {
   const router = useRouter();
@@ -138,7 +65,7 @@ export default function PortalDashboard() {
   const [error, setError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const [verifyingPayment, setVerifyingPayment] = useState(false);
-  const [activeTab, setActiveTab] = useState<"portal" | "admin">("portal");
+  const [activeTab, setActiveTab] = useState<PortalTab>("portal");
   const [actionLoading, setActionLoading] = useState<string | null>(null);
   const [allUsers, setAllUsers] = useState<PortalUser[]>([]);
   const [allAddons, setAllAddons] = useState<Addon[]>([]);
@@ -206,18 +133,7 @@ export default function PortalDashboard() {
         if (profileRes.success && profileRes.profile) {
           // Superadmin (hello@webdude.hu) gets access to all tools automatically
           if (isAdminUser && currentUser.email === "hello@webdude.hu") {
-            setAllowedTools([
-              "product_desc",
-              "review_assistant",
-              "social_matrix",
-              "cart_recovery",
-              "midjourney_prompt",
-              "banner_concept",
-              "logo_designer",
-              "ui_ux_designer",
-              "seasonal_campaign_designer",
-              "kristofka_workflow",
-            ]);
+            setAllowedTools([...SUPERADMIN_TOOLS]);
           } else {
             // Only users assigned by Superadmin get access
             const userAllowedTools = profileRes.profile.allowedTools || [];

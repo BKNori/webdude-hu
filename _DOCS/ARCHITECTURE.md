@@ -183,6 +183,13 @@ atoms  →  molecules  →  organisms  →  pages
 | `/munkafolyamatok/strategist-pro/kristofka-munkafolyamat` | `src/app/munkafolyamatok/strategist-pro/kristofka-munkafolyamat/page.tsx` | —                                                                                                                                    | Kristófka Munkafolyamat SEO oldal (Server Component)                                                                      |
 | `/api/webhooks/stripe`                                    | `src/app/api/webhooks/stripe/route.ts`                                    | —                                                                                                                                    | Stripe Webhook API végpont (HMAC-SHA256 aláírás-ellenőrzéssel, Firestore `orders`, `users` és `workflows` frissítésekkel) |
 
+### 2.5 Típusok és megjelenítési konfiguráció (SSOT)
+
+| Fájl | Export | Leírás |
+| --- | --- | --- |
+| `src/types/portal.ts` | `Workflow`, `PortalUser`, `PortalTab` | Az ügyfélportál domain-modellje. A `Workflow` a Firestore `workflows` kollekció teljes vetülete; a `status` mező a `TimelinePhaseKey` uniót használja (közös SSOT a Gantt-tel). |
+| `src/lib/portalConfig.ts` | `statusConfig`, `categoryMap`, `SUPERADMIN_TOOLS`, `WorkflowStatusConfig` | JSX-mentes megjelenítési konfiguráció: az 5 szállítási fázis címkéje/színe/haladása/ikonja, add-on kategória-leképezés és a szuperadmin AI moduljai. |
+
 ---
 
 ## 3. Technológiai Stack
