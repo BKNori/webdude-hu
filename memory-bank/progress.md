@@ -4,6 +4,9 @@
 
 ## 1. Minőségbiztosítási Státusz (QA Gates) — 2026-09-16 (Cycle 3160)
 
+- **7.3.0 QA (2026-09-18):** `npx tsc --noEmit` TSC_EXIT=0; working tree tiszta (0 sor); 2 commit: `39bcc5c` (HeroSlider) + `e227928` (asset-struktúra, 135 fájl); 46/46 törölt asset megőrizve (SHA256); 9 törött asset-hivatkozás külön migrációs ciklusra marad.
+- **Nyitott:** `firestore.rules` + `firestore.indexes.json` deploy (kizárólag Norbi); HeroSlider page-be kötése; `PortalDashboard.tsx` (875 sor) szétbontása.
+
 - **Cycle 3160 QA:** TSC_EXIT=0, LINT_EXIT=0 (0 hiba, 0 figyelmeztetés), BUILD_EXIT=0, 141/141 statikus oldal.
 - **Cycle 3160:** PortalNotificationBell bekötve a PortalDashboard fejlécébe; NotificationCenter polling archiválva; usePortalNotifications onAuthStateChanged + cleanup; badge Kék-Lila v7.0 AAA; firestore.indexes.json bővítve (deploykor index-építés kell).
 
