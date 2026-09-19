@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import PortfolioGrid from "@/components/molecules/PortfolioGrid";
 import PortfolioHero from "@/components/molecules/PortfolioHero";
 import { works as staticWorks } from "@/data/works";
@@ -6,16 +6,16 @@ import { works as staticWorks } from "@/data/works";
 export const revalidate = 3600; // 1 órás ISR gyorsítótárazás
 
 export const metadata: Metadata = {
-  title: "Referenciák & Esettanulmányok | WebDude | Webfejlesztés Kecskemét",
+  title: "Referenciák & Esettanulmányok | WebDude | Prémium Webfejlesztés",
   description:
     "Valós ügyféleredmények, konverzió-optimalizált Next.js weboldalak és egyedi digitális rendszerek. 26 év tapasztalat, mérhető növekedés.",
   keywords:
-    "webfejlesztő referenciák, esettanulmányok, Next.js projektek, WordPress fejlesztés, weboldal készítés Kecskemét, grafikai tervezés, arculattervezés",
+    "webfejlesztő referenciák, esettanulmányok, Next.js projektek, WordPress fejlesztés, prémium weboldal készítés, grafikai tervezés, arculattervezés",
   alternates: {
     canonical: "https://webdude.hu/munkak",
   },
   openGraph: {
-    title: "Referenciák & Esettanulmányok | WebDude | Webfejlesztés Kecskemét",
+    title: "Referenciák & Esettanulmányok | WebDude | Prémium Webfejlesztés",
     description:
       "Nézd meg a valós üzleti eredményeket hozó Next.js, WordPress és egyedi webfejlesztési projektjeimet.",
     url: "https://webdude.hu/munkak",
@@ -33,16 +33,42 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Referenciák & Esettanulmányok | WebDude | Webfejlesztés Kecskemét",
+    title: "Referenciák & Esettanulmányok | WebDude | Prémium Webfejlesztés",
     description:
       "Nézd meg a valós üzleti eredményeket hozó Next.js, WordPress és egyedi webfejlesztési projektjeimet.",
     images: ["/og/webdude-portfolio-og.jpg"],
   },
 };
 
+// JSON-LD: CollectionPage + ItemList az AEO (Answer Engine Optimization) szamara
+const portfolioSchema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: "Referenciák & Esettanulmányok | WebDude",
+  description: "Valós ügyféleredmények, konverzió-optimalizált Next.js weboldalak és egyedi digitális rendszerek. 26+ év grafikai és 16+ év webfejlesztői tapasztalat.",
+  url: "https://webdude.hu/munkak",
+  isPartOf: { "@id": "https://webdude.hu/#organization" },
+  mainEntity: {
+    "@type": "ItemList",
+    itemListElement: staticWorks.map((work, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: work.title,
+      url: `https://webdude.hu${work.slug}`,
+    })),
+  },
+};
+
 export default async function MunkakPage() {
   return (
     <main className="min-h-screen bg-bg-base text-text-primary">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(portfolioSchema).replace(/</g, "\\u003c"),
+        }}
+      />
+
       {/* Scroll Video Hero Section - Kliens molekula */}
       <PortfolioHero />
 

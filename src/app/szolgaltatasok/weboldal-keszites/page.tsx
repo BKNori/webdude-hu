@@ -1,4 +1,4 @@
-import Button from "@/components/atoms/Button";
+﻿import Button from "@/components/atoms/Button";
 import Badge from "@/components/atoms/Badge";
 import { Metadata } from "next";
 import BentoCard from "@/components/molecules/BentoCard";
@@ -102,6 +102,16 @@ export default async function WeboldalKeszitesPage() {
     areaServed: { "@type": "Country", name: "Hungary" },
   };
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: FAQ.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: { "@type": "Answer", text: item.a },
+    })),
+  };
+
   return (
     <>
       <script
@@ -116,6 +126,13 @@ export default async function WeboldalKeszitesPage() {
           __html: JSON.stringify(serviceSchema).replace(/</g, "\\u003c"),
         }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqSchema).replace(/</g, "\\u003c"),
+        }}
+      />
+
       <main className="min-h-screen pt-32 pb-20 bg-bg-base text-text-primary relative overflow-hidden">
         {/* Background gradient */}
         <div className="absolute inset-0 bg-linear-to-b from-[#00B5F1]/5 via-transparent to-[#00B5F1]/5" />

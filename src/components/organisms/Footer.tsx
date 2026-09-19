@@ -23,7 +23,7 @@ export default function Footer() {
     },
     {
       name: "WordPress Kecskemét",
-      href: "/szolgaltatasok/wordpress-weboldal-keszites-kecskemet",
+      href: "/szolgaltatasok/weboldal-keszites",
     },
     {
       name: "SEO Optimalizálás",

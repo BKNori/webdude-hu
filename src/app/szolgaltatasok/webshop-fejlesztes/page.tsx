@@ -1,4 +1,4 @@
-import React from "react";
+﻿import React from "react";
 import Link from "next/link";
 import { Metadata } from "next";
 import Script from "next/script";
@@ -41,7 +41,8 @@ export default async function WebshopDevelopmentPage() {
     description:
       "Professzionális webshop fejlesztés kis- és középvállalkozásoknak. WooCommerce, Shopify és egyedi e-kereskedelmi platformok készítése, amelyek növelik az online eladásokat.",
     provider: {
-      "@type": "LocalBusiness",
+      "@id": "https://webdude.hu/#organization",
+      "@type": "Organization",
       name: "WebDude",
       url: "https://webdude.hu",
     },
@@ -175,7 +176,7 @@ export default async function WebshopDevelopmentPage() {
                       "Mobil optimalizált design",
                       "Email support",
                     ],
-                    ctaText: "Basic csomag kérése",
+                    ctaText: "Egyedi árajánlat kérése",
                     ctaLink: "/kapcsolat",
                   },
                   {
@@ -192,7 +193,7 @@ export default async function WebshopDevelopmentPage() {
                       "Prioritás support",
                     ],
                     highlighted: true,
-                    ctaText: "Professional csomag kérése",
+                    ctaText: "Egyedi árajánlat kérése",
                     ctaLink: "/kapcsolat",
                   },
                   {
@@ -209,7 +210,7 @@ export default async function WebshopDevelopmentPage() {
                       "Dedikált support",
                       "24/7 monitoring",
                     ],
-                    ctaText: "Enterprise csomag kérése",
+                    ctaText: "Egyedi árajánlat kérése",
                     ctaLink: "/kapcsolat",
                   },
                 ]}

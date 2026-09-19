@@ -59,7 +59,7 @@ export const NAV_ITEMS: NavItem[] = [
       },
       {
         name: "WordPress Kecskemét",
-        href: "/szolgaltatasok/wordpress-weboldal-keszites-kecskemet",
+        href: "/szolgaltatasok/weboldal-keszites",
         icon: MapPin,
         description: "Helyi WordPress fejlesztés Kecskeméten",
         category: "Helyi",

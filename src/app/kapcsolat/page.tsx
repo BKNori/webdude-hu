@@ -1,4 +1,4 @@
-import ContactFormWrapper from "@/components/organisms/ContactFormWrapper";
+﻿import ContactFormWrapper from "@/components/organisms/ContactFormWrapper";
 import Hero from "@/components/Hero";
 import { Metadata } from "next";
 import { Mail, Phone, MapPin } from "lucide-react";
@@ -6,16 +6,16 @@ import { Mail, Phone, MapPin } from "lucide-react";
 export const metadata: Metadata = {
   title: "Kapcsolat & Konzultáció | WebDude | Közvetlen Megbeszélés",
   description:
-    "Kérj ajánlatot közvetlenül Norbitól! Nincs projektmenedzseri réteg: 26 év tapasztalattal tervezünk és fejlesztünk Next.js rendszereket Kecskemétről.",
+    "Kérj ajánlatot közvetlenül Norbitól! Nincs projektmenedzseri réteg: 26 év tapasztalattal tervezek és fejlesztek Next.js rendszereket országosan.",
   keywords:
-    "kapcsolat, weboldal készítés, grafikai tervezés, WordPress fejlesztés, AI megoldások, Kecskemét, konzultáció",
+    "kapcsolat, weboldal készítés, grafikai tervezés, WordPress fejlesztés, AI megoldások, konzultáció",
   alternates: {
     canonical: "https://webdude.hu/kapcsolat",
   },
   openGraph: {
     title: "Kapcsolat – WebDude | Grafika, Vektor, AI & WordPress Fejlesztés",
     description:
-      "Lépj kapcsolatba velem! 16 év WordPress és 26 év grafikai tapasztalattal. Ingyenes konzultáció, weboldal készítés, arculattervezés és AI megoldások Kecskemétről.",
+      "Lépj kapcsolatba velem! 16 év WordPress és 26 év grafikai tapasztalattal. Ingyenes konzultáció, weboldal készítés, arculattervezés és AI megoldások országosan.",
     url: "https://webdude.hu/kapcsolat",
     siteName: "WebDude",
     images: [
@@ -33,14 +33,49 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Kapcsolat – WebDude | Grafika, Vektor, AI & WordPress Fejlesztés",
     description:
-      "Lépj kapcsolatba velem! 16 év WordPress és 26 év grafikai tapasztalattal. Ingyenes konzultáció, weboldal készítés, arculattervezés és AI megoldások Kecskemétről.",
+      "Lépj kapcsolatba velem! 16 év WordPress és 26 év grafikai tapasztalattal. Ingyenes konzultáció, weboldal készítés, arculattervezés és AI megoldások országosan.",
     images: ["/banners/wordpress-weboldalak-keszitese-grafikai-tervezes.webp"],
+  },
+};
+
+// JSON-LD: ContactPage + LocalBusiness az AEO (Answer Engine Optimization) szamara
+const contactSchema = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  name: "Kapcsolat | WebDude",
+  url: "https://webdude.hu/kapcsolat",
+  isPartOf: { "@id": "https://webdude.hu/#organization" },
+  mainEntity: {
+    "@type": "ProfessionalService",
+    name: "WebDude",
+    url: "https://webdude.hu",
+    email: "hello@webdude.hu",
+    telephone: "+36703238003",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Kecskemét",
+      addressCountry: "HU",
+    },
+    founder: {
+      "@type": "Person",
+      name: "Norbi",
+      jobTitle: "Webfejlesztő és Grafikus",
+    },
   },
 };
 
 export default function ContactPage() {
   return (
-    <main className="min-h-screen bg-transparent text-text-primary">
+    <>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(contactSchema).replace(/</g, "\\u003c"),
+        }}
+      />
+
+      <main className="min-h-screen bg-transparent text-text-primary">
       <Hero
         label="Kapcsolat"
         title={
@@ -122,7 +157,7 @@ export default function ContactPage() {
                     Székhely
                   </span>
                   <span className="text-lg font-bold text-text-primary tracking-tight">
-                    Kecskemét, Magyarország
+                    Magyarország (országos kiszolgálás)
                   </span>
                 </div>
               </div>
@@ -143,6 +178,7 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-    </main>
+      </main>
+    </>
   );
 }

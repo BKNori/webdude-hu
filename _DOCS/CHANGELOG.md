@@ -1,5 +1,24 @@
 # Changelog
 
+## [7.5.0] — 2026-09-19 — SEO/AEO audit: 5 kritikus aloldal (404 redirect, árazás-tisztítás, JSON-LD)
+
+- **404 javítás (CRITICAL):** A menüből és footerből elérhető `/szolgaltatasok/wordpress-weboldal-keszites-kecskemet` URL 404-et adott. Javítva:
+  - `src/components/organisms/Footer.tsx` — link: `/szolgaltatasok/weboldal-keszites`, név: "WordPress Weboldal"
+  - `src/config/navigation.ts` — link: `/szolgaltatasok/weboldal-keszites`, név: "WordPress Weboldal", description: "Professzionális WordPress fejlesztés"
+  - `next.config.js` — új 301 permanent redirect: `/szolgaltatasok/wordpress-weboldal-keszites-kecskemet` → `/szolgaltatasok/weboldal-keszites`
+- **Árazás-tisztítás (CRO):** `webshop-fejlesztes/page.tsx` és `ai-prompt-engineering/page.tsx` — PricingTable CTA-k egységesítve: "Basic/Professional/Enterprise csomag kérése" → **"Egyedi árajánlat kérése"** (prémium pozicionálás, Zéró Fix Ár szabály). Fix "Ft" ár nem maradt a szolgáltatás oldalakon.
+- **SEO metaadatok (lokális korlát eltávolítása):**
+  - `munkak/page.tsx` — title: "...Prémium Webfejlesztés" (volt: "...Kecskemét"), keywords: "prémium weboldal készítés"
+  - `kapcsolat/page.tsx` — description/keywords országos fókuszra átírva ("tervezek és fejlesztek Next.js rendszereket országosan"), elérhetőség-kártya: "Magyarország (országos kiszolgálás)"
+- **JSON-LD/AEO fejlesztés (mind XSS-védett: `.replace(/</g, '\\u003c')`):**
+  - `webshop-fejlesztes/page.tsx` — Service schema provider `@id: "https://webdude.hu/#organization"` entitás-hivatkozással
+  - `weboldal-keszites/page.tsx` — **új FAQPage schema** (5 kérdés-válasz blokk)
+  - `ai-prompt-engineering/page.tsx` — **új FAQPage schema** (5 kérdés-válasz blokk)
+  - `munkak/page.tsx` — **új CollectionPage + ItemList schema** (portfólió elemek)
+  - `kapcsolat/page.tsx` — **új ContactPage + ProfessionalService schema** (E-E-A-T horgonyok: addressLocality entitás-jel, founder Person)
+- **QA:** `npx tsc --noEmit` TSC_EXIT=0 (zéró hiba); `npm run lint` LINT_EXIT=0 (1 ártalmatlan warning a `check-file.js` tesztfájlból, nem produktumkód).
+- **Kétszintű lokációs stratégia (AEO):** Ember által olvasott szöveg = országos/prémium fókusz; JSON-LD strukturált adat = entitás-horgony (Kecskemét `addressLocality` megtartva a `ProfessionalService`-ben).
+
 ## [7.4.0] — 2026-09-18 — PortalDashboard refaktor (Phase 1: típusok + konfiguráció)
 
 - **Új SSOT típusfájl:** `src/types/portal.ts` — `Workflow` (a Firestore `workflows` kollekció teljes vetülete: fázis-státusz, munkanapló, jóváhagyás, 5 fázis-ár + fizetési jelző), `PortalUser`, `PortalTab`. A `Workflow.status` mostantól a `TimelinePhaseKey` uniót használja, így a Gantt-tel **közös az egyetlen igazságforrás** (megszűnt a duplikált unió).

@@ -1,4 +1,4 @@
-import Hero from "@/components/Hero";
+﻿import Hero from "@/components/Hero";
 import Button from "@/components/atoms/Button";
 import Badge from "@/components/atoms/Badge";
 import { Metadata } from "next";
@@ -74,6 +74,16 @@ export default async function AiPromptEngineeringPage() {
     areaServed: { "@type": "Country", name: "Hungary" },
   };
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: FAQ.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: { "@type": "Answer", text: item.a },
+    })),
+  };
+
   return (
     <>
       <script
@@ -88,7 +98,12 @@ export default async function AiPromptEngineeringPage() {
           __html: JSON.stringify(serviceSchema).replace(/</g, "\\u003c"),
         }}
       />
-      <main className="min-h-screen bg-transparent text-text-primary relative overflow-hidden">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqSchema).replace(/</g, "\\u003c"),
+        }}
+      />      <main className="min-h-screen bg-transparent text-text-primary relative overflow-hidden">
         {/* Background gradient */}
         <div className="absolute inset-0 bg-linear-to-b from-[#00B5F1]/5 via-transparent to-[#00B5F1]/5" />
         <div className="relative z-10">

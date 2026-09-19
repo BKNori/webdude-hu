@@ -36,6 +36,11 @@ const nextConfig = {
         destination: "/adatvedelmi-szabalyzat",
         permanent: true,
       },
+      {
+        source: "/szolgaltatasok/wordpress-weboldal-keszites-kecskemet",
+        destination: "/szolgaltatasok/weboldal-keszites",
+        permanent: true,
+      },
     ];
   },
 };

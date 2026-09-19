@@ -1,4 +1,4 @@
-import { MetadataRoute } from "next";
+﻿import { MetadataRoute } from "next";
 import { projects } from "@/data/projects";
 import { posts as fallbackPosts } from "@/data/posts";
 import fs from "fs";
@@ -59,7 +59,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.7,
     },
     {
-      url: `${BASE_URL}/szolgaltatasok/wordpress-weboldal-keszites-kecskemet`,
+      url: `${BASE_URL}/szolgaltatasok/weboldal-keszites`,
       lastModified: BUILD_DATE,
       changeFrequency: "monthly" as const,
       priority: 0.7,
