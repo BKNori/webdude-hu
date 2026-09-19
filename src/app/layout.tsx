@@ -26,7 +26,7 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata = {
   metadataBase: new URL("https://webdude.hu"),
   title:
-    "WebDude | Full-Stack Webfejlesztés, AI Workflow & Agent Rendszerek — Kecskemét",
+    "WebDude | Full-Stack Webfejlesztés, AI Workflow & Agent Rendszerek",
   description:
     "Full-stack webfejlesztés, AI workflow és agent rendszerek — egy kézből. 26 év tapasztalat, Next.js 16, React 19, Tailwind v4, Firebase alapú prémium megoldások.",
   verification: {

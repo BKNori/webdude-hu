@@ -7,7 +7,6 @@ import Button from "@/components/atoms/Button";
 export interface PricingTier {
   id: string;
   name: string;
-  price?: string | null;
   description: string;
   features: string[];
   highlighted?: boolean;
@@ -19,14 +18,12 @@ interface PricingTableProps {
   tiers: PricingTier[];
   title?: string;
   description?: string;
-  currency?: "Ft" | "€" | "$";
 }
 
 export default function PricingTable({
   tiers,
   title,
   description,
-  currency = "Ft",
 }: PricingTableProps) {
   const [hoveredTier, setHoveredTier] = useState<string | null>(null);
 
@@ -79,20 +76,11 @@ export default function PricingTable({
                 {tier.name}
               </h3>
               <p className="text-sm text-slate-400 mb-6">{tier.description}</p>
-              {tier.price ? (
-                <div className="flex items-baseline justify-center gap-2">
-                  <span className="text-5xl font-black text-brand-primary">
-                    {tier.price}
-                  </span>
-                  <span className="text-lg text-slate-400">{currency}</span>
-                </div>
-              ) : (
-                <div className="flex items-center justify-center">
-                  <span className="text-2xl font-bold text-brand-primary">
-                    Kérjen árajánlatot
-                  </span>
-                </div>
-              )}
+              <div className="flex items-center justify-center">
+                <span className="text-2xl font-bold text-brand-primary">
+                  Egyedi árajánlat kérése
+                </span>
+              </div>
             </div>
 
             <ul className="space-y-4 mb-8">

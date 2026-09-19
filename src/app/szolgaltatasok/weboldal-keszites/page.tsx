@@ -389,7 +389,7 @@ export default async function WeboldalKeszitesPage() {
                       "Google Analytics és Search Console integráció",
                       "1 hónap karbantartás",
                     ],
-                    ctaText: "Landing Page kérése",
+                    ctaText: "Egyedi árajánlat kérése",
                     ctaLink: "/kapcsolat",
                   },
                   {
@@ -407,7 +407,7 @@ export default async function WeboldalKeszitesPage() {
                       "3 hónap karbantartás",
                     ],
                     highlighted: true,
-                    ctaText: "Vállalati Weboldal kérése",
+                    ctaText: "Egyedi árajánlat kérése",
                     ctaLink: "/kapcsolat",
                   },
                   {
@@ -424,12 +424,12 @@ export default async function WeboldalKeszitesPage() {
                       "SEO optimalizált termékoldalak",
                       "3 hónap prémium karbantartás",
                     ],
-                    ctaText: "Webshop kérése",
+                    ctaText: "Egyedi árajánlat kérése",
                     ctaLink: "/kapcsolat",
                   },
                 ]}
-                title="Válassza ki a megfelelő csomagot"
-                description="Minden csomag tartalmazza a konzultációt, webspecifikáció kialakítást, fejlesztést, tesztelést és deploy-ot. Kérjen személyre szabott árajánlatot."
+                title="Egyedi árajánlat kérése"
+                description="Minden projekt egyedi igények alapján kerül árazásra. Kérj személyre szabott árajánlatot."
               />
             </div>
           </section>

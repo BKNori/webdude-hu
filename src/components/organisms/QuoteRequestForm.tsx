@@ -251,10 +251,10 @@ export default function QuoteRequestForm() {
                 className="w-full bg-[#1e293b]/50 border border-slate-800 focus:border-sky-500/50 rounded-xl px-4 py-3 text-[#e2e8f0] outline-none transition-all"
               >
                 <option value="">-- Válassz keretet --</option>
-                <option value="150k-300k">150 000 Ft - 300 000 Ft</option>
-                <option value="300k-600k">300 000 Ft - 600 000 Ft</option>
-                <option value="600k-1.5m">600 000 Ft - 1 500 000 Ft</option>
-                <option value="1.5m+">1 500 000 Ft felett</option>
+                <option value="150k-300k">150 000 – 300 000</option>
+                <option value="300k-600k">300 000 – 600 000</option>
+                <option value="600k-1.5m">600 000 – 1 500 000</option>
+                <option value="1.5m+">1 500 000 felett</option>
               </select>
               {errors.budget && (
                 <p className="text-red-500 text-sm mt-1">

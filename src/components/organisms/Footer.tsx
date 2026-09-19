@@ -22,7 +22,7 @@ export default function Footer() {
       href: "/szolgaltatasok/webshop-fejlesztes",
     },
     {
-      name: "WordPress Kecskemét",
+      name: "WordPress Weboldal",
       href: "/szolgaltatasok/weboldal-keszites",
     },
     {
@@ -90,7 +90,7 @@ export default function Footer() {
             </Link>
             <p className="text-slate-400 text-sm leading-relaxed mb-6">
               Prémium webfejlesztés, grafikai tervezés és AI automatizáció
-              Kecskemétről. 26 éves grafikusi és 16 éves webfejlesztési
+              országosan. 26 éves grafikusi és 16 éves webfejlesztési
               tapasztalattal.
             </p>
             <div className="flex items-center gap-4">

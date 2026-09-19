@@ -8,15 +8,19 @@ import { buildBreadcrumbSchema, BreadcrumbItem } from "@/lib/breadcrumb";
 import LucideIcon from "@/components/atoms/LucideIcon";
 
 export const metadata: Metadata = {
-  title: "Webshop Fejlesztés – WebDude | E-kereskedelmi Platformok KKV-knak",
+  title: "Webshop Fejlesztés | WebDude | Prémium E-kereskedelmi Platformok",
   description:
-    "Professzionális webshop fejlesztés kis- és középvállalkozásoknak. WooCommerce, Shopify és egyedi e-kereskedelmi platformok készítése, amelyek növelik az online eladásokat.",
+    "Prémium webshop fejlesztés kis- és középvállalkozásoknak. Next.js alapú, konverzió-optimalizált e-kereskedelmi rendszerek WooCommerce és egyedi platformokon.",
   keywords:
-    "webshop fejlesztés, e-kereskedelmi platform, WooCommerce fejlesztés, Shopify fejlesztés, online bolt készítés, KKV webshop, e-commerce megoldások",
+    "webshop fejlesztés, e-kereskedelmi platform, prémium webshop készítés, WooCommerce fejlesztés, Shopify fejlesztés, online bolt készítés, e-commerce megoldások",
+  alternates: {
+    canonical: "https://webdude.hu/szolgaltatasok/webshop-fejlesztes",
+  },
   openGraph: {
-    title: "Webshop Fejlesztés – WebDude | E-kereskedelmi Platformok KKV-knak",
+    title: "Webshop Fejlesztés | WebDude | Prémium E-kereskedelmi Platformok",
     description:
-      "Professzionális webshop fejlesztés kis- és középvállalkozásoknak. WooCommerce, Shopify és egyedi e-kereskedelmi platformok készítése.",
+      "Prémium webshop fejlesztés kis- és középvállalkozásoknak. Next.js alapú, konverzió-optimalizált e-kereskedelmi rendszerek WooCommerce és egyedi platformokon.",
+    url: "https://webdude.hu/szolgaltatasok/webshop-fejlesztes",
     type: "website",
     locale: "hu_HU",
     siteName: "WebDude",
@@ -38,8 +42,9 @@ export default async function WebshopDevelopmentPage() {
     "@context": "https://schema.org",
     "@type": "Service",
     name: "Webshop Fejlesztés",
+    url: "https://webdude.hu/szolgaltatasok/webshop-fejlesztes",
     description:
-      "Professzionális webshop fejlesztés kis- és középvállalkozásoknak. WooCommerce, Shopify és egyedi e-kereskedelmi platformok készítése, amelyek növelik az online eladásokat.",
+      "Prémium webshop fejlesztés kis- és középvállalkozásoknak. Next.js alapú, konverzió-optimalizált e-kereskedelmi rendszerek WooCommerce és egyedi platformokon.",
     provider: {
       "@id": "https://webdude.hu/#organization",
       "@type": "Organization",
@@ -214,8 +219,8 @@ export default async function WebshopDevelopmentPage() {
                     ctaLink: "/kapcsolat",
                   },
                 ]}
-                title="Válassza ki az Önnek megfelelő webshop csomagot"
-                description="Komplett e-kereskedelmi megoldások KKV-knak. Kérjen személyre szabott árajánlatot."
+                title="Egyedi árajánlat kérése"
+                description="Komplett, prémium e-kereskedelmi megoldások egyedi igényekre szabva. Kérj személyre szabott árajánlatot."
               />
             </div>
           </div>

@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Kapcsolat & Konzultáció | WebDude | Közvetlen Megbeszélés",
   description:
-    "Kérj ajánlatot közvetlenül Norbitól! Nincs projektmenedzseri réteg: 26 év tapasztalattal tervezünk és fejlesztünk Next.js rendszereket Kecskemétről.",
+    "Kérj ajánlatot közvetlenül Norbitól! Nincs projektmenedzseri réteg: 26 év tapasztalattal tervezek és fejlesztek Next.js rendszereket országosan.",
   alternates: {
     canonical: "https://webdude.hu/kapcsolat",
   },
@@ -17,7 +17,7 @@ const kapcsolatJsonLd = {
       name: "WebDude.hu",
       url: "https://webdude.hu",
       description:
-        "Prémium webfejlesztés, grafikai tervezés és AI automatizáció Kecskemétről. 26 év grafikai és 16 év webfejlesztői tapasztalattal.",
+        "Prémium webfejlesztés, grafikai tervezés és AI automatizáció országosan. 26 év grafikai és 16 év webfejlesztői tapasztalattal.",
     },
     {
       "@type": "LocalBusiness",
@@ -25,7 +25,7 @@ const kapcsolatJsonLd = {
       name: "WebDude",
       url: "https://webdude.hu",
       description:
-        "Prémium webfejlesztés, grafikai tervezés és AI automatizáció Kecskemétről. Egyedi weboldalak, arculattervezés és AI megoldások. 26 év grafikai és 16 év webfejlesztői tapasztalattal.",
+        "Prémium webfejlesztés, grafikai tervezés és AI automatizáció országosan. Egyedi weboldalak, arculattervezés és AI megoldások. 26 év grafikai és 16 év webfejlesztői tapasztalattal.",
       telephone: "+36703238003",
       email: "hello@webdude.hu",
       address: {
@@ -56,7 +56,7 @@ const kapcsolatJsonLd = {
         name: "Norbi (WebDude)",
         jobTitle: "Webfejlesztő és Grafikai Tervező",
         description:
-          "16+ év webfejlesztő és 26+ év grafikai tapasztalattal rendelkező digitális szakember. Egyedi weboldalak, arculattervezés és AI automatizáció Kecskemétről. Közvetlen együttműködés, nincs ügynökségi bonyolultság.",
+          "16+ év webfejlesztő és 26+ év grafikai tapasztalattal rendelkező digitális szakember. Egyedi weboldalak, arculartervezés és AI automatizáció országosan. Közvetlen együttműködés, nincs ügynökségi bonyolultság.",
       },
       sameAs: [
         "https://www.facebook.com/webdude.hu",

@@ -2,7 +2,7 @@
 
 > **AI DIREKTÍVA:** Ez a fájl a rendszer "élő" memóriája. A 03-workflow.md 5. lépése alapján KÖTELEZŐ ezt a fájlt frissítened minden feladat befejezésekor, vagy mielőtt átadod a vezérlést a felhasználónak (Norbinak). Szigorúan tilos új feladatba kezdened, ha az "Aktuális Munkaterület Állapota" szekcióban hibák vagy félbehagyott fájlok vannak!
 
-## Aktuális állapot — 2026-09-18, 7.4.0 (PortalDashboard refaktor — Phase 1 kész)
+## Aktuális állapot — 2026-09-19, 7.5.0 (SEO/AEO audit: 404 javítás, ár-tisztítás, JSON-LD)
 
 - **7.4.0 Phase 1 (2026-09-18):** kiszervezve `src/types/portal.ts` (Workflow, PortalUser, PortalTab) és `src/lib/portalConfig.ts` (statusConfig, categoryMap, SUPERADMIN_TOOLS). PortalDashboard: **878 → 794 sor**. Workflow.status mostantól TimelinePhaseKey (közös SSOT a Gantt-tel). QA: TSC_EXIT=0, LINT_EXIT=0. **Következő: Phase 2** — 3 hook (usePortalSession, usePortalData, useStripePaymentVerification), utána portál login smoke test.
 

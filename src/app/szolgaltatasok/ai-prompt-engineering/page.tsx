@@ -13,7 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: "AI Prompt Engineering | WebDude",
     description:
-      "Professzionális AI prompt engineering szolgáltatás: ChatGPT, Claude és egyedi AI modellek prompt fejlesztése, optimalizálása és konfigurációja a maximális hatékonyságért.",
+      "AI prompt engineering szolgáltatás: ChatGPT és Claude promptok fejlesztése, optimalizálása és tesztelése. Megbízható AI rendszerek egyedi igényekre.",
     keywords:
       "AI prompt engineering, ChatGPT prompt, Claude prompt, prompt fejlesztés, AI konfiguráció, ChatGPT optimalizálás, prompt szakértő",
     alternates: {
@@ -63,8 +63,9 @@ export default async function AiPromptEngineeringPage() {
     "@context": "https://schema.org",
     "@type": "Service",
     name: "AI Prompt Engineering",
+    url: "https://webdude.hu/szolgaltatasok/ai-prompt-engineering",
     description:
-      "Professzionális AI prompt engineering szolgáltatás: ChatGPT, Claude és egyedi AI modellek prompt fejlesztése, optimalizálása és konfigurációja a maximális hatékonyságért.",
+      "AI prompt engineering szolgáltatás: ChatGPT és Claude promptok fejlesztése, optimalizálása és tesztelése. Megbízható AI rendszerek egyedi igényekre.",
     provider: {
       "@type": "Organization",
       "@id": "https://webdude.hu/#organization",

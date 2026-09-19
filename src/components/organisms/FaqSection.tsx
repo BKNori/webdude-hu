@@ -9,7 +9,7 @@ export default function FaqSection() {
     },
     {
       q: "Mennyibe kerül egy weboldal vagy webshop?",
-      a: "Az árak a projekt komplexitásától függenek. Egy bemutatkozó oldal 300.000–600.000 Ft, webshop 800.000–2.000.000 Ft között indul. A projektekhez 30% előleget kérek a munkakezdéshez, amelyet a végszámlából levonok. Kérj személyre szabott ajánlatot!",
+      a: "Az árak projekt-specifikusak — a feladat összetettségétől és a funkcionalitások méretétől függően alakulnak. Minden szerződés előtt egy személyre szabott árajánlatot készítek a konkrét igényeid alapján, így mindig tudni fogod, mire számíthatsz. Kérj egyedi árajánlatot!",
     },
     {
       q: "Segít a WebDude a szövegírásban is?",
