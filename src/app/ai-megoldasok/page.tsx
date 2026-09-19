@@ -5,15 +5,15 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "motion/react";
 import {
-  Zap,
-  Bot,
-  Sparkles,
   ArrowRight,
   CheckCircle,
-  Target,
+  Zap,
+  Sparkles,
+  Bot,
   TrendingUp,
   Clock,
   Shield,
+  Target,
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
@@ -131,18 +131,18 @@ export default function AIMSolutionsPage() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+      setCurrentSlide((prev: number) => (prev + 1) % heroSlides.length);
     }, 5000);
     return () => clearInterval(interval);
   }, []);
 
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+    setCurrentSlide((prev: number) => (prev + 1) % heroSlides.length);
   };
 
   const prevSlide = () => {
     setCurrentSlide(
-      (prev) => (prev - 1 + heroSlides.length) % heroSlides.length
+      (prev: number) => (prev - 1 + heroSlides.length) % heroSlides.length
     );
   };
 
