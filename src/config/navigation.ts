@@ -13,6 +13,8 @@ import {
   Copy,
   Wrench,
   Zap,
+  ShieldAlert,
+  RefreshCw,
 } from "lucide-react";
 
 export interface NavItem {
@@ -147,6 +149,27 @@ export const NAV_ITEMS: NavItem[] = [
         href: "/szolgaltatasok/technikai-seo-audit",
         icon: Search,
         description: "Indexelési hibák és rejtett akadályok feltárása",
+        category: "Marketing",
+      },
+      {
+        name: "WordPress Biztonság",
+        href: "/szolgaltatasok/wordpress-biztonsag",
+        icon: ShieldAlert,
+        description: "Azonnali vírusirtás és sebezhetőség-zárás",
+        category: "Biztonság",
+      },
+      {
+        name: "Weboldal Felújítás",
+        href: "/szolgaltatasok/weboldal-felujitas",
+        icon: RefreshCw,
+        description: "Elavult honlapok modernizálása és konverziója",
+        category: "Web",
+      },
+      {
+        name: "Helyi SEO (Local SEO)",
+        href: "/szolgaltatasok/helyi-seo",
+        icon: MapPin,
+        description: "Google Térkép optimalizálás és helyi dominancia",
         category: "Marketing",
       },
       {

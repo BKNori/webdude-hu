@@ -9,6 +9,26 @@
 - **Fontosság:** Kiemelt stratégiai feladat
 - **Megjegyzés:** Ez a feladat a CHANGELOG-ban van rögzítve jövőbeli implementációra
 
+## [PHASE 5 / BATCH 2: MÁSODIK PRIORITÁS — FÁJDALOMPONT-FÓKUSZÚ LANDING OLDALAK] — 2026-09-22 — WordPress Biztonság és Vírusirtás, Weboldal Felújítás & Helyi SEO (COMPLETE)
+
+- **Azonnali és Megelőző Problémakezelés:** Akut hibák (feltört WordPress, spam átirányítások, Google büntetés), elavult vizuális/technikai honlapok, valamint a környékbeli Google Térkép láthatóság hiányának célzott megoldása.
+- **Zéró Fix Ár Szabály:** Transzparens csomagstruktúra (Sürgősségi/Facelift/Alap, Rendszerkeményítés/Pro/Dominancia, Védelmi Pajzs/Enterprise/Multi-telephely), fix díjak nélkül, "Azonnali segítség kérése", "Projektfelmérés" és "Egyedi árajánlat" CTA-kal.
+- **Kék-Lila v7.0 & Tailwind v4:** Modern Tailwind v4 (`bg-linear-to-r`, `from-cta-from`, `bg-slate-950`, cián/lila luminous effektek, zéró amber/yellow).
+- **Server Component (RSC) & XSS Védelem:** Valamennyi `page.tsx` tiszta szerverkomponens, beágyazott és `.replace(/</g, '\\u003c')` szűrővel ellátott `Service` és `FAQPage` AEO sémákkal.
+- **WordPress Biztonság és Vírusirtás (`/szolgaltatasok/wordpress-biztonsag`):**
+  - H1: "Feltört WordPress weboldal helyreállítása és maximális biztonság"
+  - Rejtett backdoor irtás, Google de-blacklist, 100%-os kódfertőtlenítés, adatvesztésmentes mentés és rendszerkeményítés (hardening).
+- **Weboldal Felújítás (`/szolgaltatasok/weboldal-felujitas`):**
+  - H1: "Weboldal felújítás: Elavult honlapból ügyfélszerző gépezet"
+  - Mobile-first reszponzivitás, 301-es redirect védelem (pozícióvesztés nélkül), eladásfókuszú CTA architektúra és modern Next.js/WordPress motor.
+- **Helyi SEO (Local SEO) (`/szolgaltatasok/helyi-seo`):**
+  - H1: "Helyi SEO: Urald a Google keresőt a saját városodban"
+  - Google Cégprofil (Google Business Profile) optimalizálás, Local Map Pack Top 3 pozíció, NAP konzisztencia, Schema.org geokoordináták és értékelésgyűjtési stratégia.
+- **Navigáció Szinkronizáció (`src/config/navigation.ts`):**
+  - Az új aloldalak integrálva a Szolgáltatások legördülő menüjébe (`ShieldAlert`, `RefreshCw`, `MapPin`), megelőzve az árva URL-eket.
+
+---
+
 ## [PHASE 5 / BATCH 1: MÁSODIK PRIORITÁS — FÁJDALOMPONT-FÓKUSZÚ LANDING OLDALAK] — 2026-09-22 — WordPress Karbantartás, Weboldal Gyorsítás & Technikai SEO Audit (COMPLETE)
 
 - **Fájdalompont- és Problémamegoldó Fókusz:** A látogatók konkrét üzleti veszteségeinek (leállás, feltörés, 20%-os konverzióvesztés a lassúság miatt, láthatatlanság a keresőben) célzott kezelése.
