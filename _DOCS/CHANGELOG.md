@@ -9,6 +9,26 @@
 - **Fontosság:** Kiemelt stratégiai feladat
 - **Megjegyzés:** Ez a feladat a CHANGELOG-ban van rögzítve jövőbeli implementációra
 
+## [PHASE 5 / BATCH 1: MÁSODIK PRIORITÁS — FÁJDALOMPONT-FÓKUSZÚ LANDING OLDALAK] — 2026-09-22 — WordPress Karbantartás, Weboldal Gyorsítás & Technikai SEO Audit (COMPLETE)
+
+- **Fájdalompont- és Problémamegoldó Fókusz:** A látogatók konkrét üzleti veszteségeinek (leállás, feltörés, 20%-os konverzióvesztés a lassúság miatt, láthatatlanság a keresőben) célzott kezelése.
+- **Zéró Fix Ár Szabály:** Transzparens 3 lépcsős struktúrák (Alap/Audit, Prémium/Pro, Enterprise/Kivitelezés) fix díjak nélkül, kizárólag "Egyedi árajánlat kérése" és audit CTA-kal.
+- **Kék-Lila v7.0 & Tailwind v4:** Teljes mértékben modern Tailwind CSS v4 szintaxis (`bg-linear-to-r`, `from-cta-from`, `bg-slate-950`, cián/lila luminous effektek).
+- **Server Component (RSC) & XSS Védelem:** Minden `page.tsx` tiszta szerverkomponens, `.replace(/</g, '\\u003c')` szűrt `Service` és `FAQPage` AEO sémákkal.
+- **WordPress Karbantartás & Hibajavítás (`/szolgaltatasok/wordpress-karbantartas`):**
+  - H1: "WordPress karbantartás: hogy a weboldalad sose hagyjon cserben"
+  - Biztonsági audit, kártevőirtás, staging frissítés, 24/7 uptime monitoring és off-site mentések bemutatása.
+- **Weboldal Sebességoptimalizálás (`/szolgaltatasok/weboldal-sebessegoptimalizalas`):**
+  - H1: "Ne veszíts több ügyfelet a lassú betöltés miatt"
+  - Core Web Vitals (LCP, INP, CLS) megfelelés, Next-Gen képkonverzió (WebP/AVIF), kódminifikálás, szerveroldali gyorsítótárazás.
+- **Technikai SEO Audit (`/szolgaltatasok/technikai-seo-audit`):**
+  - H1: "Tudd meg, mi fogja vissza a weboldaladat a Google-ben"
+  - Indexelési hibák, strukturált adatok (Schema.org / JSON-LD / AEO), belső linkstruktúra és versenytárs réshasáb audit.
+- **Navigáció Szinkronizáció (`src/config/navigation.ts`):**
+  - Mindhárom új aloldal felvéve a Szolgáltatások menübe a megfelelő ikonokkal (`Wrench`, `Zap`, `Search`), megakadályozva az árva (orphan) oldalak kialakulását.
+
+---
+
 ## [PHASE 4: GLOBÁLIS BIZALOMÉPÍTŐ ÉS E-E-A-T ALAPOLDALAK] — 2026-09-22 — Kapcsolat, Munkák (Referenciák), Szia Norbi vagyok (COMPLETE)
 
 - **Kék-Lila v7.0 Vizuális Harmónia:** Minden oldalon a prémium `slate-950` háttér, `from-[#075985] to-[#5B21B6]` gradiens gombok és a kék/lila akcentusok dominálnak. Sárga/amber/gold maradványok teljesen felszámolva.

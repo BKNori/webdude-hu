@@ -3,108 +3,108 @@ import Link from "next/link";
 import { 
   CheckCircle2, 
   ArrowRight, 
-  Code2, 
-  ShieldCheck, 
-  Gauge, 
   Search, 
   HelpCircle,
-  Layers,
   Sparkles,
-  Settings2
+  FileSearch,
+  Code2,
+  Share2,
+  Target,
+  BarChart3
 } from "lucide-react";
 import PricingTable, { type PricingTier } from "@/components/molecules/PricingTable";
 
 export const metadata: Metadata = {
-  title: "WordPress weboldal készítés | Egyedi fejlesztés | WebDude",
-  description: "Egyedi WordPress weboldal készítés, felújítás és fejlesztés vállalkozásoknak. Gyors, biztonságos, könnyen kezelhető és SEO-barát megoldások.",
+  title: "Technikai SEO Audit | Keresőoptimalizálás | WebDude",
+  description: "Miért nem találják a weboldalad a Google-ben? Átfogó technikai SEO audit és priorizált javítási terv a láthatóság növeléséért.",
   openGraph: {
-    title: "WordPress weboldal készítés | Egyedi fejlesztés | WebDude",
-    description: "Egyedi WordPress weboldal készítés, felújítás és fejlesztés vállalkozásoknak. Gyors, biztonságos, könnyen kezelhető és SEO-barát megoldások.",
-    url: "https://webdude.hu/szolgaltatasok/wordpress-weboldal-keszites",
+    title: "Technikai SEO Audit | Keresőoptimalizálás | WebDude",
+    description: "Miért nem találják a weboldalad a Google-ben? Átfogó technikai SEO audit és priorizált javítási terv a láthatóság növeléséért.",
+    url: "https://webdude.hu/szolgaltatasok/technikai-seo-audit",
     type: "website",
   },
 };
 
 const pricingTiers: PricingTier[] = [
   {
-    id: "wp-starter",
-    name: "Alap WordPress Weboldal",
-    description: "Ideális bemutatkozó oldal vagy portfólió induló vállalkozásoknak egyedi sablonnal és letisztult adminnal.",
+    id: "seo-audit-starter",
+    name: "Alap SEO Audit & Elemzés",
+    description: "Kisvállalkozói oldalaknak a rejtett indexelési és technikai akadályok gyors felderítéséhez.",
     features: [
-      "Egyedi, reszponzív dizájn (nem vásárolt sablon)",
-      "Gutenberg blokkalapú, villámgyors szerkesztőfelület",
-      "Alapvető technikai és on-page SEO beállítások",
-      "Biztonsági keményítés (brute force és spam védelem)",
-      "Kapcsolati űrlap és alapvető analitika bekötés"
+      "Feltérképezési és indexelési hibák (Google Search Console) feltárása",
+      "Kulcsfontosságú meta címkék (Title, Description) auditja",
+      "Törött linkek (404-es hibák) és átirányítási láncok listázása",
+      "Mobilbarát működés és alapvető sebességelemzés",
+      "Vezetői összefoglaló a legégetőbb teendőkről"
     ],
     highlighted: false,
     ctaText: "Egyedi árajánlat kérése",
-    ctaLink: "/kapcsolat?service=wordpress-starter",
+    ctaLink: "/kapcsolat?service=seo-audit-starter",
   },
   {
-    id: "wp-pro",
-    name: "Üzleti & Prémium WordPress",
-    description: "Komplexebb vállalkozói portál egyedi funkciókkal, automatizációkkal és kiemelt konverziófókusszal.",
+    id: "seo-audit-pro",
+    name: "Mélyreható Technikai & Tartalmi Audit",
+    description: "Növekedni vágyó cégeknek és webáruházaknak átfogó versenytárselemzéssel és javítási tervvel.",
     features: [
-      "Minden, ami az Alap csomagban szerepel",
-      "Egyedi egyedi mezők (ACF Pro) és egyedi bejegyzéstípusok",
-      "Fejlett sebességoptimalizálás (90+ Google PageSpeed)",
-      "CRM, számlázó és hírlevélküldő integrációk",
-      "Többnyelvűsítés előkészítése és strukturált adatok (Schema)",
-      "Részletes betanítás és képernyővideós dokumentáció"
+      "Minden, ami az Alap auditban szerepel",
+      "Strukturált adatok (Schema.org / JSON-LD) és Rich Snippet audit",
+      "Tartalmi kannibalizáció és duplikációk felderítése",
+      "Keresési szándék (Search Intent) és kulcsszó-lefedettségi vizsgálat",
+      "3 legfontosabb piaci versenytárs technikai összehasonlítása",
+      "Priorizált, lépésről-lépésre kivitelezhető akcióterv"
     ],
     highlighted: true,
     ctaText: "Egyedi árajánlat kérése",
-    ctaLink: "/kapcsolat?service=wordpress-pro",
+    ctaLink: "/kapcsolat?service=seo-audit-pro",
   },
   {
-    id: "wp-enterprise",
-    name: "Egyedi Rendszer & Újragondolás",
-    description: "Meglévő, elavult vagy lassú rendszerek modernizálása, egyedi pluginfejlesztés és dedikált támogatás.",
+    id: "seo-audit-execution",
+    name: "Audit + Komplett Hibajavítás",
+    description: "Nemcsak feltárom a problémákat, de a fejlesztői és technikai beállításokat is elvégzem helyetted.",
     features: [
-      "Teljes adatbázis- és tartalommigráció veszteségmentesen",
-      "Egyedi plugin- és funkciófejlesztés specifikáció szerint",
-      "Headless WordPress / Next.js hibrid megoldási lehetőség",
-      "Szigorú kódolási és biztonsági auditok",
-      "Kiemelt SLA és dedikált havi karbantartási opciók"
+      "Teljes körű mélyreható technikai és AEO audit",
+      "Indexelési és canonical hibák azonnali javítása",
+      "Hiányzó strukturált adatok programozása és tesztelése",
+      "Belső linkstruktúra és URL architektúra optimalizálása",
+      "Google Search Console és analitikai audit & újraküldés"
     ],
     highlighted: false,
     ctaText: "Egyedi árajánlat kérése",
-    ctaLink: "/kapcsolat?service=wordpress-enterprise",
+    ctaLink: "/kapcsolat?service=seo-audit-execution",
   },
 ];
 
 const faqs = [
   {
-    q: "Miért egyedi WordPress oldalt készíttessek, ha vannak ingyenes vagy olcsó sablonok is?",
-    a: "A piacon vásárolható sablonok felesleges kódok ezreivel vannak telepakolva, ami lassú betöltést, biztonsági réseket és a frissítések során felmerülő hibákat eredményez. Az általam készített egyedi WordPress oldalak kizárólag a cégedhez szükséges kódot tartalmazzák, így villámgyorsak, stabilak és könnyen bővíthetők.",
+    q: "Miért van szükség technikai SEO auditra?",
+    a: "Gyakran előfordul, hogy egy gyönyörű weboldal azért nem hoz érdeklődőket, mert technikai gátak (rossz noindex beállítás, hiányzó webhelytérkép, lassú válaszidő vagy duplikált URL-ek) miatt a Google robotjai nem tudják megfelelően feltérképezni. Az audit leleplezi ezeket a láthatatlan hibákat.",
   },
   {
-    q: "Tudom majd önállóan is kezelni és módosítani a tartalmakat?",
-    a: "Igen, a projekt átadásának alapfeltétele a testreszabott, intuitív adminfelület és az oktatás. Nem kell kódolni tudnod: a szövegeket, képeket és új bejegyzéseket olyan egyszerűen tudod frissíteni, mint egy Word dokumentumot.",
+    q: "Mennyiben más a technikai audit egy általános SEO elemzésnél?",
+    a: "Míg az általános SEO sokszor csak felületes kulcsszavakat vizsgál, a technikai audit a weboldal alapvető infrastruktúrájára fókuszál: szerver válaszok, HTTP fejlécek, canonical logikák, strukturált adatok és robots.txt direktívák.",
   },
   {
-    q: "Mennyi időt vesz igénybe egy egyedi WordPress weboldal elkészítése?",
-    a: "A projekt összetettségétől függően egy átgondolt bemutatkozó weboldal jellemzően 2–3 hét alatt készül el, míg a komplexebb, egyedi funkciókat vagy migrációt igénylő rendszerek 4–6 hetet vehetnek igénybe.",
+    q: "Mit tartalmaz a kézhez kapott audit riport?",
+    a: "Nem egy értelmezhetetlen, automatikusan legenerált 100 oldalas PDF-et kapsz, hanem egy közérthető, priorizált akciótervet. Pontosan látni fogod, hogy milyen sorrendben mely javítások hozzák a legnagyobb forgalomnövekedést.",
   },
   {
-    q: "Hogyan gondoskodsz a WordPress oldal biztonságáról?",
-    a: "Alapértelmezett bejelentkezési útvonalak elrejtése, kétfaktoros hitelesítés támogatása, automatikus adatbázis-mentések, tűzfal és spamvédelem konfigurálása, valamint rendszeres mag- és bővítményfrissítési protokoll védi a weboldalt a támadásoktól.",
+    q: "Segítesz a feltárt technikai hibák kijavításában is?",
+    a: "Igen! Fejlesztői múltammal közvetlenül a kódbázisban vagy a tartalomkezelőben is el tudom végezni a javításokat, így nem kell külön programozót megbíznod az implementálással.",
   },
 ];
 
-export default function WordPressWeboldalKeszitesPage() {
+export default function TechnikaiSeoAuditPage() {
   const serviceJsonLd = {
     "@context": "https://schema.org",
     "@type": "Service",
-    name: "WordPress weboldal készítés",
+    name: "Technikai SEO Audit",
     provider: {
       "@type": "Person",
       name: "Norbert - WebDude",
       url: "https://webdude.hu",
     },
-    description: "Egyedi WordPress weboldal készítés, felújítás és fejlesztés vállalkozásoknak. Gyors, biztonságos, könnyen kezelhető és SEO-barát megoldások.",
-    serviceType: "Web Development",
+    description: "Miért nem találják a weboldalad a Google-ben? Átfogó technikai SEO audit és priorizált javítási terv a láthatóság növeléséért.",
+    serviceType: "Technical SEO Audit",
     areaServed: "HU",
   };
 
@@ -143,18 +143,18 @@ export default function WordPressWeboldalKeszitesPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sky-950/80 border border-sky-500/30 text-sky-400 text-xs font-medium uppercase tracking-wider mb-6">
-              <Sparkles className="w-3.5 h-3.5 text-[#00B5F1]" />
-              WordPress Szakértelem & Egyedi Fejlesztés
+              <Search className="w-3.5 h-3.5 text-[#00B5F1]" />
+              Adatalapú Keresőoptimalizálás & Diagnosztika
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight mb-6">
-              WordPress weboldal készítés, <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#a855f7]">kompromisszumok nélkül</span>
+              Tudd meg, mi fogja vissza a weboldaladat a <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#a855f7]">Google-ben</span>
             </h1>
             <p className="text-lg sm:text-xl text-slate-300 leading-relaxed mb-8">
-              Ha könnyen szerkeszthető, mégis professzionális weboldalra van szükséged, a WordPress jó alap lehet. Egyedi megjelenést, átgondolt struktúrát, technikai SEO-beállításokat és olyan adminfelületet kapsz, amelyet később önállóan is tudsz használni.
+              A SEO nem varázslat vagy véletlenek játéka, hanem precíz mérnöki munka. Feltárom az indexelési akadályokat, a technikai hibákat és a hiányzó strukturált adatokat, amelyek gátolják a vásárlószerzést.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
-                href="/kapcsolat?service=wordpress"
+                href="/kapcsolat?service=technikai-seo-audit"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-semibold text-white bg-linear-to-r from-cta-from to-[#5B21B6] hover:from-[#0369a1] hover:to-[#6d28d9] shadow-lg shadow-sky-950/50 transition-all duration-300 group"
               >
                 Egyedi árajánlat kérése
@@ -164,132 +164,127 @@ export default function WordPressWeboldalKeszitesPage() {
                 href="#csomagok"
                 className="inline-flex items-center justify-center px-6 py-4 rounded-xl font-medium text-slate-300 bg-slate-900 border border-slate-800 hover:border-slate-700 hover:text-white transition-colors"
               >
-                Csomagok és részletek
+                Audit csomagok
               </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* E-E-A-T Bento Grid Section */}
+      {/* SEO Pillars Bento Grid */}
       <section className="py-24 relative border-b border-slate-800/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-              Nem egy sablonos oldal — Valódi digitális érték
+              Milyen területeket vizsgálok át az audit során?
             </h2>
             <p className="text-slate-400">
-              A legtöbb WordPress oldal elbukik a lassúságon és a túlméretezett bővítményeken. Én a tiszta architektúrában és a fenntartható kódban hiszek.
+              A láthatatlan technikai részletektől a modern AI válaszmotorok (AEO) által megkövetelt strukturált adatokig.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Bento Card 1 */}
             <div className="p-8 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-[#00B5F1]/50 transition-colors duration-300 flex flex-col justify-between">
               <div>
                 <div className="w-12 h-12 rounded-xl bg-sky-950/80 border border-sky-500/30 flex items-center justify-center text-[#00B5F1] mb-6">
-                  <Gauge className="w-6 h-6" />
+                  <FileSearch className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">Maximális Betöltési Sebesség</h3>
+                <h3 className="text-xl font-bold text-white mb-3">Indexelés & Feltérképezés</h3>
                 <p className="text-slate-400 text-sm leading-relaxed">
-                  Optimalizált képek, minifikált scriptek, modern webp/avif formátumok és minimális DOM-méret. Nem terhelem a weboldaladat 40 felesleges pluginnel.
+                  Robots.txt, XML sitemap, noindex direktívák, canonical címkék és szerver hibakódok (404, 500) tüzetes vizsgálata.
                 </p>
               </div>
               <div className="mt-6 pt-6 border-t border-slate-800/80 text-xs text-sky-400 flex items-center gap-1.5 font-semibold">
-                <CheckCircle2 className="w-4 h-4" /> 90+ PageSpeed elvárás
+                <CheckCircle2 className="w-4 h-4" /> Hibátlan bejárhatóság
               </div>
             </div>
 
-            {/* Bento Card 2 */}
-            <div className="p-8 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-[#00B5F1]/50 transition-colors duration-300 flex flex-col justify-between">
-              <div>
-                <div className="w-12 h-12 rounded-xl bg-purple-950/80 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-6">
-                  <Settings2 className="w-6 h-6" />
-                </div>
-                <h3 className="text-xl font-bold text-white mb-3">Könnyen Kezelhető Admin</h3>
-                <p className="text-slate-400 text-sm leading-relaxed">
-                  Gutenberg blokkokkal és egyedi mezőkkel felvértezett vezérlőpult. Úgy formázhatod a szövegeket és tölthetsz fel új tartalmakat, hogy a dizájn nem esik szét.
-                </p>
-              </div>
-              <div className="mt-6 pt-6 border-t border-slate-800/80 text-xs text-purple-400 flex items-center gap-1.5 font-semibold">
-                <CheckCircle2 className="w-4 h-4" /> Nulla kódolási igény átadás után
-              </div>
-            </div>
-
-            {/* Bento Card 3 */}
-            <div className="p-8 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-[#00B5F1]/50 transition-colors duration-300 flex flex-col justify-between">
-              <div>
-                <div className="w-12 h-12 rounded-xl bg-sky-950/80 border border-sky-500/30 flex items-center justify-center text-[#00B5F1] mb-6">
-                  <ShieldCheck className="w-6 h-6" />
-                </div>
-                <h3 className="text-xl font-bold text-white mb-3">Védelmi Szint & Stabilitás</h3>
-                <p className="text-slate-400 text-sm leading-relaxed">
-                  Keményített konfiguráció a leggyakoribb sebezhetőségek (SQL injection, XSS, Brute-Force) ellen. Rendszeres biztonsági másolatok és naprakész komponensek.
-                </p>
-              </div>
-              <div className="mt-6 pt-6 border-t border-slate-800/80 text-xs text-sky-400 flex items-center gap-1.5 font-semibold">
-                <CheckCircle2 className="w-4 h-4" /> Nyugodt üzemeltetés
-              </div>
-            </div>
-
-            {/* Bento Card 4 (Span 2) */}
-            <div className="md:col-span-2 p-8 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-[#00B5F1]/50 transition-colors duration-300">
-              <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-4">
-                <div className="w-12 h-12 rounded-xl bg-sky-950/80 border border-sky-500/30 flex items-center justify-center text-[#00B5F1]">
-                  <Search className="w-6 h-6" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-white">Technikai SEO & Keresőoptimalizálás Alapok</h3>
-                  <p className="text-slate-400 text-sm">Hogy ne csak létezzen a weboldalad, de megtalálják az ügyfeleid is.</p>
-                </div>
-              </div>
-              <p className="text-slate-400 text-sm leading-relaxed mb-4">
-                Tiszta HTML5 struktúra, helyes H1-H3 hierarchia, automatikus XML webhelytérkép generálás, canonical címkék és modern Schema.org strukturált adatok beépítése a legmagasabb szintű Google és AI Answer Engine megfelelésért.
-              </p>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-4 border-t border-slate-800/80">
-                <div className="flex items-center gap-2 text-xs text-slate-300 font-medium">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span>Strukturált adatok</span>
-                </div>
-                <div className="flex items-center gap-2 text-xs text-slate-300 font-medium">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span>Keresőbarát URL-ek</span>
-                </div>
-                <div className="flex items-center gap-2 text-xs text-slate-300 font-medium">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span>OpenGraph közösségi kártyák</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Bento Card 5 */}
             <div className="p-8 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-[#00B5F1]/50 transition-colors duration-300 flex flex-col justify-between">
               <div>
                 <div className="w-12 h-12 rounded-xl bg-purple-950/80 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-6">
                   <Code2 className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">Egyedi Fejlesztés & Bővíthetőség</h3>
+                <h3 className="text-xl font-bold text-white mb-3">Strukturált Adatok & AEO</h3>
                 <p className="text-slate-400 text-sm leading-relaxed">
-                  Ha nem találsz kész plugint a folyamataidra, megírom az egyedi logikát. Webshop, külső API kapcsolat vagy automatizált adatfolyamok.
+                  Schema.org JSON-LD jelölések a Google Rich Snippets és a mesterséges intelligencia keresők (Perplexity, ChatGPT) számára.
                 </p>
               </div>
               <div className="mt-6 pt-6 border-t border-slate-800/80 text-xs text-purple-400 flex items-center gap-1.5 font-semibold">
-                <Layers className="w-4 h-4" /> Korlátlan növekedési potenciál
+                <CheckCircle2 className="w-4 h-4" /> AI válaszmotor készenlét
+              </div>
+            </div>
+
+            <div className="p-8 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-[#00B5F1]/50 transition-colors duration-300 flex flex-col justify-between">
+              <div>
+                <div className="w-12 h-12 rounded-xl bg-sky-950/80 border border-sky-500/30 flex items-center justify-center text-[#00B5F1] mb-6">
+                  <Share2 className="w-6 h-6" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-3">Belső Linkarchitektúra</h3>
+                <p className="text-slate-400 text-sm leading-relaxed">
+                  Átgondolt siló-struktúra kialakítása, hogy a linkérték és az autoritás a legfontosabb bevételtermelő aloldalakra áramoljon.
+                </p>
+              </div>
+              <div className="mt-6 pt-6 border-t border-slate-800/80 text-xs text-sky-400 flex items-center gap-1.5 font-semibold">
+                <CheckCircle2 className="w-4 h-4" /> Optimális belső linkelés
+              </div>
+            </div>
+
+            <div className="md:col-span-2 p-8 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-[#00B5F1]/50 transition-colors duration-300">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-4">
+                <div className="w-12 h-12 rounded-xl bg-sky-950/80 border border-sky-500/30 flex items-center justify-center text-[#00B5F1]">
+                  <BarChart3 className="w-6 h-6" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-white">Versenytárs & Kulcsszó Réshasáb Elemzés</h3>
+                  <p className="text-slate-400 text-sm">Derítsük ki, miben járnak előtted a versenytársaid és hogyan előzheted meg őket.</p>
+                </div>
+              </div>
+              <p className="text-slate-400 text-sm leading-relaxed mb-4">
+                Megkeressük azokat a releváns kifejezéseket, amelyekre van kereslet a piacon, de a te oldaladon még nincs rájuk célzott válasz. Megszüntetjük a tartalmi kannibalizációt, amikor több aloldalad versenyez egymással.
+              </p>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-4 border-t border-slate-800/80">
+                <div className="flex items-center gap-2 text-xs text-slate-300 font-medium">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <span>Keresési szándék (Search Intent)</span>
+                </div>
+                <div className="flex items-center gap-2 text-xs text-slate-300 font-medium">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <span>Versenytárs audit</span>
+                </div>
+                <div className="flex items-center gap-2 text-xs text-slate-300 font-medium">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <span>Priorizált javítási terv</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="p-8 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-[#00B5F1]/50 transition-colors duration-300 flex flex-col justify-between">
+              <div>
+                <div className="w-12 h-12 rounded-xl bg-purple-950/80 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-6">
+                  <Target className="w-6 h-6" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-3">Konverzió & Kattintási Arány (CTR)</h3>
+                <p className="text-slate-400 text-sm leading-relaxed">
+                  Nem elég megjelenni a találati listán: kattintásra ösztönző címeket és snippeteket készítünk a látogatószám növeléséhez.
+                </p>
+              </div>
+              <div className="mt-6 pt-6 border-t border-slate-800/80 text-xs text-purple-400 flex items-center gap-1.5 font-semibold">
+                <Sparkles className="w-4 h-4" /> Magasabb CTR
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Pricing Table Section - Zero Fixed Price Rule */}
+      {/* Pricing Section */}
       <section id="csomagok" className="py-24 border-b border-slate-800/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-              Szolgáltatási Csomagok & Struktúra
+              SEO Audit Csomagok & Formátum
             </h2>
             <p className="text-slate-400">
-              Minden vállalkozás és webes igény egyedi. Nincsenek rejtett költségek: a pontos igényfelmérés után személyre szabott, kötöttségek nélküli ajánlatot készítek.
+              Válaszd ki a céged jelenlegi helyzetéhez leginkább passzoló auditot. Személyre szabott ajánlattal dolgozom.
             </p>
           </div>
 
@@ -303,13 +298,13 @@ export default function WordPressWeboldalKeszitesPage() {
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900 border border-slate-800 text-slate-400 text-xs font-medium uppercase tracking-wider mb-4">
               <HelpCircle className="w-3.5 h-3.5 text-[#00B5F1]" />
-              Gyakori kérdések
+              SEO Audit GYIK
             </div>
             <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-              Minden, amit a WordPress fejlesztésről tudni érdemes
+              Gyakori kérdések a technikai SEO auditról
             </h2>
             <p className="text-slate-400">
-              Válaszok a leggyakoribb felmerülő kérdésekre a tervezéstől a későbbi karbantartásig.
+              Minden, amit a feltárásról, a jelentésről és a hibajavításról tudni érdemes.
             </p>
           </div>
 
@@ -336,13 +331,13 @@ export default function WordPressWeboldalKeszitesPage() {
       <section className="py-20 relative overflow-hidden">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-6">
-            Készen állsz egy modern, gyors és biztonságos WordPress weboldalra?
+            Szeretnéd tudni, miért nem hoz vevőket a weboldalad?
           </h2>
           <p className="text-slate-300 max-w-2xl mx-auto mb-8 text-lg">
-            Írd meg az elképzeléseidet, és 24 órán belül felveszem veled a kapcsolatot a részletekkel és a megoldási javaslatokkal!
+            Kérj auditot most, és tárd fel a weboldalad rejtett forgalomnövelési lehetőségeit!
           </p>
           <Link
-            href="/kapcsolat?service=wordpress"
+            href="/kapcsolat?service=technikai-seo-audit"
             className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-semibold text-white bg-linear-to-r from-cta-from to-[#5B21B6] hover:from-[#0369a1] hover:to-[#6d28d9] shadow-xl shadow-sky-950/60 transition-all duration-300 group"
           >
             Egyedi árajánlat kérése

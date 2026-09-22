@@ -80,7 +80,7 @@ export default function ContactPage() {
           label="Kapcsolat"
           title={
             <>
-              Indítsuk el a <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00B5F1] to-[#5B21B6] italic">projektedet!</span>
+              Indítsuk el a <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6] italic">projektedet!</span>
             </>
           }
           subtitle="Minden projekt egy egyszerű üzenettel kezdődik. Hétköznapokon 9:00 és 17:00 között vagyok elérhető, de az emailekre gyakran hétvégén is válaszolok."
@@ -99,11 +99,11 @@ export default function ContactPage() {
                   <span className="text-xs uppercase font-black tracking-[0.3em] text-[#00B5F1] mb-2 block">
                     Elérhetőségek
                   </span>
-                  <div className="absolute left-0 top-0 w-1 h-6 bg-gradient-to-b from-[#00B5F1] to-[#5B21B6]" />
+                  <div className="absolute left-0 top-0 w-1 h-6 bg-linear-to-b from-[#00B5F1] to-[#5B21B6]" />
                 </div>
                 <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold font-sans text-white leading-tight tracking-tight mb-6">
                   Indítsuk el a{" "}
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00B5F1] to-[#5B21B6] italic pr-4">
+                  <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6] italic pr-4">
                     projektedet!
                   </span>
                 </h1>

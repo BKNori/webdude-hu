@@ -3,107 +3,108 @@ import Link from "next/link";
 import { 
   CheckCircle2, 
   ArrowRight, 
+  Wrench, 
+  ShieldAlert, 
+  Zap, 
   HelpCircle,
-  Palette,
-  Eye,
-  Award,
-  BookOpen,
-  Layers,
-  Sparkles
+  Sparkles,
+  RefreshCw,
+  Lock,
+  Activity
 } from "lucide-react";
 import PricingTable, { type PricingTier } from "@/components/molecules/PricingTable";
 
 export const metadata: Metadata = {
-  title: "Arculattervezés vállalkozásoknak | Logó és márkaidentitás | WebDude",
-  description: "Egyedi arculattervezés kisvállalkozásoknak és új márkáknak. Logó, színek, tipográfia és alkalmazási útmutató egy összefüggő vizuális rendszerben.",
+  title: "WordPress Karbantartás és Hibajavítás | WebDude",
+  description: "Feltört, lassú vagy elavult WordPress weboldalak szakszerű javítása és havi karbantartása. Biztonság, sebesség és nyugalom vállalkozásoknak.",
   openGraph: {
-    title: "Arculattervezés vállalkozásoknak | Logó és márkaidentitás | WebDude",
-    description: "Egyedi arculattervezés kisvállalkozásoknak és új márkáknak. Logó, színek, tipográfia és alkalmazási útmutató egy összefüggő vizuális rendszerben.",
-    url: "https://webdude.hu/szolgaltatasok/arculattervezes",
+    title: "WordPress Karbantartás és Hibajavítás | WebDude",
+    description: "Feltört, lassú vagy elavult WordPress weboldalak szakszerű javítása és havi karbantartása. Biztonság, sebesség és nyugalom vállalkozásoknak.",
+    url: "https://webdude.hu/szolgaltatasok/wordpress-karbantartas",
     type: "website",
   },
 };
 
 const pricingTiers: PricingTier[] = [
   {
-    id: "branding-start",
-    name: "Alap Arculat & Logó",
-    description: "Induló vállalkozásoknak, akiknek profi, egységes és megbízható megjelenésre van szükségük az azonnali piaci induláshoz.",
+    id: "wp-repair",
+    name: "Azonnali Hibaelhárítás & Mentés",
+    description: "Egyszeri gyorssegély, ha a weboldalad leállt, hibaüzenetet dob, vagy feltörték és vírusossá vált.",
     features: [
-      "Végleges logótervezés 3 különböző koncepció alapján",
-      "Vektoriális és raszteres formátumok (AI, SVG, PDF, PNG)",
-      "Elsődleges és másodlagos színpaletta (HEX, RGB, CMYK)",
-      "Tipográfiai szabályok és betűtípus-párosítások",
-      "Közösségi média profilkép és borítókép sablonok"
+      "Kritikus hibák (White Screen of Death, 500 error) gyors feltárása",
+      "Kártevő- és malware-eltávolítás, tiszta mentés visszaállítása",
+      "Összeakadó, hibás pluginek cseréje vagy kompatibilitási javítása",
+      "Adatbázis-javítás és sérült fájlok helyreállítása",
+      "Részletes jegyzőkönyv az elvégzett javításokról"
     ],
     highlighted: false,
     ctaText: "Egyedi árajánlat kérése",
-    ctaLink: "/kapcsolat?service=branding-start",
+    ctaLink: "/kapcsolat?service=wordpress-repair",
   },
   {
-    id: "branding-full",
-    name: "Komplett Márkaidentitás",
-    description: "Növekvő márkáknak és átalakuló cégeknek, akik professzionális, minden felületen következetes vizuális jelenlétet akarnak.",
+    id: "wp-care-pro",
+    name: "Havi Prémium Karbantartás",
+    description: "Folyamatos biztonság és felügyelet, hogy a weboldalad sose álljon le és mindig a legfrissebb maradjon.",
     features: [
-      "Minden, ami az Alap csomagban szerepel",
-      "Kiterjedt Arculati Kézikönyv (Brand Guidelines)",
-      "Névjegykártya és levélpapír nyomdai előkészítéssel",
-      "E-mail aláírás és prezentációs sablon (PowerPoint/Keynote)",
-      "Digitális hirdetéssablonok és közösségi média csomag",
-      "Weboldal UI vizuális stílus-iránymutatás"
+      "Heti szintű tesztelt mag- és bővítményfrissítések (staging teszttel)",
+      "Napi automatikus külső felhős biztonsági mentés (off-site backup)",
+      "24/7 Uptime monitorozás és azonnali beavatkozás leálláskor",
+      "Folyamatos tűzfal- és biztonsági felügyelet",
+      "Havi 2 óra dedikált fejlesztői idő tartalmi vagy technikai módosításokra",
+      "Havi részletes technikai és látogatottsági jelentés"
     ],
     highlighted: true,
     ctaText: "Egyedi árajánlat kérése",
-    ctaLink: "/kapcsolat?service=branding-full",
+    ctaLink: "/kapcsolat?service=wordpress-care-pro",
   },
   {
-    id: "branding-custom",
-    name: "Prémium Brand Rendszer",
-    description: "Vállalati szintű márkaépítés, átfogó dizájnrendszer, csomagolástervezés és kiadványok egy kézből.",
+    id: "wp-care-ecommerce",
+    name: "Webshop & Kiemelt Rendszerfelügyelet",
+    description: "Nagy forgalmú WooCommerce áruházaknak és üzletileg kritikus platformoknak kiemelt rendelkezésre állással.",
     features: [
-      "Komplett vizuális audit és piaci pozicionálás",
-      "Egyedi ikonográfia és illusztrációs rendszer kidolgozása",
-      "Csomagolástervezés, címkék és kiadványgrafika",
-      "Jármű- és épületdekorációs látványtervek és nyomdai anyagok",
-      "Konzultáció és szaktanácsadás a márkaimplementáció során"
+      "Minden, ami a Prémium csomagban szerepel",
+      "Fizetési kapuk, kosárfolyamat és számlázó integrációk folyamatos tesztelése",
+      "Valós idejű óránkénti adatbázis-mentés rendelésvesztés ellen",
+      "Kiemelt sürgősségi SLA (garantált 2 órán belüli reagálás)",
+      "Havi 4 óra fejlesztői keretidő új funkciók építésére"
     ],
     highlighted: false,
     ctaText: "Egyedi árajánlat kérése",
-    ctaLink: "/kapcsolat?service=branding-custom",
+    ctaLink: "/kapcsolat?service=wordpress-care-ecommerce",
   },
 ];
 
 const faqs = [
   {
-    q: "Hány év grafikai tapasztalattal rendelkezel?",
-    a: "Több mint 26 éve foglalkozom nyomdai előkészítéssel, grafikai tervezéssel és digitális vizuális rendszerek alkotásával. Ismerem mind a digitális képernyők, mind a fizikai nyomtatás speciális technikai követelményeit.",
+    q: "Mi történik, ha egy frissítés után elromlik a weboldalam?",
+    a: "Minden éles frissítés előtt teljes biztonsági mentést készítek, összetettebb rendszereknél pedig staging (teszt) környezetben ellenőrzöm a változásokat. Ha bármilyen plugin összeakadna, azonnal visszaállítom a működő állapotot és kijavítom a forráskódot.",
   },
   {
-    q: "Hány logótervet kapok választásra?",
-    a: "Általában 3 teljesen különböző, átgondolt koncepciót dolgozok ki, melyeket valós felhasználási környezetben (mockupokon) mutatok be. A kiválasztott irányt az észrevételeid alapján finomítjuk a tökéletes végeredményig.",
+    q: "Hogyan történik egy feltört weboldal tisztítása és megmentése?",
+    a: "Első lépésként izolálom az oldalt a további fertőzések elkerülésére. Kézzel és speciális diagnosztikai eszközökkel eltávolítom a rosszindulatú kódokat, backdoorokat, lecserélem a fertőzött rendszerfájlokat, módosítom az összes titkosítási kulcsot és jelszót, végül keményített biztonsági védelmet állítok fel.",
   },
   {
-    q: "Milyen formátumokban kapom meg az elkészült logót?",
-    a: "Minden szabványos formátumban átadom: nyomdai minőségű vektorfájlok (AI, EPS, PDF, SVG) és digitális használatra optimalizált fájlok (PNG áttetsző háttérrel, JPG, WebP), fekete-fehér és negatív változatokkal kiegészítve.",
+    q: "Miért van szükség havi karbantartásra, ha jelenleg működik az oldal?",
+    a: "A WordPress és a hozzá tartozó bővítmények folyamatosan frissülnek, főként újonnan felfedezett biztonsági rések javítása miatt. Az elhanyagolt, hónapok óta nem frissített oldalak a hackerek legfőbb célpontjai. A megelőző karbantartás töredékébe kerül egy bekövetkezett leállás vagy adatvesztés helyreállításának.",
   },
   {
-    q: "Mi az az Arculati Kézikönyv, és miért van rá szükség?",
-    a: "Az Arculati Kézikönyv egy praktikus útmutató, amely rögzíti a logóhasználat szabályait, a betűtípusokat, a pontos színkódokat és az elrendezéseket. Ez garantálja, hogy bárki (pl. nyomda, marketinges vagy fejlesztő) dolgozik a márkáddal, a vizuális megjelenés mindig egységes marad.",
+    q: "Mennyi idő alatt tudod elkezdeni a sürgős hibajavítást?",
+    a: "Kritikus leállás vagy feltörés esetén azonnali prioritást biztosítok: az adatok átadását követően néhány órán belül megkezdem a diagnosztikát és a mentést.",
   },
 ];
 
-export default function ArculattervezesPage() {
+export default function WordPressKarbantartasPage() {
   const serviceJsonLd = {
     "@context": "https://schema.org",
     "@type": "Service",
-    name: "Arculattervezés és márkaidentitás",
+    name: "WordPress Karbantartás és Hibajavítás",
     provider: {
       "@type": "Person",
       name: "Norbert - WebDude",
       url: "https://webdude.hu",
     },
-    description: "Egyedi arculattervezés kisvállalkozásoknak és új márkáknak. Logó, színek, tipográfia és alkalmazási útmutató egy összefüggő vizuális rendszerben.",
-    serviceType: "Branding and Visual Identity",
+    description: "Feltört, lassú vagy elavult WordPress weboldalak szakszerű javítása és havi karbantartása. Biztonság, sebesség és nyugalom vállalkozásoknak.",
+    serviceType: "WordPress Maintenance and Security",
     areaServed: "HU",
   };
 
@@ -138,23 +139,23 @@ export default function ArculattervezesPage() {
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 overflow-hidden border-b border-slate-800/80">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,var(--tw-gradient-stops))] from-purple-900/20 via-slate-950 to-slate-950 pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,var(--tw-gradient-stops))] from-sky-900/20 via-slate-950 to-slate-950 pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-purple-950/80 border border-purple-500/30 text-purple-400 text-xs font-medium uppercase tracking-wider mb-6">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sky-950/80 border border-sky-500/30 text-sky-400 text-xs font-medium uppercase tracking-wider mb-6">
               <Sparkles className="w-3.5 h-3.5 text-[#00B5F1]" />
-              26 Év Grafikai Tapasztalat & Márkaépítés
+              Stabilitás, Biztonság & Védelem
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight mb-6">
-              Arculattervezés, amely <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#a855f7]">bizalmat ébreszt</span>
+              WordPress karbantartás: hogy a weboldalad <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#a855f7]">sose hagyjon cserben</span>
             </h1>
             <p className="text-lg sm:text-xl text-slate-300 leading-relaxed mb-8">
-              A márkád vizuális megjelenése az első másodpercben dönt arról, hogy komolyan vesznek-e. 26 év tapasztalattal építek vizuális rendszereket, amelyek kiemelnek a tömegből.
+              Egy leálló weboldal bevételkiesést és presztízsveszteséget okoz. Megelőzöm a hibákat, elhárítom a biztonsági réseket, és ha beütött a baj, azonnal helyreállítom a működést.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
-                href="/kapcsolat?service=arculattervezes"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-semibold text-white bg-linear-to-r from-cta-from to-[#5B21B6] hover:from-[#0369a1] hover:to-[#6d28d9] shadow-lg shadow-purple-950/50 transition-all duration-300 group"
+                href="/kapcsolat?service=wordpress-karbantartas"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-semibold text-white bg-linear-to-r from-cta-from to-[#5B21B6] hover:from-[#0369a1] hover:to-[#6d28d9] shadow-lg shadow-sky-950/50 transition-all duration-300 group"
               >
                 Egyedi árajánlat kérése
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -163,132 +164,127 @@ export default function ArculattervezesPage() {
                 href="#csomagok"
                 className="inline-flex items-center justify-center px-6 py-4 rounded-xl font-medium text-slate-300 bg-slate-900 border border-slate-800 hover:border-slate-700 hover:text-white transition-colors"
               >
-                Szolgáltatások és részletek
+                Karbantartási csomagok
               </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* E-E-A-T & Value Pillars Bento Grid */}
+      {/* Pain Points & Problem Solving Bento Grid */}
       <section className="py-24 relative border-b border-slate-800/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-              Miért nem elég egy egyszerű sablonlogó?
+              A leggyakoribb WordPress veszélyek, amelyeket elhárítok
             </h2>
             <p className="text-slate-400">
-              A generált vagy sablonból vett grafikák nem tükrözik a céged értékeit és gyakran nyomdai hibákhoz vezetnek. Egy átgondolt arculat stratégiai befektetés.
+              A legtöbb weboldal-tulajdonos csak akkor kap észbe, amikor a Google tiltólistára teszi a domaint, vagy a vásárlók nem tudnak fizetni.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Bento Card 1 */}
             <div className="p-8 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-[#00B5F1]/50 transition-colors duration-300 flex flex-col justify-between">
               <div>
-                <div className="w-12 h-12 rounded-xl bg-purple-950/80 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-6">
-                  <Award className="w-6 h-6" />
+                <div className="w-12 h-12 rounded-xl bg-red-950/80 border border-red-500/30 flex items-center justify-center text-red-400 mb-6">
+                  <ShieldAlert className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">26 Év Grafikai Rutin</h3>
+                <h3 className="text-xl font-bold text-white mb-3">Vírusok & Feltört Oldalak</h3>
                 <p className="text-slate-400 text-sm leading-relaxed">
-                  A hagyományos ofszet és digitális nyomdai alapoktól kezdve a modern UI/UX képernyődizájnig mindent átlátok. Nincsenek technikai meglepetések.
+                  Kéretlen átirányítások, spam hivatkozások vagy elérhetetlen adminfelület? Megtisztítom az állományokat és lezárom a biztonsági réseket.
                 </p>
               </div>
-              <div className="mt-6 pt-6 border-t border-slate-800/80 text-xs text-purple-400 flex items-center gap-1.5 font-semibold">
-                <CheckCircle2 className="w-4 h-4" /> Prémium szintű kivitelezés
+              <div className="mt-6 pt-6 border-t border-slate-800/80 text-xs text-red-400 flex items-center gap-1.5 font-semibold">
+                <CheckCircle2 className="w-4 h-4" /> Teljes kártevőirtás
               </div>
             </div>
 
-            {/* Bento Card 2 */}
             <div className="p-8 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-[#00B5F1]/50 transition-colors duration-300 flex flex-col justify-between">
               <div>
                 <div className="w-12 h-12 rounded-xl bg-sky-950/80 border border-sky-500/30 flex items-center justify-center text-[#00B5F1] mb-6">
-                  <Palette className="w-6 h-6" />
+                  <RefreshCw className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">Harmonikus Szín & Tipográfia</h3>
+                <h3 className="text-xl font-bold text-white mb-3">Elavult Bővítmények</h3>
                 <p className="text-slate-400 text-sm leading-relaxed">
-                  Pszichológiailag alátámasztott színhasználat és professzionális betűkészletek, amelyek támogatják az olvashatóságot és a prémium hatást.
+                  A halogatott frissítések inkompatibilitási hibákhoz és sebezhetőségekhez vezetnek. Biztonságos tesztkörnyezetben frissítek mindent.
                 </p>
               </div>
               <div className="mt-6 pt-6 border-t border-slate-800/80 text-xs text-sky-400 flex items-center gap-1.5 font-semibold">
-                <CheckCircle2 className="w-4 h-4" /> Kiemelkedés a versenytársak közül
+                <CheckCircle2 className="w-4 h-4" /> Tesztelt frissítési protokoll
               </div>
             </div>
 
-            {/* Bento Card 3 */}
             <div className="p-8 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-[#00B5F1]/50 transition-colors duration-300 flex flex-col justify-between">
               <div>
                 <div className="w-12 h-12 rounded-xl bg-purple-950/80 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-6">
-                  <BookOpen className="w-6 h-6" />
+                  <Lock className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">Arculati Kézikönyv (Brand Book)</h3>
+                <h3 className="text-xl font-bold text-white mb-3">Adatvesztés Elleni Védelem</h3>
                 <p className="text-slate-400 text-sm leading-relaxed">
-                  Pontos szabályrendszer a logó védőtávolságáról, méretezéséről, helyes és helytelen alkalmazásáról, hogy a márkád bárhol egységes maradjon.
+                  Egy szerverhiba vagy rossz beállítás percek alatt letörölheti az egész weboldaladat. Külső, titkosított szerverre mentek rendszeresen.
                 </p>
               </div>
               <div className="mt-6 pt-6 border-t border-slate-800/80 text-xs text-purple-400 flex items-center gap-1.5 font-semibold">
-                <CheckCircle2 className="w-4 h-4" /> Hosszú távú konzisztencia
+                <CheckCircle2 className="w-4 h-4" /> Napi/heti off-site mentés
               </div>
             </div>
 
-            {/* Bento Card 4 (Span 2) */}
             <div className="md:col-span-2 p-8 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-[#00B5F1]/50 transition-colors duration-300">
               <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-4">
                 <div className="w-12 h-12 rounded-xl bg-sky-950/80 border border-sky-500/30 flex items-center justify-center text-[#00B5F1]">
-                  <Layers className="w-6 h-6" />
+                  <Activity className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-white">Minden Felületen Hiteles Megjelenés</h3>
-                  <p className="text-slate-400 text-sm">A weboldaltól a névjegykártyán át az óriásplakátig.</p>
+                  <h3 className="text-xl font-bold text-white">24/7 Elérhetőség és Uptime Monitorozás</h3>
+                  <p className="text-slate-400 text-sm">Azonnal értesülök róla, ha a weboldalad leállna, még mielőtt a vevőid észrevennék.</p>
                 </div>
               </div>
               <p className="text-slate-400 text-sm leading-relaxed mb-4">
-                Nem csupán egy ikont kapsz: egy komplett vizuális eszköztárat hozok létre, amely kiterjed a prezentációs sablonokra, a közösségi média grafikákra, a céges papírokra és a nyomdai reklámeszközökre.
+                Automatizált monitoring rendszerem percenként vizsgálja a weboldalad működését és válaszidejét. Hiba esetén nem kell napokig várnod: proaktívan beavatkozom és helyreállítom a szolgáltatást.
               </p>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-4 border-t border-slate-800/80">
                 <div className="flex items-center gap-2 text-xs text-slate-300 font-medium">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span>Vektoriális SVG & AI</span>
+                  <span>Azonnali SMS/Email riasztás</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs text-slate-300 font-medium">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span>Nyomdai CMYK előkészítés</span>
+                  <span>SSL tanúsítvány felügyelet</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs text-slate-300 font-medium">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span>Közösségi média sablonok</span>
+                  <span>Sebesség- és válaszidő mérés</span>
                 </div>
               </div>
             </div>
 
-            {/* Bento Card 5 */}
             <div className="p-8 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-[#00B5F1]/50 transition-colors duration-300 flex flex-col justify-between">
               <div>
                 <div className="w-12 h-12 rounded-xl bg-sky-950/80 border border-sky-500/30 flex items-center justify-center text-[#00B5F1] mb-6">
-                  <Eye className="w-6 h-6" />
+                  <Wrench className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">Azonnali Megkülönböztetés</h3>
+                <h3 className="text-xl font-bold text-white mb-3">Dedikált Fejlesztői Keret</h3>
                 <p className="text-slate-400 text-sm leading-relaxed">
-                  A vevőid néhány pillanat alatt ítélnek. Olyan vizuális arculatot alkotunk, amely stabilitást és magas minőséget sugároz.
+                  Kisebb szöveges vagy vizuális módosítások, új hírlevél feliratkozó, vagy új funkciók? A karbantartás tartalmazza a fejlesztői órákat.
                 </p>
               </div>
               <div className="mt-6 pt-6 border-t border-slate-800/80 text-xs text-sky-400 flex items-center gap-1.5 font-semibold">
-                <CheckCircle2 className="w-4 h-4" /> Magasabb konverzió
+                <Zap className="w-4 h-4" /> Gyors megvalósítás
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Pricing Table Section - Zero Fixed Price Rule */}
+      {/* Pricing Section */}
       <section id="csomagok" className="py-24 border-b border-slate-800/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-              Arculattervezési Csomagok & Struktúra
+              Karbantartási Csomagok & Rendszerek
             </h2>
             <p className="text-slate-400">
-              Válaszd ki az üzleti céljaidnak megfelelő irányt. Egyedi igények alapján, rejtett költségek nélkül készítem el a személyre szabott ajánlatot.
+              Válaszd ki az oldalad méretéhez illeszkedő konstrukciót. Egyedi webshopok és portálok esetén testreszabott üzemeltetési szerződést készítek.
             </p>
           </div>
 
@@ -302,13 +298,13 @@ export default function ArculattervezesPage() {
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900 border border-slate-800 text-slate-400 text-xs font-medium uppercase tracking-wider mb-4">
               <HelpCircle className="w-3.5 h-3.5 text-[#00B5F1]" />
-              Gyakori kérdések
+              Karbantartási GYIK
             </div>
             <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-              Minden, amit az arculattervezésről tudni érdemes
+              Gyakori kérdések a felügyeletről és hibajavításról
             </h2>
             <p className="text-slate-400">
-              Válaszok a legfontosabb kérdésekre a közös munkáról, a formátumokról és a jogokról.
+              Minden, amit a weboldalad biztonságos üzemeltetéséről tudnod kell.
             </p>
           </div>
 
@@ -335,14 +331,14 @@ export default function ArculattervezesPage() {
       <section className="py-20 relative overflow-hidden">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-6">
-            Emeld magasabb szintre a márkád vizuális erejét!
+            Hiba lépett fel, vagy megbízható karbantartást keresel?
           </h2>
           <p className="text-slate-300 max-w-2xl mx-auto mb-8 text-lg">
-            Kérj egyedi árajánlatot az arculatod megtervezésére vagy megújítására, és építsünk együtt egy emlékezetes márkát!
+            Írd meg a problémádat vagy az oldalad címét, és gyorsan felmérem a helyzetet!
           </p>
           <Link
-            href="/kapcsolat?service=arculattervezes"
-            className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-semibold text-white bg-linear-to-r from-cta-from to-[#5B21B6] hover:from-[#0369a1] hover:to-[#6d28d9] shadow-xl shadow-purple-950/60 transition-all duration-300 group"
+            href="/kapcsolat?service=wordpress-karbantartas"
+            className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-semibold text-white bg-linear-to-r from-cta-from to-[#5B21B6] hover:from-[#0369a1] hover:to-[#6d28d9] shadow-xl shadow-sky-950/60 transition-all duration-300 group"
           >
             Egyedi árajánlat kérése
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />

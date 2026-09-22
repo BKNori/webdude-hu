@@ -11,6 +11,8 @@ import {
   Palette,
   Layout,
   Copy,
+  Wrench,
+  Zap,
 } from "lucide-react";
 
 export interface NavItem {
@@ -125,6 +127,27 @@ export const NAV_ITEMS: NavItem[] = [
         icon: Layout,
         description: "Teljes körű vizuális identitás tervezés",
         category: "Design",
+      },
+      {
+        name: "WordPress Karbantartás",
+        href: "/szolgaltatasok/wordpress-karbantartas",
+        icon: Wrench,
+        description: "Hibajavítás, védelem és folyamatos felügyelet",
+        category: "Karbantartás",
+      },
+      {
+        name: "Weboldal Gyorsítás",
+        href: "/szolgaltatasok/weboldal-sebessegoptimalizalas",
+        icon: Zap,
+        description: "Core Web Vitals és PageSpeed optimalizálás",
+        category: "Teljesítmény",
+      },
+      {
+        name: "Technikai SEO Audit",
+        href: "/szolgaltatasok/technikai-seo-audit",
+        icon: Search,
+        description: "Indexelési hibák és rejtett akadályok feltárása",
+        category: "Marketing",
       },
       {
         name: "Prémium AI & Automatizációs Megoldások",

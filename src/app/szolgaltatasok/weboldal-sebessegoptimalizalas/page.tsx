@@ -3,108 +3,108 @@ import Link from "next/link";
 import { 
   CheckCircle2, 
   ArrowRight, 
-  Code2, 
-  ShieldCheck, 
   Gauge, 
-  Search, 
+  Zap, 
   HelpCircle,
-  Layers,
   Sparkles,
-  Settings2
+  Server,
+  Layers,
+  TrendingUp,
+  Cpu
 } from "lucide-react";
 import PricingTable, { type PricingTier } from "@/components/molecules/PricingTable";
 
 export const metadata: Metadata = {
-  title: "WordPress weboldal készítés | Egyedi fejlesztés | WebDude",
-  description: "Egyedi WordPress weboldal készítés, felújítás és fejlesztés vállalkozásoknak. Gyors, biztonságos, könnyen kezelhető és SEO-barát megoldások.",
+  title: "Weboldal Sebességoptimalizálás | Gyorsabb Betöltés | WebDude",
+  description: "Lassú a weboldalad? A látogatók és a Google is bünteti. Adatalapú weboldal gyorsítás és Core Web Vitals optimalizálás.",
   openGraph: {
-    title: "WordPress weboldal készítés | Egyedi fejlesztés | WebDude",
-    description: "Egyedi WordPress weboldal készítés, felújítás és fejlesztés vállalkozásoknak. Gyors, biztonságos, könnyen kezelhető és SEO-barát megoldások.",
-    url: "https://webdude.hu/szolgaltatasok/wordpress-weboldal-keszites",
+    title: "Weboldal Sebességoptimalizálás | Gyorsabb Betöltés | WebDude",
+    description: "Lassú a weboldalad? A látogatók és a Google is bünteti. Adatalapú weboldal gyorsítás és Core Web Vitals optimalizálás.",
+    url: "https://webdude.hu/szolgaltatasok/weboldal-sebessegoptimalizalas",
     type: "website",
   },
 };
 
 const pricingTiers: PricingTier[] = [
   {
-    id: "wp-starter",
-    name: "Alap WordPress Weboldal",
-    description: "Ideális bemutatkozó oldal vagy portfólió induló vállalkozásoknak egyedi sablonnal és letisztult adminnal.",
+    id: "speed-audit",
+    name: "Sebességi Audit & Feltárás",
+    description: "Pontos diagnosztika a szűk keresztmetszetekről, szerver válaszidőkről és hibás szkriptekről.",
     features: [
-      "Egyedi, reszponzív dizájn (nem vásárolt sablon)",
-      "Gutenberg blokkalapú, villámgyors szerkesztőfelület",
-      "Alapvető technikai és on-page SEO beállítások",
-      "Biztonsági keményítés (brute force és spam védelem)",
-      "Kapcsolati űrlap és alapvető analitika bekötés"
+      "Teljes Core Web Vitals (LCP, INP, CLS) analízis",
+      "Képek, médiafájlok és betűtípusok betöltési vizsgálata",
+      "CSS és JavaScript blokkoló források felderítése",
+      "Szerver- és adatbázis lekérdezési sebesség elemzése",
+      "Priorizált, lépésről-lépésre követhető javítási terv"
     ],
     highlighted: false,
     ctaText: "Egyedi árajánlat kérése",
-    ctaLink: "/kapcsolat?service=wordpress-starter",
+    ctaLink: "/kapcsolat?service=speed-audit",
   },
   {
-    id: "wp-pro",
-    name: "Üzleti & Prémium WordPress",
-    description: "Komplexebb vállalkozói portál egyedi funkciókkal, automatizációkkal és kiemelt konverziófókusszal.",
+    id: "speed-pro",
+    name: "Komplett Sebességgyorsítás",
+    description: "A leggyakoribb vállalkozói weboldalak teljes optimalizálása 90+ PageSpeed pontszám eléréséért.",
     features: [
-      "Minden, ami az Alap csomagban szerepel",
-      "Egyedi egyedi mezők (ACF Pro) és egyedi bejegyzéstípusok",
-      "Fejlett sebességoptimalizálás (90+ Google PageSpeed)",
-      "CRM, számlázó és hírlevélküldő integrációk",
-      "Többnyelvűsítés előkészítése és strukturált adatok (Schema)",
-      "Részletes betanítás és képernyővideós dokumentáció"
+      "Minden, ami az Audit csomagban szerepel",
+      "Képek veszteségmentes tömörítése és modern WebP/AVIF konverzió",
+      "Next-gen böngésző és szerveroldali gyorsítótárazás (caching)",
+      "Kritikus CSS kinyerése és nem-kritikus JS késleltetése",
+      "Adatbázis-takarítás és felesleges lekérések megszüntetése",
+      "Előtte-utána sebességmérés és garancia"
     ],
     highlighted: true,
     ctaText: "Egyedi árajánlat kérése",
-    ctaLink: "/kapcsolat?service=wordpress-pro",
+    ctaLink: "/kapcsolat?service=speed-pro",
   },
   {
-    id: "wp-enterprise",
-    name: "Egyedi Rendszer & Újragondolás",
-    description: "Meglévő, elavult vagy lassú rendszerek modernizálása, egyedi pluginfejlesztés és dedikált támogatás.",
+    id: "speed-enterprise",
+    name: "Webshop & Kiemelt Rendszergyorsítás",
+    description: "Komplex WooCommerce áruházak és magas látogatottságú platformok teljesítmény-maximalizálása.",
     features: [
-      "Teljes adatbázis- és tartalommigráció veszteségmentesen",
-      "Egyedi plugin- és funkciófejlesztés specifikáció szerint",
-      "Headless WordPress / Next.js hibrid megoldási lehetőség",
-      "Szigorú kódolási és biztonsági auditok",
-      "Kiemelt SLA és dedikált havi karbantartási opciók"
+      "Pénztár és dinamikus kosár lekérések optimalizálása",
+      "Redis / Memcached memóriagyorsítótár bekötése",
+      "CDN (Cloudflare / Edge cache) konfiguráció és védelem",
+      "Felesleges bővítmények kódjának refaktorálása",
+      "Szerveroldali HTTP/3 és PHP optimalizálási javaslatok"
     ],
     highlighted: false,
     ctaText: "Egyedi árajánlat kérése",
-    ctaLink: "/kapcsolat?service=wordpress-enterprise",
+    ctaLink: "/kapcsolat?service=speed-enterprise",
   },
 ];
 
 const faqs = [
   {
-    q: "Miért egyedi WordPress oldalt készíttessek, ha vannak ingyenes vagy olcsó sablonok is?",
-    a: "A piacon vásárolható sablonok felesleges kódok ezreivel vannak telepakolva, ami lassú betöltést, biztonsági réseket és a frissítések során felmerülő hibákat eredményez. Az általam készített egyedi WordPress oldalak kizárólag a cégedhez szükséges kódot tartalmazzák, így villámgyorsak, stabilak és könnyen bővíthetők.",
+    q: "Miért számít annyira a weboldal betöltési sebessége?",
+    a: "A statisztikák egyértelműek: minden egyes másodperc késlekedés átlagosan 20%-kal csökkenti a konverziós arányt. Emellett a Google a Core Web Vitals mutatókat közvetlen rangsorolási faktorként kezeli: a lassú oldalakat hátrébb sorolja a keresési találatokban.",
   },
   {
-    q: "Tudom majd önállóan is kezelni és módosítani a tartalmakat?",
-    a: "Igen, a projekt átadásának alapfeltétele a testreszabott, intuitív adminfelület és az oktatás. Nem kell kódolni tudnod: a szövegeket, képeket és új bejegyzéseket olyan egyszerűen tudod frissíteni, mint egy Word dokumentumot.",
+    q: "Megváltozik a weboldalam kinézete a gyorsítás során?",
+    a: "Nem! Az optimalizálás lényege a motorháztető alatti kód és erőforrások észrevétlen finomhangolása. A dizájn, az elrendezés és a funkciók változatlanok maradnak, csupán a betöltés válik azonnalivá.",
   },
   {
-    q: "Mennyi időt vesz igénybe egy egyedi WordPress weboldal elkészítése?",
-    a: "A projekt összetettségétől függően egy átgondolt bemutatkozó weboldal jellemzően 2–3 hét alatt készül el, míg a komplexebb, egyedi funkciókat vagy migrációt igénylő rendszerek 4–6 hetet vehetnek igénybe.",
+    q: "Garantálható a 90+ PageSpeed pontszám mobil eszközökön is?",
+    a: "A legtöbb tiszta felépítésű weboldalnál elérhető a zöld (90+) zóna mobilon is. Olyan esetekben, ahol harmadik féltől származó nehéz szkriptek futnak (pl. komplex chat widgetek, több analitikai tracker), a legmagasabb technológiailag elérhető sebességet hozzuk ki kompromisszumok nélkül.",
   },
   {
-    q: "Hogyan gondoskodsz a WordPress oldal biztonságáról?",
-    a: "Alapértelmezett bejelentkezési útvonalak elrejtése, kétfaktoros hitelesítés támogatása, automatikus adatbázis-mentések, tűzfal és spamvédelem konfigurálása, valamint rendszeres mag- és bővítményfrissítési protokoll védi a weboldalt a támadásoktól.",
+    q: "Mennyi ideig tart a weboldal sebességoptimalizálása?",
+    a: "Egy bemutatkozó weboldal optimalizálása általában 2–4 munkanapot vesz igénybe, míg összetett webshopok esetén 1–2 hét szükséges az alapos tesztelés miatt.",
   },
 ];
 
-export default function WordPressWeboldalKeszitesPage() {
+export default function WeboldalSebessegoptimalizalasPage() {
   const serviceJsonLd = {
     "@context": "https://schema.org",
     "@type": "Service",
-    name: "WordPress weboldal készítés",
+    name: "Weboldal Sebességoptimalizálás",
     provider: {
       "@type": "Person",
       name: "Norbert - WebDude",
       url: "https://webdude.hu",
     },
-    description: "Egyedi WordPress weboldal készítés, felújítás és fejlesztés vállalkozásoknak. Gyors, biztonságos, könnyen kezelhető és SEO-barát megoldások.",
-    serviceType: "Web Development",
+    description: "Lassú a weboldalad? A látogatók és a Google is bünteti. Adatalapú weboldal gyorsítás és Core Web Vitals optimalizálás.",
+    serviceType: "Website Performance Optimization",
     areaServed: "HU",
   };
 
@@ -143,18 +143,18 @@ export default function WordPressWeboldalKeszitesPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sky-950/80 border border-sky-500/30 text-sky-400 text-xs font-medium uppercase tracking-wider mb-6">
-              <Sparkles className="w-3.5 h-3.5 text-[#00B5F1]" />
-              WordPress Szakértelem & Egyedi Fejlesztés
+              <Zap className="w-3.5 h-3.5 text-[#00B5F1]" />
+              Core Web Vitals & PageSpeed Gyorsítás
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight mb-6">
-              WordPress weboldal készítés, <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#a855f7]">kompromisszumok nélkül</span>
+              Ne veszíts több ügyfelet a <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#a855f7]">lassú betöltés</span> miatt
             </h1>
             <p className="text-lg sm:text-xl text-slate-300 leading-relaxed mb-8">
-              Ha könnyen szerkeszthető, mégis professzionális weboldalra van szükséged, a WordPress jó alap lehet. Egyedi megjelenést, átgondolt struktúrát, technikai SEO-beállításokat és olyan adminfelületet kapsz, amelyet később önállóan is tudsz használni.
+              Minden másodperc várakozás 20%-kal csökkenti a bevételedet. A látogatók azonnal visszalépnek, a Google pedig hátrébb sorolja a lassú oldalakat. Adatalapú gyorsítással repítem a zöld zónába a weboldaladat.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
-                href="/kapcsolat?service=wordpress"
+                href="/kapcsolat?service=weboldal-sebessegoptimalizalas"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-semibold text-white bg-linear-to-r from-cta-from to-[#5B21B6] hover:from-[#0369a1] hover:to-[#6d28d9] shadow-lg shadow-sky-950/50 transition-all duration-300 group"
               >
                 Egyedi árajánlat kérése
@@ -164,132 +164,127 @@ export default function WordPressWeboldalKeszitesPage() {
                 href="#csomagok"
                 className="inline-flex items-center justify-center px-6 py-4 rounded-xl font-medium text-slate-300 bg-slate-900 border border-slate-800 hover:border-slate-700 hover:text-white transition-colors"
               >
-                Csomagok és részletek
+                Gyorsítási opciók
               </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* E-E-A-T Bento Grid Section */}
+      {/* Speed Metrics Bento Grid */}
       <section className="py-24 relative border-b border-slate-800/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-              Nem egy sablonos oldal — Valódi digitális érték
+              Hogyan gyorsítom fel a weboldaladat a valóságban?
             </h2>
             <p className="text-slate-400">
-              A legtöbb WordPress oldal elbukik a lassúságon és a túlméretezett bővítményeken. Én a tiszta architektúrában és a fenntartható kódban hiszek.
+              Nem használok csodatevőnek mondott, valójában lassító &quot;all-in-one&quot; bővítményeket. Mérnöki pontossággal optimalizálom az erőforrásokat.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Bento Card 1 */}
             <div className="p-8 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-[#00B5F1]/50 transition-colors duration-300 flex flex-col justify-between">
               <div>
                 <div className="w-12 h-12 rounded-xl bg-sky-950/80 border border-sky-500/30 flex items-center justify-center text-[#00B5F1] mb-6">
                   <Gauge className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">Maximális Betöltési Sebesség</h3>
+                <h3 className="text-xl font-bold text-white mb-3">Core Web Vitals Megfelelés</h3>
                 <p className="text-slate-400 text-sm leading-relaxed">
-                  Optimalizált képek, minifikált scriptek, modern webp/avif formátumok és minimális DOM-méret. Nem terhelem a weboldaladat 40 felesleges pluginnel.
+                  LCP (legnagyobb tartalom megjelenése), INP (interakciós válaszidő) és CLS (elrendezés-elmozdulás) optimalizálása a Google elvárásai szerint.
                 </p>
               </div>
               <div className="mt-6 pt-6 border-t border-slate-800/80 text-xs text-sky-400 flex items-center gap-1.5 font-semibold">
-                <CheckCircle2 className="w-4 h-4" /> 90+ PageSpeed elvárás
+                <CheckCircle2 className="w-4 h-4" /> Zöld metrikák garantálva
               </div>
             </div>
 
-            {/* Bento Card 2 */}
             <div className="p-8 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-[#00B5F1]/50 transition-colors duration-300 flex flex-col justify-between">
               <div>
                 <div className="w-12 h-12 rounded-xl bg-purple-950/80 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-6">
-                  <Settings2 className="w-6 h-6" />
+                  <Layers className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">Könnyen Kezelhető Admin</h3>
+                <h3 className="text-xl font-bold text-white mb-3">Next-Gen Képoptimalizálás</h3>
                 <p className="text-slate-400 text-sm leading-relaxed">
-                  Gutenberg blokkokkal és egyedi mezőkkel felvértezett vezérlőpult. Úgy formázhatod a szövegeket és tölthetsz fel új tartalmakat, hogy a dizájn nem esik szét.
+                  Több megabájtos képek automatikus átalakítása WebP és AVIF formátumokba, reszponzív méretezéssel és késleltetett betöltéssel (Lazy Loading).
                 </p>
               </div>
               <div className="mt-6 pt-6 border-t border-slate-800/80 text-xs text-purple-400 flex items-center gap-1.5 font-semibold">
-                <CheckCircle2 className="w-4 h-4" /> Nulla kódolási igény átadás után
+                <CheckCircle2 className="w-4 h-4" /> Akár 80%-kal kisebb oldalsúly
               </div>
             </div>
 
-            {/* Bento Card 3 */}
             <div className="p-8 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-[#00B5F1]/50 transition-colors duration-300 flex flex-col justify-between">
               <div>
                 <div className="w-12 h-12 rounded-xl bg-sky-950/80 border border-sky-500/30 flex items-center justify-center text-[#00B5F1] mb-6">
-                  <ShieldCheck className="w-6 h-6" />
+                  <Cpu className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">Védelmi Szint & Stabilitás</h3>
+                <h3 className="text-xl font-bold text-white mb-3">Kód Minifikálás & Késleltetés</h3>
                 <p className="text-slate-400 text-sm leading-relaxed">
-                  Keményített konfiguráció a leggyakoribb sebezhetőségek (SQL injection, XSS, Brute-Force) ellen. Rendszeres biztonsági másolatok és naprakész komponensek.
+                  A felesleges CSS és JS sorok eltávolítása, a renderelést blokkoló szkriptek aszinkron futtatása és a kritikus CSS beágyazása.
                 </p>
               </div>
               <div className="mt-6 pt-6 border-t border-slate-800/80 text-xs text-sky-400 flex items-center gap-1.5 font-semibold">
-                <CheckCircle2 className="w-4 h-4" /> Nyugodt üzemeltetés
+                <CheckCircle2 className="w-4 h-4" /> Blokkolásmentes renderelés
               </div>
             </div>
 
-            {/* Bento Card 4 (Span 2) */}
             <div className="md:col-span-2 p-8 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-[#00B5F1]/50 transition-colors duration-300">
               <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-4">
                 <div className="w-12 h-12 rounded-xl bg-sky-950/80 border border-sky-500/30 flex items-center justify-center text-[#00B5F1]">
-                  <Search className="w-6 h-6" />
+                  <Server className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-white">Technikai SEO & Keresőoptimalizálás Alapok</h3>
-                  <p className="text-slate-400 text-sm">Hogy ne csak létezzen a weboldalad, de megtalálják az ügyfeleid is.</p>
+                  <h3 className="text-xl font-bold text-white">Szerveroldali Gyorsítótár & Adatbázis Hangolás</h3>
+                  <p className="text-slate-400 text-sm">A lassú szerver válaszidő (TTFB) lefaragása a töredékére.</p>
                 </div>
               </div>
               <p className="text-slate-400 text-sm leading-relaxed mb-4">
-                Tiszta HTML5 struktúra, helyes H1-H3 hierarchia, automatikus XML webhelytérkép generálás, canonical címkék és modern Schema.org strukturált adatok beépítése a legmagasabb szintű Google és AI Answer Engine megfelelésért.
+                Objektum-gyorsítótár (Redis), szerveroldali gzip/brotli tömörítés és adatbázis indexelés. Az oldal nem fog megrogyni a nagyobb forgalmú kampányok idején sem.
               </p>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-4 border-t border-slate-800/80">
                 <div className="flex items-center gap-2 text-xs text-slate-300 font-medium">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span>Strukturált adatok</span>
+                  <span>Alacsonyabb TTFB</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs text-slate-300 font-medium">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span>Keresőbarát URL-ek</span>
+                  <span>Brotli tömörítés</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs text-slate-300 font-medium">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span>OpenGraph közösségi kártyák</span>
+                  <span>Magasabb terhelhetőség</span>
                 </div>
               </div>
             </div>
 
-            {/* Bento Card 5 */}
             <div className="p-8 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-[#00B5F1]/50 transition-colors duration-300 flex flex-col justify-between">
               <div>
                 <div className="w-12 h-12 rounded-xl bg-purple-950/80 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-6">
-                  <Code2 className="w-6 h-6" />
+                  <TrendingUp className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">Egyedi Fejlesztés & Bővíthetőség</h3>
+                <h3 className="text-xl font-bold text-white mb-3">Mérhető Konverzióugrás</h3>
                 <p className="text-slate-400 text-sm leading-relaxed">
-                  Ha nem találsz kész plugint a folyamataidra, megírom az egyedi logikát. Webshop, külső API kapcsolat vagy automatizált adatfolyamok.
+                  A gyors oldal azonnal megragadja a figyelmet: a látogatók nem ugranak vissza a keresőbe, hanem megrendelik a termékedet.
                 </p>
               </div>
               <div className="mt-6 pt-6 border-t border-slate-800/80 text-xs text-purple-400 flex items-center gap-1.5 font-semibold">
-                <Layers className="w-4 h-4" /> Korlátlan növekedési potenciál
+                <Sparkles className="w-4 h-4" /> Több eladás
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Pricing Table Section - Zero Fixed Price Rule */}
+      {/* Pricing Section */}
       <section id="csomagok" className="py-24 border-b border-slate-800/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-              Szolgáltatási Csomagok & Struktúra
+              Sebességoptimalizálási Csomagok
             </h2>
             <p className="text-slate-400">
-              Minden vállalkozás és webes igény egyedi. Nincsenek rejtett költségek: a pontos igényfelmérés után személyre szabott, kötöttségek nélküli ajánlatot készítek.
+              Válaszd ki a rendszeredhez illeszkedő gyorsítási szintet. Fix díjas meglepetések nélkül, egyedi igényfelméréssel dolgozom.
             </p>
           </div>
 
@@ -303,13 +298,13 @@ export default function WordPressWeboldalKeszitesPage() {
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900 border border-slate-800 text-slate-400 text-xs font-medium uppercase tracking-wider mb-4">
               <HelpCircle className="w-3.5 h-3.5 text-[#00B5F1]" />
-              Gyakori kérdések
+              Sebesség GYIK
             </div>
             <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-              Minden, amit a WordPress fejlesztésről tudni érdemes
+              Gyakori kérdések a weboldal gyorsításról
             </h2>
             <p className="text-slate-400">
-              Válaszok a leggyakoribb felmerülő kérdésekre a tervezéstől a későbbi karbantartásig.
+              Minden lényeges technikai részlet a gyorsítás folyamatáról.
             </p>
           </div>
 
@@ -336,13 +331,13 @@ export default function WordPressWeboldalKeszitesPage() {
       <section className="py-20 relative overflow-hidden">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-6">
-            Készen állsz egy modern, gyors és biztonságos WordPress weboldalra?
+            Szeretnéd tudni, mennyit gyorsulhat a te weboldalad?
           </h2>
           <p className="text-slate-300 max-w-2xl mx-auto mb-8 text-lg">
-            Írd meg az elképzeléseidet, és 24 órán belül felveszem veled a kapcsolatot a részletekkel és a megoldási javaslatokkal!
+            Küldd el a weboldalad linkjét, és elkészítem az előzetes sebességi elemzést a legfontosabb javítási javaslatokkal!
           </p>
           <Link
-            href="/kapcsolat?service=wordpress"
+            href="/kapcsolat?service=weboldal-sebessegoptimalizalas"
             className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-semibold text-white bg-linear-to-r from-cta-from to-[#5B21B6] hover:from-[#0369a1] hover:to-[#6d28d9] shadow-xl shadow-sky-950/60 transition-all duration-300 group"
           >
             Egyedi árajánlat kérése

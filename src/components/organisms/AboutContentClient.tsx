@@ -41,8 +41,8 @@ export default function AboutContentClient() {
       {/* 1. Hero Szekció (Személyes felütés) */}
       <section className="relative min-h-[90vh] flex items-center justify-center pt-32 pb-24 overflow-hidden border-b border-slate-800/80">
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 right-20 w-96 h-96 bg-gradient-to-br from-[#00B5F1]/15 to-purple-600/15 rounded-full blur-[120px]" />
-          <div className="absolute bottom-20 left-20 w-80 h-80 bg-gradient-to-br from-purple-900/20 to-slate-950 rounded-full blur-[100px]" />
+          <div className="absolute top-20 right-20 w-96 h-96 bg-linear-to-br from-[#00B5F1]/15 to-purple-600/15 rounded-full blur-[120px]" />
+          <div className="absolute bottom-20 left-20 w-80 h-80 bg-linear-to-br from-purple-900/20 to-slate-950 rounded-full blur-[100px]" />
         </div>
 
         <div className="max-w-6xl mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-12 items-center">
@@ -58,7 +58,7 @@ export default function AboutContentClient() {
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold font-sans text-white leading-tight tracking-tight">
               Nem egy ügynökséggel, hanem{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00B5F1] to-[#a855f7]">
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#a855f7]">
                 velem dolgozol
               </span>
             </h1>
@@ -68,7 +68,7 @@ export default function AboutContentClient() {
             <div className="pt-2 flex flex-col sm:flex-row gap-4">
               <Link
                 href="/kapcsolat"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-semibold text-white bg-gradient-to-r from-[#075985] to-[#5B21B6] hover:from-[#0369a1] hover:to-[#6d28d9] shadow-lg shadow-sky-950/50 transition-all duration-300 group"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-semibold text-white bg-linear-to-r from-[#075985] to-[#5B21B6] hover:from-[#0369a1] hover:to-[#6d28d9] shadow-lg shadow-sky-950/50 transition-all duration-300 group"
               >
                 Egyedi árajánlat kérése
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -88,7 +88,7 @@ export default function AboutContentClient() {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="relative w-full flex justify-center lg:justify-end"
           >
-            <div className="relative w-full max-w-md aspect-[4/5] overflow-hidden rounded-3xl border border-slate-800 bg-slate-900/60 p-3 shadow-2xl backdrop-blur-md">
+            <div className="relative w-full max-w-md aspect-4/5 overflow-hidden rounded-3xl border border-slate-800 bg-slate-900/60 p-3 shadow-2xl backdrop-blur-md">
               <div className="w-full h-full relative overflow-hidden rounded-2xl">
                 <Image
                   src="/assets/personal/webdude-kep.webp"
@@ -112,7 +112,7 @@ export default function AboutContentClient() {
               <span className="text-xs uppercase font-black tracking-[0.4em] text-[#00B5F1] mb-2 block">
                 Filozófia & Szemlélet
               </span>
-              <div className="absolute left-0 top-0 w-1 h-6 bg-gradient-to-b from-[#00B5F1] to-[#5B21B6]" />
+              <div className="absolute left-0 top-0 w-1 h-6 bg-linear-to-b from-[#00B5F1] to-[#5B21B6]" />
             </div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-sans text-white leading-tight tracking-tight">
               A közvetlen partnerség ereje
@@ -164,7 +164,7 @@ export default function AboutContentClient() {
               <span className="text-xs uppercase font-black tracking-[0.4em] text-[#00B5F1] mb-2 block">
                 Szakmai Mérföldkövek
               </span>
-              <div className="absolute left-0 top-0 w-1 h-6 bg-gradient-to-b from-[#00B5F1] to-[#5B21B6]" />
+              <div className="absolute left-0 top-0 w-1 h-6 bg-linear-to-b from-[#00B5F1] to-[#5B21B6]" />
             </div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white">
               Szakmai utam & tapasztalatom
@@ -220,7 +220,7 @@ export default function AboutContentClient() {
           <div className="pt-4">
             <Link
               href="/kapcsolat"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-[#075985] to-[#5B21B6] hover:from-[#0369a1] hover:to-[#6d28d9] text-white rounded-xl font-bold transition-all duration-300 shadow-xl shadow-sky-950/60 hover:scale-105 active:scale-95"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-linear-to-r from-[#075985] to-[#5B21B6] hover:from-[#0369a1] hover:to-[#6d28d9] text-white rounded-xl font-bold transition-all duration-300 shadow-xl shadow-sky-950/60 hover:scale-105 active:scale-95"
             >
               Egyedi árajánlat kérése
               <ArrowRight className="w-4 h-4" />

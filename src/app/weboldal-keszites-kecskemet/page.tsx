@@ -183,7 +183,7 @@ export default function WeboldalKeszitesKecskemetPage() {
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 overflow-hidden border-b border-slate-800/80">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-sky-900/20 via-slate-950 to-slate-950 pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,var(--tw-gradient-stops))] from-sky-900/20 via-slate-950 to-slate-950 pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sky-950/80 border border-sky-500/30 text-sky-400 text-xs font-medium uppercase tracking-wider mb-6">
@@ -191,7 +191,7 @@ export default function WeboldalKeszitesKecskemetPage() {
               Kecskemét & Bács-Kiskun Vármegye
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight mb-6">
-              Profi weboldal készítés <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00B5F1] to-[#a855f7]">Kecskeméten</span>
+              Profi weboldal készítés <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#a855f7]">Kecskeméten</span>
             </h1>
             <p className="text-lg sm:text-xl text-slate-300 leading-relaxed mb-8">
               Közvetlen kapcsolat, helyi elérhetőség és prémium digitális kivitelezés. Olyan eladásorientált weboldalt készítek kecskeméti vállalkozásodnak, amely kiemel a helyi versenytársak közül és vevőket generál.
@@ -199,7 +199,7 @@ export default function WeboldalKeszitesKecskemetPage() {
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
                 href="/kapcsolat?service=kecskemet"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-semibold text-white bg-gradient-to-r from-[#075985] to-[#5B21B6] hover:from-[#0369a1] hover:to-[#6d28d9] shadow-lg shadow-sky-950/50 transition-all duration-300 group"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-semibold text-white bg-linear-to-r from-cta-from to-[#5B21B6] hover:from-[#0369a1] hover:to-[#6d28d9] shadow-lg shadow-sky-950/50 transition-all duration-300 group"
               >
                 Egyedi árajánlat kérése
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -265,7 +265,7 @@ export default function WeboldalKeszitesKecskemetPage() {
 
             {/* Local Proof Card */}
             <div className="p-8 rounded-2xl bg-slate-900/80 border border-slate-800 relative overflow-hidden shadow-2xl">
-              <div className="absolute top-0 right-0 w-48 h-48 bg-gradient-to-br from-[#00B5F1]/10 to-purple-600/10 blur-3xl pointer-events-none" />
+              <div className="absolute top-0 right-0 w-48 h-48 bg-linear-to-br from-[#00B5F1]/10 to-purple-600/10 blur-3xl pointer-events-none" />
               <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
                 <MapPin className="w-5 h-5 text-[#00B5F1]" />
                 Kecskeméti Helyi Előnyök
@@ -291,7 +291,7 @@ export default function WeboldalKeszitesKecskemetPage() {
               <div className="mt-8 pt-6 border-t border-slate-800">
                 <Link
                   href="/kapcsolat?service=kecskemet"
-                  className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold text-white bg-gradient-to-r from-[#075985] to-[#5B21B6] hover:from-[#0369a1] hover:to-[#6d28d9] transition-all duration-200"
+                  className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold text-white bg-linear-to-r from-cta-from to-[#5B21B6] hover:from-[#0369a1] hover:to-[#6d28d9] transition-all duration-200"
                 >
                   Személyes találkozó kérése
                   <ArrowRight className="w-4 h-4" />
@@ -410,7 +410,7 @@ export default function WeboldalKeszitesKecskemetPage() {
           </p>
           <Link
             href="/kapcsolat?service=kecskemet"
-            className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-semibold text-white bg-gradient-to-r from-[#075985] to-[#5B21B6] hover:from-[#0369a1] hover:to-[#6d28d9] shadow-xl shadow-sky-950/60 transition-all duration-300 group"
+            className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-semibold text-white bg-linear-to-r from-cta-from to-[#5B21B6] hover:from-[#0369a1] hover:to-[#6d28d9] shadow-xl shadow-sky-950/60 transition-all duration-300 group"
           >
             Egyedi árajánlat kérése
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
