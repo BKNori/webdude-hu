@@ -75,7 +75,7 @@ export default function ContactPage() {
         }}
       />
 
-      <main className="min-h-screen bg-transparent text-text-primary">
+      <div className="min-h-screen bg-transparent text-text-primary">
       <Hero
         label="Kapcsolat"
         title={
@@ -121,7 +121,7 @@ export default function ContactPage() {
                   <Mail className="w-6 h-6 text-[#00B5F1] group-hover:scale-110 transition-transform" />
                 </div>
                 <div>
-                  <span className="text-xs uppercase tracking-[0.2em] font-bold opacity-50 block mb-1 text-slate-500">
+                  <span className="text-xs uppercase tracking-[0.2em] font-bold block mb-1 text-slate-400">
                     Email cím
                   </span>
                   <a
@@ -137,7 +137,7 @@ export default function ContactPage() {
                   <Phone className="w-6 h-6 text-[#00B5F1] group-hover:scale-110 transition-transform" />
                 </div>
                 <div>
-                  <span className="text-xs uppercase tracking-[0.2em] font-bold opacity-50 block mb-1 text-slate-500">
+                  <span className="text-xs uppercase tracking-[0.2em] font-bold block mb-1 text-slate-400">
                     Telefonszám
                   </span>
                   <a
@@ -153,7 +153,7 @@ export default function ContactPage() {
                   <MapPin className="w-6 h-6 text-[#00B5F1] group-hover:scale-110 transition-transform" />
                 </div>
                 <div>
-                  <span className="text-xs uppercase tracking-[0.2em] font-bold opacity-50 block mb-1 text-slate-500">
+                  <span className="text-xs uppercase tracking-[0.2em] font-bold block mb-1 text-slate-400">
                     Székhely
                   </span>
                   <span className="text-lg font-bold text-text-primary tracking-tight">
@@ -178,7 +178,7 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-      </main>
+      </div>
     </>
   );
 }

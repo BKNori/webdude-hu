@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -26,36 +27,36 @@ export default function AdminSettingsPage() {
               Jelenleg a következő admin felületek érhetők el:
             </p>
             <div className="mt-4 space-y-2">
-              <a
+              <Link
                 href="/admin/super-control"
                 className="block text-[#00B5F1] hover:text-[#00B5F1]/400"
               >
                 /admin/super-control - Szuperadmin Dashboard
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/admin/email-templates"
                 className="block text-[#00B5F1] hover:text-[#00B5F1]/400"
               >
                 /admin/email-templates - Email Sablonok
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/admin/work-log"
                 className="block text-[#00B5F1] hover:text-[#00B5F1]/400"
               >
                 /admin/work-log - Munkanapló
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/admin/portfolio"
                 className="block text-[#00B5F1] hover:text-[#00B5F1]/400"
               >
                 /admin/portfolio - Portfólió
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/admin/leads"
                 className="block text-[#00B5F1] hover:text-[#00B5F1]/400"
               >
                 /admin/leads - Leadek
-              </a>
+              </Link>
             </div>
           </div>
         </div>

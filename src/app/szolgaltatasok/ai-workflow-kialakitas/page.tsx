@@ -90,7 +90,7 @@ export default async function AiWorkflowPage() {
           __html: JSON.stringify(serviceSchema).replace(/</g, "\\u003c"),
         }}
       />
-      <main className="min-h-screen bg-bg-base text-text-primary relative overflow-hidden">
+      <div className="min-h-screen bg-bg-base text-text-primary relative overflow-hidden">
         {/* Background gradient */}
         <div className="absolute inset-0 bg-linear-to-b from-[#00B5F1]/5 via-transparent to-[#00B5F1]/5" />
         <div className="relative z-10">
@@ -104,6 +104,21 @@ export default async function AiWorkflowPage() {
             cta2Link="/munkak"
             fullHeight={true}
           />
+
+          {/* Direct Answer Block - AEO optimalizált "AI workflow áttekintés" */}
+          <section className="relative py-12 bg-bg-base border-y border-white/5">
+            <div className="max-w-4xl mx-auto px-6 text-center">
+              <p className="text-base md:text-lg text-slate-300 leading-relaxed">
+                <span className="text-[#00B5F1] font-semibold">
+                  AI workflow automatizálás:
+                </span>{" "}
+                ChatGPT, Claude és egyedi AI eszközök integrációja,
+                konfigurációja és testreszabása vállalkozások számára. 40-70%
+                időmegtakarítás, szigorú adatvédelem, titkosított kapcsolatok.
+                Egyszerű workflow 1-2 hét, komplex rendszer 4-8 hét.
+              </p>
+            </div>
+          </section>
 
           <div className="max-w-6xl mx-auto px-6">
             <div className="mt-12 grid gap-12 md:grid-cols-2 items-start max-w-4xl mx-auto">
@@ -483,7 +498,7 @@ export default async function AiWorkflowPage() {
             </section>
           </div>
         </div>
-      </main>
+      </div>
     </>
   );
 }

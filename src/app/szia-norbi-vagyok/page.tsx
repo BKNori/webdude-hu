@@ -36,7 +36,7 @@ export default function AboutPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-bg-base text-text-primary">
+    <div className="min-h-screen bg-bg-base text-text-primary">
       {/* 1. Hero Szekció (Személyes felütés) */}
       <section className="relative min-h-screen flex items-center justify-center pt-32 pb-40 overflow-hidden">
         {/* Ötletes háttér effektek */}
@@ -282,6 +282,6 @@ export default function AboutPage() {
           </motion.div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

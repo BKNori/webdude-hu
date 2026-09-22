@@ -11,20 +11,20 @@ interface RimaiCaseStudyProps {
 
 export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
   return (
-    <main className="min-h-screen bg-[#020617] text-[#e2e8f0]">
+    <div className="min-h-screen bg-bg-base text-text-primary">
       {/* Hero Szekció - 100vh */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/assets/portfolio/Rimai/rimai-3d-glass-window-logo-mockup-copy.webp"
+            src="/assets/portfolio/rimai/rimai-3d-glass-window-logo-mockup-copy.webp"
             alt="Rimai Útépítő Kft. 3D Logo Mockup"
             fill
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-[#020617]" />
+          <div className="absolute inset-0 bg-linear-to-b from-black/70 via-black/50 to-bg-base" />
         </div>
-        
+
         <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -34,14 +34,14 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
           >
             <div className="inline-block px-4 py-2 bg-sky-500/10 border border-sky-500/20 rounded-full">
               <span className="text-sky-400 text-xs font-bold uppercase tracking-wider">
-                {project.year} – {project.category}
+                {project.year || new Date().getFullYear()} – {project.category}
               </span>
             </div>
-            
+
             <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold leading-tight">
               {project.title}
             </h1>
-            
+
             <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto">
               {project.description}
             </p>
@@ -54,7 +54,9 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
                 transition={{ delay: 0.2 }}
                 className="bg-slate-900/50 backdrop-blur-sm border border-sky-500/20 rounded-2xl p-6"
               >
-                <div className="text-3xl md:text-4xl font-bold text-sky-400 mb-2">100%</div>
+                <div className="text-3xl md:text-4xl font-bold text-sky-400 mb-2">
+                  100%
+                </div>
                 <div className="text-sm text-slate-400">Autonómia</div>
               </motion.div>
               <motion.div
@@ -63,7 +65,9 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
                 transition={{ delay: 0.3 }}
                 className="bg-slate-900/50 backdrop-blur-sm border border-sky-500/20 rounded-2xl p-6"
               >
-                <div className="text-3xl md:text-4xl font-bold text-sky-400 mb-2">0-ról</div>
+                <div className="text-3xl md:text-4xl font-bold text-sky-400 mb-2">
+                  0-ról
+                </div>
                 <div className="text-sm text-slate-400">Felépítve</div>
               </motion.div>
               <motion.div
@@ -72,7 +76,9 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
                 transition={{ delay: 0.4 }}
                 className="bg-slate-900/50 backdrop-blur-sm border border-sky-500/20 rounded-2xl p-6"
               >
-                <div className="text-3xl md:text-4xl font-bold text-sky-400 mb-2">360°</div>
+                <div className="text-3xl md:text-4xl font-bold text-sky-400 mb-2">
+                  360°
+                </div>
                 <div className="text-sm text-slate-400">Arculattervezés</div>
               </motion.div>
             </div>
@@ -118,17 +124,19 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="md:col-span-2 relative aspect-[2/1] rounded-2xl overflow-hidden group hover:scale-[1.02] transition-transform duration-300"
+              className="md:col-span-2 relative aspect-2/1 rounded-2xl overflow-hidden group hover:scale-[1.02] transition-transform duration-300"
             >
               <Image
-                src="/assets/portfolio/Rimai/Rimai-Arculat-1.webp"
+                src="/assets/portfolio/rimai/rimai-arculat-1.webp"
                 alt="Rimai Névjegykártyák"
                 fill
                 className="object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
               <div className="absolute bottom-6 left-6">
-                <div className="text-white font-bold text-lg">Névjegykártyák</div>
+                <div className="text-white font-bold text-lg">
+                  Névjegykártyák
+                </div>
               </div>
             </motion.div>
 
@@ -140,12 +148,12 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
               className="relative aspect-square rounded-2xl overflow-hidden group hover:scale-[1.02] transition-transform duration-300"
             >
               <Image
-                src="/assets/portfolio/Rimai/rimai-fal-1-scaled.webp"
+                src="/assets/portfolio/rimai/rimai-fal-1-scaled.webp"
                 alt="Rimai Irodai Logó"
                 fill
                 className="object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
               <div className="absolute bottom-6 left-6">
                 <div className="text-white font-bold text-lg">Irodai Logó</div>
               </div>
@@ -156,17 +164,19 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="relative aspect-[2/1] rounded-2xl overflow-hidden group hover:scale-[1.02] transition-transform duration-300"
+              className="relative aspect-2/1 rounded-2xl overflow-hidden group hover:scale-[1.02] transition-transform duration-300"
             >
               <Image
-                src="/assets/portfolio/Rimai/Rimai-poszter-copy-scaled.webp"
+                src="/assets/portfolio/rimai/rimai-poszter-copy-scaled.webp"
                 alt="Rimai Autó Dekoráció"
                 fill
                 className="object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
               <div className="absolute bottom-6 left-6">
-                <div className="text-white font-bold text-lg">Autó Dekoráció</div>
+                <div className="text-white font-bold text-lg">
+                  Autó Dekoráció
+                </div>
               </div>
             </motion.div>
           </div>
@@ -200,13 +210,17 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
               className="space-y-6"
             >
               <div className="bg-slate-900/50 border border-sky-500/20 rounded-2xl p-8">
-                <h3 className="text-xl font-bold text-sky-400 mb-4">A Kihívás</h3>
+                <h3 className="text-xl font-bold text-sky-400 mb-4">
+                  A Kihívás
+                </h3>
                 <p className="text-slate-300 leading-relaxed">
                   {project.challenge}
                 </p>
               </div>
               <div className="bg-slate-900/50 border border-sky-500/20 rounded-2xl p-8">
-                <h3 className="text-xl font-bold text-sky-400 mb-4">A Megoldás</h3>
+                <h3 className="text-xl font-bold text-sky-400 mb-4">
+                  A Megoldás
+                </h3>
                 <p className="text-slate-300 leading-relaxed">
                   {project.solution}
                 </p>
@@ -222,7 +236,7 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
             >
               <div className="relative aspect-video rounded-2xl overflow-hidden group">
                 <Image
-                  src="/assets/portfolio/Rimai/Rimai-aszfaltra-irva-copy copy.webp"
+                  src="/assets/portfolio/rimai/rimai-aszfaltra-irva-copy-copy.webp"
                   alt="Rimai Aszfaltra Írt"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
@@ -230,7 +244,7 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
               </div>
               <div className="relative aspect-video rounded-2xl overflow-hidden group">
                 <Image
-                  src="/assets/portfolio/Rimai/Rimai-utepites-csatornazas.webp"
+                  src="/assets/portfolio/rimai/rimai-utepites-csatornazas.webp"
                   alt="Rimai Útépítés Csatornázás"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
@@ -268,7 +282,7 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
               className="relative aspect-square rounded-2xl overflow-hidden group"
             >
               <Image
-                src="/assets/portfolio/Rimai/Rimai-poszter-rgb.webp"
+                src="/assets/portfolio/rimai/rimai-poszter-rgb.webp"
                 alt="Rimai Poszter RGB"
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-500"
@@ -283,7 +297,7 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
               className="relative aspect-square rounded-2xl overflow-hidden group"
             >
               <Image
-                src="/assets/portfolio/Rimai/excavator-utepites-rimai-kecskemet-copy.webp"
+                src="/assets/portfolio/rimai/excavator-utepites-rimai-kecskemet-copy.webp"
                 alt="Excavator Útépítés"
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-500"
@@ -298,7 +312,7 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
               className="relative aspect-square rounded-2xl overflow-hidden group"
             >
               <Image
-                src="/assets/portfolio/Rimai/Rimai-melyepites-copy (1).webp"
+                src="/assets/portfolio/rimai/rimai-melyepites-copy-1.webp"
                 alt="Rimai Mélyépítés"
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-500"
@@ -309,7 +323,7 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
       </section>
 
       {/* Eredmények Szekció */}
-      <section className="py-24 px-6 bg-gradient-to-br from-sky-500/10 to-orange-500/10 border-y border-sky-500/20">
+      <section className="py-24 px-6 bg-linear-to-br from-sky-500/10 to-orange-500/10 border-y border-sky-500/20">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -340,7 +354,10 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
             </div>
 
             <p className="text-slate-300 text-lg max-w-2xl mx-auto leading-relaxed">
-              Ez a projekt tökéletes példája annak, amikor a műszaki precizitás (fejlesztés, szerver) és a kreatív vízió (grafika, arculat, szövegírás) egy kézben összpontosul, kompromisszummentes minőséget eredményezve.
+              Ez a projekt tökéletes példája annak, amikor a műszaki precizitás
+              (fejlesztés, szerver) és a kreatív vízió (grafika, arculat,
+              szövegírás) egy kézben összpontosul, kompromisszummentes minőséget
+              eredményezve.
             </p>
           </motion.div>
         </div>
@@ -357,11 +374,12 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
             className="space-y-8"
           >
             <h2 className="text-3xl md:text-5xl font-bold">
-              Készen állsz a{" "}
-              <span className="text-sky-400">következő</span> szintre?
+              Készen állsz a <span className="text-sky-400">következő</span>{" "}
+              szintre?
             </h2>
             <p className="text-slate-400 text-lg">
-              Hogyan tudnám a te vállalkozásodat is a digitális élvonalba repíteni?
+              Hogyan tudnám a te vállalkozásodat is a digitális élvonalba
+              repíteni?
             </p>
             <div className="flex flex-wrap justify-center gap-6">
               <Link
@@ -380,6 +398,6 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
           </motion.div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

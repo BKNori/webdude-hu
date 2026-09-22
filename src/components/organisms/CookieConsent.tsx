@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { motion } from "motion/react";
 import Button from "@/components/atoms/Button";
 
@@ -90,12 +91,12 @@ export default function CookieConsent() {
             </p>
             <p className="text-xs text-slate-500">
               További információ:{" "}
-              <a
+              <Link
                 href="/adatvedelmi-szabalyzat"
                 className="text-sky-500 hover:text-violet-700 underline"
               >
                 Adatvédelmi Szabályzat
-              </a>
+              </Link>
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">

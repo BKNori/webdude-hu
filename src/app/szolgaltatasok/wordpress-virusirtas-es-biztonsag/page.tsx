@@ -61,7 +61,7 @@ export default async function SecurityPage() {
           __html: JSON.stringify(serviceSchema).replace(/</g, "\\u003c"),
         }}
       />
-      <main className="py-24 bg-transparent text-text-primary relative overflow-hidden">
+      <div className="py-24 bg-transparent text-text-primary relative overflow-hidden">
         {/* Background gradient */}
         <div className="absolute inset-0 bg-linear-to-b from-[#00B5F1]/5 via-transparent to-[#00B5F1]/5" />
         <div className="relative z-10">
@@ -90,7 +90,7 @@ export default async function SecurityPage() {
             </div>
           </div>
         </div>
-      </main>
+      </div>
     </>
   );
 }

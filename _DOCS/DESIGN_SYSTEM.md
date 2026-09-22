@@ -41,24 +41,24 @@ A **„Cyber-Arany 2026"** stílus egy prémium, sötét alapú, futurisztikus d
 
 ### 2.2 Szövegszínek (Olvashatósági Hierarchia)
 
-| Token neve       | Hex       | Tailwind class   | WCAG Szint | Használat                                     |
-| ---------------- | --------- | ---------------- | ---------- | --------------------------------------------- |
-| `text-primary`   | `#e2e8f0` | `text-[#e2e8f0]` | AAA        | Fő szövegtartalom, heading-ek.                |
-| `text-secondary` | `#94a3b8` | `text-slate-400` | AA         | Alcímek, hosszú olvasmányok, meta adatok.     |
-| `text-muted`     | `#64748b` | `text-slate-500` | AA (Large) | Placeholder, disabled text, kiegészítő label. |
-| `text-inverted`  | `#020617` | `text-slate-950` | AAA (9.76:1) | Arany (amber) CTA gombokon belüli feliratok. |
+| Token neve       | Hex       | Tailwind class   | WCAG Szint   | Használat                                     |
+| ---------------- | --------- | ---------------- | ------------ | --------------------------------------------- |
+| `text-primary`   | `#e2e8f0` | `text-[#e2e8f0]` | AAA          | Fő szövegtartalom, heading-ek.                |
+| `text-secondary` | `#94a3b8` | `text-slate-400` | AA           | Alcímek, hosszú olvasmányok, meta adatok.     |
+| `text-muted`     | `#64748b` | `text-slate-500` | AA (Large)   | Placeholder, disabled text, kiegészítő label. |
+| `text-inverted`  | `#020617` | `text-slate-950` | AAA (9.76:1) | Arany (amber) CTA gombokon belüli feliratok.  |
 
 ### 2.3 Brand Akcentus Színek (Kék-Lila)
 
-| Token neve     | Hex       | Tailwind class                        | Használat                                       |
-| -------------- | --------- | ------------------------------------- | ----------------------------------------------- |
+| Token neve      | Hex       | Tailwind class                            | Használat                                       |
+| --------------- | --------- | ----------------------------------------- | ----------------------------------------------- |
 | `brand-primary` | `#00B5F1` | `bg-brand-primary` / `text-brand-primary` | Elsődleges CTA gombok, aktív állapotok, ikonok. |
-| `cta-from`    | `#38bdf8` | `from-cta-from`                       | Gradiens kezdőpont (sky-400).                  |
-| `cta-to`      | `#5B21B6` | `to-cta-to`                           | Gradiens végpont (violet-700).                    |
-| `cta-hover`   | `#5B21B6` | `hover:bg-cta-hover`                  | Hover háttér, sötét felirattal ellenőrizendő.     |
-| `cta-from`    | `#075985` | `bg-cta-from`                         | Mély arany; szövegkontraszt külön ellenőrzendő.  |
-| `brand-glow`   | `#00B5F1` | `shadow-[0_0_40px_rgba(0, 181, 241,0.3)]` | Arany glow hatások.                          |
-| `border-color` | `#334155` | `border-slate-700`                    | Szegélyek, keretek, elválasztók.                |
+| `cta-from`      | `#38bdf8` | `from-cta-from`                           | Gradiens kezdőpont (sky-400).                   |
+| `cta-to`        | `#5B21B6` | `to-cta-to`                               | Gradiens végpont (violet-700).                  |
+| `cta-hover`     | `#5B21B6` | `hover:bg-cta-hover`                      | Hover háttér, sötét felirattal ellenőrizendő.   |
+| `cta-from`      | `#075985` | `bg-cta-from`                             | Mély arany; szövegkontraszt külön ellenőrzendő. |
+| `brand-glow`    | `#00B5F1` | `shadow-[0_0_40px_rgba(0, 181, 241,0.3)]` | Arany glow hatások.                             |
+| `border-color`  | `#334155` | `border-slate-700`                        | Szegélyek, keretek, elválasztók.                |
 
 ---
 
@@ -125,9 +125,9 @@ Kerüljük a random z-index értékeket. Szigorú hierarchia:
 
 | Token neve    | CSS érték                           | Tailwind class                               | Használat                |
 | ------------- | ----------------------------------- | -------------------------------------------- | ------------------------ |
-| `elevation-1` | `0 4px 12px rgba(0, 181, 241,.04)`   | `shadow-[0_4px_12px_rgba(0, 181, 241,.04)]`   | Kis elemek, badge-ek     |
-| `elevation-2` | `0 8px 24px rgba(0, 181, 241,.06)`   | `shadow-[0_8px_24px_rgba(0, 181, 241,.06)]`   | Kártyák, konténerek      |
-| `elevation-3` | `0 18px 40px rgba(0, 181, 241,.08)`  | `shadow-[0_18px_40px_rgba(0, 181, 241,.08)]`  | Hover állapotok, modálok |
+| `elevation-1` | `0 4px 12px rgba(0, 181, 241,.04)`  | `shadow-[0_4px_12px_rgba(0, 181, 241,.04)]`  | Kis elemek, badge-ek     |
+| `elevation-2` | `0 8px 24px rgba(0, 181, 241,.06)`  | `shadow-[0_8px_24px_rgba(0, 181, 241,.06)]`  | Kártyák, konténerek      |
+| `elevation-3` | `0 18px 40px rgba(0, 181, 241,.08)` | `shadow-[0_18px_40px_rgba(0, 181, 241,.08)]` | Hover állapotok, modálok |
 
 **Megjegyzés:** A Kék-Lila v7.0 rendszerben a három szintű elevation rendszert használjuk a térbeliség létrehozására. A régi shadow-soft, shadow-medium, shadow-large tokeneket felváltották az elevation-1, elevation-2, elevation-3 tokenek.
 
@@ -139,7 +139,7 @@ Kerüljük a random z-index értékeket. Szigorú hierarchia:
 
 ```typescript
 <div className="
-  bg-[#0f172a]
+  bg-bg-surface
   border border-slate-700
   rounded-3xl
   p-8
@@ -166,7 +166,7 @@ Kerüljük a random z-index értékeket. Szigorú hierarchia:
 // Másodlagos (Secondary - Outline)
 <button className="
   border border-slate-700 hover:border-[#00B5F1]
-  text-[#e2e8f0] hover:text-[#00B5F1]
+  text-text-primary hover:text-[#00B5F1]
   bg-transparent
   px-8 py-4 rounded-full
   font-medium
@@ -190,10 +190,10 @@ Minden inputnak rendelkeznie kell fókusz- és hibaállapottal.
 
 ```typescript
 <input className="
-  w-full bg-[#0f172a]
+  w-full bg-bg-surface
   border border-slate-700
   focus:border-[#00B5F1] focus:ring-1 focus:ring-[#00B5F1]
-  text-[#e2e8f0] placeholder:text-slate-500
+  text-text-primary placeholder:text-slate-500
   px-5 py-4 rounded-2xl
   outline-none transition-all duration-200
   aria-invalid:border-red-500 aria-invalid:ring-red-500
@@ -235,7 +235,7 @@ Csak a Hero dashboard / kiemelt előnézeti kártyákon használható:
 
 ```typescript
 <div className="
-  backdrop-blur-md bg-[#0f172a]/90
+  backdrop-blur-md bg-bg-surface/90
   border border-slate-700
   rounded-3xl
   shadow-[0_8px_24px_rgba(0, 181, 241,.06)]

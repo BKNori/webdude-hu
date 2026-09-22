@@ -239,7 +239,7 @@ export default function SystemShowcase() {
             }}
             whileTap={{ scale: 0.97 }}
             transition={{ type: "spring", stiffness: 400, damping: 20 }}
-            className="inline-flex items-center gap-3 px-8 py-4 rounded-full font-semibold text-[#00B5F1] text-base uppercase tracking-wider border border-[#00B5F1]/40 hover:border-sky-500/50 hover:bg-[#00B5F1]/10 hover:shadow-[0_0_32px_rgba(0, 181, 241,0.25)] transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 focus:ring-offset-[#020617]"
+            className="inline-flex items-center gap-3 px-8 py-4 rounded-full font-semibold text-[#00B5F1] text-base uppercase tracking-wider border border-[#00B5F1]/40 hover:border-sky-500/50 hover:bg-[#00B5F1]/10 hover:shadow-[0_0_32px_rgba(0, 181, 241,0.25)] transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 focus:ring-offset-bg-base"
             aria-label="Egyedi árajánlat kérése"
           >
             Egyedi árajánlat kérése

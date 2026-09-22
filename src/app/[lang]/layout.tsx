@@ -1,0 +1,165 @@
+import React from "react";
+import { Inter, Space_Grotesk } from "next/font/google";
+import { MotionConfig } from "motion/react";
+import PageWrapper from "@/components/layout/PageWrapper";
+import Script from "next/script";
+import { getClarityScript } from "@/lib/clarity";
+import { getDictionary } from "@/lib/dictionary";
+import { Language } from "@/types/dictionary";
+
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+  preload: true,
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-space-grotesk",
+  weight: ["700"],
+  preload: true,
+});
+
+interface LangLayoutProps {
+  children: React.ReactNode;
+  params: {
+    lang: Language;
+  };
+}
+
+export default async function LangLayout({
+  children,
+  params,
+}: LangLayoutProps) {
+  const dictionary = await getDictionary(params.lang);
+
+  const jsonLd: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "https://webdude.hu/#organization",
+    name: dictionary.common.title,
+    description: dictionary.common.description,
+    url: "https://webdude.hu",
+    telephone: "+36 70 323 8003",
+    email: "hello@webdude.hu",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Kecskemét",
+      addressRegion: "Bács-Kiskun",
+      addressCountry: "HU",
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 46.908,
+      longitude: 19.693,
+    },
+    openingHoursSpecification: {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "09:00",
+      closes: "16:00",
+    },
+    priceRange: "€€",
+    logo: {
+      "@type": "ImageObject",
+      url: "https://webdude.hu/og/webdude-og.jpg",
+      width: 1200,
+      height: 630,
+    },
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: "+36 70 323 8003",
+      email: "hello@webdude.hu",
+      contactType: "customer service",
+      areaServed: "HU",
+      availableLanguage: params.lang === "en" ? "English" : "Hungarian",
+    },
+    sameAs: [
+      "https://www.facebook.com/webdude.hu",
+      "https://www.linkedin.com/company/webdude",
+      "https://twitter.com/webdude_hu",
+    ],
+    areaServed: {
+      "@type": "Country",
+      name: "Hungary",
+    },
+    founder: {
+      "@type": "Person",
+      name: "Norbi",
+      jobTitle: "Full-Stack Web Developer & AI Specialist",
+    },
+    inLanguage: params.lang === "en" ? "en-US" : "hu-HU",
+  };
+
+  return (
+    <MotionConfig reducedMotion="user">
+      <html
+        lang={params.lang}
+        data-scroll-behavior="smooth"
+        className="overflow-x-hidden"
+      >
+        <head>
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+          />
+          {/* Preconnect for performance */}
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link
+            rel="preconnect"
+            href="https://fonts.gstatic.com"
+            crossOrigin="anonymous"
+          />
+          <link
+            rel="preconnect"
+            href="https://firebasestorage.googleapis.com"
+          />
+          <Script
+            id="json-ld"
+            type="application/ld+json"
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+            }}
+          />
+          {process.env.NODE_ENV === "production" &&
+            process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID && (
+              <Script
+                id="clarity"
+                strategy="afterInteractive"
+                dangerouslySetInnerHTML={{
+                  __html: getClarityScript(
+                    process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID
+                  ),
+                }}
+              />
+            )}
+        </head>
+        <body
+          className={`${inter.className} ${spaceGrotesk.className} antialiased min-h-screen max-w-[100vw] relative bg-transparent overflow-x-hidden touch-action-pan-y`}
+        >
+          {/* Skip link for accessibility */}
+          <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-[#00B5F1] focus:text-bg-base focus:px-4 focus:py-2 focus:rounded-md"
+          >
+            {dictionary.common.skipToContent}
+          </a>
+
+          {/* Globális CSS Háttérréteg */}
+          <div className="fixed inset-0 pointer-events-none -z-10 overflow-hidden">
+            <div className="absolute top-[-10%] left-[15%] w-150 h-150 rounded-full bg-[#00B5F1]/15 blur-[140px] bg-ambient-glow-1" />
+            <div className="absolute top-[40%] right-[10%] w-125 h-125 rounded-full bg-[#00B5F1]/10 blur-[150px] bg-ambient-glow-2" />
+            <div className="absolute bottom-[-10%] left-[20%] w-[162.5] h-[162.5] rounded-full bg-[#00B5F1]/10 blur-[160px] bg-ambient-glow-1" />
+            <div className="absolute inset-0 bg-mesh-grid opacity-60" />
+          </div>
+
+          {/* Fő tartalom réteg */}
+          <PageWrapper dictionary={dictionary}>{children}</PageWrapper>
+        </body>
+      </html>
+    </MotionConfig>
+  );
+}

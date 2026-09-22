@@ -9,9 +9,24 @@ const config = {
     '\\.(png|jpg|jpeg|svg)$': '<rootDir>/__mocks__/fileMock.js',
   },
 
-
-
-  testMatch: ['**/?(*.)+(spec|test).[tj]s?(x)'],
+  /**
+   * KIZÁRÓLAG az élő forráskód tesztjei futnak a Jest alatt (jsdom).
+   * Az `e2e/**` Playwright specifikációk a `npm run test:e2e`-vel futnak,
+   * a `_mentesek/**` pedig archivált másolat (nem élő kód).
+   */
+  testMatch: [
+    '<rootDir>/src/**/__tests__/**/*.{test,spec}.{ts,tsx}',
+    '<rootDir>/src/**/*.{test,spec}.{ts,tsx}',
+  ],
+  testPathIgnorePatterns: [
+    '<rootDir>/node_modules/',
+    '<rootDir>/.next/',
+    '<rootDir>/e2e/',
+    '<rootDir>/_mentesek/',
+    '<rootDir>/deploy_dist/',
+    '<rootDir>/functions/',
+  ],
+  modulePathIgnorePatterns: ['<rootDir>/.next/', '<rootDir>/_mentesek/'],
   collectCoverage: true,
   coverageThreshold: {
     global: {
@@ -20,6 +35,5 @@ const config = {
       statements: 80,
     },
   },
-  modulePathIgnorePatterns: ['<rootDir>/.next/'],
 };
 module.exports = config;

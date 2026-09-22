@@ -351,7 +351,7 @@ export default async function AddonsPage() {
               <h2 className="text-2xl md:text-3xl font-black text-white tracking-tight font-mono">
                 TERMÉKKATALÓGUS
               </h2>
-              <p className="text-xs text-slate-500 font-mono mt-2 uppercase tracking-widest">
+              <p className="text-xs text-slate-400 font-mono mt-2 uppercase tracking-widest">
                 Kattints a megrendelésre az indításhoz
               </p>
             </div>
@@ -422,7 +422,7 @@ export default async function AddonsPage() {
                   {/* Pricing & CTA */}
                   <div className="mt-8 pt-6 border-t border-white/5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                     <div>
-                      <span className="text-[10px] text-slate-500 uppercase font-mono block">
+                      <span className="text-[10px] text-slate-400 uppercase font-mono block">
                         Egyszeri díj
                       </span>
                       <span className="text-2xl font-black text-[#00B5F1] font-mono tracking-wider">
@@ -432,7 +432,7 @@ export default async function AddonsPage() {
                     </div>
                     <Link
                       href="/portal"
-                      className="px-6 py-3 bg-[#00B5F1] hover:bg-[#5B21B6] text-bg-base font-bold rounded-xl uppercase tracking-wider text-xs transition-all duration-300 text-center flex items-center justify-center gap-1.5"
+                      className="px-6 py-3 bg-[#00B5F1] hover:bg-[#5B21B6] text-bg-base hover:text-white font-bold rounded-xl uppercase tracking-wider text-xs transition-all duration-300 text-center flex items-center justify-center gap-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B5F1] focus-visible:ring-offset-2 focus-visible:ring-offset-[#020617]"
                     >
                       <ShoppingBag className="w-4 h-4" />
                       Megrendelés
@@ -447,14 +447,14 @@ export default async function AddonsPage() {
         {/* AEO-OPTIMIZED FAQ SECTION */}
         <section className="max-w-4xl mx-auto border-t border-slate-800/60 pt-20">
           <div className="text-center mb-12">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] uppercase font-mono tracking-widest font-bold text-slate-500 bg-transparent border border-slate-800/80 mb-4">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] uppercase font-mono tracking-widest font-bold text-slate-400 bg-transparent border border-slate-800/80 mb-4">
               <HelpCircle className="w-3.5 h-3.5" />
               KÉRDÉSEK ÉS VÁLASZOK
             </span>
             <h2 className="text-2xl md:text-3xl font-black text-white tracking-tight font-mono">
               GYAKRAN ISMÉTELT KÉRDÉSEK
             </h2>
-            <p className="text-xs text-slate-500 font-mono mt-2 uppercase tracking-widest">
+            <p className="text-xs text-slate-400 font-mono mt-2 uppercase tracking-widest">
               Minden, amit az azonnali kiegészítőkről tudni érdemes
             </p>
           </div>

@@ -9,18 +9,20 @@ import { buildBreadcrumbSchema, BreadcrumbItem } from "@/lib/breadcrumb";
 import Image from "next/image";
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Weboldal Készítés – React, Next.js, WordPress, Node.js | WebDude",
+    title:
+      "Weboldal Készítés Kecskemétről – Next.js, React, WordPress | WebDude",
     description:
-      "Egyedi weboldal fejlesztés React, Next.js, WordPress, Node.js, HTML, JavaScript technológiákkal. Mobilbarát, SEO-optimalizált és konverzió-fókuszú megoldások az ügyfél igénye szerint. Landing page, vállalati weboldal, webshop és alkalmazás fejlesztés.",
+      "Prémium weboldal készítés Next.js 16, React 19, WordPress és egyedi fejlesztéssel. 26 év grafikai és 16 év webfejlesztői tapasztalat, SEO/AEO optimalizálás, konverzió-fókuszú megoldások Kecskemétről országosan.",
     keywords:
-      "weboldal készítés, React fejlesztés, Next.js, WordPress, Node.js, HTML, JavaScript, egyedi weboldal, responsive design, landing page, vállalati weboldal, webshop fejlesztés, SaaS platform",
+      "weboldal készítés Kecskemét, React fejlesztés, Next.js, WordPress, Node.js, egyedi weboldal, responsive design, landing page, vállalati weboldal, webshop fejlesztés, SaaS platform, SEO optimalizálás",
     alternates: {
       canonical: "https://webdude.hu/szolgaltatasok/weboldal-keszites",
     },
     openGraph: {
-      title: "Weboldal Készítés – React, Next.js, WordPress, Node.js | WebDude",
+      title:
+        "Weboldal Készítés Kecskemétről – Next.js, React, WordPress | WebDude",
       description:
-        "Egyedi weboldal fejlesztés React, Next.js, WordPress, Node.js, HTML, JavaScript technológiákkal. Mobilbarát, SEO-optimalizált és konverzió-fókuszú megoldások az ügyfél igénye szerint.",
+        "Prémium weboldal készítés Next.js 16, React 19, WordPress és egyedi fejlesztéssel. 26 év grafikai és 16 év webfejlesztői tapasztalat, SEO/AEO optimalizálás, konverzió-fókuszú megoldások Kecskemétről országosan.",
       url: "https://webdude.hu/szolgaltatasok/weboldal-keszites",
       type: "website",
       siteName: "WebDude",
@@ -35,9 +37,10 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     twitter: {
       card: "summary_large_image",
-      title: "Weboldal Készítés – React, Next.js, WordPress, Node.js | WebDude",
+      title:
+        "Weboldal Készítés Kecskemétről – Next.js, React, WordPress | WebDude",
       description:
-        "Egyedi weboldal fejlesztés React, Next.js, WordPress, Node.js, HTML, JavaScript technológiákkal. Mobilbarát, SEO-optimalizált és konverzió-fókuszú megoldások az ügyfél igénye szerint.",
+        "Prémium weboldal készítés Next.js 16, React 19, WordPress és egyedi fejlesztéssel. 26 év grafikai és 16 év webfejlesztői tapasztalat, SEO/AEO optimalizálás, konverzió-fókuszú megoldások Kecskemétről országosan.",
       images: [
         "/banners/wordpress-weboldalak-keszitese-grafikai-tervezes.webp",
       ],
@@ -48,31 +51,35 @@ export async function generateMetadata(): Promise<Metadata> {
 const FAQ = [
   {
     q: "Milyen technológiákkal fejlesztek weboldalakat?",
-    a: "React, Next.js, WordPress, Node.js, HTML, JavaScript, TypeScript, Tailwind CSS. Az ügyfél igénye szerint választjuk a legmegfelelőbb technológiát: React/Next.js modern weboldalakhoz, WordPress CMS-hez, Node.js backend-hez, HTML/JavaScript egyszerűbb projektekhez.",
+    a: "React, Next.js 16, React 19, WordPress, Node.js, HTML, JavaScript, TypeScript, Tailwind CSS v4. Az ügyfél igénye szerint választjuk a legmegfelelőbb technológiát: React/Next.js modern weboldalakhoz (pl. btshop.hu), WordPress CMS-hez (pl. Classi-Co Kft.), Node.js backend-hez (pl. HU-MAGO Kft.), HTML/JavaScript egyszerűbb projektekhez (pl. Bor és Garnéla).",
   },
   {
     q: "Mennyi idő egy weboldal elkészítése?",
-    a: "Egyszerű landing page 1-2 hét, vállalati weboldal 2-4 hét, komplex webshop vagy alkalmazás 4-8 hét attól függően, hogy milyen funkciók szükségesek. A webspecifikáció kialakítása és konzultáció 3-5 munkanap.",
+    a: "Egyszerű landing page 1-2 hét, vállalati weboldal 2-4 hét, komplex webshop vagy alkalmazás 4-8 hét attól függően, hogy milyen funkciók szükségesek. A webspecifikáció kialakítása és konzultáció 3-5 munkanap. A btshop.hu webshop 4-6 hét alatt készült el.",
   },
   {
     q: "Biztonságos a weboldal fejlesztés?",
-    a: "Igen, minden fejlesztésnél biztonsági auditot végzek, SSL titkosítást alkalmazok, követem a legújabb biztonsági best practice-eket, és rendszeres biztonsági frissítéseket biztosítok.",
+    a: "Igen, minden fejlesztésnél biztonsági auditot végzek, SSL titkosítást alkalmazok, követem a legújabb biztonsági best practice-eket, és rendszeres biztonsági frissítéseket biztosítok. Minden WooCommerce webshop biztonságos fizetési integrációval rendelkezik.",
   },
   {
     q: "Mennyibe kerül egy weboldal?",
-    a: "Egyedi árajánlat kérése a projekt igényei szerint. Ingyenes konzultáció a pontos árhoz.",
+    a: "Egyedi árajánlat kérése a projekt igényei szerint. Ingyenes konzultáció a pontos árhoz. Landing page, vállalati weboldal és webshop csomagok elérhetők egyedi árazással.",
   },
   {
     q: "Miért a WordPress a legjobb választás?",
-    a: "WordPress 16+ éves tapasztalatom van, könnyen frissíthető, SEO-barát, hatalmas plugin ökoszisztéma, WooCommerce webshop integráció, és költséghatékony megoldás KKV-k számára.",
+    a: "WordPress 16+ éves tapasztalatom van, könnyen frissíthető, SEO-barát, hatalmas plugin ökoszisztéma, WooCommerce webshop integráció, és költséghatékony megoldás KKV-k számára. Lásd Classi-Co Kft. és btshop.hu projekteket.",
   },
   {
     q: "Miért válasszam React/Next.js-t?",
-    a: "Next.js 16 a legmodernebb technológia, szerveroldali renderelés (SSR), kiváló SEO, gyors betöltés, skálázható, és ideális SaaS platformokhoz és komplex webalkalmazásokhoz.",
+    a: "Next.js 16 a legmodernebb technológia, szerveroldali renderelés (SSR), kiváló SEO, gyors betöltés (LCP < 2.5s), skálázható, és ideális SaaS platformokhoz és komplex webalkalmazásokhoz. Lásd btshop.hu és HU-MAGO Kft. projekteket.",
   },
   {
     q: "Karbantartást is biztosítasz?",
-    a: "Igen, minden csomag tartalmaz karbantartást: landing page 1 hónap, vállalati weboldal 3 hónap, webshop 3 hónap prémium karbantartás. Utána havi karbantartási csomagok elérhetők.",
+    a: "Igen, minden csomag tartalmaz karbantartást: landing page 1 hónap, vállalati weboldal 3 hónap, webshop 3 hónap prémium karbantartás. Utána havi karbantartási csomagok elérhetők biztonsági frissítésekkel és napi mentésekkel.",
+  },
+  {
+    q: "SEO és AEO optimalizálást is végzel?",
+    a: "Igen, minden weboldal SEO optimalizált (Google Search Console, Analytics bekötés, strukturált adatok JSON-LD formátumban) és AEO optimalizált (ChatGPT, Perplexity, Gemini AI keresők). Lász főoldal Direct Answer Block-ot és FAQPage JSON-LD sémát.",
   },
 ];
 
@@ -90,9 +97,10 @@ export default async function WeboldalKeszitesPage() {
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
+    "@id": "https://webdude.hu/#service-weboldal-keszites",
     name: "Weboldal Készítés",
     description:
-      "Egyedi weboldal fejlesztés React, Next.js, WordPress, Node.js, HTML, JavaScript technológiákkal. Mobilbarát, SEO-optimalizált és konverzió-fókuszú megoldások az ügyfél igénye szerint.",
+      "Prémium weboldal készítés Next.js 16, React 19, WordPress és egyedi fejlesztéssel. 26 év grafikai és 16 év webfejlesztői tapasztalat, SEO/AEO optimalizálás, konverzió-fókuszú megoldások Kecskemétről országosan.",
     provider: {
       "@type": "Organization",
       "@id": "https://webdude.hu/#organization",
@@ -100,6 +108,40 @@ export default async function WeboldalKeszitesPage() {
       url: "https://webdude.hu",
     },
     areaServed: { "@type": "Country", name: "Hungary" },
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Webfejlesztési Szolgáltatások",
+      itemListElement: [
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Landing Page Fejlesztés",
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Vállalati Weboldal Fejlesztés",
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Webshop Fejlesztés",
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "SEO és AEO Optimalizálás",
+          },
+        },
+      ],
+    },
   };
 
   const faqSchema = {
@@ -133,7 +175,7 @@ export default async function WeboldalKeszitesPage() {
         }}
       />
 
-      <main className="min-h-screen pt-32 pb-20 bg-bg-base text-text-primary relative overflow-hidden">
+      <div className="min-h-screen pt-32 pb-20 bg-bg-base text-text-primary relative overflow-hidden">
         {/* Background gradient */}
         <div className="absolute inset-0 bg-linear-to-b from-[#00B5F1]/5 via-transparent to-[#00B5F1]/5" />
 
@@ -159,12 +201,13 @@ export default async function WeboldalKeszitesPage() {
             <div className="space-y-8">
               <Badge>Webfejlesztés</Badge>
               <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold text-white leading-tight">
-                Weboldal Készítés
+                Weboldal Készítés Kecskemétről
               </h1>
               <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-                Egyedi weboldal fejlesztés React, Next.js, WordPress, Node.js,
-                HTML, JavaScript technológiákkal az ügyfél igénye szerint.
-                Mobilbarát, SEO-optimalizált és konverzió-fókuszú megoldások.
+                Egyedi weboldal fejlesztés Next.js 16, React 19, WordPress,
+                Node.js, HTML, JavaScript technológiákkal. 26 év grafikai és 16
+                év webfejlesztői tapasztalat, mobilbarát, SEO-optimalizált és
+                konverzió-fókuszú megoldások Kecskemétről országosan.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <Button
@@ -183,13 +226,41 @@ export default async function WeboldalKeszitesPage() {
                 </Button>
               </div>
 
+              {/* Direct Answer Block - AEO optimalizált */}
+              <div className="mt-8 bg-slate-900/80 backdrop-blur-sm border border-[#00B5F1]/30 rounded-2xl p-6 max-w-4xl mx-auto">
+                <p className="text-base md:text-lg text-slate-300 leading-relaxed">
+                  <span className="text-[#00B5F1] font-semibold">
+                    WebDude egyéni vállalkozás:
+                  </span>{" "}
+                  26 év grafikai és 16 év webfejlesztői tapasztalat, Next.js 16,
+                  React 19, WordPress és egyedi fejlesztés, SEO/AEO
+                  optimalizálás, konverzió-fókuszú megoldások Kecskemétről
+                  országosan.
+                </p>
+              </div>
+
+              {/* Direct Answer Block - AEO optimalizált "Weboldal készítés folyamat" */}
+              <div className="mt-6 bg-slate-900/80 backdrop-blur-sm border border-[#00B5F1]/30 rounded-2xl p-6 max-w-4xl mx-auto">
+                <p className="text-base md:text-lg text-slate-300 leading-relaxed">
+                  <span className="text-[#00B5F1] font-semibold">
+                    Weboldal készítés folyamat:
+                  </span>{" "}
+                  Webspecifikáció kialakítás 3-5 munkanap, fejlesztés 1-4 hét
+                  attól függően a komplexitástól, tesztelés és deploy 1-2 hét.
+                  Minden projekt egyedi árazással és határidőre kész.
+                  Karbantartás 1-3 hónap csomagban elérhető.
+                </p>
+              </div>
+
               {/* Stats */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-12 max-w-4xl mx-auto">
                 <div className="bg-slate-900/50 backdrop-blur-sm border border-[#00B5F1]/20 rounded-2xl p-6">
                   <div className="text-3xl md:text-4xl font-bold text-[#00B5F1] mb-2">
                     16+
                   </div>
-                  <div className="text-sm text-slate-400">Éves tapasztalat</div>
+                  <div className="text-sm text-slate-400">
+                    Éves webfejlesztői tapasztalat
+                  </div>
                 </div>
                 <div className="bg-slate-900/50 backdrop-blur-sm border border-[#00B5F1]/20 rounded-2xl p-6">
                   <div className="text-3xl md:text-4xl font-bold text-[#00B5F1] mb-2">
@@ -202,7 +273,7 @@ export default async function WeboldalKeszitesPage() {
                     +300%
                   </div>
                   <div className="text-sm text-slate-400">
-                    Konverzió növekedés
+                    Átlagos konverzió növekedés
                   </div>
                 </div>
               </div>
@@ -224,25 +295,25 @@ export default async function WeboldalKeszitesPage() {
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <BentoCard
                   title="React & Next.js"
-                  description="Modern, gyors és skálázható front-end fejlesztés szerveroldali rendereléssel és optimalizált teljesítménnyel"
+                  description="Modern, gyors és skálázható front-end fejlesztés szerveroldali rendereléssel és optimalizált teljesítménnyel. Lásd btshop.hu projektet."
                   metric="SSR"
                   highlight="LCP < 2.5s"
                 />
                 <BentoCard
                   title="WordPress"
-                  description="CMS-alapú weboldalak, WooCommerce webshopok és egyedi plugin fejlesztés"
+                  description="CMS-alapú weboldalak, WooCommerce webshopok és egyedi plugin fejlesztés. Lásd btshop.hu és Classi-Co Kft. projekteket."
                   metric="CMS"
                   highlight="16 év tapasztalat"
                 />
                 <BentoCard
                   title="Node.js"
-                  description="Back-end fejlesztés, API integrációk és teljes stack alkalmazások építése"
+                  description="Back-end fejlesztés, API integrációk és teljes stack alkalmazások építése. Lásd HU-MAGO Kft. projektet."
                   metric="API"
                   highlight="Full Stack"
                 />
                 <BentoCard
                   title="HTML & JavaScript"
-                  description="Hagyományos és modern front-end fejlesztés, responsive design és interaktív felületek"
+                  description="Hagyományos és modern front-end fejlesztés, responsive design és interaktív felületek. Lásd Bor és Garnéla projektet."
                   metric="Vanilla"
                   highlight="Responsive"
                 />
@@ -567,7 +638,7 @@ export default async function WeboldalKeszitesPage() {
             </div>
           </section>
         </div>
-      </main>
+      </div>
     </>
   );
 }

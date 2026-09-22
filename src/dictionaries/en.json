@@ -1,0 +1,88 @@
+{
+  "common": {
+    "title": "WebDude",
+    "description": "Full-stack web development, AI workflow and agent systems — all in one place. 26 years of experience, Next.js 16, React 19, Tailwind v4, Firebase-based premium solutions.",
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "skipToContent": "Skip to main content"
+  },
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "news": "News",
+    "products": "Products",
+    "contact": "Contact",
+    "portal": "Client Portal",
+    "about": "About",
+    "cta": "Get a Quote"
+  },
+  "hero": {
+    "title": "Web Development & AI Automation",
+    "subtitle": "Next.js-based lightning-fast websites and AI-driven lead generation for small and medium businesses from Kecskemét, nationwide. 26 years of graphic design, 16 years of development experience.",
+    "cta": "Get a Quote",
+    "ctaSecondary": "View My Work"
+  },
+  "footer": {
+    "services": "Services",
+    "quickLinks": "Quick Links",
+    "contact": "Contact",
+    "copyright": "© 2024 WebDude. All rights reserved.",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "phone": "+36 70 323 8003",
+    "email": "hello@webdude.hu",
+    "address": "Kecskemét, Hungary",
+    "servicesLinks": {
+      "webDevelopment": "Web Development",
+      "wordpressWebshop": "WordPress Webshop",
+      "webshopDevelopment": "Webshop Development",
+      "wordpressWebsite": "WordPress Website",
+      "seoOptimization": "SEO Optimization",
+      "marketingLeadGeneration": "Marketing Lead Generation",
+      "graphicDesign": "Graphic Design",
+      "logoDesign": "Custom Logo Design",
+      "aiWorkflow": "AI Workflow Setup",
+      "aiVideoGeneration": "AI Image & Video Generation",
+      "aiPromptEngineering": "AI Prompt Engineering"
+    }
+  },
+  "language": {
+    "switch": "Switch Language",
+    "hungarian": "Hungarian",
+    "english": "English"
+  },
+  "bentoGrid": {
+    "expertise": {
+      "title": "Expertise",
+      "content": "WebDude is a solo business: 26 years of graphic design and 16 years of web development experience, Next.js 16, React 19, Tailwind v4 and Firebase-based premium solutions from Kecskemét, nationwide."
+    },
+    "techStack": {
+      "title": "Tech Stack",
+      "content": "Next.js 16, React 19, TypeScript, Tailwind CSS v4, Firebase (Firestore, Auth, Storage), Motion animations, React Hook Form, Zod validation. Modern, fast and secure solutions."
+    },
+    "timeline": {
+      "title": "Timeline & Guarantee",
+      "content": "Landing page 1-2 weeks, corporate website 2-4 weeks, webshop 4-6 weeks, AI workflow 2-8 weeks. Every project with custom pricing and deadline. No hidden costs."
+    }
+  },
+  "services": {
+    "page": {
+      "title": "Services – WebDude | Web Development, SEO, AI Automation",
+      "description": "26 years of experience: custom web development, SEO optimization, AI automation and graphic design for SMEs. Free consultation. Increase your client acquisition!",
+      "heroLabel": "SME & Marketing Services",
+      "heroTitle": "Increase Client Acquisition with Website and AI",
+      "heroSubtitle": "Digital solutions designed for small and medium businesses that automate marketing and increase conversion.",
+      "cta1": "Free Consultation",
+      "cta2": "View Portfolio",
+      "directAnswer": "WebDude digital services: Custom web development, graphic design, AI workflow automation, SEO optimization and marketing lead generation for SMEs. 26 years of experience, Next.js 16, React 19, Tailwind v4, Firebase-based premium solutions from Kecskemét, nationwide.",
+      "sectionTitle": "Our Digital Services",
+      "sectionSubtitle": "How can I help?",
+      "sectionDescription": "Services designed for SMEs and solo entrepreneurs that increase client acquisition, automate marketing and strengthen brand presence.",
+      "processTitle": "How I work?",
+      "processDescription": "Transparent process, results-oriented approach. No project manager, direct communication with me.",
+      "faqTitle": "How much does a website cost?",
+      "faqSection": "Frequently Asked Questions"
+    }
+  }
+}

@@ -173,6 +173,18 @@ service cloud.firestore {
       allow read, write: if false;
     }
 
+    // Notifications — valós idejű értesítések a portálhoz
+    match /notifications/{notificationId} {
+      // Olvasás: csak a saját értesítések vagy admin
+      allow read: if isAdmin() || (isAuthenticated() && resource.data.userId == request.auth.uid);
+      // Létrehozás: admin vagy saját (pl. admin küldhet, vagy saját generálás létrehoz)
+      allow create: if isAdmin() || (isAuthenticated() && request.resource.data.userId == request.auth.uid);
+      // Frissítés: csak a saját értesítések (isRead flag)
+      allow update: if isAdmin() || (isAuthenticated() && resource.data.userId == request.auth.uid && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['isRead']));
+      // Törlés: csak a saját értesítések vagy admin
+      allow delete: if isAdmin() || (isAuthenticated() && resource.data.userId == request.auth.uid);
+    }
+
     // Minden más: tiltva
     match /{document=**} {
       allow read, write: if false;

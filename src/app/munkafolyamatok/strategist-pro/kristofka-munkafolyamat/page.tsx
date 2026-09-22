@@ -173,7 +173,7 @@ export default function KristofkaWorkflowPage() {
 
       {/* Footer */}
       <footer className="border-t border-bg-elevated/20 py-8 px-6">
-        <div className="max-w-7xl mx-auto text-center text-slate-500 text-sm">
+        <div className="max-w-7xl mx-auto text-center text-slate-400 text-sm">
           <p>© 2026 WebDude.hu. Minden jog fenntartva.</p>
         </div>
       </footer>

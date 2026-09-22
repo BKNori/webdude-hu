@@ -223,7 +223,7 @@ export default function AdminPanel({
               type="text"
               {...register("name")}
               placeholder="Pl. Kis Péter"
-              className="w-full bg-bg-elevated/30 border border-slate-800 focus:border-sky-500/50 rounded-xl px-4 py-3 text-text-primary outline-none transition-all"
+              className="w-full bg-bg-elevated/30 border border-slate-800 focus:border-sky-500/50 focus:ring-2 focus:ring-[#00B5F1] focus:ring-offset-2 focus:ring-offset-bg-base rounded-xl px-4 py-3 text-text-primary outline-none transition-all"
             />
             {errors.name && (
               <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>
@@ -238,7 +238,7 @@ export default function AdminPanel({
               type="email"
               {...register("email")}
               placeholder="peter@pelda.hu"
-              className="w-full bg-bg-elevated/30 border border-slate-800 focus:border-sky-500/50 rounded-xl px-4 py-3 text-text-primary outline-none transition-all"
+              className="w-full bg-bg-elevated/30 border border-slate-800 focus:border-sky-500/50 focus:ring-2 focus:ring-[#00B5F1] focus:ring-offset-2 focus:ring-offset-bg-base rounded-xl px-4 py-3 text-text-primary outline-none transition-all"
             />
             {errors.email && (
               <p className="text-red-500 text-sm mt-1">
@@ -250,7 +250,7 @@ export default function AdminPanel({
           <button
             type="submit"
             disabled={isPendingRegister}
-            className="w-full py-4 px-6 rounded-xl bg-sky-500 hover:bg-violet-700 disabled:bg-sky-500/30 text-bg-base font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2"
+            className="w-full py-4 px-6 rounded-xl bg-sky-500 hover:bg-violet-700 disabled:bg-sky-500/30 text-bg-base font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-[#00B5F1] focus:ring-offset-2 focus:ring-offset-bg-base"
           >
             {isPendingRegister ? "Mentés folyamatban..." : "Ügyfél Létrehozása"}
           </button>

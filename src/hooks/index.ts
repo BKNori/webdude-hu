@@ -2,3 +2,7 @@
 export { usePortalSession, type PortalSession } from "./usePortalSession";
 export { usePortalData, type PortalData, type PortalDataInput } from "./usePortalData";
 export { useStripePaymentVerification } from "./useStripePaymentVerification";
+
+// Akadálymentesítési (a11y) hook-ok exportja
+export { useFocusTrap } from "./useFocusTrap";
+

@@ -368,7 +368,7 @@ export default function AIWorkshopCollection() {
       </header>
 
       {/* Main Container */}
-      <main className="max-w-6xl mx-auto px-6 py-12 space-y-12">
+      <div className="max-w-6xl mx-auto px-6 py-12 space-y-12">
         {/* Title Block */}
         <div className="space-y-2 relative">
           <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 rounded-full bg-sky-500/5 blur-3xl pointer-events-none" />
@@ -431,7 +431,7 @@ export default function AIWorkshopCollection() {
                         Aktív
                       </span>
                     ) : (
-                      <span className="text-[9px] font-mono font-bold tracking-wider text-slate-500 bg-slate-900 border border-slate-800 px-2.5 py-1 rounded-md uppercase flex items-center gap-1 select-none">
+                      <span className="text-[9px] font-mono font-bold tracking-wider text-slate-400 bg-slate-900 border border-slate-800 px-2.5 py-1 rounded-md uppercase flex items-center gap-1 select-none">
                         <Lock className="w-2.5 h-2.5" />
                         Zárolt
                       </span>
@@ -493,7 +493,7 @@ export default function AIWorkshopCollection() {
             );
           })}
         </div>
-      </main>
+      </div>
     </div>
   );
 }

@@ -1,0 +1,88 @@
+{
+  "common": {
+    "title": "WebDude",
+    "description": "Full-stack webfejlesztés, AI workflow és agent rendszerek — egy kézből. 26 év tapasztalat, Next.js 16, React 19, Tailwind v4, Firebase alapú prémium megoldások.",
+    "loading": "Betöltés...",
+    "error": "Hiba történt",
+    "skipToContent": "Ugrás a fő tartalomra"
+  },
+  "nav": {
+    "home": "Főoldal",
+    "services": "Szolgáltatások",
+    "portfolio": "Munkáim",
+    "news": "Hírek",
+    "products": "Termékek",
+    "contact": "Kapcsolat",
+    "portal": "Ügyfélportál",
+    "about": "Rólam",
+    "cta": "Kérj árajánlatot"
+  },
+  "hero": {
+    "title": "Webfejlesztés & AI Automatizáció",
+    "subtitle": "Next.js alapú villámgyors weboldalak és AI-vezérelt lead-generálás kis- és középvállalkozásoknak Kecskemétről, országosan. 26 év grafikai, 16 év fejlesztői tapasztalat.",
+    "cta": "Kérj árajánlatot",
+    "ctaSecondary": "Tekintsd meg a munkáimat"
+  },
+  "footer": {
+    "services": "Szolgáltatások",
+    "quickLinks": "Gyorslinkek",
+    "contact": "Elérhetőség",
+    "copyright": "© 2024 WebDude. Minden jog fenntartva.",
+    "privacyPolicy": "Adatvédelmi szabályzat",
+    "termsOfService": "Felhasználási feltételek",
+    "phone": "+36 70 323 8003",
+    "email": "hello@webdude.hu",
+    "address": "Kecskemét, Magyarország",
+    "servicesLinks": {
+      "webDevelopment": "Weboldal Készítés",
+      "wordpressWebshop": "WordPress Webshop",
+      "webshopDevelopment": "Webshop Fejlesztés",
+      "wordpressWebsite": "WordPress Weboldal",
+      "seoOptimization": "SEO Optimalizálás",
+      "marketingLeadGeneration": "Marketing Lead Generálás",
+      "graphicDesign": "Grafikai Tervezés",
+      "logoDesign": "Egyedi Arculattervezés",
+      "aiWorkflow": "AI Workflow Kialakítás",
+      "aiVideoGeneration": "AI Kép és Videó Generálás",
+      "aiPromptEngineering": "AI Prompt Engineering"
+    }
+  },
+  "language": {
+    "switch": "Nyelvváltás",
+    "hungarian": "Magyar",
+    "english": "English"
+  },
+  "bentoGrid": {
+    "expertise": {
+      "title": "Szakértői Háttér",
+      "content": "WebDude egyéni vállalkozás: 26 év grafikai és 16 év webfejlesztői tapasztalat, Next.js 16, React 19, Tailwind v4 és Firebase alapú prémium megoldások Kecskemétről, országosan."
+    },
+    "techStack": {
+      "title": "Technológiai Stack",
+      "content": "Next.js 16, React 19, TypeScript, Tailwind CSS v4, Firebase (Firestore, Auth, Storage), Motion animációk, React Hook Form, Zod validáció. Modern, gyors és biztonságos megoldások."
+    },
+    "timeline": {
+      "title": "Projekt Időzítés & Garancia",
+      "content": "Landing page 1-2 hét, vállalati weboldal 2-4 hét, webshop 4-6 hét, AI workflow 2-8 hét. Minden projekt egyedi árazással és határidőre kész. Nincs rejtett költség."
+    }
+  },
+  "services": {
+    "page": {
+      "title": "Szolgáltatások – WebDude | Weboldal Készítés, SEO, AI Automatizáció",
+      "description": "26 év tapasztalattal: egyedi weboldal készítés, SEO optimalizálás, AI automatizáció és grafikai tervezés KKV-knak. Ingyenes konzultáció. Növelje az ügyfélszerzést!",
+      "heroLabel": "KKV & Marketing Szolgáltatások",
+      "heroTitle": "Növelje az Ügyfélszerzést Weboldallal és AI-val",
+      "heroSubtitle": "Kis- és középvállalkozások számára tervezett digitális megoldások, amelyek automatizálják a marketinget és növelik a konverziót.",
+      "cta1": "Ingyenes konzultáció",
+      "cta2": "Munkák megtekintése",
+      "directAnswer": "WebDude digitális szolgáltatások: Egyedi weboldal készítés, grafikai tervezés, AI workflow automatizáció, SEO optimalizálás és marketing lead generálás KKV-knak. 26 év tapasztalat, Next.js 16, React 19, Tailwind v4, Firebase alapú prémium megoldások Kecskemétről országosan.",
+      "sectionTitle": "Digitális Szolgáltatásaink",
+      "sectionSubtitle": "Miben tudok segíteni?",
+      "sectionDescription": "KKV-k és magánvállalkozások számára tervezett szolgáltatások, amelyek növelik az ügyfélszerzést, automatizálják a marketinget és erősítik a márka jelenlétét.",
+      "processTitle": "Hogyan dolgozom?",
+      "processDescription": "Átlátható folyamat, eredményorientált megközelítés. Nincs projektmenedzser, közvetlen kommunikáció velem.",
+      "faqTitle": "Mennyibe kerül egy weboldal?",
+      "faqSection": "Gyakori Kérdések"
+    }
+  }
+}

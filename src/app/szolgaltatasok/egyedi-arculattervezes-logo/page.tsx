@@ -110,7 +110,7 @@ export default async function BrandingPage() {
           __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
         }}
       />
-      <main className="min-h-screen bg-transparent text-text-primary relative overflow-hidden">
+      <div className="min-h-screen bg-transparent text-text-primary relative overflow-hidden">
         {/* Hero Section with 3 Banners */}
         <section className="relative w-full h-screen min-h-150 overflow-hidden">
           <div className="absolute inset-0 grid grid-cols-1 md:grid-cols-3">
@@ -536,7 +536,7 @@ export default async function BrandingPage() {
             </section>
           </div>
         </div>
-      </main>
+      </div>
     </>
   );
 }

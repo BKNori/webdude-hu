@@ -22,6 +22,15 @@ const DashboardStatsSchema = z.object({
   revenueTrend: z.string(), // "+12%" or "-5%"
   avgCompletionTime: z.number(), // napokban
   leadConversionRate: z.number(), // százalék
+  churnRate: z.number(), // százalék
+  ltv: z.number(), // Lifetime Value (HUF)
+  cac: z.number(), // Customer Acquisition Cost (HUF)
+  revenueByService: z.array(
+    z.object({
+      service: z.string(),
+      revenue: z.number(),
+    })
+  ),
 });
 
 export async function getDashboardStatsAction() {
@@ -171,6 +180,88 @@ export async function getDashboardStatsAction() {
         ? (completedProjectsSnap.data().count / leadsCount) * 100
         : 0;
 
+    // Calculate churn rate (simplified - customers who stopped purchasing in last 90 days)
+    const ninetyDaysAgo = new Date();
+    ninetyDaysAgo.setDate(ninetyDaysAgo.getDate() - 90);
+
+    const activeCustomersQuery = query(
+      transactionsCol,
+      where("createdAt", ">=", ninetyDaysAgo.toISOString())
+    );
+    const activeCustomersSnap = await getDocs(activeCustomersQuery);
+
+    const totalCustomersSnap = await getDocs(transactionsCol);
+    const totalCustomers = new Set(
+      totalCustomersSnap.docs.map((doc) => doc.data().clientId)
+    ).size;
+
+    const activeCustomers = new Set(
+      activeCustomersSnap.docs.map((doc) => doc.data().clientId)
+    ).size;
+
+    const churnRate =
+      totalCustomers > 0
+        ? ((totalCustomers - activeCustomers) / totalCustomers) * 100
+        : 0;
+
+    // Calculate LTV (Lifetime Value) - average revenue per customer
+    const revenueByCustomer = new Map<string, number>();
+    totalCustomersSnap.forEach((doc) => {
+      const data = doc.data();
+      const clientId = data.clientId;
+      const amount = data.amount || 0;
+      revenueByCustomer.set(
+        clientId,
+        (revenueByCustomer.get(clientId) || 0) + amount
+      );
+    });
+
+    const ltv =
+      revenueByCustomer.size > 0
+        ? Array.from(revenueByCustomer.values()).reduce((a, b) => a + b, 0) /
+          revenueByCustomer.size
+        : 0;
+
+    // Calculate CAC (Customer Acquisition Cost) - total marketing spend / new customers
+    const marketingSpendCol = collection(db, "marketing_spend");
+    const marketingSpendSnap = await getDocs(marketingSpendCol);
+
+    let totalMarketingSpend = 0;
+    marketingSpendSnap.forEach((doc) => {
+      const data = doc.data();
+      if (data.amount) {
+        totalMarketingSpend += data.amount;
+      }
+    });
+
+    const newCustomersSnap = await getDocs(
+      query(
+        transactionsCol,
+        where("createdAt", ">=", ninetyDaysAgo.toISOString())
+      )
+    );
+    const newCustomers = new Set(
+      newCustomersSnap.docs.map((doc) => doc.data().clientId)
+    ).size;
+
+    const cac = newCustomers > 0 ? totalMarketingSpend / newCustomers : 0;
+
+    // Calculate revenue by service type
+    const revenueByServiceMap = new Map<string, number>();
+    totalCustomersSnap.forEach((doc) => {
+      const data = doc.data();
+      const service = data.serviceType || "Egyéb";
+      const amount = data.amount || 0;
+      revenueByServiceMap.set(
+        service,
+        (revenueByServiceMap.get(service) || 0) + amount
+      );
+    });
+
+    const revenueByService = Array.from(revenueByServiceMap.entries()).map(
+      ([service, revenue]) => ({ service, revenue })
+    );
+
     const stats = {
       leadsCount,
       activeProjectsCount: activeProjectsSnap.data().count,
@@ -183,6 +274,10 @@ export async function getDashboardStatsAction() {
       revenueTrend,
       avgCompletionTime,
       leadConversionRate,
+      churnRate,
+      ltv,
+      cac,
+      revenueByService,
     };
 
     const validatedStats = DashboardStatsSchema.parse(stats);

@@ -39,7 +39,7 @@ export default function AboutPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-transparent text-text-primary">
+    <div className="min-h-screen bg-transparent text-text-primary">
       {/* 1. Hero Szekció (Személyes felütés) */}
       <section className="relative min-h-screen flex items-center justify-center pt-32 pb-40 overflow-hidden">
         <div className="absolute inset-0 z-0">
@@ -238,6 +238,6 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

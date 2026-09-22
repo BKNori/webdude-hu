@@ -4,6 +4,7 @@ import { MotionConfig } from "motion/react";
 import PageWrapper from "../components/layout/PageWrapper";
 import Script from "next/script";
 import { getClarityScript } from "@/lib/clarity";
+import { getDictionary } from "@/lib/dictionary";
 // import AuroraBackground removed for clean background
 
 import "./globals.css";
@@ -25,8 +26,7 @@ const spaceGrotesk = Space_Grotesk({
 
 export const metadata = {
   metadataBase: new URL("https://webdude.hu"),
-  title:
-    "WebDude | Full-Stack Webfejlesztés, AI Workflow & Agent Rendszerek",
+  title: "WebDude | Full-Stack Webfejlesztés, AI Workflow & Agent Rendszerek",
   description:
     "Full-stack webfejlesztés, AI workflow és agent rendszerek — egy kézből. 26 év tapasztalat, Next.js 16, React 19, Tailwind v4, Firebase alapú prémium megoldások.",
   verification: {
@@ -46,31 +46,18 @@ interface RootLayoutProps {
   children: React.ReactNode;
 }
 
-export default function RootLayout({ children }: RootLayoutProps) {
-  const jsonLd = {
+export default async function RootLayout({ children }: RootLayoutProps) {
+  const dictionary = await getDictionary("hu");
+  const jsonLd: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "@id": "https://webdude.hu/#organization",
     name: "WebDude",
-    founder: {
-      "@type": "Person",
-      name: "Norbi",
-      jobTitle: "Full-Stack Web Developer & AI Specialist",
-    },
-    serviceType: [
-      "Web Development",
-      "UI/UX Design",
-      "AI Agent Development",
-      "WordPress Development",
-      "Grafikai Tervezés",
-      "SEO Optimalizálás",
-    ],
-    areaServed: { "@type": "Country", name: "Hungary" },
+    description:
+      "Full-stack webfejlesztés, AI workflow és agent rendszerek — egy kézből. 26 év grafikai és 16 év webfejlesztői tapasztalat, Next.js 16, React 19, Tailwind v4, Firebase alapú prémium megoldások Kecskemétről.",
     url: "https://webdude.hu",
     telephone: "+36 70 323 8003",
     email: "hello@webdude.hu",
-    description:
-      "Full-stack webfejlesztés, AI workflow és agent rendszerek — egy kézből. 26 év tapasztalat, Next.js 16, React 19, Tailwind v4, Firebase alapú prémium megoldások.",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Kecskemét",
@@ -108,6 +95,15 @@ export default function RootLayout({ children }: RootLayoutProps) {
       "https://www.linkedin.com/company/webdude",
       "https://twitter.com/webdude_hu",
     ],
+    areaServed: {
+      "@type": "Country",
+      name: "Hungary",
+    },
+    founder: {
+      "@type": "Person",
+      name: "Norbi",
+      jobTitle: "Full-Stack Webfejlesztő & AI Specialist",
+    },
   };
 
   return (
@@ -174,7 +170,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           </div>
 
           {/* Fő tartalom réteg */}
-          <PageWrapper>{children}</PageWrapper>
+          <PageWrapper dictionary={dictionary}>{children}</PageWrapper>
         </body>
       </html>
     </MotionConfig>

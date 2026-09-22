@@ -261,9 +261,9 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
       </aside>
 
       {/* Main Content — ml-64 = sidebar szélessége, flex-1 = maradék terület */}
-      <main className="ml-64 flex-1 min-h-screen p-8 overflow-x-hidden">
+      <div className="ml-64 flex-1 min-h-screen p-8 overflow-x-hidden">
         {children}
-      </main>
+      </div>
     </div>
   );
 }

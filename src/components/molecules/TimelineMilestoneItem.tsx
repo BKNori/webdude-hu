@@ -54,7 +54,7 @@ const NODE_STYLES: Record<MilestoneStatus, string> = {
   completed:
     "border-[#00B5F1] bg-[#00B5F1]/15 text-[#00B5F1] shadow-[0_0_18px_rgba(0, 181, 241,0.35)]",
   in_progress: "border-sky-400 bg-sky-500/10 text-sky-300 animate-pulse",
-  pending: "border-slate-800 bg-slate-950 text-slate-500",
+  pending: "border-slate-800 bg-slate-950 text-slate-400",
 };
 
 /** Gantt sáv kitöltés státusz szerint. */

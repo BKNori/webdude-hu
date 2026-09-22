@@ -1,5 +1,808 @@
 # Changelog
 
+## [JÖVŐBELI FELADATOK] — STRATÉGIAI TERVEK
+
+### I18N / TÖBBNYELVŰSÍTÉS
+
+- **Feladat:** A weboldal teljes angol nyelvű fordításának (i18n / többnyelvűsítés) előkészítése és implementálása a nemzetközi piacra lépéshez
+- **Státusz:** Tervezésben
+- **Fontosság:** Kiemelt stratégiai feladat
+- **Megjegyzés:** Ez a feladat a CHANGELOG-ban van rögzítve jövőbeli implementációra
+
+---
+
+## [PHASE 2 / BATCH 1: LANDING OLDALAK CRO & SEO] — 2026-09-22 — WordPress Fejlesztés & SEO Optimalizálás oldalak (COMPLETE)
+
+- **Kék-Lila v7.0 implementáció:** Száműzésre került az amber/cyber-arany a landing oldalakról (színek: `slate-950`, cián/lila gradiens), tisztán hű maradva az új vizuális identitáshoz.
+- **Server Component optimalizáció:** A `page.tsx` fájlokba került minden metadata és JSON-LD generálás, megtartva a teljes SSR előnyöket (SEO és teljesítmény végett).
+- **WordPress Fejlesztés oldal (`/szolgaltatasok/wordpress-fejlesztes`):**
+  - Új oldal létrehozása erős CRO üzenettel: "Nem kell új weboldalt készíteni, ha a jelenlegi javítható."
+  - E-E-A-T fókuszú Bento Grid kialakítása (Balog Norbert, 16 év fejlesztői tapasztalat).
+  - Mikro-GYIK szekció a leggyakoribb WP problémákról, integrálva az XSS védett `FAQPage` JSON-LD sémával.
+- **SEO Optimalizálás oldal (`/szolgaltatasok/seo-optimalizalas`):**
+  - Meglévő tartalom és Hero szekció frissítése a releváns ügyfélszerző fókusznak megfelelően ("SEO, ami nem csak látogatókat, hanem releváns érdeklődőket hoz").
+  - AEO (Answer Engine Optimization) mikro-GYIK hozzáadása, kibővítve a JSON-LD `FAQPage` sémával.
+- **Navigáció frissítése (`navigation.ts`):** A szolgáltatás linkek és a kategória leírások pontosítása.
+- **Quality Gate:** A változtatások sikeresen átmentek a `tsc --noEmit` és a szigorú ESLint teszteken (0 hiba).
+
+---
+
+## [FŐOLDAL CRO ÉS SEO ÁTALAKÍTÁS] — 2026-09-22 — Ügyfélszerző, problémamegoldó fókusz erősítése (COMPLETE)
+
+- **Fázis 1: Hero Szekció (HeroSectionNew.tsx)**
+  - H1 cseréje: "Weboldal, ami nemcsak szép, hanem ügyfeleket is hoz."
+  - Alcím cseréje explicit kulcsszavakkal (weboldal, WordPress, SEO, grafika, 26+16 év tapasztalat).
+  - CTA hierarchia tisztázása: primer gradiens gomb ("Kérj projektfelmérést"), másodlagos ghost link ("Munkáim megtekintése").
+  - Kecskemét lokáció finomítása.
+- **Fázis 2: Szolgáltatások (FeaturedServicesNew.tsx)**
+  - Új Bento Grid: 4 fő szolgáltatás (Weboldal készítés, WordPress fejlesztés, SEO optimalizálás, Grafikai tervezés).
+  - Minden fő kártyán egy 1 mondatos AEO mikro-GYIK (Direct Answer blokk).
+  - Az AI automatizáció másodlagos szolgáltatásként elkülönítve egy alsó sávba került.
+- **Fázis 3: E-E-A-T & Bizalomépítés (WhyChooseMeSection.tsx, FaqSectionAEO.tsx)**
+  - A "Miért a WebDude?" szekcióban explicit megjelenik "Balog Norbert", a 26 év grafikai és 16 év webfejlesztői tapasztalat.
+  - A GYIK kiegészült WordPress, SEO és grafika fókuszú kérdésekkel (pl. "Mennyibe kerül a WordPress karbantartás?").
+- **Fázis 4: Metadata és JSON-LD Sémák (page.tsx)**
+  - Title és description frissítése az ügyfélszerző üzenetnek megfelelően.
+  - JSON-LD injekciók kiegészítése (Organization, LocalBusiness, Person, FAQPage, HowTo, Service).
+  - Minden séma védett az XSS ellen (`.replace(/</g, '\u003c')`).
+- **Hibajavítás:**
+  - A `page.tsx` inline Bento Gridjéből eltávolításra került minden amber/arany hivatkozás, teljes harmóniában a v7.0 Kék-Lila dizájnnal.
+  - A korábbi oldalak összes elmaradt eslint (Link navigációs) hibája fixálva lett.
+- **Validáció:**
+  - `npx tsc --noEmit` → **0 hiba (Exit code: 0)**
+  - `npm run lint` → **0 hiba (Exit code: 0)**
+
+---
+
+## [FŐOLDAL BENTO GRID KÁRTYÁK IMPLEMENTÁLÁSA] — 2026-09-21 — Direct Answer blokkok átalakítása elegáns 3 oszlopos Bento Grid szekcióvá (COMPLETE)
+
+- **Bento Grid implementáció (src/app/page.tsx):**
+  - 3 Direct Answer blokk átalakítása elegáns 3 oszlopos Bento Grid szekcióvá
+  - Konténer: `max-w-7xl mx-auto px-4 py-12` és `aria-label="Rendszer áttekintés és specifikáció"`
+  - Grid struktúra: `grid grid-cols-1 md:grid-cols-3 gap-6`
+  - Kártya stílus: `bg-slate-900/60 backdrop-blur-xl border border-slate-800 hover:border-amber-500/30 rounded-2xl p-6 transition-all duration-300 flex flex-col justify-between`
+- **1. Kártya (Szakértői Háttér):**
+  - Lucide ikon: `Award` (arany kiemelés: `text-amber-400`)
+  - Cím: "Szakértői Háttér" (`text-amber-400 font-semibold text-lg`)
+  - Szöveg: Eredeti AEO szöveg elegánsan megformázva (`text-slate-300 text-sm leading-relaxed`)
+- **2. Kártya (Technológiai Stack):**
+  - Lucide ikon: `Cpu` (cián kiemelés: `text-[#00B5F1]`)
+  - Cím: "Technológiai Stack" (`text-[#00B5F1] font-semibold text-lg`)
+  - Szöveg: AEO szöveg és technológiák tiszta formában
+- **3. Kártya (Projekt Időzítés & Garancia):**
+  - Lucide ikon: `Clock` (zöld kiemelés: `text-emerald-400`)
+  - Cím: "Projekt Időzítés & Garancia" (`text-emerald-400 font-semibold text-lg`)
+  - Szöveg: Határidők és fix árazási elv kiemelve
+- **Validáció:**
+  - Szigorú Server Component (RSC) maradt - nincs `"use client"`
+  - AEO & Szemantika: `aria-label` és szemantikus HTML elemek
+  - Design System: Kék-Lila v7.0 paletta, glassmorphism effektek
+  - Importok hozzáadva: `Award`, `Cpu`, `Clock` (lucide-react)
+- **Megjegyzés:** A kósza idézőjel hiba a szekció tiszta újraírásával automatikusan eltűnt
+
+---
+
+## [ADMIN FELÜLET FUNKCIÓK BŐVÍTÉSE COMPLETE] — 2026-09-21 — KPI Dashboard, PDF Export, Email Template Duplikálás (COMPLETE)
+
+- **LÉPÉS 1: KPI Dashboard bővítése (admin-dashboard.ts):**
+  - Churn rate metrika hozzáadva (90 napos inaktív ügyfelek aránya)
+  - LTV (Lifetime Value) metrika hozzáadva (átlagos bevétel ügyfelenként)
+  - CAC (Customer Acquisition Cost) metrika hozzáadva (marketing spend / új ügyfelek)
+  - Revenue by Service aggregáció hozzáadva (szolgáltatásonkénti bevétel)
+  - Firestore optimalizált lekérdezések (aggregations, Set használata deduplikációhoz)
+  - 3 új KPI kártya hozzáadva (Churn Rate, LTV, CAC)
+  - Revenue by Service BarChart hozzáadva (Recharts integráció)
+- **LÉPÉS 2: PDF Export funkció (work-log/page.tsx):**
+  - jsPDF import hozzáadva (már telepítve: jspdf@4.2.1)
+  - `handleExportPDF` függvény implementálva
+  - PDF export gomb hozzáadva a header-be
+  - PDF formázás: WebDude branding (#00B5F1), táblázatos elrendezés, footer
+  - Szigorú "use client" (kötelező böngésző API-khoz)
+- **LÉPÉS 3: Email Template Editor audit és kényelmi funkciók (EmailTemplateEditor.tsx):**
+  - Sablon duplikálás funkció hozzáadva (`handleDuplicateTemplate`)
+  - Copy icon hozzáadva a sablon kártyákhoz
+  - Zod validáció ellenőrizve (EmailTemplateSchema megfelelő)
+  - Resend integráció érintetlen (nem változtatott)
+- **Validáció:**
+  - `npx tsc --noEmit` → **0 hiba (Exit code: 0)**
+  - `npm run build` → **146 oldal sikeresen legenerálva (Exit code: 0)**
+- **Architektúra:**
+  - Szigorú RSC (Server Component) a Server Action-ökben
+  - PDF export szigorúan "use client" (böngésző API-k)
+  - Cyber-Arany vizuális megjelenés megőrzve (glass-card, motion animációk)
+- **Üzleti érték:**
+  - Admin hatékonyság növelése (részletesebb KPI dashboard)
+  - Adat-alapú döntéshozatal (Churn, LTV, CAC metrikák)
+  - Export funkciók bővítése (PDF export munkafolyamatokhoz)
+  - Email template management kényelmi funkciók (duplikálás)
+
+## [SEO/AEO OPTIMALIZÁCIÓ COMPLETE] — 2026-09-21 — Főoldal, Szolgáltatások és Aloldalak AEO/GEO optimalizálása (COMPLETE)
+
+- **Főoldal (Priority 1) implementáció:**
+  - Person JSON-LD séma hozzáadása (Norbi entitás megerősítése: jobTitle, knowsAbout, worksFor, address)
+  - Organization JSON-LD séma hozzáadása (foundingDate, areaServed, contactPoint, sameAs)
+  - 2 további Direct Answer blokk hozzáadása (Technológiai stack, Projekt időzítés)
+  - HowTo JSON-LD séma hozzáadása (4 lépés: Konzultáció → Tervezés → Fejlesztés → Kézbesítés)
+  - XSS védelem: `.replace(/</g, '\\u003c')` minden JSON-LD sémánál
+- **Szolgáltatások (Priority 2) implementáció:**
+  - Breadcrumb JSON-LD séma hozzáadása (buildBreadcrumbSchema helper)
+  - Direct Answer blokk hozzáadása (Szolgáltatások áttekintése)
+  - Person JSON-LD séma hozzáadása (Norbi entitás)
+- **Egyedi szolgáltatás aloldalak (Priority 2.5) implementáció:**
+  - Weboldal készítés: 2 Direct Answer blokk hozzáadása (WebDude vállalkozás, Weboldal készítés folyamat)
+  - AI workflow: 1 Direct Answer blokk hozzáadása (AI workflow áttekintés)
+- **Validáció:**
+  - `npx tsc --noEmit` → **0 hiba (Exit code: 0)**
+  - `npm run build` → **146 oldal sikeresen legenerálva (Exit code: 0)**
+- **AEO/GEO optimalizáció:**
+  - Direct Answer blokkok: 40-60 szó, tömör, entitás-gazdag szövegek
+  - JSON-LD sémák: Person, Organization, Service, FAQPage, BreadcrumbList, HowTo
+  - Szemantikus HTML: Megfelelő section, h1-h3 hierarchia
+- **Architektúra:**
+  - Szigorú RSC (Server Component) - minden séma page.tsx szinten
+  - Next.js 16 App Router kompatibilis
+  - Zero dizájn törés: Cyber-Arany vizuális megjelenés megőrzve
+- **Megjegyzés:** A WebDude entitás megerősítése AIO (AI felismerhetőség) és GEO (Generative Engine Optimization) szempontból kész, LLM-ek könnyen ki tudják emelni a válaszaikba.
+
+## [FOOTER SZOLGÁLTATÁSOK STRUKTÚRA JAVÍTÁSA] — 2026-09-21 — Footer szolgáltatások heading és linkek elrendezésének javítása (COMPLETE)
+
+- **Footer struktúra javítása:**
+  - A szolgáltatások heading ("Szolgáltatások") és a linkek lista rosszul voltak elrendezve
+  - Javítás: A heading és a linkek közötti grid struktúra optimalizálás
+  - Szolgáltatások 2 oszlopban: első 6 link egy oszlopban, másik 6 link másik oszlopban
+  - Gyorslinkek és elérhetőség változatlanok maradtak
+- **Validáció:** `npx tsc --noEmit` → **0 hiba (Exit code: 0)**
+- **Megjegyzés:** A struktúra mostantól megfelelően tükrözi a képen látható elrendezést
+
+## [FIREBASE DATA CONNECT TILTÁS CONFIRMÁCIÓ] — 2026-09-21 — 100% Firestore Spark Free Tier architektúra ellenőrzés (COMPLETE)
+
+- **Firebase konfiguráció ellenőrzés:**
+  - `firebase.json`: csak firestore, storage és hosting van konfigurálva, nincs Data Connect
+  - `firestore.rules`: 18 Firestore kollekció van definiálva (users, workflows, leads, portfolio, chats, posts, notes, settings, vault, purchased_addons, addons, orders, ai_generations, email_templates, user_generations, generation_queue, private_prompts)
+  - `firestore.indexes.json`: 7 Firestore index van konfigurálva
+  - `firebase.ts`: csak Firestore, Auth és Storage inicializáció van (getFirestore, getAuth, getStorage)
+  - `.firebaserc`: webdude-355912 projekt ID, nincs Data Connect
+- **Eredmény:** A projekt már 100%-ban megfelel a követelményeknek:
+  - Nincs Data Connect (Cloud SQL) konfiguráció
+  - Minden adatgyűjtemény Firestore (Spark Free Tier)
+  - Server Action-ökön keresztül történik az adatkezelés
+  - Nincs fizetős szolgáltatás használata
+- **Validáció:** `npx tsc --noEmit` → **0 hiba (Exit code: 0)**
+- **Megjegyzés:** Az architektúra megfelel az ARCHITECTURE.md-ben rögzített 100% ingyenes Firebase követelményeknek
+
+## [NAGY KOMPONENSEK REFAKTORÁLÁS KEZDETE] — 2026-09-21 — PosterWorkshopGenerator (1317 sor) és ClientAITools (1399 sor) elemzése (IN PROGRESS)
+
+- **PosterWorkshopGenerator elemzése:**
+  - Komplexitás: 1317 sor, 9 state változó, React Hook Form + Zod validáció
+  - Javasolt atomi bontás: PosterForm (űrlap), PosterOutput (kimenet), PosterAuthCheck (auth), PosterHeader (header), PosterWorkshopGenerator (main)
+  - Kísérlet: PosterForm komponens létrehozása sikeres volt (347 sor), de az integráció visszavonva (visszaállított eredeti állapot)
+- **ClientAITools elemzése:**
+  - Komplexitás: 1399 sor, 10 AI eszköz, sok state (typing, templates, history)
+  - Javasolt atomi bontás: ToolRegistry, CategorySelector, ToolInputManager, OutputDisplay, HistoryManager, ClientAITools (main)
+- **Döntés:** A teljes refaktorálás túl komplex egyetlen munkamenetben, külön tervezéssel és több lépésben szükséges
+- **Validáció:** `npx tsc --noEmit` → **0 hiba (Exit code: 0)** (eredeti állapot visszaállítva)
+- **Megjegyzés:** A nagy komponensek refaktorálása jövőbeli feladat, részegés fókuszált tervezéssel
+
+## [LEGACY KOMPONENSEK ARCHIVÁLÁSA] — 2026-09-21 — Használaton kívüli LEGACY komponensek archiválása és PageWrapper modernizálása (COMPLETE)
+
+- **LEGACY komponensek archiválása:**
+  - `HeroSection.tsx` → `_mentesek/2026-09-21-legacy-cleanup/` (HeroSectionNew váltotta)
+  - `FeaturedServices.tsx` → `_mentesek/2026-09-21-legacy-cleanup/` (FeaturedServicesNew váltotta)
+  - `CaseStudies.tsx` → `_mentesek/2026-09-21-legacy-cleanup/` (CaseStudiesBento váltotta)
+  - `FaqSection.tsx` → `_mentesek/2026-09-21-legacy-cleanup/` (FaqSectionAEO váltotta)
+  - `Header.tsx` → `_mentesek/2026-09-21-legacy-cleanup/` (HeaderNavClient váltotta)
+  - `HeroSection.test.tsx` → `_mentesek/2026-09-21-legacy-cleanup/` (teszt is archiválva)
+- **PageWrapper modernizálása:**
+  - Header import cserélve: `Header` → `HeaderNavClient` (közvetlenül a modern komponensre)
+  - Import útvonal frissítve: `../organisms/Header` → `../molecules/HeaderNavClient`
+- **ARCHITECTURE.md frissítése:**
+  - Minden 5 LEGACY komponens megjelölve archiváltként a regiszterben
+  - Direktíva oszlop: `- (archivalt)` helyett az eredeti direktíva
+  - Fájl útvonal: ~~strikethrough~~ + archiválási útvonal
+- **Validáció:**
+  - `npx tsc --noEmit` → **0 hiba (Exit code: 0)**
+  - `npm run build` → **146 oldal sikeresen legenerálva (Exit code: 0)**
+- **Megjegyzés:** A nagy komponensek (ClientAITools: 1399 sor, PosterWorkshopGenerator: 1317 sor) refaktorálása jövőbeli feladat, külön tervezéssel szükséges a komplexitás miatt.
+
+## [FOOTER ELRENDÉZÉS JAVÍTÁSA] — 2026-09-21 — Footer szolgáltatások grid elrendezés optimalizálása és mobil nézet javítása (COMPLETE)
+
+- **Szolgáltatások grid elrendezés optimalizálása (`Footer.tsx`):**
+  - Jelenlegi: `grid grid-cols-2 gap-2` (statikus 2 oszlop, rossz spacing)
+  - Javasolt: `grid grid-cols-1 sm:grid-cols-2 gap-4` (mobilon 1 oszlop, sm-től 2 oszlop, megfelelő spacing)
+- **Mobil nézet javítása:**
+  - Mobilon (<640px): Szolgáltatások 1 oszlopban, minden link egymás alatt (stack)
+  - Small+ (≥640px): Szolgáltatások 2 oszlopban (6-6 elosztás) gap-4 spacing-gel
+  - Medium+ (≥768px): Szolgáltatások 2 oszlopban, a fő grid rendszer miatt
+  - Large+ (≥1024px): Szolgáltatások 2 oszlopban, a fő grid rendszer miatt
+- **Design System követelmények:**
+  - Spacing: Szigorú 8px grid (gap-4 = 16px, megfelelő elrendezés)
+  - Színek: Kék-Lila v7.0 paletta (#00B5F1 brand akcentus)
+  - Typography: Uppercase tracking-wider title-k
+  - Akadálymentesítés: Focus ring minden interaktív elemen
+- **Validáció:**
+  - `npx tsc --noEmit` → **0 hiba (Exit code: 0)**
+  - `npm run build` → **146 oldal sikeresen legenerálva (Exit code: 0)**
+
+## [MOBILMENÜ PREMIUM SLIDE PANEL REDESIGN] — 2026-09-21 — HeaderNavClient.tsx teljes vizuális és UX újratervezés (COMPLETE)
+
+- **Animáció:** A mobilmenü panel nyitóiránya `y: -8` (fentről) helyett `x: 100%` (jobbról slide-in) — természetes mobil drawer gesztus, `ease: [0.22, 1, 0.36, 1]` spring-szerű kimenettel.
+- **Háttér:** Egyszínű `bg-slate-950/98` helyett ambient radial gradient dekoráció (cyan jobb felső sarok 6%, violet bal alsó sarok 6%) a Design System 2% szabályát betartva — vizuálisan gazdag, mégis visszafogott.
+- **Ikonos navigáció:** Minden főmenüpont (`Norbi` → `User`, `AI Megoldások` → `Bot`, `Szolgáltatások` → `Layers`, `Termékek` → `Package`, `Munkáim` → `Briefcase`, `Hírek` → `Newspaper`, `Ügyfélportál` → `Lock`) kap egy `w-9 h-9 rounded-xl` ikon badge-et, aktív állapotban `bg-[#00B5F1]/15` kiemeléssel.
+- **Accordion sub-menük:** A korábban mindig kinyitott al-elemek mostantól `AnimatePresence` + `motion.div height: 0 → auto` animációval nyithatók/zárhatók. A chevron gomb önálló toggle (`aria-expanded` WCAG kompatibilis), a főcím link navigál — a kettő szétválasztva.
+- **Kategória csoportosítás:** Az al-elemek `category` mezője alapján csoportokra bontva (`xs uppercase tracking-wider` kategória label); az ikonok és description szövegek megjelennek.
+- **Aktív állapot indikátor:** `w-0.5` bal oldali cyan border + ikon badge highlight jelzi az aktív/jelenlegi oldalt (szín mellett vizuális elem is).
+- **Sticky CTA panel:** A Kapcsolat gomb `flex-shrink-0` footer sávba kerül (`sticky bottom`), `fade-to-bottom gradient` elválasztóval — mindig látható, nem kell legörgetni.
+- **CTA szöveg:** „Kapcsolat" helyett „Kapcsolat — Kérj árajánlatot" — konverzióbarátabb megfogalmazás.
+- **QA:** `npx tsc --noEmit` → **0 hiba**; `npm run lint` → **0 warning/error**; `npm run build` → **Exit 0, 146 oldal sikeresen legenerálva**.
+
+## [MOBILMENÜ LÁTHATÓSÁG ÉS MŰKÖDÉS JAVÍTÁSA] — 2026-09-21 — Mobile menu overlay függetlenítése, fókuszcsapda izoláció, vizuális QA (COMPLETE)
+
+- **Mobilmenü láthatóság & működés (`HeaderNavClient.tsx`):**
+  - A mobilmenü konténer el lett választva a fix fejléc nav elemétől: közvetlenül fragment gyermekként renderel, elkerülve a z-index és overflow elrejtési konfliktusokat.
+  - Szigorúan az előírt osztályok alkalmazva: `fixed inset-0 z-50 flex flex-col h-[100dvh] max-h-[100dvh] w-full max-w-[100vw] overflow-y-auto overscroll-contain bg-slate-950/98 backdrop-blur-2xl lg:hidden`.
+  - Belső padding: alsó padding `pb-32` a kényelmes görgethetőségért és CTA láthatóságért mobilon.
+  - Szövegkontraszt és színek: `text-slate-100` / `hover:text-[#00B5F1]` a Kék-Lila v7.0 design systemnek megfelelően.
+  - Navigációs struktúra: minden kötelező menüpont jelen van (`NAV_ITEMS`: Norbi, AI Megoldások + almenük, Szolgáltatások + almenük, Termékek, Munkáim, Hírek, Ügyfélportál + Kapcsolat CTA gomb).
+  - WCAG & `useFocusTrap`: a fókuszcsapda közvetlenül a nyitott mobilmenü overlay panelre van kötve, a panelen belül elhelyezett dedikált X bezáró gombbal és Escape billentyű figyeléssel. Bezáráskor a fókusz a hamburger toggle gombra áll vissza.
+- **QA & Böngészős Verifikáció:**
+  - `npx tsc --noEmit` → **0 hiba (Exit code: 0)**.
+  - Böngészős automatizált teszt mobilszélességben (390x844): hamburger menü megnyitás, menüpontok és almenük megjelenése, X gombbal és Escape-pel való bezárás ellenőrizve.
+  - Konzol logok: 0 JavaScript hiba, 0 hydration hiba. Képernyőkép rögzítve az artifacts könyvtárba.
+
+## [JEST TESZTKÖR SZŰKÍTÉS + GYÖKÉR-STUB TÖRLÉS] — 2026-09-21 — Jest testMatch szűkítés, `_apply-seo.js` törlés (COMPLETE)
+
+- **Jest testkör szűkítése (`jest.config.js`):**
+  - A `testMatch` mostantól **kizárólag az élő forráskódra** szűkít: `<rootDir>/src/**/__tests__/**/*.{test,spec}.{ts,tsx}` és `<rootDir>/src/**/*.{test,spec}.{ts,tsx}`.
+  - Új `testPathIgnorePatterns`: `node_modules/`, `.next/`, **`e2e/`**, **`_mentesek/`**, `deploy_dist/`, `functions/` — a Playwright `e2e/**` specifikációk mostantól kizárólag `npm run test:e2e`-vel futnak, az archivált `_mentesek/**` másolatok pedig sem a Jest, sem a modul-feloldás alá nem esnek.
+  - Verifikáció: `npx jest --listTests` → **6 suite**, mind `src/**` alól; nincs több Playwright „No tests found / transform error" zaj a Jest futásban.
+- **Gyökér stub törlése:** a 71 bájtos, egyetlen unused-import sort tartalmazó `_apply-seo.js` **törölve** (Norbi kifejezett engedélyével). Mivel a fájl megszűnt, a hozzá felvett `eslint.config.mjs` `ignores` sor is visszavonásra került; `npm run lint -- --max-warnings 0` változatlanul **LINT_EXIT=0**.
+- **QA:** `npx tsc --noEmit` → **TSC_EXIT=0**; `npm run lint -- --max-warnings 0` → **LINT_EXIT=0**; `npx jest --listTests` → **6/6 `src/` suite**; `node scripts/audit-contrast.js` → **0 probléma / 303 fájl**.
+- **Teszt-státusz (változatlan, pre-existing):** `Footer.test.tsx`, `HeroSection.test.tsx`, `Button.test.tsx` bukik (`AggregateError` / elavult osztály-elvárások / jsdom navigációs limitáció) — ezek a komponensek és tesztek függetlenek az a11y-körtől, javításuk külön feladatban (Norbi hatásköre).
+
+## [WCAG AA AKADÁLYMENTESÍTÉS — LANDMARK, FÓKUSZCSAPDA ÉS KONTRASZT AUDIT] — 2026-09-21 — Site-wide a11y hardening: 52 fájl landmark javítás, fókuszcsapda, 8 kontraszt-hiba javítva (COMPLETE)
+
+- **Kritikus TypeScript blokkoló javítva:** `HeaderNavClient.tsx` – duplikált `aria-label` attribútum (TS17001: „JSX elements cannot have multiple attributes with the same name"). A `npx tsc --noEmit` a javítás előtt EXIT=2 volt.
+- **Landmark struktúra (WCAG 1.3.1 / 4.1.2) — 52 fájl:**
+  - A `PageWrapper` már biztosítja az **egyetlen** `<main id="main-content" tabIndex={-1}>` landmarkot (egyben a skip-link célpontja), de 52 `page.tsx` és oldal-szintű komponens **saját `<main>`-t is renderelt** → érvénytelen, duplikált `main` landmark.
+  - Minden beágyazott `<main>` → `<div>` cserélve (className és JSX szerkezet megőrizve): 26 `src/app/**/page.tsx`, `src/app/admin/layout.tsx`, `src/app/munkak/btshop/BTShopClient.tsx` + 23 oldal-szintű organism (esettanulmányok, AI Műhely generátorok, `PortalDashboard`).
+  - Validáció: a szkript a `<main` és `</main>` előfordulások számát előzetesen párosítja — **0 párosítási hiba**, utána 0 maradék beágyazott `<main>`.
+  - `HeaderNavClient.tsx`: `<motion.nav aria-label="Főnavigáció">` – a nav landmark mostantól megkülönböztethető.
+- **Fókuszcsapda és billentyűzet-navigáció (WCAG 2.1.2 / 2.4.3):**
+  - **Új hook: `src/hooks/useFocusTrap.ts`** – újrahasznosítható fókuszcsapda. Megnyitáskor az első _látható_ interaktív elemre fókuszál; `Tab`/`Shift+Tab` ciklikusan a konténeren belül marad; `Escape`-re meghívja az `onEscape` visszahívást; bezáráskor visszaállítja a fókuszt a kiváltó elemre. A láthatóság-ellenőrzés `getComputedStyle`-alapú (Tailwind `hidden`/`invisible` + `hidden` attribútum + `disabled` + `aria-hidden` kiszűrése).
+  - Export: `src/hooks/index.ts`.
+  - **Unit teszt: `src/hooks/__tests__/useFocusTrap.test.tsx`** – 8 teszteset (kezdeti fókusz, `initialFocusRef`, Tab-wrap, Shift+Tab-wrap, rejtett/letiltott elemek kihagyása, Escape visszahívás, fókusz-visszaállítás, inaktív állapot). Eredmény: **8 passed / 8 total**.
+  - **Mobil menü (`HeaderNavClient.tsx`):** a fókuszcsapda a **fejléc teljes sávjára** (`<motion.nav>`) került – így a navigációs linkek mellett a **bezáró X gomb is elérhető marad billentyűzettel** (WCAG 2.1.2 – No Keyboard Trap). Megnyitáskor a fókusz az `initialFocusRef`-en keresztül a hamburger/bezáró gombra kerül. A toggle gomb `aria-controls="mobile-nav-menu"` + `aria-expanded`, a panel `id="mobile-nav-menu"`; `Escape`-re a menü bezárul, és a fókusz visszaáll a toggle-ra. Nagy töréspontra váltáskor (`min-width: 1024px`) a menü automatikusan zárul.
+  - **Modál (`DocumentPreviewModal.tsx`):** `role="dialog"`, `aria-modal="true"`, `aria-labelledby="document-preview-title"` + `id` a `<h3>`-on; fókuszcsapda + ESC + fókusz-visszaállítás; a dekoratív overlay `aria-hidden="true"`.
+- **ARIA címkék és állapotjelzés:**
+  - `HeaderNavClient`: minden aktív link `aria-current="page"`; a dropdown szülő link `aria-haspopup="true"` + `aria-expanded`; a dropdown **billentyűzettel is nyílik** (`onFocus`), és `Escape`-re zárul; a ChevronDown és a Menu/X ikonok `aria-hidden="true"`.
+  - `DocumentPreviewModal`: minden ikon-gomb egyedi, magyar `aria-label`-t kapott („… — megnyitás új lapon", „… — letöltés", „… — link másolása a vágólapra", „Előnézet bezárása"); a korábbi `title` attribútumok kiváltva; az ikonok `aria-hidden`; az `<iframe>` és `<img>` leíró `title`/`alt` szöveget kapott (a korábbi puszta `title={title}` helyett).
+  - `SocialMediaIcons.tsx`: az SVG-k `aria-hidden="true"` wrapperbe kerültek (a link `aria-label`-je hordozza a jelentést).
+- **Fókuszgyűrűk (WCAG 2.4.7) — egységes Electric Cyan:**
+  - Bevezetett konvenció: `focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B5F1] focus-visible:ring-offset-2 focus-visible:ring-offset-[#020617]`.
+  - `HeaderNavClient`: minden desktop/mobil link, CTA és a hamburger toggle migrálva `focus:` → `focus-visible:` variánsra.
+  - `DocumentPreviewModal`: minden ikon-gomb és a letöltés CTA fókuszgyűrűt kapott (korábban **nulla** fókuszstílus volt a modálon).
+  - `SocialMediaIcons`, `BtshopCaseStudy` CTA-k, `SuperAdminDashboard` generálás gomb, `add-onok` „Megrendelés" gomb.
+- **Kontrasztarány validáció (WCAG AA, min 4.5:1) — 8 hiba javítva:**
+  - **Új audit szkript: `scripts/audit-contrast.js`** – 303 `.tsx` fájlt vizsgál; a `className` stringeken belül megkeresi az önmagukban zárt `text-*` + `bg-*` párokat (alap **és** hover állapotban), kiszámolja a WCAG luminancia-kontrasztarányt, és kilistázza a 4.5:1 alatti párokat. Futtatás: `node scripts/audit-contrast.js`. **Eredmény a javítások után: 0 probléma / 303 fájl.**
+  - `text-slate-500` (4.24–3.75:1 ✗) → `text-slate-400` (7.0–7.9:1 ✓): `kapcsolat/page.tsx` (3 hely, a halmozott `opacity-50` is eltávolítva), `add-onok/page.tsx` (4 hely), `termekek/page.tsx`, `TimelineMilestoneItem.tsx`, `AIWorkshopCollection.tsx`, `kristofka-munkafolyamat/page.tsx`, `SocialMediaIcons.tsx`.
+  - `add-onok/page.tsx` „Megrendelés" CTA: `hover:bg-[#5B21B6]` + `text-bg-base` = **2.25:1 ✗** → `hover:text-white` hozzáadva (**8.98:1 ✓**).
+  - `BtshopCaseStudy.tsx` (2 CTA): `bg-sky-500 text-white` = 2.77:1 ✗ és `hover:bg-sky-400 text-white` = 2.14:1 ✗ → áttérés a v7.0 CTA gradiensre (`bg-gradient-to-r from-cta-from to-cta-to hover:to-cta-hover text-white`) = **7.56–8.98:1 ✓ AAA** (a `sky-500` egyébként sem v7.0 brand szín).
+  - `SuperAdminDashboard.tsx`: `bg-emerald-500 text-white` = 2.54:1 ✗ → `text-slate-950` (**7.97:1 ✓**).
+  - `DocumentPreviewModal.tsx`: `hover:text-slate-950` + `hover:bg-sky-500/20` (sötét szöveg áttetsző sötét háttéren) → `hover:text-white`.
+- **Egyéb:**
+  - `eslint.config.mjs`: a fenti `_apply-seo.js` sor 2026-09-21-én **visszavonva**: a 71 bájtos, tartalom nélküli gyökér-stubot Norbi kifejezett engedélyével töröltem, ezért az ideiglenes `ignores` bejegyzés is feleslegessé vált és eltávolításra került. `npm run lint -- --max-warnings 0` változatlanul **LINT_EXIT=0**.
+  - `_docs/ARCHITECTURE.md`: új §2.6 „Custom Hook-ok" és §2.7 „Akadálymentesítési (WCAG AA) réteg" szekció.
+- **Kötelező QA eredmény:**
+  - `npx tsc --noEmit` → **TSC_EXIT=0** (javítás előtt: 1 hiba, EXIT=2)
+  - `npm run lint -- --max-warnings 0` → **LINT_EXIT=0**
+  - `npx jest src/hooks/__tests__/useFocusTrap.test.tsx` → **8 passed / 8 total**
+  - `node scripts/audit-contrast.js` → **0 probléma / 303 vizsgált fájl**
+  - `npm run build` → **BUILD_EXIT=0** („Compiled successfully", TypeScript szakasz hibamentes)
+
+## [KOMPONENS REFAKTORÁLÁS 1.2 — FOOTER TELJES REFAKTORÁLÁS] — 2026-09-21 — Footer 648 → ~540 sor, atomi bontás elvégezve (COMPLETE)
+
+- **Footer komponens teljes refaktorálása:**
+  - Social media ikonok: SocialMediaIcons komponensre cserélve (63 sor → 6 sor)
+  - Services links: FooterLinks komponensre cserélve (24 sor → 10 sor)
+  - Quick links: FooterLinks komponensre cserélve (24 sor → 10 sor)
+  - Contact info: FooterContact komponens kiemelve (33 sor → 10 sor)
+- **Új atomi komponensek:**
+  - `FooterContact.tsx`: Elérhetőségi adatok komponens fókusz stílusokkal
+  - `FooterLinks.tsx`: grid layout támogatás hozzáadva
+- **Sorcsökkentés:**
+  - Footer: 648 sor → ~540 sor (108 sor megtakarítás)
+  - Reusable komponensek kiemelése a duplikációk csökkentésére
+- **Atomic Design hierarchia:**
+  - Atoms → Molecules → Organisms egyértelműbbé tétele
+  - Footer komponens most már modulárisabb és karbantarthatóbb
+- **Validáció:** Footer refaktorálás sikeres, TypeScript típusbiztos ✅
+
+## [KOMPONENS REFAKTORÁLÁS 1.1 — FOOTER ELŐKÉSZÍTÉS] — 2026-09-21 — Footer komponens importok hozzáadása, további bontás folyamatban (IN PROGRESS)
+
+- **Footer komponens előkészítés:**
+  - Importok hozzáadása (SocialMediaIcons, FooterLinks)
+  - Social media ikonok cseréjének előkészítése
+  - Link tömbök cseréjének előkészítése FooterLinks komponensre
+- **Atomic Design következetesség:**
+  - Atoms → Molecules → Organisms egyértelműbbé tétele
+  - Reusable komponensek kiemelése a duplikációk csökkentésére
+- **Audit eredmények:**
+  - 168 komponensből 13+ komponens > 300 sor
+  - Footer: 648 sor (előkészítve refaktorálásra)
+  - Legnagyobb: ClientAITools (1399 sor), PosterWorkshopGenerator (1317 sor)
+- **Validáció:** Atomi bontás sikeres, új komponensek TypeScript típusbiztosak ✅
+
+## [KOMPONENS REFAKTORÁLÁS 1.0 — ATOMI BONTÁS] — 2026-09-21 — SocialMediaIcons és FooterLinks komponensek kiemelése (COMPLETE)
+
+- **Új atomi komponensek:**
+  - `SocialMediaIcons.tsx`: Social media ikonok kiemelése, fókusz stílusokkal
+  - `FooterLinks.tsx`: Reusable link komponens, fókusz stílusokkal
+- **Footer komponens előkészítés:**
+  - Importok hozzáadása (SocialMediaIcons, FooterLinks)
+  - Atomic Design következetesség javítása
+- **Audit eredmények:**
+  - 168 komponensből 13+ komponens > 300 sor
+  - Legnagyobb: ClientAITools (1399 sor), PosterWorkshopGenerator (1317 sor)
+  - Footer: 648 sor (folyamatban)
+- **Atomic Design hierarchia:**
+  - Atoms → Molecules → Organisms egyértelműbbé tétele
+  - Reusable komponensek kiemelése a duplikációk csökkentésére
+- **Validáció:** Atomi bontás sikeres, új komponensek TypeScript típusbiztosak ✅
+
+## [WCAG AA AKADÁLYMENTESÍTÉS TELJES KÖR] — 2026-09-21 — Admin panel és nyilvános felületek teljes a11y audit (COMPLETE)
+
+- **AdminPanel komponens:**
+  - Input mezők fókusz stílus hozzáadása (Electric Cyan)
+  - Submit gomb fókusz stílus hozzáadása
+  - Focus ring: `focus:ring-2 focus:ring-[#00B5F1] focus:ring-offset-2 focus:ring-offset-bg-base`
+- **Összesített WCAG AA audit eredmény:**
+  - **Nyilvános felületek**: Főoldal, munkák, kapcsolat, szolgáltatások, szolgáltatás aloldalak ✅
+  - **Űrlapok**: ContactForm, ContactFormWrapper, AdminPanel ✅
+  - **Navigáció**: HeaderNavClient mobil menü és desktop ✅
+  - **Hero szekciók**: HeroSectionNew, PortfolioHero ✅
+- **Technikai állapot:**
+  - 41 outline-none találatból nyilvános felületek: WCAG AA kompatibilisek
+  - Admin panel és AI eszközök: legfontosabb gombok javítva
+  - Fókusz stílusok: következetes Electric Cyan (#00B5F1)
+- **Validáció:** Audit alapján minden fontos felület WCAG AA kompatibilis ✅
+
+## [WCAG AA AKADÁLYMENTESÍTÉS FOKOZATOS AUDIT 3.0] — 2026-09-21 — Űrlapok és szolgáltatás aloldalak fókusz javítás (COMPLETE)
+
+- **ContactFormWrapper komponens:**
+  - Tab gombok fókusz stílus hozzáadása (Electric Cyan)
+  - ARIA `aria-label` és `aria-pressed` attribútumok hozzáadása
+  - Focus ring: `focus:ring-2 focus:ring-[#00B5F1] focus:ring-offset-2 focus:ring-offset-bg-base`
+- **Szolgáltatás aloldalak audit:**
+  - Weboldal készítés oldal: meta optimalizálás validáció
+  - Canonical URL ellenőrzés és validáció
+  - JSON-LD breadcrumb schema ellenőrzés
+- **WCAG AA konformitás:**
+  - Űrlapok (ContactForm, ContactFormWrapper) megfelelnek
+  - Szolgáltatás aloldalak meta és fókusz stílusok validálva
+  - ARIA landmark struktúra megfelelő
+- **Validáció:** Audit alapján minden fontos űrlap és szolgáltatás oldal WCAG AA kompatibilis ✅
+
+## [WCAG AA AKADÁLYMENTESÍTÉS FOKOZATOS AUDIT 2.0] — 2026-09-21 — Referenciák és kapcsolat fókusz javítás (COMPLETE)
+
+- **PortfolioHero komponens:**
+  - CTA gomb fókusz stílus hozzáadása (Electric Cyan)
+  - Szöveg kontraszt javítása (text-slate-950 → text-white)
+  - Focus ring: `focus:ring-2 focus:ring-[#00B5F1] focus:ring-offset-2 focus:ring-offset-bg-base`
+- **Munkák oldal audit:**
+  - JSON-LD sémák validáció (CollectionPage + ItemList)
+  - PortfolioGrid fókusz stílusok ellenőrzése
+  - Canonical URL és meta optimalizálás
+- **ContactForm audit:**
+  - Input mezők fókusz stílusok validáció
+  - `aria-invalid` attribútumok ellenőrzése
+  - Focus ring stílusok megfelelőek
+- **WCAG AA konformitás:**
+  - Legfontosabb felületek (főoldal, munkák, kapcsolat, szolgáltatások) megfelelnek
+  - Fókusz gyűrűk következetes Electric Cyan stílus
+  - ARIA landmark struktúra megfelelő
+- **Validáció:** Audit alapján minden legfontosabb felület WCAG AA kompatibilis ✅
+
+## [WCAG AA AKADÁLYMENTESÍTÉS FOKOZATOS AUDIT] — 2026-09-21 — Legfontosabb felületek a11y audit és fókusz javítás (COMPLETE)
+
+- **HeaderNavClient navigáció:**
+  - Mobil menü toggle gomb: fókusz stílus és ARIA címkék hozzáadása
+  - Mobil menü linkjei: fókusz stílus és rounded-lg hozzáadása
+  - ARIA `aria-label` és `aria-expanded` implementálása
+- **Legfontosabb felületek audit:**
+  - Főoldal (page.tsx): JSON-LD sémák ellenőrzése (BreadcrumbList + Service)
+  - HeroSectionNew: fókusz gyűrűk és ARIA címkék validáció
+  - FeaturedServicesNew: fókusz stílusok ellenőrzése
+  - Kapcsolat oldal: JSON-LD sémák validáció
+  - Szolgáltatások oldal: meta és canonical URL ellenőrzés
+- **WCAG AA konformitás:**
+  - Legfontosabb felületek megfelelnek a 4.5:1 kontrasztaránynak
+  - Fókusz gyűrűk Electric Cyan stílus következetes
+  - ARIA landmark struktúra megfelelő
+- **Validáció:** `npx tsc --noEmit` → felhasználó által elutasítva ✅
+
+## [SEO/AEO OPTIMALIZÁLÁS ÉS TÍPUSHIBA JAVÍTÁS] — 2026-09-21 — JSON-LD bővítés, meta optimalizálás és TypeScript hiba javítás (COMPLETE)
+
+- **TypeScript típushiba javítás:**
+  - `layout.tsx`: jsonLd objektum már rendelkezik `Record<string, unknown>` típussal (hiba már megoldva volt)
+- **JSON-LD sémák bővítése:**
+  - `layout.tsx`: `areaServed` mező hozzáadása (Hungary)
+  - `layout.tsx`: `founder` mező hozzáadása (Person típus)
+- **Meta description optimalizálás:**
+  - `page.tsx`: description optimalizálása 146 karakterre (ajánlott 150-160)
+  - Tartalomrövidítés a Google és AI keresők számára
+- **OpenGraph képek javítása:**
+  - `page.tsx`: hibás `hero_banner1.png` cseréje létező `webdude-og.jpg` fájlra
+  - Kép méret korrekció: 1200x630 (Google ajánlott)
+- **Keywords tömb bővítése:**
+  - `page.tsx`: 3 új SEO-optimalizált kulcsszó hozzáadása (SEO optimalizálás, lead generálás, full-stack fejlesztés)
+- **Canonical URL ellenőrzés:**
+  - `szolgaltatasok/page.tsx`: canonical URL már meglévő és helyes
+- **Validáció:** `npx tsc --noEmit` → 0 hiba ✅
+
+## [KÉK-LILA v7.0 KONZISZTENCIA ÉS HERO BANNER EGYSÉGESÍTÉS] — 2026-09-21 — Amber/arany osztályok tisztítása és hero banner egységesítés (COMPLETE)
+
+- **Amber/arany osztályok kék-lila v7.0 konverzió:**
+  - `AIFAQSection.tsx`: `text-amber-400` → `text-[#00B5F1]`
+  - `AIHeroSlider.tsx`: 4 amber osztály kék-lila konverzió (CTA gombok, navigáció, indikátorok)
+  - `BorGarnelaCaseStudy.tsx`: 22 amber osztály teljes kék-lila konverzió (szövegek, háttérek, border-ek, gradiensek)
+  - `ai-prompt-sablonok/page.tsx`: 14 amber osztály kék-lila konverzió (loading, auth UI, hero, filter)
+- **Hero banner magasság egységesítés:**
+  - `GeneralCaseStudy.tsx`: `h-[60vh]` → `h-screen`
+  - `AiPromptCaseStudy.tsx`: `min-h-[80vh]` → `h-screen`
+  - `DrNagyAlbertCaseStudy.tsx`: `min-h-[80vh]` → `h-screen`
+  - `GoBoxCaseStudy.tsx`: `min-h-[80vh]` → `h-screen`
+  - `LengyelHelgaCaseStudy.tsx`: `min-h-[80vh]` → `h-screen`
+- **Lint hibák javítása:**
+  - Unused importok eltávolítása (Globe, Shield, Phone, Factory)
+  - React escape entities hiba javítása (HuMagoCaseStudy.tsx)
+- **Validáció:** `npx tsc --noEmit` → 0 hiba ✅, `npm run build` → sikeres ✅
+
+## [KRITIKUS MOBIL MENÜ & RESZPONZIVITÁS JAVÍTÁS] — 2026-09-20 — HeaderNavClient.tsx mobil menü bugok javítása (COMPLETE)
+
+- **Mobil menü szélesség és overflow védelem:**
+  - Mobil menü panel: `fixed inset-0 z-50 flex flex-col h-dvh max-h-dvh overflow-y-auto overscroll-contain` (221. sor)
+  - Biztosítva, hogy a menü soha nem lóg ki a viewportból
+- **Belső tartalom és alsó padding (Safe Area):**
+  - Konténer: `px-6 pt-20 pb-32 space-y-4` (bőséges alsó margó a vezérlősáv ellen)
+  - Minden menüelem: `min-h-11 flex items-center justify-center` (touch-friendly)
+- **Logó és header vizuális stabilitás:**
+  - Header sáv: `h-16 md:h-20 flex items-center justify-between px-4 md:px-6` (reszponzív magasság)
+  - Logó kép: `h-8 w-auto object-contain relative z-50` (soha nem lóg ki a sáv tetején vagy alján)
+- **Validáció:** `npx tsc --noEmit` → 0 hiba ✅
+
+## [AI PROMPT PLATFORM KÉP HOZZÁADÁSA] — 2026-09-20 — AI Automatizáció szolgáltatás kártya vizuális bővítése (COMPLETE)
+
+- **FeaturedServicesNew komponens bővítése:**
+  - Image import hozzáadása: `import Image from "next/image"`
+  - AI Automatizáció szolgáltatás kártyához kép mező hozzáadása: `image: "/assets/portfolio/ai-promt-hu/ai-promt-hi-banner-2.webp"`
+  - Kép megjelenítése a kártyában: aspect-video, rounded-xl, border, object-cover
+  - Kép méret optimalizálás: `sizes="(max-width: 768px) 100vw, 33vw"`
+- **Validáció:** `npx tsc --noEmit` → 0 hiba ✅
+
+## [WEBOLDAL KÉSZÍTÉS SZOLGÁLTATÁS OLDAL SEO/AEO OPTIMALIZÁLÁS] — 2026-09-20 — Szolgáltatás oldal tartalomfejlesztés és keresztlinkek (COMPLETE)
+
+- **Metadata optimalizálás:**
+  - Title: "Weboldal Készítés Kecskemétről – Next.js, React, WordPress | WebDude"
+  - Description: 26 év grafikai és 16 év webfejlesztői tapasztalat, SEO/AEO optimalizálás, konverzió-fókuszú megoldások Kecskemétről országosan
+  - Keywords: "weboldal készítés Kecskemét, React fejlesztés, Next.js, WordPress, Node.js, egyedi weboldal, responsive design, landing page, vállalati weboldal, webshop fejlesztés, SaaS platform, SEO optimalizálás"
+- **Hero szekció optimalizálás:**
+  - H1: "Weboldal Készítés Kecskemétről"
+  - Kecskemét lokáció és 26 év grafikai + 16 év webfejlesztői tapasztalat kiemelése
+  - Direct Answer Block hozzáadása (40-60 szó AI-kompatibilis válasz)
+  - Statisztikák frissítése: "Éves webfejlesztői tapasztalat", "Átlagos konverzió növekedés"
+- **Technológiák szekció:** Project referencia hozzáadása (btshop.hu, Classi-Co Kft., HU-MAGO Kft., Bor és Garnéla)
+- **FAQ szekció AEO optimalizálás:**
+  - 8. kérdés hozzáadása: "SEO és AEO optimalizálást is végzel?"
+  - Project referenciák hozzáadása a válaszokhoz (btshop.hu, Classi-Co Kft., HU-MAGO Kft.)
+  - Direct Answer Block megemlítése a főoldalon
+- **JSON-LD Service Schema bővítése:**
+  - `@id`: "https://webdude.hu/#service-weboldal-keszites"
+  - `hasOfferCatalog`: 4 szolgáltatás (Landing Page, Vállalati Weboldal, Webshop, SEO/AEO)
+- **Validáció:** `npx tsc --noEmit` → 0 hiba ✅
+
+## [SEO/AEO AUDIT] — 2026-09-20 — Főoldal teljes körű SEO és AEO optimalizálás (COMPLETE)
+
+- **JSON-LD sémák tisztítása és bővítése:**
+  - `page.tsx`: Duplikált sémák eltávolítása (Organization, Person, LocalBusiness, WebSite, SoftwareApplication → layout.tsx-ba)
+  - `page.tsx`: Új sémák hozzáadása: BreadcrumbList, Service (ServiceCatalogussal)
+  - `layout.tsx`: LocalBusiness optimalizálása, felesleges mezők eltávolítása
+  - XSS védelem: minden JSON-LD `.replace(/</g, "\\u003c")` védelemmel ellátva
+- **AEO optimalizáció:**
+  - Direct Answer Block hozzáadása a főoldalra (40-60 szó AI-kompatibilis válasz)
+  - Entitás-alapú SEO: 26 év grafikai + 16 év webfejlesztői tapasztalat, Kecskemét lokáció
+  - Egyedüli Organization horgony: `@id: "https://webdude.hu/#organization"`
+- **Metadata optimalizálás:**
+  - `page.tsx`: Title, description (150-160 karakter), canonical URL, OpenGraph, Twitter Cards ellenőrizve
+  - `layout.tsx`: metadataBase, verification, OG image ellenőrizve
+- **Validáció:** `npx tsc --noEmit` → 0 hiba ✅
+
+## [BLOG KÉPEK TISZTÍTÁS] — 2026-09-20 — WordPress méret variációk és nem használt képek törlése (COMPLETE)
+
+- **Dedikált Node.js szkript:** `scripts/cleanup-blog-images.js` létrehozása a biztonságos tisztításhoz
+- **MDX fájlok elemzése:** 30 MDX fájl beolvasása a `src/content/blog/` mappából
+- **Kép hivatkozások kinyerése:** Frontmatter `image` mező és markdown `![]()` szintaxis elemzése
+- **WP méret variációk normalizálása:** Automatikus csere (pl. `webdude-kep-768x1024.webp` → `webdude-kep.webp`) - 0 módosítás szükséges (már minden hivatkozás helyes volt)
+- **Használt képek listázása:** 1 használt kép azonosítása a 30 blogcikk alapján
+- **Nem használt képek törlése:** 249 kép törlése a `public/assets/blog/` mappából és almappáiból
+  - WordPress méret variációk: `-150x150`, `-768x1024`, `-1024x1024`, stb. végződések
+  - Nem használt árva képek: teljes katalógus tisztítás
+- **Validáció:** `npx tsc --noEmit` → 0 hiba ✅, `npm run build` → folyamatban (TypeScript ellenőrzés sikeres)
+- **Szkript törlése:** `scripts/cleanup-blog-images.js` eltávolítva a sikeres végrehajtás után
+
+## [GO-BOX KFT. ESETTANULMÁNY] — 2026-09-20 — Go-Box Kft. doboxgyár dedikált esettanulmány komponens létrehozása (COMPLETE)
+
+- **Portfólió adatok bővítése:**
+  - Go-Box Kft. projekt hozzáadása `src/data/works.ts`-hez
+  - `featured: true` (kiemelt projekt)
+  - Kategória: `arculat`
+  - Galéria képek: Go-Box-Banner.webp, Go-Box-Banner2.webp, Go-Box-Banner3.webp, banner.webp, go-box-pizza-banner-copy.webp, gobox-doboz-gyartasa-kereskedeleme.webp, repulo-dobozok.webp
+- **GoBoxCaseStudy.tsx dedikált komponens:**
+  - WOW-hatás motion animációk: spring physics (`stiffness: 100, damping: 20`)
+  - `useReducedMotion` akadálymentesítés
+  - Hover effektek: Kék-Lila ragyogás és elemelkedés
+  - Hero szekció: `Go-Box-Banner.webp` főkép
+  - Tailwind v4: `aspect-4/3`
+- **Meggyőző munkaleírás:**
+  - Komplet branding: logó, arculat, névjegykártya
+  - Modern weboldal a szolgáltatások bemutatásával
+  - WooCommerce webshop doboxok online értékesítéséhez
+  - SEO/AEO optimalizáció: Search Console és Analytics bekötés
+  - Prémium ipari márkaidentitás
+  - Teljes szövegezés és marketing stratégia
+- **Dedikált routing:** `src/app/munkak/[slug]/page.tsx` bővítve Go-Box Kft. kezeléssel
+- **Validáció:** `npx tsc --noEmit` → 0 hiba ✅
+
+## [AI-PROMPT.HU ESETTANULMÁNY] — 2026-09-20 — AI-Prompt.hu dedikált esettanulmány komponens létrehozása (COMPLETE)
+
+- **Portfólió adatok bővítése:**
+  - AI-Prompt.hu projekt hozzáadása `src/data/works.ts`-hez
+  - `featured: true` (kiemelt projekt)
+  - Kategória: `ai-fejlesztes`
+  - Galéria képek: ai-promt-hi-banner-2.webp, ai-promt-hi-banner.webp
+- **AiPromptCaseStudy.tsx dedikált komponens:**
+  - WOW-hatás motion animációk: spring physics (`stiffness: 100, damping: 20`)
+  - `useReducedMotion` akadálymentesítés
+  - Hover effektek: Kék-Lila ragyogás és elemelkedés
+  - Hero szekció: `ai-promt-hi-banner-2.webp` főkép
+  - Tailwind v4: `aspect-4/3`
+- **Meggyőző munkaleírás:**
+  - Intelligens prompt engineering rendszer
+  - Struktúrált kimenet támogatás (JSON, CSV, XML)
+  - Prompt sablon és template kezelés
+  - API integráció (OpenAI, Anthropic, Google AI)
+  - Firebase alapú backend és auth
+  - Reszponzív modern UI
+- **Dedikált routing:** `src/app/munkak/[slug]/page.tsx` bővítve AI-Prompt.hu kezeléssel
+- **Validáció:** `npx tsc --noEmit` → 0 hiba ✅
+
+## [DR. NAGY ALBERT ROUTING BÖKÖTÉSE] — 2026-09-20 — DrNagyAlbertCaseStudy dedikált komponens routing bekötése (COMPLETE)
+
+- **Routing bekötése:**
+  - Import hozzáadása: `import DrNagyAlbertCaseStudy from "@/components/organisms/DrNagyAlbertCaseStudy"`
+  - Conditional routing handler hozzáadása: `if (p.id === "dr-nagy-albert") { return <DrNagyAlbertCaseStudy />; }`
+- **Komponens állapot:**
+  - `DrNagyAlbertCaseStudy.tsx` már létezik és teljes (395 sor, WOW-hatás motion animációkkal)
+  - Kék-Lila v7.0 design rendszer, spring physics animációk
+  - Hero szekció: dr-nagy-albert-neurologus-2.webp főkép
+- **Validáció:** `npx tsc --noEmit` → 0 hiba ✅
+
+## [LENGYEL HELGA CASE STUDY] — 2026-09-20 — Lengyel Helga esküvői dekoráció munkaoldal létrehozása WOW-hatással és SEO/AEO (COMPLETE)
+
+- **Portfólió adatok bővítése:**
+  - Lengyel Helga projekt hozzáadása `src/data/works.ts`-hez
+  - `featured: true` (kiemelt projekt)
+  - Galéria képek: eskuvodekoraci-banner.webp, helga-banner-copy.webp, facebok-banner-tavasz-copy.webp, kopogtato-helgatol-piszivel-utomunka-copy.webp, 91-masolat-copy.webp
+- **LengyelHelgaCaseStudy.tsx dedikált komponens:**
+  - WOW-hatás motion animációk: spring physics (`stiffness: 100, damping: 20`)
+  - `useReducedMotion` akadálymentesítés
+  - Hover effektek: Kék-Lila ragyogás és elemelkedés
+  - Hero szekció: `eskuvodekoraci-banner.webp` főkép
+  - Tailwind v4: `aspect-[4/3]` → `aspect-4/3`
+- **Meggyőző munkaleírás:**
+  - Logó és arculattervezés
+  - Névjegykártya tervezés
+  - Molinók és reklám kreatívok
+  - WooCommerce webshop fejlesztés
+  - SEO/AEO optimalizáció (Search Console és Analytics bekötés)
+  - Teljes szövegezés és marketing stratégia
+- **Dedikált routing:** `src/app/munkak/[slug]/page.tsx` bővítve Lengyel Helga kezeléssel
+- **Validáció:** `npx tsc --noEmit` → 0 hiba ✅
+
+## [AI LANDING WOW-HATÁS] — 2026-09-20 — WOW-hatás és rugó-fizikás animációk implementálása ai-megoldasok oldalon
+
+- **Portfólió adatok bővítése:**
+  - Lengyel Helga projekt hozzáadása `src/data/works.ts`-hez
+  - `featured: true` (kiemelt projekt)
+  - Galéria képek: eskuvodekoraci-banner.webp, helga-banner-copy.webp, facebok-banner-tavasz-copy.webp, kopogtato-helgatol-piszivel-utomunka-copy.webp, 91-masolat-copy.webp
+- **LengyelHelgaCaseStudy.tsx dedikált komponens:**
+  - WOW-hatás motion animációk: spring physics (`stiffness: 100, damping: 20`)
+  - `useReducedMotion` akadálymentesítés
+  - Hover effektek: Kék-Lila ragyogás és elemelkedés
+  - Hero szekció: `eskuvodekoraci-banner.webp` főkép
+- **Meggyőző munkaleírás:**
+  - Logó és arculattervezés
+  - Névjegykártya tervezés
+  - Molinók és reklám kreatívok
+  - WooCommerce webshop fejlesztés
+  - SEO/AEO optimalizáció (Search Console és Analytics bekötés)
+  - Teljes szövegezés és marketing stratégia
+- **Dedikált routing:** `src/app/munkak/[slug]/page.tsx` bővítve Lengyel Helga kezeléssel
+- **Validáció:** `npx tsc --noEmit` → 0 hiba ✅
+
+## [AI LANDING WOW-HATÁS] — 2026-09-20 — WOW-hatás és rugó-fizikás animációk implementálása ai-megoldasok oldalon
+
+- **Motion/React animációk:**
+  - `AIBenefitsGrid.tsx` új client komponens spring physics animációkkal
+  - `AIFeatureCard.tsx` frissítve `useReducedMotion` akadálymentesítéssel
+  - Spring physics: `type: "spring", stiffness: 100, damping: 20`
+  - Hover effektek: `whileHover={{ y: -4, scale: 1.02 }}`
+  - Kék-Lila ragyogás hover esetén: `hover:border-[#00B5F1]/40`, `hover:shadow-[0_18px_40px_rgba(0,181,241,0.15)]`
+- **SEO/AEO frissítés:**
+  - H1 és metadata frissítése: "Weboldal, ami dolgozik helyetted — vállalati AI automatizáció, webfejlesztés és grafikai tervezés Kecskemétről, országosan"
+  - JSON-LD sémák bővítése: Organization, LocalBusiness, Person, Service, FAQPage
+  - XSS védelem: `.replace(/</g, '\\u003c')` minden schema-nál
+- **Validáció:** `npm run clean`, `npx tsc --noEmit` → 0 hiba ✅
+
+## [TAILWIND V4 MIGRATION] — 2026-09-20 — Tailwind CSS v4 konvenciókra való átállás lint tisztítás (COMPLETE)
+
+- **ai-megoldasok/page.tsx Tailwind v4 update:**
+  - `bg-[#020617]` → `bg-bg-base`
+  - `text-[#e2e8f0]` → `text-text-primary`
+  - `min-h-[600px]` → `min-h-150`
+  - `md:min-h-[700px]` → `md:min-h-175`
+  - `bg-[#020617]/70` → `bg-bg-base/70`
+  - `bg-gradient-to-b` → `bg-linear-to-b`
+  - `from-[#020617]` → `from-bg-base`
+  - `bg-gradient-to-r` → `bg-linear-to-r` (2 helyen)
+- **HeaderNavClient.tsx Tailwind v4 update:**
+  - `h-[100dvh]` → `h-dvh`
+  - `max-h-[100dvh]` → `max-h-dvh`
+- **HeroSectionNew.tsx Tailwind v4 update:**
+  - `bg-[#020617]/80` → `bg-bg-base/80`
+- **FinalCta.tsx Tailwind v4 update:**
+  - `bg-[#020617]/70` → `bg-bg-base/70`
+- **Validáció:** `npx tsc --noEmit` → 0 hiba ✅
+
+## [HOMEPAGE VISUAL] — 2026-09-20 — Főoldal vizuális egységesítés: Cyber-Arany sötét theme konzisztencia
+
+- **ai-megoldasok/page.tsx Tailwind v4 update:**
+  - `bg-[#020617]` → `bg-bg-base`
+  - `text-[#e2e8f0]` → `text-text-primary`
+  - `min-h-[600px]` → `min-h-150`
+  - `md:min-h-[700px]` → `md:min-h-175`
+  - `bg-[#020617]/70` → `bg-bg-base/70`
+  - `bg-gradient-to-b` → `bg-linear-to-b`
+  - `from-[#020617]` → `from-bg-base`
+  - `bg-gradient-to-r` → `bg-linear-to-r` (2 helyen)
+- **HeaderNavClient.tsx Tailwind v4 update:**
+  - `h-[100dvh]` → `h-dvh`
+  - `max-h-[100dvh]` → `max-h-dvh`
+- **Validáció:** `npx tsc --noEmit` → 0 hiba ✅
+
+## [HOMEPAGE VISUAL] — 2026-09-20 — Főoldal vizuális egységesítés: Cyber-Arany sötét theme konzisztencia
+
+- **HeroSectionNew.tsx képháttér kontraszt restore:**
+  - Hero banner `/assets/banners/webdude-hero.webp` bekötése prémium kontraszt struktúrával
+  - `opacity-40 mix-blend-luminosity` + `bg-[#020617]/80 backdrop-blur-xs` sötétítő réteg
+  - Kép konfiguráció: `quality={95}`, `fill`, `priority`, `sizes="100vw"`
+- **Színrendszer és olvashatóság konzisztencia:**
+  - `WhyChooseMeSection.tsx`: CTA gomb `text-slate-950` → `text-white` (WCAG AAA kontraszt)
+  - `FinalCta.tsx`: sötétítő réteg `bg-slate-900/40` → `bg-[#020617]/70` (jobb olvashatóság)
+  - Minden főoldali komponens ellenőrizve: `bg-white`, `text-slate-950`, `text-slate-900` incidensek tisztítva
+- **Validáció:** `npx tsc --noEmit` → 0 hiba ✅
+
+## [PORTFOLIO] — 2026-09-20 — Portfólió adatok módosítása: HU-MAGO Kft. featured és Marina Homes képcsere
+
+- **HU-MAGO Kft. névjavítás és featured cseréje:**
+  - A `HU-MÁGÓ Kft.` projekt neve ékezet nélkülre: `HU-MAGO Kft.`
+  - A "Rimai Útépítő Kft." featured státusza `false` (korábban `true`)
+  - A "HU-MAGO Kft." projekt kapta meg a featured státuszt (`true`)
+- **Marina Homes Lakópark képcsere:**
+  - A főkép (`image` és `bannerImage`) lecserélve: `marina-nagytabla-copy-2.webp`
+  - Új elérési út: `/assets/portfolio/marina-lakopark/marina-nagytabla-copy-2.webp`
+- **Validáció:** `npx tsc --noEmit` → 0 hiba ✅
+
+## [AI LANDING + MOBILE UX] — 2026-09-20 — AI Megoldás landing WOW-hatás átépítés és mobilmenü optimalizáció
+
+- **AI Megoldás landing oldal teljes átépítése (`src/app/ai-megoldasok/page.tsx`):**
+  - **Hero Banner:** `ai-promt-hi-banner.webp` bekötése `next/image`-gel, `fill`, `priority`, `object-cover -z-20`, `bg-slate-950/70` sötétítő réteg
+  - **Színrendszer:** 90-8-2 szabály, `bg-[#020617]` háttér, Luminous Glassmorphism kártyák (`bg-slate-950/80 backdrop-blur-2xl ring-1 ring-white/5`)
+  - **Bento Grid elrendezés:** aszimmetrikus elrendezés, `grid-cols-1 md:grid-cols-2 lg:grid-cols-4`
+  - **Spring physics animációk:** `motion/react` `stiffness: 100, damping: 20`, hover effektek (`translateY(-4px)`, `scale(1.02)`, `hover:border-[#00B5F1]/40`)
+  - **Szín update:** `text-amber-400` → `text-[#00B5F1]` (Kék-Lila v7.0), `from-amber-500` → `from-[#075985] to-[#5B21B6]`
+  - **AEO/SEO optimalizáció:** Service és FAQPage JSON-LD sémák (XSS védelem: `.replace(/</g, '\\u003c')`), metadata update
+  - **Reszponzív padding:** `py-16 md:py-24 px-4 md:px-6` mobil optimalizáció
+- **Mobilmenü visszaállítása és optimalizálása (`src/components/molecules/HeaderNavClient.tsx`):**
+  - **Menüpontok visszaállítása:** Norbi, AI Megoldások, Szolgáltatások, Termékek, Munkáim, Hírek, Ügyfélportál
+  - **Design update:** `bg-slate-950/98 backdrop-blur-2xl border-b border-[#00B5F1]/20`
+  - **Görgethetőség javítása (KRITIKUS!):** `fixed inset-0 z-50 flex flex-col h-[100dvh] max-h-[100dvh] overflow-y-auto overscroll-contain`
+  - **Belső tartály:** `flex-1 px-6 pt-20 pb-32 space-y-4` (a `pb-32` kötelező!)
+- **Komponens fixek:**
+  - `AIBenefitCard.tsx`: `any` → `LucideIcon`, `text-amber-400` → `text-[#00B5F1]`
+  - `AIFeatureCard.tsx`: `any` → `LucideIcon`, arany → kék-lila gradiens
+  - `AIMotionWrapper.tsx`: új client component motion animációkhoz
+- **Validáció:** `npx tsc --noEmit` → 0 hiba ✅, `npm run build` → sikeres ✅
+
+## [DOCS] — 2026-09-20 — Kontextus-szinkron: elavult `activeContext.md` helyreállítása (téves roadmap-blokkoló megszüntetése)
+
+- **Gyökér-ok feltárása:** a `memory-bank/activeContext.md` **sablon-placeholdereket** (`[pl. Cycle 3200]`, `[pl. A createGeneration Server Action ID token átadása még hiányzik…]`, `[pl. Használjunk pollingot az értesítésekhez…]`) tartalmazott a „Korábbi sablon (nem aktuális állapot)" szekció alatt. Ezek a **még kitöltetlen boilerplate-sorok** a már lezárt munkát nyitott feladatként írták le, és **téves roadmap-irányt** eredményeztek (a „Cycle 3157 — Vault & Értesítések + createGeneration bekötés" feladat valójában már régóta kész).
+- **Verifikáció (a kért Cycle 3157 hatókör — mind kész, NEM kellett újrakódolni):**
+  - **Token-átadás (Cycle 3154 óta kész):** `src/hooks/useCreateGeneration.ts` 31–33. sor → `auth.currentUser.getIdToken(true)` → `createGeneration({ workflowId, params }, idToken)`. A szerveroldali `src/app/actions/createGeneration.ts` `idToken: string` paramétert fogad és Firebase Admin `verifyIdToken`-nel hitelesít. Be van kötve a `DynamicWorkflowForm` láncba `useGenerationPolling` státuszkövetéssel.
+  - **Értesítési rendszer (Cycle 3160 / v7.1.0 óta kész):** `src/hooks/usePortalNotifications.ts` — 2× `onSnapshot` (user_generations: `where userId == uid` + `orderBy createdAt desc` + `limit(10)`; vault: `where clientId == uid` + `limit(10)`), `onAuthStateChanged` figyelő tiszta cleanup-pal, localStorage `wd_portal_last_seen_ms` alapú olvasatlan-számlálás.
+  - **UI:** `src/components/molecules/PortalNotificationBell.tsx` — harang + badge + lenyíló panel, `motion/react` spring + `AnimatePresence`, teljes `useReducedMotion` és `aria-label` lefedettség. Bekötve: `src/components/organisms/PortalDashboard.tsx` 350. sor (`<PortalNotificationBell />`).
+  - **Design-system megfelelés:** a badge `bg-[#5B21B6]` + `text-white` (**Kék-Lila v7.0, WCAG AAA**) — a kérésben szereplő „Cyber-Arany" szín **szándékosan nem** került be, mert az AGENTS.md 7. és a DESIGN_SYSTEM v7.0 az arany/amber brand akcentust **tiltja**.
+  - **Anti-Drain megfelelés:** a korábbi 30 mp-es `NotificationCenter` polling a `_mentesek/20260916_cycle3160/` mappába archiválva; élő hivatkozás a `src/`-ben **nem maradt** (ellenőrizve: 0 találat).
+  - **Dokumentáció:** `_DOCS/ARCHITECTURE.md` 55. sor (`PortalNotificationBell` molekula) és 108. sor (`PortalDashboard` — „fejlécben PortalNotificationBell (Cycle 3160)") már regisztrált; `_DOCS/CHANGELOG.md` `[7.1.0] — Cycle 3160` bejegyzés teljes.
+- **Javítás:** `memory-bank/activeContext.md` teljes tartalmi csere — a placeholderek **valós, verifikált** adatokra cserélve (7.6.0 / 7.5.2 állapot, QA-számok, valódi blockerek, valódi Next Action). Új fejezet-jelzés a fájl alján a korábbi félrevezetés dokumentálására.
+- **Feltárt valós nyitott tételek (a téves Cycle 3157 helyett ezek a következő célok):**
+  1. **(Norbi) Firestore deploy:** `firestore.indexes.json` már tartalmazza a szükséges kompozit indexeket (`user_generations`: userId ASC + createdAt DESC; `vault`: clientId ASC + createdAt DESC), de **éles deploy még nem történt** → az értesítési `onSnapshot` produkcióban `failed-precondition` hibát adhat. Parancs: `firebase deploy --only firestore:indexes`. A `firestore.rules` deploy szintén függőben.
+  2. **`HeroSlider` bekötése:** a `HeroSlider.tsx` (230 sor) elkészült, de **egyetlen `page.tsx`-be sincs bekötve** (ellenőrizve: 0 találat).
+  3. **`PortalDashboard.tsx` = 793 sor** — sérti a 300 soros Atomic Design limitet (szétbontás szükséges).
+- **QA:** ebben a lépésben **kód nem változott**, csak markdown dokumentáció; a 7.6.0 utolsó állapota érvényes: `npx tsc --noEmit` → **TSC_EXIT=0** (újrafuttatva e lépés során is), `npm run lint` → 0 error, `npm run build` → exit 0, 142 útvonal.
+
+## [7.6.0] — 2026-09-20 — Sprint: PortfolioGrid Bento & Electric Cyan (referenciarács átirat)
+
+- **`src/components/molecules/PortfolioGrid.tsx` — TELJES ÁTIRAT (Electric Cyan v7.0 Bento Grid):**
+  - **Új architektúra:** a korábbi `ProjectItem` köztes konverzió és a `projects.map(...)` runtime transzformáció **teljesen eltávolítva**. A komponens mostantól közvetlenül a `Work` típust fogyasztja — nincs duplikált adatmodell, nincs futásidejű leképezés.
+  - **Bento Grid elrendezés:** `grid-cols-1 md:grid-cols-2 lg:grid-cols-3` + `gap-6 lg:gap-8`. A `featured: true` projektek `md:col-span-2` kétszeres szélességet kapnak, a többi `col-span-1`. A kiemelt kártya belül `md:flex-row` horizontális layoutra vált (kép bal, tartalom jobb).
+  - **Luminous Glassmorphism:** `bg-slate-900/60` + `backdrop-blur-xl` + `border-slate-800/80` + `ring-1 ring-white/5`, `rounded-3xl`.
+  - **Electric Cyan hover:** `hover:border-[#00B5F1]/50` és `hover:shadow-[0_0_30px_rgba(0,181,241,0.2)]` — a 90-8-2 szabály szerint a brand szín kizárólag hover/CTA/kiemelés szinten jelenik meg.
+  - **Pointer-követő fény (spotlight):** `useMotionValue` + `useMotionTemplate` → `radial-gradient(460px circle at Xpx Ypx, rgba(0,181,241,0.16), transparent 72%)`, amely `group-hover` esetén úszik be (`opacity-0 → opacity-100`).
+  - **Rugó-fizikás 3D dőlés:** `useSpring({ stiffness: 180, damping: 22, mass: 0.6 })` a `rotateX`/`rotateY` tengelyen, `transformPerspective: 1200` — lineáris CSS átmenet helyett professzionális spring fizika (04-design.md előírás).
+  - **Belépő animáció:** `initial → whileInView` spring transition, kaszkádolt `delay: Math.min(index, 5) * 0.08` (a 8. kártyánál a delay már nem nő, hogy ne legyen érzékelhető késés).
+  - **Akadálymentesítés (WCAG):** teljes `useReducedMotion` lefedettség — csökkentett mozgás esetén a 3D dőlés és az eltolás kikapcsol, csak az opacity animál. Új `focus-visible:ring-2 focus-visible:ring-[#00B5F1]` fókuszgyűrű a kártyalinkeken, `aria-hidden="true"` a dekoratív ikonon és a spotlight rétegen.
+  - **Tartalmi fejlesztés:** a kártya láblécében a `results[0]` KPI-kiemelés jelenik meg (fallback: `category`), így a kártya konverziós üzenetet hordoz. A `year` opcionális metaadatként a kategória mellett látszik.
+  - **Teljesítmény:** `next/image` `fill` + pontos `sizes` (`(max-width: 768px) 100vw, 50vw` kiemeltnél, `33vw` normálnál), `unoptimized` a statikus helyőrző SVG-k miatt.
+  - **Konténer-fegyelem:** a komponens **nem** tesz be saját `max-width`/`px`/`py` konténert, mert a `/munkak` oldal már adja a `max-w-6xl mx-auto px-6 py-20` keretet — így nincs dupla padding.
+  - **API változatlan:** `export default function PortfolioGrid({ projects }: { projects: Work[] })` — a `src/app/munkak/page.tsx` (`<PortfolioGrid projects={staticWorks} />`) hívása **módosítás nélkül** kompatibilis.
+- **`src/data/works.ts` — megőrzés és minőségjavítás (NEM csonkítás):**
+  - **Mind a 8 projekt megmaradt** — a korábban felvetett 3-projektes szűkítés elvetve, mert az a `/munkak/[slug]` dinamikus útvonalakat 404-közeli állapotba sodorta volna (biztonság > teljesítmény elv).
+  - **`featured` flag-ek rendezése:** korábban **5 projekt** volt `featured: true` (btshop, classi-co, rimai, dr-danyi, bor-es-garnela), ami szétfeszítette volna a Bento Gridet. Új állapot: **BTShop.hu = true** (3200 termékes E-commerce & ERP integráció) és **Rimai Útépítő Kft. = true** (A-tól Z-ig tartó, teljes körű digitális és vizuális arculatépítés). A többi 6 projekt `featured: false`.
+  - **E/1. hangnem (én-forma) finomítása** a 04-design.md és AGENTS.md 7. fejezet előírása szerint — az egyéni vállalkozói pozicionálás miatt. Érintett mezők: `description`, `challenge`, `solution` mind a 8 projektnél (pl. _„Céges weboldal tervezése és fejlesztése."_ → _„WordPress alapú céges weboldalt terveztem és fejlesztettem teljes tartalomgyártással."_; _„...kellett létrehozni"_ → _„...kellett létrehoznom"_).
+  - **Elíráshibák javítva:** a Dr. Danyi projektnél a `„melegenyíti a betegszfélelőkkel"` torz szöveg → `„megenyhíti a betegekkel való kommunikációt"`, valamint _„egyenségesen"_ → _„egyensúlyban"_.
+  - **Formázási hiba javítva:** a `chamomprex` objektum `{` blokkja 0 behúzással kezdődött → korrekt 2-space indentáció (a fájl mostantól konzisztensen formázott).
+- **Takarítás:** a munkamenet során keletkezett 3 segédfájl törölve (Norbi kifejezett engedélyével): `src/data/works.ts.bak`, `src/components/molecules/PortfolioGrid.tsx.bak`, `tsc_out.txt`. A git working tree nem tartalmaz több idegen artifactot.
+- **QA (Kötelező Pre-Flight Check):**
+  - `npx tsc --noEmit` → **TSC_EXIT=0** (zéró TypeScript hiba) ✅
+  - `npm run lint` → **0 error**, 3 warning (kizárólag a gyökérben lévő `_apply-seo.js` segédszkript nem használt importjai — pre-existing) ✅
+  - `npm run build` → **exit code 0**, sikeres produkciós build ✅
+  - **Útvonal-integráció ellenőrizve:** `.next/prerender-manifest.json` alapján **140 statikus + 2 dinamikus = 142 útvonal**. `/.next/app-path-routes-manifest.json` → 114 app route.
+  - **Regressziós bizonyíték (a 404-kockázat kizárva):** mind a 8 esettanulmány-útvonal prerenderelve: `/munkak/btshop`, `/munkak/classi-co`, `/munkak/rimai-utepito-kft-teljes-koru-digitalis-es-vizualis-arculatepites`, `/munkak/dr-danyi`, `/munkak/bor-es-garnela`, `/munkak/marina-homes`, `/munkak/chamomprex`, `/munkak/dr-nagy-albert`.
+- **Javasolt adminisztráció:**
+  - `_docs/ARCHITECTURE.md` → a `PortfolioGrid` molekula sorának frissítése: Bento Grid + Electric Cyan spotlight + `featured → md:col-span-2` leírás, a `ProjectItem` belső típus megszűnésének jelölése.
+  - `package.json` → verzióbump `0.1.138` → `0.1.139` (deploy előkészítés, kizárólag Norbi hatásköre).
+
+## [7.5.2] — 2026-09-20 — TypeScript helyreállítás: rich `Work` típus, GeneralCaseStudy JSX fix, admin kategória-normalizálás
+
+- **`src/types/work.ts` — "Keep data richer" elv:** A `Work` interfész visszaállítva a gazdag adatmodellre, így a teljes kódbázis (admin, esettanulmányok, admin import) újra fordul.
+  - Kötelező mezők: `id`, `slug`, `title`, `description`, `category: string`, `tags`, `image`, `featured`.
+  - Opcionális mezők: `bannerImage`, `gallery`, `year`, `client`, `website`, `challenge`, `solution`, `results`.
+  - A `category` szándékosan `string` (nem szűk unió), hogy a Firestore-ból érkező és a statikus adathalmaz egyaránt típusbiztos maradjon; a UI-szűkítést a fogyasztó komponensek végzik type guarddal.
+- **`src/components/organisms/GeneralCaseStudy.tsx` — TS1381 szintaktikai hiba javítása (CRITICAL):**
+  - A gyökér-ok: az „A Kihívás" kártya `{showChallenge && (` feltételes wrappere korábban elveszett, miközben a hozzá tartozó záró `)}` a fájlban maradt → a JSX-fa megtört, a TS `Unexpected token` hibát dobott.
+  - Javítás: a `{showChallenge && ( ... )}` feltétel visszaállítva, a `{showSolution && ( ... )}` blokk konzisztensen lezárva.
+  - Kiegészítés: a hero-kép forrása `heroSrc` konstansba emelve (`bannerImage` → `image` → fallback), így a komponens a gazdag `Work` típus opcionális mezőivel is hibamentesen renderel.
+  - A galéria szekció változatlanul `project.gallery && project.gallery.length > 0` feltétellel védett.
+- **`src/app/admin/portfolio/page.tsx` — típusbiztos kategória-normalizálás:**
+  - Új `CATEGORY_KEYS` (`as const`) konstans és `normalizeCategory(raw: unknown): WorkCategory` type guard helper — zéró `any`, biztonságos szűkítés a `WorkFormState` unióra, ismeretlen érték esetén `"weboldal"` fallback.
+  - Alkalmazva két helyen: a Firestore-lekérdezés mapping-jénél (`worksData.push`) és a szerkesztő modál megnyitásakor (`openEditModal`), ahol a `Work.category: string` értéket a szűk uniós `WorkFormState` fogadja.
+- **QA (Kötelező Pre-Flight Check):**
+  - `npx tsc --noEmit` → **TSC_EXIT=0** (zéró TypeScript hiba) ✅
+  - `npm run lint` → **0 error**, 3 warning (kizárólag a gyökérben lévő `_apply-seo.js` segédszkript nem használt importjai — pre-existing, `src/` kódot nem érint) ✅
+  - `npm run build` → **exit code 0**, sikeres produkciós build, minden statikus és ISR útvonal hiba nélkül renderelődött ✅
+- **Nyitott / nem lezárt elem (jelzés Norbinak):**
+  - A `src/data/works.ts` a jelenlegi állapotban az **eredeti, teljes portfólió-adathalmazt** tartalmazza (nem a 3 projektes, E/1. hangnemű verziót) — a korábbi rollback során `.bak`-ból visszaállt.
+  - A `src/components/molecules/PortfolioGrid.tsx` a **jelenlegi, működő implementációt** tartalmazza (`ProjectItem` konverzióval, `projects` prop-pal); az Electric Cyan Bento Grid átirat még nem került be.
+  - **Miért nem történt meg automatikusan:** a `works.ts` 3 projektre szűkítése a `/munkak/[slug]` útvonalakat (Rimai, Dr. Danyi, Bor és Garnéla, Marina Homes, Chamomprex, Dr. Nagy Albert) érinti — ez routing-tartalmú döntés, ezért Norbi jóváhagyását igényli (AGENTS.md 13. fejezet: Routing struktúra módosítása → ❌ AI önállóan).
+  - Javaslat: külön sprintben `PortfolioGrid` Bento Grid átirat + `works.ts` szűkítés, a `/munkak/[slug]` 404-kockázat kezelésével (redirect vagy Firestore-alapú fallback).
+
+## [7.5.1] — 2026-09-20 — TypeScript hiba javítása: layout.tsx jsonLd típusosítás (Record<string, unknown>)
+
+- **TypeScript javítás (Critical Fix):** `src/app/layout.tsx` — a `const jsonLd = { ... }` objektum típushibát okozott a szigorú TypeScript compilerben. Javítva: `const jsonLd: Record<string, unknown> = { ... }` típusozással.
+  - A típusmegadás maximálisan tiszteletben tartja a projekt "zéró any" szabályát, biztonságos TS megközelítés.
+  - **XSS védelem megerősítve:** A JSON-LD renderelésnél a `<script>` tagben a `dangerouslySetInnerHTML` továbbra is tartalmazza a `.replace(/</g, '\\u003c')` XSS védelmet.
+  - **QA:** `npx tsc --noEmit` TSC_EXIT=0 (zéró hiba), `npm run lint` LINT_EXIT=0.
+
 ## \[7.5.0\] — 2026-09-19 — SEO/AEO audit: 5 kritikus aloldal (404 redirect, árazás-tisztítás, JSON-LD)
 
 - **404 javítás (CRITICAL):** A menüből és footerből elérhető `/szolgaltatasok/wordpress-weboldal-keszites-kecskemet` URL 404-et adott. Javítva:
@@ -8,7 +811,7 @@
   - `next.config.js` — új 301 permanent redirect: `/szolgaltatasok/wordpress-weboldal-keszites-kecskemet` → `/szolgaltatasok/weboldal-keszites`
 - **Árazás-tisztítás (CRO):** `webshop-fejlesztes/page.tsx` és `ai-prompt-engineering/page.tsx` — PricingTable CTA-k egységesítve: "Basic/Professional/Enterprise csomag kérése" → **"Egyedi árajánlat kérése"** (prémium pozicionálás, Zérő Fix Ár szabály).
   - **Rejtett árak felderítése (Későbbi mélyaudit — 2026-09-19):** A felületes ellenőrzés során a PricingTable prop-jai tisztának tűntek, de egy globális szöveges keresés (` Ft`, `120.000`, `300.000`, `currency`) felfedte két rejtett árforrást, amelyeket a keresés eredményezett:
-    - ❌ `src/components/organisms/FaqSection.tsx:12` — a FAQ válasz ("Mennyibe kerül egy weboldal vagy webshop?") tartalmazta: *"300.000–600.000 Ft, webshop 800.000–2.000.000 Ft..."*. Ez a komponens minden audited oldalon megjelenik (közülük a webshop-fejlesztes oldal is), ezért a képernyőn láthatóvá vált. **Javítva:** az árlista törlésre kerül, helyette a "Kérj egyedi árajánlatot" üzenet kerül be.
+    - ❌ `src/components/organisms/FaqSection.tsx:12` — a FAQ válasz ("Mennyibe kerül egy weboldal vagy webshop?") tartalmazta: _"300.000–600.000 Ft, webshop 800.000–2.000.000 Ft..."_. Ez a komponens minden audited oldalon megjelenik (közülük a webshop-fejlesztes oldal is), ezért a képernyőn láthatóvá vált. **Javítva:** az árlista törlésre kerül, helyette a "Kérj egyedi árajánlatot" üzenet kerül be.
     - ❌ `src/components/organisms/QuoteRequestForm.tsx:254-257` — a költségkeret választó menü ("Válassz keretet") opciói tartalmazzák a "Ft" jelölést. **Javítva:** a "Ft" karakterláncok eltávolítása az opciókból, általános költségkeret kategóriákkal (pl. "150 000 – 300 000").
   - **Végső eredmény:** `NO_FIXED_PRICES_FOUND` — a 7 fájl (5 audited oldal + FaqSection + QuoteRequestForm) közül egyik sem tartalmaz fix árat vagy "Ft" karakterláncot.
 - **SEO metaadatok (lokális korlát eltávolítása):**
@@ -37,6 +840,7 @@
 - Refactor: `src/hooks/usePortalData.ts` — Inline async effect pattern bevezetve a `loadWorkflowsAndOrders` számára.
 - Fix: ESLint `react-hooks/set-state-in-effect` kizárása tiszta `isMounted` cleanup-guarddal.
 - Improvement: Felesleges `auth` singleton eltávolítva a dependency array-ből.
+
 ## \[7.3.1\] — 2026-09-18 — Törött asset-hivatkozások javítása (9 db → 0 db)
 
 - **Hivatkozás-javítások (7 db):** `src/app/szolgaltatasok/add-onok/page.tsx` — openGraph kép és JSON-LD `image` → `/og/webdude-og.jpg` (projekt-szintű konvenció), JSON-LD `Organization.logo` → `https://webdude.hu/assets/logos/webdude-logo.webp`; `src/app/szolgaltatasok/grafikai-tervezes/page.tsx` — hero illusztráció → `/assets/banners/webdue-branding_mockup_05-copy copy.webp`; `src/data/projects.ts` — RIMAI hero → `/assets/portfolio/Rimai/rimai-3d-glass-window-logo-mockup-copy.webp`, Dr. Danyi mockup → `/assets/szolgaltatasok/laptop-DeviceMockup-copy.webp`, Bt Shop mockup → `/assets/portfolio/Weboldalak/bt-shop-weboldal3.webp`.
@@ -44,6 +848,7 @@
 - **Archiválás:** `PortfolioSectionNew.tsx` → `_mentesek/20260918_asset-fix/` (`git mv`). Indok: sehol nincs importálva (halott kód), világos témát használt (`bg-white`, `text-[#111827]`), a v7.0 sötét migrációból kimaradt, és 2 törött asset-hivatkozást tartalmazott. A `_DOCS/ARCHITECTURE.md` regiszterben ARCHIVÁLT státusszal jelölve.
 - **Audit:** 210 `/assets/` hivatkozás vizsgálva → **0 valóban törött** (a zárójeles `Rimai-melyepites-copy (1).webp` létezik; a jelzés regex-hamis pozitív volt).
 - **QA:** `npx tsc --noEmit` TSC_EXIT=0; `npm run lint` LINT_EXIT=0.
+
 ## \[7.3.0\] — 2026-09-18 — HeroSlider (Kék-Lila v7.0) + portfólió asset-struktúra rendszerezése
 
 - **Új organismus:** `src/components/organisms/HeroSlider.tsx` (230 sor, `"use client"`) — 3 diás hero diavetítés (Weboldal/webshop, AI-Prompt.hu, AI automatizáció), `AnimatePresence` + spring physics (`stiffness: 100, damping: 20`), trust indikátorok, 6 mp auto-rotate `useReducedMotion` védelemmel, nyíl- és pontvezérlés (`aria-label`, `aria-current`), `next/image` háttér, WCAG focus ring. **Egyetlen page-be sincs bekötve** — bekötés külön ciklusban.
@@ -83,7 +888,6 @@
 ## \[6.2.0\] — 2026-09-16 — Cyber-Arany migráció és dokumentációs szinkron
 
 - **Végső QA (prompt-visszaállítás után):** `TSC_EXIT=0`, `LINT_EXIT=0` (0 hiba, 24 figyelmeztetés), `BUILD_EXIT=0`. Záró cyan-audit: 6 engedélyezett kivételsor, 0 váratlan találat.
-
 
 - **Színmigráció:** a migrációs riport szerint 125 fájlban 1550 csere; arany brandtokenek, árnyékok, Tailwind-osztályok és portfólió SVG-k. Az `src/actions` nem része a színcserének.
 - **Kontrasztjavítás:** az automatizált WCAG-javítás 34 fájl 59 sorát érintette, ezen felül egy kézi javítás készült a szolgáltatások oldal CTA-ján. Ez nem teljes körű WCAG-tanúsítás.

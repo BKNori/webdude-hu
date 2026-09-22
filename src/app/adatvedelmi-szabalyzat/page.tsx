@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function AdatvedelmiSzabalyzat() {
   return (
-    <main className="py-20 md:py-32 relative z-10">
+    <div className="py-20 md:py-32 relative z-10">
       <div className="max-w-6xl mx-auto px-6">
         <div className="max-w-4xl mx-auto">
           {/* Header section with brand color */}
@@ -211,6 +211,6 @@ export default function AdatvedelmiSzabalyzat() {
           </div>
         </div>
       </div>
-    </main>
+    </div>
   );
 }

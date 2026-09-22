@@ -5,10 +5,7 @@ import ScrollVideoHero from "@/components/organisms/ScrollVideoHero";
 
 export default function PortfolioHero() {
   return (
-    <ScrollVideoHero
-      videoSrc="/webdude-websites-promo.mp4"
-      scrollHeight={120}
-    >
+    <ScrollVideoHero videoSrc="/webdude-websites-promo.mp4" scrollHeight={120}>
       {/* Content overlay - WoW effect with dramatic entrance */}
       <div className="text-center space-y-8 px-6">
         <motion.div
@@ -51,7 +48,7 @@ export default function PortfolioHero() {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           href="/kapcsolat"
-          className="inline-block px-10 py-5 bg-[#00B5F1] hover:bg-[#5B21B6] text-slate-950 rounded-full font-bold text-lg shadow-[0_8px_24px_rgba(0, 181, 241,0.2)] hover:shadow-[0_18px_40px_rgba(0, 181, 241,0.3)] transition-all duration-300"
+          className="inline-block px-10 py-5 bg-[#00B5F1] hover:bg-[#5B21B6] text-white rounded-full font-bold text-lg shadow-[0_8px_24px_rgba(0, 181, 241,0.2)] hover:shadow-[0_18px_40px_rgba(0, 181, 241,0.3)] transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#00B5F1] focus:ring-offset-2 focus:ring-offset-bg-base"
         >
           Kapcsolat →
         </motion.a>

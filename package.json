@@ -1,6 +1,6 @@
 {
     "name":  "webdude-hu",
-    "version":  "0.1.138",
+    "version":  "0.1.155",
     "private":  true,
     "scripts":  {
                     "clean":  "node -e \"require(\u0027fs\u0027).rmSync(\u0027.next\u0027,{recursive:true,force:true});\"",
@@ -24,7 +24,7 @@
                          "firebase-admin":  "^14.1.0",
                          "gray-matter":  "^4.0.3",
                          "jspdf":  "^4.2.1",
-                         "lucide-react":  "^1.22.0",
+                         "lucide-react":  "^1.47.0",
                          "motion":  "^12.40.0",
                          "next":  "16.2.6",
                          "next-mdx-remote":  "^5.0.0",

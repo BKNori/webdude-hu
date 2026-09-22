@@ -240,7 +240,7 @@ Deliver a phased launch roadmap:
 
 export default function PromptTemplatesPage() {
   return (
-    <main className="min-h-screen bg-bg-base text-text-primary">
+    <div className="min-h-screen bg-bg-base text-text-primary">
       {/* Hero Section */}
       <section className="relative py-24 md:py-32 bg-bg-base border-b border-slate-800">
         <div className="max-w-6xl mx-auto px-6">
@@ -282,6 +282,6 @@ export default function PromptTemplatesPage() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

@@ -106,7 +106,7 @@ export default async function WebshopDevelopmentPage() {
           __html: JSON.stringify(serviceSchema).replace(/</g, "\\u003c"),
         }}
       />
-      <main className="bg-bg-base text-text-primary relative overflow-hidden">
+      <div className="bg-bg-base text-text-primary relative overflow-hidden">
         {/* Background gradient */}
         <div className="absolute inset-0 bg-linear-to-b from-[#00B5F1]/5 via-transparent to-[#00B5F1]/5" />
         <div className="relative z-10">
@@ -244,7 +244,7 @@ export default async function WebshopDevelopmentPage() {
             </div>
           </div>
         </section>
-      </main>
+      </div>
     </>
   );
 }

@@ -12,22 +12,26 @@ interface GeneralCaseStudyProps {
 export default function GeneralCaseStudy({ project }: GeneralCaseStudyProps) {
   const shouldReduceMotion = useReducedMotion();
 
+  const heroSrc =
+    project.bannerImage ||
+    project.image ||
+    "/assets/banners/pro-web-design.jpg";
+
+  const showChallenge = Boolean(project.challenge);
+  const showSolution = Boolean(project.solution);
+
   return (
-    <main className="min-h-screen bg-bg-base text-text-primary">
-      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
+    <div className="min-h-screen bg-bg-base text-text-primary">
+      <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src={
-              project.bannerImage ||
-              project.image ||
-              "/assets/banners/pro-web-design.jpg"
-            }
+            src={heroSrc}
             alt={project.title}
             fill
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-bg-base" />
+          <div className="absolute inset-0 bg-linear-to-b from-black/70 via-black/50 to-bg-base" />
         </div>
 
         <motion.div
@@ -39,9 +43,19 @@ export default function GeneralCaseStudy({ project }: GeneralCaseStudyProps) {
           <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold leading-tight mb-6">
             {project.title}
           </h1>
-          <p className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-8">
             {project.description}
           </p>
+          {project.website && (
+            <Link
+              href={project.website}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-linear-to-r from-[#00B5F1] to-[#5B21B6] text-white font-bold rounded-full transition-all hover:scale-[1.02] shadow-[0_8px_24px_rgba(0,181,241,0.3)]"
+            >
+              <span>Weboldal megtekintése</span>
+            </Link>
+          )}
         </motion.div>
       </section>
 
@@ -51,7 +65,7 @@ export default function GeneralCaseStudy({ project }: GeneralCaseStudyProps) {
           {/* Mesh grid háttér */}
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-0 opacity-60 [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]"
+            className="pointer-events-none absolute inset-0 opacity-60 mask-[radial-gradient(ellipse_at_center,black,transparent_75%)]"
             style={{
               backgroundImage:
                 "linear-gradient(to right, rgba(0, 181, 241,0.07) 1px, transparent 1px), linear-gradient(to bottom, rgba(0, 181, 241,0.07) 1px, transparent 1px)",
@@ -85,7 +99,9 @@ export default function GeneralCaseStudy({ project }: GeneralCaseStudyProps) {
                     delay: shouldReduceMotion ? 0 : (index % 6) * 0.07,
                   }}
                   whileHover={
-                    shouldReduceMotion ? undefined : { y: -8, rotateX: 2, scale: 1.02 }
+                    shouldReduceMotion
+                      ? undefined
+                      : { y: -8, rotateX: 2, scale: 1.02 }
                   }
                   style={{ transformPerspective: 1200 }}
                   className="group relative aspect-video overflow-hidden rounded-2xl border border-white/10 bg-slate-950/80 backdrop-blur-2xl ring-1 ring-white/5 transition-colors duration-300 hover:border-sky-500/40 hover:ring-[#00B5F1]/50 hover:shadow-[0_0_52px_-12px_rgba(0, 181, 241,0.55)]"
@@ -110,38 +126,42 @@ export default function GeneralCaseStudy({ project }: GeneralCaseStudyProps) {
       <section className="relative py-20 px-6">
         <div className="max-w-5xl mx-auto">
           <div className="grid gap-12">
-            <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-slate-950/80 backdrop-blur-2xl p-8 transition-colors duration-300 hover:border-sky-500/40 hover:shadow-[0_0_52px_-16px_rgba(0, 181, 241,0.5)]">
-              <div
-                aria-hidden="true"
-                className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-                style={{
-                  background:
-                    "radial-gradient(520px circle at 12% 0%, rgba(0, 181, 241,0.14), transparent 62%)",
-                }}
-              />
-              <h3 className="relative text-xl font-bold text-[#00B5F1] mb-4">
-                A Kihívás
-              </h3>
-              <p className="relative text-slate-400 leading-relaxed">
-                {project.challenge}
-              </p>
-            </div>
-            <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-slate-950/80 backdrop-blur-2xl p-8 transition-colors duration-300 hover:border-sky-500/40 hover:shadow-[0_0_52px_-16px_rgba(0, 181, 241,0.5)]">
-              <div
-                aria-hidden="true"
-                className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-                style={{
-                  background:
-                    "radial-gradient(520px circle at 12% 0%, rgba(0, 181, 241,0.14), transparent 62%)",
-                }}
-              />
-              <h3 className="relative text-xl font-bold text-[#00B5F1] mb-4">
-                A Megoldás
-              </h3>
-              <p className="relative text-slate-400 leading-relaxed">
-                {project.solution}
-              </p>
-            </div>
+            {showChallenge && (
+              <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-slate-950/80 backdrop-blur-2xl p-8 transition-colors duration-300 hover:border-sky-500/40 hover:shadow-[0_0_52px_-16px_rgba(0, 181, 241,0.5)]">
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                  style={{
+                    background:
+                      "radial-gradient(520px circle at 12% 0%, rgba(0, 181, 241,0.14), transparent 62%)",
+                  }}
+                />
+                <h3 className="relative text-xl font-bold text-[#00B5F1] mb-4">
+                  A Kihívás
+                </h3>
+                <p className="relative text-slate-400 leading-relaxed">
+                  {project.challenge}
+                </p>
+              </div>
+            )}
+            {showSolution && (
+              <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-slate-950/80 backdrop-blur-2xl p-8 transition-colors duration-300 hover:border-sky-500/40 hover:shadow-[0_0_52px_-16px_rgba(0, 181, 241,0.5)]">
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                  style={{
+                    background:
+                      "radial-gradient(520px circle at 12% 0%, rgba(0, 181, 241,0.14), transparent 62%)",
+                  }}
+                />
+                <h3 className="relative text-xl font-bold text-[#00B5F1] mb-4">
+                  A Megoldás
+                </h3>
+                <p className="relative text-slate-400 leading-relaxed">
+                  {project.solution}
+                </p>
+              </div>
+            )}
             <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-slate-950/80 backdrop-blur-2xl p-8 transition-colors duration-300 hover:border-sky-500/40 hover:shadow-[0_0_52px_-16px_rgba(0, 181, 241,0.5)]">
               <div
                 aria-hidden="true"
@@ -156,7 +176,10 @@ export default function GeneralCaseStudy({ project }: GeneralCaseStudyProps) {
               </h3>
               <div className="relative space-y-3">
                 {project.results?.map((result, index) => (
-                  <div key={index} className="flex items-start gap-3 text-slate-400">
+                  <div
+                    key={index}
+                    className="flex items-start gap-3 text-slate-400"
+                  >
                     <span
                       aria-hidden="true"
                       className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-sky-400 shadow-[0_0_12px_2px_rgba(0, 181, 241,0.45)]"
@@ -192,6 +215,6 @@ export default function GeneralCaseStudy({ project }: GeneralCaseStudyProps) {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

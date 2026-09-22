@@ -190,7 +190,7 @@ export default async function BlogPost({ params }: PageProps) {
           __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
         }}
       />
-      <main className="min-h-screen py-32 bg-bg-base text-text-primary">
+      <div className="min-h-screen py-32 bg-bg-base text-text-primary">
         {/* Ambient backgrounds */}
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#00B5F1]/5 rounded-full blur-[120px] pointer-events-none" />
         <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-[#5B21B6]/5 rounded-full blur-[140px] pointer-events-none" />
@@ -268,7 +268,7 @@ export default async function BlogPost({ params }: PageProps) {
             </div>
           </section>
         </div>
-      </main>
+      </div>
     </>
   );
 }

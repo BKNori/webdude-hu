@@ -1,54 +1,72 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "motion/react";
 import { ChevronDown, HelpCircle } from "lucide-react";
 
 interface FaqItem {
   question: string;
   answer: string;
+  category: string;
 }
 
+// ─── AEO-optimalizált GYIK — WordPress, SEO, Grafika fókusz ─────────────────
+// Formátum: közvetlen, tömör válasz AI-keresők (ChatGPT, Perplexity, Gemini) számára
 const faqs: FaqItem[] = [
   {
+    category: "Weboldal",
     question: "Mennyi idő alatt készül el egy weboldal?",
     answer:
-      "Egy egyszerű bemutatkozó oldal általában 1–3 hét, egy komplexebb webshop vagy portál 4–12 hét. Az első konzultáción pontosan meghatározom a határidőt — amit megígérek, azt tartom.",
+      "Egy egyszerű bemutatkozó oldal általában 2–4 hét, egy komplexebb webshop vagy portál 4–10 hét. Az első konzultáción pontosan meghatározom a határidőt — amit megígérek, azt tartom.",
   },
   {
-    question: "Mennyibe kerül egy weboldal vagy webshop?",
+    category: "WordPress",
+    question: "WordPress vagy egyedi weboldal fejlesztés — melyik a jobb?",
     answer:
-      "Az árajánlat mindig a projekt valós komplexitásához igazodik — a felmérés után fix, előre egyeztetett összeget és határidőt kapsz, rejtett költségek nélkül. Nincs dobozos csomag és nincs nyilvános árlista: minden rendszer más, ezért egyedileg tervezem meg. Kérj személyre szabott ajánlatot!",
+      "WordPress ideális KKV-knak, akik maguk szeretnék szerkeszteni a tartalmat és standard funkciókra van szükségük (blog, bemutatkozó, WooCommerce webshop). Egyedi Next.js fejlesztés nagyobb rendszerekhez ajánlott, ahol maximális sebesség, komplex logika vagy egyedi integráció kell. Mindkettőhöz egyforma tapasztalattal rendelkezem.",
   },
   {
+    category: "WordPress",
+    question: "Mennyibe kerül egy WordPress weboldal karbantartása?",
+    answer:
+      "Az alap WordPress karbantartási csomag tartalmaz havi plugin- és core-frissítéseket, napi biztonsági mentést, Lighthouse auditot és 1 óra tartalomfrissítési segítséget. Az ár a projekt komplexitásától függ — az első konzultáción konkrét ajánlatot adok.",
+  },
+  {
+    category: "SEO",
+    question: "Hogyan segít a SEO optimalizálás a vállalkozásomnak?",
+    answer:
+      "A technikai SEO és tartalomoptimalizálás együtt növeli az organikus (fizetés nélküli) Google-forgalmadat. Elvégzem a weboldal sebességoptimalizálást (Lighthouse 95+), a kulcsszó-stratégia kialakítását, Schema.org JSON-LD implementációt, és az AEO optimalizálást is — hogy az AI-alapú keresőkben (ChatGPT, Perplexity, Gemini) is megjelenj.",
+  },
+  {
+    category: "SEO",
+    question: "Mikor lesznek mérhető SEO eredmények?",
+    answer:
+      "A technikai SEO változások (sebesség, Core Web Vitals, struktúrált adatok) hatása néhány héten belül mérhető. A kulcsszó-helyezések javulása általában 3–6 hónap, hosszú távú organikus forgalom-növekedés 6–12 hónap alatt valósul meg — az iparág versenyességétől függően.",
+  },
+  {
+    category: "Grafika",
+    question: "Mit tartalmaz az arculattervezési csomag?",
+    answer:
+      "Az alap arculattervezés tartalmaz: logó tervezést (3 koncepció, 2 körös korrekció), színpalettát, tipográfiai rendszert és alapvető brand guide-ot. Igény szerint bővíthető névjegy, fejléc, közösségi média sablon és nyomdai anyagok tervezésével. 26 év grafikai tapasztalattal, Adobe CC és Figma eszközökkel dolgozom.",
+  },
+  {
+    category: "Általános",
     question: "Miért válasszak téged ügynökség helyett?",
     answer:
-      "Közvetlenül velem dolgozol — nincs projektmenedzser közvetítő, nincs kommunikációs veszteség. Grafikai és webfejlesztési tapasztalatom 26+, ill. 16+ év, és minden projektben az elejétől a végéig én vagyok jelen. Az ügynökségeknél ugyanez 2-3x annyiba kerül, és egy junior fejlesztő valósítja meg.",
+      "Közvetlenül Balog Norberttel dolgozol — nincs projektmenedzser közvetítő, nincs kommunikációs veszteség. 26 év grafikai és 16 év webfejlesztői tapasztalatom van, és minden projektben az elejétől a végéig én vagyok jelen. Egy ügynökségnél ugyanez 2–3× annyiba kerül, és jellemzően egy junior fejlesztő valósítja meg.",
   },
   {
-    question: "Segítesz az AI automatizáció bevezetésében is?",
-    answer:
-      "Igen — OpenAI GPT-4, Groq API és egyedi LLM integrációkat készítek. Legyen szó AI chatbotról, automatizált e-mail marketing-ről, CRM integrációról vagy tartalom-generálásról, megvalósítom és betanítom a rendszert.",
-  },
-  {
+    category: "Általános",
     question: "Milyen garanciát vállalsz az elkészült munkára?",
     answer:
-      "Átadást követően 30 napos hibajavítási garanciát biztosítok. Ezen felül opcionális havi karbantartási csomagokat kínálok, amelyek tartalmazzák a szoftverfrissítéseket, napi biztonsági mentést és havi Lighthouse auditot.",
+      "Átadást követően 30 napos hibajavítási garanciát biztosítok — minden felmerülő problémát plusz díj nélkül megoldok. Ezen felül opcionális havi karbantartási csomagok érhetők el, amelyek tartalmazzák a frissítéseket, napi biztonsági mentést és havi Lighthouse auditot.",
   },
   {
-    question: "Milyen technológiákat használsz?",
+    category: "Általános",
+    question: "Mennyibe kerül egy weboldal vagy webshop?",
     answer:
-      "Next.js 16, React 19, TypeScript (strict), Tailwind CSS v4, Firebase Firestore/Auth/Storage, és motion/react animációk. Minden oldal Server-Side Rendering vagy ISR stratégiával épül, ami garantálja a gyorsaságot és az SEO-t.",
-  },
-  {
-    question: "Hogyan optimalizálod a weboldalt SEO és AEO szempontból?",
-    answer:
-      "Technikai SEO audit, Lighthouse 95+ optimalizálás, Schema.org JSON-LD implementáció (LocalBusiness, FAQPage, Person), strukturált tartalom AI keresőknek (ChatGPT, Perplexity, Gemini), és Core Web Vitals optimalizálás (LCP < 2.5s, CLS < 0.1).",
-  },
-  {
-    question: "Van-e referenciád hasonló projektekre?",
-    answer:
-      "Igen, a /munkak oldalon megtekintheted a legfrissebb projekteket. Például a btshop.hu webshop +40% konverziónövekedést ért el a migrációt követően, az AI-Prompt.hu platform pedig 3 hónap alatt stabil bevételt termel.",
+      "Az árajánlat mindig a projekt valós komplexitásához igazodik — a felmérés után fix, előre egyeztetett összeget és határidőt kapsz, rejtett költségek nélkül. Nincs dobozos csomag: minden rendszer más, ezért egyedileg tervezem meg az árat is. Kérj ingyenes projektfelmérést!",
   },
 ];
 
@@ -136,6 +154,7 @@ export default function FaqSectionAEO() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   // FAQPage JSON-LD Schema — AEO (ChatGPT, Perplexity, Gemini) optimalizált
+  // FONTOS: a kérdés-válasz pároknak szinkronban kell lenniük az oldal tartalmával
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -152,9 +171,9 @@ export default function FaqSectionAEO() {
   return (
     <section
       className="relative py-24 md:py-32 bg-bg-base overflow-hidden"
-      aria-label="Gyakran ismételt kérdések"
+      aria-label="Gyakran ismételt kérdések — Weboldal, WordPress, SEO, Grafika"
     >
-      {/* JSON-LD AEO Schema */}
+      {/* JSON-LD AEO Schema — XSS védelem: .replace(/</g, '\u003c') */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -199,8 +218,8 @@ export default function FaqSectionAEO() {
               a választ
             </h2>
             <p className="text-slate-400 text-lg leading-relaxed">
-              A leggyakrabban felmerülő kérdések — őszintén, ügynökségi
-              mellébeszélés nélkül.
+              Weboldal, WordPress, SEO és grafika — a leggyakrabban felmerülő
+              kérdések, őszintén, ügynökségi mellébeszélés nélkül.
             </p>
           </motion.div>
 
@@ -212,7 +231,9 @@ export default function FaqSectionAEO() {
                   item={faq}
                   index={idx}
                   isOpen={openIndex === idx}
-                  onToggle={() => setOpenIndex(openIndex === idx ? null : idx)}
+                  onToggle={() =>
+                    setOpenIndex(openIndex === idx ? null : idx)
+                  }
                 />
               </div>
             ))}
@@ -227,12 +248,12 @@ export default function FaqSectionAEO() {
             className="text-center text-slate-500 text-sm mt-10"
           >
             Nem találtad a választ?{" "}
-            <a
+            <Link
               href="/kapcsolat"
               className="text-[#00B5F1] font-semibold hover:underline focus:outline-none focus:ring-2 focus:ring-[#00B5F1] rounded"
             >
               Írj nekem közvetlenül
-            </a>
+            </Link>
           </motion.p>
         </div>
       </div>

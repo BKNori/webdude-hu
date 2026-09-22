@@ -24,7 +24,7 @@ export const projects: readonly Project[] = [
     result:
       "A weboldal nagy sikert aratott: a látogatottság jelentősen megnőtt, a cég online megkeresései pedig emelkedtek.",
     assets: {
-      hero: "/assets/portfolio/Rimai/rimai-3d-glass-window-logo-mockup-copy.webp",
+      hero: "/assets/portfolio/rimai/rimai-3d-glass-window-logo-mockup-copy.webp",
       videoMac:
         "https://webdude.hu/wp-content/uploads/2024/06/Macbook-Air-rimaiutepito.hu-M7E2QQtk8h.webm",
       videoIphone:
@@ -73,7 +73,7 @@ export const projects: readonly Project[] = [
       "Áttekinthető, modern e-kereskedelmi platform, amely az indulást követő első negyedévben 35%-kal növelte az online eladások számát.",
     assets: {
       hero: "/assets/banners/pro-web-design.jpg",
-      mockup: "/assets/portfolio/Weboldalak/bt-shop-weboldal3.webp",
+      mockup: "/assets/portfolio/weboldalak/bt-shop-weboldal3.webp",
     },
     keywords: [
       "Webshop készítés",
@@ -240,7 +240,7 @@ export const projects: readonly Project[] = [
     result:
       "A megújult felületnek köszönhetően nőtt a konverziós ráta, az organikus Google helyezések javultak, a látogatók pedig hosszabb időt töltenek az oldalon.",
     assets: {
-      hero: "/assets/portfolio/2025/01/A-25-legjobb-mesterseges-intelligencia-muveszeti-otlet-a-kreativitas-felkeltesehez-AI-Art-Prompt-Ideas-copy.webp",
+      hero: "/assets/portfolio/2025/01/a-25-legjobb-mesterseges-intelligencia-muveszeti-otlet-a-kreativitas-felkeltesehez-ai-art-prompt-ideas-copy.webp",
     },
     keywords: ["Weboldal készítés", "Grafikai tervezés", "Arculattervezés"],
   },
@@ -257,7 +257,7 @@ export const projects: readonly Project[] = [
     result:
       "A megújult felületnek köszönhetően nőtt a konverziós ráta, az organikus Google helyezések javultak, a látogatók pedig hosszabb időt töltenek az oldalon.",
     assets: {
-      hero: "/assets/portfolio/2025/01/A-25-legjobb-mesterseges-intelligencia-muveszeti-otlet-a-kreativitas-felkeltesehez-AI-Art-Prompt-Ideas-copy.webp",
+      hero: "/assets/portfolio/2025/01/a-25-legjobb-mesterseges-intelligencia-muveszeti-otlet-a-kreativitas-felkeltesehez-ai-art-prompt-ideas-copy.webp",
     },
     keywords: ["Weboldal készítés", "Grafikai tervezés", "Arculattervezés"],
   },
@@ -308,7 +308,7 @@ export const projects: readonly Project[] = [
     result:
       "A megújult felületnek köszönhetően nőtt a konverziós ráta, az organikus Google helyezések javultak, a látogatók pedig hosszabb időt töltenek az oldalon.",
     assets: {
-      hero: "/assets/portfolio/2025/01/A-25-legjobb-mesterseges-intelligencia-muveszeti-otlet-a-kreativitas-felkeltesehez-AI-Art-Prompt-Ideas-copy.webp",
+      hero: "/assets/portfolio/2025/01/a-25-legjobb-mesterseges-intelligencia-muveszeti-otlet-a-kreativitas-felkeltesehez-ai-art-prompt-ideas-copy.webp",
     },
     keywords: ["Weboldal készítés", "Grafikai tervezés", "Arculattervezés"],
   },
@@ -488,7 +488,7 @@ export const projects: readonly Project[] = [
     result:
       "A megújult felületnek köszönhetően nőtt a konverziós ráta, az organikus Google helyezések javultak, a látogatók pedig hosszabb időt töltenek az oldalon.",
     assets: {
-      hero: "/assets/portfolio/2025/01/A-25-legjobb-mesterseges-intelligencia-muveszeti-otlet-a-kreativitas-felkeltesehez-AI-Art-Prompt-Ideas-copy.webp",
+      hero: "/assets/portfolio/2025/01/a-25-legjobb-mesterseges-intelligencia-muveszeti-otlet-a-kreativitas-felkeltesehez-ai-art-prompt-ideas-copy.webp",
     },
     keywords: ["Weboldal készítés", "Grafikai tervezés", "Arculattervezés"],
   },

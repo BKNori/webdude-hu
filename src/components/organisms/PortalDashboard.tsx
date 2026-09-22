@@ -366,7 +366,7 @@ export default function PortalDashboard() {
       </header>
 
       {/* Main Content */}
-      <main className="max-w-6xl mx-auto px-6 py-12 space-y-12">
+      <div className="max-w-6xl mx-auto px-6 py-12 space-y-12">
         {/* Title area */}
         <div className="space-y-2">
           <span className="text-xs font-mono font-black uppercase tracking-widest text-sky-500">
@@ -787,7 +787,7 @@ export default function PortalDashboard() {
             </div>
           </>
         )}
-      </main>
+      </div>
     </div>
   );
 }

@@ -16,11 +16,13 @@ export default function ContactFormWrapper() {
         <button
           type="button"
           onClick={() => setActiveForm("quote")}
-          className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-xl transition-all duration-300 text-xs font-bold uppercase tracking-wider ${
+          className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-xl transition-all duration-300 text-xs font-bold uppercase tracking-wider focus:outline-none focus:ring-2 focus:ring-[#00B5F1] focus:ring-offset-2 focus:ring-offset-bg-base ${
             activeForm === "quote"
               ? "bg-sky-500 text-bg-base shadow-[0_4px_12px_rgba(0, 181, 241,0.2)]"
               : "text-slate-400 hover:text-white hover:bg-bg-elevated/30"
           }`}
+          aria-label="Részletes ajánlatkérés"
+          aria-pressed={activeForm === "quote"}
         >
           <ClipboardList className="w-4 h-4" />
           Részletes ajánlatkérés
@@ -28,11 +30,13 @@ export default function ContactFormWrapper() {
         <button
           type="button"
           onClick={() => setActiveForm("simple")}
-          className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-xl transition-all duration-300 text-xs font-bold uppercase tracking-wider ${
+          className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-xl transition-all duration-300 text-xs font-bold uppercase tracking-wider focus:outline-none focus:ring-2 focus:ring-[#00B5F1] focus:ring-offset-2 focus:ring-offset-bg-base ${
             activeForm === "simple"
               ? "bg-sky-500 text-bg-base shadow-[0_4px_12px_rgba(0, 181, 241,0.2)]"
               : "text-slate-400 hover:text-white hover:bg-bg-elevated/30"
           }`}
+          aria-label="Egyszerű üzenet"
+          aria-pressed={activeForm === "simple"}
         >
           <MessageSquare className="w-4 h-4" />
           Egyszerű üzenet

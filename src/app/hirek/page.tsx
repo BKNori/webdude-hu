@@ -48,7 +48,7 @@ export default async function HirekPage() {
   }));
 
   return (
-    <main className="min-h-screen bg-transparent text-text-primary">
+    <div className="min-h-screen bg-transparent text-text-primary">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -85,6 +85,6 @@ export default async function HirekPage() {
           </div>
         )}
       </div>
-    </main>
+    </div>
   );
 }

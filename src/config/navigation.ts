@@ -33,6 +33,40 @@ export const NAV_ITEMS: NavItem[] = [
     href: "/szia-norbi-vagyok",
   },
   {
+    name: "AI Megoldások",
+    href: "/ai-megoldasok",
+    subItems: [
+      {
+        name: "AI Workflow Kialakítás",
+        href: "/szolgaltatasok/ai-workflow-kialakitas",
+        icon: Bot,
+        description: "Automatizált munkafolyamatok és AI integrációk",
+        category: "Automatizáció",
+      },
+      {
+        name: "AI Kép és Videó Generálás",
+        href: "/szolgaltatasok/ai-kep-es-videogeneralas",
+        icon: ImageIcon,
+        description: "AI-vezérelt képek és videók készítése",
+        category: "Generatív",
+      },
+      {
+        name: "AI Prompt Engineering",
+        href: "/szolgaltatasok/ai-prompt-engineering",
+        icon: Sparkles,
+        description: "Professzionális prompt tervezés és optimalizálás",
+        category: "Engineering",
+      },
+      {
+        name: "AI Sablonok",
+        href: "/portal/prompt-sablonok",
+        icon: Copy,
+        description: "Professzionális AI prompt sablonok gyűjteménye",
+        category: "Sablonok",
+      },
+    ],
+  },
+  {
     name: "Szolgáltatások",
     href: "/szolgaltatasok",
     subItems: [
@@ -58,8 +92,8 @@ export const NAV_ITEMS: NavItem[] = [
         category: "Webshop",
       },
       {
-        name: "WordPress Weboldal",
-        href: "/szolgaltatasok/weboldal-keszites",
+        name: "WordPress Fejlesztés",
+        href: "/szolgaltatasok/wordpress-fejlesztes",
         icon: MapPin,
         description: "Professzionális WordPress fejlesztés",
         category: "Helyi",
@@ -102,38 +136,8 @@ export const NAV_ITEMS: NavItem[] = [
     ],
   },
   {
-    name: "AI Megoldások",
-    href: "/ai-megoldasok",
-    subItems: [
-      {
-        name: "AI Workflow Kialakús",
-        href: "/szolgaltatasok/ai-workflow-kialakitas",
-        icon: Bot,
-        description: "Automatizált munkafolyamatok és AI integrációk",
-        category: "Automatizáció",
-      },
-      {
-        name: "AI Kép és Videó Generálás",
-        href: "/szolgaltatasok/ai-kep-es-videogeneralas",
-        icon: ImageIcon,
-        description: "AI-vezérelt képek és videók készítése",
-        category: "Generatív",
-      },
-      {
-        name: "AI Prompt Engineering",
-        href: "/szolgaltatasok/ai-prompt-engineering",
-        icon: Sparkles,
-        description: "Professzionális prompt tervezés és optimalizálás",
-        category: "Engineering",
-      },
-      {
-        name: "AI Sablonok",
-        href: "/portal/prompt-sablonok",
-        icon: Copy,
-        description: "Professzionális AI prompt sablonok gyűjteménye",
-        category: "Sablonok",
-      },
-    ],
+    name: "Termékek",
+    href: "/termekek",
   },
   { name: "Munkáim", href: "/munkak" },
   { name: "Hírek", href: "/hirek" },

@@ -9,7 +9,8 @@ import {
   Copy,
   RefreshCw,
 } from "lucide-react";
-import { useState } from "react";
+import { useCallback, useState } from "react";
+import { useFocusTrap } from "@/hooks/useFocusTrap";
 
 interface DocumentPreviewModalProps {
   isOpen: boolean;
@@ -18,6 +19,10 @@ interface DocumentPreviewModalProps {
   fileUrl: string;
   fileType: "pdf" | "image" | "docx" | "other";
 }
+
+/** Egységes Electric Cyan fókuszgyűrű (WCAG 2.4.7 – látható fókusz). */
+const FOCUS_RING =
+  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B5F1] focus-visible:ring-offset-2 focus-visible:ring-offset-[#020617]";
 
 export default function DocumentPreviewModal({
   isOpen,
@@ -28,6 +33,11 @@ export default function DocumentPreviewModal({
 }: DocumentPreviewModalProps) {
   const [isCopying, setIsCopying] = useState(false);
   const reducedMotion = useReducedMotion();
+
+  const requestClose = useCallback(() => onClose(), [onClose]);
+
+  // Fókuszcsapda + ESC zárás + fókusz-visszaállítás (WCAG 2.1.2, 2.4.3).
+  const dialogRef = useFocusTrap<HTMLDivElement>(isOpen, requestClose);
 
   const handleCopyLink = async () => {
     try {
@@ -64,15 +74,20 @@ export default function DocumentPreviewModal({
           animate="animate"
           exit="exit"
           className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6"
-          onClick={onClose}
+          onClick={requestClose}
         >
           {/* Background overlay with premium glassmorphism */}
           <motion.div
+            aria-hidden="true"
             className="absolute inset-0 bg-slate-950/80 backdrop-blur-2xl"
             transition={{ duration: 0.3 }}
           />
 
           <motion.div
+            ref={dialogRef}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="document-preview-title"
             variants={cardVariants}
             initial="initial"
             animate="animate"
@@ -83,8 +98,14 @@ export default function DocumentPreviewModal({
             {/* Header */}
             <div className="flex items-center justify-between px-6 py-4 border-b border-slate-800/40 bg-slate-900/90">
               <div className="flex items-center gap-3">
-                <FileText className="w-5 h-5 text-sky-500" />
-                <h3 className="font-semibold text-white tracking-tight truncate max-w-md">
+                <FileText
+                  aria-hidden="true"
+                  className="w-5 h-5 text-[#00B5F1]"
+                />
+                <h3
+                  id="document-preview-title"
+                  className="font-semibold text-white tracking-tight truncate max-w-md"
+                >
                   {title}
                 </h3>
               </div>
@@ -94,38 +115,43 @@ export default function DocumentPreviewModal({
                   href={fileUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800/50 transition-colors"
-                  title="Megnyitás új lapon"
+                  aria-label={`${title} — megnyitás új lapon`}
+                  className={`p-2 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800/50 transition-colors ${FOCUS_RING}`}
                 >
-                  <ExternalLink className="w-5 h-5" />
+                  <ExternalLink aria-hidden="true" className="w-5 h-5" />
                 </a>
                 <a
                   href={fileUrl}
                   download
-                  className="p-2 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800/50 transition-colors"
-                  title="Letöltés"
+                  aria-label={`${title} — letöltés`}
+                  className={`p-2 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800/50 transition-colors ${FOCUS_RING}`}
                 >
-                  <Download className="w-5 h-5" />
+                  <Download aria-hidden="true" className="w-5 h-5" />
                 </a>
                 {/* Copy link */}
                 <button
+                  type="button"
                   onClick={handleCopyLink}
-                  className="p-2 text-slate-400 hover:text-slate-950 rounded-lg hover:bg-sky-500/20 transition-colors"
-                  title="Link másolása"
+                  aria-label={`${title} — link másolása a vágólapra`}
+                  className={`p-2 text-slate-400 hover:text-white rounded-lg hover:bg-[#00B5F1]/20 transition-colors ${FOCUS_RING}`}
                   disabled={isCopying}
                 >
                   {isCopying ? (
-                    <RefreshCw className="w-3.5 h-3.5 animate-spin" />
+                    <RefreshCw
+                      aria-hidden="true"
+                      className="w-3.5 h-3.5 animate-spin"
+                    />
                   ) : (
-                    <Copy className="w-3.5 h-3.5" />
+                    <Copy aria-hidden="true" className="w-3.5 h-3.5" />
                   )}
                 </button>
                 <button
                   type="button"
-                  onClick={onClose}
-                  className="p-2 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800/50 transition-colors"
+                  onClick={requestClose}
+                  aria-label="Előnézet bezárása"
+                  className={`p-2 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800/50 transition-colors ${FOCUS_RING}`}
                 >
-                  <X className="w-5 h-5" />
+                  <X aria-hidden="true" className="w-5 h-5" />
                 </button>
               </div>
             </div>
@@ -135,15 +161,15 @@ export default function DocumentPreviewModal({
               {fileType === "pdf" ? (
                 <iframe
                   src={`${fileUrl}#toolbar=0`}
-                  className="w-full h-full rounded-xl border border-slate-850"
-                  title={title}
+                  className="w-full h-full rounded-xl border border-slate-800"
+                  title={`${title} — PDF előnézet`}
                 />
               ) : fileType === "image" ? (
                 <div className="relative w-full h-full flex items-center justify-center">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={fileUrl}
-                    alt={title}
+                    alt={`${title} — dokumentum előnézet`}
                     className="max-h-full max-w-full object-contain rounded-xl"
                   />
                 </div>
@@ -155,9 +181,10 @@ export default function DocumentPreviewModal({
                   <a
                     href={fileUrl}
                     download
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-sky-500 text-slate-950 font-bold hover:bg-sky-400 transition-colors"
+                    className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#00B5F1] text-white font-bold hover:bg-[#0ea5e9] transition-colors ${FOCUS_RING}`}
                   >
-                    <Download className="w-4 h-4" /> Letöltés indítása
+                    <Download aria-hidden="true" className="w-4 h-4" />
+                    Letöltés indítása
                   </a>
                 </div>
               )}

@@ -442,7 +442,7 @@ export default function SuperAdminDashboard() {
                     <button
                       onClick={() => handleGenerateLeadPage(selectedModule)}
                       disabled={deploying}
-                      className="px-6 py-3 bg-emerald-500 text-white font-bold rounded-xl transition-all disabled:opacity-50 flex items-center gap-2"
+                      className="px-6 py-3 bg-emerald-500 text-slate-950 hover:text-slate-950 font-bold rounded-xl transition-all disabled:opacity-50 flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B5F1] focus-visible:ring-offset-2 focus-visible:ring-offset-[#020617]"
                     >
                       {deploying ? (
                         <>

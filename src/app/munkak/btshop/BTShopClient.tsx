@@ -13,11 +13,11 @@ import BtshopFinalCta from "@/components/organisms/BtshopFinalCta";
  */
 export default function BTShopClient() {
   return (
-    <main className="min-h-screen bg-[#020617] text-[#e2e8f0]">
+    <div className="min-h-screen bg-[#020617] text-[#e2e8f0]">
       <BtshopHero />
       <BtshopEngineeringGrid />
       <BtshopEeatSection />
       <BtshopFinalCta />
-    </main>
+    </div>
   );
 }

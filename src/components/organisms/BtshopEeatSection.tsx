@@ -30,7 +30,7 @@ export default function BtshopEeatSection() {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <section className="relative py-24 px-6 border-y border-slate-800/60 bg-[#0f172a]/40">
+    <section className="relative py-24 px-6 border-y border-slate-800/60 bg-bg-surface/40">
       <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
         {/* Portré / vizuál oldalsáv */}
         <motion.div
@@ -41,7 +41,7 @@ export default function BtshopEeatSection() {
           className="lg:col-span-2"
         >
           <div className="relative rounded-3xl overflow-hidden border border-[#00B5F1]/25 shadow-[0_0_60px_rgba(0, 181, 241,0.14)]">
-            <div className="relative aspect-4/3 w-full bg-[#020617]">
+            <div className="relative aspect-4/3 w-full bg-bg-base">
               <Image
                 src="/assets/portfolio/btshop/btshop-dashboard-placeholder.svg"
                 alt="btshop.hu rendszerdashboard — szinkronizációs áttekintés"
@@ -69,15 +69,16 @@ export default function BtshopEeatSection() {
             </span>
           </div>
 
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-[#e2e8f0] mb-4">
-            Ezt a rendszert <span className="text-[#00B5F1]">egyetlen kézzel</span>{" "}
-            építették fel.
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-text-primary mb-4">
+            Ezt a rendszert{" "}
+            <span className="text-[#00B5F1]">egyetlen kézzel</span> építették
+            fel.
           </h2>
           <p className="text-slate-400 leading-relaxed mb-8 max-w-2xl">
             Nincs projektmenedzser réteg, nincs kreatív-technikai köztes
-            fordítás. 26 éves grafikai és rendszermérnöki rálátással,
-            16 éves WordPress-rutinból született meg az a rendszer, amely
-            ma a btshop.hu teljes üzleti hátfelét viseli.
+            fordítás. 26 éves grafikai és rendszermérnöki rálátással, 16 éves
+            WordPress-rutinból született meg az a rendszer, amely ma a btshop.hu
+            teljes üzleti hátfelét viseli.
           </p>
 
           <dl className="grid grid-cols-1 sm:grid-cols-2 gap-4">

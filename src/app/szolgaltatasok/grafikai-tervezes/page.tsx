@@ -109,7 +109,7 @@ export default async function GraphicDesignPage() {
           __html: JSON.stringify(serviceSchema).replace(/</g, "\\u003c"),
         }}
       />
-      <main className="min-h-screen bg-bg-base text-text-primary relative overflow-hidden">
+      <div className="min-h-screen bg-bg-base text-text-primary relative overflow-hidden">
         {/* Hero Section with Carousel */}
         <HeroCarousel
           images={[
@@ -467,7 +467,7 @@ export default async function GraphicDesignPage() {
             </section>
           </div>
         </div>
-      </main>
+      </div>
     </>
   );
 }

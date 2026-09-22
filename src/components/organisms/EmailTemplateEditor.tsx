@@ -12,6 +12,7 @@ import {
   Loader2,
   AlertCircle,
   Code,
+  Copy,
 } from "lucide-react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "@/lib/firebase";
@@ -170,6 +171,31 @@ export default function EmailTemplateEditor() {
       setError("Hiba történt a törlés során.");
     } finally {
       setDeleting(null);
+    }
+  };
+
+  const handleDuplicateTemplate = async (template: EmailTemplate) => {
+    const newTemplateId = `${template.templateId}_copy_${Date.now()}`;
+    const newName = `${template.name} (Másolat)`;
+
+    try {
+      const response = await saveEmailTemplateAction(
+        newTemplateId,
+        newName,
+        template.subject,
+        template.htmlContent,
+        template.variables,
+        template.category,
+        idToken
+      );
+
+      if (response.success) {
+        await loadTemplates();
+      } else {
+        setError(response.error || "Hiba történt a másolás során.");
+      }
+    } catch {
+      setError("Hiba történt a másolás során.");
     }
   };
 
@@ -505,13 +531,22 @@ export default function EmailTemplateEditor() {
                       <button
                         onClick={() => handleEditTemplate(template)}
                         className="p-2 bg-blue-500/10 hover:bg-blue-500/20 text-blue-500 rounded-lg transition-colors"
+                        title="Szerkesztés"
                       >
                         <Edit className="w-4 h-4" />
+                      </button>
+                      <button
+                        onClick={() => handleDuplicateTemplate(template)}
+                        className="p-2 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-500 rounded-lg transition-colors"
+                        title="Duplikálás"
+                      >
+                        <Copy className="w-4 h-4" />
                       </button>
                       <button
                         onClick={() => handleDelete(template.id)}
                         disabled={deleting === template.id}
                         className="p-2 bg-red-500/10 hover:bg-red-500/20 text-red-500 rounded-lg transition-colors disabled:opacity-50"
+                        title="Törlés"
                       >
                         {deleting === template.id ? (
                           <Loader2 className="w-4 h-4 animate-spin" />

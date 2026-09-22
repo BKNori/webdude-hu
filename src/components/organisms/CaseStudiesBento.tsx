@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "motion/react";
 import { TrendingUp, ArrowRight, ExternalLink } from "lucide-react";
 
@@ -23,6 +24,7 @@ const caseStudies = [
     href: "/munkak",
     imgPlaceholder: "B2B",
     accentColor: "#00B5F1",
+    image: "/assets/portfolio/btshop/btshop-banner.webp",
   },
   {
     id: "ai-prompt",
@@ -142,23 +144,32 @@ export default function CaseStudiesBento() {
                 className="mx-6 mt-6 rounded-2xl overflow-hidden border border-white/8 relative"
                 style={{ minHeight: "140px" }}
               >
-                <div
-                  className="absolute inset-0 flex items-center justify-center"
-                  style={{
-                    background: `linear-gradient(135deg, ${cs.accentColor}15 0%, rgba(255,255,255,0.03) 100%)`,
-                  }}
-                >
-                  <span
-                    className="text-5xl font-black opacity-30 tracking-tighter"
-                    style={{ color: cs.accentColor }}
-                    aria-hidden="true"
+                {cs.image ? (
+                  <Image
+                    src={cs.image}
+                    alt={cs.title}
+                    fill
+                    className="object-cover"
+                  />
+                ) : (
+                  <div
+                    className="absolute inset-0 flex items-center justify-center"
+                    style={{
+                      background: `linear-gradient(135deg, ${cs.accentColor}15 0%, rgba(255,255,255,0.03) 100%)`,
+                    }}
                   >
-                    {cs.imgPlaceholder}
-                  </span>
-                </div>
+                    <span
+                      className="text-5xl font-black opacity-30 tracking-tighter"
+                      style={{ color: cs.accentColor }}
+                      aria-hidden="true"
+                    >
+                      {cs.imgPlaceholder}
+                    </span>
+                  </div>
+                )}
                 {/* MacOS dots dísz */}
                 <div
-                  className="absolute top-3 left-4 flex gap-1.5"
+                  className="absolute top-3 left-4 flex gap-1.5 z-10"
                   aria-hidden="true"
                 >
                   <div className="w-2.5 h-2.5 rounded-full bg-red-500/60" />

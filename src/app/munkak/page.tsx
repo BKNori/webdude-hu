@@ -1,4 +1,5 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
+import Link from "next/link";
 import PortfolioGrid from "@/components/molecules/PortfolioGrid";
 import PortfolioHero from "@/components/molecules/PortfolioHero";
 import { works as staticWorks } from "@/data/works";
@@ -45,7 +46,8 @@ const portfolioSchema = {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
   name: "Referenciák & Esettanulmányok | WebDude",
-  description: "Valós ügyféleredmények, konverzió-optimalizált Next.js weboldalak és egyedi digitális rendszerek. 26+ év grafikai és 16+ év webfejlesztői tapasztalat.",
+  description:
+    "Valós ügyféleredmények, konverzió-optimalizált Next.js weboldalak és egyedi digitális rendszerek. 26+ év grafikai és 16+ év webfejlesztői tapasztalat.",
   url: "https://webdude.hu/munkak",
   isPartOf: { "@id": "https://webdude.hu/#organization" },
   mainEntity: {
@@ -61,7 +63,7 @@ const portfolioSchema = {
 
 export default async function MunkakPage() {
   return (
-    <main className="min-h-screen bg-bg-base text-text-primary">
+    <div className="min-h-screen bg-bg-base text-text-primary">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -94,12 +96,12 @@ export default async function MunkakPage() {
             választ adtam. Nézd meg a sikertörténeteket!
           </p>
 
-          <a
+          <Link
             href="/kapcsolat"
             className="px-8 py-4 bg-linear-to-r from-[#00B5F1] to-[#5B21B6] hover:from-[#5B21B6] hover:to-[#5B21B6] text-slate-950 rounded-full font-bold hover:scale-105 active:scale-95 transition-transform duration-300 shadow-[0_8px_24px_rgba(0, 181, 241,0.3)] hover:shadow-[0_18px_40px_rgba(0, 181, 241,0.4)] min-h-11 min-w-11 inline-block tracking-wide"
           >
             Kapcsolat
-          </a>
+          </Link>
         </div>
       </section>
 
@@ -108,7 +110,7 @@ export default async function MunkakPage() {
         {/* Cyber-Arany mesh grid */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 opacity-70 [mask-image:radial-gradient(ellipse_at_center,black,transparent_78%)]"
+          className="pointer-events-none absolute inset-0 opacity-70 mask-[radial-gradient(ellipse_at_center,black,transparent_78%)]"
           style={{
             backgroundImage:
               "linear-gradient(to right, rgba(0, 181, 241,0.07) 1px, transparent 1px), linear-gradient(to bottom, rgba(0, 181, 241,0.07) 1px, transparent 1px)",
@@ -197,16 +199,16 @@ export default async function MunkakPage() {
                 Hogyan tudnám a te vállalkozásodat is a digitális élvonalba
                 repíteni? Beszéljük meg a részleteket!
               </p>
-              <a
+              <Link
                 href="/kapcsolat"
                 className="inline-block px-10 py-5 bg-linear-to-r from-[#00B5F1] to-[#5B21B6] hover:from-[#5B21B6] hover:to-[#5B21B6] text-slate-950 rounded-full font-bold text-lg shadow-[0_8px_24px_rgba(0, 181, 241,0.3)] hover:shadow-[0_18px_40px_rgba(0, 181, 241,0.4)] hover:scale-105 active:scale-95 transition-all duration-300 tracking-wide"
               >
                 Ajánlatot kérek →
-              </a>
+              </Link>
             </div>
           </div>
         </section>
       </section>
-    </main>
+    </div>
   );
 }

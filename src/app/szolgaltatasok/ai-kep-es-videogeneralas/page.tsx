@@ -89,7 +89,7 @@ export default async function AiMediaPage() {
           __html: JSON.stringify(serviceSchema).replace(/</g, "\\u003c"),
         }}
       />
-      <main className="min-h-screen bg-transparent text-text-primary relative overflow-hidden">
+      <div className="min-h-screen bg-transparent text-text-primary relative overflow-hidden">
         {/* Hero Section with Carousel */}
         <HeroCarousel
           images={[
@@ -446,7 +446,7 @@ export default async function AiMediaPage() {
             </section>
           </div>
         </div>
-      </main>
+      </div>
     </>
   );
 }

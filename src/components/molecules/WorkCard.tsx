@@ -18,6 +18,9 @@ export default function WorkCard({ work }: WorkCardProps) {
     branding: "bg-orange-500/10 text-orange-500 border-orange-500/20",
   };
 
+  const categoryKey = (work.category as keyof typeof categoryColors) ?? "weboldal";
+  const categoryClass = categoryColors[categoryKey] ?? categoryColors.weboldal;
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -57,7 +60,7 @@ export default function WorkCard({ work }: WorkCardProps) {
           <div className="p-6 flex-1 flex flex-col">
             <div className="mb-3">
               <span
-                className={`inline-block px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider border ${categoryColors[work.category]}`}
+                className={`inline-block px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider border ${categoryClass}`}
               >
                 {work.category}
               </span>

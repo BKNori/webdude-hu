@@ -8,7 +8,7 @@ export const metadata = {
 
 export default function FelhasznalasiFeltetelek() {
   return (
-    <main className="py-20 md:py-32 relative z-10">
+    <div className="py-20 md:py-32 relative z-10">
       <div className="max-w-6xl mx-auto px-6">
         <div className="max-w-4xl mx-auto">
           {/* Header section with brand color */}
@@ -290,6 +290,6 @@ export default function FelhasznalasiFeltetelek() {
           </div>
         </div>
       </div>
-    </main>
+    </div>
   );
 }

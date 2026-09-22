@@ -3,6 +3,7 @@ import Link from "next/link";
 import Hero from "@/components/Hero";
 import ServiceCard from "@/components/molecules/ServiceCard";
 import { Metadata } from "next";
+import { buildBreadcrumbSchema, BreadcrumbItem } from "@/lib/breadcrumb";
 
 export const metadata: Metadata = {
   title: "Szolgáltatások – WebDude | Weboldal Készítés, SEO, AI Automatizáció",
@@ -53,6 +54,29 @@ export const metadata: Metadata = {
 };
 
 export default async function ServicesPage() {
+  const breadcrumbItems: BreadcrumbItem[] = [
+    { name: "Főoldal", url: "/" },
+    { name: "Szolgáltatások", url: "/szolgaltatasok" },
+  ];
+
+  const breadcrumbSchema = buildBreadcrumbSchema(breadcrumbItems);
+
+  const personSchema = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": "https://webdude.hu/#person",
+    name: "Norbi",
+    jobTitle: "Full-Stack Webfejlesztő & AI Specialist",
+    description:
+      "26 év grafikai és 16 év webfejlesztői tapasztalat, Next.js 16, React 19, Tailwind v4, Firebase alapú prémium megoldások Kecskemétről.",
+    url: "https://webdude.hu",
+    worksFor: {
+      "@type": "Organization",
+      "@id": "https://webdude.hu/#organization",
+      name: "WebDude",
+    },
+  };
+
   const services = [
     {
       title: "Weboldal Készítés",
@@ -235,7 +259,19 @@ export default async function ServicesPage() {
   };
 
   return (
-    <main className="bg-bg-base text-text-primary">
+    <div className="bg-bg-base text-text-primary">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema).replace(/</g, "\\u003c"),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(personSchema).replace(/</g, "\\u003c"),
+        }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -267,6 +303,21 @@ export default async function ServicesPage() {
         fullHeight={true}
         backgroundImage="/assets/banners/szeged-terkozeves.webp"
       />
+
+      {/* Direct Answer Block - AEO optimalizált "Szolgáltatások Áttekintése" */}
+      <section className="relative py-12 bg-bg-base border-y border-white/5">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <p className="text-base md:text-lg text-slate-300 leading-relaxed">
+            <span className="text-[#00B5F1] font-semibold">
+              WebDude digitális szolgáltatások:
+            </span>{" "}
+            Egyedi weboldal készítés, grafikai tervezés, AI workflow
+            automatizáció, SEO optimalizálás és marketing lead generálás
+            KKV-knak. 26 év tapasztalat, Next.js 16, React 19, Tailwind v4,
+            Firebase alapú prémium megoldások Kecskemétről országosan.
+          </p>
+        </div>
+      </section>
 
       {/* Social Proof Section */}
       <section className="py-24 bg-bg-surface border-y border-slate-700">
@@ -353,7 +404,8 @@ export default async function ServicesPage() {
               <div className="absolute left-0 top-0 w-1 h-6 bg-brand-primary" />
             </div>
             <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold font-sans text-text-primary leading-tight tracking-tight">
-              Hogyan <span className="text-brand-primary italic">dolgozom</span>?
+              Hogyan <span className="text-brand-primary italic">dolgozom</span>
+              ?
             </h2>
             <p className="mt-6 text-lg md:text-xl text-slate-400 max-w-lg leading-relaxed mx-auto tracking-wide font-medium">
               Átlátható folyamat, eredményorientált megközelítés. Nincs
@@ -504,6 +556,6 @@ export default async function ServicesPage() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

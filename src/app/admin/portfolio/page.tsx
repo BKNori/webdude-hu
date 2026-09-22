@@ -51,6 +51,26 @@ const initialFormState: WorkFormState = {
   client: "",
 };
 
+const CATEGORY_KEYS = [
+  "weboldal",
+  "webshop",
+  "arculat",
+  "grafika",
+  "branding",
+] as const;
+
+type WorkCategory = (typeof CATEGORY_KEYS)[number];
+
+/**
+ * A Firestore-ból érkező kategória érték normalizálása a szigorú
+ * WorkFormState unióra (zéró `any`, biztonságos type guard).
+ */
+function normalizeCategory(raw: unknown): WorkCategory {
+  return CATEGORY_KEYS.includes(raw as WorkCategory)
+    ? (raw as WorkCategory)
+    : "weboldal";
+}
+
 export default function AdminPortfolio() {
   const [works, setWorks] = useState<Work[]>([]);
   const [loading, setLoading] = useState(!db);
@@ -94,7 +114,7 @@ export default function AdminPortfolio() {
           slug: data.slug || "",
           title: data.title || "",
           description: data.description || "",
-          category: data.category || "weboldal",
+          category: normalizeCategory(data.category),
           tags: Array.isArray(data.tags)
             ? data.tags
             : Array.isArray(data.keywords)
@@ -107,8 +127,8 @@ export default function AdminPortfolio() {
             "image" in data.assets
               ? ((data.assets as Record<string, unknown>).image as string)
               : ""),
-          challenge: data.challenge || "",
-          solution: data.solution || "",
+          challenge: data.challenge || data.solution || "",
+          solution: data.solution || data.challenge || "",
           results: Array.isArray(data.results) ? data.results : [],
           featured: !!data.featured,
           year: typeof data.year === "number" ? data.year : undefined,
@@ -175,7 +195,7 @@ export default function AdminPortfolio() {
     setFormState({
       title: work.title,
       slug: work.slug,
-      category: work.category,
+      category: normalizeCategory(work.category),
       description: work.description,
       tags: work.tags.join(", "),
       image: work.image || "",
@@ -209,7 +229,7 @@ export default function AdminPortfolio() {
     const workData = {
       title: formState.title,
       slug: formState.slug || generateSlug(formState.title),
-      category: formState.category,
+      category: formState.category as "weboldal" | "webshop" | "arculat" | "grafika" | "branding",
       description: formState.description,
       tags: tagsArray,
       keywords: tagsArray, // mapping tags to keywords array

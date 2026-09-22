@@ -33,7 +33,7 @@ const clients = [
 export default function SocialProofStrip() {
   return (
     <section
-      className="relative py-16 md:py-20 bg-[#020617] border-y border-white/5 overflow-hidden"
+      className="relative py-16 md:py-20 bg-bg-base border-y border-white/5 overflow-hidden"
       aria-label="Statisztikák és referenciák"
     >
       {/* Halvány elválasztó fény */}
@@ -65,7 +65,7 @@ export default function SocialProofStrip() {
                 }}
                 className="flex flex-col items-center text-center"
               >
-                <div className="w-12 h-12 rounded-2xl bg-[#0f172a] border border-[#00B5F1]/20 flex items-center justify-center mb-3">
+                <div className="w-12 h-12 rounded-2xl bg-bg-surface border border-[#00B5F1]/20 flex items-center justify-center mb-3">
                   <Icon className="w-6 h-6 text-[#00B5F1]" aria-hidden="true" />
                 </div>
                 <div className="text-3xl md:text-4xl font-extrabold text-white tabular-nums">

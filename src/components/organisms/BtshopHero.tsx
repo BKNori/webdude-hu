@@ -33,7 +33,7 @@ export default function BtshopHero() {
       />
       <div
         aria-hidden
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[720px] h-[720px] rounded-full pointer-events-none"
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-180 h-180 rounded-full pointer-events-none"
         style={{
           background:
             "radial-gradient(circle, rgba(0, 181, 241,0.14) 0%, transparent 65%)",
@@ -57,7 +57,7 @@ export default function BtshopHero() {
           initial={shouldReduceMotion ? {} : { opacity: 0, y: 32 }}
           animate={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
           transition={{ ...spring, delay: 0.1 }}
-          className="text-4xl sm:text-5xl md:text-7xl font-black leading-[1.08] tracking-tight text-[#e2e8f0]"
+          className="text-4xl sm:text-5xl md:text-7xl font-black leading-[1.08] tracking-tight text-text-primary"
         >
           Amikor a weboldal nemcsak elad, hanem a{" "}
           <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6]">
@@ -72,11 +72,10 @@ export default function BtshopHero() {
           transition={{ ...spring, delay: 0.2 }}
           className="mt-8 text-lg md:text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed"
         >
-          A btshop.hu egy 3200 termékes B2B/B2C óriásáruház, ahol a
-          WooCommerce nem egy külön sziget, hanem a cég idegrendszere:
-          kétirányú szinkronban él a Kulcs-Soft könyvelőprogrammal, a Google
-          Merchant Center feedjével és az MPL / Foxpost szállítási lánccal —
-          emberi beavatkozás nélkül.
+          A btshop.hu egy 3200 termékes B2B/B2C óriásáruház, ahol a WooCommerce
+          nem egy külön sziget, hanem a cég idegrendszere: kétirányú szinkronban
+          él a Kulcs-Soft könyvelőprogrammal, a Google Merchant Center feedjével
+          és az MPL / Foxpost szállítási lánccal — emberi beavatkozás nélkül.
         </motion.p>
 
         {/* Statisztikák — Luminous Glassmorphism */}
@@ -109,21 +108,17 @@ export default function BtshopHero() {
           transition={{ ...spring, delay: 0.45 }}
           className="mt-16 relative rounded-3xl overflow-hidden border border-[#00B5F1]/25 shadow-[0_0_80px_rgba(0, 181, 241,0.18)]"
         >
-          <div className="relative aspect-video w-full bg-[#020617]">
+          <div className="relative aspect-video w-full bg-bg-base">
             <Image
-              src="/assets/portfolio/btshop/btshop-hero-placeholder.svg"
+              src="/assets/portfolio/btshop/btshop-banner.webp"
               alt="btshop.hu — 3200 termékes e-kereskedelmi rendszer vizuál"
               fill
-              unoptimized
               sizes="(max-width: 1024px) 100vw, 1024px"
               className="object-cover"
               priority
             />
           </div>
         </motion.div>
-        <p className="mt-4 text-xs text-slate-500 uppercase tracking-widest">
-          Vizuális placeholder — a végleges kreatív hamarosan
-        </p>
       </div>
     </section>
   );

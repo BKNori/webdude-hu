@@ -3,16 +3,16 @@ export interface Work {
   slug: string;
   title: string;
   description: string;
-  category: "weboldal" | "webshop" | "arculat" | "grafika" | "branding";
+  category: string;
   tags: string[];
-  image?: string;
+  image: string;
+  featured: boolean;
   bannerImage?: string;
   gallery?: string[];
-  challenge?: string;
-  solution?: string;
-  results?: string[];
-  featured?: boolean;
   year?: number;
   client?: string;
   website?: string;
+  challenge?: string;
+  solution?: string;
+  results?: string[];
 }

@@ -7,10 +7,18 @@ import { motion, useScroll, useTransform } from "motion/react";
 import { ArrowRight, CheckCircle2, Star } from "lucide-react";
 import HeroDashboardMockup from "@/components/molecules/HeroDashboardMockup";
 
+// Kulcsszavak kiemelve a jobb scannelhetőség és AEO-felismerés érdekében
+const serviceHighlights = [
+  "Weboldal készítés",
+  "WordPress fejlesztés",
+  "SEO optimalizálás",
+  "Grafikai tervezés",
+];
+
 const trustPoints = [
-  "Közvetlen kommunikáció",
-  "30 napos garancia",
-  "Fix határidők",
+  "Közvetlen kommunikáció — nincs közvetítő",
+  "30 napos hibajavítási garancia",
+  "Fix árak, fix határidők",
 ];
 
 export default function HeroSectionNew() {
@@ -47,20 +55,18 @@ export default function HeroSectionNew() {
       className="relative isolate w-full min-h-screen overflow-hidden bg-bg-base flex items-center"
       aria-label="Főoldal hero szekció"
     >
-      {/* Brand banner — halványított, a CSS rétegek dominálnak */}
+      {/* Brand banner — prémium kontraszt struktúra */}
       <Image
-        src="/assets/banners/webdude-hero.webp"
-        alt="WebDude weboldal és AI automatizáció"
+        alt="WebDude — Weboldal készítés, WordPress, SEO és grafikai tervezés Kecskemétről"
+        className="object-cover -z-20 opacity-40 mix-blend-luminosity"
         fill
         priority
-        quality={90}
+        quality={95}
         sizes="100vw"
-        className="object-cover -z-20 opacity-60"
+        src="/assets/banners/webdude-hero.webp"
       />
-
-      {/* Sötétítő réteg az olvashatóságért */}
       <div
-        className="absolute inset-0 bg-slate-950/80 -z-10"
+        className="absolute inset-0 bg-bg-base/80 backdrop-blur-xs -z-10"
         aria-hidden="true"
       />
 
@@ -70,7 +76,7 @@ export default function HeroSectionNew() {
         aria-hidden="true"
       />
 
-      {/* Finom fénygömbök — arany glow + halvány rim light */}
+      {/* Finom fénygömbök — kék-lila glow + halvány rim light */}
       <motion.div
         style={{ opacity: glowOpacity }}
         className="absolute inset-0 pointer-events-none overflow-hidden -z-10"
@@ -88,7 +94,7 @@ export default function HeroSectionNew() {
           className="absolute -bottom-1/4 -right-1/4 w-[50vw] h-[50vw] rounded-full hero-blob-2"
           style={{
             background:
-              "radial-gradient(circle, rgba(0, 181, 241,0.18) 0%, transparent 70%)",
+              "radial-gradient(circle, rgba(91, 33, 182,0.18) 0%, transparent 70%)",
             filter: "blur(100px)",
           }}
         />
@@ -97,13 +103,14 @@ export default function HeroSectionNew() {
       {/* Fő tartalom */}
       <div className="relative z-10 w-full max-w-360 mx-auto px-6 lg:px-12 xl:px-16 pt-32 pb-16 lg:pt-40 lg:pb-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* BAL OLDAL — üzenet + egyetlen CTA */}
+          {/* BAL OLDAL — ügyfélszerző üzenet + egyetlen CTA */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate="visible"
             className="flex flex-col items-start"
           >
+            {/* Lokáció badge — Kecskemét + országos */}
             <motion.div variants={fadeUpVariants}>
               <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/5 border border-[#00B5F1]/25 backdrop-blur-sm mb-8">
                 <span
@@ -111,17 +118,17 @@ export default function HeroSectionNew() {
                   aria-hidden="true"
                 />
                 <span className="text-[#00B5F1] text-xs font-bold uppercase tracking-widest">
-                  Kecskemét · Magyarország · Távolról is
+                  Kecskemét · Országos kiszolgálás · Távolról is
                 </span>
               </div>
             </motion.div>
 
-            {/* H1 — egyetlen, határozott ígéret */}
+            {/* H1 — egyetlen, ügyfélszerző ígéret (CRO & SEO optimalizált) */}
             <motion.h1
               variants={fadeUpVariants}
               className="text-4xl sm:text-5xl lg:text-[3.4rem] xl:text-[3.9rem] font-extrabold tracking-tight leading-[1.1] text-white mb-6"
             >
-              AI-alapú{" "}
+              Weboldal, ami nemcsak{" "}
               <span
                 className="hero-shimmer-text"
                 style={{
@@ -132,30 +139,60 @@ export default function HeroSectionNew() {
                   backgroundClip: "text",
                 }}
               >
-                weboldalak és automatizáció
+                szép, hanem ügyfeleket
               </span>{" "}
-              vállalkozásoknak
+              is hoz.
             </motion.h1>
 
-            {/* Alcím — kulcsszavak megtartva (SEO/AEO) */}
+            {/* Alcím — kulcsszavak explicit felsorolása (AEO & SEO) */}
             <motion.p
               variants={fadeUpVariants}
-              className="text-lg lg:text-xl text-slate-400 leading-relaxed max-w-xl mb-8"
+              className="text-lg lg:text-xl text-slate-400 leading-relaxed max-w-xl mb-6"
             >
-              Next.js 16 alapú webfejlesztés, AI automatizáció és grafikai
-              tervezés{" "}
+              Egy kézben kapod a{" "}
               <span className="text-[#e2e8f0] font-semibold">
-                Kecskemétről
+                weboldal készítést
               </span>
-              , országosan. 26 év grafikai és 16 év fejlesztői tapasztalat — egy
-              emberrel, ügynökségi mellébeszélés nélkül.
+              ,{" "}
+              <span className="text-[#e2e8f0] font-semibold">
+                WordPress fejlesztést
+              </span>
+              ,{" "}
+              <span className="text-[#e2e8f0] font-semibold">SEO-t</span> és{" "}
+              <span className="text-[#e2e8f0] font-semibold">
+                grafikai tervezést
+              </span>{" "}
+              – ügynökségi mellébeszélés nélkül,{" "}
+              <span className="text-[#e2e8f0] font-semibold">
+                26 év kreatív és 16 év webfejlesztői tapasztalattal.
+              </span>
             </motion.p>
+
+            {/* Szolgáltatás kulcsszavak — vizuális scannelhetőség + AEO */}
+            <motion.ul
+              variants={fadeUpVariants}
+              className="flex flex-wrap gap-2 mb-8"
+              aria-label="Fő szolgáltatások"
+            >
+              {serviceHighlights.map((service) => (
+                <li
+                  key={service}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#00B5F1]/8 border border-[#00B5F1]/20 text-xs font-semibold text-[#00B5F1] tracking-wide"
+                >
+                  <span
+                    className="w-1.5 h-1.5 rounded-full bg-[#00B5F1]"
+                    aria-hidden="true"
+                  />
+                  {service}
+                </li>
+              ))}
+            </motion.ul>
 
             {/* Trust jelek */}
             <motion.ul
               variants={fadeUpVariants}
               className="flex flex-col sm:flex-row flex-wrap gap-3 mb-10"
-              aria-label="Garanciák"
+              aria-label="Garanciák és előnyök"
             >
               {trustPoints.map((item) => (
                 <li
@@ -171,11 +208,12 @@ export default function HeroSectionNew() {
               ))}
             </motion.ul>
 
-            {/* EGYETLEN telített CTA + másodlagos szöveges link */}
+            {/* CTA hierarchia — 1 primer gomb + 1 ghost/underline link */}
             <motion.div
               variants={fadeUpVariants}
               className="flex flex-col items-start gap-5"
             >
+              {/* Primer CTA — egyetlen telített gomb */}
               <motion.div
                 whileHover={{ scale: 1.04 }}
                 whileTap={{ scale: 0.97 }}
@@ -183,10 +221,11 @@ export default function HeroSectionNew() {
               >
                 <Link
                   href="/kapcsolat"
-                  className="group inline-flex items-center gap-3 px-8 py-4 rounded-full font-bold text-slate-950 text-base uppercase tracking-wider bg-linear-to-r from-[#00B5F1] to-[#5B21B6] hover:from-[#5B21B6] hover:to-[#5B21B6] shadow-[0_8px_32px_rgba(0, 181, 241,0.35)] hover:shadow-[0_12px_40px_rgba(0, 181, 241,0.5)] transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#00B5F1] focus:ring-offset-2 focus:ring-offset-[#020617]"
-                  aria-label="Ingyenes konzultáció kérése"
+                  id="hero-primary-cta"
+                  className="group inline-flex items-center gap-3 px-8 py-4 rounded-full font-bold text-slate-950 text-base uppercase tracking-wider bg-linear-to-r from-[#00B5F1] to-[#5B21B6] hover:from-[#5B21B6] hover:to-[#5B21B6] shadow-[0_8px_32px_rgba(0,181,241,0.35)] hover:shadow-[0_12px_40px_rgba(0,181,241,0.5)] transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#00B5F1] focus:ring-offset-2 focus:ring-offset-bg-base"
+                  aria-label="Projektfelmérés kérése — ingyenes konzultáció"
                 >
-                  <span>Ingyenes konzultáció kérése</span>
+                  <span>Kérj projektfelmérést</span>
                   <ArrowRight
                     className="w-5 h-5 transition-transform duration-200 group-hover:translate-x-1"
                     aria-hidden="true"
@@ -194,11 +233,14 @@ export default function HeroSectionNew() {
                 </Link>
               </motion.div>
 
+              {/* Másodlagos link — ghost/underline, nem versenyez a primer CTA-val */}
               <Link
                 href="/munkak"
-                className="inline-flex items-center gap-2 text-sm font-semibold text-slate-400 hover:text-[#00B5F1] underline decoration-slate-700 underline-offset-4 hover:decoration-[#00B5F1] transition-colors duration-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 focus:ring-offset-[#020617]"
+                id="hero-secondary-cta"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-slate-400 hover:text-[#00B5F1] underline decoration-slate-700 underline-offset-4 hover:decoration-[#00B5F1] transition-colors duration-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 focus:ring-offset-bg-base"
+                aria-label="Referenciamunkáim megtekintése"
               >
-                Esettanulmányok megtekintése
+                Referenciamunkáim megtekintése
                 <ArrowRight className="w-4 h-4" aria-hidden="true" />
               </Link>
             </motion.div>

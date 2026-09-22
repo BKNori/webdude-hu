@@ -23,9 +23,11 @@ import {
   Edit2,
   Bot,
   Loader2,
+  Download,
 } from "lucide-react";
 import TaskCaptureForm from "@/components/organisms/TaskCaptureForm";
 import { autoAssignAllPendingTasksAction } from "@/actions/dispatcher";
+import jsPDF from "jspdf";
 
 interface WorkLog {
   id: string;
@@ -125,6 +127,75 @@ export default function WorkLogPage() {
     }
   };
 
+  const handleExportPDF = () => {
+    const pdf = new jsPDF();
+
+    // Set up document
+    pdf.setFontSize(20);
+    pdf.setTextColor(0, 181, 241); // #00B5F1
+    pdf.text("WebDude - Munka Log Export", 20, 20);
+
+    pdf.setFontSize(12);
+    pdf.setTextColor(100, 100, 100);
+    pdf.text(
+      `Export dátuma: ${new Date().toLocaleDateString("hu-HU")}`,
+      20,
+      30
+    );
+    pdf.text(`Összes feladat: ${filteredLogs.length}`, 20, 38);
+
+    // Add table headers
+    pdf.setFontSize(10);
+    pdf.setTextColor(0, 0, 0);
+    pdf.setFont("helvetica", "bold");
+    pdf.text("Feladat", 20, 55);
+    pdf.text("Státusz", 120, 55);
+    pdf.text("Határidő", 160, 55);
+
+    // Add separator line
+    pdf.setDrawColor(200, 200, 200);
+    pdf.line(20, 58, 190, 58);
+
+    // Add table rows
+    pdf.setFont("helvetica", "normal");
+    let yPosition = 65;
+
+    filteredLogs.forEach((log) => {
+      if (yPosition > 270) {
+        pdf.addPage();
+        yPosition = 20;
+      }
+
+      // Task description (truncate if too long)
+      const taskText =
+        log.task_description.length > 40
+          ? log.task_description.substring(0, 40) + "..."
+          : log.task_description;
+      pdf.text(taskText, 20, yPosition);
+
+      // Status
+      const statusLabel = getStatusLabel(log.status);
+      pdf.text(statusLabel, 120, yPosition);
+
+      // Due date
+      const dueDateText = log.due_date
+        ? log.due_date.toDate().toLocaleDateString("hu-HU")
+        : "-";
+      pdf.text(dueDateText, 160, yPosition);
+
+      yPosition += 10;
+    });
+
+    // Add footer
+    pdf.setFontSize(8);
+    pdf.setTextColor(150, 150, 150);
+    pdf.text("WebDude - www.webdude.hu", 20, 285);
+    pdf.text("© 2026 WebDude", 20, 290);
+
+    // Save PDF
+    pdf.save(`worklog_export_${new Date().toISOString().split("T")[0]}.pdf`);
+  };
+
   const handleAiTriage = async () => {
     setAiTriageLoading(true);
     setAiTriageResult(null);
@@ -222,6 +293,13 @@ export default function WorkLogPage() {
           </p>
         </div>
         <div className="flex items-center gap-3">
+          <button
+            onClick={handleExportPDF}
+            className="flex items-center gap-2 px-4 py-3 bg-[#0f0f1a] border border-gray-700 hover:border-gray-600 text-gray-400 hover:text-white font-bold rounded-lg transition-colors"
+          >
+            <Download className="w-5 h-5" />
+            PDF Export
+          </button>
           <button
             onClick={handleAiTriage}
             disabled={aiTriageLoading}

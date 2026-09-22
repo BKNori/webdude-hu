@@ -22,8 +22,8 @@ export default function FinalCta() {
         </video>
       </div>
 
-      {/* Overlay for text readability - lighter to show video more */}
-      <div className="absolute inset-0 z-0 bg-slate-900/40" />
+      {/* Overlay for text readability - sötétebb a kontraszt javítása */}
+      <div className="absolute inset-0 z-0 bg-bg-base/70" />
 
       <div className="px-6 lg:px-8 text-center max-w-6xl mx-auto relative z-10 flex flex-col items-center">
         <ScaleMotion className="flex items-center justify-center gap-4 mb-8">

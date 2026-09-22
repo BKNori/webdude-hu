@@ -421,7 +421,7 @@ export default function ProductsPage() {
                         <span className="text-sm font-medium">
                           {product.rating}
                         </span>
-                        <span className="text-slate-500 text-sm">
+                        <span className="text-slate-400 text-sm">
                           ({product.reviews})
                         </span>
                       </div>

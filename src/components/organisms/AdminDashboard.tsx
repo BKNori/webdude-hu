@@ -51,6 +51,13 @@ interface DashboardStats {
   revenueTrend: string;
   avgCompletionTime: number; // napokban
   leadConversionRate: number; // százalék
+  churnRate: number; // százalék
+  ltv: number; // Lifetime Value (HUF)
+  cac: number; // Customer Acquisition Cost (HUF)
+  revenueByService: Array<{
+    service: string;
+    revenue: number;
+  }>;
 }
 
 export default function AdminDashboard() {
@@ -202,6 +209,9 @@ export default function AdminDashboard() {
       color: "#10b981",
     },
   ];
+
+  // Revenue by service data for BarChart
+  const revenueByServiceData = stats?.revenueByService || [];
 
   if (loading) {
     return (
@@ -434,6 +444,84 @@ export default function AdminDashboard() {
               </motion.div>
             </div>
 
+            {/* Advanced KPI Cards - Churn, LTV, CAC */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {/* Churn Rate */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6 }}
+                className="glass-card p-6 space-y-4"
+              >
+                <div className="flex items-center justify-between">
+                  <div className="p-3 bg-red-500/10 rounded-xl">
+                    <TrendingDown className="w-6 h-6 text-red-500" />
+                  </div>
+                  <span className="text-xs font-mono text-slate-400 uppercase">
+                    Churn Rate
+                  </span>
+                </div>
+                <div>
+                  <div className="text-3xl font-bold text-white">
+                    {stats.churnRate.toFixed(1)}%
+                  </div>
+                  <div className="text-sm text-slate-400">
+                    Ügyfél elvesztés (90 nap)
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* LTV (Lifetime Value) */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.7 }}
+                className="glass-card p-6 space-y-4"
+              >
+                <div className="flex items-center justify-between">
+                  <div className="p-3 bg-emerald-500/10 rounded-xl">
+                    <DollarSign className="w-6 h-6 text-emerald-500" />
+                  </div>
+                  <span className="text-xs font-mono text-slate-400 uppercase">
+                    LTV
+                  </span>
+                </div>
+                <div>
+                  <div className="text-3xl font-bold text-white">
+                    {formatCurrency(stats.ltv)}
+                  </div>
+                  <div className="text-sm text-slate-400">
+                    Ügyfél élettartam-érték
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* CAC (Customer Acquisition Cost) */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.8 }}
+                className="glass-card p-6 space-y-4"
+              >
+                <div className="flex items-center justify-between">
+                  <div className="p-3 bg-sky-500/10 rounded-xl">
+                    <TrendingUp className="w-6 h-6 text-sky-500" />
+                  </div>
+                  <span className="text-xs font-mono text-slate-400 uppercase">
+                    CAC
+                  </span>
+                </div>
+                <div>
+                  <div className="text-3xl font-bold text-white">
+                    {formatCurrency(stats.cac)}
+                  </div>
+                  <div className="text-sm text-slate-400">
+                    Ügyfélszerzési költség
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+
             {/* AI Tools Activity */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -547,6 +635,37 @@ export default function AdminDashboard() {
                 </ResponsiveContainer>
               </motion.div>
             </div>
+
+            {/* Revenue by Service Chart */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.9 }}
+              className="glass-card p-6"
+            >
+              <h3 className="text-lg font-bold text-white mb-4">
+                Bevétel Szolgáltatásonként
+              </h3>
+              <ResponsiveContainer width="100%" height={250}>
+                <BarChart data={revenueByServiceData}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
+                  <XAxis dataKey="service" stroke="#94a3b8" />
+                  <YAxis
+                    stroke="#94a3b8"
+                    tickFormatter={(value) => formatCurrency(Number(value))}
+                  />
+                  <Tooltip
+                    contentStyle={{
+                      backgroundColor: "#0f172a",
+                      border: "1px solid #334155",
+                      borderRadius: "8px",
+                    }}
+                    formatter={(value) => formatCurrency(Number(value))}
+                  />
+                  <Bar dataKey="revenue" fill="#00B5F1" />
+                </BarChart>
+              </ResponsiveContainer>
+            </motion.div>
 
             {/* Revenue Section */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
