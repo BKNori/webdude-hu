@@ -150,20 +150,20 @@ export default function HeroSectionNew() {
               className="text-lg lg:text-xl text-slate-400 leading-relaxed max-w-xl mb-6"
             >
               Egy kézben kapod a{" "}
-              <span className="text-[#e2e8f0] font-semibold">
+              <span className="text-text-primary font-semibold">
                 weboldal készítést
               </span>
               ,{" "}
-              <span className="text-[#e2e8f0] font-semibold">
+              <span className="text-text-primary font-semibold">
                 WordPress fejlesztést
               </span>
               ,{" "}
-              <span className="text-[#e2e8f0] font-semibold">SEO-t</span> és{" "}
-              <span className="text-[#e2e8f0] font-semibold">
+              <span className="text-text-primary font-semibold">SEO-t</span> és{" "}
+              <span className="text-text-primary font-semibold">
                 grafikai tervezést
               </span>{" "}
               – ügynökségi mellébeszélés nélkül,{" "}
-              <span className="text-[#e2e8f0] font-semibold">
+              <span className="text-text-primary font-semibold">
                 26 év kreatív és 16 év webfejlesztői tapasztalattal.
               </span>
             </motion.p>

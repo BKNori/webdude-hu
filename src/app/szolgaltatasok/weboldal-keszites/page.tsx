@@ -1,106 +1,46 @@
-﻿import Button from "@/components/atoms/Button";
-import Badge from "@/components/atoms/Badge";
+import React from "react";
+import Link from "next/link";
 import { Metadata } from "next";
-import BentoCard from "@/components/molecules/BentoCard";
-import AnimatedSystemFlow from "@/components/molecules/AnimatedSystemFlow";
-import CaseStudyCard from "@/components/molecules/CaseStudyCard";
-import PricingTable from "@/components/molecules/PricingTable";
+import { Search, Code, PenTool, ArrowRight } from "lucide-react";
+import Hero from "@/components/Hero";
+import PricingTable, { PricingTier } from "@/components/molecules/PricingTable";
 import { buildBreadcrumbSchema, BreadcrumbItem } from "@/lib/breadcrumb";
-import Image from "next/image";
-export async function generateMetadata(): Promise<Metadata> {
-  return {
-    title:
-      "Weboldal Készítés Kecskemétről – Next.js, React, WordPress | WebDude",
-    description:
-      "Prémium weboldal készítés Next.js 16, React 19, WordPress és egyedi fejlesztéssel. 26 év grafikai és 16 év webfejlesztői tapasztalat, SEO/AEO optimalizálás, konverzió-fókuszú megoldások Kecskemétről országosan.",
-    keywords:
-      "weboldal készítés Kecskemét, React fejlesztés, Next.js, WordPress, Node.js, egyedi weboldal, responsive design, landing page, vállalati weboldal, webshop fejlesztés, SaaS platform, SEO optimalizálás",
-    alternates: {
-      canonical: "https://webdude.hu/szolgaltatasok/weboldal-keszites",
-    },
-    openGraph: {
-      title:
-        "Weboldal Készítés Kecskemétről – Next.js, React, WordPress | WebDude",
-      description:
-        "Prémium weboldal készítés Next.js 16, React 19, WordPress és egyedi fejlesztéssel. 26 év grafikai és 16 év webfejlesztői tapasztalat, SEO/AEO optimalizálás, konverzió-fókuszú megoldások Kecskemétről országosan.",
-      url: "https://webdude.hu/szolgaltatasok/weboldal-keszites",
-      type: "website",
-      siteName: "WebDude",
-      images: [
-        {
-          url: "/banners/wordpress-weboldalak-keszitese-grafikai-tervezes.webp",
-          width: 1920,
-          height: 1080,
-          alt: "Weboldal készítés React, Next.js, WordPress technológiákkal",
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title:
-        "Weboldal Készítés Kecskemétről – Next.js, React, WordPress | WebDude",
-      description:
-        "Prémium weboldal készítés Next.js 16, React 19, WordPress és egyedi fejlesztéssel. 26 év grafikai és 16 év webfejlesztői tapasztalat, SEO/AEO optimalizálás, konverzió-fókuszú megoldások Kecskemétről országosan.",
-      images: [
-        "/banners/wordpress-weboldalak-keszitese-grafikai-tervezes.webp",
-      ],
-    },
-  };
-}
 
-const FAQ = [
-  {
-    q: "Milyen technológiákkal fejlesztek weboldalakat?",
-    a: "React, Next.js 16, React 19, WordPress, Node.js, HTML, JavaScript, TypeScript, Tailwind CSS v4. Az ügyfél igénye szerint választjuk a legmegfelelőbb technológiát: React/Next.js modern weboldalakhoz (pl. btshop.hu), WordPress CMS-hez (pl. Classi-Co Kft.), Node.js backend-hez (pl. HU-MAGO Kft.), HTML/JavaScript egyszerűbb projektekhez (pl. Bor és Garnéla).",
+export const metadata: Metadata = {
+  title: "Weboldal készítés vállalkozásoknak | WebDude",
+  description:
+    "Gyors, modern és keresőbarát weboldal készítés kis- és középvállalkozásoknak. Egyedi design, fejlesztés, SEO és személyes kommunikáció a WebDude-tól.",
+  keywords:
+    "weboldal készítés, prémium weboldal, egyedi weboldal, webfejlesztés, SEO weboldal, KKV weboldal",
+  alternates: {
+    canonical: "https://webdude.hu/szolgaltatasok/weboldal-keszites",
   },
-  {
-    q: "Mennyi idő egy weboldal elkészítése?",
-    a: "Egyszerű landing page 1-2 hét, vállalati weboldal 2-4 hét, komplex webshop vagy alkalmazás 4-8 hét attól függően, hogy milyen funkciók szükségesek. A webspecifikáció kialakítása és konzultáció 3-5 munkanap. A btshop.hu webshop 4-6 hét alatt készült el.",
+  openGraph: {
+    title: "Weboldal készítés vállalkozásoknak | WebDude",
+    description:
+      "Gyors, modern és keresőbarát weboldal készítés kis- és középvállalkozásoknak.",
+    type: "website",
+    locale: "hu_HU",
+    siteName: "WebDude",
   },
-  {
-    q: "Biztonságos a weboldal fejlesztés?",
-    a: "Igen, minden fejlesztésnél biztonsági auditot végzek, SSL titkosítást alkalmazok, követem a legújabb biztonsági best practice-eket, és rendszeres biztonsági frissítéseket biztosítok. Minden WooCommerce webshop biztonságos fizetési integrációval rendelkezik.",
-  },
-  {
-    q: "Mennyibe kerül egy weboldal?",
-    a: "Egyedi árajánlat kérése a projekt igényei szerint. Ingyenes konzultáció a pontos árhoz. Landing page, vállalati weboldal és webshop csomagok elérhetők egyedi árazással.",
-  },
-  {
-    q: "Miért a WordPress a legjobb választás?",
-    a: "WordPress 16+ éves tapasztalatom van, könnyen frissíthető, SEO-barát, hatalmas plugin ökoszisztéma, WooCommerce webshop integráció, és költséghatékony megoldás KKV-k számára. Lásd Classi-Co Kft. és btshop.hu projekteket.",
-  },
-  {
-    q: "Miért válasszam React/Next.js-t?",
-    a: "Next.js 16 a legmodernebb technológia, szerveroldali renderelés (SSR), kiváló SEO, gyors betöltés (LCP < 2.5s), skálázható, és ideális SaaS platformokhoz és komplex webalkalmazásokhoz. Lásd btshop.hu és HU-MAGO Kft. projekteket.",
-  },
-  {
-    q: "Karbantartást is biztosítasz?",
-    a: "Igen, minden csomag tartalmaz karbantartást: landing page 1 hónap, vállalati weboldal 3 hónap, webshop 3 hónap prémium karbantartás. Utána havi karbantartási csomagok elérhetők biztonsági frissítésekkel és napi mentésekkel.",
-  },
-  {
-    q: "SEO és AEO optimalizálást is végzel?",
-    a: "Igen, minden weboldal SEO optimalizált (Google Search Console, Analytics bekötés, strukturált adatok JSON-LD formátumban) és AEO optimalizált (ChatGPT, Perplexity, Gemini AI keresők). Lász főoldal Direct Answer Block-ot és FAQPage JSON-LD sémát.",
-  },
-];
+};
 
 export const revalidate = 3600;
 
-export default async function WeboldalKeszitesPage() {
+export default function WeboldalKeszitesPage() {
   const breadcrumbItems: BreadcrumbItem[] = [
     { name: "Főoldal", url: "/" },
     { name: "Szolgáltatások", url: "/szolgaltatasok" },
-    { name: "Weboldal Készítés", url: "/szolgaltatasok/weboldal-keszites" },
+    { name: "Weboldal készítés", url: "/szolgaltatasok/weboldal-keszites" },
   ];
-
   const breadcrumbSchema = buildBreadcrumbSchema(breadcrumbItems);
 
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
-    "@id": "https://webdude.hu/#service-weboldal-keszites",
-    name: "Weboldal Készítés",
+    name: "Weboldal készítés",
     description:
-      "Prémium weboldal készítés Next.js 16, React 19, WordPress és egyedi fejlesztéssel. 26 év grafikai és 16 év webfejlesztői tapasztalat, SEO/AEO optimalizálás, konverzió-fókuszú megoldások Kecskemétről országosan.",
+      "Gyors, modern és keresőbarát weboldal készítés kis- és középvállalkozásoknak.",
     provider: {
       "@type": "Organization",
       "@id": "https://webdude.hu/#organization",
@@ -108,51 +48,90 @@ export default async function WeboldalKeszitesPage() {
       url: "https://webdude.hu",
     },
     areaServed: { "@type": "Country", name: "Hungary" },
-    hasOfferCatalog: {
-      "@type": "OfferCatalog",
-      name: "Webfejlesztési Szolgáltatások",
-      itemListElement: [
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "Landing Page Fejlesztés",
-          },
-        },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "Vállalati Weboldal Fejlesztés",
-          },
-        },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "Webshop Fejlesztés",
-          },
-        },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "SEO és AEO Optimalizálás",
-          },
-        },
-      ],
-    },
   };
+
+  const faqs = [
+    {
+      question: "Mennyi idő alatt készül el egy új weboldal?",
+      answer: "A projekt bonyolultságától függően átlagosan 2-4 hét. Ez magában foglalja a tervezést, az egyedi arculat kialakítását, a kódolást és a SEO optimalizálást is.",
+    },
+    {
+      question: "Sablonokat használsz, vagy egyedi fejlesztést?",
+      answer: "Kizárólag egyedi tervezésű és fejlesztésű (Next.js vagy prémium WordPress) oldalakat adok át. Sablonok helyett a vállalkozásod céljaihoz igazított, tiszta kódú megoldásokat alkalmazok.",
+    },
+    {
+      question: "Később tudom én is szerkeszteni a tartalmat?",
+      answer: "Igen. Ha WordPress alapú az oldal, akkor egy rendkívül könnyen kezelhető admin felületet kapsz. Ha Next.js / headless CMS (pl. Sanity) alapú, akkor is egy intuitív szerkesztőt adok át betanítással.",
+    },
+    {
+      question: "Mobilon is jól fog kinézni?",
+      answer: "Természetesen. Minden általam fejlesztett oldal reszponzív ('Mobile-First'), tehát telefonon, tableten és asztali gépen is tökéletes felhasználói élményt nyújt.",
+    },
+  ];
 
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: FAQ.map((item) => ({
+    mainEntity: faqs.map((faq) => ({
       "@type": "Question",
-      name: item.q,
-      acceptedAnswer: { "@type": "Answer", text: item.a },
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
     })),
   };
+
+  const tiers: PricingTier[] = [
+    {
+      id: "bemutatkozo",
+      name: "Bemutatkozó / Landing",
+      description: "Egyoldalas (One-pager) vagy kisebb bemutatkozó weboldal vállalkozásoknak, profi megjelenéssel és SEO alapokkal.",
+      features: [
+        "Egyedi, letisztult dizájn",
+        "Mobilbarát (reszponzív) kialakítás",
+        "Alap SEO beállítások (meta, sitemap)",
+        "Kapcsolati űrlap és GDPR",
+        "Rendkívül gyors betöltődés",
+        "Képek és tartalom optimalizálása"
+      ],
+      highlighted: false,
+      ctaText: "Egyedi árajánlat kérése",
+      ctaLink: "/kapcsolat"
+    },
+    {
+      id: "vallalati",
+      name: "Vállalati Weboldal",
+      description: "Több aloldalas, kiterjedt céges weboldal egyedi funkciókkal és komplex menürendszerrel.",
+      features: [
+        "Minden a Bemutatkozó csomagból",
+        "Több egyedi aloldal (pl. Szolgáltatások, Rólunk)",
+        "Dinamikus tartalom (Blog / Hírek modul)",
+        "Haladó SEO és sebességoptimalizálás",
+        "Könnyen kezelhető CMS rendszer",
+        "Adminisztrátori betanítás"
+      ],
+      highlighted: true,
+      ctaText: "Egyedi árajánlat kérése",
+      ctaLink: "/kapcsolat"
+    },
+    {
+      id: "premium",
+      name: "Prémium (Next.js / React)",
+      description: "A legmagasabb szintű teljesítmény és technológia. Villámgyors betöltődés és korlátlan skálázhatóság.",
+      features: [
+        "Minden a Vállalati csomagból",
+        "Next.js 16 / React 19 architektúra",
+        "Tökéletes Core Web Vitals (99+ pont)",
+        "Headless CMS integráció",
+        "Luminous glassmorphism dizájn elemek",
+        "Maximális konverzió és biztonság"
+      ],
+      highlighted: false,
+      ctaText: "Egyedi árajánlat kérése",
+      ctaLink: "/kapcsolat"
+    },
+  ];
 
   return (
     <>
@@ -175,469 +154,123 @@ export default async function WeboldalKeszitesPage() {
         }}
       />
 
-      <div className="min-h-screen pt-32 pb-20 bg-bg-base text-text-primary relative overflow-hidden">
-        {/* Background gradient */}
-        <div className="absolute inset-0 bg-linear-to-b from-[#00B5F1]/5 via-transparent to-[#00B5F1]/5" />
+      <div className="bg-slate-950 text-text-primary relative overflow-hidden min-h-screen">
+        <div className="absolute inset-0 bg-linear-to-b from-[#00B5F1]/5 via-transparent to-[#5B21B6]/5" />
+        
+        <div className="relative z-10">
+          <Hero
+            label="Weboldal Készítés"
+            title={
+              <>
+                Weboldal készítés, ami{" "}
+                <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6] italic">
+                  ügyfeleket hoz
+                </span>
+              </>
+            }
+            subtitle="Olyan weboldalt készítek, amely nemcsak bemutatja a vállalkozásodat, hanem segít érdeklődőket szerezni, bizalmat építeni és ajánlatkéréseket generálni."
+            cta1="Egyedi árajánlat kérése"
+            cta1Link="/kapcsolat"
+            cta2="Munkák megtekintése"
+            cta2Link="/munkak"
+            fullHeight={false}
+          />
+        </div>
 
-        {/* Hero Section with Background Image - Full Width */}
-        <section
-          id="hero"
-          className="relative w-full min-h-[80vh] flex items-center justify-center overflow-hidden"
-        >
-          {/* Background Image */}
-          <div className="absolute inset-0">
-            <Image
-              src="/assets/banners/webdue-branding_mockup_05-copy copy.webp"
-              alt="Weboldal Készítés Hero Banner"
-              fill
-              className="object-cover"
-              priority
-            />
-            <div className="absolute inset-0 bg-slate-900/60" />
-          </div>
-
-          {/* Content */}
-          <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
-            <div className="space-y-8">
-              <Badge>Webfejlesztés</Badge>
-              <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold text-white leading-tight">
-                Weboldal Készítés Kecskemétről
-              </h1>
-              <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-                Egyedi weboldal fejlesztés Next.js 16, React 19, WordPress,
-                Node.js, HTML, JavaScript technológiákkal. 26 év grafikai és 16
-                év webfejlesztői tapasztalat, mobilbarát, SEO-optimalizált és
-                konverzió-fókuszú megoldások Kecskemétről országosan.
+        {/* ── E-E-A-T Bento Grid ── */}
+        <section className="py-24 relative z-10">
+          <div className="max-w-6xl mx-auto px-6">
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
+                Miért válassz engem a fejlesztéshez?
+              </h2>
+              <p className="text-slate-400 text-lg">
+                26 év grafikai és 16 év webfejlesztői tapasztalat (Balog Norbert). Kód, design és marketing egy kézben.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <Button
-                  variant="primary"
-                  href="/kapcsolat"
-                  className="w-full sm:w-auto"
-                >
-                  Kérj ingyenes konzultációt
-                </Button>
-                <Button
-                  variant="secondary"
-                  href="/munkak"
-                  className="w-full sm:w-auto"
-                >
-                  Portfólió megtekintése
-                </Button>
-              </div>
+            </div>
 
-              {/* Direct Answer Block - AEO optimalizált */}
-              <div className="mt-8 bg-slate-900/80 backdrop-blur-sm border border-[#00B5F1]/30 rounded-2xl p-6 max-w-4xl mx-auto">
-                <p className="text-base md:text-lg text-slate-300 leading-relaxed">
-                  <span className="text-[#00B5F1] font-semibold">
-                    WebDude egyéni vállalkozás:
-                  </span>{" "}
-                  26 év grafikai és 16 év webfejlesztői tapasztalat, Next.js 16,
-                  React 19, WordPress és egyedi fejlesztés, SEO/AEO
-                  optimalizálás, konverzió-fókuszú megoldások Kecskemétről
-                  országosan.
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-2xl p-8 hover:border-[#00B5F1]/50 transition-all duration-300">
+                <Code className="w-10 h-10 text-[#00B5F1] mb-6" />
+                <h3 className="text-xl font-bold text-white mb-3">Tiszta, modern kód</h3>
+                <p className="text-slate-400 text-sm leading-relaxed">
+                  Semmi felesleges bloatware. Next.js 16 vagy optimalizált WordPress alapokon dolgozom, biztosítva a gyorsaságot és a jövőállóságot.
                 </p>
               </div>
-
-              {/* Direct Answer Block - AEO optimalizált "Weboldal készítés folyamat" */}
-              <div className="mt-6 bg-slate-900/80 backdrop-blur-sm border border-[#00B5F1]/30 rounded-2xl p-6 max-w-4xl mx-auto">
-                <p className="text-base md:text-lg text-slate-300 leading-relaxed">
-                  <span className="text-[#00B5F1] font-semibold">
-                    Weboldal készítés folyamat:
-                  </span>{" "}
-                  Webspecifikáció kialakítás 3-5 munkanap, fejlesztés 1-4 hét
-                  attól függően a komplexitástól, tesztelés és deploy 1-2 hét.
-                  Minden projekt egyedi árazással és határidőre kész.
-                  Karbantartás 1-3 hónap csomagban elérhető.
+              <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-2xl p-8 hover:border-[#5B21B6]/80 transition-all duration-300">
+                <PenTool className="w-10 h-10 text-[#00B5F1] mb-6" />
+                <h3 className="text-xl font-bold text-white mb-3">Saját tervezésű UI/UX</h3>
+                <p className="text-slate-400 text-sm leading-relaxed">
+                  Nincsenek tucat-sablonok. A 26 éves vizuális múlttal minden weboldal pixelpontos, márkahű és konverzióra optimalizált designt kap.
                 </p>
               </div>
-
-              {/* Stats */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-12 max-w-4xl mx-auto">
-                <div className="bg-slate-900/50 backdrop-blur-sm border border-[#00B5F1]/20 rounded-2xl p-6">
-                  <div className="text-3xl md:text-4xl font-bold text-[#00B5F1] mb-2">
-                    16+
-                  </div>
-                  <div className="text-sm text-slate-400">
-                    Éves webfejlesztői tapasztalat
-                  </div>
-                </div>
-                <div className="bg-slate-900/50 backdrop-blur-sm border border-[#00B5F1]/20 rounded-2xl p-6">
-                  <div className="text-3xl md:text-4xl font-bold text-[#00B5F1] mb-2">
-                    200+
-                  </div>
-                  <div className="text-sm text-slate-400">Sikeres projekt</div>
-                </div>
-                <div className="bg-slate-900/50 backdrop-blur-sm border border-[#00B5F1]/20 rounded-2xl p-6">
-                  <div className="text-3xl md:text-4xl font-bold text-[#00B5F1] mb-2">
-                    +300%
-                  </div>
-                  <div className="text-sm text-slate-400">
-                    Átlagos konverzió növekedés
-                  </div>
-                </div>
+              <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-2xl p-8 hover:border-[#00B5F1]/50 transition-all duration-300">
+                <Search className="w-10 h-10 text-[#00B5F1] mb-6" />
+                <h3 className="text-xl font-bold text-white mb-3">Beépített SEO (AEO)</h3>
+                <p className="text-slate-400 text-sm leading-relaxed">
+                  Az oldal már az első naptól kezdve keresőbarát. Strukturált adatok (JSON-LD), gyors betöltődés és technikai SEO az alapcsomag része.
+                </p>
               </div>
             </div>
           </div>
         </section>
 
-        <div className="max-w-6xl mx-auto px-6 relative z-10">
-          {/* Technologies Section */}
-          <section
-            id="technologies"
-            className="mt-24 max-w-6xl mx-auto relative overflow-hidden"
-          >
-            <div className="absolute inset-0 bg-linear-to-b from-transparent via-[#00B5F1]/5 to-transparent" />
-            <div className="relative z-10">
-              <h2 className="text-4xl font-bold text-text-primary mb-8">
-                Technológiák
+        {/* ── Csomagok (Zéró Fix Ár) ── */}
+        <section className="py-24 bg-slate-900/40 relative z-10">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+                Webfejlesztési Csomagok
               </h2>
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <BentoCard
-                  title="React & Next.js"
-                  description="Modern, gyors és skálázható front-end fejlesztés szerveroldali rendereléssel és optimalizált teljesítménnyel. Lásd btshop.hu projektet."
-                  metric="SSR"
-                  highlight="LCP < 2.5s"
-                />
-                <BentoCard
-                  title="WordPress"
-                  description="CMS-alapú weboldalak, WooCommerce webshopok és egyedi plugin fejlesztés. Lásd btshop.hu és Classi-Co Kft. projekteket."
-                  metric="CMS"
-                  highlight="16 év tapasztalat"
-                />
-                <BentoCard
-                  title="Node.js"
-                  description="Back-end fejlesztés, API integrációk és teljes stack alkalmazások építése. Lásd HU-MAGO Kft. projektet."
-                  metric="API"
-                  highlight="Full Stack"
-                />
-                <BentoCard
-                  title="HTML & JavaScript"
-                  description="Hagyományos és modern front-end fejlesztés, responsive design és interaktív felületek. Lásd Bor és Garnéla projektet."
-                  metric="Vanilla"
-                  highlight="Responsive"
-                />
-              </div>
+              <p className="text-slate-400 text-lg">
+                Válassz a vállalkozásod méretéhez és céljaihoz illeszkedő funkciócsomagok közül. Minden projekt egyedi, így az árazás is testreszabott.
+              </p>
             </div>
-          </section>
+            
+            <PricingTable tiers={tiers} />
+          </div>
+        </section>
 
-          {/* Process Section */}
-          <section
-            id="process"
-            className="mt-24 max-w-6xl mx-auto relative overflow-hidden"
-          >
-            <div className="absolute inset-0 bg-linear-to-b from-transparent via-[#00B5F1]/5 to-transparent" />
-            <div className="relative z-10">
-              <h2 className="text-4xl font-bold text-text-primary mb-8">
-                Fejlesztési Folyamat
-              </h2>
-              <AnimatedSystemFlow
-                steps={[
-                  {
-                    id: 1,
-                    title: "Elemzés",
-                    label: "Követelmények & Stratégia",
-                  },
-                  {
-                    id: 2,
-                    title: "Technológia",
-                    label: "Stack & Archtitektúra",
-                  },
-                  { id: 3, title: "Fejlesztés", label: "React, Node.js, WP" },
-                  { id: 4, title: "Tesztelés", label: "QA & Performance" },
-                  { id: 5, title: "Launch", label: "Deploy & Monitor" },
-                ]}
-              />
+        {/* ── Mikro-GYIK (AEO) ── */}
+        <section className="py-24 border-t border-slate-800 relative z-10">
+          <div className="max-w-4xl mx-auto px-6">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl font-bold text-white mb-4">Gyakori kérdések (Gyors válaszok)</h2>
+              <p className="text-slate-400">Amiket a leggyakrabban kérdeznek tőlem a weboldalkészítés kapcsán.</p>
             </div>
-          </section>
-
-          {/* Case Studies Section */}
-          <section
-            id="case-studies"
-            className="mt-24 max-w-6xl mx-auto relative overflow-hidden"
-          >
-            <div className="absolute inset-0 bg-linear-to-b from-transparent via-[#00B5F1]/5 to-transparent" />
-            <div className="relative z-10">
-              <h2 className="text-4xl font-bold text-text-primary mb-8">
-                Esettanulmányok
-              </h2>
-              <div className="grid md:grid-cols-2 gap-6">
-                <CaseStudyCard
-                  title="E-kereskedelmi Platform"
-                  client="Fashion Brand"
-                  description="WooCommerce webshop fejlesztés egyedi témával és API integrációkkal"
-                  metrics={[
-                    { label: "Konverzió", value: "+340%" },
-                    { label: "LCP", value: "1.2s" },
-                  ]}
-                />
-                <CaseStudyCard
-                  title="SaaS Landing"
-                  client="Tech Startup"
-                  description="React alapú landing page optimalizált CRO és AEO elemekkel"
-                  metrics={[
-                    { label: "Lead Generálás", value: "+280%" },
-                    { label: "SEO Score", value: "95/100" },
-                  ]}
-                />
-              </div>
-            </div>
-          </section>
-
-          {/* Services Section */}
-          <section
-            id="services"
-            className="mt-24 max-w-6xl mx-auto relative overflow-hidden"
-          >
-            <div className="absolute inset-0 bg-linear-to-b from-transparent via-[#00B5F1]/5 to-transparent" />
-            <div className="relative z-10">
-              <h2 className="text-4xl font-bold text-text-primary mb-8">
-                Szolgáltatások
-              </h2>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <BentoCard
-                  title="Landing Page"
-                  description="Konverzió-fókuszú landing page-k, amelyek maximalizálják az ügyfélszerzést és a lead generálást"
-                  metric="+300%"
-                  highlight="Konverzió növekedés"
-                />
-                <BentoCard
-                  title="Vállalati Weboldal"
-                  description="Professzionális vállalati weboldalak CMS rendszerrel, amelyek könnyen frissíthetők és skálázhatók"
-                  metric="CMS"
-                  highlight="Könnyen frissíthető"
-                />
-                <BentoCard
-                  title="Webshop"
-                  description="E-kereskedelmi megoldások WooCommerce vagy egyedi fejlesztéssel, biztonságos fizetési integrációkkal"
-                  metric="E-comm"
-                  highlight="Biztonságos fizetés"
-                />
-                <BentoCard
-                  title="Alkalmazás"
-                  description="Web alapú alkalmazások és SaaS platformok fejlesztése modern technológiákkal"
-                  metric="SaaS"
-                  highlight="Skálázható"
-                />
-                <BentoCard
-                  title="API Integráció"
-                  description="Külső rendszerek összekapcsolása, API fejlesztés és adatszinkronizáció"
-                  metric="REST"
-                  highlight="Adatszinkronizáció"
-                />
-                <BentoCard
-                  title="Karbantartás"
-                  description="Folyamatos biztonsági frissítések, biztonsági mentések és technikai támogatás"
-                  metric="24/7"
-                  highlight="Biztonságos"
-                />
-              </div>
-            </div>
-          </section>
-
-          {/* Pricing Section */}
-          <section
-            id="pricing"
-            className="mt-24 max-w-6xl mx-auto relative overflow-hidden"
-          >
-            <div className="absolute inset-0 bg-linear-to-b from-transparent via-[#00B5F1]/5 to-transparent" />
-            <div className="relative z-10">
-              <h2 className="text-4xl font-bold text-text-primary mb-8">
-                Árazás
-              </h2>
-              <PricingTable
-                tiers={[
-                  {
-                    id: "landing",
-                    name: "Landing Page",
-                    description:
-                      "Konverzió-fókuszú landing page 1-2 hét alatt (webspecifikáció kialakítással)",
-                    features: [
-                      "Webspecifikáció kialakítás és konzultáció",
-                      "Modern React/Next.js fejlesztés",
-                      "Mobilbarát és SEO-optimalizált",
-                      "Konverzió-optimalizált CTA elemek",
-                      "Google Analytics és Search Console integráció",
-                      "1 hónap karbantartás",
-                    ],
-                    ctaText: "Egyedi árajánlat kérése",
-                    ctaLink: "/kapcsolat",
-                  },
-                  {
-                    id: "corporate",
-                    name: "Vállalati Weboldal",
-                    description:
-                      "Professzionális vállalati weboldal 2-4 hét alatt (webspecifikáció kialakítással)",
-                    features: [
-                      "Webspecifikáció kialakítás és konzultáció",
-                      "CMS rendszer (WordPress vagy Next.js)",
-                      "Testreszabott design és branding",
-                      "Bővíthető és skálázható",
-                      "Biztonsági optimalizálás",
-                      "SEO és AEO beállítások",
-                      "3 hónap karbantartás",
-                    ],
-                    highlighted: true,
-                    ctaText: "Egyedi árajánlat kérése",
-                    ctaLink: "/kapcsolat",
-                  },
-                  {
-                    id: "ecommerce",
-                    name: "Webshop",
-                    description:
-                      "E-kereskedelmi platform 4-8 hét alatt (webspecifikáció kialakítással)",
-                    features: [
-                      "Webspecifikáció kialakítás és konzultáció",
-                      "WooCommerce vagy egyedi fejlesztés",
-                      "Biztonságos fizetési integráció",
-                      "Raktárkészlet kezelés",
-                      "Automatikus rendelésfeldolgozás",
-                      "SEO optimalizált termékoldalak",
-                      "3 hónap prémium karbantartás",
-                    ],
-                    ctaText: "Egyedi árajánlat kérése",
-                    ctaLink: "/kapcsolat",
-                  },
-                ]}
-                title="Egyedi árajánlat kérése"
-                description="Minden projekt egyedi igények alapján kerül árazásra. Kérj személyre szabott árajánlatot."
-              />
-            </div>
-          </section>
-
-          {/* Benefits Section */}
-          <section
-            id="benefits"
-            className="mt-24 max-w-4xl mx-auto relative overflow-hidden"
-          >
-            <div className="absolute inset-0 bg-linear-to-b from-transparent via-[#00B5F1]/5 to-transparent" />
-            <div className="relative z-10">
-              <h2 className="text-4xl font-bold text-text-primary mb-8">
-                Miért WebDude?
-              </h2>
-              <div className="space-y-4">
-                <div className="flex items-start gap-4">
-                  <div className="shrink-0 w-8 h-8 bg-[#00B5F1] rounded-full flex items-center justify-center text-bg-base font-bold">
-                    ✓
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-text-primary">
-                      16 éves webfejlesztési tapasztalat
-                    </h3>
-                    <p className="text-slate-400">
-                      WordPress-gyökerektől a modern React megoldásokig — minden
-                      technológiát ismerek és alkalmazok
-                    </p>
-                  </div>
+            
+            <div className="space-y-6">
+              {faqs.map((faq, index) => (
+                <div key={index} className="bg-slate-900/80 backdrop-blur-md border border-white/5 rounded-2xl p-6 hover:border-[#00B5F1]/30 transition-colors">
+                  <h3 className="text-lg font-semibold text-[#00B5F1] mb-3">
+                    {faq.question}
+                  </h3>
+                  <p className="text-slate-400 text-sm leading-relaxed">
+                    {faq.answer}
+                  </p>
                 </div>
-                <div className="flex items-start gap-4">
-                  <div className="shrink-0 w-8 h-8 bg-[#00B5F1] rounded-full flex items-center justify-center text-bg-base font-bold">
-                    ✓
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-text-primary">
-                      Konverzió-fókuszú fejlesztés
-                    </h3>
-                    <p className="text-slate-400">
-                      Nem csak szép weboldalakat készítek — olyan digitális
-                      eszközöket, amelyek ügyfeleket szereznek
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="shrink-0 w-8 h-8 bg-[#00B5F1] rounded-full flex items-center justify-center text-bg-base font-bold">
-                    ✓
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-text-primary">
-                      SEO és AEO optimalizálás
-                    </h3>
-                    <p className="text-slate-400">
-                      Minden weboldal strukturált adatokkal és optimalizált
-                      metatagokkal kerül kiadásra
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="shrink-0 w-8 h-8 bg-[#00B5F1] rounded-full flex items-center justify-center text-bg-base font-bold">
-                    ✓
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-text-primary">
-                      Mobilbarát és reszponzív
-                    </h3>
-                    <p className="text-slate-400">
-                      Minden weboldal optimalizált minden eszközre — mobil,
-                      tablet és desktop
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="shrink-0 w-8 h-8 bg-[#00B5F1] rounded-full flex items-center justify-center text-bg-base font-bold">
-                    ✓
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-text-primary">
-                      Gyors és megbízható
-                    </h3>
-                    <p className="text-slate-400">
-                      Core Web Vitals fókuszú fejlesztés, biztosított gyors
-                      betöltési idő és megbízható működés
-                    </p>
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
-          </section>
+          </div>
+        </section>
 
-          {/* FAQ Section */}
-          <section
-            id="faq"
-            className="mt-24 max-w-4xl mx-auto relative overflow-hidden"
-          >
-            <div className="absolute inset-0 bg-linear-to-b from-transparent via-[#00B5F1]/5 to-transparent" />
-            <div className="relative z-10">
-              <h2 className="text-4xl font-bold text-text-primary mb-8">
-                Gyakori kérdések
-              </h2>
-              <div className="space-y-6">
-                {FAQ.map((item, i) => (
-                  <div
-                    key={i}
-                    className="bg-transparent border border-slate-700/60 p-6 rounded-lg"
-                  >
-                    <h3 className="text-lg font-semibold text-[#00B5F1] mb-2">
-                      {item.q}
-                    </h3>
-                    <p className="text-slate-400">{item.a}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-
-          {/* CTA Section */}
-          <section
-            id="cta"
-            className="mt-24 text-center relative overflow-hidden"
-          >
-            <div className="absolute inset-0 bg-linear-to-b from-transparent via-[#00B5F1]/5 to-transparent" />
-            <div className="relative z-10">
-              <div className="bg-transparent border border-slate-700/60 p-16 rounded-2xl">
-                <h2 className="text-5xl font-bold text-text-primary mb-6">
-                  Készen állsz a projekt kezdetére?
-                </h2>
-                <p className="text-xl text-slate-400 mb-8">
-                  Kérj ingyenes konzultációt, és együtt találjuk meg a
-                  legmegfelelőbb technológiai megoldást a te projektjeidhez.
-                </p>
-                <Button variant="primary" href="/kapcsolat">
-                  Kérj ingyenes konzultációt
-                </Button>
-              </div>
-            </div>
-          </section>
-        </div>
+        {/* ── CTA ── */}
+        <section className="py-32 text-center relative z-10">
+          <div className="max-w-2xl mx-auto px-6">
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+              Indítsuk el az <span className="text-[#00B5F1] italic">új weboldaladat!</span>
+            </h2>
+            <p className="text-slate-400 mb-10 text-lg">
+              Minden projekt egy ingyenes, kötelezettségmentes konzultációval kezdődik, ahol megbeszéljük a részleteket.
+            </p>
+            <Link
+              href="/kapcsolat"
+              className="inline-flex items-center gap-3 px-8 py-4 rounded-full font-bold text-slate-950 bg-linear-to-r from-[#00B5F1] to-[#5B21B6] hover:shadow-[0_8px_32px_rgba(0,181,241,0.35)] hover:scale-105 transition-all duration-300"
+            >
+              Egyedi árajánlat kérése <ArrowRight className="w-5 h-5" />
+            </Link>
+          </div>
+        </section>
       </div>
     </>
   );

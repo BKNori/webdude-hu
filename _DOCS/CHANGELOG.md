@@ -11,6 +11,23 @@
 
 ---
 
+## [PHASE 2 / BATCH 2: LANDING OLDALAK CRO & SEO] — 2026-09-22 — Weboldal készítés, Webshop fejlesztés & Grafikai tervezés oldalak (COMPLETE)
+
+- **Zéró Fix Ár Szabály:** A `PricingTable` megmaradt a funkciók transzparens összehasonlítására (Start, Pro, Prémium csomagok), de a fix "Ft" alapú árak törlésre kerültek, helyüket átvette a személyre szabott "Egyedi árajánlat alapján" megközelítés. Minden gomb egyedi ajánlatkérésre navigál.
+- **Kék-Lila v7.0 Véglegesítés:** Száműzésre került az amber/cyber-arany ezekről a landing oldalakról is (színek: `slate-950`, cián/lila gradiens, luminous glassmorphism hover effektek).
+- **Server Component optimalizáció & JSON-LD:** A `page.tsx` fájlok továbbra is SSR fókuszúak. A JSON-LD generálás (Service és FAQPage) XSS védelemmel (`.replace(/</g, '\\u003c')`) történik.
+- **Weboldal készítés oldal (`/szolgaltatasok/weboldal-keszites`):**
+  - Fókuszban a konverzió: "Weboldal készítés, ami ügyfeleket hoz".
+  - E-E-A-T (Balog Norbert, 26 év vizuális múlt) hangsúlyozása.
+- **Webshop fejlesztés oldal (`/szolgaltatasok/webshop-fejlesztes`):**
+  - "Webshop készítés, ami ténylegesen elad" főüzenet. 
+  - Kiemelt figyelem a zökkenőmentes pénztár, a sebesség és az elhagyott kosár kezelésére.
+- **Grafikai tervezés oldal (`/szolgaltatasok/grafikai-tervezes`):**
+  - Egységes arculatépítésre helyezett fókusz ("Grafikai tervezés, amely felismerhetővé teszi a márkádat").
+  - Vector alapú logó átadás és UI/UX drótváz koncepciók hangsúlyozása.
+
+---
+
 ## [PHASE 2 / BATCH 1: LANDING OLDALAK CRO & SEO] — 2026-09-22 — WordPress Fejlesztés & SEO Optimalizálás oldalak (COMPLETE)
 
 - **Kék-Lila v7.0 implementáció:** Száműzésre került az amber/cyber-arany a landing oldalakról (színek: `slate-950`, cián/lila gradiens), tisztán hű maradva az új vizuális identitáshoz.
