@@ -7,7 +7,7 @@ import { works as staticWorks } from "@/data/works";
 export const revalidate = 3600; // 1 órás ISR gyorsítótárazás
 
 export const metadata: Metadata = {
-  title: "Referenciák & Esettanulmányok | WebDude | Prémium Webfejlesztés",
+  title: "Referenciák & Esettanulmányok | WebDude",
   description:
     "Valós ügyféleredmények, konverzió-optimalizált Next.js weboldalak és egyedi digitális rendszerek. 26 év tapasztalat, mérhető növekedés.",
   keywords:
@@ -16,9 +16,9 @@ export const metadata: Metadata = {
     canonical: "https://webdude.hu/munkak",
   },
   openGraph: {
-    title: "Referenciák & Esettanulmányok | WebDude | Prémium Webfejlesztés",
+    title: "Referenciák & Esettanulmányok | WebDude",
     description:
-      "Nézd meg a valós üzleti eredményeket hozó Next.js, WordPress és egyedi webfejlesztési projektjeimet.",
+      "Valós ügyféleredmények, konverzió-optimalizált Next.js weboldalak és egyedi digitális rendszerek. 26 év tapasztalat, mérhető növekedés.",
     url: "https://webdude.hu/munkak",
     siteName: "WebDude",
     images: [
@@ -34,24 +34,24 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Referenciák & Esettanulmányok | WebDude | Prémium Webfejlesztés",
+    title: "Referenciák & Esettanulmányok | WebDude",
     description:
-      "Nézd meg a valós üzleti eredményeket hozó Next.js, WordPress és egyedi webfejlesztési projektjeimet.",
+      "Valós ügyféleredmények, konverzió-optimalizált Next.js weboldalak és egyedi digitális rendszerek. 26 év tapasztalat, mérhető növekedés.",
     images: ["/og/webdude-portfolio-og.jpg"],
   },
 };
 
-// JSON-LD: CollectionPage + ItemList az AEO (Answer Engine Optimization) szamara
+// JSON-LD: CollectionPage + ItemList sémák az AEO / keresők számára XSS védelemmel
 const portfolioSchema = {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
   name: "Referenciák & Esettanulmányok | WebDude",
   description:
-    "Valós ügyféleredmények, konverzió-optimalizált Next.js weboldalak és egyedi digitális rendszerek. 26+ év grafikai és 16+ év webfejlesztői tapasztalat.",
+    "Valós ügyféleredmények, konverzió-optimalizált Next.js weboldalak és egyedi digitális rendszerek. 26 év tapasztalat, mérhető növekedés.",
   url: "https://webdude.hu/munkak",
-  isPartOf: { "@id": "https://webdude.hu/#organization" },
   mainEntity: {
     "@type": "ItemList",
+    numberOfItems: staticWorks.length,
     itemListElement: staticWorks.map((work, i) => ({
       "@type": "ListItem",
       position: i + 1,
@@ -63,7 +63,7 @@ const portfolioSchema = {
 
 export default async function MunkakPage() {
   return (
-    <div className="min-h-screen bg-bg-base text-text-primary">
+    <div className="min-h-screen bg-slate-950 text-slate-100">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -71,141 +71,122 @@ export default async function MunkakPage() {
         }}
       />
 
-      {/* Scroll Video Hero Section - Kliens molekula */}
+      {/* Scroll Video Hero Section */}
       <PortfolioHero />
 
       {/* Text Content Below Video */}
-      <section className="py-20 bg-bg-surface">
+      <section className="py-20 bg-slate-950 border-b border-slate-800/80">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <div className="inline-block relative pl-6 mb-8">
             <span className="text-xs uppercase font-black tracking-[0.3em] text-[#00B5F1] mb-2 block">
-              Referenciák
+              Referenciák & Portfólió
             </span>
-            <div className="absolute left-0 top-0 w-1 h-6 bg-[#00B5F1]" />
+            <div className="absolute left-0 top-0 w-1 h-6 bg-linear-to-b from-[#00B5F1] to-[#5B21B6]" />
           </div>
 
-          <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold font-sans text-text-primary leading-tight tracking-tight mb-6">
-            Eredmények, nem csak{" "}
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold font-sans text-white leading-tight tracking-tight mb-6">
+            Eredményorientált{" "}
             <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6] italic pr-4">
-              Dizájn
+              webes megoldások
             </span>
           </h1>
 
-          <p className="text-lg md:text-xl text-slate-400 max-w-lg leading-relaxed mb-8 mx-auto tracking-wide font-medium">
-            Minden projekt egy egyedi kihívás, amire kreatív és technológiai
-            választ adtam. Nézd meg a sikertörténeteket!
+          <p className="text-lg md:text-xl text-slate-400 max-w-xl leading-relaxed mb-8 mx-auto tracking-wide font-medium">
+            Minden projekt egy egyedi üzleti és vizuális kihívás. Nem sablonokat másolok: egyedi, konverzióra és sebességre tervezett felületeket építek.
           </p>
 
           <Link
             href="/kapcsolat"
-            className="px-8 py-4 bg-linear-to-r from-[#00B5F1] to-[#5B21B6] hover:from-[#5B21B6] hover:to-[#5B21B6] text-slate-950 rounded-full font-bold hover:scale-105 active:scale-95 transition-transform duration-300 shadow-[0_8px_24px_rgba(0, 181, 241,0.3)] hover:shadow-[0_18px_40px_rgba(0, 181, 241,0.4)] min-h-11 min-w-11 inline-block tracking-wide"
+            className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-linear-to-r from-[#075985] to-[#5B21B6] hover:from-[#0369a1] hover:to-[#6d28d9] text-white rounded-xl font-bold transition-all duration-300 shadow-lg shadow-sky-950/50 hover:scale-105 active:scale-95"
           >
-            Kapcsolat
+            Egyedi árajánlat kérése
           </Link>
         </div>
       </section>
 
       {/* Stats Section */}
-      <section className="py-24 bg-bg-surface border-y border-slate-800 relative overflow-hidden">
-        {/* Cyber-Arany mesh grid */}
+      <section className="py-24 bg-slate-900/40 border-b border-slate-800/80 relative overflow-hidden">
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 opacity-70 mask-[radial-gradient(ellipse_at_center,black,transparent_78%)]"
+          className="pointer-events-none absolute inset-0 opacity-40 mask-[radial-gradient(ellipse_at_center,black,transparent_78%)]"
           style={{
             backgroundImage:
-              "linear-gradient(to right, rgba(0, 181, 241,0.07) 1px, transparent 1px), linear-gradient(to bottom, rgba(0, 181, 241,0.07) 1px, transparent 1px)",
-            backgroundSize: "56px 56px",
+              "linear-gradient(to right, rgba(0, 181, 241,0.08) 1px, transparent 1px), linear-gradient(to bottom, rgba(0, 181, 241,0.08) 1px, transparent 1px)",
+            backgroundSize: "48px 48px",
           }}
         />
-        <div className="max-w-6xl mx-auto px-6">
+        <div className="max-w-6xl mx-auto px-6 relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-sans text-text-primary leading-tight tracking-tight mb-4">
-              Számok, amik{" "}
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-sans text-white leading-tight tracking-tight mb-4">
+              Mérhető{" "}
               <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6] italic">
-                számítanak
+                eredmények
               </span>
             </h2>
             <p className="text-lg text-slate-400 max-w-2xl mx-auto">
-              Valós üzleti eredmények, amiket a projektekkel értünk el
+              Valós üzleti eredmények, amelyeket a partnereimmel közösen értünk el
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-slate-950/80 backdrop-blur-2xl p-10 transition-colors duration-300 hover:border-sky-500/40 hover:shadow-[0_0_60px_-14px_rgba(0, 181, 241,0.55)]">
-              <div
-                aria-hidden="true"
-                className="pointer-events-none absolute inset-x-10 top-0 h-px bg-linear-to-r from-transparent via-[#00B5F1]/70 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-              />
-              <span className="relative text-6xl font-black font-serif block mb-4 text-text-primary group-hover:text-[#00B5F1] tracking-tight transition-colors duration-300">
+            <div className="group relative overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/80 backdrop-blur-xl p-10 transition-colors duration-300 hover:border-[#00B5F1]/50 hover:shadow-[0_0_40px_rgba(0,181,241,0.15)]">
+              <span className="text-5xl sm:text-6xl font-black block mb-4 text-white group-hover:text-[#00B5F1] tracking-tight transition-colors duration-300">
                 200+
               </span>
-              <p className="relative text-sm uppercase tracking-[0.2em] font-bold text-slate-400">
-                Projekt Készítve
+              <p className="text-xs uppercase tracking-[0.2em] font-bold text-slate-400">
+                Sikeres Projekt
               </p>
             </div>
-            <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-slate-950/80 backdrop-blur-2xl p-10 transition-colors duration-300 hover:border-sky-500/40 hover:shadow-[0_0_60px_-14px_rgba(0, 181, 241,0.55)]">
-              <div
-                aria-hidden="true"
-                className="pointer-events-none absolute inset-x-10 top-0 h-px bg-linear-to-r from-transparent via-[#00B5F1]/70 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-              />
-              <span className="relative text-6xl font-black font-serif block mb-4 text-text-primary group-hover:text-[#00B5F1] tracking-tight transition-colors duration-300">
-                500+
+            <div className="group relative overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/80 backdrop-blur-xl p-10 transition-colors duration-300 hover:border-[#00B5F1]/50 hover:shadow-[0_0_40px_rgba(0,181,241,0.15)]">
+              <span className="text-5xl sm:text-6xl font-black block mb-4 text-white group-hover:text-[#00B5F1] tracking-tight transition-colors duration-300">
+                26 Év
               </span>
-              <p className="relative text-sm uppercase tracking-[0.2em] font-bold text-slate-400">
-                Lead Generált
+              <p className="text-xs uppercase tracking-[0.2em] font-bold text-slate-400">
+                Szakmai Tapasztalat
               </p>
             </div>
-            <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-slate-950/80 backdrop-blur-2xl p-10 transition-colors duration-300 hover:border-sky-500/40 hover:shadow-[0_0_60px_-14px_rgba(0, 181, 241,0.55)]">
-              <div
-                aria-hidden="true"
-                className="pointer-events-none absolute inset-x-10 top-0 h-px bg-linear-to-r from-transparent via-[#00B5F1]/70 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-              />
-              <span className="relative text-6xl font-black font-serif block mb-4 text-text-primary group-hover:text-[#00B5F1] tracking-tight transition-colors duration-300">
-                +150%
+            <div className="group relative overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/80 backdrop-blur-xl p-10 transition-colors duration-300 hover:border-[#00B5F1]/50 hover:shadow-[0_0_40px_rgba(0,181,241,0.15)]">
+              <span className="text-5xl sm:text-6xl font-black block mb-4 text-white group-hover:text-[#00B5F1] tracking-tight transition-colors duration-300">
+                90+
               </span>
-              <p className="relative text-sm uppercase tracking-[0.2em] font-bold text-slate-400">
-                Konverzió Növekedés
+              <p className="text-xs uppercase tracking-[0.2em] font-bold text-slate-400">
+                Átlagos PageSpeed Pont
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="max-w-6xl mx-auto px-6 relative z-10 py-20">
+      {/* Bento Grid: Projects */}
+      <section className="max-w-6xl mx-auto px-6 relative z-10 py-24">
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-sans text-text-primary leading-tight tracking-tight mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-sans text-white leading-tight tracking-tight mb-4">
             Kiemelt{" "}
             <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6] italic">
-              Projektek
+              munkák & esettanulmányok
             </span>
           </h2>
           <p className="text-lg text-slate-400 max-w-2xl mx-auto">
-            Válogatás a legfrissebb és legérdekesebb munkáimból
+            Válogatás a legfrissebb webfejlesztési, webshop és arculati projektjeimből
           </p>
         </div>
         <PortfolioGrid projects={staticWorks} />
 
         {/* CTA Section */}
-        <section className="mt-20 text-center bg-bg-surface border-t border-slate-800 py-40 relative overflow-hidden">
-          <div className="max-w-6xl mx-auto px-6 relative z-10">
-            <div className="max-w-3xl mx-auto space-y-10">
-              <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold font-sans text-text-primary leading-tight tracking-tight">
-                Készen állsz a{" "}
-                <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6] italic pr-4">
-                  következő
-                </span>{" "}
-                szintre?
-              </h2>
-              <p className="text-lg md:text-xl text-slate-400 max-w-lg leading-relaxed mx-auto tracking-wide font-medium">
-                Hogyan tudnám a te vállalkozásodat is a digitális élvonalba
-                repíteni? Beszéljük meg a részleteket!
-              </p>
-              <Link
-                href="/kapcsolat"
-                className="inline-block px-10 py-5 bg-linear-to-r from-[#00B5F1] to-[#5B21B6] hover:from-[#5B21B6] hover:to-[#5B21B6] text-slate-950 rounded-full font-bold text-lg shadow-[0_8px_24px_rgba(0, 181, 241,0.3)] hover:shadow-[0_18px_40px_rgba(0, 181, 241,0.4)] hover:scale-105 active:scale-95 transition-all duration-300 tracking-wide"
-              >
-                Ajánlatot kérek →
-              </Link>
-            </div>
+        <section className="mt-24 text-center rounded-3xl bg-slate-900/60 border border-slate-800 py-24 px-6 relative overflow-hidden">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-linear-to-br from-[#00B5F1]/10 to-purple-600/10 blur-[120px] pointer-events-none" />
+          <div className="max-w-3xl mx-auto space-y-8 relative z-10">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight">
+              Készen állsz egy modern, eladásorientált weboldalra?
+            </h2>
+            <p className="text-lg text-slate-300 max-w-xl mx-auto leading-relaxed">
+              Beszéljük át az elképzeléseidet, és készítek számodra egy kötelezettségmentes, egyedi árajánlatot.
+            </p>
+            <Link
+              href="/kapcsolat"
+              className="inline-flex items-center justify-center px-10 py-4 bg-linear-to-r from-[#075985] to-[#5B21B6] hover:from-[#0369a1] hover:to-[#6d28d9] text-white rounded-xl font-bold text-base shadow-xl shadow-sky-950/60 transition-all duration-300 hover:scale-105 active:scale-95"
+            >
+              Egyedi árajánlat kérése
+            </Link>
           </div>
         </section>
       </section>

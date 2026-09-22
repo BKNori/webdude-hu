@@ -9,6 +9,28 @@
 - **Fontosság:** Kiemelt stratégiai feladat
 - **Megjegyzés:** Ez a feladat a CHANGELOG-ban van rögzítve jövőbeli implementációra
 
+## [PHASE 4: GLOBÁLIS BIZALOMÉPÍTŐ ÉS E-E-A-T ALAPOLDALAK] — 2026-09-22 — Kapcsolat, Munkák (Referenciák), Szia Norbi vagyok (COMPLETE)
+
+- **Kék-Lila v7.0 Vizuális Harmónia:** Minden oldalon a prémium `slate-950` háttér, `from-[#075985] to-[#5B21B6]` gradiens gombok és a kék/lila akcentusok dominálnak. Sárga/amber/gold maradványok teljesen felszámolva.
+- **Server Component (RSC) Architektúra:** Minden `page.tsx` tiszta szerverkomponens. Az interaktív és animációs részek (pl. Timeline, AboutContentClient, PortfolioHero) önálló, apró klienskomponensekbe vannak szervezve.
+- **XSS Védelem:** Minden beágyazott JSON-LD séma szigorúan a `.replace(/</g, '\\u003c')` szűrővel van ellátva.
+- **Kapcsolat oldal (`/kapcsolat`):**
+  - Title: "Kapcsolat & Konzultáció | WebDude | Közvetlen Megbeszélés"
+  - H1: "Indítsuk el a projektedet!" (szigorúan egyesszám).
+  - JSON-LD: `ContactPage` és `ProfessionalService` sémák hivatalos elérhetőségekkel (`hello@webdude.hu`, `+36 70 323 8003`, Kecskemét).
+- **Munkák oldal (`/munkak`):**
+  - Title: "Referenciák & Esettanulmányok | WebDude"
+  - H1: "Eredményorientált webes megoldások"
+  - Teljes Kék-Lila v7.0 bento grid stílus, konverziós statisztikák (200+ projekt, 26 év tapasztalat, 90+ PageSpeed).
+  - JSON-LD: `CollectionPage` és `ItemList` sémák valamennyi statikus projekt indexelésével.
+- **Szia Norbi vagyok oldal (`/szia-norbi-vagyok`):**
+  - Title: "Balog Norbert – WebDude | 26 év tapasztalat"
+  - H1: "Nem egy ügynökséggel, hanem velem dolgozol"
+  - Erős E-E-A-T pozicionálás: nyomdaipari gyökerek, 26 év vizuális múlt, GAMF mérnök-informatikai alapok, modern Next.js és AI fejlesztés.
+  - JSON-LD: `ProfilePage` és `Person` sémák, szoros összekapcsolás a WebDude szervezettel és szakmai készségekkel.
+
+---
+
 ## [PHASE 3 / BATCH 1: ELSŐ PRIORITÁS LANDING OLDALAK & LOKÁLIS SEO] — 2026-09-22 — WordPress weboldal készítés, Arculattervezés & Weboldal készítés Kecskemét (COMPLETE)
 
 - **Zéró Fix Ár Szabály betartása:** Mindhárom oldalon a csomag-struktúra transzparens módon mutatja be a funkcionalitást (Start, Pro, Prémium/Enterprise), kizárólag "Egyedi árajánlat kérése" CTA-val és fix forintárak nélkül.
