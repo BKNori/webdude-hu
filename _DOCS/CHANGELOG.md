@@ -9,6 +9,22 @@
 - **Fontosság:** Kiemelt stratégiai feladat
 - **Megjegyzés:** Ez a feladat a CHANGELOG-ban van rögzítve jövőbeli implementációra
 
+## [PHASE 3 / BATCH 1: ELSŐ PRIORITÁS LANDING OLDALAK & LOKÁLIS SEO] — 2026-09-22 — WordPress weboldal készítés, Arculattervezés & Weboldal készítés Kecskemét (COMPLETE)
+
+- **Zéró Fix Ár Szabály betartása:** Mindhárom oldalon a csomag-struktúra transzparens módon mutatja be a funkcionalitást (Start, Pro, Prémium/Enterprise), kizárólag "Egyedi árajánlat kérése" CTA-val és fix forintárak nélkül.
+- **Kék-Lila v7.0 Vizuális Nyelv:** Kizárólag a `slate-950` háttér, `from-[#075985] to-[#5B21B6]` gradiens gombok és cián/lila luminous hover effektek kerültek felhasználásra. Sárga/amber/gold elemek zéró jelenléte.
+- **Server Component (RSC) & XSS Védelem:** A `page.tsx` fájlok tiszta szerverkomponensek, beágyazott `Metadata` exporttal és `.replace(/</g, '\\u003c')` XSS-védelemmel ellátott JSON-LD struktúrával (`Service`, `FAQPage`, `LocalBusiness`).
+- **WordPress weboldal készítés (`/szolgaltatasok/wordpress-weboldal-keszites`):**
+  - H1: "WordPress weboldal készítés, kompromisszumok nélkül"
+  - E-E-A-T Bento Grid architektúra: 90+ PageSpeed elvárás, felesleges plugin-mentes kód, tiszta Gutenberg admin.
+- **Arculattervezés (`/szolgaltatasok/arculattervezes`):**
+  - H1: "Arculattervezés, amely bizalmat ébreszt"
+  - E-E-A-T hangsúlyozása: 26 év nyomdai és grafikai tervezői rutin, komplett arculati kézikönyv (Brand Book), nyomdakész és digitális formátumok.
+- **LOKÁLIS SEO: Weboldal készítés Kecskemét (`/weboldal-keszites-kecskemet`):**
+  - H1: "Profi weboldal készítés Kecskeméten"
+  - Dedikált konverziós és bizalomépítő szekció: "Személyes találkozó és konzultáció Kecskeméten" (helyi jelenlét, személyes egyeztetés kávé mellett, közvetlen kontaktus Norbival).
+  - Teljes `LocalBusiness` JSON-LD séma `addressLocality: "Kecskemét"`, geo-koordináták és nyitvatartási adatok injektálásával.
+
 ---
 
 ## [PHASE 2 / BATCH 2: LANDING OLDALAK CRO & SEO] — 2026-09-22 — Weboldal készítés, Webshop fejlesztés & Grafikai tervezés oldalak (COMPLETE)

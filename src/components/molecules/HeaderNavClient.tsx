@@ -347,14 +347,14 @@ export default function HeaderNavClient({
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "100%" }}
             transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-0 z-50 flex flex-col h-[100dvh] max-h-[100dvh] w-full overflow-hidden lg:hidden"
+            className="fixed inset-0 z-50 flex flex-col h-dvh max-h-dvh w-full overflow-hidden lg:hidden"
             style={{
               background:
                 "radial-gradient(ellipse 80% 50% at 90% 0%, rgba(0, 181, 241, 0.06) 0%, transparent 70%), radial-gradient(ellipse 60% 40% at 10% 100%, rgba(91, 33, 182, 0.06) 0%, transparent 70%), #020617",
             }}
           >
             {/* Fejléc sáv: logó + X gomb */}
-            <div className="flex items-center justify-between px-5 h-16 border-b border-white/5 flex-shrink-0">
+            <div className="flex items-center justify-between px-5 h-16 border-b border-white/5 shrink-0">
               <Link
                 href="/"
                 onClick={closeMenu}
@@ -629,7 +629,7 @@ export default function HeaderNavClient({
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: 0.25 }}
-              className="flex-shrink-0 px-4 pt-3 pb-6 border-t border-white/5"
+              className="shrink-0 px-4 pt-3 pb-6 border-t border-white/5"
               style={{
                 background:
                   "linear-gradient(to top, #020617 60%, transparent 100%)",
