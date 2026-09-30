@@ -2,6 +2,14 @@
 
 > **AI DIREKTÍVA:** Ez a fájl a rendszer "élő" memóriája. A 03-workflow.md 5. lépése alapján KÖTELEZŐ ezt a fájlt frissítened minden feladat befejezésekor, vagy mielőtt átadod a vezérlést a felhasználónak (Norbinak). Szigorúan tilos új feladatba kezdened, ha az "Aktuális Munkaterület Állapota" szekcióban hibák vagy félbehagyott fájlok vannak!
 
+## Aktuális állapot — 2026-09-30, PortalDashboard szétbontás (7.8.0) lezárva
+
+- **Fő eredmény (2026-09-30):** a `PortalDashboard.tsx` **793 → 194 sor** (300-as limit alá került) 6 új `src/components/organisms/portal/*` szekció-komponensre bontva (PortalHeader, PortalAlerts, PortalWorkflowGrid, PortalWorkflowCard, PortalOnboardingSection, PortalOrdersSection) — mindegyik ≤300 sor. A 7.4.0/7.4.1-ben előkészített, de soha be nem kötött `usePortalSession` + `usePortalData` hookok mostantól a dashboard adatszállítói. Bugfix: a `usePortalData` adatbetöltő effectje csak érvényes `idToken` esetén indul (különben üres tokennel ment egy felesleges Firestore-hívás és hamis hibaüzenet villantott a portál betöltésekor).
+- **QA:** `npx tsc --noEmit` → TSC_EXIT=0; `npm run lint` → LINT_EXIT=0 (0 hiba, 2 előre meglévő warning `HeroSectionNew.tsx`); `npm run build` → BUILD_EXIT=0.
+- **Dokumentáció:** `_DOCS/CHANGELOG.md` `[7.8.0]`, `_DOCS/ARCHITECTURE.md` (6 új organisms sor + hook-leírások), `memory-bank/progress.md`.
+- **Archívum (nem törölt fájl):** `_mentesek/20260929_portalSplit/PortalDashboard.tsx.793.bak` — az eredeti 793 soros változat megőrzésre.
+- **Nyitott (Norbi):** (1) `/portal` auth mögötti manuális smoke test (login, workflow betöltés, Stripe fizetés, jóváhagyás, onboarding, kézbesítés); (2) `useStripePaymentVerification` hook szándékosan nem bekötve (duplikált verifikáció miatt) — ARCHITECTURE-ban dokumentálva.
+
 ## Aktuális állapot — 2026-09-29, Hero háttérkép-láthatóság + Esettanulmány #2 kép + AI Prompt Platform állítás-visszavonás lezárva
 
 - **Fő eredmény (2026-09-29):** a főoldali hero háttérképek jelentősen láthatóbbá téve (`opacity-65`, színvisszaállítás, `bg-slate-950/60` overlay, új bal-oldali szövegvédelmi gradient scrim a WCAG AA megtartásához); a „Nem ígéret — bizonyíték" szekció Esettanulmány #2 kártyája megkapta az `ai-promt-hi-banner-2.webp` képet (HU+EN+defaults); a hero 3. dia jobb oldali mockup-kártyája eltávolítva; a „Nulláról 3 hónap alatt a piac élére" szöveg kigyomlázva minden élő forrásból (3. dia címe: „AI Prompt Platform").
@@ -53,8 +61,9 @@
 - **CI/CD:** a `deploy.bat` kiváltása GitHub Actions workflow-val (hosszú távú).
 
 ## 5. KÖVETKEZŐ ATOMI LÉPÉS (Next Action)
-- 🎯 **Feladat:** `PortalDashboard.tsx` (jelenleg **793 sor**, sérti a 300 soros Atomic Design limitet) szétbontása al-komponensekre: Rendelések, WorkflowChat, Projekt idővonal (Gantt), Vault szekciók.
-- 🛠️ **Érintett fájlok:** `src/components/organisms/PortalDashboard.tsx` → új `src/components/organisms/portal/*` szekció-komponensek; `_docs/ARCHITECTURE.md` regiszter bővítése.
-- 🧪 **Várt kimenet:** Zéró TS hiba, `npm run build` EXIT=0, a portál funkcionalitás regressziómentes, és a `PortalDashboard.tsx` ≤300 sor.
+- 🎯 **Feladat:** `next.config.js` `unoptimized: true` globális beállítás felülvizsgálata + hero LCP finomhangolás. A képoptimalizálás a cPanel-memóriakorlát miatt van kikapcsolva, de a hosting ma már Firebase (Web Frameworks) → a hero 2000×1000 bannerek nyersen, `next/image` optimalizálás nélkül mennek ki (LCP-kockázat, Lighthouse-mutatók).
+- 🛠️ **Érintett fájlok:** `next.config.js`, `src/components/organisms/HeroSectionNew.tsx` (`sizes` attribútumok), esetleges `priority` finomhangolás a fold feletti képeken; `_docs/CHANGELOG.md`.
+- 🧪 **Várt kimenet:** Zéró TS hiba, `npm run build` EXIT=0, és a hero banner képei reszponzív méretekben (AVIF/WebP) kiszolgálva.
+- 📌 **Alternatíva / párhuzamos tételek:** HeroSlider.tsx archiválási döntés (duplikálja a `HeroSectionNew` diavetítését) · Jest konfig-tisztítás (`_mentesek/**` + `e2e/**` kizárása) · `HeroSectionNew.tsx` 2 `exhaustive-deps` warning nullázása (a `--max-warnings 0` CI-hoz kell).
 
 > ⚠️ **JAVÍTÁS (2026-09-20):** ez a fájl korábban **sablon-placeholdereket** (`[pl. ...]`) tartalmazott, amelyek a már lezárt Cycle 3154/3160 munkát nyitott feladatként írták le — ez téves roadmap-irányt okozott. A placeholderek valós, verifikált adatokra cserélve.

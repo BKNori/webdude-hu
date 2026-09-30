@@ -2,8 +2,9 @@
 
 > **AI DIREKTÍVA:** Ez a dokumentum a projekt makro-szintű állapotát (Roadmap) és a minőségbiztosítási (QA) státuszt rögzíti. Ezt a fájlt minden sikeres ciklus (Sprint) lezárása után kötelezően frissítened kell a legújabb validációs eredményekkel és az áthelyezett backlog elemekkel.
 
-## 1. Minőségbiztosítási Státusz (QA Gates) — frissítve: 2026-09-29 (7.7.0 lezárva)
+## 1. Minőségbiztosítási Státusz (QA Gates) — frissítve: 2026-09-30 (7.8.0 lezárva)
 
+- **7.8.0 QA (2026-09-30):** `npx tsc --noEmit` TSC_EXIT=0; `npm run lint` LINT_EXIT=0 (0 hiba, 2 előre meglévő `react-hooks/exhaustive-deps` warning `HeroSectionNew.tsx`); `npm run build` BUILD_EXIT=0. Tartalom: `PortalDashboard.tsx` 793 → 194 sor, 6 új `portal/*` szekció-komponens, Phase 2 hookok (`usePortalSession` + `usePortalData`) életbe léptetése, `usePortalData` idToken-guard bugfix.
 - **7.7.0 QA (2026-09-29):** `npx tsc --noEmit` TSC_EXIT=0; `npm run lint` LINT_EXIT=0 (0 hiba, 2 előre meglévő `react-hooks/exhaustive-deps` warning `HeroSectionNew.tsx`); `npm run build` BUILD_EXIT=0. Tartalom: hero háttérkép-láthatóság (`opacity-65`, `bg-slate-950/60`, bal-oldali WCAG AA scrim), Esettanulmány #2 kép bekötve (HU/EN/defaults), hero 3. dia mockup-kártya eltávolítva, „Nulláról 3 hónap alatt a piac élére" állítás visszavonva (élő forrásból 0 találat).
 - **I18N / EN főoldal QA (2026-09-24):** `[lang]` dinamikus route megszüntetve, natív `/en` route (`src/app/en/page.tsx` + `layout.tsx`) bevezetve; JSON-LD SSOT (`src/lib/structuredData.ts`); locale-aware navigáció; hreflang; új `not-found.tsx` konverziós 404.
 - **7.6.0 QA (2026-09-20):** TSC_EXIT=0; LINT_EXIT=0; BUILD_EXIT=0; 142 útvonal. PortfolioGrid Bento Grid + Electric Cyan, 8/8 `/munkak/[slug]` prerenderelve → 0 regresszió.
@@ -16,6 +17,7 @@
 - **7.0.0 Kék-Lila migráció (2026-09-16):** arany/amber tiltva, CTA `#075985` → `#5B21B6`, akcentus `#7C3AED` fehér szöveggel AAA; záró audit: 0 váratlan cyan-találat (riport: `_mentesek/20260916_amber-migration/_zaras-audit.txt`).
 
 ## 2. Kész / Lezárt Mérföldkövek (Legutóbbiak)
+- ✅ **[7.8.0] (2026-09-30):** `PortalDashboard.tsx` 793 → 194 sor (6 új `portal/*` szekció-komponens) + Phase 2 hookok (`usePortalSession`, `usePortalData`) életbe léptetése; `usePortalData` idToken-guard bugfix.
 - ✅ **[7.7.0] (2026-09-29):** Hero háttérkép-láthatóság + WCAG AA szövegvédelmi scrim; Esettanulmány #2 valós kép; „AI Prompt Platform" állítás-visszavonás.
 - ✅ **[I18N] (2026-09-24):** Angol `/en` főoldal, locale-aware navigáció, JSON-LD SSOT, konverziós 404 (`not-found.tsx`).
 - ✅ **[Phase 5 / Batch 1+2] (2026-09-22):** 8 fájdalompont-fókuszú landing oldal Kék-Lila v7.0-zel, zéró fix ár.
@@ -45,7 +47,7 @@
 
 ## 5. Ismert Technikai Adósságok (Tech Debt)
 Ezekhez a fájlokhoz csak célzott technikai sprint keretében szabad hozzányúlni:
-- ⚠️ **PortalDashboard.tsx:** **793 sor** (2026-09-29; a 7.4.0 Phase 1 óta 878 → 794 → 793), ami sérti az Atomic Design 300 soros limitjét → szétbontás szükséges (Rendelések, WorkflowChat, Projekt idővonal, Vault).
+- ✅ **PortalDashboard.tsx (7.8.0-ban MEGOLDVA):** a 300 soros limit megsértése megszűnt — 194 sor, 6 `src/components/organisms/portal/*` szekció-komponensre bontva; az eredeti 793 soros fájl archívumban (`_mentesek/20260929_portalSplit/PortalDashboard.tsx.793.bak`).
 - ⚠️ **PortfolioGrid.tsx:** `unoptimized` flag felülvizsgálata (a `next.config.js` globális `unoptimized: true`-ja miatt jelenleg minden kép nyersen töltődik); fájlnevek slugosítása a 7.3.0-ban megtörtént.
 - ⚠️ **btshop placeholder SVG-k:** még amber (`#f59e0b`) színt használnak → v7.0 szabálysértés (arany/amber tiltva).
 - ⚠️ **HeroSectionNew.tsx:** 2 db `react-hooks/exhaustive-deps` warning (`SLIDES.length`) — a 0-warning QA-hoz javítandó.

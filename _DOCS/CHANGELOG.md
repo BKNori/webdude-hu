@@ -9,6 +9,26 @@
 - **Fontosság:** Kiemelt stratégiai feladat
 - **Megjegyzés:** Ez a feladat a CHANGELOG-ban van rögzítve jövőbeli implementációra
 
+## [7.8.0] — 2026-09-30 — PORTALDASHBOARD SZÉTBONTÁSA (793 → 194 SOR) + PHASE 2 HOOKOK BEKÖTÉSE (COMPLETE)
+
+- **Cél:** a `PortalDashboard.tsx` (793 sor) 300 soros Atomic Design limit alá szorítása, a 7.4.0-ban (Phase 1) és 7.4.1-ben (Phase 2) előkészített, de **soha be nem kötött** hook-ok tényleges használatba vétele.
+- **Új szekció-komponensek (`src/components/organisms/portal/`, mind `"use client"`, mind ≤300 sor):**
+  - `PortalHeader.tsx` (88 sor) – brand, portál navigáció (Projektek / Műhely / Sablonok), `PortalNotificationBell`, email chip, kijelentkezés gomb.
+  - `PortalAlerts.tsx` (46 sor) – hiba-sáv, siker-sáv, Stripe tranzakció-ellenőrző overlay.
+  - `PortalWorkflowGrid.tsx` (62 sor) – üres állapot vagy a kártyák 2 oszlopos rácsa.
+  - `PortalWorkflowCard.tsx` (236 sor) – státusz-badge, animált haladás, leírás, jegyzetek, Stripe mérföldkő-fizetés, fázis-jóváhagyás, `WorkflowChat`, lábléc.
+  - `PortalOnboardingSection.tsx` (76 sor) – a kifizetett, kitöltetlen add-onok `OnboardingForm`-jai.
+  - `PortalOrdersSection.tsx` (44 sor) – superadmin megrendelés-lista `OrderStatusCard` ráccsal.
+- **Karmester komponens:** `PortalDashboard.tsx` **793 → 194 sor** (kód és markup egy-az-egy, 0 viselkedésváltozás): hook-hívások + szekció-összeállítás. Az eredeti 793 soros fájl megőrizve: `_mentesek/20260929_portalSplit/PortalDashboard.tsx.793.bak` (gitignore-olt archívum, nem törölt fájl).
+- **Phase 2 hookok életbe léptetése:** a `usePortalSession` (auth, jogosultság, superadmin listák, hiba/siker, kijelentkezés) és a `usePortalData` (workflow-k, megrendelések, Stripe fizetés, jóváhagyás, kézbesítés, `formatDate`) mostantól a dashboard adatszállítói. A `onPaymentVerified` callback `useCallback`-tel stabilizálva, hogy a Stripe effekt ne fusson újra minden rendereléskor.
+- **Bugfix a `usePortalData`-ban:** az adatbetöltő effect guardja `!auth || !user` → `!auth || !user || !idToken`. **Miért:** a `usePortalSession` előbb állítja a `user`-t, majd (egy `await` után) az `idToken`-t → a régi logika üres tokennel indított egy Firestore lekérést, ami hamis „Nem sikerült letölteni a workflow-kat" hibaüzenetet villantott fel minden portál-betöltéskor (felesleges olvasás is).
+- **Nem kötöttük be a `useStripePaymentVerification`-t:** a fizetés-visszaigazolás teljes logikája már a `usePortalData` belső effektjében fut (verifying state + hiba/siker + workflow frissítés); mindkettő bekötése duplikált `verifyStripePaymentAction` hívást okozna. Az ARCHITECTURE regiszterben dokumentálva.
+- **Dokumentáció:** `_DOCS/ARCHITECTURE.md` – 6 új organisms sor + `PortalDashboard` frissítés + 3 hook-leírás; `memory-bank/activeContext.md` és `progress.md` szinkron.
+- **Quality Gate:** `npx tsc --noEmit` → **TSC_EXIT=0**; `npm run lint` → **LINT_EXIT=0** (0 hiba; a 2 figyelmeztetés a `HeroSectionNew.tsx` előre meglévő `exhaustive-deps` warningje, változatlan); `npm run build` → **BUILD_EXIT=0**.
+- **Manuális ellenőrzés szükséges (Norbi):** a `/portal` oldal auth mögötti része (bejelentkezés, workflow-k betöltése, Stripe fizetés, fázis-jóváhagyás, onboarding, kézbesítés) — ezt a build nem tudja automatikusan igazolni.
+
+---
+
 ## [7.7.0] — 2026-09-29 — HERO HÁTTÉRKÉP LÁTHATÓSÁG, ESETTANULMÁNY #2 KÉP ÉS AI PROMPT PLATFORM ÁLLÍTÁS VISSZAVONÁSA (COMPLETE)
 
 - **Hero háttérképek fokozott láthatóság (`src/components/organisms/HeroSectionNew.tsx`):**

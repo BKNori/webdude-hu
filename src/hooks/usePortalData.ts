@@ -215,8 +215,10 @@ export function usePortalData({
   }, [user, onPaymentVerified]);
 
   // Adatok egyszeri betöltése bejelentkezés után.
+  // Csak érvényes idToken-nal indítunk lekérést (különben az első, még
+  // token nélküli futtatás felesleges Firestore-hívást és hamis hibaüzenetet okozna).
   useEffect(() => {
-    if (!auth || !user) return;
+    if (!auth || !user || !idToken) return;
 
     let isMounted = true;
     const loadWorkflowsAndOrders = async () => {
