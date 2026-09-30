@@ -1,5 +1,12 @@
 # Changelog
 
+## [7.12.4] — 2026-09-30 — V7.0 BRAND TISZTÍTÁS: AMBER/GOLD ACCENTUSOK ELTÁVOLÍTÁSA (COMPLETE)
+
+- **Érintett komponensek:** `ModernServicesSection.tsx` és `TLDRSection.tsx` auditálva; minden visszamaradt sárga `yellow-400` / `yellow-500` brand akcentus kikerült a háttérekből, glow-okból, szöveggradiensekből, kártya CTA-kból és az elsődleges CTA gombból.
+- **v7.0 color mapping:** a tisztított felületek a globális `--color-brand-primary` (`#00b5f1`), `--color-brand-secondary` (`#7c3aed`), valamint a WCAG-biztos `--color-cta-from` → `--color-cta-to` tokeneket használják; a sötét háttéren szöveges felületeknél megmaradt a világos / Electric Cyan szöveg, a telített CTA gradienseken pedig `text-white`.
+- **Ellenőrzés:** a két állományban a `yellow-*`, `amber-*`, `gold-*` és a legacy arany hex kódok keresése **0 találatot** adott.
+- **QA:** `npx tsc --noEmit` → `0`; `npm run lint -- --max-warnings 0` → `0`; `npm run build` → `0` (157 statikus oldal).
+
 ## [7.12.3] — 2026-09-30 — GLOBAL TAILWIND V4 GRADIENT SWEEP (COMPLETE)
 
 - **No broken windows sweep:** a teljes `src/` könyvtár átvizsgálásra került a visszamaradt Tailwind v3 `bg-gradient-to-*` osztályokra; minden előfordulás a helyes v4-es `bg-linear-to-*` szintaxisra váltott.

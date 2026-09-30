@@ -77,7 +77,7 @@ const services = [
       "Stratégiai márkaépítés, vizuális identitás és teljes körű design rendszer kialakítása.",
     icon: Layout,
     href: "/szolgaltatasok/egyedi-arculattervezes-logo",
-    color: "from-[#00B5F1]/20 to-yellow-500/20",
+    color: "from-brand-primary/20 to-brand-secondary/20",
     iconColor: "text-sky-400",
     benefits: ["Stratégiai tervezés", "Design rendszer", "Márkaépítés"],
   },
@@ -102,8 +102,8 @@ export default function ModernServicesSection() {
       className="py-24 md:py-32 bg-transparent relative overflow-hidden"
     >
       {/* Background Effects */}
-      <div className="absolute inset-0 bg-linear-to-b from-yellow-400/5 via-transparent to-yellow-400/5" />
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-yellow-400/10 rounded-full blur-3xl" />
+      <div className="absolute inset-0 bg-linear-to-b from-brand-primary/5 via-transparent to-brand-secondary/5" />
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-brand-primary/10 rounded-full blur-3xl" />
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl" />
 
       <div className="px-6 lg:px-8 max-w-7xl mx-auto relative z-10">
@@ -129,7 +129,7 @@ export default function ModernServicesSection() {
           </motion.div>
           <h2 className="text-4xl md:text-6xl font-bold text-text-primary mb-6">
             Modern Megoldások,{" "}
-            <span className="text-transparent bg-clip-text bg-linear-to-r from-yellow-400 to-[#5B21B6]">
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-brand-primary to-brand-secondary">
               Valós Eredmények
             </span>
           </h2>
@@ -235,7 +235,7 @@ export default function ModernServicesSection() {
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       whileHover={{ opacity: 1, y: 0 }}
-                      className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-linear-to-r from-yellow-400/10 to-[#00B5F1]/10 border border-[#00B5F1]/20 text-[#00B5F1] text-sm font-bold hover:bg-linear-to-r hover:from-yellow-400 hover:to-[#5B21B6] hover:text-slate-950 transition-all duration-300"
+                      className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-linear-to-r from-brand-primary/10 to-brand-secondary/10 border border-[#00B5F1]/20 text-[#00B5F1] text-sm font-bold hover:bg-linear-to-r hover:from-cta-from hover:to-cta-to hover:text-white transition-all duration-300"
                     >
                       <Zap className="w-4 h-4" />
                       <span>Részletek</span>
@@ -256,7 +256,7 @@ export default function ModernServicesSection() {
           className="text-center"
         >
           <div className="bg-bg-surface/90 backdrop-blur-xl border border-[#00B5F1]/20 rounded-3xl p-12 relative overflow-hidden shadow-xl shadow-slate-200/50">
-            <div className="absolute inset-0 bg-linear-to-br from-yellow-400/5 via-[#00B5F1]/5 to-yellow-400/5" />
+            <div className="absolute inset-0 bg-linear-to-br from-brand-secondary/5 via-brand-primary/5 to-brand-secondary/5" />
             <div className="relative z-10">
               <motion.div
                 initial={{ scale: 0.9, opacity: 0 }}
@@ -272,7 +272,7 @@ export default function ModernServicesSection() {
               </motion.div>
               <h3 className="text-3xl md:text-4xl font-bold text-text-primary mb-4">
                 Készítsünk Együtt Valami
-                <span className="text-transparent bg-clip-text bg-linear-to-r from-yellow-400 to-[#5B21B6]">
+                <span className="text-transparent bg-clip-text bg-linear-to-r from-brand-primary to-brand-secondary">
                   {" "}
                   Hatalmasat
                 </span>
@@ -285,7 +285,7 @@ export default function ModernServicesSection() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
                   href="/szolgaltatasok"
-                  className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-linear-to-r from-yellow-400 to-[#5B21B6] text-slate-950 font-bold hover:shadow-lg hover:shadow-[#00B5F1]/30 transition-all duration-300 shadow-lg shadow-[#00B5F1]/20 hover:scale-105"
+                  className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-linear-to-r from-cta-from to-cta-to text-white font-bold hover:shadow-lg hover:shadow-[#00B5F1]/30 transition-all duration-300 shadow-lg shadow-[#00B5F1]/20 hover:scale-105"
                 >
                   <span>Összes Szolgáltatás</span>
                   <ArrowRight className="w-5 h-5" />

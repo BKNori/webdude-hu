@@ -94,6 +94,7 @@
 - **Commit / Deploy:** NEM történt — kizárólag Norbi hatásköre.
 
 ## 3. Legutóbbi Elvégzett Lépések (Sync)
+- **2026-09-30 — [7.12.4] v7.0 brand cleanup:** `ModernServicesSection` és `TLDRSection` auditálva; minden visszamaradt sárga `yellow-400` / `yellow-500` akcentus eltávolítva, és `brand-primary` / `brand-secondary` / `cta-from → cta-to` tokenekre cserélve. A telített CTA-k `text-white` felirattal készülnek a WCAG kontraszt érdekében. QA: `tsc` / `lint --max-warnings 0` / `build` → `0`.
 - **2026-09-30 — [7.12.3] Tailwind global gradient sweep:** a teljes `src/` állományban a `bg-gradient-to-*` osztályok `bg-linear-to-*` értékekre cserélve; **11 fájl / 18 sor**, `findstr` keresés → **0 találat**. QA: `tsc` / `lint --max-warnings 0` / `build` → `0`.
 - **2026-09-30 — [7.12.2] diagnostics cleanup:** `smoke-test-gallery.js` TypeScript suppression és `--help` támogatás; `PortfolioGrid` és `BtshopCaseStudy` Tailwind v4 class javítások; VS Code Markdown reference-link false positivek kikapcsolása. QA: `tsc` / `lint --max-warnings 0` / `build` → `0`.
 - **2026-09-21 — [WCAG AA a11y kör]:** 52 fájl landmark javítás (beágyazott `<main>` → `<div>`); új `useFocusTrap` hook (`initialFocusRef` támogatással) + 8 unit teszt; mobil menü és `DocumentPreviewModal` fókuszcsapda/ESC/ARIA; egységes Electric Cyan `focus-visible` gyűrűk; 8 kontraszt-hiba javítva; új kontraszt-audit szkript (0 hiba / 303 fájl); `eslint.config.mjs` — `_apply-seo.js` ignore, így a `--max-warnings 0` 0-ra jön ki; `tsc` blokkoló hiba (TS17001) javítva.
