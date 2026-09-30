@@ -4,13 +4,21 @@ import React from "react";
 
 interface FooterContactProps {
   className?: string;
+  /** Szekciócím (i18n szótárból, fallback: magyar). */
+  title?: string;
+  /** Látható cím (i18n szótárból, fallback: magyar). */
+  address?: string;
 }
 
-export default function FooterContact({ className = "" }: FooterContactProps) {
+export default function FooterContact({
+  className = "",
+  title = "Elérhetőség",
+  address = "Kecskemét, Magyarország",
+}: FooterContactProps) {
   return (
     <div className={className}>
       <h3 className="text-text-primary font-bold mb-4 uppercase tracking-wider text-sm">
-        Elérhetőség
+        {title}
       </h3>
       <ul className="space-y-3">
         <li className="text-slate-400 text-sm">
@@ -29,9 +37,7 @@ export default function FooterContact({ className = "" }: FooterContactProps) {
             hello@webdude.hu
           </a>
         </li>
-        <li className="text-slate-400 text-sm">
-          Kecskemét, Magyarország
-        </li>
+        <li className="text-slate-400 text-sm">{address}</li>
       </ul>
     </div>
   );

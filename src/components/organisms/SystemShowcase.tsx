@@ -4,7 +4,7 @@ import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 import { Search, Brain, Code2, Rocket, ArrowRight } from "lucide-react";
 
-const steps = [
+const STEP_DEFAULTS = [
   {
     id: "audit",
     step: "01",
@@ -47,7 +47,19 @@ const steps = [
   },
 ];
 
-export default function SystemShowcase() {
+import { SystemContent } from "@/types/dictionary";
+
+interface SystemShowcaseProps {
+  /** Nyelvi tartalom a szótárból (HU/EN). */
+  content: SystemContent;
+}
+
+export default function SystemShowcase({ content }: SystemShowcaseProps) {
+  // Nyelvi szövegek a szótárból; a HU vizuális tokenek (ikon, szín) maradnak.
+  const steps = STEP_DEFAULTS.map((step, index) => ({
+    ...step,
+    ...(content.steps[index] ?? {}),
+  }));
   const sectionRef = useRef<HTMLElement>(null);
 
   const { scrollYProgress } = useScroll({
@@ -62,7 +74,7 @@ export default function SystemShowcase() {
     <section
       ref={sectionRef}
       className="relative py-24 md:py-32 bg-bg-base overflow-hidden"
-      aria-label="Munkafolyamat bemutató"
+      aria-label={content.ariaLabel}
     >
       {/* Háttér effekt */}
       <div
@@ -94,19 +106,18 @@ export default function SystemShowcase() {
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#00B5F1]/10 border border-[#00B5F1]/20 mb-6">
             <span className="text-[#00B5F1] text-xs font-bold uppercase tracking-widest">
-              A rendszer, nem a személyem
+              {content.eyebrow}
             </span>
           </div>
           <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-white mb-4 leading-tight">
-            Hogyan születik egy{" "}
+            {content.title.prefix}
             <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6]">
-              eredményes
-            </span>{" "}
-            weboldal?
+              {content.title.highlight}
+            </span>
+            {content.title.suffix}
           </h2>
           <p className="text-slate-400 text-lg max-w-2xl mx-auto leading-relaxed">
-            4 atomi fázis — auditot követő AI-tervezéstől az élesítésig, mérhető
-            KPI-okkal minden lépésnél.
+            {content.subtitle}
           </p>
         </motion.div>
 
@@ -232,7 +243,7 @@ export default function SystemShowcase() {
           className="mt-16 text-center"
         >
           <motion.a
-            href="/kapcsolat"
+            href={content.cta.href}
             whileHover={{
               scale: 1.03,
               boxShadow: "0 0 40px rgba(0, 181, 241,0.4)",
@@ -240,9 +251,9 @@ export default function SystemShowcase() {
             whileTap={{ scale: 0.97 }}
             transition={{ type: "spring", stiffness: 400, damping: 20 }}
             className="inline-flex items-center gap-3 px-8 py-4 rounded-full font-semibold text-[#00B5F1] text-base uppercase tracking-wider border border-[#00B5F1]/40 hover:border-sky-500/50 hover:bg-[#00B5F1]/10 hover:shadow-[0_0_32px_rgba(0, 181, 241,0.25)] transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 focus:ring-offset-bg-base"
-            aria-label="Egyedi árajánlat kérése"
+            aria-label={content.cta.label}
           >
-            Egyedi árajánlat kérése
+            {content.cta.label}
             <ArrowRight className="w-5 h-5" aria-hidden="true" />
           </motion.a>
         </motion.div>

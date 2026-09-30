@@ -1,7 +1,9 @@
 # ARCHITECTURE.md — WebDude Rendszerarchitektúra
 
 **webdude.hu | Next.js 16 · React 19 · TypeScript · Firebase**
-**Utolsó frissítés: 2026-09-16 (Kék-Lila v7.0 migráció)**
+**Utolsó frissítés: 2026-09-24 (I18N: angol `/en` főoldal, locale-nav és JSON-LD SSOT)**
+
+> **6.3.0 (2026-09-24):** Új `/en` route (angol főoldal, natív JSON Dictionary i18n, hreflang) és JSON-LD SSOT (`src/lib/structuredData.ts`). A HU `/` route és a gyökér layout változatlan — zéró visszaesés.
 
 > **6.2.0:** A vizuális rendszer Kék-Lila v7.0 (arany/amber tiltva). A színtokenek forrása a `src/app/globals.css`, az előírásokat a `DESIGN_SYSTEM.md` rögzíti. Új route, komponens, Firestore-séma vagy Server/Client határ nem keletkezett. A `MilestoneAccent` új alapértéke `neutral`; a `cyan` kizárólag visszafelé kompatibilis, semleges színű alias.
 
@@ -148,6 +150,7 @@ atoms  →  molecules  →  organisms  →  pages
 | Route                                                     | Fájl                                                                      | Organisms                                                                                                                            | Leírás                                                                                                                    |
 | --------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------- |
 | `/`                                                       | `src/app/page.tsx`                                                        | HeroSectionNew, SocialProofStrip, SystemShowcase, FeaturedServicesNew, CaseStudiesBento, WhyChooseMeSection, FaqSectionAEO, FinalCta | Főoldal (Soft Premium Redesign 2026.09)                                                                                   |
+| `/en`                                                     | `src/app/en/page.tsx`                                                     | HeroSectionNew, SocialProofStrip, SystemShowcase, FeaturedServicesNew, CaseStudiesBento, WhyChooseMeSection, FaqSectionAEO, FinalCta | Angol nyelvű főoldal — natív JSON Dictionary i18n, hreflang, EN JSON-LD a `en/layout.tsx`-ben (2026-09-24)                |
 | `/kapcsolat`                                              | `src/app/kapcsolat/page.tsx`                                              | Header, Hero, ContactFormWrapper, Footer                                                                                             | Kapcsolati oldal                                                                                                          |
 | `/szia-norbi-vagyok`                                      | `src/app/szia-norbi-vagyok/page.tsx`                                      | Header, Timeline, Footer                                                                                                             | Személyes "Rólam" oldal                                                                                                   |
 | `/szolgaltatasok`                                         | `src/app/szolgaltatasok/page.tsx`                                         | Header, Hero, ServiceCard, Footer                                                                                                    | Szolgáltatások                                                                                                            |
@@ -354,6 +357,7 @@ service cloud.firestore {
 
 ```
 /              → src/app/page.tsx          (Főoldal)
+/en            → src/app/en/page.tsx       (Angol főoldal — natív JSON Dictionary i18n)
 /[aloldal]     → src/app/[aloldal]/page.tsx (Bővítendő)
 ```
 
@@ -471,9 +475,12 @@ export async function getDashboardStatsAction(idToken: string) {
 | Oldal                                                   | JSON-LD Sémák                                                 | Direct Answer Blokkok                                   | Utolsó frissítés |
 | ------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------- | ---------------- |
 | Főoldal (`/`)                                           | Person, Organization, Service, BreadcrumbList, HowTo, FAQPage | 3 blokk (WebDude, Technológiai stack, Projekt időzítés) | 2026-09-21       |
+| Angol főoldal (`/en`)                                   | BreadcrumbList, Person, Organization, LocalBusiness, Service, HowTo, FAQPage | 3 blokk (Expertise, Tech Stack, Timeline) | 2026-09-24       |
 | Szolgáltatások (`/szolgaltatasok`)                      | Person, Service, BreadcrumbList, FAQPage                      | 1 blokk (Szolgáltatások áttekintése)                    | 2026-09-21       |
 | Weboldal készítés (`/szolgaltatasok/weboldal-keszites`) | Service, BreadcrumbList, FAQPage                              | 2 blokk (WebDude, Weboldal készítés folyamat)           | 2026-09-21       |
 | AI workflow (`/szolgaltatasok/ai-workflow-kialakitas`)  | Service, BreadcrumbList                                       | 1 blokk (AI workflow áttekintés)                        | 2026-09-21       |
+
+A JSON-LD sémák központi forrása (SSOT): `src/lib/structuredData.ts` — `serializeJsonLd` (XSS-védett), `buildHuJsonLd`, `buildEnJsonLd` (`inLanguage: "en-US"`, LocalBusiness Kecskeméttel a sémában).
 
 ### 9.2 XSS Védelem
 

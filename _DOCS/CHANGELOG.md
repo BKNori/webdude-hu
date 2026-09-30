@@ -9,6 +9,91 @@
 - **Fontosság:** Kiemelt stratégiai feladat
 - **Megjegyzés:** Ez a feladat a CHANGELOG-ban van rögzítve jövőbeli implementációra
 
+## [7.7.0] — 2026-09-29 — HERO HÁTTÉRKÉP LÁTHATÓSÁG, ESETTANULMÁNY #2 KÉP ÉS AI PROMPT PLATFORM ÁLLÍTÁS VISSZAVONÁSA (COMPLETE)
+
+- **Hero háttérképek fokozott láthatóság (`src/components/organisms/HeroSectionNew.tsx`):**
+  - Háttérkép `opacity-35 mix-blend-luminosity` → `opacity-65` (a luminosity blend eltávolítva — a banner színek telítettségükben jelennek meg).
+  - Sötét kontrasztréteg `bg-slate-950/75 backdrop-blur-xs` → `bg-slate-950/60` (élesebb, színhű háttér).
+  - Mesh grid `opacity-60` → `opacity-35`.
+  - **Új szövegvédelmi scrim:** bal oldali gradient (`bg-linear-to-r from-slate-950/90 via-slate-950/55 to-slate-950/25`) — a háttér élénkítése ellenére biztosítja a WCAG AA kontrasztot a bal oldali szövegoszlopban (becsült `text-slate-400` ≈ 4.9–7.7:1 a világosabb képpixelek mögött is).
+- **Hero 3. dia (AI Prompt Platform):**
+  - **Jobb oldali mockup-kártya eltávolítva** (az `ai-promt-hi-banner-2.webp` lebegő előnézete) — minden dián egységesen `HeroDashboardMockup` jelenik meg.
+  - `SlideData.mockup` mező, a `HeroMockupContent` import és a szótár-override `mockup` kulcs törölve (HU és EN).
+  - **Állítás-visszavonás:** a *„Nulláról 3 hónap alatt a piac élére"* szöveg eltávolítva minden élő forrásból (hero cím, `bgAlt`, mockup alt/caption, EN fordítás) — a 3. dia címe mostantól: **„AI Prompt Platform"** (üres highlight/suffix).
+- **Esettanulmány #2 kép bekötve (`CaseStudiesBento.tsx` + szótárak):** az „AI Prompt Platform" kártya `image` mezője `null` → `/assets/portfolio/ai-promt-hu/ai-promt-hi-banner-2.webp` (HU, EN és a komponens alapérték is) — a kártya mostantól valós bannerképpel jelenik meg a „Nem ígéret — bizonyíték" szekcióban.
+- **Quality Gate:** `npx tsc --noEmit` → TSC_EXIT=0; `npm run lint` → LINT_EXIT=0 (0 hiba, 2 előre meglévő `react-hooks/exhaustive-deps` warning `HeroSectionNew.tsx`); `npm run build` → BUILD_EXIT=0.
+- **Megjegyzés (Norbinak):** a `CaseStudiesBento` #2 kártya címe továbbra is tartalmazza a *„nulláról 3 hónap alatt"* részt („a piac élére" nélkül) — ha ezt is törölni szeretnéd, külön kérés szükséges.
+
+---
+
+## [I18N: ANGOL `/en` FŐOLDAL, LOCALE-NAVIGÁCIÓ ÉS SSOT JSON-LD] — 2026-09-24 — English Homepage & Structured Data SSOT (COMPLETE)
+
+- **Új angol főoldal (`src/app/en/page.tsx` + `src/app/en/layout.tsx`):** Server Component; a metadata (title, description, hreflang `alternates.languages`: hu-HU/en-US/x-default) és az összes JSON-LD séma (`buildEnJsonLd`) kizárólag a `layout.tsx`-ben, szerveroldalon jelenik meg (AEO szabály: JSON-LD soha kliens komponensből).
+- **JSON-LD SSOT (`src/lib/structuredData.ts`):** `serializeJsonLd` (XSS-védett `.replace(/</g, '\\u003c')`), `buildEnJsonLd(dictionary)` (`inLanguage: "en-US"`) és `buildHuJsonLd(dictionary)` exportok — a HU sémák (breadcrumb, person, organization, service, howTo, faqPage) szó szerint átköltöztek a régi `page.tsx` inline definícióiból (látható szövegben továbbra sincs Kecskemét, csak a sémában).
+- **HU főoldal refactor (`src/app/page.tsx`):** az 5 inline sémablokk és a hozzájuk tartozó 5 `<script>` tag helyét `const jsonLdSchemas = buildHuJsonLd(dictionary)` + `jsonLdSchemas.map(...)` + `serializeJsonLd` váltotta; nulla viselkedésbeli regresszió.
+- **Locale-aware navigáció (`src/config/navigation.en.ts`, `navigation.ts`, `HeaderNavClient.tsx`):** új `NAV_ITEMS_EN` (`/en#about`, `/en#services`, `/en#cases`, `/en#faq`) és `getNavItems(lang)` segéd; a Header kliens komponens `dictionary` propból épít, logó/CTA/aria-label/kapcsolat hivatkozások nyelvfüggők (`isEn ? "/en" : "/"`).
+- **Hreflang + sitemap (`src/app/sitemap.ts`):** `/en` bejegyzés `alternates.languages` (hu-HU ↔ en-US) mindkét főoldalhoz.
+- **AEO duplikáció megszüntetve:** `FaqSectionAEO renderSchema={false}` mindkét nyelvű oldalon — a FAQPage séma egyetlen forrásból (SSOT) érkezik.
+- **AEO Direct Answer szavaszám-korrekció (`src/dictionaries/en.json`):** 2 GYIK-válasz kiigazítva a 40–60 szavas sávba (#1 határidők: 35 → 44 szó; #7 ügynökség helyett: 63 → 57 szó) — tartalom és E-E-A-T horgony (26+16 év) megtartva.
+- **ARCHITECTURE.md regisztráció:** `/en` route a Pages táblában (2.4) és a Routing szekcióban (7); EN sémák a SEO/AEO táblában (9.1); JSON-LD SSOT forrás megjelölve; fejléc dátum frissítve.
+- **Quality Gate:** `npx tsc --noEmit` (0 hiba), `npm run lint` (0 hiba, 2 előre meglévő warning `HeroSectionNew.tsx`), `npm run build` (BUILD_EXIT=0).
+
+---
+
+## [UI/UX & BRANDING: MEGA MENÜ, 3-DIÁS HERO SLIDER ÉS BRAND KONZISZTENCIA] — 2026-09-22 — Navigation, HeroSectionNew & Brand Updates (COMPLETE)
+
+- **3-Hasábos Letisztult Mega Menü & Mobil Optimalizáció (`src/components/molecules/HeaderNavClient.tsx`):**
+  - **Letisztult szöveges megjelenés:** Ikonok eltávolítva a menüpontok mellől a maximális minimalizmus és áttekinthetőség érdekében.
+  - **Luminous Glassmorphism:** `bg-slate-950/95 backdrop-blur-2xl border border-[#00B5F1]/20 shadow-2xl` konténer és `lg:w-[800px]`, `grid grid-cols-3 gap-6 p-6`.
+  - **Interakciók & Színek:** `text-slate-300 hover:text-[#00B5F1] hover:bg-[#00B5F1]/10 rounded-lg p-2.5 transition-all`.
+  - **Mobil Safe Area & Görgetés:** `h-[100dvh] max-h-[100dvh] overflow-y-auto overscroll-contain pb-32` a mobilos navigációs sáv takarásának megakadályozására.
+- **Főoldali Hero Slider 3 Diával & AI Mockup Integrációval (`src/components/organisms/HeroSectionNew.tsx`):**
+  - **1. Dia (Alap üzenet):** Eredeti H1 és CTA-k (`/kapcsolat`, `/munkak`), háttér: `/assets/banners/webdude-hero.webp`.
+  - **2. Dia (Ügyfélmágnes 1):** Technikai webfejlesztés és konverziós webshop készítés, háttér: `/assets/banners/ronch caffe adris nagybanner 20221005c copy 2.webp`. CTA: "Egyedi árajánlat kérése" (Kék-Lila gradiens gomb).
+  - **3. Dia (AI Prompt Platform):** Fő üzenet: *"AI Prompt Platform — Nulláról 3 hónap alatt"*, háttér: `/assets/banners/webdude banner 2000x1000.webp`. CTA: "AI Megoldások felfedezése" (Kék-Lila gradiens gomb). Vizuális extra: a dián a lebegő jobb oldali panelbe beágyazva a `/assets/portfolio/ai-promt-hu/ai-promt-hi-banner-2.webp` valós projekt mockup.
+  - **LCP Védelem:** Szigorúan KIZÁRÓLAG a 0. dia kapja meg a Next.js `<Image priority={currentSlide === 0} loading={currentSlide === 0 ? "eager" : "lazy"} />` attribútumot.
+  - **WCAG AAA Kontraszt:** Minden CTA gomb kötelezően `text-white` felirattal rendelkezik.
+- **Márka-Konzisztencia Frissítés ("Balog Norbert" -> "WebDude"):**
+  - `src/components/organisms/WhyChooseMeSection.tsx`: "WebDude vagyok — és ez teszi a különbséget", "A WebDude 26 éve foglalkozik...", "Közvetlenül velem, a WebDude-dal dolgozol...".
+  - `src/components/organisms/FaqSectionAEO.tsx`: FAQ válaszban "Közvetlenül velem, a WebDude-dal dolgozol...".
+  - `src/app/page.tsx`: Metadata leírásban "WebDude: 26 év kreatív...", HowTo sémában "Közvetlen kommunikáció a WebDude-dal...".
+- **Tailwind CSS v4 & Minőségbiztosítási Javítások (IDE Warningok felszámolása):**
+  - `HeroSectionNew.tsx`: Arbitrary `min-h-[460px]`, `sm:min-h-[480px]`, `lg:min-h-[520px]` cserélve a szabványos `min-h-115`, `sm:min-h-120`, `lg:min-h-130` osztályokra.
+  - `HeaderNavClient.tsx`: Ütköző `sm:left-auto` és `sm:left-1/2` osztályok egységesítve, `lg:w-[800px]` -> `lg:w-200`, mobilon `h-[100dvh] max-h-[100dvh]` -> `h-dvh max-h-dvh`.
+  - `not-found.tsx`: `bg-gradient-to-br` modernizálva a Tailwind v4 `bg-linear-to-br` szintaxisára.
+  - Quality Gate: `npx tsc --noEmit` (0 hiba) és `npm run lint` (0 warning, 0 hiba).
+
+---
+
+## [UI/UX & CRO: 3 HASÁBOS PRÉMIUM MEGA MENÜ & MOBIL SAFE AREA] — 2026-09-22 — HeaderNavClient (COMPLETE)
+
+- **3 Hasábos Asztali Mega Menü Finomhangolás (`src/components/molecules/HeaderNavClient.tsx`):**
+  - **Kilógás mentes, reszponzív méretezés:** Az asztali és köztes kijelzőkön (pl. kisebb laptopok, 1024-1280px között) a fix túlzott szélességet felváltotta a safe viewport-aware layout (`fixed left-4 right-4 sm:left-auto sm:right-auto sm:absolute sm:left-1/2 sm:-translate-x-1/2 sm:w-[92vw] sm:max-w-3xl lg:w-[760px] xl:w-[780px]`), így garantáltan soha nem csúszik le a képernyő jobb szélén.
+  - **Egyedi Megoldás CTA eltávolítva:** A felhasználói kérésnek megfelelően a 3. hasáb alján lévő "Egyedi Megoldás" promóciós doboz törölve lett a letisztult, elegáns megjelenésért.
+  - **Tökéletesen szimmetrikus 3x5-ös struktúra:** A 15 db szolgáltatás egyenlően oszlik el a 3 hasábban (Webfejlesztés 5 db, SEO & Marketing 5 db, Karbantartás & Design 5 db).
+  - Vizuális hierarchia: `w-4.5 h-4.5` ikonok, `text-slate-300 hover:text-[#00B5F1] hover:bg-slate-900/60 rounded-lg p-2 transition-all`.
+- **Mobil Menü Safe Area & Görgetés Optimalizálás (`src/components/molecules/HeaderNavClient.tsx`):**
+  - Külső konténer: `fixed inset-0 z-50 flex flex-col h-[100dvh] max-h-[100dvh] w-full max-w-[100vw] overflow-y-auto overscroll-contain bg-slate-950/98 backdrop-blur-2xl lg:hidden`.
+  - Mobil Safe Area védelem: `pb-32` padding a gördülő tartalom alján, kiküszöbölve a böngészősáv kitakarásait.
+  - Eltávolítottuk az `overflow-hidden` szülői korlátozást a gördíthetőség biztosítására.
+
+---
+
+## [PHASE 6: SEO INFRASTRUKTÚRA, INDEXELÉS ÉS BELSŐ LINKARCHITEKTÚRA] — 2026-09-22 — Sitemap, Footer Link Juice & CRO 404 Hibaoldal (COMPLETE)
+
+- **Sitemap Teljes Szinkronizáció (`src/app/sitemap.ts`):**
+  - Mind a 14 új és frissített szolgáltatás- és landing oldal felvétele a dinamikus sitemapba a megfelelő prioritásokkal (0.8 és 0.9) és változási frekvenciával (`weekly` / `monthly`).
+  - Felvett útvonalak: `/szolgaltatasok/wordpress-fejlesztes`, `/szolgaltatasok/seo-optimalizalas`, `/szolgaltatasok/weboldal-keszites`, `/szolgaltatasok/webshop-fejlesztes`, `/szolgaltatasok/grafikai-tervezes`, `/szolgaltatasok/wordpress-weboldal-keszites`, `/szolgaltatasok/arculattervezes`, `/weboldal-keszites-kecskemet`, `/szolgaltatasok/wordpress-karbantartas`, `/szolgaltatasok/weboldal-sebessegoptimalizalas`, `/szolgaltatasok/technikai-seo-audit`, `/szolgaltatasok/wordpress-biztonsag`, `/szolgaltatasok/weboldal-felujitas`, `/szolgaltatasok/helyi-seo`.
+- **Footer Link Juice Optimalizálás (`src/components/organisms/Footer.tsx`):**
+  - A Footer "Szolgáltatások" oszlopának felülvizsgálata és frissítése: a linkerő közvetlen átcsatornázása a legfontosabb konverziós céloldalakra (Weboldal készítés, WordPress karbantartás, Weboldal gyorsítás, Technikai SEO audit, Weboldal felújítás, Helyi SEO).
+  - Színek és hover állapotok szigorúan Kék-Lila v7.0 konformak (`hover:text-[#00B5F1]`), minden elavult árnyalat eliminálva.
+- **404 Hibaoldal Ügyfélszerző Átalakítása (`src/app/not-found.tsx`):**
+  - A korábbi hiányzó/alap 404 oldal lecserélése egy konverziós gépezetté: *"Ezt az oldalt nem találjuk, de a Te weboldaladat rendbe tudjuk tenni!"*
+  - Beépített gyorslinkek a kritikus szolgáltatásokra (Egyedi weboldal készítés, WordPress javítás & karbantartás, Technikai SEO & Sebességoptimalizálás) és közvetlen Kapcsolatfelvételi CTA.
+  - Szigorúan Kék-Lila v7.0 luminous glass kártya, Tailwind v4 szintaxis (`bg-linear-to-r`, `from-cta-from`), zero hydration kockázat.
+
+---
+
 ## [PHASE 5 / BATCH 2: MÁSODIK PRIORITÁS — FÁJDALOMPONT-FÓKUSZÚ LANDING OLDALAK] — 2026-09-22 — WordPress Biztonság és Vírusirtás, Weboldal Felújítás & Helyi SEO (COMPLETE)
 
 - **Azonnali és Megelőző Problémakezelés:** Akut hibák (feltört WordPress, spam átirányítások, Google büntetés), elavult vizuális/technikai honlapok, valamint a környékbeli Google Térkép láthatóság hiányának célzott megoldása.

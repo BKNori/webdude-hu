@@ -3,6 +3,12 @@
 import React from "react";
 import { motion } from "motion/react";
 import { Award, Clock, Palette, Star } from "lucide-react";
+import { ProofContent } from "@/types/dictionary";
+
+interface SocialProofStripProps {
+  /** Nyelvi tartalom a szótárból (HU/EN). */
+  content: ProofContent;
+}
 
 /**
  * SocialProofStrip — E-E-A-T autoritás sáv
@@ -12,14 +18,14 @@ import { Award, Clock, Palette, Star } from "lucide-react";
  * - Amber kizárólag fémjelzésként (micro badge)
  */
 
-const stats = [
+const STAT_DEFAULTS = [
   { icon: Palette, value: "26+", label: "Év grafikai tervezés" },
   { icon: Award, value: "16+", label: "Év webfejlesztés" },
   { icon: Star, value: "4.9/5", label: "Átlagos értékelés" },
   { icon: Clock, value: "24h", label: "Átlagos válaszidő" },
 ];
 
-const clients = [
+const CLIENT_DEFAULTS = [
   "btshop.hu",
   "Rimai Kft.",
   "B2B Logisztika",
@@ -30,11 +36,20 @@ const clients = [
   "Figma Design",
 ];
 
-export default function SocialProofStrip() {
+export default function SocialProofStrip({ content }: SocialProofStripProps) {
+  // Nyelvi szövegek a szótárból; a HU alapértékek a fallback.
+  const stats = STAT_DEFAULTS.map((stat, index) => ({
+    ...stat,
+    ...(content.stats[index] ?? {}),
+  }));
+  const clients =
+    content.clients.length > 0 ? content.clients : CLIENT_DEFAULTS;
+
   return (
     <section
+      id="proof"
       className="relative py-16 md:py-20 bg-bg-base border-y border-white/5 overflow-hidden"
-      aria-label="Statisztikák és referenciák"
+      aria-label={content.ariaLabel}
     >
       {/* Halvány elválasztó fény */}
       <div
@@ -87,13 +102,13 @@ export default function SocialProofStrip() {
           <span className="h-px w-12 bg-white/10" />
           <span className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.25em] text-sky-400/90">
             <span className="w-1.5 h-1.5 rotate-45 bg-sky-500" />
-            47+ leszállított projekt
+            {content.badge}
           </span>
           <span className="h-px w-12 bg-white/10" />
         </div>
 
         <p className="text-center text-xs text-slate-400 uppercase tracking-widest font-medium mb-6">
-          Eddig együttműködtem
+          {content.clientsLabel}
         </p>
 
         {/* Marquee 1 — balra (végtelenített) */}

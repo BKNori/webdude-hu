@@ -9,12 +9,13 @@ import FinalCta from "@/components/organisms/FinalCta";
 import { Metadata } from "next";
 import { Award, Cpu, Clock } from "lucide-react";
 import { getDictionary } from "@/lib/dictionary";
+import { buildHuJsonLd, serializeJsonLd } from "@/lib/structuredData";
 
 // ─── SEO Metadata — Ügyfélszerző, problémamegoldó fókusz ────────────────────
 export const metadata: Metadata = {
   title: "Weboldal készítés, SEO és WordPress fejlesztés | WebDude",
   description:
-    "Weboldal készítés, WordPress fejlesztés, SEO optimalizálás és grafikai tervezés Kecskemétről — ügynökségi mellébeszélés nélkül. Balog Norbert: 26 év kreatív és 16 év webfejlesztői tapasztalat.",
+    "Weboldal készítés, WordPress fejlesztés, SEO optimalizálás és grafikai tervezés Kecskemétről — ügynökségi mellébeszélés nélkül. WebDude: 26 év kreatív és 16 év webfejlesztői tapasztalat.",
   keywords: [
     "weboldal készítés Kecskemét",
     "WordPress fejlesztés",
@@ -29,6 +30,11 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: "https://webdude.hu",
+    languages: {
+      "hu-HU": "https://webdude.hu",
+      "en-US": "https://webdude.hu/en",
+      "x-default": "https://webdude.hu",
+    },
   },
   openGraph: {
     title: "WebDude | Weboldal készítés, WordPress, SEO & Grafika",
@@ -58,237 +64,27 @@ export const metadata: Metadata = {
 export default async function Home() {
   const dictionary = await getDictionary("hu");
 
-  // ─── JSON-LD Sémák (Server Component szinten injektálva) ────────────────
-  // XSS VÉDELEM: minden sémánál kötelező a .replace(/</g, '\u003c') alkalmazása!
+  // ─── JSON-LD Sémák — SSOT: src/lib/structuredData.ts (Server Component) ────
+  // XSS VÉDELEM: a serializeJsonLd alkalmazza a .replace(/</g, '\u003c') védelmet.
+  const jsonLdSchemas = buildHuJsonLd(dictionary);
 
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Főoldal",
-        item: "https://webdude.hu",
-      },
-    ],
-  };
-
-  // Person séma — Balog Norbert E-E-A-T entitás (weboldal, WordPress, SEO, grafika)
-  const personSchema = {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "@id": "https://webdude.hu/#person",
-    name: "Balog Norbert",
-    alternateName: "Norbi",
-    jobTitle: "Webfejlesztő, SEO Szakértő & Grafikai Tervező",
-    description:
-      "Balog Norbert 26 év grafikai tervezői és 16 év webfejlesztői tapasztalattal rendelkező szakember. Weboldal készítés, WordPress fejlesztés, SEO optimalizálás és grafikai tervezés — egy kézből, Kecskemétről.",
-    url: "https://webdude.hu/szia-norbi-vagyok",
-    knowsAbout: [
-      "Weboldal készítés",
-      "WordPress fejlesztés",
-      "WooCommerce fejlesztés",
-      "SEO optimalizálás",
-      "AEO — AI Answer Engine Optimization",
-      "Grafikai tervezés",
-      "Arculattervezés",
-      "Next.js 16",
-      "React 19",
-      "TypeScript",
-      "Tailwind CSS v4",
-      "Firebase",
-    ],
-    worksFor: {
-      "@type": "Organization",
-      "@id": "https://webdude.hu/#organization",
-      name: "WebDude",
-      url: "https://webdude.hu",
-    },
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Kecskemét",
-      addressRegion: "Bács-Kiskun",
-      addressCountry: "HU",
-    },
-  };
-
-  // Organization séma — WebDude vállalkozás (weboldal, WordPress, SEO, grafika fókusz)
-  const organizationSchema = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "@id": "https://webdude.hu/#organization",
-    name: "WebDude",
-    description:
-      "Weboldal készítés, WordPress fejlesztés, SEO optimalizálás és grafikai tervezés — egy kézből. Balog Norbert: 26 év grafikai és 16 év webfejlesztői tapasztalattal, Kecskemétről, országosan.",
-    url: "https://webdude.hu",
-    logo: {
-      "@type": "ImageObject",
-      url: "https://webdude.hu/og/webdude-og.jpg",
-      width: 1200,
-      height: 630,
-    },
-    foundingDate: "2009",
-    founder: {
-      "@type": "Person",
-      "@id": "https://webdude.hu/#person",
-      name: "Balog Norbert",
-    },
-    areaServed: {
-      "@type": "Country",
-      name: "Hungary",
-    },
-    contactPoint: {
-      "@type": "ContactPoint",
-      telephone: "+36 70 323 8003",
-      email: "hello@webdude.hu",
-      contactType: "customer service",
-      areaServed: "HU",
-      availableLanguage: "Hungarian",
-    },
-    sameAs: [
-      "https://www.facebook.com/webdude.hu",
-      "https://www.linkedin.com/company/webdude",
-      "https://twitter.com/webdude_hu",
-    ],
-    hasOfferCatalog: {
-      "@type": "OfferCatalog",
-      name: "WebDude Szolgáltatások",
-      itemListElement: [
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "Weboldal készítés",
-            description: "Prémium egyedi weboldal fejlesztés Next.js és WordPress alapon",
-          },
-        },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "WordPress fejlesztés",
-            description: "Egyedi WordPress témák, WooCommerce webshopok és plugin fejlesztés",
-          },
-        },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "SEO optimalizálás",
-            description: "Technikai SEO audit, kulcsszó-stratégia és AEO optimalizálás",
-          },
-        },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "Grafikai tervezés",
-            description: "Logó, arculattervezés, UI/UX design és nyomdai anyagok",
-          },
-        },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "AI Automatizáció",
-            description: "OpenAI GPT-4, Groq LLM integráció, AI chatbot és CRM automatizáció",
-          },
-        },
-      ],
-    },
-  };
-
-  const serviceSchema = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "@id": "https://webdude.hu/#service",
-    name: "Weboldal készítés, WordPress fejlesztés, SEO és Grafikai tervezés",
-    description:
-      "Weboldal készítés, WordPress fejlesztés, SEO optimalizálás és grafikai tervezés — egy kézből. 26 év grafikai és 16 év webfejlesztői tapasztalat.",
-    provider: {
-      "@type": "Organization",
-      "@id": "https://webdude.hu/#organization",
-      name: "WebDude",
-    },
-    areaServed: {
-      "@type": "Country",
-      name: "Hungary",
-    },
-  };
-
-  const howToSchema = {
-    "@context": "https://schema.org",
-    "@type": "HowTo",
-    name: "Hogyan dolgozunk együtt a WebDude-dal?",
-    description:
-      "Átlátható fejlesztési folyamat projektfelmérésről az élesítésig. Közvetlen kommunikáció Balog Norberttel, nincs projektmenedzser.",
-    step: [
-      {
-        "@type": "HowToStep",
-        position: 1,
-        name: "Ingyenes projektfelmérés",
-        text: "Megbeszéljük a céljaidat, elvárásaidat és a projekt részleteit — kötelezettség nélkül.",
-      },
-      {
-        "@type": "HowToStep",
-        position: 2,
-        name: "Stratégia és tervezés",
-        text: "Kidolgozom a részletes tervet, fix árajánlatot és ütemezést adok.",
-      },
-      {
-        "@type": "HowToStep",
-        position: 3,
-        name: "Fejlesztés és implementáció",
-        text: "Elkezdem a munkát rendszeres státuszfrissítésekkel és áttekintési pontokkal.",
-      },
-      {
-        "@type": "HowToStep",
-        position: 4,
-        name: "Élesítés és átadás",
-        text: "Átadom a kész projektet, és 30 napos hibajavítási garanciával támogatom az indulást.",
-      },
-    ],
-  };
+  // Organization, Service, HowTo, FAQPage sémák → src/lib/structuredData.ts
 
   return (
     <>
-      {/* ── JSON-LD Sémák — XSS-safe (.replace(/</g, '\u003c') minden sémánál) ── */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema).replace(/</g, "\\u003c"),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(personSchema).replace(/</g, "\\u003c"),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(organizationSchema).replace(/</g, "\\u003c"),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(serviceSchema).replace(/</g, "\\u003c"),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(howToSchema).replace(/</g, "\\u003c"),
-        }}
-      />
+      {/* ── JSON-LD Sémák — SSOT: structuredData.ts, XSS-védetten serializálva ── */}
+      {jsonLdSchemas.map((schema, index) => (
+        <script
+          key={index}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(schema) }}
+        />
+      ))}
 
       {/* ── Főoldal szekciók ───────────────────────────────────────────────── */}
       <div className="grow">
         {/* 1. Hero — ügyfélszerző H1, CTA hierarchia */}
-        <HeroSectionNew />
+        <HeroSectionNew content={dictionary.home.hero} />
 
         {/* 1.5 Direct Answer Bento Grid — AEO optimalizált "Szakmai Snapshot" */}
         {/* DESIGN NOTE: v7.0 — amber/arany TILOS, kizárólag kék-lila (#00B5F1/#5B21B6) */}
@@ -296,6 +92,8 @@ export default async function Home() {
           aria-label="Szakmai háttér és szakterületek"
           className="max-w-7xl mx-auto px-4 py-12"
         >
+          {/* Rejtett H2 — a H1 → H2 → H3 heading-hierarchia fenntartásához */}
+          <h2 className="sr-only">{dictionary.home.snapshot.heading}</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* 1. Kártya — Szakértői Háttér (Balog Norbert E-E-A-T) */}
             <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800 hover:border-[#00B5F1]/30 rounded-2xl p-6 transition-all duration-300 flex flex-col justify-between">
@@ -345,25 +143,25 @@ export default async function Home() {
         </section>
 
         {/* 2. Social Proof Strip — KPI statisztikák + scroll-velocity marquee */}
-        <SocialProofStrip />
+        <SocialProofStrip content={dictionary.home.proof} />
 
         {/* 3. System Showcase — scroll-bound animated folyamatábra */}
-        <SystemShowcase />
+        <SystemShowcase content={dictionary.home.system} />
 
         {/* 4. Featured Services — 4 fő (Weboldal, WordPress, SEO, Grafika) + AI másodlagos */}
-        <FeaturedServicesNew />
+        <FeaturedServicesNew content={dictionary.home.services} />
 
         {/* 5. Case Studies — 2 kiemelt esettanulmány KPI számokkal */}
-        <CaseStudiesBento />
+        <CaseStudiesBento content={dictionary.home.cases} />
 
         {/* 6. Why Choose Me — Balog Norbert E-E-A-T, előnyök */}
-        <WhyChooseMeSection />
+        <WhyChooseMeSection content={dictionary.home.why} />
 
-        {/* 7. FAQ AEO — accordion + FAQPage JSON-LD, WordPress/SEO/Grafika kérdések */}
-        <FaqSectionAEO />
+        {/* 7. FAQ AEO — accordion; FAQPage JSON-LD szerveren (structuredData.ts) */}
+        <FaqSectionAEO content={dictionary.home.faq} renderSchema={false} />
 
         {/* 8. Final CTA */}
-        <FinalCta />
+        <FinalCta content={dictionary.home.finalCta} />
       </div>
     </>
   );

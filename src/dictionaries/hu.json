@@ -1,5 +1,455 @@
 {
-  "common": {
+
+  "home": {
+    "meta": {
+      "title": "Weboldal készítés, SEO és WordPress fejlesztés | WebDude",
+      "description": "Weboldal készítés, WordPress fejlesztés, SEO optimalizálás és grafikai tervezés Kecskemétről — ügynökségi mellébeszélés nélkül. WebDude: 26 év kreatív és 16 év webfejlesztői tapasztalat."
+    },
+    "hero": {
+      "ariaLabel": "Főoldal hero szekció és bemutató",
+      "highlightsAriaLabel": "Kiemelt szolgáltatások",
+      "trustAriaLabel": "Előnyök és garanciák",
+      "ratingAriaLabel": "5 csillag értékelés",
+      "slidesNavAriaLabel": "Diaválasztó",
+      "slideLabel": "dia",
+      "prevLabel": "Előző dia",
+      "nextLabel": "Következő dia",
+      "scrollHint": "Görgess",
+      "slides": [
+        {
+          "id": "web-dev",
+          "badge": "Kecskemét · Országos kiszolgálás · Távolról is",
+          "titlePrefix": "Weboldal, ami nemcsak ",
+          "titleHighlight": "szép, hanem ügyfeleket",
+          "titleSuffix": " is hoz.",
+          "subtitle": "Egy kézben kapod a **weboldal készítést**, **WordPress fejlesztést**, **SEO-t** és **grafikai tervezést** – ügynökségi mellébeszélés nélkül, **26 év kreatív és 16 év webfejlesztői tapasztalattal.**",
+          "highlights": [
+            "Weboldal készítés",
+            "WordPress fejlesztés",
+            "SEO optimalizálás",
+            "Grafikai tervezés"
+          ],
+          "trustPoints": [
+            "Közvetlen kommunikáció — nincs közvetítő",
+            "30 napos hibajavítási garancia",
+            "Fix árak, fix határidők"
+          ],
+          "cta1": { "label": "Kérj projektfelmérést", "href": "/kapcsolat" },
+          "cta2": { "label": "Munkáim megtekintése", "href": "/munkak" },
+          "bgImage": "/assets/banners/webdude-hero.webp",
+          "bgAlt": "WebDude — Weboldal készítés, WordPress, SEO és grafikai tervezés Kecskemétről",
+          "ratingText": "47+ elégedett ügyfél"
+        },
+        {
+          "id": "client-magnet",
+          "badge": "Technikai Webfejlesztés · Konverziós Webshopok",
+          "titlePrefix": "Skálázható weboldalak és webshopok, amelyek ",
+          "titleHighlight": "valódi forgalmat és bevételt",
+          "titleSuffix": " termelnek.",
+          "subtitle": "Egyedi fejlesztésű, villámgyors **WordPress, WooCommerce és Next.js webshopok**, amelyek zökkenőmentes vásárlási élményt nyújtanak és technikai hibák nélkül konvertálják a látogatóidat vásárlókká.",
+          "highlights": [
+            "Egyedi Webshop Fejlesztés",
+            "Technikai Kódoptimalizálás",
+            "Villámgyors Betöltés (LCP < 2s)",
+            "Konverziófókuszú UI/UX"
+          ],
+          "trustPoints": [
+            "Automatizált fizetés és számlázás",
+            "Mobil-első, akadálymentes design",
+            "Biztonságos felhő architektúra"
+          ],
+          "cta1": { "label": "Egyedi árajánlat kérése", "href": "/kapcsolat" },
+          "cta2": {
+            "label": "Webshop fejlesztés részletei",
+            "href": "/szolgaltatasok/webshop-fejlesztes"
+          },
+          "bgImage": "/assets/banners/ronch caffe adris nagybanner 20221005c copy 2.webp",
+          "bgAlt": "WebDude — Technikai webfejlesztés és konverziós webshop készítés",
+          "ratingText": "Kiemelkedő konverziós arány"
+        },
+        {
+          "id": "ai-prompt-platform",
+          "badge": "AI Prompt Platform · Kiemelt Esettanulmány",
+          "titlePrefix": "AI Prompt Platform",
+          "titleHighlight": "",
+          "titleSuffix": "",
+          "subtitle": "Teljes körű, skálázható AI architektúra és prompt-ökoszisztéma kivitelezése. **Next.js 16** és modern mesterséges intelligencia munkafolyamatok integrációjával, amely automatizálja a tartalomkészítést és a feladatokat.",
+          "highlights": [
+            "AI Prompt Ökoszisztéma",
+            "Next.js 16 & React 19",
+            "3 Hónapos Piaci Bevezetés",
+            "Automatizált Generálás"
+          ],
+          "trustPoints": [
+            "Élesben tesztelt AI rendszerek",
+            "Azonnali produktivitási ugrás",
+            "Modern, jövőbiztos infrastruktúra"
+          ],
+          "cta1": { "label": "AI Megoldások felfedezése", "href": "/szolgaltatasok" },
+          "cta2": { "label": "Prompt sablonok", "href": "/portal/prompt-sablonok" },
+          "bgImage": "/assets/banners/webdude banner 2000x1000.webp",
+          "bgAlt": "WebDude — AI Prompt Platform",
+          "ratingText": "100% egyedi AI integráció"
+        }
+      ]
+    },
+    "snapshot": {
+      "ariaLabel": "Szakmai háttér és szakterületek",
+      "heading": "Szakmai háttér és szakterületek",
+      "cards": [
+        {
+          "title": "Szakértői Háttér",
+          "content": "WebDude egyéni vállalkozás: 26 év grafikai és 16 év webfejlesztői tapasztalat, Next.js 16, React 19, Tailwind v4 és Firebase alapú prémium megoldások Kecskemétről, országosan."
+        },
+        {
+          "title": "Technológiai Stack",
+          "content": "Next.js 16, React 19, TypeScript, Tailwind CSS v4, Firebase (Firestore, Auth, Storage), Motion animációk, React Hook Form, Zod validáció. Modern, gyors és biztonságos megoldások."
+        },
+        {
+          "title": "Projekt Időzítés & Garancia",
+          "content": "Landing page 1-2 hét, vállalati weboldal 2-4 hét, webshop 4-6 hét, AI workflow 2-8 hét. Minden projekt egyedi árazással és határidőre kész. Nincs rejtett költség."
+        }
+      ]
+    },
+    "proof": {
+      "ariaLabel": "Statisztikák és referenciák",
+      "badge": "47+ leszállított projekt",
+      "clientsLabel": "Eddig együttműködtem",
+      "clients": [
+        "btshop.hu",
+        "Rimai Kft.",
+        "B2B Logisztika",
+        "AI-Prompt.hu",
+        "Next.js Projektek",
+        "Firebase Appok",
+        "WooCommerce",
+        "Figma Design"
+      ],
+      "stats": [
+        { "label": "Év grafikai tervezés", "value": "26+" },
+        { "label": "Év webfejlesztés", "value": "16+" },
+        { "label": "Átlagos értékelés", "value": "4.9/5" },
+        { "label": "Átlagos válaszidő", "value": "24h" }
+      ]
+    },
+    "system": {
+      "ariaLabel": "Munkafolyamat bemutató",
+      "eyebrow": "A rendszer, nem a személyem",
+      "title": {
+        "prefix": "Hogyan születik egy ",
+        "highlight": "eredményes",
+        "suffix": " weboldal?"
+      },
+      "subtitle": "4 atomi fázis — auditot követő AI-tervezéstől az élesítésig, mérhető KPI-okkal minden lépésnél.",
+      "cta": { "label": "Egyedi árajánlat kérése", "href": "/kapcsolat" },
+      "steps": [
+        {
+          "id": "audit",
+          "step": "01",
+          "title": "Audit & Stratégia",
+          "description": "Ingyenes weboldal audit — sebességmérés, SEO elemzés, konverzió diagnózis. Ezek alapján születik a precíz fejlesztési terv."
+        },
+        {
+          "id": "design",
+          "step": "02",
+          "title": "AI Tervezés & UX",
+          "description": "AI-asszisztált user journey tervezés, wireframe és prototípus — mielőtt egy sor kód íródna. Pontosan tudod, mit kapsz."
+        },
+        {
+          "id": "dev",
+          "step": "03",
+          "title": "Next.js Fejlesztés",
+          "description": "React 19, TypeScript, Tailwind CSS v4 — villámgyors, skálázható architektúra, beépített SEO, Schema.org és Firebase backend."
+        },
+        {
+          "id": "launch",
+          "step": "04",
+          "title": "Élesítés & Növekedés",
+          "description": "Firebase Hosting, automatizált CI/CD, Lighthouse 95+ garantálva. Átadás után sem hagylak magadra — havi support opcionálisan."
+        }
+      ]
+    },
+    "services": {
+      "ariaLabel": "Kiemelt szolgáltatások — Weboldal, WordPress, SEO, Grafika",
+      "eyebrow": "Fő szolgáltatásaim",
+      "title": {
+        "prefix": "Weboldal · WordPress · SEO ·",
+        "highlight": "Grafika",
+        "suffix": ""
+      },
+      "allServicesLabel": "Összes szolgáltatás",
+      "allServicesHref": "/szolgaltatasok",
+      "quickAnswerLabel": "Gyors válasz:",
+      "detailsAriaSuffix": "részletei",
+      "primary": [
+        {
+          "id": "weboldal",
+          "eyebrow": "Fő szolgáltatás",
+          "title": "Weboldal készítés",
+          "description": "Prémium, villámgyors weboldalak és webshopok — Next.js 16, WordPress vagy teljesen egyedi fejlesztésben. Beépített SEO, Schema.org JSON-LD és Firebase backend.",
+          "directAnswer": "Mennyi idő alatt készül el? 2–6 hét, a projekt komplexitásától függően.",
+          "tags": ["Egyedi fejlesztés", "Lighthouse 95+", "Mobile-first"],
+          "features": [
+            "LCP < 2.5s garantálva",
+            "Biztonságos, karbantartható kód",
+            "Konverzió-optimalizált dizájn"
+          ],
+          "href": "/szolgaltatasok/weboldal-keszites"
+        },
+        {
+          "id": "wordpress",
+          "eyebrow": "WordPress fejlesztés",
+          "title": "WordPress fejlesztés",
+          "description": "Egyedi WordPress témák, WooCommerce webshopok és plugin fejlesztés. Gyors, biztonságos, karbantartható — saját admin felülettel.",
+          "directAnswer": "WordPress vagy egyedi weboldal? WordPress KKV-knak, egyedi fejlesztés komplexebb rendszerekhez.",
+          "tags": ["WordPress", "WooCommerce", "Egyedi téma"],
+          "features": ["Könnyű szerkeszthetőség"],
+          "href": "/szolgaltatasok/wordpress-fejlesztes"
+        },
+        {
+          "id": "seo",
+          "eyebrow": "SEO & AEO",
+          "title": "SEO optimalizálás",
+          "description": "Technikai SEO audit, tartalom-optimalizálás és AEO (AI-keresők számára) — hogy megtaláljanak Google-on és ChatGPT-n is.",
+          "directAnswer": "Mikor lesznek SEO eredmények? 3–6 hónapon belül mérhető organikus forgalom-növekedés.",
+          "tags": ["Technikai SEO", "Kulcsszó stratégia", "AEO / AI Search"],
+          "features": ["+40–180% organikus forgalom (mért)"],
+          "href": "/szolgaltatasok/seo-optimalizalas"
+        },
+        {
+          "id": "grafika",
+          "eyebrow": "Vizuális Identitás",
+          "title": "Grafikai tervezés",
+          "description": "26 éves grafikai tapasztalattal: logó, arculattervezés, nyomdai anyagok és UI/UX design — pixel-perfect minőségben, Adobe CC és Figma eszközökkel.",
+          "directAnswer": "Mit tartalmaz az arculattervezés? Logó, színpaletta, tipográfia, brand book és alkalmazott grafikai elemek.",
+          "tags": ["Logó & Arculat", "UI/UX Design", "Nyomdai anyagok"],
+          "features": ["26 év grafikai rutin", "Nyomtatásra kész anyagok"],
+          "href": "/munkak"
+        }
+      ],
+      "secondary": {
+        "dividerLabel": "Kiegészítő megoldás",
+        "eyebrow": "Kiegészítő megoldás",
+        "title": "AI Automatizáció",
+        "description": "OpenAI GPT-4, Groq LLM integráció, AI chatbot és CRM automatizáció. Kevesebb manualitás, több lead — meglévő vállalkozásodra ráépítve.",
+        "directAnswer": "Kinek ajánlott az AI automatizáció? Olyan vállalkozásoknak, akik ismétlődő folyamataikat szeretnék hatékonyabbá tenni.",
+        "tags": ["GPT-4 integráció", "Chatbot", "CRM automatizáció"],
+        "href": "/szolgaltatasok/ai-prompt-engineering",
+        "detailsLabel": "Részletek"
+      },
+      "directAnswerHeading": "Közvetlen válaszok",
+      "directAnswers": [
+        {
+          "question": "Mit tartalmaz az egyedi weboldal fejlesztés?",
+          "answer": "Az egyedi weboldal fejlesztés egy vállalkozásra szabott weboldal tervezését, fejlesztését és élesítését jelenti. A WebDude minden projektet Next.js 16, React 19 vagy WordPress alapon épít, beépített technikai SEO-val, Schema.org struktúrált adatokkal és Firebase backenddel. Az átfutási idő jellemzően 2–6 hét, reszponzív, WCAG AA akadálymentes és Core Web Vitals célmutatókra optimalizált kivitelben."
+        },
+        {
+          "question": "Mikor jobb a WordPress, és mikor az egyedi Next.js fejlesztés?",
+          "answer": "A WordPress akkor ideális, ha a csapatod fejlesztő nélkül szeretné szerkeszteni a tartalmat, és elegendőek a standard funkciók, például a blog vagy a WooCommerce webshop. Az egyedi Next.js fejlesztés komplex logikához, maximális sebességhez vagy egyedi integrációkhoz ajánlott. A WebDude mindkét stacket azonos mélységű tapasztalattal kivitelezi."
+        },
+        {
+          "question": "Mit jelent az AEO a klasszikus SEO mellett?",
+          "answer": "Az AEO (Answer Engine Optimization) a tartalom olyan strukturálása, hogy az AI-alapú keresők — ChatGPT, Perplexity, Gemini — idézhető válaszként használhassák. A klasszikus SEO a Google rangsorolásra optimalizál, az AEO a közvetlen válaszokra: tömör, önmagában is értelmezhető blokkokkal, FAQPage és Service struktúrált adatokkal."
+        },
+        {
+          "question": "Milyen grafikai tapasztalatot hoz a WebDude egy projektbe?",
+          "answer": "A WebDude 26 év grafikai tervezési gyakorlattal rendelkezik: logótervezés, teljes arculat, nyomdai anyagok és UI/UX design Adobe CC és Figma eszközökkel. Ez azt jelenti, hogy a vizuális identitás és a kód ugyanabból a kézből születik, így a terv és a megvalósítás között nincs veszteség."
+        }
+      ]
+    },
+    "cases": {
+      "ariaLabel": "Esettanulmányok",
+      "eyebrow": "Mért eredmények",
+      "title": {
+        "prefix": "Nem ígéret —",
+        "highlight": "bizonyíték",
+        "suffix": ""
+      },
+      "detailsLabel": "Részletek",
+      "allLabel": "Összes referencia",
+      "allHref": "/munkak",
+      "items": [
+        {
+          "id": "btshop",
+          "client": "btshop.hu",
+          "category": "E-commerce Webshop",
+          "eyebrow": "Esettanulmány #1",
+          "title": "Webshop újratervezés — +40% konverzió",
+          "description": "A btshop.hu B2B logisztikai webshop teljeskörű Next.js migrációja és UI/UX újratervezése. Eredmény: 40%-kal több megrendelés, Lighthouse 96/100, és 60%-kal jobb mobilos élmény.",
+          "kpis": [
+            { "label": "Konverzió növekedés", "value": "+40%" },
+            { "label": "Lighthouse Score", "value": "96/100" },
+            { "label": "Mobilos javulás", "value": "+60%" }
+          ],
+          "tags": ["Next.js", "WooCommerce Migration", "B2B Logisztika"],
+          "href": "/munkak",
+          "imgPlaceholder": "B2B",
+          "image": "/assets/portfolio/btshop/btshop-banner.webp"
+        },
+        {
+          "id": "ai-prompt",
+          "client": "AI-Prompt.hu",
+          "category": "AI Platform",
+          "eyebrow": "Esettanulmány #2",
+          "title": "AI prompt platform — nulláról 3 hónap alatt",
+          "description": "Az AI-Prompt.hu platform teljes tervezése és fejlesztése: React 19 alapú UI, Groq LLM integráció, user portal és lead-generáló automatizáció. 180 nap alatt stabil, bevételt termelő rendszer.",
+          "kpis": [
+            { "label": "Organikus forgalom", "value": "+184%" },
+            { "label": "AI automatizáció", "value": "9 eszköz" },
+            { "label": "Build idő", "value": "3 hónap" }
+          ],
+          "tags": ["React 19", "Groq LLM", "Firebase", "Lead Gen"],
+          "href": "/munkak",
+          "imgPlaceholder": "AI",
+          "image": "/assets/portfolio/ai-promt-hu/ai-promt-hi-banner-2.webp"
+        }
+      ]
+    },
+    "why": {
+      "ariaLabel": "Miért a WebDude — Balog Norbert",
+      "eyebrow": "Miért a WebDude?",
+      "title": {
+        "prefix": "WebDude vagyok — ",
+        "highlight": "és ez teszi a különbséget",
+        "suffix": ""
+      },
+      "subtitle": "Nem egy ügynökség, hanem egy dedikált szakértő — aki 26 év grafikai és 16 év webfejlesztői rutinnal készíti el a weboldaladat, WordPress-projektedet, megtervezi a SEO-stratégiát vagy az arculatodat. Közvetlen kommunikáció, nincs közvetítő, nincs rejtett díj.",
+      "benefitsTitle": {
+        "prefix": "Ami tényleg ",
+        "highlight": "megkülönböztet",
+        "suffix": ""
+      },
+      "advantages": [
+        {
+          "title": "26 Év Grafikai Rutin",
+          "description": "A WebDude 26 éve foglalkozik grafikai tervezéssel és vizuális kommunikációval — amit csak a hosszú, megélt tapasztalat adhat.",
+          "stat": "26+",
+          "statLabel": "Év dizájn"
+        },
+        {
+          "title": "16 Év Webfejlesztés",
+          "description": "Next.js, WordPress, WooCommerce, Firebase — 16 év folyamatos webfejlesztői tapasztalat, nem csak elmélet.",
+          "stat": "16+",
+          "statLabel": "Év fejlesztés"
+        },
+        {
+          "title": "Közvetlen Kapcsolat Velem",
+          "description": "Közvetlenül velem, a WebDude-dal dolgozol — nincs projektmenedzser közvetítő, nincs kommunikációs veszteség, nincs félreértés.",
+          "stat": "1:1",
+          "statLabel": "Kommunikáció"
+        },
+        {
+          "title": "30 Napos Garancia",
+          "description": "Átadást követően hibajavítási garancia és folyamatos támogatás. Ha valami nem működik, megoldom — plusz díj nélkül.",
+          "stat": "30",
+          "statLabel": "Nap garancia"
+        },
+        {
+          "title": "Gyors Átfutás",
+          "description": "Nincs bürokrácia, nincs hosszú onboarding. Amint egyeztünk, azonnali indulás és hatékony, fókuszált munkavégzés.",
+          "stat": "2x",
+          "statLabel": "Gyorsabb"
+        },
+        {
+          "title": "Transzparens Árazás",
+          "description": "Rejtett költségek nélkül, előre egyeztetett fix árak és fix határidők. Amit megígérek, azt tartom.",
+          "stat": "0",
+          "statLabel": "Rejtett cost"
+        }
+      ],
+      "benefits": [
+        {
+          "title": "100% Fókusz a projektedre",
+          "description": "Nincs megosztott figyelem — kizárólag a te projektedre koncentrálok, amíg kész nincs."
+        },
+        {
+          "title": "ROI fókuszú szemlélet",
+          "description": "Nem csak szép weboldalt készítek, hanem olyat, ami konvertál és megtérül."
+        },
+        {
+          "title": "Grafika + Kód egyben",
+          "description": "A legtöbb fejlesztő nem tervez, a legtöbb dizájner nem kódol. Én mindkettőt csinálom."
+        },
+        {
+          "title": "Szenvedély minden projektben",
+          "description": "Minden munkában az elejétől a végéig én vagyok jelen — nem junior, nem kiszervezett csapat."
+        },
+        {
+          "title": "Hosszú távú kapcsolat",
+          "description": "A projekt átadása nem a vége, hanem az eleje — opcionális havi support és karbantartás is elérhető."
+        }
+      ],
+      "cta": { "label": "Ismerj meg jobban", "href": "/szia-norbi-vagyok" }
+    },
+    "faq": {
+      "ariaLabel": "Gyakran ismételt kérdések — Weboldal, WordPress, SEO, Grafika",
+      "eyebrow": "GYIK",
+      "title": {
+        "prefix": "Amire ",
+        "highlight": "tudni akarod",
+        "suffix": " a választ"
+      },
+      "subtitle": "Weboldal, WordPress, SEO és grafika — a leggyakrabban felmerülő kérdések, őszintén, ügynökségi mellébeszélés nélkül.",
+      "footerQuestion": "Nem találtad a választ?",
+      "footerCta": "Írj nekem közvetlenül",
+      "footerCtaHref": "/kapcsolat",
+      "items": [
+        {
+          "category": "Weboldal",
+          "question": "Mennyi idő alatt készül el egy weboldal?",
+          "answer": "Egy egyszerű bemutatkozó oldal általában 2–4 hét, egy komplexebb webshop vagy portál 4–10 hét. Az első konzultáción pontosan meghatározom a határidőt — amit megígérek, azt tartom."
+        },
+        {
+          "category": "WordPress",
+          "question": "WordPress vagy egyedi weboldal fejlesztés — melyik a jobb?",
+          "answer": "WordPress ideális KKV-knak, akik maguk szeretnék szerkeszteni a tartalmat és standard funkciókra van szükségük (blog, bemutatkozó, WooCommerce webshop). Egyedi Next.js fejlesztés nagyobb rendszerekhez ajánlott, ahol maximális sebesség, komplex logika vagy egyedi integráció kell. Mindkettőhöz egyforma tapasztalattal rendelkezem."
+        },
+        {
+          "category": "WordPress",
+          "question": "Mennyibe kerül egy WordPress weboldal karbantartása?",
+          "answer": "Az alap WordPress karbantartási csomag tartalmaz havi plugin- és core-frissítéseket, napi biztonsági mentést, Lighthouse auditot és 1 óra tartalomfrissítési segítséget. Az ár a projekt komplexitásától függ — az első konzultáción konkrét ajánlatot adok."
+        },
+        {
+          "category": "SEO",
+          "question": "Hogyan segít a SEO optimalizálás a vállalkozásomnak?",
+          "answer": "A technikai SEO és tartalomoptimalizálás együtt növeli az organikus (fizetés nélküli) Google-forgalmadat. Elvégzem a weboldal sebességoptimalizálást (Lighthouse 95+), a kulcsszó-stratégia kialakítását, Schema.org JSON-LD implementációt, és az AEO optimalizálást is — hogy az AI-alapú keresőkben (ChatGPT, Perplexity, Gemini) is megjelenj."
+        },
+        {
+          "category": "SEO",
+          "question": "Mikor lesznek mérhető SEO eredmények?",
+          "answer": "A technikai SEO változások (sebesség, Core Web Vitals, struktúrált adatok) hatása néhány héten belül mérhető. A kulcsszó-helyezések javulása általában 3–6 hónap, hosszú távú organikus forgalom-növekedés 6–12 hónap alatt valósul meg — az iparág versenyességétől függően."
+        },
+        {
+          "category": "Grafika",
+          "question": "Mit tartalmaz az arculattervezési csomag?",
+          "answer": "Az alap arculattervezés tartalmaz: logó tervezést (3 koncepció, 2 körös korrekció), színpalettát, tipográfiai rendszert és alapvető brand guide-ot. Igény szerint bővíthető névjegy, fejléc, közösségi média sablon és nyomdai anyagok tervezésével. 26 év grafikai tapasztalattal, Adobe CC és Figma eszközökkel dolgozom."
+        },
+        {
+          "category": "Általános",
+          "question": "Miért válasszak téged ügynökség helyett?",
+          "answer": "Közvetlenül velem, a WebDude-dal dolgozol — nincs projektmenedzser közvetítő, nincs kommunikációs veszteség. 26 év grafikai és 16 év webfejlesztői tapasztalatom van, és minden projektben az elejétől a végéig én vagyok jelen. Egy ügynökségnél ugyanez 2–3× annyiba kerül, és jellemzően egy junior fejlesztő valósítja meg."
+        },
+        {
+          "category": "Általános",
+          "question": "Milyen garanciát vállalsz az elkészült munkára?",
+          "answer": "Átadást követően 30 napos hibajavítási garanciát biztosítok — minden felmerülő problémát plusz díj nélkül megoldok. Ezen felül opcionális havi karbantartási csomagok érhetők el, amelyek tartalmazzák a frissítéseket, napi biztonsági mentést és havi Lighthouse auditot."
+        },
+        {
+          "category": "Általános",
+          "question": "Mennyibe kerül egy weboldal vagy webshop?",
+          "answer": "Az árajánlat mindig a projekt valós komplexitásához igazodik — a felmérés után fix, előre egyeztetett összeget és határidőt kapsz, rejtett költségek nélkül. Nincs dobozos csomag: minden rendszer más, ezért egyedileg tervezem meg az árat is. Kérj ingyenes projektfelmérést!"
+        }
+      ]
+    },
+    "finalCta": {
+      "eyebrow": "VÉGÜL",
+      "title": "Készen állsz a szintlépésre?",
+      "subtitle": "Indítsuk be a projektedet még ma!",
+      "cta": { "label": "Beszéljünk róla", "href": "/kapcsolat" }
+    }
+  },
+
+    "common": {
     "title": "WebDude",
     "description": "Full-stack webfejlesztés, AI workflow és agent rendszerek — egy kézből. 26 év tapasztalat, Next.js 16, React 19, Tailwind v4, Firebase alapú prémium megoldások.",
     "loading": "Betöltés...",
@@ -15,7 +465,8 @@
     "contact": "Kapcsolat",
     "portal": "Ügyfélportál",
     "about": "Rólam",
-    "cta": "Kérj árajánlatot"
+    "cta": "Kérj árajánlatot",
+    "faq": "GYIK"
   },
   "hero": {
     "title": "Webfejlesztés & AI Automatizáció",
@@ -28,24 +479,33 @@
     "quickLinks": "Gyorslinkek",
     "contact": "Elérhetőség",
     "copyright": "© 2024 WebDude. Minden jog fenntartva.",
+    "rightsReserved": "Minden jog fenntartva.",
     "privacyPolicy": "Adatvédelmi szabályzat",
     "termsOfService": "Felhasználási feltételek",
     "phone": "+36 70 323 8003",
     "email": "hello@webdude.hu",
     "address": "Kecskemét, Magyarország",
-    "servicesLinks": {
-      "webDevelopment": "Weboldal Készítés",
-      "wordpressWebshop": "WordPress Webshop",
-      "webshopDevelopment": "Webshop Fejlesztés",
-      "wordpressWebsite": "WordPress Weboldal",
-      "seoOptimization": "SEO Optimalizálás",
-      "marketingLeadGeneration": "Marketing Lead Generálás",
-      "graphicDesign": "Grafikai Tervezés",
-      "logoDesign": "Egyedi Arculattervezés",
-      "aiWorkflow": "AI Workflow Kialakítás",
-      "aiVideoGeneration": "AI Kép és Videó Generálás",
-      "aiPromptEngineering": "AI Prompt Engineering"
-    }
+    "description": "Prémium webfejlesztés, grafikai tervezés és AI automatizáció országosan.",
+    "serviceLinkItems": [
+      { "label": "Weboldal Készítés", "href": "/szolgaltatasok/weboldal-keszites" },
+      { "label": "WordPress Karbantartás", "href": "/szolgaltatasok/wordpress-karbantartas" },
+      { "label": "Weboldal Gyorsítás", "href": "/szolgaltatasok/weboldal-sebessegoptimalizalas" },
+      { "label": "Technikai SEO Audit", "href": "/szolgaltatasok/technikai-seo-audit" },
+      { "label": "Webshop Fejlesztés", "href": "/szolgaltatasok/webshop-fejlesztes" },
+      { "label": "WordPress Fejlesztés", "href": "/szolgaltatasok/wordpress-fejlesztes" },
+      { "label": "WordPress Biztonság", "href": "/szolgaltatasok/wordpress-biztonsag" },
+      { "label": "Weboldal Felújítás", "href": "/szolgaltatasok/weboldal-felujitas" },
+      { "label": "Helyi SEO (Kecskemét)", "href": "/weboldal-keszites-kecskemet" },
+      { "label": "Arculattervezés & Logó", "href": "/szolgaltatasok/arculattervezes" },
+      { "label": "SEO Optimalizálás", "href": "/szolgaltatasok/seo-optimalizalas" },
+      { "label": "AI Workflow & Integráció", "href": "/szolgaltatasok/ai-workflow-kialakitas" }
+    ],
+    "quickLinkItems": [
+      { "label": "Rólam", "href": "/szia-norbi-vagyok" },
+      { "label": "Munkáim", "href": "/munkak" },
+      { "label": "Hírek", "href": "/hirek" },
+      { "label": "Kapcsolat", "href": "/kapcsolat" }
+    ]
   },
   "language": {
     "switch": "Nyelvváltás",

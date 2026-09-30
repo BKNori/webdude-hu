@@ -17,6 +17,7 @@ import {
   Newspaper,
   Lock,
   ArrowRight,
+  HelpCircle,
 } from "lucide-react";
 import LanguageSwitcher from "./LanguageSwitcher";
 import { Language } from "@/types/dictionary";
@@ -27,7 +28,7 @@ interface HeaderNavClientProps {
   dictionary?: Dictionary;
   currentLang?: Language;
 }
-import { NAV_ITEMS, SubItem } from "@/config/navigation";
+import { getNavItems, SubItem } from "@/config/navigation";
 import { useFocusTrap } from "@/hooks/useFocusTrap";
 import { ComponentType } from "react";
 
@@ -35,7 +36,7 @@ import { ComponentType } from "react";
 const FOCUS_RING =
   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B5F1] focus-visible:ring-offset-2 focus-visible:ring-offset-[#020617]";
 
-/** Mobilmenü főelem ikonok — a navigációs menüpontokhoz rendelve. */
+/** Mobilmenü főelem ikonok — a navigációs menüpontokhoz rendelve (HU + EN). */
 const NAV_ICONS: Record<string, ComponentType<{ className?: string }>> = {
   Norbi: User,
   "AI Megoldások": Bot,
@@ -44,9 +45,15 @@ const NAV_ICONS: Record<string, ComponentType<{ className?: string }>> = {
   Munkáim: Briefcase,
   Hírek: Newspaper,
   Ügyfélportál: Lock,
+  // EN anchor-menü (/en)
+  About: User,
+  Services: Layers,
+  Portfolio: Briefcase,
+  FAQ: HelpCircle,
 };
 
 export default function HeaderNavClient({
+  dictionary,
   currentLang,
 }: HeaderNavClientProps) {
   const [isOpen, setIsOpen] = useState(false);
@@ -59,6 +66,31 @@ export default function HeaderNavClient({
   const pathname = usePathname();
   const detectedLang = getLanguageFromPathname(pathname);
   const actualLang = currentLang || detectedLang;
+  const isEn = actualLang === "en";
+
+  // Nyelvfüggő menü: HU dropdown, EN anchor-alapú (/en) főoldali menü.
+  const navItems = getNavItems(actualLang);
+
+  // WCAG: a nyelvérzékeny aria-label-ek szótárból / nyelvi címkékből.
+  const labels = {
+    mainNav: isEn ? "Main navigation" : "Főnavigáció",
+    logoHome: isEn ? "WebDude home" : "WebDude főoldal",
+    openMenu: isEn ? "Open menu" : "Menü megnyitása",
+    closeMenu: isEn ? "Close menu" : "Menü bezárása",
+    mobileNav: isEn ? "Mobile navigation" : "Mobilnavigáció",
+    mobileNavList: isEn ? "Mobile navigation list" : "Mobilnavigáció lista",
+    contact: isEn ? "Contact us" : "Kapcsolatfelvétel",
+    contactHref: isEn ? "/en#contact" : "/kapcsolat",
+    contactLabel:
+      dictionary?.nav?.contact ?? (isEn ? "Contact" : "Kapcsolat"),
+    contactCtaLabel: isEn
+      ? `${dictionary?.nav?.contact ?? "Contact"} — ${dictionary?.nav?.cta ?? "Request a custom quote"}`
+      : "Kapcsolat — Kérj árajánlatot",
+    submenu: (name: string, open: boolean) =>
+      isEn
+        ? `${name} submenu ${open ? "close" : "open"}`
+        : `${name} almenü ${open ? "bezárása" : "megnyitása"}`,
+  };
 
   // Mobil menü bezárása – ESC és a fókuszcsapda visszahívása is ezt használja.
   const closeMenu = useCallback(() => {
@@ -128,7 +160,152 @@ export default function HeaderNavClient({
     };
   }, [isOpen]);
 
-  const renderDropdownContent = (subItems: SubItem[]) => {
+  const renderDropdownContent = (subItems: SubItem[], itemName: string) => {
+    if (itemName === "Szolgáltatások") {
+      const col1Hrefs = [
+        "/szolgaltatasok/weboldal-keszites",
+        "/szolgaltatasok/wordpress-weboldal-keszites",
+        "/szolgaltatasok/webshop-fejlesztes",
+        "/szolgaltatasok/woocommerce-webshop-keszites",
+        "/szolgaltatasok/weboldal-felujitas",
+      ];
+      const col2Hrefs = [
+        "/szolgaltatasok/seo-optimalizalas",
+        "/szolgaltatasok/technikai-seo-audit",
+        "/szolgaltatasok/helyi-seo",
+        "/szolgaltatasok/marketing-lead-generalas",
+        "/szolgaltatasok/weboldal-sebessegoptimalizalas",
+      ];
+
+      const col1Items = subItems.filter((s) => col1Hrefs.includes(s.href));
+      const col2Items = subItems.filter((s) => col2Hrefs.includes(s.href));
+      const col3Items = subItems.filter(
+        (s) => !col1Hrefs.includes(s.href) && !col2Hrefs.includes(s.href)
+      );
+
+      return (
+        <div className="grid grid-cols-3 gap-6 p-6">
+          {/* 1. Hasáb: Webfejlesztés */}
+          <div className="flex flex-col gap-1.5">
+            <div className="px-2 pb-2 mb-1 border-b border-slate-800/80">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#00B5F1]">
+                Webfejlesztés
+              </span>
+            </div>
+            {col1Items.map((sub, idx) => {
+              const isCurrent = pathname === sub.href;
+              return (
+                <motion.div
+                  key={sub.name}
+                  initial={{ opacity: 0, y: -4 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.15, delay: idx * 0.02 }}
+                >
+                  <Link
+                    href={sub.href}
+                    aria-current={isCurrent ? "page" : undefined}
+                    className={`block p-2.5 rounded-lg text-sm transition-all ${FOCUS_RING} ${
+                      isCurrent
+                        ? "text-[#00B5F1] bg-[#00B5F1]/15 font-semibold"
+                        : "text-slate-300 hover:text-[#00B5F1] hover:bg-[#00B5F1]/10"
+                    }`}
+                  >
+                    <div className="font-medium leading-tight">
+                      {sub.name}
+                    </div>
+                    {sub.description && (
+                      <p className="text-xs text-slate-400 line-clamp-1 mt-0.5">
+                        {sub.description}
+                      </p>
+                    )}
+                  </Link>
+                </motion.div>
+              );
+            })}
+          </div>
+
+          {/* 2. Hasáb: SEO & Marketing */}
+          <div className="flex flex-col gap-1.5">
+            <div className="px-2 pb-2 mb-1 border-b border-slate-800/80">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#00B5F1]">
+                SEO & Marketing
+              </span>
+            </div>
+            {col2Items.map((sub, idx) => {
+              const isCurrent = pathname === sub.href;
+              return (
+                <motion.div
+                  key={sub.name}
+                  initial={{ opacity: 0, y: -4 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.15, delay: 0.04 + idx * 0.02 }}
+                >
+                  <Link
+                    href={sub.href}
+                    aria-current={isCurrent ? "page" : undefined}
+                    className={`block p-2.5 rounded-lg text-sm transition-all ${FOCUS_RING} ${
+                      isCurrent
+                        ? "text-[#00B5F1] bg-[#00B5F1]/15 font-semibold"
+                        : "text-slate-300 hover:text-[#00B5F1] hover:bg-[#00B5F1]/10"
+                    }`}
+                  >
+                    <div className="font-medium leading-tight">
+                      {sub.name}
+                    </div>
+                    {sub.description && (
+                      <p className="text-xs text-slate-400 line-clamp-1 mt-0.5">
+                        {sub.description}
+                      </p>
+                    )}
+                  </Link>
+                </motion.div>
+              );
+            })}
+          </div>
+
+          {/* 3. Hasáb: Karbantartás & Design */}
+          <div className="flex flex-col gap-1.5">
+            <div className="px-2 pb-2 mb-1 border-b border-slate-800/80">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#00B5F1]">
+                Karbantartás & Design
+              </span>
+            </div>
+            {col3Items.map((sub, idx) => {
+              const isCurrent = pathname === sub.href;
+              return (
+                <motion.div
+                  key={sub.name}
+                  initial={{ opacity: 0, y: -4 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.15, delay: 0.08 + idx * 0.02 }}
+                >
+                  <Link
+                    href={sub.href}
+                    aria-current={isCurrent ? "page" : undefined}
+                    className={`block p-2.5 rounded-lg text-sm transition-all ${FOCUS_RING} ${
+                      isCurrent
+                        ? "text-[#00B5F1] bg-[#00B5F1]/15 font-semibold"
+                        : "text-slate-300 hover:text-[#00B5F1] hover:bg-[#00B5F1]/10"
+                    }`}
+                  >
+                    <div className="font-medium leading-tight">
+                      {sub.name}
+                    </div>
+                    {sub.description && (
+                      <p className="text-xs text-slate-400 line-clamp-1 mt-0.5">
+                        {sub.description}
+                      </p>
+                    )}
+                  </Link>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      );
+    }
+
+    // Alapértelmezett (pl. AI Megoldások) 1 oszlopos lista
     return (
       <div className="flex flex-col gap-1 p-4">
         {subItems.map((sub, subIndex) => (
@@ -145,9 +322,16 @@ export default function HeaderNavClient({
             >
               <div className="flex items-center gap-3">
                 {sub.icon && (
-                  <sub.icon className="w-4 h-4 text-[#00B5F1] shrink-0" />
+                  <sub.icon className="w-5 h-5 text-[#00B5F1] shrink-0" />
                 )}
-                <span>{sub.name}</span>
+                <div className="flex-1 min-w-0">
+                  <span className="block">{sub.name}</span>
+                  {sub.description && (
+                    <span className="text-xs text-slate-400 block truncate mt-0.5">
+                      {sub.description}
+                    </span>
+                  )}
+                </div>
               </div>
             </Link>
           </motion.div>
@@ -159,7 +343,7 @@ export default function HeaderNavClient({
   return (
     <>
       <motion.nav
-        aria-label="Főnavigáció"
+        aria-label={labels.mainNav}
         initial={{ y: 0 }}
         animate={{ y: 0 }}
         transition={{
@@ -176,9 +360,9 @@ export default function HeaderNavClient({
           {/* LOGO */}
           <div className="flex items-center h-full">
             <Link
-              href="/"
+              href={isEn ? "/en" : "/"}
               className="flex items-center gap-2 group"
-              aria-label="WebDude főoldal"
+              aria-label={labels.logoHome}
             >
               <div className="h-8 flex items-center">
                 <NextImage
@@ -195,7 +379,7 @@ export default function HeaderNavClient({
 
           {/* DESKTOP NAV */}
           <div className="hidden lg:flex items-center gap-4">
-            {NAV_ITEMS.map((item, index) => (
+            {navItems.map((item, index) => (
               <motion.div
                 key={item.name}
                 className="relative"
@@ -250,15 +434,19 @@ export default function HeaderNavClient({
                 <AnimatePresence>
                   {activeDropdown === item.name && item.subItems && (
                     <motion.div
-                      initial={{ opacity: 0, y: 10, scale: 0.98 }}
-                      animate={{ opacity: 1, y: 0, scale: 1 }}
-                      exit={{ opacity: 0, y: 8, scale: 0.98 }}
-                      transition={{ duration: 0.2, ease: "easeOut" }}
-                      className="absolute top-full left-1/2 -translate-x-1/2 mt-1 w-full lg:min-w-64 lg:max-w-80 bg-slate-900/95 backdrop-blur-md border border-slate-700/80 rounded-2xl shadow-[0_18px_40px_rgba(0,0,0,0.6)] overflow-hidden z-40"
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.22, ease: "easeOut" }}
+                      className={`absolute top-full mt-2 bg-slate-950/95 backdrop-blur-2xl border border-[#00B5F1]/20 rounded-2xl shadow-2xl overflow-hidden z-40 ${
+                        item.name === "Szolgáltatások"
+                          ? "fixed left-4 right-4 sm:right-auto sm:absolute sm:left-1/2 sm:-translate-x-1/2 sm:w-[92vw] sm:max-w-3xl lg:w-200"
+                          : "left-1/2 -translate-x-1/2 w-full lg:min-w-72 lg:max-w-80 border-slate-800/80"
+                      }`}
                       onMouseEnter={() => handleDropdownEnter(item.name)}
                       onMouseLeave={handleDropdownLeave}
                     >
-                      {renderDropdownContent(item.subItems)}
+                      {renderDropdownContent(item.subItems, item.name)}
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -280,16 +468,16 @@ export default function HeaderNavClient({
               transition={{ duration: 0.3, delay: 0.4 }}
             >
               <Link
-                href="/kapcsolat"
+                href={labels.contactHref}
                 className={`relative px-6 py-2.5 rounded-full font-bold text-sm text-white transition-all duration-300 transform hover:scale-105 ${FOCUS_RING}`}
                 style={{
                   background:
                     "linear-gradient(135deg, #00B5F1 0%, #5B21B6 100%)",
                   boxShadow: "0 8px 24px rgba(0, 181, 241,0.35)",
                 }}
-                aria-label="Kapcsolatfelvétel"
+                aria-label={labels.contact}
               >
-                <span className="relative z-10">Kapcsolat</span>
+                <span className="relative z-10">{labels.contactLabel}</span>
               </Link>
             </motion.div>
           </div>
@@ -301,7 +489,7 @@ export default function HeaderNavClient({
             className={`lg:hidden text-slate-200 p-3 rounded-xl hover:bg-slate-800/80 transition-colors min-w-11 min-h-11 flex items-center justify-center border border-transparent hover:border-slate-700/50 ${FOCUS_RING}`}
             onClick={() => setIsOpen((prev) => !prev)}
             whileTap={{ scale: 0.92 }}
-            aria-label={isOpen ? "Menü bezárása" : "Menü megnyitása"}
+            aria-label={isOpen ? labels.closeMenu : labels.openMenu}
             aria-expanded={isOpen}
             aria-controls="mobile-nav-menu"
           >
@@ -342,12 +530,12 @@ export default function HeaderNavClient({
             id="mobile-nav-menu"
             role="dialog"
             aria-modal="true"
-            aria-label="Mobilnavigáció"
+            aria-label={labels.mobileNav}
             initial={{ opacity: 0, x: "100%" }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "100%" }}
             transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-0 z-50 flex flex-col h-dvh max-h-dvh w-full overflow-hidden lg:hidden"
+            className="fixed inset-0 z-50 flex flex-col h-dvh max-h-dvh w-full max-w-[100vw] overflow-y-auto overscroll-contain bg-slate-950/98 backdrop-blur-2xl lg:hidden"
             style={{
               background:
                 "radial-gradient(ellipse 80% 50% at 90% 0%, rgba(0, 181, 241, 0.06) 0%, transparent 70%), radial-gradient(ellipse 60% 40% at 10% 100%, rgba(91, 33, 182, 0.06) 0%, transparent 70%), #020617",
@@ -356,10 +544,10 @@ export default function HeaderNavClient({
             {/* Fejléc sáv: logó + X gomb */}
             <div className="flex items-center justify-between px-5 h-16 border-b border-white/5 shrink-0">
               <Link
-                href="/"
+                href={isEn ? "/en" : "/"}
                 onClick={closeMenu}
                 className="flex items-center group"
-                aria-label="WebDude főoldal"
+                aria-label={labels.logoHome}
               >
                 <NextImage
                   src="/assets/logos/webdude-logo.webp"
@@ -373,7 +561,7 @@ export default function HeaderNavClient({
               <button
                 type="button"
                 onClick={closeMenu}
-                aria-label="Menü bezárása"
+                aria-label={labels.closeMenu}
                 className={`text-slate-300 p-2.5 rounded-xl hover:bg-slate-800/80 border border-slate-700/40 hover:border-slate-600/60 transition-all min-w-11 min-h-11 flex items-center justify-center ${FOCUS_RING}`}
               >
                 <X className="w-5 h-5" aria-hidden="true" />
@@ -383,10 +571,10 @@ export default function HeaderNavClient({
             {/* Görgethető navigációs lista */}
             <div className="flex-1 overflow-y-auto overscroll-contain">
               <nav
-                aria-label="Mobilnavigáció lista"
-                className="px-4 pt-4 pb-4 space-y-1"
+                aria-label={labels.mobileNavList}
+                className="px-4 pt-4 pb-32 space-y-1"
               >
-                {NAV_ITEMS.map((item, index) => {
+                {navItems.map((item, index) => {
                   const IconComponent = NAV_ICONS[item.name];
                   const isActive =
                     pathname === item.href ||
@@ -455,7 +643,7 @@ export default function HeaderNavClient({
                                 setOpenSection(isSectionOpen ? null : item.name)
                               }
                               aria-expanded={isSectionOpen}
-                              aria-label={`${item.name} almenü ${isSectionOpen ? "bezárása" : "megnyitása"}`}
+                              aria-label={labels.submenu(item.name, isSectionOpen)}
                               className={`shrink-0 w-12 h-14 flex items-center justify-center text-slate-400 hover:text-[#00B5F1] transition-colors ${FOCUS_RING}`}
                             >
                               <motion.span
@@ -636,16 +824,16 @@ export default function HeaderNavClient({
               }}
             >
               <Link
-                href="/kapcsolat"
+                href={labels.contactHref}
                 onClick={closeMenu}
                 className={`block w-full py-4 rounded-2xl font-bold text-center text-white text-base transition-all hover:scale-[1.02] active:scale-[0.98] shadow-[0_4px_24px_rgba(0,181,241,0.3)] ${FOCUS_RING}`}
                 style={{
                   background:
                     "linear-gradient(135deg, #00B5F1 0%, #5B21B6 100%)",
                 }}
-                aria-label="Kapcsolatfelvétel"
+                aria-label={labels.contact}
               >
-                Kapcsolat — Kérj árajánlatot
+                {labels.contactCtaLabel}
               </Link>
             </motion.div>
           </motion.div>

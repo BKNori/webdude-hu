@@ -1,4 +1,4 @@
-﻿import { MetadataRoute } from "next";
+import { MetadataRoute } from "next";
 import { projects } from "@/data/projects";
 import { posts as fallbackPosts } from "@/data/posts";
 import fs from "fs";
@@ -10,11 +10,31 @@ const BUILD_DATE = new Date("2026-06-28");
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticPages = [
+    // Főoldal és főkategóriák
     {
       url: BASE_URL,
       lastModified: BUILD_DATE,
       changeFrequency: "weekly" as const,
       priority: 1,
+      alternates: {
+        languages: {
+          "hu-HU": BASE_URL,
+          "en-US": `${BASE_URL}/en`,
+        },
+      },
+    },
+    // English homepage — /en prefix, hreflang kapcsolat a HU változattal
+    {
+      url: `${BASE_URL}/en`,
+      lastModified: BUILD_DATE,
+      changeFrequency: "weekly" as const,
+      priority: 1,
+      alternates: {
+        languages: {
+          "hu-HU": BASE_URL,
+          "en-US": `${BASE_URL}/en`,
+        },
+      },
     },
     {
       url: `${BASE_URL}/munkak`,
@@ -23,16 +43,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.9,
     },
     {
-      url: `${BASE_URL}/hirek`,
-      lastModified: BUILD_DATE,
-      changeFrequency: "weekly" as const,
-      priority: 0.8,
-    },
-    {
       url: `${BASE_URL}/szolgaltatasok`,
       lastModified: BUILD_DATE,
       changeFrequency: "monthly" as const,
-      priority: 0.8,
+      priority: 0.9,
     },
     {
       url: `${BASE_URL}/termekek`,
@@ -41,25 +55,113 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8,
     },
     {
-      url: `${BASE_URL}/szolgaltatasok/add-onok`,
+      url: `${BASE_URL}/hirek`,
+      lastModified: BUILD_DATE,
+      changeFrequency: "weekly" as const,
+      priority: 0.8,
+    },
+    {
+      url: `${BASE_URL}/kapcsolat`,
       lastModified: BUILD_DATE,
       changeFrequency: "monthly" as const,
-      priority: 0.7,
+      priority: 0.8,
     },
+    {
+      url: `${BASE_URL}/szia-norbi-vagyok`,
+      lastModified: BUILD_DATE,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    },
+
+    // 1. és 2. prioritású új és megújított szolgáltatás landing oldalak (0.8 - 0.9)
     {
       url: `${BASE_URL}/szolgaltatasok/weboldal-keszites`,
       lastModified: BUILD_DATE,
-      changeFrequency: "monthly" as const,
-      priority: 0.7,
+      changeFrequency: "weekly" as const,
+      priority: 0.9,
     },
     {
       url: `${BASE_URL}/szolgaltatasok/webshop-fejlesztes`,
       lastModified: BUILD_DATE,
-      changeFrequency: "monthly" as const,
-      priority: 0.7,
+      changeFrequency: "weekly" as const,
+      priority: 0.9,
     },
     {
-      url: `${BASE_URL}/szolgaltatasok/weboldal-keszites`,
+      url: `${BASE_URL}/szolgaltatasok/wordpress-fejlesztes`,
+      lastModified: BUILD_DATE,
+      changeFrequency: "weekly" as const,
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/szolgaltatasok/wordpress-weboldal-keszites`,
+      lastModified: BUILD_DATE,
+      changeFrequency: "weekly" as const,
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/szolgaltatasok/seo-optimalizalas`,
+      lastModified: BUILD_DATE,
+      changeFrequency: "weekly" as const,
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/szolgaltatasok/grafikai-tervezes`,
+      lastModified: BUILD_DATE,
+      changeFrequency: "weekly" as const,
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/szolgaltatasok/arculattervezes`,
+      lastModified: BUILD_DATE,
+      changeFrequency: "weekly" as const,
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/weboldal-keszites-kecskemet`,
+      lastModified: BUILD_DATE,
+      changeFrequency: "weekly" as const,
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/szolgaltatasok/wordpress-karbantartas`,
+      lastModified: BUILD_DATE,
+      changeFrequency: "weekly" as const,
+      priority: 0.8,
+    },
+    {
+      url: `${BASE_URL}/szolgaltatasok/weboldal-sebessegoptimalizalas`,
+      lastModified: BUILD_DATE,
+      changeFrequency: "weekly" as const,
+      priority: 0.8,
+    },
+    {
+      url: `${BASE_URL}/szolgaltatasok/technikai-seo-audit`,
+      lastModified: BUILD_DATE,
+      changeFrequency: "weekly" as const,
+      priority: 0.8,
+    },
+    {
+      url: `${BASE_URL}/szolgaltatasok/wordpress-biztonsag`,
+      lastModified: BUILD_DATE,
+      changeFrequency: "weekly" as const,
+      priority: 0.8,
+    },
+    {
+      url: `${BASE_URL}/szolgaltatasok/weboldal-felujitas`,
+      lastModified: BUILD_DATE,
+      changeFrequency: "weekly" as const,
+      priority: 0.8,
+    },
+    {
+      url: `${BASE_URL}/szolgaltatasok/helyi-seo`,
+      lastModified: BUILD_DATE,
+      changeFrequency: "weekly" as const,
+      priority: 0.8,
+    },
+
+    // További specifikus szolgáltatások
+    {
+      url: `${BASE_URL}/szolgaltatasok/woocommerce-webshop-keszites`,
       lastModified: BUILD_DATE,
       changeFrequency: "monthly" as const,
       priority: 0.7,
@@ -71,37 +173,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.7,
     },
     {
-      url: `${BASE_URL}/szolgaltatasok/woocommerce-webshop-keszites`,
-      lastModified: BUILD_DATE,
-      changeFrequency: "monthly" as const,
-      priority: 0.7,
-    },
-    {
-      url: `${BASE_URL}/szolgaltatasok/wordpress-virusirtas-es-biztonsag`,
-      lastModified: BUILD_DATE,
-      changeFrequency: "monthly" as const,
-      priority: 0.7,
-    },
-    {
       url: `${BASE_URL}/szolgaltatasok/egyedi-arculattervezes-logo`,
       lastModified: BUILD_DATE,
       changeFrequency: "monthly" as const,
       priority: 0.7,
     },
     {
-      url: `${BASE_URL}/szolgaltatasok/grafikai-tervezes`,
-      lastModified: BUILD_DATE,
-      changeFrequency: "monthly" as const,
-      priority: 0.7,
-    },
-    {
-      url: `${BASE_URL}/szolgaltatasok/seo-optimalizalas`,
-      lastModified: BUILD_DATE,
-      changeFrequency: "monthly" as const,
-      priority: 0.7,
-    },
-    {
       url: `${BASE_URL}/szolgaltatasok/marketing-lead-generalas`,
+      lastModified: BUILD_DATE,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    },
+    {
+      url: `${BASE_URL}/szolgaltatasok/ai-workflow-kialakitas`,
       lastModified: BUILD_DATE,
       changeFrequency: "monthly" as const,
       priority: 0.7,
@@ -119,23 +203,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.7,
     },
     {
-      url: `${BASE_URL}/szolgaltatasok/ai-workflow-kialakitas`,
+      url: `${BASE_URL}/szolgaltatasok/add-onok`,
       lastModified: BUILD_DATE,
       changeFrequency: "monthly" as const,
       priority: 0.7,
     },
-    {
-      url: `${BASE_URL}/kapcsolat`,
-      lastModified: BUILD_DATE,
-      changeFrequency: "monthly" as const,
-      priority: 0.6,
-    },
-    {
-      url: `${BASE_URL}/szia-norbi-vagyok`,
-      lastModified: BUILD_DATE,
-      changeFrequency: "monthly" as const,
-      priority: 0.6,
-    },
+
+    // Jogi és szabályzati oldalak
     {
       url: `${BASE_URL}/felhasznalasi-feltetelek`,
       lastModified: BUILD_DATE,

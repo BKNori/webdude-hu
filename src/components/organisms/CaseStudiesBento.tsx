@@ -5,8 +5,14 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "motion/react";
 import { TrendingUp, ArrowRight, ExternalLink } from "lucide-react";
+import { CasesContent } from "@/types/dictionary";
 
-const caseStudies = [
+interface CaseStudiesBentoProps {
+  /** Nyelvi tartalom a szótárból (HU/EN). */
+  content: CasesContent;
+}
+
+const CASE_STUDY_DEFAULTS = [
   {
     id: "btshop",
     client: "btshop.hu",
@@ -43,14 +49,31 @@ const caseStudies = [
     href: "/munkak",
     imgPlaceholder: "AI",
     accentColor: "#00B5F1",
+    image: "/assets/portfolio/ai-promt-hu/ai-promt-hi-banner-2.webp",
   },
 ];
 
-export default function CaseStudiesBento() {
+export default function CaseStudiesBento({ content }: CaseStudiesBentoProps) {
+  // Nyelvi szövegek a szótárból; a KPI színek és a design tokenek maradnak.
+  const caseStudies = CASE_STUDY_DEFAULTS.map((item, index) => {
+    const override = content.items[index];
+    if (!override) return item;
+    return {
+      ...item,
+      ...override,
+      accentColor: item.accentColor,
+      kpis: override.kpis.map((kpi, kpiIndex) => ({
+        ...kpi,
+        color: item.kpis[kpiIndex]?.color ?? item.accentColor,
+      })),
+    };
+  });
+
   return (
     <section
+      id="cases"
       className="relative py-24 md:py-32 bg-bg-base overflow-hidden"
-      aria-label="Esettanulmányok"
+      aria-label={content.ariaLabel}
     >
       {/* Halvány háttér glow */}
       <div
@@ -78,22 +101,23 @@ export default function CaseStudiesBento() {
                 aria-hidden="true"
               />
               <span className="text-[#00B5F1] text-xs font-bold uppercase tracking-widest">
-                Mért eredmények
+                {content.eyebrow}
               </span>
             </div>
             <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-white leading-tight">
-              Nem ígéret —{" "}
+              {content.title.prefix}{" "}
               <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6]">
-                bizonyíték
+                {content.title.highlight}
               </span>
+              {content.title.suffix}
             </h2>
           </div>
           <Link
             href="/munkak"
             className="inline-flex items-center gap-2 text-slate-400 hover:text-[#00B5F1] text-sm font-semibold transition-colors duration-200 group focus:outline-none focus:ring-2 focus:ring-[#00B5F1] rounded-lg px-2 py-1"
-            aria-label="Összes referencia megtekintése"
+            aria-label={content.allLabel}
           >
-            Összes referencia
+            {content.allLabel}
             <ArrowRight
               className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1"
               aria-hidden="true"
@@ -238,9 +262,9 @@ export default function CaseStudiesBento() {
                     href={cs.href}
                     className="inline-flex items-center gap-1.5 text-xs font-bold transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-sky-500 rounded-lg px-1 py-0.5"
                     style={{ color: cs.accentColor }}
-                    aria-label={`${cs.title} — részletek`}
+                    aria-label={`${cs.title} — ${content.detailsLabel}`}
                   >
-                    Részletek
+                    {content.detailsLabel}
                     <ExternalLink className="w-3 h-3" aria-hidden="true" />
                   </Link>
                 </div>

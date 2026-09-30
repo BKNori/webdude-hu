@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "motion/react";
 import { ChevronDown, HelpCircle } from "lucide-react";
+import { FaqContent } from "@/types/dictionary";
 
 interface FaqItem {
   question: string;
@@ -13,7 +14,7 @@ interface FaqItem {
 
 // ─── AEO-optimalizált GYIK — WordPress, SEO, Grafika fókusz ─────────────────
 // Formátum: közvetlen, tömör válasz AI-keresők (ChatGPT, Perplexity, Gemini) számára
-const faqs: FaqItem[] = [
+const FAQ_DEFAULTS: FaqItem[] = [
   {
     category: "Weboldal",
     question: "Mennyi idő alatt készül el egy weboldal?",
@@ -54,7 +55,7 @@ const faqs: FaqItem[] = [
     category: "Általános",
     question: "Miért válasszak téged ügynökség helyett?",
     answer:
-      "Közvetlenül Balog Norberttel dolgozol — nincs projektmenedzser közvetítő, nincs kommunikációs veszteség. 26 év grafikai és 16 év webfejlesztői tapasztalatom van, és minden projektben az elejétől a végéig én vagyok jelen. Egy ügynökségnél ugyanez 2–3× annyiba kerül, és jellemzően egy junior fejlesztő valósítja meg.",
+      "Közvetlenül velem, a WebDude-dal dolgozol — nincs projektmenedzser közvetítő, nincs kommunikációs veszteség. 26 év grafikai és 16 év webfejlesztői tapasztalatom van, és minden projektben az elejétől a végéig én vagyok jelen. Egy ügynökségnél ugyanez 2–3× annyiba kerül, és jellemzően egy junior fejlesztő valósítja meg.",
   },
   {
     category: "Általános",
@@ -71,7 +72,7 @@ const faqs: FaqItem[] = [
 ];
 
 interface AccordionItemProps {
-  item: (typeof faqs)[number];
+  item: FaqItem;
   index: number;
   isOpen: boolean;
   onToggle: () => void;
@@ -150,8 +151,27 @@ function AccordionItem({ item, index, isOpen, onToggle }: AccordionItemProps) {
   );
 }
 
-export default function FaqSectionAEO() {
+interface FaqSectionAEOProps {
+  /** Nyelvi tartalom a szótárból (HU/EN). */
+  content: FaqContent;
+  /**
+   * JSON-LD FAQPage séma renderelése. Az EN főoldalon `false`, mert a séma
+   * a szerveroldali `en/layout.tsx`-ben kerül kiírásra (AEO szabály).
+   */
+  renderSchema?: boolean;
+}
+
+export default function FaqSectionAEO({
+  content,
+  renderSchema = true,
+}: FaqSectionAEOProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+
+  // Nyelvi szövegek a szótárból; a HU alapértékek a fallback.
+  const faqs = FAQ_DEFAULTS.map((faq, index) => ({
+    ...faq,
+    ...(content.items[index] ?? {}),
+  }));
 
   // FAQPage JSON-LD Schema — AEO (ChatGPT, Perplexity, Gemini) optimalizált
   // FONTOS: a kérdés-válasz pároknak szinkronban kell lenniük az oldal tartalmával
@@ -170,16 +190,20 @@ export default function FaqSectionAEO() {
 
   return (
     <section
+      id="faq"
       className="relative py-24 md:py-32 bg-bg-base overflow-hidden"
-      aria-label="Gyakran ismételt kérdések — Weboldal, WordPress, SEO, Grafika"
+      aria-label={content.ariaLabel}
     >
       {/* JSON-LD AEO Schema — XSS védelem: .replace(/</g, '\u003c') */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(faqSchema).replace(/</g, "\\u003c"),
-        }}
-      />
+      {/* Az EN oldalon a FAQPage séma szerver oldalon (en/layout.tsx) kerül ki. */}
+      {renderSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(faqSchema).replace(/</g, "\\u003c"),
+          }}
+        />
+      )}
 
       {/* Háttér */}
       <div
@@ -207,19 +231,18 @@ export default function FaqSectionAEO() {
                 aria-hidden="true"
               />
               <span className="text-[#00B5F1] text-xs font-bold uppercase tracking-widest">
-                GYIK
+                {content.eyebrow}
               </span>
             </div>
             <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-white mb-4 leading-tight">
-              Amire{" "}
+              {content.title.prefix}
               <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6]">
-                tudni akarod
-              </span>{" "}
-              a választ
+                {content.title.highlight}
+              </span>
+              {content.title.suffix}
             </h2>
             <p className="text-slate-400 text-lg leading-relaxed">
-              Weboldal, WordPress, SEO és grafika — a leggyakrabban felmerülő
-              kérdések, őszintén, ügynökségi mellébeszélés nélkül.
+              {content.subtitle}
             </p>
           </motion.div>
 
@@ -247,12 +270,12 @@ export default function FaqSectionAEO() {
             transition={{ delay: 0.4 }}
             className="text-center text-slate-500 text-sm mt-10"
           >
-            Nem találtad a választ?{" "}
+            {content.footerQuestion}{" "}
             <Link
-              href="/kapcsolat"
+              href={content.footerCtaHref}
               className="text-[#00B5F1] font-semibold hover:underline focus:outline-none focus:ring-2 focus:ring-[#00B5F1] rounded"
             >
-              Írj nekem közvetlenül
+              {content.footerCta}
             </Link>
           </motion.p>
         </div>

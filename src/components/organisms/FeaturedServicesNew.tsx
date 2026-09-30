@@ -18,11 +18,17 @@ import {
   BarChart3,
   FileImage,
 } from "lucide-react";
+import { ServicesContent } from "@/types/dictionary";
+
+interface FeaturedServicesNewProps {
+  /** Nyelvi tartalom a szótárból (HU/EN). */
+  content: ServicesContent;
+}
 
 // ─────────────────────────────────────────────────────────────────────────────
 // 4 FŐ SZOLGÁLTATÁS — Bento Grid (KKV fókusz, AEO mikro-GYIK blokkok)
 // ─────────────────────────────────────────────────────────────────────────────
-const primaryServices = [
+const PRIMARY_SERVICE_DEFAULTS = [
   {
     id: "weboldal",
     icon: Globe,
@@ -107,7 +113,7 @@ const primaryServices = [
 // ─────────────────────────────────────────────────────────────────────────────
 // MÁSODLAGOS SZOLGÁLTATÁS — AI Automatizáció (külön sávban, vizuálisan hátrébb)
 // ─────────────────────────────────────────────────────────────────────────────
-const secondaryService = {
+const SECONDARY_SERVICE_DEFAULTS = {
   id: "ai",
   icon: Bot,
   eyebrow: "Kiegészítő megoldás",
@@ -121,11 +127,43 @@ const secondaryService = {
   color: "#a78bfa",
 };
 
-export default function FeaturedServicesNew() {
+export default function FeaturedServicesNew({
+  content,
+}: FeaturedServicesNewProps) {
+  // Nyelvi szövegek a szótárból; a HU vizuális tokenek (ikon, szín) maradnak.
+  const primaryServices = PRIMARY_SERVICE_DEFAULTS.map((item, index) => {
+    const override = content.primary[index];
+    if (!override) return item;
+    return {
+      ...item,
+      eyebrow: override.eyebrow,
+      title: override.title,
+      description: override.description,
+      microFaq: override.directAnswer,
+      tags: override.tags,
+      href: override.href,
+      features: item.features.map((feature, featureIndex) => ({
+        ...feature,
+        text: override.features[featureIndex] ?? feature.text,
+      })),
+    };
+  });
+
+  const secondaryService = {
+    ...SECONDARY_SERVICE_DEFAULTS,
+    eyebrow: content.secondary.eyebrow,
+    title: content.secondary.title,
+    description: content.secondary.description,
+    microFaq: content.secondary.directAnswer,
+    tags: content.secondary.tags,
+    href: content.secondary.href,
+  };
+
   return (
     <section
+      id="services"
       className="relative py-24 md:py-32 bg-bg-base overflow-hidden"
-      aria-label="Kiemelt szolgáltatások — Weboldal, WordPress, SEO, Grafika"
+      aria-label={content.ariaLabel}
     >
       {/* Háttér dot pattern */}
       <div
@@ -148,22 +186,23 @@ export default function FeaturedServicesNew() {
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#00B5F1]/10 border border-[#00B5F1]/20 mb-6">
             <span className="text-[#00B5F1] text-xs font-bold uppercase tracking-widest">
-              Fő szolgáltatásaim
+              {content.eyebrow}
             </span>
           </div>
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
             <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-white leading-tight max-w-2xl">
-              Weboldal · WordPress · SEO ·{" "}
+              {content.title.prefix}{" "}
               <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6]">
-                Grafika
+                {content.title.highlight}
               </span>
+              {content.title.suffix}
             </h2>
             <Link
-              href="/szolgaltatasok"
+              href={content.allServicesHref}
               className="inline-flex items-center gap-2 text-slate-400 hover:text-[#00B5F1] text-sm font-semibold transition-colors duration-200 group focus:outline-none focus:ring-2 focus:ring-[#00B5F1] rounded-lg px-2 py-1"
-              aria-label="Összes szolgáltatás megtekintése"
+              aria-label={content.allServicesLabel}
             >
-              Összes szolgáltatás
+              {content.allServicesLabel}
               <ArrowRight
                 className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1"
                 aria-hidden="true"
@@ -249,7 +288,7 @@ export default function FeaturedServicesNew() {
                       <Link
                         href={service.href}
                         className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-slate-500 hover:text-white hover:border-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-sky-500"
-                        aria-label={`${service.title} részletei`}
+                        aria-label={`${service.title} ${content.detailsAriaSuffix}`}
                         tabIndex={0}
                       >
                         <ArrowRight className="w-4 h-4" aria-hidden="true" />
@@ -276,7 +315,7 @@ export default function FeaturedServicesNew() {
                         className="font-semibold not-italic"
                         style={{ color: service.color }}
                       >
-                        Gyors válasz:
+                        {content.quickAnswerLabel}
                       </span>{" "}
                       {service.microFaq}
                     </div>
@@ -337,7 +376,7 @@ export default function FeaturedServicesNew() {
           <div className="flex items-center gap-4 mb-6">
             <div className="flex-1 h-px bg-white/6" aria-hidden="true" />
             <span className="text-slate-600 text-xs uppercase tracking-widest font-semibold">
-              Kiegészítő megoldás
+              {content.secondary.dividerLabel}
             </span>
             <div className="flex-1 h-px bg-white/6" aria-hidden="true" />
           </div>
@@ -387,7 +426,7 @@ export default function FeaturedServicesNew() {
                   className="font-semibold not-italic"
                   style={{ color: `${secondaryService.color}80` }}
                 >
-                  Gyors válasz:
+                  {content.quickAnswerLabel}
                 </span>{" "}
                 {secondaryService.microFaq}
               </p>
@@ -414,9 +453,9 @@ export default function FeaturedServicesNew() {
                 href={secondaryService.href}
                 className="inline-flex items-center gap-1.5 text-xs font-semibold transition-colors duration-200 hover:underline focus:outline-none focus:ring-2 focus:ring-[#a78bfa] rounded"
                 style={{ color: secondaryService.color }}
-                aria-label="AI automatizáció részletei"
+                aria-label={`${secondaryService.title} ${content.detailsAriaSuffix}`}
               >
-                Részletek
+                {content.secondary.detailsLabel}
                 <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
               </Link>
             </div>

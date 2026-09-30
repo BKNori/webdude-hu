@@ -5,6 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "motion/react";
 import { Globe, Check } from "lucide-react";
 import { Language } from "@/types/dictionary";
+import { stripLocale, withLocale } from "@/lib/i18n";
 
 interface LanguageSwitcherProps {
   currentLang: Language;
@@ -15,32 +16,16 @@ export default function LanguageSwitcher({ currentLang }: LanguageSwitcherProps)
   const pathname = usePathname();
   const router = useRouter();
 
-  const languages: { code: Language; label: string; flag: string }[] = [
-    { code: "hu", label: "Magyar", flag: "🇭🇺" },
-    { code: "en", label: "English", flag: "🇬🇧" },
+  const languages: { code: Language; label: string }[] = [
+    { code: "hu", label: "Magyar" },
+    { code: "en", label: "English" },
   ];
 
   const handleLanguageChange = (lang: Language) => {
-    // Remove current language prefix if exists
-    let newPathname = pathname;
-    if (pathname.startsWith("/en")) {
-      newPathname = pathname.replace("/en", "");
-    }
-    if (pathname.startsWith("/hu")) {
-      newPathname = pathname.replace("/hu", "");
-    }
-
-    // Add new language prefix if not Hungarian (default)
-    if (lang === "en") {
-      newPathname = `/en${newPathname}`;
-    }
-
-    // Handle root path
-    if (newPathname === "") {
-      newPathname = lang === "en" ? "/en" : "/";
-    }
-
-    router.push(newPathname);
+    // A magyar URL prefix nélküli, az angol "/en" prefixet kap.
+    // withLocale biztonságosan cseréli a prefixet (nem globális replace).
+    const target = lang === "en" ? withLocale(pathname, "en") : stripLocale(pathname);
+    router.push(target === "" ? "/" : target);
     setIsOpen(false);
   };
 
@@ -56,7 +41,7 @@ export default function LanguageSwitcher({ currentLang }: LanguageSwitcherProps)
       >
         <Globe className="w-4 h-4 text-slate-400" />
         <span className="text-sm font-medium text-slate-300">
-          {currentLanguage?.flag} {currentLanguage?.label}
+          {currentLanguage?.label}
         </span>
       </button>
 
@@ -75,7 +60,9 @@ export default function LanguageSwitcher({ currentLang }: LanguageSwitcherProps)
                 onClick={() => handleLanguageChange(lang.code)}
                 className="w-full flex items-center gap-3 px-4 py-3 text-left hover:bg-slate-800/50 transition-colors focus:outline-none focus:bg-slate-800/50"
               >
-                <span className="text-lg">{lang.flag}</span>
+                <span className="text-sm text-slate-300 uppercase tracking-wider">
+                  {lang.code}
+                </span>
                 <span className="text-sm text-slate-300">{lang.label}</span>
                 {lang.code === currentLang && (
                   <Check className="w-4 h-4 text-[#00B5F1] ml-auto" />

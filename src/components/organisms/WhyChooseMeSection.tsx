@@ -18,14 +18,15 @@ import {
   Globe,
 } from "lucide-react";
 import Link from "next/link";
+import { WhyContent } from "@/types/dictionary";
 
-// ─── E-E-A-T Előnyök — Balog Norbert személyes pozicionálás ─────────────────
-const advantages = [
+// ─── E-E-A-T Előnyök — WebDude személyes pozicionálás ─────────────────
+const ADVANTAGE_DEFAULTS = [
   {
     icon: Award,
     title: "26 Év Grafikai Rutin",
     description:
-      "Balog Norbert 26 éve foglalkozik grafikai tervezéssel és vizuális kommunikációval — amit csak a hosszú, megélt tapasztalat adhat.",
+      "A WebDude 26 éve foglalkozik grafikai tervezéssel és vizuális kommunikációval — amit csak a hosszú, megélt tapasztalat adhat.",
     color: "from-[#00B5F1]/20 to-[#5B21B6]/20",
     iconColor: "text-[#00B5F1]",
     stat: "26+",
@@ -45,7 +46,7 @@ const advantages = [
     icon: Users,
     title: "Közvetlen Kapcsolat Velem",
     description:
-      "Közvetlenül Balog Norberttel dolgozol — nincs projektmenedzser közvetítő, nincs kommunikációs veszteség, nincs félreértés.",
+      "Közvetlenül velem, a WebDude-dal dolgozol — nincs projektmenedzser közvetítő, nincs kommunikációs veszteség, nincs félreértés.",
     color: "from-[#00B5F1]/20 to-[#5B21B6]/20",
     iconColor: "text-[#00B5F1]",
     stat: "1:1",
@@ -83,7 +84,7 @@ const advantages = [
   },
 ];
 
-const benefits = [
+const BENEFIT_DEFAULTS = [
   {
     icon: Target,
     title: "100% Fókusz a projektedre",
@@ -116,15 +117,31 @@ const benefits = [
   },
 ];
 
-export default function WhyChooseMeSection() {
+interface WhyChooseMeProps {
+  /** Nyelvi tartalom a szótárból (HU/EN). */
+  content: WhyContent;
+}
+
+export default function WhyChooseMeSection({ content }: WhyChooseMeProps) {
+  // Nyelvi szövegek a szótárból; a HU vizuális tokenek (ikon, szín) maradnak.
+  const advantages = ADVANTAGE_DEFAULTS.map((item, index) => ({
+    ...item,
+    ...(content.advantages[index] ?? {}),
+  }));
+  const benefits = BENEFIT_DEFAULTS.map((item, index) => ({
+    ...item,
+    ...(content.benefits[index] ?? {}),
+  }));
+
   return (
     <motion.section
+      id="about"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.8 }}
       className="py-24 md:py-32 bg-transparent relative overflow-hidden"
-      aria-label="Miért a WebDude — Balog Norbert"
+      aria-label={content.ariaLabel}
     >
       {/* Háttér effektek */}
       <div className="absolute inset-0 bg-linear-to-b from-[#00B5F1]/5 via-transparent to-[#00B5F1]/5" />
@@ -149,23 +166,20 @@ export default function WhyChooseMeSection() {
           >
             <Sparkles className="w-4 h-4 text-[#00B5F1]" aria-hidden="true" />
             <span className="text-xs font-bold text-[#00B5F1] uppercase tracking-wider">
-              Miért a WebDude?
+              {content.eyebrow}
             </span>
           </motion.div>
 
-          {/* H2 — Balog Norbert explicit E-E-A-T hivatkozással */}
+          {/* H2 — WebDude explicit E-E-A-T hivatkozással */}
           <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
-            Balog Norbert vagyok —{" "}
+            {content.title.prefix}
             <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6]">
-              és ez teszi a különbséget
+              {content.title.highlight}
             </span>
+            {content.title.suffix}
           </h2>
           <p className="text-slate-400 text-lg max-w-3xl mx-auto leading-relaxed">
-            Nem egy ügynökség, hanem egy dedikált szakértő — aki 26 év grafikai
-            és 16 év webfejlesztői rutinnal készíti el a weboldaladat,
-            WordPress-projektedet, megtervezi a SEO-stratégiát vagy az
-            arculatodat. Közvetlen kommunikáció, nincs közvetítő, nincs rejtett
-            díj.
+            {content.subtitle}
           </p>
         </motion.div>
 
@@ -231,10 +245,11 @@ export default function WhyChooseMeSection() {
           <div className="absolute inset-0 bg-linear-to-r from-[#00B5F1]/5 to-[#5B21B6]/5" />
           <div className="relative z-10">
             <h3 className="text-3xl md:text-4xl font-bold text-white text-center mb-12">
-              Ami tényleg{" "}
+              {content.benefitsTitle.prefix}
               <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6]">
-                megkülönböztet
+                {content.benefitsTitle.highlight}
               </span>
+              {content.benefitsTitle.suffix}
             </h3>
             <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-5">
               {benefits.map((benefit, idx) => (
@@ -270,11 +285,11 @@ export default function WhyChooseMeSection() {
           className="text-center"
         >
           <Link
-            href="/szia-norbi-vagyok"
+            href={content.cta.href}
             className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-linear-to-r from-[#00B5F1] to-[#5B21B6] text-slate-950 font-bold hover:shadow-lg hover:shadow-[#00B5F1]/30 transition-all duration-300 shadow-lg shadow-[#00B5F1]/20 hover:scale-105"
-            aria-label="Ismerj meg jobban — Balog Norbert bemutatkozó oldala"
+            aria-label={content.cta.label}
           >
-            <span>Ismerj meg jobban</span>
+            <span>{content.cta.label}</span>
             <ArrowRight className="w-5 h-5" aria-hidden="true" />
           </Link>
         </motion.div>

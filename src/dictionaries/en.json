@@ -1,4 +1,542 @@
 {
+  "home": {
+    "meta": {
+      "title": "Premium Web Development & AI Automation | WebDude",
+      "description": "Premium web development and AI automation with Next.js 16 and Firebase. A remote partner with 26 years of design and 16 years of web development experience."
+    },
+    "hero": {
+      "ariaLabel": "Homepage hero section and showcase",
+      "highlightsAriaLabel": "Core services",
+      "trustAriaLabel": "Benefits and guarantees",
+      "ratingAriaLabel": "Rated 5 out of 5",
+      "slidesNavAriaLabel": "Slide selector",
+      "slideLabel": "slide",
+      "prevLabel": "Previous slide",
+      "nextLabel": "Next slide",
+      "scrollHint": "Scroll",
+      "slides": [
+        {
+          "id": "web-dev",
+          "badge": "Remote partner · Clients across Europe · Worldwide delivery",
+          "titlePrefix": "A website that is not only ",
+          "titleHighlight": "beautiful, but wins clients",
+          "titleSuffix": " for your business.",
+          "subtitle": "You get **web development**, **WordPress engineering**, **SEO** and **graphic design** from a single hand – without agency overhead, backed by **26 years of design and 16 years of web development experience.**",
+          "highlights": [
+            "Web Development",
+            "WordPress Engineering",
+            "SEO & AEO",
+            "Graphic Design"
+          ],
+          "trustPoints": [
+            "Direct communication — no middlemen",
+            "30-day post-launch fix guarantee",
+            "Fixed scope, fixed deadlines"
+          ],
+          "cta1": {
+            "label": "Request a custom quote",
+            "href": "/en#contact"
+          },
+          "cta2": {
+            "label": "View my work",
+            "href": "/en#cases"
+          },
+          "bgImage": "/assets/banners/webdude-hero.webp",
+          "bgAlt": "WebDude — premium web development, WordPress engineering, SEO and graphic design for international clients",
+          "ratingText": "47+ satisfied clients"
+        },
+        {
+          "id": "client-magnet",
+          "badge": "Technical Web Development · Conversion-focused E-commerce",
+          "titlePrefix": "Scalable websites and online stores that generate ",
+          "titleHighlight": "real traffic and revenue",
+          "titleSuffix": ".",
+          "subtitle": "Custom-built, lightning-fast **WordPress, WooCommerce and Next.js stores** that deliver a frictionless buying experience and convert your visitors into customers.",
+          "highlights": [
+            "Custom E-commerce Development",
+            "Performance Engineering",
+            "Fast Loading (LCP < 2s)",
+            "Conversion-focused UI/UX"
+          ],
+          "trustPoints": [
+            "Automated payments and invoicing",
+            "Mobile-first, accessible design",
+            "Secure cloud architecture"
+          ],
+          "cta1": {
+            "label": "Request a custom quote",
+            "href": "/en#contact"
+          },
+          "cta2": {
+            "label": "E-commerce development details",
+            "href": "/en#services"
+          },
+          "bgImage": "/assets/banners/ronch caffe adris nagybanner 20221005c copy 2.webp",
+          "bgAlt": "WebDude — technical web development and high-converting e-commerce solutions",
+          "ratingText": "Outstanding conversion rate"
+        },
+        {
+          "id": "ai-prompt-platform",
+          "badge": "AI Prompt Platform · Featured Case Study",
+          "titlePrefix": "AI Prompt Platform",
+          "titleHighlight": "",
+          "titleSuffix": "",
+          "subtitle": "A complete, scalable AI architecture and prompt ecosystem. Built with **Next.js 16** and modern AI workflows that automate content production and day-to-day operations.",
+          "highlights": [
+            "AI Prompt Ecosystem",
+            "Next.js 16 & React 19",
+            "3-Month Market Launch",
+            "Automated Generation"
+          ],
+          "trustPoints": [
+            "Battle-tested AI systems",
+            "Immediate productivity gain",
+            "Modern, future-proof infrastructure"
+          ],
+          "cta1": {
+            "label": "Explore AI solutions",
+            "href": "/en#services"
+          },
+          "cta2": {
+            "label": "Prompt templates",
+            "href": "/en#services"
+          },
+          "bgImage": "/assets/banners/webdude banner 2000x1000.webp",
+          "bgAlt": "WebDude — AI Prompt Platform",
+          "ratingText": "100% custom AI integration"
+        }
+      ]
+    },
+    "snapshot": {
+      "ariaLabel": "Professional background and core disciplines",
+      "heading": "Professional background and core disciplines",
+      "cards": [
+        {
+          "title": "Expertise",
+          "content": "WebDude is a solo studio with 26 years of graphic design and 16 years of web development experience. I build premium Next.js 16, React 19, Tailwind v4 and Firebase solutions as a remote partner for clients across Europe and worldwide."
+        },
+        {
+          "title": "Technology Stack",
+          "content": "Next.js 16, React 19, TypeScript, Tailwind CSS v4, Firebase (Firestore, Auth, Storage), Motion animations, React Hook Form and Zod validation — modern, fast and secure by default."
+        },
+        {
+          "title": "Timeline & Guarantee",
+          "content": "Landing pages in 1–2 weeks, corporate websites in 2–4 weeks, e-commerce in 4–6 weeks, AI workflows in 2–8 weeks. Every project is quoted individually, delivered on a fixed deadline, with no hidden costs."
+        }
+      ]
+    },
+    "proof": {
+      "ariaLabel": "Statistics and references",
+      "badge": "47+ projects delivered",
+      "clientsLabel": "Trusted by teams in",
+      "clients": [
+        "btshop.hu",
+        "Rimai Ltd.",
+        "B2B Logistics",
+        "AI-Prompt.hu",
+        "Next.js Projects",
+        "Firebase Apps",
+        "WooCommerce",
+        "Figma Design"
+      ],
+      "stats": [
+        {
+          "label": "Years of graphic design",
+          "value": "26+"
+        },
+        {
+          "label": "Years of web development",
+          "value": "16+"
+        },
+        {
+          "label": "Average client rating",
+          "value": "4.9/5"
+        },
+        {
+          "label": "Average response time",
+          "value": "24h"
+        }
+      ]
+    },
+    "system": {
+      "ariaLabel": "How I work",
+      "eyebrow": "A system, not a sales pitch",
+      "title": {
+        "prefix": "How a ",
+        "highlight": "high-performing",
+        "suffix": " website is built"
+      },
+      "subtitle": "Four atomic phases — from audit and AI-assisted design to launch, with measurable KPIs at every step.",
+      "cta": {
+        "label": "Request a custom quote",
+        "href": "/en#contact"
+      },
+      "steps": [
+        {
+          "id": "audit",
+          "step": "01",
+          "title": "Audit & Strategy",
+          "description": "A free website audit covering speed, SEO and conversion diagnostics. Those findings become a precise development roadmap."
+        },
+        {
+          "id": "design",
+          "step": "02",
+          "title": "AI-Assisted Design & UX",
+          "description": "AI-supported user journey mapping, wireframes and prototypes before a single line of code is written. You know exactly what you get."
+        },
+        {
+          "id": "dev",
+          "step": "03",
+          "title": "Next.js Development",
+          "description": "React 19, TypeScript and Tailwind CSS v4 — a lightning-fast, scalable architecture with SEO, Schema.org and a Firebase backend built in."
+        },
+        {
+          "id": "launch",
+          "step": "04",
+          "title": "Launch & Growth",
+          "description": "Firebase Hosting, automated CI/CD and a Lighthouse 95+ target. I stay available after handover, with optional monthly support."
+        }
+      ]
+    },
+    "services": {
+      "ariaLabel": "Core services — web development, WordPress, SEO and design",
+      "eyebrow": "Core services",
+      "title": {
+        "prefix": "Website · WordPress · SEO ·",
+        "highlight": "Design",
+        "suffix": ""
+      },
+      "allServicesLabel": "Request the full service list",
+      "allServicesHref": "/en#contact",
+      "quickAnswerLabel": "Quick answer:",
+      "detailsAriaSuffix": "details",
+      "primary": [
+        {
+          "id": "weboldal",
+          "eyebrow": "Core service",
+          "title": "Web Development",
+          "description": "Premium, lightning-fast websites and online stores — built with Next.js 16, WordPress or fully custom code. SEO, Schema.org JSON-LD and a Firebase backend included.",
+          "directAnswer": "Custom web development is the design, engineering and launch of a website tailored to one business. WebDude builds every project on Next.js 16, React 19 or WordPress, with technical SEO, Schema.org structured data and Firebase baked in. Most builds are delivered in two to six weeks, fully responsive, accessible to WCAG AA and measured against Core Web Vitals targets.",
+          "tags": [
+            "Custom build",
+            "Lighthouse 95+",
+            "Mobile-first"
+          ],
+          "features": [
+            "LCP < 2.5s target guaranteed",
+            "Secure, maintainable code",
+            "Conversion-optimised design"
+          ],
+          "href": "/en#contact"
+        },
+        {
+          "id": "wordpress",
+          "eyebrow": "WordPress engineering",
+          "title": "WordPress Development",
+          "description": "Custom WordPress themes, WooCommerce stores and plugin development. Fast, secure and maintainable — with an admin experience tailored to your team.",
+          "directAnswer": "WordPress is the right choice when your team wants to edit content without a developer, and standard features such as a blog or a WooCommerce store are enough. Custom Next.js development is better for complex logic, maximum speed or bespoke integrations. WebDude delivers both stacks with equal depth of experience.",
+          "tags": [
+            "WordPress",
+            "WooCommerce",
+            "Custom theme"
+          ],
+          "features": [
+            "Straightforward content editing"
+          ],
+          "href": "/en#contact"
+        },
+        {
+          "id": "seo",
+          "eyebrow": "SEO & AEO",
+          "title": "SEO Optimisation",
+          "description": "Technical SEO audits, content optimisation and AEO (Answer Engine Optimisation) so you are found on Google and cited by ChatGPT, Perplexity and Gemini.",
+          "directAnswer": "SEO optimisation is the technical and editorial work that makes a website rank in search engines. WebDude covers technical SEO audits, Core Web Vitals, keyword strategy, internal linking and Schema.org structured data, then refines content for Answer Engine Optimisation. Measurable organic traffic gains usually appear within three to six months, depending on how competitive your market is.",
+          "tags": [
+            "Technical SEO",
+            "Keyword strategy",
+            "AEO / AI Search"
+          ],
+          "features": [
+            "+40–180% organic traffic (measured)"
+          ],
+          "href": "/en#contact"
+        },
+        {
+          "id": "grafika",
+          "eyebrow": "Visual identity",
+          "title": "Graphic Design",
+          "description": "26 years of design experience: logos, brand identity, print collateral and UI/UX design — pixel-perfect, produced in Adobe CC and Figma.",
+          "directAnswer": "Graphic design is the visual language of a brand: its logo, colour palette, typography and applied assets. With 26 years of design practice, WebDude delivers logo concepts, complete brand identity, print-ready collateral and UI/UX design in Adobe CC and Figma — pixel-perfect and documented in a brand book your team can reuse.",
+          "tags": [
+            "Logo & Branding",
+            "UI/UX Design",
+            "Print collateral"
+          ],
+          "features": [
+            "26 years of design practice",
+            "Print-ready artwork"
+          ],
+          "href": "/en#contact"
+        }
+      ],
+      "secondary": {
+        "dividerLabel": "Complementary solution",
+        "eyebrow": "Add-on",
+        "title": "AI Automation",
+        "description": "OpenAI GPT-4 and Groq LLM integration, AI chatbots and CRM automation. Less manual work, more qualified leads — layered onto the business you already run.",
+        "directAnswer": "AI automation suits businesses that want to remove repetitive manual processes. WebDude integrates OpenAI GPT-4 and Groq large language models into existing workflows, adds AI chat assistants and connects CRM pipelines so that inbound leads are captured, qualified and routed automatically.",
+        "tags": [
+          "GPT-4 integration",
+          "Chatbot",
+          "CRM automation"
+        ],
+        "href": "/en#contact",
+        "detailsLabel": "Request details"
+      },
+      "directAnswerHeading": "Direct answers",
+      "directAnswers": [
+        {
+          "question": "What does custom web development from WebDude include?",
+          "answer": "Custom web development is the design, engineering and launch of a site tailored to one business. Every WebDude project runs on Next.js 16, React 19 or WordPress with technical SEO, Schema.org structured data and a Firebase backend built in. Most builds ship in two to six weeks — responsive, WCAG AA accessible and tuned to Core Web Vitals targets."
+        },
+        {
+          "question": "When should you choose WordPress over custom Next.js development?",
+          "answer": "WordPress suits teams that want to edit content without a developer and rely on standard features such as a blog or a WooCommerce store. Custom Next.js development wins on complex logic, maximum performance and bespoke integrations. WebDude delivers both stacks with equal depth, so the recommendation follows your roadmap rather than a preferred tool."
+        },
+        {
+          "question": "What is AEO and how does it differ from classic SEO?",
+          "answer": "AEO, or Answer Engine Optimisation, structures content so AI search engines such as ChatGPT, Perplexity and Gemini can quote it as a direct answer. Classic SEO targets Google rankings; AEO targets citable, self-contained answers. WebDude implements both through concise direct-answer blocks plus FAQPage, Service and Organization structured data."
+        },
+        {
+          "question": "What design capability does WebDude bring to a project?",
+          "answer": "WebDude brings 26 years of graphic design practice: logo design, complete brand identity, print collateral and UI/UX design produced in Adobe CC and Figma. Because identity and code come from the same hand, nothing is lost between concept and shipped interface, and your team receives documented, reusable brand assets."
+        }
+      ]
+    },
+    "cases": {
+      "ariaLabel": "Case studies",
+      "eyebrow": "Measured results",
+      "title": {
+        "prefix": "Not a promise —",
+        "highlight": "proof",
+        "suffix": ""
+      },
+      "detailsLabel": "View details",
+      "allLabel": "Start a project",
+      "allHref": "/en#contact",
+      "items": [
+        {
+          "id": "btshop",
+          "client": "btshop.hu",
+          "category": "E-commerce store",
+          "eyebrow": "Case study #1",
+          "title": "E-commerce redesign — +40% conversion",
+          "description": "A complete Next.js migration and UI/UX redesign of the btshop.hu B2B logistics store. Result: 40% more orders, a Lighthouse score of 96/100 and a 60% better mobile experience.",
+          "kpis": [
+            {
+              "label": "Conversion lift",
+              "value": "+40%"
+            },
+            {
+              "label": "Lighthouse score",
+              "value": "96/100"
+            },
+            {
+              "label": "Mobile improvement",
+              "value": "+60%"
+            }
+          ],
+          "tags": [
+            "Next.js",
+            "WooCommerce Migration",
+            "B2B Logistics"
+          ],
+          "href": "/en#contact",
+          "imgPlaceholder": "B2B",
+          "image": "/assets/portfolio/btshop/btshop-banner.webp"
+        },
+        {
+          "id": "ai-prompt",
+          "client": "AI-Prompt.hu",
+          "category": "AI Platform",
+          "eyebrow": "Case study #2",
+          "title": "AI prompt platform — from zero in 3 months",
+          "description": "Full design and build of the AI-Prompt.hu platform: a React 19 interface, Groq LLM integration, a client portal and lead-generation automation. A stable, revenue-generating system in 180 days.",
+          "kpis": [
+            {
+              "label": "Organic traffic",
+              "value": "+184%"
+            },
+            {
+              "label": "AI automation",
+              "value": "9 tools"
+            },
+            {
+              "label": "Build time",
+              "value": "3 months"
+            }
+          ],
+          "tags": [
+            "React 19",
+            "Groq LLM",
+            "Firebase",
+            "Lead Gen"
+          ],
+          "href": "/en#contact",
+          "imgPlaceholder": "AI",
+          "image": "/assets/portfolio/ai-promt-hu/ai-promt-hi-banner-2.webp"
+        }
+      ]
+    },
+    "why": {
+      "ariaLabel": "Why WebDude — Balog Norbert",
+      "eyebrow": "Why WebDude?",
+      "title": {
+        "prefix": "I am WebDude — ",
+        "highlight": "and that is the difference",
+        "suffix": ""
+      },
+      "subtitle": "Not an agency, but a dedicated specialist who builds your website, your WordPress project, your SEO strategy and your visual identity with 26 years of design and 16 years of web development practice. Direct communication, no middlemen, no hidden fees.",
+      "benefitsTitle": {
+        "prefix": "What really ",
+        "highlight": "sets me apart",
+        "suffix": ""
+      },
+      "advantages": [
+        {
+          "title": "26 Years of Design Craft",
+          "description": "WebDude has worked in graphic design and visual communication for 26 years — the kind of judgement only long, lived experience produces.",
+          "stat": "26+",
+          "statLabel": "Years of design"
+        },
+        {
+          "title": "16 Years of Web Development",
+          "description": "Next.js, WordPress, WooCommerce and Firebase — 16 years of continuous development work, not theory.",
+          "stat": "16+",
+          "statLabel": "Years of code"
+        },
+        {
+          "title": "Direct Contact With Me",
+          "description": "You work directly with me — no account manager in between, no communication loss, no misunderstandings.",
+          "stat": "1:1",
+          "statLabel": "Communication"
+        },
+        {
+          "title": "30-Day Guarantee",
+          "description": "A post-launch fix guarantee and ongoing support. If something breaks, I fix it — at no extra cost.",
+          "stat": "30",
+          "statLabel": "Day guarantee"
+        },
+        {
+          "title": "Fast Turnaround",
+          "description": "No bureaucracy and no long onboarding. Once we agree on scope, work starts immediately and stays focused.",
+          "stat": "2x",
+          "statLabel": "Faster"
+        },
+        {
+          "title": "Transparent Pricing",
+          "description": "Fixed, pre-agreed scope and deadlines without hidden costs. I deliver what I promise.",
+          "stat": "0",
+          "statLabel": "Hidden fees"
+        }
+      ],
+      "benefits": [
+        {
+          "title": "100% Focus on Your Project",
+          "description": "No split attention — I concentrate on your project exclusively until it is finished."
+        },
+        {
+          "title": "ROI-Driven Thinking",
+          "description": "I do not just build a beautiful website, I build one that converts and pays for itself."
+        },
+        {
+          "title": "Design + Code in One",
+          "description": "Most developers do not design and most designers do not code. I do both."
+        },
+        {
+          "title": "Passion in Every Project",
+          "description": "I am personally involved from the first call to the final launch — no juniors, no outsourced teams."
+        },
+        {
+          "title": "Long-Term Partnership",
+          "description": "Handover is the beginning, not the end — optional monthly support and maintenance available."
+        }
+      ],
+      "cta": {
+        "label": "Get to know me",
+        "href": "/en#contact"
+      }
+    },
+    "faq": {
+      "ariaLabel": "Frequently asked questions — web development, WordPress, SEO, design",
+      "eyebrow": "FAQ",
+      "title": {
+        "prefix": "Answers to what you ",
+        "highlight": "actually want",
+        "suffix": " to know"
+      },
+      "subtitle": "Web development, WordPress, SEO and design — the questions clients ask most often, answered honestly and without agency jargon.",
+      "footerQuestion": "Did not find your answer?",
+      "footerCta": "Write to me directly",
+      "footerCtaHref": "/en#contact",
+      "items": [
+        {
+          "category": "Website",
+          "question": "How long does it take to build a website?",
+          "answer": "A straightforward brochure website usually takes 2–4 weeks, while a more complex store or portal takes 4–10 weeks. The exact deadline is confirmed during the first free consultation, in writing, and I keep the deadlines I promise, with regular progress updates along the way."
+        },
+        {
+          "category": "WordPress",
+          "question": "WordPress or a custom-built website — which is better?",
+          "answer": "WordPress is ideal for businesses that want to edit content themselves and rely on standard features such as a blog or a WooCommerce store. Custom Next.js development is recommended for larger systems that need maximum speed, complex logic or bespoke integrations. I have equal depth of experience in both."
+        },
+        {
+          "category": "WordPress",
+          "question": "What does WordPress maintenance involve?",
+          "answer": "The standard WordPress maintenance package covers monthly plugin and core updates, daily backups, a Lighthouse audit and one hour of content update support. Pricing depends on the complexity of the project — you receive a concrete proposal during the first consultation."
+        },
+        {
+          "category": "SEO",
+          "question": "How does SEO optimisation help my business?",
+          "answer": "Technical SEO and content optimisation together increase your organic, unpaid Google traffic. I handle speed optimisation to Lighthouse 95+, keyword strategy, Schema.org JSON-LD implementation and Answer Engine Optimisation — so your business also surfaces inside AI search tools such as ChatGPT, Perplexity and Gemini."
+        },
+        {
+          "category": "SEO",
+          "question": "When will I see measurable SEO results?",
+          "answer": "Technical SEO changes such as speed, Core Web Vitals and structured data show measurable effects within a few weeks. Keyword ranking improvements typically appear in 3–6 months, and long-term organic traffic growth builds over 6–12 months, depending on how competitive your industry is."
+        },
+        {
+          "category": "Design",
+          "question": "What does a brand identity package include?",
+          "answer": "A core brand identity package includes logo design with three concepts and two revision rounds, a colour palette, a typographic system and a fundamental brand guide. It can be extended with business cards, letterheads, social media templates and print collateral. Design work is produced in Adobe CC and Figma with 26 years of practice behind it."
+        },
+        {
+          "category": "General",
+          "question": "Why work with you instead of an agency?",
+          "answer": "You work directly with me — no project manager in between, no communication loss. I bring 26 years of graphic design and 16 years of web development experience, and I stay personally involved from first brief to launch. An agency typically charges two to three times more for the same scope, often delivered by a junior developer."
+        },
+        {
+          "category": "General",
+          "question": "What guarantee do you offer on delivered work?",
+          "answer": "I provide a 30-day fix guarantee after handover: any issue that appears is resolved at no additional cost. Optional monthly maintenance packages are also available, covering updates, daily backups and a monthly Lighthouse audit so your site keeps performing after launch."
+        },
+        {
+          "category": "General",
+          "question": "What does a website or online store cost?",
+          "answer": "Every quote is based on the real complexity of your project — after the assessment you receive a fixed, pre-agreed amount and deadline with no hidden costs. There are no off-the-shelf packages: every system is different, so the scope and the quote are designed individually. Request a free project assessment to start."
+        }
+      ]
+    },
+    "finalCta": {
+      "eyebrow": "FINALLY",
+      "title": "Ready to take the next step?",
+      "subtitle": "Let's get your project moving today.",
+      "cta": {
+        "label": "Book a free AI consultation",
+        "href": "/en#contact"
+      }
+    }
+  },
   "common": {
     "title": "WebDude",
     "description": "Full-stack web development, AI workflow and agent systems — all in one place. 26 years of experience, Next.js 16, React 19, Tailwind v4, Firebase-based premium solutions.",
@@ -15,11 +553,12 @@
     "contact": "Contact",
     "portal": "Client Portal",
     "about": "About",
-    "cta": "Get a Quote"
+    "cta": "Request a custom quote",
+    "faq": "FAQ"
   },
   "hero": {
     "title": "Web Development & AI Automation",
-    "subtitle": "Next.js-based lightning-fast websites and AI-driven lead generation for small and medium businesses from Kecskemét, nationwide. 26 years of graphic design, 16 years of development experience.",
+    "subtitle": "Next.js-based lightning-fast websites and AI-driven lead generation for small and medium businesses worldwide. 26 years of graphic design, 16 years of development experience.",
     "cta": "Get a Quote",
     "ctaSecondary": "View My Work"
   },
@@ -28,24 +567,81 @@
     "quickLinks": "Quick Links",
     "contact": "Contact",
     "copyright": "© 2024 WebDude. All rights reserved.",
+    "rightsReserved": "All rights reserved.",
     "privacyPolicy": "Privacy Policy",
     "termsOfService": "Terms of Service",
     "phone": "+36 70 323 8003",
     "email": "hello@webdude.hu",
-    "address": "Kecskemét, Hungary",
-    "servicesLinks": {
-      "webDevelopment": "Web Development",
-      "wordpressWebshop": "WordPress Webshop",
-      "webshopDevelopment": "Webshop Development",
-      "wordpressWebsite": "WordPress Website",
-      "seoOptimization": "SEO Optimization",
-      "marketingLeadGeneration": "Marketing Lead Generation",
-      "graphicDesign": "Graphic Design",
-      "logoDesign": "Custom Logo Design",
-      "aiWorkflow": "AI Workflow Setup",
-      "aiVideoGeneration": "AI Image & Video Generation",
-      "aiPromptEngineering": "AI Prompt Engineering"
-    }
+    "address": "Hungary · remote partner serving clients worldwide",
+    "description": "Premium web development, SEO and AI automation delivered remotely to ambitious businesses across Europe and beyond.",
+    "serviceLinkItems": [
+      {
+        "label": "Web Development",
+        "href": "/en#services"
+      },
+      {
+        "label": "WordPress Development",
+        "href": "/en#services"
+      },
+      {
+        "label": "E-commerce Development",
+        "href": "/en#services"
+      },
+      {
+        "label": "SEO Optimisation",
+        "href": "/en#services"
+      },
+      {
+        "label": "Technical SEO Audit",
+        "href": "/en#services"
+      },
+      {
+        "label": "AI Automation",
+        "href": "/en#services"
+      },
+      {
+        "label": "AI Prompt Engineering",
+        "href": "/en#services"
+      },
+      {
+        "label": "Graphic Design",
+        "href": "/en#services"
+      },
+      {
+        "label": "Brand Identity",
+        "href": "/en#services"
+      },
+      {
+        "label": "Website Maintenance",
+        "href": "/en#services"
+      },
+      {
+        "label": "Speed Optimisation",
+        "href": "/en#services"
+      },
+      {
+        "label": "Request a custom quote",
+        "href": "/en#contact"
+      }
+    ],
+    "quickLinkItems": [
+      {
+        "label": "About me",
+        "href": "/en#about"
+      },
+      {
+        "label": "Case studies",
+        "href": "/en#cases"
+      },
+      {
+        "label": "Services",
+        "href": "/en#services"
+      },
+      {
+        "label": "Contact",
+        "href": "/en#contact"
+      }
+    ]
   },
   "language": {
     "switch": "Switch Language",
@@ -55,7 +651,7 @@
   "bentoGrid": {
     "expertise": {
       "title": "Expertise",
-      "content": "WebDude is a solo business: 26 years of graphic design and 16 years of web development experience, Next.js 16, React 19, Tailwind v4 and Firebase-based premium solutions from Kecskemét, nationwide."
+      "content": "WebDude is a solo business: 26 years of graphic design and 16 years of web development experience, delivering premium Next.js 16, React 19, Tailwind v4 and Firebase solutions as a remote partner to clients worldwide."
     },
     "techStack": {
       "title": "Tech Stack",
@@ -75,7 +671,7 @@
       "heroSubtitle": "Digital solutions designed for small and medium businesses that automate marketing and increase conversion.",
       "cta1": "Free Consultation",
       "cta2": "View Portfolio",
-      "directAnswer": "WebDude digital services: Custom web development, graphic design, AI workflow automation, SEO optimization and marketing lead generation for SMEs. 26 years of experience, Next.js 16, React 19, Tailwind v4, Firebase-based premium solutions from Kecskemét, nationwide.",
+      "directAnswer": "WebDude digital services: Custom web development, graphic design, AI workflow automation, SEO optimization and marketing lead generation for SMEs. 26 years of experience, Next.js 16, React 19, Tailwind v4, Firebase-based premium solutions delivered as a remote partner worldwide.",
       "sectionTitle": "Our Digital Services",
       "sectionSubtitle": "How can I help?",
       "sectionDescription": "Services designed for SMEs and solo entrepreneurs that increase client acquisition, automate marketing and strengthen brand presence.",

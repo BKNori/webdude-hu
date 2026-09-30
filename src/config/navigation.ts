@@ -1,4 +1,6 @@
 import { ComponentType } from "react";
+import { Language } from "@/types/dictionary";
+import { NAV_ITEMS_EN } from "./navigation.en";
 import {
   Bot,
   Image as ImageIcon,
@@ -189,3 +191,11 @@ export const NAV_ITEMS: NavItem[] = [
   { name: "Hírek", href: "/hirek" },
   { name: "Ügyfélportál", href: "/portal" },
 ];
+
+/**
+ * Nyelvfüggő navigáció — a HeaderNavClient innen kéri le a menüt.
+ * HU: teljes dropdown menü (NAV_ITEMS), EN: anchor-alapú főoldali menü.
+ */
+export function getNavItems(lang: Language): NavItem[] {
+  return lang === "en" ? NAV_ITEMS_EN : NAV_ITEMS;
+}

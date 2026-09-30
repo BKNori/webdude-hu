@@ -9,6 +9,11 @@ import FooterLinks from "@/components/molecules/FooterLinks";
 import FooterContact from "@/components/molecules/FooterContact";
 import { Dictionary } from "@/types/dictionary";
 
+interface FooterLink {
+  name: string;
+  href: string;
+}
+
 interface FooterProps {
   dictionary?: Dictionary["footer"];
 }
@@ -16,61 +21,79 @@ interface FooterProps {
 export default function Footer({ dictionary }: FooterProps) {
   const currentYear = new Date().getFullYear();
 
-  const servicesLinks = dictionary?.servicesLinks
-    ? [
-        {
-          name: dictionary.servicesLinks.webDevelopment,
-          href: "/szolgaltatasok/weboldal-keszites",
-        },
-        {
-          name: dictionary.servicesLinks.wordpressWebshop,
-          href: "/szolgaltatasok/woocommerce-webshop-keszites",
-        },
-        {
-          name: dictionary.servicesLinks.webshopDevelopment,
-          href: "/szolgaltatasok/webshop-fejlesztes",
-        },
-        {
-          name: dictionary.servicesLinks.wordpressWebsite,
-          href: "/szolgaltatasok/weboldal-keszites",
-        },
-        {
-          name: dictionary.servicesLinks.seoOptimization,
-          href: "/szolgaltatasok/seo-optimalizalas",
-        },
-        {
-          name: dictionary.servicesLinks.marketingLeadGeneration,
-          href: "/szolgaltatasok/marketing-lead-generalas",
-        },
-        {
-          name: dictionary.servicesLinks.graphicDesign,
-          href: "/szolgaltatasok/grafikai-tervezes",
-        },
-        {
-          name: dictionary.servicesLinks.logoDesign,
-          href: "/szolgaltatasok/egyedi-arculattervezes-logo",
-        },
-        {
-          name: dictionary.servicesLinks.aiWorkflow,
-          href: "/szolgaltatasok/ai-workflow-kialakitas",
-        },
-        {
-          name: dictionary.servicesLinks.aiVideoGeneration,
-          href: "/szolgaltatasok/ai-kep-es-videogeneralas",
-        },
-        {
-          name: dictionary.servicesLinks.aiPromptEngineering,
-          href: "/szolgaltatasok/ai-prompt-engineering",
-        },
-      ]
-    : [];
+  const fallbackServicesLinks = [
+    {
+      name: dictionary?.serviceLinkItems?.[0]?.label || "Weboldal Készítés",
+      href: "/szolgaltatasok/weboldal-keszites",
+    },
+    {
+      name: "WordPress Karbantartás",
+      href: "/szolgaltatasok/wordpress-karbantartas",
+    },
+    {
+      name: "Weboldal Gyorsítás",
+      href: "/szolgaltatasok/weboldal-sebessegoptimalizalas",
+    },
+    {
+      name: "Technikai SEO Audit",
+      href: "/szolgaltatasok/technikai-seo-audit",
+    },
+    {
+      name: "Webshop Fejlesztés",
+      href: "/szolgaltatasok/webshop-fejlesztes",
+    },
+    {
+      name: "WordPress Fejlesztés",
+      href: "/szolgaltatasok/wordpress-fejlesztes",
+    },
+    {
+      name: "WordPress Biztonság",
+      href: "/szolgaltatasok/wordpress-biztonsag",
+    },
+    {
+      name: "Weboldal Felújítás",
+      href: "/szolgaltatasok/weboldal-felujitas",
+    },
+    {
+      name: "Helyi SEO (Kecskemét)",
+      href: "/weboldal-keszites-kecskemet",
+    },
+    {
+      name: "Arculattervezés & Logó",
+      href: "/szolgaltatasok/arculattervezes",
+    },
+    {
+      name: "SEO Optimalizálás",
+      href: "/szolgaltatasok/seo-optimalizalas",
+    },
+    {
+      name: "AI Workflow & Integráció",
+      href: "/szolgaltatasok/ai-workflow-kialakitas",
+    },
+  ];
 
-  const quickLinks = [
+  const fallbackQuickLinks = [
     { name: "Rólam", href: "/szia-norbi-vagyok" },
     { name: "Munkáim", href: "/munkak" },
     { name: "Hírek", href: "/hirek" },
     { name: "Kapcsolat", href: "/kapcsolat" },
   ];
+
+  // Aktív linklista: a nyelvi szótárból (locale-korrekt href-ekkel).
+  // A magyar lista kizárólag fallback, így a HU megjelenés változatlan.
+  const servicesLinks: FooterLink[] = dictionary?.serviceLinkItems
+    ? dictionary.serviceLinkItems.map((item) => ({
+        name: item.label,
+        href: item.href,
+      }))
+    : fallbackServicesLinks;
+
+  const quickLinks: FooterLink[] = dictionary?.quickLinkItems
+    ? dictionary.quickLinkItems.map((item) => ({
+        name: item.label,
+        href: item.href,
+      }))
+    : fallbackQuickLinks;
 
   return (
     <footer className="public-footer bg-bg-base border-t border-slate-800 mt-0 relative overflow-hidden">
@@ -114,7 +137,7 @@ export default function Footer({ dictionary }: FooterProps) {
           >
             <div className="md:col-span-2 lg:col-span-2">
               <h3 className="text-sm font-bold text-text-primary uppercase tracking-wider mb-4">
-                Szolgáltatások
+                {dictionary?.services ?? "Szolgáltatások"}
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <ul className="space-y-2">
@@ -154,7 +177,7 @@ export default function Footer({ dictionary }: FooterProps) {
             className="md:col-span-1 lg:col-span-1"
           >
             <FooterLinks
-              title="Gyorslinkek"
+              title={dictionary?.quickLinks ?? "Gyorslinkek"}
               links={quickLinks}
               className="grid grid-cols-1 gap-2"
             />
@@ -168,7 +191,10 @@ export default function Footer({ dictionary }: FooterProps) {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="md:col-span-1 lg:col-span-1"
           >
-            <FooterContact />
+            <FooterContact
+              title={dictionary?.contact ?? "Elérhetőség"}
+              address={dictionary?.address ?? "Kecskemét, Magyarország"}
+            />
             <div className="mt-6 pt-4 border-t border-slate-700">
               <a
                 href="https://ai-promt.hu"
@@ -558,20 +584,21 @@ export default function Footer({ dictionary }: FooterProps) {
         <div className="px-6 lg:px-8 py-6 max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-slate-500 text-xs">
-              &copy; {currentYear} WebDude.hu. Minden jog fenntartva.
+              &copy; {currentYear} WebDude.hu.{" "}
+              {dictionary?.rightsReserved ?? "Minden jog fenntartva."}
             </p>
             <div className="flex items-center gap-6 text-xs">
               <Link
                 href="/adatvedelmi-szabalyzat"
                 className="text-slate-400 hover:text-sky-500 transition-colors hover:translate-x-1 transform duration-300 inline-block"
               >
-                Adatvédelmi nyilatkozat
+                {dictionary?.privacyPolicy ?? "Adatvédelmi nyilatkozat"}
               </Link>
               <Link
                 href="/felhasznalasi-feltetelek"
                 className="text-slate-400 hover:text-sky-500 transition-colors hover:translate-x-1 transform duration-300 inline-block"
               >
-                Felhasználási feltételek
+                {dictionary?.termsOfService ?? "Felhasználási feltételek"}
               </Link>
             </div>
           </div>

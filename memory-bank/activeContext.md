@@ -2,6 +2,12 @@
 
 > **AI DIREKTÍVA:** Ez a fájl a rendszer "élő" memóriája. A 03-workflow.md 5. lépése alapján KÖTELEZŐ ezt a fájlt frissítened minden feladat befejezésekor, vagy mielőtt átadod a vezérlést a felhasználónak (Norbinak). Szigorúan tilos új feladatba kezdened, ha az "Aktuális Munkaterület Állapota" szekcióban hibák vagy félbehagyott fájlok vannak!
 
+## Aktuális állapot — 2026-09-29, Hero háttérkép-láthatóság + Esettanulmány #2 kép + AI Prompt Platform állítás-visszavonás lezárva
+
+- **Fő eredmény (2026-09-29):** a főoldali hero háttérképek jelentősen láthatóbbá téve (`opacity-65`, színvisszaállítás, `bg-slate-950/60` overlay, új bal-oldali szövegvédelmi gradient scrim a WCAG AA megtartásához); a „Nem ígéret — bizonyíték" szekció Esettanulmány #2 kártyája megkapta az `ai-promt-hi-banner-2.webp` képet (HU+EN+defaults); a hero 3. dia jobb oldali mockup-kártyája eltávolítva; a „Nulláról 3 hónap alatt a piac élére" szöveg kigyomlázva minden élő forrásból (3. dia címe: „AI Prompt Platform").
+- **QA:** `npx tsc --noEmit` → TSC_EXIT=0; `npm run lint` → LINT_EXIT=0 (0 hiba, 2 előre meglévő `react-hooks/exhaustive-deps` warning `HeroSectionNew.tsx`); `npm run build` → BUILD_EXIT=0.
+- **Nyitott (Norbinak):** a `CaseStudiesBento` #2 kártya címében még szerepel a „nulláról 3 hónap alatt" rész (külön kérés kell a törléséhez); manuális vizuális ellenőrzés a böngészőben (hero kontraszt + képelőnézetek).
+
 ## Aktuális állapot — 2026-09-21, WCAG AA akadálymentesítés (landmark + fókuszcsapda + kontraszt) lezárva
 
 - **Fő eredmény (2026-09-21):** teljes körű WCAG AA a11y hardening. A kiinduló állapot **egy blokkoló TypeScript hibát** tartalmazott (`HeaderNavClient.tsx` duplikált `aria-label` → TS17001, `tsc` EXIT=2).

@@ -4,10 +4,19 @@ import {
   FadeUpMotion,
   ScaleMotion,
 } from "@/components/molecules/MotionWrapper";
+import { FinalCtaContent } from "@/types/dictionary";
 
-export default function FinalCta() {
+interface FinalCtaProps {
+  /** Nyelvi tartalom a szótárból (HU/EN). */
+  content: FinalCtaContent;
+}
+
+export default function FinalCta({ content }: FinalCtaProps) {
   return (
-    <section className="min-h-[80vh] py-16 md:py-20 lg:py-24 flex items-center justify-center bg-transparent text-white relative overflow-hidden mb-0">
+    <section
+      id="contact"
+      className="min-h-[80vh] py-16 md:py-20 lg:py-24 flex items-center justify-center bg-transparent text-white relative overflow-hidden mb-0"
+    >
       {/* Video background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <video
@@ -32,13 +41,13 @@ export default function FinalCta() {
         <FadeUpMotion delay={0.2}>
           <div className="max-w-3xl mx-auto text-center">
             <p className="text-xs uppercase tracking-[0.5em] text-[#00B5F1] mb-4">
-              VÉGÜL
+              {content.eyebrow}
             </p>
             <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-white mb-6 leading-tight">
-              Készen állsz a szintlépésre?
+              {content.title}
             </h2>
             <p className="text-lg md:text-xl text-white/90 leading-relaxed">
-              Indítsuk be a projektedet még ma!
+              {content.subtitle}
             </p>
           </div>
         </FadeUpMotion>
@@ -46,11 +55,11 @@ export default function FinalCta() {
         <FadeUpMotion delay={0.4} className="mt-8">
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
             <Button
-              href="/kapcsolat"
+              href={content.cta.href}
               variant="primary"
               className="px-8 py-4 text-lg"
             >
-              Beszéljünk róla
+              {content.cta.label}
             </Button>
           </div>
         </FadeUpMotion>
