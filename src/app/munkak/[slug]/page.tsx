@@ -1,4 +1,5 @@
 import { works } from "@/data/works";
+import { CASE_STUDY_SEO } from "@/data/caseStudySeo";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import RimaiCaseStudy from "@/components/organisms/RimaiCaseStudy";
@@ -39,6 +40,12 @@ export async function generateMetadata({
   const project = await getProject(slug);
   if (!project) return { title: "Projekt nem található | WebDude" };
 
+  // 7.12.0: a normalizált route-ok gazdag SEO-adatai (korábban önálló
+  // route mappákban éltek) — prioritás a CASE_STUDY_SEO tábla. E nélkül a
+  // canonical, a keywords és a JSON-LD sémák elvesznének.
+  const seoOverride = CASE_STUDY_SEO[slug];
+  if (seoOverride) return seoOverride.metadata;
+
   return {
     title: `${project.title} – WebDude Portfólió`,
     description: project.description,
@@ -52,51 +59,74 @@ export default async function ProjectPage({ params }: PageProps) {
 
   if (!p) notFound();
 
+  // 7.12.0: a normalizált route-ok JSON-LD sémái (korábban az önálló
+  // route mappák page/layout szintjén éltek). A metadata API nem tud
+  // strukturált adatot, ezért a sémákat itt rendereljük, szerveroldalon,
+  // XSS-védett formában — Client Componentbe soha nem kerülhetnek.
+  const schemas = CASE_STUDY_SEO[slug]?.schemas ?? [];
+
+  // Egy dedikált esettanulmány + az esetleges JSON-LD sémái egyetlen
+  // fragmentben. Üres sémalista esetén csak a komponens renderelődik.
+  const withSchemas = (content: React.ReactNode) => (
+    <>
+      {schemas.map((schema, index) => (
+        <script
+          key={index}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(schema).replace(/</g, "\\u003c"),
+          }}
+        />
+      ))}
+      {content}
+    </>
+  );
+
   // Rimai Útépítő Kft. dedikált esettanulmány
   if (p.id === "rimai-utepito") {
-    return <RimaiCaseStudy project={p} />;
+    return withSchemas(<RimaiCaseStudy project={p} />);
   }
 
   // Bor és Garnéla dedikált esettanulmány
   if (p.id === "bor-es-garnela") {
-    return <BorGarnelaCaseStudy project={p} />;
+    return withSchemas(<BorGarnelaCaseStudy project={p} />);
   }
 
   // HU-MÁGÓ Kft. dedikált esettanulmány
   if (p.id === "hu-mago-kft") {
-    return <HuMagoCaseStudy project={p} />;
+    return withSchemas(<HuMagoCaseStudy project={p} />);
   }
 
   // Classi-Co Kft. dedikált esettanulmány
   if (p.id === "classi-co") {
-    return <ClassiCoCaseStudy project={p} />;
+    return withSchemas(<ClassiCoCaseStudy project={p} />);
   }
 
   // BTShop dedikált esettanulmány
   if (p.id === "btshop") {
-    return <BtshopCaseStudy project={p} />;
+    return withSchemas(<BtshopCaseStudy project={p} />);
   }
 
   // Lengyel Helga dedikált esettanulmány
   if (p.id === "lengyel-helga") {
-    return <LengyelHelgaCaseStudy />;
+    return withSchemas(<LengyelHelgaCaseStudy />);
   }
 
   // Dr. Nagy Albert dedikált esettanulmány
   if (p.id === "dr-nagy-albert") {
-    return <DrNagyAlbertCaseStudy />;
+    return withSchemas(<DrNagyAlbertCaseStudy />);
   }
 
   // AI-Prompt.hu dedikált esettanulmány
   if (p.id === "ai-prompt-hu") {
-    return <AiPromptCaseStudy />;
+    return withSchemas(<AiPromptCaseStudy />);
   }
 
   // Go-Box Kft. dedikált esettanulmány
   if (p.id === "go-box-kft") {
-    return <GoBoxCaseStudy />;
+    return withSchemas(<GoBoxCaseStudy />);
   }
 
   // Általános esettanulány layout
-  return <GeneralCaseStudy project={p} />;
+  return withSchemas(<GeneralCaseStudy project={p} />);
 }

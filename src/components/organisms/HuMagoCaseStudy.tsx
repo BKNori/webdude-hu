@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import ResponsiveImage from "@/components/molecules/ResponsiveImage";
 import Link from "next/link";
 import {
   motion,
@@ -42,13 +42,13 @@ export default function HuMagoCaseStudy({ project }: HuMagoCaseStudyProps) {
         className="relative h-screen flex items-center justify-center overflow-hidden"
       >
         <motion.div style={{ y, opacity }} className="absolute inset-0">
-          <Image
-            src="/assets/portfolio/hu-mago-kft/hu-mago-kft -banner.webp"
-            alt="HU-MÁGÓ Kft. - Ipari Gépkereskedelem Innováció"
-            fill
-            className="object-cover"
-            priority
-          />
+          <ResponsiveImage
+             src="/assets/portfolio/hu-mago-kft/hu-mago-kft -banner.webp"
+             alt="HU-MÁGÓ Kft. - Ipari Gépkereskedelem Innováció"
+             sizes="100vw"
+             priority
+             className="object-cover"
+           />
           <div className="absolute inset-0 bg-linear-to-b from-black/80 via-black/60 to-bg-base" />
         </motion.div>
 
@@ -218,21 +218,21 @@ export default function HuMagoCaseStudy({ project }: HuMagoCaseStudyProps) {
               className="space-y-6"
             >
               <div className="relative aspect-video rounded-3xl overflow-hidden group">
-                <Image
-                  src="/assets/portfolio/hu-mago-kft/humago-fal-copy.webp"
-                  alt="HU-MÁGÓ Kft. Hero Banner"
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
-                />
+                <ResponsiveImage
+             src="/assets/portfolio/hu-mago-kft/humago-fal-copy.webp"
+             alt="HU-MÁGÓ Kft. Hero Banner"
+             sizes="100vw"
+             className="object-cover group-hover:scale-105 transition-transform duration-700"
+           />
                 <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent" />
               </div>
               <div className="relative aspect-video rounded-3xl overflow-hidden group">
-                <Image
-                  src="/assets/portfolio/hu-mago-kft/hu-mago-magazin-mocdddkup-copy.webp"
-                  alt="HU-MÁGÓ Kft. Katalógus"
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
-                />
+                <ResponsiveImage
+             src="/assets/portfolio/hu-mago-kft/hu-mago-magazin-mocdddkup-copy.webp"
+             alt="HU-MÁGÓ Kft. Katalógus"
+             sizes="100vw"
+             className="object-cover group-hover:scale-105 transition-transform duration-700"
+           />
                 <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent" />
               </div>
             </motion.div>
@@ -441,12 +441,12 @@ export default function HuMagoCaseStudy({ project }: HuMagoCaseStudyProps) {
               transition={{ duration: 0.6 }}
               className="lg:col-span-2 relative aspect-4/3 rounded-3xl overflow-hidden group"
             >
-              <Image
-                src="/assets/portfolio/hu-mago-kft/hu-mago-magazin-mocdddkup-copy.webp"
-                alt="HU-MÁGÓ Kft. Katalógus"
-                fill
-                className="object-cover group-hover:scale-110 transition-transform duration-700"
-              />
+              <ResponsiveImage
+             src="/assets/portfolio/hu-mago-kft/hu-mago-magazin-mocdddkup-copy.webp"
+             alt="HU-MÁGÓ Kft. Katalógus"
+             sizes="100vw"
+             className="object-cover group-hover:scale-110 transition-transform duration-700"
+           />
               <div className="absolute inset-0 bg-linear-to-t from-black/70 to-transparent" />
               <div className="absolute bottom-6 left-6">
                 <div className="text-white font-bold text-xl">
@@ -462,12 +462,12 @@ export default function HuMagoCaseStudy({ project }: HuMagoCaseStudyProps) {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="relative aspect-square rounded-3xl overflow-hidden group"
             >
-              <Image
-                src="/assets/portfolio/hu-mago-kft/hu-mago-nevjegyek-tervek.webp"
-                alt="HU-MÁGÓ Kft. Névjegykártya"
-                fill
-                className="object-cover group-hover:scale-110 transition-transform duration-700"
-              />
+              <ResponsiveImage
+             src="/assets/portfolio/hu-mago-kft/hu-mago-nevjegyek-tervek.webp"
+             alt="HU-MÁGÓ Kft. Névjegykártya"
+             sizes="100vw"
+             className="object-cover group-hover:scale-110 transition-transform duration-700"
+           />
               <div className="absolute inset-0 bg-linear-to-t from-black/70 to-transparent" />
               <div className="absolute bottom-6 left-6">
                 <div className="text-white font-bold">Névjegykártya</div>
@@ -481,12 +481,12 @@ export default function HuMagoCaseStudy({ project }: HuMagoCaseStudyProps) {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="relative aspect-video rounded-3xl overflow-hidden group"
             >
-              <Image
-                src="/assets/portfolio/hu-mago-kft/humago-allo-banner-a-shopbansss-cssopy-copy.webp"
-                alt="HU-MÁGÓ Kft. Weboldal Banner"
-                fill
-                className="object-cover group-hover:scale-110 transition-transform duration-700"
-              />
+              <ResponsiveImage
+             src="/assets/portfolio/hu-mago-kft/humago-allo-banner-a-shopbansss-cssopy-copy.webp"
+             alt="HU-MÁGÓ Kft. Weboldal Banner"
+             sizes="100vw"
+             className="object-cover group-hover:scale-110 transition-transform duration-700"
+           />
               <div className="absolute inset-0 bg-linear-to-t from-black/70 to-transparent" />
               <div className="absolute bottom-6 left-6">
                 <div className="text-white font-bold">Weboldal Design</div>
@@ -500,12 +500,12 @@ export default function HuMagoCaseStudy({ project }: HuMagoCaseStudyProps) {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="relative aspect-video rounded-3xl overflow-hidden group"
             >
-              <Image
-                src="/assets/portfolio/hu-mago-kft/nevjegykartya-tervezes-es-nyomtatas.webp"
-                alt="HU-MÁGÓ Kft. Nyomdai Anyagok"
-                fill
-                className="object-cover group-hover:scale-110 transition-transform duration-700"
-              />
+              <ResponsiveImage
+             src="/assets/portfolio/hu-mago-kft/nevjegykartya-tervezes-es-nyomtatas.webp"
+             alt="HU-MÁGÓ Kft. Nyomdai Anyagok"
+             sizes="100vw"
+             className="object-cover group-hover:scale-110 transition-transform duration-700"
+           />
               <div className="absolute inset-0 bg-linear-to-t from-black/70 to-transparent" />
               <div className="absolute bottom-6 left-6">
                 <div className="text-white font-bold">Nyomdai Anyagok</div>
@@ -519,12 +519,12 @@ export default function HuMagoCaseStudy({ project }: HuMagoCaseStudyProps) {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="relative aspect-video rounded-3xl overflow-hidden group"
             >
-              <Image
-                src="/assets/portfolio/hu-mago-kft/csaj-shop-copy.webp"
-                alt="HU-MÁGÓ Kft. E-kereskedelem"
-                fill
-                className="object-cover group-hover:scale-110 transition-transform duration-700"
-              />
+              <ResponsiveImage
+             src="/assets/portfolio/hu-mago-kft/csaj-shop-copy.webp"
+             alt="HU-MÁGÓ Kft. E-kereskedelem"
+             sizes="100vw"
+             className="object-cover group-hover:scale-110 transition-transform duration-700"
+           />
               <div className="absolute inset-0 bg-linear-to-t from-black/70 to-transparent" />
               <div className="absolute bottom-6 left-6">
                 <div className="text-white font-bold">E-kereskedelem</div>

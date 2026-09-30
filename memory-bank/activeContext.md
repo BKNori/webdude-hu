@@ -2,7 +2,13 @@
 
 > **AI DIREKTÍVA:** Ez a fájl a rendszer "élő" memóriája. A 03-workflow.md 5. lépése alapján KÖTELEZŐ ezt a fájlt frissítened minden feladat befejezésekor, vagy mielőtt átadod a vezérlést a felhasználónak (Norbinak). Szigorúan tilos új feladatba kezdened, ha az "Aktuális Munkaterület Állapota" szekcióban hibák vagy félbehagyott fájlok vannak!
 
-## Aktuális állapot — 2026-09-30, galéria-csoport méret-optimalizálás (7.11.1) lezárva
+## Aktuális állapot — 2026-09-30, routing normalizálás + 9 dedikált esettanulmány (7.12.0) lezárva
+
+- **Routing normalizálás:** a `src/app/munkak/classi-co/` és `src/app/munkak/btshop/` route mappák **törölve** (5 fájl); a SEO-adatok a `src/data/caseStudySeo.ts` SSOT-ba költöztek; a `[slug]/page.tsx` `withSchemas()` helperrel rendereli a JSON-LD-t. `ClassiCoCaseStudy` + `BtshopCaseStudy` életre kelt — több halott kód nincs.
+- **9 komponens képei:** új `casestudy` generátor-csoport; **38 `<Image>` → `<ResponsiveImage>`**; generátor + clean zöld; repó továbbra is **224 fájl / 6,6 MB**.
+- **QA:** TSC_EXIT=0; LINT_CI_EXIT=0; BUILD_EXIT=0; VERIFY 253 URL / 0 hiányzó; SMOKE 13/13 OK (btshop 17 KB, classi-co 48 KB, rimai 92 KB, bor-garnela 151 KB).
+- **Nyitott (következő sprint lehetősége):** a 4 dinamikus `src={img}` galéria-tömb még nyers `works.ts`/`gallery[]` alapú — ha azok is `ResponsiveImage`-re mennek, a generátor már lefedi őket; a `ClassiCoClient`/`BTShopClient` komponensek kihasználatlanul maradtak (későbbi törlés Norbi döntése).
+
 
 - **Döntés (Norbi):** a galéria 3 oszlopos rács → a kártyák sosem szélesebbek ~640 px-nél, ezért a **`gallery` csoport AVIF-only, `[320, 640]` szélességekkel**. A `hero` és a `card` csoport **megtartja a WebP-et** (a hero a teljes viewportot fedi le; a visszaesési háló biztonságáért).
 - **Mért eredmény: 474 fájl / 18 MB → 224 fájl / 6,6 MB (−63%).** A galéria 368 → **124 fájl**; a generált AVIF-tömeg 8216 KB → 4574 KB. Ez a cPanel `deploy-v0.1.XXX.zip` (~147 MB) terhelését is csökkenti.

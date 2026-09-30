@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
+import ResponsiveImage from "@/components/molecules/ResponsiveImage";
 import Link from "next/link";
 import { motion } from "motion/react";
 import { useReducedMotion } from "motion/react";
@@ -97,14 +97,13 @@ export default function DrNagyAlbertCaseStudy() {
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <Image
-            src="/assets/portfolio/drnagyalbert/dr-nagy-albert-neurologus-2.webp"
-            alt="Dr. Nagy Albert Neurológus"
-            fill
-            priority
-            className="object-cover object-center -z-20"
-            sizes="100vw"
-          />
+          <ResponsiveImage
+             src="/assets/portfolio/drnagyalbert/dr-nagy-albert-neurologus-2.webp"
+             alt="Dr. Nagy Albert Neurológus"
+             sizes="100vw"
+             priority
+             className="object-cover object-center -z-20"
+           />
           <div className="absolute inset-0 bg-bg-base/80 backdrop-blur-xs -z-10" />
         </div>
 
@@ -193,13 +192,12 @@ export default function DrNagyAlbertCaseStudy() {
 
             <motion.div variants={fadeInUp} className="relative">
               <div className="aspect-video rounded-3xl overflow-hidden ring-1 ring-white/10">
-                <Image
-                  src="/assets/portfolio/drnagyalbert/dr-nagy-albert-neurologus.webp"
-                  alt="Dr. Nagy Albert Neurológus"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
+                <ResponsiveImage
+             src="/assets/portfolio/drnagyalbert/dr-nagy-albert-neurologus.webp"
+             alt="Dr. Nagy Albert Neurológus"
+             sizes="(max-width: 768px) 100vw, 50vw"
+             className="object-cover"
+           />
               </div>
             </motion.div>
           </motion.div>
@@ -303,19 +301,18 @@ export default function DrNagyAlbertCaseStudy() {
             {[
               "/assets/portfolio/drnagyalbert/identity-design-kecskemet-copy.webp",
               "/assets/portfolio/drnagyalbert/infuzios-terapia-kecskemeten.jpg",
-            ].map((img, index) => (
+            ].map((img: string, index: number) => (
               <motion.div
                 key={index}
                 variants={fadeInUp}
                 whileHover={shouldReduceMotion ? {} : { scale: 1.05 }}
                 className="relative aspect-4/3 rounded-2xl overflow-hidden ring-1 ring-white/10"
               >
-                <Image
+                <ResponsiveImage
                   src={img}
                   alt={`Dr. Nagy Albert projekt kép ${index + 1}`}
-                  fill
-                  className="object-cover"
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 50vw"
+                  className="object-cover"
                 />
               </motion.div>
             ))}

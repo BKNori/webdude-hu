@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import ResponsiveImage from "@/components/molecules/ResponsiveImage";
 import Link from "next/link";
 import { motion } from "motion/react";
 import { Work } from "@/types/work";
@@ -15,13 +15,13 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
       {/* Hero Szekció - 100vh */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
-          <Image
-            src="/assets/portfolio/rimai/rimai-3d-glass-window-logo-mockup-copy.webp"
-            alt="Rimai Útépítő Kft. 3D Logo Mockup"
-            fill
-            className="object-cover"
-            priority
-          />
+          <ResponsiveImage
+             src="/assets/portfolio/rimai/rimai-3d-glass-window-logo-mockup-copy.webp"
+             alt="Rimai Útépítő Kft. 3D Logo Mockup"
+             sizes="100vw"
+             priority
+             className="object-cover"
+           />
           <div className="absolute inset-0 bg-linear-to-b from-black/70 via-black/50 to-bg-base" />
         </div>
 
@@ -126,12 +126,12 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
               transition={{ duration: 0.5 }}
               className="md:col-span-2 relative aspect-2/1 rounded-2xl overflow-hidden group hover:scale-[1.02] transition-transform duration-300"
             >
-              <Image
-                src="/assets/portfolio/rimai/rimai-arculat-1.webp"
-                alt="Rimai Névjegykártyák"
-                fill
-                className="object-cover"
-              />
+              <ResponsiveImage
+             src="/assets/portfolio/rimai/rimai-arculat-1.webp"
+             alt="Rimai Névjegykártyák"
+             sizes="100vw"
+             className="object-cover"
+           />
               <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
               <div className="absolute bottom-6 left-6">
                 <div className="text-white font-bold text-lg">
@@ -147,12 +147,12 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="relative aspect-square rounded-2xl overflow-hidden group hover:scale-[1.02] transition-transform duration-300"
             >
-              <Image
-                src="/assets/portfolio/rimai/rimai-fal-1-scaled.webp"
-                alt="Rimai Irodai Logó"
-                fill
-                className="object-cover"
-              />
+              <ResponsiveImage
+             src="/assets/portfolio/rimai/rimai-fal-1-scaled.webp"
+             alt="Rimai Irodai Logó"
+             sizes="100vw"
+             className="object-cover"
+           />
               <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
               <div className="absolute bottom-6 left-6">
                 <div className="text-white font-bold text-lg">Irodai Logó</div>
@@ -166,12 +166,12 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="relative aspect-2/1 rounded-2xl overflow-hidden group hover:scale-[1.02] transition-transform duration-300"
             >
-              <Image
-                src="/assets/portfolio/rimai/rimai-poszter-copy-scaled.webp"
-                alt="Rimai Autó Dekoráció"
-                fill
-                className="object-cover"
-              />
+              <ResponsiveImage
+             src="/assets/portfolio/rimai/rimai-poszter-copy-scaled.webp"
+             alt="Rimai Autó Dekoráció"
+             sizes="100vw"
+             className="object-cover"
+           />
               <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
               <div className="absolute bottom-6 left-6">
                 <div className="text-white font-bold text-lg">
@@ -235,20 +235,20 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
               className="space-y-6"
             >
               <div className="relative aspect-video rounded-2xl overflow-hidden group">
-                <Image
-                  src="/assets/portfolio/rimai/rimai-aszfaltra-irva-copy-copy.webp"
-                  alt="Rimai Aszfaltra Írt"
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                />
+                <ResponsiveImage
+             src="/assets/portfolio/rimai/rimai-aszfaltra-irva-copy-copy.webp"
+             alt="Rimai Aszfaltra Írt"
+             sizes="100vw"
+             className="object-cover group-hover:scale-105 transition-transform duration-500"
+           />
               </div>
               <div className="relative aspect-video rounded-2xl overflow-hidden group">
-                <Image
-                  src="/assets/portfolio/rimai/rimai-utepites-csatornazas.webp"
-                  alt="Rimai Útépítés Csatornázás"
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                />
+                <ResponsiveImage
+             src="/assets/portfolio/rimai/rimai-utepites-csatornazas.webp"
+             alt="Rimai Útépítés Csatornázás"
+             sizes="100vw"
+             className="object-cover group-hover:scale-105 transition-transform duration-500"
+           />
               </div>
             </motion.div>
           </div>
@@ -281,12 +281,12 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
               transition={{ duration: 0.5 }}
               className="relative aspect-square rounded-2xl overflow-hidden group"
             >
-              <Image
-                src="/assets/portfolio/rimai/rimai-poszter-rgb.webp"
-                alt="Rimai Poszter RGB"
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
-              />
+              <ResponsiveImage
+             src="/assets/portfolio/rimai/rimai-poszter-rgb.webp"
+             alt="Rimai Poszter RGB"
+             sizes="100vw"
+             className="object-cover group-hover:scale-105 transition-transform duration-500"
+           />
             </motion.div>
 
             <motion.div
@@ -296,12 +296,12 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="relative aspect-square rounded-2xl overflow-hidden group"
             >
-              <Image
-                src="/assets/portfolio/rimai/excavator-utepites-rimai-kecskemet-copy.webp"
-                alt="Excavator Útépítés"
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
-              />
+              <ResponsiveImage
+             src="/assets/portfolio/rimai/excavator-utepites-rimai-kecskemet-copy.webp"
+             alt="Excavator Útépítés"
+             sizes="100vw"
+             className="object-cover group-hover:scale-105 transition-transform duration-500"
+           />
             </motion.div>
 
             <motion.div
@@ -311,12 +311,12 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="relative aspect-square rounded-2xl overflow-hidden group"
             >
-              <Image
-                src="/assets/portfolio/rimai/rimai-melyepites-copy-1.webp"
-                alt="Rimai Mélyépítés"
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
-              />
+              <ResponsiveImage
+             src="/assets/portfolio/rimai/rimai-melyepites-copy-1.webp"
+             alt="Rimai Mélyépítés"
+             sizes="100vw"
+             className="object-cover group-hover:scale-105 transition-transform duration-500"
+           />
             </motion.div>
           </div>
         </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
+import ResponsiveImage from "@/components/molecules/ResponsiveImage";
 import Link from "next/link";
 import { motion } from "motion/react";
 import { useReducedMotion } from "motion/react";
@@ -87,14 +87,13 @@ export default function AiPromptCaseStudy() {
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <Image
-            src="/assets/portfolio/ai-promt-hu/ai-promt-hi-banner-2.webp"
-            alt="AI-Prompt.hu AI Prompt Optimalizáló Platform"
-            fill
-            priority
-            className="object-cover object-center -z-20"
-            sizes="100vw"
-          />
+          <ResponsiveImage
+             src="/assets/portfolio/ai-promt-hu/ai-promt-hi-banner-2.webp"
+             alt="AI-Prompt.hu AI Prompt Optimalizáló Platform"
+             sizes="100vw"
+             priority
+             className="object-cover object-center -z-20"
+           />
           <div className="absolute inset-0 bg-bg-base/80 backdrop-blur-xs -z-10" />
         </div>
 
@@ -182,13 +181,12 @@ export default function AiPromptCaseStudy() {
 
             <motion.div variants={fadeInUp} className="relative">
               <div className="aspect-video rounded-3xl overflow-hidden ring-1 ring-white/10">
-                <Image
-                  src="/assets/portfolio/ai-promt-hu/ai-promt-hi-banner.webp"
-                  alt="AI-Prompt.hu Platform"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
+                <ResponsiveImage
+             src="/assets/portfolio/ai-promt-hu/ai-promt-hi-banner.webp"
+             alt="AI-Prompt.hu Platform"
+             sizes="(max-width: 768px) 100vw, 50vw"
+             className="object-cover"
+           />
               </div>
             </motion.div>
           </motion.div>
@@ -292,19 +290,18 @@ export default function AiPromptCaseStudy() {
             {[
               "/assets/portfolio/ai-promt-hu/ai-promt-hi-banner-2.webp",
               "/assets/portfolio/ai-promt-hu/ai-promt-hi-banner.webp",
-            ].map((img, index) => (
+            ].map((img: string, index: number) => (
               <motion.div
                 key={index}
                 variants={fadeInUp}
                 whileHover={shouldReduceMotion ? {} : { scale: 1.05 }}
                 className="relative aspect-4/3 rounded-2xl overflow-hidden ring-1 ring-white/10"
               >
-                <Image
+                <ResponsiveImage
                   src={img}
                   alt={`AI-Prompt.hu projekt kép ${index + 1}`}
-                  fill
-                  className="object-cover"
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 50vw"
+                  className="object-cover"
                 />
               </motion.div>
             ))}

@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import ResponsiveImage from "@/components/molecules/ResponsiveImage";
 import Link from "next/link";
 import {
@@ -43,14 +42,13 @@ export default function ClassiCoCaseStudy({ project }: ClassiCoCaseStudyProps) {
         className="relative h-screen flex items-center justify-center overflow-hidden"
       >
         <motion.div style={{ y, opacity }} className="absolute inset-0">
-          <Image
-            src="/assets/portfolio/classi-co/szeged-terkovezes3-scopy.webp"
-            alt="Classi-Co Kft. - Térkövezés és Beton Kivitelezés"
-            fill
-            className="object-cover"
-            priority
-            sizes="100vw"
-          />
+          <ResponsiveImage
+             src="/assets/portfolio/classi-co/szeged-terkovezes3-scopy.webp"
+             alt="Classi-Co Kft. - Térkövezés és Beton Kivitelezés"
+             sizes="100vw"
+             priority
+             className="object-cover"
+           />
           <div className="absolute inset-0 bg-linear-to-b from-black/80 via-black/60 to-bg-base" />
         </motion.div>
 
@@ -181,13 +179,12 @@ export default function ClassiCoCaseStudy({ project }: ClassiCoCaseStudyProps) {
               transition={{ duration: 0.8 }}
               className="relative aspect-square rounded-3xl overflow-hidden bg-slate-900/60 border border-slate-800 flex items-center justify-center p-12"
             >
-              <Image
-                src="/assets/portfolio/classi-co/classi-co-logo-h100.webp"
-                alt="Classi-Co Logo"
-                width={400}
-                height={400}
-                className="object-contain"
-              />
+              <ResponsiveImage
+             src="/assets/portfolio/classi-co/classi-co-logo-h100.webp"
+             alt="Classi-Co Logo"
+             sizes="100vw"
+             className="object-contain"
+           />
             </motion.div>
 
             <motion.div

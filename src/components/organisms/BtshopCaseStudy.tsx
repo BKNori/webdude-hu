@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import ResponsiveImage from "@/components/molecules/ResponsiveImage";
 import Link from "next/link";
 import {
   motion,
@@ -42,13 +42,13 @@ export default function BtshopCaseStudy({ project }: BtshopCaseStudyProps) {
         className="relative h-screen flex items-center justify-center overflow-hidden"
       >
         <motion.div style={{ y, opacity }} className="absolute inset-0">
-          <Image
-            src="/assets/portfolio/btshop/btshop-banner-2.webp"
-            alt="BTShop.hu - Enterprise E-commerce & Kulcs-Soft Integráció"
-            fill
-            className="object-cover"
-            priority
-          />
+          <ResponsiveImage
+             src="/assets/portfolio/btshop/btshop-banner-2.webp"
+             alt="BTShop.hu - Enterprise E-commerce & Kulcs-Soft Integráció"
+             sizes="100vw"
+             priority
+             className="object-cover"
+           />
           <div className="absolute inset-0 bg-linear-to-b from-black/80 via-black/60 to-bg-base" />
         </motion.div>
 
@@ -216,21 +216,21 @@ export default function BtshopCaseStudy({ project }: BtshopCaseStudyProps) {
               className="space-y-6"
             >
               <div className="relative aspect-video rounded-3xl overflow-hidden group">
-                <Image
-                  src="/assets/portfolio/btshop/btshop-banner-2.webp"
-                  alt="BTShop.hu Enterprise Dashboard"
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
-                />
+                <ResponsiveImage
+             src="/assets/portfolio/btshop/btshop-banner-2.webp"
+             alt="BTShop.hu Enterprise Dashboard"
+             sizes="100vw"
+             className="object-cover group-hover:scale-105 transition-transform duration-700"
+           />
                 <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent" />
               </div>
               <div className="relative aspect-video rounded-3xl overflow-hidden group">
-                <Image
-                  src="/assets/portfolio/btshop/bt-shop-weboldal-screen.webp"
-                  alt="BTShop.hu Weboldal Screenshot"
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
-                />
+                <ResponsiveImage
+             src="/assets/portfolio/btshop/bt-shop-weboldal-screen.webp"
+             alt="BTShop.hu Weboldal Screenshot"
+             sizes="100vw"
+             className="object-cover group-hover:scale-105 transition-transform duration-700"
+           />
                 <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent" />
               </div>
             </motion.div>

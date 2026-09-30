@@ -110,7 +110,72 @@ const GROUPS = [
     },
     sources: collectGalleryImages,
   },
+  {
+    // A 8 dedikált esettanulmány-komponens (`BtshopCaseStudy`,
+    // `RimaiCaseStudy`, `GoBoxCaseStudy`, `LengyelHelgaCaseStudy`,
+    // `HuMagoCaseStudy`, `BorGarnelaCaseStudy`, `AiPromptCaseStudy`,
+    // `DrNagyAlbertCaseStudy`) hardcode-olt `next/image` hivatkozásai
+    // (7.12.0). A `src/components/organisms/*CaseStudy.tsx` fájlok
+    // literális `src="/assets/..."` attribútumaiból automatikusan gyűjtve —
+    // a dinamikus `src={...}` kifejezések nincsenek benne, mert azok nem
+    // statikusan kibonthatók. MEGJEGYZÉS: a `ClassiCoCaseStudy` galériája
+    // már a galéria-csoportban benne van (lásd `collectGalleryImages`),
+    // így itt nem szerepel újra.
+    name: "casestudy",
+    // A dedikált komponensekben hero (teljes viewport) ÉS kisebb
+    // galériakártyák is vannak — a derivatívumokat a `hero` csoport
+    // osztja meg velük, így nincs duplikált fájl, viszont a közös
+    // kaszkád mindkét méretet lefedi. A `minBytes` itt magasabb: a
+    // komponens-képek egy része már most is apró (logó, ikon).
+    widths: [320, 640, 960],
+    formats: "both",
+    minBytes: 20 * 1024,
+    out: (publicKey, width, ext) => {
+      const dir = path
+        .dirname(publicKey.replace(/^\//, ""))
+        .replace(/^assets\//, "");
+      const base = path.basename(publicKey, path.extname(publicKey));
+      const fileName = `${base}-${width}w.${ext}`;
+      return {
+        file: path.join(PUBLIC_DIR, "assets/responsive", dir, fileName),
+        url: `/assets/responsive/${dir}/${fileName}`,
+      };
+    },
+    sources: collectCaseStudyImages,
+  },
 ];
+
+/** A 8 dedikált esettanulmány-komponensben hardcode-olt képek. */
+function collectCaseStudyImages() {
+  // A ClassiCoCaseStudy galériája már a galéria-csoport része —
+  // a hero-ja viszont nincs benne, ezért külön szerepel.
+  const FILES = [
+    "BtshopCaseStudy.tsx",
+    "RimaiCaseStudy.tsx",
+    "GoBoxCaseStudy.tsx",
+    "LengyelHelgaCaseStudy.tsx",
+    "HuMagoCaseStudy.tsx",
+    "BorGarnelaCaseStudy.tsx",
+    "AiPromptCaseStudy.tsx",
+    "DrNagyAlbertCaseStudy.tsx",
+    "ClassiCoCaseStudy.tsx",
+  ];
+  const found = new Set();
+  for (const file of FILES) {
+    const target = path.join(ROOT, "src/components/organisms", file);
+    if (!fs.existsSync(target)) {
+      console.warn(`[WARN] Esettanulmány-komponens nem található: ${file}`);
+      continue;
+    }
+    const content = fs.readFileSync(target, "utf8");
+    for (const match of content.matchAll(
+      /src\s*=\s*["'](\/assets\/[^"']+)["']/g
+    )) {
+      found.add(match[1]);
+    }
+  }
+  return [...found];
+}
 
 /** A `works.ts` `gallery: [...]` tömbjeiben hivatkozott képek. */
 function collectGalleryImages() {
@@ -406,7 +471,9 @@ export function getResponsiveImageVariants(
   if (totals.missing) console.log(`Nem található források: ${totals.missing}`);
   if (totals.unsupported) {
     console.log(
-      `Nem kép formátumú források (kihagyva): ${totals.unsupported} — ezek a galériában `<img>`-ként soha nem működtek`
+      "Nem kép formátumú források (kihagyva): " +
+        totals.unsupported +
+        " — ezek a galériában képként soha nem működtek"
     );
   }
   console.log(

@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import ResponsiveImage from "@/components/molecules/ResponsiveImage";
 import Link from "next/link";
 import {
   motion,
@@ -44,13 +44,13 @@ export default function BorGarnelaCaseStudy({
         className="relative h-screen flex items-center justify-center overflow-hidden"
       >
         <motion.div style={{ y, opacity }} className="absolute inset-0">
-          <Image
-            src="/assets/portfolio/bor-es-garnela/bor-garnela-foodtruck-banner-eros-pista-feszt-2023-kecskemet-copy.webp"
-            alt="Bor és Garnéla Food Truck - Eros Pista Fesztivál"
-            fill
-            className="object-cover"
-            priority
-          />
+          <ResponsiveImage
+             src="/assets/portfolio/bor-es-garnela/bor-garnela-foodtruck-banner-eros-pista-feszt-2023-kecskemet-copy.webp"
+             alt="Bor és Garnéla Food Truck - Eros Pista Fesztivál"
+             sizes="100vw"
+             priority
+             className="object-cover"
+           />
           <div className="absolute inset-0 bg-linear-to-b from-black/80 via-black/60 to-bg-base" />
         </motion.div>
 
@@ -200,21 +200,21 @@ export default function BorGarnelaCaseStudy({
               className="space-y-6"
             >
               <div className="relative aspect-4/3 rounded-3xl overflow-hidden group">
-                <Image
-                  src="/assets/portfolio/bor-es-garnela/bor-garnela-foodtruck-banner-eros-pista-feszt-2023-kecskemet-copy.webp"
-                  alt="Bor és Garnéla Food Truck Banner"
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
-                />
+                <ResponsiveImage
+             src="/assets/portfolio/bor-es-garnela/bor-garnela-foodtruck-banner-eros-pista-feszt-2023-kecskemet-copy.webp"
+             alt="Bor és Garnéla Food Truck Banner"
+             sizes="100vw"
+             className="object-cover group-hover:scale-105 transition-transform duration-700"
+           />
                 <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent" />
               </div>
               <div className="relative aspect-video rounded-3xl overflow-hidden group">
-                <Image
-                  src="/assets/portfolio/bor-es-garnela/bor-es-garnela-etalp-terbezes.webp"
-                  alt="Bor és Garnéla Étlap Tervezés"
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
-                />
+                <ResponsiveImage
+             src="/assets/portfolio/bor-es-garnela/bor-es-garnela-etalp-terbezes.webp"
+             alt="Bor és Garnéla Étlap Tervezés"
+             sizes="100vw"
+             className="object-cover group-hover:scale-105 transition-transform duration-700"
+           />
                 <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent" />
               </div>
             </motion.div>
@@ -327,12 +327,12 @@ export default function BorGarnelaCaseStudy({
               transition={{ duration: 0.6 }}
               className="lg:col-span-2 lg:row-span-2 relative aspect-square rounded-3xl overflow-hidden group"
             >
-              <Image
-                src="/assets/portfolio/bor-es-garnela/bor-garnela-zaszlo2-scaled.webp"
-                alt="Bor és Garnéla Zászló"
-                fill
-                className="object-cover group-hover:scale-110 transition-transform duration-700"
-              />
+              <ResponsiveImage
+             src="/assets/portfolio/bor-es-garnela/bor-garnela-zaszlo2-scaled.webp"
+             alt="Bor és Garnéla Zászló"
+             sizes="100vw"
+             className="object-cover group-hover:scale-110 transition-transform duration-700"
+           />
               <div className="absolute inset-0 bg-linear-to-t from-black/70 to-transparent" />
               <div className="absolute bottom-6 left-6">
                 <div className="text-white font-bold text-xl">Brand Zászló</div>
@@ -346,12 +346,12 @@ export default function BorGarnelaCaseStudy({
               transition={{ duration: 0.6, delay: 0.1 }}
               className="relative aspect-square rounded-3xl overflow-hidden group"
             >
-              <Image
-                src="/assets/portfolio/bor-es-garnela/bor-es-garnela-thor-advert-copy-2.webp"
-                alt="Bor és Garnéla Reklám"
-                fill
-                className="object-cover group-hover:scale-110 transition-transform duration-700"
-              />
+              <ResponsiveImage
+             src="/assets/portfolio/bor-es-garnela/bor-es-garnela-thor-advert-copy-2.webp"
+             alt="Bor és Garnéla Reklám"
+             sizes="100vw"
+             className="object-cover group-hover:scale-110 transition-transform duration-700"
+           />
               <div className="absolute inset-0 bg-linear-to-t from-black/70 to-transparent" />
               <div className="absolute bottom-6 left-6">
                 <div className="text-white font-bold">Reklám Anyag</div>
@@ -365,12 +365,12 @@ export default function BorGarnelaCaseStudy({
               transition={{ duration: 0.6, delay: 0.2 }}
               className="relative aspect-square rounded-3xl overflow-hidden group"
             >
-              <Image
-                src="/assets/portfolio/bor-es-garnela/bor-garnela-advert.webp"
-                alt="Bor és Garnéla Promóció"
-                fill
-                className="object-cover group-hover:scale-110 transition-transform duration-700"
-              />
+              <ResponsiveImage
+             src="/assets/portfolio/bor-es-garnela/bor-garnela-advert.webp"
+             alt="Bor és Garnéla Promóció"
+             sizes="100vw"
+             className="object-cover group-hover:scale-110 transition-transform duration-700"
+           />
               <div className="absolute inset-0 bg-linear-to-t from-black/70 to-transparent" />
               <div className="absolute bottom-6 left-6">
                 <div className="text-white font-bold">Promóciós Grafika</div>
@@ -384,12 +384,12 @@ export default function BorGarnelaCaseStudy({
               transition={{ duration: 0.6, delay: 0.3 }}
               className="relative aspect-square rounded-3xl overflow-hidden group"
             >
-              <Image
-                src="/assets/portfolio/bor-es-garnela/wordpress-weboldalak-boer-es-garnela.webp"
-                alt="Bor és Garnéla Weboldal"
-                fill
-                className="object-cover group-hover:scale-110 transition-transform duration-700"
-              />
+              <ResponsiveImage
+             src="/assets/portfolio/bor-es-garnela/wordpress-weboldalak-boer-es-garnela.webp"
+             alt="Bor és Garnéla Weboldal"
+             sizes="100vw"
+             className="object-cover group-hover:scale-110 transition-transform duration-700"
+           />
               <div className="absolute inset-0 bg-linear-to-t from-black/70 to-transparent" />
               <div className="absolute bottom-6 left-6">
                 <div className="text-white font-bold">Weboldal Design</div>
@@ -403,12 +403,12 @@ export default function BorGarnelaCaseStudy({
               transition={{ duration: 0.6, delay: 0.4 }}
               className="relative aspect-square rounded-3xl overflow-hidden group"
             >
-              <Image
-                src="/assets/portfolio/bor-es-garnela/ajandekutalvany-vegpsd-copy-2.webp"
-                alt="Bor és Garnéla Ajándékutalvány"
-                fill
-                className="object-cover group-hover:scale-110 transition-transform duration-700"
-              />
+              <ResponsiveImage
+             src="/assets/portfolio/bor-es-garnela/ajandekutalvany-vegpsd-copy-2.webp"
+             alt="Bor és Garnéla Ajándékutalvány"
+             sizes="100vw"
+             className="object-cover group-hover:scale-110 transition-transform duration-700"
+           />
               <div className="absolute inset-0 bg-linear-to-t from-black/70 to-transparent" />
               <div className="absolute bottom-6 left-6">
                 <div className="text-white font-bold">Ajándékutalvány</div>

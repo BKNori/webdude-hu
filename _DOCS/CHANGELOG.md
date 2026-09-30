@@ -1,5 +1,13 @@
 # Changelog
 
+## [7.12.0] — 2026-09-30 — ROUTING NORMALIZÁLÁS + 9 DEDIKÁLT ESETTANULMÁNY RESZPONZÍV KÉPEI (COMPLETE)
+
+- **Routing normalizálás (a 7.11.1-ben talált rejtett hiba lezárva):** a `src/app/munkak/classi-co/` (2 fájl) és a `src/app/munkak/btshop/` (3 fájl) **önálló route mappák törölve**. A `[slug]/page.tsx` dedikált ágai (`ClassiCoCaseStudy`, `BtshopCaseStudy`) így **életre keltek** — a két oldal most prefix-méretben a megfelelő, gazdag organismet rendereli. Zéró-törlés garancia: a törölt mappák minden gazdag SEO-adata (egyedi title/keywords/canonical/OG/Twitter/JSON-LD) az új `src/data/caseStudySeo.ts` SSOT-táblába költözött (`CASE_STUDY_SEO`), a `[slug]/page.tsx` `generateMetadata`-ja felülírással, a JSON-LD sémák pedig szerveroldali, XSS-védett `<script>`-ként renderelve (`.replace(/</g, "\\u003c")`).
+- **9 dedikált komponens reszponzív képei:** új `casestudy` forráscsoport a generátorban (hero-méretű + galériakártya képek, `[320, 640, 960]`, AVIF+WebP; a `ClassiCoCaseStudy` galériája már a galéria-csoportban van, a dedup véd). **38 db `<Image>` → `<ResponsiveImage>` csere** 9 fájlban (a `fill`/`width`/`height` propok eldobva — a komponens tölti a szülőt; `priority`/`sizes`/`alt`/`className` megőrizve). Eszközök: `scripts/scan-case-study-images.js` (33 egyedi literális kép diagnosztika) + `scripts/migrate-case-study-images.js` (mechanikus, reverzibilis átírás + kézi dinamikus `src={img}` audit).
+- **Élő eredmény (13/13 oldal, SMOKE_EXIT=0):** btshop 3 AVIF = 17 KB, classi-co 8 AVIF = 48 KB, rimai 9 AVIF = 92 KB, ai-prompt-hu 4 AVIF = 18 KB, dr-nagy-albert 4 AVIF = 32 KB, go-box 8 AVIF = 54 KB, hu-mago 8 AVIF = 75 KB, lengyel-helga 5 AVIF = 78 KB, bor-garnela 8 AVIF = 151 KB. Nyers oldal-kép URL (`<img src>`) már csak szándékos kivétel (külső/logo), a törött `.webm` videók kivételével minden helyi 200.
+- **Build-kimenet (VERIFY_EXIT=0):** 288 HTML, **253 egyedi srcset URL, 0 hiányzó**; `<source avif>` 240, `<source webp>` 126. Generátor: `[OK] casestudy` az új képekkel; a `--clean` 0 elavultat talált (a repó továbbra is **224 fájl / 6,6 MB** cél alatt).
+- **Quality Gate:** `npx tsc --noEmit` → TSC_EXIT=0; `npm run lint -- --max-warnings 0` → LINT_CI_EXIT=0; `npm run build` → BUILD_EXIT=0; smoke → SMOKE_EXIT=0.
+
 ## [JÖVŐBELI FELADATOK] — STRATÉGIAI TERVEK
 
 ### I18N / TÖBBNYELVŰSÍTÉS
