@@ -44,7 +44,10 @@ export default function ResponsiveImage({
       {variants ? (
         <>
           <source type="image/avif" srcSet={variants.avif} sizes={sizes} />
-          <source type="image/webp" srcSet={variants.webp} sizes={sizes} />
+          {/* Nem minden kép-csoport készít WebP-t (a galéria AVIF-only) */}
+          {variants.webp ? (
+            <source type="image/webp" srcSet={variants.webp} sizes={sizes} />
+          ) : null}
         </>
       ) : null}
       <img

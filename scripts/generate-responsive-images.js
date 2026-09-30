@@ -22,9 +22,24 @@ const ROOT = path.join(__dirname, "..");
 const PUBLIC_DIR = path.join(ROOT, "public");
 const MANIFEST_PATH = path.join(ROOT, "src/data/responsiveImages.ts");
 
-const FORMATS = [
-  { id: "avif", options: { quality: 55, effort: 4 } },
-  { id: "webp", options: { quality: 78, effort: 4 } },
+/**
+ * Formátum-készletek. A galéria AVIF-only (a látogatók túl 95%-a támogatja,
+ * és a 3 oszlopos rács miatt a WebP másolat csak duplikálná a tárhelyet), a
+ * hero és a kártyák viszont megtartják a WebP-et is — ott a böngészők
+ * visszaesési hálója (régi Safari) miatt nem érdemes kockáztatni.
+ */
+const FORMAT_PRESETS = {
+  avif: [{ id: "avif", options: { quality: 55, effort: 4 } }],
+  both: [
+    { id: "avif", options: { quality: 55, effort: 4 } },
+    { id: "webp", options: { quality: 78, effort: 4 } },
+  ],
+};
+
+/** A gyökérkimeneti könyvtárak — a `--clean` ezeket takarítja. */
+const OUTPUT_ROOTS = [
+  path.join(PUBLIC_DIR, "assets/responsive"),
+  path.join(PUBLIC_DIR, "assets/banners/responsive"),
 ];
 
 /**
@@ -76,7 +91,11 @@ const GROUPS = [
     // a nyereség. A már kész képeket a `processed` halmaz kihagyja, a 50 KB
     // alatti forrásokat pedig nem éri meg derivatívumozni.
     name: "gallery",
-    widths: [320, 640, 960],
+    // 7.11.1: a galéria egy 3 oszlopos rács, a kártyák fizikailag sosem
+    // szélesebbek ~640 px-nél, így a 960w-as variáns és a WebP másolat
+    // feleslegesen terhelt (a 7.11.0-s 16,3 MB-ból a java nagy része ez volt).
+    widths: [320, 640],
+    formats: "avif",
     minBytes: 50 * 1024,
     out: (publicKey, width, ext) => {
       const dir = path
@@ -154,6 +173,53 @@ const kb = (bytes) => Math.round(bytes / 1024);
 /** A már feldolgozott kép-útvonalak — a forráscsoportok közötti deduplikációhoz. */
 const processed = new Set();
 
+/** `--clean` kapcsoló: a generált, de már feleslegessé vált fájlok takarítása. */
+const CLEAN = process.argv.includes("--clean");
+
+/**
+ * Eltávolítja a kimeneti könyvtárakból azokat a fájlokat, amelyeket az új
+ * manifestum már nem hivatkozik (pl. egy leszűkített szélességkészlet vagy
+ * az elhagyott WebP-variánsok). Csak generált derivatívumokat érint — az
+ * eredeti `public/assets/...` képek sosem kerülnek ide.
+ */
+function cleanStaleDerivatives(manifest) {
+  const referenced = new Set();
+  for (const entry of Object.values(manifest)) {
+    for (const format of ["avif", "webp"]) {
+      for (const candidate of (entry[format] || "").split(",")) {
+        const url = candidate.trim().split(/\s+/)[0];
+        if (!url) continue;
+        referenced.add(
+          path.normalize(
+            path.join(PUBLIC_DIR, decodeURI(url).replace(/^\//, ""))
+          )
+        );
+      }
+    }
+  }
+
+  let removed = 0;
+  for (const root of OUTPUT_ROOTS) {
+    if (!fs.existsSync(root)) continue;
+    const walk = (dir) => {
+      for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+        const target = path.join(dir, entry.name);
+        if (entry.isDirectory()) {
+          walk(target);
+          // Az üresre maradt könyvtárakat is összessük (a git nem tartja
+          // nyilván az üres mappákat, de a tisztaság kedvéért).
+          if (fs.readdirSync(target).length === 0) fs.rmdirSync(target);
+        } else if (!referenced.has(path.normalize(target))) {
+          fs.unlinkSync(target);
+          removed++;
+        }
+      }
+    };
+    walk(root);
+  }
+  return removed;
+}
+
 async function generateGroup(group) {
   const manifest = {};
   const stats = {
@@ -213,7 +279,9 @@ async function generateGroup(group) {
     // tartalmazhat szóközt, különben a böngésző srcset-elemzése elhasal.
     const entry = { fallback: encodeURI(publicKey), avif: "", webp: "" };
 
-    for (const format of FORMATS) {
+    // A csoport dönti el a formátumokat (a galéria AVIF-only).
+    const formats = FORMAT_PRESETS[group.formats || "both"];
+    for (const format of formats) {
       const parts = [];
       for (const width of group.widths) {
         // Felnagyítani nem érdemes: a forrás a legnagyobb rendelkezésre álló.
@@ -314,6 +382,15 @@ export function getResponsiveImageVariants(
       `[HIBA] ${missingUrls} hibás URL — a manifestum szándékosan NEM lett kiírva.`
     );
     process.exit(1);
+  }
+
+  if (CLEAN) {
+    const removed = cleanStaleDerivatives(manifest);
+    console.log(
+      removed > 0
+        ? `[CLEAN] ${removed} elavult derivatívum eltávolítva.`
+        : "[CLEAN] Nincs elavult derivatívum."
+    );
   }
 
   fs.mkdirSync(path.dirname(MANIFEST_PATH), { recursive: true });

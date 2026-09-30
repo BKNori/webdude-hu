@@ -9,6 +9,17 @@
 - **Fontosság:** Kiemelt stratégiai feladat
 - **Megjegyzés:** Ez a feladat a CHANGELOG-ban van rögzítve jövőbeli implementációra
 
+## [7.11.1] — 2026-09-30 — GALÉRIA-CSOPORT MÉRET OptimalIZÁLÁSA: AVIF-ONLY, MAX 640 PX (COMPLETE)
+
+- **Döntés (Norbi):** a galéria egy **többoszlopos (3-as) rácsban** jelenik meg, ahol a kártyák fizikailag sosem szélesebbek ~640 px-nél. A 960w-as variáns és a WebP másolat tehát **feleslegesen terhelt** a repót (és a cPanel deploy zipet) → a galéria-csoport **AVIF-only, `[320, 640]` szélességekkel**.
+- **Kép-formátum csoportonként választható** (`FORMAT_PRESETS`): a `gallery` csoport `avif`, a `hero` és a `card` továbbra is `both` (a hero a teljes viewportot fedi le, ott a böngészők visszaesési hálója — régi Safari — miatt nem érdemes a WebP-et elhagyni).
+- **Új `--clean` mód a generátoron:** a kimeneti könyvtárakból eltávolít minden generált fájlt, amelyet az új manifestum már nem hivatkozik (a leszűkített szélességek és az elhagyott WebP-variánsok). **Kizárólag generált derivatívumokat érint, az eredeti `public/assets/...` képekhez nem nyúl.** Egy futás alatt **250 elavult fájl** került ki.
+- **Mért eredmény:** a `public/assets/responsive` + `assets/banners/responsive` együtt **474 fájl / 18 MB → 224 fájl / 6,6 MB (−63%)**; a generált AVIF-tömeg 8216 KB → **4574 KB**. A galéria 368 fájlról **124-re** csökkent.
+- **Komponens:** a `ResponsiveImage` a hiányzó `webp` srcsetet most **nem rendereli** (`<source>` ki van hagyva) — a galéria így tiszta AVIF láncot ad, a hero/kártyák változatlanul AVIF→WebP→eredeti sorrendben.
+- **Quality Gate:** `npx tsc --noEmit` → **TSC_EXIT=0**; `npm run lint -- --max-warnings 0` → **LINT_CI_EXIT=0**; `npm run build` → **BUILD_EXIT=0**.
+
+---
+
 ## [7.11.0] — 2026-09-30 — ESSETANULMÁNY-GALÉRIA KÉPEK RESZPONZÍV BETÖLTÉSE (COMPLETE)
 
 - **Új forráscsoport a generátorban (`gallery`):** a `works.ts` `gallery: [...]` tömbjeiből gyűjti a képeket (nem hardcode-olt lista, a `works.ts`-et parse-olja). Saját szélességkészlet `[320, 640, 960]` (a galéria 3 oszlopos rácsa ~1/3 szélesség), `minBytes: 50 KB` küszöb (a már apró képek nem érdemelnek derivatívumot) és **deduplikáció** a `processed` halmazzal (a kártyaképek egy része a galériában is szerepel → nem dolgozzuk fel kétszer).

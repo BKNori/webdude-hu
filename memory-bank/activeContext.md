@@ -2,6 +2,16 @@
 
 > **AI DIREKTÍVA:** Ez a fájl a rendszer "élő" memóriája. A 03-workflow.md 5. lépése alapján KÖTELEZŐ ezt a fájlt frissítened minden feladat befejezésekor, vagy mielőtt átadod a vezérlést a felhasználónak (Norbinak). Szigorúan tilos új feladatba kezdened, ha az "Aktuális Munkaterület Állapota" szekcióban hibák vagy félbehagyott fájlok vannak!
 
+## Aktuális állapot — 2026-09-30, galéria-csoport méret-optimalizálás (7.11.1) lezárva
+
+- **Döntés (Norbi):** a galéria 3 oszlopos rács → a kártyák sosem szélesebbek ~640 px-nél, ezért a **`gallery` csoport AVIF-only, `[320, 640]` szélességekkel**. A `hero` és a `card` csoport **megtartja a WebP-et** (a hero a teljes viewportot fedi le; a visszaesési háló biztonságáért).
+- **Mért eredmény: 474 fájl / 18 MB → 224 fájl / 6,6 MB (−63%).** A galéria 368 → **124 fájl**; a generált AVIF-tömeg 8216 KB → 4574 KB. Ez a cPanel `deploy-v0.1.XXX.zip` (~147 MB) terhelését is csökkenti.
+- **Új `--clean` mód a generátoron:** a nem hivatkozott, generált derivatívumokat törli (250 fájl került ki egy futáskor). **Csak a generált `*/responsive/*` fájlokat érinti, az eredeti képeket soha.**
+- **Komponens:** a `ResponsiveImage` a hiányzó `webp` srcsetet nem rendereli (tiszta AVIF lánc a galériában).
+- **QA:** `npx tsc --noEmit` → TSC_EXIT=0; `npm run lint -- --max-warnings 0` → LINT_CI_EXIT=0; `npm run build` → BUILD_EXIT=0.
+- **Megjegyzés (DPR):** a 640 px-es felső korlát egy 3 oszlopos, ~400 CSS px széles kártyát retina (DPR 2) kijelzőn ~2/3-ig fedi le — a böngésző enyhe felméretezést mutat, cserébe a tárhely a negyede. Ha a retina minőség fontosabb, a `GROUPS.gallery.widths` `[320, 640, 960]`-ra visszaállítható (a `--clean` a fölösleges fájlokat rendben eldobja).
+- **Nyitott:** a 8 dedikált esettanulmány-komponens saját, hardcode-olt képei még `next/image`-t használnak (nincsenek a generátor forráscsoportjai között).
+
 ## Aktuális állapot — 2026-09-30, essettanulmány-galéria reszponzív képek (7.11.0) lezárva
 
 - **Fő eredmény:** a `works.ts` `gallery[]` képei is reszponzív betöltést kaptak → **78 kép a manifestumban, 468 derivatívum**. A galéria a repó legnagyobb képtömege (75 kép, 46,5 MB, átlag 621 KB) → a böngésző átlagosan **~40 KB AVIF-ot** tölt le (−94%).

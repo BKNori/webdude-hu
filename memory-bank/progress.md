@@ -2,7 +2,9 @@
 
 > **AI DIREKTÍVA:** Ez a dokumentum a projekt makro-szintű állapotát (Roadmap) és a minőségbiztosítási (QA) státuszt rögzíti. Ezt a fájlt minden sikeres ciklus (Sprint) lezárása után kötelezően frissítened kell a legújabb validációs eredményekkel és az áthelyezett backlog elemekkel.
 
-## 1. Minőségbiztosítási Státusz (QA Gates) — frissítve: 2026-09-30 (7.11.0 lezárva)
+## 1. Minőségbiztosítási Státusz (QA Gates) — frissítve: 2026-09-30 (7.11.1 lezárva)
+
+- **7.11.1 QA (2026-09-30):** `npx tsc --noEmit` TSC_EXIT=0; `npm run lint -- --max-warnings 0` LINT_CI_EXIT=0; `npm run build` BUILD_EXIT=0. Tartalom: a `gallery` forráscsoport **AVIF-only, `[320, 640]`** szélességekre szűkítve (a 3 oszlopos rács miatt); új `--clean` takarítási mód (250 elavult fájl törölve); a `ResponsiveImage` a hiányzó WebP srcsetet nem rendereli. **Mért eredmény: 474 fájl / 18 MB → 224 fájl / 6,6 MB (−63%).**
 
 - **7.11.0 QA (2026-09-30):** `npx tsc --noEmit` TSC_EXIT=0; `npm run lint -- --max-warnings 0` LINT_CI_EXIT=0; `npm run build` BUILD_EXIT=0. Tartalom: essettanulmány-galéria képek (`works.ts` `gallery[]`) reszponzív betöltése — 78 kép / 468 fájl a manifestumban; `GeneralCaseStudy` hero+galéria és `ClassiCoCaseStudy` galéria átvezetve `ResponsiveImage`-re; 2 törött `.webm` (videó) hivatkozás kivéve a `gallery[]`-ből; a generátor hibatűrő lett.
 - **7.10.0 QA (2026-09-30):** `npx tsc --noEmit` TSC_EXIT=0; `npm run lint -- --max-warnings 0` **LINT_CI_EXIT=0** (a CI szigorú kapuja); `npm run build` BUILD_EXIT=0. Tartalom: CI branch-javítás (`main` → `master`) + 0-warning kapu, reszponzív képek a `PortfolioGrid`/`WorkCard`/`CaseStudiesBento`/`BlogGrid` komponenseken (általános `ResponsiveImage` molekula, 16 kép / 106 fájl), törött `btshop-banner.webp` hivatkozás javítva 6 helyen.
@@ -20,6 +22,7 @@
 - **7.0.0 Kék-Lila migráció (2026-09-16):** arany/amber tiltva, CTA `#075985` → `#5B21B6`, akcentus `#7C3AED` fehér szöveggel AAA; záró audit: 0 váratlan cyan-találat (riport: `_mentesek/20260916_amber-migration/_zaras-audit.txt`).
 
 ## 2. Kész / Lezárt Mérföldkövek (Legutóbbiak)
+- ✅ **[7.11.1] (2026-09-30):** Galéria-csoport méret-optimalizálás — AVIF-only, max 640 px + `--clean` takarítási mód: **474 fájl / 18 MB → 224 fájl / 6,6 MB (−63%)**, a cPanel deploy zip terhelésének védelme érdekében.
 - ✅ **[7.11.0] (2026-09-30):** Essettanulmány-galéria képek reszponzív betöltése (78 kép / 468 fájl, a 46,5 MB galéria átlagosan ~40 KB AVIF-ra (−94%)); 2 törött `.webm` (videó) hivatkozás kivéve a `gallery[]`-ből; a generátor hibatűrő.
 - ✅ **[7.10.0] (2026-09-30):** CI élesítve (`main` → `master`, `--max-warnings 0` kapu), reszponzív `<picture>` betöltés a portfolio/essettanulmány/blog kártyákon (általános `ResponsiveImage`, 16 kép / 106 fájl), törött `btshop-banner.webp` hivatkozás javítva 6 helyen.
 - ✅ **[7.9.0] (2026-09-30):** Hero LCP statikus AVIF/WebP derivatívumok + `<picture>`/`fetchPriority` (mobilon −95%), `unoptimized: true` indok dokumentálva, **lint 0/0**, a hamis „Firebase hosting" állítás javítva (valós: cPanel + Phusion Passenger).
