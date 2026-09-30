@@ -25,8 +25,8 @@
 - ✅ **[7.6.0] (2026-09-20):** PortfolioGrid Bento & Electric Cyan (200 sor), 8/8 slug-route 0 regresszióval.
 - ✅ **[7.5.0–7.5.2] (2026-09-19/20):** SEO/AEO audit, 301 redirect, TypeScript helyreállítás.
 - ✅ **Cycle 3151:** Portál Dokumentum Előnéző & Széf (Document Vault & Preview Modal) integráció Luminous Glassmorphism dizájnnal.
-- ✅ **Cycle 3152:** Projekt Idővonal & Gantt Chart (`ProjectTimelineGantt`), determinisztikus UTC-alapú dátumlogikával[cite: 19].
-- ✅ **Cycle 3155:** Esettanulmányok (btshop) és portfólió adatok dinamikus bekötése E-E-A-T + high-ticket CTA elemekkel[cite: 19].
+- ✅ **Cycle 3152:** Projekt Idővonal & Gantt Chart (`ProjectTimelineGantt`), determinisztikus UTC-alapú dátumlogikával.
+- ✅ **Cycle 3155:** Esettanulmányok (btshop) és portfólió adatok dinamikus bekötése E-E-A-T + high-ticket CTA elemekkel.
 
 ## 3. Aktuális Sprint (Lezárva: 7.7.0 — 2026-09-29)
 - ✅ **Hero háttérkép-láthatóság:** `opacity-35 mix-blend-luminosity` → `opacity-65`, overlay `bg-slate-950/75` → `/60`, mesh `opacity-60` → `35`, új bal-oldali gradient scrim (WCAG AA megtartva).
