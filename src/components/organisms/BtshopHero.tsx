@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import ResponsiveImage from "@/components/molecules/ResponsiveImage";
 import { motion } from "motion/react";
 import { useReducedMotion } from "motion/react";
 
@@ -109,10 +109,9 @@ export default function BtshopHero() {
           className="mt-16 relative rounded-3xl overflow-hidden border border-[#00B5F1]/25 shadow-[0_0_80px_rgba(0, 181, 241,0.18)]"
         >
           <div className="relative aspect-video w-full bg-bg-base">
-            <Image
+            <ResponsiveImage
               src="/assets/portfolio/btshop/btshop-banner-2.webp"
               alt="btshop.hu — 3200 termékes e-kereskedelmi rendszer vizuál"
-              fill
               sizes="(max-width: 1024px) 100vw, 1024px"
               className="object-cover"
               priority

@@ -1,6 +1,12 @@
 # Changelog
 
-## [7.12.0] — 2026-09-30 — ROUTING NORMALIZÁLÁS + 9 DEDIKÁLT ESETTANULMÁNY RESZPONZÍV KÉPEI (COMPLETE)
+## [7.12.1] — 2026-09-30 — NO DEAD CODE TAKARÍTÁS: BTShop MARADVÁNYOK + 7.12.0 LEZÁRÁS (COMPLETE)
+
+- **No dead code takarítás:** a törölt `src/app/munkak/btshop/` route mappa árván hagyta a `BtshopEeatSection.tsx` organismt (csak a halott `BTShopClient` importálta) → **fájl törölve**. Ezzel a `ClassiCoClient` (7.12.0-ban a route mappával együtt törölve) és a `BTShopClient` után **0 kihasználatlan esettanulmány-fájl** maradt.
+- **`BtshopHero.tsx` reszponzív átvezetés:** a `BtshopCaseStudy` migrálása során kimaradt `next/image` (hero vizuál, `btshop-banner-2.webp`) → `ResponsiveImage`-re cserélve (`priority` + `sizes` megőrizve, `fill` eldobva). A btshop oldal így már csak reszponzív képet szolgál ki.
+- **7.12.0 sprint hivatalos lezárása:** routing normalizálás (2 route mappa törölve, SEO a `caseStudySeo.ts` SSOT-ban, JSON-LD szerveroldalon), **38 + 1 = 39 db `<Image>` → `<ResponsiveImage>`** 10 fájlban; generátor `casestudy` csoport; repó **224 fájl / 6,6 MB** cél alatt.
+- **Quality Gate (7.12.1):** `npx tsc --noEmit` → TSC_EXIT=0; `npm run lint -- --max-warnings 0` → LINT_CI_EXIT=0. Build + verify + smoke a 7.12.0-ban: BUILD_EXIT=0; 288 HTML / **253 egyedi srcset URL / 0 hiányzó**; 13/13 oldal OK (btshop 17 KB, classi-co 48 KB, rimai 92 KB, bor-garnela 151 KB).
+
 
 - **Routing normalizálás (a 7.11.1-ben talált rejtett hiba lezárva):** a `src/app/munkak/classi-co/` (2 fájl) és a `src/app/munkak/btshop/` (3 fájl) **önálló route mappák törölve**. A `[slug]/page.tsx` dedikált ágai (`ClassiCoCaseStudy`, `BtshopCaseStudy`) így **életre keltek** — a két oldal most prefix-méretben a megfelelő, gazdag organismet rendereli. Zéró-törlés garancia: a törölt mappák minden gazdag SEO-adata (egyedi title/keywords/canonical/OG/Twitter/JSON-LD) az új `src/data/caseStudySeo.ts` SSOT-táblába költözött (`CASE_STUDY_SEO`), a `[slug]/page.tsx` `generateMetadata`-ja felülírással, a JSON-LD sémák pedig szerveroldali, XSS-védett `<script>`-ként renderelve (`.replace(/</g, "\\u003c")`).
 - **9 dedikált komponens reszponzív képei:** új `casestudy` forráscsoport a generátorban (hero-méretű + galériakártya képek, `[320, 640, 960]`, AVIF+WebP; a `ClassiCoCaseStudy` galériája már a galéria-csoportban van, a dedup véd). **38 db `<Image>` → `<ResponsiveImage>` csere** 9 fájlban (a `fill`/`width`/`height` propok eldobva — a komponens tölti a szülőt; `priority`/`sizes`/`alt`/`className` megőrizve). Eszközök: `scripts/scan-case-study-images.js` (33 egyedi literális kép diagnosztika) + `scripts/migrate-case-study-images.js` (mechanikus, reverzibilis átírás + kézi dinamikus `src={img}` audit).
