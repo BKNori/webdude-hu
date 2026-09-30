@@ -10,7 +10,9 @@
 - **Komponens:** a `ResponsiveImage` a hiányzó `webp` srcsetet nem rendereli (tiszta AVIF lánc a galériában).
 - **QA:** `npx tsc --noEmit` → TSC_EXIT=0; `npm run lint -- --max-warnings 0` → LINT_CI_EXIT=0; `npm run build` → BUILD_EXIT=0.
 - **Megjegyzés (DPR):** a 640 px-es felső korlát egy 3 oszlopos, ~400 CSS px széles kártyát retina (DPR 2) kijelzőn ~2/3-ig fedi le — a böngésző enyhe felméretezést mutat, cserébe a tárhely a negyede. Ha a retina minőség fontosabb, a `GROUPS.gallery.widths` `[320, 640, 960]`-ra visszaállítható (a `--clean` a fölösleges fájlokat rendben eldobja).
-- **Nyitott:** a 8 dedikált esettanulmány-komponens saját, hardcode-olt képei még `next/image`-t használnak (nincsenek a generátor forráscsoportjai között).
+- **Nyitott:** a 8 dedikált esettanulmány-komponens saját, hardcode-olt képei még `next/image`-t használnak (nincsenek a generátor forráscsoportjai között) → élő mérés: 2–11 nyers kép oldalanként, 0 AVIF.
+- **⚠️ Halott kód (Norbi döntésére vár):** a `src/app/munkak/classi-co/` és `src/app/munkak/btshop/` önálló route mappák **megelőzik** a `munkak/[slug]` dinamikus útvonalat, ezért a `ClassiCoCaseStudy` (544 sor) és `BtshopCaseStudy` (399 sor) **nem fut élesben**. A 7.11.0 `ClassiCoCaseStudy` galéria-átvezetésének így nincs látható hatása. Lehetőségek: (a) a két dedikált route mappát törölni és a `[slug]` ágra átérni, (b) a halott komponenseket törölni, (c) a `ClassiCoClient`/`BTShopClient` képeit is a generátorba kötni.
+- **Saját mérési hiba (javítva):** a smoke teszt csak a `<picture>`/avif jelenlétet nézte, ezért hamisan „9 üres oldalt" jelzett. A `next/image` + `unoptimized: true` sima `<img>`-t ad. A javított `scripts/smoke-test-gallery.js` a nyers `<img src>`-eket is ellenőrzi → valódi eredmény: **13/13 oldal OK, 0 törött kép**.
 
 ## Aktuális állapot — 2026-09-30, essettanulmány-galéria reszponzív képek (7.11.0) lezárva
 
