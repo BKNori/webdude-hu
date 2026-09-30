@@ -1,5 +1,12 @@
 # Changelog
 
+## [7.12.2] — 2026-09-30 — DIAGNOSZTIKA TAKARÍTÁS: SMOKE TESZT SÚGÓ + TAILWIND V4 + MARKDOWN LINT (COMPLETE)
+
+- **`scripts/smoke-test-gallery.js`:** a Node QA szkript TypeScript-nyelvi szolgáltatás általi téves validálását `// @ts-nocheck` jelzi; a `-h` / `--help` opció szakszerű súgót ad és `0` kilépési kóddal zárul. `node --check` → `0`, `--help` → `0`, szigorú JS-typecheck → `0`.
+- **Tailwind v4 token csere:** a `PortfolioGrid` `md:min-h-[320px]` → `md:min-h-80`, `[mask-image:...]` → `[mask:...]`; a `BtshopCaseStudy` két CTA gombja `bg-gradient-to-r` → `bg-linear-to-r` értékre váltott.
+- **Markdown diagnostics:** a `.vscode/settings.json` `markdown.validate.referenceLinks.enabled: false` beállítása elnyomja a changelog `## [7.12.1]` jellegű, hivatkozásnak tévesztett zárójeles címsorok „No link definition found” álhíreit anélkül, hogy a tényleges fájlhivatkozás-ellenőrzés ki lenne kapcsolva.
+- **QA:** `npx tsc --noEmit` → `0`; `npm run lint -- --max-warnings 0` → `0`; `npm run build` → `0`.
+
 ## [7.12.1] — 2026-09-30 — NO DEAD CODE TAKARÍTÁS: BTShop MARADVÁNYOK + 7.12.0 LEZÁRÁS (COMPLETE)
 
 - **No dead code takarítás:** a törölt `src/app/munkak/btshop/` route mappa árván hagyta a `BtshopEeatSection.tsx` organismt (csak a halott `BTShopClient` importálta) → **fájl törölve**. Ezzel a `ClassiCoClient` (7.12.0-ban a route mappával együtt törölve) és a `BTShopClient` után **0 kihasználatlan esettanulmány-fájl** maradt.

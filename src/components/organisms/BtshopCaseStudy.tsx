@@ -144,7 +144,7 @@ export default function BtshopCaseStudy({ project }: BtshopCaseStudyProps) {
                 href={project.website}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-10 py-5 bg-gradient-to-r from-cta-from to-cta-to hover:to-cta-hover text-white font-bold rounded-full transition-all duration-300 hover:scale-105 shadow-lg shadow-cta-to/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B5F1] focus-visible:ring-offset-2 focus-visible:ring-offset-[#020617]"
+                className="inline-flex items-center gap-2 px-10 py-5 bg-linear-to-r from-cta-from to-cta-to hover:to-cta-hover text-white font-bold rounded-full transition-all duration-300 hover:scale-105 shadow-lg shadow-cta-to/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B5F1] focus-visible:ring-offset-2 focus-visible:ring-offset-[#020617]"
               >
                 Webshop megtekintése →
               </motion.a>
@@ -401,7 +401,7 @@ export default function BtshopCaseStudy({ project }: BtshopCaseStudyProps) {
             <div className="flex flex-wrap justify-center gap-6">
               <Link
                 href="/kapcsolat"
-                className="px-10 py-5 bg-gradient-to-r from-cta-from to-cta-to hover:to-cta-hover text-white font-bold rounded-full transition-all duration-300 hover:scale-105 shadow-lg shadow-cta-to/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B5F1] focus-visible:ring-offset-2 focus-visible:ring-offset-[#020617]"
+                className="px-10 py-5 bg-linear-to-r from-cta-from to-cta-to hover:to-cta-hover text-white font-bold rounded-full transition-all duration-300 hover:scale-105 shadow-lg shadow-cta-to/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B5F1] focus-visible:ring-offset-2 focus-visible:ring-offset-[#020617]"
               >
                 Ajánlatot kérek →
               </Link>

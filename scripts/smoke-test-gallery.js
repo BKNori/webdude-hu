@@ -1,3 +1,5 @@
+// @ts-nocheck — önálló Node QA szkript; a TypeScript nyelvi szolgáltatás
+// ne validáljalja Next/TS projektként (a tsc és lint amúgy sem veszi be).
 /**
  * Smoke teszt a futó szerver ellen (7.11.1 QA).
  *
@@ -11,17 +13,31 @@
  */
 const http = require("http");
 
-const PORT = process.argv[2] || "3100";
-const PAGES = process.argv.slice(3).length
-  ? process.argv.slice(3)
-  : [
-      "/munkak/chamomprex",
-      "/munkak/dr-danyi",
-      "/munkak/marina-homes",
-      "/munkak/classi-co",
-      "/munkak/btshop",
-      "/munkak",
-    ];
+const args = process.argv.slice(2);
+const positional = args.filter((arg) => !arg.startsWith("-"));
+
+if (args.includes("--help") || args.includes("-h")) {
+  console.log(`Használat: node scripts/smoke-test-gallery.js [port] [oldal ...]
+
+Opciók:
+  -h, --help           Megjeleníti ezt a súgót, és kilép.
+  [port]               A vizsgált localhost port (alapértelmezés: 3100).
+  [oldal ...]          Ellenőrizendő oldalak; nincs megadva, az alapgalériát használja.`);
+  process.exit(0);
+}
+
+const PORT = positional[0] || "3100";
+const PAGES =
+  positional.length > 1
+    ? positional.slice(1)
+    : [
+        "/munkak/chamomprex",
+        "/munkak/dr-danyi",
+        "/munkak/marina-homes",
+        "/munkak/classi-co",
+        "/munkak/btshop",
+        "/munkak",
+      ];
 
 /** Letölti egy URL fejléceit és a tartalmát. */
 function fetchRaw(url) {

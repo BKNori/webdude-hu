@@ -91,7 +91,7 @@ function PortfolioCard({ project, index }: PortfolioCardProps) {
       <div
         className={`relative z-10 overflow-hidden border-slate-800/80 ${
           isFeatured
-            ? "aspect-video w-full md:aspect-auto md:min-h-[320px] md:w-1/2 md:border-r"
+            ? "aspect-video w-full md:aspect-auto md:min-h-80 md:w-1/2 md:border-r"
             : "aspect-video w-full border-b"
         }`}
       >
@@ -179,7 +179,7 @@ export default function PortfolioGrid({ projects }: { projects: Work[] }) {
       {/* Mesh grid háttér — Electric Cyan */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 opacity-60 [mask-image:radial-gradient(ellipse_at_center,black,transparent_78%)]"
+        className="pointer-events-none absolute inset-0 opacity-60 [mask:radial-gradient(ellipse_at_center,black,transparent_78%)]"
         style={{
           backgroundImage:
             "linear-gradient(to right, rgba(0, 181, 241,0.07) 1px, transparent 1px), linear-gradient(to bottom, rgba(0, 181, 241,0.07) 1px, transparent 1px)",
