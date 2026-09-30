@@ -104,7 +104,7 @@ export default function HeroSlider() {
   const isExternal = slide.primaryHref.startsWith("http");
 
   const primaryButtonClass =
-    "inline-flex items-center justify-center rounded-lg bg-gradient-to-r from-cta-from to-cta-to px-8 py-4 text-base font-semibold text-white shadow-lg shadow-sky-900/30 transition-transform duration-200 hover:-translate-y-1 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 focus:ring-offset-slate-950";
+    "inline-flex items-center justify-center rounded-lg bg-linear-to-r from-cta-from to-cta-to px-8 py-4 text-base font-semibold text-white shadow-lg shadow-sky-900/30 transition-transform duration-200 hover:-translate-y-1 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 focus:ring-offset-slate-950";
 
   const secondaryButtonClass =
     "inline-flex items-center justify-center rounded-lg border border-slate-600 px-8 py-4 text-base font-medium text-slate-200 transition-colors duration-200 hover:border-sky-500/60 hover:text-white focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 focus:ring-offset-slate-950";

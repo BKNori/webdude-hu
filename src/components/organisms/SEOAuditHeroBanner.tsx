@@ -105,7 +105,7 @@ export default function SEOAuditHeroBanner({
                 />
               </div>
             ) : (
-              <div className="aspect-video rounded-2xl bg-gradient-to-br from-brand-primary/20 to-transparent border border-brand-primary/20 flex items-center justify-center">
+              <div className="aspect-video rounded-2xl bg-linear-to-br from-brand-primary/20 to-transparent border border-brand-primary/20 flex items-center justify-center">
                 <div className="text-center space-y-4">
                   <Shield className="w-24 h-24 text-brand-primary/50 mx-auto" />
                   <p className="text-sm text-slate-400">

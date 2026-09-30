@@ -148,7 +148,7 @@ export default function ArchitectViewSection({
               }%`,
             }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="h-full bg-gradient-to-r from-brand-primary to-emerald-500"
+            className="h-full bg-linear-to-r from-brand-primary to-emerald-500"
           />
         </div>
       </div>

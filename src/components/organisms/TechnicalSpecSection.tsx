@@ -130,7 +130,7 @@ export default function TechnicalSpecSection({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-12 p-6 bg-gradient-to-r from-brand-primary/10 to-transparent border border-brand-primary/20 rounded-xl"
+          className="mt-12 p-6 bg-linear-to-r from-brand-primary/10 to-transparent border border-brand-primary/20 rounded-xl"
         >
           <div className="flex items-center gap-4">
             <Shield className="w-8 h-8 text-brand-primary" />

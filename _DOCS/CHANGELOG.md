@@ -1,5 +1,12 @@
 # Changelog
 
+## [7.12.3] — 2026-09-30 — GLOBAL TAILWIND V4 GRADIENT SWEEP (COMPLETE)
+
+- **No broken windows sweep:** a teljes `src/` könyvtár átvizsgálásra került a visszamaradt Tailwind v3 `bg-gradient-to-*` osztályokra; minden előfordulás a helyes v4-es `bg-linear-to-*` szintaxisra váltott.
+- **Érintett állományok:** `ProjectTimelineGantt`, `TimelineMilestoneItem`, `ArchitectViewSection`, `CompetitorAnalyzer`, `ContentPlanner`, `HeroSlider`, `ModernServicesSection`, `SEOAuditHeroBanner`, `SEOAuditTool`, `TechnicalSpecSection`, `TLDRSection` — összesen **11 fájl / 18 sor**.
+- **Zéró maradvány:** a `findstr /S /N /C:"bg-gradient-to-" src\*.tsx src\*.ts` keresés **0 találatot** adott.
+- **QA:** `npx tsc --noEmit` → `0`; `npm run lint -- --max-warnings 0` → `0`; `npm run build` → `0`.
+
 ## [7.12.2] — 2026-09-30 — DIAGNOSZTIKA TAKARÍTÁS: SMOKE TESZT SÚGÓ + TAILWIND V4 + MARKDOWN LINT (COMPLETE)
 
 - **`scripts/smoke-test-gallery.js`:** a Node QA szkript TypeScript-nyelvi szolgáltatás általi téves validálását `// @ts-nocheck` jelzi; a `-h` / `--help` opció szakszerű súgót ad és `0` kilépési kóddal zárul. `node --check` → `0`, `--help` → `0`, szigorú JS-typecheck → `0`.

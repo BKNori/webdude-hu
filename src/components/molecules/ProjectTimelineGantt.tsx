@@ -140,7 +140,7 @@ export default function ProjectTimelineGantt({
                     duration: shouldReduceMotion ? 0 : 0.9,
                     ease: "easeOut",
                   }}
-                  className="h-full rounded-full bg-gradient-to-r from-[#5B21B6] to-[#00B5F1]"
+                  className="h-full rounded-full bg-linear-to-r from-[#5B21B6] to-[#00B5F1]"
                 />
               </div>
             </div>
@@ -148,7 +148,7 @@ export default function ProjectTimelineGantt({
             <ol role="list" className="relative mt-8 space-y-5">
               <span
                 aria-hidden="true"
-                className="absolute top-5 bottom-5 left-[19px] hidden w-px bg-gradient-to-b from-[#00B5F1]/45 via-slate-800 to-transparent sm:block"
+                className="absolute top-5 bottom-5 left-[19px] hidden w-px bg-linear-to-b from-[#00B5F1]/45 via-slate-800 to-transparent sm:block"
               />
               {items.map((item, index) => (
                 <TimelineMilestoneItem

@@ -59,8 +59,8 @@ const NODE_STYLES: Record<MilestoneStatus, string> = {
 
 /** Gantt sáv kitöltés státusz szerint. */
 const BAR_FILL: Record<MilestoneStatus, string> = {
-  completed: "bg-gradient-to-r from-[#5B21B6] to-[#00B5F1]",
-  in_progress: "bg-gradient-to-r from-sky-500 to-sky-300",
+  completed: "bg-linear-to-r from-[#5B21B6] to-[#00B5F1]",
+  in_progress: "bg-linear-to-r from-sky-500 to-sky-300",
   pending: "bg-slate-700",
 };
 

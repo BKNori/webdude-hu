@@ -402,7 +402,7 @@ export default function SEOAuditTool() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="glass-card p-8 border border-sky-500/30 bg-gradient-to-br from-sky-500/5 to-transparent text-center"
+              className="glass-card p-8 border border-sky-500/30 bg-linear-to-br from-sky-500/5 to-transparent text-center"
             >
               <div className="space-y-4">
                 <h3 className="text-2xl font-bold text-white">

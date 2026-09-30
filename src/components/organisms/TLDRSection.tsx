@@ -53,7 +53,7 @@ export default function TLDRSection() {
   return (
     <section className="py-24 relative overflow-hidden">
       {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-yellow-400/5 to-transparent" />
+      <div className="absolute inset-0 bg-linear-to-b from-transparent via-yellow-400/5 to-transparent" />
 
       <div className="px-6 lg:px-8 relative z-10 max-w-6xl mx-auto">
         <motion.div
