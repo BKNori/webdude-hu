@@ -2,8 +2,9 @@
 
 > **AI DIREKTÍVA:** Ez a dokumentum a projekt makro-szintű állapotát (Roadmap) és a minőségbiztosítási (QA) státuszt rögzíti. Ezt a fájlt minden sikeres ciklus (Sprint) lezárása után kötelezően frissítened kell a legújabb validációs eredményekkel és az áthelyezett backlog elemekkel.
 
-## 1. Minőségbiztosítási Státusz (QA Gates) — frissítve: 2026-09-30 (7.9.0 lezárva)
+## 1. Minőségbiztosítási Státusz (QA Gates) — frissítve: 2026-09-30 (7.10.0 lezárva)
 
+- **7.10.0 QA (2026-09-30):** `npx tsc --noEmit` TSC_EXIT=0; `npm run lint -- --max-warnings 0` **LINT_CI_EXIT=0** (a CI szigorú kapuja); `npm run build` BUILD_EXIT=0. Tartalom: CI branch-javítás (`main` → `master`) + 0-warning kapu, reszponzív képek a `PortfolioGrid`/`WorkCard`/`CaseStudiesBento`/`BlogGrid` komponenseken (általános `ResponsiveImage` molekula, 16 kép / 106 fájl), törött `btshop-banner.webp` hivatkozás javítva 6 helyen.
 - **7.9.0 QA (2026-09-30):** `npx tsc --noEmit` TSC_EXIT=0; `npm run lint` **LINT_EXIT=0 → 0 hiba, 0 figyelmeztetés (a projekt történetében először)**; `npm run build` BUILD_EXIT=0. Tartalom: hero LCP statikus AVIF/WebP derivatívumok (`<picture>` + `srcSet` + `fetchPriority="high"`), `next.config.js` kommentelve (`unoptimized: true` megmarad, indok dokumentálva), a 2 `exhaustive-deps` warning javítva.
 - **7.8.0 QA (2026-09-30):** `npx tsc --noEmit` TSC_EXIT=0; `npm run lint` LINT_EXIT=0 (0 hiba, 2 előre meglévő `react-hooks/exhaustive-deps` warning `HeroSectionNew.tsx`); `npm run build` BUILD_EXIT=0. Tartalom: `PortalDashboard.tsx` 793 → 194 sor, 6 új `portal/*` szekció-komponens, Phase 2 hookok (`usePortalSession` + `usePortalData`) életbe léptetése, `usePortalData` idToken-guard bugfix.
 - **7.7.0 QA (2026-09-29):** `npx tsc --noEmit` TSC_EXIT=0; `npm run lint` LINT_EXIT=0 (0 hiba, 2 előre meglévő `react-hooks/exhaustive-deps` warning `HeroSectionNew.tsx`); `npm run build` BUILD_EXIT=0. Tartalom: hero háttérkép-láthatóság (`opacity-65`, `bg-slate-950/60`, bal-oldali WCAG AA scrim), Esettanulmány #2 kép bekötve (HU/EN/defaults), hero 3. dia mockup-kártya eltávolítva, „Nulláról 3 hónap alatt a piac élére" állítás visszavonva (élő forrásból 0 találat).
@@ -18,6 +19,7 @@
 - **7.0.0 Kék-Lila migráció (2026-09-16):** arany/amber tiltva, CTA `#075985` → `#5B21B6`, akcentus `#7C3AED` fehér szöveggel AAA; záró audit: 0 váratlan cyan-találat (riport: `_mentesek/20260916_amber-migration/_zaras-audit.txt`).
 
 ## 2. Kész / Lezárt Mérföldkövek (Legutóbbiak)
+- ✅ **[7.10.0] (2026-09-30):** CI élesítve (`main` → `master`, `--max-warnings 0` kapu), reszponzív `<picture>` betöltés a portfolio/essettanulmány/blog kártyákon (általános `ResponsiveImage`, 16 kép / 106 fájl), törött `btshop-banner.webp` hivatkozás javítva 6 helyen.
 - ✅ **[7.9.0] (2026-09-30):** Hero LCP statikus AVIF/WebP derivatívumok + `<picture>`/`fetchPriority` (mobilon −95%), `unoptimized: true` indok dokumentálva, **lint 0/0**, a hamis „Firebase hosting" állítás javítva (valós: cPanel + Phusion Passenger).
 - ✅ **[7.8.0] (2026-09-30):** `PortalDashboard.tsx` 793 → 194 sor (6 új `portal/*` szekció-komponens) + Phase 2 hookok (`usePortalSession`, `usePortalData`) életbe léptetése; `usePortalData` idToken-guard bugfix.
 - ✅ **[7.7.0] (2026-09-29):** Hero háttérkép-láthatóság + WCAG AA szövegvédelmi scrim; Esettanulmány #2 valós kép; „AI Prompt Platform" állítás-visszavonás.
@@ -40,8 +42,8 @@
 
 ## 4. Backlog / Tervezett Feladatok (Roadmap)
 - ⏳ **`PortalDashboard.tsx` (793 sor) szétbontása** → `src/components/organisms/portal/*` szekciók (Rendelések, WorkflowChat, Projekt idővonal, Vault) + Phase 2 hookok (`usePortalSession`, `usePortalData`, `useStripePaymentVerification`). **Ez a KÖVETKEZŐ ATOMI LÉPÉS** (részlet: `activeContext.md` 5. pont).
-- ⏳ **Képoptimalizálás kiterjesztése (7.9.0 után):** a `next.config.js` `unoptimized: true` **érvényes és megmarad** — a hosting cPanel + Phusion Passenger (a korábbi „már Firebase" állítás téves volt, lásd `activeContext.md`). A hero képekre megoldva: statikus AVIF/WebP derivatívumok + `<picture>` (`scripts/generate-responsive-images.js` + `HeroBackgroundImage`). **Hátra van:** a portfólió- és essettanulmány-kártyák (`PortfolioGrid`, `WorkCard`, `CaseStudiesBento`, `BlogGrid`) ugyanilyen nyers betöltése.
-- ⏳ **CI élesítése:** a `.github/workflows/ci.yml` a `main` branchre figyel, a projekt `master` → a pipeline soha nem futott. Javítás: `branches: [ master ]` + `npm run lint -- --max-warnings 0` (a 7.9.0 óta 0/0 a lint).
+- ✅ **Képoptimalizálás kiterjesztve (7.9.0 + 7.10.0-ban kész):** a `next.config.js` `unoptimized: true` **érvényes és megmarad** — a hosting cPanel + Phusion Passenger (a korábbi „már Firebase" állítás téves volt, lásd `activeContext.md`). Statikus AVIF/WebP derivatívumok + `<picture>` srcSet a `HeroSectionNew`, `PortfolioGrid`, `WorkCard`, `CaseStudiesBento` és `BlogGrid` komponenseken (általános `ResponsiveImage` molekula, 16 kép / 106 fájl). **Hátra van:** a `works.ts` `gallery[]` képek (essettanulmány-oldali galéria) még nyers betöltésűek.
+- ✅ **CI élesítve (7.10.0):** a `.github/workflows/ci.yml` `main` → `master` (mindkét trigger) + `npm run lint -- --max-warnings 0`. A pipeline korábban soha nem futott; most a `master`-re pusholáskor valós ellenőrzést ad.
 - ⏳ **Firestore deploy (kizárólag Norbi):** `firestore.indexes.json` + `firestore.rules` élesítése → `firebase deploy --only firestore:indexes`.
 - ⏳ **Admin Felület (Középtávú):** Részletesebb KPI dashboard bővítés (Revenue, Churn rate, LTV), valamint PDF export funkciók implementálása a meglévő CSV exportok mellé.
 - ⏳ **AI Eszközök:** További AI műhelyek (pl. Tartalomtervező, Versenytárs-elemző) vizuális felturbózása a "WOW-hatás" (Spring Physics) jegyében.

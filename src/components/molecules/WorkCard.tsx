@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
+import ResponsiveImage from "@/components/molecules/ResponsiveImage";
 import { Work } from "@/types/work";
 import { motion } from "motion/react";
 
@@ -34,13 +34,11 @@ export default function WorkCard({ work }: WorkCardProps) {
           {/* Image placeholder */}
           <div className="aspect-video bg-linear-to-br from-bg-elevated to-bg-base relative overflow-hidden">
             {work.image ? (
-              <Image
+              <ResponsiveImage
                 src={work.image}
                 alt={work.title}
-                fill
-                className="object-cover transition-transform duration-500 hover:scale-110"
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                unoptimized
+                className="object-cover transition-transform duration-500 hover:scale-110"
               />
             ) : (
               <div className="w-full h-full flex items-center justify-center">

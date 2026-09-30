@@ -9,6 +9,18 @@
 - **Fontosság:** Kiemelt stratégiai feladat
 - **Megjegyzés:** Ez a feladat a CHANGELOG-ban van rögzítve jövőbeli implementációra
 
+## [7.10.0] — 2026-09-30 — CI ÉLESÍTÉS + RESZPONZÍV KÉPEK A KÁRTYÁKON (COMPLETE)
+
+- **CI élesítve:** a `.github/workflows/ci.yml` a `main` branchre figyeltek, a projekt viszont `master` ágon van → **a pipeline soha nem futott**. Javítva mindkét trigger (`push` + `pull_request`) `master`-re, és a lint lépés immár `npm run lint -- --max-warnings 0` — a 7.9.0 óta a projekt **0 figyelmeztetéssel** is átmegy, így a szigorú kapu működőképes. Ellenőrizve: `LINT_CI_EXIT=0`.
+- **A reszponzív kép-optimalizálás kiterjesztve 5 komponensre:** a 7.9.0-ban csak a hero készült el; most a `PortfolioGrid`, `WorkCard`, `CaseStudiesBento` és `BlogGrid` is `<picture>` + `srcSet` betöltést kap. A `HeroBackgroundImage` speciális komponens megszűnt, helyette **általános `ResponsiveImage`** molekula szolgálja ki mind az 5 helyet (a `sizes` most propként adható át, nem hardcode-olt).
+- **A generátor immár automatikusan gyűjti a forrásokat** (nem hardcode-olt lista): `src/data/works.ts` (`image`/`bannerImage`), `src/dictionaries/{hu,en}.json` (`cases[].image`) és `src/content/blog/*.{md,mdx}` frontmatter. Két szélességkészlet: hero `[640, 1024, 1600, 2000]`, kártyák `[320, 640, 960]` (a kártyák ~1/3 szélességűek, a nagyobb variáns csak a repót hízna). Kimenet: **16 kép → 106 fájl**; a manifestum neve `src/data/responsiveImages.ts` lett (a régi `heroImages.ts` megszűnt).
+- **Előre nem látott törött kép-hivatkozás javítva (6 helyen):** a `/assets/portfolio/btshop/btshop-banner.webp` **nem létezik a lemezen** (a mappában csak `btshop-banner-2.webp` van) → törött kép jelent meg a btshop esettanulmány hero-ján (`BtshopHero`), az esettanulmány-oldalon (`BtshopCaseStudy`), a portfolio-kártyán (`works.ts`), a galériában, a `CaseStudiesBento` alapértékében és mindkét szótárban. Mindegyik a létező `btshop-banner-2.webp` útvonalra mutat. **A generátor `[WARN] Nem található` sora találta meg** — kézi ellenőrzéssel nem került volna elő.
+- **Kibugázott saját hiba és a védőháló, ami a jövőben elkapja:** az első kiterjesztési generálás a kártyaképeket **almappákba** írta, de a `srcset` URL-ekből az almappa kimaradt → minden kártyakép 404-et kapott volna, miközben a build zöld maradt (ezt kézi HTML-ellenőrzés fogta meg, nem a QA). Javítva: minden képcsoport egységes `out()` függvénye adja vissza a lemezbeli útvonalat ÉS a URL-t, és a generátor **manifestumkiírás előtt minden URL-t ellenőriz a lemezen** (`process.exit(1)` hiba esetén). Független ellenőrzés: **100 srcset-URL, 0 hiányzó**.
+- **Hulladék tisztítva:** a `next build` által automatikusan létrehozott `jsconfig.json` (a `tsconfig.json` duplikátuma) kikerült a repóból, és felkerült a `.gitignore`-ba.
+- **Quality Gate:** `npx tsc --noEmit` → **TSC_EXIT=0**; `npm run lint -- --max-warnings 0` → **LINT_CI_EXIT=0**; `npm run build` → **BUILD_EXIT=0**.
+
+---
+
 ## [7.9.0] — 2026-09-30 — HERO LCP: STATIKUS AVIF/WEBP DERIVATÍVUMOK + FETCHPRIORITY (COMPLETE)
 
 - **Kiindulási helyzet felülvizsgálva (a korábbi feltevés téves volt):** a memory-bank azt állította, hogy a hosting „ma már Firebase (Web Frameworks)". **A valós deploy a `deploy.ps1` alapján Phusion Passenger wrapperrel futó cPanel shared hosting** (standalone build → Passenger patch → 147 MB-os `deploy-v0.1.XXX.zip` → manuális feltöltés). Következésképpen a `next.config.js` `unoptimized: true` **érvényes és megmarad** — eredeti indoka (memóriakorlát) továbbra is él.

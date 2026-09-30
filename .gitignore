@@ -49,6 +49,8 @@ deploy_dist/
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+# a `next build` automatikusan létrehozza, duplikálja a tsconfig.json-t
+jsconfig.json
 deploy-*.zip
 standalone.zip
 *.zip

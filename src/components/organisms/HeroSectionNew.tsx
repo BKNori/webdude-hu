@@ -2,7 +2,7 @@
 
 import React, { useRef, useState, useEffect, useCallback } from "react";
 import Link from "next/link";
-import HeroBackgroundImage from "@/components/molecules/HeroBackgroundImage";
+import ResponsiveImage from "@/components/molecules/ResponsiveImage";
 import { motion, AnimatePresence, useScroll, useTransform } from "motion/react";
 import {
   ArrowRight,
@@ -266,10 +266,11 @@ export default function HeroSectionNew({ content }: HeroSectionNewProps) {
             transition={{ duration: 0.8, ease: "easeInOut" }}
             className="absolute inset-0"
           >
-            <HeroBackgroundImage
+            <ResponsiveImage
               alt={slide.bgAlt}
               className="object-cover opacity-65"
               priority={currentSlide === 0}
+              sizes="100vw"
               src={slide.bgImage}
             />
           </motion.div>

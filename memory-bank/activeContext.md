@@ -2,6 +2,15 @@
 
 > **AI DIREKTÍVA:** Ez a fájl a rendszer "élő" memóriája. A 03-workflow.md 5. lépése alapján KÖTELEZŐ ezt a fájlt frissítened minden feladat befejezésekor, vagy mielőtt átadod a vezérlést a felhasználónak (Norbinak). Szigorúan tilos új feladatba kezdened, ha az "Aktuális Munkaterület Állapota" szekcióban hibák vagy félbehagyott fájlok vannak!
 
+## Aktuális állapot — 2026-09-30, CI élesítés + reszponzív képek a kártyákon (7.10.0) lezárva
+
+- **CI élesítve:** a `.github/workflows/ci.yml` a `main` branchre figyeltek, a projekt `master` → **a pipeline soha nem futott**. Javítva mindkét trigger, és a lint lépés most `npm run lint -- --max-warnings 0` (a 7.9.0 óta 0/0 a lint, így a szigorú kapu is átmegy — ellenőrizve: `LINT_CI_EXIT=0`).
+- **Kép-optimalizálás kiterjesztve:** a `HeroBackgroundImage` speciális komponens helyett **általános `ResponsiveImage`** molekula szolgálja ki mind az 5 helyet (`HeroSectionNew`, `PortfolioGrid`, `WorkCard`, `CaseStudiesBento`, `BlogGrid`). A generátor a forrásokat most **automatikusan gyűjti** (`works.ts`, szótárak, blog frontmatter) → **16 kép, 106 derivatívum**; a manifestum `src/data/responsiveImages.ts`.
+- **Előre nem látott törött kép-hivatkozás javítva (6 helyen):** `/assets/portfolio/btshop/btshop-banner.webp` nem létezik a lemezen → `btshop-banner-2.webp` lett (btshop hero, essettanulmány-oldal, portfolio-kártya, galéria, szótárak). A generátor `[WARN]` sora találta meg.
+- **QA:** `npx tsc --noEmit` → TSC_EXIT=0; `npm run lint -- --max-warnings 0` → LINT_CI_EXIT=0; `npm run build` → BUILD_EXIT=0.
+- **Archívum (nem törölt fájl):** `_mentesek/20260930_responsiveImages/HeroBackgroundImage.tsx.specializalt`.
+- **Nyitott (Norbi):** a portfólió/essettanulmány **galéria** képei (`GeneralCaseStudy` galéria + `munkak/[slug]` hero) még nyers betöltésűek — a generátorhoz új forráscsoportként lehetne kötni (`works.ts` `gallery[]`).
+
 ## Aktuális állapot — 2026-09-30, Hero LCP statikus kép-derivatívumok (7.9.0) lezárva
 
 - **INFRASTRUKTÚRA-ÁLLÍTÁS JAVÍTVA (a korábbi feltevés téves volt):** a hosting **NEM Firebase**. A valós deploy a `deploy.ps1` szerint: `npm run build` (standalone) → Phusion Passenger patch a `server.js`-en → Passenger wrapper (`// webdude.hu | cPanel deployment entry point`) → `.next/standalone` zippelése → `deploy-v0.1.XXX.zip` (~147 MB) → **manuális feltöltés cPanelre**. Ezért:

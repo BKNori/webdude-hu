@@ -110,7 +110,7 @@ export default function BtshopHero() {
         >
           <div className="relative aspect-video w-full bg-bg-base">
             <Image
-              src="/assets/portfolio/btshop/btshop-banner.webp"
+              src="/assets/portfolio/btshop/btshop-banner-2.webp"
               alt="btshop.hu — 3200 termékes e-kereskedelmi rendszer vizuál"
               fill
               sizes="(max-width: 1024px) 100vw, 1024px"

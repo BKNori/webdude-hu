@@ -2,9 +2,9 @@ name: Production CI/CD Pipeline
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
 
 jobs:
   verify:
@@ -25,8 +25,8 @@ jobs:
       - name: Run TypeScript Strict Check
         run: npx tsc --noEmit
 
-      - name: Run ESLint
-        run: npm run lint
+      - name: Run ESLint (0 warning kapu)
+        run: npm run lint -- --max-warnings 0
 
       - name: Build Next.js
         run: npm run build

@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import ResponsiveImage from "@/components/molecules/ResponsiveImage";
 import Link from "next/link";
 import { useRef } from "react";
 import type { MouseEvent } from "react";
@@ -95,17 +95,15 @@ function PortfolioCard({ project, index }: PortfolioCardProps) {
             : "aspect-video w-full border-b"
         }`}
       >
-        <Image
+        <ResponsiveImage
           src={coverImage}
           alt={project.title}
-          fill
           sizes={
             isFeatured
               ? "(max-width: 768px) 100vw, 50vw"
               : "(max-width: 768px) 100vw, 33vw"
           }
           className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.05]"
-          unoptimized
         />
         {isFeatured && (
           <span className="absolute top-4 left-4 z-20 rounded-full bg-[#00B5F1] px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-slate-950 shadow-[0_0_24px_rgba(0,181,241,0.45)]">

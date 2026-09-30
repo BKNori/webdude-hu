@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
+import ResponsiveImage from "@/components/molecules/ResponsiveImage";
 import { motion } from "motion/react";
 
 export interface BlogPostItem {
@@ -53,10 +53,9 @@ export default function BlogGrid({ posts }: BlogGridProps) {
         >
           {post.coverImage && (
             <div className="relative aspect-video w-full overflow-hidden rounded-2xl mb-5 bg-slate-950">
-              <Image
+              <ResponsiveImage
                 src={post.coverImage}
                 alt={post.title}
-                fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
               />

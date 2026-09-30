@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
+import ResponsiveImage from "@/components/molecules/ResponsiveImage";
 import { motion } from "motion/react";
 import { TrendingUp, ArrowRight, ExternalLink } from "lucide-react";
 import { CasesContent } from "@/types/dictionary";
@@ -30,7 +30,7 @@ const CASE_STUDY_DEFAULTS = [
     href: "/munkak",
     imgPlaceholder: "B2B",
     accentColor: "#00B5F1",
-    image: "/assets/portfolio/btshop/btshop-banner.webp",
+    image: "/assets/portfolio/btshop/btshop-banner-2.webp",
   },
   {
     id: "ai-prompt",
@@ -169,10 +169,10 @@ export default function CaseStudiesBento({ content }: CaseStudiesBentoProps) {
                 style={{ minHeight: "140px" }}
               >
                 {cs.image ? (
-                  <Image
+                  <ResponsiveImage
                     src={cs.image}
                     alt={cs.title}
-                    fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                     className="object-cover"
                   />
                 ) : (
