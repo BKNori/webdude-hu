@@ -75,7 +75,6 @@ export default async function RootLayout({ children }: RootLayoutProps) {
       opens: "09:00",
       closes: "16:00",
     },
-    priceRange: "€€",
     logo: {
       "@type": "ImageObject",
       url: "https://webdude.hu/og/webdude-og.jpg",

@@ -1,26 +1,30 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { 
-  CheckCircle2, 
-  ArrowRight, 
-  MapPin, 
-  Users2, 
-  Clock, 
-  ShieldCheck, 
+import {
+  CheckCircle2,
+  ArrowRight,
+  MapPin,
+  Users2,
+  Clock,
+  ShieldCheck,
   HelpCircle,
   Sparkles,
   Coffee,
   Laptop,
-  Compass
+  Compass,
 } from "lucide-react";
-import PricingTable, { type PricingTier } from "@/components/molecules/PricingTable";
+import PricingTable, {
+  type PricingTier,
+} from "@/components/molecules/PricingTable";
 
 export const metadata: Metadata = {
   title: "Weboldal készítés Kecskemét | WebDude",
-  description: "Weboldal készítés Kecskeméten és országosan. WordPress, egyedi webfejlesztés, SEO és grafikai tervezés közvetlenül a WebDude-tól.",
+  description:
+    "Weboldal készítés Kecskeméten és országosan. WordPress, egyedi webfejlesztés, SEO és grafikai tervezés közvetlenül a WebDude-tól.",
   openGraph: {
     title: "Weboldal készítés Kecskemét | WebDude",
-    description: "Weboldal készítés Kecskeméten és országosan. WordPress, egyedi webfejlesztés, SEO és grafikai tervezés közvetlenül a WebDude-tól.",
+    description:
+      "Weboldal készítés Kecskeméten és országosan. WordPress, egyedi webfejlesztés, SEO és grafikai tervezés közvetlenül a WebDude-tól.",
     url: "https://webdude.hu/weboldal-keszites-kecskemet",
     type: "website",
   },
@@ -30,13 +34,14 @@ const pricingTiers: PricingTier[] = [
   {
     id: "kecskemet-start",
     name: "Kecskeméti Vállalkozói Alapcsomag",
-    description: "Helyi kisvállalkozásoknak, szolgáltatóknak és szakembereknek a helyi láthatóság megalapozásához.",
+    description:
+      "Helyi kisvállalkozásoknak, szolgáltatóknak és szakembereknek a helyi láthatóság megalapozásához.",
     features: [
       "Egyedi, mobilbarát dizájn Kecskemétre szabva",
       "Google Cégprofil (Google Business Profile) optimalizáció",
       "Kecskeméti lokális kulcsszavak és lokális SEO beállítás",
       "Gyors betöltés, SSL tanúsítvány és biztonsági alapok",
-      "Személyes vagy online egyeztetés a projekt indulásakor"
+      "Személyes vagy online egyeztetés a projekt indulásakor",
     ],
     highlighted: false,
     ctaText: "Egyedi árajánlat kérése",
@@ -45,14 +50,15 @@ const pricingTiers: PricingTier[] = [
   {
     id: "kecskemet-pro",
     name: "Kecskeméti Növekedési & Üzleti Csomag",
-    description: "Versenytársakat megelőző helyi és regionális jelenlét, komplex bemutató felület és konverziós gépezet.",
+    description:
+      "Versenytársakat megelőző helyi és regionális jelenlét, komplex bemutató felület és konverziós gépezet.",
     features: [
       "Minden, ami az Alapcsomagban szerepel",
       "Részletes konkurencia- és kulcsszóelemzés a kecskeméti és országos piacon",
       "Kiemelt sebességoptimalizálás (90+ PageSpeed)",
       "Interaktív funkciók, űrlapok, időpontfoglalási rendszer integráció",
       "LocalBusiness és Service strukturált adatok a Google kiemeléshez",
-      "Személyes konzultáció és folyamatos dedikált támogatás"
+      "Személyes konzultáció és folyamatos dedikált támogatás",
     ],
     highlighted: true,
     ctaText: "Egyedi árajánlat kérése",
@@ -61,13 +67,14 @@ const pricingTiers: PricingTier[] = [
   {
     id: "kecskemet-custom",
     name: "Egyedi Rendszer & Webáruház",
-    description: "Egyedi szoftvermegoldások, webshopok és nagyobb volumenű vállalkozói platformok fejlesztése.",
+    description:
+      "Egyedi szoftvermegoldások, webshopok és nagyobb volumenű vállalkozói platformok fejlesztése.",
     features: [
       "Komplett e-kereskedelmi vagy egyedi webalkalmazás fejlesztés",
       "Számlázó, futárszolgálat és banki fizetési kapu integrációk",
       "Teljes arculati és grafikai támogatás (online és offline)",
       "Kiemelt SLA és havi szintű technikai karbantartás",
-      "Közvetlen, személyes rendelkezésre állás Kecskeméten"
+      "Közvetlen, személyes rendelkezésre állás Kecskeméten",
     ],
     highlighted: false,
     ctaText: "Egyedi árajánlat kérése",
@@ -102,7 +109,6 @@ export default function WeboldalKeszitesKecskemetPage() {
     image: "https://webdude.hu/og/weboldal-keszites-kecskemet.jpg",
     url: "https://webdude.hu/weboldal-keszites-kecskemet",
     telephone: "+36-20-000-0000",
-    priceRange: "$$",
     address: {
       "@type": "PostalAddress",
       streetAddress: "Kecskemét",
@@ -117,16 +123,10 @@ export default function WeboldalKeszitesKecskemetPage() {
     },
     openingHoursSpecification: {
       "@type": "OpeningHoursSpecification",
-      dayOfWeek: [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday"
-      ],
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
       opens: "09:00",
-      closes: "18:00"
-    }
+      closes: "18:00",
+    },
   };
 
   const serviceJsonLd = {
@@ -138,7 +138,8 @@ export default function WeboldalKeszitesKecskemetPage() {
       name: "Norbert - WebDude",
       url: "https://webdude.hu",
     },
-    description: "Weboldal készítés Kecskeméten és országosan. WordPress, egyedi webfejlesztés, SEO és grafikai tervezés közvetlenül a WebDude-tól.",
+    description:
+      "Weboldal készítés Kecskeméten és országosan. WordPress, egyedi webfejlesztés, SEO és grafikai tervezés közvetlenül a WebDude-tól.",
     serviceType: "Web Development and Local SEO",
     areaServed: {
       "@type": "AdministrativeArea",
@@ -191,10 +192,16 @@ export default function WeboldalKeszitesKecskemetPage() {
               Kecskemét & Bács-Kiskun Vármegye
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight mb-6">
-              Profi weboldal készítés <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#a855f7]">Kecskeméten</span>
+              Profi weboldal készítés{" "}
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#a855f7]">
+                Kecskeméten
+              </span>
             </h1>
             <p className="text-lg sm:text-xl text-slate-300 leading-relaxed mb-8">
-              Közvetlen kapcsolat, helyi elérhetőség és prémium digitális kivitelezés. Olyan eladásorientált weboldalt készítek kecskeméti vállalkozásodnak, amely kiemel a helyi versenytársak közül és vevőket generál.
+              Közvetlen kapcsolat, helyi elérhetőség és prémium digitális
+              kivitelezés. Olyan eladásorientált weboldalt készítek kecskeméti
+              vállalkozásodnak, amely kiemel a helyi versenytársak közül és
+              vevőket generál.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
@@ -216,7 +223,10 @@ export default function WeboldalKeszitesKecskemetPage() {
       </section>
 
       {/* DEDICATED SECTION: Személyes találkozó és konzultáció Kecskeméten (CRITICAL LOCAL SEO & CONVERSION) */}
-      <section id="szemelyes-talalkozo" className="py-24 relative border-b border-slate-800/80 bg-slate-900/30">
+      <section
+        id="szemelyes-talalkozo"
+        className="py-24 relative border-b border-slate-800/80 bg-slate-900/30"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -228,7 +238,10 @@ export default function WeboldalKeszitesKecskemetPage() {
                 Személyes találkozó és konzultáció Kecskeméten
               </h2>
               <p className="text-slate-300 text-base sm:text-lg leading-relaxed mb-6">
-                A sikeres webes projekt alapja az őszinte, közvetlen kommunikáció. Nem egy arctalan ügynökség vagyok sokadik közvetítővel: velem, a fejlesztővel és tervezővel beszélsz az első pillanattól fogva.
+                A sikeres webes projekt alapja az őszinte, közvetlen
+                kommunikáció. Nem egy arctalan ügynökség vagyok sokadik
+                közvetítővel: velem, a fejlesztővel és tervezővel beszélsz az
+                első pillanattól fogva.
               </p>
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
@@ -236,8 +249,13 @@ export default function WeboldalKeszitesKecskemetPage() {
                     <Users2 className="w-4 h-4" />
                   </div>
                   <div>
-                    <h4 className="text-white font-semibold text-sm">Szemtől szembeni bizalom</h4>
-                    <p className="text-slate-400 text-xs mt-0.5">Üljünk le egy kávé mellé Kecskemét belvárosában vagy az irodádban, és beszéljük át pontosan az üzleti céljaidat.</p>
+                    <h4 className="text-white font-semibold text-sm">
+                      Szemtől szembeni bizalom
+                    </h4>
+                    <p className="text-slate-400 text-xs mt-0.5">
+                      Üljünk le egy kávé mellé Kecskemét belvárosában vagy az
+                      irodádban, és beszéljük át pontosan az üzleti céljaidat.
+                    </p>
                   </div>
                 </div>
 
@@ -246,8 +264,14 @@ export default function WeboldalKeszitesKecskemetPage() {
                     <Clock className="w-4 h-4" />
                   </div>
                   <div>
-                    <h4 className="text-white font-semibold text-sm">Gyors reagálás és helyi elérhetőség</h4>
-                    <p className="text-slate-400 text-xs mt-0.5">Helyben vagyok: ha sürgős módosítás, fotózás vagy személyes egyeztetés szükséges, azonnal rendelkezésre állok.</p>
+                    <h4 className="text-white font-semibold text-sm">
+                      Gyors reagálás és helyi elérhetőség
+                    </h4>
+                    <p className="text-slate-400 text-xs mt-0.5">
+                      Helyben vagyok: ha sürgős módosítás, fotózás vagy
+                      személyes egyeztetés szükséges, azonnal rendelkezésre
+                      állok.
+                    </p>
                   </div>
                 </div>
 
@@ -256,8 +280,14 @@ export default function WeboldalKeszitesKecskemetPage() {
                     <Compass className="w-4 h-4" />
                   </div>
                   <div>
-                    <h4 className="text-white font-semibold text-sm">Helyi piaci és vásárlói ismeret</h4>
-                    <p className="text-slate-400 text-xs mt-0.5">Pontosan ismerem a kecskeméti és Bács-Kiskun vármegyei vásárlói szokásokat, a helyi konkurenciát és az elvárásokat.</p>
+                    <h4 className="text-white font-semibold text-sm">
+                      Helyi piaci és vásárlói ismeret
+                    </h4>
+                    <p className="text-slate-400 text-xs mt-0.5">
+                      Pontosan ismerem a kecskeméti és Bács-Kiskun vármegyei
+                      vásárlói szokásokat, a helyi konkurenciát és az
+                      elvárásokat.
+                    </p>
                   </div>
                 </div>
               </div>
@@ -273,7 +303,9 @@ export default function WeboldalKeszitesKecskemetPage() {
               <ul className="space-y-4 text-sm text-slate-300">
                 <li className="flex items-center gap-3">
                   <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
-                  <span>Kecskemét-fókuszú lokális SEO és kulcsszó-optimalizálás</span>
+                  <span>
+                    Kecskemét-fókuszú lokális SEO és kulcsszó-optimalizálás
+                  </span>
                 </li>
                 <li className="flex items-center gap-3">
                   <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
@@ -281,11 +313,15 @@ export default function WeboldalKeszitesKecskemetPage() {
                 </li>
                 <li className="flex items-center gap-3">
                   <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
-                  <span>Egyetlen felelős: nem adom át alvállalkozóknak a munkát</span>
+                  <span>
+                    Egyetlen felelős: nem adom át alvállalkozóknak a munkát
+                  </span>
                 </li>
                 <li className="flex items-center gap-3">
                   <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
-                  <span>26 év tapasztalat grafika, nyomda és webfejlesztés terén</span>
+                  <span>
+                    26 év tapasztalat grafika, nyomda és webfejlesztés terén
+                  </span>
                 </li>
               </ul>
               <div className="mt-8 pt-6 border-t border-slate-800">
@@ -310,7 +346,8 @@ export default function WeboldalKeszitesKecskemetPage() {
               Miért éri meg velem dolgozni?
             </h2>
             <p className="text-slate-400">
-              Professzionális webes jelenlét, amely valódi vásárlókat és megkereséseket hoz kecskeméti cégednek.
+              Professzionális webes jelenlét, amely valódi vásárlókat és
+              megkereséseket hoz kecskeméti cégednek.
             </p>
           </div>
 
@@ -319,9 +356,13 @@ export default function WeboldalKeszitesKecskemetPage() {
               <div className="w-12 h-12 rounded-xl bg-sky-950/80 border border-sky-500/30 flex items-center justify-center text-[#00B5F1] mb-6">
                 <Laptop className="w-6 h-6" />
               </div>
-              <h3 className="text-xl font-bold text-white mb-3">Modern Technológia</h3>
+              <h3 className="text-xl font-bold text-white mb-3">
+                Modern Technológia
+              </h3>
               <p className="text-slate-400 text-sm leading-relaxed">
-                Next.js, React vagy tiszta kódú WordPress. Nem lassú, elavult sablonokat tákolok, hanem jövőbiztos és villámgyors kódbázist építek.
+                Next.js, React vagy tiszta kódú WordPress. Nem lassú, elavult
+                sablonokat tákolok, hanem jövőbiztos és villámgyors kódbázist
+                építek.
               </p>
             </div>
 
@@ -329,9 +370,13 @@ export default function WeboldalKeszitesKecskemetPage() {
               <div className="w-12 h-12 rounded-xl bg-purple-950/80 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-6">
                 <Sparkles className="w-6 h-6" />
               </div>
-              <h3 className="text-xl font-bold text-white mb-3">Grafika & Web Egy Kézben</h3>
+              <h3 className="text-xl font-bold text-white mb-3">
+                Grafika & Web Egy Kézben
+              </h3>
               <p className="text-slate-400 text-sm leading-relaxed">
-                Nem kell külön grafikust és fejlesztőt keresned. A logótól, az arculati színektől a kódolásig és a nyomdai anyagokig mindent megtervezek.
+                Nem kell külön grafikust és fejlesztőt keresned. A logótól, az
+                arculati színektől a kódolásig és a nyomdai anyagokig mindent
+                megtervezek.
               </p>
             </div>
 
@@ -339,9 +384,13 @@ export default function WeboldalKeszitesKecskemetPage() {
               <div className="w-12 h-12 rounded-xl bg-sky-950/80 border border-sky-500/30 flex items-center justify-center text-[#00B5F1] mb-6">
                 <ShieldCheck className="w-6 h-6" />
               </div>
-              <h3 className="text-xl font-bold text-white mb-3">Biztonság & Garancia</h3>
+              <h3 className="text-xl font-bold text-white mb-3">
+                Biztonság & Garancia
+              </h3>
               <p className="text-slate-400 text-sm leading-relaxed">
-                Maximális védelem a feltörések ellen, rendszeres mentések és átadás után sem engedem el a kezed: elérhető vagyok a jövőben is.
+                Maximális védelem a feltörések ellen, rendszeres mentések és
+                átadás után sem engedem el a kezed: elérhető vagyok a jövőben
+                is.
               </p>
             </div>
           </div>
@@ -356,7 +405,8 @@ export default function WeboldalKeszitesKecskemetPage() {
               Csomagok & Szolgáltatási Struktúra
             </h2>
             <p className="text-slate-400">
-              Minden vállalkozás más és más fázisban van. Személyre szabott árajánlatot adok a konkrét céljaid alapján.
+              Minden vállalkozás más és más fázisban van. Személyre szabott
+              árajánlatot adok a konkrét céljaid alapján.
             </p>
           </div>
 
@@ -382,12 +432,14 @@ export default function WeboldalKeszitesKecskemetPage() {
 
           <div className="space-y-4">
             {faqs.map((faq, index) => (
-              <div 
+              <div
                 key={index}
                 className="p-6 rounded-xl bg-slate-900/50 border border-slate-800 hover:border-slate-700 transition-colors"
               >
                 <h3 className="text-lg font-bold text-white mb-2 flex items-start gap-3">
-                  <span className="text-[#00B5F1] font-mono text-sm mt-1">0{index + 1}.</span>
+                  <span className="text-[#00B5F1] font-mono text-sm mt-1">
+                    0{index + 1}.
+                  </span>
                   {faq.q}
                 </h3>
                 <p className="text-slate-400 text-sm leading-relaxed pl-8">
@@ -406,7 +458,8 @@ export default function WeboldalKeszitesKecskemetPage() {
             Találkozzunk Kecskeméten egy kötetlen konzultációra!
           </h2>
           <p className="text-slate-300 max-w-2xl mx-auto mb-8 text-lg">
-            Beszéljük át a weboldalad vagy új projekted terveit. Írj nekem most, és 24 órán belül egyeztetünk egy időpontot!
+            Beszéljük át a weboldalad vagy új projekted terveit. Írj nekem most,
+            és 24 órán belül egyeztetünk egy időpontot!
           </p>
           <Link
             href="/kapcsolat?service=kecskemet"

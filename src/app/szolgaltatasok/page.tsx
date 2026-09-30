@@ -8,7 +8,7 @@ import { buildBreadcrumbSchema, BreadcrumbItem } from "@/lib/breadcrumb";
 export const metadata: Metadata = {
   title: "Szolgáltatások – WebDude | Weboldal Készítés, SEO, AI Automatizáció",
   description:
-    "26 év tapasztalattal: egyedi weboldal készítés, SEO optimalizálás, AI automatizáció és grafikai tervezés KKV-knak. Ingyenes konzultáció. Növelje az ügyfélszerzést!",
+    "26 év tapasztalattal: egyedi weboldal készítés, SEO optimalizálás, AI automatizáció és grafikai tervezés KKV-knak. Ingyenes konzultáció országosan. Növelje az ügyfélszerzést!",
   keywords:
     "weboldal készítés, SEO optimalizálás, AI automatizáció, grafikai tervezés, WordPress fejlesztés, webshop készítés, marketing lead generálás, KKV digitális megoldások",
   alternates: {
@@ -314,7 +314,8 @@ export default async function ServicesPage() {
             Egyedi weboldal készítés, grafikai tervezés, AI workflow
             automatizáció, SEO optimalizálás és marketing lead generálás
             KKV-knak. 26 év tapasztalat, Next.js 16, React 19, Tailwind v4,
-            Firebase alapú prémium megoldások Kecskemétről országosan.
+            Firebase alapú prémium megoldások országos szolgáltatással és online
+            kiszolgálással.
           </p>
         </div>
       </section>

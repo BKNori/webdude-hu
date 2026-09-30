@@ -195,7 +195,6 @@ export default function AIMSolutionsPage() {
               opens: "09:00",
               closes: "18:00",
             },
-            priceRange: "$$",
             description:
               "Weboldal, ami dolgozik helyetted — vállalati AI automatizáció, webfejlesztés és grafikai tervezés Kecskemétről, országosan.",
           }).replace(/</g, "\\u003c"),
@@ -248,7 +247,6 @@ export default function AIMSolutionsPage() {
               url: "https://webdude.hu/szia-norbi-vagyok",
             },
             url: "https://webdude.hu/ai-megoldasok",
-            priceRange: "$$",
             serviceType: "AI Automatizáció",
           }).replace(/</g, "\\u003c"),
         }}

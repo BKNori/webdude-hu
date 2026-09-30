@@ -46,7 +46,6 @@ const kapcsolatJsonLd = {
           closes: "17:00",
         },
       ],
-      priceRange: "€€",
       areaServed: {
         "@type": "Country",
         name: "Magyarország",
@@ -84,8 +83,18 @@ const kapcsolatJsonLd = {
     {
       "@type": "BreadcrumbList",
       itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Kezdőlap", item: "https://webdude.hu" },
-        { "@type": "ListItem", position: 2, name: "Kapcsolat & Konzultáció", item: "https://webdude.hu/kapcsolat" },
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Kezdőlap",
+          item: "https://webdude.hu",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Kapcsolat & Konzultáció",
+          item: "https://webdude.hu/kapcsolat",
+        },
       ],
     },
   ],

@@ -34,7 +34,8 @@ const contactPageSchema = {
   "@context": "https://schema.org",
   "@type": "ContactPage",
   name: "Kapcsolat & Konzultáció | WebDude",
-  description: "Kérj ajánlatot közvetlenül Norbitól! Nincs projektmenedzseri réteg: 26 év tapasztalattal tervezek és fejlesztek Next.js rendszereket országosan.",
+  description:
+    "Kérj ajánlatot közvetlenül Norbitól! Nincs projektmenedzseri réteg: 26 év tapasztalattal tervezek és fejlesztek Next.js rendszereket országosan.",
   url: "https://webdude.hu/kapcsolat",
   mainEntity: {
     "@type": "ProfessionalService",
@@ -42,7 +43,6 @@ const contactPageSchema = {
     url: "https://webdude.hu",
     email: "hello@webdude.hu",
     telephone: "+36 70 323 8003",
-    priceRange: "$$",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Kecskemét",
@@ -80,7 +80,10 @@ export default function ContactPage() {
           label="Kapcsolat"
           title={
             <>
-              Indítsuk el a <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6] italic">projektedet!</span>
+              Indítsuk el a{" "}
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6] italic">
+                projektedet!
+              </span>
             </>
           }
           subtitle="Minden projekt egy egyszerű üzenettel kezdődik. Hétköznapokon 9:00 és 17:00 között vagyok elérhető, de az emailekre gyakran hétvégén is válaszolok."
@@ -108,7 +111,8 @@ export default function ContactPage() {
                   </span>
                 </h1>
                 <p className="text-lg md:text-xl text-slate-400 max-w-lg leading-relaxed tracking-wide font-medium">
-                  Válassz a kapcsolattartási lehetőségek közül, és beszéljük át az elképzeléseidet közvetlenül velem!
+                  Válassz a kapcsolattartási lehetőségek közül, és beszéljük át
+                  az elképzeléseidet közvetlenül velem!
                 </p>
               </div>
 

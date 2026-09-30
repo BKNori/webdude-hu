@@ -53,19 +53,23 @@ export default function WeboldalKeszitesPage() {
   const faqs = [
     {
       question: "Mennyi idő alatt készül el egy új weboldal?",
-      answer: "A projekt bonyolultságától függően átlagosan 2-4 hét. Ez magában foglalja a tervezést, az egyedi arculat kialakítását, a kódolást és a SEO optimalizálást is.",
+      answer:
+        "A projekt bonyolultságától függően átlagosan 2-4 hét. Ez magában foglalja a tervezést, az egyedi arculat kialakítását, a kódolást és a SEO optimalizálást is.",
     },
     {
       question: "Sablonokat használsz, vagy egyedi fejlesztést?",
-      answer: "Kizárólag egyedi tervezésű és fejlesztésű (Next.js vagy prémium WordPress) oldalakat adok át. Sablonok helyett a vállalkozásod céljaihoz igazított, tiszta kódú megoldásokat alkalmazok.",
+      answer:
+        "Kizárólag egyedi tervezésű és fejlesztésű (Next.js vagy prémium WordPress) oldalakat adok át. Sablonok helyett a vállalkozásod céljaihoz igazított, tiszta kódú megoldásokat alkalmazok.",
     },
     {
       question: "Később tudom én is szerkeszteni a tartalmat?",
-      answer: "Igen. Ha WordPress alapú az oldal, akkor egy rendkívül könnyen kezelhető admin felületet kapsz. Ha Next.js / headless CMS (pl. Sanity) alapú, akkor is egy intuitív szerkesztőt adok át betanítással.",
+      answer:
+        "Igen. Ha WordPress alapú az oldal, akkor egy rendkívül könnyen kezelhető admin felületet kapsz. Ha Next.js / headless CMS (pl. Sanity) alapú, akkor is egy intuitív szerkesztőt adok át betanítással.",
     },
     {
       question: "Mobilon is jól fog kinézni?",
-      answer: "Természetesen. Minden általam fejlesztett oldal reszponzív ('Mobile-First'), tehát telefonon, tableten és asztali gépen is tökéletes felhasználói élményt nyújt.",
+      answer:
+        "Természetesen. Minden általam fejlesztett oldal reszponzív ('Mobile-First'), tehát telefonon, tableten és asztali gépen is tökéletes felhasználói élményt nyújt.",
     },
   ];
 
@@ -86,50 +90,53 @@ export default function WeboldalKeszitesPage() {
     {
       id: "bemutatkozo",
       name: "Bemutatkozó / Landing",
-      description: "Egyoldalas (One-pager) vagy kisebb bemutatkozó weboldal vállalkozásoknak, profi megjelenéssel és SEO alapokkal.",
+      description:
+        "Egyoldalas (One-pager) vagy kisebb bemutatkozó weboldal vállalkozásoknak, profi megjelenéssel és SEO alapokkal.",
       features: [
         "Egyedi, letisztult dizájn",
         "Mobilbarát (reszponzív) kialakítás",
         "Alap SEO beállítások (meta, sitemap)",
         "Kapcsolati űrlap és GDPR",
         "Rendkívül gyors betöltődés",
-        "Képek és tartalom optimalizálása"
+        "Képek és tartalom optimalizálása",
       ],
       highlighted: false,
       ctaText: "Egyedi árajánlat kérése",
-      ctaLink: "/kapcsolat"
+      ctaLink: "/kapcsolat",
     },
     {
       id: "vallalati",
       name: "Vállalati Weboldal",
-      description: "Több aloldalas, kiterjedt céges weboldal egyedi funkciókkal és komplex menürendszerrel.",
+      description:
+        "Több aloldalas, kiterjedt céges weboldal egyedi funkciókkal és komplex menürendszerrel.",
       features: [
         "Minden a Bemutatkozó csomagból",
         "Több egyedi aloldal (pl. Szolgáltatások, Rólunk)",
         "Dinamikus tartalom (Blog / Hírek modul)",
         "Haladó SEO és sebességoptimalizálás",
         "Könnyen kezelhető CMS rendszer",
-        "Adminisztrátori betanítás"
+        "Adminisztrátori betanítás",
       ],
       highlighted: true,
       ctaText: "Egyedi árajánlat kérése",
-      ctaLink: "/kapcsolat"
+      ctaLink: "/kapcsolat",
     },
     {
       id: "premium",
       name: "Prémium (Next.js / React)",
-      description: "A legmagasabb szintű teljesítmény és technológia. Villámgyors betöltődés és korlátlan skálázhatóság.",
+      description:
+        "A legmagasabb szintű teljesítmény és technológia. Villámgyors betöltődés és korlátlan skálázhatóság.",
       features: [
         "Minden a Vállalati csomagból",
         "Next.js 16 / React 19 architektúra",
         "Tökéletes Core Web Vitals (99+ pont)",
         "Headless CMS integráció",
         "Luminous glassmorphism dizájn elemek",
-        "Maximális konverzió és biztonság"
+        "Maximális konverzió és biztonság",
       ],
       highlighted: false,
       ctaText: "Egyedi árajánlat kérése",
-      ctaLink: "/kapcsolat"
+      ctaLink: "/kapcsolat",
     },
   ];
 
@@ -156,7 +163,7 @@ export default function WeboldalKeszitesPage() {
 
       <div className="bg-slate-950 text-text-primary relative overflow-hidden min-h-screen">
         <div className="absolute inset-0 bg-linear-to-b from-[#00B5F1]/5 via-transparent to-[#5B21B6]/5" />
-        
+
         <div className="relative z-10">
           <Hero
             label="Weboldal Készítés"
@@ -177,6 +184,21 @@ export default function WeboldalKeszitesPage() {
           />
         </div>
 
+        {/* Direct Answer Block - AEO optimalizált "Weboldal Készítés Áttekintése" */}
+        <section className="relative py-12 bg-bg-base border-y border-white/5">
+          <div className="max-w-4xl mx-auto px-6 text-center">
+            <p className="text-base md:text-lg text-slate-300 leading-relaxed">
+              <span className="text-[#00B5F1] font-semibold">
+                WebDude weboldal készítés:
+              </span>{" "}
+              Egyedi, reszponzív weboldalak KKV-knak — Next.js, WordPress,
+              WooCommerce és egyedi fejlesztés. 26 év tapasztalat, gyors
+              betöltés, SEO-optimalizált és konverzió-fókuszú design országos
+              szolgáltatással.
+            </p>
+          </div>
+        </section>
+
         {/* ── E-E-A-T Bento Grid ── */}
         <section className="py-24 relative z-10">
           <div className="max-w-6xl mx-auto px-6">
@@ -185,30 +207,43 @@ export default function WeboldalKeszitesPage() {
                 Miért válassz engem a fejlesztéshez?
               </h2>
               <p className="text-slate-400 text-lg">
-                26 év grafikai és 16 év webfejlesztői tapasztalat (Balog Norbert). Kód, design és marketing egy kézben.
+                26 év grafikai és 16 év webfejlesztői tapasztalat (Balog
+                Norbert). Kód, design és marketing egy kézben.
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-2xl p-8 hover:border-[#00B5F1]/50 transition-all duration-300">
                 <Code className="w-10 h-10 text-[#00B5F1] mb-6" />
-                <h3 className="text-xl font-bold text-white mb-3">Tiszta, modern kód</h3>
+                <h3 className="text-xl font-bold text-white mb-3">
+                  Tiszta, modern kód
+                </h3>
                 <p className="text-slate-400 text-sm leading-relaxed">
-                  Semmi felesleges bloatware. Next.js 16 vagy optimalizált WordPress alapokon dolgozom, biztosítva a gyorsaságot és a jövőállóságot.
+                  Semmi felesleges bloatware. Next.js 16 vagy optimalizált
+                  WordPress alapokon dolgozom, biztosítva a gyorsaságot és a
+                  jövőállóságot.
                 </p>
               </div>
               <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-2xl p-8 hover:border-[#5B21B6]/80 transition-all duration-300">
                 <PenTool className="w-10 h-10 text-[#00B5F1] mb-6" />
-                <h3 className="text-xl font-bold text-white mb-3">Saját tervezésű UI/UX</h3>
+                <h3 className="text-xl font-bold text-white mb-3">
+                  Saját tervezésű UI/UX
+                </h3>
                 <p className="text-slate-400 text-sm leading-relaxed">
-                  Nincsenek tucat-sablonok. A 26 éves vizuális múlttal minden weboldal pixelpontos, márkahű és konverzióra optimalizált designt kap.
+                  Nincsenek tucat-sablonok. A 26 éves vizuális múlttal minden
+                  weboldal pixelpontos, márkahű és konverzióra optimalizált
+                  designt kap.
                 </p>
               </div>
               <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-2xl p-8 hover:border-[#00B5F1]/50 transition-all duration-300">
                 <Search className="w-10 h-10 text-[#00B5F1] mb-6" />
-                <h3 className="text-xl font-bold text-white mb-3">Beépített SEO (AEO)</h3>
+                <h3 className="text-xl font-bold text-white mb-3">
+                  Beépített SEO (AEO)
+                </h3>
                 <p className="text-slate-400 text-sm leading-relaxed">
-                  Az oldal már az első naptól kezdve keresőbarát. Strukturált adatok (JSON-LD), gyors betöltődés és technikai SEO az alapcsomag része.
+                  Az oldal már az első naptól kezdve keresőbarát. Strukturált
+                  adatok (JSON-LD), gyors betöltődés és technikai SEO az
+                  alapcsomag része.
                 </p>
               </div>
             </div>
@@ -223,10 +258,12 @@ export default function WeboldalKeszitesPage() {
                 Webfejlesztési Csomagok
               </h2>
               <p className="text-slate-400 text-lg">
-                Válassz a vállalkozásod méretéhez és céljaihoz illeszkedő funkciócsomagok közül. Minden projekt egyedi, így az árazás is testreszabott.
+                Válassz a vállalkozásod méretéhez és céljaihoz illeszkedő
+                funkciócsomagok közül. Minden projekt egyedi, így az árazás is
+                testreszabott.
               </p>
             </div>
-            
+
             <PricingTable tiers={tiers} />
           </div>
         </section>
@@ -235,13 +272,21 @@ export default function WeboldalKeszitesPage() {
         <section className="py-24 border-t border-slate-800 relative z-10">
           <div className="max-w-4xl mx-auto px-6">
             <div className="text-center mb-16">
-              <h2 className="text-3xl font-bold text-white mb-4">Gyakori kérdések (Gyors válaszok)</h2>
-              <p className="text-slate-400">Amiket a leggyakrabban kérdeznek tőlem a weboldalkészítés kapcsán.</p>
+              <h2 className="text-3xl font-bold text-white mb-4">
+                Gyakori kérdések (Gyors válaszok)
+              </h2>
+              <p className="text-slate-400">
+                Amiket a leggyakrabban kérdeznek tőlem a weboldalkészítés
+                kapcsán.
+              </p>
             </div>
-            
+
             <div className="space-y-6">
               {faqs.map((faq, index) => (
-                <div key={index} className="bg-slate-900/80 backdrop-blur-md border border-white/5 rounded-2xl p-6 hover:border-[#00B5F1]/30 transition-colors">
+                <div
+                  key={index}
+                  className="bg-slate-900/80 backdrop-blur-md border border-white/5 rounded-2xl p-6 hover:border-[#00B5F1]/30 transition-colors"
+                >
                   <h3 className="text-lg font-semibold text-[#00B5F1] mb-3">
                     {faq.question}
                   </h3>
@@ -258,10 +303,12 @@ export default function WeboldalKeszitesPage() {
         <section className="py-32 text-center relative z-10">
           <div className="max-w-2xl mx-auto px-6">
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-              Indítsuk el az <span className="text-[#00B5F1] italic">új weboldaladat!</span>
+              Indítsuk el az{" "}
+              <span className="text-[#00B5F1] italic">új weboldaladat!</span>
             </h2>
             <p className="text-slate-400 mb-10 text-lg">
-              Minden projekt egy ingyenes, kötelezettségmentes konzultációval kezdődik, ahol megbeszéljük a részleteket.
+              Minden projekt egy ingyenes, kötelezettségmentes konzultációval
+              kezdődik, ahol megbeszéljük a részleteket.
             </p>
             <Link
               href="/kapcsolat"

@@ -15,14 +15,15 @@ import { buildHuJsonLd, serializeJsonLd } from "@/lib/structuredData";
 export const metadata: Metadata = {
   title: "Weboldal készítés, SEO és WordPress fejlesztés | WebDude",
   description:
-    "Weboldal készítés, WordPress fejlesztés, SEO optimalizálás és grafikai tervezés Kecskemétről — ügynökségi mellébeszélés nélkül. WebDude: 26 év kreatív és 16 év webfejlesztői tapasztalat.",
+    "Weboldal készítés, WordPress fejlesztés, SEO optimalizálás és grafikai tervezés országosan — ügynökségi mellébeszélés nélkül. WebDude: 26 év kreatív és 16 év webfejlesztői tapasztalat online kiszolgálással.",
   keywords: [
-    "weboldal készítés Kecskemét",
+    "weboldal készítés országosan",
+    "weboldal készítés Magyarország",
     "WordPress fejlesztés",
     "SEO optimalizálás",
     "grafikai tervezés",
     "webshop készítés",
-    "WordPress fejlesztő Magyarország",
+    "WordPress fejlesztő",
     "weboldal készítés ára",
     "SEO szakértő",
     "arculattervezés",
@@ -39,7 +40,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "WebDude | Weboldal készítés, WordPress, SEO & Grafika",
     description:
-      "Weboldal, ami ügyfeleket hoz. 26 év tapasztalat — egy emberrel, mellékesek nélkül. Kecskemétről, országosan.",
+      "Weboldal, ami ügyfeleket hoz. 26 év tapasztalat — egy emberrel, mellékesek nélkül. Országos szolgáltatás, online kiszolgálással.",
     url: "https://webdude.hu",
     siteName: "WebDude",
     images: [
@@ -99,7 +100,10 @@ export default async function Home() {
             <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800 hover:border-[#00B5F1]/30 rounded-2xl p-6 transition-all duration-300 flex flex-col justify-between">
               <div>
                 <div className="flex items-center gap-3 mb-4">
-                  <Award className="w-8 h-8 text-[#00B5F1]" aria-hidden="true" />
+                  <Award
+                    className="w-8 h-8 text-[#00B5F1]"
+                    aria-hidden="true"
+                  />
                   <h3 className="text-[#00B5F1] font-semibold text-lg">
                     {dictionary.bentoGrid.expertise.title}
                   </h3>
@@ -129,7 +133,10 @@ export default async function Home() {
             <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800 hover:border-[#00B5F1]/30 rounded-2xl p-6 transition-all duration-300 flex flex-col justify-between">
               <div>
                 <div className="flex items-center gap-3 mb-4">
-                  <Clock className="w-8 h-8 text-[#00B5F1]" aria-hidden="true" />
+                  <Clock
+                    className="w-8 h-8 text-[#00B5F1]"
+                    aria-hidden="true"
+                  />
                   <h3 className="text-[#00B5F1] font-semibold text-lg">
                     {dictionary.bentoGrid.timeline.title}
                   </h3>

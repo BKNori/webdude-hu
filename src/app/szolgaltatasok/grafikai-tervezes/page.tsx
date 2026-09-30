@@ -7,16 +7,16 @@ import PricingTable, { PricingTier } from "@/components/molecules/PricingTable";
 import { buildBreadcrumbSchema, BreadcrumbItem } from "@/lib/breadcrumb";
 
 export const metadata: Metadata = {
-  title: "Grafikai tervezés és arculattervezés Kecskemét | WebDude",
+  title: "Grafikai tervezés és arculattervezés országosan | WebDude",
   description:
     "Logó, arculat, marketinganyagok és digitális grafikai tervezés egységes vizuális rendszerben. 26 év grafikai tapasztalat a WebDude-tól.",
   keywords:
-    "grafikai tervezés, arculattervezés, logó tervezés, webdesign, UI/UX tervezés, marketing grafika, Kecskemét",
+    "grafikai tervezés, arculattervezés, logó tervezés, webdesign, UI/UX tervezés, marketing grafika, országosan",
   alternates: {
     canonical: "https://webdude.hu/szolgaltatasok/grafikai-tervezes",
   },
   openGraph: {
-    title: "Grafikai tervezés és arculattervezés Kecskemét | WebDude",
+    title: "Grafikai tervezés és arculattervezés országosan | WebDude",
     description:
       "Logó, arculat, marketinganyagok és digitális grafikai tervezés egységes vizuális rendszerben.",
     type: "website",
@@ -53,15 +53,18 @@ export default function GrafikaiTervezesPage() {
   const faqs = [
     {
       question: "Miért fontos az egységes arculat egy vállalkozásnak?",
-      answer: "Az egységes arculat (színek, tipográfia, logó) bizalmat épít és profizmust sugároz. Ha a weboldalad, a névjegykártyád és a Facebook posztjaid vizuálisan koherensek, a vásárlók könnyebben felismernek és megbízhatóbbnak tartanak.",
+      answer:
+        "Az egységes arculat (színek, tipográfia, logó) bizalmat épít és profizmust sugároz. Ha a weboldalad, a névjegykártyád és a Facebook posztjaid vizuálisan koherensek, a vásárlók könnyebben felismernek és megbízhatóbbnak tartanak.",
     },
     {
       question: "Kapsz vektoros forrásfájlokat a logóhoz?",
-      answer: "Igen. A logó átadásakor nem csak JPG vagy PNG formátumot kapsz, hanem teljes vektoros (AI, EPS, SVG, PDF) fájlcsomagot, így a jövőben óriásplakátra is nyomtatható lesz minőségromlás nélkül.",
+      answer:
+        "Igen. A logó átadásakor nem csak JPG vagy PNG formátumot kapsz, hanem teljes vektoros (AI, EPS, SVG, PDF) fájlcsomagot, így a jövőben óriásplakátra is nyomtatható lesz minőségromlás nélkül.",
     },
     {
       question: "Nyomdai előkészítést is vállalsz?",
-      answer: "26 év grafikai és nyomdai tapasztalattal a hátam mögött pontosan tudom, milyen kifutókra, CMYK színterekre és PDF beállításokra van szükség. Bármilyen szórólap, névjegykártya vagy molinó nyomdakész anyagát elkészítem.",
+      answer:
+        "26 év grafikai és nyomdai tapasztalattal a hátam mögött pontosan tudom, milyen kifutókra, CMYK színterekre és PDF beállításokra van szükség. Bármilyen szórólap, névjegykártya vagy molinó nyomdakész anyagát elkészítem.",
     },
   ];
 
@@ -82,50 +85,53 @@ export default function GrafikaiTervezesPage() {
     {
       id: "logo-only",
       name: "Logó & Arculati Alapok",
-      description: "Induló vállalkozásoknak, akik egy profi és felismerhető emblémára vágynak.",
+      description:
+        "Induló vállalkozásoknak, akik egy profi és felismerhető emblémára vágynak.",
       features: [
         "2-3 db egyedi logó koncepció",
         "Színpaletta és betűtípus meghatározása",
         "Korrektúrakörök a finomhangoláshoz",
         "Vektoros forrásfájlok (SVG, PDF, EPS)",
         "Közösségi média profilképek",
-        "Favicon a weboldalhoz"
+        "Favicon a weboldalhoz",
       ],
       highlighted: false,
       ctaText: "Egyedi árajánlat kérése",
-      ctaLink: "/kapcsolat"
+      ctaLink: "/kapcsolat",
     },
     {
       id: "full-brand",
       name: "Teljes KisArculat",
-      description: "Komplett vizuális identitás, amivel magabiztosan léphetsz a piacra.",
+      description:
+        "Komplett vizuális identitás, amivel magabiztosan léphetsz a piacra.",
       features: [
         "Minden a Logó csomagból",
         "Névjegykártya tervezés (nyomdakész)",
         "Levélpapír és boríték dizájn",
         "Facebook / LinkedIn borítókép",
         "Arculati kézikönyv (Brand Guidelines)",
-        "Social média poszt sablonok (3 db)"
+        "Social média poszt sablonok (3 db)",
       ],
       highlighted: true,
       ctaText: "Egyedi árajánlat kérése",
-      ctaLink: "/kapcsolat"
+      ctaLink: "/kapcsolat",
     },
     {
       id: "ui-ux",
       name: "Webdesign & UI/UX",
-      description: "Komplex felhasználói felületek és szoftverek vizuális tervezése (Figma).",
+      description:
+        "Komplex felhasználói felületek és szoftverek vizuális tervezése (Figma).",
       features: [
         "Drótváz (Wireframe) tervezés",
         "Pixepontos UI/UX design (Figma)",
         "Prototípus és animációs tervek",
         "Reszponzív (mobil-tablet-desktop) nézetek",
         "Design System létrehozása fejlesztőknek",
-        "Konverzió-optimalizált (CRO) felépítés"
+        "Konverzió-optimalizált (CRO) felépítés",
       ],
       highlighted: false,
       ctaText: "Egyedi árajánlat kérése",
-      ctaLink: "/kapcsolat"
+      ctaLink: "/kapcsolat",
     },
   ];
 
@@ -152,7 +158,7 @@ export default function GrafikaiTervezesPage() {
 
       <div className="bg-slate-950 text-text-primary relative overflow-hidden min-h-screen">
         <div className="absolute inset-0 bg-linear-to-b from-[#00B5F1]/5 via-transparent to-[#5B21B6]/5" />
-        
+
         <div className="relative z-10">
           <Hero
             label="Grafikai Tervezés"
@@ -182,30 +188,41 @@ export default function GrafikaiTervezesPage() {
                 26 év vizuális tapasztalat
               </h2>
               <p className="text-slate-400 text-lg">
-                Nem most kezdtem ismerkedni a Photoshop-pal. A nyomdai előkészítéstől a modern Figma alapú UI/UX tervezésig minden területen naprakész vagyok.
+                Nem most kezdtem ismerkedni a Photoshop-pal. A nyomdai
+                előkészítéstől a modern Figma alapú UI/UX tervezésig minden
+                területen naprakész vagyok.
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-2xl p-8 hover:border-[#00B5F1]/50 transition-all duration-300">
                 <PenTool className="w-10 h-10 text-[#00B5F1] mb-6" />
-                <h3 className="text-xl font-bold text-white mb-3">Logó & Arculat</h3>
+                <h3 className="text-xl font-bold text-white mb-3">
+                  Logó & Arculat
+                </h3>
                 <p className="text-slate-400 text-sm leading-relaxed">
-                  Vektoros, letisztult logók, amik pólóra hímezve és óriásplakáton is ugyanúgy jól mutatnak.
+                  Vektoros, letisztult logók, amik pólóra hímezve és
+                  óriásplakáton is ugyanúgy jól mutatnak.
                 </p>
               </div>
               <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-2xl p-8 hover:border-[#5B21B6]/80 transition-all duration-300">
                 <MousePointerClick className="w-10 h-10 text-[#00B5F1] mb-6" />
-                <h3 className="text-xl font-bold text-white mb-3">UI/UX Webdesign</h3>
+                <h3 className="text-xl font-bold text-white mb-3">
+                  UI/UX Webdesign
+                </h3>
                 <p className="text-slate-400 text-sm leading-relaxed">
-                  Figma alapú, fejlesztőbarát felülettervek. Design Systemek, drótvázak és animált prototípusok.
+                  Figma alapú, fejlesztőbarát felülettervek. Design Systemek,
+                  drótvázak és animált prototípusok.
                 </p>
               </div>
               <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-2xl p-8 hover:border-[#00B5F1]/50 transition-all duration-300">
                 <Layers className="w-10 h-10 text-[#00B5F1] mb-6" />
-                <h3 className="text-xl font-bold text-white mb-3">Marketing Grafikák</h3>
+                <h3 className="text-xl font-bold text-white mb-3">
+                  Marketing Grafikák
+                </h3>
                 <p className="text-slate-400 text-sm leading-relaxed">
-                  Facebook, Instagram posztok, hirdetési bannerek és nyomdakész (CMYK) szórólapok, molinók, névjegykártyák.
+                  Facebook, Instagram posztok, hirdetési bannerek és nyomdakész
+                  (CMYK) szórólapok, molinók, névjegykártyák.
                 </p>
               </div>
             </div>
@@ -223,7 +240,7 @@ export default function GrafikaiTervezesPage() {
                 Az egyszerű logófrissítéstől a komplett brand felépítéséig.
               </p>
             </div>
-            
+
             <PricingTable tiers={tiers} />
           </div>
         </section>
@@ -232,13 +249,20 @@ export default function GrafikaiTervezesPage() {
         <section className="py-24 border-t border-slate-800 relative z-10">
           <div className="max-w-4xl mx-auto px-6">
             <div className="text-center mb-16">
-              <h2 className="text-3xl font-bold text-white mb-4">Gyakori kérdések (Design)</h2>
-              <p className="text-slate-400">Amiket a legtöbbször kérdeznek a tervezés kapcsán.</p>
+              <h2 className="text-3xl font-bold text-white mb-4">
+                Gyakori kérdések (Design)
+              </h2>
+              <p className="text-slate-400">
+                Amiket a legtöbbször kérdeznek a tervezés kapcsán.
+              </p>
             </div>
-            
+
             <div className="space-y-6">
               {faqs.map((faq, index) => (
-                <div key={index} className="bg-slate-900/80 backdrop-blur-md border border-white/5 rounded-2xl p-6 hover:border-[#00B5F1]/30 transition-colors">
+                <div
+                  key={index}
+                  className="bg-slate-900/80 backdrop-blur-md border border-white/5 rounded-2xl p-6 hover:border-[#00B5F1]/30 transition-colors"
+                >
                   <h3 className="text-lg font-semibold text-[#00B5F1] mb-3">
                     {faq.question}
                   </h3>
@@ -255,10 +279,12 @@ export default function GrafikaiTervezesPage() {
         <section className="py-32 text-center relative z-10">
           <div className="max-w-2xl mx-auto px-6">
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-              Legyen a márkád <span className="text-[#00B5F1] italic">felejthetetlen!</span>
+              Legyen a márkád{" "}
+              <span className="text-[#00B5F1] italic">felejthetetlen!</span>
             </h2>
             <p className="text-slate-400 mb-10 text-lg">
-              Kérj árajánlatot, és tervezzük meg együtt a vállalkozásod új, profi arcát.
+              Kérj árajánlatot, és tervezzük meg együtt a vállalkozásod új,
+              profi arcát.
             </p>
             <Link
               href="/kapcsolat"

@@ -97,6 +97,21 @@ export default async function WooCommercePage() {
             fullHeight={true}
           />
 
+          {/* Direct Answer Block - AEO optimalizált "WooCommerce Webshop Áttekintése" */}
+          <section className="relative py-12 bg-bg-base border-y border-white/5">
+            <div className="max-w-4xl mx-auto px-6 text-center">
+              <p className="text-base md:text-lg text-slate-300 leading-relaxed">
+                <span className="text-[#00B5F1] font-semibold">
+                  WebDude WooCommerce webshop:
+                </span>{" "}
+                16 év tapasztalattal WooCommerce webshop készítés, fejlesztés és
+                optimalizálás. Konverzió-fókuszú e-kereskedelmi rendszerek,
+                fizetési integrációk, készletkezelés és teljes körű támogatás
+                országos szolgáltatással.
+              </p>
+            </div>
+          </section>
+
           <div className="max-w-6xl mx-auto px-6">
             <div className="mt-12 grid gap-12 md:grid-cols-2 items-start max-w-4xl mx-auto">
               <div className="space-y-6">
