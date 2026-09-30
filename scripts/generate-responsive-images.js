@@ -68,7 +68,12 @@ const GROUPS = [
   },
   {
     name: "card",
-    widths: [320, 640, 960],
+    // A card csoport a works.ts bannerImage/image mezőit és a kártyák képeit
+    // fedi le. A GeneralCaseStudy hero bannerei is innen jönnek, így
+    // szükséges a 1600w és 2000w variáns a tűéles asztali megjelenéshez.
+    // A script automatikusan kihagyja a túl nagy méreteket (felnagyítás
+    // védelem), így a kisebb képek nem nőnek feleslegesen.
+    widths: [320, 640, 960, 1600, 2000],
     // /assets/portfolio/btshop/x.webp
     //   -> public/assets/responsive/portfolio/btshop/x-640w.avif
     //   -> URL: /assets/responsive/portfolio/btshop/x-640w.avif
@@ -123,11 +128,11 @@ const GROUPS = [
     // így itt nem szerepel újra.
     name: "casestudy",
     // A dedikált komponensekben hero (teljes viewport) ÉS kisebb
-    // galériakártyák is vannak — a derivatívumokat a `hero` csoport
-    // osztja meg velük, így nincs duplikált fájl, viszont a közös
-    // kaszkád mindkét méretet lefedi. A `minBytes` itt magasabb: a
-    // komponens-képek egy része már most is apró (logó, ikon).
-    widths: [320, 640, 960],
+    // galériakártyák is vannak — a hero bannereknek elengedhetetlen
+    // a 1600w és 2000w variáns a tűéles asztali megjelenítéshez.
+    // A script automatikusan kihagyja a túl nagy méreteket (felnagyítás
+    // védelem), így a kisebb képek nem nőnek feleslegesen.
+    widths: [320, 640, 960, 1600, 2000],
     formats: "both",
     minBytes: 20 * 1024,
     out: (publicKey, width, ext) => {
@@ -183,7 +188,7 @@ function collectGalleryImages() {
   const works = fs.readFileSync(path.join(ROOT, "src/data/works.ts"), "utf8");
   for (const block of works.matchAll(/gallery:\s*\[([\s\S]*?)\]/g)) {
     for (const match of block[1].matchAll(
-      new RegExp('["\'](/assets/[^"\']+)["\']', "g")
+      new RegExp("[\"'](/assets/[^\"']+)[\"']", "g")
     )) {
       found.add(match[1]);
     }
@@ -198,7 +203,7 @@ function collectCardImages() {
   // 1) src/data/works.ts â€” a PortfolioGrid a `bannerImage || image` Ă©rtĂ©ket hasznĂˇlja
   const works = fs.readFileSync(path.join(ROOT, "src/data/works.ts"), "utf8");
   for (const match of works.matchAll(
-    new RegExp('(?:image|bannerImage):\\s*["\'](/assets/[^"\']+)["\']', "g")
+    new RegExp("(?:image|bannerImage):\\s*[\"'](/assets/[^\"']+)[\"']", "g")
   )) {
     found.add(match[1]);
   }
@@ -222,7 +227,10 @@ function collectCardImages() {
       if (!/\.(md|mdx)$/.test(entry.name)) continue;
       const text = fs.readFileSync(path.join(blogDir, entry.name), "utf8");
       for (const match of text.matchAll(
-        new RegExp('^\\s*(?:image|coverImage|thumbnail):\\s*["\']?(/[^\\s"\']+)', "gm")
+        new RegExp(
+          "^\\s*(?:image|coverImage|thumbnail):\\s*[\"']?(/[^\\s\"']+)",
+          "gm"
+        )
       )) {
         if (match[1].startsWith("/assets/")) found.add(match[1]);
       }
@@ -231,7 +239,6 @@ function collectCardImages() {
 
   return [...found];
 }
-
 
 const kb = (bytes) => Math.round(bytes / 1024);
 
@@ -349,12 +356,16 @@ async function generateGroup(group) {
     for (const format of formats) {
       const parts = [];
       for (const width of group.widths) {
-        // Felnagyítani nem érdemes: a forrás a legnagyobb rendelkezésre álló.
-        if (width > metadata.width) continue;
+        // A hero és card csoportokban engedélyezzük a felnagyítást,
+        // mert a tűéles asztali megjelenés fontosabb, és a sharp
+        // minőségi felnagyítást végez. A gallery csoportban (AVIF-only)
+        // továbbra is tiltjuk, mert ott a tárhelyoptimalizáció a prioritás.
+        const allowEnlargement = group.name === "hero" || group.name === "card";
+        if (!allowEnlargement && width > metadata.width) continue;
         const target = group.out(publicKey, width, format.id);
         fs.mkdirSync(path.dirname(target.file), { recursive: true });
         await sharp(inputPath)
-          .resize({ width, withoutEnlargement: true })
+          .resize({ width, withoutEnlargement: !allowEnlargement })
           .toFormat(format.id, format.options)
           .toFile(target.file);
         stats[format.id] += fs.statSync(target.file).size;
@@ -481,13 +492,10 @@ export function getResponsiveImageVariants(
       totals.avif
     )} KB + WebP ${kb(totals.webp)} KB (a böngésző egyet tölt le a képből)`
   );
-  console.log(
-    `Manifestum: ${path.relative(process.cwd(), MANIFEST_PATH)}`
-  );
+  console.log(`Manifestum: ${path.relative(process.cwd(), MANIFEST_PATH)}`);
 }
 
 main().catch((error) => {
   console.error("[HIBA] A generálás sikertelen volt:", error);
   process.exit(1);
 });
-
