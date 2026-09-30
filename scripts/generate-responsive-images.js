@@ -70,7 +70,42 @@ const GROUPS = [
     },
     sources: collectCardImages,
   },
+  {
+    // Az essettanulmány-oldali „Projekt Galéria" képei (works.ts gallery[]).
+    // Ezek a legnagyobb fájlok a repóban (átlag 621 KB), így itt a legnagyobb
+    // a nyereség. A már kész képeket a `processed` halmaz kihagyja, a 50 KB
+    // alatti forrásokat pedig nem éri meg derivatívumozni.
+    name: "gallery",
+    widths: [320, 640, 960],
+    minBytes: 50 * 1024,
+    out: (publicKey, width, ext) => {
+      const dir = path
+        .dirname(publicKey.replace(/^\//, ""))
+        .replace(/^assets\//, "");
+      const base = path.basename(publicKey, path.extname(publicKey));
+      const fileName = `${base}-${width}w.${ext}`;
+      return {
+        file: path.join(PUBLIC_DIR, "assets/responsive", dir, fileName),
+        url: `/assets/responsive/${dir}/${fileName}`,
+      };
+    },
+    sources: collectGalleryImages,
+  },
 ];
+
+/** A `works.ts` `gallery: [...]` tömbjeiben hivatkozott képek. */
+function collectGalleryImages() {
+  const found = new Set();
+  const works = fs.readFileSync(path.join(ROOT, "src/data/works.ts"), "utf8");
+  for (const block of works.matchAll(/gallery:\s*\[([\s\S]*?)\]/g)) {
+    for (const match of block[1].matchAll(
+      new RegExp('["\'](/assets/[^"\']+)["\']', "g")
+    )) {
+      found.add(match[1]);
+    }
+  }
+  return [...found];
+}
 
 /** A portfĂłliĂł-, essettanulmĂˇny- Ă©s blogkĂˇrtyĂˇk kĂ©pei a kĂłdban vannak hivatkozva. */
 function collectCardImages() {
@@ -116,11 +151,30 @@ function collectCardImages() {
 
 const kb = (bytes) => Math.round(bytes / 1024);
 
+/** A már feldolgozott kép-útvonalak — a forráscsoportok közötti deduplikációhoz. */
+const processed = new Set();
+
 async function generateGroup(group) {
   const manifest = {};
-  const stats = { original: 0, avif: 0, webp: 0, files: 0, missing: 0 };
+  const stats = {
+    original: 0,
+    avif: 0,
+    webp: 0,
+    files: 0,
+    missing: 0,
+    skipDup: 0,
+    skipSmall: 0,
+    unsupported: 0,
+  };
 
   for (const publicKey of group.sources()) {
+    // Egy kép több forráscsoportban is szerepelhet (pl. egy banner a kártyán ÉS
+    // a galériában) — a második előfordulást nem dolgozzuk fel újra.
+    if (processed.has(publicKey)) {
+      stats.skipDup++;
+      continue;
+    }
+
     const inputPath = path.join(PUBLIC_DIR, publicKey.replace(/^\//, ""));
     if (!fs.existsSync(inputPath)) {
       console.warn(`[WARN] Nem található, kihagyva: ${publicKey}`);
@@ -129,8 +183,30 @@ async function generateGroup(group) {
     }
 
     const originalSize = fs.statSync(inputPath).size;
+    if (group.minBytes && originalSize < group.minBytes) {
+      // Már eleve kicsi kép — a derivatívum nem hozna érdemi megtakarítást.
+      stats.skipSmall++;
+      continue;
+    }
+
     stats.original += originalSize;
-    const metadata = await sharp(inputPath).metadata();
+
+    // Nem minden, amit a works.ts hivatkozik, kép: a classi-co galériában
+    // 2 db .webm (videó) fájl is van, amit a sharp nem tud feldolgozni.
+    // Ez nem bukhat fel a teljes generálást — kihagyjuk és szólunk.
+    let metadata;
+    try {
+      metadata = await sharp(inputPath).metadata();
+    } catch {
+      console.warn(`[WARN] Nem kép (sharp nem olvassa): ${publicKey}`);
+      stats.unsupported++;
+      continue;
+    }
+    if (!metadata.width || !metadata.height) {
+      console.warn(`[WARN] Érvénytelen kép méretekkel: ${publicKey}`);
+      stats.unsupported++;
+      continue;
+    }
 
     // A manifestum KULCSA nyers marad (így hivatkozik rá a kód), csak a
     // kibocsátott URL-ek URL-kódoltak: a srcset szintaxisban a URL nem
@@ -157,7 +233,10 @@ async function generateGroup(group) {
 
     // Ha egyik töréspont sem volt használható, nem kerül a manifestumba —
     // a komponens így nyers <img>-re esik vissza.
-    if (entry.avif) manifest[publicKey] = entry;
+    if (entry.avif) {
+      manifest[publicKey] = entry;
+      processed.add(publicKey);
+    }
   }
 
   return { manifest, stats };
@@ -165,7 +244,16 @@ async function generateGroup(group) {
 
 async function main() {
   const manifest = {};
-  const totals = { original: 0, avif: 0, webp: 0, files: 0, missing: 0 };
+  const totals = {
+    original: 0,
+    avif: 0,
+    webp: 0,
+    files: 0,
+    missing: 0,
+    skipDup: 0,
+    skipSmall: 0,
+    unsupported: 0,
+  };
 
   for (const group of GROUPS) {
     const result = await generateGroup(group);
@@ -235,7 +323,15 @@ export function getResponsiveImageVariants(
   console.log("=== Összegzés ===");
   console.log(`Képek a manifestumban: ${Object.keys(manifest).length}`);
   console.log(`Generált fájlok: ${totals.files}`);
+  console.log(
+    `Kihagyva: ${totals.skipDup} duplikált (már kész), ${totals.skipSmall} 50 KB alatti forrás`
+  );
   if (totals.missing) console.log(`Nem található források: ${totals.missing}`);
+  if (totals.unsupported) {
+    console.log(
+      `Nem kép formátumú források (kihagyva): ${totals.unsupported} — ezek a galériában `<img>`-ként soha nem működtek`
+    );
+  }
   console.log(
     `Eredeti méret összesen: ${kb(totals.original)} KB → AVIF ${kb(
       totals.avif

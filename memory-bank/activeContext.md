@@ -2,6 +2,15 @@
 
 > **AI DIREKTÍVA:** Ez a fájl a rendszer "élő" memóriája. A 03-workflow.md 5. lépése alapján KÖTELEZŐ ezt a fájlt frissítened minden feladat befejezésekor, vagy mielőtt átadod a vezérlést a felhasználónak (Norbinak). Szigorúan tilos új feladatba kezdened, ha az "Aktuális Munkaterület Állapota" szekcióban hibák vagy félbehagyott fájlok vannak!
 
+## Aktuális állapot — 2026-09-30, essettanulmány-galéria reszponzív képek (7.11.0) lezárva
+
+- **Fő eredmény:** a `works.ts` `gallery[]` képei is reszponzív betöltést kaptak → **78 kép a manifestumban, 468 derivatívum**. A galéria a repó legnagyobb képtömege (75 kép, 46,5 MB, átlag 621 KB) → a böngésző átlagosan **~40 KB AVIF-ot** tölt le (−94%).
+- **UI:** `GeneralCaseStudy` (hero + galéria) és `ClassiCoCaseStudy` (galéria) a `ResponsiveImage` komponenst használja.
+- **Talált és javított hiba:** a classi-co `gallery[]`-ben két **`.webm` videó** szerepelt, amelyek `<img>`-ként soha nem jelentek meg, és a `sharp`-et is megbuktatták. A videók a dedikált `<video>` elemeikben megmaradtak; a generátor pedig immár hibatűrő erre az esetre.
+- **QA:** `npx tsc --noEmit` → TSC_EXIT=0; `npm run lint -- --max-warnings 0` → LINT_CI_EXIT=0; `npm run build` → BUILD_EXIT=0.
+- **⚠️ Tárhely-megjegyzés (Norbinak):** a 468 derivatívum ≈ **18 MB**-ot ad a `public/`-hez. Ez a látogatói adatforalom szempontjából nagy nyereség, de ha a repó mérete gond, a galéria-csoport szűkíthető (pl. csak `[320, 640]`, vagy csak AVIF) a `scripts/generate-responsive-images.js` `GROUPS` definíciójában.
+- **Nyitott:** a `munkak/[slug]`-hoz tartozó dedikált esettanulmány-komponensek (`BtshopCaseStudy`, `RimaiCaseStudy`, `GoBoxCaseStudy`, `LengyelHelgaCaseStudy`, `HuMagoCaseStudy`, `BorGarnelaCaseStudy`, `AiPromptCaseStudy`, `DrNagyAlbertCaseStudy`) hero/saját képei még `next/image`-t használnak — ezekhez a generátorba új forráscsoport (a komponensekben hardcode-olt `/assets/...` útvonalakból) kellene.
+
 ## Aktuális állapot — 2026-09-30, CI élesítés + reszponzív képek a kártyákon (7.10.0) lezárva
 
 - **CI élesítve:** a `.github/workflows/ci.yml` a `main` branchre figyeltek, a projekt `master` → **a pipeline soha nem futott**. Javítva mindkét trigger, és a lint lépés most `npm run lint -- --max-warnings 0` (a 7.9.0 óta 0/0 a lint, így a szigorú kapu is átmegy — ellenőrizve: `LINT_CI_EXIT=0`).

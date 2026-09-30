@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import ResponsiveImage from "@/components/molecules/ResponsiveImage";
 import Link from "next/link";
 import { motion, useReducedMotion } from "motion/react";
 import { Work } from "@/types/work";
@@ -24,12 +24,12 @@ export default function GeneralCaseStudy({ project }: GeneralCaseStudyProps) {
     <div className="min-h-screen bg-bg-base text-text-primary">
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
-          <Image
+          <ResponsiveImage
             src={heroSrc}
             alt={project.title}
-            fill
-            className="object-cover"
+            sizes="100vw"
             priority
+            className="object-cover"
           />
           <div className="absolute inset-0 bg-linear-to-b from-black/70 via-black/50 to-bg-base" />
         </div>
@@ -106,10 +106,10 @@ export default function GeneralCaseStudy({ project }: GeneralCaseStudyProps) {
                   style={{ transformPerspective: 1200 }}
                   className="group relative aspect-video overflow-hidden rounded-2xl border border-white/10 bg-slate-950/80 backdrop-blur-2xl ring-1 ring-white/5 transition-colors duration-300 hover:border-sky-500/40 hover:ring-[#00B5F1]/50 hover:shadow-[0_0_52px_-12px_rgba(0, 181, 241,0.55)]"
                 >
-                  <Image
+                  <ResponsiveImage
                     src={image}
                     alt={`${project.title} - ${index + 1}`}
-                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.07]"
                   />
                   <div

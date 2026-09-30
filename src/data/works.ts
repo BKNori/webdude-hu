@@ -68,8 +68,10 @@ export const works: Work[] = [
       "/assets/portfolio/classi-co/szeged-terkovezes-copy-2.webp",
       "/assets/portfolio/classi-co/szeged-terkovezes-utburkolas-copy.webp",
       "/assets/portfolio/classi-co/szeged-terkovezes3-scopy.webp",
-      "/assets/portfolio/classi-co/iphone-13-pro-wwwclassi-cohu-9h7x7sodyg.webm",
-      "/assets/portfolio/classi-co/macbook-air-wwwclassi-cohu-qvokictypt.webm",
+      // Megjegyzés: a classi-co .webm fájlok (iphone-13-pro-…, macbook-air-…)
+      // SZÁNDÉKOSAN nincsenek itt: azok videók, és a ClassiCoCaseStudy
+      // dedikált <video> elemeiben játszanak le. A gallery[] egy <img>
+      // listája, így videó nem lehet benne.
     ],
     featured: false,
     year: 2025,

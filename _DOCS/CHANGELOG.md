@@ -9,6 +9,18 @@
 - **Fontosság:** Kiemelt stratégiai feladat
 - **Megjegyzés:** Ez a feladat a CHANGELOG-ban van rögzítve jövőbeli implementációra
 
+## [7.11.0] — 2026-09-30 — ESSETANULMÁNY-GALÉRIA KÉPEK RESZPONZÍV BETÖLTÉSE (COMPLETE)
+
+- **Új forráscsoport a generátorban (`gallery`):** a `works.ts` `gallery: [...]` tömbjeiből gyűjti a képeket (nem hardcode-olt lista, a `works.ts`-et parse-olja). Saját szélességkészlet `[320, 640, 960]` (a galéria 3 oszlopos rácsa ~1/3 szélesség), `minBytes: 50 KB` küszöb (a már apró képek nem érdemelnek derivatívumot) és **deduplikáció** a `processed` halmazzal (a kártyaképek egy része a galériában is szerepel → nem dolgozzuk fel kétszer).
+- **UI átvezetés:** a `GeneralCaseStudy` **hero-képe** és **galéria-rácsa**, valamint a `ClassiCoCaseStudy` galériája is a `ResponsiveImage` komponenst használja (eddig nyers `next/image` + `fill`, ahol a `sizes` a globális `unoptimized: true` miatt halott attribútum volt).
+- **Mért hatás:** a galéria **75 képe 46,5 MB** (átlag 621 KB, a legnagyobb 1,7 MB) → a generált derivatívumokból a böngésző **egyet** tölt le: átlagosan **~40 KB AVIF (kb. −94%)**.
+- **Két törött `.webm` hivatkozás kivéve a `gallery[]`-ből:** a classi-co galériában két **videó** fájl (`iphone-13-pro-…webm`, `macbook-air-…webm`) szerepelt, amelyek `<img src>`-ként **soha nem tudtak megjelenni** (a böngésző nem dekódol képet videóból), és a `sharp` sem tudta őket feldolgozni → a generálás elbukott volna. A fájlok **nem tűntek el**: a `ClassiCoCaseStudy` dedikált `<video>` elemeiben továbbra is lejátszódnak. Helyükké magyarázó komment került.
+- **A generátor immár hibatűrő:** a nem kép formátumú vagy méretadat nélküli forrásokat kihagyja figyelmeztetéssel (`process.exit(1)` helyett), így egy hibás bejegyzés nem állítja le a teljes generálást.
+- **Eredmény:** **78 kép a manifestumban, 468 generált fájl** (11 duplikált + 4 apró forrás kihagyva, **0 hibás srcset-URL** — a generátor beépített védőhálója zöld).
+- **Quality Gate:** `npx tsc --noEmit` → **TSC_EXIT=0**; `npm run lint -- --max-warnings 0` → **LINT_CI_EXIT=0**; `npm run build` → **BUILD_EXIT=0**.
+
+---
+
 ## [7.10.0] — 2026-09-30 — CI ÉLESÍTÉS + RESZPONZÍV KÉPEK A KÁRTYÁKON (COMPLETE)
 
 - **CI élesítve:** a `.github/workflows/ci.yml` a `main` branchre figyeltek, a projekt viszont `master` ágon van → **a pipeline soha nem futott**. Javítva mindkét trigger (`push` + `pull_request`) `master`-re, és a lint lépés immár `npm run lint -- --max-warnings 0` — a 7.9.0 óta a projekt **0 figyelmeztetéssel** is átmegy, így a szigorú kapu működőképes. Ellenőrizve: `LINT_CI_EXIT=0`.

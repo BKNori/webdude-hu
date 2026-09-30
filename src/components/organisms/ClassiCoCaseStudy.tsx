@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import ResponsiveImage from "@/components/molecules/ResponsiveImage";
 import Link from "next/link";
 import {
   motion,
@@ -429,12 +430,11 @@ export default function ClassiCoCaseStudy({ project }: ClassiCoCaseStudyProps) {
                         : "aspect-video"
                   } relative rounded-3xl overflow-hidden group`}
                 >
-                  <Image
+                  <ResponsiveImage
                     src={img}
                     alt={`Classi-Co Projekt kép ${index + 1}`}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-700"
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    className="object-cover group-hover:scale-110 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-linear-to-t from-black/70 to-transparent" />
                   <div className="absolute bottom-6 left-6">
