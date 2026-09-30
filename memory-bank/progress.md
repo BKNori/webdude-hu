@@ -2,8 +2,9 @@
 
 > **AI DIREKTÍVA:** Ez a dokumentum a projekt makro-szintű állapotát (Roadmap) és a minőségbiztosítási (QA) státuszt rögzíti. Ezt a fájlt minden sikeres ciklus (Sprint) lezárása után kötelezően frissítened kell a legújabb validációs eredményekkel és az áthelyezett backlog elemekkel.
 
-## 1. Minőségbiztosítási Státusz (QA Gates) — frissítve: 2026-09-30 (7.8.0 lezárva)
+## 1. Minőségbiztosítási Státusz (QA Gates) — frissítve: 2026-09-30 (7.9.0 lezárva)
 
+- **7.9.0 QA (2026-09-30):** `npx tsc --noEmit` TSC_EXIT=0; `npm run lint` **LINT_EXIT=0 → 0 hiba, 0 figyelmeztetés (a projekt történetében először)**; `npm run build` BUILD_EXIT=0. Tartalom: hero LCP statikus AVIF/WebP derivatívumok (`<picture>` + `srcSet` + `fetchPriority="high"`), `next.config.js` kommentelve (`unoptimized: true` megmarad, indok dokumentálva), a 2 `exhaustive-deps` warning javítva.
 - **7.8.0 QA (2026-09-30):** `npx tsc --noEmit` TSC_EXIT=0; `npm run lint` LINT_EXIT=0 (0 hiba, 2 előre meglévő `react-hooks/exhaustive-deps` warning `HeroSectionNew.tsx`); `npm run build` BUILD_EXIT=0. Tartalom: `PortalDashboard.tsx` 793 → 194 sor, 6 új `portal/*` szekció-komponens, Phase 2 hookok (`usePortalSession` + `usePortalData`) életbe léptetése, `usePortalData` idToken-guard bugfix.
 - **7.7.0 QA (2026-09-29):** `npx tsc --noEmit` TSC_EXIT=0; `npm run lint` LINT_EXIT=0 (0 hiba, 2 előre meglévő `react-hooks/exhaustive-deps` warning `HeroSectionNew.tsx`); `npm run build` BUILD_EXIT=0. Tartalom: hero háttérkép-láthatóság (`opacity-65`, `bg-slate-950/60`, bal-oldali WCAG AA scrim), Esettanulmány #2 kép bekötve (HU/EN/defaults), hero 3. dia mockup-kártya eltávolítva, „Nulláról 3 hónap alatt a piac élére" állítás visszavonva (élő forrásból 0 találat).
 - **I18N / EN főoldal QA (2026-09-24):** `[lang]` dinamikus route megszüntetve, natív `/en` route (`src/app/en/page.tsx` + `layout.tsx`) bevezetve; JSON-LD SSOT (`src/lib/structuredData.ts`); locale-aware navigáció; hreflang; új `not-found.tsx` konverziós 404.
@@ -17,6 +18,7 @@
 - **7.0.0 Kék-Lila migráció (2026-09-16):** arany/amber tiltva, CTA `#075985` → `#5B21B6`, akcentus `#7C3AED` fehér szöveggel AAA; záró audit: 0 váratlan cyan-találat (riport: `_mentesek/20260916_amber-migration/_zaras-audit.txt`).
 
 ## 2. Kész / Lezárt Mérföldkövek (Legutóbbiak)
+- ✅ **[7.9.0] (2026-09-30):** Hero LCP statikus AVIF/WebP derivatívumok + `<picture>`/`fetchPriority` (mobilon −95%), `unoptimized: true` indok dokumentálva, **lint 0/0**, a hamis „Firebase hosting" állítás javítva (valós: cPanel + Phusion Passenger).
 - ✅ **[7.8.0] (2026-09-30):** `PortalDashboard.tsx` 793 → 194 sor (6 új `portal/*` szekció-komponens) + Phase 2 hookok (`usePortalSession`, `usePortalData`) életbe léptetése; `usePortalData` idToken-guard bugfix.
 - ✅ **[7.7.0] (2026-09-29):** Hero háttérkép-láthatóság + WCAG AA szövegvédelmi scrim; Esettanulmány #2 valós kép; „AI Prompt Platform" állítás-visszavonás.
 - ✅ **[I18N] (2026-09-24):** Angol `/en` főoldal, locale-aware navigáció, JSON-LD SSOT, konverziós 404 (`not-found.tsx`).
@@ -38,7 +40,8 @@
 
 ## 4. Backlog / Tervezett Feladatok (Roadmap)
 - ⏳ **`PortalDashboard.tsx` (793 sor) szétbontása** → `src/components/organisms/portal/*` szekciók (Rendelések, WorkflowChat, Projekt idővonal, Vault) + Phase 2 hookok (`usePortalSession`, `usePortalData`, `useStripePaymentVerification`). **Ez a KÖVETKEZŐ ATOMI LÉPÉS** (részlet: `activeContext.md` 5. pont).
-- ⏳ **`next.config.js` `unoptimized: true` felülvizsgálata:** globálisan ki van kapcsolva a képoptimalizálás (eredeti indok: cPanel memóriakorlát; ma már Firebase Hosting) → a hero 2000×1000 banner nyersen megy ki, LCP-kockázat.
+- ⏳ **Képoptimalizálás kiterjesztése (7.9.0 után):** a `next.config.js` `unoptimized: true` **érvényes és megmarad** — a hosting cPanel + Phusion Passenger (a korábbi „már Firebase" állítás téves volt, lásd `activeContext.md`). A hero képekre megoldva: statikus AVIF/WebP derivatívumok + `<picture>` (`scripts/generate-responsive-images.js` + `HeroBackgroundImage`). **Hátra van:** a portfólió- és essettanulmány-kártyák (`PortfolioGrid`, `WorkCard`, `CaseStudiesBento`, `BlogGrid`) ugyanilyen nyers betöltése.
+- ⏳ **CI élesítése:** a `.github/workflows/ci.yml` a `main` branchre figyel, a projekt `master` → a pipeline soha nem futott. Javítás: `branches: [ master ]` + `npm run lint -- --max-warnings 0` (a 7.9.0 óta 0/0 a lint).
 - ⏳ **Firestore deploy (kizárólag Norbi):** `firestore.indexes.json` + `firestore.rules` élesítése → `firebase deploy --only firestore:indexes`.
 - ⏳ **Admin Felület (Középtávú):** Részletesebb KPI dashboard bővítés (Revenue, Churn rate, LTV), valamint PDF export funkciók implementálása a meglévő CSV exportok mellé.
 - ⏳ **AI Eszközök:** További AI műhelyek (pl. Tartalomtervező, Versenytárs-elemző) vizuális felturbózása a "WOW-hatás" (Spring Physics) jegyében.
@@ -50,6 +53,6 @@ Ezekhez a fájlokhoz csak célzott technikai sprint keretében szabad hozzányú
 - ✅ **PortalDashboard.tsx (7.8.0-ban MEGOLDVA):** a 300 soros limit megsértése megszűnt — 194 sor, 6 `src/components/organisms/portal/*` szekció-komponensre bontva; az eredeti 793 soros fájl archívumban (`_mentesek/20260929_portalSplit/PortalDashboard.tsx.793.bak`).
 - ⚠️ **PortfolioGrid.tsx:** `unoptimized` flag felülvizsgálata (a `next.config.js` globális `unoptimized: true`-ja miatt jelenleg minden kép nyersen töltődik); fájlnevek slugosítása a 7.3.0-ban megtörtént.
 - ⚠️ **btshop placeholder SVG-k:** még amber (`#f59e0b`) színt használnak → v7.0 szabálysértés (arany/amber tiltva).
-- ⚠️ **HeroSectionNew.tsx:** 2 db `react-hooks/exhaustive-deps` warning (`SLIDES.length`) — a 0-warning QA-hoz javítandó.
+- ✅ **HeroSectionNew.tsx (7.9.0-ban MEGOLDVA):** a 2 db `react-hooks/exhaustive-deps` warning (`SLIDES.length`) javítva → a `npm run lint` mostantól **0 hibát és 0 figyelmeztetést** ad, így a `--max-warnings 0` CI-kapu is bekapcsolható.
 - ⚠️ **HeroSlider.tsx (230 sor):** 0 helyen bekötve és a diavetítést a `HeroSectionNew.tsx` már lefedi → bekötés vs. archiválás döntés szükséges (duplikáció).
 - ⚠️ **Jest konfig:** `_mentesek/**` + `e2e/**` kizárása a `testMatch`-ből, stale `Footer`/`HeroSection`/`Button` tesztek frissítése (hamis negatívok).

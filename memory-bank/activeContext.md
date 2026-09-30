@@ -2,6 +2,17 @@
 
 > **AI DIREKTÍVA:** Ez a fájl a rendszer "élő" memóriája. A 03-workflow.md 5. lépése alapján KÖTELEZŐ ezt a fájlt frissítened minden feladat befejezésekor, vagy mielőtt átadod a vezérlést a felhasználónak (Norbinak). Szigorúan tilos új feladatba kezdened, ha az "Aktuális Munkaterület Állapota" szekcióban hibák vagy félbehagyott fájlok vannak!
 
+## Aktuális állapot — 2026-09-30, Hero LCP statikus kép-derivatívumok (7.9.0) lezárva
+
+- **INFRASTRUKTÚRA-ÁLLÍTÁS JAVÍTVA (a korábbi feltevés téves volt):** a hosting **NEM Firebase**. A valós deploy a `deploy.ps1` szerint: `npm run build` (standalone) → Phusion Passenger patch a `server.js`-en → Passenger wrapper (`// webdude.hu | cPanel deployment entry point`) → `.next/standalone` zippelése → `deploy-v0.1.XXX.zip` (~147 MB) → **manuális feltöltés cPanelre**. Ezért:
+  - a `next.config.js` `unoptimized: true` **érvényes és szándékosan megmarad** (a futás közbeni Next.js képoptimalizálás a shared hosting memóriakorlátján OOM-ot okozna);
+  - az `output: "standalone"` szükséges, nem elavult;
+  - a `firebase.json` **csak a `hosting` blokkban elavult** (`"public": "out"` + `**`→`/index.html`; ilyen mappa sosem készült). A fájl a `firestore`/`storage` szabályok miatt megmarad.
+- **Fő eredmény (7.9.0):** a hero háttérképek reszponzív betöltése statikus, build-time generált AVIF/WebP derivatívumokkal (`<picture>` + `srcSet` + `sizes="100vw"` + `fetchPriority="high"` az LCP dián). Mért nyereség: mobilon a 368 KB-os banner **17,7 KB (−95%)**, a 284 KB-os **36,1 KB (−87%)**. Nulla szerveroldali CPU/memóriaigény, nulla új dependency.
+- **Új fájlok:** `scripts/generate-responsive-images.js` (sharp-alapú generátor, 22 derivatívumot állít elő), `src/data/heroImages.ts` (AUTO-GENERATED manifestum + `getHeroImageVariants()`), `src/components/molecules/HeroBackgroundImage.tsx` (57 sor), `public/assets/banners/responsive/*`.
+- **QA:** `npx tsc --noEmit` → **TSC_EXIT=0**; `npm run lint` → **LINT_EXIT=0 (0 hiba, 0 figyelmeztetés — a projekt történetében először!)**; `npm run build` → **BUILD_EXIT=0**.
+- **Nyitott (Norbi):** (1) hero vizuális ellenőrzés böngészőben (a `<picture>` lánc helyes betöltése a 3 dián); (2) a `.github/workflows/ci.yml` a **`main`** branchre figyel, a projekt viszont **`master`** → **a CI soha nem futott** (javítás: 1 sor); (3) ugyanez a kép-optimalizálás kiterjeszthető a portfólió/easettanulmány kártyákra.
+
 ## Aktuális állapot — 2026-09-30, PortalDashboard szétbontás (7.8.0) lezárva
 
 - **Fő eredmény (2026-09-30):** a `PortalDashboard.tsx` **793 → 194 sor** (300-as limit alá került) 6 új `src/components/organisms/portal/*` szekció-komponensre bontva (PortalHeader, PortalAlerts, PortalWorkflowGrid, PortalWorkflowCard, PortalOnboardingSection, PortalOrdersSection) — mindegyik ≤300 sor. A 7.4.0/7.4.1-ben előkészített, de soha be nem kötött `usePortalSession` + `usePortalData` hookok mostantól a dashboard adatszállítói. Bugfix: a `usePortalData` adatbetöltő effectje csak érvényes `idToken` esetén indul (különben üres tokennel ment egy felesleges Firestore-hívás és hamis hibaüzenet villantott a portál betöltésekor).
@@ -61,9 +72,12 @@
 - **CI/CD:** a `deploy.bat` kiváltása GitHub Actions workflow-val (hosszú távú).
 
 ## 5. KÖVETKEZŐ ATOMI LÉPÉS (Next Action)
-- 🎯 **Feladat:** `next.config.js` `unoptimized: true` globális beállítás felülvizsgálata + hero LCP finomhangolás. A képoptimalizálás a cPanel-memóriakorlát miatt van kikapcsolva, de a hosting ma már Firebase (Web Frameworks) → a hero 2000×1000 bannerek nyersen, `next/image` optimalizálás nélkül mennek ki (LCP-kockázat, Lighthouse-mutatók).
-- 🛠️ **Érintett fájlok:** `next.config.js`, `src/components/organisms/HeroSectionNew.tsx` (`sizes` attribútumok), esetleges `priority` finomhangolás a fold feletti képeken; `_docs/CHANGELOG.md`.
-- 🧪 **Várt kimenet:** Zéró TS hiba, `npm run build` EXIT=0, és a hero banner képei reszponzív méretekben (AVIF/WebP) kiszolgálva.
-- 📌 **Alternatíva / párhuzamos tételek:** HeroSlider.tsx archiválási döntés (duplikálja a `HeroSectionNew` diavetítését) · Jest konfig-tisztítás (`_mentesek/**` + `e2e/**` kizárása) · `HeroSectionNew.tsx` 2 `exhaustive-deps` warning nullázása (a `--max-warnings 0` CI-hoz kell).
+- 🎯 **Feladat:** a **CI élesítése** — a `.github/workflows/ci.yml` a `main` branchre figyel, a projekt viszont `master` ágon van, így a pipeline **soha nem futott**. Két sor: (a) `branches: [ main ]` → `[ master ]`; (b) a `npm run lint` lépéshez `--max-warnings 0` hozzáadása — a 7.9.0 óta a projekt **0 figyelmeztetéssel** is átmegy, így ez a kapu is működőképes lesz.
+- 🛠️ **Érintett fájlok:** `.github/workflows/ci.yml`.
+- 🧪 **Várt kimenet:** a `master`-re pusholáskor lefut a TypeScript + ESLint (0/0) + build ellenőrzés.
+- 📌 **Alternatíva / párhuzamos tételek:**
+  - **Képderivatívumok kiterjesztése** ugyanezzel a mintával a portfólió- és essettanulmány-kártyákra (`PortfolioGrid`, `WorkCard`, `CaseStudiesBento`, `BlogGrid`) — a jelenlegi `unoptimized: true` mellett ezek is nyers, teljes méretű képeket szolgálnak ki.
+  - `HeroSlider.tsx` archiválási döntés (duplikálja a `HeroSectionNew` diavetítését, 0 helyen bekötve).
+  - Jest konfig-tisztítás (`_mentesek/**` + `e2e/**` kizárása a `testMatch`-ből).
 
 > ⚠️ **JAVÍTÁS (2026-09-20):** ez a fájl korábban **sablon-placeholdereket** (`[pl. ...]`) tartalmazott, amelyek a már lezárt Cycle 3154/3160 munkát nyitott feladatként írták le — ez téves roadmap-irányt okozott. A placeholderek valós, verifikált adatokra cserélve.

@@ -2,7 +2,7 @@
 
 import React, { useRef, useState, useEffect, useCallback } from "react";
 import Link from "next/link";
-import Image from "next/image";
+import HeroBackgroundImage from "@/components/molecules/HeroBackgroundImage";
 import { motion, AnimatePresence, useScroll, useTransform } from "motion/react";
 import {
   ArrowRight,
@@ -216,12 +216,12 @@ export default function HeroSectionNew({ content }: HeroSectionNewProps) {
   const nextSlide = useCallback(() => {
     setDirection(1);
     setCurrentSlide((prev) => (prev + 1) % SLIDES.length);
-  }, []);
+  }, [SLIDES.length]);
 
   const prevSlide = useCallback(() => {
     setDirection(-1);
     setCurrentSlide((prev) => (prev - 1 + SLIDES.length) % SLIDES.length);
-  }, []);
+  }, [SLIDES.length]);
 
   const goToSlide = (idx: number) => {
     setDirection(idx > currentSlide ? 1 : -1);
@@ -266,14 +266,10 @@ export default function HeroSectionNew({ content }: HeroSectionNewProps) {
             transition={{ duration: 0.8, ease: "easeInOut" }}
             className="absolute inset-0"
           >
-            <Image
+            <HeroBackgroundImage
               alt={slide.bgAlt}
               className="object-cover opacity-65"
-              fill
               priority={currentSlide === 0}
-              loading={currentSlide === 0 ? "eager" : "lazy"}
-              quality={90}
-              sizes="100vw"
               src={slide.bgImage}
             />
           </motion.div>

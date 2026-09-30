@@ -9,6 +9,26 @@
 - **Fontosság:** Kiemelt stratégiai feladat
 - **Megjegyzés:** Ez a feladat a CHANGELOG-ban van rögzítve jövőbeli implementációra
 
+## [7.9.0] — 2026-09-30 — HERO LCP: STATIKUS AVIF/WEBP DERIVATÍVUMOK + FETCHPRIORITY (COMPLETE)
+
+- **Kiindulási helyzet felülvizsgálva (a korábbi feltevés téves volt):** a memory-bank azt állította, hogy a hosting „ma már Firebase (Web Frameworks)". **A valós deploy a `deploy.ps1` alapján Phusion Passenger wrapperrel futó cPanel shared hosting** (standalone build → Passenger patch → 147 MB-os `deploy-v0.1.XXX.zip` → manuális feltöltés). Következésképpen a `next.config.js` `unoptimized: true` **érvényes és megmarad** — eredeti indoka (memóriakorlát) továbbra is él.
+- **A `next.config.js` kommentelve:** a `unoptimized: true` mellé rögzítve a valós indokot és az utat, hogy a következő módosítás ne próbálja meg elavult configként kikapcsolni. **Nem volt viselkedésváltozás.**
+- **Új generátor szkript (`scripts/generate-responsive-images.js`):** a repóban amúgy is jelen lévő `sharp`-pel build-time legenerálja a 3 hero banner AVIF (q55) + WebP (q78) variánsait 640/1024/1600/2000 px töréspontokban → `public/assets/banners/responsive/` (22 fájl), és kiírja a tipizált TS-manifestumot (`src/data/heroImages.ts`, AUTO-GENERATED, `getHeroImageVariants()` accessor). Zéro új package dependency.
+- **Új levél-komponens (`src/components/molecules/HeroBackgroundImage.tsx`, 57 sor):** `<picture>` lánc (AVIF → WebP → eredeti) `srcSet` + `sizes="100vw"`, `fetchPriority="high"` és `loading="eager"` az első (LCP) dián, `className` prop a vizuális megjelenés átadására. **Graceful fallback:** a manifestumban nem szereplő kép (pl. szótárból felülírt `bgImage`, `/en` oldal) csendben a nyers `<img>`-re esik vissza.
+- **`HeroSectionNew.tsx`:** a `next/image` használat helyett a `HeroBackgroundImage`; a `quality={90}` és `sizes="100vw"` **halott attribútumok** eltűntek (`unoptimized: true` mellett hatástalanok). A 7.7.0-ban beállított `opacity-65` megjelenés és a javított `alt` változatlanul megmaradt.
+- **Mért eredmény (a böngésző a látványmezőhöz illő EGYET fájlt tölt le a 4-ből):**
+  | Slide | Forrás | Ma (nyers) | Mobil AVIF 640w | Desktop AVIF |
+  | --- | --- | --- | --- | --- |
+  | webdude-hero | 1920×1200 | 368 KB | **17,7 KB (−95%)** | 158 KB (−57%) |
+  | ronch caffe banner | 2560×1440 | 284 KB | **36,1 KB (−87%)** | 150 KB (−47%) |
+  | webdude banner 2000x1000 | 2000×1000 | 52 KB | **12,7 KB (−76%)** | 58 KB (+12%) |
+- **Felfedezett és javított hiba a build kimenetében (ezért van ez a kör):** a `srcset` szintaxisban **a URL nem tartalmazhat szóközt** — a 2. és 3. dia fájlneveiben viszont van (`ronch caffe adris…`, `webdude banner 2000x1000…`). Szóközös URL-lel a böngésző srcset-elemzése elhasal és **a kép le sem töltődik** (csak böngészőben derülne ki). A generátó ezért `encodeURI()`-val bocsátja ki a URL-eket (a lemezen lévő fájlnevek változatlanok, a manifestum kulcsa nyers marad a kereséshez). **Ellenőrizve:** 22 srcset-jelölteken, 0 hibás; a 0. dia a buildelt `index.html`-ben helyesen renderelődik.
+- **Lint nullázva:** a `HeroSectionNew.tsx` 2 db `react-hooks/exhaustive-deps` warningja (`SLIDES.length`) javítva → **`npm run lint`: 0 hiba, 0 figyelmeztetés** (a projekt történetében először). Ez a `--max-warnings 0` CI-kapuhoz szükséges előfeltétel.
+- **Quality Gate:** `npx tsc --noEmit` → **TSC_EXIT=0**; `npm run lint` → **LINT_EXIT=0 (0/0)**; `npm run build` → **BUILD_EXIT=0**.
+- **Dokumentációs javítás:** a memory-bank és az ARCHITECTURE rögzíti a valós **cPanel + Phusion Passenger** infrastruktúrát, valamint azt, hogy a `firebase.json` `hosting` blokkja elavult konfig (a `firestore`/`storage` szabályok miatt a fájl megmarad, csak a hosting-rész dead).
+
+---
+
 ## [7.8.0] — 2026-09-30 — PORTALDASHBOARD SZÉTBONTÁSA (793 → 194 SOR) + PHASE 2 HOOKOK BEKÖTÉSE (COMPLETE)
 
 - **Cél:** a `PortalDashboard.tsx` (793 sor) 300 soros Atomic Design limit alá szorítása, a 7.4.0-ban (Phase 1) és 7.4.1-ben (Phase 2) előkészített, de **soha be nem kötött** hook-ok tényleges használatba vétele.

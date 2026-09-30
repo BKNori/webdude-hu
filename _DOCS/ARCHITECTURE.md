@@ -1,7 +1,11 @@
 # ARCHITECTURE.md — WebDude Rendszerarchitektúra
 
 **webdude.hu | Next.js 16 · React 19 · TypeScript · Firebase**
-**Utolsó frissítés: 2026-09-24 (I18N: angol `/en` főoldal, locale-nav és JSON-LD SSOT)**
+**Utolsó frissítés: 2026-09-30 (7.9.0: hero LCP statikus kép-derivatívumok)**
+
+> **7.9.0 (2026-09-30):** Új `HeroBackgroundImage` molekula (`<picture>` + AVIF/WebP `srcSet` + `fetchPriority`) és a `scripts/generate-responsive-images.js` build-time generátor (`src/data/heroImages.ts` manifestum).
+>
+> ⚠️ **INFRASTRUKTÚRA-ÁLLÍTÁS:** a hosting **Phusion Passenger wrapperrel futó cPanel shared hosting** (`deploy.ps1`: standalone build → Passenger patch → `deploy-v0.1.XXX.zip` → manuális feltöltés), **nem Firebase**. A `next.config.js` `unoptimized: true` ezért **érvényes és szándékosan megmarad** (memóriakorlát); az `output: "standalone"` szükséges. A `firebase.json` **csak a `hosting` blokkja elavult** (`"public": "out"` sosem készült) — a `firestore`/`storage` szabályok miatt a fájl megmarad. Kontextus: a `remotePatterns` Firebase Storage hostname-ok admin-feltöltéshez továbbra is élnek.
 
 > **6.3.0 (2026-09-24):** Új `/en` route (angol főoldal, natív JSON Dictionary i18n, hreflang) és JSON-LD SSOT (`src/lib/structuredData.ts`). A HU `/` route és a gyökér layout változatlan — zéró visszaesés.
 
@@ -67,6 +71,7 @@ atoms  →  molecules  →  organisms  →  pages
 | `GraphicToolCard`        | `src/components/molecules/GraphicToolCard.tsx`             | Eszköz gomb kártya a grafikai AI eszközökhez (client component)                                                                                                                                                                                     | `"use client"`                |
 | `LighthouseAuditor`      | `src/components/molecules/LighthouseAuditor.tsx`           | Google PageSpeed API alapú interaktív audit vizualizáció (KPI mutatókkal)                                                                                                                                                                           | `"use client"` (motion/react) |
 | `OnboardingForm`         | `src/components/molecules/OnboardingForm.tsx`              | Kategória-specifikus dinamikus onboarding kérdőív (Zod + React Hook Form)                                                                                                                                                                           | `"use client"`                |
+| `HeroBackgroundImage`    | `src/components/molecules/HeroBackgroundImage.tsx`         | **7.9.0** – Hero háttérkép reszponzív betöltése: `<picture>` lánc (AVIF → WebP → eredeti) `srcSet` + `sizes="100vw"`, `fetchPriority="high"` az LCP dián. A `unoptimized: true` miatt a `next/image` nem ad reszponzív srcset-et, ezért statikus, build-time generált derivatívumokat használ (`scripts/generate-responsive-images.js` + `src/data/heroImages.ts` manifestum); ismeretlen kép esetén csendben nyers `<img>`-re esik vissza. | Server Component (nincs hook) |
 | `PerformanceGauge`       | `src/components/molecules/PerformanceGauge.tsx`            | Lebutított Lighthouse score gauge (statikus, vizuálisan lenyűgöző Performance Target grafikon)                                                                                                                                                      | `"use client"` (motion/react) |
 | `PromptTemplatesClient`  | `src/app/portal/prompt-sablonok/PromptTemplatesClient.tsx` | AI Prompt Sablonok megjelenítése jogosultság ellenőrzéssel (superadmin automatikus hozzáférés, ügyfél csak ha hasPromptAccess: true)                                                                                                                | `"use client"`                |
 | `DocumentPreviewModal`   | `src/components/molecules/DocumentPreviewModal.tsx`        | Univerzális előnézeti modál PDF, képek és dokumentumok in-app megjelenítésére (iframe, <img>, letöltés, vágólap); Luminous Glassmorphism dizájnnal, `motion/react` nyitó/záró animációkkal, `useReducedMotion` támogatással                         | `"use client"` (motion/react) |
