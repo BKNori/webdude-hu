@@ -99,6 +99,11 @@ export const responsiveImageManifest: Record<string, ResponsiveImageVariants> = 
     "avif": "/assets/responsive/portfolio/btshop/btshop-banner-2-320w.avif 320w, /assets/responsive/portfolio/btshop/btshop-banner-2-640w.avif 640w, /assets/responsive/portfolio/btshop/btshop-banner-2-960w.avif 960w, /assets/responsive/portfolio/btshop/btshop-banner-2-1600w.avif 1600w, /assets/responsive/portfolio/btshop/btshop-banner-2-2000w.avif 2000w",
     "webp": "/assets/responsive/portfolio/btshop/btshop-banner-2-320w.webp 320w, /assets/responsive/portfolio/btshop/btshop-banner-2-640w.webp 640w, /assets/responsive/portfolio/btshop/btshop-banner-2-960w.webp 960w, /assets/responsive/portfolio/btshop/btshop-banner-2-1600w.webp 1600w, /assets/responsive/portfolio/btshop/btshop-banner-2-2000w.webp 2000w"
   },
+  "/assets/portfolio/btshop/btshop-dashboard-placeholder.webp": {
+    "fallback": "/assets/portfolio/btshop/btshop-dashboard-placeholder.webp",
+    "avif": "/assets/responsive/portfolio/btshop/btshop-dashboard-placeholder-320w.avif 320w, /assets/responsive/portfolio/btshop/btshop-dashboard-placeholder-640w.avif 640w, /assets/responsive/portfolio/btshop/btshop-dashboard-placeholder-960w.avif 960w, /assets/responsive/portfolio/btshop/btshop-dashboard-placeholder-1600w.avif 1600w, /assets/responsive/portfolio/btshop/btshop-dashboard-placeholder-2000w.avif 2000w",
+    "webp": "/assets/responsive/portfolio/btshop/btshop-dashboard-placeholder-320w.webp 320w, /assets/responsive/portfolio/btshop/btshop-dashboard-placeholder-640w.webp 640w, /assets/responsive/portfolio/btshop/btshop-dashboard-placeholder-960w.webp 960w, /assets/responsive/portfolio/btshop/btshop-dashboard-placeholder-1600w.webp 1600w, /assets/responsive/portfolio/btshop/btshop-dashboard-placeholder-2000w.webp 2000w"
+  },
   "/assets/portfolio/btshop/bt-shop-weboldal-screen.webp": {
     "fallback": "/assets/portfolio/btshop/bt-shop-weboldal-screen.webp",
     "avif": "/assets/responsive/portfolio/btshop/bt-shop-weboldal-screen-320w.avif 320w, /assets/responsive/portfolio/btshop/bt-shop-weboldal-screen-640w.avif 640w, /assets/responsive/portfolio/btshop/bt-shop-weboldal-screen-960w.avif 960w",

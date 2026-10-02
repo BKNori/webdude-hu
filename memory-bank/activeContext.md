@@ -2,6 +2,18 @@
 
 > **AI DIREKTÍVA:** Ez a fájl a rendszer "élő" memóriája. A 03-workflow.md 5. lépése alapján KÖTELEZŐ ezt a fájlt frissítened minden feladat befejezésekor, vagy mielőtt átadod a vezérlést a felhasználónak (Norbinak). Szigorúan tilos új feladatba kezdened, ha az "Aktuális Munkaterület Állapota" szekcióban hibák vagy félbehagyott fájlok vannak!
 
+## Aktuális állapot — 2026-10-02, [7.15.0] BTShop esettanulmány WOW-hatás + E-E-A-T
+
+- **Halott kód takarítás:** a `BtshopHero.tsx`, `BtshopEngineeringGrid.tsx`, `BtshopFinalCta.tsx` **egyikét sem importálta semmi**; a `BtshopEeatSection.tsx` nem létezett. A `BtshopCaseStudy.tsx` (444 sor) az egyetlen élő komponens. A 3 dead-end fájlt töröltem, az E-E-A-T komponens a `BtshopEngineeringGrid.tsx` helyén jött létre (`git mv` + átírás, 117 sor).
+- **Hero:** többrétegű Luminous overlay (`slate-950/70 + backdrop-blur-[2px]`, lejtő, 10%-os cyan radial glow, alja fade). A hero kép **a 7.14.4 highres (6675×3758) maradt** — a kérés placeholdert javasolt, de az elveszítette volna a nagy felbontást.
+- **Copy:** új H1 + lead; a 4 mérnöki kártya a kért Authority-Driven szöveggel, **AEO (AI Engine Optimization)** explicit kiemeléssel.
+- **Emoji → lucide-react:** `🔄 🔍 📦 📊` → `RefreshCw / SearchCheck / Truck / Gauge` (04-design tiltás) → **0 emoji a BTShop oldalon**.
+- **SSOT:** `sky-400` → `brand-primary`, `bg-slate-900/60` → `bg-slate-950/80 backdrop-blur-2xl`.
+- **E-E-A-T:** 3 hitelesítési signal (26 év / 16 év / Nincs ügynökségi lánc) + „Nincs ügynökségi lánc, csak közvetlen, mérnöki precizitás." Spring `{stiffness: 100, damping: 20}` + `useReducedMotion`.
+- **`works.ts` sync:** `gallery[1]` duplikált `btshop-banner-2` → `btshop-dashboard-placeholder.webp` (439 KB, valódi dashboard). `image`/`bannerImage` változatlan (highres hero).
+- **Generálás:** `--clean` → 79 kép / 444 fájl, `[CLEAN]` nincs elavult.
+- **QA:** `tsc`=0; `lint --max-warnings 0`=0; `build`=0 (164 oldal). Dev-render: `STATUS=200`, E-E-A-T heading + AEO + highres + dashboard mind OK, 0 emoji.
+- **Tanulság:** a kérésben felsorolt fájlnevek (`BtshopHero`, `BtshopEngineeringGrid`, `BtshopEeatSection`) **nem a renderelési úton voltak**. Mindig `Select-String` import-ellenőrzéssel kell kezdeni, mielőtt egy komponenst „frissítenénk" — különben dead-end fájlokat írunk át, és az élő oldalon semmi nem változik.
 ## Aktuális állapot — 2026-10-02, [7.14.4] BTShop high-res hero lezárva, Nulla felnagyítás a repóban
 
 - **Lezárás:** a 7.13.1 óta listázott utolsó felnagyítási technikai adósság **lezárva**.

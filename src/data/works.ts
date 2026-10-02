@@ -22,7 +22,7 @@ export const works: Work[] = [
     bannerImage: "/assets/portfolio/btshop/btshop-banner-highres.webp",
     gallery: [
       "/assets/portfolio/btshop/btshop-banner-2.webp",
-      "/assets/portfolio/btshop/btshop-banner-2.webp",
+      "/assets/portfolio/btshop/btshop-dashboard-placeholder.webp",
       "/assets/portfolio/btshop/bt-shop-weboldal-screen.webp",
     ],
     featured: true,

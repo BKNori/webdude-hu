@@ -1,6 +1,7 @@
 "use client";
 
 import ResponsiveImage from "@/components/molecules/ResponsiveImage";
+import BtshopEeatSection from "@/components/organisms/BtshopEeatSection";
 import Link from "next/link";
 import {
   motion,
@@ -10,6 +11,20 @@ import {
 } from "motion/react";
 import { Work } from "@/types/work";
 import { useRef } from "react";
+import {
+  RefreshCw,
+  SearchCheck,
+  Truck,
+  Gauge,
+  type LucideIcon,
+} from "lucide-react";
+
+/** A Technikai Szolgáltatások szekció adatszerkezete. */
+interface EngineeringService {
+  title: string;
+  description: string;
+  icon: LucideIcon;
+}
 
 interface BtshopCaseStudyProps {
   project: Work;
@@ -44,12 +59,26 @@ export default function BtshopCaseStudy({ project }: BtshopCaseStudyProps) {
         <motion.div style={{ y, opacity }} className="absolute inset-0">
           <ResponsiveImage
              src="/assets/portfolio/btshop/btshop-banner-highres.webp"
-             alt="BTShop.hu - Enterprise E-commerce & Kulcs-Soft Integráció"
+             alt="BTShop.hu — 3200 termékes Enterprise E-commerce rendszer és egyedi ERP integráció"
              sizes="100vw"
              priority
              className="object-cover"
            />
-          <div className="absolute inset-0 bg-linear-to-b from-black/80 via-black/60 to-bg-base" />
+          {/* Többrétegű Luminous Glassmorphism overlay: olvashatóság + WOW-hatás.
+              A felső/lejtő gradiens a szöveget kontrasztossá teszi, a középső
+              slate-950 réteg + backdrop-blur a képet "üveg mögé" rejti, az alsó
+              lila-cián glow a brand 2%-os kiemelését adja. */}
+          <div className="absolute inset-0 bg-slate-950/70 backdrop-blur-[2px]" />
+          <div className="absolute inset-0 bg-linear-to-b from-bg-base via-bg-base/60 to-bg-base" />
+          <div
+            aria-hidden
+            className="absolute inset-0 opacity-60"
+            style={{
+              background:
+                "radial-gradient(ellipse 70% 50% at 50% 45%, rgba(0, 181, 241,0.10) 0%, transparent 70%)",
+            }}
+          />
+          <div className="absolute inset-x-0 bottom-0 h-40 bg-linear-to-t from-bg-base to-transparent" />
         </motion.div>
 
         <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
@@ -85,7 +114,11 @@ export default function BtshopCaseStudy({ project }: BtshopCaseStudyProps) {
               }}
               className="text-5xl sm:text-6xl md:text-8xl font-bold leading-tight"
             >
-              {project.title}
+              BTShop.hu — 3200 termékes{" "}
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-brand-primary to-brand-secondary">
+                E-commerce Nagyhatalom
+              </span>{" "}
+              &amp; Egyedi ERP Integráció
             </motion.h1>
 
             <motion.p
@@ -97,7 +130,9 @@ export default function BtshopCaseStudy({ project }: BtshopCaseStudyProps) {
               }}
               className="text-xl md:text-2xl text-slate-200 max-w-3xl mx-auto font-light"
             >
-              {project.description}
+              Amikor a weboldal nemcsak elad, hanem a teljes céges
+              infrastruktúrát mozgatja. Zéró manuális adminisztráció, saját
+              fejlesztésű SEO motor és valós idejű könyvelőprogram-szinkronizáció.
             </motion.p>
 
             {/* Szolgáltatás Kiemelők */}
@@ -217,11 +252,11 @@ export default function BtshopCaseStudy({ project }: BtshopCaseStudyProps) {
             >
               <div className="relative aspect-video rounded-3xl overflow-hidden group">
                 <ResponsiveImage
-             src="/assets/portfolio/btshop/btshop-banner-2.webp"
-             alt="BTShop.hu Enterprise Dashboard"
-             sizes="(max-width: 1024px) 100vw, 50vw"
-             className="object-cover group-hover:scale-105 transition-transform duration-700"
-           />
+              src="/assets/portfolio/btshop/btshop-dashboard-placeholder.webp"
+              alt="BTShop.hu Enterprise Dashboard"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover group-hover:scale-105 transition-transform duration-700"
+            />
                 <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent" />
               </div>
               <div className="relative aspect-video rounded-3xl overflow-hidden group">
@@ -268,42 +303,51 @@ export default function BtshopCaseStudy({ project }: BtshopCaseStudyProps) {
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {[
+            {([
               {
-                title: "Kétirányú ERP Szinkronizáció",
+                title: "Kétirányú Könyvelői Szinkronizáció",
                 description:
-                  "Egyedi API összekötés a szerveren futó Kulcs-Soft könyvelőprogrammal. A termékadatok, árak és készletek exportja, valamint a beérkező megrendelések importja teljesen automatizált.",
-                icon: "🔄",
+                  "Az ügyfél könyvelői programja egy dedikált szerveren fut. Olyan automata API-hidat fejlesztettem, amely valós időben exportálja a több mint 3200 termék adatait, és emberi beavatkozás nélkül importálja a beérkező WooCommerce megrendeléseket.",
+                icon: RefreshCw,
               },
               {
                 title: "Saját Fejlesztésű SEO Plugin",
                 description:
-                  "A dobozos megoldások helyett egy egyedi, a bolt specifikus igényeire írt WordPress plugint készítettem, amely garantálja a maximális technikai SEO pontszámot.",
-                icon: "🔍",
+                  "A dobozos megoldások itt már nem voltak elegendőek. A maximális láthatóság érdekében egy egyedi, a bolt specifikus igényeire írt WordPress plugint készítettem, amely garantálja a tökéletes technikai SEO és AEO (AI Engine Optimization) pontszámot.",
+                icon: SearchCheck,
               },
               {
                 title: "Komplex Logisztika",
                 description:
-                  "MPL és Foxpost API integráció a zökkenőmentes csomagkezelésért és szállítási címke generálásért. Automatizált szállítási folyamatok.",
-                icon: "📦",
+                  "MPL és Foxpost API integráció a zökkenőmentes csomagkezelésért és szállítási címke generálásért. Automatizált szállítási folyamatok — a megrendeléstől a csomagátadásig.",
+                icon: Truck,
               },
               {
-                title: "Data-Driven Marketing",
+                title: "Skálázható Architektúra",
                 description:
-                  "Google Search Console, Google Analytics 4 és Merchant Center bekötés dinamikus, napi szintű termék feed (XML) szinkronizációval. Marketing automatizáció.",
-                icon: "📊",
+                  "A hatalmas adatbázis (3200+ termék) ellenére a frontend villámgyors maradt. Teljes Google Merchant Center integráció a napi feed szinkronizációhoz.",
+                icon: Gauge,
               },
-            ].map((service, index) => (
+            ] satisfies EngineeringService[]).map((service, index) => (
               <motion.div
                 key={service.title}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-slate-900/60 border border-slate-800 rounded-3xl p-8 hover:border-sky-500/50 transition-colors duration-300 group"
+                className="group relative bg-slate-950/80 backdrop-blur-2xl border border-slate-800/80 hover:border-brand-primary/50 rounded-3xl p-8 transition-colors duration-300"
               >
-                <div className="text-4xl mb-4">{service.icon}</div>
-                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-sky-400 transition-colors">
+                {/* Top glow csík — hover-re megjelenő fényléc */}
+                <div
+                  aria-hidden
+                  className="absolute inset-x-8 top-0 h-px bg-linear-to-r from-transparent via-brand-primary/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
+                />
+                <service.icon
+                  className="w-10 h-10 text-brand-primary mb-5"
+                  strokeWidth={1.5}
+                  aria-hidden
+                />
+                <h3 className="text-xl font-bold text-text-primary mb-3 group-hover:text-brand-primary transition-colors">
                   {service.title}
                 </h3>
                 <p className="text-slate-400 leading-relaxed">
@@ -314,6 +358,9 @@ export default function BtshopCaseStudy({ project }: BtshopCaseStudyProps) {
           </div>
         </div>
       </section>
+
+      {/* E-E-A-T Szekció — egyetlen szakember, teljes felelősség */}
+      <BtshopEeatSection />
 
       {/* Eredmények Szekció */}
       <section className="py-32 px-6 bg-linear-to-br from-sky-500/10 to-blue-500/10 border-y border-sky-500/20">
