@@ -1,5 +1,17 @@
 # Changelog
 
+## [7.14.3] — 2026-10-02 — FOOTER SOCIAL ICONOK LÁTHATATLANSÁGÁNAK JAVÍTÁSA (`className` → `class` A RAW SVG-BAN)
+
+- **Tünet:** a footer 4 social ikonja (YouTube / Instagram / Behance / Pinterest) **egyetlen útvonalon sem volt látható**, sem asztali, sem mobil nézetben, HU és EN oldalon egyaránt. A linkek kódban megvoltak, a `Footer.tsx` 7. sorban importálta, a 127. sorban `<SocialMediaIcons />`-t renderelte.
+- **Diagnózis (élő DOM, Puppeteer):** a linkek **a DOM-ban jelen voltak**, `visibility: visible`, `opacity: 1` — de `getBoundingClientRect()` **0×0 px**-t adott, a `<svg>`-re és a `<a>`-ra egyaránt. A szülő `div.flex.items-center.gap-4` szintén 0 magas volt.
+- **Gyökér-ok:** a `SocialMediaIcons.tsx` a 4 ikont **raw HTML stringként** tárolja és `dangerouslySetInnerHTML`-lel injektálja. Ezekben a `<svg>` **JSX-hez írt `className="w-5 h-5"`** attribútumot kaptak. A `dangerouslySetInnerHTML` **nem** megy át a JSX-transzformáción: a HTML parser az attribútumneveket **kisbetűsíti** → `classname="w-5 h-5"`, ami sem a `class`, sem a Tailwind által nem ismert attribútum. Az SVG így **egyetlen CSS osztályt sem kapott**, és a `viewBox` mellé nem volt `width`/`height` attribútum → **nulla méretű, láthatatlan elem**. Ezért volt „nálunk megvan, de a képernyőn nincs".
+- **Javítás:** mind a 4 nyers SVG stringben `className=` → `class=`. Előtte globális szűrés igazolta, hogy a `src/`-ben **nincs más** ilyen hibás `dangerouslySetInnerHTML`-d SVG (a többi ~150 előfordulás mind JSON-LD script).
+- **Mérő eredmény:** mind a 4 link `<a>` **0×0 → 20×20 px**, az `<svg>` szintén 20×20. Ellenőrizve: `/` (HU) és `/en` (EN) útvonalon egyaránt 4/4, 800 px-es viewporton, `md:col-span-2 lg:col-span-1` szülő `display: block` / `visibility: visible` → **a reszponzív elrejtés és az i18n renderelési ág is rendben van, egyik sem volt a hiba oka.**
+- **SSOT token javítás (ugyanebben a fájlban):** `hover:text-[#00B5F1]` → `hover:text-brand-primary`, `focus-visible:ring-[#00B5F1]` → `ring-brand-primary`, `focus-visible:ring-offset-[#020617]` → `ring-offset-bg-base` (a 02-stack hardkódolt hex tiltása). Emellett `inline-flex items-center justify-center` a wrapperre, hogy a flex szülőben a kitöltés és a `hover:scale-110` hitbox korrekt legyen.
+- **UTF-8 állapot:** ellenőrizve — az `aria-label` **nem** volt hibás. A terminal a `—`/`ú` karaktereket mojibaiként renderelte, a böngészőben `aria-label="Instagram — megnyitás új ablakban"` a helyes érték. Az eredeti diagnózis ezen a ponton téves volt.
+- **QA:** `npx tsc --noEmit` → **TSC_EXIT=0**; `npm run lint -- --max-warnings 0` → **LINT_EXIT=0**. Dev-server + Puppeteer vizuális screenshot igazolta a megjelenést.
+
+---
 ## [7.14.1] — 2026-10-02 — ADMINISZTRATÍV TISZTÍTÁS + BACKLOG FELTÖLTÉS (COMPLETE, build nélkül)
 
 - **Git hygiene:** a `package.json` egyetlen módosítása kizárólag **PowerShell-formázási zaj** (2→4 szóköz indent, `ConvertTo-Json` jellegű) és egy `0.1.168 → 0.1.169` verzióbump volt; **függőség-, script- és verzióügyvitel-változás nem volt benne**, a `package-lock.json` érintetlen. Mivel a repo konvenciója a 2 szóközös JSON indent, a 4 szóközös visszaalakítás zaj volt → **`git checkout -- package.json` (visszavonva)**. Így a working tree 100%-ig tiszta lett, verziócsökkenés és félkész verzióbump nélkül.

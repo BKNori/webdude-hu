@@ -2,6 +2,15 @@
 
 > **AI DIREKTÍVA:** Ez a fájl a rendszer "élő" memóriája. A 03-workflow.md 5. lépése alapján KÖTELEZŐ ezt a fájlt frissítened minden feladat befejezésekor, vagy mielőtt átadod a vezérlést a felhasználónak (Norbinak). Szigorúan tilos új feladatba kezdened, ha az "Aktuális Munkaterület Állapota" szekcióban hibák vagy félbehagyott fájlok vannak!
 
+## Aktuális állapot — 2026-10-02, [7.14.3] footer social ikonok láthatatlansága javítva
+
+- **Tünet:** a footer 4 social ikonja (YouTube / Instagram / Behance / Pinterest) **semmilyen útvonalon, semmilyen viewporton nem volt látható** — a kódban megvoltak és renderelődtek.
+- **Gyökér-ok (nem UTF-8, nem `/en` ág, nem reszponzív elrejtés):** a `SocialMediaIcons.tsx` a 4 ikont **raw HTML stringként** tárolja és `dangerouslySetInnerHTML`-lel injektálja. A `<svg>`-k **JSX-hez írt `className="w-5 h-5"`** attribútumot kaptak; a HTML parser ezt **kisbetűsíti** → `classname=`, ami sem a `class`, sem a Tailwind által nem ismert attribútum. Az SVG így **0 CSS osztályt** kapott, `width`/`height` attribútum nélkül → **0×0 px**, láthatatlan. Puppeteer: `getBoundingClientRect()` = 0×0 minden linkre, `visibility: visible` mellett.
+- **Javítás:** `className=` → `class=` mind a 4 nyers SVG stringben. Globális szűrés: a `src/`-ben nincs más hibás `dangerouslySetInnerHTML`-d SVG (a ~150 többi előfordulás JSON-LD script). **Mérő eredmény: 0×0 → 20×20 px**, HU `/` és EN `/en` útvonalon is 4/4.
+- **SSOT token:** `hover:text-[#00B5F1]` → `hover:text-brand-primary`, `ring-[#00B5F1]` → `ring-brand-primary`, `ring-offset-[#020617]` → `ring-offset-bg-base`; `inline-flex items-center justify-center` a wrapperre (hover hitbox).
+- **Hibás diagnózis, amit ez a kör cáfolt:** az `aria-label` **nem** volt UTF-8 duplán kódolt — a Windows terminal mojibait renderelt, a böngésző `aria-label="Instagram — megnyitás új ablakban"` helyes értéket mutat. Ez a megkülönböztetés csak élő DOM-inspekcióval volt lehetséges.
+- **Tanulság a jövőre:** **`dangerouslySetInnerHTML`-lel injektált SVG-ben mindig `class=`, sosem `className=`** — a JSX-transzformáció ilyenkor nem fut le. Ha egy nyers stringben SVG-t használunk, a `width`/`height` attribútumot is érdemes explicit megadni, hogy egy osztály-hiba ne tegye 0-méretűvé az elemet.
+- **QA:** `npx tsc --noEmit` = 0; `npm run lint -- --max-warnings 0` = 0. Dev-server + Puppeteer screenshot igazolta.
 ## Aktuális állapot — 2026-10-02, [7.14.1] adminisztratív tisztítás + backlog feltöltés
 
 - **Git hygiene:** a `package.json` módosítása kizárólag PowerShell-formázási zaj (4→2 szóköz indent)
