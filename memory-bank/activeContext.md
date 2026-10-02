@@ -2,6 +2,21 @@
 
 > **AI DIREKTÍVA:** Ez a fájl a rendszer "élő" memóriája. A 03-workflow.md 5. lépése alapján KÖTELEZŐ ezt a fájlt frissítened minden feladat befejezésekor, vagy mielőtt átadod a vezérlést a felhasználónak (Norbinak). Szigorúan tilos új feladatba kezdened, ha az "Aktuális Munkaterület Állapota" szekcióban hibák vagy félbehagyott fájlok vannak!
 
+## Aktuális állapot — 2026-10-02, [7.14.4] BTShop high-res hero lezárva, Nulla felnagyítás a repóban
+
+- **Lezárás:** a 7.13.1 óta listázott utolsó felnagyítási technikai adósság **lezárva**.
+  Ezzel a `works.ts` **mind a 9 projektjének** hero-ja valódi nagy felbontású forrásból
+  generálódik → **nulla ismert interpolált hero a repóban**.
+- **Csere:** `btshop-banner-2.webp` (1376×768, 62 KB) → `btshop-banner-highres.webp` (**6675×3758**).
+  Frissítve: `src/data/works.ts` (`image` + `bannerImage`, 21–22. sor), `BtshopCaseStudy.tsx` (hero `src`, 46. sor).
+- **Szándékosan változatlan:** `works.ts` `gallery[]` és a komponens galéria-blokkja (220. sor, `sizes="50vw"`).
+  A `btshop-banner-2.webp` a galériában megmarad → ott a szűk `[320, 640]` AVIF készlet renderelődik.
+- **Regenerálás:** `--clean` → `[OK] hero: 3 kép / 24 fájl`, `[CLEAN] Nincs elavult derivatívum`; összesen **78 kép / 434 fájl** (AVIF 13 088 KB + WebP 14 440 KB).
+- **Verifikáció (nem fájllista, hanem `sharp` metadata):** 1600w → **1600×901**, 2000w → **2000×1126 px** — valódi downscale a 6675 px-es masterből, nem interpoláció. AVIF 64–86 KB, WebP 90–122 KB.
+- **Manifestum:** `src/data/responsiveImages.ts` frissült az új kulcsra; a `btshop-banner-2` bejegyzés a galéria miatt **megmaradt**.
+- **QA (zero-error):** `npx tsc --noEmit` = **0**; `npm run lint -- --max-warnings 0` = **0**; `npm run build` = **0** (164 statikus oldal).
+- **SSOT:** a `_DOCS/01_CURRENT_TASKS.md` blokkoló szekciója „✅ Lezárva"-ra cserélve, a korábbi feltételezés-tartalom helyett a tényleges lezárással.
+- **Tanulság:** a `--clean` mód és a `sharp` metadata-visszaolvasás együtt adják a bizonyítható környezetet — fájl-lista alapján nem derülne ki, hogy egy 1600w/2000w variáns valódi-e vagy interpolált.
 ## Aktuális állapot — 2026-10-02, [7.14.3] footer social ikonok láthatatlansága javítva
 
 - **Tünet:** a footer 4 social ikonja (YouTube / Instagram / Behance / Pinterest) **semmilyen útvonalon, semmilyen viewporton nem volt látható** — a kódban megvoltak és renderelődtek.

@@ -43,7 +43,7 @@ export default function BtshopCaseStudy({ project }: BtshopCaseStudyProps) {
       >
         <motion.div style={{ y, opacity }} className="absolute inset-0">
           <ResponsiveImage
-             src="/assets/portfolio/btshop/btshop-banner-2.webp"
+             src="/assets/portfolio/btshop/btshop-banner-highres.webp"
              alt="BTShop.hu - Enterprise E-commerce & Kulcs-Soft Integráció"
              sizes="100vw"
              priority

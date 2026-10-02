@@ -49,14 +49,20 @@
 
 ---
 
-### ⛔ Blokkoló (asset hiány) — BTShop hero
+### ✅ Lezárva: BTShop hero high-res csere (7.14.4)
 
-- A 7.14.0 sprint után a BTShop hero (`btshop-banner-2.webp`, 1376×768) az **egyetlen**
-  megmaradt felnagyítási technikai adósság: a `hero` csoport 1600w/2000w variánsai
-  interpoláltak, így retina/asztali kijelzőn életlenek.
-- **A tervezett `public/assets/portfolio/btshop/btshop-banner-highres.webp` master fájl
-  a repóban NEM található** (sem git-tracked, sem untracked) → a generátor `--clean`
-  futtatása nem indítható, mert az új derivatívumok nem készülhetnek el.
-- **Teendő:** Norbi biztosítsa a ≥1920×960 felbontású BTShop bannér forrást,
-  majd `works.ts` (`image` + `bannerImage`) és `BtshopCaseStudy.tsx` (hero `src`)
-  frissítés + `node scripts/generate-responsive-images.js --clean` + QA kapuk.
+- A `btshop-banner-highres.webp` (6675×3758) master a helyére került.
+- `src/data/works.ts` (`image` + `bannerImage`) és `src/components/organisms/BtshopCaseStudy.tsx` (hero `src`, 46. sor) frissítve.
+- A `gallery[]` tömb és a komponens galéria-blokkja (220. sor) szándékosan változatlan.
+- `node scripts/generate-responsive-images.js --clean` → hero 3 kép / 24 fájl, `[CLEAN] nincs elavult`; összesen 78 kép / 434 derivatívum.
+- Verifikálva `sharp`-pel: 1600w → 1600×901, 2000w → 2000×1126 px (**valódi downscale**).
+- QA: `tsc`=0, `lint --max-warnings 0`=0, `build`=0 (164 oldal).
+- **Ezzel a repóban nulla ismert felnagyítás maradt** — a portfólió hero-k vizuális adósságai lezárva.
+
+### ⛔ Megszűnt blokkoló — BTShop hero (2026-10-02)
+
+- A korábbi blokkoló feltétel (**a highres master nem létezett a repóban**) **lezárult**:
+  Norbi biztosította a `btshop-banner-highres.webp` (6675×3758) forrást, és a 7.14.4
+  sprintben a csere + generálás + mindhárom QA kapu zöld lett.
+- A `btshop-banner-2.webp` (1376×768) **a galériában maradt** — ott szándékosan
+  a szűk `[320, 640]` AVIF készlet renderelődik, ez nem adósság.

@@ -1,5 +1,16 @@
 # Changelog
 
+## [7.14.4] — 2026-10-02 — BTSHOP HIGH-RES HERO CSERE — AZ UTOLSÓ FELNAGYÍTÁSI ADÓSSÁG LEZÁRVA (COMPLETE)
+
+- **Lezárás:** a 7.13.1 sprint nyitott pontjaként továbbra is listázott BTShop hero felnagyítás **lezárva**. Ezzel a `works.ts` **mind a 9 projektje** valódi (nem interpolált) nagy felbontású hero forrást használ — a repóban **nulla** ismert felnagyítás maradt.
+- **Tartalmi csere:** `btshop-banner-2.webp` (1376×768, 62 KB) → **`btshop-banner-highres.webp` (6675×3758)**. Frissítve 2 helyen: `src/data/works.ts` (`image` + `bannerImage`, a 21–22. sor), `src/components/organisms/BtshopCaseStudy.tsx` (hero `src` prop, 46. sor).
+- **Szándékosan változatlan:** a `works.ts` `gallery[]` tömbje (`btshop-banner-2.webp` + `bt-shop-weboldal-screen.webp`) és a komponens galéria-blokkja (220. sor, `sizes="50vw"`) — az eredeti koncepció szerint a galéria a szűk készlettel renderelődik továbbra is.
+- **Regenerálás:** `node scripts/generate-responsive-images.js --clean` → `[OK] hero: 3 kép / 24 fájl`, `[CLEAN] Nincs elavult derivatívum`. Összesen 78 kép / **434 generált fájl** (AVIF 13 088 KB + WebP 14 440 KB).
+- **Verifikáció (nem csak fájllista):** a `sharp` visszaolvasás igazolta, hogy a `btshop-banner-highres` 1600w és 2000w variánsa **valódi downscale**, nem interpoláció → `1600w → 1600×901`, `2000w → 2000×1126 px` (a 6675×3758-as masterből). AVIF 64–86 KB, WebP 90–122 KB. A `src/data/responsiveImages.ts` manifestum frissült az új kulcsra; a régi `btshop-banner-2` bejegyzés a galéria miatt **megmaradt** a manifestumban.
+- **Formátum-készlet:** a hero továbbra is AVIF + WebP (`FORMAT_PRESETS.both`) — a teljes viewportot fedő hero-nál a régi Safari-ok visszaesési hálója miatt a WebP nem hagyható el.
+- **QA (zero-error):** `npx tsc --noEmit` → **TSC_EXIT=0**; `npm run lint -- --max-warnings 0` → **LINT_EXIT=0**; `npm run build` → **BUILD_EXIT=0** (164 statikus oldal, minden route prerendered).
+
+---
 ## [7.14.3] — 2026-10-02 — FOOTER SOCIAL ICONOK LÁTHATATLANSÁGÁNAK JAVÍTÁSA (`className` → `class` A RAW SVG-BAN)
 
 - **Tünet:** a footer 4 social ikonja (YouTube / Instagram / Behance / Pinterest) **egyetlen útvonalon sem volt látható**, sem asztali, sem mobil nézetben, HU és EN oldalon egyaránt. A linkek kódban megvoltak, a `Footer.tsx` 7. sorban importálta, a 127. sorban `<SocialMediaIcons />`-t renderelte.

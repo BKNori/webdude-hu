@@ -18,8 +18,8 @@ export const works: Work[] = [
       "Google Merchant Center",
       "MPL / Foxpost API",
     ],
-    image: "/assets/portfolio/btshop/btshop-banner-2.webp",
-    bannerImage: "/assets/portfolio/btshop/btshop-banner-2.webp",
+    image: "/assets/portfolio/btshop/btshop-banner-highres.webp",
+    bannerImage: "/assets/portfolio/btshop/btshop-banner-highres.webp",
     gallery: [
       "/assets/portfolio/btshop/btshop-banner-2.webp",
       "/assets/portfolio/btshop/btshop-banner-2.webp",

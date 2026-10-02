@@ -29,10 +29,10 @@ export const responsiveImageManifest: Record<string, ResponsiveImageVariants> = 
     "avif": "/assets/banners/responsive/webdude%20banner%202000x1000-640w.avif 640w, /assets/banners/responsive/webdude%20banner%202000x1000-1024w.avif 1024w, /assets/banners/responsive/webdude%20banner%202000x1000-1600w.avif 1600w, /assets/banners/responsive/webdude%20banner%202000x1000-2000w.avif 2000w",
     "webp": "/assets/banners/responsive/webdude%20banner%202000x1000-640w.webp 640w, /assets/banners/responsive/webdude%20banner%202000x1000-1024w.webp 1024w, /assets/banners/responsive/webdude%20banner%202000x1000-1600w.webp 1600w, /assets/banners/responsive/webdude%20banner%202000x1000-2000w.webp 2000w"
   },
-  "/assets/portfolio/btshop/btshop-banner-2.webp": {
-    "fallback": "/assets/portfolio/btshop/btshop-banner-2.webp",
-    "avif": "/assets/responsive/portfolio/btshop/btshop-banner-2-320w.avif 320w, /assets/responsive/portfolio/btshop/btshop-banner-2-640w.avif 640w, /assets/responsive/portfolio/btshop/btshop-banner-2-960w.avif 960w, /assets/responsive/portfolio/btshop/btshop-banner-2-1600w.avif 1600w, /assets/responsive/portfolio/btshop/btshop-banner-2-2000w.avif 2000w",
-    "webp": "/assets/responsive/portfolio/btshop/btshop-banner-2-320w.webp 320w, /assets/responsive/portfolio/btshop/btshop-banner-2-640w.webp 640w, /assets/responsive/portfolio/btshop/btshop-banner-2-960w.webp 960w, /assets/responsive/portfolio/btshop/btshop-banner-2-1600w.webp 1600w, /assets/responsive/portfolio/btshop/btshop-banner-2-2000w.webp 2000w"
+  "/assets/portfolio/btshop/btshop-banner-highres.webp": {
+    "fallback": "/assets/portfolio/btshop/btshop-banner-highres.webp",
+    "avif": "/assets/responsive/portfolio/btshop/btshop-banner-highres-320w.avif 320w, /assets/responsive/portfolio/btshop/btshop-banner-highres-640w.avif 640w, /assets/responsive/portfolio/btshop/btshop-banner-highres-960w.avif 960w, /assets/responsive/portfolio/btshop/btshop-banner-highres-1600w.avif 1600w, /assets/responsive/portfolio/btshop/btshop-banner-highres-2000w.avif 2000w",
+    "webp": "/assets/responsive/portfolio/btshop/btshop-banner-highres-320w.webp 320w, /assets/responsive/portfolio/btshop/btshop-banner-highres-640w.webp 640w, /assets/responsive/portfolio/btshop/btshop-banner-highres-960w.webp 960w, /assets/responsive/portfolio/btshop/btshop-banner-highres-1600w.webp 1600w, /assets/responsive/portfolio/btshop/btshop-banner-highres-2000w.webp 2000w"
   },
   "/assets/portfolio/classi-co/szeged-terkovezes3-scopy.webp": {
     "fallback": "/assets/portfolio/classi-co/szeged-terkovezes3-scopy.webp",
@@ -93,6 +93,11 @@ export const responsiveImageManifest: Record<string, ResponsiveImageVariants> = 
     "fallback": "/assets/portfolio/go-box-kft/repulo-dobozok.webp",
     "avif": "/assets/responsive/portfolio/go-box-kft/repulo-dobozok-320w.avif 320w, /assets/responsive/portfolio/go-box-kft/repulo-dobozok-640w.avif 640w, /assets/responsive/portfolio/go-box-kft/repulo-dobozok-960w.avif 960w, /assets/responsive/portfolio/go-box-kft/repulo-dobozok-1600w.avif 1600w, /assets/responsive/portfolio/go-box-kft/repulo-dobozok-2000w.avif 2000w",
     "webp": "/assets/responsive/portfolio/go-box-kft/repulo-dobozok-320w.webp 320w, /assets/responsive/portfolio/go-box-kft/repulo-dobozok-640w.webp 640w, /assets/responsive/portfolio/go-box-kft/repulo-dobozok-960w.webp 960w, /assets/responsive/portfolio/go-box-kft/repulo-dobozok-1600w.webp 1600w, /assets/responsive/portfolio/go-box-kft/repulo-dobozok-2000w.webp 2000w"
+  },
+  "/assets/portfolio/btshop/btshop-banner-2.webp": {
+    "fallback": "/assets/portfolio/btshop/btshop-banner-2.webp",
+    "avif": "/assets/responsive/portfolio/btshop/btshop-banner-2-320w.avif 320w, /assets/responsive/portfolio/btshop/btshop-banner-2-640w.avif 640w, /assets/responsive/portfolio/btshop/btshop-banner-2-960w.avif 960w, /assets/responsive/portfolio/btshop/btshop-banner-2-1600w.avif 1600w, /assets/responsive/portfolio/btshop/btshop-banner-2-2000w.avif 2000w",
+    "webp": "/assets/responsive/portfolio/btshop/btshop-banner-2-320w.webp 320w, /assets/responsive/portfolio/btshop/btshop-banner-2-640w.webp 640w, /assets/responsive/portfolio/btshop/btshop-banner-2-960w.webp 960w, /assets/responsive/portfolio/btshop/btshop-banner-2-1600w.webp 1600w, /assets/responsive/portfolio/btshop/btshop-banner-2-2000w.webp 2000w"
   },
   "/assets/portfolio/btshop/bt-shop-weboldal-screen.webp": {
     "fallback": "/assets/portfolio/btshop/bt-shop-weboldal-screen.webp",
