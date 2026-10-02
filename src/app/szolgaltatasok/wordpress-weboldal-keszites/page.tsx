@@ -97,15 +97,50 @@ export default function WordPressWeboldalKeszitesPage() {
   const serviceJsonLd = {
     "@context": "https://schema.org",
     "@type": "Service",
+    "@id": "https://webdude.hu/szolgaltatasok/wordpress-weboldal-keszites#service",
     name: "WordPress weboldal készítés",
+    alternateName: [
+      "Egyedi WordPress fejlesztés",
+      "WordPress weboldal készítés",
+      "Egyedi WordPress sablon",
+      "WordPress biztonság",
+      "WordPress gyorsaság optimalizálás",
+    ],
     provider: {
-      "@type": "Person",
-      name: "Norbert - WebDude",
+      "@type": "Organization",
+      "@id": "https://webdude.hu/#organization",
+      name: "WebDude",
       url: "https://webdude.hu",
     },
-    description: "Egyedi WordPress weboldal készítés, felújítás és fejlesztés vállalkozásoknak. Gyors, biztonságos, könnyen kezelhető és SEO-barát megoldások.",
+    description:
+      "Egyedi WordPress weboldal készítés, felújítás és fejlesztés vállalkozásoknak. Gyors, biztonságos, könnyen kezelhető és SEO-barát megoldások.",
     serviceType: "Web Development",
-    areaServed: "HU",
+    category: "WordPress",
+    areaServed: { "@type": "Country", name: "Hungary" },
+    audience: {
+      "@type": "BusinessAudience",
+      name: "Vállalkozások, amelyek egyedi, gyors és biztonságos WordPress weboldalt igényelnek",
+    },
+    // Árazási modell: a WebDude kizárólag egyedi árajánlatot ad (nincs fix árkatalógus),
+    // ezért a kérésenkénti modellt nyíltan kommunikáljuk.
+    offers: {
+      "@type": "Offer",
+      priceCurrency: "HUF",
+      description: "Egyedi árajánlat kérése — a projekt terjedelmétől függően.",
+      availability: "https://schema.org/InStock",
+      url: "https://webdude.hu/kapcsolat?service=wordpress",
+    },
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "WordPress fejlesztési csomagok",
+      itemListElement: pricingTiers.map((tier) => ({
+        "@type": "Offer",
+        name: tier.name,
+        description: tier.description,
+        priceCurrency: "HUF",
+        url: `https://webdude.hu${tier.ctaLink}`,
+      })),
+    },
   };
 
   const faqJsonLd = {
@@ -143,11 +178,11 @@ export default function WordPressWeboldalKeszitesPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sky-950/80 border border-sky-500/30 text-sky-400 text-xs font-medium uppercase tracking-wider mb-6">
-              <Sparkles className="w-3.5 h-3.5 text-[#00B5F1]" />
+              <Sparkles className="w-3.5 h-3.5 text-brand-primary" />
               WordPress Szakértelem & Egyedi Fejlesztés
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight mb-6">
-              WordPress weboldal készítés, <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#a855f7]">kompromisszumok nélkül</span>
+              WordPress weboldal készítés, <span className="text-transparent bg-clip-text bg-linear-to-r from-brand-primary to-[#a855f7]">kompromisszumok nélkül</span>
             </h1>
             <p className="text-lg sm:text-xl text-slate-300 leading-relaxed mb-8">
               Ha könnyen szerkeszthető, mégis professzionális weboldalra van szükséged, a WordPress jó alap lehet. Egyedi megjelenést, átgondolt struktúrát, technikai SEO-beállításokat és olyan adminfelületet kapsz, amelyet később önállóan is tudsz használni.
@@ -155,7 +190,7 @@ export default function WordPressWeboldalKeszitesPage() {
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
                 href="/kapcsolat?service=wordpress"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-semibold text-white bg-linear-to-r from-cta-from to-[#5B21B6] hover:from-[#0369a1] hover:to-[#6d28d9] shadow-lg shadow-sky-950/50 transition-all duration-300 group"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-semibold text-white bg-linear-to-r from-cta-from to-brand-secondary hover:from-[#0369a1] hover:to-[#6d28d9] shadow-lg shadow-sky-950/50 transition-all duration-300 group"
               >
                 Egyedi árajánlat kérése
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -185,9 +220,9 @@ export default function WordPressWeboldalKeszitesPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Bento Card 1 */}
-            <div className="p-8 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-[#00B5F1]/50 transition-colors duration-300 flex flex-col justify-between">
+            <div className="p-8 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-brand-primary/50 transition-colors duration-300 flex flex-col justify-between">
               <div>
-                <div className="w-12 h-12 rounded-xl bg-sky-950/80 border border-sky-500/30 flex items-center justify-center text-[#00B5F1] mb-6">
+                <div className="w-12 h-12 rounded-xl bg-sky-950/80 border border-sky-500/30 flex items-center justify-center text-brand-primary mb-6">
                   <Gauge className="w-6 h-6" />
                 </div>
                 <h3 className="text-xl font-bold text-white mb-3">Maximális Betöltési Sebesség</h3>
@@ -201,7 +236,7 @@ export default function WordPressWeboldalKeszitesPage() {
             </div>
 
             {/* Bento Card 2 */}
-            <div className="p-8 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-[#00B5F1]/50 transition-colors duration-300 flex flex-col justify-between">
+            <div className="p-8 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-brand-primary/50 transition-colors duration-300 flex flex-col justify-between">
               <div>
                 <div className="w-12 h-12 rounded-xl bg-purple-950/80 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-6">
                   <Settings2 className="w-6 h-6" />
@@ -217,9 +252,9 @@ export default function WordPressWeboldalKeszitesPage() {
             </div>
 
             {/* Bento Card 3 */}
-            <div className="p-8 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-[#00B5F1]/50 transition-colors duration-300 flex flex-col justify-between">
+            <div className="p-8 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-brand-primary/50 transition-colors duration-300 flex flex-col justify-between">
               <div>
-                <div className="w-12 h-12 rounded-xl bg-sky-950/80 border border-sky-500/30 flex items-center justify-center text-[#00B5F1] mb-6">
+                <div className="w-12 h-12 rounded-xl bg-sky-950/80 border border-sky-500/30 flex items-center justify-center text-brand-primary mb-6">
                   <ShieldCheck className="w-6 h-6" />
                 </div>
                 <h3 className="text-xl font-bold text-white mb-3">Védelmi Szint & Stabilitás</h3>
@@ -233,9 +268,9 @@ export default function WordPressWeboldalKeszitesPage() {
             </div>
 
             {/* Bento Card 4 (Span 2) */}
-            <div className="md:col-span-2 p-8 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-[#00B5F1]/50 transition-colors duration-300">
+            <div className="md:col-span-2 p-8 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-brand-primary/50 transition-colors duration-300">
               <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-4">
-                <div className="w-12 h-12 rounded-xl bg-sky-950/80 border border-sky-500/30 flex items-center justify-center text-[#00B5F1]">
+                <div className="w-12 h-12 rounded-xl bg-sky-950/80 border border-sky-500/30 flex items-center justify-center text-brand-primary">
                   <Search className="w-6 h-6" />
                 </div>
                 <div>
@@ -263,7 +298,7 @@ export default function WordPressWeboldalKeszitesPage() {
             </div>
 
             {/* Bento Card 5 */}
-            <div className="p-8 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-[#00B5F1]/50 transition-colors duration-300 flex flex-col justify-between">
+            <div className="p-8 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-brand-primary/50 transition-colors duration-300 flex flex-col justify-between">
               <div>
                 <div className="w-12 h-12 rounded-xl bg-purple-950/80 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-6">
                   <Code2 className="w-6 h-6" />
@@ -302,7 +337,7 @@ export default function WordPressWeboldalKeszitesPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900 border border-slate-800 text-slate-400 text-xs font-medium uppercase tracking-wider mb-4">
-              <HelpCircle className="w-3.5 h-3.5 text-[#00B5F1]" />
+              <HelpCircle className="w-3.5 h-3.5 text-brand-primary" />
               Gyakori kérdések
             </div>
             <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
@@ -320,7 +355,7 @@ export default function WordPressWeboldalKeszitesPage() {
                 className="p-6 rounded-xl bg-slate-900/50 border border-slate-800 hover:border-slate-700 transition-colors"
               >
                 <h3 className="text-lg font-bold text-white mb-2 flex items-start gap-3">
-                  <span className="text-[#00B5F1] font-mono text-sm mt-1">0{index + 1}.</span>
+                  <span className="text-brand-primary font-mono text-sm mt-1">0{index + 1}.</span>
                   {faq.q}
                 </h3>
                 <p className="text-slate-400 text-sm leading-relaxed pl-8">
@@ -343,7 +378,7 @@ export default function WordPressWeboldalKeszitesPage() {
           </p>
           <Link
             href="/kapcsolat?service=wordpress"
-            className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-semibold text-white bg-linear-to-r from-cta-from to-[#5B21B6] hover:from-[#0369a1] hover:to-[#6d28d9] shadow-xl shadow-sky-950/60 transition-all duration-300 group"
+            className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-semibold text-white bg-linear-to-r from-cta-from to-brand-secondary hover:from-[#0369a1] hover:to-[#6d28d9] shadow-xl shadow-sky-950/60 transition-all duration-300 group"
           >
             Egyedi árajánlat kérése
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />

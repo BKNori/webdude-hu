@@ -37,6 +37,7 @@ export default function WordPressDevPage() {
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
+    "@id": "https://webdude.hu/szolgaltatasok/wordpress-fejlesztes#service",
     name: "WordPress fejlesztés és hibajavítás",
     description:
       "WordPress hibajavítás, egyedi funkciók, sebességoptimalizálás, biztonság és meglévő weboldalak fejlesztése.",
@@ -46,7 +47,24 @@ export default function WordPressDevPage() {
       name: "WebDude",
       url: "https://webdude.hu",
     },
-    areaServed: { "@type": "Country", name: "Hungary" },
+    category: "WordPress",
+    alternateName: [
+      "WordPress fejlesztés",
+      "egyedi WordPress sablon",
+      "WordPress plugin fejlesztés",
+      "WordPress optimalizálás",
+    ],
+    audience: {
+      "@type": "BusinessAudience",
+      name: "Vállalkozások, amelyek egyedi funkciókkal rendelkező WordPress rendszert igényelnek",
+    },
+    // A WebDude kizárólag egyedi árojánlatot ad — nincs fix árkatalógus.
+    offers: {
+      "@type": "Offer",
+      priceCurrency: "HUF",
+      description: "Egyedi árajánlat kérése — a projekt terjedelmétől függően.",
+      availability: "https://schema.org/InStock",
+    },
   };
 
   const faqs = [
@@ -109,7 +127,7 @@ export default function WordPressDevPage() {
 
       <div className="bg-bg-base text-text-primary relative overflow-hidden">
         {/* Kék-Lila v7.0 háttér */}
-        <div className="absolute inset-0 bg-linear-to-b from-[#00B5F1]/5 via-transparent to-[#5B21B6]/5" />
+        <div className="absolute inset-0 bg-linear-to-b from-brand-primary/5 via-transparent to-brand-secondary/5" />
         
         <div className="relative z-10">
           <Hero
@@ -117,7 +135,7 @@ export default function WordPressDevPage() {
             title={
               <>
                 WordPress{" "}
-                <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6] italic">
+                <span className="text-transparent bg-clip-text bg-linear-to-r from-brand-primary to-brand-secondary italic">
                   fejlesztés
                 </span>{" "}
                 és hibajavítás
@@ -145,22 +163,22 @@ export default function WordPressDevPage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-2xl p-8 hover:border-[#00B5F1]/30 transition-all duration-300">
-                <Cog className="w-10 h-10 text-[#00B5F1] mb-6" />
+              <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-2xl p-8 hover:border-brand-primary/30 transition-all duration-300">
+                <Cog className="w-10 h-10 text-brand-primary mb-6" />
                 <h3 className="text-xl font-bold text-white mb-3">Egyedi Funkciók</h3>
                 <p className="text-slate-400 text-sm leading-relaxed">
                   Ha a dobozos megoldások nem elegendőek, egyedi pluginokat, WooCommerce kiegészítőket és harmadik féltől származó API integrációkat fejlesztek az oldaladhoz.
                 </p>
               </div>
-              <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-2xl p-8 hover:border-[#00B5F1]/30 transition-all duration-300">
-                <Zap className="w-10 h-10 text-[#00B5F1] mb-6" />
+              <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-2xl p-8 hover:border-brand-primary/30 transition-all duration-300">
+                <Zap className="w-10 h-10 text-brand-primary mb-6" />
                 <h3 className="text-xl font-bold text-white mb-3">Sebesség (LCP)</h3>
                 <p className="text-slate-400 text-sm leading-relaxed">
                   Tudományos megközelítéssel gyorsítom a WordPress-t. Képek optimalizálása, adatbázis tisztítás, fejlett caching és felesleges JS/CSS blokkolása a 90+ Lighthouse pontszámért.
                 </p>
               </div>
-              <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-2xl p-8 hover:border-[#00B5F1]/30 transition-all duration-300">
-                <ShieldCheck className="w-10 h-10 text-[#00B5F1] mb-6" />
+              <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-2xl p-8 hover:border-brand-primary/30 transition-all duration-300">
+                <ShieldCheck className="w-10 h-10 text-brand-primary mb-6" />
                 <h3 className="text-xl font-bold text-white mb-3">Szigorú Biztonság</h3>
                 <p className="text-slate-400 text-sm leading-relaxed">
                   Malware irtás, sérülékenységvizsgálat, erősített jelszó-szabályzat, belépési limitálások és biztonsági naplózás. Megvédem az oldaladat a bruteforce és injektálásos támadásoktól.
@@ -180,8 +198,8 @@ export default function WordPressDevPage() {
             
             <div className="space-y-6">
               {faqs.map((faq, index) => (
-                <div key={index} className="bg-slate-900/80 border border-white/5 rounded-2xl p-6 hover:border-[#00B5F1]/20 transition-colors">
-                  <h3 className="text-lg font-semibold text-[#00B5F1] mb-3">
+                <div key={index} className="bg-slate-900/80 border border-white/5 rounded-2xl p-6 hover:border-brand-primary/20 transition-colors">
+                  <h3 className="text-lg font-semibold text-brand-primary mb-3">
                     {faq.question}
                   </h3>
                   <p className="text-slate-400 text-sm leading-relaxed">
@@ -197,14 +215,14 @@ export default function WordPressDevPage() {
         <section className="py-32 text-center relative z-10">
           <div className="max-w-2xl mx-auto px-6">
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-              Rendbe rakjuk a <span className="text-[#00B5F1] italic">WordPress</span> oldalad?
+              Rendbe rakjuk a <span className="text-brand-primary italic">WordPress</span> oldalad?
             </h2>
             <p className="text-slate-400 mb-10 text-lg">
               Kérj ingyenes projektfelmérést, és 24 órán belül megvizsgálom a weboldalad állapotát.
             </p>
             <Link
               href="/kapcsolat"
-              className="inline-flex items-center gap-3 px-8 py-4 rounded-full font-bold text-slate-950 bg-linear-to-r from-[#00B5F1] to-[#5B21B6] hover:shadow-[0_8px_32px_rgba(0,181,241,0.35)] transition-all duration-300"
+              className="inline-flex items-center gap-3 px-8 py-4 rounded-full font-bold text-slate-950 bg-linear-to-r from-brand-primary to-brand-secondary hover:shadow-[0_8px_32px_rgba(0,181,241,0.35)] transition-all duration-300"
             >
               Kérj felmérést <ArrowRight className="w-5 h-5" />
             </Link>

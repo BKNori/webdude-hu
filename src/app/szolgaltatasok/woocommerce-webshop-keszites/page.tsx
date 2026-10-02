@@ -57,6 +57,7 @@ export default async function WooCommercePage() {
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
+    "@id": "https://webdude.hu/szolgaltatasok/woocommerce-webshop-keszites#service",
     name: "WooCommerce Webshop Készítés és Fejlesztés",
     description:
       "16 év tapasztalattal WooCommerce webshop készítés, fejlesztés és optimalizálás. Konverzió-fókuszú e-kereskedelmi rendszerek, fizetési integrációk és teljes körű támogatás.",
@@ -65,7 +66,37 @@ export default async function WooCommercePage() {
       name: "WebDude",
       url: "https://webdude.hu",
     },
-    areaServed: { "@type": "Country", name: "Hungary" },
+    category: "E-commerce",
+    alternateName: [
+      "WooCommerce webshop készítés",
+      "WooCommerce fejlesztés",
+      "egyedi webshop",
+      "WooCommerce optimalizálás",
+    ],
+    audience: {
+      "@type": "BusinessAudience",
+      name: "Kis- és középvállalkozások, amelyeknek egyedi online értékesítő rendszerre van szükségük",
+    },
+    // A WebDude kizárólag egyedi árojánlatot ad — nincs fix árkatalógus.
+    offers: {
+      "@type": "Offer",
+      priceCurrency: "HUF",
+      description: "Egyedi árajánlat kérése — a projekt terjedelmétől függően.",
+      availability: "https://schema.org/InStock",
+    },
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: FAQ.map((faq) => ({
+      "@type": "Question",
+      name: faq.q,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.a,
+      },
+    })),
   };
 
   return (
@@ -82,9 +113,15 @@ export default async function WooCommercePage() {
           __html: JSON.stringify(serviceSchema).replace(/</g, "\\u003c"),
         }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqSchema).replace(/</g, "\\u003c"),
+        }}
+      />
       <div className="min-h-screen bg-transparent text-text-primary relative overflow-hidden">
         {/* Background gradient */}
-        <div className="absolute inset-0 bg-linear-to-b from-[#00B5F1]/5 via-transparent to-[#00B5F1]/5" />
+        <div className="absolute inset-0 bg-linear-to-b from-brand-primary/5 via-transparent to-brand-primary/5" />
         <div className="relative z-10">
           <Hero
             label="Szolgáltatás"
@@ -101,7 +138,7 @@ export default async function WooCommercePage() {
           <section className="relative py-12 bg-bg-base border-y border-white/5">
             <div className="max-w-4xl mx-auto px-6 text-center">
               <p className="text-base md:text-lg text-slate-300 leading-relaxed">
-                <span className="text-[#00B5F1] font-semibold">
+                <span className="text-brand-primary font-semibold">
                   WebDude WooCommerce webshop:
                 </span>{" "}
                 16 év tapasztalattal WooCommerce webshop készítés, fejlesztés és
@@ -133,8 +170,8 @@ export default async function WooCommercePage() {
               </div>
 
               <div className="rounded-2xl overflow-hidden border border-slate-700/60">
-                <div className="bg-linear-to-br from-[#00B5F1]/20 to-[#00B5F1]/5 p-12 flex items-center justify-center min-h-100">
-                  <p className="text-2xl text-[#00B5F1] font-semibold text-center">
+                <div className="bg-linear-to-br from-brand-primary/20 to-brand-primary/5 p-12 flex items-center justify-center min-h-100">
+                  <p className="text-2xl text-brand-primary font-semibold text-center">
                     WooCommerce Webshop Archetktúra
                   </p>
                 </div>
@@ -143,14 +180,14 @@ export default async function WooCommercePage() {
 
             {/* Services Section */}
             <section className="mt-24 max-w-6xl mx-auto relative overflow-hidden">
-              <div className="absolute inset-0 bg-linear-to-b from-transparent via-[#00B5F1]/5 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-b from-transparent via-brand-primary/5 to-transparent" />
               <div className="relative z-10">
                 <h2 className="text-4xl font-bold text-text-primary mb-8">
                   Szolgáltatások
                 </h2>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                   <div className="bg-transparent border border-slate-700/60 p-6 rounded-lg">
-                    <h3 className="text-xl font-semibold text-[#00B5F1] mb-3">
+                    <h3 className="text-xl font-semibold text-brand-primary mb-3">
                       Webshop Fejlesztés
                     </h3>
                     <p className="text-slate-400">
@@ -159,7 +196,7 @@ export default async function WooCommercePage() {
                     </p>
                   </div>
                   <div className="bg-transparent border border-slate-700/60 p-6 rounded-lg">
-                    <h3 className="text-xl font-semibold text-[#00B5F1] mb-3">
+                    <h3 className="text-xl font-semibold text-brand-primary mb-3">
                       Fizetési Integráció
                     </h3>
                     <p className="text-slate-400">
@@ -168,7 +205,7 @@ export default async function WooCommercePage() {
                     </p>
                   </div>
                   <div className="bg-transparent border border-slate-700/60 p-6 rounded-lg">
-                    <h3 className="text-xl font-semibold text-[#00B5F1] mb-3">
+                    <h3 className="text-xl font-semibold text-brand-primary mb-3">
                       Performance Optimalizálás
                     </h3>
                     <p className="text-slate-400">
@@ -182,7 +219,7 @@ export default async function WooCommercePage() {
 
             {/* Pricing Section */}
             <section className="mt-24 max-w-6xl mx-auto relative overflow-hidden">
-              <div className="absolute inset-0 bg-linear-to-b from-transparent via-[#00B5F1]/5 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-b from-transparent via-brand-primary/5 to-transparent" />
               <div className="relative z-10">
                 <PricingTable
                   tiers={[
@@ -246,14 +283,14 @@ export default async function WooCommercePage() {
 
             {/* Benefits Section */}
             <section className="mt-24 max-w-4xl mx-auto relative overflow-hidden">
-              <div className="absolute inset-0 bg-linear-to-b from-transparent via-[#00B5F1]/5 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-b from-transparent via-brand-primary/5 to-transparent" />
               <div className="relative z-10">
                 <h2 className="text-4xl font-bold text-text-primary mb-8">
                   Miért WooCommerce?
                 </h2>
                 <div className="space-y-4">
                   <div className="flex items-start gap-4">
-                    <div className="shrink-0 w-8 h-8 bg-[#00B5F1] rounded-full flex items-center justify-center text-bg-base font-bold">
+                    <div className="shrink-0 w-8 h-8 bg-brand-primary rounded-full flex items-center justify-center text-bg-base font-bold">
                       ✓
                     </div>
                     <div>
@@ -267,7 +304,7 @@ export default async function WooCommercePage() {
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <div className="shrink-0 w-8 h-8 bg-[#00B5F1] rounded-full flex items-center justify-center text-bg-base font-bold">
+                    <div className="shrink-0 w-8 h-8 bg-brand-primary rounded-full flex items-center justify-center text-bg-base font-bold">
                       ✓
                     </div>
                     <div>
@@ -281,7 +318,7 @@ export default async function WooCommercePage() {
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <div className="shrink-0 w-8 h-8 bg-[#00B5F1] rounded-full flex items-center justify-center text-bg-base font-bold">
+                    <div className="shrink-0 w-8 h-8 bg-brand-primary rounded-full flex items-center justify-center text-bg-base font-bold">
                       ✓
                     </div>
                     <div>
@@ -295,7 +332,7 @@ export default async function WooCommercePage() {
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <div className="shrink-0 w-8 h-8 bg-[#00B5F1] rounded-full flex items-center justify-center text-bg-base font-bold">
+                    <div className="shrink-0 w-8 h-8 bg-brand-primary rounded-full flex items-center justify-center text-bg-base font-bold">
                       ✓
                     </div>
                     <div>
@@ -309,7 +346,7 @@ export default async function WooCommercePage() {
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <div className="shrink-0 w-8 h-8 bg-[#00B5F1] rounded-full flex items-center justify-center text-bg-base font-bold">
+                    <div className="shrink-0 w-8 h-8 bg-brand-primary rounded-full flex items-center justify-center text-bg-base font-bold">
                       ✓
                     </div>
                     <div>
@@ -328,14 +365,14 @@ export default async function WooCommercePage() {
 
             {/* Features Section */}
             <section className="mt-24 max-w-4xl mx-auto relative overflow-hidden">
-              <div className="absolute inset-0 bg-linear-to-b from-transparent via-[#00B5F1]/5 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-b from-transparent via-brand-primary/5 to-transparent" />
               <div className="relative z-10">
                 <h2 className="text-4xl font-bold text-text-primary mb-8">
                   Főbb Funkciók
                 </h2>
                 <div className="space-y-6">
                   <div className="bg-transparent border border-slate-700/60 p-6 rounded-lg">
-                    <h3 className="text-lg font-semibold text-[#00B5F1] mb-2">
+                    <h3 className="text-lg font-semibold text-brand-primary mb-2">
                       Termékkezelés és Változatok
                     </h3>
                     <p className="text-slate-400">
@@ -344,7 +381,7 @@ export default async function WooCommercePage() {
                     </p>
                   </div>
                   <div className="bg-transparent border border-slate-700/60 p-6 rounded-lg">
-                    <h3 className="text-lg font-semibold text-[#00B5F1] mb-2">
+                    <h3 className="text-lg font-semibold text-brand-primary mb-2">
                       Kosár és Checkout Rendszer
                     </h3>
                     <p className="text-slate-400">
@@ -353,7 +390,7 @@ export default async function WooCommercePage() {
                     </p>
                   </div>
                   <div className="bg-transparent border border-slate-700/60 p-6 rounded-lg">
-                    <h3 className="text-lg font-semibold text-[#00B5F1] mb-2">
+                    <h3 className="text-lg font-semibold text-brand-primary mb-2">
                       Szállítási és Fizetési Konfiguráció
                     </h3>
                     <p className="text-slate-400">
@@ -362,7 +399,7 @@ export default async function WooCommercePage() {
                     </p>
                   </div>
                   <div className="bg-transparent border border-slate-700/60 p-6 rounded-lg">
-                    <h3 className="text-lg font-semibold text-[#00B5F1] mb-2">
+                    <h3 className="text-lg font-semibold text-brand-primary mb-2">
                       Marketing és Akciók
                     </h3>
                     <p className="text-slate-400">
@@ -371,7 +408,7 @@ export default async function WooCommercePage() {
                     </p>
                   </div>
                   <div className="bg-transparent border border-slate-700/60 p-6 rounded-lg">
-                    <h3 className="text-lg font-semibold text-[#00B5F1] mb-2">
+                    <h3 className="text-lg font-semibold text-brand-primary mb-2">
                       Analitika és RIporting
                     </h3>
                     <p className="text-slate-400">
@@ -385,14 +422,14 @@ export default async function WooCommercePage() {
 
             {/* Process Section */}
             <section className="mt-24 max-w-4xl mx-auto relative overflow-hidden">
-              <div className="absolute inset-0 bg-linear-to-b from-transparent via-[#00B5F1]/5 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-b from-transparent via-brand-primary/5 to-transparent" />
               <div className="relative z-10">
                 <h2 className="text-4xl font-bold text-text-primary mb-8">
                   Működési folyamat
                 </h2>
                 <div className="space-y-6">
                   <div className="bg-transparent border border-slate-700/60 p-6 rounded-lg">
-                    <h3 className="text-lg font-semibold text-[#00B5F1] mb-2">
+                    <h3 className="text-lg font-semibold text-brand-primary mb-2">
                       1. Konzultáció és Stratégia
                     </h3>
                     <p className="text-slate-400">
@@ -401,7 +438,7 @@ export default async function WooCommercePage() {
                     </p>
                   </div>
                   <div className="bg-transparent border border-slate-700/60 p-6 rounded-lg">
-                    <h3 className="text-lg font-semibold text-[#00B5F1] mb-2">
+                    <h3 className="text-lg font-semibold text-brand-primary mb-2">
                       2. Design és Fejlesztés
                     </h3>
                     <p className="text-slate-400">
@@ -410,7 +447,7 @@ export default async function WooCommercePage() {
                     </p>
                   </div>
                   <div className="bg-transparent border border-slate-700/60 p-6 rounded-lg">
-                    <h3 className="text-lg font-semibold text-[#00B5F1] mb-2">
+                    <h3 className="text-lg font-semibold text-brand-primary mb-2">
                       3. Integráció és Tesztelés
                     </h3>
                     <p className="text-slate-400">
@@ -419,7 +456,7 @@ export default async function WooCommercePage() {
                     </p>
                   </div>
                   <div className="bg-transparent border border-slate-700/60 p-6 rounded-lg">
-                    <h3 className="text-lg font-semibold text-[#00B5F1] mb-2">
+                    <h3 className="text-lg font-semibold text-brand-primary mb-2">
                       4. Élesítés és Támogatás
                     </h3>
                     <p className="text-slate-400">
@@ -432,7 +469,7 @@ export default async function WooCommercePage() {
 
             {/* FAQ Section */}
             <section className="mt-24 max-w-4xl mx-auto px-6 relative overflow-hidden">
-              <div className="absolute inset-0 bg-linear-to-b from-transparent via-[#00B5F1]/5 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-b from-transparent via-brand-primary/5 to-transparent" />
               <div className="relative z-10">
                 <h2 className="text-4xl font-bold text-text-primary mb-8">
                   Gyakori kérdések
@@ -443,7 +480,7 @@ export default async function WooCommercePage() {
                       key={index}
                       className="bg-transparent border border-slate-700/60 p-6 rounded-lg group"
                     >
-                      <summary className="font-semibold text-text-primary cursor-pointer group-hover:text-[#00B5F1] transition-colors">
+                      <summary className="font-semibold text-text-primary cursor-pointer group-hover:text-brand-primary transition-colors">
                         {f.q}
                       </summary>
                       <p className="mt-3 text-slate-400">{f.a}</p>
@@ -454,7 +491,7 @@ export default async function WooCommercePage() {
             </section>
 
             {/* CTA Section */}
-            <section className="mt-24 bg-linear-to-r from-[#00B5F1]/10 to-[#00B5F1]/5 border border-[#00B5F1]/30 p-12 rounded-3xl text-center max-w-4xl mx-auto relative overflow-hidden">
+            <section className="mt-24 bg-linear-to-r from-brand-primary/10 to-brand-primary/5 border border-brand-primary/30 p-12 rounded-3xl text-center max-w-4xl mx-auto relative overflow-hidden">
               <div className="relative z-10">
                 <h2 className="text-5xl font-bold text-text-primary mb-4">
                   Kész elindítani az online értékesítést?
@@ -475,7 +512,7 @@ export default async function WooCommercePage() {
 
             {/* Related Services */}
             <section className="mt-24 max-w-4xl mx-auto relative overflow-hidden">
-              <div className="absolute inset-0 bg-linear-to-b from-transparent via-[#00B5F1]/5 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-b from-transparent via-brand-primary/5 to-transparent" />
               <div className="relative z-10">
                 <h2 className="text-3xl font-bold text-text-primary mb-6">
                   Kapcsolódó szolgáltatások

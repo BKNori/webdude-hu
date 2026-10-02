@@ -1,5 +1,21 @@
 # Changelog
 
+## [7.17.0] — 2026-10-02 — WORDPRESS / WOOCOMMERCE ALOLDALAK SEO+AEO ELŐKÉSZÍTÉSE
+
+- **Audit (23 szolgáltatásoldal):** mindegyik Server Component, mindegyiknek volt `metadata` és `Service` sémája — a séma azonban **vékony volt**: se `@id`, se kulcsszavak, se árazási modell. A WordPress-fókuszú 5 aloldal (`wordpress-weboldal-keszites`, `wordpress-fejlesztes`, `wordpress-biztonsag`, `woocommerce-webshop-keszites`, `wordpress-webshop-keszites`) célzottan bővült.
+- **AEO-kulcs (`Service` séma bővítés, mind az 5 oldalon):**
+  - **`@id`** (`https://webdude.hu/szolgaltatasok/<slug>#service`) → a szolgáltatás most hivatkozható entitás; a `provider` `Organization`-je ugyanarra a `#organization` `@id`-re mutat, így a két séma összekapcsolódik.
+  - **`alternateName`** → 4–5 célzott kulcsszó szolgáltatásonként (pl. „Egyedi WordPress sablon", „WordPress biztonság", „WordPress gyorsítás", „malware removal", „WooCommerce optimalizálás"). Az LLM-keresők az `alternateName`-re matchelnek, nem a marketing-címre.
+  - **`offers`** → a WebDude **egyedi árajánlat** modellje strukturált formában: `Offer` + `priceCurrency: HUF` + „Egyedi árojánlat kérése" leírás. **Szándékosan nincs `price`** — a fix árkatalógus a 04-design CRO-szabálya tiltja.
+  - **`audience`** (`BusinessAudience`) + **`category`**.
+  - A `wordpress-weboldal-keszites`-en kiegészült egy **`hasOfferCatalog`** is, ami a 3 `pricingTiers` csomagot `Offer`-ként listázza (a CTA-URL-jeikkel) — a Google anélkül is felismeri, hogy a csomagok külön ajánlatok.
+- **A `FAQPage` séma pótlása (2 oldalon):** a `woocommerce-webshop-keszites` oldalon létezett egy `FAQ` const tömb, de **soha nem serializálták sémába** → most már van `faqSchema` + `<script type="application/ld+json">` blokk. A `wordpress-webshop-keszites` oldalon pedig **semmilyen GYIK nem volt** (0 heading, 212 soros vázlós oldal) → 5 kérdés-válasz pár + `FAQPage` séma + **látható, natív `<details>/<summary>` akkordeon** került rá (brand hover-glow, `group-open:rotate-45` a plusz ikonra, `aria-labelledby` a H2-n).
+- **AEO-barát kérdés-formátum ellenőrizve:** a 4 meglévő GYIK **mind direkt, LLM-hivatkozható** volt („Miért lassú a WordPress weboldalam, és mit tehetünk ellene?", „Feltörték a weboldalamat. Tudsz segíteni?", „Mennyibe kerül egy WooCommerce webshop?") → **nem kellett átírni**, csak a 2 hiányzó oldalt pótoltam ugyanezzel a mintával. A látható GYIK-szövegek **100%-ig emberi, kód- és regexmentesek**.
+- **SSOT token sweep:** az 5 oldalon maradt `text-[#00B5F1]` / `bg-[#00B5F1]` osztályok → `brand-primary`.
+- **XSS-védelem:** minden új sémablokk a meglévő `.replace(/</g, "\\u003c")` mintát követi, RSC-szinten, `"use client"` nélkül.
+- **QA + gépi validáció:** `npx tsc --noEmit` → **0**; `npm run lint -- --max-warnings 0` → **0**; `npm run build` → **0**. A **prerenderelt HTML-t parszoltam**: mind az 5 oldalon `Service: 1/1` (teljes: `@id` + `alternateName` + `offers` + `audience`), `FAQPage: 1`, **0 JSON parse-hiba**. A `wordpress-webshop-keszites` kimenete 5 `<details>` elemet tartalmaz (a látható GYIK ténylegesen renderelődik).
+
+---
 ## [7.16.1] — 2026-10-02 — TAILWIND V4 ELAVULT OSZTÁLYOK JAVÍTÁSA (IDE DIAGNOSZTIKA ALAPJÁN)
 
 - **A VS Code Tailwind/TS szerver figyelmeztetéseinek lezárása.** A 7.16.0 token sweep után a felszínre került három, a Tailwind v4-ben elavultnak jelzett utility-minta:
