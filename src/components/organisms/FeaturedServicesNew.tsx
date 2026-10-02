@@ -42,7 +42,7 @@ const PRIMARY_SERVICE_DEFAULTS = [
     href: "/szolgaltatasok/weboldal-keszites",
     color: "#00B5F1",
     bgGlow: "rgba(0, 181, 241,0.08)",
-    accent: "from-[#00B5F1]/15 to-transparent",
+    accent: "from-brand-primary/15 to-transparent",
     large: true, // 2-oszlopos
     features: [
       { icon: Zap, text: "LCP < 2.5s garantálva" },
@@ -63,7 +63,7 @@ const PRIMARY_SERVICE_DEFAULTS = [
     href: "/szolgaltatasok/wordpress-fejlesztes",
     color: "#00B5F1",
     bgGlow: "rgba(0, 181, 241,0.08)",
-    accent: "from-[#00B5F1]/15 to-transparent",
+    accent: "from-brand-primary/15 to-transparent",
     large: false,
     features: [
       { icon: RefreshCw, text: "Könnyű szerkeszthetőség" },
@@ -101,7 +101,7 @@ const PRIMARY_SERVICE_DEFAULTS = [
     href: "/munkak",
     color: "#00B5F1",
     bgGlow: "rgba(0, 181, 241,0.08)",
-    accent: "from-[#00B5F1]/15 to-transparent",
+    accent: "from-brand-primary/15 to-transparent",
     large: false,
     features: [
       { icon: Brush, text: "26 év grafikai rutin" },
@@ -162,7 +162,7 @@ export default function FeaturedServicesNew({
   return (
     <section
       id="services"
-      className="relative py-24 md:py-32 bg-bg-base overflow-hidden"
+      className="relative py-24 md:py-32 bg-bg-surface/30 overflow-hidden"
       aria-label={content.ariaLabel}
     >
       {/* Háttér dot pattern */}
@@ -184,22 +184,22 @@ export default function FeaturedServicesNew({
           transition={{ type: "spring", stiffness: 80, damping: 20 }}
           className="mb-12 md:mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#00B5F1]/10 border border-[#00B5F1]/20 mb-6">
-            <span className="text-[#00B5F1] text-xs font-bold uppercase tracking-widest">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-primary/10 border border-brand-primary/20 mb-6">
+            <span className="text-brand-primary text-xs font-bold uppercase tracking-widest">
               {content.eyebrow}
             </span>
           </div>
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
             <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-white leading-tight max-w-2xl">
               {content.title.prefix}{" "}
-              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6]">
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-brand-primary to-brand-secondary">
                 {content.title.highlight}
               </span>
               {content.title.suffix}
             </h2>
             <Link
               href={content.allServicesHref}
-              className="inline-flex items-center gap-2 text-slate-400 hover:text-[#00B5F1] text-sm font-semibold transition-colors duration-200 group focus:outline-none focus:ring-2 focus:ring-[#00B5F1] rounded-lg px-2 py-1"
+              className="inline-flex items-center gap-2 text-slate-400 hover:text-brand-primary text-sm font-semibold transition-colors duration-200 group focus:outline-none focus:ring-2 focus:ring-brand-primary rounded-lg px-2 py-1"
               aria-label={content.allServicesLabel}
             >
               {content.allServicesLabel}
@@ -385,7 +385,7 @@ export default function FeaturedServicesNew({
           <motion.div
             whileHover={{ y: -2, boxShadow: "0 12px 48px rgba(167,139,250,0.1)" }}
             transition={{ type: "spring", stiffness: 200, damping: 20 }}
-            className="flex flex-col md:flex-row items-start md:items-center gap-6 p-6 rounded-2xl border border-white/6 hover:border-[#a78bfa]/30 transition-colors duration-300"
+            className="flex flex-col md:flex-row items-start md:items-center gap-6 p-6 rounded-2xl border border-white/6 hover:border-violet-400/30 transition-colors duration-300"
             style={{
               background:
                 "linear-gradient(135deg, rgba(167,139,250,0.04) 0%, rgba(255,255,255,0.02) 100%)",
@@ -451,7 +451,7 @@ export default function FeaturedServicesNew({
               </div>
               <Link
                 href={secondaryService.href}
-                className="inline-flex items-center gap-1.5 text-xs font-semibold transition-colors duration-200 hover:underline focus:outline-none focus:ring-2 focus:ring-[#a78bfa] rounded"
+                className="inline-flex items-center gap-1.5 text-xs font-semibold transition-colors duration-200 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400 rounded"
                 style={{ color: secondaryService.color }}
                 aria-label={`${secondaryService.title} ${content.detailsAriaSuffix}`}
               >

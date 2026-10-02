@@ -15,7 +15,7 @@ export default function FinalCta({ content }: FinalCtaProps) {
   return (
     <section
       id="contact"
-      className="min-h-[80vh] py-16 md:py-20 lg:py-24 flex items-center justify-center bg-transparent text-white relative overflow-hidden mb-0"
+      className="min-h-[80vh] py-16 md:py-20 lg:py-24 flex items-center justify-center bg-transparent text-text-primary relative overflow-hidden mb-0"
     >
       {/* Video background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
@@ -36,17 +36,17 @@ export default function FinalCta({ content }: FinalCtaProps) {
 
       <div className="px-6 lg:px-8 text-center max-w-6xl mx-auto relative z-10 flex flex-col items-center">
         <ScaleMotion className="flex items-center justify-center gap-4 mb-8">
-          <GeometricIcon type="diamond" size={40} color="text-[#00B5F1]" />
+          <GeometricIcon type="diamond" size={40} color="text-brand-primary" />
         </ScaleMotion>
         <FadeUpMotion delay={0.2}>
           <div className="max-w-3xl mx-auto text-center">
-            <p className="text-xs uppercase tracking-[0.5em] text-[#00B5F1] mb-4">
+            <p className="text-xs uppercase tracking-[0.5em] text-brand-primary mb-4">
               {content.eyebrow}
             </p>
-            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-white mb-6 leading-tight">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-text-primary mb-6 leading-tight">
               {content.title}
             </h2>
-            <p className="text-lg md:text-xl text-white/90 leading-relaxed">
+            <p className="text-lg md:text-xl text-slate-200 leading-relaxed">
               {content.subtitle}
             </p>
           </div>

@@ -48,7 +48,7 @@ export default function SocialProofStrip({ content }: SocialProofStripProps) {
   return (
     <section
       id="proof"
-      className="relative py-16 md:py-20 bg-bg-base border-y border-white/5 overflow-hidden"
+      className="relative py-20 md:py-28 bg-bg-surface/30 border-y border-white/5 overflow-hidden"
       aria-label={content.ariaLabel}
     >
       {/* Halvány elválasztó fény */}
@@ -80,8 +80,8 @@ export default function SocialProofStrip({ content }: SocialProofStripProps) {
                 }}
                 className="flex flex-col items-center text-center"
               >
-                <div className="w-12 h-12 rounded-2xl bg-bg-surface border border-[#00B5F1]/20 flex items-center justify-center mb-3">
-                  <Icon className="w-6 h-6 text-[#00B5F1]" aria-hidden="true" />
+                <div className="w-12 h-12 rounded-2xl bg-bg-surface border border-brand-primary/20 flex items-center justify-center mb-3">
+                  <Icon className="w-6 h-6 text-brand-primary" aria-hidden="true" />
                 </div>
                 <div className="text-3xl md:text-4xl font-extrabold text-white tabular-nums">
                   {stat.value}

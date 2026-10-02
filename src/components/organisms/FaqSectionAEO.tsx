@@ -191,7 +191,7 @@ export default function FaqSectionAEO({
   return (
     <section
       id="faq"
-      className="relative py-24 md:py-32 bg-bg-base overflow-hidden"
+      className="relative py-24 md:py-32 bg-bg-surface/30 overflow-hidden"
       aria-label={content.ariaLabel}
     >
       {/* JSON-LD AEO Schema — XSS védelem: .replace(/</g, '\u003c') */}

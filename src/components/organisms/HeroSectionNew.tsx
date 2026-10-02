@@ -340,12 +340,12 @@ export default function HeroSectionNew({ content }: HeroSectionNewProps) {
                 className="w-full flex flex-col items-start"
               >
                 {/* Badge */}
-                <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/5 border border-[#00B5F1]/25 backdrop-blur-sm mb-6">
+                <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/5 border border-brand-primary/25 backdrop-blur-sm mb-6">
                   <span
-                    className="w-2 h-2 rounded-full bg-[#00B5F1] hero-pulse-dot"
+                    className="w-2 h-2 rounded-full bg-brand-primary hero-pulse-dot"
                     aria-hidden="true"
                   />
-                  <span className="text-[#00B5F1] text-xs font-bold uppercase tracking-widest">
+                  <span className="text-brand-primary text-xs font-bold uppercase tracking-widest">
                     {slide.badge}
                   </span>
                 </div>
@@ -381,10 +381,10 @@ export default function HeroSectionNew({ content }: HeroSectionNewProps) {
                   {slide.highlights.map((item) => (
                     <li
                       key={item}
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#00B5F1]/8 border border-[#00B5F1]/20 text-xs font-semibold text-[#00B5F1] tracking-wide"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-brand-primary/8 border border-brand-primary/20 text-xs font-semibold text-brand-primary tracking-wide"
                     >
                       <span
-                        className="w-1.5 h-1.5 rounded-full bg-[#00B5F1]"
+                        className="w-1.5 h-1.5 rounded-full bg-brand-primary"
                         aria-hidden="true"
                       />
                       {item}
@@ -403,7 +403,7 @@ export default function HeroSectionNew({ content }: HeroSectionNewProps) {
                       className="flex items-center gap-2 text-sm text-slate-400 font-medium"
                     >
                       <CheckCircle2
-                        className="w-4 h-4 text-[#00B5F1] shrink-0"
+                        className="w-4 h-4 text-brand-primary shrink-0"
                         aria-hidden="true"
                       />
                       {point}
@@ -421,7 +421,7 @@ export default function HeroSectionNew({ content }: HeroSectionNewProps) {
                     <Link
                       href={slide.cta1.href}
                       id={slide.cta1.id}
-                      className="group inline-flex items-center gap-3 px-8 py-4 rounded-full font-bold text-white text-base uppercase tracking-wider bg-linear-to-r from-[#075985] to-[#5B21B6] hover:from-[#5B21B6] hover:to-[#5B21B6] shadow-[0_8px_32px_rgba(0,181,241,0.35)] hover:shadow-[0_12px_40px_rgba(0,181,241,0.5)] transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#00B5F1] focus:ring-offset-2 focus:ring-offset-bg-base"
+                      className="group inline-flex items-center gap-3 px-8 py-4 rounded-full font-bold text-white text-base uppercase tracking-wider bg-linear-to-r from-cta-from to-brand-secondary hover:from-brand-secondary hover:to-brand-secondary shadow-[0_8px_32px_rgba(0,181,241,0.35)] hover:shadow-[0_12px_40px_rgba(0,181,241,0.5)] transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base"
                       aria-label={slide.cta1.text}
                     >
                       <span>{slide.cta1.text}</span>
@@ -436,7 +436,7 @@ export default function HeroSectionNew({ content }: HeroSectionNewProps) {
                     <Link
                       href={slide.cta2.href}
                       id={slide.cta2.id}
-                      className="inline-flex items-center gap-2 text-sm font-semibold text-slate-400 hover:text-[#00B5F1] underline decoration-slate-700 underline-offset-4 hover:decoration-[#00B5F1] transition-colors duration-200 rounded-lg px-2 py-1 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 focus:ring-offset-bg-base"
+                      className="inline-flex items-center gap-2 px-6 py-4 rounded-full text-sm font-semibold text-slate-200 border border-slate-700/80 hover:border-brand-primary/60 hover:text-brand-primary hover:bg-brand-primary/5 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base"
                       aria-label={slide.cta2.text}
                     >
                       {slide.cta2.text}
@@ -451,7 +451,7 @@ export default function HeroSectionNew({ content }: HeroSectionNewProps) {
                     {Array.from({ length: 5 }).map((_, i) => (
                       <Star
                         key={i}
-                        className="w-4 h-4 text-[#00B5F1] fill-[#00B5F1]"
+                        className="w-4 h-4 text-brand-primary fill-brand-primary"
                         aria-hidden="true"
                       />
                     ))}
@@ -492,9 +492,9 @@ export default function HeroSectionNew({ content }: HeroSectionNewProps) {
                   aria-selected={isActive}
                   aria-label={`${idx + 1}. ${content.slideLabel}: ${s.highlights[0]}`}
                   onClick={() => goToSlide(idx)}
-                  className={`h-2.5 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#00B5F1] ${
+                  className={`h-2.5 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand-primary ${
                     isActive
-                      ? "w-8 bg-linear-to-r from-[#00B5F1] to-[#5B21B6] shadow-[0_0_12px_rgba(0,181,241,0.5)]"
+                      ? "w-8 bg-linear-to-r from-brand-primary to-brand-secondary shadow-[0_0_12px_rgba(0,181,241,0.5)]"
                       : "w-2.5 bg-slate-800 hover:bg-slate-700"
                   }`}
                 />
@@ -511,7 +511,7 @@ export default function HeroSectionNew({ content }: HeroSectionNewProps) {
               type="button"
               onClick={prevSlide}
               aria-label={content.prevLabel}
-              className="w-10 h-10 rounded-full border border-slate-800 bg-slate-900/60 backdrop-blur-sm text-slate-300 hover:text-[#00B5F1] hover:border-[#00B5F1]/50 flex items-center justify-center transition-all focus:outline-none focus:ring-2 focus:ring-[#00B5F1]"
+              className="w-10 h-10 rounded-full border border-slate-800 bg-slate-900/60 backdrop-blur-sm text-slate-300 hover:text-brand-primary hover:border-brand-primary/50 flex items-center justify-center transition-all focus:outline-none focus:ring-2 focus:ring-brand-primary"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
@@ -519,7 +519,7 @@ export default function HeroSectionNew({ content }: HeroSectionNewProps) {
               type="button"
               onClick={nextSlide}
               aria-label={content.nextLabel}
-              className="w-10 h-10 rounded-full border border-slate-800 bg-slate-900/60 backdrop-blur-sm text-slate-300 hover:text-[#00B5F1] hover:border-[#00B5F1]/50 flex items-center justify-center transition-all focus:outline-none focus:ring-2 focus:ring-[#00B5F1]"
+              className="w-10 h-10 rounded-full border border-slate-800 bg-slate-900/60 backdrop-blur-sm text-slate-300 hover:text-brand-primary hover:border-brand-primary/50 flex items-center justify-center transition-all focus:outline-none focus:ring-2 focus:ring-brand-primary"
             >
               <ChevronRight className="w-5 h-5" />
             </button>
@@ -543,7 +543,7 @@ export default function HeroSectionNew({ content }: HeroSectionNewProps) {
           transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
           className="w-4 h-7 rounded-full border border-slate-800 flex items-start justify-center pt-1"
         >
-          <div className="w-1 h-1.5 rounded-full bg-[#00B5F1]" />
+          <div className="w-1 h-1.5 rounded-full bg-brand-primary" />
         </motion.div>
       </motion.div>
     </section>

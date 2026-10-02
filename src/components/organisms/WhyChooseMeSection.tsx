@@ -27,8 +27,8 @@ const ADVANTAGE_DEFAULTS = [
     title: "26 Év Grafikai Rutin",
     description:
       "A WebDude 26 éve foglalkozik grafikai tervezéssel és vizuális kommunikációval — amit csak a hosszú, megélt tapasztalat adhat.",
-    color: "from-[#00B5F1]/20 to-[#5B21B6]/20",
-    iconColor: "text-[#00B5F1]",
+    color: "from-brand-primary/20 to-brand-secondary/20",
+    iconColor: "text-brand-primary",
     stat: "26+",
     statLabel: "Év dizájn",
   },
@@ -37,8 +37,8 @@ const ADVANTAGE_DEFAULTS = [
     title: "16 Év Webfejlesztés",
     description:
       "Next.js, WordPress, WooCommerce, Firebase — 16 év folyamatos webfejlesztői tapasztalat, nem csak elmélet.",
-    color: "from-[#00B5F1]/20 to-[#5B21B6]/20",
-    iconColor: "text-[#00B5F1]",
+    color: "from-brand-primary/20 to-brand-secondary/20",
+    iconColor: "text-brand-primary",
     stat: "16+",
     statLabel: "Év fejlesztés",
   },
@@ -47,8 +47,8 @@ const ADVANTAGE_DEFAULTS = [
     title: "Közvetlen Kapcsolat Velem",
     description:
       "Közvetlenül velem, a WebDude-dal dolgozol — nincs projektmenedzser közvetítő, nincs kommunikációs veszteség, nincs félreértés.",
-    color: "from-[#00B5F1]/20 to-[#5B21B6]/20",
-    iconColor: "text-[#00B5F1]",
+    color: "from-brand-primary/20 to-brand-secondary/20",
+    iconColor: "text-brand-primary",
     stat: "1:1",
     statLabel: "Kommunikáció",
   },
@@ -57,8 +57,8 @@ const ADVANTAGE_DEFAULTS = [
     title: "30 Napos Garancia",
     description:
       "Átadást követően hibajavítási garancia és folyamatos támogatás. Ha valami nem működik, megoldom — plusz díj nélkül.",
-    color: "from-[#00B5F1]/20 to-[#5B21B6]/20",
-    iconColor: "text-[#00B5F1]",
+    color: "from-brand-primary/20 to-brand-secondary/20",
+    iconColor: "text-brand-primary",
     stat: "30",
     statLabel: "Nap garancia",
   },
@@ -67,8 +67,8 @@ const ADVANTAGE_DEFAULTS = [
     title: "Gyors Átfutás",
     description:
       "Nincs bürokrácia, nincs hosszú onboarding. Amint egyeztünk, azonnali indulás és hatékony, fókuszált munkavégzés.",
-    color: "from-[#00B5F1]/20 to-[#5B21B6]/20",
-    iconColor: "text-[#00B5F1]",
+    color: "from-brand-primary/20 to-brand-secondary/20",
+    iconColor: "text-brand-primary",
     stat: "2x",
     statLabel: "Gyorsabb",
   },
@@ -77,8 +77,8 @@ const ADVANTAGE_DEFAULTS = [
     title: "Transzparens Árazás",
     description:
       "Rejtett költségek nélkül, előre egyeztetett fix árak és fix határidők. Amit megígérek, azt tartom.",
-    color: "from-[#00B5F1]/20 to-[#5B21B6]/20",
-    iconColor: "text-[#00B5F1]",
+    color: "from-brand-primary/20 to-brand-secondary/20",
+    iconColor: "text-brand-primary",
     stat: "0",
     statLabel: "Rejtett cost",
   },
@@ -144,9 +144,9 @@ export default function WhyChooseMeSection({ content }: WhyChooseMeProps) {
       aria-label={content.ariaLabel}
     >
       {/* Háttér effektek */}
-      <div className="absolute inset-0 bg-linear-to-b from-[#00B5F1]/5 via-transparent to-[#00B5F1]/5" />
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#00B5F1]/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#5B21B6]/10 rounded-full blur-3xl" />
+      <div className="absolute inset-0 bg-linear-to-b from-brand-primary/5 via-transparent to-brand-primary/5" />
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-primary/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-brand-secondary/10 rounded-full blur-3xl" />
 
       <div className="px-6 lg:px-8 max-w-7xl mx-auto relative z-10">
         {/* ── SZEKCIÓ FEJLÉC — E-E-A-T: Balog Norbert személyes entitás ──────── */}
@@ -162,10 +162,10 @@ export default function WhyChooseMeSection({ content }: WhyChooseMeProps) {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#00B5F1]/10 border border-[#00B5F1]/20 mb-6"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-primary/10 border border-brand-primary/20 mb-6"
           >
-            <Sparkles className="w-4 h-4 text-[#00B5F1]" aria-hidden="true" />
-            <span className="text-xs font-bold text-[#00B5F1] uppercase tracking-wider">
+            <Sparkles className="w-4 h-4 text-brand-primary" aria-hidden="true" />
+            <span className="text-xs font-bold text-brand-primary uppercase tracking-wider">
               {content.eyebrow}
             </span>
           </motion.div>
@@ -173,7 +173,7 @@ export default function WhyChooseMeSection({ content }: WhyChooseMeProps) {
           {/* H2 — WebDude explicit E-E-A-T hivatkozással */}
           <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
             {content.title.prefix}
-            <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6]">
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-brand-primary to-brand-secondary">
               {content.title.highlight}
             </span>
             {content.title.suffix}
@@ -196,7 +196,7 @@ export default function WhyChooseMeSection({ content }: WhyChooseMeProps) {
               <motion.div
                 whileHover={{ y: -4, scale: 1.02 }}
                 transition={{ duration: 0.3 }}
-                className="group h-full bg-slate-900/80 backdrop-blur-md border border-slate-700/80 rounded-3xl p-8 hover:border-[#00B5F1]/50 transition-all duration-500 shadow-xl shadow-slate-950/50 hover:shadow-[#00B5F1]/20 relative overflow-hidden"
+                className="group h-full bg-slate-900/80 backdrop-blur-md border border-slate-700/80 rounded-3xl p-8 hover:border-brand-primary/50 transition-all duration-500 shadow-xl shadow-slate-950/50 hover:shadow-brand-primary/20 relative overflow-hidden"
               >
                 {/* Background Gradient */}
                 <motion.div
@@ -221,7 +221,7 @@ export default function WhyChooseMeSection({ content }: WhyChooseMeProps) {
                     </div>
                   </div>
 
-                  <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-[#00B5F1] transition-colors">
+                  <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-brand-primary transition-colors">
                     {advantage.title}
                   </h3>
 
@@ -240,13 +240,13 @@ export default function WhyChooseMeSection({ content }: WhyChooseMeProps) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="bg-slate-900/60 border border-[#00B5F1]/20 rounded-3xl p-12 backdrop-blur-md relative overflow-hidden mb-12"
+          className="bg-slate-900/60 border border-brand-primary/20 rounded-3xl p-12 backdrop-blur-md relative overflow-hidden mb-12"
         >
-          <div className="absolute inset-0 bg-linear-to-r from-[#00B5F1]/5 to-[#5B21B6]/5" />
+          <div className="absolute inset-0 bg-linear-to-r from-brand-primary/5 to-brand-secondary/5" />
           <div className="relative z-10">
             <h3 className="text-3xl md:text-4xl font-bold text-white text-center mb-12">
               {content.benefitsTitle.prefix}
-              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6]">
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-brand-primary to-brand-secondary">
                 {content.benefitsTitle.highlight}
               </span>
               {content.benefitsTitle.suffix}
@@ -261,7 +261,7 @@ export default function WhyChooseMeSection({ content }: WhyChooseMeProps) {
                   transition={{ duration: 0.4, delay: idx * 0.1 }}
                   className="text-center"
                 >
-                  <div className="w-16 h-16 rounded-2xl bg-[#00B5F1]/10 border border-[#00B5F1]/20 flex items-center justify-center text-[#00B5F1] mx-auto mb-4">
+                  <div className="w-16 h-16 rounded-2xl bg-brand-primary/10 border border-brand-primary/20 flex items-center justify-center text-brand-primary mx-auto mb-4">
                     <benefit.icon className="w-8 h-8" aria-hidden="true" />
                   </div>
                   <h4 className="text-lg font-bold text-white mb-2">
@@ -286,7 +286,7 @@ export default function WhyChooseMeSection({ content }: WhyChooseMeProps) {
         >
           <Link
             href={content.cta.href}
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-linear-to-r from-[#00B5F1] to-[#5B21B6] text-slate-950 font-bold hover:shadow-lg hover:shadow-[#00B5F1]/30 transition-all duration-300 shadow-lg shadow-[#00B5F1]/20 hover:scale-105"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-linear-to-r from-brand-primary to-brand-secondary text-slate-950 font-bold hover:shadow-lg hover:shadow-brand-primary/30 transition-all duration-300 shadow-lg shadow-brand-primary/20 hover:scale-105"
             aria-label={content.cta.label}
           >
             <span>{content.cta.label}</span>

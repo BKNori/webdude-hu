@@ -95,18 +95,18 @@ export default function CaseStudiesBento({ content }: CaseStudiesBentoProps) {
           className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 md:mb-16"
         >
           <div>
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#00B5F1]/10 border border-[#00B5F1]/20 mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-primary/10 border border-brand-primary/20 mb-6">
               <TrendingUp
-                className="w-3.5 h-3.5 text-[#00B5F1]"
+                className="w-3.5 h-3.5 text-brand-primary"
                 aria-hidden="true"
               />
-              <span className="text-[#00B5F1] text-xs font-bold uppercase tracking-widest">
+              <span className="text-brand-primary text-xs font-bold uppercase tracking-widest">
                 {content.eyebrow}
               </span>
             </div>
             <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-white leading-tight">
               {content.title.prefix}{" "}
-              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6]">
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-brand-primary to-brand-secondary">
                 {content.title.highlight}
               </span>
               {content.title.suffix}
@@ -114,12 +114,12 @@ export default function CaseStudiesBento({ content }: CaseStudiesBentoProps) {
           </div>
           <Link
             href="/munkak"
-            className="inline-flex items-center gap-2 text-slate-400 hover:text-[#00B5F1] text-sm font-semibold transition-colors duration-200 group focus:outline-none focus:ring-2 focus:ring-[#00B5F1] rounded-lg px-2 py-1"
+            className="group inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-brand-primary/40 bg-brand-primary/5 text-brand-primary text-sm font-semibold transition-all duration-300 hover:bg-brand-primary/10 hover:border-brand-primary/70 hover:shadow-[0_0_24px_rgba(0,181,241,0.18)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base shrink-0"
             aria-label={content.allLabel}
           >
             {content.allLabel}
             <ArrowRight
-              className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1"
+              className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
               aria-hidden="true"
             />
           </Link>
@@ -260,8 +260,7 @@ export default function CaseStudiesBento({ content }: CaseStudiesBentoProps) {
                   </div>
                   <Link
                     href={cs.href}
-                    className="inline-flex items-center gap-1.5 text-xs font-bold transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-sky-500 rounded-lg px-1 py-0.5"
-                    style={{ color: cs.accentColor }}
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-400 hover:text-brand-primary transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary rounded-lg px-2 py-1 border border-transparent hover:border-brand-primary/30"
                     aria-label={`${cs.title} — ${content.detailsLabel}`}
                   >
                     {content.detailsLabel}

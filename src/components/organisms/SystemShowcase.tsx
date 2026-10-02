@@ -104,14 +104,14 @@ export default function SystemShowcase({ content }: SystemShowcaseProps) {
           transition={{ type: "spring", stiffness: 80, damping: 20 }}
           className="text-center mb-16 md:mb-20"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#00B5F1]/10 border border-[#00B5F1]/20 mb-6">
-            <span className="text-[#00B5F1] text-xs font-bold uppercase tracking-widest">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-primary/10 border border-brand-primary/20 mb-6">
+            <span className="text-brand-primary text-xs font-bold uppercase tracking-widest">
               {content.eyebrow}
             </span>
           </div>
           <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-white mb-4 leading-tight">
             {content.title.prefix}
-            <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6]">
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-brand-primary to-brand-secondary">
               {content.title.highlight}
             </span>
             {content.title.suffix}
@@ -130,7 +130,7 @@ export default function SystemShowcase({ content }: SystemShowcaseProps) {
           />
           {/* Animált töltési vonal */}
           <motion.div
-            className="absolute top-16 left-[12.5%] h-0.5 bg-linear-to-r from-[#00B5F1] via-[#00B5F1]/80 to-sky-400 hidden lg:block origin-left"
+            className="absolute top-16 left-[12.5%] h-0.5 bg-linear-to-r from-brand-primary via-brand-primary/80 to-sky-400 hidden lg:block origin-left"
             style={{ scaleX: lineProgress, width: "75%" }}
             aria-hidden="true"
           />
@@ -250,7 +250,7 @@ export default function SystemShowcase({ content }: SystemShowcaseProps) {
             }}
             whileTap={{ scale: 0.97 }}
             transition={{ type: "spring", stiffness: 400, damping: 20 }}
-            className="inline-flex items-center gap-3 px-8 py-4 rounded-full font-semibold text-[#00B5F1] text-base uppercase tracking-wider border border-[#00B5F1]/40 hover:border-sky-500/50 hover:bg-[#00B5F1]/10 hover:shadow-[0_0_32px_rgba(0, 181, 241,0.25)] transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 focus:ring-offset-bg-base"
+            className="inline-flex items-center gap-3 px-8 py-4 rounded-full font-semibold text-brand-primary text-base uppercase tracking-wider border border-brand-primary/40 hover:border-sky-500/50 hover:bg-brand-primary/10 hover:shadow-[0_0_32px_rgba(0, 181, 241,0.25)] transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 focus:ring-offset-bg-base"
             aria-label={content.cta.label}
           >
             {content.cta.label}
