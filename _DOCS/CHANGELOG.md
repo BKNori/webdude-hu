@@ -28,21 +28,24 @@
 - **7.12.0 sprint hivatalos lezárása:** routing normalizálás (2 route mappa törölve, SEO a `caseStudySeo.ts` SSOT-ban, JSON-LD szerveroldalon), **38 + 1 = 39 db `<Image>` → `<ResponsiveImage>`** 10 fájlban; generátor `casestudy` csoport; repó **224 fájl / 6,6 MB** cél alatt.
 - **Quality Gate (7.12.1):** `npx tsc --noEmit` → TSC_EXIT=0; `npm run lint -- --max-warnings 0` → LINT_CI_EXIT=0. Build + verify + smoke a 7.12.0-ban: BUILD_EXIT=0; 288 HTML / **253 egyedi srcset URL / 0 hiányzó**; 13/13 oldal OK (btshop 17 KB, classi-co 48 KB, rimai 92 KB, bor-garnela 151 KB).
 
-
 - **Routing normalizálás (a 7.11.1-ben talált rejtett hiba lezárva):** a `src/app/munkak/classi-co/` (2 fájl) és a `src/app/munkak/btshop/` (3 fájl) **önálló route mappák törölve**. A `[slug]/page.tsx` dedikált ágai (`ClassiCoCaseStudy`, `BtshopCaseStudy`) így **életre keltek** — a két oldal most prefix-méretben a megfelelő, gazdag organismet rendereli. Zéró-törlés garancia: a törölt mappák minden gazdag SEO-adata (egyedi title/keywords/canonical/OG/Twitter/JSON-LD) az új `src/data/caseStudySeo.ts` SSOT-táblába költözött (`CASE_STUDY_SEO`), a `[slug]/page.tsx` `generateMetadata`-ja felülírással, a JSON-LD sémák pedig szerveroldali, XSS-védett `<script>`-ként renderelve (`.replace(/</g, "\\u003c")`).
 - **9 dedikált komponens reszponzív képei:** új `casestudy` forráscsoport a generátorban (hero-méretű + galériakártya képek, `[320, 640, 960]`, AVIF+WebP; a `ClassiCoCaseStudy` galériája már a galéria-csoportban van, a dedup véd). **38 db `<Image>` → `<ResponsiveImage>` csere** 9 fájlban (a `fill`/`width`/`height` propok eldobva — a komponens tölti a szülőt; `priority`/`sizes`/`alt`/`className` megőrizve). Eszközök: `scripts/scan-case-study-images.js` (33 egyedi literális kép diagnosztika) + `scripts/migrate-case-study-images.js` (mechanikus, reverzibilis átírás + kézi dinamikus `src={img}` audit).
 - **Élő eredmény (13/13 oldal, SMOKE_EXIT=0):** btshop 3 AVIF = 17 KB, classi-co 8 AVIF = 48 KB, rimai 9 AVIF = 92 KB, ai-prompt-hu 4 AVIF = 18 KB, dr-nagy-albert 4 AVIF = 32 KB, go-box 8 AVIF = 54 KB, hu-mago 8 AVIF = 75 KB, lengyel-helga 5 AVIF = 78 KB, bor-garnela 8 AVIF = 151 KB. Nyers oldal-kép URL (`<img src>`) már csak szándékos kivétel (külső/logo), a törött `.webm` videók kivételével minden helyi 200.
 - **Build-kimenet (VERIFY_EXIT=0):** 288 HTML, **253 egyedi srcset URL, 0 hiányzó**; `<source avif>` 240, `<source webp>` 126. Generátor: `[OK] casestudy` az új képekkel; a `--clean` 0 elavultat talált (a repó továbbra is **224 fájl / 6,6 MB** cél alatt).
 - **Quality Gate:** `npx tsc --noEmit` → TSC_EXIT=0; `npm run lint -- --max-warnings 0` → LINT_CI_EXIT=0; `npm run build` → BUILD_EXIT=0; smoke → SMOKE_EXIT=0.
 
+## [7.13.0] — 2026-09-30 — I18N IMPLEMENTÁCIÓ: ANGOL ROUTOK ÉS LOKALIZÁCIÓ (COMPLETE)
+
+- **Főoldalak (EN):** `/en`, `/en/services`, `/en/portfolio`, `/en/contact` angol verziók létrehozva.
+- **Szolgáltatás oldalak (EN):** `/en/services/web-development`, `/en/services/seo-optimization`, `/en/services/woocommerce-development`, `/en/services/graphic-design` angol verziók létrehozva.
+- **JSON Dictionary infrastruktúra:** `src/dictionaries/hu.json` és `en.json` teljes tartalommal, `src/types/dictionary.ts` típusok, `src/lib/dictionary.ts` és `src/lib/i18n.ts` helper függvények.
+- **Routing szabályok:** Magyar URL prefix nélkül (`/`), angol URL szigorúan `/en/` prefix. `/hu` route tiltva.
+- **SEO/AEO optimalizáció:** Angol metaadatok, hreflang alternates, JSON-LD sémák (Organization, Service, FAQPage, Breadcrumb), Direct Answer blokkok.
+- **Fix ár szabály:** Angol oldalakon nincsenek fix árak, csak CTA alapú ("Request a custom quote").
+- **Lokáció fókusz:** Látható szövegekből "Kecskemét" eltávolítva (országos/remote partner fókusz), JSON-LD sémákban megmarad.
+- **QA:** `npx tsc --noEmit` → 0; `npm run lint -- --max-warnings 0` → 0.
+
 ## [JÖVŐBELI FELADATOK] — STRATÉGIAI TERVEK
-
-### I18N / TÖBBNYELVŰSÍTÉS
-
-- **Feladat:** A weboldal teljes angol nyelvű fordításának (i18n / többnyelvűsítés) előkészítése és implementálása a nemzetközi piacra lépéshez
-- **Státusz:** Tervezésben
-- **Fontosság:** Kiemelt stratégiai feladat
-- **Megjegyzés:** Ez a feladat a CHANGELOG-ban van rögzítve jövőbeli implementációra
 
 ## [7.11.1] — 2026-09-30 — GALÉRIA-CSOPORT MÉRET OptimalIZÁLÁSA: AVIF-ONLY, MAX 640 PX (COMPLETE)
 
@@ -51,7 +54,6 @@
 - **CI:** a `6c07066` pushra a „Production CI/CD Pipeline" **sikeres** (`conclusion: success`).
 - **⚠️ ELŐZETESEN REJTETT HIBA (nem regresszió, de fontos):** a `src/app/munkak/classi-co/` és a `src/app/munkak/btshop/` **önálló route mappák**, amelyek a `munkak/[slug]` dinamikus útvonal fölött **prioritást kapnak** a Next.js-ben. Emiatt a `[slug]/page.tsx` `ClassiCoCaseStudy` és `BtshopCaseStudy` ága **halott kód** — a két oldalt a `ClassiCoClient` / `BTShopClient` rendereli. A 7.11.0-ban a `ClassiCoCaseStudy` galériáján végzett `ResponsiveImage`-átvezetés ezért **nem hat az éles megjelenésre** (a `ClassiCoClient` egyáltalán nem importál képet). A `ClassiCoCaseStudy` (544 sor) és `BtshopCaseStudy` (399 sor) jelenleg kihasználatlan.
 - **Saját hibám és a javítás:** a smoke teszt első változata hamis riasztást adott („9 üres oldal"), mert csak a `<picture>`/avif jelenlétét nézte. A `next/image` + `unoptimized: true` **sima `<img>`-t** ad, `<picture>` nélkül — ezért a 9 dedikált oldalon a 0 `<picture>` **normális**, nem hiba. A szkript most a nyers `<img src>` URL-eket is ellenőrzi, és a szöveg/kép/picture/avif darabszámot együtt jelenti. Mind a 12 esettanulmány-oldal rendben: 1620–4598 karakter szöveg, 2–14 kép.
-
 
 - **Döntés (Norbi):** a galéria egy **többoszlopos (3-as) rácsban** jelenik meg, ahol a kártyák fizikailag sosem szélesebbek ~640 px-nél. A 960w-as variáns és a WebP másolat tehát **feleslegesen terhelt** a repót (és a cPanel deploy zipet) → a galéria-csoport **AVIF-only, `[320, 640]` szélességekkel**.
 - **Kép-formátum csoportonként választható** (`FORMAT_PRESETS`): a `gallery` csoport `avif`, a `hero` és a `card` továbbra is `both` (a hero a teljes viewportot fedi le, ott a böngészők visszaesési hálója — régi Safari — miatt nem érdemes a WebP-et elhagyni).
@@ -94,11 +96,11 @@
 - **Új levél-komponens (`src/components/molecules/HeroBackgroundImage.tsx`, 57 sor):** `<picture>` lánc (AVIF → WebP → eredeti) `srcSet` + `sizes="100vw"`, `fetchPriority="high"` és `loading="eager"` az első (LCP) dián, `className` prop a vizuális megjelenés átadására. **Graceful fallback:** a manifestumban nem szereplő kép (pl. szótárból felülírt `bgImage`, `/en` oldal) csendben a nyers `<img>`-re esik vissza.
 - **`HeroSectionNew.tsx`:** a `next/image` használat helyett a `HeroBackgroundImage`; a `quality={90}` és `sizes="100vw"` **halott attribútumok** eltűntek (`unoptimized: true` mellett hatástalanok). A 7.7.0-ban beállított `opacity-65` megjelenés és a javított `alt` változatlanul megmaradt.
 - **Mért eredmény (a böngésző a látványmezőhöz illő EGYET fájlt tölt le a 4-ből):**
-  | Slide | Forrás | Ma (nyers) | Mobil AVIF 640w | Desktop AVIF |
-  | --- | --- | --- | --- | --- |
-  | webdude-hero | 1920×1200 | 368 KB | **17,7 KB (−95%)** | 158 KB (−57%) |
-  | ronch caffe banner | 2560×1440 | 284 KB | **36,1 KB (−87%)** | 150 KB (−47%) |
-  | webdude banner 2000x1000 | 2000×1000 | 52 KB | **12,7 KB (−76%)** | 58 KB (+12%) |
+  | Slide                    | Forrás    | Ma (nyers) | Mobil AVIF 640w    | Desktop AVIF  |
+  | ------------------------ | --------- | ---------- | ------------------ | ------------- |
+  | webdude-hero             | 1920×1200 | 368 KB     | **17,7 KB (−95%)** | 158 KB (−57%) |
+  | ronch caffe banner       | 2560×1440 | 284 KB     | **36,1 KB (−87%)** | 150 KB (−47%) |
+  | webdude banner 2000x1000 | 2000×1000 | 52 KB      | **12,7 KB (−76%)** | 58 KB (+12%)  |
 - **Felfedezett és javított hiba a build kimenetében (ezért van ez a kör):** a `srcset` szintaxisban **a URL nem tartalmazhat szóközt** — a 2. és 3. dia fájlneveiben viszont van (`ronch caffe adris…`, `webdude banner 2000x1000…`). Szóközös URL-lel a böngésző srcset-elemzése elhasal és **a kép le sem töltődik** (csak böngészőben derülne ki). A generátó ezért `encodeURI()`-val bocsátja ki a URL-eket (a lemezen lévő fájlnevek változatlanok, a manifestum kulcsa nyers marad a kereséshez). **Ellenőrizve:** 22 srcset-jelölteken, 0 hibás; a 0. dia a buildelt `index.html`-ben helyesen renderelődik.
 - **Lint nullázva:** a `HeroSectionNew.tsx` 2 db `react-hooks/exhaustive-deps` warningja (`SLIDES.length`) javítva → **`npm run lint`: 0 hiba, 0 figyelmeztetés** (a projekt történetében először). Ez a `--max-warnings 0` CI-kapuhoz szükséges előfeltétel.
 - **Quality Gate:** `npx tsc --noEmit` → **TSC_EXIT=0**; `npm run lint` → **LINT_EXIT=0 (0/0)**; `npm run build` → **BUILD_EXIT=0**.
@@ -136,10 +138,10 @@
 - **Hero 3. dia (AI Prompt Platform):**
   - **Jobb oldali mockup-kártya eltávolítva** (az `ai-promt-hi-banner-2.webp` lebegő előnézete) — minden dián egységesen `HeroDashboardMockup` jelenik meg.
   - `SlideData.mockup` mező, a `HeroMockupContent` import és a szótár-override `mockup` kulcs törölve (HU és EN).
-  - **Állítás-visszavonás:** a *„Nulláról 3 hónap alatt a piac élére"* szöveg eltávolítva minden élő forrásból (hero cím, `bgAlt`, mockup alt/caption, EN fordítás) — a 3. dia címe mostantól: **„AI Prompt Platform"** (üres highlight/suffix).
+  - **Állítás-visszavonás:** a _„Nulláról 3 hónap alatt a piac élére"_ szöveg eltávolítva minden élő forrásból (hero cím, `bgAlt`, mockup alt/caption, EN fordítás) — a 3. dia címe mostantól: **„AI Prompt Platform"** (üres highlight/suffix).
 - **Esettanulmány #2 kép bekötve (`CaseStudiesBento.tsx` + szótárak):** az „AI Prompt Platform" kártya `image` mezője `null` → `/assets/portfolio/ai-promt-hu/ai-promt-hi-banner-2.webp` (HU, EN és a komponens alapérték is) — a kártya mostantól valós bannerképpel jelenik meg a „Nem ígéret — bizonyíték" szekcióban.
 - **Quality Gate:** `npx tsc --noEmit` → TSC_EXIT=0; `npm run lint` → LINT_EXIT=0 (0 hiba, 2 előre meglévő `react-hooks/exhaustive-deps` warning `HeroSectionNew.tsx`); `npm run build` → BUILD_EXIT=0.
-- **Megjegyzés (Norbinak):** a `CaseStudiesBento` #2 kártya címe továbbra is tartalmazza a *„nulláról 3 hónap alatt"* részt („a piac élére" nélkül) — ha ezt is törölni szeretnéd, külön kérés szükséges.
+- **Megjegyzés (Norbinak):** a `CaseStudiesBento` #2 kártya címe továbbra is tartalmazza a _„nulláról 3 hónap alatt"_ részt („a piac élére" nélkül) — ha ezt is törölni szeretnéd, külön kérés szükséges.
 
 ---
 
@@ -167,7 +169,7 @@
 - **Főoldali Hero Slider 3 Diával & AI Mockup Integrációval (`src/components/organisms/HeroSectionNew.tsx`):**
   - **1. Dia (Alap üzenet):** Eredeti H1 és CTA-k (`/kapcsolat`, `/munkak`), háttér: `/assets/banners/webdude-hero.webp`.
   - **2. Dia (Ügyfélmágnes 1):** Technikai webfejlesztés és konverziós webshop készítés, háttér: `/assets/banners/ronch caffe adris nagybanner 20221005c copy 2.webp`. CTA: "Egyedi árajánlat kérése" (Kék-Lila gradiens gomb).
-  - **3. Dia (AI Prompt Platform):** Fő üzenet: *"AI Prompt Platform — Nulláról 3 hónap alatt"*, háttér: `/assets/banners/webdude banner 2000x1000.webp`. CTA: "AI Megoldások felfedezése" (Kék-Lila gradiens gomb). Vizuális extra: a dián a lebegő jobb oldali panelbe beágyazva a `/assets/portfolio/ai-promt-hu/ai-promt-hi-banner-2.webp` valós projekt mockup.
+  - **3. Dia (AI Prompt Platform):** Fő üzenet: _"AI Prompt Platform — Nulláról 3 hónap alatt"_, háttér: `/assets/banners/webdude banner 2000x1000.webp`. CTA: "AI Megoldások felfedezése" (Kék-Lila gradiens gomb). Vizuális extra: a dián a lebegő jobb oldali panelbe beágyazva a `/assets/portfolio/ai-promt-hu/ai-promt-hi-banner-2.webp` valós projekt mockup.
   - **LCP Védelem:** Szigorúan KIZÁRÓLAG a 0. dia kapja meg a Next.js `<Image priority={currentSlide === 0} loading={currentSlide === 0 ? "eager" : "lazy"} />` attribútumot.
   - **WCAG AAA Kontraszt:** Minden CTA gomb kötelezően `text-white` felirattal rendelkezik.
 - **Márka-Konzisztencia Frissítés ("Balog Norbert" -> "WebDude"):**
@@ -205,7 +207,7 @@
   - A Footer "Szolgáltatások" oszlopának felülvizsgálata és frissítése: a linkerő közvetlen átcsatornázása a legfontosabb konverziós céloldalakra (Weboldal készítés, WordPress karbantartás, Weboldal gyorsítás, Technikai SEO audit, Weboldal felújítás, Helyi SEO).
   - Színek és hover állapotok szigorúan Kék-Lila v7.0 konformak (`hover:text-[#00B5F1]`), minden elavult árnyalat eliminálva.
 - **404 Hibaoldal Ügyfélszerző Átalakítása (`src/app/not-found.tsx`):**
-  - A korábbi hiányzó/alap 404 oldal lecserélése egy konverziós gépezetté: *"Ezt az oldalt nem találjuk, de a Te weboldaladat rendbe tudjuk tenni!"*
+  - A korábbi hiányzó/alap 404 oldal lecserélése egy konverziós gépezetté: _"Ezt az oldalt nem találjuk, de a Te weboldaladat rendbe tudjuk tenni!"_
   - Beépített gyorslinkek a kritikus szolgáltatásokra (Egyedi weboldal készítés, WordPress javítás & karbantartás, Technikai SEO & Sebességoptimalizálás) és közvetlen Kapcsolatfelvételi CTA.
   - Szigorúan Kék-Lila v7.0 luminous glass kártya, Tailwind v4 szintaxis (`bg-linear-to-r`, `from-cta-from`), zero hydration kockázat.
 
@@ -300,7 +302,7 @@
   - Fókuszban a konverzió: "Weboldal készítés, ami ügyfeleket hoz".
   - E-E-A-T (Balog Norbert, 26 év vizuális múlt) hangsúlyozása.
 - **Webshop fejlesztés oldal (`/szolgaltatasok/webshop-fejlesztes`):**
-  - "Webshop készítés, ami ténylegesen elad" főüzenet. 
+  - "Webshop készítés, ami ténylegesen elad" főüzenet.
   - Kiemelt figyelem a zökkenőmentes pénztár, a sebesség és az elhagyott kosár kezelésére.
 - **Grafikai tervezés oldal (`/szolgaltatasok/grafikai-tervezes`):**
   - Egységes arculatépítésre helyezett fókusz ("Grafikai tervezés, amely felismerhetővé teszi a márkádat").
