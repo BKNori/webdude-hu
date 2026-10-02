@@ -84,7 +84,7 @@ const bannerStyles = [
     description: "Elegáns, prémium",
     prompt:
       "luxury banner design, elegant aesthetic, premium feel, sophisticated colors, high-end visual",
-    color: "from-yellow-500 to-[#00B5F1]",
+    color: "from-brand-secondary to-brand-primary",
   },
   {
     id: "tech",

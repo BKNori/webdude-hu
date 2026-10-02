@@ -85,7 +85,7 @@ const visualStyles = [
     description: "Filmes, drámai",
     prompt:
       "cinematic visual, dramatic lighting, chiaroscuro, film grain aesthetic, movie-like composition",
-    color: "from-yellow-500 to-[#00B5F1]",
+    color: "from-brand-secondary to-brand-primary",
   },
   {
     id: "abstract",

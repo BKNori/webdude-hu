@@ -51,7 +51,7 @@ export default function HeroStaticBanner() {
         >
           <Link
             href={ctaHref}
-            className="inline-block bg-[#00B5F1] text-[#090a16] font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-[#ffd700] transition-colors"
+            className="inline-block bg-[#00B5F1] text-[#090a16] font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-[#5B21B6] hover:text-white transition-colors"
           >
             {ctaText}
           </Link>

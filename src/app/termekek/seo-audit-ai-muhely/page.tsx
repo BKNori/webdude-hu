@@ -53,7 +53,7 @@ const auditTypes = [
     description: "Lighthouse score",
     prompt:
       "performance SEO audit, Lighthouse score optimization, Core Web Vitals, page speed, loading time analysis",
-    color: "from-yellow-500 to-[#00B5F1]",
+    color: "from-brand-secondary to-brand-primary",
   },
   {
     id: "backlink",

@@ -85,7 +85,7 @@ const contentTypes = [
     description: "Termék leírás",
     prompt:
       "product description, benefit-focused copy, feature highlights, persuasive selling points, customer-centric language",
-    color: "from-yellow-500 to-[#00B5F1]",
+    color: "from-brand-secondary to-brand-primary",
   },
   {
     id: "ad",

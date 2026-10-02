@@ -46,18 +46,17 @@ A **„Cyber-Arany 2026"** stílus egy prémium, sötét alapú, futurisztikus d
 | `text-primary`   | `#e2e8f0` | `text-[#e2e8f0]` | AAA          | Fő szövegtartalom, heading-ek.                |
 | `text-secondary` | `#94a3b8` | `text-slate-400` | AA           | Alcímek, hosszú olvasmányok, meta adatok.     |
 | `text-muted`     | `#64748b` | `text-slate-500` | AA (Large)   | Placeholder, disabled text, kiegészítő label. |
-| `text-inverted`  | `#020617` | `text-slate-950` | AAA (9.76:1) | Arany (amber) CTA gombokon belüli feliratok.  |
+| `text-inverted`  | `#020617` | `text-slate-950` | AAA (8.5:1)  | Tömör cián (brand-primary) háttér feliratai.    |
 
 ### 2.3 Brand Akcentus Színek (Kék-Lila)
 
 | Token neve      | Hex       | Tailwind class                            | Használat                                       |
 | --------------- | --------- | ----------------------------------------- | ----------------------------------------------- |
 | `brand-primary` | `#00B5F1` | `bg-brand-primary` / `text-brand-primary` | Elsődleges CTA gombok, aktív állapotok, ikonok. |
-| `cta-from`      | `#38bdf8` | `from-cta-from`                           | Gradiens kezdőpont (sky-400).                   |
-| `cta-to`        | `#5B21B6` | `to-cta-to`                               | Gradiens végpont (violet-700).                  |
-| `cta-hover`     | `#5B21B6` | `hover:bg-cta-hover`                      | Hover háttér, sötét felirattal ellenőrizendő.   |
-| `cta-from`      | `#075985` | `bg-cta-from`                             | Mély arany; szövegkontraszt külön ellenőrzendő. |
-| `brand-glow`    | `#00B5F1` | `shadow-[0_0_40px_rgba(0, 181, 241,0.3)]` | Arany glow hatások.                             |
+| `cta-from`      | `#075985` | `from-cta-from` / `bg-cta-from`           | CTA gradiens kezdőpont (sky-800); fehér felirattal AAA (7.56:1). |
+| `cta-to`        | `#5B21B6` | `to-cta-to`                               | Gradiens végpont (violet-800); fehér felirattal AAA (8.98:1).    |
+| `cta-hover`     | `#6d28d9` | `hover:bg-cta-hover`                      | Hover háttér (violet-700); fehér felirattal AAA (7.1:1).          |
+| `brand-glow`    | `#00B5F1` | `shadow-[0_0_40px_rgba(0, 181, 241,0.3)]` | Cián glow hatások.                             |
 | `border-color`  | `#334155` | `border-slate-700`                        | Szegélyek, keretek, elválasztók.                |
 
 ---
@@ -154,9 +153,10 @@ Kerüljük a random z-index értékeket. Szigorú hierarchia:
 
 ```typescript
 // Elsődleges (Brand) - A figyelem mágnes
+// CIÁN háttér: sötét felirat (8.4:1 AAA); HOVER lila háttér: FEHÉR felirat (8.9:1 AAA)
 <button className="
   bg-[#00B5F1] hover:bg-[#5B21B6]
-  text-slate-950 font-bold
+  text-slate-950 hover:text-white font-bold
   px-8 py-4 rounded-full
   uppercase tracking-wider text-sm
   transition-all duration-300 hover:scale-[1.02] active:scale-95
@@ -173,14 +173,25 @@ Kerüljük a random z-index értékeket. Szigorú hierarchia:
   transition-all duration-300
 ">
 
-// Akcentus (violet, fehér szöveg — WCAG AAA)
+// Akcentus (violet-600, fehér szöveg — WCAG AA 5.7:1; hover violet-700: AAA 7.1:1)
 <button className="
-  bg-[#00B5F1] hover:bg-[#5B21B6]
-  text-slate-950 font-bold
+  bg-[#7C3AED] hover:bg-[#6d28d9]
+  text-white font-bold
   px-8 py-4 rounded-full
   uppercase tracking-wider text-sm
   transition-all duration-300 hover:scale-[1.02] active:scale-95
-  shadow-[0_0_40px_rgba(0, 181, 241,0.3)]
+  shadow-[0_0_40px_rgba(124, 58, 237,0.3)]
+">
+
+// Konverziós Gradiens (Fő CTA - a v7.0 szabványos értékesítési gomb)
+// from-cta-from (#075985) → to-cta-to (#5B21B6): FEHÉR felirat KÖTELEZŐ (7.56–8.98:1 AAA)
+<button className="
+  bg-linear-to-r from-cta-from to-cta-to
+  hover:from-[#0369a1] hover:to-[#6d28d9]
+  text-white font-semibold
+  px-8 py-4 rounded-xl
+  transition-all duration-300 hover:scale-[1.02] active:scale-95
+  shadow-lg shadow-purple-950/50
 ">
 ```
 
@@ -256,9 +267,9 @@ Képkezelés: Minden fotónak vagy mockuponak tiszta, világos esztétikát kell
 
 **DDR-001 (Sötét Téma):** A Kék-Lila v7.0 rendszer kizárólag sötét témát használ (`bg-bg-base`).
 
-**DDR-002 (Arany fényhatás):** Visszafogott kék-lila árnyékok támogatják a térbeliséget. A glow kizárólag brand kiemeléseknél használható.
+**DDR-002 (Fényhatás / glow):** Visszafogott kék-lila árnyékok támogatják a térbeliséget. A glow kizárólag brand kiemeléseknél használható.
 
-**DDR-003 (Kontraszt):** Tömör `brand-primary` és `cta-hover` háttéren a felirat `text-slate-950`, nem `text-white`. A kontrasztot színpáronként kell mérni: az áttetsző hátterek, gradiensek, mély arany és hover állapotok külön ellenőrzést igényelnek. A sikeres build nem WCAG-tanúsítás.
+**DDR-003 (Kontraszt):** Tömör `brand-primary` (cián) háttéren a felirat `text-slate-950` (8.5:1 AAA); a sötét kék-lila CTA gradiensen (`cta-from` → `cta-to`) és `cta-hover` háttéren a felirat KÖTELEZŐEN `text-white` (7.1–8.98:1 AAA). A kontrasztot színpáronként kell mérni: az áttetsző hátterek, gradiensek és hover állapotok külön ellenőrzést igényelnek. A sikeres build nem WCAG-tanúsítás.
 
 **DDR-004 (Space Grotesk):** A címsorok kizárólag Space Grotesk betűtípust használhatnak (font-weight: 700). A folyószöveg és UI elemek Inter betűtípust (font-weight: 400, 500, 600).
 

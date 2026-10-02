@@ -85,7 +85,7 @@ const analysisTypes = [
     description: "Tartalom stratégia",
     prompt:
       "content strategy analysis, competitive content, content performance, SEO comparison, social media presence, thought leadership",
-    color: "from-yellow-500 to-[#00B5F1]",
+    color: "from-brand-secondary to-brand-primary",
   },
   {
     id: "swot",

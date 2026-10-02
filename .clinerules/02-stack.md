@@ -13,7 +13,7 @@ Ez a dokumentum határozza meg a projekt kódolási és technológiai alapelveit
 - **Zod Validáció:** Minden Server Action bemenetét és űrlap adatot `Zod` sémával (schema) KELL validálni a feldolgozás előtt[cite: 12, 15]. 
 
 ## 3. DESIGN RENDSZER (TAILWIND v4 & UI)
-- **SSOT Irányelv:** A pontos színkódokat (Electric Cyan vagy Cyber-Arany) KIZÁRÓLAG a `_docs/DESIGN_SYSTEM.md` határozza meg. Hardkódolt hexadecimális értékek (pl. `bg-[#020617]`) helyett a Tailwind v4 design tokeneket (pl. `bg-bg-base`, `text-text-primary`) KELL használni[cite: 12, 16, 21].
+- **SSOT Irányelv:** A pontos színkódokat (Electric Cyan vagy Kék-Lila v7.0) KIZÁRÓLAG a `_docs/DESIGN_SYSTEM.md` határozza meg. Hardkódolt hexadecimális értékek (pl. `bg-[#020617]`) helyett a Tailwind v4 design tokeneket (pl. `bg-bg-base`, `text-text-primary`) KELL használni[cite: 12, 16, 21].
 - **A 90-8-2 Vizuális Szabály:** 90% mélysötét háttér, 8% Luminous Glassmorphism (`backdrop-blur-xl`), és szigorúan maximum 2% kiemelő brand szín az akciógombokon (CTA) és hover effekteken[cite: 12, 27].
 - **Animációk (Motion):** A `motion/react` animációkat kizárólag izolált, `"use client"` direktívával ellátott fájlokban szabad implementálni. Használd a `useReducedMotion` hookot az akadálymentesítés érdekében[cite: 15, 27].
 

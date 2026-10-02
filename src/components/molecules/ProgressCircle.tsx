@@ -6,13 +6,13 @@ import { useMotionPreset } from "@/hooks/useMotionPreset";
 interface ProgressCircleProps {
   value: string;
   description: string;
-  color?: "gold" | "dark" | "highlight";
+  color?: "brand" | "dark" | "highlight";
 }
 
 const colorClasses = {
-  gold: {
-    stroke: "#ffd700",
-    glow: "rgba(255, 215, 0, 0.3)",
+  brand: {
+    stroke: "#00B5F1",
+    glow: "rgba(0, 181, 241, 0.3)",
   },
   dark: {
     stroke: "#64748b",
@@ -27,7 +27,7 @@ const colorClasses = {
 export default function ProgressCircle({
   value,
   description,
-  color = "gold",
+  color = "brand",
 }: ProgressCircleProps) {
   const colors = colorClasses[color];
   const radius = 40;

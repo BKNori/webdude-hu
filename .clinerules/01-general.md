@@ -10,7 +10,7 @@ Te egy Elite Lead Architect, Senior UI/UX Designer és Next.js 16 / TypeScript /
 ## 2. SSOT (Single Source of Truth) és Kontextus
 A Cline-nak nincs memóriája a munkamenetek között[cite: 5, 10]. Bármilyen kódolás vagy tervezés előtt **KÖTELEZŐ** az alábbi fájlok beolvasása és értelmezése (Deep Read)[cite: 3, 12, 33]:
 - `_docs/ARCHITECTURE.md` (Komponens fa, Server/Client határok, Adatmodell)
-- `_docs/DESIGN_SYSTEM.md` (Színrendszer: Cyber-Arany / Electric Cyan, UI konvenciók)
+- `_docs/DESIGN_SYSTEM.md` (Színrendszer: Kék-Lila v7.0 / Electric Cyan, UI konvenciók)
 - `_docs/WORKFLOW_PROTOCOL.md` (Fejlesztési protokoll)
 - `_docs/CHANGELOG.md` (Eddigi verziótörténet)
 - `memory-bank/` mappa aktuális tartalma.

@@ -11,7 +11,7 @@ interface GeometricIconProps {
 const GeometricIcon = ({
   type,
   size = 24,
-  color = "#ffd700",
+  color = "#00B5F1",
 }: GeometricIconProps) => {
   const icons = {
     hexagon: (

@@ -1,5 +1,19 @@
 # Changelog
 
+## [7.13.0] — 2026-10-02 — V7.0 BRAND-TISZTÍTÁS: AMBER/TILTÓLISTA SWEEP (COMPLETE)
+
+- **Feladat:** a v7.0 kék-lila brand-tisztítás 5. pontja — az arany/amber tiltólista (`DESIGN_SYSTEM.md` §1) teljes végrehajtása a `src/` állományban, Norbi 4 fókuszpontja + további találatok alapján.
+- **Érintett fájlok (23):**
+  - **`termekek/*-ai-muhely` (8 oldal):** a `color` adatmezők `from-yellow-500` / `to-yellow-500` gradiensjei `from-brand-secondary to-brand-primary` / `to-brand-secondary` / `to-brand-primary` tokenekre cserélve (a `color` mezők 32×32px dekoratív ikon-négyzetek háttérgradiensére mennek, szöveg nincs rajtuk → kontraszt-biztonságos).
+  - **Prompt-sablonok oldalak:** `i-prompt-sablonok/page.tsx` + `portal/prompt-sablonok/PromptTemplatesClient.tsx` — H1 gradiens (`from-[#f59e0b] to-[#d97706]` → `from-brand-primary to-brand-secondary`), header/spinner/border/hover/kártya-hover (`brand-primary` tokenek), CopyButton teljes CTA (`bg-[#00B5F1] hover:bg-[#5B21B6] text-slate-950 hover:text-white` — **kontraszt-javítás**: a sötét szöveg a lila hover-en 2.25:1 volt, most AAA).
+  - **`ai-megoldasok/ai-prompt-sablonok`:** 3 db `color` adatmező (dead data, a JSX nem használja) szintén brand tokenekre cserélve audit-tisztaságért.
+  - **További arany-helyek:** `HeroStaticBanner` CTA hover (`#ffd700` → `#5B21B6` + `hover:text-white`), `felhasznalasi-feltetelek` link hover (2× `#ffd700` → `white`), `GeometricIcon` alapértelmezett `#ffd700` → `#00B5F1`, `ProgressCircle` `gold` token → `brand` (`#ffd700` → `#00B5F1`, prop-átnevezés; a komponens 0 helyen van bekötve), `opengraph-image.tsx` 4× `#f59e0b` → `#00B5F1` (+ érvénytelen `color: "bg-transparent"` → `#020617` javítás a badge-eken).
+  - **SSOT + AI-utasító dokszik:** `DESIGN_SYSTEM.md` (5 arany-szöveg: `text-inverted`, `brand-glow`, `DDR-002`, `DDR-003`, + **duplikált `cta-from` sor egyesítése** `#38bdf8`/`#075985` → `#075985` a runtime `globals.css` szerint; `cta-hover` `#5B21B6` → `#6d28d9` a kódhoz igazítva; 7.2 CTA-minták javítva: `hover:text-white` hozzáadva, akcentus minta `#7C3AED`-re állítva, **hiányzó konverziós gradiens CTA minta pótolva**), `AGENTS.md` színtábla (`Brand (Arany)` → `Brand (Cián)`, `Gradiens kezdet` `#38bdf8` → `#075985`), `.clinerules/01+02+04` (`hover:border-amber-500/50` → `hover:border-brand-primary/50`, „Cyber-Arany" → „Kék-Lila v7.0"), `.agentskills/tailwind-v4-migrate/SKILL.md` (**„Use gold accents #f59e0b STRICTLY" előírás → kék-lila + explicit amber-tilalom**).
+- **Szándékosan MEGTARTVA (szemantikus UI, Norbi engedélyével):** `CaseStudiesBento` macOS traffic-light sárga pont (ablak-ikonográfia, `/60` opacity), `SeoWorkshopGenerator` warning számláló (piros/sárga/zöld validációs hármas), `admin/work-log` `pending` státusz (`yellow-500/10` badge).
+- **Nem módosítva (kategorikus színek, nem brand akcentus):** `WorkCard` `branding` narancs badge, `ModernServicesSection` narancs ikonszín, `ProgressCircle` `highlight` `#ff6b00`.
+- **QA:** `npx tsc --noEmit` → 0 hiba; `npm run lint -- --max-warnings 0` → 0 hiba / 0 figyelmeztetés; `npm run build` → BUILD_EXIT=0.
+- **Találat a sweep után:** `src/`-ben hex/yellow/amber/gold mintára **0 új találat** (a 3 szándékos szemantikus elem kivételével). *Következő döntés alatt:* a régi „Cyber-Arany/Cyber-Gold" **márkanév** tovább él ~100+ helyen élő AI-promptokban (pl. „max 2% gold focus"), UI-szövegekben és `_DOCS`-ban — külön sprint-javaslat.
+
 ## [7.12.5] — 2026-10-02 — CHAT HIBAJAVÍTÁS: CONTEXT ENGINE FIREBASE ADMIN SDK ELTÁVOLÍTÁSA + DEBUG LOG TISZTÍTÁS (COMPLETE)
 
 - **Érintett fájlok:** `src/actions/context-engine.ts`, `src/actions/ai-copilot.ts`, `src/actions/portal.ts`, `src/components/organisms/WorkflowChat.tsx`, `src/components/molecules/SocialMediaIcons.tsx`

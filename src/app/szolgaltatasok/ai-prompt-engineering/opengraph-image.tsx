@@ -39,7 +39,7 @@ export default function Image() {
           style={{
             width: "32px",
             height: "32px",
-            backgroundColor: "#f59e0b",
+            backgroundColor: "#00B5F1",
             borderRadius: "8px",
           }}
         />
@@ -97,8 +97,8 @@ export default function Image() {
         <div
           style={{
             padding: "8px 16px",
-            backgroundColor: "#f59e0b",
-            color: "bg-transparent",
+            backgroundColor: "#00B5F1",
+            color: "#020617",
             borderRadius: "9999px",
             fontSize: "16px",
             fontWeight: "600",
@@ -109,8 +109,8 @@ export default function Image() {
         <div
           style={{
             padding: "8px 16px",
-            backgroundColor: "#f59e0b",
-            color: "bg-transparent",
+            backgroundColor: "#00B5F1",
+            color: "#020617",
             borderRadius: "9999px",
             fontSize: "16px",
             fontWeight: "600",
@@ -121,8 +121,8 @@ export default function Image() {
         <div
           style={{
             padding: "8px 16px",
-            backgroundColor: "#f59e0b",
-            color: "bg-transparent",
+            backgroundColor: "#00B5F1",
+            color: "#020617",
             borderRadius: "9999px",
             fontSize: "16px",
             fontWeight: "600",

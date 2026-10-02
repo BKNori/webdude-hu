@@ -85,7 +85,7 @@ const designStyles = [
     description: "Elegáns, prémium",
     prompt:
       "luxury UI/UX design, elegant aesthetic, premium feel, sophisticated colors, high-end user experience",
-    color: "from-yellow-500 to-[#00B5F1]",
+    color: "from-brand-secondary to-brand-primary",
   },
   {
     id: "tech",

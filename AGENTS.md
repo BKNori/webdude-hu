@@ -78,7 +78,7 @@ webdude-hu/
 │   └── content/                    # MDX fájlok (blog bejegyzések)
 ├── _docs/
 │   ├── ARCHITECTURE.md             # Atomic Design fa, komponens regiszter
-│   ├── DESIGN_SYSTEM.md            # Cyber-Arany paletta, Tailwind konvenciók
+│   ├── DESIGN_SYSTEM.md            # Kék-Lila v7.0 paletta, Tailwind konvenciók
 │   ├── CHANGELOG.md                # Deploy napló
 │   └── WORKFLOW_PROTOCOL.md        # Munkafolyamat szabályok
 ├── public/
@@ -169,9 +169,9 @@ Kártya/panel:     #0f172a  →  bg-[#0f172a] (bg-surface)
 Kiemelt felület:  #1e293b  →  bg-[#1e293b] (bg-elevated)
 Fő szöveg:        #e2e8f0  →  text-[#e2e8f0] (text-primary)
 Muted szöveg:     #94a3b8  →  text-slate-400 (text-secondary)
-Brand (Arany):    #00B5F1  →  text-brand-primary / bg-brand-primary
-Brand Hover:      #5B21B6  →  hover:bg-cta-hover
-Gradiens kezdet:  #38bdf8  →  from-cta-from
+Brand (Cián):     #00B5F1  →  text-brand-primary / bg-brand-primary
+Brand Hover:      #6d28d9  →  hover:bg-cta-hover
+Gradiens kezdet:  #075985  →  from-cta-from
 Gradiens vége:    #5B21B6  →  to-cta-to
 Siker:            #10b981  →  text-emerald-500
 Hiba:             #ef4444  →  text-red-500

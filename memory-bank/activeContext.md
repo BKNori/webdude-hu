@@ -2,6 +2,14 @@
 
 > **AI DIREKTÍVA:** Ez a fájl a rendszer "élő" memóriája. A 03-workflow.md 5. lépése alapján KÖTELEZŐ ezt a fájlt frissítened minden feladat befejezésekor, vagy mielőtt átadod a vezérlést a felhasználónak (Norbinak). Szigorúan tilos új feladatba kezdened, ha az "Aktuális Munkaterület Állapota" szekcióban hibák vagy félbehagyott fájlok vannak!
 
+## Aktuális állapot — 2026-10-02, [7.13.0] amber-tilalom sweep lezárva
+
+- **Fő eredmény:** a v7.0 brand-tisztítás 5. pontja (amber/gy gold tiltólista) **végrehajtva, QA zöld, commitolva**: 23 fájl tisztítva a `src/`-ben + SSOT/AI-utasító dokszik. A `src/` hex/yellow/amber/gold mintára **0 találat** maradt (3 szándékos szemantikus elem: macOS traffic-light pont, `SeoWorkshop` warning-hármas, `admin/work-log` pending státusz).
+- **Norbi 4 fókuszpontja:** (1) `termekek/*-ai-muhely` 8 oldal `color` gradiens → brand token; (2) prompt-sablonok `#f59e0b` kártyák/keretek/glow → `brand-primary` + CopyButton kontraszt AAA-ra javítva; (3) `CaseStudiesBento`/`SeoWorkshopGenerator` megtartva (szemantikus, indokolva); (4) telített CTA → `text-white` (SSOT 7.2 minták javítva, hiányzó konverziós gradiens CTA pótolva).
+- **SSOT-ellentmondások rendezve:** `DESIGN_SYSTEM` duplikált `cta-from` sor (`#38bdf8` vs `#075985`) egyesítve a runtime `globals.css` szerint; `cta-hover` `#6d28d9`; `.clinerules/04` `hover:border-amber-500/50` → `brand-primary`; `SKILL.md` „Use gold STRICTLY" → amber-tilalom.
+- **QA:** `tsc`=0; `lint --max-warnings 0`=0; `build`=0 (23 fájl, +73/−62).
+- **NYITOTT DÖNTÉS (Norbinak, következő sprint):** a régi **„Cyber-Arany/Cyber-Gold" márkanév tovább él ~297 helyen** (kizárva: `CHANGELOG`, `_mentesek`, `.next`, történeti `_DOCS`): élő **AI-promptok** (`src/actions/*-workshop.ts`, `ai-tools.ts` — „Apply WebDude Cyber-Gold identity, max 2% gold focus" → az AI arany fókuszt generál!), felhasználói UI-szövegek (`banner-ai-muhely` „90/8/2 (Cyber-Arany)", `ClientAITools` `cyber_gold` opció), kommentek, `projects.ts` (44× portfólió-szöveg), `_DOCS/ARCHITECTURE.md` (46×). **Javaslat:** külön `7.14.0` „márkanév-szinkron" sprint — a promptok szövege és a `cyber_gold` érték funkcionális (AI-kimenetet befolyásol), ezért Norbi jóváhagyása kell a pontos új megfogalmazáshoz; a történeti dokumentumokat (`MODERNIZATION_PLAN`, `VISUAL_AUDIT`, CHANGELOG) NEM szabad átírni.
+
 ## Aktuális állapot — 2026-10-02, 7.12.5 chat-hibajavítás + debug log tisztítás lezárva
 
 - **Fő eredmény:** a 7.12.5-ös chat-hibajavítás (Firebase Admin SDK → Firestore REST, `_docs` útvonal, `idToken` lánc) **lehúzva, letisztítva és commitolva**: a hibakeresés során bekerült **25 db debug `console.log`/`console.error`** eltávolítva a production kódból (`portal.ts` 14, `ai-copilot.ts` 6, `context-engine.ts` 3, `WorkflowChat.tsx` 2), velük együtt a csak a logoláshoz használt `errorText` ideiglenes változók.

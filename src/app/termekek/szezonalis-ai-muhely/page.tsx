@@ -61,7 +61,7 @@ const seasonalCampaigns = [
     description: "Tavaszi húsvéti kampány",
     prompt:
       "Easter campaign visual, spring fresh colors, pastel tones, seasonal elements, festive spring aesthetic",
-    color: "from-pink-500 to-yellow-500",
+    color: "from-pink-500 to-brand-secondary",
   },
   {
     id: "summer",
@@ -69,7 +69,7 @@ const seasonalCampaigns = [
     description: "Nyári szezonális kampány",
     prompt:
       "Summer campaign visual, bright warm colors, beach vibes, energetic atmosphere, seasonal summer aesthetic",
-    color: "from-orange-500 to-yellow-500",
+    color: "from-orange-500 to-brand-primary",
   },
   {
     id: "autumn",

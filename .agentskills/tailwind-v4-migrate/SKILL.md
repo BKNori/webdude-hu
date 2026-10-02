@@ -1,7 +1,7 @@
 ---
 name: tailwind-v4-migrate
 version: 1.0.0
-description: Validates Tailwind CSS v4 syntax and enforces WebDude Cyber-Arany Design System rules.
+description: Validates Tailwind CSS v4 syntax and enforces WebDude Kék-Lila v7.0 Design System rules.
 ---
 
 # WebDude Design System Standards
@@ -9,7 +9,7 @@ description: Validates Tailwind CSS v4 syntax and enforces WebDude Cyber-Arany D
 ### 1. The 90-8-2 Rule
 - **90% Dark Base:** Backgrounds must use deep dark tones (e.g., `#020617`, `#0f172a`).
 - **8% Glassmorphism:** Use `backdrop-blur-xl` and `bg-slate-950/80` for cards, modals, and sticky elements.
-- **2% Accent (Cyber-Gold):** Use gold accents (`#f59e0b`, `text-amber-500`) STRICTLY for primary CTAs, hover effects, or micro-badges.
+- **2% Accent (Kék-Lila v7.0):** Use brand accents (`text-brand-primary` / `#00B5F1` cyan, `#7C3AED` violet, `cta-from`→`cta-to` gradient) STRICTLY for primary CTAs, hover effects, or micro-badges. **Amber/gold (`#f59e0b`, `text-amber-500`) is FORBIDDEN as brand accent.**
 
 ### 2. Tailwind v4 & Animation Rules
 - **No Deprecated Classes:** Ensure absolute Tailwind v4 compliance.

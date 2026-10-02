@@ -268,7 +268,7 @@ export default function FelhasznalasiFeltetelek() {
                   <strong>Email:</strong>{" "}
                   <a
                     href="mailto:hello@webdude.hu"
-                    className="text-[#00B5F1] hover:text-[#ffd700] transition-colors underline decoration-dotted"
+                    className="text-[#00B5F1] hover:text-white transition-colors underline decoration-dotted"
                   >
                     hello@webdude.hu
                   </a>
@@ -277,7 +277,7 @@ export default function FelhasznalasiFeltetelek() {
                   <strong>Weboldal:</strong>{" "}
                   <a
                     href="https://webdude.hu"
-                    className="text-[#00B5F1] hover:text-[#ffd700] transition-colors underline decoration-dotted"
+                    className="text-[#00B5F1] hover:text-white transition-colors underline decoration-dotted"
                   >
                     https://webdude.hu
                   </a>

@@ -247,7 +247,7 @@ export default function PromptTemplatesPage() {
           <div className="text-center">
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight">
               AI{" "}
-              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#f59e0b] to-[#d97706]">
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-brand-primary to-brand-secondary">
                 Prompt
               </span>{" "}
               Sablonok
@@ -266,7 +266,7 @@ export default function PromptTemplatesPage() {
             {promptTemplates.map((template) => (
               <div
                 key={template.id}
-                className="bg-slate-900/80 backdrop-blur-xl rounded-2xl border border-slate-700/80 p-8 hover:border-[#f59e0b]/50 transition-all duration-300"
+                className="bg-slate-900/80 backdrop-blur-xl rounded-2xl border border-slate-700/80 p-8 hover:border-brand-primary/50 transition-all duration-300"
               >
                 <h2 className="text-2xl font-bold text-text-primary mb-4">
                   {template.title}

@@ -24,7 +24,7 @@ const promptTemplates = [
     id: 1,
     category: "Logo Design",
     icon: Palette,
-    color: "from-[#f59e0b] to-orange-500",
+    color: "from-brand-primary to-brand-secondary",
     title: "Minimalista Tech Logo",
     description: "Modern, tiszta vonalvezetésű tech vállalati logó",
     prompt:
@@ -112,7 +112,7 @@ const promptTemplates = [
     id: 7,
     category: "Illustration",
     icon: ImageIcon,
-    color: "from-yellow-500 to-[#f59e0b]",
+    color: "from-brand-secondary to-brand-primary",
     title: "3D Illusztráció",
     description: "Stílusos 3D illusztráció marketing anyagokhoz",
     prompt:
@@ -248,7 +248,7 @@ const promptTemplates = [
     id: 16,
     category: "Infographic",
     icon: ImageIcon,
-    color: "from-orange-500 to-[#f59e0b]",
+    color: "from-orange-500 to-brand-secondary",
     title: "Adatvizualizáció Infografika",
     description: "Professzionális infografika design",
     prompt:
