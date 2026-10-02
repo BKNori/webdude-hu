@@ -1,5 +1,16 @@
 # Changelog
 
+## [7.14.1] — 2026-10-02 — ADMINISZTRATÍV TISZTÍTÁS + BACKLOG FELTÖLTÉS (COMPLETE, build nélkül)
+
+- **Git hygiene:** a `package.json` egyetlen módosítása kizárólag **PowerShell-formázási zaj** (2→4 szóköz indent, `ConvertTo-Json` jellegű) és egy `0.1.168 → 0.1.169` verzióbump volt; **függőség-, script- és verzióügyvitel-változás nem volt benne**, a `package-lock.json` érintetlen. Mivel a repo konvenciója a 2 szóközös JSON indent, a 4 szóközös visszaalakítás zaj volt → **`git checkout -- package.json` (visszavonva)**. Így a working tree 100%-ig tiszta lett, verziócsökkenés és félkész verzióbump nélkül.
+- **SSOT (`_docs/01_CURRENT_TASKS.md`):** a „🔵 Aktív / Várakozó" szekció — amely a 2026-09-19-i Git History Cleanup bejegyzés óta **üres placeholder** volt — feltöltve a `_docs/ROADMAP.md` középtávú + technikai adósság soraiból:
+  - **Portál funkciók:** valós idejű / késleltetett polling-alapú értesítés-badge (`src/app/actions/portal-notifications.ts` ma egyszeri lekérés; Anti-Drain Policy szerint nem `onSnapshot` végtelen ciklus), Vault dokumentum-előnéző (PDF/kép, `src/actions/vault.ts`).
+  - **Admin UI:** KPI dashboard bővítése (Revenue, Churn rate, LTV — `src/app/actions/getEnhancedKpiMetrics.ts`), export funkciók egységesítése (`exportLeads.ts` + `exportProjects.ts`, PDF/CSV közös felület).
+  - **Technikai adósság:** Playwright E2E smoke suite a `/kapcsolat`, `/munkak` (+ `/munkak/[slug]`), `/portal` útvonalakra és a Stripe webhook integrációs tesztjére (`src/app/api/webhooks/stripe/route.ts`), valamint Sentry monitoring (jelenleg csak Firebase Analytics van). A `test:e2e` script már létezik a `package.json`-ban, lefedett spec még nincs.
+- **QA:** `npx tsc --noEmit` → **TSC_EXIT=0**; `npm run lint -- --max-warnings 0` → **LINT_EXIT=0**. `npm run build` **nem futott**: a commit kizárólag `_docs/01_CURRENT_TASKS.md` és `memory-bank/activeContext.md` dokumentációs változás, `src/` és `public/` alá nem nyúlt → a build-kimenet bitre azonos lenne. `public/` bináris érintettség miatt a build amúgy sem érintett.
+- **⛔ BLOKKOLÓ — BTShop hero csere NEM történt meg:** a kért `public/assets/portfolio/btshop/btshop-banner-highres.webp` master fájl **nem létezik** sem git-tracked, sem untracked állapotban (teljes repó-rekurzív keresés: csak `bt-shop-weboldal-screen.webp`, `btshop-banner-2.webp` (1376×768, 62 KB), `btshop-dashboard-placeholder.{svg,webp}`, `btshop-hero-placeholder.svg`). Mivel a `btshop-banner-2.webp` továbbra is 1376×768, a `hero` csoport 1600w/2000w derivatívumai változatlanul interpoláltak maradnak, a `node scripts/generate-responsive-images.js --clean` futtatása pedig csak ugyanazokat a (felnagyított) kimeneteket generálná újra. **A `works.ts` és a `BtshopCaseStudy.tsx` érintetlenül maradt** — a szándékos 404-et / életlen hero-t elkerülendő. Folytatás: Norbi feltölti a ≥1920×960 felbontású bannért, majd a 7.14.2 sprint folytatja a cserét + generálást + QA kapukat.
+
+---
 ## [7.14.0] — 2026-10-02 — HIGH-RES HERÓ FORRÁSOK BEKÖTÉSE (GO-BOX + HU-MÁGÓ) (COMPLETE)
 
 - **Probléma (a 7.13.1 sprint nyitott pontja):** a `GoBoxCaseStudy` és `HuMagoCaseStudy` hero mesterképe 1376×768 px volt, így a `hero` csoport 1600w/2000w variánsa **felnagyított interpoláció** volt — retina/asztali kijelzőn életlen. Ez 3 projektből 2-t érintett.
