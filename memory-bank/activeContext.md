@@ -2,6 +2,15 @@
 
 > **AI DIREKTÍVA:** Ez a fájl a rendszer "élő" memóriája. A 03-workflow.md 5. lépése alapján KÖTELEZŐ ezt a fájlt frissítened minden feladat befejezésekor, vagy mielőtt átadod a vezérlést a felhasználónak (Norbinak). Szigorúan tilos új feladatba kezdened, ha az "Aktuális Munkaterület Állapota" szekcióban hibák vagy félbehagyott fájlok vannak!
 
+## Aktuális állapot — 2026-10-02, [7.14.0] high-res hero források lezárva
+
+- **Fő eredmény:** a 7.13.1 sprint nyitott pontja megoldva — a Go-Box és Hu-Mago esettanulmány hero mesterképe lecserélve valódi nagy felbontású alternatívára, így a `hero` csoport 1600w/2000w variánsa **nem több interpoláció**.
+- **Go-Box:** `Go-Box-Banner.webp` (1376×768) → `repulo-dobozok.webp` (2635×1200). **Hu-Mago:** `hu-mago-kft -banner.webp` (1376×768) → `humago-allo-banner-a-shopbansss-cssopy-copy.webp` (1920×960). Érintett: `src/data/works.ts` (`image`+`bannerImage`), `GoBoxCaseStudy.tsx` + `HuMagoCaseStudy.tsx` hero `src` prop.
+- **Regenerálás:** `node scripts/generate-responsive-images.js --clean` → hero 3 kép / 24 fájl, `[CLEAN] 18 elavult derivatívum törölve` (Go-Box-Banner-* és hu-mago-kft%20-banner-* 1600w/2000w). Összesen 77 kép / 424 derivatívum.
+- **Megjegyzés:** a Go-Box galéria-lista változatlan, ott a `Go-Box-Banner.webp` a szűk `[320,640,960]` készlettel renderelődik továbbra is.
+- **QA:** `tsc`=0; `lint --max-warnings 0`=0; `build`=0 (164 statikus oldal).
+- **Nyitott:** a **BTShop** hero (`btshop-banner-2.webp`, 1376×768) még mindig nincs nagyobb masterrel — ez az egyetlen megmaradt ismert felnagyítás.
+
 ## Aktuális állapot — 2026-10-02, [7.13.1] esettanulmány-kép retina javítás lezárva
 
 - **Fő eredmény:** az esettanulmány-képek retina-regressziójának javítása. **Gyökér-ok:** a generátor `gallery` csoportja futott a `casestudy` előtt, és a `processed` dedup miatt a `works.ts gallery[]`-ban is szereplő, de a 9 komponensben nagy méretben (50–66vw) renderelt képek csak a szűk `[320,640]` AVIF készletet kapták → életlen retina megjelenés. **Audit: 28/37 kép volt 1600w alatt.**

@@ -1,5 +1,16 @@
 # Changelog
 
+## [7.14.0] — 2026-10-02 — HIGH-RES HERÓ FORRÁSOK BEKÖTÉSE (GO-BOX + HU-MÁGÓ) (COMPLETE)
+
+- **Probléma (a 7.13.1 sprint nyitott pontja):** a `GoBoxCaseStudy` és `HuMagoCaseStudy` hero mesterképe 1376×768 px volt, így a `hero` csoport 1600w/2000w variánsa **felnagyított interpoláció** volt — retina/asztali kijelzőn életlen. Ez 3 projektből 2-t érintett.
+- **Tartalmi csere (adat + komponens szinten):**
+  - **Go-Box:** `Go-Box-Banner.webp` (1376×768) → **`repulo-dobozok.webp` (2635×1200)**. Frissítve: `src/data/works.ts` (`image` + `bannerImage`), `src/components/organisms/GoBoxCaseStudy.tsx` hero `src` prop. A galéria-lista (`Go-Box-Banner.webp`, `Banner2`, `Banner3`, `banner.webp`, `go-box-pizza-banner-copy.webp`, …) **változatlan** — ott a `Go-Box-Banner.webp` továbbra is szerepel, csak most már a szűk `[320, 640, 960]` galéria-készlettel.
+  - **Hu-Mago:** `hu-mago-kft -banner.webp` (1376×768) → **`humago-allo-banner-a-shopbansss-cssopy-copy.webp` (1920×960)**. Frissítve: `src/data/works.ts` (`image` + `bannerImage`), `src/components/organisms/HuMagoCaseStudy.tsx` hero `src` prop.
+  - **BTShop változatlan** — nincs nagyobb master fájl a lemezen (1376×768 marad, a felnagyított 1600w/2000w így továbbra is az egyetlen ismert technikai adósság).
+- **Regenerálás:** `node scripts/generate-responsive-images.js --clean` → `[OK] hero: 3 kép → 24 fájl`, `[CLEAN] 18 elavult derivatívum eltávolítva`. Összesen 77 kép / 424 derivatívum. A generátor a `GROUP_ORDER` miatt a `hero` csoportban futtatja ezeket → **valódi (nem felnagyított) 1600w + 2000w AVIF és WebP készlet** készült mindkét projekthez (`repulo-dobozok-1600w/2000w.{avif,webp}`, `humago-allo-…-1600w/2000w.{avif,webp}`).
+- **Tisztaítás igazolt:** a `Go-Box-Banner-*` (8 db) és `hu-mago-kft%20-banner-*` (10 db) elavult 1600w/2000w derivatívumai törölve, és kikerültek a `src/data/responsiveImages.ts` manifestumból — a régi útvonalakhoz már nem létezik reszponzív variáns, csak a szűk galéria-készlet (ahol még hivatkozott rá).
+- **QA:** `npx tsc --noEmit` → 0; `npm run lint -- --max-warnings 0` → 0; `npm run build` → 0 (164 statikus oldal).
+
 ## [7.13.1] — 2026-10-02 — ESETTANULMÁNY-KÉPEK RETINA REGRESSZIÓJÁNAK JAVÍTÁSA (RESPONSIVE PIPELINE)
 
 - **Hiba (gyökér-ok):** a generátor `GROUPS` deklarációs sorrendje miatt a `gallery` csoport futott a `casestudy` ELŐTT. A `processed` deduplikáció miatt azok a képek, amelyek a `works.ts gallery[]`-ban ÉS a 9 dedikált esettanulmány-komponensben is szerepelnek, de ott NAGY méretben (50vw / 66vw / 33vw / 25vw) renderelődnek, **csak a szűk `[320, 640]`, AVIF-only készletet kapták**. Retina (DPR 2) kijelzőn ezek 725–1520 px-t igényelnek → **életlen megjelenés**. Audit: **28 / 37 esettanulmány-kép** volt 1600w alatt.

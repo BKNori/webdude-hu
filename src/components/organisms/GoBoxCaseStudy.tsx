@@ -94,7 +94,7 @@ export default function GoBoxCaseStudy() {
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <ResponsiveImage
-             src="/assets/portfolio/go-box-kft/Go-Box-Banner.webp"
+             src="/assets/portfolio/go-box-kft/repulo-dobozok.webp"
              alt="Go-Box Kft. Dobozgyár"
              sizes="100vw"
              priority

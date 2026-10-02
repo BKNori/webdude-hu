@@ -252,8 +252,9 @@ export const works: Work[] = [
       "Arculattervezés",
       "Nyomdai anyagok",
     ],
-    image: "/assets/portfolio/hu-mago-kft/hu-mago-kft -banner.webp",
-    bannerImage: "/assets/portfolio/hu-mago-kft/hu-mago-kft -banner.webp",
+    image: "/assets/portfolio/hu-mago-kft/humago-allo-banner-a-shopbansss-cssopy-copy.webp",
+    bannerImage:
+      "/assets/portfolio/hu-mago-kft/humago-allo-banner-a-shopbansss-cssopy-copy.webp",
     gallery: [
       "/assets/portfolio/hu-mago-kft/humago-fal-copy.webp",
       "/assets/portfolio/hu-mago-kft/hu-mago-magazin-mocdddkup-copy.webp",
@@ -506,8 +507,8 @@ export const works: Work[] = [
       "Ipari branding",
       "Kereskedelmi weboldal",
     ],
-    image: "/assets/portfolio/go-box-kft/Go-Box-Banner.webp",
-    bannerImage: "/assets/portfolio/go-box-kft/Go-Box-Banner.webp",
+    image: "/assets/portfolio/go-box-kft/repulo-dobozok.webp",
+    bannerImage: "/assets/portfolio/go-box-kft/repulo-dobozok.webp",
     gallery: [
       "/assets/portfolio/go-box-kft/Go-Box-Banner.webp",
       "/assets/portfolio/go-box-kft/Go-Box-Banner2.webp",

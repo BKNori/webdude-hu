@@ -43,7 +43,7 @@ export default function HuMagoCaseStudy({ project }: HuMagoCaseStudyProps) {
       >
         <motion.div style={{ y, opacity }} className="absolute inset-0">
           <ResponsiveImage
-             src="/assets/portfolio/hu-mago-kft/hu-mago-kft -banner.webp"
+             src="/assets/portfolio/hu-mago-kft/humago-allo-banner-a-shopbansss-cssopy-copy.webp"
              alt="HU-MÁGÓ Kft. - Ipari Gépkereskedelem Innováció"
              sizes="100vw"
              priority
