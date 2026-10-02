@@ -2,6 +2,21 @@
 
 > **AI DIREKTÍVA:** Ez a fájl a rendszer "élő" memóriája. A 03-workflow.md 5. lépése alapján KÖTELEZŐ ezt a fájlt frissítened minden feladat befejezésekor, vagy mielőtt átadod a vezérlést a felhasználónak (Norbinak). Szigorúan tilos új feladatba kezdened, ha az "Aktuális Munkaterület Állapota" szekcióban hibák vagy félbehagyott fájlok vannak!
 
+## Aktuális állapot — 2026-10-02, [7.14.1] adminisztratív tisztítás + backlog feltöltés
+
+- **Git hygiene:** a `package.json` módosítása kizárólag PowerShell-formázási zaj (4→2 szóköz indent)
+  és egy `0.1.168→0.1.169` verzióbump volt, függőség-változás nélkül → **visszavonva**,
+  a working tree tiszta. A `package.json` továbbra is a 0.1.168-at hordozza.
+- **SSOT:** a `_docs/01_CURRENT_TASKS.md` „Aktív / Várakozó" szekciója (eddig üres volt)
+  feltöltve a ROADMAP-ból: (1) portál értesítések + Vault előnéző, (2) admin KPI-dashboard
+  (Revenue/Churn/LTV) + export egységesítés, (3) Playwright E2E smoke suite
+  (/kapcsolat, /munkak, /portal, Stripe webhook) + Sentry monitoring.
+- **QA:** `npx tsc --noEmit` = 0; `npm run lint -- --max-warnings 0` = 0. Build nem futott
+  (a változás kizárólag dokumentáció, kód/binary fájlhoz nem nyúlt).
+- **⛔ BLOKKOLÓ (asset hiány, Norbi):** a `btshop-banner-highres.webp` master a megadott
+  helyen (`public/assets/portfolio/btshop/`) **nem létezik** — sem git-tracked, sem untracked.
+  Így a 3. lépés (BTShop hero csere + `generate-responsive-images.js --clean` + QA)
+  nem volt végrehajtható; a változtatás elhalasztva a fájl feltöltéséig.
 ## Aktuális állapot — 2026-10-02, [7.14.0] high-res hero források lezárva
 
 - **Fő eredmény:** a 7.13.1 sprint nyitott pontja megoldva — a Go-Box és Hu-Mago esettanulmány hero mesterképe lecserélve valódi nagy felbontású alternatívára, így a `hero` csoport 1600w/2000w variánsa **nem több interpoláció**.
