@@ -31,11 +31,13 @@ const socialMediaIcons: SocialMediaIcon[] = [
   {
     name: "Pinterest",
     href: "https://hu.pinterest.com/awebdude/",
-    svg: `<svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-12-5.373-12-12-12zm0 4.5c-.828 0-1.5-.672-1.5-1.5s-.672-1.5-1.5-1.5.828 0-1.5.672-1.5 1.5.672 0 1.5.672 1.5 1.5.828 0 1.5-.672 1.5-1.5.1.5-.672 1.5-1.5zm0 2.5c-1.933 0-3.5-1.567-3.5-3.5s1.567-3.5 3.5-3.5 1.933 0 3.5 1.567 3.5 3.5-1.567 3.5-3.5 3.5z" /></svg>`,
+    svg: `<svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm1.713 18.995c-2.852 0-3.797-1.886-3.797-1.886l.67-2.72s1.005.744 2.185.744c1.245 0 1.615-.922 1.615-1.63 0-1.485-1.597-2.022-3.237-2.022h-.632l-.972 4.344c-.078.346-.248.744-.248 1.143 0 1.5 1.604 2.76 3.517 2.76 3.085 0 5.266-2.193 5.266-5.76 0-3.347-2.493-5.605-5.85-5.605-3.72 0-6.27 2.45-6.27 5.8 0 1.83.865 2.735 1.58 2.735.44 0 .723-.22.723-.628 0-.355-.173-.632-.173-.995 0-1.657 1.347-3.004 3.004-3.004 1.742 0 2.85 1.29 2.85 2.965 0 2.26-1.61 3.753-3.57 3.753z" /></svg>`,
   },
 ];
 
-export default function SocialMediaIcons({ className = "" }: SocialMediaIconsProps) {
+export default function SocialMediaIcons({
+  className = "",
+}: SocialMediaIconsProps) {
   return (
     <div className={`flex items-center gap-4 ${className}`}>
       {socialMediaIcons.map((icon) => (
@@ -47,7 +49,10 @@ export default function SocialMediaIcons({ className = "" }: SocialMediaIconsPro
           aria-label={`${icon.name} — megnyitás új ablakban`}
           className="text-slate-400 hover:text-[#00B5F1] transition-colors hover:scale-110 transform duration-300 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B5F1] focus-visible:ring-offset-2 focus-visible:ring-offset-[#020617]"
         >
-          <span aria-hidden="true" dangerouslySetInnerHTML={{ __html: icon.svg }} />
+          <span
+            aria-hidden="true"
+            dangerouslySetInnerHTML={{ __html: icon.svg }}
+          />
         </a>
       ))}
     </div>

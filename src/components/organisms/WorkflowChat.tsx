@@ -123,19 +123,32 @@ export default function WorkflowChat({
         await fetchMessages(false);
 
         // Generate AI Copilot response
-        const aiRes = await generateAICopilotResponseAction(
-          workflowId,
-          data.text
-        );
-        if (aiRes.success && aiRes.response) {
-          const aiCommentRes = await addWorkflowCommentAction(
-            idToken,
+        try {
+          const aiRes = await generateAICopilotResponseAction(
             workflowId,
-            aiRes.response
+            data.text,
+            idToken
           );
-          if (aiCommentRes.success) {
-            await fetchMessages(false);
+          if (aiRes.success && aiRes.response) {
+            const aiCommentRes = await addWorkflowCommentAction(
+              idToken,
+              workflowId,
+              aiRes.response
+            );
+            if (aiCommentRes.success) {
+              await fetchMessages(false);
+            } else {
+              setError(
+                aiCommentRes.error || "Nem sikerült menteni az AI választ."
+              );
+            }
+          } else {
+            // AI válasz hiba nem blokkolja a felhasználói üzenet küldését
+            console.warn("AI Copilot error:", aiRes.error);
           }
+        } catch (aiError) {
+          // AI hiba nem blokkolja a felhasználói üzenet küldését
+          console.warn("AI Copilot exception:", aiError);
         }
       } else {
         setError(res.error || "Nem sikerült elküldeni az üzenetet.");

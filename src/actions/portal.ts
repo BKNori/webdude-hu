@@ -798,7 +798,10 @@ export async function addWorkflowCommentAction(
 ) {
   const user = await verifyUserToken(idToken);
   if (!user) {
-    return { success: false, error: "Jogosulatlan hozzáférés." };
+    return {
+      success: false,
+      error: "Jogosulatlan hozzáférés (érvénytelen token).",
+    };
   }
 
   const cleanedText = text.trim();
@@ -810,8 +813,9 @@ export async function addWorkflowCommentAction(
   }
 
   const projectId = process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID;
-  if (!projectId)
+  if (!projectId) {
     return { success: false, error: "Hiányzó projekt konfiguráció." };
+  }
 
   try {
     // 1. Resolve author name
@@ -859,7 +863,9 @@ export async function addWorkflowCommentAction(
       const err = (await res.json()) as { error?: { message?: string } };
       return {
         success: false,
-        error: err.error?.message || "Nem sikerült elmenteni a kommentet.",
+        error:
+          err.error?.message ||
+          `Nem sikerült elmenteni a kommentet (${res.status}).`,
       };
     }
 
@@ -894,12 +900,16 @@ export async function getWorkflowCommentsAction(
 ) {
   const user = await verifyUserToken(idToken);
   if (!user) {
-    return { success: false, error: "Jogosulatlan hozzáférés." };
+    return {
+      success: false,
+      error: "Jogosulatlan hozzáférés (érvénytelen token).",
+    };
   }
 
   const projectId = process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID;
-  if (!projectId)
+  if (!projectId) {
     return { success: false, error: "Hiányzó projekt konfiguráció." };
+  }
 
   try {
     const url = `https://firestore.googleapis.com/v1/projects/${projectId}/databases/(default)/documents/workflows/${workflowId}/comments`;
@@ -914,7 +924,16 @@ export async function getWorkflowCommentsAction(
       if (res.status === 404) {
         return { success: true, comments: [] };
       }
-      return { success: false, error: "Nem sikerült betölteni a kommenteket." };
+      if (res.status === 401 || res.status === 403) {
+        return {
+          success: false,
+          error: "Jogosulatlan hozzáférés a kommentekhez.",
+        };
+      }
+      return {
+        success: false,
+        error: `Nem sikerült betölteni a kommenteket (${res.status}).`,
+      };
     }
 
     const data = (await res.json()) as {

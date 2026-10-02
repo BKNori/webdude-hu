@@ -1,5 +1,18 @@
 # Changelog
 
+## [7.12.5] — 2026-10-02 — CHAT HIBAJAVÍTÁS: CONTEXT ENGINE FIREBASE ADMIN SDK ELTÁVOLÍTÁSA + DEBUG LOG TISZTÍTÁS (COMPLETE)
+
+- **Érintett fájlok:** `src/actions/context-engine.ts`, `src/actions/ai-copilot.ts`, `src/actions/portal.ts`, `src/components/organisms/WorkflowChat.tsx`, `src/components/molecules/SocialMediaIcons.tsx`
+- **Hiba:** WorkflowChat "Valami hiba történt a csatlakozás során" hibaüzenet Firebase Admin SDK függőség és helytelen mappa elérési út miatt
+- **Javítás:**
+  - Firebase Admin SDK → Firestore REST API migráció (konzisztens a projekt többi részével)
+  - Mappa elérési út javítva: `_DOCS` → `_docs` (96. sor a context-engine.ts-ben)
+  - `idToken` paraméter hozzáadása és továbbítása a hívásláncban (getProjectContextAction → generateAICopilotResponseAction → WorkflowChat)
+  - Extra környezeti változók eltávolítása (FIREBASE_ADMIN_CLIENT_EMAIL, FIREBASE_ADMIN_PRIVATE_KEY már nem szükséges)
+  - **Debug log tisztítás — 25 hívás eltávolítva a production kódból:** `portal.ts` (14), `ai-copilot.ts` (6), `context-engine.ts` (3), `WorkflowChat.tsx` (2) — a hibakeresés során bekerült `console.log`/`console.error` nyomok és a kizárólag a logoláshoz deklárált `errorText` ideiglenes változók. *Megmaradt (szándékos):* a HEAD-ban már meglévő catch-ág hiba-`console.error`-ok és a WorkflowChat 2 db `console.warn` (nem-haladó AI hiba jelzés).
+  - **SocialMediaIcons:** a Pinterest ikon roncsolt SVG `path`-je érvényes Pinterest logóra cserélve; a komponens Prettier-formázott (destrukturált props, tagelt `dangerouslySetInnerHTML`).
+- **QA:** `npx tsc --noEmit` → 0 hiba; `npm run lint -- --max-warnings 0` → **0 hiba / 0 figyelmeztetés**; `npm run build` → BUILD_EXIT=0.
+
 ## [7.12.4] — 2026-09-30 — V7.0 BRAND TISZTÍTÁS: AMBER/GOLD ACCENTUSOK ELTÁVOLÍTÁSA (COMPLETE)
 
 - **Érintett komponensek:** `ModernServicesSection.tsx` és `TLDRSection.tsx` auditálva; minden visszamaradt sárga `yellow-400` / `yellow-500` brand akcentus kikerült a háttérekből, glow-okból, szöveggradiensekből, kártya CTA-kból és az elsődleges CTA gombból.

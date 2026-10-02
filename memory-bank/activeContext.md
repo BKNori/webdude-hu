@@ -2,6 +2,14 @@
 
 > **AI DIREKTÍVA:** Ez a fájl a rendszer "élő" memóriája. A 03-workflow.md 5. lépése alapján KÖTELEZŐ ezt a fájlt frissítened minden feladat befejezésekor, vagy mielőtt átadod a vezérlést a felhasználónak (Norbinak). Szigorúan tilos új feladatba kezdened, ha az "Aktuális Munkaterület Állapota" szekcióban hibák vagy félbehagyott fájlok vannak!
 
+## Aktuális állapot — 2026-10-02, 7.12.5 chat-hibajavítás + debug log tisztítás lezárva
+
+- **Fő eredmény:** a 7.12.5-ös chat-hibajavítás (Firebase Admin SDK → Firestore REST, `_docs` útvonal, `idToken` lánc) **lehúzva, letisztítva és commitolva**: a hibakeresés során bekerült **25 db debug `console.log`/`console.error`** eltávolítva a production kódból (`portal.ts` 14, `ai-copilot.ts` 6, `context-engine.ts` 3, `WorkflowChat.tsx` 2), velük együtt a csak a logoláshoz használt `errorText` ideiglenes változók.
+- **Kapott javítás:** `SocialMediaIcons.tsx` — a Pinterest ikon roncsolt SVG `path`-je érvényes Pinterest logóra cserélve + Prettier formázás.
+- **Megmaradt (szándékos):** a HEAD-ból örökölt catch-ág hiba-`console.error`-ok (pl. `AI Copilot error`, `Profile fetch error`) és a WorkflowChat 2 db `console.warn` (nem-haladó AI hiba jelzés) — ezek hiba-kezelés, nem debug nyom.
+- **QA:** `npx tsc --noEmit` → TSC_EXIT=0; `npm run lint -- --max-warnings 0` → LINT_EXIT=0; `npm run build` → BUILD_EXIT=0.
+- **Következő (Norbi kérésére, sorrendben):** **5. pont — v7.0 brand-tisztítás / amber tiltás folytatása** (`termekek/*-ai-muhely` `from-yellow-500` gradiensei, `prompt-sablonok` oldalak `#f59e0b` kártyái, `CaseStudiesBento` sárga státuszpont, `SeoWorkshopGenerator` sárga figyelmeztetés) — a színcserék **nem vakon**, a `DESIGN_SYSTEM.md` tokenjei alapján.
+
 ## Aktuális állapot — 2026-09-30, routing normalizálás + 9 dedikált esettanulmány (7.12.0) lezárva
 
 - **Routing normalizálás:** a `src/app/munkak/classi-co/` és `src/app/munkak/btshop/` route mappák **törölve** (5 fájl); a SEO-adatok a `src/data/caseStudySeo.ts` SSOT-ba költöztek; a `[slug]/page.tsx` `withSchemas()` helperrel rendereli a JSON-LD-t. `ClassiCoCaseStudy` + `BtshopCaseStudy` életre kelt — több halott kód nincs.

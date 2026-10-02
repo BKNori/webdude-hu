@@ -2,8 +2,10 @@
 
 > **AI DIREKTÍVA:** Ez a dokumentum a projekt makro-szintű állapotát (Roadmap) és a minőségbiztosítási (QA) státuszt rögzíti. Ezt a fájlt minden sikeres ciklus (Sprint) lezárása után kötelezően frissítened kell a legújabb validációs eredményekkel és az áthelyezett backlog elemekkel.
 
-## 1. Minőségbiztosítási Státusz (QA Gates) — frissítve: 2026-09-30 (7.11.1 lezárva)
+## 1. Minőségbiztosítási Státusz (QA Gates) — frissítve: 2026-10-02 (7.12.5 lezárva)
 
+- **7.12.5 QA (2026-10-02):** `npx tsc --noEmit` TSC_EXIT=0; `npm run lint -- --max-warnings 0` LINT_EXIT=0; `npm run build` BUILD_EXIT=0. Tartalom: chat-hibajavítás (Firebase Admin SDK → Firestore REST a `context-engine.ts`-ben, `_DOCS` → `_docs` útvonal, `idToken` lánc a hívásláncban), **25 db debug `console.log`/`console.error` eltávolítva a production kódból** (`portal.ts` 14, `ai-copilot.ts` 6, `context-engine.ts` 3, `WorkflowChat.tsx` 2), `SocialMediaIcons.tsx` Pinterest SVG javítás.
+- **7.12.0–7.12.4 QA (2026-09-30/10-01):** TSC_EXIT=0; LINT_CI_EXIT=0; BUILD_EXIT=0; SMOKE 13/13 OK. Tartalom: routing normalizálás + 9 dedikált esettanulmány, 39 `<Image>` → `<ResponsiveImage>`, halott kód törölve (`ClassiCoClient`, `BTShopClient`, `BtshopEeatSection`), hero élesség (card/casestudy csoportok 1600w/2000w-ig), smoke-test `@ts-nocheck` + `--help`, Tailwind v4 `bg-linear-to-*` sweep (11 fájl), amber/gold accentusok eltávolítva (`ModernServicesSection`, `TLDRSection`).
 - **7.11.1 QA (2026-09-30):** `npx tsc --noEmit` TSC_EXIT=0; `npm run lint -- --max-warnings 0` LINT_CI_EXIT=0; `npm run build` BUILD_EXIT=0. Tartalom: a `gallery` forráscsoport **AVIF-only, `[320, 640]`** szélességekre szűkítve (a 3 oszlopos rács miatt); új `--clean` takarítási mód (250 elavult fájl törölve); a `ResponsiveImage` a hiányzó WebP srcsetet nem rendereli. **Mért eredmény: 474 fájl / 18 MB → 224 fájl / 6,6 MB (−63%).**
 
 - **7.11.0 QA (2026-09-30):** `npx tsc --noEmit` TSC_EXIT=0; `npm run lint -- --max-warnings 0` LINT_CI_EXIT=0; `npm run build` BUILD_EXIT=0. Tartalom: essettanulmány-galéria képek (`works.ts` `gallery[]`) reszponzív betöltése — 78 kép / 468 fájl a manifestumban; `GeneralCaseStudy` hero+galéria és `ClassiCoCaseStudy` galéria átvezetve `ResponsiveImage`-re; 2 törött `.webm` (videó) hivatkozás kivéve a `gallery[]`-ből; a generátor hibatűrő lett.

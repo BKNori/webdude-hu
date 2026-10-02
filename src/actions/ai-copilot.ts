@@ -17,22 +17,25 @@ interface AIResponse {
  */
 export async function generateAICopilotResponseAction(
   workflowId: string,
-  userMessage: string
+  userMessage: string,
+  idToken?: string
 ): Promise<AIResponse> {
   try {
-    // Get project context
-    const contextRes = await getProjectContextAction(workflowId);
+    const contextRes = await getProjectContextAction(workflowId, idToken);
     if (!contextRes.success || !contextRes.context) {
       return {
         success: false,
-        error: "Nem sikerült lekérni a projekt kontextust.",
+        error: contextRes.error || "Nem sikerült lekérni a projekt kontextust.",
       };
     }
 
     // Get AI knowledge base
     const knowledgeBaseRes = await getAIKnowledgeBaseAction();
     if (!knowledgeBaseRes.success || !knowledgeBaseRes.knowledgeBase) {
-      return { success: false, error: "Nem sikerült lekérni a tudásbázist." };
+      return {
+        success: false,
+        error: knowledgeBaseRes.error || "Nem sikerült lekérni a tudásbázist.",
+      };
     }
 
     // Check if user message requires fresh web data
@@ -97,6 +100,15 @@ ${liveWebContext ? "Ha valós idejű webes adatok állnak rendelkezésre, haszn�
 Proaktívan jelölj meg, ha szükséges egy konzultációt vagy további információt.
 `;
 
+    // Check Groq API key
+    const groqApiKey = process.env.GROQ_API_KEY;
+    if (!groqApiKey) {
+      return {
+        success: false,
+        error: "AI API kulcs nincs konfigurálva (GROQ_API_KEY).",
+      };
+    }
+
     // Call Groq API for AI response
     const groqResponse = await fetch(
       "https://api.groq.com/openai/v1/chat/completions",
@@ -104,7 +116,7 @@ Proaktívan jelölj meg, ha szükséges egy konzultációt vagy további inform�
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${process.env.GROQ_API_KEY}`,
+          Authorization: `Bearer ${groqApiKey}`,
         },
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
@@ -120,10 +132,10 @@ Proaktívan jelölj meg, ha szükséges egy konzultációt vagy további inform�
 
     if (!groqResponse.ok) {
       const errorText = await groqResponse.text();
-      console.error("Groq API error:", errorText);
+      console.error("Groq API error:", groqResponse.status, errorText);
       return {
         success: false,
-        error: "Hiba történt az AI válasz generálásakor.",
+        error: `AI API hiba (${groqResponse.status}): ${errorText}`,
       };
     }
 
@@ -137,7 +149,10 @@ Proaktívan jelölj meg, ha szükséges egy konzultációt vagy további inform�
     console.error("AI Copilot error:", error);
     return {
       success: false,
-      error: "Hiba történt az AI válasz generálásakor.",
+      error:
+        error instanceof Error
+          ? error.message
+          : "Hiba történt az AI válasz generálásakor.",
     };
   }
 }
