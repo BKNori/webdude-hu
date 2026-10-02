@@ -1,5 +1,16 @@
 # Changelog
 
+## [7.13.1] — 2026-10-02 — ESETTANULMÁNY-KÉPEK RETINA REGRESSZIÓJÁNAK JAVÍTÁSA (RESPONSIVE PIPELINE)
+
+- **Hiba (gyökér-ok):** a generátor `GROUPS` deklarációs sorrendje miatt a `gallery` csoport futott a `casestudy` ELŐTT. A `processed` deduplikáció miatt azok a képek, amelyek a `works.ts gallery[]`-ban ÉS a 9 dedikált esettanulmány-komponensben is szerepelnek, de ott NAGY méretben (50vw / 66vw / 33vw / 25vw) renderelődnek, **csak a szűk `[320, 640]`, AVIF-only készletet kapták**. Retina (DPR 2) kijelzőn ezek 725–1520 px-t igényelnek → **életlen megjelenés**. Audit: **28 / 37 esettanulmány-kép** volt 1600w alatt.
+- **Javítás 1 — generátor futási sorrend:** explicit `GROUP_ORDER = ["hero", "card", "casestudy", "gallery"]` + `GROUPS.sort(...)`. Így a közös képek a bővebb `[320, 640, 960, 1600, 2000]` (AVIF + WebP) készletet kapják, a tisztán rács-specifikus (csak `gallery[]`-ban lévő) képek pedig maradnak a szűk, tárhely-optimalizált készletnél. → `scripts/generate-responsive-images.js`
+- **Javítás 2 — `sizes` attribútumok:** 25 esettanulmány-kép `sizes="100vw"`-ről a tényleges rács-oszlopszélességére igazítva (`BorGarnelaCaseStudy` 7×, `HuMagoCaseStudy` 7×, `RimaiCaseStudy` 8×, `BtshopCaseStudy` 2×, `ClassiCoCaseStudy` 1×). Enélkül a bővebb készlet túl-töltést okozott volna (2000w egy 25vw-os képhez). **A hero-k (`h-screen`, `sizes="100vw"`, `priority`) változatlanok** — és mind a 9 megőrizte a 1600w + 2000w variánsát (ellenőrizve).
+- **Regenerálás:** `node scripts/generate-responsive-images.js --clean`. Eredmény: `casestudy` 25 kép → 204 fájl; `gallery` 78 → 37 kép (74 fájl, a többit a casestudy vette át); összesen **78 kép / 432 derivatívum**; `[CLEAN]` → nincs elavult fájl.
+- **Verifikáció (audit):** a 1600w alatti képek száma **28/37 → 9/37**, és a maradék mind indokolt (1200–1400 px forrás → honest 960w; 340 px logó; 2× `.webm` videó; 663 px forrás → 640w). **Nincs több alul-szolgáltatott nagy felbontású kép.**
+- **Tárhely-hatás:** `public/assets/responsive/**` 254 fájl / 10,2 MB → **408 fájl / 24,3 MB** (+154 fájl, +14,1 MB). Ez a korábbi állapot alul-szolgáltatásának valós költsége. *Opcionális trimmelés:* a `casestudy` csoport `formats: "avif"`-re váltása (a galéria mintájára) kb. a felére csökkentené; a `<picture>` lánc miatt a régi böngésző az eredeti fájlt kapná, tehát nem törik el — külön döntést igényel.
+- **QA:** `npx tsc --noEmit` → 0; `npm run lint -- --max-warnings 0` → 0; `npm run build` → 0 (164 statikus oldal).
+- **Nyitott (Norbi — tartalmi döntés, nem hajtottam végre):** 3 hero masterje alacsony felbontású: `btshop-banner-2.webp` (1376×768), `Go-Box-Banner.webp` (1376×768), `hu-mago-kft -banner.webp` (1376×768) → a 1600w/2000w variánsuk felnagyítás. Nagyobb felbontású alternatívák a lemezen: Go-Box → `repulo-dobozok.webp` (2635×1200) vagy `go-box-pizza-banner-copy.webp` (1920×1646); Hu-Mago → `humago-allo-banner-a-shopbansss-cssopy-copy.webp` (1920×960). A csere a `works.ts` `bannerImage`/`image` mező és a komponens `src` módosítását igényli.
+
 ## [7.13.0] — 2026-10-02 — V7.0 BRAND-TISZTÍTÁS: AMBER/TILTÓLISTA SWEEP (COMPLETE)
 
 - **Feladat:** a v7.0 kék-lila brand-tisztítás 5. pontja — az arany/amber tiltólista (`DESIGN_SYSTEM.md` §1) teljes végrehajtása a `src/` állományban, Norbi 4 fókuszpontja + további találatok alapján.

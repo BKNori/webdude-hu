@@ -203,7 +203,7 @@ export default function BorGarnelaCaseStudy({
                 <ResponsiveImage
              src="/assets/portfolio/bor-es-garnela/bor-garnela-foodtruck-banner-eros-pista-feszt-2023-kecskemet-copy.webp"
              alt="Bor és Garnéla Food Truck Banner"
-             sizes="100vw"
+             sizes="(max-width: 1024px) 100vw, 50vw"
              className="object-cover group-hover:scale-105 transition-transform duration-700"
            />
                 <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent" />
@@ -212,7 +212,7 @@ export default function BorGarnelaCaseStudy({
                 <ResponsiveImage
              src="/assets/portfolio/bor-es-garnela/bor-es-garnela-etalp-terbezes.webp"
              alt="Bor és Garnéla Étlap Tervezés"
-             sizes="100vw"
+             sizes="(max-width: 1024px) 100vw, 50vw"
              className="object-cover group-hover:scale-105 transition-transform duration-700"
            />
                 <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent" />
@@ -330,7 +330,7 @@ export default function BorGarnelaCaseStudy({
               <ResponsiveImage
              src="/assets/portfolio/bor-es-garnela/bor-garnela-zaszlo2-scaled.webp"
              alt="Bor és Garnéla Zászló"
-             sizes="100vw"
+             sizes="(max-width: 768px) 100vw, 50vw"
              className="object-cover group-hover:scale-110 transition-transform duration-700"
            />
               <div className="absolute inset-0 bg-linear-to-t from-black/70 to-transparent" />
@@ -349,7 +349,7 @@ export default function BorGarnelaCaseStudy({
               <ResponsiveImage
              src="/assets/portfolio/bor-es-garnela/bor-es-garnela-thor-advert-copy-2.webp"
              alt="Bor és Garnéla Reklám"
-             sizes="100vw"
+             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
              className="object-cover group-hover:scale-110 transition-transform duration-700"
            />
               <div className="absolute inset-0 bg-linear-to-t from-black/70 to-transparent" />
@@ -368,7 +368,7 @@ export default function BorGarnelaCaseStudy({
               <ResponsiveImage
              src="/assets/portfolio/bor-es-garnela/bor-garnela-advert.webp"
              alt="Bor és Garnéla Promóció"
-             sizes="100vw"
+             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
              className="object-cover group-hover:scale-110 transition-transform duration-700"
            />
               <div className="absolute inset-0 bg-linear-to-t from-black/70 to-transparent" />
@@ -387,7 +387,7 @@ export default function BorGarnelaCaseStudy({
               <ResponsiveImage
              src="/assets/portfolio/bor-es-garnela/wordpress-weboldalak-boer-es-garnela.webp"
              alt="Bor és Garnéla Weboldal"
-             sizes="100vw"
+             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
              className="object-cover group-hover:scale-110 transition-transform duration-700"
            />
               <div className="absolute inset-0 bg-linear-to-t from-black/70 to-transparent" />
@@ -406,7 +406,7 @@ export default function BorGarnelaCaseStudy({
               <ResponsiveImage
              src="/assets/portfolio/bor-es-garnela/ajandekutalvany-vegpsd-copy-2.webp"
              alt="Bor és Garnéla Ajándékutalvány"
-             sizes="100vw"
+             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
              className="object-cover group-hover:scale-110 transition-transform duration-700"
            />
               <div className="absolute inset-0 bg-linear-to-t from-black/70 to-transparent" />

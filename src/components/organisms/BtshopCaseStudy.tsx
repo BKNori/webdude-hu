@@ -219,7 +219,7 @@ export default function BtshopCaseStudy({ project }: BtshopCaseStudyProps) {
                 <ResponsiveImage
              src="/assets/portfolio/btshop/btshop-banner-2.webp"
              alt="BTShop.hu Enterprise Dashboard"
-             sizes="100vw"
+             sizes="(max-width: 1024px) 100vw, 50vw"
              className="object-cover group-hover:scale-105 transition-transform duration-700"
            />
                 <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent" />
@@ -228,7 +228,7 @@ export default function BtshopCaseStudy({ project }: BtshopCaseStudyProps) {
                 <ResponsiveImage
              src="/assets/portfolio/btshop/bt-shop-weboldal-screen.webp"
              alt="BTShop.hu Weboldal Screenshot"
-             sizes="100vw"
+             sizes="(max-width: 1024px) 100vw, 50vw"
              className="object-cover group-hover:scale-105 transition-transform duration-700"
            />
                 <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent" />

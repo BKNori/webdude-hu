@@ -2,6 +2,15 @@
 
 > **AI DIREKTÍVA:** Ez a fájl a rendszer "élő" memóriája. A 03-workflow.md 5. lépése alapján KÖTELEZŐ ezt a fájlt frissítened minden feladat befejezésekor, vagy mielőtt átadod a vezérlést a felhasználónak (Norbinak). Szigorúan tilos új feladatba kezdened, ha az "Aktuális Munkaterület Állapota" szekcióban hibák vagy félbehagyott fájlok vannak!
 
+## Aktuális állapot — 2026-10-02, [7.13.1] esettanulmány-kép retina javítás lezárva
+
+- **Fő eredmény:** az esettanulmány-képek retina-regressziójának javítása. **Gyökér-ok:** a generátor `gallery` csoportja futott a `casestudy` előtt, és a `processed` dedup miatt a `works.ts gallery[]`-ban is szereplő, de a 9 komponensben nagy méretben (50–66vw) renderelt képek csak a szűk `[320,640]` AVIF készletet kapták → életlen retina megjelenés. **Audit: 28/37 kép volt 1600w alatt.**
+- **Javítás:** (1) explicit `GROUP_ORDER = ["hero","card","casestudy","gallery"]` a generátorban; (2) 25 kép `sizes` attribútuma a valós rács-oszlopszélességre igazítva (`100vw` → `50vw`/`66vw`/`33vw`/`25vw`). A hero-k (`sizes="100vw"`, `priority`) változatlanok, mind a 9 megőrizte a 2000w-et.
+- **Verifikáció:** 1600w alatti képek **28/37 → 9/37**, a maradék mind indokolt (kis forrás/logó/videó). Regenerálás `--clean`-nel: 432 derivatívum, nincs elavult fájl.
+- **Tárhely:** 10,2 MB → 24,3 MB (+14,1 MB) — az alul-szolgáltatás valós költsége; opcionális trimmelés: `casestudy` `formats: "avif"`.
+- **QA:** `tsc`=0; `lint --max-warnings 0`=0; `build`=0 (164 statikus oldal).
+- **Nyitott (Norbi, tartalmi döntés):** 3 hero 1376×768-as master (`btshop-banner-2`, `Go-Box-Banner`, `hu-mago-kft -banner`) → felnagyított 2000w. Nagyobb felbontású alternatívák a lemezen: Go-Box `repulo-dobozok.webp` (2635×1200) / `go-box-pizza-banner-copy.webp` (1920×1646); Hu-Mago `humago-allo-banner-a-shopbansss-cssopy-copy.webp` (1920×960).
+
 ## Aktuális állapot — 2026-10-02, [7.13.0] amber-tilalom sweep lezárva
 
 - **Fő eredmény:** a v7.0 brand-tisztítás 5. pontja (amber/gy gold tiltólista) **végrehajtva, QA zöld, commitolva**: 23 fájl tisztítva a `src/`-ben + SSOT/AI-utasító dokszik. A `src/` hex/yellow/amber/gold mintára **0 találat** maradt (3 szándékos szemantikus elem: macOS traffic-light pont, `SeoWorkshop` warning-hármas, `admin/work-log` pending státusz).

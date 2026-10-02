@@ -182,7 +182,7 @@ export default function ClassiCoCaseStudy({ project }: ClassiCoCaseStudyProps) {
               <ResponsiveImage
              src="/assets/portfolio/classi-co/classi-co-logo-h100.webp"
              alt="Classi-Co Logo"
-             sizes="100vw"
+             sizes="(max-width: 768px) 100vw, 50vw"
              className="object-contain"
            />
             </motion.div>

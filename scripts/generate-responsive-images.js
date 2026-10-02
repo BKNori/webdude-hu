@@ -150,6 +150,27 @@ const GROUPS = [
   },
 ];
 
+/**
+ * A csoportok FUTÁSI SORRENDJE (a GROUPS tömb deklarációs sorrendjétől függetlenül).
+ *
+ * MIÉRT: a generátor `processed` halmaza deduplikálja a forrásokat — az első
+ * csoport nyer. A `gallery` (works.ts `gallery[]`) szűk, AVIF-only
+ * `[320, 640]` készletet gyárt, mert az a `GeneralCaseStudy` 3 oszlopos
+ * rácsára van kalibrálva. A 9 dedikált esettanulmány-komponens viszont
+ * UGYANEZEKET a képeket nagy méretben (akár `lg:col-span-2` = 66vw, ill.
+ * 50vw) rendereli. Ha a `gallery` futna előbb, ezek a képek csak 640w-ig
+ * lennének elérhetők → retina (DPR 2) kijelzőn életlen megjelenés.
+ * Ezért a `casestudy` csoport fut ELŐBB: így a közös képek a bővebb
+ * `[320, 640, 960, 1600, 2000]` készletet kapják, a rács-specifikus
+ * (csak a `gallery[]`-ban szereplő) képek pedig maradnak a szűk,
+ * tárhely-optimalizált készletnél.
+ */
+const GROUP_ORDER = ["hero", "card", "casestudy", "gallery"];
+GROUPS.sort(
+  (a, b) => GROUP_ORDER.indexOf(a.name) - GROUP_ORDER.indexOf(b.name)
+);
+
+
 /** A 8 dedikált esettanulmány-komponensben hardcode-olt képek. */
 function collectCaseStudyImages() {
   // A ClassiCoCaseStudy galériája már a galéria-csoport része —

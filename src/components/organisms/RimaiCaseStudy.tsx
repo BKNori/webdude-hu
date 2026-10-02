@@ -129,7 +129,7 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
               <ResponsiveImage
              src="/assets/portfolio/rimai/rimai-arculat-1.webp"
              alt="Rimai Névjegykártyák"
-             sizes="100vw"
+             sizes="(max-width: 768px) 100vw, 66vw"
              className="object-cover"
            />
               <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
@@ -150,7 +150,7 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
               <ResponsiveImage
              src="/assets/portfolio/rimai/rimai-fal-1-scaled.webp"
              alt="Rimai Irodai Logó"
-             sizes="100vw"
+             sizes="(max-width: 768px) 100vw, 33vw"
              className="object-cover"
            />
               <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
@@ -169,7 +169,7 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
               <ResponsiveImage
              src="/assets/portfolio/rimai/rimai-poszter-copy-scaled.webp"
              alt="Rimai Autó Dekoráció"
-             sizes="100vw"
+             sizes="(max-width: 768px) 100vw, 33vw"
              className="object-cover"
            />
               <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
@@ -238,7 +238,7 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
                 <ResponsiveImage
              src="/assets/portfolio/rimai/rimai-aszfaltra-irva-copy-copy.webp"
              alt="Rimai Aszfaltra Írt"
-             sizes="100vw"
+             sizes="(max-width: 768px) 100vw, 50vw"
              className="object-cover group-hover:scale-105 transition-transform duration-500"
            />
               </div>
@@ -246,7 +246,7 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
                 <ResponsiveImage
              src="/assets/portfolio/rimai/rimai-utepites-csatornazas.webp"
              alt="Rimai Útépítés Csatornázás"
-             sizes="100vw"
+             sizes="(max-width: 768px) 100vw, 50vw"
              className="object-cover group-hover:scale-105 transition-transform duration-500"
            />
               </div>
@@ -284,7 +284,7 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
               <ResponsiveImage
              src="/assets/portfolio/rimai/rimai-poszter-rgb.webp"
              alt="Rimai Poszter RGB"
-             sizes="100vw"
+             sizes="(max-width: 768px) 100vw, 33vw"
              className="object-cover group-hover:scale-105 transition-transform duration-500"
            />
             </motion.div>
@@ -299,7 +299,7 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
               <ResponsiveImage
              src="/assets/portfolio/rimai/excavator-utepites-rimai-kecskemet-copy.webp"
              alt="Excavator Útépítés"
-             sizes="100vw"
+             sizes="(max-width: 768px) 100vw, 33vw"
              className="object-cover group-hover:scale-105 transition-transform duration-500"
            />
             </motion.div>
@@ -314,7 +314,7 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
               <ResponsiveImage
              src="/assets/portfolio/rimai/rimai-melyepites-copy-1.webp"
              alt="Rimai Mélyépítés"
-             sizes="100vw"
+             sizes="(max-width: 768px) 100vw, 33vw"
              className="object-cover group-hover:scale-105 transition-transform duration-500"
            />
             </motion.div>
