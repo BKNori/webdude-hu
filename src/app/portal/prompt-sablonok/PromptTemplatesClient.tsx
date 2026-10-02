@@ -398,7 +398,7 @@ export default function PromptTemplatesClient() {
                   {template.title}
                 </h2>
                 <div className="relative">
-                  <pre className="bg-bg-code/50 rounded-xl p-6 text-sm text-text-secondary overflow-x-auto whitespace-pre-wrap wrap-break-word border border-slate-800">
+                  <pre className="bg-bg-code/50 rounded-xl p-6 text-sm text-text-secondary overflow-x-auto whitespace-pre-wrap break-words border border-slate-800">
                     {template.prompt}
                   </pre>
                   <CopyButton text={template.prompt} />

@@ -119,7 +119,7 @@ export default function ServiceSectionNew() {
             Szolgáltatások
           </span>
           <h2
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#e2e8f0] mb-6"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold text-text-primary mb-6"
             style={{ fontFamily: "Space Grotesk, sans-serif" }}
           >
             Amit nyújtok
@@ -153,7 +153,7 @@ export default function ServiceSectionNew() {
                 </motion.div>
               </div>
 
-              <h3 className="text-2xl md:text-3xl font-bold text-[#e2e8f0] mb-5 group-hover:text-sky-500 transition-colors duration-300 tracking-tight leading-tight">
+              <h3 className="text-2xl md:text-3xl font-bold text-text-primary mb-5 group-hover:text-sky-500 transition-colors duration-300 tracking-tight leading-tight">
                 {service.title}
               </h3>
               <p className="text-base md:text-lg leading-relaxed text-slate-400 mb-8 tracking-wide font-medium">

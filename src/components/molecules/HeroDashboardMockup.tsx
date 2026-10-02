@@ -128,7 +128,7 @@ export default function HeroDashboardMockup() {
                     />
                   </div>
                   <div>
-                    <p className="text-xs text-[#e2e8f0] font-medium leading-tight">
+                    <p className="text-xs text-text-primary font-medium leading-tight">
                       {card.label}
                     </p>
                     <p className="text-[10px] text-slate-400 mt-0.5">

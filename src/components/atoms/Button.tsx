@@ -27,14 +27,14 @@ interface ButtonProps {
 const styles: Record<ButtonVariant, string> = {
   // Elsődleges CTA: kék-lila gradiens, fehér szöveg (WCAG AAA a #075985→#5B21B6 alapon)
   primary:
-    "bg-linear-to-r from-[#075985] to-[#5B21B6] hover:from-[#6D28D9] hover:to-[#5B21B6] text-white border border-transparent shadow-[0_8px_24px_rgba(7,89,133,0.35)] hover:shadow-[0_12px_32px_rgba(91,33,182,0.45)] focus-visible:ring-2 focus-visible:ring-[#00B5F1] focus-visible:ring-offset-2 focus-visible:ring-offset-[#020617]",
+    "bg-linear-to-r from-[#075985] to-[#5B21B6] hover:from-[#6D28D9] hover:to-[#5B21B6] text-white border border-transparent shadow-[0_8px_24px_rgba(7,89,133,0.35)] hover:shadow-[0_12px_32px_rgba(91,33,182,0.45)] focus-visible:ring-2 focus-visible:ring-[#00B5F1] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base",
   secondary:
-    "bg-slate-900/80 text-text-primary border border-slate-700 hover:border-[#00B5F1]/50 hover:text-[#00B5F1] hover:shadow-[0_8px_24px_rgba(0,181,241,0.15)] focus-visible:ring-2 focus-visible:ring-[#00B5F1] focus-visible:ring-offset-2 focus-visible:ring-offset-[#020617]",
+    "bg-slate-900/80 text-text-primary border border-slate-700 hover:border-[#00B5F1]/50 hover:text-[#00B5F1] hover:shadow-[0_8px_24px_rgba(0,181,241,0.15)] focus-visible:ring-2 focus-visible:ring-[#00B5F1] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base",
   // Akcentus: #7C3AED (violet-600) fehér szöveggel — WCAG AAA (~9:1)
   accent:
-    "bg-[#7C3AED] hover:bg-[#6D28D9] text-white border border-transparent shadow-[0_8px_24px_rgba(124,58,237,0.35)] hover:shadow-[0_12px_32px_rgba(124,58,237,0.45)] focus-visible:ring-2 focus-visible:ring-[#7C3AED] focus-visible:ring-offset-2 focus-visible:ring-offset-[#020617]",
+    "bg-[#7C3AED] hover:bg-[#6D28D9] text-white border border-transparent shadow-[0_8px_24px_rgba(124,58,237,0.35)] hover:shadow-[0_12px_32px_rgba(124,58,237,0.45)] focus-visible:ring-2 focus-visible:ring-[#7C3AED] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base",
   ghost:
-    "bg-transparent text-[#00B5F1] border border-slate-700 hover:bg-[#00B5F1]/10 hover:border-[#00B5F1]/50 focus-visible:ring-2 focus-visible:ring-[#00B5F1] focus-visible:ring-offset-2 focus-visible:ring-offset-[#020617]",
+    "bg-transparent text-[#00B5F1] border border-slate-700 hover:bg-[#00B5F1]/10 hover:border-[#00B5F1]/50 focus-visible:ring-2 focus-visible:ring-[#00B5F1] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base",
 };
 
 export default function Button({

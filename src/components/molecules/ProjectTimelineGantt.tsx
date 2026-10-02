@@ -72,7 +72,7 @@ export default function ProjectTimelineGantt({
               <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
               Projekt idővonal
             </span>
-            <h3 className="text-xl font-bold tracking-tight text-[#e2e8f0] md:text-2xl">
+            <h3 className="text-xl font-bold tracking-tight text-text-primary md:text-2xl">
               {heading}
             </h3>
             <p className="text-sm text-slate-400">{subheading}</p>

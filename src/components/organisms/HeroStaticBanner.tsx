@@ -35,7 +35,7 @@ export default function HeroStaticBanner() {
           {headline}
         </motion.h1>
         <motion.p
-          className="text-lg md:text-xl text-[#e2e8f0] mb-8"
+          className="text-lg md:text-xl text-text-primary mb-8"
           initial={{ opacity: 0, y: 20 }}
           animate={shouldReduce ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}

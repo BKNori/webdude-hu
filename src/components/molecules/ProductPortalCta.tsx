@@ -41,7 +41,7 @@ export default function ProductPortalCta({ productName }: ProductPortalCtaProps)
           Élő AI demó
         </span>
 
-        <h2 className="mt-6 text-2xl md:text-4xl font-bold tracking-tight text-[#e2e8f0] leading-tight">
+        <h2 className="mt-6 text-2xl md:text-4xl font-bold tracking-tight text-text-primary leading-tight">
           Próbáld ki a{" "}
           <span className="text-[#00B5F1]">{productName}</span> műhelyt a
           portálon

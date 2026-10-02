@@ -29,7 +29,7 @@ export default function TrustSectionNew() {
             Technológiák
           </span>
           <h2
-            className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#e2e8f0] tracking-tight leading-tight"
+            className="text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary tracking-tight leading-tight"
             style={{ fontFamily: "Space Grotesk, sans-serif" }}
           >
             Amivel dolgozom

@@ -120,7 +120,7 @@ export default function QuoteRequestForm() {
             />
           </svg>
         </div>
-        <h3 className="text-3xl font-bold text-[#e2e8f0] mb-4">
+        <h3 className="text-3xl font-bold text-text-primary mb-4">
           Sikeres Igényfelmérés!
         </h3>
         <p className="text-slate-400 mb-8 leading-relaxed">
@@ -159,7 +159,7 @@ export default function QuoteRequestForm() {
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
         {step === 1 && (
           <div className="space-y-6 animate-fade-in">
-            <h3 className="text-xl font-bold text-[#e2e8f0] mb-2">
+            <h3 className="text-xl font-bold text-text-primary mb-2">
               Mutatkozz be kérlek!
             </h3>
             <div>
@@ -170,7 +170,7 @@ export default function QuoteRequestForm() {
                 type="text"
                 {...register("name")}
                 placeholder="Pl. Kovács Gábor"
-                className="w-full bg-[#1e293b]/30 border border-slate-800 focus:border-sky-500/50 rounded-xl px-4 py-3 text-[#e2e8f0] outline-none transition-all"
+                className="w-full bg-[#1e293b]/30 border border-slate-800 focus:border-sky-500/50 rounded-xl px-4 py-3 text-text-primary outline-none transition-all"
               />
               {errors.name && (
                 <p className="text-red-500 text-sm mt-1">
@@ -187,7 +187,7 @@ export default function QuoteRequestForm() {
                 type="email"
                 {...register("email")}
                 placeholder="gabor@kovacs.hu"
-                className="w-full bg-[#1e293b]/30 border border-slate-800 focus:border-sky-500/50 rounded-xl px-4 py-3 text-[#e2e8f0] outline-none transition-all"
+                className="w-full bg-[#1e293b]/30 border border-slate-800 focus:border-sky-500/50 rounded-xl px-4 py-3 text-text-primary outline-none transition-all"
               />
               {errors.email && (
                 <p className="text-red-500 text-sm mt-1">
@@ -211,7 +211,7 @@ export default function QuoteRequestForm() {
 
         {step === 2 && (
           <div className="space-y-6 animate-fade-in">
-            <h3 className="text-xl font-bold text-[#e2e8f0] mb-2">
+            <h3 className="text-xl font-bold text-text-primary mb-2">
               Projekt adatok
             </h3>
             <div>
@@ -220,7 +220,7 @@ export default function QuoteRequestForm() {
               </label>
               <select
                 {...register("projectType")}
-                className="w-full bg-[#1e293b]/50 border border-slate-800 focus:border-sky-500/50 rounded-xl px-4 py-3 text-[#e2e8f0] outline-none transition-all"
+                className="w-full bg-[#1e293b]/50 border border-slate-800 focus:border-sky-500/50 rounded-xl px-4 py-3 text-text-primary outline-none transition-all"
               >
                 <option value="">-- Válassz típust --</option>
                 <option value="webdevelopment">
@@ -248,7 +248,7 @@ export default function QuoteRequestForm() {
               </label>
               <select
                 {...register("budget")}
-                className="w-full bg-[#1e293b]/50 border border-slate-800 focus:border-sky-500/50 rounded-xl px-4 py-3 text-[#e2e8f0] outline-none transition-all"
+                className="w-full bg-[#1e293b]/50 border border-slate-800 focus:border-sky-500/50 rounded-xl px-4 py-3 text-text-primary outline-none transition-all"
               >
                 <option value="">-- Válassz keretet --</option>
                 <option value="150k-300k">150 000 – 300 000</option>
@@ -285,7 +285,7 @@ export default function QuoteRequestForm() {
 
         {step === 3 && (
           <div className="space-y-6 animate-fade-in">
-            <h3 className="text-xl font-bold text-[#e2e8f0] mb-2">
+            <h3 className="text-xl font-bold text-text-primary mb-2">
               Rövid összefoglaló
             </h3>
             <div>
@@ -296,7 +296,7 @@ export default function QuoteRequestForm() {
                 {...register("summary")}
                 rows={5}
                 placeholder="Pl. szeretnék egy modern Next.js weboldalt kecskeméti kkv vállalkozásomnak, ami automatikusan gyűjti az ajánlatkéréseket..."
-                className="w-full bg-[#1e293b]/30 border border-slate-800 focus:border-sky-500/50 rounded-xl px-4 py-3 text-[#e2e8f0] outline-none transition-all resize-none"
+                className="w-full bg-[#1e293b]/30 border border-slate-800 focus:border-sky-500/50 rounded-xl px-4 py-3 text-text-primary outline-none transition-all resize-none"
               />
               {errors.summary && (
                 <p className="text-red-500 text-sm mt-1">

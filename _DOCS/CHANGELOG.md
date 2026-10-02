@@ -1,5 +1,17 @@
 # Changelog
 
+## [7.16.1] — 2026-10-02 — TAILWIND V4 ELAVULT OSZTÁLYOK JAVÍTÁSA (IDE DIAGNOSZTIKA ALAPJÁN)
+
+- **A VS Code Tailwind/TS szerver figyelmeztetéseinek lezárása.** A 7.16.0 token sweep után a felszínre került három, a Tailwind v4-ben elavultnak jelzett utility-minta:
+  - `focus-visible:ring-offset-[#020617]` → `ring-offset-bg-base` (a `bg-base` token pontosan ezt a hexet hordozza)
+  - `text-[#e2e8f0]` → `text-text-primary` (a szövegtoken pontosan `#e2e8f0`)
+  - `break-words` → `wrap-break-word` (a v4-ben ez a kanonikus név)
+- **Hatóköre kiszélesítve:** a minták **nem csak a jelzett fájlokban**, hanem a teljes `src/`-ben előfordultak → összesen **21 fájl** javítva (a 3 jelentett + 18 további: `Button.tsx`, `HeaderNavClient.tsx`, `DocumentPreviewModal.tsx`, `WorkflowChat.tsx`, `ServiceSectionNew.tsx`, `TrustSectionNew.tsx`, `SuperAdminDashboard.tsx`, `QuoteRequestForm.tsx`, `SectionTitle.tsx`, `ProjectTimelineGantt.tsx`, `TimelineMilestoneItem.tsx`, `HeroDashboardMockup.tsx`, `LanguageSwitcher.tsx`, `LogoInteractiveDemo.tsx`, `ProductPortalCta.tsx`, `PromptTemplatesClient.tsx`, `termekek/*-ai-muhely` 5 oldal).
+- **Szándékos kivétel:** a `<pre>` elemeken (`i-prompt-sablonok/page.tsx`, `portal/prompt-sablonok/PromptTemplatesClient.tsx`) a `wrap-break-word` **visszaállítva `break-words`-ra**. Ezek `whitespace-pre-wrap`-pel kombinálódnak, ahol a hosszú prompt-szövegek tördelése a cél; a v4-es alias ott nem nyújt többletet, csak eltérő viselkedési kockázatot a `<pre>`-n.
+- **Halott fájl nyom:** a `BtshopEngineeringGrid.tsx` TS-hibát jelzett a 10. sorban, de a fájl **nem létezik a lemezen** (a 7.15.0 sprint `git mv`-vel `BtshopEeatSection.tsx`-ra nevezte át, majd `git rm`-mel törölte) → a VS Code egy megnyitott, elavult editort-buffer-t tart a memóriában. **Nincs valós kódhiba**; a munkafelület újratöltése (`Developer: Reload Window`) eltünteti.
+- **QA (zero-error):** `npx tsc --noEmit` → **TSC_EXIT=0**; `npm run lint -- --max-warnings 0` → **LINT_EXIT=0**; `npm run build` → **BUILD_EXIT=0**.
+
+---
 ## [7.16.0] — 2026-10-02 — HOMEPAGE UX/UI SIMPLIFICATION & PREMIUM REFACTOR
 
 - **Kiindulási audit (3 premissza tévesnek bizonyult, ezért nem hajtottam végre felesleges törléseket):** (1) a főoldali 7 komponensben **0 emoji** volt (a 16 találat mind kommentben vagy máshol); (2) a `CaseStudiesBento` **már 2 kártyás** volt, `/munkak` CTA-val; (3) a `CTA`-k száma szekciónként 0–1, `Button variant="primary"` **egyedül a `FinalCta`-ban** volt. A kérés csak a **valós** hiányosságokra szűkült.

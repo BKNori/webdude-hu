@@ -35,7 +35,7 @@ export default function LanguageSwitcher({ currentLang }: LanguageSwitcherProps)
     <div className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-900/40 backdrop-blur-md border border-slate-700/50 hover:border-[#00B5F1]/50 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#00B5F1] focus:ring-offset-2 focus:ring-offset-[#020617]"
+        className="flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-900/40 backdrop-blur-md border border-slate-700/50 hover:border-[#00B5F1]/50 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#00B5F1] focus:ring-offset-2 focus:ring-offset-bg-base"
         aria-label="Switch language"
         aria-expanded={isOpen}
       >

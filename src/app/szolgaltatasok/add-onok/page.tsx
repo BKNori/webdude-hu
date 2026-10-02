@@ -432,7 +432,7 @@ export default async function AddonsPage() {
                     </div>
                     <Link
                       href="/portal"
-                      className="px-6 py-3 bg-[#00B5F1] hover:bg-[#5B21B6] text-bg-base hover:text-white font-bold rounded-xl uppercase tracking-wider text-xs transition-all duration-300 text-center flex items-center justify-center gap-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B5F1] focus-visible:ring-offset-2 focus-visible:ring-offset-[#020617]"
+                      className="px-6 py-3 bg-[#00B5F1] hover:bg-[#5B21B6] text-bg-base hover:text-white font-bold rounded-xl uppercase tracking-wider text-xs transition-all duration-300 text-center flex items-center justify-center gap-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B5F1] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base"
                     >
                       <ShoppingBag className="w-4 h-4" />
                       Megrendelés

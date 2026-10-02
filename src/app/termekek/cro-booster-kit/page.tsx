@@ -50,7 +50,7 @@ export default function CROBoosterKitPage() {
             <div className="absolute inset-0 bg-linear-to-b from-[#00B5F1]/5 via-transparent to-transparent" />
             <div className="max-w-6xl mx-auto px-6 relative z-10">
               <div className="text-center space-y-6">
-                <h1 className="text-4xl md:text-6xl font-bold text-[#e2e8f0] tracking-tight">
+                <h1 className="text-4xl md:text-6xl font-bold text-text-primary tracking-tight">
                   CRO Booster Kit
                 </h1>
                 <p className="text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">
@@ -64,12 +64,12 @@ export default function CROBoosterKitPage() {
 
           <section className="py-16 md:py-24 border-t border-slate-800/80">
             <div className="max-w-4xl mx-auto px-6">
-              <h2 className="text-3xl font-bold text-[#e2e8f0] mb-8 text-center tracking-tight">
+              <h2 className="text-3xl font-bold text-text-primary mb-8 text-center tracking-tight">
                 Üzleti Eredmények
               </h2>
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="bg-slate-950/80 border border-slate-800/80 rounded-3xl p-6 shadow-[0_8px_24px_rgba(0,0,0,0.35)] hover:shadow-[0_16px_48px_rgba(0, 181, 241,0.18)] transition-all duration-300">
-                  <h3 className="text-lg font-bold text-[#e2e8f0] mb-2">
+                  <h3 className="text-lg font-bold text-text-primary mb-2">
                     2.8x hirdetési ROI
                   </h3>
                   <p className="text-sm text-slate-400">
@@ -77,7 +77,7 @@ export default function CROBoosterKitPage() {
                   </p>
                 </div>
                 <div className="bg-slate-950/80 border border-slate-800/80 rounded-3xl p-6 shadow-[0_8px_24px_rgba(0,0,0,0.35)] hover:shadow-[0_16px_48px_rgba(0, 181, 241,0.18)] transition-all duration-300">
-                  <h3 className="text-lg font-bold text-[#e2e8f0] mb-2">
+                  <h3 className="text-lg font-bold text-text-primary mb-2">
                     45% bounce rate csökkenés
                   </h3>
                   <p className="text-sm text-slate-400">
@@ -85,7 +85,7 @@ export default function CROBoosterKitPage() {
                   </p>
                 </div>
                 <div className="bg-slate-950/80 border border-slate-800/80 rounded-3xl p-6 shadow-[0_8px_24px_rgba(0,0,0,0.35)] hover:shadow-[0_16px_48px_rgba(0, 181, 241,0.18)] transition-all duration-300">
-                  <h3 className="text-lg font-bold text-[#e2e8f0] mb-2">
+                  <h3 className="text-lg font-bold text-text-primary mb-2">
                     30 nap alatt dupla konverzió
                   </h3>
                   <p className="text-sm text-slate-400">
@@ -93,7 +93,7 @@ export default function CROBoosterKitPage() {
                   </p>
                 </div>
                 <div className="bg-slate-950/80 border border-slate-800/80 rounded-3xl p-6 shadow-[0_8px_24px_rgba(0,0,0,0.35)] hover:shadow-[0_16px_48px_rgba(0, 181, 241,0.18)] transition-all duration-300">
-                  <h3 className="text-lg font-bold text-[#e2e8f0] mb-2">
+                  <h3 className="text-lg font-bold text-text-primary mb-2">
                     Kész A/B teszt sablonok
                   </h3>
                   <p className="text-sm text-slate-400">
@@ -106,7 +106,7 @@ export default function CROBoosterKitPage() {
 
           <section className="py-16 md:py-24 border-t border-slate-800/80">
             <div className="max-w-4xl mx-auto px-6 text-center">
-              <h2 className="text-3xl font-bold text-[#e2e8f0] mb-4 tracking-tight">
+              <h2 className="text-3xl font-bold text-text-primary mb-4 tracking-tight">
                 Egyedi árajánlat
               </h2>
               <p className="text-slate-400 mb-8">
@@ -120,7 +120,7 @@ export default function CROBoosterKitPage() {
                 </p>
                 <Link
                   href="/kapcsolat"
-                  className="w-full inline-flex items-center justify-center gap-2 px-8 py-4 bg-linear-to-r from-[#00B5F1] to-[#5B21B6] hover:from-[#5B21B6] hover:to-[#5B21B6] text-slate-950 font-bold rounded-full uppercase tracking-wider text-sm transition-all duration-300 hover:scale-[1.02] active:scale-95 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 focus:ring-offset-[#020617]"
+                  className="w-full inline-flex items-center justify-center gap-2 px-8 py-4 bg-linear-to-r from-[#00B5F1] to-[#5B21B6] hover:from-[#5B21B6] hover:to-[#5B21B6] text-slate-950 font-bold rounded-full uppercase tracking-wider text-sm transition-all duration-300 hover:scale-[1.02] active:scale-95 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 focus:ring-offset-bg-base"
                 >
                   Egyedi árajánlat kérése
                 </Link>

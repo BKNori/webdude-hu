@@ -14,7 +14,7 @@ export default function LogoInteractiveDemo() {
               <Sparkles className="w-6 h-6 text-[#00B5F1]" />
             </div>
             <div>
-              <h2 className="text-xl md:text-2xl font-bold text-[#e2e8f0] tracking-tight">
+              <h2 className="text-xl md:text-2xl font-bold text-text-primary tracking-tight">
                 Logo AI Műhely
               </h2>
               <p className="text-sm text-[#94a3b8] mt-1">

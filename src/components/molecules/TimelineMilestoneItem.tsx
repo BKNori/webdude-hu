@@ -73,9 +73,9 @@ const STATUS_BADGES: Record<MilestoneStatus, string> = {
 
 /** Opcionális szín-felülírás a mérföldkő címéhez. */
 const ACCENT_TITLE: Record<MilestoneAccent, string> = {
-  neutral: "text-[#e2e8f0]",
-  cyan: "text-[#e2e8f0]", // legacy alias — v5.x adatok kompatibilitása
-  gold: "text-[#e2e8f0]", // v7.0: semlegesítve — arany brand tiltva
+  neutral: "text-text-primary",
+  cyan: "text-text-primary", // legacy alias — v5.x adatok kompatibilitása
+  gold: "text-text-primary", // v7.0: semlegesítve — arany brand tiltva
   emerald: "text-emerald-300",
   slate: "text-slate-300",
 };

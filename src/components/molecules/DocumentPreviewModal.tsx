@@ -22,7 +22,7 @@ interface DocumentPreviewModalProps {
 
 /** Egységes Electric Cyan fókuszgyűrű (WCAG 2.4.7 – látható fókusz). */
 const FOCUS_RING =
-  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B5F1] focus-visible:ring-offset-2 focus-visible:ring-offset-[#020617]";
+  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B5F1] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base";
 
 export default function DocumentPreviewModal({
   isOpen,
