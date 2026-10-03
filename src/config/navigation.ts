@@ -17,6 +17,8 @@ import {
   Zap,
   ShieldAlert,
   RefreshCw,
+  Newspaper,
+  Lock,
 } from "lucide-react";
 
 export interface NavItem {
@@ -193,9 +195,72 @@ export const NAV_ITEMS: NavItem[] = [
 ];
 
 /**
+ * **Top Bar elemek** — a Header legfelső, vékony sávja.
+ *
+ * A „Hírek" és az „Ügyfélportál" kiemelése a fő navigációból
+ * ide: kisebb betűmérettel (`text-xs`), diszkrét `lucide-react`
+ * ikonokkal jelenik meg, így nem vonják el a figyelmet a fő
+ * CTA-król, de minden útvonal elérhető marad egyetlen kattintással.
+ *
+ * **A z-index:** a sáv a fejléc *része* (`bg-bg-base/80`
+ * üveghatás), nem külön réteg — ezért nincs saját z-indexe,
+ * így sosem takarhatja el a cookie bannert vagy a modálokat.
+ */
+export interface TopBarItem {
+  name: string;
+  href: string;
+  icon: ComponentType<{ className?: string }>;
+}
+
+/** A top bar magyar tartalma. */
+export const TOP_BAR_ITEMS_HU: TopBarItem[] = [
+  { name: "Hírek", href: "/hirek", icon: Newspaper },
+  { name: "Ügyfélportál", href: "/portal", icon: Lock },
+];
+
+/** A top bar angol tartalma. */
+export const TOP_BAR_ITEMS_EN: TopBarItem[] = [
+  { name: "Blog", href: "/hirek", icon: Newspaper },
+  { name: "Client Portal", href: "/portal", icon: Lock },
+];
+
+/**
+ * A top bar elemei a megfelelő nyelven.
+ *
+ * **A fő menü és a top bar szétválasztása itt történik:** a
+ * `NAV_ITEMS` (és az EN variánsa) változatlan marad a
+ * szolgáltatás/dropdown struktúra miatt, de a `HeaderNavClient`
+ * a `TOP_BAR_ITEM_NAMES` alapján kiszűri a „Hírek" és az
+ * „Ügyfélportál" pontot a fő menüből, hogy ne jelenjenek meg
+ * kétszer.
+ */
+export function getTopBarItems(lang: Language): TopBarItem[] {
+  return lang === "en" ? TOP_BAR_ITEMS_EN : TOP_BAR_ITEMS_HU;
+}
+
+/**
+ * Azok a menünevek, amelyek a top barban jelennek meg, és
+ * **nem** duplikálódnak a fő navigációban.
+ */
+export const TOP_BAR_ITEM_NAMES = ["Hírek", "Ügyfélportál"];
+
+/**
  * Nyelvfüggő navigáció — a HeaderNavClient innen kéri le a menüt.
  * HU: teljes dropdown menü (NAV_ITEMS), EN: anchor-alapú főoldali menü.
  */
 export function getNavItems(lang: Language): NavItem[] {
   return lang === "en" ? NAV_ITEMS_EN : NAV_ITEMS;
+}
+
+/**
+ * A **fő** navigáció a top bar elemei nélkül.
+ *
+ * Ez az, amit a fejléc vízszintes sávja renderel — így a
+ * „Hírek" és az „Ügyfélportál" csak egyszer jelenik meg,
+ * a felső sávon.
+ */
+export function getMainNavItems(lang: Language): NavItem[] {
+  return getNavItems(lang).filter(
+    (item) => !TOP_BAR_ITEM_NAMES.includes(item.name)
+  );
 }

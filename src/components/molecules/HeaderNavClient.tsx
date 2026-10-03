@@ -28,7 +28,12 @@ interface HeaderNavClientProps {
   dictionary?: Dictionary;
   currentLang?: Language;
 }
-import { getNavItems, SubItem } from "@/config/navigation";
+import {
+  getMainNavItems,
+  getNavItems,
+  getTopBarItems,
+  SubItem,
+} from "@/config/navigation";
 import { useFocusTrap } from "@/hooks/useFocusTrap";
 import { ComponentType } from "react";
 
@@ -68,8 +73,32 @@ export default function HeaderNavClient({
   const actualLang = currentLang || detectedLang;
   const isEn = actualLang === "en";
 
-  // Nyelvfüggő menü: HU dropdown, EN anchor-alapú (/en) főoldali menü.
-  const navItems = getNavItems(actualLang);
+  /**
+ * Nyelvfüggő menü: HU dropdown, EN anchor-alapú (/en) főoldali menü.
+ *
+ * A „Hírek" és az „Ügyfélportál" **nincs** a DESKTOP listában — azok
+ * a fejléc legfelső, vékony **Top Bar** sávján jelennek meg, így a
+ * fő navigáció vízszintesen középre igazítható marad, és több helyet
+ * kap a fontos CTA-k számára.
+ */
+const navItems = getMainNavItems(actualLang);
+
+/**
+ * **A MOBIL menü a TELJES navigációt kapja** (`getNavItems`),
+ * a top bar elemeivel együtt — különben a „Hírek" és az
+ * „Ügyfélportál" link mobilon eltűnne, mert a top bar `hidden lg:block`
+ * (mobilesen nem renderelődik). Ez a lépés garantálja, hogy egyetlen
+ * útvonal sem veszik el.
+ */
+const navItemsMobile = getNavItems(actualLang);
+
+/**
+ * A top bar (Hírek + Ügyfélportál) elemei.
+ *
+ * **Mobilon a top bar NEM jelenik meg** — a keskeny kijelzőn a
+ * hamburger menü tartalmazza ezeket is (lásd `navItemsMobile`).
+ */
+const topBarItems = getTopBarItems(actualLang);
 
   // WCAG: a nyelvérzékeny aria-label-ek szótárból / nyelvi címkékből.
   const labels = {
@@ -356,6 +385,43 @@ export default function HeaderNavClient({
             : "border-slate-800/30"
         }`}
       >
+        {/* ── TOP BAR ──────────────────────────────────────────────────
+              Vékony, sötét sáv a fejléc legtetején: a „Hírek" és az
+              „Ügyfélportál" linkjeivel. `text-xs` méret + diszkrét
+              `lucide-react` ikonok, hogy ne vonják el a figyelmet a
+              fő CTA-król.
+
+              **A `bg-bg-base/60` üveghatás** a Kék-Lila v7.0
+              glassmorphism nyelvét követi (a fejléc többi részéhez
+              igazodva). Nincs saját z-indexe → sosem takarhatja el
+              a cookie bannert vagy a modálokat.
+
+              **Mobilon (`hidden lg:flex`) nem látszik** — a keskeny
+              kijelzőn a hamburger menü tartalmazza ezeket is. */}
+        <div className="hidden lg:block border-b border-slate-800/40 bg-bg-base/60">
+          <div className="max-w-7xl mx-auto px-4 md:px-6 h-9 flex items-center justify-end gap-6">
+            {topBarItems.map((item) => {
+              const Icon = item.icon;
+              const isActive = pathname === item.href;
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  aria-current={isActive ? "page" : undefined}
+                  className={`group flex items-center gap-1.5 text-xs font-medium tracking-wide transition-colors duration-200 ${FOCUS_RING} ${
+                    isActive
+                      ? "text-brand-primary"
+                      : "text-slate-400 hover:text-brand-primary"
+                  }`}
+                >
+                  <Icon className="w-3.5 h-3.5 opacity-70 group-hover:opacity-100 transition-opacity" />
+                  <span>{item.name}</span>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+
         <div className="max-w-7xl mx-auto px-4 md:px-6 h-16 md:h-20 flex items-center justify-between">
           {/* LOGO */}
           <div className="flex items-center h-full">
@@ -574,7 +640,9 @@ export default function HeaderNavClient({
                 aria-label={labels.mobileNavList}
                 className="px-4 pt-4 pb-32 space-y-1"
               >
-                {navItems.map((item, index) => {
+                {/* A MOBIL menü a TELJES navigációt kapja (a top bar elemeivel
+                    együtt), mert a top bar mobilon nem renderelődik. */}
+                {navItemsMobile.map((item, index) => {
                   const IconComponent = NAV_ICONS[item.name];
                   const isActive =
                     pathname === item.href ||

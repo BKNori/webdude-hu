@@ -15,11 +15,18 @@ const cinematicTransition = {
   mass: 0.9,
 } as const;
 
+/**
+ * Gyorsválaszok.
+ *
+ * **Nincsenek emojik:** a DESIGN_SYSTEM.md (04-design § 1) kifejezetten
+ * tiltja az emoji-használatot a prémium pozicionálás miatt — az
+ * ikonográfiát a `lucide-react` vektoros ikonok adják.
+ */
 const quickReplies = [
-  { text: "🚀 SaaS / Webapp fejlesztés", category: "saas" },
-  { text: "🛒 WordPress / Webshop", category: "wordpress" },
-  { text: "🎨 Prémium arculattervezés", category: "design" },
-  { text: "🤖 Vállalati AI automatizáció", category: "ai" },
+  { text: "SaaS / Webapp fejlesztés", category: "saas" },
+  { text: "WordPress / Webshop", category: "wordpress" },
+  { text: "Prémium arculattervezés", category: "design" },
+  { text: "Vállalati AI automatizáció", category: "ai" },
 ];
 
 export default function WebDudeChat() {
@@ -44,19 +51,19 @@ export default function WebDudeChat() {
   const currentQuickReplies = isWordPressPage
     ? [
         {
-          text: "🛡️ WordPress biztonsági ellenőrzést szeretnék",
+          text: "WordPress biztonsági ellenőrzést szeretnék",
           category: "wordpress",
         },
         {
-          text: "⚡ Szeretném gyorsabbá tenni a weboldalam",
+          text: "Szeretném gyorsabbá tenni a weboldalam",
           category: "wordpress",
         },
         {
-          text: "💾 Érdekel a napi automatizált mentés",
+          text: "Érdekel a napi automatizált mentés",
           category: "wordpress",
         },
         {
-          text: "🔧 Kérnék egy egyedi karbantartási tervet",
+          text: "Kérnék egy egyedi karbantartási tervet",
           category: "wordpress",
         },
       ]
@@ -539,11 +546,19 @@ export default function WebDudeChat() {
                 </div>
               )}
 
-              {/* Error Alert */}
+              {/* Error Alert — a szerver által küldött, emberi olvasásra szánt
+                  üzenetet jeleníti meg. A korábbi statikus szöveg
+                  minden hibaforrást (rate limit, konfiguráció-hiány,
+                  hálózati hiba) egyformán "csatlakozási hibaként" mutatta,
+                  ami nem volt diagnosztikailag hasznos. */}
               {error && (
-                <div className="rounded-xl bg-red-500/10 border border-red-500/20 p-3 text-center text-xs text-red-400">
-                  Valami hiba történt a csatlakozás során. Kérlek próbáld meg
-                  újra!
+                <div
+                  role="alert"
+                  aria-live="polite"
+                  className="rounded-xl bg-red-500/10 border border-red-500/20 p-3 text-center text-xs text-red-400"
+                >
+                  {error.message ||
+                    "Valami hiba történt. Kérlek, próbáld meg újra!"}
                 </div>
               )}
 
