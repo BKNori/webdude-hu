@@ -4,6 +4,7 @@ import Badge from "@/components/atoms/Badge";
 import { Metadata } from "next";
 import PricingTable from "@/components/molecules/PricingTable";
 import { buildBreadcrumbSchema, BreadcrumbItem } from "@/lib/breadcrumb";
+import DirectAnswerBlock from "@/components/molecules/DirectAnswerBlock";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -135,19 +136,16 @@ export default async function WooCommercePage() {
           />
 
           {/* Direct Answer Block - AEO optimalizált "WooCommerce Webshop Áttekintése" */}
-          <section className="relative py-12 bg-bg-base border-y border-white/5">
-            <div className="max-w-4xl mx-auto px-6 text-center">
-              <p className="text-base md:text-lg text-slate-300 leading-relaxed">
-                <span className="text-brand-primary font-semibold">
-                  WebDude WooCommerce webshop:
-                </span>{" "}
-                16 év tapasztalattal WooCommerce webshop készítés, fejlesztés és
-                optimalizálás. Konverzió-fókuszú e-kereskedelmi rendszerek,
-                fizetési integrációk, készletkezelés és teljes körű támogatás
-                országos szolgáltatással.
-              </p>
-            </div>
-          </section>
+          <DirectAnswerBlock
+          id="wc-webshop"
+          question="Mit érdemes tudni egy WooCommerce webshop készítése előtt?"
+          answer="Egy WooCommerce webshop készítésekor a legfontosabb a konverzióra optimalizált termékbevitel, a megbízható fizetési és szállítási integráció, valamint az automatikus készletkezelés. 16 év tapasztalattal építek olyan rendszereket, amelyek 90 feletti Google PageSpeed pontszámot érnek el, és GDPR-kompatibilisak."
+          facts={[
+            { label: "Tapasztalat", value: "16 év" },
+            { label: "Kezdeti átadás", value: "2–4 hét" },
+            { label: "Árazás", value: "Egyedi árajánlat" },
+          ]}
+        />
 
           <div className="max-w-6xl mx-auto px-6">
             <div className="mt-12 grid gap-12 md:grid-cols-2 items-start max-w-4xl mx-auto">

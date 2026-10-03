@@ -13,6 +13,7 @@ import {
   Settings2
 } from "lucide-react";
 import PricingTable, { type PricingTier } from "@/components/molecules/PricingTable";
+import DirectAnswerBlock from "@/components/molecules/DirectAnswerBlock";
 
 export const metadata: Metadata = {
   title: "WordPress weboldal készítés | Egyedi fejlesztés | WebDude",
@@ -205,6 +206,19 @@ export default function WordPressWeboldalKeszitesPage() {
           </div>
         </div>
       </section>
+
+      {/* AEO Direct Answer blokk — a hero után, hogy az AI keresők és a látogató
+        az első 3 másodpercben már megtalálja a tömör választ. */}
+      <DirectAnswerBlock
+        id="wp-weboldal"
+        question="Mennyibe kerül egy egyedi WordPress weboldal, és miért érdemes nem sablont használni?"
+        answer="Egyedi WordPress weboldal fejlesztésének ára a projekt terjedelmétől függ, ezért a WebDude minden esetben egyedi árajánlatot készít. 16 év tapasztalattal fejlesztek egyedi sablonokat, melyek kizárólag az ügyfél igényeit szolgálják ki, gyorsak, biztonságosak és SEO-optimalizáltak."
+        facts={[
+          { label: "Tapasztalat", value: "16 év" },
+          { label: "Árazás", value: "Egyedi árajánlat" },
+          { label: "Garancia", value: "Hiba nélküli átadás" },
+        ]}
+      />
 
       {/* E-E-A-T Bento Grid Section */}
       <section className="py-24 relative border-b border-slate-800/80">

@@ -13,6 +13,7 @@ import {
   Activity
 } from "lucide-react";
 import PricingTable, { type PricingTier } from "@/components/molecules/PricingTable";
+import DirectAnswerBlock from "@/components/molecules/DirectAnswerBlock";
 
 export const metadata: Metadata = {
   title: "WordPress Karbantartás és Hibajavítás | WebDude",
@@ -97,7 +98,15 @@ export default function WordPressKarbantartasPage() {
   const serviceJsonLd = {
     "@context": "https://schema.org",
     "@type": "Service",
+    "@id": "https://webdude.hu/szolgaltatasok/wordpress-karbantartas#service",
     name: "WordPress Karbantartás és Hibajavítás",
+    alternateName: [
+      "WordPress karbantartás",
+      "WordPress frissítés",
+      "WordPress biztonság",
+      "WordPress gyorsítás",
+      "WordPress hibajavítás",
+    ],
     provider: {
       "@type": "Person",
       name: "Norbert - WebDude",
@@ -105,6 +114,19 @@ export default function WordPressKarbantartasPage() {
     },
     description: "Feltört, lassú vagy elavult WordPress weboldalak szakszerű javítása és havi karbantartása. Biztonság, sebesség és nyugalom vállalkozásoknak.",
     serviceType: "WordPress Maintenance and Security",
+    category: "WordPress",
+    audience: {
+      "@type": "BusinessAudience",
+      name: "Vállalkozások, amelyeknek biztonságos és gyors WordPress weboldalra van szükségük folyamatosan",
+    },
+    // A WebDude kizárólag egyedi árajánlatot ad — nincs fix árkatalógus.
+    offers: {
+      "@type": "Offer",
+      priceCurrency: "HUF",
+      description: "Egyedi árajánlat kérése — a karbantartás terjedelmétől függően.",
+      availability: "https://schema.org/InStock",
+      url: "https://webdude.hu/kapcsolat?service=wordpress-karbantartas",
+    },
     areaServed: "HU",
   };
 
@@ -170,6 +192,18 @@ export default function WordPressKarbantartasPage() {
           </div>
         </div>
       </section>
+
+      {/* AEO Direct Answer blokk — a hero után */}
+      <DirectAnswerBlock
+        id="wp-karbantartas"
+        question="Mit tartalmaz a havi WordPress karbantartás?"
+        answer="A havi WordPress karbantartás magában foglalja a WordPress és a bővítmények biztonsági frissítését, a rendszeres mentést, az adatbázis-tisztítást, a Core Web Vitals és a Google PageSpeed ellenőrzését, valamint a spamek és a feltörési kísérletek szűrését. 16 év tapasztalattal gondoskodom arról, hogy a weboldal folyamatosan gyors, biztonságos és elérhető maradjon."
+        facts={[
+          { label: "Tapasztalat", value: "16 év" },
+          { label: "Frissítés", value: "Havi rendszeresség" },
+          { label: "Árazás", value: "Egyedi ajánlat" },
+        ]}
+      />
 
       {/* Pain Points & Problem Solving Bento Grid */}
       <section className="py-24 relative border-b border-slate-800/80">

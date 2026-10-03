@@ -1,5 +1,19 @@
 # Changelog
 
+## [7.18.0] — 2026-10-02 — WORDPRESS AEO DIRECT ANSWER BLOKKOK + CSS TOKEN PÓTLÁS
+
+- **Először egy audit, hogy ne vakon dolgozzam.** A kérés **3 állítása nem igazolódott**: (1) a `FaqSectionAEO.tsx`-ben és a `FinalCta.tsx`-ban **nincs egyetlen fix ár** sem a forrásban, sem a renderelt `index.html`-ben (a számcsoportok a méret- és sorszámok); (2) **nincs többesszámú fogalmazás** („Indítsuk", „Beszéljünk", „meghatározzuk" → 0 találat); (3) a `globals.css` `@theme` blokkban **csak egy** token hiányzott. Ezek helyett a valódi hiányosságokat javítottam.
+- **CSS token pótlás:** `--color-bg-code: #0b1120` (Level 1.5 — kódrészlet/prompt-sablon/terminal) bekerült a `@theme`-be. Ez volt az egyetlen hiányzó token a 13 ellenőrzöttből; a `portal/prompt-sablonok/PromptTemplatesClient.tsx` `bg-bg-code/50` osztálya eddig halott színre hivatkozott.
+- **AEO Direct Answer blokkok (a FŐ fókusz) — új komponens:** `src/components/molecules/DirectAnswerBlock.tsx` (~90 sor, Server Component, újrahasznosítható). Minden WordPress/WooCommerce fókuszú oldalra bekötve (6 oldal): `wordpress-weboldal-keszites`, `wordpress-fejlesztes`, `wordpress-biztonsag`, `woocommerce-webshop-keszites`, `wordpress-webshop-keszites`, `wordpress-karbantartas`.
+  - **Tartalom:** 40–60 szavas, entitás-gazdag válasz (16 év tapasztalat, WordPress, WooCommerce, egyedi fejlesztés, SEO, Core Web Vitals) + 3 kulcstény-táblázat. A kérdések természetes nyelvi formájúak („Mennyibe kerül egy egyedi WordPress weboldal, és miért érdemes nem sablont használni?", „Mit kell tenni, ha feltörték a WordPress weboldalamat?").
+  - **Zéró fix ár:** minden blokkban az „Árazás" tény értéke **„Egyedi árojánlat"** / „Egyedi ajánlat" — számszerű ár nincs.
+  - **Dizájn:** `border-l-2 border-l-brand-primary` csík + üveg háttér + 7%-os cyan radial glow → a 90-8-2 szabály szerint a brand csak a kereten jelenik meg, a szöveg `text-slate-300`.
+  - **a11y:** a heading `id`-je és az `aria-labelledby` **oldal-specifikus** (`wp-weboldal-heading`, `wc-webshop-heading`, `wp-webshop-heading`, `wp-karbantartas-heading`, `wp-fejlesztes-heading`, `wp-biztonsag-heading`) → **nincs duplikált DOM-id**.
+- **`Service` séma bővítés a 6. oldalon** (`wordpress-karbantartas`, ami a 7.17.0-ban kimaradt): `@id`, `alternateName` (5 kulcsszó), `audience`, `offers` (egyedi árajánlat modell, `price` **nélkül**), `category`.
+- **`woocommerce-webshop-keszites` javítás:** a manuálisan írt, kérdés nélküli bevezető `<p>` blokk helyére a standard `DirectAnswerBlock` került → most már van H2 + természetes kérdés + idézhető válasz.
+- **QA + gépi validáció a prerenderelt HTML-en:** `npx tsc --noEmit` → **0**; `npm run lint -- --max-warnings 0` → **0**; `npm run build` → **0**. Mind a **6 oldalon**: `Service: 1` (teljes), `FAQPage: 1`, **0 JSON parse-hiba**, `DirectAnswer` egyedi id-vel, **0 fix ár** sem a JSON-LD-ben, sem a látható HTML-ben.
+
+---
 ## [7.17.0] — 2026-10-02 — WORDPRESS / WOOCOMMERCE ALOLDALAK SEO+AEO ELŐKÉSZÍTÉSE
 
 - **Audit (23 szolgáltatásoldal):** mindegyik Server Component, mindegyiknek volt `metadata` és `Service` sémája — a séma azonban **vékony volt**: se `@id`, se kulcsszavak, se árazási modell. A WordPress-fókuszú 5 aloldal (`wordpress-weboldal-keszites`, `wordpress-fejlesztes`, `wordpress-biztonsag`, `woocommerce-webshop-keszites`, `wordpress-webshop-keszites`) célzottan bővült.

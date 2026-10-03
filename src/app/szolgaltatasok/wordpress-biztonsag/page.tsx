@@ -13,6 +13,7 @@ import {
   ShieldCheck
 } from "lucide-react";
 import PricingTable, { type PricingTier } from "@/components/molecules/PricingTable";
+import DirectAnswerBlock from "@/components/molecules/DirectAnswerBlock";
 
 export const metadata: Metadata = {
   title: "Feltört WordPress Helyreállítás és Biztonság | WebDude",
@@ -159,7 +160,18 @@ export default function WordPressBiztonsagPage() {
       />
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 overflow-hidden border-b border-slate-800/80">
+            <DirectAnswerBlock
+        id="wp-biztonsag"
+        question="Mit kell tenni, ha feltörték a WordPress weboldalamat?"
+        answer="Feltörés esetén az első lépés az azonnali biztonsági mentés, majd a fertőzött fájlok és a visszaírt hozzáférési pontok teljes eltávolítása. Ezután jön a keményítés: jelszó-erősítés, kétlépéses azonosítás, frissítések és a támadási felület csökkentése. 16 év tapasztalattal végzem el a tisztítást és a megelőző beállításokat."
+        facts={[
+            { label: "Tapasztalat", value: "16 év" },
+            { label: "Válaszidő", value: "Sürgősség szerint" },
+            { label: "Árazás", value: "Egyedi árojánlat" },
+        ]}
+      />
+
+<section className="relative pt-32 pb-20 overflow-hidden border-b border-slate-800/80">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,var(--tw-gradient-stops))] from-sky-900/20 via-slate-950 to-slate-950 pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl">

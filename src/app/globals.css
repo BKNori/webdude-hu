@@ -7,6 +7,7 @@
   --color-bg-card: #0f172a; /* Kártyák — slate-900 */
   --color-bg-surface: #0f172a; /* Level 1 — kártyák, panelek, formok */
   --color-bg-elevated: #1e293b; /* Level 2 — hover, dropdown, modál */
+  --color-bg-code: #0b1120; /* Level 1.5 — kódrészlet, prompt-sablon, terminal */
 
   /* ── Szöveg hierarchia (WCAG: mind világos sötét alapon) ───────────────── */
   --color-text-primary: #e2e8f0; /* AAA — fő szöveg, heading */

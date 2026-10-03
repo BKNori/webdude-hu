@@ -4,6 +4,7 @@ import { Metadata } from "next";
 import { ShieldCheck, Zap, Cog, ArrowRight } from "lucide-react";
 import Hero from "@/components/Hero";
 import { buildBreadcrumbSchema, BreadcrumbItem } from "@/lib/breadcrumb";
+import DirectAnswerBlock from "@/components/molecules/DirectAnswerBlock";
 
 export const metadata: Metadata = {
   title: "WordPress fejlesztő vállalkozásoknak | WebDude",
@@ -151,7 +152,18 @@ export default function WordPressDevPage() {
         </div>
 
         {/* ── E-E-A-T Bento Grid ── */}
-        <section className="py-24 relative z-10">
+              <DirectAnswerBlock
+        id="wp-fejlesztes"
+        question="Mikor érdemes WordPress fejlesztőt fogadni egy meglévő weboldalhoz?"
+        answer="WordPress fejlesztőt akkor érdemes bevonni, ha a meglévő oldal már nem bővíthető sablonból: egyedi funkció kell, a sebesség romlik, vagy a biztonsági frissítések már nem elegendők. 16 év tapasztalattal oldok meg új funkciók, hibajavítás és teljes modernizáció feladatokat egyedi igény szerint."
+        facts={[
+            { label: "Tapasztalat", value: "16 év" },
+            { label: "Árazás", value: "Egyedi árajánlat" },
+            { label: "Hibajavítás", value: "Gyors javítás" },
+        ]}
+      />
+
+<section className="py-24 relative z-10">
           <div className="max-w-6xl mx-auto px-6">
             <div className="text-center max-w-3xl mx-auto mb-16">
               <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">

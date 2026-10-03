@@ -3,6 +3,7 @@ import Button from "@/components/atoms/Button";
 import { Metadata } from "next";
 import PricingTable from "@/components/molecules/PricingTable";
 import { buildBreadcrumbSchema, BreadcrumbItem } from "@/lib/breadcrumb";
+import DirectAnswerBlock from "@/components/molecules/DirectAnswerBlock";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -252,6 +253,17 @@ export default async function WebshopPage() {
                 Árajánlat kérése
               </Button>
             </div>
+
+            <DirectAnswerBlock
+            id="wp-webshop"
+            question="Mennyibe kerül egy WordPress webshop elkészítése?"
+            answer="Egy WordPress webshop ára a projekt terjedelmétől függ: a termékek számától, a szükséges fizetési és szállítási integrációktól és az egyedi funkcióktól. A WebDude-nál nincs fix ársor, minden webshophoz egyedi árajánlat készül. 16 év tapasztalattal építek WooCommerce alapú, gyors és konverzió-optimalizált online áruházakat."
+            facts={[
+              { label: "Tapasztalat", value: "16 év" },
+              { label: "Átadás", value: "3–10 hét" },
+              { label: "Árazás", value: "Egyedi árajánlat" },
+            ]}
+          />
 
             {/* GYIK — AEO-barát direkt kérdés-válasz struktúra.
                 A látható szöveg emberi és premium; a schema maga a fenti
