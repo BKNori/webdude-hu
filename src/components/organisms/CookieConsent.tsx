@@ -76,14 +76,33 @@ export default function CookieConsent() {
       initial={{ opacity: 0, y: 100 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="fixed bottom-4 left-4 right-4 md:left-8 md:right-8 z-50 pointer-events-none"
+      /**
+       * **z-index: a banner a header (`z-40`) ALATT van.**
+       *
+       * A korábbi `z-50` miatt a banner a fix fejléc fölött lebegett,
+       * és mobilon (390×844) az „Elfogadom"/„Elutasítom" gombok
+       * fedték a hamburger menüt — a gomb kattinthatatlan volt, amíg
+       * a visitor nem döntött a sütikről. Ez a 7.19.0 smoke suite
+       * diagnosztikájában derült ki.
+       *
+       * A z-index skála: `z-0` alap · `z-10` badge · `z-40` header/
+       * overlay · `z-50` modál. A consent banner nem modál, ezért
+       * `z-30`-ot kap — így **soha nem tudja fedni a headert**.
+       *
+       * Emellett a panel `max-h`-gel korlátozott és belsőleg
+       * görgethető: nagyon rövid viewporton (pl. fekvő telefon) sem
+       * nyeli el a teljes képernyőt.
+       */
+      className="fixed bottom-4 left-4 right-4 md:left-8 md:right-8 z-30 pointer-events-none"
+      role="dialog"
+      aria-label="Cookie-k és analitika beállítások"
     >
-      <div className="bg-bg-surface border border-sky-500/50 rounded-2xl p-6 md:p-8 shadow-2xl backdrop-blur-xl bg-opacity-95 pointer-events-auto">
+      <div className="max-h-[70vh] overflow-y-auto overscroll-contain bg-bg-surface border border-sky-500/50 rounded-2xl p-6 md:p-8 shadow-2xl backdrop-blur-xl bg-opacity-95 pointer-events-auto">
         <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6">
           <div className="flex-1">
-            <h3 className="text-lg font-bold text-text-primary mb-2">
-              🍪 Cookie-k és Analitika
-            </h3>
+            <h2 className="text-lg font-bold text-text-primary mb-2">
+              Cookie-k és Analitika
+            </h2>
             <p className="text-sm text-slate-400 mb-2">
               Sütiket használunk a felhasználói élmény javításához és a weboldal
               forgalmának elemzéséhez. Az adatok segítenek nekünk jobb

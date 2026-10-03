@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import { dismissConsentBanner } from "./smoke-helpers";
+import { dismissConsentBanner, watchConsoleErrors } from "./smoke-helpers";
 
 /**
  * Smoke teszt — közönség/marketing útvonalak.
@@ -13,26 +13,23 @@ import { dismissConsentBanner } from "./smoke-helpers";
  */
 test.describe("Közönség / marketing útvonalak", () => {
   /**
-   * A hydration-figyelő. A `useEffect` utáni konzolhibák (hydration
+   * A hydration-figyelő: a `useEffect` utáni konzolhibák (hydration
    * mismatch, `pageerror`) a legdrágább SEO-hibák egyike, ezért a
    * smoke teszt minden kritikus útvonalon figyeli a konzolt.
+   *
+   * A `watchConsoleErrors` a **saját kódunk** hibáit engedi át — a
+   * külső analitikai scriptek (Clarity, GTM) saját hibáit szűri, mert
+   * azok nem a mi regresszióink.
    */
-  const collectErrors = (page: import("@playwright/test").Page) => {
-    const errors: string[] = [];
-    page.on("console", (msg) => {
-      if (msg.type() === "error") errors.push(`console: ${msg.text()}`);
-    });
-    page.on("pageerror", (err) => errors.push(`pageerror: ${String(err)}`));
-    return errors;
-  };
+  const collectErrors = watchConsoleErrors;
 
   /**
    * A hydration akkor kész, amikor a `load` esemény lefutott.
    *
-   * **Miért nem `networkidle`?** A Next.js dev szerver HMR-websocketet
-   * tart nyitva, így a hálózat sosem lesz teljesen csendes, és a
-   * `networkidle` a 30 s-es teszt-timeouttal elhasal. Ez a megoldás
-   * a valódi feltételt (a JS lefutott, a DOM kész) figyeli.
+   * **Miért nem `networkidle`?** Még a dev szerver HMR-websockete
+   * mellett sem megbízható, és a production módban sincs értelme.
+   * Ez a megoldás a valódi feltételt (a JS lefutott, a DOM kész)
+   * figyeli.
    */
   const waitForHydration = async (page: import("@playwright/test").Page) => {
     await page.waitForLoadState("load");

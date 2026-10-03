@@ -89,9 +89,15 @@ export default function PortalDashboard() {
           <span className="text-xs font-mono font-black uppercase tracking-widest text-sky-500">
             Aktív Projektek & Workflow
           </span>
-          <h1 className="text-3xl md:text-5xl font-extrabold text-text-primary tracking-tight font-mono">
+          {/**
+           * `h2`, nem `h1`: az oldal egyetlen `h1`-je a `page.tsx`
+           * Server Component `sr-only` címsora, ami a `!user`
+           * (nem belépett) állapotban is jelen van. Ez a dashboard
+           * a `page.tsx` címsor *alá* kerül a hierarchiában.
+           */}
+          <h2 className="text-3xl md:text-5xl font-extrabold text-text-primary tracking-tight font-mono">
             Munkafolyamatok
-          </h1>
+          </h2>
           <p className="text-slate-400 text-sm max-w-xl">
             Kövesd nyomon valós időben a weboldalad, webáruházad vagy AI
             automatizációd aktuális állapotát és mérföldköveit.

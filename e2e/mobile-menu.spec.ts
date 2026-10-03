@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import { dismissConsentBanner } from "./smoke-helpers";
+import { watchConsoleErrors } from "./smoke-helpers";
 
 /**
  * Mobilmenű a11y-teszt — WCAG 2.4.3 (fókuszsorrend) és 2.1.2 (nincs csapda).
@@ -10,6 +10,13 @@ import { dismissConsentBanner } from "./smoke-helpers";
  * eltérésnél elhasal. Az `aria-controls="mobile-nav-menu"` attribútum
  * viszont magát az **ARIA-kapcsolatot** teszteszteli — ez az, amit a
  * WCAG elvár, és nyelvfüggetlen.
+ *
+ * **A cookie banner NEM kerül megkerülésre ebben a tesztben.**
+ * A 7.19.0 javítás óta a banner a header (`z-40`) alatt van (`z-30`),
+ * így nem fedheti a hamburger gombot. Ez a teszt kifejezetten azt
+ * bizonyítja: a banner **jelen van**, és a gomb **kattintható**.
+ * Ha a regresszió visszatérne, a `click()` "intercepts pointer
+ * events" hibával bukna — vagyis ez a teszt a UI-javítás őre.
  */
 test.describe("Mobilmenü (WCAG AA) — 390x844 viewport", () => {
   test.use({ viewport: { width: 390, height: 844 } });
@@ -17,24 +24,29 @@ test.describe("Mobilmenü (WCAG AA) — 390x844 viewport", () => {
   test("a hamburger megnyitja a menüt, az ESC bezárja és visszaadja a fókuszt", async ({
     page,
   }) => {
-    const consoleErrors: string[] = [];
-    page.on("console", (msg) => {
-      if (msg.type() === "error") consoleErrors.push(msg.text());
-    });
-    page.on("pageerror", (err) => consoleErrors.push(String(err)));
+    const consoleErrors = watchConsoleErrors(page);
 
     await page.goto("/", { waitUntil: "domcontentloaded" });
+    await page.waitForLoadState("load");
 
-    // A cookie banner mobilon lefedi a hamburger gombot — el kell
-    // távolítani, különben a kattintás nem jut el a gombra.
-    await dismissConsentBanner(page);
+    // **A 7.19.0 javítás ellenőrzése:** a consent banner a header
+    // (`z-40`) alatt van (`z-30`), ezért NEM takarhatja a hamburger
+    // gombot. Ezért itt **nem**Dismissoljuk el — kifejezetten azt
+    // teszteljük, hogy a gomb banner jelenlétében is kattintható.
+    await page.waitForTimeout(1_200);
 
     // A toggle-t az ARIA-kapcsolat azonosítja (nyelvfüggetlen).
     const toggle = page.locator('button[aria-controls="mobile-nav-menu"]');
     await expect(toggle).toBeVisible();
     await expect(toggle).toHaveAttribute("aria-expanded", "false");
 
-    // Nyitás.
+    // **A banner valóban jelen van** (a teszt nem kerüli meg).
+    await expect(
+      page.getByRole("button", { name: /elutasítom|elfogadom/i }).first()
+    ).toBeVisible();
+
+    // Ha a banner fedné a gombot, a `click()` it'd "intercepts pointer
+    // events" hibát dobna. A sikeres nyitás bizonyítja, hogy nem fedi.
     await toggle.click();
     await expect(toggle).toHaveAttribute("aria-expanded", "true");
 

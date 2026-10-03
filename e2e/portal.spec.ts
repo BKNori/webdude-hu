@@ -12,12 +12,11 @@
  *  3. **nincs hálózati író kérés** a betöltés során.
  */
 import { test, expect } from "@playwright/test";
-import { dismissConsentBanner } from "./smoke-helpers";
+import { dismissConsentBanner, watchConsoleErrors } from "./smoke-helpers";
 
 test.describe("Ügyfélportál (/portal) — auth-fal", () => {
   test("200-as válasz és a portál váz betölt", async ({ page }) => {
-    const errors: string[] = [];
-    page.on("pageerror", (e) => errors.push(String(e)));
+    const errors = watchConsoleErrors(page);
 
     const response = await page.goto("/portal", {
       waitUntil: "domcontentloaded",
