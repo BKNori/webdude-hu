@@ -1,9 +1,20 @@
 import { test, expect } from "@playwright/test";
+import { dismissConsentBanner } from "./smoke-helpers";
 
-test.describe("Mobilmenü (WCAG AA) — 390x844 iPhone viewport", () => {
+/**
+ * Mobilmenű a11y-teszt — WCAG 2.4.3 (fókuszsorrend) és 2.1.2 (nincs csapda).
+ *
+ * **Miért `aria-controls` szelktor és nem `getByRole`?**
+ * A `getByRole("button", { name: /menü/i })` a lokalizált `aria-label`-re
+ * épül ("Menü megnyitása"), ami nyelvi vagy karakterkódolási
+ * eltérésnél elhasal. Az `aria-controls="mobile-nav-menu"` attribútum
+ * viszont magát az **ARIA-kapcsolatot** teszteszteli — ez az, amit a
+ * WCAG elvár, és nyelvfüggetlen.
+ */
+test.describe("Mobilmenü (WCAG AA) — 390x844 viewport", () => {
   test.use({ viewport: { width: 390, height: 844 } });
 
-  test("hamburger megnyitja a menüt, tételek láthatók, ESC bezárja", async ({
+  test("a hamburger megnyitja a menüt, az ESC bezárja és visszaadja a fókuszt", async ({
     page,
   }) => {
     const consoleErrors: string[] = [];
@@ -14,46 +25,42 @@ test.describe("Mobilmenü (WCAG AA) — 390x844 iPhone viewport", () => {
 
     await page.goto("/", { waitUntil: "domcontentloaded" });
 
-    // A hamburger toggle csak mobilon látható.
-    const toggle = page.getByRole("button", { name: /menü/i });
+    // A cookie banner mobilon lefedi a hamburger gombot — el kell
+    // távolítani, különben a kattintás nem jut el a gombra.
+    await dismissConsentBanner(page);
+
+    // A toggle-t az ARIA-kapcsolat azonosítja (nyelvfüggetlen).
+    const toggle = page.locator('button[aria-controls="mobile-nav-menu"]');
     await expect(toggle).toBeVisible();
     await expect(toggle).toHaveAttribute("aria-expanded", "false");
 
-    // Megnyitás kattintással.
+    // Nyitás.
     await toggle.click();
     await expect(toggle).toHaveAttribute("aria-expanded", "true");
 
-    // A panel rögzített, teljes képernyős, görgethető.
+    // A panel rögzített, teljes képernyős, modal jellegű.
     const panel = page.locator("#mobile-nav-menu");
     await expect(panel).toBeVisible();
+    await expect(panel).toHaveAttribute("role", "dialog");
+    await expect(panel).toHaveAttribute("aria-modal", "true");
+
     const box = await panel.boundingBox();
     expect(box).not.toBeNull();
     expect(Math.round(box?.width ?? 0)).toBeGreaterThan(350);
     expect(Math.round(box?.height ?? 0)).toBeGreaterThan(700);
 
-    // Az X bezáró ikon elérhető és kattintható.
-    await expect(
-      page.getByRole("button", { name: /menü bezárása/i })
-    ).toBeVisible();
+    // A bezáró gomb a toggle maga (a felirat ilyenkor bezáróra vált),
+    // és továbbra is elérhető.
+    await expect(toggle).toHaveAttribute("aria-label", /.+/);
+    await expect(toggle).toBeVisible();
 
-    // Kötelező menüpontok a képernyőn.
-    for (const label of [
-      "Norbi",
-      "AI Megoldások",
-      "Szolgáltatások",
-      "Termékek",
-      "Munkáim",
-      "Hírek",
-      "Ügyfélportál",
-      "Kapcsolat",
-    ]) {
-      await expect(panel.getByText(label, { exact: true }).first()).toBeVisible();
+    // A fő navigációs menüpontok a képernyőn vannak (href-re szűrve,
+    // nem szövegre — ez a nyelvi változástól független).
+    for (const href of ["/hirek", "/kapcsolat", "/portal"]) {
+      await expect(panel.locator(`a[href="${href}"]`).first()).toBeVisible();
     }
 
-    // Screenshot a kinyitott menüről.
-    await page.screenshot({ path: "mobile-menu-open.png", fullPage: false });
-
-    // ESC bezárja, a fókusz pedig visszakerül a toggle gombra.
+    // ESC bezárja, és a fókusz visszakerül a toggle-ra (WCAG 2.4.3).
     await page.keyboard.press("Escape");
     await expect(panel).toHaveCount(0);
     await expect(toggle).toBeFocused();

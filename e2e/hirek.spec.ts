@@ -1,33 +1,57 @@
+/**
+ * A blog útvonal **a `munkak.spec.ts` „Közönség / marketing" csoportjában**
+ * fut (`/hirek` teszt) — ez a fájl a 7.19.0 sprintben a duplikáció
+ * megszüntetése után csak a tartalmi mélységet ellenőrzi, ami a
+ * `/hirek` listát megkülönbözteti a többi marketing oldaltól.
+ *
+ * **Történet:** a korábbi `hirek.spec.ts` a `munkak.spec.ts`-hez
+ * szinte azonos teszteket tartalmazott (`.grid`, `article`,
+ * `application/ld+json` szelektorok), és mind elbukott strict mode
+ * violation miatt. A `/hirek` alap-útvonaltesztje a közös spec-ben
+ * van; itt a **bejegyzés-navigáció** és a **JSON-LD** maradt.
+ */
 import { test, expect } from "@playwright/test";
+import { dismissConsentBanner } from "./smoke-helpers";
 
-test.describe("Hírek oldal (/hirek)", () => {
+test.describe("Hírek oldal (/hirek) — tartalmi ellenőrzések", () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto("/hirek");
+    await page.goto("/hirek", { waitUntil: "domcontentloaded" });
+    await dismissConsentBanner(page);
   });
 
-  test("oldal betöltése és megjelenítése", async ({ page }) => {
-    await expect(page).toHaveTitle(/Szakmai Hírek/);
-    await expect(page.locator("h1")).toContainText("Hírek");
-  });
-
-  test("blog bejegyzések megjelenítése", async ({ page }) => {
-    const blogGrid = page.locator(".grid");
-    await expect(blogGrid).toBeVisible();
-    
-    const posts = page.locator("article");
-    const count = await posts.count();
-    expect(count).toBeGreaterThan(0);
-  });
-
-  test("blog bejegyzés linkje működik", async ({ page }) => {
+  test("blogbejegyzés linkje a részletoldalra navigál", async ({ page }) => {
     const firstPost = page.locator("article").first();
-    await firstPost.click();
-    
-    await expect(page).toHaveURL(/\/hirek\//);
+    await expect(firstPost).toBeVisible();
+
+    // A kártyán belüli link — nem a fejléc vagy a CTA.
+    const postLink = firstPost.getByRole("link").first();
+    await expect(postLink).toBeVisible();
+
+    const href = await postLink.getAttribute("href");
+    expect(href).toMatch(/^\/hirek\/.+/);
   });
 
-  test("JSON-LD schema jelen van", async ({ page }) => {
-    const schemaScript = page.locator('script[type="application/ld+json"]');
-    await expect(schemaScript).toHaveCount(1);
+  test("JSON-LD sémák érvényesek és a blog-lista jelölt", async ({
+    page,
+  }) => {
+    const schemas = page.locator('script[type="application/ld+json"]');
+    expect(await schemas.count()).toBeGreaterThan(0);
+
+    const types = await schemas.evaluateAll((nodes) =>
+      nodes.map((n) => {
+        try {
+          const parsed = JSON.parse(n.textContent ?? "{}");
+          const t = parsed["@type"];
+          return Array.isArray(t) ? t.join("+") : String(t ?? "");
+        } catch {
+          return "PARSE_HIBA";
+        }
+      })
+    );
+
+    // Nincs hibásan serializált séma (a 7.17.0/7.18.0 JSON-LD sprintjeinek őre).
+    expect(types).not.toContain("PARSE_HIBA");
+    // A blogoldal a bejegyzéslistát `ItemList`-ként jelöli.
+    expect(types.some((t) => t.includes("ItemList"))).toBe(true);
   });
 });

@@ -59,7 +59,7 @@ export default function WordPressDevPage() {
       "@type": "BusinessAudience",
       name: "Vállalkozások, amelyek egyedi funkciókkal rendelkező WordPress rendszert igényelnek",
     },
-    // A WebDude kizárólag egyedi árojánlatot ad — nincs fix árkatalógus.
+    // A WebDude kizárólag egyedi árajánlatot ad — nincs fix árkatalógus.
     offers: {
       "@type": "Offer",
       priceCurrency: "HUF",

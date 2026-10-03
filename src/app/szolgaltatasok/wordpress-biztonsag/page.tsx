@@ -119,11 +119,11 @@ export default function WordPressBiztonsagPage() {
       "@type": "BusinessAudience",
       name: "Vállalkozások, amelyeknek feltört vagy elavult a WordPress weboldaluk",
     },
-    // A WebDude kizárólag egyedi árojánlatot ad — nincs fix árkatalógus.
+    // A WebDude kizárólag egyedi árajánlatot ad — nincs fix árkatalógus.
     offers: {
       "@type": "Offer",
       priceCurrency: "HUF",
-      description: "Egyedi árojánlat kérése — a projekt terjedelmétől függően.",
+      description: "Egyedi árajánlat kérése — a projekt terjedelmétől függően.",
       availability: "https://schema.org/InStock",
       url: "https://webdude.hu/kapcsolat?service=wordpress-biztonsag",
     },
@@ -167,7 +167,7 @@ export default function WordPressBiztonsagPage() {
         facts={[
             { label: "Tapasztalat", value: "16 év" },
             { label: "Válaszidő", value: "Sürgősség szerint" },
-            { label: "Árazás", value: "Egyedi árojánlat" },
+            { label: "Árazás", value: "Egyedi árajánlat" },
         ]}
       />
 

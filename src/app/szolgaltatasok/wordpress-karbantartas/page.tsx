@@ -201,7 +201,7 @@ export default function WordPressKarbantartasPage() {
         facts={[
           { label: "Tapasztalat", value: "16 év" },
           { label: "Frissítés", value: "Havi rendszeresség" },
-          { label: "Árazás", value: "Egyedi ajánlat" },
+          { label: "Árazás", value: "Egyedi árajánlat" },
         ]}
       />
 

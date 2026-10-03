@@ -78,7 +78,7 @@ export default async function WooCommercePage() {
       "@type": "BusinessAudience",
       name: "Kis- és középvállalkozások, amelyeknek egyedi online értékesítő rendszerre van szükségük",
     },
-    // A WebDude kizárólag egyedi árojánlatot ad — nincs fix árkatalógus.
+    // A WebDude kizárólag egyedi árajánlatot ad — nincs fix árkatalógus.
     offers: {
       "@type": "Offer",
       priceCurrency: "HUF",

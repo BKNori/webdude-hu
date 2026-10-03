@@ -1,4 +1,3 @@
-import SectionTitle from "@/components/atoms/SectionTitle";
 import Button from "@/components/atoms/Button";
 import { Metadata } from "next";
 import PricingTable from "@/components/molecules/PricingTable";
@@ -81,7 +80,7 @@ export default async function WebshopPage() {
       "@type": "BusinessAudience",
       name: "Vállalkozások, amelyek WordPress alapú online áruházat szeretnének",
     },
-    // A WebDude kizárólag egyedi árojánlatot ad — nincs fix árkatalógus.
+    // A WebDude kizárólag egyedi árajánlatot ad — nincs fix árkatalógus.
     offers: {
       "@type": "Offer",
       priceCurrency: "HUF",
@@ -157,14 +156,24 @@ export default async function WebshopPage() {
         {/* Background gradient */}
         <div className="absolute inset-0 bg-linear-to-b from-brand-primary/5 via-transparent to-brand-primary/5" />
         <div className="relative z-10">
+          {/* A nyitó szekció címsora H1 — az oldal egyetlen elsődleges
+              címsora. A `SectionTitle` atom `h2`-t renderel, ezért itt
+              kézzel kell a hero-szintű `h1` (AGENTS.md 5. §: egy oldalon
+              pontosan egy `h1`). A `as` prop nincs a komponensben, így
+              ez a hero-blokk szándékosan kézi markup. */}
           <div className="max-w-6xl mx-auto px-6">
-            <SectionTitle
-              center
-              eyebrow="Szolgáltatás"
-              title="WordPress Webshop Készítés"
-              description="Skálázható, konverzió-vezérelt WooCommerce és headless shop megoldások gyorsan és megbízhatóan."
-              className="mx-auto"
-            />
+            <div className="text-center">
+              <span className="inline-block text-sm font-semibold tracking-[0.2em] uppercase text-brand-primary mb-4">
+                Szolgáltatás
+              </span>
+              <h1 className="text-[clamp(1.5rem,4vw,2.5rem)] sm:text-[clamp(1.875rem,5vw,3rem)] md:text-[clamp(2rem,5.5vw,3.5rem)] lg:text-[clamp(2.25rem,6vw,4rem)] font-extrabold tracking-tight text-text-primary mb-6 leading-tight wrap-break-word">
+                WordPress Webshop Készítés
+              </h1>
+              <p className="text-lg text-slate-400 max-w-3xl mx-auto leading-relaxed">
+                Skálázható, konverzió-vezérelt WooCommerce és headless shop
+                megoldások gyorsan és megbízhatóan.
+              </p>
+            </div>
             <div className="mt-12 max-w-3xl mx-auto">
               <p className="text-xl text-slate-400 leading-relaxed mb-8">
                 16 éves WordPress tapasztalattal olyan e-kereskedelmi

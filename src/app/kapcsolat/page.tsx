@@ -80,7 +80,7 @@ export default function ContactPage() {
           label="Kapcsolat"
           title={
             <>
-              Indítsuk el a{" "}
+              Indítsd el a{" "}
               <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6] italic">
                 projektedet!
               </span>
@@ -104,12 +104,12 @@ export default function ContactPage() {
                   </span>
                   <div className="absolute left-0 top-0 w-1 h-6 bg-linear-to-b from-[#00B5F1] to-[#5B21B6]" />
                 </div>
-                <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold font-sans text-white leading-tight tracking-tight mb-6">
-                  Indítsuk el a{" "}
-                  <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6] italic pr-4">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-sans text-text-primary leading-tight tracking-tight mb-6">
+                  Indítsd el a{" "}
+                  <span className="text-transparent bg-clip-text bg-linear-to-r from-brand-primary to-brand-secondary italic">
                     projektedet!
                   </span>
-                </h1>
+                </h2>
                 <p className="text-lg md:text-xl text-slate-400 max-w-lg leading-relaxed tracking-wide font-medium">
                   Válassz a kapcsolattartási lehetőségek közül, és beszéljük át
                   az elképzeléseidet közvetlenül velem!

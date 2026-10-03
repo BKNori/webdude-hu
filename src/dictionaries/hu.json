@@ -444,8 +444,8 @@
     "finalCta": {
       "eyebrow": "VÉGÜL",
       "title": "Készen állsz a szintlépésre?",
-      "subtitle": "Indítsuk be a projektedet még ma!",
-      "cta": { "label": "Beszéljünk róla", "href": "/kapcsolat" }
+      "subtitle": "Indítsd be a projektedet még ma!",
+      "cta": { "label": "Kérj ajánlatot", "href": "/kapcsolat" }
     }
   },
 

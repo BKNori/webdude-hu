@@ -303,8 +303,8 @@ export default function WeboldalKeszitesPage() {
         <section className="py-32 text-center relative z-10">
           <div className="max-w-2xl mx-auto px-6">
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-              Indítsuk el az{" "}
-              <span className="text-[#00B5F1] italic">új weboldaladat!</span>
+              Indítsd el az{" "}
+              <span className="text-brand-primary italic">új weboldaladat!</span>
             </h2>
             <p className="text-slate-400 mb-10 text-lg">
               Minden projekt egy ingyenes, kötelezettségmentes konzultációval
