@@ -40,6 +40,11 @@ function PortfolioCard({ project, index }: PortfolioCardProps) {
   const rotateY = useSpring(tiltYTarget, { stiffness: 180, damping: 22, mass: 0.6 });
 
   const isFeatured = Boolean(project.featured);
+  // Hero kiemelés: csak az ELSŐ kártya (index 0) kap kétszeres szélességet.
+  // Így a 3 oszlopos rács zéró hézaggal töltődik ki (2 + 1 = teljes első sor,
+  // utána egységes 1-1-1), a sorrend pedig sértetlen marad — nem csúsznak
+  // be a kártyák közé a `grid-flow-row-dense` által (ami így tartalék).
+  const isHero = isFeatured && index === 0;
   const kpiHighlight = project.results?.[0] ?? project.category;
   const coverImage = project.bannerImage || project.image;
 
@@ -78,7 +83,7 @@ function PortfolioCard({ project, index }: PortfolioCardProps) {
         shouldReduceMotion ? undefined : { rotateX, rotateY, transformPerspective: 1200 }
       }
       className={`group relative flex overflow-hidden rounded-3xl border border-slate-800/80 bg-slate-900/60 backdrop-blur-xl ring-1 ring-white/5 transition-colors duration-300 hover:border-[#00B5F1]/50 hover:shadow-[0_0_30px_rgba(0,181,241,0.2)] ${
-        isFeatured ? "md:col-span-2 flex-col md:flex-row" : "col-span-1 flex-col"
+        isHero ? "md:col-span-2 flex-col md:flex-row" : "col-span-1 flex-col"
       }`}
     >
       {/* Electric Cyan spotlight — pointer-követő fény */}
@@ -90,7 +95,7 @@ function PortfolioCard({ project, index }: PortfolioCardProps) {
 
       <div
         className={`relative z-10 overflow-hidden border-slate-800/80 ${
-          isFeatured
+          isHero
             ? "aspect-video w-full md:aspect-auto md:min-h-80 md:w-1/2 md:border-r"
             : "aspect-video w-full border-b"
         }`}
@@ -99,7 +104,7 @@ function PortfolioCard({ project, index }: PortfolioCardProps) {
           src={coverImage}
           alt={project.title}
           sizes={
-            isFeatured
+            isHero
               ? "(max-width: 768px) 100vw, 50vw"
               : "(max-width: 768px) 100vw, 33vw"
           }
@@ -114,7 +119,7 @@ function PortfolioCard({ project, index }: PortfolioCardProps) {
 
       <div
         className={`relative z-10 flex flex-col justify-between p-6 md:p-8 ${
-          isFeatured ? "w-full md:w-1/2" : "w-full grow"
+          isHero ? "w-full md:w-1/2" : "w-full grow"
         }`}
       >
         <div>
@@ -187,8 +192,9 @@ export default function PortfolioGrid({ projects }: { projects: Work[] }) {
         }}
       />
 
-      {/* Bento Grid — a kiemelt projektek kétszeres szélességet kapnak */}
-      <div className="relative grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+      {/* Bento Grid — a kiemelt projektek kétszeres szélességet kapnak;
+          a grid-flow-row-dense automatikusan kitölti a réseket, így nincs hézag. */}
+      <div className="relative grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8 grid-flow-row-dense">
         {projects.map((project, index) => (
           <PortfolioCard key={project.id} project={project} index={index} />
         ))}

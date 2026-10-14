@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     "Icon Design AI Műhely",
     "Design System AI Műhely",
     "Kristófka Munkafolyamat",
-    "WebDude AI Studio",
+    "WebDude AI Studio"
   ],
   openGraph: {
     title: "AI Műhely Katalógus | WebDude",
@@ -35,10 +35,10 @@ export const metadata: Metadata = {
         url: "/og/ai-muhely.jpg",
         width: 1200,
         height: 630,
-        alt: "WebDude AI Műhely Katalógus",
-      },
-    ],
-  },
+        alt: "WebDude AI Műhely Katalógus"
+      }
+    ]
+  }
 };
 
 const productSchema = {
@@ -50,26 +50,23 @@ const productSchema = {
   image: "https://webdude.hu/og/ai-muhely.jpg",
   brand: {
     "@type": "Brand",
-    name: "WebDude",
+    name: "WebDude"
   },
   offers: {
     "@type": "Offer",
-    price: "0",
-    priceCurrency: "HUF",
     availability: "https://schema.org/InStock",
     url: "https://webdude.hu/termekek/ai-muhely",
-    priceValidUntil: "2027-12-31",
     seller: {
       "@type": "Organization",
-      name: "WebDude.hu",
+      name: "WebDude.hu"
     },
     description: "Egyedi árajánlat kérése",
   },
   aggregateRating: {
     "@type": "AggregateRating",
     ratingValue: "4.8",
-    reviewCount: "31",
-  },
+    reviewCount: "31"
+  }
 };
 
 export default function AiWorkshopPage() {
@@ -78,7 +75,7 @@ export default function AiWorkshopPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(productSchema).replace(/</g, "\\u003c"),
+          __html: JSON.stringify(productSchema).replace(/</g, "\\u003c")
         }}
       />
       <AIWorkshopCollection />

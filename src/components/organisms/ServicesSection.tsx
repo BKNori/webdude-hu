@@ -38,7 +38,8 @@ const services = [
     cta: "Részletek",
     faq: {
       question: "Mennyibe kerül egy webshop?",
-      answer: "800.000–2.000.000 Ft között, a funkcionalitástól függően.",
+      answer:
+        "A díjazást mindig egyedi árajánlatban adom meg a projekt terjedelmétől és a kért funkcionalitástól függően.",
     },
   },
   {

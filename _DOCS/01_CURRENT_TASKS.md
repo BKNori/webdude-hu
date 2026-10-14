@@ -28,9 +28,8 @@
 **Forrás:** `_docs/ROADMAP.md` — középtávú fejlesztések + technikai adósságok (2026-10-02-i állapot)
 
 #### 🟠 1. Portál funkciók (ügyfél-elégedettség / transzparencia)
-- **Valós idejű / polling-alapú értesítések (badge)** — a `src/app/actions/portal-notifications.ts` ma egyszeri lekérést végez;
-  késleltetett polling vagy FCM alapú badge szükséges (Anti-Drain Policy: nem `onSnapshot` végtelen ciklusban).
-- **Vault dokumentum-előnéző** — PDF- és kép-előnézet a `src/actions/vault.ts` mögötti fájlokhoz.
+- ✅ **Valós idejű értesítések (badge) — LEZÁRVA [7.20.5]:** a `PortalNotificationBell` + `usePortalNotifications` (3× `onSnapshot` a Phase 2 [7.22.0] óta: user_generations + vault + users/{uid}/notifications, `limit(10)`, tiszta cleanup, error callback) él; a createGeneration `failed` státuszt is jelzi. A dead-end `portal-notifications.ts` **törölve** (YAGNI).
+- ✅ **Vault dokumentum-előnézet — LEZÁRVA [Cycle 3151]:** a `DocumentPreviewModal` molekula (PDF-`iframe` + kép `<img>`, glassmorphism, `motion/react`, `useFocusTrap` ESC/fókuszcsapda, Bezárás/Megnyitás/Letöltés/Link-másolás) él és a `ClientVault` Eye-gombjához van bekötve. *(2026-10-14: a modal valódi buborék-zárási hiba javítva + a nyers hex színek a Kék-Lila v7.0 tokenekre cserélve.)*
 
 #### 🟠 2. Admin UI (adat-alapú döntéshozatal)
 - **KPI dashboard bővítése** — Revenue, Churn rate, LTV metrikák
@@ -39,12 +38,12 @@
   különálló akciók; PDF (jspdf) + CSV formátumok egységes felületen, letöltés-dialógussal.
 
 #### 🟡 3. Technikai adósság (stabilitás / hiba-észlelés)
-- **Playwright E2E smoke suite** a kritikus útvonalakra:
-  - `/kapcsolat` (kapcsolati űrlap → server action)
-  - `/munkak` (lista + `/munkak/[slug]` esettanulmány render)
-  - `/portal` (auth-guarded felület betöltése)
-  - Stripe webhook (`src/app/api/webhooks/stripe/route.ts` — integrációs teszt, szignatúra-ellenőrzéssel)
-  - A `test:e2e` script már létezik a `package.json`-ban, lefedett spec még nincs.
+- **Playwright E2E smoke suite** — ✅ **HIÁNY-PÓTLÁS LEZÁRVA [7.23.0]:** a meglévő infra (Playwright config, `test:e2e`, `smoke-helpers.ts`) mellé 3 új spec készült:
+  - `e2e/stripe-webhook.spec.ts` — biztonsági őr: érvénytelen/hiányzó `stripe-signature` fejléccel a route elutasítja a kérést (**0 Firestore írás**, pozitív happy-path szándékosan nem fedett).
+  - `e2e/munkak-slug.spec.ts` — dinamikus `GeneralCaseStudy` slug (200 + 1 H1 + JSON-LD) + ismeretlen slug → 404.
+  - `e2e/pricing-zero-fixed.spec.ts` — a Zérő Fix Ár [7.21.0] takarítás regressziós őre (bolt nincs fix ár, `/termekek` JSON-LD nincs `price`).
+  - **Eredmény:** 23/23 teszt PASSED, 0 flake; `tsc`/`lint`/`build` = 0. A `test-results/` + `playwright-report/` a `.gitignore`-ban van.
+  - **Opcionális következő:** CI-bridge (`.github/workflows/` E2E lépés) — külön jóváhagyás.
 - **Sentry monitoring** — production hibák láthatósága (jelenleg csak Firebase Analytics van).
 
 ---

@@ -18,14 +18,14 @@
         {
           "id": "web-dev",
           "badge": "Remote partner · Clients across Europe · Worldwide delivery",
-          "titlePrefix": "A website that is not only ",
-          "titleHighlight": "beautiful, but wins clients",
-          "titleSuffix": " for your business.",
-          "subtitle": "You get **web development**, **WordPress engineering**, **SEO** and **graphic design** from a single hand – without agency overhead, backed by **26 years of design and 16 years of web development experience.**",
+          "titlePrefix": "Instead of agency compromises: ",
+          "titleHighlight": "premium website development, directly with me.",
+          "titleSuffix": "",
+          "subtitle": "**Web development, WordPress engineering, SEO and graphic design** from an experienced professional — from the first idea to the launch.",
           "highlights": [
             "Web Development",
             "WordPress Engineering",
-            "SEO & AEO",
+            "SEO",
             "Graphic Design"
           ],
           "trustPoints": [
@@ -34,11 +34,11 @@
             "Fixed scope, fixed deadlines"
           ],
           "cta1": {
-            "label": "Request a custom quote",
+            "label": "Let's talk about your project",
             "href": "/en#contact"
           },
           "cta2": {
-            "label": "View my work",
+            "label": "View references",
             "href": "/en#cases"
           },
           "bgImage": "/assets/banners/webdude-hero.webp",

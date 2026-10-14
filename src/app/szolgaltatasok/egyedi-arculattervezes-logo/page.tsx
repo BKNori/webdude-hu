@@ -122,7 +122,7 @@ export default async function BrandingPage() {
                 className="object-cover"
                 priority
               />
-              <div className="absolute inset-0 bg-black/60" />
+              <div className="absolute inset-0 bg-slate-950/60" />
             </div>
             <div className="relative h-full">
               <Image
@@ -132,7 +132,7 @@ export default async function BrandingPage() {
                 className="object-cover"
                 priority
               />
-              <div className="absolute inset-0 bg-black/60" />
+              <div className="absolute inset-0 bg-slate-950/60" />
             </div>
             <div className="relative h-full">
               <Image
@@ -142,7 +142,7 @@ export default async function BrandingPage() {
                 className="object-cover"
                 priority
               />
-              <div className="absolute inset-0 bg-black/60" />
+              <div className="absolute inset-0 bg-slate-950/60" />
             </div>
           </div>
 

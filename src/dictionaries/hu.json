@@ -19,14 +19,14 @@
         {
           "id": "web-dev",
           "badge": "Kecskemét · Országos kiszolgálás · Távolról is",
-          "titlePrefix": "Weboldal, ami nemcsak ",
-          "titleHighlight": "szép, hanem ügyfeleket",
-          "titleSuffix": " is hoz.",
-          "subtitle": "Egy kézben kapod a **weboldal készítést**, **WordPress fejlesztést**, **SEO-t** és **grafikai tervezést** – ügynökségi mellébeszélés nélkül, **26 év kreatív és 16 év webfejlesztői tapasztalattal.**",
+          "titlePrefix": "Ügynökségi kompromisszumok helyett: ",
+          "titleHighlight": "prémium weboldal készítés, közvetlenül velem.",
+          "titleSuffix": "",
+          "subtitle": "**Weboldal készítés, WordPress fejlesztés, SEO és grafikai tervezés** egy tapasztalt szakembertől, az első ötlettől az élesítésig.",
           "highlights": [
             "Weboldal készítés",
             "WordPress fejlesztés",
-            "SEO optimalizálás",
+            "SEO",
             "Grafikai tervezés"
           ],
           "trustPoints": [
@@ -34,8 +34,8 @@
             "30 napos hibajavítási garancia",
             "Fix árak, fix határidők"
           ],
-          "cta1": { "label": "Kérj projektfelmérést", "href": "/kapcsolat" },
-          "cta2": { "label": "Munkáim megtekintése", "href": "/munkak" },
+          "cta1": { "label": "Beszéljük át a projekted", "href": "/kapcsolat" },
+          "cta2": { "label": "Referenciák megtekintése", "href": "/munkak" },
           "bgImage": "/assets/banners/webdude-hero.webp",
           "bgAlt": "WebDude — Weboldal készítés, WordPress, SEO és grafikai tervezés Kecskemétről",
           "ratingText": "47+ elégedett ügyfél"

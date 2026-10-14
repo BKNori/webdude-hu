@@ -124,7 +124,7 @@ export async function POST(req: Request) {
     const { messages } = (await req.json()) as { messages: UIMessage[] };
 
     const result = await streamText({
-      model: groq("llama-3.3-70b-versatile"),
+      model: groq("openai/gpt-oss-120b"),
       messages: await convertToModelMessages(messages),
       system: `Te a WebDude.hu digitális projektmenedzsere és lead minősítő asszisztense vagy.
 A megbízód Norbi (WebDude), aki egy high-end digitális kézműves, fejlesztő és designer.

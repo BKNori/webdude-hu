@@ -22,8 +22,6 @@ const products = [
     id: 1,
     name: "AI Workflow Starter Pack",
     category: "AI Automatizáció",
-    price: 99000,
-    originalPrice: 149000,
     rating: 4.9,
     reviews: 23,
     description:
@@ -35,15 +33,13 @@ const products = [
       "1 év ingyenes frissítés",
     ],
     icon: Zap,
-    color: "from-[#00B5F1] to-orange-500",
+    color: "from-[#00B5F1] to-brand-secondary",
     href: "/termekek/ai-workflow-starter-pack",
   },
   {
     id: 2,
     name: "SEO & AEO Audit Pro",
     category: "SEO Optimalizálás",
-    price: 59000,
-    originalPrice: 89000,
     rating: 4.8,
     reviews: 47,
     description:
@@ -62,8 +58,6 @@ const products = [
     id: 3,
     name: "CRO Booster Kit",
     category: "Konverzió Optimalizálás",
-    price: 79000,
-    originalPrice: 119000,
     rating: 4.7,
     reviews: 31,
     description:
@@ -82,8 +76,6 @@ const products = [
     id: 4,
     name: "AI Chatbot Starter",
     category: "AI Megoldások",
-    price: 129000,
-    originalPrice: 179000,
     rating: 4.9,
     reviews: 18,
     description:
@@ -102,8 +94,6 @@ const products = [
     id: 5,
     name: "Kristófka Munkafolyamat",
     category: "AI Műhely",
-    price: 199000,
-    originalPrice: 249000,
     rating: 4.9,
     reviews: 12,
     description:
@@ -115,15 +105,13 @@ const products = [
       "Strategist-Pro AI workflow",
     ],
     icon: Zap,
-    color: "from-[#00B5F1] to-orange-500",
+    color: "from-[#00B5F1] to-brand-secondary",
     href: "/termekek/kristofka-munkafolyamat",
   },
   {
     id: 6,
     name: "Banner AI Műhely",
     category: "AI Műhely",
-    price: 29000,
-    originalPrice: 79000,
     rating: 4.8,
     reviews: 15,
     description:
@@ -142,8 +130,6 @@ const products = [
     id: 7,
     name: "Logo AI Műhely",
     category: "AI Műhely",
-    price: 39000,
-    originalPrice: 99000,
     rating: 4.9,
     reviews: 21,
     description:
@@ -162,8 +148,6 @@ const products = [
     id: 8,
     name: "Midjourney AI Műhely",
     category: "AI Műhely",
-    price: 49000,
-    originalPrice: 129000,
     rating: 4.8,
     reviews: 28,
     description:
@@ -182,8 +166,6 @@ const products = [
     id: 9,
     name: "SEO Audit AI Műhely",
     category: "AI Műhely",
-    price: 69000,
-    originalPrice: 109000,
     rating: 4.7,
     reviews: 19,
     description:
@@ -202,8 +184,6 @@ const products = [
     id: 10,
     name: "Szezonalis AI Műhely",
     category: "AI Műhely",
-    price: 39000,
-    originalPrice: 69000,
     rating: 4.6,
     reviews: 14,
     description:
@@ -222,8 +202,6 @@ const products = [
     id: 11,
     name: "Tartalomtervező AI Műhely",
     category: "AI Műhely",
-    price: 59000,
-    originalPrice: 89000,
     rating: 4.8,
     reviews: 22,
     description:
@@ -242,8 +220,6 @@ const products = [
     id: 12,
     name: "UI/UX AI Műhely",
     category: "AI Műhely",
-    price: 99000,
-    originalPrice: 149000,
     rating: 4.9,
     reviews: 17,
     description:
@@ -262,8 +238,6 @@ const products = [
     id: 13,
     name: "Versenytárs Elemző AI Műhely",
     category: "AI Műhely",
-    price: 79000,
-    originalPrice: 119000,
     rating: 4.7,
     reviews: 16,
     description:

@@ -243,8 +243,8 @@ export default function SuperadminWorkshopDashboard() {
                     </p>
 
                     <div className="flex items-center justify-between pt-3 border-t border-gray-800">
-                      <p className="text-xs font-bold text-white">
-                        {workshop.price}
+                      <p className="text-xs font-bold text-sky-400">
+                        Egyedi árajánlat alapján
                       </p>
                       <div className="flex items-center gap-1 text-sky-500 opacity-0 group-hover:opacity-100 transition-opacity">
                         <span className="text-xs font-bold uppercase tracking-wider">

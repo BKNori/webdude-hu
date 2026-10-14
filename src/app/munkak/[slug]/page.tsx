@@ -11,6 +11,8 @@ import LengyelHelgaCaseStudy from "@/components/organisms/LengyelHelgaCaseStudy"
 import DrNagyAlbertCaseStudy from "@/components/organisms/DrNagyAlbertCaseStudy";
 import AiPromptCaseStudy from "@/components/organisms/AiPromptCaseStudy";
 import GoBoxCaseStudy from "@/components/organisms/GoBoxCaseStudy";
+import LeanperialCaseStudy from "@/components/organisms/LeanperialCaseStudy";
+import NedelMarketCaseStudy from "@/components/organisms/NedelMarketCaseStudy";
 import GeneralCaseStudy from "@/components/organisms/GeneralCaseStudy";
 
 // ISR: Revalidate pages every 1 hour (Anti-Drain Policy)
@@ -125,6 +127,16 @@ export default async function ProjectPage({ params }: PageProps) {
   // Go-Box Kft. dedikált esettanulmány
   if (p.id === "go-box-kft") {
     return withSchemas(<GoBoxCaseStudy />);
+  }
+
+  // Leanperial — Quiet Luxury dedikált esettanulmány
+  if (p.id === "leanperial") {
+    return withSchemas(<LeanperialCaseStudy />);
+  }
+
+  // Nedel Market — WooCommerce & irodai szerver dedikált esettanulmány
+  if (p.id === "nedelmarket") {
+    return withSchemas(<NedelMarketCaseStudy />);
   }
 
   // Általános esettanulány layout

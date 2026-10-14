@@ -58,18 +58,18 @@ export default function BtshopCaseStudy({ project }: BtshopCaseStudyProps) {
       >
         <motion.div style={{ y, opacity }} className="absolute inset-0">
           <ResponsiveImage
-             src="/assets/portfolio/btshop/btshop-banner-highres.webp"
-             alt="BTShop.hu — 3200 termékes Enterprise E-commerce rendszer és egyedi ERP integráció"
-             sizes="100vw"
-             priority
-             className="object-cover"
-           />
+            src="/assets/portfolio/btshop/btshop-banner-highres.webp"
+            alt="BTShop.hu — 3200 termékes Enterprise E-commerce rendszer és egyedi ERP integráció"
+            sizes="100vw"
+            priority
+            className="object-cover"
+          />
           {/* Többrétegű Luminous Glassmorphism overlay: olvashatóság + WOW-hatás.
               A felső/lejtő gradiens a szöveget kontrasztossá teszi, a középső
               slate-950 réteg + backdrop-blur a képet "üveg mögé" rejti, az alsó
               lila-cián glow a brand 2%-os kiemelését adja. */}
-          <div className="absolute inset-0 bg-slate-950/70 backdrop-blur-[2px]" />
-          <div className="absolute inset-0 bg-linear-to-b from-bg-base via-bg-base/60 to-bg-base" />
+          <div className="absolute inset-0 bg-slate-950/50 backdrop-blur-[1px]" />
+          <div className="absolute inset-0 bg-linear-to-b from-bg-base via-bg-base/40 to-bg-base" />
           <div
             aria-hidden
             className="absolute inset-0 opacity-60"
@@ -132,7 +132,8 @@ export default function BtshopCaseStudy({ project }: BtshopCaseStudyProps) {
             >
               Amikor a weboldal nemcsak elad, hanem a teljes céges
               infrastruktúrát mozgatja. Zéró manuális adminisztráció, saját
-              fejlesztésű SEO motor és valós idejű könyvelőprogram-szinkronizáció.
+              fejlesztésű SEO motor és valós idejű
+              könyvelőprogram-szinkronizáció.
             </motion.p>
 
             {/* Szolgáltatás Kiemelők */}
@@ -252,20 +253,20 @@ export default function BtshopCaseStudy({ project }: BtshopCaseStudyProps) {
             >
               <div className="relative aspect-video rounded-3xl overflow-hidden group">
                 <ResponsiveImage
-              src="/assets/portfolio/btshop/btshop-dashboard-placeholder.webp"
-              alt="BTShop.hu Enterprise Dashboard"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-cover group-hover:scale-105 transition-transform duration-700"
-            />
+                  src="/assets/portfolio/btshop/btshop-dashboard-placeholder.webp"
+                  alt="BTShop.hu Enterprise Dashboard"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                />
                 <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent" />
               </div>
               <div className="relative aspect-video rounded-3xl overflow-hidden group">
                 <ResponsiveImage
-             src="/assets/portfolio/btshop/bt-shop-weboldal-screen.webp"
-             alt="BTShop.hu Weboldal Screenshot"
-             sizes="(max-width: 1024px) 100vw, 50vw"
-             className="object-cover group-hover:scale-105 transition-transform duration-700"
-           />
+                  src="/assets/portfolio/btshop/bt-shop-weboldal-screen.webp"
+                  alt="BTShop.hu Weboldal Screenshot"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                />
                 <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent" />
               </div>
             </motion.div>
@@ -303,32 +304,34 @@ export default function BtshopCaseStudy({ project }: BtshopCaseStudyProps) {
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {([
-              {
-                title: "Kétirányú Könyvelői Szinkronizáció",
-                description:
-                  "Az ügyfél könyvelői programja egy dedikált szerveren fut. Olyan automata API-hidat fejlesztettem, amely valós időben exportálja a több mint 3200 termék adatait, és emberi beavatkozás nélkül importálja a beérkező WooCommerce megrendeléseket.",
-                icon: RefreshCw,
-              },
-              {
-                title: "Saját Fejlesztésű SEO Plugin",
-                description:
-                  "A dobozos megoldások itt már nem voltak elegendőek. A maximális láthatóság érdekében egy egyedi, a bolt specifikus igényeire írt WordPress plugint készítettem, amely garantálja a tökéletes technikai SEO és AEO (AI Engine Optimization) pontszámot.",
-                icon: SearchCheck,
-              },
-              {
-                title: "Komplex Logisztika",
-                description:
-                  "MPL és Foxpost API integráció a zökkenőmentes csomagkezelésért és szállítási címke generálásért. Automatizált szállítási folyamatok — a megrendeléstől a csomagátadásig.",
-                icon: Truck,
-              },
-              {
-                title: "Skálázható Architektúra",
-                description:
-                  "A hatalmas adatbázis (3200+ termék) ellenére a frontend villámgyors maradt. Teljes Google Merchant Center integráció a napi feed szinkronizációhoz.",
-                icon: Gauge,
-              },
-            ] satisfies EngineeringService[]).map((service, index) => (
+            {(
+              [
+                {
+                  title: "Kétirányú Könyvelői Szinkronizáció",
+                  description:
+                    "Az ügyfél könyvelői programja egy dedikált szerveren fut. Olyan automata API-hidat fejlesztettem, amely valós időben exportálja a több mint 3200 termék adatait, és emberi beavatkozás nélkül importálja a beérkező WooCommerce megrendeléseket.",
+                  icon: RefreshCw,
+                },
+                {
+                  title: "Saját Fejlesztésű SEO Plugin",
+                  description:
+                    "A dobozos megoldások itt már nem voltak elegendőek. A maximális láthatóság érdekében egy egyedi, a bolt specifikus igényeire írt WordPress plugint készítettem, amely garantálja a tökéletes technikai SEO és AEO (AI Engine Optimization) pontszámot.",
+                  icon: SearchCheck,
+                },
+                {
+                  title: "Komplex Logisztika",
+                  description:
+                    "MPL és Foxpost API integráció a zökkenőmentes csomagkezelésért és szállítási címke generálásért. Automatizált szállítási folyamatok — a megrendeléstől a csomagátadásig.",
+                  icon: Truck,
+                },
+                {
+                  title: "Skálázható Architektúra",
+                  description:
+                    "A hatalmas adatbázis (3200+ termék) ellenére a frontend villámgyors maradt. Teljes Google Merchant Center integráció a napi feed szinkronizációhoz.",
+                  icon: Gauge,
+                },
+              ] satisfies EngineeringService[]
+            ).map((service, index) => (
               <motion.div
                 key={service.title}
                 initial={{ opacity: 0, y: 30 }}

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import PortfolioGrid from "@/components/molecules/PortfolioGrid";
 import PortfolioHero from "@/components/molecules/PortfolioHero";
+import MunkakFaqSection from "@/components/organisms/MunkakFaqSection";
 import { works as staticWorks } from "@/data/works";
 
 export const revalidate = 3600; // 1 órás ISR gyorsítótárazás
@@ -41,7 +42,33 @@ export const metadata: Metadata = {
   },
 };
 
-// JSON-LD: CollectionPage + ItemList sémák az AEO / keresők számára XSS védelemmel
+// A kért portfólió sorrend (SSOT a /munkak listához): a btshop és a hu-mago a
+// lista elejére, a dr-nagy-albert előrébb, a nedelmarket a közepére, míg a
+// leanperial az utolsó elem. A go-box-kft dupla bejegyzés egyesítve (egy kártya).
+const PORTFOLIO_ORDER = [
+  "btshop",
+  "hu-mago-kft",
+  "dr-nagy-albert",
+  "go-box-kft",
+  "classi-co",
+  "rimai-utepito",
+  "dr-danyi",
+  "bor-es-garnela",
+  "nedelmarket",
+  "marina-homes",
+  "chamomprex",
+  "lengyel-helga",
+  "ai-prompt-hu",
+  "leanperial",
+];
+
+const orderedWorks = [...staticWorks].sort(
+  (a, b) => PORTFOLIO_ORDER.indexOf(a.id) - PORTFOLIO_ORDER.indexOf(b.id)
+);
+
+// JSON-LD: CollectionPage + ItemList + BreadcrumbList sémák az AEO / keresők
+// számára XSS védelemmel. A sémák a MEGJELENÍTHETŐ (rendezett) listára
+// mutatnak, hogy a strukturált adat konzisztens legyen a látható tartalommal.
 const portfolioSchema = {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
@@ -49,16 +76,61 @@ const portfolioSchema = {
   description:
     "Valós ügyféleredmények, konverzió-optimalizált Next.js weboldalak és egyedi digitális rendszerek. 26 év tapasztalat, mérhető növekedés.",
   url: "https://webdude.hu/munkak",
+  isPartOf: {
+    "@type": "WebSite",
+    name: "WebDude",
+    url: "https://webdude.hu",
+  },
+  about: {
+    "@type": "Thing",
+    name: "Webfejlesztés, webshop és arculattervezés referenciák",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "WebDude",
+    url: "https://webdude.hu",
+    logo: {
+      "@type": "ImageObject",
+      url: "https://webdude.hu/assets/logos/webdude-logo.webp",
+    },
+    founder: {
+      "@type": "Person",
+      name: "Norbi (WebDude)",
+      jobTitle: "Webfejlesztő és Grafikai Tervező",
+      url: "https://webdude.hu/szia-norbi-vagyok",
+    },
+  },
   mainEntity: {
     "@type": "ItemList",
-    numberOfItems: staticWorks.length,
-    itemListElement: staticWorks.map((work, i) => ({
+    numberOfItems: orderedWorks.length,
+    itemListOrder: "https://schema.org/ItemListOrderAscending",
+    itemListElement: orderedWorks.map((work, i) => ({
       "@type": "ListItem",
       position: i + 1,
       name: work.title,
-      url: `https://webdude.hu${work.slug}`,
+      url: `https://webdude.hu/munkak/${work.slug}`,
     })),
   },
+};
+
+// BreadcrumbList — az AEO/keresők számára a navigációs hierarchia.
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Főoldal",
+      item: "https://webdude.hu",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Munkák",
+      item: "https://webdude.hu/munkak",
+    },
+  ],
 };
 
 export default async function MunkakPage() {
@@ -68,6 +140,12 @@ export default async function MunkakPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(portfolioSchema).replace(/</g, "\\u003c"),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema).replace(/</g, "\\u003c"),
         }}
       />
 
@@ -169,7 +247,10 @@ export default async function MunkakPage() {
             Válogatás a legfrissebb webfejlesztési, webshop és arculati projektjeimből
           </p>
         </div>
-        <PortfolioGrid projects={staticWorks} />
+        <PortfolioGrid projects={orderedWorks} />
+
+        {/* Gyakori kérdések (AEO) — AI-kereső-barát FAQ, FAQPage sémával */}
+        <MunkakFaqSection />
 
         {/* CTA Section */}
         <section className="mt-24 text-center rounded-3xl bg-slate-900/60 border border-slate-800 py-24 px-6 relative overflow-hidden">
@@ -181,12 +262,23 @@ export default async function MunkakPage() {
             <p className="text-lg text-slate-300 max-w-xl mx-auto leading-relaxed">
               Beszéljük át az elképzeléseidet, és készítek számodra egy kötelezettségmentes, egyedi árajánlatot.
             </p>
-            <Link
-              href="/kapcsolat"
-              className="inline-flex items-center justify-center px-10 py-4 bg-linear-to-r from-[#075985] to-[#5B21B6] hover:from-[#0369a1] hover:to-[#6d28d9] text-white rounded-xl font-bold text-base shadow-xl shadow-sky-950/60 transition-all duration-300 hover:scale-105 active:scale-95"
-            >
-              Egyedi árajánlat kérése
-            </Link>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Link
+                href="/kapcsolat"
+                className="inline-flex items-center justify-center px-10 py-4 bg-linear-to-r from-[#075985] to-[#5B21B6] hover:from-[#0369a1] hover:to-[#6d28d9] text-white rounded-xl font-bold text-base shadow-xl shadow-sky-950/60 transition-all duration-300 hover:scale-105 active:scale-95"
+              >
+                Egyedi árajánlat kérése
+              </Link>
+              <Link
+                href="/kapcsolat"
+                className="inline-flex items-center justify-center px-10 py-4 border border-slate-700 hover:border-[#00B5F1] text-slate-300 hover:text-[#00B5F1] rounded-xl font-bold text-base transition-all duration-300"
+              >
+                Ingyenes konzultáció
+              </Link>
+            </div>
+            <p className="text-xs uppercase tracking-[0.25em] text-slate-500 font-bold">
+              26 év tapasztalat · Válasz 24 órán belül · Kötelezettség nélkül
+            </p>
           </div>
         </section>
       </section>

@@ -12,7 +12,7 @@ import {
   ArrowRight,
   Copy,
   RefreshCw,
-  PenTool,
+  PenTool
 } from "lucide-react";
 
 const productSchema = {
@@ -24,26 +24,23 @@ const productSchema = {
   image: "https://webdude.hu/og/webdude-og.jpg",
   brand: {
     "@type": "Brand",
-    name: "WebDude",
+    name: "WebDude"
   },
   offers: {
     "@type": "Offer",
-    price: "0",
-    priceCurrency: "HUF",
     availability: "https://schema.org/InStock",
     url: "https://webdude.hu/termekek/tartalomtervezo-ai-muhely",
-    priceValidUntil: "2027-12-31",
     seller: {
       "@type": "Organization",
-      name: "WebDude.hu",
+      name: "WebDude.hu"
     },
     description: "Egyedi árajánlat kérése",
   },
   aggregateRating: {
     "@type": "AggregateRating",
     ratingValue: "4.8",
-    reviewCount: "31",
-  },
+    reviewCount: "31"
+  }
 };
 
 const contentTypes = [
@@ -53,7 +50,7 @@ const contentTypes = [
     description: "Blog tartalom generálás",
     prompt:
       "blog post content, engaging article structure, SEO optimized, compelling headline, informative body, professional writing style",
-    color: "from-blue-500 to-sky-500",
+    color: "from-blue-500 to-sky-500"
   },
   {
     id: "social",
@@ -61,7 +58,7 @@ const contentTypes = [
     description: "Social media tartalom",
     prompt:
       "social media content, engaging captions, hashtag strategy, platform-specific format, viral potential, interactive elements",
-    color: "from-purple-500 to-pink-500",
+    color: "from-purple-500 to-pink-500"
   },
   {
     id: "email",
@@ -69,7 +66,7 @@ const contentTypes = [
     description: "Email kampány tartalom",
     prompt:
       "email marketing content, compelling subject line, persuasive copy, call-to-action optimization, conversion-focused",
-    color: "from-[#00B5F1] to-orange-500",
+    color: "from-[#00B5F1] to-brand-secondary"
   },
   {
     id: "landing",
@@ -77,7 +74,7 @@ const contentTypes = [
     description: "Landing page szöveg",
     prompt:
       "landing page copy, conversion-focused headlines, benefit-driven content, persuasive CTAs, sales funnel optimization",
-    color: "from-green-500 to-emerald-500",
+    color: "from-green-500 to-emerald-500"
   },
   {
     id: "product",
@@ -85,7 +82,7 @@ const contentTypes = [
     description: "Termék leírás",
     prompt:
       "product description, benefit-focused copy, feature highlights, persuasive selling points, customer-centric language",
-    color: "from-brand-secondary to-brand-primary",
+    color: "from-brand-secondary to-brand-primary"
   },
   {
     id: "ad",
@@ -93,25 +90,25 @@ const contentTypes = [
     description: "PPC hirdetés szöveg",
     prompt:
       "ad copy, compelling headlines, persuasive body text, conversion-optimized, A/B testing ready",
-    color: "from-indigo-500 to-blue-500",
-  },
+    color: "from-indigo-500 to-blue-500"
+  }
 ];
 
 const contentTones = [
   {
     id: "professional",
     name: "Professzionális",
-    description: "Hivatalos, szakmai",
+    description: "Hivatalos, szakmai"
   },
   { id: "casual", name: "Lazán", description: "Barátságos, közvetlen" },
   { id: "humorous", name: "Humoros", description: "Vicces, szórakoztató" },
-  { id: "urgent", name: "Sürgős", description: "Akciós, sürgető" },
+  { id: "urgent", name: "Sürgős", description: "Akciós, sürgető" }
 ];
 
 const contentLengths = [
   { id: "short", name: "Rövid", description: "150-300 szó" },
   { id: "medium", name: "Közepes", description: "300-600 szó" },
-  { id: "long", name: "Hosszú", description: "600-1200 szó" },
+  { id: "long", name: "Hosszú", description: "600-1200 szó" }
 ];
 
 export default function TartalomtervezoAIMuhelyPage() {
@@ -157,7 +154,7 @@ export default function TartalomtervezoAIMuhelyPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(productSchema).replace(/</g, "\\u003c"),
+          __html: JSON.stringify(productSchema).replace(/</g, "\\u003c")
         }}
       />
       <ProductAccessGuard>
@@ -441,23 +438,23 @@ export default function TartalomtervezoAIMuhelyPage() {
                   {
                     icon: FileText,
                     title: "Tartalom Generálás",
-                    description: "Automatikus tartalom generálás",
+                    description: "Automatikus tartalom generálás"
                   },
                   {
                     icon: ImageIcon,
                     title: "Vizuális Tervezés",
-                    description: "AI vizuális tervezés",
+                    description: "AI vizuális tervezés"
                   },
                   {
                     icon: Share2,
                     title: "Blog Posztok",
-                    description: "Blog tartalom generálás",
+                    description: "Blog tartalom generálás"
                   },
                   {
                     icon: PenTool,
                     title: "Social Media Tartalmak",
-                    description: "Social media tartalom generálás",
-                  },
+                    description: "Social media tartalom generálás"
+                  }
                 ].map((feature, index) => {
                   const FeatureIcon = feature.icon;
                   return (

@@ -12,7 +12,7 @@ import {
   ArrowRight,
   Copy,
   RefreshCw,
-  Layers,
+  Layers
 } from "lucide-react";
 
 const productSchema = {
@@ -24,26 +24,23 @@ const productSchema = {
   image: "https://webdude.hu/og/webdude-og.jpg",
   brand: {
     "@type": "Brand",
-    name: "WebDude",
+    name: "WebDude"
   },
   offers: {
     "@type": "Offer",
-    price: "0",
-    priceCurrency: "HUF",
     availability: "https://schema.org/InStock",
     url: "https://webdude.hu/termekek/ui-ux-ai-muhely",
-    priceValidUntil: "2027-12-31",
     seller: {
       "@type": "Organization",
-      name: "WebDude.hu",
+      name: "WebDude.hu"
     },
     description: "Egyedi árajánlat kérése",
   },
   aggregateRating: {
     "@type": "AggregateRating",
     ratingValue: "4.8",
-    reviewCount: "31",
-  },
+    reviewCount: "31"
+  }
 };
 
 const designStyles = [
@@ -53,7 +50,7 @@ const designStyles = [
     description: "Tiszta, egyszerű",
     prompt:
       "minimalist UI/UX design, clean interface, ample white space, modern typography, professional aesthetic, user-friendly",
-    color: "from-blue-500 to-sky-500",
+    color: "from-blue-500 to-sky-500"
   },
   {
     id: "modern",
@@ -61,7 +58,7 @@ const designStyles = [
     description: "Kortárs, innovatív",
     prompt:
       "modern UI/UX design, contemporary aesthetic, bold typography, dynamic layout, innovative user experience",
-    color: "from-purple-500 to-pink-500",
+    color: "from-purple-500 to-pink-500"
   },
   {
     id: "corporate",
@@ -69,7 +66,7 @@ const designStyles = [
     description: "Professzionális, üzleti",
     prompt:
       "corporate UI/UX design, professional business aesthetic, trustworthy colors, clean interface, established UX patterns",
-    color: "from-[#00B5F1] to-orange-500",
+    color: "from-[#00B5F1] to-brand-secondary"
   },
   {
     id: "creative",
@@ -77,7 +74,7 @@ const designStyles = [
     description: "Színes, dinamikus",
     prompt:
       "creative UI/UX design, vibrant colors, artistic elements, unique composition, eye-catching interface",
-    color: "from-green-500 to-emerald-500",
+    color: "from-green-500 to-emerald-500"
   },
   {
     id: "luxury",
@@ -85,7 +82,7 @@ const designStyles = [
     description: "Elegáns, prémium",
     prompt:
       "luxury UI/UX design, elegant aesthetic, premium feel, sophisticated colors, high-end user experience",
-    color: "from-brand-secondary to-brand-primary",
+    color: "from-brand-secondary to-brand-primary"
   },
   {
     id: "tech",
@@ -93,34 +90,34 @@ const designStyles = [
     description: "Modern, innovatív",
     prompt:
       "tech UI/UX design, modern innovation aesthetic, digital elements, futuristic but professional, clean tech style",
-    color: "from-indigo-500 to-blue-500",
-  },
+    color: "from-indigo-500 to-blue-500"
+  }
 ];
 
 const deviceTypes = [
   { id: "desktop", name: "Desktop", description: "Asztali interface" },
   { id: "mobile", name: "Mobile", description: "Mobil interface" },
   { id: "responsive", name: "Responsive", description: "Reszponzív design" },
-  { id: "tablet", name: "Tablet", description: "Tablet interface" },
+  { id: "tablet", name: "Tablet", description: "Tablet interface" }
 ];
 
 const uxFocus = [
   {
     id: "conversion",
     name: "Konverzió",
-    description: "Konverzió optimalizált",
+    description: "Konverzió optimalizált"
   },
   {
     id: "accessibility",
     name: "Akadálymentesítés",
-    description: "WCAG kompatibilis",
+    description: "WCAG kompatibilis"
   },
   { id: "speed", name: "Sebesség", description: "Gyors betöltés" },
   {
     id: "engagement",
     name: "Elköteleződés",
-    description: "Felhasználói élmény",
-  },
+    description: "Felhasználói élmény"
+  }
 ];
 
 export default function UIUXAIMuhelyPage() {
@@ -166,7 +163,7 @@ export default function UIUXAIMuhelyPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(productSchema).replace(/</g, "\\u003c"),
+          __html: JSON.stringify(productSchema).replace(/</g, "\\u003c")
         }}
       />
       <ProductAccessGuard>
@@ -449,23 +446,23 @@ export default function UIUXAIMuhelyPage() {
                   {
                     icon: Layout,
                     title: "UI/UX Design Generálás",
-                    description: "Automatikus UI/UX design",
+                    description: "Automatikus UI/UX design"
                   },
                   {
                     icon: Smartphone,
                     title: "Wireframe Tervezés",
-                    description: "Wireframe generálás",
+                    description: "Wireframe generálás"
                   },
                   {
                     icon: Monitor,
                     title: "Konverziófókuszú Interface",
-                    description: "Konverzió optimalizált design",
+                    description: "Konverzió optimalizált design"
                   },
                   {
                     icon: Layers,
                     title: "UX Optimalizáció",
-                    description: "User experience optimalizáció",
-                  },
+                    description: "User experience optimalizáció"
+                  }
                 ].map((feature, index) => {
                   const FeatureIcon = feature.icon;
                   return (

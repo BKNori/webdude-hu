@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { headers } from "next/headers";
 import { db } from "@/lib/firebase";
+import { notifyUser } from "@/lib/notify";
 import {
   collection,
   addDoc,
@@ -131,6 +132,19 @@ export async function POST(req: Request) {
                 );
               }
             }
+
+            // Értesítés (Phase 2): sikeres fizetés jóváhagyva.
+            if (orderClientId) {
+              await notifyUser({
+                userId: orderClientId,
+                kind: "payment",
+                tone: "success",
+                title: "Fizetés jóváhagyva",
+                message:
+                  "A rendelésed fizetése megérkezett, a szolgáltatás elindult.",
+                link: "/portal",
+              });
+            }
           }
         }
 
@@ -172,6 +186,17 @@ export async function POST(req: Request) {
                 });
                 console.log(`Unlocked tool ${phase} for user ${finalClientId}`);
               }
+
+              // Értesítés (Phase 2): közvetlen add-on vásárlás fizetése.
+              await notifyUser({
+                userId: finalClientId,
+                kind: "payment",
+                tone: "success",
+                title: "Fizetés jóváhagyva",
+                message:
+                  "A kiegészítő szolgáltatás fizetése megérkezett, köszönjük!",
+                link: "/portal",
+              });
             }
           } else {
             // Standard workflow milestone payment

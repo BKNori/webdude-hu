@@ -12,7 +12,7 @@ import {
   ArrowRight,
   Copy,
   RefreshCw,
-  Target,
+  Target
 } from "lucide-react";
 
 const productSchema = {
@@ -24,26 +24,23 @@ const productSchema = {
   image: "https://webdude.hu/og/webdude-og.jpg",
   brand: {
     "@type": "Brand",
-    name: "WebDude",
+    name: "WebDude"
   },
   offers: {
     "@type": "Offer",
-    price: "0",
-    priceCurrency: "HUF",
     availability: "https://schema.org/InStock",
     url: "https://webdude.hu/termekek/versenytares-elemzo-ai-muhely",
-    priceValidUntil: "2027-12-31",
     seller: {
       "@type": "Organization",
-      name: "WebDude.hu",
+      name: "WebDude.hu"
     },
     description: "Egyedi árajánlat kérése",
   },
   aggregateRating: {
     "@type": "AggregateRating",
     ratingValue: "4.8",
-    reviewCount: "31",
-  },
+    reviewCount: "31"
+  }
 };
 
 const analysisTypes = [
@@ -53,7 +50,7 @@ const analysisTypes = [
     description: "Piaci elemzés",
     prompt:
       "market research analysis, industry trends, market size, growth potential, competitive landscape, market positioning",
-    color: "from-blue-500 to-sky-500",
+    color: "from-blue-500 to-sky-500"
   },
   {
     id: "pricing",
@@ -61,7 +58,7 @@ const analysisTypes = [
     description: "Árazási stratégia",
     prompt:
       "pricing strategy analysis, competitive pricing, value proposition, price elasticity, revenue optimization, profit margins",
-    color: "from-purple-500 to-pink-500",
+    color: "from-purple-500 to-pink-500"
   },
   {
     id: "marketing",
@@ -69,7 +66,7 @@ const analysisTypes = [
     description: "Marketing stratégia",
     prompt:
       "marketing strategy analysis, competitive marketing, channel analysis, campaign performance, brand positioning, customer acquisition",
-    color: "from-[#00B5F1] to-orange-500",
+    color: "from-[#00B5F1] to-brand-secondary"
   },
   {
     id: "product",
@@ -77,7 +74,7 @@ const analysisTypes = [
     description: "Termék elemzés",
     prompt:
       "product analysis, feature comparison, USP identification, product differentiation, value proposition, competitive advantage",
-    color: "from-green-500 to-emerald-500",
+    color: "from-green-500 to-emerald-500"
   },
   {
     id: "content",
@@ -85,7 +82,7 @@ const analysisTypes = [
     description: "Tartalom stratégia",
     prompt:
       "content strategy analysis, competitive content, content performance, SEO comparison, social media presence, thought leadership",
-    color: "from-brand-secondary to-brand-primary",
+    color: "from-brand-secondary to-brand-primary"
   },
   {
     id: "swot",
@@ -93,20 +90,20 @@ const analysisTypes = [
     description: "Erősségek és gyengeségek",
     prompt:
       "SWOT analysis, strengths weaknesses opportunities threats, competitive positioning, strategic advantages, market gaps",
-    color: "from-indigo-500 to-blue-500",
-  },
+    color: "from-indigo-500 to-blue-500"
+  }
 ];
 
 const analysisDepth = [
   { id: "quick", name: "Gyors", description: "Áttekintő elemzés" },
   { id: "detailed", name: "Részletes", description: "Mélyreható elemzés" },
-  { id: "comprehensive", name: "Komplex", description: "Teljes körű elemzés" },
+  { id: "comprehensive", name: "Komplex", description: "Teljes körű elemzés" }
 ];
 
 const focusAreas = [
   { id: "direct", name: "Közvetlen", description: "Közvetlen versenytársak" },
   { id: "indirect", name: "Közvetett", description: "Közvetett versenytársak" },
-  { id: "emerging", name: "Feltörekvő", description: "Új versenytársak" },
+  { id: "emerging", name: "Feltörekvő", description: "Új versenytársak" }
 ];
 
 export default function VersenytaresElemzoAIMuhelyPage() {
@@ -152,7 +149,7 @@ export default function VersenytaresElemzoAIMuhelyPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(productSchema).replace(/</g, "\\u003c"),
+          __html: JSON.stringify(productSchema).replace(/</g, "\\u003c")
         }}
       />
       <ProductAccessGuard>
@@ -436,23 +433,23 @@ export default function VersenytaresElemzoAIMuhelyPage() {
                   {
                     icon: Users,
                     title: "Piackutatás",
-                    description: "Piaci elemzés és kutatás",
+                    description: "Piaci elemzés és kutatás"
                   },
                   {
                     icon: TrendingUp,
                     title: "Versenytárs Monitoring",
-                    description: "Versenytárs követés",
+                    description: "Versenytárs követés"
                   },
                   {
                     icon: BarChart3,
                     title: "Stratégiai Elemzés",
-                    description: "Stratégiai tervezés",
+                    description: "Stratégiai tervezés"
                   },
                   {
                     icon: Target,
                     title: "SWOT Elemzés",
-                    description: "Erősségek és gyengeségek",
-                  },
+                    description: "Erősségek és gyengeségek"
+                  }
                 ].map((feature, index) => {
                   const FeatureIcon = feature.icon;
                   return (

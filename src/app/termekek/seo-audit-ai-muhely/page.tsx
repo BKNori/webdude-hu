@@ -11,7 +11,7 @@ import {
   ArrowRight,
   Copy,
   RefreshCw,
-  Target,
+  Target
 } from "lucide-react";
 
 const auditTypes = [
@@ -21,7 +21,7 @@ const auditTypes = [
     description: "Technikai elemzés",
     prompt:
       "technical SEO audit, site speed analysis, mobile optimization, crawlability, indexability, technical performance review",
-    color: "from-blue-500 to-sky-500",
+    color: "from-blue-500 to-sky-500"
   },
   {
     id: "content",
@@ -29,7 +29,7 @@ const auditTypes = [
     description: "Tartalom elemzés",
     prompt:
       "content SEO audit, keyword analysis, content quality, duplicate content, content structure optimization",
-    color: "from-purple-500 to-pink-500",
+    color: "from-purple-500 to-pink-500"
   },
   {
     id: "aeo",
@@ -37,7 +37,7 @@ const auditTypes = [
     description: "AI válasz motor",
     prompt:
       "AEO optimization, AI answer engine optimization, schema.org implementation, structured data, featured snippets",
-    color: "from-[#00B5F1] to-orange-500",
+    color: "from-[#00B5F1] to-brand-secondary"
   },
   {
     id: "local",
@@ -45,7 +45,7 @@ const auditTypes = [
     description: "Helyi keresés",
     prompt:
       "local SEO audit, Google Business Profile optimization, local citations, NAP consistency, local search ranking",
-    color: "from-green-500 to-emerald-500",
+    color: "from-green-500 to-emerald-500"
   },
   {
     id: "performance",
@@ -53,7 +53,7 @@ const auditTypes = [
     description: "Lighthouse score",
     prompt:
       "performance SEO audit, Lighthouse score optimization, Core Web Vitals, page speed, loading time analysis",
-    color: "from-brand-secondary to-brand-primary",
+    color: "from-brand-secondary to-brand-primary"
   },
   {
     id: "backlink",
@@ -61,8 +61,8 @@ const auditTypes = [
     description: "Link profil elemzés",
     prompt:
       "backlink profile audit, link quality analysis, toxic links, domain authority, link building strategy",
-    color: "from-indigo-500 to-blue-500",
-  },
+    color: "from-indigo-500 to-blue-500"
+  }
 ];
 
 const focusAreas = [
@@ -70,16 +70,16 @@ const focusAreas = [
   {
     id: "competitors",
     name: "Versenytársak",
-    description: "Versenytárs elemzés",
+    description: "Versenytárs elemzés"
   },
   { id: "technical", name: "Technikai", description: "Technikai SEO" },
-  { id: "content", name: "Tartalom", description: "Tartalom optimalizáció" },
+  { id: "content", name: "Tartalom", description: "Tartalom optimalizáció" }
 ];
 
 const depthLevels = [
   { id: "basic", name: "Alap", description: "Gyors áttekintés" },
   { id: "detailed", name: "Részletes", description: "Mélyreható elemzés" },
-  { id: "comprehensive", name: "Komplex", description: "Teljes körű audit" },
+  { id: "comprehensive", name: "Komplex", description: "Teljes körű audit" }
 ];
 
 const productSchema = {
@@ -91,26 +91,23 @@ const productSchema = {
   image: "https://webdude.hu/og/webdude-og.jpg",
   brand: {
     "@type": "Brand",
-    name: "WebDude",
+    name: "WebDude"
   },
   offers: {
     "@type": "Offer",
-    price: "0",
-    priceCurrency: "HUF",
     availability: "https://schema.org/InStock",
     url: "https://webdude.hu/termekek/seo-audit-ai-muhely",
-    priceValidUntil: "2027-12-31",
     seller: {
       "@type": "Organization",
-      name: "WebDude.hu",
+      name: "WebDude.hu"
     },
     description: "Egyedi árajánlat kérése",
   },
   aggregateRating: {
     "@type": "AggregateRating",
     ratingValue: "4.8",
-    reviewCount: "31",
-  },
+    reviewCount: "31"
+  }
 };
 
 export default function SEOAuditAIMuhelyPage() {
@@ -156,7 +153,7 @@ export default function SEOAuditAIMuhelyPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(productSchema).replace(/</g, "\\u003c"),
+          __html: JSON.stringify(productSchema).replace(/</g, "\\u003c")
         }}
       />
       <div className="min-h-screen bg-bg-base">
@@ -437,23 +434,23 @@ export default function SEOAuditAIMuhelyPage() {
                 {
                   icon: Search,
                   title: "SEO Audit Vizualizáció",
-                  description: "Automatikus audit elemzés",
+                  description: "Automatikus audit elemzés"
                 },
                 {
                   icon: TrendingUp,
                   title: "Lighthouse Score Tracking",
-                  description: "Teljesítmény követés",
+                  description: "Teljesítmény követés"
                 },
                 {
                   icon: BarChart3,
                   title: "Kulcsszó Stratégia",
-                  description: "AI kulcsszó elemzés",
+                  description: "AI kulcsszó elemzés"
                 },
                 {
                   icon: Target,
                   title: "AI Válasz Motor Optimalizáció",
-                  description: "AEO optimalizáció",
-                },
+                  description: "AEO optimalizáció"
+                }
               ].map((feature, index) => {
                 const FeatureIcon = feature.icon;
                 return (

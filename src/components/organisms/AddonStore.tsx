@@ -2,9 +2,8 @@
 
 import React, { useEffect, useState, useCallback } from "react";
 import { motion } from "motion/react";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { getAddonsAction, getClientOrdersAction } from "@/actions/addons";
-import { createStripeCheckoutSessionAction } from "@/actions/stripe";
 import { Addon, Order } from "@/types/addon";
 import {
   Loader2,
@@ -19,7 +18,6 @@ import {
 
 interface AddonStoreProps {
   idToken: string;
-  onOrderError: (msg: string) => void;
 }
 
 const categoryIcons = {
@@ -29,12 +27,10 @@ const categoryIcons = {
   cro: TrendingUp,
 };
 
-export default function AddonStore({ idToken, onOrderError }: AddonStoreProps) {
+export default function AddonStore({ idToken }: AddonStoreProps) {
   const [addons, setAddons] = useState<Addon[]>([]);
   const [orders, setOrders] = useState<Order[]>([]);
   const [loading, setLoading] = useState(true);
-  const [actionLoading, setActionLoading] = useState<string | null>(null);
-  const router = useRouter();
 
   const fetchStoreData = useCallback(async () => {
     try {
@@ -61,28 +57,6 @@ export default function AddonStore({ idToken, onOrderError }: AddonStoreProps) {
       })();
     }
   }, [idToken, fetchStoreData]);
-
-  const handlePurchase = async (addonId: string) => {
-    setActionLoading(addonId);
-    try {
-      const origin = window.location.origin;
-      const res = await createStripeCheckoutSessionAction(
-        idToken,
-        "addon",
-        addonId,
-        origin
-      );
-      if (res.success && res.url) {
-        router.push(res.url);
-      } else {
-        onOrderError(res.error || "Hiba történt a fizetés indításakor.");
-      }
-    } catch {
-      onOrderError("Kapcsolódási hiba a fizetés indításakor.");
-    } finally {
-      setActionLoading(null);
-    }
-  };
 
   const getOrderStatusBadge = (status: Order["status"]) => {
     switch (status) {
@@ -140,7 +114,6 @@ export default function AddonStore({ idToken, onOrderError }: AddonStoreProps) {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {addons.map((addon, index) => {
           const Icon = categoryIcons[addon.category] || Sparkles;
-          const isPending = actionLoading === addon.id;
           const order = orders.find((o) => o.addonId === addon.id);
           const hasPurchased =
             order && (order.status === "paid" || order.status === "delivered");
@@ -200,7 +173,7 @@ export default function AddonStore({ idToken, onOrderError }: AddonStoreProps) {
                     Egyszeri díj
                   </span>
                   <span className="text-sky-500 font-bold text-lg font-mono">
-                    {addon.price.toLocaleString("hu-HU")} Ft
+                    Egyedi árajánlat
                   </span>
                 </div>
 
@@ -210,25 +183,13 @@ export default function AddonStore({ idToken, onOrderError }: AddonStoreProps) {
                     Aktív
                   </div>
                 ) : (
-                  <button
-                    type="button"
-                    disabled={actionLoading !== null}
-                    onClick={() => handlePurchase(addon.id)}
-                    className={`w-full py-3 rounded-xl bg-sky-500 text-bg-base font-bold text-xs uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-1.5 cursor-pointer hover:bg-violet-700 disabled:opacity-50 ${
-                      isPending
-                        ? "animate-pulse shadow-[0_0_30px_rgba(0, 181, 241,0.6)]"
-                        : ""
-                    }`}
+                  <Link
+                    href="/kapcsolat"
+                    className="w-full py-3 rounded-xl bg-sky-500 text-bg-base font-bold text-xs uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-1.5 cursor-pointer hover:bg-violet-700"
                   >
-                    {isPending ? (
-                      <Loader2 className="w-4 h-4 animate-spin text-bg-base" />
-                    ) : (
-                      <>
-                        <CreditCard className="w-4 h-4" />
-                        Megrendelés
-                      </>
-                    )}
-                  </button>
+                    <CreditCard className="w-4 h-4" />
+                    Egyedi árajánlat kérése
+                  </Link>
                 )}
               </div>
             </motion.div>

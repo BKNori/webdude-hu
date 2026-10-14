@@ -165,10 +165,7 @@ export default function PortalDashboard() {
             )}
 
             {/* Add-on Store Section */}
-            <AddonStore
-              idToken={idToken}
-              onOrderError={(msg: string) => setError(msg)}
-            />
+            <AddonStore idToken={idToken} />
 
             {/* Orders Section (superadmin) */}
             <PortalOrdersSection

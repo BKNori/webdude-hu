@@ -15,7 +15,7 @@ export default function WorkCard({ work }: WorkCardProps) {
     webshop: "bg-green-500/10 text-green-500 border-green-500/20",
     arculat: "bg-purple-500/10 text-purple-500 border-purple-500/20",
     grafika: "bg-pink-500/10 text-pink-500 border-pink-500/20",
-    branding: "bg-orange-500/10 text-orange-500 border-orange-500/20",
+    branding: "bg-brand-secondary/10 text-brand-secondary border-brand-secondary/20",
   };
 
   const categoryKey = (work.category as keyof typeof categoryColors) ?? "weboldal";

@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { buildBreadcrumbSchema } from "@/lib/breadcrumb";
 
 export const metadata: Metadata = {
   title: "AI Prompt Sablonok | Grafikai AI Prompt Könyvtár | WebDude",
@@ -63,6 +64,16 @@ const jsonLd = {
   },
 };
 
+/**
+ * Breadcrumb (morzsamenü) séma — a projekt AEO-szabványa szerint minden
+ * aloldalon kötelező. Az `ai-megoldasok` szülő szekció az anyaútvonal.
+ */
+const breadcrumbSchema = buildBreadcrumbSchema([
+  { name: "Főoldal", url: "/" },
+  { name: "AI Megoldások", url: "/ai-megoldasok" },
+  { name: "AI Prompt Sablonok", url: "/ai-megoldasok/ai-prompt-sablonok" },
+]);
+
 export default function AIPromptSablonokLayout({
   children,
 }: {
@@ -71,9 +82,20 @@ export default function AIPromptSablonokLayout({
   return (
     <>
       {children}
+      {/* XSS VÉDELEM: a `<` karakter escape-je kötelező a JSON-LD-ben is.
+          (A korábbi verzió ezt kihagyta — ez volt az egyetlen, nem védett
+          JSON-LD a teljes /ai-megoldasok fa alatt.) */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema).replace(/</g, "\\u003c"),
+        }}
       />
     </>
   );

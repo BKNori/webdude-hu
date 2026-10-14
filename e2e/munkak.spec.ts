@@ -48,7 +48,11 @@ test.describe("Közönség / marketing útvonalak", () => {
     const h1 = page.getByRole("heading", { level: 1 });
     await expect(h1).toHaveCount(1);
     await expect(h1).toBeVisible();
-    await expect(h1).toContainText(/weboldal/i);
+    // A szövegre NEM szűrünk: a CRO-szövegcserék miatt a H1 folyamatosan
+    // változik (a teszt maga is ezt írja le a CTA-knál). A lényeg a
+    // heading-hierarchia: pontosan egy H1, látható, nem üres.
+    const h1Text = (await h1.textContent()) ?? "";
+    expect(h1Text.trim().length).toBeGreaterThan(10);
 
     // Az elsődleges CTA-k léteznek és kattinthatók (nem küldjük el).
     // A CTA-szövegek változhatnak, ezért a href-címre szűrünk, nem a szövegre.

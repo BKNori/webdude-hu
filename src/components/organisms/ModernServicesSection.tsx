@@ -57,8 +57,8 @@ const services = [
       "Technikai SEO audit, Lighthouse optimalizálás, Schema.org JSON-LD implementáció és kulcsszó stratégia.",
     icon: Search,
     href: "/szolgaltatasok/seo-optimalizalas",
-    color: "from-orange-500/20 to-red-500/20",
-    iconColor: "text-orange-400",
+    color: "from-brand-primary/20 to-brand-secondary/20",
+    iconColor: "text-brand-primary",
     benefits: ["95+ Lighthouse", "Google rangsor", "Organikus forgalom"],
   },
   {

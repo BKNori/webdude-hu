@@ -122,7 +122,6 @@ export default function WordPressBiztonsagPage() {
     // A WebDude kizárólag egyedi árajánlatot ad — nincs fix árkatalógus.
     offers: {
       "@type": "Offer",
-      priceCurrency: "HUF",
       description: "Egyedi árajánlat kérése — a projekt terjedelmétől függően.",
       availability: "https://schema.org/InStock",
       url: "https://webdude.hu/kapcsolat?service=wordpress-biztonsag",

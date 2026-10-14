@@ -1,5 +1,211 @@
 # Changelog
 
+## [7.28.1] — 2026-10-14 — BENNFOK KÉP-PROBLÉMA AUDIT ÉS BRAND KONSOLIDÁCIÓ (Kék-Lila v7.0)
+
+- **`_docs/DESIGN_SYSTEM.md` frissítés:** Kék-Lila v7.0 csatorna valósításban megerősítése: `from-[#00B5F1] → to-[#5B21B6]` / `from-brand-primary/20 → to-brand-secondary/20`; minden `amber (#f59e0b) / orange (#f97316) / red-500` alapú gradiens-prop és `color` prop **deregisterálva** a design-tokenekkel kicserélve.
+- **Brandesített komponensek (12 fájl, kizárólag a tervezési specnek megfelelően):**
+  - `src/components/atoms/LoadingSpinner.tsx` — `border-t-orange-500` → `border-t-brand-primary` (lilás ködrésztű betöltés).
+  - `src/components/molecules/WorkCard.tsx` — `bg-orange-500/10 text-orange-500 border-orange-500/20` → `bg-brand-secondary/10 text-brand-secondary border-brand-secondary/20` (branding kártya-képzés).
+  - `src/components/organisms/RimaiCaseStudy.tsx` — eredményblokk háttégradiens `to-orange-500/10` → `to-brand-secondary/10`.
+  - `src/components/organisms/ModernServicesSection.tsx` — orange/red service `color` (from-orange-500/20 to-red-500/20, iconColor text-orange-400) → `from-brand-primary/20 to-brand-secondary/20` / `text-brand-primary` (lilás / cyán).
+  - `src/app/ai-megoldasok/ai-prompt-sablonok/page.tsx` — teaser `from-red-500 to-orange-500` → `from-red-500 to-brand-secondary` (lilás átmenet).
+  - `src/app/termekek/midjourney-ai-muheap/page.tsx` — `from-[#00B5F1] to-orange-500` → `from-[#00B5F1] to-brand-secondary`.
+  - `src/app/termekek/page.tsx` — 2× `from-[#00B5F1] to-orange-500` → `from-[#00B5F1] to-brand-secondary` (Krisztofka UI · Midjourney teaser).
+  - `src/app/termekek/seo-audit-ai-muheap/page.tsx` — `from-[#00B5F1] to-orange-500` → `from-[#00B5F1] to-brand-secondary`.
+  - `src/app/termekek/szezonalis-ai-muheap/page.tsx` — 2× gradiens-csere `from-orange-500 to-brand-primary` → `from-brand-secondary to-brand-primary` valamint `from-[#00B5F1] to-orange-500` → `from-[#00B5F1] to-brand-secondary`.
+  - `src/app/termekek/tartalomtervezo-ai-muheap/page.tsx`, `src/app/termekek/ui-ux-ai-muheap/page.tsx`, `src/app/termekek/versenytares-elemzo-ai-muheap/page.tsx` — mindegyik `from-[#00B5F1] to-orange-500` → `from-[#00B5F1] to-brand-secondary`.
+  - `src/app/szolgaltatasok/egyedi-arculattervezes-logo/page.tsx` — hero-overlay `bg-black/60` × 3 → `bg-slate-950/60` (lilás, `Kék-Lila v7.0` kompatibilis; a `bg-black` teljes árnyék nem létezik a palette-ban → `bg-slate-950` → 90%-os mélység + 60%-os átlátszóság).
+- **Szándékos kivételek kizárása** (megváltozott helyzethez igazodva, a csapat jóváhagyása nélkül változatlan):
+  - Admin-pending / SEO-Workshop warning trio / macOS traffic-light dots / `cyber_gold` AI-prompt szöveges értékek (funkcionális) — manuális döntés vár.
+  - White button labels on dark CTA (DDR-003 AAA kontraszt) — szabályszabályozott kivétel.
+  - EmailTemplateEditor preview — emailek világos háttereivel autentikusak.
+  - `HeaderNavClient.tsx` dropdown — specnek megfelelően már működik; kihagyva.
+- **CSR / SEO:** nincs új markup, nincs `window`/`document` kliensoldali használat; minden metadatum JSON-LD-t még `layout.tsx`-ben van kiszolgálva.
+- **QA (Zero-Error Gate):** `npx tsc --noEmit` → **TSC_EXIT=0**; `npm run lint -- --max-warnings 0` → **LINT_EXIT=0**; `npm run build` → **BUILD_EXIT=0** (169 statikus oldal + 12 deploy-elt); összefoglaló `CHANGELOG.md` és `_docs/ARCHITECTURE.md` megegyezik a kód változásával.
+## [7.28.0] — 2026-10-14 — /MUNKAK OLDAL AUDIT: SORREND, HÉZAG-MENTESSÉG, GO-BOX EGYEZTETÉS, SEO/AEO + LEAD-GEN
+
+A `/munkak` (Referenciák) oldal teljes körű auditja és rendezése: a Go-Box duplikáció egyesítése, a kért portfólió-sorrend bevezetése, a Bento Grid hézag-ok megszüntetése, valamint SEO/AEO és lead-generálás erősítés.
+
+- **`src/data/works.ts` — Go-Box duplikáció egyesítése (valódi adat-integritási hiba):** korábban **két `go-box-kft` bejegyzés** létezett ugyanazzal az `id`-vel és `slug`-gal (a régi portfólió-rendezésből) — ez dupla kártyát/oldalt és React `key` duplikációt okozott. Egyetlen, egyesített bejegyzés maradt, amely **mindkét forrásból megőrzi az információt és képeket**: a legjobb felbontású hero (`repulo-dobozok.webp`), a teljes 8 képes galéria (a régi extra `webdude-logo-3200x2000-baner-websites-copy.webp` is), a részletesebb `challenge`/`solution` (második bejegyzésből), a kiegészítő tag-eket és `results` listát (egyesítve).
+- **`src/app/munkak/page.tsx` — kért portfólió-sorrend (SSOT):** új `PORTFOLIO_ORDER` konstans + `orderedWorks` rendezett lista bevezetése. A **btshop** és a **hu-mago-kft** a lista elejére, a **dr-nagy-albert** előrébb, a **nedelmarket** a közepére, míg a **leanperial** az utolsó elemre került. A rendezett lista szolgálja ki egyszerre a látható `PortfolioGrid`-et és a JSON-LD `ItemList`-t (konzisztencia).
+- **`src/components/molecules/PortfolioGrid.tsx` — Bento Grid hézag-megszüntetés (valódi layout hiba):** korábban **minden `featured` kártya `md:col-span-2`-t** kapott egy `lg:grid-cols-3` rácsban — két egymás utáni featured (2+2=4 > 3) lyukat hagyott. Javítás: az extra `col-span-2` + kétszínű belső layout (`md:w-1/2`, `md:border-r`) és a helyes `sizes` **kizárólag az ELSŐ (hero) kártyának** jár (`isHero = isFeatured && index === 0`); minden más kártya egységes `col-span-1` + `w-full grow` + `border-b` → a 3 oszlopos rács **zéró hézaggal** töltődik ki (2+1 = teljes első sor, utána egységes 1-1-1) és a sorrend sértetlen marad. A `grid-flow-row-dense` tartalékként megmarad. A „Kiemelt" badge és a tag-szám a `featured`-on marad (szemantika).
+- **`src/app/munkak/page.tsx` — SEO/AEO és lead-gen erősítés:**
+  - **JSON-LD `ItemList` javítás:** az egyes listaelemek `url`-je `https://webdude.hu${work.slug}` (hiba: hiányzott a `/munkak/` prefix, érvénytelen hivatkozások) → `https://webdude.hu/munkak/${work.slug}`; hozzáadva `itemListOrder`, `numberOfItems` az `orderedWorks`-ből.
+  - **`CollectionPage` bővítés:** új `publisher` (`Organization` + `Person` founder — Norbi/WebDude), `isPartOf` (`WebSite`) és `about` (`Thing`) mezők az AEO/keresők számára.
+  - **Új `BreadcrumbList` JSON-LD séma** (Főoldal → Munkák) injektálva a `portfolioSchema` mellé — XSS-védetten (`.replace(/</g, "\\u003c")`).
+  - **Lead-gen CTA:** a záró CTA-ban másodlagos „Ingyenes konzultáció" gomb hozzáadva (elsődleges „Egyedi árajánlat kérése" + trust-sor: „26 év tapasztalat · Válasz 24 órán belül · Kötelezettség nélkül").
+- **`src/components/organisms/MunkakFaqSection.tsx` (ÚJ):** AI-kereső-barát (AEO) **Gyakori kérdések** szekció a `/munkak` oldalhoz — tiszta **Server Component** (nincs `"use client"`, nincs `motion`). 4 konkrét, konverzió-fókuszú kérdés-válasz (projekttípusok, árazás „nincs fix ár", határidő, WordPress vs. egyedi fejlesztés), saját `FAQPage` JSON-LD sémával (XSS-védve), amelyet a ChatGPT/Perplexity/Gemini és a Google közvetlenül kiemelhet. Kék-Lila v7.0 glassmorphism; a `page.tsx` a grid és a záró CTA közé rendereli.
+- **`_DOCS/ARCHITECTURE.md`:** `PortfolioGrid` regiszter frissítés (`isHero` logika + `grid-flow-row-dense`), új `MunkakFaqSection` organism regisztrálás, a `/munkak` route leírásának bővítése.
+- **QA (zero-error):** `npx tsc --noEmit` → **TSC_EXIT=0**; `npm run lint -- --max-warnings 0` → **LINT_EXIT=0**; `npm run build` → **BUILD_EXIT=0** (169 statikus oldal, `/munkak` SSR/ISR).
+- **Ellenőrzött a generált HTML-ből:** `BTSHOP_FIRST=True` (a btshop megelőzi a hu-mago-kft-t), `FAQ=True` + `FAQ_SCHEMA=True`, `BREADCRUMB=True`, `CTA2=True` (kettős CTA), `ORDER_URL=True` (helyes `/munkak/btshop` URL-ek).
+
+---
+
+## [7.27.0] — 2026-10-14 — VAULT DOKUMENTUM-ELŐNÉZET: FÁJLSOR-KATTINTÁS (TELJES KÉPERNYŐS PREVIEW UX)
+
+A „Vault dokumentum-előnézet" felhasználói élményének befejezése: a kért specifikáció („a fájlra kattintva nyíljon meg az előnézeti modál") valódi hiányosságának pótlása. A korábbi állapotban a `DocumentPreviewModal` és az Eye-gomb bekötése már létezett (Cycle 3151), de a **fájlsorra kattintva nem történt semmi** — csak a kis Eye-gomb nyitotta a panelt. A `ClientVault` fájlkártyái most teljes felületükön kattinthatóvá váltak.
+
+- **`src/components/organisms/ClientVault.tsx` (funkció-kiegészítés):**
+  - **Fájlsor = előnézet-gomb:** a fájlkártya (`canPreview` = PDF/JPG/JPEG/PNG/GIF/SVG/WebP) teljes felülete most `role="button"` + `tabIndex={0}` + `onClick` (Előnézet megnyitása) + `onKeyDown` (Enter/Space — WCAG 2.1.1) + `aria-label` (`<fájlnév> — előnézet megnyitása`); `focus-visible` gyűrű a Kék-Lila v7.0 tokenekkel (`ring-brand-primary`). Nem-previewelhető fájloknál (pl. ZIP) a kártya interaktivitás nélkül marad (nincs félrevezető `role`).
+  - **Akció-elszigetelés (`stopPropagation`):** a Letöltés (`<a target=_blank>`) és Törlés gombok, valamint a meglévő Eye-gomb `stopPropagation`-t kapnak, hogy a fájlsor szülő-`onClick`-je ne nyissa meg az előnézetet, amikor a felhasználó letöltést/törlést indít.
+- **Terv (a kért 4 pont állapota):** (1) dokumentációs nagytakarítás → már lezárva `[7.26.0]`-ban; (2) `DocumentPreviewModal` molekula (PDF-`iframe`, kép `<img>`, glassmorphism, `motion/react`, `useFocusTrap` ESC/fókuszcsapda, Bezárás/Megnyitás/Letöltés/Link-másolás) → él és Kék-Lila v7.0 (tokenekre cserélve `[7.26.0]`); (3) Vault integráció + fájlsor-kattintás → **ezen a körben zárul**; (4) minőségbiztosítás → lásd QA.
+- **QA (zero-error):** `npx tsc --noEmit` → **TSC_EXIT=0**; `npm run lint -- --max-warnings 0` → **LINT_EXIT=0**; `npm run build` → **BUILD_EXIT=0**.
+
+---
+
+## [7.26.0] — 2026-10-14 — SSOT DOKUMENTÁCIOS NAGYTAKARÍTÁS + DOCUMENT PREVIEW MODAL HARDENING
+
+Téves roadmap-irány megszüntetése és a meglévő, működő Vault dokumentum-előnéző valódi hibáinak javítása. A Deep Read során kiderült, hogy a „Token átadás" (Cycle 3154), a „Portál értesítések" (Cycle 3160 / [7.22.0]) és a „Vault dokumentum-előnéző" (Cycle 3151) funkciók mind **már régóta élnek és stabilan működnek** — a korábbi memória-sablon placeholderei („[pl. …még hiányzik]") nyitott feladatként tüntették fel őket.
+
+- **Dokumentációs nagytakarítás (SSOT javítás):**
+  - `memory-bank/activeContext.md` „KÖVETKEZŐ ATOMI LÉPÉS" szekciója: az értesítések/Token/Vault-előnézet „tervezendő/hiányos" placeholder-sorai **„✅ LEZÁRVA"** bejegyzésekre cserélve; a valódi nyitott pont a „2. Admin UI" blokk (KPI dashboard + export egységesítés).
+  - `_DOCS/01_CURRENT_TASKS.md`: a „Vault dokumentum-előnézet" nyitott pont **LEZÁRVA [Cycle 3151]**-re állítva; az értesítési sor a jelenlegi **3× `onSnapshot`** (Phase 2 [7.22.0]) állapotra frissítve.
+- **`src/components/molecules/DocumentPreviewModal.tsx` (VALÓDI HIBÁK JAVÍTVA, nem újraépítés):**
+  - **Buborék-zárási hiba (valódi UX hiba):** a külső overlay `onClick={requestClose}` (backdrop-kattintás = zárás) miatt a modál **belső** területén (PDF iframe, kép, gombok) történő kattintás **felbuborékolt és bezárta** a panelt. Javítás: a kártya `motion.div`-re `onClick={(e) => e.stopPropagation()}` — így a háttérre kattintás zár, a belső interakció (iframe-görgetés, gomb) nem.
+  - **Design-rendszer szegély (AGENTS.md / DESIGN_SYSTEM v7.0):** a nyers hex értékek (`#00B5F1` fókuszgyűrű, `#00B5F1`/`#0ea5e9` letöltés-gomb, `text-[#00B5F1]` fejléc-ikon) a **Kék-Lila v7.0 tokenekre** cserélve (`ring-brand-primary`, `bg-cta-from`/`hover:bg-cta-hover`, `text-brand-primary`).
+  - **Prémium glow:** a kártya élkerete `border-slate-800/50` + `shadow-2xl` → `border-brand-primary/20` + cián glow `shadow-[0_24px_80px_-12px_rgba(0,181,241,0.35)]` (a „finom élkeret" kérésnek megfelelően).
+- **`_DOCS/ARCHITECTURE.md`:** a `DocumentPreviewModal` molekula-regiszter frissítve (fókuszcsapda, bubble-javítás, v7.0 tokenek, ClientVault bekötés).
+- **Ellenőrzött, NEM módosított (már kész és stabil):** `useCreateGeneration` (getIdToken(true) → verifyIdToken), `usePortalNotifications` + `PortalNotificationBell` (3× onSnapshot, Anti-Drain cleanup, WCAG), `ClientVault` Eye-gomb bekötés.
+- **QA (zero-error):** `npx tsc --noEmit` → **TSC_EXIT=0**; `npm run lint -- --max-warnings 0` → **LINT_EXIT=0**; `npm run build` → **BUILD_EXIT=0**.
+
+---
+
+## [7.25.0] — 2026-10-14 — NEDEL MARKET ESETTANULMÁNY INTEGRÁCIÓ
+
+Komplett B2B kereskedelmi esettanulmány beágyazása: egy WooCommerce katalógus és egyedi, irodai szerverre kötött könyvelőprogram-szinkron bemutatása a WebDude OS Kék-Lila v7.0 architektúrájába. Fókusz: AEO/SEO és lead-generáló, ügyfélbarát szövegírás.
+
+- **`src/components/organisms/NedelMarketCaseStudy.tsx` (ÚJ):** dedikált Client Component (`motion/react` rugó-fizika, `stiffness: 100 / damping: 20`, `useReducedMotion` akadálymentesítés). Szerkezet: (1) HERO — `nedel_market_banner.webp` Luminous háttér (`ResponsiveImage`, `priority`), Kék-Lila gradiens + ambient glow, a kért H1 („Komplett B2B Kereskedelmi Ökoszisztéma és Helyi Szerver Integráció") + lead; (2) KPI/áttekintő grid (Megoldás / Biztonság / Láthatóság / Eredmény); (3) összeszerkeszti a `NedelMarketBentoGrid`-et; (4) Zérő Fix Ár CTA → `/kapcsolat`.
+- **`src/components/organisms/NedelMarketBentoGrid.tsx` (ÚJ):** a 4 technológiai vívmány aszimmetrikus Bento Gridben (Atomic Design: a szülő <300 sor maradjon), glassmorphism + spring belépés: (1) Helyi Szerver és Valós Idejű Könyvelés (RAID/Backup), (2) Áttörhetetlen Digitális Páncél (Wordfence), (3) SEO és AI-Kereső Láthatóság (RankMath AEO), (4) Adatalapú Döntések (GA4/Search Console/Bing). Háttérképes, áttetsző/hover-effektes kártyák (`nedel_market_banner`, `fehér_spárga`, `paprika_eladó_banner1`).
+- **Képek (ResponsiveImage, 0 nyers `<Image>`/`<img>`):** a 3 Nedel kép (`nedel_market_banner.webp`, `fehér_spárga.webp`, `paprika_eladó_banner1.webp`) build-time AVIF+WebP derivatívumokkal (`scripts/generate-responsive-images.js`, mindkét komponens a `casestudy` csoportban). Generált statikus HTML: egyetlen H1, XSS-védett JSON-LD, **0 gold/amber/yellow** osztály.
+- **`src/data/works.ts`:** `nedelmarket` bejegyzés a tömb **elejére** (slug `nedelmarket`, kategória/tags: WooCommerce, Rendszerintegráció, Irodai Szerver, SEO & Biztonság; teljes `challenge`/`solution`/`results`).
+- **`src/data/caseStudySeo.ts` (SSOT):** `nedelmarket` SEO-bejegyzés — Meta Title „Nedel Market: WooCommerce Katalógus & Irodai Szerver Integráció | WebDude", AEO/SEO meta description, canonical, OG/Twitter; JSON-LD: `Article` + `Project` + `WebDude` Organization. A `[slug]/page.tsx` `withSchemas()` helperrel injektálja XSS-védve (`.replace(/</g, '\\u003c')`).
+- **`src/app/munkak/[slug]/page.tsx`:** `NedelMarketCaseStudy` import + feltételes render (`p.id === "nedelmarket"` → `withSchemas(<NedelMarketCaseStudy />)`).
+- **`scripts/generate-responsive-images.js`:** `NedelMarketCaseStudy.tsx` + `NedelMarketBentoGrid.tsx` a `casestudy` forráscsoportba regisztrálva.
+- **Elvárás-eltérés (szándékos, konzisztencia):** a kért CTA „Kérj Ingyenes Projektfelmérést" a `/#kapcsolat` helyett a dedikált **`/kapcsolat`** oldalra linkel — az aktuális főoldali kapcsolat szekció azonosítója `id="contact"` (nem `#kapcsolat`), így a horgony-link törött lenne; minden többi esettanulmány is a `/kapcsolat`-ra irányít (UX + konverzió).
+- **QA (zero-error):** `npx tsc --noEmit` → **TSC_EXIT=0**; `npm run lint -- --max-warnings 0` → **LINT_EXIT=0**; `npm run build` → **BUILD_EXIT=0** (`/munkak/nedelmarket` statikus, ISR `revalidate: 3600`, 168 oldal).
+
+---
+
+## [7.24.0] — 2026-10-14 — LEANPERIAL „QUIET LUXURY" ESETTANULMÁNY INTEGRÁCIÓ
+
+Prémium „Quiet Luxury" esettanulmány teljes értékű beágyazása a portfólióba a WebDude OS Kék-Lila v7.0 architektúrájába. Egy nemzetközi luxusmárka-tanácsadó (Executive Search & Private Advisory) weboldal-fejlesztése: kártevőmentesítés, egyedi WordPress + Kadence felület, SMTP-hitelesítés és technikai SEO-tökéletesítés.
+
+- **`src/components/organisms/LeanperialCaseStudy.tsx` (ÚJ):** tiszta **Server Component (RSC)** — nincs `"use client"`, nincs `motion`; a teljes interakció (hover-lift, cyan/lila glow, glassmorphism) tiszta CSS/Tailwind rétegekkel valósul meg (minimális JS, maximális LCP/SEO). Szerkezet: (1) HERO — `leanperial website mockup.webp` Luminous háttér + Kék-Lila gradiens + ambient glow; (2) KPI/áttekintő grid (Ügyfél / Iparág / Megoldás / Eredmény); (3) 5 lépéses **aszimmetrikus Bento Grid** (Válságkezelés & kártevőirtás, Prémium UI/UX, Grafikai utómunka, Funkcionalitás & SMTP, Keresőoptimalizálás) háttérképes, áttetsző/hover-effektes kártyákkal — a technikai bravúrok (DNS menedzsment, Let's Encrypt, WebP, SMTP/SPF/DKIM, Schema Markup) kártyán belüli tag-ekként; (4) Zéró Fix Ár CTA blokk.
+- **Képek (ResponsiveImage, 0 nyers `<Image>`/`<img>`):** a mappában lévő 5 kép (`leanperial website mockup.webp`, `K-Leanperial_banner.webp`, `K-Mastering_questioning_bg.webp`, `K-Executive_Search-bg.webp`, `K-Leanperial_banner2.webp`) build-time AVIF+WebP derivatívumokkal (`scripts/generate-responsive-images.js`, új `casestudy`-csoport regisztráció). A generált statikus HTML ellenőrzése: XSS-védett JSON-LD, egyetlen H1, **0 gold/amber/yellow** osztály.
+- **`src/data/works.ts`:** `leanperial` bejegyzés a tömb **elejére** (slug: `leanperial`, kategória/tags: WordPress, UI/UX Design, Kártevőirtás, SEO; teljes `challenge`/`solution`/`results`).
+- **`src/data/caseStudySeo.ts` (SSOT):** `leanperial` SEO-bejegyzés — dinamikus Meta Title („Esettanulmány: Leanperial — Quiet Luxury Weboldal Fejlesztése | WebDude"), E-E-A-T meta description, canonical, OG/Twitter; JSON-LD sémák: `Article` + `Project` (megrendelő: Leanperial, eredmény: 100% SEO + vírusmentesítés) + `WebDude` Organization. A `[slug]/page.tsx` `withSchemas()` helperrel injektálja őket XSS-védve (`.replace(/</g, '\\u003c')`).
+- **`src/app/munkak/[slug]/page.tsx`:** `LeanperialCaseStudy` import + feltételes render (`p.id === "leanperial"` → `withSchemas(<LeanperialCaseStudy />)`).
+- **`scripts/generate-responsive-images.js`:** `LeanperialCaseStudy.tsx` beregisztrálva a `casestudy` forráscsoportba.
+- **QA (zero-error):** `npx tsc --noEmit` → **TSC_EXIT=0**; `npm run lint -- --max-warnings 0` → **LINT_EXIT=0**; `npm run build` → **BUILD_EXIT=0** (`/munkak/leanperial` statikus oldal, ISR `revalidate: 3600`, 168/168 oldal).
+
+---
+
+## [7.23.0] — 2026-10-08 — E2E SMOKE SUITE HIÁNY-PÓTLÁS + ZÉRÓ FIX ÁR CTA-JAVÍTÁS
+
+Regresszió-védelmi háló erősítése Playwright E2E smoke tesztekkel a kritikus üzleti útvonalakra (Stripe webhook spoofing-őr, dinamikus esettanulmány `/munkak/[slug]`, Zéró Fix Ár regressziós őr). Két valós hiba is felderült és javításra került a tesztek írása közben.
+
+- **`e2e/stripe-webhook.spec.ts` (ÚJ):** biztonság-centrikus negatív teszt — érvénytelen/hiányzó `stripe-signature` fejléccel a `/api/webhooks/stripe` **elutasítja** a kérést (nem 200/nem „handled"), és assertálja, hogy a spoofing-válasz nem sikerre hivatkozik. HMAC-SHA256 + `timingSafeEqual` aláírás-ellenőrzés az érintés előtt visszatér → **garantáltan nincs Firestore írás** (Anti-Drain). A pozitív happy-path szándékosan nincs fedve (teszt-kulcs + webhook-secret a repóban nem biztonságos).
+- **`e2e/munkak-slug.spec.ts` (ÚJ):** dinamikus `GeneralCaseStudy` slug (`dr-danyi`) → 200 + pontosan 1 H1 + érvényes, XSS-védett JSON-LD; ismeretlen slug → 404 (`notFound()` viselkedés). Lezárja a `/munkak/[slug]` fedettségi hiányt.
+- **`e2e/pricing-zero-fixed.spec.ts` (ÚJ):** a [7.21.0] Zéró Fix Ár tisztítás regressziós őre — az `/szolgaltatasok/add-onok` látható szövegében + JSON-LD-jében **nincs fix-ár minta**, viszont jelen van az ajánlatkérő CTA; a `/termekek/ai-chatbot-starter` JSON-LD `offers`-e **nem tartalmaz `price` mezőt**.
+- **`e2e/kapcsolat.spec.ts` (JAVÍTVA):** a „fő CTA-k nem üres href-re mutatnak" teszt törékeny, szövegalapú (`/projektfelmérés/i`) szelektort használt, de a hero elsődleges CTA szövege a `dictionary`-ből (nyelvfüggő) jön. Stabila HTML ID-alapú attribútum-szelektorra (`[id^="hero-cta-"][id$="-primary"]`) cserélve — forgás- és nyelvfüggetlen.
+- **`src/app/szolgaltatasok/add-onok/page.tsx` (JAVÍTVA — valódi Zéró Fix Ár szabálysértés):** a publikus katalógus kártyáin a CTA még „Megrendelés" szövegű `/portal` (fizetési flow) link volt, miközben az árcímke már „Egyedi árajánlat" volt. A CTA „Egyedi árajánlat kérése" + `/kapcsolat` (ajánlatkérő) lett, `ShoppingBag` → `CreditCard` ikon — konzisztensen a portál `AddonStore`-dal.
+- **`.gitignore`:** `test-results/` és `playwright-report/` hozzáadva (teszt-hulladék kizárva a repóból).
+- **QA:** `npx tsc --noEmit` → **0**; `npm run lint -- --max-warnings 0` → **0**; `npm run build` → **0**; `npx playwright test` → **23/23 passed** (0 flake).
+
+## [7.22.0] — 2026-10-08 — PORTÁL ÉRTESÍTÉSEK PHASE 2: DEDIKÁLT NOTIFICATIONS KOLLEKCIÓ (PATH B)
+
+Az értesítési rendszer kiterjesztése a meglévő származtatott listenereken (`user_generations`, `vault`) túl egy dedikált `users/{uid}/notifications` al-kollekcióra (Path B döntés: teljes lefedettség, egységes séma, szerveroldali írás Admin SDK-val — kliens `read` only a `firestore.rules`-ben). A meglévő két listener MEGMARAD (visszafelé kompatibilis bővítés).
+
+- **`src/lib/notify.ts` (ÚJ):** központi `notifyUser()` helper — Admin SDK írás a `users/{uid}/notifications` kollekcióba (`FieldValue.serverTimestamp()`, `read: false`, `kind`/`tone`/`title`/`message`/`link`). **Dinamikus import** (`await import("@/lib/firebase-admin")`) — így a modul-szinten inicializálódó Admin SDK nem húzódik be a publikus oldalak prerenderelésekor (build fix: `add-onok` oldal `app/invalid-credential` hibája). **Best-effort** belső try/catch: egy értesítési hiba soha nem szakítja meg a trigger fő műveletét.
+- **Trigger-ek bekötve (a sikeres műveletek UTÁN, best-effort):**
+  - `api/webhooks/stripe/route.ts` — T1: `checkout.session.completed` „paid" → *Fizetés jóváhagyva* (success); T1b: mérföldkő-fizetés ág ugyancsak.
+  - `actions/addons.ts` — T2: `deliverOrderAction` → *Rendelés kézbesítve* (success).
+  - `actions/portal.ts` — T3: `approveWorkflowPhaseAction` → *Fázis jóváhagyva — Norbi értesítve* (info, megerősítő visszajelzés).
+- **`usePortalNotifications` hook (bővítve):** 3. listener a dedikált `notifications` kollekcióra (`where userId == uid` + `orderBy createdAt desc` + `limit(10)`), egységes normalizálás (ISO dátum `Date.parse`), `unseen` jelölés a `wd_portal_last_seen_ms` localStorage alapján; hibakezelés minden listeneren (`console.error` + `setReady(true)`).
+- **`PortalNotificationBell` UI (bővítve, v7.0):** `kindIcon` rekord (`CreditCard` = payment, `PackageCheck` = delivery, `CheckCircle2` = approval, `Sparkles` = generation, `ShieldCheck` = vault, `MessageSquare` = message) + `tone` színek (emerald / red / `#00B5F1`) — **0 amber/gold**, ikon-szintű szemantika (a 90-8-2 szabály sértetlen, a lila badge nem nő). A meglévő olvasatlan kiemelés, `aria-live`, click-outside/Escape típus-függetlenül öröklődik. Mérethatár: Bell 151 sor (300-as limit alatt, nem kellett szétbontani).
+- **QA:** `npx tsc --noEmit` → **0**; `npm run lint -- --max-warnings 0` → **0**; `npm run build` → **0**.
+- **Norbi teendő (blokkoló az éles működéshez):** (1) `firestore.rules` — `users/{uid}/notifications`: `allow read: if request.auth.uid == userId; allow write: if false`; (2) `firestore.indexes.json` — kompozit index (`userId ASC + createdAt DESC`); (3) `firebase deploy --only firestore:indexes,firestore:rules`.
+
+## [7.21.0] — 2026-10-08 — ZÉRÓ FIX ÁR TISZTÍTÁS: PUBLIKUS KATALÓGUS ÁRAK ELTÁVOLÍTÁSA
+
+A „Zéró Fix Ár" (04-design / 02-stack) szabály végrehajtása a publikus felületeken. **A portálbeli konkrét, teljesült rendelések/nyugták összegei KIKÉSZEN NEM érintettek** (privát felület, valós összegek).
+
+- **Adattípus-áttérés (`null` = „Egyedi árajánlat"):** `types/addon.ts` → `price: number | null`; `actions/addons.ts` `PRESET_ADDONS` (6 db) + Firestore-lekérő fallback `: 0` → `: null`; `actions/stripe.ts` `ADDONS_CONFIG` (4 db) → `null`; `scripts/seed-addons.ts` (6 db) → `null` (konzisztencia az esetleges újra-seedeléshez; a Firestore `addons` adatot Norbi manuálisan tisztítja).
+- **Defenzív guardok (NaN / érvénytelen amount ellen):** `stripe.ts` `createStripeCheckoutSessionAction` — `addon.price === null || <= 0` esetén korai `return { error }` („egyedi árajánlat alapján érhető el"); `addons.ts` `createCheckoutSessionAction` — azonos guard a `String(addon.price)` / `addon.price * 100` hívások előtt; webhook `verifyAndRecordPurchase` — `price: null` esetén `{ nullValue: null }` (nem `integerValue: "null"`).
+- **`AddonStore` bolt (publikus portál szekció):** a „Megrendelés" (`<button>` → `createStripeCheckoutSessionAction`) cserélve **„Egyedi árajánlat kérése" `<Link href="/kapcsolat">`** CTA-ra; `handlePurchase`, `useRouter`, `actionLoading` state, `onOrderError` prop és a Stripe-action import **eltávolítva** (a publikus automata vásárlás ezzel leáll). `PortalDashboard` az `onOrderError` prop átadás nélkül használja.
+- **Pricing táblázatok (3 szolgáltatás oldal):** `logo-tervezes`, `szorolap-tervezes`, `csomagolas-tervezes` — a `price: "120 000 Ft - 180 000 Ft"` jellegű ársávok → **`price: "Egyedi árajánlat alapján"`**; a CTA-k egységesen „Kérj egyedi árajánlatot" / „Egyedi árajánlat kérése" (`/kapcsolat`); a FAQ „pontos díjtételt az ingyenes konzultáció keretében készített egyedi árajánlat határozza meg".
+- **JSON-LD séma (SEO/AEO):** a `termekek/**` és `portal/ai-muhely/**` JSON-LD `offers` blokkjaiból a `price` / `priceCurrency` / `priceValidUntil` mezők eltávolítva; a `price: "0"` típusú káros értékek szintén. A `szolgaltatasok/wordpress-*` és `woocommerce-*` oldalak JSON-LD `offers`-éből a felesleges `priceCurrency: "HUF"` (7 hely) törölve — helyette marad a `description: "Egyedi árajánlat kérése"`. (TS1117 objektum-duplikáció javítva: a `layout.tsx` fájlokban az általam korábban rossz helyre került `description` sor törölve, a valódi termék-leírás megmaradt.)
+- **`ServicesSection` FAQ:** az „800.000–2.000.000 Ft" fix árszöveg → „A díjazást mindig egyedi árajánlatban adom meg a projekt terjedelmétől és a kért funkcionalitástól függően."
+- **Nem érintett (indokoltan):** portálbeli saját-rendelés összegek (`OrderStatusCard`, `WorkflowMilestonePayment`, `AddonStore` korábbi rendelési lista, `mérföldkő` díjak), `actions/portal.ts` / `onboarding.ts` projektenkénti egyeztetett díjak (szerveroldali/admin infra), `admin/portal-kezelo` szerkesztőárak.
+- **QA:** `npx tsc --noEmit` → **0**; `npm run lint -- --max-warnings 0` → **0**; `npm run build` → **0**.
+
+## [7.20.5] — 2026-10-08 — PORTÁL ÉRTESÍTÉSEK PHASE 1: HIBAJAVÍTÁS + UI FINOMHANGOLÁS
+
+- **FÁZIS 1 — `createGeneration` `failed`-ág (valós hibajavítás):** a `generationRef` kiemelve a `try` elé (`let … : DocumentReference | null`), a catch ág most `status: "failed"` + `errorMessage` + `updatedAt` frissítést ír (belső try/catch-csel, hogy a frissítési hiba ne rontsa el az eredeti hibaüzenetet). Korábban a hibás generálás **örökre `processing` státuszban ragadt** → a `useGenerationPolling` és a harang sosem kapott „sikertelen" értesítést.
+- **FÁZIS 2 — `usePortalNotifications`:** `onSnapshot` **`error` callback mindkét hallgatónál** (`user_generations`, `vault`) — egy `failed-precondition` (pl. hiányzó index) többé nem némán hal el; új `tone` (`success`/`error`/`info`) és `unseen` mezők a `PortalNotification` interfészben, az `unseen`-t az `all` memo számolja (`createdAtMs > lastSeenMs`).
+- **FÁZIS 3 — `PortalNotificationBell` UI:** **click-outside** (`mousedown`) + **Escape** zárás (a11y dropdown, tiszta cleanup, csak nyitott állapotban); **szemantikus státusz-színek** (`text-emerald-500` / `text-red-500` / `#00B5F1` — v7.0, 0 amber); **olvasatlan tétel kiemelése** (bal oldali `#00B5F1` csík + `bg-sky-500/5`); `sr-only` **`aria-live="polite"`** státusz-jelzés; panel **`role="dialog"` + `aria-label`**.
+- **Dead code törlés (YAGNI — Norbi jóváhagyásával):** `src/app/actions/portal-notifications.ts` **törölve** — a `getClientNotificationsAction` egy `users/{uid}/notifications` al-kollekciót olvasott, aminek **nem volt írója**; egyetlen hívója (a 30 mp-es `NotificationCenter`) már a Cycle 3160-ban archiválva. Élő hivatkozás a törlés előtt: **0**.
+- **Adatmodell-megőrzés (Anti-Drain):** nem épült be új `notifications` kollekció — a meglévő 2× `onSnapshot` (`limit(10)`, felhasználónkénti `where`, cleanup) marad, mert az deriválja az eseményeket a forrásdokumentumokból (nincs write amplifikáció, nincs üres polling).
+- **SSOT:** `_docs/01_CURRENT_TASKS.md` Portál 1. pont ✅ **LEZÁRVA [7.20.5]**-re írva (a „ma egyszeri lekérést végez" állítás elavult volt).
+- **QA:** `npx tsc --noEmit` → **0**; `npm run lint -- --max-warnings 0` → **0**; `npm run build` → **0**.
+- **Üzemeltetési előfeltétel (Norbi):** `firebase deploy --only firestore:indexes` + `firestore.rules` — az indexek élesítése nélkül a listener-ek produkcióban `failed-precondition` hibát adnak, ami mostantól **láthatóan** naplózódik (nem némán).
+
+## [7.20.4] — 2026-10-08 — TECH DEBT CLEANUP: SSOT-DOKUMENTÁCIÓ + DEAD CODE
+
+- **FÁZIS 1 — Dokumentációs ellentmondások feloldva (memory-bank):**
+  - `activeContext.md` §5: a téves „KÖVETKEZŐ ATOMI LÉPÉS: CI élesítése (main→master)" bejegyzés átírva ✅ **[LEZÁRVA — 7.10.0]** jelölésre (a pipeline 2026-09-30 óta fut); helyére a valós következő lépés: **Portál valós idejű értesítéseinek tervezése**.
+  - `activeContext.md` §4 + §1 „Fő célkitűzés": a `HeroSlider` bekötése és a `PortalDashboard` szétbontása mint nyitott tételek tisztázva (archiválva / [7.8.0]-ban megoldva).
+  - `progress.md` §4: a `PortalDashboard.tsx` „KÖVETKEZŐ ATOMI LÉPÉS" megjegyzés eltávolítva → ✅ MEGOLDVA (7.8.0) pontosítva.
+- **FÁZIS 2 — Tech debt:**
+  - **`HeroSlider.tsx` (230 sor) archiválva:** `git mv` → `_mentesek/20261008_techdebt-cleanup/HeroSlider.tsx`. Import-ellenőrzés: **0 valós hivatkozás** (az `AIHeroSlider.tsx` „találatok" név-egyezések voltak); a diavetítést a `HeroSectionNew` natívan kezeli. `ARCHITECTURE.md` regiszter: **ARCHIVALT** jelölés (a `Header` mintájára).
+  - **btshop placeholder SVG-k — ellenőrizve, már TISZTÁK:** a `btshop-{hero,dashboard}-placeholder.svg` kizárólag v7.0 színeket használ (`#00B5F1` / `#7C3AED` / `#020617` / `#1e293b`); a teljes `public/` + `src/` SVG készlet `f59e0b|ffd700` mintára **0 találat** → kódmódosítás nem volt szükséges; a 7.3.1 óta örökölt ⚠️ megjegyzés elavult, ✅-re állítva (`progress.md` §5).
+  - **`dev-server.log` törölve** a projekt gyökeréből; a dev szerver a továbbiakban log-fájl nélkül indul (3000-es port él).
+- **FÁZIS 3 — Validáció:** `npx tsc --noEmit` → **0** (a HeroSlider törlés nem okozott import hibát); `npm run lint -- --max-warnings 0` → **0**; `npm run build` → **0**.
+
+## [7.20.3] — 2026-10-08 — [FIX] GROQ MODELLCSERE — ÉLŐ CHAT ÚJRAÜZEMELTETVE
+
+- **Hiba:** a `/api/chat` (WebDudeChat widget) `404 model_not_found` hibát kapott: „The model `llama-3.3-70b-versatile` does not exist or you do not have access to it." A modell a Groq-on **Enterprise (Contact Sales) szintre került** — a fejlesztői `GROQ_API_KEY` már nem fér hozzá. Igazolás: élő `GET /v1/models` a projektkulccsal → **11 modell, 0 Llama chatmodell**; a kért `llama-3.3-70b-specdec` szintén nem elérhető.
+- **Csere — 16 fájl, 21 előfordulás:** `llama-3.3-70b-versatile` → **`openai/gpt-oss-120b`** (Groq **Production** flagship, 131K context, 65K completion, `$0.15/$0.60`). Érintett: `src/app/api/chat/route.ts`, `src/actions/ai.ts` (5×), `ai-copilot.ts` és 13 `*-workshop.ts`. UTF-8, BOM-mentes írás; a `_mentesek/` mentések szándékosan érintetlenek.
+- **További elavult modell javítva:** `src/app/actions/createGeneration.ts` `llama3-70b-8192` → `openai/gpt-oss-120b` (ugyanaz a 404-osztály; élő portál útvonal: `DynamicWorkflowForm` → `useCreateGeneration` → Server Action).
+- **Modellválasztás indoka:** a `qwen/qwen3.8-27b` **Preview** (nem production-be való), a `gpt-oss-20b` kisebb — a `gpt-oss-120b` az egyetlen Production általános chatmodell a kulcson, és **élő füstteszt `tools` definícióval** igazolta: `STATUS=OK · FINISH=tool_calls` (a chat `getPortfolio`/`saveLead` eszközhívás működik).
+- **Böngészős validáció (szigorítva):** `scripts/verify-chat.mjs` mostantól **valódi assistant-választ** követel (`replyReceived`) és a hibaablakot (`role="alert"` + AI SDK hibaüzenetek) külön ellenőrzi → **PASS: true** (0 saját konzolhiba, 0 pageerror, 0 összeomlás, `postMessage`-számláló = 0). Szerverlog: `POST /api/chat 200 in 4.7s`, `model_not_found` = 0.
+- **QA:** `npx tsc --noEmit` → **0**; `npm run lint -- --max-warnings 0` → **0**; `npm run build` → **0**.
+
+## [7.20.2] — 2026-10-06 — NAVIGÁCIÓ ÁTSZERVEZÉS ÉS PORTFÓLIO FRISSÍTÉS (COMPLETE)
+
+- **Navigáció átszervezése:** "Termékek" menüpont eltávolítva a NAV_ITEMS-ből (Főmenü), és áthelyezve a TOP_BAR_ITEMS_HU-ba (Topmenü/fejléc felső sáv). A `getMainNavItems` kiszűri a TOP_BAR_ITEM_NAMES elemeit, így a vízszintes főmenüben nem jelenik meg, de a top barban igen. A mobil hamburger menü továbbra tartalmazza a teljes navigációt.
+- **AI Megoldások audit:** `/ai-megoldasok` főoldal és layout ellenőrizve - SEO/AEO sémák, struktúra és Cyber-Arany dizájn következetesség rendben. Nincs szükség további UI finomhangolásra.
+- **Social Proof HOLD:** Az ügyfelek hivatalos jóváhagyásáig felfüggesztve - nincs módosítás.
+- **HU-MAGO Kft. főkép csere:** `works.ts`-ben a főkép útvonala módosítva a Gemini generált képre (`.webp` formátumot követve, manuális konverzió szükséges a JFIF fájlból).
+- **Go-Box Kft. visszaállítása:** Projekt visszaállítva `works.ts`-ben a megadott tartalommal (Title, Challenge, Solution, Results). Főkép: `Go-Box-Banner2.webp`. Tags: WooCommerce, Arculattervezés, Logó Design, Weboldal, SEO, Analitika.
+- **Lengyel Helga főkép csere:** `eskuvodekoraci-banner.webp` → `eskuvoidekoraci-banner.webp` (i betűs változat).
+- **Go-Box Kft. főkép és gallery bővítése:** Főkép: `Go-Box-Banner2.webp` → `Go-Box-Banner.webp`. Gallery bővítve az összes mappában lévő képpel (Go-Box-Banner, Go-Box-Banner2, Go-Box-Banner3, banner, go-box-pizza-banner-copy, gobox-doboz-gyartasa-kereskedeleme, repulo-dobozok, webdude-logo-3200x2000-baner-websites-copy).
+- **Logó Tervezés oldal létrehozása:** Új szolgáltatás oldal (`/szolgaltatasok/logo-tervezes`) létrehozva 11 logo projekt portfóliójával (Dr. Nagy Albert, Bor és Garnéla, Delta Food Admin, Farkas Nora, Galvan, GoPrime, Home Garden, Linett, Notár MSSARY, Prime, SDadas, Végleges Web3). SEO/AEO optimalizálva (Service, FAQPage sémák), pricing táblázatokkal és konverziófókuszú CTÁ-val. Hozzáadva a navigációhoz (Szolgáltatások almenü, PenTool ikon) és mobilmenü ikonokhoz.
+- **Szórólap Tervezés oldal létrehozása:** Új szolgáltatás oldal (`/szolgaltatasok/szorolap-tervezes`) létrehozva 4 szórólap projekt portfóliójával (Delta Food Flyer A5, Delta Food Molinó, Dalta Food Molinó 350x190cm, KTU Flyer A6). SEO/AEO optimalizálva (Service, FAQPage sémák), pricing táblázatokkal (Egyedi Szórólap, Teljes Marketing Csomag, Vállalati Kampány). Hozzáadva a navigációhoz (Szolgáltatások almenü, FileText ikon) és mobilmenü ikonokhoz.
+- **Csomagolás Tervezés oldal létrehozása:** Új szolgáltatás oldal (`/szolgaltatasok/csomagolas-tervezes`) létrehozva 2 csomagolás projekt portfóliójával (Stand-Up Pouch, AI Generált Csomagolás). SEO/AEO optimalizálva (Service, FAQPage sémák), pricing táblázatokkal (Label és Címke, Teljes Csomagolás Design, Vállalati Termékcsalád). Hozzáadva a navigációhoz (Szolgáltatások almenü, Box ikon) és mobilmenü ikonokhoz.
+- **QA:** `npx tsc --noEmit` → 0 hiba
+
+## [7.20.1] — 2026-10-10 — [DOCS] E2E PORTÜTKÖZÉS KEZELÉSÉNEK HOZZÁADÁSA A WORKFLOW PROTOKOLLHOZ
+
+- **[DOCS] Új szekció: „🧪 4. QA és E2E Tesztelési Szabályok" a `_docs/WORKFLOW_PROTOCOL.md`-ban.** A 7.20.0-s [CRO] sprint során két, **kizárólag környezeti okból** keletkezett, ismétlődő hamis bukást észleltünk a Playwright E2E futtatásoknál. Ezeket most leírtuk a protokollba, hogy a jövőben ne a kódot keressük, ha a hiba valójában a környezetben van.
+- **4.1 szabály — kötelező portellenőrzés:** E2E tesztek (Playwright) futtatása előtt **KÖTELEZŐ** ellenőrizni, hogy a **3000-es port szabad-e**. Ha egy korábbi `next start` vagy `npm run dev` processz beragadt, a `playwright.config.ts` `webServer` blokkja nem tud szervert indítani, és a tesztek **`EADDRINUSE: address already in use :::3000`** hibával, teljesen hamisan buknak (0 teszt fut le).
+- **4.2 szabály — a megoldás Windows/PowerShell specifikus:** a beragadt processzt ki kell lőni, referenciaként a **`Get-NetTCPConnection -LocalPort 3000 -State Listen`** + **`Stop-Process -Id <PID> -Force`** parancspárossal (Opció A), illetve az **`npx kill-port 3000`** alternatívával (Opció B). Kiegészítve egy `Measure-Object`-es port-ellenőrző sornak és egy **`Start-Sleep -Seconds 3` utóengedéssel** (a TCP port felszabadulásához ~2-3 mp szükséges, különben egy gyors újrafuttatásnál szintén `EADDRINUSE`-t kapunk).
+- **4.3 szabály — NE fussunk párhuzamos buildet/tesztet (a másik hibaforrás):** a `npm run build` a `npm run clean`-nel törli a `.next` mappát, így ha két build párhuzamosan fut, az egyik a másik webpack cache-ét pusztítja el → `Caching failed for pack: ENOENT … rename` → `TypeError: Cannot read properties of undefined (reading 'call')` (`.next\server\webpack-runtime.js`). **Elsődleges diagnosztikai szabály: a `webpack-runtime.js` hibákra NE a kódban keressük az okot, hanem először ellenőrizzük, fut-e éppen másik build.**
+- **Fázis 4 (Lokális Validáció) bővítve:** a `tsc` / `lint` / `build` mellé bekerült a 4. lépésként a `npm run test:e2e` kereszt-hivatkozással a portellenőrzésre.
+- **Az Incident Response szekció átszámozva 4 → 5-re** (az új QA-szekció a Deployment Protocol után, a hibaelhárítás előtt kapott helyet), így a dokumentum 1→2→3→4→5 sorrendben konzisztens.
+- **QA:** `npx tsc --noEmit` → **0**; `npm run lint` → **0**; `npm run build` → **0** (164 oldal); `npm run test:e2e -- munkak.spec.ts` → **4 passed, 0 failed**. A módosítás kizárólag `_docs/` fájlokat érint (markdown), a `src/` kódbázis érintetlen.
+
+## [7.20.0] — 2026-10-10 — [CRO] HERO SZEKCIÓ ÉRTÉKESÍTÉSI FÓKUSZÚ SZÖVEGCSERE (HU/EN)
+
+- **A CRO audit szerint a főoldali hero túl általános volt:** a „Weboldal, ami nemcsak szép, hanem ügyfeleket is hoz." headline a szolgáltatásnév helyett a kimenetet hangsúlyozta, de nem mondta meg, **kivel** dolgozik a látogató. Az új headline a fő differenciáló elemet helyezi előtérbe: nincs ügynökségi közvetítő réteg.
+- **H1: három iteráció után elértük a nyelvtanilag TISZTA + SEO-optimalizált + RÖVID verziót.** A kiindulási „Verzió C" („Nem egy ügynökségi csapatban tűnsz el. Közvetlenül velem dolgozol.") **két hibát hordozott**: (1) a szolgáltatásnév kiesett a H1-ből, így a fő keresési kifejezés (`weboldal készítés`) csak az alcímben maradt; (2) a hozzáfűzött „Prémium weboldal készítés, közvetlenül velem." mondat nem folytatta nyelvtanilag az elsőt. A gyógymér a **kettőpontos, nominatív felsoroló szerkezet**, amely mindkettőt megoldja.
+- **VÉGLEGES H1: „Ügynökségi kompromisszumok helyett: prémium weboldal készítés, közvetlenül velem."** (EN: „Instead of agency compromises: premium website development, directly with me."). A kettőpont után a szolgáltatásnév a színátmenetes `hero-shimmer-text` kiemelésbe kerül — így a **személyes differenciáló ajánlat (nincs ügynökségi közvetítő) a H1 első szavai, az SEO-kulcsszó pedig a vizuálisan kiemelt rész**. Hossz: HU 81 / EN 77 karakter (a `text-[3.7rem]` méretben 2 sorba törik, nem 3-ba).
+- **Alcím:** „**Weboldal készítés, WordPress fejlesztés, SEO és grafikai tervezés** egy tapasztalt szakembertől, az első ötlettől az élesítésig."; elsődleges CTA „Beszéljük át a projekted" (a bizalomképző „Kérj projektfelmérést" helyett — a „felmérés" a kérés előtt elrettenthette a látogatót), másodlagos CTA „Referenciák megtekintése" (a „Munkáim" személyes jellegét a szolgáltatásnyelv egységesítette).
+- **A szövegek szótár-szinten kerültek átírásra (`src/dictionaries/hu.json` + `en.json`, `home.hero.slides[0]`), NEM komponens-szinten.** A `HeroSectionNew.tsx`-ben a szövegek a nyelvi szótárból jönnek (`EmphasizedText` + `SlideData` mapping); a komponensben lévő `SLIDE_DEFAULTS` csak HU fallback. Így a komponens, a `page.tsx` (Server Component) és a design rendszer változatlan maradt — **nulla komponens- és nulla `"use client"` diff**.
+- **A highlight badge-ek és az alcím kiemelése a meglévő vizuális ritmust tartja:** a szolgáltatásnevek `**kiemelés**` markdown-jelöléssel mennek az alcímbe (a `EmphasizedText` rendereli), a szolgáltatás-lista badge-ek formájában változatlan. A design tokenek (`from-cta-from to-brand-secondary`, `text-white`, `brand-primary`) sem érintettek.
+- **`e2e/munkak.spec.ts`: a `/` H1-assert elavult.** A teszt a régi headline-ra szűrt (`toContainText(/weboldal/i)`) — ez **törzsanyag-szintű szövegperekció volt**, ami minden CRO-szövegcserétől függetlenül elhasal. A teszt maga is dokumentálja ezt a CTA-knál („A CTA-szövegek változhatnak"), csak a H1-nél nem volt konzisztens. Javítás: a szövegszűrés helyett a valódi SEO-invariánsokat ellenőrzi — **pontosan egy H1, látható, nem üres** (`trim().length > 10`). A szöveges tartalom helyett a heading-hierarchia a regressziós őr.
+- **QA:** `npx tsc --noEmit` → **0**; `npm run lint` → **0**; `npm run build` → **0** (164+ statikus oldal); `npm run test:e2e -- munkak.spec.ts` → **4 passed, 0 failed**.
+
 ## [7.19.0] — 2026-10-02 — PLAYWRIGHT E2E SMOKE SUITE (4 KRITIKUS ÚTVONAL) + 2 VALÓS SEO HIBA JAVÍTÁSA
 
 - **A kérés „létrehozni" szót használt — a suite viszont LÉTEZETT és 12/13 tesztje BUKOTT.** A `playwright.config.ts` és 4 `e2e/*.spec.ts` fájl már a repóban volt, de mind elavult szelektorokat használtak. Ez a sprint nem tesztet írt, hanem **megjavított és valódi termékhibákat talált**.
@@ -45,6 +251,7 @@
 - **QA + gépi validáció a prerenderelt HTML-en:** `npx tsc --noEmit` → **0**; `npm run lint -- --max-warnings 0` → **0**; `npm run build` → **0**. Mind a **6 oldalon**: `Service: 1` (teljes), `FAQPage: 1`, **0 JSON parse-hiba**, `DirectAnswer` egyedi id-vel, **0 fix ár** sem a JSON-LD-ben, sem a látható HTML-ben.
 
 ---
+
 ## [7.17.0] — 2026-10-02 — WORDPRESS / WOOCOMMERCE ALOLDALAK SEO+AEO ELŐKÉSZÍTÉSE
 
 - **Audit (23 szolgáltatásoldal):** mindegyik Server Component, mindegyiknek volt `metadata` és `Service` sémája — a séma azonban **vékony volt**: se `@id`, se kulcsszavak, se árazási modell. A WordPress-fókuszú 5 aloldal (`wordpress-weboldal-keszites`, `wordpress-fejlesztes`, `wordpress-biztonsag`, `woocommerce-webshop-keszites`, `wordpress-webshop-keszites`) célzottan bővült.
@@ -61,6 +268,7 @@
 - **QA + gépi validáció:** `npx tsc --noEmit` → **0**; `npm run lint -- --max-warnings 0` → **0**; `npm run build` → **0**. A **prerenderelt HTML-t parszoltam**: mind az 5 oldalon `Service: 1/1` (teljes: `@id` + `alternateName` + `offers` + `audience`), `FAQPage: 1`, **0 JSON parse-hiba**. A `wordpress-webshop-keszites` kimenete 5 `<details>` elemet tartalmaz (a látható GYIK ténylegesen renderelődik).
 
 ---
+
 ## [7.16.1] — 2026-10-02 — TAILWIND V4 ELAVULT OSZTÁLYOK JAVÍTÁSA (IDE DIAGNOSZTIKA ALAPJÁN)
 
 - **A VS Code Tailwind/TS szerver figyelmeztetéseinek lezárása.** A 7.16.0 token sweep után a felszínre került három, a Tailwind v4-ben elavultnak jelzett utility-minta:
@@ -73,6 +281,7 @@
 - **QA (zero-error):** `npx tsc --noEmit` → **TSC_EXIT=0**; `npm run lint -- --max-warnings 0` → **LINT_EXIT=0**; `npm run build` → **BUILD_EXIT=0**.
 
 ---
+
 ## [7.16.0] — 2026-10-02 — HOMEPAGE UX/UI SIMPLIFICATION & PREMIUM REFACTOR
 
 - **Kiindulási audit (3 premissza tévesnek bizonyult, ezért nem hajtottam végre felesleges törléseket):** (1) a főoldali 7 komponensben **0 emoji** volt (a 16 találat mind kommentben vagy máshol); (2) a `CaseStudiesBento` **már 2 kártyás** volt, `/munkak` CTA-val; (3) a `CTA`-k száma szekciónként 0–1, `Button variant="primary"` **egyedül a `FinalCta`-ban** volt. A kérés csak a **valós** hiányosságokra szűkült.
@@ -85,6 +294,7 @@
 - **QA (zero-error):** `npx tsc --noEmit` → **TSC_EXIT=0**; `npm run lint -- --max-warnings 0` → **LINT_EXIT=0**; `npm run build` → **BUILD_EXIT=0** (a build a RSC-renderelés regresszió-ellenőrzését is adta).
 
 ---
+
 ## [7.15.0] — 2026-10-02 — BTSHOP ESETTANULMÁNY: HERO WOW-HATÁS, AUTHORITY COPYWRITING, E-E-A-T SZEKCIÓ (COMPLETE)
 
 - **Halott kód tisztítás (a sprint legnagyobb technikai adóssága):** felmérésként kiderült, hogy a `BtshopHero.tsx` (114 sor), a `BtshopEngineeringGrid.tsx` (109 sor) és a `BtshopFinalCta.tsx` (63 sor) **egyikét sem importálta semmi** — a `/munkak/btshop` oldalt kizárólag a `BtshopCaseStudy.tsx` renderelte. A kérésben szereplő `BtshopEeatSection.tsx` pedig **egyáltalán nem létezett**. A 3 dead-end fájlt **`git rm`-mel törölve**, az E-E-A-T komponens a `BtshopEngineeringGrid.tsx` helyén jött létre (`git mv` + teljes átírás).
@@ -92,10 +302,10 @@
 - **H1 átírás:** a dinamikus `{project.title}` helyett statikus, brand-gradiens kiemelésű „BTShop.hu — 3200 termékes **E-commerce Nagyhatalom** & Egyedi ERP Integráció" (`from-brand-primary to-brand-secondary`).
 - **Alcím (lead):** „Amikor a weboldal nemcsak elad, hanem a teljes céges infrastruktúrát mozgatja. Zéró manuális adminisztráció, saját fejlesztésű SEO motor és valós idejű könyvelőprogram-szinkronizáció."
 - **Mérnöki kihívások — Authority-Driven copy (4 kártya, mind a kért szöveggel):**
-  - *Kétirányú Könyvelői Szinkronizáció* — „Az ügyfél könyvelői programja egy dedikált szerveren fut. Olyan automata API-hidat fejlesztettem, amely valós időben exportálja a több mint 3200 termék adatait, és emberi beavatkozás nélkül importálja a beérkező WooCommerce megrendeléseket."
-  - *Saját Fejlesztésű SEO Plugin* — „A dobozos megoldások itt már nem voltak elegendőek… garantálja a tökéletes technikai SEO és **AEO (AI Engine Optimization)** pontszámot." (az AEO-ot külön kiemelve, a 9. § SEO/AEO prioritás szerint)
-  - *Skálázható Architektúra* (a korábbi „Data-Driven Marketing" helyett, a kért szöveggel: „A hatalmas adatbázis (3200+ termék) ellenére a frontend villámgyors maradt. Teljes Google Merchant Center integráció a napi feed szinkronizációhoz.")
-  - *Komplex Logisztika* — kiegészítve: „a megrendeléstől a csomagátadásig".
+  - _Kétirányú Könyvelői Szinkronizáció_ — „Az ügyfél könyvelői programja egy dedikált szerveren fut. Olyan automata API-hidat fejlesztettem, amely valós időben exportálja a több mint 3200 termék adatait, és emberi beavatkozás nélkül importálja a beérkező WooCommerce megrendeléseket."
+  - _Saját Fejlesztésű SEO Plugin_ — „A dobozos megoldások itt már nem voltak elegendőek… garantálja a tökéletes technikai SEO és **AEO (AI Engine Optimization)** pontszámot." (az AEO-ot külön kiemelve, a 9. § SEO/AEO prioritás szerint)
+  - _Skálázható Architektúra_ (a korábbi „Data-Driven Marketing" helyett, a kért szöveggel: „A hatalmas adatbázis (3200+ termék) ellenére a frontend villámgyors maradt. Teljes Google Merchant Center integráció a napi feed szinkronizációhoz.")
+  - _Komplex Logisztika_ — kiegészítve: „a megrendeléstől a csomagátadásig".
 - **Emoji → `lucide-react` (04-design tiltás javítása):** a 4 kártya `🔄 🔍 📦 📊` emoji-jelőléseit `RefreshCw` / `SearchCheck` / `Truck` / `Gauge` (`strokeWidth={1.5}`, `type LucideIcon` típussal) vektoros ikonra cseréltem → **a BTShop oldalon 0 emoji maradt**.
 - **SSOT token sweep:** `text-sky-400` → `text-brand-primary`, `hover:border-sky-500/50` → `hover:border-brand-primary/50`, `bg-slate-900/60` → `bg-slate-950/80 backdrop-blur-2xl` (Luminous Glassmorphism), `text-white` → `text-text-primary`.
 - **ÚJ `BtshopEeatSection.tsx` (117 sor):** Authority-driven hitelesítő szekció a Technikai Szolgáltatások és az Eredmények közé bekötve. 3 üveg hitelesítési signal (`26 év` grafikai / `16 év` webfejlesztői / `Nincs` ügynökségi lánc) + a kért szöveg: „26 év grafikai és 16 év komplex webfejlesztői tapasztalat. **Nincs ügynökségi lánc, csak közvetlen, mérnöki precizitás.**" Minden animáció `type: "spring", stiffness: 100, damping: 20` (a kért fizika) és `useReducedMotion`-ba kötve (a11y). `aria-labelledby="btshop-eeat-heading"` a helyes címsor-szemantika miatt.
@@ -105,6 +315,7 @@
 - **Lint-javítás közben:** a `BtshopCaseStudy.tsx`-be került `ShieldCheck`/`Award`/`Code2` icon-importok `no-unused-vars` hibát adtak (azok a `BtshopEeatSection`-ben használatosak) → a felesleges importok kivéve, csak a `type LucideIcon` maradt.
 
 ---
+
 ## [7.14.4] — 2026-10-02 — BTSHOP HIGH-RES HERO CSERE — AZ UTOLSÓ FELNAGYÍTÁSI ADÓSSÁG LEZÁRVA (COMPLETE)
 
 - **Lezárás:** a 7.13.1 sprint nyitott pontjaként továbbra is listázott BTShop hero felnagyítás **lezárva**. Ezzel a `works.ts` **mind a 9 projektje** valódi (nem interpolált) nagy felbontású hero forrást használ — a repóban **nulla** ismert felnagyítás maradt.
@@ -116,6 +327,7 @@
 - **QA (zero-error):** `npx tsc --noEmit` → **TSC_EXIT=0**; `npm run lint -- --max-warnings 0` → **LINT_EXIT=0**; `npm run build` → **BUILD_EXIT=0** (164 statikus oldal, minden route prerendered).
 
 ---
+
 ## [7.14.3] — 2026-10-02 — FOOTER SOCIAL ICONOK LÁTHATATLANSÁGÁNAK JAVÍTÁSA (`className` → `class` A RAW SVG-BAN)
 
 - **Tünet:** a footer 4 social ikonja (YouTube / Instagram / Behance / Pinterest) **egyetlen útvonalon sem volt látható**, sem asztali, sem mobil nézetben, HU és EN oldalon egyaránt. A linkek kódban megvoltak, a `Footer.tsx` 7. sorban importálta, a 127. sorban `<SocialMediaIcons />`-t renderelte.
@@ -128,6 +340,7 @@
 - **QA:** `npx tsc --noEmit` → **TSC_EXIT=0**; `npm run lint -- --max-warnings 0` → **LINT_EXIT=0**. Dev-server + Puppeteer vizuális screenshot igazolta a megjelenést.
 
 ---
+
 ## [7.14.1] — 2026-10-02 — ADMINISZTRATÍV TISZTÍTÁS + BACKLOG FELTÖLTÉS (COMPLETE, build nélkül)
 
 - **Git hygiene:** a `package.json` egyetlen módosítása kizárólag **PowerShell-formázási zaj** (2→4 szóköz indent, `ConvertTo-Json` jellegű) és egy `0.1.168 → 0.1.169` verzióbump volt; **függőség-, script- és verzióügyvitel-változás nem volt benne**, a `package-lock.json` érintetlen. Mivel a repo konvenciója a 2 szóközös JSON indent, a 4 szóközös visszaalakítás zaj volt → **`git checkout -- package.json` (visszavonva)**. Így a working tree 100%-ig tiszta lett, verziócsökkenés és félkész verzióbump nélkül.
@@ -139,6 +352,7 @@
 - **⛔ BLOKKOLÓ — BTShop hero csere NEM történt meg:** a kért `public/assets/portfolio/btshop/btshop-banner-highres.webp` master fájl **nem létezik** sem git-tracked, sem untracked állapotban (teljes repó-rekurzív keresés: csak `bt-shop-weboldal-screen.webp`, `btshop-banner-2.webp` (1376×768, 62 KB), `btshop-dashboard-placeholder.{svg,webp}`, `btshop-hero-placeholder.svg`). Mivel a `btshop-banner-2.webp` továbbra is 1376×768, a `hero` csoport 1600w/2000w derivatívumai változatlanul interpoláltak maradnak, a `node scripts/generate-responsive-images.js --clean` futtatása pedig csak ugyanazokat a (felnagyított) kimeneteket generálná újra. **A `works.ts` és a `BtshopCaseStudy.tsx` érintetlenül maradt** — a szándékos 404-et / életlen hero-t elkerülendő. Folytatás: Norbi feltölti a ≥1920×960 felbontású bannért, majd a 7.14.2 sprint folytatja a cserét + generálást + QA kapukat.
 
 ---
+
 ## [7.14.0] — 2026-10-02 — HIGH-RES HERÓ FORRÁSOK BEKÖTÉSE (GO-BOX + HU-MÁGÓ) (COMPLETE)
 
 - **Probléma (a 7.13.1 sprint nyitott pontja):** a `GoBoxCaseStudy` és `HuMagoCaseStudy` hero mesterképe 1376×768 px volt, így a `hero` csoport 1600w/2000w variánsa **felnagyított interpoláció** volt — retina/asztali kijelzőn életlen. Ez 3 projektből 2-t érintett.
@@ -157,7 +371,7 @@
 - **Javítás 2 — `sizes` attribútumok:** 25 esettanulmány-kép `sizes="100vw"`-ről a tényleges rács-oszlopszélességére igazítva (`BorGarnelaCaseStudy` 7×, `HuMagoCaseStudy` 7×, `RimaiCaseStudy` 8×, `BtshopCaseStudy` 2×, `ClassiCoCaseStudy` 1×). Enélkül a bővebb készlet túl-töltést okozott volna (2000w egy 25vw-os képhez). **A hero-k (`h-screen`, `sizes="100vw"`, `priority`) változatlanok** — és mind a 9 megőrizte a 1600w + 2000w variánsát (ellenőrizve).
 - **Regenerálás:** `node scripts/generate-responsive-images.js --clean`. Eredmény: `casestudy` 25 kép → 204 fájl; `gallery` 78 → 37 kép (74 fájl, a többit a casestudy vette át); összesen **78 kép / 432 derivatívum**; `[CLEAN]` → nincs elavult fájl.
 - **Verifikáció (audit):** a 1600w alatti képek száma **28/37 → 9/37**, és a maradék mind indokolt (1200–1400 px forrás → honest 960w; 340 px logó; 2× `.webm` videó; 663 px forrás → 640w). **Nincs több alul-szolgáltatott nagy felbontású kép.**
-- **Tárhely-hatás:** `public/assets/responsive/**` 254 fájl / 10,2 MB → **408 fájl / 24,3 MB** (+154 fájl, +14,1 MB). Ez a korábbi állapot alul-szolgáltatásának valós költsége. *Opcionális trimmelés:* a `casestudy` csoport `formats: "avif"`-re váltása (a galéria mintájára) kb. a felére csökkentené; a `<picture>` lánc miatt a régi böngésző az eredeti fájlt kapná, tehát nem törik el — külön döntést igényel.
+- **Tárhely-hatás:** `public/assets/responsive/**` 254 fájl / 10,2 MB → **408 fájl / 24,3 MB** (+154 fájl, +14,1 MB). Ez a korábbi állapot alul-szolgáltatásának valós költsége. _Opcionális trimmelés:_ a `casestudy` csoport `formats: "avif"`-re váltása (a galéria mintájára) kb. a felére csökkentené; a `<picture>` lánc miatt a régi böngésző az eredeti fájlt kapná, tehát nem törik el — külön döntést igényel.
 - **QA:** `npx tsc --noEmit` → 0; `npm run lint -- --max-warnings 0` → 0; `npm run build` → 0 (164 statikus oldal).
 - **Nyitott (Norbi — tartalmi döntés, nem hajtottam végre):** 3 hero masterje alacsony felbontású: `btshop-banner-2.webp` (1376×768), `Go-Box-Banner.webp` (1376×768), `hu-mago-kft -banner.webp` (1376×768) → a 1600w/2000w variánsuk felnagyítás. Nagyobb felbontású alternatívák a lemezen: Go-Box → `repulo-dobozok.webp` (2635×1200) vagy `go-box-pizza-banner-copy.webp` (1920×1646); Hu-Mago → `humago-allo-banner-a-shopbansss-cssopy-copy.webp` (1920×960). A csere a `works.ts` `bannerImage`/`image` mező és a komponens `src` módosítását igényli.
 
@@ -173,7 +387,7 @@
 - **Szándékosan MEGTARTVA (szemantikus UI, Norbi engedélyével):** `CaseStudiesBento` macOS traffic-light sárga pont (ablak-ikonográfia, `/60` opacity), `SeoWorkshopGenerator` warning számláló (piros/sárga/zöld validációs hármas), `admin/work-log` `pending` státusz (`yellow-500/10` badge).
 - **Nem módosítva (kategorikus színek, nem brand akcentus):** `WorkCard` `branding` narancs badge, `ModernServicesSection` narancs ikonszín, `ProgressCircle` `highlight` `#ff6b00`.
 - **QA:** `npx tsc --noEmit` → 0 hiba; `npm run lint -- --max-warnings 0` → 0 hiba / 0 figyelmeztetés; `npm run build` → BUILD_EXIT=0.
-- **Találat a sweep után:** `src/`-ben hex/yellow/amber/gold mintára **0 új találat** (a 3 szándékos szemantikus elem kivételével). *Következő döntés alatt:* a régi „Cyber-Arany/Cyber-Gold" **márkanév** tovább él ~100+ helyen élő AI-promptokban (pl. „max 2% gold focus"), UI-szövegekben és `_DOCS`-ban — külön sprint-javaslat.
+- **Találat a sweep után:** `src/`-ben hex/yellow/amber/gold mintára **0 új találat** (a 3 szándékos szemantikus elem kivételével). _Következő döntés alatt:_ a régi „Cyber-Arany/Cyber-Gold" **márkanév** tovább él ~100+ helyen élő AI-promptokban (pl. „max 2% gold focus"), UI-szövegekben és `_DOCS`-ban — külön sprint-javaslat.
 
 ## [7.12.5] — 2026-10-02 — CHAT HIBAJAVÍTÁS: CONTEXT ENGINE FIREBASE ADMIN SDK ELTÁVOLÍTÁSA + DEBUG LOG TISZTÍTÁS (COMPLETE)
 
@@ -184,7 +398,7 @@
   - Mappa elérési út javítva: `_DOCS` → `_docs` (96. sor a context-engine.ts-ben)
   - `idToken` paraméter hozzáadása és továbbítása a hívásláncban (getProjectContextAction → generateAICopilotResponseAction → WorkflowChat)
   - Extra környezeti változók eltávolítása (FIREBASE_ADMIN_CLIENT_EMAIL, FIREBASE_ADMIN_PRIVATE_KEY már nem szükséges)
-  - **Debug log tisztítás — 25 hívás eltávolítva a production kódból:** `portal.ts` (14), `ai-copilot.ts` (6), `context-engine.ts` (3), `WorkflowChat.tsx` (2) — a hibakeresés során bekerült `console.log`/`console.error` nyomok és a kizárólag a logoláshoz deklárált `errorText` ideiglenes változók. *Megmaradt (szándékos):* a HEAD-ban már meglévő catch-ág hiba-`console.error`-ok és a WorkflowChat 2 db `console.warn` (nem-haladó AI hiba jelzés).
+  - **Debug log tisztítás — 25 hívás eltávolítva a production kódból:** `portal.ts` (14), `ai-copilot.ts` (6), `context-engine.ts` (3), `WorkflowChat.tsx` (2) — a hibakeresés során bekerült `console.log`/`console.error` nyomok és a kizárólag a logoláshoz deklárált `errorText` ideiglenes változók. _Megmaradt (szándékos):_ a HEAD-ban már meglévő catch-ág hiba-`console.error`-ok és a WorkflowChat 2 db `console.warn` (nem-haladó AI hiba jelzés).
   - **SocialMediaIcons:** a Pinterest ikon roncsolt SVG `path`-je érvényes Pinterest logóra cserélve; a komponens Prettier-formázott (destrukturált props, tagelt `dangerouslySetInnerHTML`).
 - **QA:** `npx tsc --noEmit` → 0 hiba; `npm run lint -- --max-warnings 0` → **0 hiba / 0 figyelmeztetés**; `npm run build` → BUILD_EXIT=0.
 

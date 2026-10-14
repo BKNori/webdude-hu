@@ -11,8 +11,14 @@ export interface Addon {
   title: string;
   /** Short description of the add‑on */
   description: string;
-  /** Price in Hungarian Forint (HUF) */
-  price: number;
+  /**
+   * Price in Hungarian Forint (HUF).
+   *
+   * `null` = „Egyedi árajánlat" (Zéró Fix Ár szabály): a publikus katalógusban
+   * nem jelenik meg összeg, csak ajánlatkérő CTA. A Stripe checkout ebben az
+   * esetben korai hibával visszatér.
+   */
+  price: number | null;
   /** Type of service */
   type: "one-time" | "recurring";
   /** Category for UI grouping */

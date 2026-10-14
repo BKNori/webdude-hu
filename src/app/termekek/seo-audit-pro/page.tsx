@@ -19,12 +19,12 @@ export const metadata: Metadata = {
       {
         url: "/og/webdude-og.jpg",
         width: 1200,
-        height: 630,
-      },
+        height: 630
+      }
     ],
     locale: "hu_HU",
-    type: "website",
-  },
+    type: "website"
+  }
 };
 
 const productSchema = {
@@ -36,25 +36,22 @@ const productSchema = {
   image: "https://webdude.hu/og/webdude-og.jpg",
   brand: {
     "@type": "Brand",
-    name: "WebDude",
+    name: "WebDude"
   },
   offers: {
     "@type": "Offer",
-    price: "149000",
-    priceCurrency: "HUF",
     availability: "https://schema.org/InStock",
     url: "https://webdude.hu/termekek/seo-audit-pro",
-    priceValidUntil: "2027-12-31",
     seller: {
       "@type": "Organization",
-      name: "WebDude.hu",
-    },
+      name: "WebDude.hu"
+    }
   },
   aggregateRating: {
     "@type": "AggregateRating",
     ratingValue: "4.8",
-    reviewCount: "31",
-  },
+    reviewCount: "31"
+  }
 };
 
 export default function SEOAuditProPage() {
@@ -63,7 +60,7 @@ export default function SEOAuditProPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(productSchema).replace(/</g, "\\u003c"),
+          __html: JSON.stringify(productSchema).replace(/</g, "\\u003c")
         }}
       />
       <div className="min-h-screen bg-bg-base">

@@ -323,7 +323,7 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
       </section>
 
       {/* Eredmények Szekció */}
-      <section className="py-24 px-6 bg-linear-to-br from-sky-500/10 to-orange-500/10 border-y border-sky-500/20">
+      <section className="py-24 px-6 bg-linear-to-br from-sky-500/10 to-brand-secondary/10 border-y border-sky-500/20">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

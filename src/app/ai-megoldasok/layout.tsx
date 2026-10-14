@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { buildBreadcrumbSchema } from "@/lib/breadcrumb";
 
 export const metadata: Metadata = {
   title:
@@ -99,6 +100,15 @@ const jsonLd = {
   },
 };
 
+/**
+ * Breadcrumb (morzsamenü) séma — kötelező minden publikus aloldalon
+ * az AEO-szabvány szerint (AGENTS.md 9. §). XSS-védetten renderelődik.
+ */
+const breadcrumbSchema = buildBreadcrumbSchema([
+  { name: "Főoldal", url: "/" },
+  { name: "AI Megoldások", url: "/ai-megoldasok" },
+]);
+
 export default function AIMSolutionsLayout({
   children,
 }: {
@@ -110,6 +120,12 @@ export default function AIMSolutionsLayout({
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema).replace(/</g, "\\u003c"),
         }}
       />
       {children}

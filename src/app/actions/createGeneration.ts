@@ -3,6 +3,7 @@
 import { getAuth } from "firebase-admin/auth";
 import { adminApp, adminDb } from "@/lib/firebase-admin";
 import { logger } from "@/lib/logger";
+import type { DocumentReference } from "firebase-admin/firestore";
 import {
   GenerationInput,
   CreateGenerationResponse,
@@ -24,7 +25,7 @@ async function callGroqAPI(prompt: string): Promise<string> {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        model: "llama3-70b-8192",
+        model: "openai/gpt-oss-120b",
         messages: [
           {
             role: "system",
@@ -54,6 +55,11 @@ export async function createGeneration(
   input: GenerationInput,
   idToken: string
 ): Promise<CreateGenerationResponse> {
+  // A try-n KÍVÜL is kell, hogy a catch ág `failed` státuszt írhasson —
+  // enélkül a hibás generálás ÖRÖKRE `processing` státuszban ragadna, és a
+  // kliensoldali useGenerationPolling / PortalNotificationBell sosem kapna
+  // „sikertelen" értesítést. (null marad, ha a hiba a dok létrehozása előtt jött.)
+  let generationRef: DocumentReference | null = null;
   try {
     logger.info('createGeneration: indítás', {
       layer: 'ServerActions',
@@ -95,7 +101,7 @@ export async function createGeneration(
 
     // Generálás létrehozása Firestore-ban (Admin SDK — a rules `update: if false`
     // csak a kliensoldali írást tiltja, a backend mindig írhat)
-    const generationRef = adminDb.collection("user_generations").doc();
+    generationRef = adminDb.collection("user_generations").doc();
     const now = new Date();
     await generationRef.set({
       userId: uid,
@@ -135,6 +141,29 @@ export async function createGeneration(
     return { success: true, generationId: generationRef.id };
   } catch (error) {
     logger.error('createGeneration: kivétel a generálás során', error, { layer: 'ServerActions', meta: { workflowId: input.workflowId } });
+
+    // Státuszfrissítés failed-re, hogy a kliensoldal (useGenerationPolling) és a
+    // PortalNotificationBell ("AI generálás sikertelen") valós visszajelzést kapjon.
+    // Csak akkor próbálkozunk, ha a dokumentum már létrejött (generationRef != null);
+    // a `set` hiányos elhelyezése esetén a belső catch naplózza és nem rontja el
+    // az eredeti hibaüzenetet.
+    if (generationRef) {
+      try {
+        await generationRef.update({
+          status: "failed",
+          errorMessage:
+            error instanceof Error ? error.message : "Ismeretlen hiba",
+          updatedAt: new Date(),
+        });
+      } catch (updateError) {
+        logger.error(
+          'createGeneration: a failed státusz frissítése sem sikerült',
+          updateError,
+          { layer: 'ServerActions', meta: { generationId: generationRef.id } }
+        );
+      }
+    }
+
     return {
       success: false,
       error:

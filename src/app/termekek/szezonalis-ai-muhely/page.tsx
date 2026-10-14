@@ -12,7 +12,7 @@ import {
   ArrowRight,
   Copy,
   RefreshCw,
-  Star,
+  Star
 } from "lucide-react";
 
 const productSchema = {
@@ -24,26 +24,23 @@ const productSchema = {
   image: "https://webdude.hu/og/webdude-og.jpg",
   brand: {
     "@type": "Brand",
-    name: "WebDude",
+    name: "WebDude"
   },
   offers: {
     "@type": "Offer",
-    price: "0",
-    priceCurrency: "HUF",
     availability: "https://schema.org/InStock",
     url: "https://webdude.hu/termekek/szezonalis-ai-muhely",
-    priceValidUntil: "2027-12-31",
     seller: {
       "@type": "Organization",
-      name: "WebDude.hu",
+      name: "WebDude.hu"
     },
     description: "Egyedi árajánlat kérése",
   },
   aggregateRating: {
     "@type": "AggregateRating",
     ratingValue: "4.8",
-    reviewCount: "31",
-  },
+    reviewCount: "31"
+  }
 };
 
 const seasonalCampaigns = [
@@ -53,7 +50,7 @@ const seasonalCampaigns = [
     description: "Ünnepi karácsonyi kampány",
     prompt:
       "Christmas campaign visual, holiday festive atmosphere, warm colors, decorative elements, seasonal marketing, premium holiday aesthetic",
-    color: "from-red-500 to-green-500",
+    color: "from-red-500 to-green-500"
   },
   {
     id: "easter",
@@ -61,7 +58,7 @@ const seasonalCampaigns = [
     description: "Tavaszi húsvéti kampány",
     prompt:
       "Easter campaign visual, spring fresh colors, pastel tones, seasonal elements, festive spring aesthetic",
-    color: "from-pink-500 to-brand-secondary",
+    color: "from-pink-500 to-brand-secondary"
   },
   {
     id: "summer",
@@ -69,7 +66,7 @@ const seasonalCampaigns = [
     description: "Nyári szezonális kampány",
     prompt:
       "Summer campaign visual, bright warm colors, beach vibes, energetic atmosphere, seasonal summer aesthetic",
-    color: "from-orange-500 to-brand-primary",
+    color: "from-brand-secondary to-brand-primary"
   },
   {
     id: "autumn",
@@ -77,7 +74,7 @@ const seasonalCampaigns = [
     description: "Őszi szezonális kampány",
     prompt:
       "Autumn campaign visual, warm earth tones, falling leaves, cozy atmosphere, seasonal autumn aesthetic",
-    color: "from-[#00B5F1] to-orange-500",
+    color: "from-[#00B5F1] to-brand-secondary"
   },
   {
     id: "blackfriday",
@@ -85,7 +82,7 @@ const seasonalCampaigns = [
     description: "Akciós kampány",
     prompt:
       "Black Friday campaign visual, bold urgent colors, promotional elements, sale atmosphere, high-contrast marketing aesthetic",
-    color: "from-purple-500 to-red-500",
+    color: "from-purple-500 to-red-500"
   },
   {
     id: "newyear",
@@ -93,15 +90,15 @@ const seasonalCampaigns = [
     description: "Újévi kampány",
     prompt:
       "New Year campaign visual, celebration atmosphere, fireworks, fresh start aesthetic, premium holiday design",
-    color: "from-blue-500 to-purple-500",
-  },
+    color: "from-blue-500 to-purple-500"
+  }
 ];
 
 const eventTypes = [
   { id: "birthday", name: "Születésnap", description: "Születésnapi ünnep" },
   { id: "anniversary", name: "Évforduló", description: "Évforduló ünnep" },
   { id: "valentine", name: "Valentin-nap", description: "Szerelmi ünnep" },
-  { id: "halloween", name: "Halloween", description: "Őszi ünnep" },
+  { id: "halloween", name: "Halloween", description: "Őszi ünnep" }
 ];
 
 const visualStyles = [
@@ -109,14 +106,14 @@ const visualStyles = [
   {
     id: "minimalist",
     name: "Minimalista",
-    description: "Egyszerű, letisztult",
+    description: "Egyszerű, letisztult"
   },
   { id: "modern", name: "Modern", description: "Kortárs, stílusos" },
   {
     id: "traditional",
     name: "Hagyományos",
-    description: "Klasszikus, hagyományos",
-  },
+    description: "Klasszikus, hagyományos"
+  }
 ];
 
 export default function SzezonalisAIMuhelyPage() {
@@ -164,7 +161,7 @@ export default function SzezonalisAIMuhelyPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(productSchema).replace(/</g, "\\u003c"),
+          __html: JSON.stringify(productSchema).replace(/</g, "\\u003c")
         }}
       />
       <ProductAccessGuard>
@@ -448,23 +445,23 @@ export default function SzezonalisAIMuhelyPage() {
                   {
                     icon: Calendar,
                     title: "Szezonalis Kampányok",
-                    description: "Szezonális marketing kampányok",
+                    description: "Szezonális marketing kampányok"
                   },
                   {
                     icon: Gift,
                     title: "Ünnepi Vizuálok",
-                    description: "Ünnepi grafikák generálása",
+                    description: "Ünnepi grafikák generálása"
                   },
                   {
                     icon: Sun,
                     title: "Midjourney v6 Master",
-                    description: "Prémium prompt sablonok",
+                    description: "Prémium prompt sablonok"
                   },
                   {
                     icon: Star,
                     title: "Automatikus Generálás",
-                    description: "Automatikus vizuál generálás",
-                  },
+                    description: "Automatikus vizuál generálás"
+                  }
                 ].map((feature, index) => {
                   const FeatureIcon = feature.icon;
                   return (

@@ -18,6 +18,9 @@ import {
   Lock,
   ArrowRight,
   HelpCircle,
+  PenTool,
+  FileText,
+  Box,
 } from "lucide-react";
 import LanguageSwitcher from "./LanguageSwitcher";
 import { Language } from "@/types/dictionary";
@@ -50,6 +53,9 @@ const NAV_ICONS: Record<string, ComponentType<{ className?: string }>> = {
   Munkáim: Briefcase,
   Hírek: Newspaper,
   Ügyfélportál: Lock,
+  "Logó Tervezés": PenTool,
+  "Szórólap Tervezés": FileText,
+  "Csomagolás Tervezés": Box,
   // EN anchor-menü (/en)
   About: User,
   Services: Layers,
@@ -74,31 +80,31 @@ export default function HeaderNavClient({
   const isEn = actualLang === "en";
 
   /**
- * Nyelvfüggő menü: HU dropdown, EN anchor-alapú (/en) főoldali menü.
- *
- * A „Hírek" és az „Ügyfélportál" **nincs** a DESKTOP listában — azok
- * a fejléc legfelső, vékony **Top Bar** sávján jelennek meg, így a
- * fő navigáció vízszintesen középre igazítható marad, és több helyet
- * kap a fontos CTA-k számára.
- */
-const navItems = getMainNavItems(actualLang);
+   * Nyelvfüggő menü: HU dropdown, EN anchor-alapú (/en) főoldali menü.
+   *
+   * A „Hírek" és az „Ügyfélportál" **nincs** a DESKTOP listában — azok
+   * a fejléc legfelső, vékony **Top Bar** sávján jelennek meg, így a
+   * fő navigáció vízszintesen középre igazítható marad, és több helyet
+   * kap a fontos CTA-k számára.
+   */
+  const navItems = getMainNavItems(actualLang);
 
-/**
- * **A MOBIL menü a TELJES navigációt kapja** (`getNavItems`),
- * a top bar elemeivel együtt — különben a „Hírek" és az
- * „Ügyfélportál" link mobilon eltűnne, mert a top bar `hidden lg:block`
- * (mobilesen nem renderelődik). Ez a lépés garantálja, hogy egyetlen
- * útvonal sem veszik el.
- */
-const navItemsMobile = getNavItems(actualLang);
+  /**
+   * **A MOBIL menü a TELJES navigációt kapja** (`getNavItems`),
+   * a top bar elemeivel együtt — különben a „Hírek" és az
+   * „Ügyfélportál" link mobilon eltűnne, mert a top bar `hidden lg:block`
+   * (mobilesen nem renderelődik). Ez a lépés garantálja, hogy egyetlen
+   * útvonal sem veszik el.
+   */
+  const navItemsMobile = getNavItems(actualLang);
 
-/**
- * A top bar (Hírek + Ügyfélportál) elemei.
- *
- * **Mobilon a top bar NEM jelenik meg** — a keskeny kijelzőn a
- * hamburger menü tartalmazza ezeket is (lásd `navItemsMobile`).
- */
-const topBarItems = getTopBarItems(actualLang);
+  /**
+   * A top bar (Hírek + Ügyfélportál) elemei.
+   *
+   * **Mobilon a top bar NEM jelenik meg** — a keskeny kijelzőn a
+   * hamburger menü tartalmazza ezeket is (lásd `navItemsMobile`).
+   */
+  const topBarItems = getTopBarItems(actualLang);
 
   // WCAG: a nyelvérzékeny aria-label-ek szótárból / nyelvi címkékből.
   const labels = {
@@ -110,8 +116,7 @@ const topBarItems = getTopBarItems(actualLang);
     mobileNavList: isEn ? "Mobile navigation list" : "Mobilnavigáció lista",
     contact: isEn ? "Contact us" : "Kapcsolatfelvétel",
     contactHref: isEn ? "/en#contact" : "/kapcsolat",
-    contactLabel:
-      dictionary?.nav?.contact ?? (isEn ? "Contact" : "Kapcsolat"),
+    contactLabel: dictionary?.nav?.contact ?? (isEn ? "Contact" : "Kapcsolat"),
     contactCtaLabel: isEn
       ? `${dictionary?.nav?.contact ?? "Contact"} — ${dictionary?.nav?.cta ?? "Request a custom quote"}`
       : "Kapcsolat — Kérj árajánlatot",
@@ -239,9 +244,7 @@ const topBarItems = getTopBarItems(actualLang);
                         : "text-slate-300 hover:text-[#00B5F1] hover:bg-[#00B5F1]/10"
                     }`}
                   >
-                    <div className="font-medium leading-tight">
-                      {sub.name}
-                    </div>
+                    <div className="font-medium leading-tight">{sub.name}</div>
                     {sub.description && (
                       <p className="text-xs text-slate-400 line-clamp-1 mt-0.5">
                         {sub.description}
@@ -278,9 +281,7 @@ const topBarItems = getTopBarItems(actualLang);
                         : "text-slate-300 hover:text-[#00B5F1] hover:bg-[#00B5F1]/10"
                     }`}
                   >
-                    <div className="font-medium leading-tight">
-                      {sub.name}
-                    </div>
+                    <div className="font-medium leading-tight">{sub.name}</div>
                     {sub.description && (
                       <p className="text-xs text-slate-400 line-clamp-1 mt-0.5">
                         {sub.description}
@@ -317,9 +318,7 @@ const topBarItems = getTopBarItems(actualLang);
                         : "text-slate-300 hover:text-[#00B5F1] hover:bg-[#00B5F1]/10"
                     }`}
                   >
-                    <div className="font-medium leading-tight">
-                      {sub.name}
-                    </div>
+                    <div className="font-medium leading-tight">{sub.name}</div>
                     {sub.description && (
                       <p className="text-xs text-slate-400 line-clamp-1 mt-0.5">
                         {sub.description}
@@ -711,7 +710,10 @@ const topBarItems = getTopBarItems(actualLang);
                                 setOpenSection(isSectionOpen ? null : item.name)
                               }
                               aria-expanded={isSectionOpen}
-                              aria-label={labels.submenu(item.name, isSectionOpen)}
+                              aria-label={labels.submenu(
+                                item.name,
+                                isSectionOpen
+                              )}
                               className={`shrink-0 w-12 h-14 flex items-center justify-center text-slate-400 hover:text-[#00B5F1] transition-colors ${FOCUS_RING}`}
                             >
                               <motion.span

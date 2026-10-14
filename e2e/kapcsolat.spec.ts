@@ -73,9 +73,14 @@ test.describe("Konverziós útvonal (/kapcsolat)", () => {
     await visit(page, "/");
 
     // A főoldali elsődleges CTA-k léteznek és érvényes célra mutatnak.
+    // A hero elsődleges CTA szövege a szótárból (dictionary) jön, nyelvfüggő —
+    // ezért a törékeny szövegillesztés helyett a stabil HTML ID-ra
+    // támaszkodunk (`hero-cta-N-primary`). A slider automatikusan léptet,
+    // ezért az aktív dia primary CTA-ját kérdezzük le attribútum-szelektorral
+    // (forgás-független: bármelyik aktív dia primary gombja illeszkedik).
     for (const cta of [
       page.locator('a[href*="kapcsolat"]').first(),
-      page.getByRole("link", { name: /projektfelmérés/i }).first(),
+      page.locator('[id^="hero-cta-"][id$="-primary"]').first(),
     ]) {
       await expect(cta).toBeVisible();
       const href = await cta.getAttribute("href");

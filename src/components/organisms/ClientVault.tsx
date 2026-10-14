@@ -430,7 +430,31 @@ export default function ClientVault() {
               return (
                 <div
                   key={file.id}
-                  className="bg-transparent border border-bg-elevated/50 hover:border-sky-500/30 rounded-2xl p-4 flex items-center justify-between gap-4 transition-all duration-300 group"
+                  onClick={
+                    canPreview(file.name)
+                      ? () => setPreviewFile(file)
+                      : undefined
+                  }
+                  onKeyDown={
+                    canPreview(file.name)
+                      ? (event) => {
+                          if (event.key === "Enter" || event.key === " ") {
+                            event.preventDefault();
+                            setPreviewFile(file);
+                          }
+                        }
+                      : undefined
+                  }
+                  role={canPreview(file.name) ? "button" : undefined}
+                  tabIndex={canPreview(file.name) ? 0 : undefined}
+                  aria-label={
+                    canPreview(file.name)
+                      ? `${file.name} — előnézet megnyitása`
+                      : undefined
+                  }
+                  className={`bg-transparent border border-bg-elevated/50 hover:border-sky-500/30 rounded-2xl p-4 flex items-center justify-between gap-4 transition-all duration-300 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2 focus-visible:ring-offset-bg-surface${
+                    canPreview(file.name) ? " cursor-pointer" : ""
+                  }`}
                 >
                   <div className="flex items-center gap-3 min-w-0">
                     <div className="w-10 h-10 rounded-xl bg-bg-elevated/40 flex items-center justify-center text-sky-500/80 shrink-0">
@@ -465,7 +489,10 @@ export default function ClientVault() {
                     {canPreview(file.name) && (
                       <button
                         type="button"
-                        onClick={() => setPreviewFile(file)}
+                        onClick={(event) => {
+                          event.stopPropagation();
+                          setPreviewFile(file);
+                        }}
                         className="p-2 bg-bg-elevated/50 hover:bg-sky-500/10 text-slate-400 hover:text-sky-500 rounded-lg transition-colors cursor-pointer"
                         title="Előnézet"
                       >
@@ -476,6 +503,7 @@ export default function ClientVault() {
                       href={file.url}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={(event) => event.stopPropagation()}
                       className="p-2 bg-bg-elevated/50 hover:bg-sky-500/10 text-slate-400 hover:text-sky-500 rounded-lg transition-colors cursor-pointer"
                       title="Letöltés"
                     >
@@ -486,7 +514,10 @@ export default function ClientVault() {
                     {!isAdminUpload && (
                       <button
                         type="button"
-                        onClick={() => handleDelete(file)}
+                        onClick={(event) => {
+                          event.stopPropagation();
+                          handleDelete(file);
+                        }}
                         className="p-2 bg-bg-elevated/50 hover:bg-red-500/10 text-slate-400 hover:text-red-400 rounded-lg transition-colors cursor-pointer"
                         title="Törlés"
                       >

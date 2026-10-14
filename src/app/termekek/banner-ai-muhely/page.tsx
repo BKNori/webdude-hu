@@ -10,7 +10,7 @@ import {
   Zap,
   ArrowRight,
   Copy,
-  RefreshCw,
+  RefreshCw
 } from "lucide-react";
 import ProductAccessGuard from "@/components/molecules/ProductAccessGuard";
 
@@ -23,26 +23,23 @@ const productSchema = {
   image: "https://webdude.hu/og/webdude-og.jpg",
   brand: {
     "@type": "Brand",
-    name: "WebDude",
+    name: "WebDude"
   },
   offers: {
     "@type": "Offer",
-    price: "0",
-    priceCurrency: "HUF",
     availability: "https://schema.org/InStock",
     url: "https://webdude.hu/termekek/banner-ai-muhely",
-    priceValidUntil: "2027-12-31",
     seller: {
       "@type": "Organization",
-      name: "WebDude.hu",
+      name: "WebDude.hu"
     },
     description: "Egyedi árajánlat kérése",
   },
   aggregateRating: {
     "@type": "AggregateRating",
     ratingValue: "4.8",
-    reviewCount: "31",
-  },
+    reviewCount: "31"
+  }
 };
 
 const bannerStyles = [
@@ -52,7 +49,7 @@ const bannerStyles = [
     description: "Tiszta, egyszerű vonalvezetés",
     prompt:
       "minimalist banner design, clean lines, ample white space, modern typography, professional aesthetic",
-    color: "from-[#00B5F1] to-sky-500",
+    color: "from-[#00B5F1] to-sky-500"
   },
   {
     id: "cyberpunk",
@@ -60,7 +57,7 @@ const bannerStyles = [
     description: "Futurisztikus, neon elemek",
     prompt:
       "cyberpunk banner design, neon lights, futuristic aesthetic, dark background with vibrant colors, tech-inspired",
-    color: "from-purple-500 to-pink-500",
+    color: "from-purple-500 to-pink-500"
   },
   {
     id: "corporate",
@@ -68,7 +65,7 @@ const bannerStyles = [
     description: "Professzionális, üzleti",
     prompt:
       "corporate banner design, professional business aesthetic, clean typography, trustworthy colors, modern corporate style",
-    color: "from-[#00B5F1] to-[#5B21B6]",
+    color: "from-[#00B5F1] to-[#5B21B6]"
   },
   {
     id: "creative",
@@ -76,7 +73,7 @@ const bannerStyles = [
     description: "Színes, dinamikus",
     prompt:
       "creative banner design, vibrant colors, dynamic composition, artistic elements, eye-catching visual",
-    color: "from-green-500 to-emerald-500",
+    color: "from-green-500 to-emerald-500"
   },
   {
     id: "luxury",
@@ -84,7 +81,7 @@ const bannerStyles = [
     description: "Elegáns, prémium",
     prompt:
       "luxury banner design, elegant aesthetic, premium feel, sophisticated colors, high-end visual",
-    color: "from-brand-secondary to-brand-primary",
+    color: "from-brand-secondary to-brand-primary"
   },
   {
     id: "tech",
@@ -92,30 +89,30 @@ const bannerStyles = [
     description: "Modern, innovatív",
     prompt:
       "tech banner design, modern innovation aesthetic, clean tech style, digital elements, futuristic but professional",
-    color: "from-indigo-500 to-blue-500",
-  },
+    color: "from-indigo-500 to-blue-500"
+  }
 ];
 
 const aspectRatios = [
   { id: "16:9", name: "16:9 (Wide)", width: 1920, height: 1080 },
   { id: "4:3", name: "4:3 (Standard)", width: 1920, height: 1440 },
   { id: "1:1", name: "1:1 (Square)", width: 1080, height: 1080 },
-  { id: "9:16", name: "9:16 (Story)", width: 1080, height: 1920 },
+  { id: "9:16", name: "9:16 (Story)", width: 1080, height: 1920 }
 ];
 
 const colorPalettes = [
   {
     id: "9082",
     name: "90/8/2 (Cyber-Arany)",
-    description: "90% sötét, 8% arany, 2% kiemelő",
+    description: "90% sötét, 8% arany, 2% kiemelő"
   },
   {
     id: "monochrome",
     name: "Monokróm",
-    description: "Fekete-fehér árnyalatok",
+    description: "Fekete-fehér árnyalatok"
   },
   { id: "vibrant", name: "Vibráns", description: "Erős, élénk színek" },
-  { id: "pastel", name: "Pasztell", description: "Finom, lágy színek" },
+  { id: "pastel", name: "Pasztell", description: "Finom, lágy színek" }
 ];
 
 export default function BannerAIMuhelyPage() {
@@ -165,7 +162,7 @@ export default function BannerAIMuhelyPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(productSchema).replace(/</g, "\\u003c"),
+          __html: JSON.stringify(productSchema).replace(/</g, "\\u003c")
         }}
       />
       <ProductAccessGuard>
@@ -458,24 +455,24 @@ export default function BannerAIMuhelyPage() {
                     icon: ImageIcon,
                     title: "Midjourney v6 Master",
                     description:
-                      "Prémium prompt sablonok a legjobb eredményekhez",
+                      "Prémium prompt sablonok a legjobb eredményekhez"
                   },
                   {
                     icon: Palette,
                     title: "90/8/2 Színarány",
                     description:
-                      "Cyber-Arany identitás a konverzió növeléséhez",
+                      "Cyber-Arany identitás a konverzió növeléséhez"
                   },
                   {
                     icon: Camera,
                     title: "85mm G-Master Optika",
-                    description: "Professzionális optikai beállítások",
+                    description: "Professzionális optikai beállítások"
                   },
                   {
                     icon: Zap,
                     title: "Chiaroscuro Lighting",
-                    description: "Fény-árnyék kontraszt a drámai hatásért",
-                  },
+                    description: "Fény-árnyék kontraszt a drámai hatásért"
+                  }
                 ].map((feature, index) => {
                   const FeatureIcon = feature.icon;
                   return (

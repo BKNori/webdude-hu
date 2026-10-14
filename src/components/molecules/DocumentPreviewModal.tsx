@@ -22,7 +22,7 @@ interface DocumentPreviewModalProps {
 
 /** Egységes Electric Cyan fókuszgyűrű (WCAG 2.4.7 – látható fókusz). */
 const FOCUS_RING =
-  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B5F1] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base";
+  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base";
 
 export default function DocumentPreviewModal({
   isOpen,
@@ -92,7 +92,8 @@ export default function DocumentPreviewModal({
             initial="initial"
             animate="animate"
             exit="exit"
-            className="relative w-full max-w-5xl h-[85vh] mx-auto flex flex-col rounded-3xl bg-slate-900 border border-slate-800/50 shadow-2xl overflow-hidden z-10"
+            onClick={(event) => event.stopPropagation()}
+            className="relative w-full max-w-5xl h-[85vh] mx-auto flex flex-col rounded-3xl bg-slate-900 border border-brand-primary/20 shadow-[0_24px_80px_-12px_rgba(0,181,241,0.35)] overflow-hidden z-10"
             transition={{ duration: reducedMotion ? 0 : 0.5 }}
           >
             {/* Header */}
@@ -100,7 +101,7 @@ export default function DocumentPreviewModal({
               <div className="flex items-center gap-3">
                 <FileText
                   aria-hidden="true"
-                  className="w-5 h-5 text-[#00B5F1]"
+                  className="w-5 h-5 text-brand-primary"
                 />
                 <h3
                   id="document-preview-title"
@@ -181,7 +182,7 @@ export default function DocumentPreviewModal({
                   <a
                     href={fileUrl}
                     download
-                    className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#00B5F1] text-white font-bold hover:bg-[#0ea5e9] transition-colors ${FOCUS_RING}`}
+                    className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-cta-from text-white font-bold hover:bg-cta-hover transition-colors ${FOCUS_RING}`}
                   >
                     <Download aria-hidden="true" className="w-4 h-4" />
                     Letöltés indítása

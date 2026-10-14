@@ -2,6 +2,55 @@
 
 > **AI DIREKTÍVA:** Ez a fájl a rendszer "élő" memóriája. A 03-workflow.md 5. lépése alapján KÖTELEZŐ ezt a fájlt frissítened minden feladat befejezésekor, vagy mielőtt átadod a vezérlést a felhasználónak (Norbinak). Szigorúan tilos új feladatba kezdened, ha az "Aktuális Munkaterület Állapota" szekcióban hibák vagy félbehagyott fájlok vannak!
 
+## Aktuális állapot — 2026-10-08, [7.23.0] E2E Smoke Suite hiány-pótlás (Act mód, LEZÁRVA)
+
+- **Cél:** regressziós védelem a Zéró Fix Ár [7.21.0] + Portál értesítések [7.22.0] mély refaktor után. Az infra (Playwright config, `test:e2e`, `smoke-helpers.ts`, 5 meglévő spec) már kész és futott — a feladat **hiány-pótlás** volt, nem nulláról-építés.
+- **Új spec-ek (3):**
+  - `e2e/stripe-webhook.spec.ts` — biztonsági őr: érvénytelen és hiányzó `stripe-signature` fejléccel a route **elutasítja** a kérést (spoofing-megelőzés), és a válasz nem „sikeres" feldolgozásra utal. A HMAC-SHA256 ellenőrzés miatt a route az írás előtt visszatér → **0 Firestore írás** (Anti-Drain: pozitív happy-path szándékosan nincs fedve, érvényes aláíráshoz titkos webhook-kulcs kellene a repóba).
+  - `e2e/munkak-slug.spec.ts` — dinamikus `GeneralCaseStudy` útvonal: `/munkak/dr-danyi` 200 + pontosan 1 H1 + JSON-LD érvényes/XSS-védett; `/munkak/nem-letezik-xyz` → 404 (`notFound()`).
+  - `e2e/pricing-zero-fixed.spec.ts` — a [7.21.0] takarítás őre: az `/szolgaltatasok/add-onok` bolt kártyáin nincs fix ár („Ft" / `toLocaleString`), csak „Egyedi árajánlat kérése" CTA; a `/termekek` JSON-LD `offers` nem tartalmaz `price` mezőt.
+- **Módosított meglévő:** `e2e/kapcsolat.spec.ts` — az elavult „Kérj projektfelmérést" hero-CTA szöveg a `hu.json` dictionary miatt „Beszéljük át a projekted"-re változott; a szelektor stabil szövegre frissítve.
+- **Housekeeping:** `.gitignore` → `test-results/` + `playwright-report/` kizárva.
+- **QA:** `tsc` = 0; `lint --max-warnings 0` = 0; `build` = 0; **`npx playwright test` = 23/23 PASSED, 0 flake** (1.0m).
+- **Következő (opcionális, külön jóváhagyás):** CI-bridge — `.github/workflows/` E2E lépés a meglévő `ci.yml`-hez (`npx playwright install --with-deps chromium` → `build` → `start` → `test`); a `test:e2e` már képes rá.
+
+
+## Aktuális állapot — 2026-10-08, [7.22.0] Portál értesítések Phase 2 (Act mód, LEZÁRVA)
+
+- **Cél:** az értesítési források bővítése a meglévő származtatott listenereken túl — dedikált `users/{uid}/notifications` kollekció (Path B: teljes lefedettség, egységes séma, Admin SDK írás, kliens read-only). A `user_generations` + `vault` listenerek megmaradtak (visszafelé kompatibilis).
+- **`src/lib/notify.ts` (ÚJ):** `notifyUser()` helper — dinamikus `await import("@/lib/firebase-admin")` (build fix: a statikus import miatt a publikus `add-onok` oldal prerenderelése `app/invalid-credential` hibát dobott), best-effort try/catch.
+- **Trigger-ek:** Stripe webhook (`checkout.session.completed` → „Fizetés jóváhagyva"), `deliverOrderAction` (→ „Rendelés kézbesítve"), `approveWorkflowPhaseAction` (→ „Fázis jóváhagyva").
+- **Hook + UI:** 3. listener (`limit(10)`, ISO normalizálás, unseen jelölés, error callback); `PortalNotificationBell` `kindIcon` rekord (CreditCard/PackageCheck/CheckCircle2/Sparkles/ShieldCheck/MessageSquare) + tone színek — 0 amber, Bell 151 sor (limit alatt).
+- **QA:** `tsc` = 0; `lint --max-warnings 0` = 0; `build` = 0.
+- **Norbi teendő (blokkoló az éles működéshez):** `firestore.rules` (`users/{uid}/notifications`: read saját, write=false) + `firestore.indexes.json` kompozit index (`userId ASC + createdAt DESC`) + `firebase deploy --only firestore:indexes,firestore:rules`.
+- **Következő (opcionális, Phase 3):** további nem-deriválható eseményforrások (pl. manuális admin üzenetek, FCM push), vagy új UI jellemzők (csoportosítás/arhívum).
+
+## Aktuális állapot — 2026-10-08, [7.21.0] Zéró Fix Ár tisztítás (Act mód, LEZÁRVA)
+
+- **Cél:** a „Zéró Fix Ár" szabály végrehajtása a **publikus** katalóguson/marketing oldalakon; a portálbeli konkrét, teljesült rendelések/nyugták összegei **kimondottan megmaradtak** (privát felület, valós összegek — Norbi döntése).
+- **Adattípus-áttérés:** `types/addon.ts` → `price: number | null`; `addons.ts` / `stripe.ts` / `seed-addons.ts` fix árak → `null` (defenzív guardok a fizetési actionökben, `nullValue` a webhook írásnál).
+- **`AddonStore`:** „Megrendelés" gomb → **„Egyedi árajánlat kérése" `/kapcsolat` Link**; a Stripe automata vásárlás a publikus bolton leáll (infra a `stripe.ts`-ben megmarad).
+- **Pricing oldalak + JSON-LD:** 3 szolgáltatás-ársáv „Egyedi árajánlat alapján"; `termekek/**` + `wordpress-*` JSON-LD `price`/`priceCurrency`/`price: "0"` eltávolítva; `ServicesSection` FAQ fix ár törölve.
+- **QA:** `tsc` = 0; `lint --max-warnings 0` = 0; `build` = 0.
+- **Norbi teendő:** a Firestore `addons` kollekció fix árainak manuális tisztítása (kód és seed már nullázott).
+- **Következő (Phase 2, jóváhagyásra vár):** Portál értesítések új eseményforrások (Stripe fizetés, fázis-jóváhagyás, kézbesítés) — dedikált `users/{uid}/notifications` kollekció + `src/lib/notify.ts` helper + `firestore.rules` (write = Admin SDK) + kompozit index.
+
+## Aktuális állapot — 2026-10-08, [7.20.4] Tech Debt Cleanup (SSOT-rendbetétel + dead code)
+
+- **SSOT-javítás:** a két téves roadmap-jelzés feloldva — `activeContext` §5 CI pont ✅ [7.10.0]-ra; `progress` §4 PortalDashboard pont ✅ [7.8.0]-ra. A §5-ben mostantól a **valós következő lépés** szerepel: *Portál valós idejű értesítéseinek tervezése* (késleltetett polling, Anti-Drain).
+- **`HeroSlider.tsx` archiválva:** `git mv` → `_mentesek/20261008_techdebt-cleanup/HeroSlider.tsx` (0 import igazolva, dead code); `ARCHITECTURE.md` regiszter ARCHIVALT.
+- **btshop SVG-k: tiszták** — v7.0 színek, `f59e0b|ffd700` = 0 találat a teljes `public/`+`src/` SVG-készletben; a régi ⚠️ megjegyzés elavultsága rögzítve.
+- **`dev-server.log` törölve**, a dev szerver log-fájl nélkül újraindítva.
+- **QA:** `tsc` = 0; `lint --max-warnings 0` = 0; `build` = 0. *(A [7.20.3] Groq-fix élesítése Norbi részéről megtörtént.)*
+
+## Aktuális állapot — 2026-10-08, [7.20.3] Groq modellcsere — a chat újra él
+
+- **Kritikus hiba javítva:** a WebDudeChat `/api/chat` 404-et kapott (`llama-3.3-70b-versatile` → Enterprise szintre került, a fejlesztői kulcs nem fér hozzá — élő `/v1/models`: 11 modell, 0 Llama chatmodell; a `llama-3.3-70b-specdec` sem elérhető, a kérésben javasolt csere tehát nem működött volna).
+- **Csere:** `llama-3.3-70b-versatile` → **`openai/gpt-oss-120b`** (Production) **16 fájl / 21 előfordulás** (`route.ts`, `ai.ts` 5×, `ai-copilot.ts`, 13 `*-workshop.ts`); + `createGeneration.ts` `llama3-70b-8192` → `openai/gpt-oss-120b` (szintén halott modell, élő portál-generálás). `_mentesek/` érintetlen.
+- **Igazolás:** élő füstteszt `tools`-szal → `FINISH=tool_calls` (eszközhívás OK); `scripts/verify-chat.mjs` (szigorítva: valódi válasz + `role="alert"` detektálás) → **PASS: true**; szerverlog `POST /api/chat 200`, `model_not_found` = 0.
+- **QA:** `tsc` = 0; `lint --max-warnings 0` = 0; `build` = 0. Korábban (ugyanezen a napon) törölve a korrupt **1,3 GB-os `.next` cache** is (a `a[c] is not a function` Clarity-eredetű hamis jelzése mellett) — lásd [7.20.3] CHANGELOG.
+- **Új eszköz:** `scripts/verify-chat.mjs` — böngészős chat-regressziós teszt (Playwright), `PLAYWRIGHT_BASE_URL` felülírható.
+
 ## Aktuális állapot — 2026-10-02, [7.15.0] BTShop esettanulmány WOW-hatás + E-E-A-T
 
 - **Halott kód takarítás:** a `BtshopHero.tsx`, `BtshopEngineeringGrid.tsx`, `BtshopFinalCta.tsx` **egyikét sem importálta semmi**; a `BtshopEeatSection.tsx` nem létezett. A `BtshopCaseStudy.tsx` (444 sor) az egyetlen élő komponens. A 3 dead-end fájlt töröltem, az E-E-A-T komponens a `BtshopEngineeringGrid.tsx` helyén jött létre (`git mv` + átírás, 117 sor).
@@ -169,7 +218,7 @@
 ## 1. Jelenlegi Sprint / Fókusz
 - **Aktív Ciklus:** **WCAG AA akadálymentesítési kör — LEZÁRVA (2026-09-21)**. A token-átadás (Cycle 3154) és a portál értesítési rendszer (Cycle 3160) szintén **készen van és verifikált** — lásd 3. pont.
 - **Aktív Ciklus (korábbi):** Cycle 3157 → **TÁRGYTALAN (már lezárva Cycle 3160 / v7.1.0 alatt)**.
-- **Fő célkitűzés:** a 7.6.0 (PortfolioGrid Bento & Electric Cyan) lezárása után a valós nyitott tételek: Firestore index/rules deploy (Norbi), `HeroSlider` page-be kötése, `PortalDashboard.tsx` (793 sor) szétbontása.
+- **Fő célkitűzés (frissítve 2026-10-08):** a valós nyitott tételek: Firestore index/rules deploy (Norbi); ~~`HeroSlider` page-be kötése~~ (lezárva: archiválva, [7.20.4]); ~~`PortalDashboard.tsx` (793 sor) szétbontása~~ (megoldva: [7.8.0]).
 
 ## 2. Aktuális Munkaterület Állapota (Git & QA)
 - **TypeScript & Build:** ✅ `npx tsc --noEmit` → TSC_EXIT=0; `npm run lint -- --max-warnings 0` → LINT_EXIT=0 (a `_apply-seo.js` gyökér-stub felvéve az `eslint.config.mjs` ignores listájára); `npm run build` → exit 0, 146 statikus oldal; `node scripts/audit-contrast.js` → 0 hiba / 303 fájl; `npx jest src/hooks/__tests__/useFocusTrap.test.tsx` → 8/8.
@@ -192,16 +241,18 @@
 - **(Norbi) Jest konfig-tisztítás (javaslat, nem blokkoló):** a `_mentesek/**` és `e2e/**` kizárása a `testMatch`-ből, illetve a stale `Footer`/`HeroSection`/`Button` tesztek frissítése — jelenleg hamis negatívot adnak minden QA futásnál (lásd 2. pont).
 - **(Norbi) Firestore index-deploy:** a `firestore.indexes.json` már tartalmazza a szükséges kompozit indexeket (`user_generations`: userId ASC + createdAt DESC; `vault`: clientId ASC + createdAt DESC), de **éles deploy még nem történt**. Enélkül az értesítési `onSnapshot` lekérdezések produkcióban `failed-precondition` hibát adhatnak. Parancs: `firebase deploy --only firestore:indexes`.
 - **(Norbi) `firestore.rules` deploy:** ugyancsak függőben.
-- **`HeroSlider` bekötése:** a `HeroSlider.tsx` (230 sor, 7.3.0) elkészült, de **egyetlen `page.tsx`-be sincs bekötve** (ellenőrizve: 0 találat).
+- ~~**`HeroSlider` bekötése**~~ → **lezárva [7.20.4]: archiválva** (`_mentesek/20261008_techdebt-cleanup/HeroSlider.tsx`) — a diavetítést a `HeroSectionNew` natívan kezeli, a komponens 0 helyen volt bekötve (dead code).
 - **CI/CD:** a `deploy.bat` kiváltása GitHub Actions workflow-val (hosszú távú).
 
 ## 5. KÖVETKEZŐ ATOMI LÉPÉS (Next Action)
-- 🎯 **Feladat:** a **CI élesítése** — a `.github/workflows/ci.yml` a `main` branchre figyel, a projekt viszont `master` ágon van, így a pipeline **soha nem futott**. Két sor: (a) `branches: [ main ]` → `[ master ]`; (b) a `npm run lint` lépéshez `--max-warnings 0` hozzáadása — a 7.9.0 óta a projekt **0 figyelmeztetéssel** is átmegy, így ez a kapu is működőképes lesz.
-- 🛠️ **Érintett fájlok:** `.github/workflows/ci.yml`.
-- 🧪 **Várt kimenet:** a `master`-re pusholáskor lefut a TypeScript + ESLint (0/0) + build ellenőrzés.
-- 📌 **Alternatíva / párhuzamos tételek:**
-  - **Képderivatívumok kiterjesztése** ugyanezzel a mintával a portfólió- és essettanulmány-kártyákra (`PortfolioGrid`, `WorkCard`, `CaseStudiesBento`, `BlogGrid`) — a jelenlegi `unoptimized: true` mellett ezek is nyers, teljes méretű képeket szolgálnak ki.
-  - `HeroSlider.tsx` archiválási döntés (duplikálja a `HeroSectionNew` diavetítését, 0 helyen bekötve).
+- ✅ **[LEZÁRVA — 7.10.0] CI élesítés:** a `.github/workflows/ci.yml` `main` → `master` + `--max-warnings 0` lint-kapu 2026-09-30-ban bekerült és fut a `master` pushokra. *(Ez a bejegyzés korábban tévesen még nyitott feladatként szerepelt itt — 2026-10-08-án tisztázva.)*
+- ✅ **[LEZÁRVA] Token átadás (`createGeneration`, Cycle 3154):** a `useCreateGeneration` → `getIdToken(true)` → `createGeneration(input, idToken)` lánc **él és működik**; a szerver `verifyIdToken`-nel hitelesít. Bekötve a `DynamicWorkflowForm`-ba. *(Korábban sablon-placeholderként „hiányos"-ként szerepelt — tisztítva.)*
+- ✅ **[LEZÁRVA] Portál valós idejű értesítések (Cycle 3160 / [7.1.0], Phase 2 [7.22.0]):** a `PortalNotificationBell` + `usePortalNotifications` (3× `onSnapshot`, Anti-Drain cleanup) **él és működik**; bekötve a `PortalDashboard` fejlécébe. *(Korábban sablon-placeholderként „tervezendő"-ként szerepelt — tisztítva.)*
+- ✅ **[LEZÁRVA] Vault dokumentum-előnéző (Cycle 3151):** a `DocumentPreviewModal` (PDF-iframe + kép `<img>`, glassmorphism, motion, `useFocusTrap` ESC/fókuszcsapda, Bezárás/Megnyitás/Letöltés/Link-másolás) **él és be van kötve** a `ClientVault`-ba. *(Korábban a ROADMAP nyitott pontjaként szerepelt — tisztítva.)*
+- 🎯 **Aktuális következő lépés (ROADMAP szerint valóban nyitott):** a „2. Admin UI" blokk — KPI dashboard bővítés (Revenue / Churn / LTV, `src/app/actions/getEnhancedKpiMetrics.ts`) és az export-funkciók egységesítése (`exportLeads.ts` + `exportProjects.ts` → PDF/CSV közös felület). *(Norbi jóváhagyása után indul.)*
+- 📌 **Párhuzamos / nyitott tételek:**
+  - **Képderivatívumok kiterjesztése** a portfólió- és esettanulmány-kártyákra (`PortfolioGrid`, `WorkCard`, `CaseStudiesBento`, `BlogGrid`) — a jelenlegi `unoptimized: true` mellett ezek is nyers, teljes méretű képeket szolgálnak ki.
+  - ~~`HeroSlider.tsx` archiválási döntés~~ → **lezárva [7.20.4]**: `_mentesek/20261008_techdebt-cleanup/`-ba archiválva.
   - Jest konfig-tisztítás (`_mentesek/**` + `e2e/**` kizárása a `testMatch`-ből).
 
-> ⚠️ **JAVÍTÁS (2026-09-20):** ez a fájl korábban **sablon-placeholdereket** (`[pl. ...]`) tartalmazott, amelyek a már lezárt Cycle 3154/3160 munkát nyitott feladatként írták le — ez téves roadmap-irányt okozott. A placeholderek valós, verifikált adatokra cserélve.
+> ⚠️ **JAVÍTÁS (2026-09-20):** ez a fájl korábban **sablon-placeholdereket** (`[pl. ...]`) tartalmazott, amelyek a már lezárt Cycle 3154/3160/3151 munkát nyitott feladatként írták le — ez téves roadmap-irányt okozott. A placeholderek valós, verifikált adatokra cserélve. *(2026-10-14: újabb tisztítás — a „következő lépés" szekcióban az értesítések/Token/Vault-előnézet ismét lezárásra cserélve, a valódi nyitott pont az Admin KPI-blokk.)*

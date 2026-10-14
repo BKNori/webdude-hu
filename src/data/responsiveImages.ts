@@ -29,6 +29,21 @@ export const responsiveImageManifest: Record<string, ResponsiveImageVariants> = 
     "avif": "/assets/banners/responsive/webdude%20banner%202000x1000-640w.avif 640w, /assets/banners/responsive/webdude%20banner%202000x1000-1024w.avif 1024w, /assets/banners/responsive/webdude%20banner%202000x1000-1600w.avif 1600w, /assets/banners/responsive/webdude%20banner%202000x1000-2000w.avif 2000w",
     "webp": "/assets/banners/responsive/webdude%20banner%202000x1000-640w.webp 640w, /assets/banners/responsive/webdude%20banner%202000x1000-1024w.webp 1024w, /assets/banners/responsive/webdude%20banner%202000x1000-1600w.webp 1600w, /assets/banners/responsive/webdude%20banner%202000x1000-2000w.webp 2000w"
   },
+  "/assets/portfolio/nedel-market/nedel_market_banner.webp": {
+    "fallback": "/assets/portfolio/nedel-market/nedel_market_banner.webp",
+    "avif": "/assets/responsive/portfolio/nedel-market/nedel_market_banner-320w.avif 320w, /assets/responsive/portfolio/nedel-market/nedel_market_banner-640w.avif 640w, /assets/responsive/portfolio/nedel-market/nedel_market_banner-960w.avif 960w, /assets/responsive/portfolio/nedel-market/nedel_market_banner-1600w.avif 1600w, /assets/responsive/portfolio/nedel-market/nedel_market_banner-2000w.avif 2000w",
+    "webp": "/assets/responsive/portfolio/nedel-market/nedel_market_banner-320w.webp 320w, /assets/responsive/portfolio/nedel-market/nedel_market_banner-640w.webp 640w, /assets/responsive/portfolio/nedel-market/nedel_market_banner-960w.webp 960w, /assets/responsive/portfolio/nedel-market/nedel_market_banner-1600w.webp 1600w, /assets/responsive/portfolio/nedel-market/nedel_market_banner-2000w.webp 2000w"
+  },
+  "/assets/portfolio/leanperial/leanperial website mockup.webp": {
+    "fallback": "/assets/portfolio/leanperial/leanperial%20website%20mockup.webp",
+    "avif": "/assets/responsive/portfolio/leanperial/leanperial%20website%20mockup-320w.avif 320w, /assets/responsive/portfolio/leanperial/leanperial%20website%20mockup-640w.avif 640w, /assets/responsive/portfolio/leanperial/leanperial%20website%20mockup-960w.avif 960w, /assets/responsive/portfolio/leanperial/leanperial%20website%20mockup-1600w.avif 1600w, /assets/responsive/portfolio/leanperial/leanperial%20website%20mockup-2000w.avif 2000w",
+    "webp": "/assets/responsive/portfolio/leanperial/leanperial%20website%20mockup-320w.webp 320w, /assets/responsive/portfolio/leanperial/leanperial%20website%20mockup-640w.webp 640w, /assets/responsive/portfolio/leanperial/leanperial%20website%20mockup-960w.webp 960w, /assets/responsive/portfolio/leanperial/leanperial%20website%20mockup-1600w.webp 1600w, /assets/responsive/portfolio/leanperial/leanperial%20website%20mockup-2000w.webp 2000w"
+  },
+  "/assets/portfolio/leanperial/K-Leanperial_banner.webp": {
+    "fallback": "/assets/portfolio/leanperial/K-Leanperial_banner.webp",
+    "avif": "/assets/responsive/portfolio/leanperial/K-Leanperial_banner-320w.avif 320w, /assets/responsive/portfolio/leanperial/K-Leanperial_banner-640w.avif 640w, /assets/responsive/portfolio/leanperial/K-Leanperial_banner-960w.avif 960w, /assets/responsive/portfolio/leanperial/K-Leanperial_banner-1600w.avif 1600w, /assets/responsive/portfolio/leanperial/K-Leanperial_banner-2000w.avif 2000w",
+    "webp": "/assets/responsive/portfolio/leanperial/K-Leanperial_banner-320w.webp 320w, /assets/responsive/portfolio/leanperial/K-Leanperial_banner-640w.webp 640w, /assets/responsive/portfolio/leanperial/K-Leanperial_banner-960w.webp 960w, /assets/responsive/portfolio/leanperial/K-Leanperial_banner-1600w.webp 1600w, /assets/responsive/portfolio/leanperial/K-Leanperial_banner-2000w.webp 2000w"
+  },
   "/assets/portfolio/btshop/btshop-banner-highres.webp": {
     "fallback": "/assets/portfolio/btshop/btshop-banner-highres.webp",
     "avif": "/assets/responsive/portfolio/btshop/btshop-banner-highres-320w.avif 320w, /assets/responsive/portfolio/btshop/btshop-banner-highres-640w.avif 640w, /assets/responsive/portfolio/btshop/btshop-banner-highres-960w.avif 960w, /assets/responsive/portfolio/btshop/btshop-banner-highres-1600w.avif 1600w, /assets/responsive/portfolio/btshop/btshop-banner-highres-2000w.avif 2000w",
@@ -54,10 +69,15 @@ export const responsiveImageManifest: Record<string, ResponsiveImageVariants> = 
     "avif": "/assets/responsive/portfolio/bor-es-garnela/bor-garnela-foodtruck-banner-eros-pista-feszt-2023-kecskemet-copy-320w.avif 320w, /assets/responsive/portfolio/bor-es-garnela/bor-garnela-foodtruck-banner-eros-pista-feszt-2023-kecskemet-copy-640w.avif 640w, /assets/responsive/portfolio/bor-es-garnela/bor-garnela-foodtruck-banner-eros-pista-feszt-2023-kecskemet-copy-960w.avif 960w, /assets/responsive/portfolio/bor-es-garnela/bor-garnela-foodtruck-banner-eros-pista-feszt-2023-kecskemet-copy-1600w.avif 1600w, /assets/responsive/portfolio/bor-es-garnela/bor-garnela-foodtruck-banner-eros-pista-feszt-2023-kecskemet-copy-2000w.avif 2000w",
     "webp": "/assets/responsive/portfolio/bor-es-garnela/bor-garnela-foodtruck-banner-eros-pista-feszt-2023-kecskemet-copy-320w.webp 320w, /assets/responsive/portfolio/bor-es-garnela/bor-garnela-foodtruck-banner-eros-pista-feszt-2023-kecskemet-copy-640w.webp 640w, /assets/responsive/portfolio/bor-es-garnela/bor-garnela-foodtruck-banner-eros-pista-feszt-2023-kecskemet-copy-960w.webp 960w, /assets/responsive/portfolio/bor-es-garnela/bor-garnela-foodtruck-banner-eros-pista-feszt-2023-kecskemet-copy-1600w.webp 1600w, /assets/responsive/portfolio/bor-es-garnela/bor-garnela-foodtruck-banner-eros-pista-feszt-2023-kecskemet-copy-2000w.webp 2000w"
   },
-  "/assets/portfolio/hu-mago-kft/humago-allo-banner-a-shopbansss-cssopy-copy.webp": {
-    "fallback": "/assets/portfolio/hu-mago-kft/humago-allo-banner-a-shopbansss-cssopy-copy.webp",
-    "avif": "/assets/responsive/portfolio/hu-mago-kft/humago-allo-banner-a-shopbansss-cssopy-copy-320w.avif 320w, /assets/responsive/portfolio/hu-mago-kft/humago-allo-banner-a-shopbansss-cssopy-copy-640w.avif 640w, /assets/responsive/portfolio/hu-mago-kft/humago-allo-banner-a-shopbansss-cssopy-copy-960w.avif 960w, /assets/responsive/portfolio/hu-mago-kft/humago-allo-banner-a-shopbansss-cssopy-copy-1600w.avif 1600w, /assets/responsive/portfolio/hu-mago-kft/humago-allo-banner-a-shopbansss-cssopy-copy-2000w.avif 2000w",
-    "webp": "/assets/responsive/portfolio/hu-mago-kft/humago-allo-banner-a-shopbansss-cssopy-copy-320w.webp 320w, /assets/responsive/portfolio/hu-mago-kft/humago-allo-banner-a-shopbansss-cssopy-copy-640w.webp 640w, /assets/responsive/portfolio/hu-mago-kft/humago-allo-banner-a-shopbansss-cssopy-copy-960w.webp 960w, /assets/responsive/portfolio/hu-mago-kft/humago-allo-banner-a-shopbansss-cssopy-copy-1600w.webp 1600w, /assets/responsive/portfolio/hu-mago-kft/humago-allo-banner-a-shopbansss-cssopy-copy-2000w.webp 2000w"
+  "/assets/portfolio/hu-mago-kft/Gemini_Generated_Image_h2e2i2h2e2i2h2e2.jfif": {
+    "fallback": "/assets/portfolio/hu-mago-kft/Gemini_Generated_Image_h2e2i2h2e2i2h2e2.jfif",
+    "avif": "/assets/responsive/portfolio/hu-mago-kft/Gemini_Generated_Image_h2e2i2h2e2i2h2e2-320w.avif 320w, /assets/responsive/portfolio/hu-mago-kft/Gemini_Generated_Image_h2e2i2h2e2i2h2e2-640w.avif 640w, /assets/responsive/portfolio/hu-mago-kft/Gemini_Generated_Image_h2e2i2h2e2i2h2e2-960w.avif 960w, /assets/responsive/portfolio/hu-mago-kft/Gemini_Generated_Image_h2e2i2h2e2i2h2e2-1600w.avif 1600w, /assets/responsive/portfolio/hu-mago-kft/Gemini_Generated_Image_h2e2i2h2e2i2h2e2-2000w.avif 2000w",
+    "webp": "/assets/responsive/portfolio/hu-mago-kft/Gemini_Generated_Image_h2e2i2h2e2i2h2e2-320w.webp 320w, /assets/responsive/portfolio/hu-mago-kft/Gemini_Generated_Image_h2e2i2h2e2i2h2e2-640w.webp 640w, /assets/responsive/portfolio/hu-mago-kft/Gemini_Generated_Image_h2e2i2h2e2i2h2e2-960w.webp 960w, /assets/responsive/portfolio/hu-mago-kft/Gemini_Generated_Image_h2e2i2h2e2i2h2e2-1600w.webp 1600w, /assets/responsive/portfolio/hu-mago-kft/Gemini_Generated_Image_h2e2i2h2e2i2h2e2-2000w.webp 2000w"
+  },
+  "/assets/portfolio/go-box-kft/Go-Box-Banner.webp": {
+    "fallback": "/assets/portfolio/go-box-kft/Go-Box-Banner.webp",
+    "avif": "/assets/responsive/portfolio/go-box-kft/Go-Box-Banner-320w.avif 320w, /assets/responsive/portfolio/go-box-kft/Go-Box-Banner-640w.avif 640w, /assets/responsive/portfolio/go-box-kft/Go-Box-Banner-960w.avif 960w, /assets/responsive/portfolio/go-box-kft/Go-Box-Banner-1600w.avif 1600w, /assets/responsive/portfolio/go-box-kft/Go-Box-Banner-2000w.avif 2000w",
+    "webp": "/assets/responsive/portfolio/go-box-kft/Go-Box-Banner-320w.webp 320w, /assets/responsive/portfolio/go-box-kft/Go-Box-Banner-640w.webp 640w, /assets/responsive/portfolio/go-box-kft/Go-Box-Banner-960w.webp 960w, /assets/responsive/portfolio/go-box-kft/Go-Box-Banner-1600w.webp 1600w, /assets/responsive/portfolio/go-box-kft/Go-Box-Banner-2000w.webp 2000w"
   },
   "/assets/portfolio/marina-lakopark/marina-nagytabla-copy-2.webp": {
     "fallback": "/assets/portfolio/marina-lakopark/marina-nagytabla-copy-2.webp",
@@ -79,10 +99,10 @@ export const responsiveImageManifest: Record<string, ResponsiveImageVariants> = 
     "avif": "/assets/responsive/portfolio/drnagyalbert/dr-nagy-albert-neurologus-2-320w.avif 320w, /assets/responsive/portfolio/drnagyalbert/dr-nagy-albert-neurologus-2-640w.avif 640w, /assets/responsive/portfolio/drnagyalbert/dr-nagy-albert-neurologus-2-960w.avif 960w, /assets/responsive/portfolio/drnagyalbert/dr-nagy-albert-neurologus-2-1600w.avif 1600w, /assets/responsive/portfolio/drnagyalbert/dr-nagy-albert-neurologus-2-2000w.avif 2000w",
     "webp": "/assets/responsive/portfolio/drnagyalbert/dr-nagy-albert-neurologus-2-320w.webp 320w, /assets/responsive/portfolio/drnagyalbert/dr-nagy-albert-neurologus-2-640w.webp 640w, /assets/responsive/portfolio/drnagyalbert/dr-nagy-albert-neurologus-2-960w.webp 960w, /assets/responsive/portfolio/drnagyalbert/dr-nagy-albert-neurologus-2-1600w.webp 1600w, /assets/responsive/portfolio/drnagyalbert/dr-nagy-albert-neurologus-2-2000w.webp 2000w"
   },
-  "/assets/portfolio/lengyel-helga-eskuvodekoracio/eskuvodekoraci-banner.webp": {
-    "fallback": "/assets/portfolio/lengyel-helga-eskuvodekoracio/eskuvodekoraci-banner.webp",
-    "avif": "/assets/responsive/portfolio/lengyel-helga-eskuvodekoracio/eskuvodekoraci-banner-320w.avif 320w, /assets/responsive/portfolio/lengyel-helga-eskuvodekoracio/eskuvodekoraci-banner-640w.avif 640w, /assets/responsive/portfolio/lengyel-helga-eskuvodekoracio/eskuvodekoraci-banner-960w.avif 960w, /assets/responsive/portfolio/lengyel-helga-eskuvodekoracio/eskuvodekoraci-banner-1600w.avif 1600w, /assets/responsive/portfolio/lengyel-helga-eskuvodekoracio/eskuvodekoraci-banner-2000w.avif 2000w",
-    "webp": "/assets/responsive/portfolio/lengyel-helga-eskuvodekoracio/eskuvodekoraci-banner-320w.webp 320w, /assets/responsive/portfolio/lengyel-helga-eskuvodekoracio/eskuvodekoraci-banner-640w.webp 640w, /assets/responsive/portfolio/lengyel-helga-eskuvodekoracio/eskuvodekoraci-banner-960w.webp 960w, /assets/responsive/portfolio/lengyel-helga-eskuvodekoracio/eskuvodekoraci-banner-1600w.webp 1600w, /assets/responsive/portfolio/lengyel-helga-eskuvodekoracio/eskuvodekoraci-banner-2000w.webp 2000w"
+  "/assets/portfolio/lengyel-helga-eskuvodekoracio/eskuvoidekoraci-banner.webp": {
+    "fallback": "/assets/portfolio/lengyel-helga-eskuvodekoracio/eskuvoidekoraci-banner.webp",
+    "avif": "/assets/responsive/portfolio/lengyel-helga-eskuvodekoracio/eskuvoidekoraci-banner-320w.avif 320w, /assets/responsive/portfolio/lengyel-helga-eskuvodekoracio/eskuvoidekoraci-banner-640w.avif 640w, /assets/responsive/portfolio/lengyel-helga-eskuvodekoracio/eskuvoidekoraci-banner-960w.avif 960w, /assets/responsive/portfolio/lengyel-helga-eskuvodekoracio/eskuvoidekoraci-banner-1600w.avif 1600w, /assets/responsive/portfolio/lengyel-helga-eskuvodekoracio/eskuvoidekoraci-banner-2000w.avif 2000w",
+    "webp": "/assets/responsive/portfolio/lengyel-helga-eskuvodekoracio/eskuvoidekoraci-banner-320w.webp 320w, /assets/responsive/portfolio/lengyel-helga-eskuvodekoracio/eskuvoidekoraci-banner-640w.webp 640w, /assets/responsive/portfolio/lengyel-helga-eskuvodekoracio/eskuvoidekoraci-banner-960w.webp 960w, /assets/responsive/portfolio/lengyel-helga-eskuvodekoracio/eskuvoidekoraci-banner-1600w.webp 1600w, /assets/responsive/portfolio/lengyel-helga-eskuvodekoracio/eskuvoidekoraci-banner-2000w.webp 2000w"
   },
   "/assets/portfolio/ai-promt-hu/ai-promt-hi-banner-2.webp": {
     "fallback": "/assets/portfolio/ai-promt-hu/ai-promt-hi-banner-2.webp",
@@ -154,10 +174,20 @@ export const responsiveImageManifest: Record<string, ResponsiveImageVariants> = 
     "avif": "/assets/responsive/portfolio/go-box-kft/Go-Box-Banner2-320w.avif 320w, /assets/responsive/portfolio/go-box-kft/Go-Box-Banner2-640w.avif 640w, /assets/responsive/portfolio/go-box-kft/Go-Box-Banner2-960w.avif 960w",
     "webp": "/assets/responsive/portfolio/go-box-kft/Go-Box-Banner2-320w.webp 320w, /assets/responsive/portfolio/go-box-kft/Go-Box-Banner2-640w.webp 640w, /assets/responsive/portfolio/go-box-kft/Go-Box-Banner2-960w.webp 960w"
   },
+  "/assets/portfolio/lengyel-helga-eskuvodekoracio/eskuvodekoraci-banner.webp": {
+    "fallback": "/assets/portfolio/lengyel-helga-eskuvodekoracio/eskuvodekoraci-banner.webp",
+    "avif": "/assets/responsive/portfolio/lengyel-helga-eskuvodekoracio/eskuvodekoraci-banner-320w.avif 320w, /assets/responsive/portfolio/lengyel-helga-eskuvodekoracio/eskuvodekoraci-banner-640w.avif 640w, /assets/responsive/portfolio/lengyel-helga-eskuvodekoracio/eskuvodekoraci-banner-960w.avif 960w, /assets/responsive/portfolio/lengyel-helga-eskuvodekoracio/eskuvodekoraci-banner-1600w.avif 1600w, /assets/responsive/portfolio/lengyel-helga-eskuvodekoracio/eskuvodekoraci-banner-2000w.avif 2000w",
+    "webp": "/assets/responsive/portfolio/lengyel-helga-eskuvodekoracio/eskuvodekoraci-banner-320w.webp 320w, /assets/responsive/portfolio/lengyel-helga-eskuvodekoracio/eskuvodekoraci-banner-640w.webp 640w, /assets/responsive/portfolio/lengyel-helga-eskuvodekoracio/eskuvodekoraci-banner-960w.webp 960w, /assets/responsive/portfolio/lengyel-helga-eskuvodekoracio/eskuvodekoraci-banner-1600w.webp 1600w, /assets/responsive/portfolio/lengyel-helga-eskuvodekoracio/eskuvodekoraci-banner-2000w.webp 2000w"
+  },
   "/assets/portfolio/lengyel-helga-eskuvodekoracio/helga-banner-copy.webp": {
     "fallback": "/assets/portfolio/lengyel-helga-eskuvodekoracio/helga-banner-copy.webp",
     "avif": "/assets/responsive/portfolio/lengyel-helga-eskuvodekoracio/helga-banner-copy-320w.avif 320w, /assets/responsive/portfolio/lengyel-helga-eskuvodekoracio/helga-banner-copy-640w.avif 640w, /assets/responsive/portfolio/lengyel-helga-eskuvodekoracio/helga-banner-copy-960w.avif 960w, /assets/responsive/portfolio/lengyel-helga-eskuvodekoracio/helga-banner-copy-1600w.avif 1600w",
     "webp": "/assets/responsive/portfolio/lengyel-helga-eskuvodekoracio/helga-banner-copy-320w.webp 320w, /assets/responsive/portfolio/lengyel-helga-eskuvodekoracio/helga-banner-copy-640w.webp 640w, /assets/responsive/portfolio/lengyel-helga-eskuvodekoracio/helga-banner-copy-960w.webp 960w, /assets/responsive/portfolio/lengyel-helga-eskuvodekoracio/helga-banner-copy-1600w.webp 1600w"
+  },
+  "/assets/portfolio/hu-mago-kft/humago-allo-banner-a-shopbansss-cssopy-copy.webp": {
+    "fallback": "/assets/portfolio/hu-mago-kft/humago-allo-banner-a-shopbansss-cssopy-copy.webp",
+    "avif": "/assets/responsive/portfolio/hu-mago-kft/humago-allo-banner-a-shopbansss-cssopy-copy-320w.avif 320w, /assets/responsive/portfolio/hu-mago-kft/humago-allo-banner-a-shopbansss-cssopy-copy-640w.avif 640w, /assets/responsive/portfolio/hu-mago-kft/humago-allo-banner-a-shopbansss-cssopy-copy-960w.avif 960w, /assets/responsive/portfolio/hu-mago-kft/humago-allo-banner-a-shopbansss-cssopy-copy-1600w.avif 1600w",
+    "webp": "/assets/responsive/portfolio/hu-mago-kft/humago-allo-banner-a-shopbansss-cssopy-copy-320w.webp 320w, /assets/responsive/portfolio/hu-mago-kft/humago-allo-banner-a-shopbansss-cssopy-copy-640w.webp 640w, /assets/responsive/portfolio/hu-mago-kft/humago-allo-banner-a-shopbansss-cssopy-copy-960w.webp 960w, /assets/responsive/portfolio/hu-mago-kft/humago-allo-banner-a-shopbansss-cssopy-copy-1600w.webp 1600w"
   },
   "/assets/portfolio/hu-mago-kft/humago-fal-copy.webp": {
     "fallback": "/assets/portfolio/hu-mago-kft/humago-fal-copy.webp",
@@ -223,6 +253,31 @@ export const responsiveImageManifest: Record<string, ResponsiveImageVariants> = 
     "fallback": "/assets/portfolio/drnagyalbert/dr-nagy-albert-neurologus.webp",
     "avif": "/assets/responsive/portfolio/drnagyalbert/dr-nagy-albert-neurologus-320w.avif 320w, /assets/responsive/portfolio/drnagyalbert/dr-nagy-albert-neurologus-640w.avif 640w, /assets/responsive/portfolio/drnagyalbert/dr-nagy-albert-neurologus-960w.avif 960w, /assets/responsive/portfolio/drnagyalbert/dr-nagy-albert-neurologus-1600w.avif 1600w",
     "webp": "/assets/responsive/portfolio/drnagyalbert/dr-nagy-albert-neurologus-320w.webp 320w, /assets/responsive/portfolio/drnagyalbert/dr-nagy-albert-neurologus-640w.webp 640w, /assets/responsive/portfolio/drnagyalbert/dr-nagy-albert-neurologus-960w.webp 960w, /assets/responsive/portfolio/drnagyalbert/dr-nagy-albert-neurologus-1600w.webp 1600w"
+  },
+  "/assets/portfolio/nedel-market/fehér_spárga.webp": {
+    "fallback": "/assets/portfolio/nedel-market/feh%C3%A9r_sp%C3%A1rga.webp",
+    "avif": "/assets/responsive/portfolio/nedel-market/feh%C3%A9r_sp%C3%A1rga-320w.avif 320w, /assets/responsive/portfolio/nedel-market/feh%C3%A9r_sp%C3%A1rga-640w.avif 640w",
+    "webp": ""
+  },
+  "/assets/portfolio/nedel-market/paprika_eladó_banner1.webp": {
+    "fallback": "/assets/portfolio/nedel-market/paprika_elad%C3%B3_banner1.webp",
+    "avif": "/assets/responsive/portfolio/nedel-market/paprika_elad%C3%B3_banner1-320w.avif 320w, /assets/responsive/portfolio/nedel-market/paprika_elad%C3%B3_banner1-640w.avif 640w",
+    "webp": ""
+  },
+  "/assets/portfolio/leanperial/K-Leanperial_banner2.webp": {
+    "fallback": "/assets/portfolio/leanperial/K-Leanperial_banner2.webp",
+    "avif": "/assets/responsive/portfolio/leanperial/K-Leanperial_banner2-320w.avif 320w, /assets/responsive/portfolio/leanperial/K-Leanperial_banner2-640w.avif 640w",
+    "webp": ""
+  },
+  "/assets/portfolio/leanperial/K-Mastering_questioning_bg.webp": {
+    "fallback": "/assets/portfolio/leanperial/K-Mastering_questioning_bg.webp",
+    "avif": "/assets/responsive/portfolio/leanperial/K-Mastering_questioning_bg-320w.avif 320w, /assets/responsive/portfolio/leanperial/K-Mastering_questioning_bg-640w.avif 640w",
+    "webp": ""
+  },
+  "/assets/portfolio/leanperial/K-Executive_Search-bg.webp": {
+    "fallback": "/assets/portfolio/leanperial/K-Executive_Search-bg.webp",
+    "avif": "/assets/responsive/portfolio/leanperial/K-Executive_Search-bg-320w.avif 320w, /assets/responsive/portfolio/leanperial/K-Executive_Search-bg-640w.avif 640w",
+    "webp": ""
   },
   "/assets/portfolio/classi-co/classi-co-banner-copy.webp": {
     "fallback": "/assets/portfolio/classi-co/classi-co-banner-copy.webp",
@@ -339,6 +394,31 @@ export const responsiveImageManifest: Record<string, ResponsiveImageVariants> = 
     "avif": "/assets/responsive/portfolio/bor-es-garnela/side-41-copy-scaled-copy-320w.avif 320w, /assets/responsive/portfolio/bor-es-garnela/side-41-copy-scaled-copy-640w.avif 640w",
     "webp": ""
   },
+  "/assets/portfolio/go-box-kft/Go-Box-Banner3.webp": {
+    "fallback": "/assets/portfolio/go-box-kft/Go-Box-Banner3.webp",
+    "avif": "/assets/responsive/portfolio/go-box-kft/Go-Box-Banner3-320w.avif 320w, /assets/responsive/portfolio/go-box-kft/Go-Box-Banner3-640w.avif 640w",
+    "webp": ""
+  },
+  "/assets/portfolio/go-box-kft/banner.webp": {
+    "fallback": "/assets/portfolio/go-box-kft/banner.webp",
+    "avif": "/assets/responsive/portfolio/go-box-kft/banner-320w.avif 320w, /assets/responsive/portfolio/go-box-kft/banner-640w.avif 640w",
+    "webp": ""
+  },
+  "/assets/portfolio/go-box-kft/go-box-pizza-banner-copy.webp": {
+    "fallback": "/assets/portfolio/go-box-kft/go-box-pizza-banner-copy.webp",
+    "avif": "/assets/responsive/portfolio/go-box-kft/go-box-pizza-banner-copy-320w.avif 320w, /assets/responsive/portfolio/go-box-kft/go-box-pizza-banner-copy-640w.avif 640w",
+    "webp": ""
+  },
+  "/assets/portfolio/go-box-kft/gobox-doboz-gyartasa-kereskedeleme.webp": {
+    "fallback": "/assets/portfolio/go-box-kft/gobox-doboz-gyartasa-kereskedeleme.webp",
+    "avif": "/assets/responsive/portfolio/go-box-kft/gobox-doboz-gyartasa-kereskedeleme-320w.avif 320w, /assets/responsive/portfolio/go-box-kft/gobox-doboz-gyartasa-kereskedeleme-640w.avif 640w",
+    "webp": ""
+  },
+  "/assets/portfolio/go-box-kft/webdude-logo-3200x2000-baner-websites-copy.webp": {
+    "fallback": "/assets/portfolio/go-box-kft/webdude-logo-3200x2000-baner-websites-copy.webp",
+    "avif": "/assets/responsive/portfolio/go-box-kft/webdude-logo-3200x2000-baner-websites-copy-320w.avif 320w, /assets/responsive/portfolio/go-box-kft/webdude-logo-3200x2000-baner-websites-copy-640w.avif 640w",
+    "webp": ""
+  },
   "/assets/banners/marina homes lakópark logó RGB-7.webp": {
     "fallback": "/assets/banners/marina%20homes%20lak%C3%B3park%20log%C3%B3%20RGB-7.webp",
     "avif": "/assets/responsive/banners/marina%20homes%20lak%C3%B3park%20log%C3%B3%20RGB-7-320w.avif 320w, /assets/responsive/banners/marina%20homes%20lak%C3%B3park%20log%C3%B3%20RGB-7-640w.avif 640w",
@@ -382,31 +462,6 @@ export const responsiveImageManifest: Record<string, ResponsiveImageVariants> = 
   "/assets/portfolio/lengyel-helga-eskuvodekoracio/91-masolat-copy.webp": {
     "fallback": "/assets/portfolio/lengyel-helga-eskuvodekoracio/91-masolat-copy.webp",
     "avif": "/assets/responsive/portfolio/lengyel-helga-eskuvodekoracio/91-masolat-copy-320w.avif 320w, /assets/responsive/portfolio/lengyel-helga-eskuvodekoracio/91-masolat-copy-640w.avif 640w",
-    "webp": ""
-  },
-  "/assets/portfolio/go-box-kft/Go-Box-Banner.webp": {
-    "fallback": "/assets/portfolio/go-box-kft/Go-Box-Banner.webp",
-    "avif": "/assets/responsive/portfolio/go-box-kft/Go-Box-Banner-320w.avif 320w, /assets/responsive/portfolio/go-box-kft/Go-Box-Banner-640w.avif 640w",
-    "webp": ""
-  },
-  "/assets/portfolio/go-box-kft/Go-Box-Banner3.webp": {
-    "fallback": "/assets/portfolio/go-box-kft/Go-Box-Banner3.webp",
-    "avif": "/assets/responsive/portfolio/go-box-kft/Go-Box-Banner3-320w.avif 320w, /assets/responsive/portfolio/go-box-kft/Go-Box-Banner3-640w.avif 640w",
-    "webp": ""
-  },
-  "/assets/portfolio/go-box-kft/banner.webp": {
-    "fallback": "/assets/portfolio/go-box-kft/banner.webp",
-    "avif": "/assets/responsive/portfolio/go-box-kft/banner-320w.avif 320w, /assets/responsive/portfolio/go-box-kft/banner-640w.avif 640w",
-    "webp": ""
-  },
-  "/assets/portfolio/go-box-kft/go-box-pizza-banner-copy.webp": {
-    "fallback": "/assets/portfolio/go-box-kft/go-box-pizza-banner-copy.webp",
-    "avif": "/assets/responsive/portfolio/go-box-kft/go-box-pizza-banner-copy-320w.avif 320w, /assets/responsive/portfolio/go-box-kft/go-box-pizza-banner-copy-640w.avif 640w",
-    "webp": ""
-  },
-  "/assets/portfolio/go-box-kft/gobox-doboz-gyartasa-kereskedeleme.webp": {
-    "fallback": "/assets/portfolio/go-box-kft/gobox-doboz-gyartasa-kereskedeleme.webp",
-    "avif": "/assets/responsive/portfolio/go-box-kft/gobox-doboz-gyartasa-kereskedeleme-320w.avif 320w, /assets/responsive/portfolio/go-box-kft/gobox-doboz-gyartasa-kereskedeleme-640w.avif 640w",
     "webp": ""
   }
 };

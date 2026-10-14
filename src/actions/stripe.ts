@@ -12,28 +12,31 @@ const PHASE_LABELS: Record<string, string> = {
 };
 
 // Add-ons configuration
+// ZÉRÓ FIX ÁR: a `price` mező `null` — a publikus katalógusban nem jelenik meg
+// összeg, csak az ajánlatkérő CTA. A Stripe checkout ebben az esetben korai
+// hibával visszatér (lásd a guard-ot a createStripeCheckoutSessionAction-ben).
 export const ADDONS_CONFIG: Record<
   string,
-  { name: string; price: number; desc: string }
+  { name: string; price: number | null; desc: string }
 > = {
   addon_seo_article: {
     name: "🚀 Extra AI SEO Cikk (1 db)",
-    price: 15000,
+    price: null,
     desc: "Konverzió-optimalizált, keresőbarát szakcikk megírása és publikálása.",
   },
   addon_speed_opt: {
     name: "⚡ Webhely Sebesség Optimalizálás",
-    price: 45000,
+    price: null,
     desc: "Lighthouse pontszámok maximalizálása, betöltési sebesség radikális növelése.",
   },
   addon_security_pack: {
     name: "🛡️ Prémium Biztonsági Csomag (1 év)",
-    price: 60000,
+    price: null,
     desc: "Automatikus tűzfal, folyamatos malware scannelés és heti mentések.",
   },
   addon_ai_chatbot: {
     name: "🤖 Egyedi AI Chatbot Asszisztens",
-    price: 120000,
+    price: null,
     desc: "Saját tudásbázissal és egyedi stílussal rendelkező chatbot integrációja.",
   },
 };
@@ -71,6 +74,18 @@ export async function createStripeCheckoutSessionAction(
     const addon = ADDONS_CONFIG[phase];
     if (!addon) {
       return { success: false, error: "Érvénytelen kiegészítő szolgáltatás." };
+    }
+
+    // ZÉRÓ FIX ÁR guard: fix ár nélkül nem indítható Stripe munkamenet.
+    // A publikus bolt csak „Egyedi árajánlat kérése" CTA-t kínál, így ez az
+    // ág elvileg nem fut el — defenzív korai visszatérés a NaN/érvénytelen
+    // amount ellen.
+    if (addon.price === null || addon.price <= 0) {
+      return {
+        success: false,
+        error:
+          "Ez a kiegészítő szolgáltatás egyedi árajánlat alapján érhető el. Kérlek vedd fel velem a kapcsolatot.",
+      };
     }
 
     try {
@@ -442,7 +457,12 @@ export async function verifyStripePaymentAction(
             clientId: { stringValue: user.uid },
             addonId: { stringValue: phase },
             addonName: { stringValue: addon.name },
-            price: { integerValue: String(addon.price) },
+            // ZÉRÓ FIX ÁR: a `price` lehet null (egyedi árajánlat). Ekkor
+            // `nullValue` kerül tárolásra, nem egy érvénytelen integer.
+            price:
+              addon.price === null
+                ? { nullValue: null }
+                : { integerValue: String(addon.price) },
             purchasedAt: { stringValue: new Date().toISOString() },
             sessionId: { stringValue: sessionId },
           },

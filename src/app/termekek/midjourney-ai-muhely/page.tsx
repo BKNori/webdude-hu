@@ -11,7 +11,7 @@ import {
   ArrowRight,
   Copy,
   RefreshCw,
-  Layers,
+  Layers
 } from "lucide-react";
 import ProductAccessGuard from "@/components/molecules/ProductAccessGuard";
 
@@ -24,26 +24,23 @@ const productSchema = {
   image: "https://webdude.hu/og/webdude-og.jpg",
   brand: {
     "@type": "Brand",
-    name: "WebDude",
+    name: "WebDude"
   },
   offers: {
     "@type": "Offer",
-    price: "0",
-    priceCurrency: "HUF",
     availability: "https://schema.org/InStock",
     url: "https://webdude.hu/termekek/midjourney-ai-muhely",
-    priceValidUntil: "2027-12-31",
     seller: {
       "@type": "Organization",
-      name: "WebDude.hu",
+      name: "WebDude.hu"
     },
     description: "Egyedi árajánlat kérése",
   },
   aggregateRating: {
     "@type": "AggregateRating",
     ratingValue: "4.8",
-    reviewCount: "31",
-  },
+    reviewCount: "31"
+  }
 };
 
 const visualStyles = [
@@ -53,7 +50,7 @@ const visualStyles = [
     description: "Valósághű, részletes",
     prompt:
       "photorealistic visual, hyper-detailed, realistic lighting, 85mm G-Master optics, professional photography aesthetic",
-    color: "from-blue-500 to-sky-500",
+    color: "from-blue-500 to-sky-500"
   },
   {
     id: "cyberpunk",
@@ -61,7 +58,7 @@ const visualStyles = [
     description: "Futurisztikus, neon",
     prompt:
       "cyberpunk visual, neon lights, futuristic aesthetic, dark background with vibrant colors, tech-inspired, Cyber-Dark aesthetic",
-    color: "from-purple-500 to-pink-500",
+    color: "from-purple-500 to-pink-500"
   },
   {
     id: "minimalist",
@@ -69,7 +66,7 @@ const visualStyles = [
     description: "Tiszta, egyszerű",
     prompt:
       "minimalist visual, clean composition, ample negative space, modern aesthetic, professional simplicity",
-    color: "from-[#00B5F1] to-orange-500",
+    color: "from-[#00B5F1] to-brand-secondary"
   },
   {
     id: "artistic",
@@ -77,7 +74,7 @@ const visualStyles = [
     description: "Kreatív, expresszív",
     prompt:
       "artistic visual, creative expression, dynamic composition, artistic elements, unique aesthetic",
-    color: "from-green-500 to-emerald-500",
+    color: "from-green-500 to-emerald-500"
   },
   {
     id: "cinematic",
@@ -85,7 +82,7 @@ const visualStyles = [
     description: "Filmes, drámai",
     prompt:
       "cinematic visual, dramatic lighting, chiaroscuro, film grain aesthetic, movie-like composition",
-    color: "from-brand-secondary to-brand-primary",
+    color: "from-brand-secondary to-brand-primary"
   },
   {
     id: "abstract",
@@ -93,19 +90,19 @@ const visualStyles = [
     description: "Koncepcionális",
     prompt:
       "abstract visual, conceptual design, geometric shapes, modern art aesthetic, creative interpretation",
-    color: "from-indigo-500 to-blue-500",
-  },
+    color: "from-indigo-500 to-blue-500"
+  }
 ];
 
 const lightingOptions = [
   {
     id: "chiaroscuro",
     name: "Chiaroscuro",
-    description: "Fény-árnyék kontraszt",
+    description: "Fény-árnyék kontraszt"
   },
   { id: "golden", name: "Golden Hour", description: "Aranyórá fény" },
   { id: "studio", name: "Studio Lighting", description: "Stúdió fények" },
-  { id: "natural", name: "Natural Light", description: "Természetes fény" },
+  { id: "natural", name: "Natural Light", description: "Természetes fény" }
 ];
 
 const qualitySettings = [
@@ -113,13 +110,13 @@ const qualitySettings = [
   {
     id: "high",
     name: "High Quality",
-    description: "4K felbontás, magas részlet",
+    description: "4K felbontás, magas részlet"
   },
   {
     id: "standard",
     name: "Standard",
-    description: "2K felbontás, standard részlet",
-  },
+    description: "2K felbontás, standard részlet"
+  }
 ];
 
 export default function MidjourneyAIMuhelyPage() {
@@ -165,7 +162,7 @@ export default function MidjourneyAIMuhelyPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(productSchema).replace(/</g, "\\u003c"),
+          __html: JSON.stringify(productSchema).replace(/</g, "\\u003c")
         }}
       />
       <ProductAccessGuard>
@@ -444,23 +441,23 @@ export default function MidjourneyAIMuhelyPage() {
                   {
                     icon: ImageIcon,
                     title: "Midjourney v6 Integráció",
-                    description: "Legújabb Midjourney verzió",
+                    description: "Legújabb Midjourney verzió"
                   },
                   {
                     icon: Camera,
                     title: "85mm G-Master Optika",
-                    description: "Professzionális optikai beállítások",
+                    description: "Professzionális optikai beállítások"
                   },
                   {
                     icon: Sun,
                     title: "Chiaroscuro Lighting",
-                    description: "Fény-árnyék kontraszt",
+                    description: "Fény-árnyék kontraszt"
                   },
                   {
                     icon: Layers,
                     title: "Prémium Vizuálok",
-                    description: "Cyber-Dark aesthetic",
-                  },
+                    description: "Cyber-Dark aesthetic"
+                  }
                 ].map((feature, index) => {
                   const FeatureIcon = feature.icon;
                   return (

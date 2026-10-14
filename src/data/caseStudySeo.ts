@@ -182,8 +182,7 @@ export const CASE_STUDY_SEO: Record<string, CaseStudySeoEntry> = {
         operatingSystem: "Web",
         offers: {
           "@type": "Offer",
-          price: "0",
-          priceCurrency: "HUF",
+          description: "Egyedi árajánlat kérése",
           availability: "https://schema.org/InStock",
         },
         description:
@@ -240,4 +239,190 @@ export const CASE_STUDY_SEO: Record<string, CaseStudySeoEntry> = {
       },
     ],
   },
+  leanperial: {
+    metadata: {
+      title:
+        "Esettanulmány: Leanperial — Quiet Luxury Weboldal Fejlesztése | WebDude",
+      description:
+        "Leanperial prémium „Quiet Luxury” weboldala: kártevőmentesítés, egyedi WordPress + Kadence fejlesztés, SMTP-hitelesítés és technikai SEO — 100/100 pont, vírusmentes, ultragyors platform.",
+      keywords: [
+        "Leanperial",
+        "Quiet Luxury weboldal",
+        "WordPress fejlesztés",
+        "Kadence",
+        "Kártevőirtás",
+        "Executive Search weboldal",
+        "UI/UX Design",
+        "SEO optimalizálás",
+        "SMTP hitelesítés",
+        "Luxusmárka tanácsadás",
+      ],
+      alternates: {
+        canonical: "https://webdude.hu/munkak/leanperial",
+      },
+      openGraph: {
+        title: "Leanperial — Quiet Luxury Weboldal Fejlesztése & Kártevőmentesítés",
+        description:
+          "Prémium „Quiet Luxury” weboldal egyedi WordPress + Kadence alapon: teljes kártevőmentesítés, megbízható SMTP és 100/100 SEO pontszám.",
+        url: "https://webdude.hu/munkak/leanperial",
+        siteName: "WebDude",
+        images: [
+          {
+            url: "https://webdude.hu/assets/portfolio/leanperial/leanperial%20website%20mockup.webp",
+            width: 1200,
+            height: 630,
+          },
+        ],
+        locale: "hu_HU",
+        type: "article",
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: "Leanperial — Quiet Luxury Weboldal Fejlesztése | WebDude",
+        description:
+          "Kártevőmentesítés, egyedi WordPress + Kadence fejlesztés és technikai SEO — 100/100 pontszámú, ultragyors luxusmárka-platform.",
+        images: [
+          "https://webdude.hu/assets/portfolio/leanperial/leanperial%20website%20mockup.webp",
+        ],
+      },
+    },
+    schemas: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        headline:
+          "Leanperial — Quiet Luxury Weboldal Fejlesztése & Kártevőmentesítés",
+        description:
+          "Nemzetközi luxusmárka-tanácsadó számára készült prémium weboldal: teljes kártevőmentesítés, DNS- és SSL-újjáépítés, egyedi WordPress + Kadence fejlesztés, SMTP-hitelesítés és technikai SEO-tökéletesítés.",
+        image:
+          "https://webdude.hu/assets/portfolio/leanperial/leanperial%20website%20mockup.webp",
+        author: NORBI_PERSON,
+        publisher: WEBDUDE_ORG,
+        datePublished: "2026-10-14",
+        dateModified: "2026-10-14",
+        mainEntityOfPage: {
+          "@type": "WebPage",
+          "@id": "https://webdude.hu/munkak/leanperial",
+        },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "Project",
+        name: "Leanperial — Quiet Luxury Weboldal & Kártevőmentesítés",
+        description:
+          "Executive Search & Private Advisory vállalkozás prémium „Quiet Luxury” weboldala: kártevőirtás, egyedi WordPress + Kadence fejlesztés, SMTP-hitelesítés (SPF/DKIM), WebP-optimalizálás és 100/100 SEO pontszámú technikai optimalizálás.",
+        url: "https://webdude.hu/munkak/leanperial",
+        creator: {
+          "@type": "Person",
+          name: "Norbi (WebDude)",
+          jobTitle: "Webfejlesztő és Grafikai Tervező",
+          url: "https://webdude.hu/szia-norbi-vagyok",
+        },
+        keywords: [
+          "Quiet Luxury",
+          "WordPress",
+          "Kadence",
+          "Kártevőirtás",
+          "SMTP hitelesítés",
+          "SEO",
+          "Executive Search",
+        ],
+      },
+      WEBDUDE_ORG,
+    ],
+  },
+
+  nedelmarket: {
+    metadata: {
+      title:
+        "Nedel Market: WooCommerce Katalógus & Irodai Szerver Integráció | WebDude",
+      description:
+        "Komplex WooCommerce katalógus fejlesztés, Wordfence biztonság, RankMath SEO és egyedi irodai szerver kiépítés könyvelőprogram szinkronnal.",
+      keywords: [
+        "Nedel Market",
+        "WooCommerce katalógus",
+        "Irodai szerver",
+        "Könyvelőprogram szinkron",
+        "Wordfence",
+        "RankMath SEO",
+        "Rendszerintegráció",
+        "AEO SEO",
+        "GA4 analitika",
+        "B2B webshop",
+      ],
+      alternates: {
+        canonical: "https://webdude.hu/munkak/nedelmarket",
+      },
+      openGraph: {
+        title: "Nedel Market — WooCommerce Katalógus & Irodai Szerver Integráció",
+        description:
+          "Komplett B2B ökoszisztéma: WooCommerce katalógus, könyvelőprogram szinkron, Wordfence védelem és RankMath SEO egy helyi szerveren.",
+        url: "https://webdude.hu/munkak/nedelmarket",
+        siteName: "WebDude",
+        images: [
+          {
+            url: "https://webdude.hu/assets/portfolio/nedel-market/nedel_market_banner.webp",
+            width: 1200,
+            height: 630,
+          },
+        ],
+        locale: "hu_HU",
+        type: "article",
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: "Nedel Market — WooCommerce & Irodai Szerver Integráció | WebDude",
+        description:
+          "WooCommerce katalógus, könyvelőprogram szinkron, Wordfence biztonság és RankMath SEO egy egyedi, tükörmentett helyi szerveren.",
+        images: [
+          "https://webdude.hu/assets/portfolio/nedel-market/nedel_market_banner.webp",
+        ],
+      },
+    },
+    schemas: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        headline:
+          "Nedel Market: Komplett B2B Kereskedelmi Ökoszisztéma és Helyi Szerver Integráció",
+        description:
+          "WooCommerce katalógus fejlesztése, amely valós időben kommunikál az irodai könyvelőprogrammal egy egyedileg épített, tükörmentett helyi szerverkörnyezetben. Wordfence biztonság, RankMath AEO/SEO és GA4 analitika.",
+        image:
+          "https://webdude.hu/assets/portfolio/nedel-market/nedel_market_banner.webp",
+        author: NORBI_PERSON,
+        publisher: WEBDUDE_ORG,
+        datePublished: "2026-10-14",
+        dateModified: "2026-10-14",
+        mainEntityOfPage: {
+          "@type": "WebPage",
+          "@id": "https://webdude.hu/munkak/nedelmarket",
+        },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "Project",
+        name: "Nedel Market — B2B Kereskedelmi Ökoszisztéma",
+        description:
+          "Komplex WooCommerce katalógus és irodai szerver integráció: valós idejű könyvelőprogram-szinkron, automatizált RAID/Backup, Wordfence tűzfal, RankMath AEO/SEO struktúra és GA4/Search Console/Bing Webmaster analitika.",
+        url: "https://webdude.hu/munkak/nedelmarket",
+        creator: {
+          "@type": "Person",
+          name: "Norbi (WebDude)",
+          jobTitle: "Webfejlesztő és Grafikai Tervező",
+          url: "https://webdude.hu/szia-norbi-vagyok",
+        },
+        keywords: [
+          "WooCommerce",
+          "Irodai szerver",
+          "Könyvelőprogram szinkron",
+          "Wordfence",
+          "RankMath",
+          "Rendszerintegráció",
+          "SEO & Biztonság",
+        ],
+      },
+      WEBDUDE_ORG,
+    ],
+  },
+
 };

@@ -158,7 +158,7 @@ const promptTemplates = [
     id: 10,
     category: "Book Cover",
     icon: ImageIcon,
-    color: "from-red-500 to-orange-500",
+    color: "from-red-500 to-brand-secondary",
     title: "Könyvborító Design",
     description: "Figyelemfelkeltő könyvborító illusztráció",
     prompt:
@@ -248,7 +248,7 @@ const promptTemplates = [
     id: 16,
     category: "Infographic",
     icon: ImageIcon,
-    color: "from-orange-500 to-brand-secondary",
+    color: "from-brand-secondary to-brand-secondary",
     title: "Adatvizualizáció Infografika",
     description: "Professzionális infografika design",
     prompt:

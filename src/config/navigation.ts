@@ -7,6 +7,7 @@ import {
   Sparkles,
   Globe,
   ShoppingBag,
+  Package,
   MapPin,
   Search,
   TrendingUp,
@@ -19,6 +20,9 @@ import {
   RefreshCw,
   Newspaper,
   Lock,
+  PenTool,
+  FileText,
+  Box,
 } from "lucide-react";
 
 export interface NavItem {
@@ -128,6 +132,29 @@ export const NAV_ITEMS: NavItem[] = [
         category: "Design",
       },
       {
+        name: "Logó Tervezés",
+        href: "/szolgaltatasok/logo-tervezes",
+        icon: PenTool,
+        description: "Egyedi logó tervezés és teljes vizuális identitás",
+        category: "Design",
+      },
+      {
+        name: "Szórólap Tervezés",
+        href: "/szolgaltatasok/szorolap-tervezes",
+        icon: FileText,
+        description:
+          "Szórólapok, molinók és marketing anyagok nyomdai előkészítéssel",
+        category: "Design",
+      },
+      {
+        name: "Csomagolás Tervezés",
+        href: "/szolgaltatasok/csomagolas-tervezes",
+        icon: Box,
+        description:
+          "Termék design, label, doboz és csomagolás tervezés mockup vizualizációval",
+        category: "Design",
+      },
+      {
         name: "Egyedi Fejlesztés",
         href: "/szolgaltatasok/egyedi-arculattervezes-logo",
         icon: Layout,
@@ -185,10 +212,6 @@ export const NAV_ITEMS: NavItem[] = [
       },
     ],
   },
-  {
-    name: "Termékek",
-    href: "/termekek",
-  },
   { name: "Munkáim", href: "/munkak" },
   { name: "Hírek", href: "/hirek" },
   { name: "Ügyfélportál", href: "/portal" },
@@ -214,6 +237,7 @@ export interface TopBarItem {
 
 /** A top bar magyar tartalma. */
 export const TOP_BAR_ITEMS_HU: TopBarItem[] = [
+  { name: "Termékek", href: "/termekek", icon: Package },
   { name: "Hírek", href: "/hirek", icon: Newspaper },
   { name: "Ügyfélportál", href: "/portal", icon: Lock },
 ];
@@ -241,8 +265,17 @@ export function getTopBarItems(lang: Language): TopBarItem[] {
 /**
  * Azok a menünevek, amelyek a top barban jelennek meg, és
  * **nem** duplikálódnak a fő navigációban.
+ *
+ * **„Termékek":** a kérés szerint a főmenüből (`Main Nav`) a top barba
+ * került. A név itt szerepel, ezért a `getMainNavItems` kiszűri a
+ * vízszintes főmenüből — **de a `NAV_ITEMS`-ben továbbra is ott marad**,
+ * mert a mobil hamburger-menü a `getNavItems`-et (teljes lista) kapja.
+ * Így a „Termékek" útvonal mobilon is elérhető marad, nem veszik el.
+ *
+ * Az EN menü anchor-alapú (`NAV_ITEMS_EN`), abban nincs „Termékek" pont,
+ * ezért a szűrő az angol főmenüre nézve semmit nem távolít el.
  */
-export const TOP_BAR_ITEM_NAMES = ["Hírek", "Ügyfélportál"];
+export const TOP_BAR_ITEM_NAMES = ["Termékek", "Hírek", "Ügyfélportál"];
 
 /**
  * Nyelvfüggő navigáció — a HeaderNavClient innen kéri le a menüt.

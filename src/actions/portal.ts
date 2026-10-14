@@ -6,6 +6,7 @@ import {
 
 import { z } from "zod";
 import { sendWelcomeEmailAction } from "./mail";
+import { notifyUser } from "@/lib/notify";
 import { ChatMessage } from "@/types/chat";
 
 // Wrapper server actions for re-export compatibility
@@ -777,6 +778,16 @@ export async function approveWorkflowPhaseAction(
         error: err.error?.message || "Sikertelen jóváhagyás.",
       };
     }
+
+    // Értesítés (Phase 2): fázis jóváhagyva (megerősítő visszajelzés, info).
+    await notifyUser({
+      userId: user.uid,
+      kind: "approval",
+      tone: "info",
+      title: "Fázis jóváhagyva",
+      message: "Rögzítettem a jóváhagyásodat, értesítettem magam.",
+      link: "/portal",
+    });
 
     return { success: true, message: "Fázis sikeresen jóváhagyva!" };
   } catch (error: unknown) {

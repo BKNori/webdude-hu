@@ -2,6 +2,7 @@
 
 import { verifyUserToken } from "./portal";
 import { Addon } from "@/types/addon";
+import { notifyUser } from "@/lib/notify";
 
 // Firestore response types for strict typing
 type FirestoreValue = {
@@ -25,7 +26,7 @@ const PRESET_ADDONS: Addon[] = [
     title: "15 perces UX/UI Roast & Konverziós Diagnosztika",
     description:
       "Személyre szabott, kíméletlenül őszinte videós elemzés a weboldalad legkritikusabb dizájn-, használhatósági és eladási hibáiról, amelyek elüldözik a látogatóidat.",
-    price: 25000,
+    price: null,
     type: "one-time",
     category: "design",
     features: [
@@ -42,7 +43,7 @@ const PRESET_ADDONS: Addon[] = [
     title: "Lighthouse Google Speed & Core Web Vitals Optimalizálás",
     description:
       "A betöltési sebesség drasztikus növelése és a Google PageSpeed Insights pontok feltornázása a 90-95+ tartományba a jobb keresőoptimalizálási helyezésekért.",
-    price: 49000,
+    price: null,
     type: "one-time",
     category: "tech",
     features: [
@@ -59,7 +60,7 @@ const PRESET_ADDONS: Addon[] = [
     title: "Prémium AI + Emberi Hibrid SEO Szakcikk & AEO Optimalizálás",
     description:
       "Olyan mélyreható iparági szakcikk, amely a legújabb keresési trendek alapján készül, és kiválóan rangsorol mind a Google-ben, mind a modern AI válaszgépeken (AEO).",
-    price: 15000,
+    price: null,
     type: "one-time",
     category: "ai",
     features: [
@@ -76,7 +77,7 @@ const PRESET_ADDONS: Addon[] = [
     title: "Landing Page Konverziós Audit & Copywriting Finomhangolás",
     description:
       "Átfogó CRO (Conversion Rate Optimization) elemzés, amely során átvilágítjuk a szövegezést, a CTA gombokat és az elrendezést a maximális értékesítés eléréséhez.",
-    price: 35000,
+    price: null,
     type: "one-time",
     category: "cro",
     features: [
@@ -93,7 +94,7 @@ const PRESET_ADDONS: Addon[] = [
     title: "🛡️ WebDude Prémium Biztonsági Csomag & Kiber-páncél (1 év)",
     description:
       "Komplex védelmi rendszer weboldalad számára: automata tűzfal, napi kártevő-vizsgálat, brute-force védelem és heti biztonsági mentések külső szerverre.",
-    price: 60000,
+    price: null,
     type: "one-time",
     category: "tech",
     features: [
@@ -110,7 +111,7 @@ const PRESET_ADDONS: Addon[] = [
     title: "🤖 Egyedi AI Chatbot Asszisztens & Lead Minősítő Integráció",
     description:
       "Egyedi stílusú, saját tudásbázisodra (szolgáltatásaid, áraid, FAQ) betanított mesterséges intelligencia alapú chatbot, amely 24/7-ben kiszolgálja a látogatókat.",
-    price: 120000,
+    price: null,
     type: "one-time",
     category: "ai",
     features: [
@@ -175,7 +176,7 @@ export async function getAddonsAction(idToken: string) {
         description: fields.description?.stringValue || "",
         price: fields.price?.integerValue
           ? parseInt(fields.price.integerValue)
-          : 0,
+          : null,
         type: (fields.type?.stringValue || "one-time") as
           "one-time" | "recurring",
         category: (fields.category?.stringValue || "tech") as
@@ -300,6 +301,16 @@ export async function createCheckoutSessionAction(
     return {
       success: false,
       error: "Érvénytelen kiegészítő szolgáltatás azonosító.",
+    };
+  }
+
+  // ZÉRÓ FIX ÁR guard: fix ár nélkül (null) nem indítható automata fizetés.
+  // A publikus bolt csak „Egyedi árajánlat kérése" CTA-t kínál.
+  if (addon.price === null || addon.price <= 0) {
+    return {
+      success: false,
+      error:
+        "Ez a kiegészítő szolgáltatás egyedi árajánlat alapján érhető el. Kérlek vedd fel velem a kapcsolatot.",
     };
   }
 
@@ -524,6 +535,22 @@ export async function deliverOrderAction(
   }
 
   try {
+    // A címzett (ügyfél) kinyerése a rendelésből az értesítéshez.
+    const getUrl = `https://firestore.googleapis.com/v1/projects/${projectId}/databases/(default)/documents/orders/${orderId}`;
+    const getRes = await fetch(getUrl, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${idToken}`,
+      },
+    });
+    let orderClientId = "";
+    if (getRes.ok) {
+      const orderDoc = (await getRes.json()) as {
+        fields?: { clientId?: { stringValue?: string } };
+      };
+      orderClientId = orderDoc.fields?.clientId?.stringValue ?? "";
+    }
+
     const patchUrl = `https://firestore.googleapis.com/v1/projects/${projectId}/databases/(default)/documents/orders/${orderId}?updateMask.fieldPaths=status&updateMask.fieldPaths=deliveryNotes&updateMask.fieldPaths=deliveryUrl&updateMask.fieldPaths=deliveredAt`;
     const res = await fetch(patchUrl, {
       method: "PATCH",
@@ -547,6 +574,18 @@ export async function deliverOrderAction(
         success: false,
         error: err?.error?.message || "Failed to update order status.",
       };
+    }
+
+    // Értesítés (Phase 2): rendelés kézbesítve (best-effort, a fő művelet után).
+    if (orderClientId) {
+      await notifyUser({
+        userId: orderClientId,
+        kind: "delivery",
+        tone: "success",
+        title: "Rendelés kézbesítve",
+        message: "A megrendelt szolgáltatás teljesítve, részletek a portálon.",
+        link: "/portal",
+      });
     }
 
     // Revalidate portal page cache

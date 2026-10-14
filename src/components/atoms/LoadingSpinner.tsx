@@ -17,7 +17,7 @@ export default function LoadingSpinner() {
           transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}
         />
         <motion.div
-          className="absolute top-2 left-2 w-12 h-12 border-4 border-transparent border-t-orange-500 rounded-full"
+          className="absolute top-2 left-2 w-12 h-12 border-4 border-transparent border-t-brand-primary rounded-full"
           animate={{ rotate: -360 }}
           transition={{ duration: 0.6, repeat: Infinity, ease: "linear" }}
         />

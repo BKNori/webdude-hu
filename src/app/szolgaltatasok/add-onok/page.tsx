@@ -11,6 +11,7 @@ import {
   HelpCircle,
   Clock,
   Code,
+  CreditCard,
 } from "lucide-react";
 import { getAddonsAction } from "@/actions/addons";
 import { Addon } from "@/types/addon";
@@ -31,7 +32,6 @@ interface LocalAddon {
   id: string;
   title: string;
   description: string;
-  price: number;
   category: string;
   features: string[];
   icon: typeof Cpu;
@@ -43,7 +43,6 @@ const FALLBACK_ADDONS: LocalAddon[] = [
     title: "15 perces Videós UX/UI Roast (Audit)",
     description:
       "Videós képernyőfelvétel-elemzés a weboldalad legkritikusabb használhatósági és konverziós hibáiról. Azonnali, gyakorlati javaslatok a konverzió növelésére.",
-    price: 19900,
     category: "CRO & UX",
     features: [
       "15 perces rögzített videó",
@@ -58,7 +57,6 @@ const FALLBACK_ADDONS: LocalAddon[] = [
     title: "AI + Emberi Blogcikk Csomag",
     description:
       "Profi SEO szakcikk, ami optimalizálva van mind a Google, mind az AI válaszgépek (AEO) számára. AI-asszisztált kutatás, emberi finomhangolás és copywriting.",
-    price: 49900,
     category: "SEO & AEO",
     features: [
       "Kulcsszókutatás",
@@ -73,7 +71,6 @@ const FALLBACK_ADDONS: LocalAddon[] = [
     title: "Lighthouse Sebesség-optimalizálás",
     description:
       "A betöltési idő minimalizálása és a Google Core Web Vitals pontok feljavítása. Gyorsabb oldal, elégedettebb látogatók, jobb konverzió és SEO.",
-    price: 59900,
     category: "Technikai",
     features: [
       "Lighthouse Mobil pontszám javítás",
@@ -88,7 +85,6 @@ const FALLBACK_ADDONS: LocalAddon[] = [
     title: "Szezonális Webshop Banner Csomag (3 db)",
     description:
       "Profi, konverzióra optimalizált banner tervek a webshopod főoldalára, közösségi médiára vagy hirdetésekhez. Kiemelkedő vizuális minőség.",
-    price: 39900,
     category: "Grafikai tervezés",
     features: [
       "3 db egyedi méretű banner design",
@@ -103,7 +99,6 @@ const FALLBACK_ADDONS: LocalAddon[] = [
     title: "Strukturált Adat (Schema.org & AEO) Integráció",
     description:
       "Bonyolult JSON-LD strukturált adatok beágyazása a weboldalad kódjába, hogy a keresőrobotok és az AI (ChatGPT, Gemini, Perplexity) tökéletesen megértsék a vállalkozásodat.",
-    price: 29900,
     category: "Modern SEO",
     features: [
       "Entity-based JSON-LD integráció",
@@ -118,7 +113,6 @@ const FALLBACK_ADDONS: LocalAddon[] = [
     title: "AI SEO Audit & Optimalizáció",
     description:
       "AI‑vezérelt SEO audit, kulcsszóelemzés és struktúra javítás egyetlen csomagban.",
-    price: 44900,
     category: "SEO & AEO",
     features: [
       "AI elemzés",
@@ -133,7 +127,6 @@ const FALLBACK_ADDONS: LocalAddon[] = [
     title: "Prémium Brandépítési Csomag",
     description:
       "Logó, színpaletta, tipográfia és brand kézikönyv egy teljes körű csomagban.",
-    price: 69900,
     category: "Grafikai tervezés",
     features: [
       "Logó tervezés",
@@ -148,7 +141,6 @@ const FALLBACK_ADDONS: LocalAddon[] = [
     title: "Teljesítmény‑Boost Csomag",
     description:
       "Weboldalad gyorsítása, kódoptimalizálás, képtömörítés és CDN beállítás.",
-    price: 54900,
     category: "Technikai",
     features: [
       "Lighthouse pontszám növelés",
@@ -163,7 +155,6 @@ const FALLBACK_ADDONS: LocalAddon[] = [
     title: "AI Tartalomkészítő Csomag",
     description:
       "AI‑alapú tartalomgenerálás, blogcikkek, social media posztok egy hónapra.",
-    price: 39900,
     category: "AI & Content",
     features: [
       "AI‑cikk generálás",
@@ -177,7 +168,6 @@ const FALLBACK_ADDONS: LocalAddon[] = [
     id: "custom-analytics",
     title: "Egyedi Analitika Dashboard",
     description: "Testreszabott analitika dashboard a vállalkozásod KPI‑inak.",
-    price: 79900,
     category: "Tech",
     features: [
       "Google Analytics integráció",
@@ -202,7 +192,6 @@ export default async function AddonsPage() {
           id: a.id,
           title: a.title,
           description: a.description,
-          price: a.price,
           category:
             a.category === "design"
               ? "Grafikai tervezés"
@@ -257,8 +246,8 @@ export default async function AddonsPage() {
         },
         offers: {
           "@type": "Offer",
-          price: String(addon.price),
-          priceCurrency: "HUF",
+          description:
+            "Egyedi árajánlat kérése — a kiegészítő szolgáltatás terjedelmétől függően.",
           availability: "https://schema.org/InStock",
         },
       })),
@@ -426,16 +415,15 @@ export default async function AddonsPage() {
                         Egyszeri díj
                       </span>
                       <span className="text-2xl font-black text-[#00B5F1] font-mono tracking-wider">
-                        {addon.price.toLocaleString("hu-HU")}{" "}
-                        <span className="text-xs font-normal">Ft</span>
+                        Egyedi árajánlat
                       </span>
                     </div>
                     <Link
-                      href="/portal"
+                      href="/kapcsolat"
                       className="px-6 py-3 bg-[#00B5F1] hover:bg-[#5B21B6] text-bg-base hover:text-white font-bold rounded-xl uppercase tracking-wider text-xs transition-all duration-300 text-center flex items-center justify-center gap-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B5F1] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base"
                     >
-                      <ShoppingBag className="w-4 h-4" />
-                      Megrendelés
+                      <CreditCard className="w-4 h-4" />
+                      Egyedi árajánlat kérése
                     </Link>
                   </div>
                 </div>

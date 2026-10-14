@@ -62,7 +62,6 @@ export default function WordPressDevPage() {
     // A WebDude kizárólag egyedi árajánlatot ad — nincs fix árkatalógus.
     offers: {
       "@type": "Offer",
-      priceCurrency: "HUF",
       description: "Egyedi árajánlat kérése — a projekt terjedelmétől függően.",
       availability: "https://schema.org/InStock",
     },

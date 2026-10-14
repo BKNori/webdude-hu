@@ -185,6 +185,10 @@ function collectCaseStudyImages() {
     "AiPromptCaseStudy.tsx",
     "DrNagyAlbertCaseStudy.tsx",
     "ClassiCoCaseStudy.tsx",
+    "LeanperialCaseStudy.tsx",
+    "LeanperialProcessGrid.tsx",
+    "NedelMarketCaseStudy.tsx",
+    "NedelMarketBentoGrid.tsx",
   ];
   const found = new Set();
   for (const file of FILES) {

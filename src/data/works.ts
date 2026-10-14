@@ -2,6 +2,83 @@ import { Work } from "@/types/work";
 
 export const works: Work[] = [
   {
+    id: "nedelmarket",
+    slug: "nedelmarket",
+    title:
+      "Nedel Market: Komplett B2B Kereskedelmi Ökoszisztéma és Helyi Szerver Integráció",
+    description:
+      "Több mint egy WooCommerce katalógus. Egy teljesen integrált rendszer, amely összeköti a modern online értékesítést az irodai könyvelőprogrammal és egy egyedileg épített, tükörmentett helyi szerverkörnyezettel — Wordfence védelmet, RankMath SEO-t és GA4 analitikával.",
+    category: "webshop",
+    tags: [
+      "WooCommerce",
+      "Rendszerintegráció",
+      "Irodai Szerver",
+      "SEO & Biztonság",
+      "Wordfence",
+      "RankMath",
+      "Könyvelőprogram szinkron",
+    ],
+    image: "/assets/portfolio/nedel-market/nedel_market_banner.webp",
+    bannerImage: "/assets/portfolio/nedel-market/nedel_market_banner.webp",
+    gallery: [
+      "/assets/portfolio/nedel-market/nedel_market_banner.webp",
+      "/assets/portfolio/nedel-market/fehér_spárga.webp",
+      "/assets/portfolio/nedel-market/paprika_eladó_banner1.webp",
+    ],
+    featured: true,
+    year: 2026,
+    client: "Nedel Market",
+    challenge:
+      "A Nedel Market egy B2B élelmiszer-kereskedelmi vállalkozás, ahol az online kínálatnak naprakészen kellett volna kommuniálnia a helyi irodai könyvelőprogrammal és a szerveren futó adatbázissal. A korábbi, sablonos megoldás nem biztosított valós idejű szinkront, adatvesztéssel és biztonsági résekkel fenyegetett, miközben a b2b vevők egyre inkább online, önkiszolgáló katalógust igényeltek.",
+    solution:
+      "Komplex, integrált ökoszisztémát építettem. Egy egyedileg konfigurált helyi szerverkörnyezettel kötöttem össze a WooCommerce katalógust a könyvelőprogrammal, automatizált RAID/Backup tükörmentésekkel a folyamatos adatelérés és a maximális adatbiztonság garantálására. A webáruházat Wordfence professzionális tűzfalával láttam el, amely valós időben blokkolja a rosszindulatú támadásokat. A RankMath rendszerrel AEO/SEO struktúrát hoztam létre (Schema Markup, kanonikus URL-ek), hogy a Google és az AI keresők is tökéletesen értssék a tartalmat, végül GA4, Search Console és Bing Webmaster Tools bekötésével adatalapú döntéshozatalt tettem lehetővé.",
+    results: [
+      "Valós idejű könyvelőprogram-szinkron helyi szerveren",
+      "Wordfence tűzfal — 0-24 órás, blokkoló védelem",
+      "RankMath AEO/SEO struktúra (AI-keresőknek is)",
+      "GA4 + Search Console + Bing Webmaster analitika",
+      "Automatizált RAID/Backup, zéró adatvesztés",
+    ],
+  },
+  {
+    id: "leanperial",
+    slug: "leanperial",
+    title: "Leanperial — Quiet Luxury Weboldal Fejlesztése & Kártevőmentesítés",
+    description:
+      "Egy nemzetközi luxusmárka-tanácsadó számára építettem prémium „Quiet Luxury” weboldalt egyedi WordPress + Kadence alapon: teljes kártevőirtás, DNS- és SSL-újjáépítés, SMTP-hitelesítés, valamint technikai SEO-tökéletesítés — az eredmény egy ultragyors, 100/100 SEO pontszámú, vírusmentes platform.",
+    category: "weboldal",
+    tags: [
+      "WordPress",
+      "UI/UX Design",
+      "Kártevőirtás",
+      "SEO",
+      "Kadence",
+      "Executive Search",
+    ],
+    image: "/assets/portfolio/leanperial/leanperial website mockup.webp",
+    bannerImage: "/assets/portfolio/leanperial/K-Leanperial_banner.webp",
+    gallery: [
+      "/assets/portfolio/leanperial/K-Leanperial_banner.webp",
+      "/assets/portfolio/leanperial/K-Leanperial_banner2.webp",
+      "/assets/portfolio/leanperial/K-Mastering_questioning_bg.webp",
+      "/assets/portfolio/leanperial/K-Executive_Search-bg.webp",
+    ],
+    featured: true,
+    year: 2026,
+    client: "Leanperial",
+    challenge:
+      "A Leanperial egy nemzetközi luxusmárka-tanácsadási (Executive Search & Private Advisory) vállalkozás, ahol a bizalom és a diszkréció mindent megfordít. Az örökölt weboldalukat azonban kártevő fertőzte meg: a szerver lassúvá vált, a DNS-zóna és az SSL-tanúsítvány sérült, és a böngészők „nem biztonságos” figyelmeztetést mutattak — ami egy prémium tanácsadói márkának végzetes.",
+    solution:
+      "Teljes körű helyreállítást és prémium újraépítést végeztem. Először minden kártevőt eltávolítottam és fertőtlenítesét követően a sérült DNS-rekordokat szakmailag újjáépítettem, friss Let's Encrypt tanúsítvánnyal. Ezután a Kadence témára épülő, egyedi WordPress weboldalt a „halk luxus” esztétikájával építettem fel: visszafogott tipográfia, bőséges negatív tér, prémium grafikai utómunka (retus, színkorrekció, WebP-optimalizálás). SMTP-hitelesítéssel (SPF/DKIM) megbízhatóvé tettem az ügyfélfogó űrlapokat, végül Schema Markup, kanonikus URL-ek és teljesítmény-finomhangolás keretében technikai SEO-tökélyre vittem az oldalt.",
+    results: [
+      "100/100 SEO pontszám",
+      "100% kártevőmentes, biztonságos platform",
+      "Ultragyors, WebP-optimalizált betöltés",
+      "Megbízható SMTP hitelesítés (SPF/DKIM)",
+      "Prémium Quiet Luxury felhasználói élmény",
+    ],
+  },
+  {
     id: "btshop",
     slug: "btshop",
     title:
@@ -252,9 +329,10 @@ export const works: Work[] = [
       "Arculattervezés",
       "Nyomdai anyagok",
     ],
-    image: "/assets/portfolio/hu-mago-kft/humago-allo-banner-a-shopbansss-cssopy-copy.webp",
+    image:
+      "/assets/portfolio/hu-mago-kft/Gemini_Generated_Image_h2e2i2h2e2i2h2e2.jfif",
     bannerImage:
-      "/assets/portfolio/hu-mago-kft/humago-allo-banner-a-shopbansss-cssopy-copy.webp",
+      "/assets/portfolio/hu-mago-kft/Gemini_Generated_Image_h2e2i2h2e2i2h2e2.jfif",
     gallery: [
       "/assets/portfolio/hu-mago-kft/humago-fal-copy.webp",
       "/assets/portfolio/hu-mago-kft/hu-mago-magazin-mocdddkup-copy.webp",
@@ -278,6 +356,54 @@ export const works: Work[] = [
       "Prémium offline branding",
       "AI prompt reklám generátor",
       "Teljes digitális ökoszisztéma",
+    ],
+  },
+  {
+    id: "go-box-kft",
+    slug: "go-box-kft",
+    title:
+      "Go-Box Kft. – Dobozgyár Teljes Körű Digitális Transzformáció & B2B Webáruház",
+    description:
+      "Komplett digitális megjelenés egy dobozgyár és dobozkereskedelmi vállalkozás számára: modern ipari arculattervezés logóval és teljes identitással, prémium weboldal a szolgáltatások bemutatásával, valamint egy villámgyors, egyedi WordPress/WooCommerce alapú B2B webshop a dobozok online értékesítéséhez — beépített, egyedi megrendelő űrlapokkal. Search Console és Analytics bekötésével SEO/AEO optimalizáltam a weboldalt, hogy a Go-Box Kft. maximális láthatóságot kapjon az ipari és B2B keresésben, mérhető ROI-val.",
+    category: "webshop",
+    tags: [
+      "Arculattervezés",
+      "Logó tervezés",
+      "Weboldal fejlesztés",
+      "WooCommerce",
+      "Egyedi megrendelő űrlapok",
+      "SEO optimalizálás",
+      "Analitika",
+      "Ipari branding",
+      "B2B",
+    ],
+    image: "/assets/portfolio/go-box-kft/repulo-dobozok.webp",
+    bannerImage: "/assets/portfolio/go-box-kft/repulo-dobozok.webp",
+    gallery: [
+      "/assets/portfolio/go-box-kft/Go-Box-Banner.webp",
+      "/assets/portfolio/go-box-kft/Go-Box-Banner2.webp",
+      "/assets/portfolio/go-box-kft/Go-Box-Banner3.webp",
+      "/assets/portfolio/go-box-kft/banner.webp",
+      "/assets/portfolio/go-box-kft/go-box-pizza-banner-copy.webp",
+      "/assets/portfolio/go-box-kft/gobox-doboz-gyartasa-kereskedeleme.webp",
+      "/assets/portfolio/go-box-kft/repulo-dobozok.webp",
+      "/assets/portfolio/go-box-kft/webdude-logo-3200x2000-baner-websites-copy.webp",
+    ],
+    featured: true,
+    year: 2024,
+    client: "Go-Box Kft.",
+    website: "https://gobox.hu/",
+    challenge:
+      "A Go-Box Kft., egy doboxgyár és doboxkereskedelmi vállalkozás számára teljes körű digitális transzformációt kellett létrehoznom. A cégnek hiányzott a modern online jelenlét, a következetes arculat és a hatékony webshop rendszer. A cél egy olyan prémium márkaépítés volt, amely tükrözi a gyártási szakértelmet és a kereskedelmi erőt.",
+    solution:
+      "Komplex digitális transzformációt valósítottam meg: modern, ipari arculattervezés logóval és teljes identitással, prémium weboldal fejlesztés a szolgáltatások bemutatásával, valamint egy villámgyors, egyedi WordPress/WooCommerce alapú B2B webshop a doboxok online értékesítéséhez — beépített, egyedi megrendelő űrlapokkal. Search Console és Analytics bekötésével SEO/AEO optimalizáltam a weboldalt, hogy a Go-Box Kft. szolgáltatásai maximális láthatóságot kapjanak az ipari és B2B keresésben.",
+    results: [
+      "Komplet branding: logó, arculat, névjegykártya",
+      "Modern weboldal a szolgáltatások bemutatásával",
+      "B2B WooCommerce webshop egyedi megrendelő űrlapokkal",
+      "SEO/AEO optimalizáció: Search Console és Analytics bekötés",
+      "Prémium ipari márkaidentitás",
+      "Teljes szövegezés és marketing stratégia",
     ],
   },
   {
@@ -422,11 +548,11 @@ export const works: Work[] = [
       "Virágkötész marketing",
     ],
     image:
-      "/assets/portfolio/lengyel-helga-eskuvodekoracio/eskuvodekoraci-banner.webp",
+      "/assets/portfolio/lengyel-helga-eskuvodekoracio/eskuvoidekoraci-banner.webp",
     bannerImage:
-      "/assets/portfolio/lengyel-helga-eskuvodekoracio/eskuvodekoraci-banner.webp",
+      "/assets/portfolio/lengyel-helga-eskuvodekoracio/eskuvoidekoraci-banner.webp",
     gallery: [
-      "/assets/portfolio/lengyel-helga-eskuvodekoracio/eskuvodekoraci-banner.webp",
+      "/assets/portfolio/lengyel-helga-eskuvodekoracio/eskuvoidekoraci-banner.webp",
       "/assets/portfolio/lengyel-helga-eskuvodekoracio/helga-banner-copy.webp",
       "/assets/portfolio/lengyel-helga-eskuvodekoracio/facebok-banner-tavasz-copy.webp",
       "/assets/portfolio/lengyel-helga-eskuvodekoracio/kopogtato-helgatol-piszivel-utomunka-copy.webp",
@@ -488,51 +614,6 @@ export const works: Work[] = [
       "API integráció (OpenAI, Anthropic, Google AI)",
       "Firebase alapú backend és auth",
       "Reszponzív modern UI",
-    ],
-  },
-  {
-    id: "go-box-kft",
-    slug: "go-box-kft",
-    title: "Go-Box Kft. – Dobozgyár Teljes Körű Digitális Transzformáció",
-    description:
-      "Komplett digitális megjelenés egy doboxgyár számára: logó, arculattervezés, weboldal, webshop, SEO/AEO optimalizáció és marketing stratégia.",
-    category: "arculat",
-    tags: [
-      "Arculattervezés",
-      "Logó tervezés",
-      "Weboldal fejlesztés",
-      "Webshop",
-      "SEO optimalizálás",
-      "Dobozgyár",
-      "Ipari branding",
-      "Kereskedelmi weboldal",
-    ],
-    image: "/assets/portfolio/go-box-kft/repulo-dobozok.webp",
-    bannerImage: "/assets/portfolio/go-box-kft/repulo-dobozok.webp",
-    gallery: [
-      "/assets/portfolio/go-box-kft/Go-Box-Banner.webp",
-      "/assets/portfolio/go-box-kft/Go-Box-Banner2.webp",
-      "/assets/portfolio/go-box-kft/Go-Box-Banner3.webp",
-      "/assets/portfolio/go-box-kft/banner.webp",
-      "/assets/portfolio/go-box-kft/go-box-pizza-banner-copy.webp",
-      "/assets/portfolio/go-box-kft/gobox-doboz-gyartasa-kereskedeleme.webp",
-      "/assets/portfolio/go-box-kft/repulo-dobozok.webp",
-    ],
-    featured: true,
-    year: 2025,
-    client: "Go-Box Kft.",
-    website: "https://go-box.hu",
-    challenge:
-      "A Go-Box Kft., egy doboxgyár és doboxkereskedelmi vállalkozás számára teljes körű digitális transzformációt kellett létrehoznom. A cégnek hiányzott a modern online jelenlét, a következetes arculat és a hatékony webshop rendszer. A cél egy olyan prémium márkaépítés volt, amely tükrözi a gyártási szakértelmet és a kereskedelmi erőt.",
-    solution:
-      "Komplex digitális transzformációt valósítottam meg: modern, ipari arculattervezés logóval és teljes identitással, prémium weboldal fejlesztés a szolgáltatások bemutatásával, WooCommerce alapú webshop a doboxok online értékesítéséhez, Search Console és Analytics bekötésével SEO/AEO optimalizáltam a weboldalt, hogy a Go-Box Kft. szolgáltatásai maximális láthatóságot kapjanak az ipari és B2B keresésben.",
-    results: [
-      "Komplet branding: logó, arculat, névjegykártya",
-      "Modern weboldal a szolgáltatások bemutatásával",
-      "WooCommerce webshop doboxok online értékesítéséhez",
-      "SEO/AEO optimalizáció: Search Console és Analytics bekötés",
-      "Prémium ipari márkaidentitás",
-      "Teljes szövegezés és marketing stratégia",
     ],
   },
 ];

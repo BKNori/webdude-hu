@@ -81,9 +81,10 @@ export default async function WebshopPage() {
       name: "Vállalkozások, amelyek WordPress alapú online áruházat szeretnének",
     },
     // A WebDude kizárólag egyedi árajánlatot ad — nincs fix árkatalógus.
+    // ZÉRÓ FIX ÁR: a `priceCurrency`/`price` mezőket a Zéró Fix Ár szabály
+    // értelmében a schema.org `Offer`-ből is teljesen eltávolítottuk.
     offers: {
       "@type": "Offer",
-      priceCurrency: "HUF",
       description: "Egyedi árajánlat kérése — a projekt terjedelmétől függően.",
       availability: "https://schema.org/InStock",
     },

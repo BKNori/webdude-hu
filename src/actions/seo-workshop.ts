@@ -221,7 +221,7 @@ Return valid JSON only. Hungarian language. Target 95+ Lighthouse score. Focus o
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
+          model: "openai/gpt-oss-120b",
           messages: [
             { role: "system", content: systemPrompt },
             { role: "user", content: userPrompt },

@@ -2,7 +2,6 @@ export interface AiWorkshop {
   id: string;
   name: string;
   description: string;
-  price: string;
   route: string;
   category: "branding" | "content" | "design" | "technical" | "workflow";
   icon: string;
@@ -17,7 +16,6 @@ export const aiWorkshops: AiWorkshop[] = [
     name: "Logo AI Műhely",
     description:
       "Professzionális logo tervezés AI-val. Brand guidelines, export formátumok és több variáció egyetlen kattintással.",
-    price: "49,000 Ft",
     route: "/portal/ai-muhely/logo-ai-muhely",
     category: "branding",
     icon: "Logo",
@@ -35,7 +33,6 @@ export const aiWorkshops: AiWorkshop[] = [
     name: "Midjourney AI Műhely",
     description:
       "Professzionális Midjourney promptok generálása. AI képgenerálás optimalizált promptokkal és paraméterekkel.",
-    price: "29,000 Ft",
     route: "/portal/ai-muhely/midjourney-ai-muhely",
     category: "design",
     icon: "Image",
@@ -52,7 +49,6 @@ export const aiWorkshops: AiWorkshop[] = [
     name: "SEO Audit AI Műhely",
     description:
       "Átfogó SEO audit és AEO optimalizálás. Lighthouse score javítás és AI kereső motor optimalizálás.",
-    price: "69,000 Ft",
     route: "/portal/ai-muhely/seo-audit-ai-muhely",
     category: "technical",
     icon: "Search",
@@ -69,7 +65,6 @@ export const aiWorkshops: AiWorkshop[] = [
     name: "Tartalomtervező AI Műhely",
     description:
       "Stratégiai tartalomtervezés és blog bejegyzés generálás. SEO-optimalizált cikkek és social media tartalom.",
-    price: "39,000 Ft",
     route: "/portal/ai-muhely/tartalomtervezo-ai-muhely",
     category: "content",
     icon: "FileText",
@@ -86,7 +81,6 @@ export const aiWorkshops: AiWorkshop[] = [
     name: "UI/UX AI Műhely",
     description:
       "Felhasználói élmény és felület tervezés. Wireframe, mockup és interaktív prototípus generálás.",
-    price: "59,000 Ft",
     route: "/portal/ai-muhely/ui-ux-ai-muhely",
     category: "design",
     icon: "Layout",
@@ -103,7 +97,6 @@ export const aiWorkshops: AiWorkshop[] = [
     name: "Szezonalis AI Műhely",
     description:
       "Szezonalis kampányok és ünnepi tartalom generálás. Karácsony, Black Friday, Halloween és több ünnep.",
-    price: "34,000 Ft",
     route: "/portal/ai-muhely/szezonalis-ai-muhely",
     category: "content",
     icon: "Calendar",
@@ -120,7 +113,6 @@ export const aiWorkshops: AiWorkshop[] = [
     name: "Banner AI Műhely",
     description:
       "Konverziófókuszú banner tervezés. Platform-specifikus dimenziók, art direction és több variáció.",
-    price: "29,000 Ft",
     route: "/portal/ai-muhely/banner-ai-muhely",
     category: "design",
     icon: "Monitor",
@@ -137,7 +129,6 @@ export const aiWorkshops: AiWorkshop[] = [
     name: "Poster AI Műhely",
     description:
       "Nyomdai kész poster tervezés. CMYK értékek, tipográfiai hierarchia és bleed/safe zone irányelvek.",
-    price: "39,000 Ft",
     route: "/portal/ai-muhely/poster-ai-muhely",
     category: "design",
     icon: "FileImage",
@@ -154,7 +145,6 @@ export const aiWorkshops: AiWorkshop[] = [
     name: "Social Media AI Műhely",
     description:
       "Multi-platform social media tartalom. Instagram, Facebook, LinkedIn, TikTok engagement-fókuszú copywriting.",
-    price: "44,000 Ft",
     route: "/portal/ai-muhely/social-media-ai-muhely",
     category: "content",
     icon: "Share2",
@@ -171,7 +161,6 @@ export const aiWorkshops: AiWorkshop[] = [
     name: "CIP AI Műhely",
     description:
       "Vállalati arculati elemek tervezés. Névjegykártya, levélpapír, arculati kézikönyv és nyomdai kész specifikációk.",
-    price: "54,000 Ft",
     route: "/portal/ai-muhely/cip-ai-muhely",
     category: "branding",
     icon: "Briefcase",
@@ -188,7 +177,6 @@ export const aiWorkshops: AiWorkshop[] = [
     name: "Presentation AI Műhely",
     description:
       "Pitch deck és prezentáció tervezés. Narratív struktúra, dia sablonok és vizuális hierarchia.",
-    price: "49,000 Ft",
     route: "/portal/ai-muhely/presentation-ai-muhely",
     category: "content",
     icon: "Presentation",
@@ -205,7 +193,6 @@ export const aiWorkshops: AiWorkshop[] = [
     name: "Icon Design AI Műhely",
     description:
       "SVG vektor ikonok tervezése. Icon szettek 15 stílussal, minimalista szimbólumok és optimalizált útvonalak.",
-    price: "34,000 Ft",
     route: "/portal/ai-muhely/icon-design-ai-muhely",
     category: "design",
     icon: "Icon",
@@ -222,7 +209,6 @@ export const aiWorkshops: AiWorkshop[] = [
     name: "Design System AI Műhely",
     description:
       "Design tokens és komponens könyvtár tervezés. Tailwind CSS v4 integráció, Zod validáció és skálázható rendszer.",
-    price: "79,000 Ft",
     route: "/portal/ai-muhely/design-system-ai-muhely",
     category: "technical",
     icon: "Layers",
@@ -239,7 +225,6 @@ export const aiWorkshops: AiWorkshop[] = [
     name: "Kristófka Munkafolyamat",
     description:
       "Strategist-Pro ingatlanbefektetői pitch generálás. PDF alaprajzokból és kontextus paraméterekből komplex prezentációk.",
-    price: "149,000 Ft",
     route: "/portal/ai-muhely/kristofka",
     category: "workflow",
     icon: "Building2",

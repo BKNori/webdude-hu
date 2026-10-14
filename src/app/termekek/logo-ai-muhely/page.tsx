@@ -11,7 +11,7 @@ import {
   ArrowRight,
   Copy,
   RefreshCw,
-  Hexagon,
+  Hexagon
 } from "lucide-react";
 import ProductAccessGuard from "@/components/molecules/ProductAccessGuard";
 
@@ -24,26 +24,23 @@ const productSchema = {
   image: "https://webdude.hu/og/webdude-og.jpg",
   brand: {
     "@type": "Brand",
-    name: "WebDude",
+    name: "WebDude"
   },
   offers: {
     "@type": "Offer",
-    price: "0",
-    priceCurrency: "HUF",
     availability: "https://schema.org/InStock",
     url: "https://webdude.hu/termekek/logo-ai-muhely",
-    priceValidUntil: "2027-12-31",
     seller: {
       "@type": "Organization",
-      name: "WebDude.hu",
+      name: "WebDude.hu"
     },
     description: "Egyedi árajánlat kérése",
   },
   aggregateRating: {
     "@type": "AggregateRating",
     ratingValue: "4.8",
-    reviewCount: "31",
-  },
+    reviewCount: "31"
+  }
 };
 
 const logoStyles = [
@@ -53,7 +50,7 @@ const logoStyles = [
     description: "Tiszta, egyszerű vonalvezetés",
     prompt:
       "minimalist logo design, clean lines, geometric shapes, modern typography, professional aesthetic, scalable vector style",
-    color: "from-[#00B5F1] to-sky-500",
+    color: "from-[#00B5F1] to-sky-500"
   },
   {
     id: "modern",
@@ -61,7 +58,7 @@ const logoStyles = [
     description: "Kortárs, innovatív",
     prompt:
       "modern logo design, contemporary aesthetic, bold typography, dynamic shapes, innovative visual identity",
-    color: "from-purple-500 to-pink-500",
+    color: "from-purple-500 to-pink-500"
   },
   {
     id: "corporate",
@@ -69,7 +66,7 @@ const logoStyles = [
     description: "Professzionális, üzleti",
     prompt:
       "corporate logo design, professional business aesthetic, trustworthy colors, clean typography, established brand feel",
-    color: "from-[#00B5F1] to-[#5B21B6]",
+    color: "from-[#00B5F1] to-[#5B21B6]"
   },
   {
     id: "creative",
@@ -77,7 +74,7 @@ const logoStyles = [
     description: "Színes, dinamikus",
     prompt:
       "creative logo design, vibrant colors, artistic elements, unique composition, eye-catching visual",
-    color: "from-green-500 to-emerald-500",
+    color: "from-green-500 to-emerald-500"
   },
   {
     id: "luxury",
@@ -85,7 +82,7 @@ const logoStyles = [
     description: "Elegáns, prémium",
     prompt:
       "luxury logo design, elegant aesthetic, premium feel, sophisticated colors, high-end visual identity",
-    color: "from-brand-secondary to-brand-primary",
+    color: "from-brand-secondary to-brand-primary"
   },
   {
     id: "tech",
@@ -93,30 +90,30 @@ const logoStyles = [
     description: "Modern, innovatív",
     prompt:
       "tech logo design, modern innovation aesthetic, digital elements, futuristic but professional, clean tech style",
-    color: "from-indigo-500 to-blue-500",
-  },
+    color: "from-indigo-500 to-blue-500"
+  }
 ];
 
 const logoTypes = [
   { id: "wordmark", name: "Wordmark", description: "Szöveg alapú logo" },
   { id: "symbol", name: "Szimbólum", description: "Ikon alapú logo" },
   { id: "combination", name: "Kombinált", description: "Szöveg + ikon" },
-  { id: "emblem", name: "Embléma", description: "Pajzs alapú" },
+  { id: "emblem", name: "Embléma", description: "Pajzs alapú" }
 ];
 
 const colorSchemes = [
   {
     id: "9082",
     name: "90/8/2 (Cyber-Arany)",
-    description: "90% sötét, 8% arany, 2% kiemelő",
+    description: "90% sötét, 8% arany, 2% kiemelő"
   },
   {
     id: "monochrome",
     name: "Monokróm",
-    description: "Fekete-fehér árnyalatok",
+    description: "Fekete-fehér árnyalatok"
   },
   { id: "gradient", name: "Gradiens", description: "Színátmenetes" },
-  { id: "duotone", name: "Duotón", description: "Kétszínű" },
+  { id: "duotone", name: "Duotón", description: "Kétszínű" }
 ];
 
 export default function LogoAIMuhelyPage() {
@@ -166,7 +163,7 @@ export default function LogoAIMuhelyPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(productSchema).replace(/</g, "\\u003c"),
+          __html: JSON.stringify(productSchema).replace(/</g, "\\u003c")
         }}
       />
       <ProductAccessGuard>
@@ -459,23 +456,23 @@ export default function LogoAIMuhelyPage() {
                     icon: PenTool,
                     title: "Midjourney v6 Master",
                     description:
-                      "Prémium prompt sablonok a legjobb eredményekhez",
+                      "Prémium prompt sablonok a legjobb eredményekhez"
                   },
                   {
                     icon: Palette,
                     title: "Egyedi Arculattervezés",
-                    description: "Személyre szabott vizuális identitás",
+                    description: "Személyre szabott vizuális identitás"
                   },
                   {
                     icon: Layers,
                     title: "Logo Generálás",
-                    description: "Automatikus logo generálás több stílusban",
+                    description: "Automatikus logo generálás több stílusban"
                   },
                   {
                     icon: Hexagon,
                     title: "Brand Szimbólumok",
-                    description: "Márka szimbólum tervezés és optimalizálás",
-                  },
+                    description: "Márka szimbólum tervezés és optimalizálás"
+                  }
                 ].map((feature, index) => {
                   const FeatureIcon = feature.icon;
                   return (

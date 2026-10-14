@@ -52,7 +52,7 @@ const ADDONS_CATALOG = [
     id: 'addon_ux_roast',
     title: '15 perces UX/UI Roast & Konverziós Diagnosztika',
     description: 'Személyre szabott, kíméletlenül őszinte videós elemzés a weboldalad legkritikusabb dizájn-, használhatósági és eladási hibáiról, amelyek elüldözik a látogatóidat.',
-    price: 25000,
+    price: null,
     type: 'one-time',
     category: 'design',
     features: [
@@ -68,7 +68,7 @@ const ADDONS_CATALOG = [
     id: 'addon_speed_opt',
     title: 'Lighthouse Google Speed & Core Web Vitals Optimalizálás',
     description: 'A betöltési sebesség drasztikus növelése és a Google PageSpeed Insights pontok feltornázása a 90-95+ tartományba a jobb keresőoptimalizálási helyezésekért.',
-    price: 49000,
+    price: null,
     type: 'one-time',
     category: 'tech',
     features: [
@@ -84,7 +84,7 @@ const ADDONS_CATALOG = [
     id: 'addon_seo_article',
     title: 'Prémium AI + Emberi Hibrid SEO Szakcikk & AEO Optimalizálás',
     description: 'Olyan mélyreható iparági szakcikk, amely a legújabb keresési trendek alapján készül, és kiválóan rangsorol mind a Google-ben, mind a modern AI válaszgépeken (AEO).',
-    price: 15000,
+    price: null,
     type: 'one-time',
     category: 'ai',
     features: [
@@ -100,7 +100,7 @@ const ADDONS_CATALOG = [
     id: 'addon_cro_audit',
     title: 'Landing Page Konverziós Audit & Copywriting Finomhangolás',
     description: 'Átfogó CRO (Conversion Rate Optimization) elemzés, amely során átvilágítjuk a szövegezést, a CTA gombokat és az elrendezést a maximális értékesítés eléréséhez.',
-    price: 35000,
+    price: null,
     type: 'one-time',
     category: 'cro',
     features: [
@@ -116,7 +116,7 @@ const ADDONS_CATALOG = [
     id: 'addon_security_pack',
     title: '🛡️ WebDude Prémium Biztonsági Csomag & Kiber-páncél (1 év)',
     description: 'Komplex védelmi rendszer weboldalad számára: automata tűzfal, napi kártevő-vizsgálat, brute-force védelem és heti biztonsági mentések külső szerverre.',
-    price: 60000,
+    price: null,
     type: 'one-time',
     category: 'tech',
     features: [
@@ -132,7 +132,7 @@ const ADDONS_CATALOG = [
     id: 'addon_ai_chatbot',
     title: '🤖 Egyedi AI Chatbot Asszisztens & Lead Minősítő Integráció',
     description: 'Egyedi stílusú, saját tudásbázisodra (szolgáltatásaid, áraid, FAQ) betanított mesterséges intelligencia alapú chatbot, amely 24/7-ben kiszolgálja a látogatókat.',
-    price: 120000,
+    price: null,
     type: 'one-time',
     category: 'ai',
     features: [
