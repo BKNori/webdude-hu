@@ -7,7 +7,7 @@ export default function PortfolioHero() {
   return (
     <ScrollVideoHero videoSrc="/webdude-websites-promo.mp4" scrollHeight={120}>
       {/* Content overlay - WoW effect with dramatic entrance */}
-      <div className="text-center space-y-8 px-6">
+      <div className="text-center space-y-8 px-6 max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, scale: 0.8, y: 50 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -35,7 +35,7 @@ export default function PortfolioHero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-xl md:text-2xl text-white/90 max-w-2xl leading-relaxed"
+          className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed"
         >
           Minden projekt egy egyedi kihívás, amire kreatív és technológiai
           választ adtam. Nézd meg a sikertörténeteket!

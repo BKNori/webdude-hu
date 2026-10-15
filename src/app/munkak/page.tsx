@@ -8,18 +8,18 @@ import { works as staticWorks } from "@/data/works";
 export const revalidate = 3600; // 1 órás ISR gyorsítótárazás
 
 export const metadata: Metadata = {
-  title: "Referenciák & Esettanulmányok | WebDude",
+  title: "Webfejlesztő Referenciák & Esettanulmányok | WebDude.hu",
   description:
-    "Valós ügyféleredmények, konverzió-optimalizált Next.js weboldalak és egyedi digitális rendszerek. 26 év tapasztalat, mérhető növekedés.",
+    "Konverzió-optimalizált Next.js weboldalak, webshopok és arculatok. 26 év tapasztalat, mérhető növekedés. Nézd meg a WebDude sikeres projektjeit.",
   keywords:
-    "webfejlesztő referenciák, esettanulmányok, Next.js projektek, WordPress fejlesztés, prémium weboldal készítés, grafikai tervezés, arculattervezés",
+    "webfejlesztő referenciák, esettanulmányok, Next.js projektek, webshop fejlesztés, WordPress migráció, prémium weboldal készítés, grafikai tervezés, arculattervezés, konverzió optimalizálás",
   alternates: {
     canonical: "https://webdude.hu/munkak",
   },
   openGraph: {
-    title: "Referenciák & Esettanulmányok | WebDude",
+    title: "Webfejlesztő Referenciák & Esettanulmányok | WebDude.hu",
     description:
-      "Valós ügyféleredmények, konverzió-optimalizált Next.js weboldalak és egyedi digitális rendszerek. 26 év tapasztalat, mérhető növekedés.",
+      "Konverzió-optimalizált Next.js weboldalak, webshopok és arculatok. 26 év tapasztalat, mérhető növekedés. Nézd meg a WebDude sikeres projektjeit.",
     url: "https://webdude.hu/munkak",
     siteName: "WebDude",
     images: [
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
         url: "/og/webdude-portfolio-og.jpg",
         width: 1200,
         height: 630,
-        alt: "WebDude referenciák és esettanulmányok",
+        alt: "WebDude referenciák és esettanulmányok - Next.js webfejlesztés",
       },
     ],
     locale: "hu_HU",
@@ -35,9 +35,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Referenciák & Esettanulmányok | WebDude",
+    title: "Webfejlesztő Referenciák & Esettanulmányok | WebDude.hu",
     description:
-      "Valós ügyféleredmények, konverzió-optimalizált Next.js weboldalak és egyedi digitális rendszerek. 26 év tapasztalat, mérhető növekedés.",
+      "Konverzió-optimalizált Next.js weboldalak, webshopok és arculatok. 26 év tapasztalat, mérhető növekedés.",
     images: ["/og/webdude-portfolio-og.jpg"],
   },
 };
@@ -72,9 +72,9 @@ const orderedWorks = [...staticWorks].sort(
 const portfolioSchema = {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
-  name: "Referenciák & Esettanulmányok | WebDude",
+  name: "Webfejlesztő Referenciák & Esettanulmányok | WebDude.hu",
   description:
-    "Valós ügyféleredmények, konverzió-optimalizált Next.js weboldalak és egyedi digitális rendszerek. 26 év tapasztalat, mérhető növekedés.",
+    "Konverzió-optimalizált Next.js weboldalak, webshopok és arculatok. 26 év tapasztalat, mérhető növekedés. Nézd meg a WebDude sikeres projektjeit.",
   url: "https://webdude.hu/munkak",
   isPartOf: {
     "@type": "WebSite",
@@ -170,7 +170,9 @@ export default async function MunkakPage() {
           </h1>
 
           <p className="text-lg md:text-xl text-slate-400 max-w-xl leading-relaxed mb-8 mx-auto tracking-wide font-medium">
-            Minden projekt egy egyedi üzleti és vizuális kihívás. Nem sablonokat másolok: egyedi, konverzióra és sebességre tervezett felületeket építek.
+            Minden projekt egy egyedi üzleti és vizuális kihívás. Nem sablonokat
+            másolok: egyedi, konverzióra és sebességre tervezett felületeket
+            építek.
           </p>
 
           <Link
@@ -202,7 +204,8 @@ export default async function MunkakPage() {
               </span>
             </h2>
             <p className="text-lg text-slate-400 max-w-2xl mx-auto">
-              Valós üzleti eredmények, amelyeket a partnereimmel közösen értünk el
+              Valós üzleti eredmények, amelyeket a partnereimmel közösen értünk
+              el
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
@@ -244,7 +247,8 @@ export default async function MunkakPage() {
             </span>
           </h2>
           <p className="text-lg text-slate-400 max-w-2xl mx-auto">
-            Válogatás a legfrissebb webfejlesztési, webshop és arculati projektjeimből
+            Válogatás a legfrissebb webfejlesztési, webshop és arculati
+            projektjeimből
           </p>
         </div>
         <PortfolioGrid projects={orderedWorks} />
@@ -260,7 +264,8 @@ export default async function MunkakPage() {
               Készen állsz egy modern, eladásorientált weboldalra?
             </h2>
             <p className="text-lg text-slate-300 max-w-xl mx-auto leading-relaxed">
-              Beszéljük át az elképzeléseidet, és készítek számodra egy kötelezettségmentes, egyedi árajánlatot.
+              Beszéljük át az elképzeléseidet, és készítek számodra egy
+              kötelezettségmentes, egyedi árajánlatot.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link

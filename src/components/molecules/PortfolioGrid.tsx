@@ -36,15 +36,21 @@ function PortfolioCard({ project, index }: PortfolioCardProps) {
   // 3D dőlés rugós (spring) interpolációval
   const tiltXTarget = useMotionValue(0);
   const tiltYTarget = useMotionValue(0);
-  const rotateX = useSpring(tiltXTarget, { stiffness: 180, damping: 22, mass: 0.6 });
-  const rotateY = useSpring(tiltYTarget, { stiffness: 180, damping: 22, mass: 0.6 });
+  const rotateX = useSpring(tiltXTarget, {
+    stiffness: 180,
+    damping: 22,
+    mass: 0.6,
+  });
+  const rotateY = useSpring(tiltYTarget, {
+    stiffness: 180,
+    damping: 22,
+    mass: 0.6,
+  });
 
   const isFeatured = Boolean(project.featured);
-  // Hero kiemelés: csak az ELSŐ kártya (index 0) kap kétszeres szélességet.
-  // Így a 3 oszlopos rács zéró hézaggal töltődik ki (2 + 1 = teljes első sor,
-  // utána egységes 1-1-1), a sorrend pedig sértetlen marad — nem csúsznak
-  // be a kártyák közé a `grid-flow-row-dense` által (ami így tartalék).
-  const isHero = isFeatured && index === 0;
+  // Hero kiemelés: a megadott 3 projekt mindig nagy kártyás.
+  const heroProjectIds = ["btshop", "dr-nagy-albert", "lengyel-helga"];
+  const isHero = heroProjectIds.includes(project.id);
   const kpiHighlight = project.results?.[0] ?? project.category;
   const coverImage = project.bannerImage || project.image;
 
@@ -68,8 +74,12 @@ function PortfolioCard({ project, index }: PortfolioCardProps) {
   return (
     <motion.article
       ref={cardRef}
-      initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 32, scale: 0.97 }}
-      whileInView={shouldReduceMotion ? { opacity: 1 } : { opacity: 1, y: 0, scale: 1 }}
+      initial={
+        shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 32, scale: 0.97 }
+      }
+      whileInView={
+        shouldReduceMotion ? { opacity: 1 } : { opacity: 1, y: 0, scale: 1 }
+      }
       viewport={{ once: true, margin: "-60px" }}
       transition={{
         type: "spring",
@@ -80,10 +90,14 @@ function PortfolioCard({ project, index }: PortfolioCardProps) {
       onMouseMove={handlePointerMove}
       onMouseLeave={handlePointerLeave}
       style={
-        shouldReduceMotion ? undefined : { rotateX, rotateY, transformPerspective: 1200 }
+        shouldReduceMotion
+          ? undefined
+          : { rotateX, rotateY, transformPerspective: 1200 }
       }
       className={`group relative flex overflow-hidden rounded-3xl border border-slate-800/80 bg-slate-900/60 backdrop-blur-xl ring-1 ring-white/5 transition-colors duration-300 hover:border-[#00B5F1]/50 hover:shadow-[0_0_30px_rgba(0,181,241,0.2)] ${
-        isHero ? "md:col-span-2 flex-col md:flex-row" : "col-span-1 flex-col"
+        isHero
+          ? "col-span-1 md:col-span-2 lg:col-span-2 flex-col md:flex-row"
+          : "col-span-1 flex-col"
       }`}
     >
       {/* Electric Cyan spotlight — pointer-követő fény */}

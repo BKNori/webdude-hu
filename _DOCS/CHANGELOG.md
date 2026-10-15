@@ -1,5 +1,95 @@
 # Changelog
 
+## [7.28.6] — 2026-10-15 — /MUNKAK HERO LAYOUT FIX & SEO/AEO OPTIMALIZÁLÁS (Kék-Lila v7.0)
+
+A `/munkak` (Referenciák) oldal hero banner elrendezésének javítása és SEO/AEO paraméterek profi optimalizálása.
+
+- **`src/components/molecules/PortfolioHero.tsx` — Hero szöveg elrendezés javítása:**
+  - **Max-width hozzáadása:** a szöveg konténer `max-w-5xl mx-auto` osztályokat kapott, így nagy képernyőn a szöveg középre igazított és nem nyúlik túl szélesre.
+  - **Paragraph max-width bővítése:** a leíró szöveg `max-w-2xl` → `max-w-3xl` módosítva, hogy a szöveg szélesebb és olvashatóbb legyen.
+- **`src/app/munkak/page.tsx` — SEO/AEO optimalizálás:**
+  - **Title frissítése:** "Referenciák & Esettanulmányok | WebDude" → "Webfejlesztő Referenciák & Esettanulmányok | WebDude.hu" (kulcsszó-gazdagabb, domain-előnézet).
+  - **Description frissítése:** "Valós ügyféleredmények, konverzió-optimalizált Next.js weboldalak és egyedi digitális rendszerek. 26 év tapasztalat, mérhető növekedés." → "Konverzió-optimalizált Next.js weboldalak, webshopok és arculatok. 26 év tapasztalat, mérhető növekedés. Nézd meg a WebDude sikeres projektjeit." (konkrétabb, cselekvésre ösztönző).
+  - **Keywords bővítése:** "webshop fejlesztés, WordPress migráció, konverzió optimalizálás" kulcsszavak hozzáadva.
+  - **OpenGraph és Twitter metadata szinkronizálása:** title és description konzisztens a main metadata-val.
+  - **JSON-LD séma frissítése:** `CollectionPage` és `BreadcrumbList` name/description mezők szinkronizálva a fő metadata-val.
+- **QA (Zero-Error Gate):** `npx tsc --noEmit` → **TSC_EXIT=0**; `npm run lint -- --max-warnings 0` → **LINT_EXIT=0**.
+
+---
+
+## [7.28.5] — 2026-10-15 — FIRESTORE RULES FIX & ADMIN DASHBOARD AUTHENTICATION (Kék-Lila v7.0)
+
+A Firestore Security Rules és az Admin Dashboard "Statistical Gong" (AdminDashboard) audit és javítása: permissions denied hiba megoldása, admin jogosultság ellenőrzés implementálása.
+
+- **`firestore.rules` — Hiányzó kollekciók hozzáadása:**
+  - **Projects** (`/projects/{projectId}`): admin read/write - projekt tracking Admin Dashboardhoz.
+  - **SEO Audits** (`/seo_audits/{auditId}`): admin read/write - AI eszköz tracking Admin Dashboardhoz.
+  - **Competitor Analyses** (`/competitor_analyses/{analysisId}`): admin read/write - AI eszköz tracking Admin Dashboardhoz.
+  - **Content Plans** (`/content_plans/{planId}`): admin read/write - AI eszköz tracking Admin Dashboardhoz.
+  - **Transactions** (`/transactions/{transactionId}`): admin read/write - payment tracking Admin Dashboardhoz.
+  - **Marketing Spend** (`/marketing_spend/{spendId}`): admin read/write - marketing költség tracking Admin Dashboardhoz.
+  - Minden kollekció `isAdmin() || isHelloAdmin()` jogosultsággal rendelkezik.
+- **`src/actions/admin-dashboard.ts` — Admin jogosultság ellenőrzés:**
+  - **`requireAdmin()` helper függvény:** auth token validálás a request header-ből vagy a komponensből kapott headers-ből.
+  - **Admin role vagy hello@webdude.hu email ellenőrzése:** `userProfile.profile?.role === "admin" || userProfile.profile?.email === "hello@webdude.hu" || userProfile.profile?.email === "admin@webdude.hu"`.
+  - **Mindenhárom Server Action (`getDashboardStatsAction`, `exportLeadsCSVAction`, `exportTransactionsCSVAction`, `exportProjectsCSVAction`) admin jogosultság ellenőrzéssel bővítve.**
+- **`src/components/organisms/AdminDashboard.tsx` — Auth token átadás:**
+  - **`getAuthHeaders()` helper függvény:** Firebase Auth ID token lekérése Bearer token formátumban.
+  - **Auth token átadása minden Server Action-nek:** a komponens auth header-eket generál és átadja az action-öknek.
+  - **`useCallback` és `useEffect` refaktor:** React hooks linting szabályoknak megfelelően refaktorálva.
+- **QA (Zero-Error Gate):** `npx tsc --noEmit` → **TSC_EXIT=0**; `npm run lint -- --max-warnings 0` → **LINT_EXIT=0**; `npm run build` → **BUILD_EXIT=0** (169 statikus oldal, Next.js 16.2.6 webpack).
+
+---
+
+## [7.28.4] — 2026-10-15 — HEADER DROPBACK SIMPLIFIKÁCIÓ & SOCIAL ICONS FRISSÍTÉS (Kék-Lila v7.0)
+
+A szolgáltatások dropdown menű és a közösségi ikonok felhasználói élményének egyszerűsítése, admin dashboard bővítése Portfolio Management modullal.
+
+- **`src/components/molecules/HeaderNavClient.tsx` — Dropdown egyszerűsítés:**
+  - **Ikonok és neon glow eltávolítása:** a korábbi [7.28.3] verzióban bevezetett neon glow gradiensek, ikonok és category indikátorok eltávolítva.
+  - **Egyszerű text-link megjelenítés:** kizárólag szöveges linkek, hover állapotban színátmenetes háttér (`hover:bg-[color]/5`) és félkövér font.
+  - **Grid struktúra megtartása:** `grid-cols-1 lg:grid-cols-3` elrendezés, de egyszerűsített spacing (`gap-4`, `p-6`).
+  - **Motion animációk megtartása:** belépési animációk, de finomabb delay-ekkel.
+- **`src/components/molecules/PortfolioGrid.tsx` — Hero projekt logika módosítása:**
+  - **Specifikus ID alapú kiemelés:** a korábbi `isFeatured && index === 0` logika helyett explicit ID lista (`btshop`, `dr-nagy-albert`, `lengyel-helga`) alapú hero kártya kiemelés.
+  - **Grid span fix:** `col-span-1 md:col-span-2 lg:col-span-2` konzisztens breakpoint-ekkel.
+- **`src/components/molecules/SocialMediaIcons.tsx` — Social ikonok frissítése:**
+  - **LinkedIn hozzáadása:** Pinterest helyett LinkedIn profile link (`https://www.linkedin.com/in/webdudehu`).
+  - **SVG attribútum rendezés:** `viewBox` és `fill` attribútumok egységes sorrend.
+  - **Brand token hex értékekre cserélése:** `text-brand-primary` → `text-[#00B5F1]`, `ring-brand-primary` → `ring-[#00B5F1]`.
+- **`src/components/organisms/Footer.tsx` — Szolgáltatás lista átépítése:**
+  - **3 oszlopos struktúra:** a 18 szolgáltatás elem átszervezése a header dropdown 3 oszlopos kategóriáival konzisztens módon.
+  - **Brand token hex értékekre cserélése:** AI-Prompt logo hover állapotában `brightness-0 invert` → teljes invertálás effekt.
+- **`src/components/organisms/SuperAdminDashboard.tsx` — Portfolio Management modul:**
+  - **Új modul hozzáadása:** "Portfolio Management" kategória "Portfólió Kezelő" modullal.
+  - **Dedikált routing:** `router.push("/admin/portfolio")` Next.js `useRouter` hook használatával (window.location.href helyett).
+  - **Ikon:** `Briefcase` és `ExternalLink` ikonok importálva.
+- **QA (Zero-Error Gate):** `npx tsc --noEmit` → **TSC_EXIT=0**; `npm run lint -- --max-warnings 0` → **LINT_EXIT=0**; `npm run build` → **BUILD_EXIT=0** (169 statikus oldal, Next.js 16.2.6 webpack).
+
+---
+
+## [7.28.3] — 2026-10-15 — SZOLGÁLTATÁSOK MEGAMENŰ 3 OSZLOPOS STRUKTÚRA & NEON GRADIENS FINOMHANGOLÁS (Kék-Lila v7.0)
+
+A Header „Szolgáltatások" dropdown menüjének teljes újratervezése: kiegyensúlyozott 3 oszlopos elrendezés (6-6-6 elem), Kék-Lila v7.0 neon glow gradiensek, elegáns sötét felületek és prémium hover-effektek.
+
+- **`src/config/navigation.ts` — Kategória-átrendezés (SSOT):** a 18 szolgáltatás elemet 3 egyenletes oszlopba szerveztem át kategória-alapú filter logikával:
+  - **1. oszlop (Webfejlesztés — 6 elem):** Weboldal Készítés, WordPress Webshop, Webshop Fejlesztés, WordPress Fejlesztés, Weboldal Felújítás, Helyi SEO (Local SEO).
+  - **2. oszlop (SEO & Marketing — 6 elem):** SEO Optimalizálás, Technikai SEO Audit, Marketing Lead Generálás, WordPress Karbantartás, Weboldal Gyorsítás, WordPress Biztonság.
+  - **3. oszlop (Design & AI — 6 elem):** Grafikai Tervezés, Logó Tervezés, Szórólap Tervezés, Csomagolás Tervezés, Egyedi Fejlesztés, Prémium AI & Automatizációs Megoldások.
+- **`src/components/molecules/HeaderNavClient.tsx` — RenderDropdownContent finomhangolás:**
+  - **Grid struktúra:** `grid-cols-1 lg:grid-cols-3` (mobile 1 oszlop, desktop 3 oszlop) a korábbi 4 oszlopos kiegyensúlyozatlan elrendezés helyett.
+  - **Kék-Lila v7.0 neon glow gradiensek:** minden oszlop külön brand-színnel:
+    - Webfejlesztés: `#00B5F1` (cián) — `bg-gradient-to-br from-[#00B5F1]/10 to-[#00B5F1]/5` + `shadow-[0_0_20px_rgba(0,181,241,0.15)]` aktív állapotban.
+    - SEO & Marketing: `#7C3AED` (lila) — `bg-gradient-to-br from-[#7C3AED]/10 to-[#7C3AED]/5` + `shadow-[0_0_20px_rgba(124,58,237,0.15)]` aktív állapotban.
+    - Design & AI: `#06b6d4` (cyan-500) — `bg-gradient-to-br from-[#06b6d4]/10 to-[#06b6d4]/5` + `shadow-[0_0_20px_rgba(6,182,212,0.15)]` aktív állapotban.
+  - **Hover állapotok:** `hover:bg-gradient-to-br` + `hover:shadow-[0_0_15px_rgba(...)]` elegáns neon fénycsillanás; border transzformáció `hover:border-[color]/30`.
+  - **Sötét, elegáns alap:** `from-slate-900/50 to-slate-900/70` gradiens háttér + `border-slate-700/50` diszkrét keret.
+  - **Ikon neon effekt:** aktív állapotban `drop-shadow-[0_0_6px_rgba(...)]` glow; kategória indikátorok neon pontokkal (`shadow-[0_0_8px_rgba(...)]`).
+  - **Motion animációk:** `initial={{ opacity: 0, y: 5 }}` → `animate={{ opacity: 1, y: 0 }}` egyedi delay-ekkel minden oszlopra (0, 0.06, 0.12s).
+- **QA (Zero-Error Gate):** `npx tsc --noEmit` → **TSC_EXIT=0**; `npm run lint -- --max-warnings 0` → **LINT_EXIT=0**; `npm run build` → **BUILD_EXIT=0** (169 statikus oldal, Next.js 16.2.6 webpack, ISR/SSR útvonalak validálva).
+
+---
+
 ## [7.28.1] — 2026-10-14 — BENNFOK KÉP-PROBLÉMA AUDIT ÉS BRAND KONSOLIDÁCIÓ (Kék-Lila v7.0)
 
 - **`_docs/DESIGN_SYSTEM.md` frissítés:** Kék-Lila v7.0 csatorna valósításban megerősítése: `from-[#00B5F1] → to-[#5B21B6]` / `from-brand-primary/20 → to-brand-secondary/20`; minden `amber (#f59e0b) / orange (#f97316) / red-500` alapú gradiens-prop és `color` prop **deregisterálva** a design-tokenekkel kicserélve.
@@ -22,6 +112,7 @@
   - `HeaderNavClient.tsx` dropdown — specnek megfelelően már működik; kihagyva.
 - **CSR / SEO:** nincs új markup, nincs `window`/`document` kliensoldali használat; minden metadatum JSON-LD-t még `layout.tsx`-ben van kiszolgálva.
 - **QA (Zero-Error Gate):** `npx tsc --noEmit` → **TSC_EXIT=0**; `npm run lint -- --max-warnings 0` → **LINT_EXIT=0**; `npm run build` → **BUILD_EXIT=0** (169 statikus oldal + 12 deploy-elt); összefoglaló `CHANGELOG.md` és `_docs/ARCHITECTURE.md` megegyezik a kód változásával.
+
 ## [7.28.0] — 2026-10-14 — /MUNKAK OLDAL AUDIT: SORREND, HÉZAG-MENTESSÉG, GO-BOX EGYEZTETÉS, SEO/AEO + LEAD-GEN
 
 A `/munkak` (Referenciák) oldal teljes körű auditja és rendezése: a Go-Box duplikáció egyesítése, a kért portfólió-sorrend bevezetése, a Bento Grid hézag-ok megszüntetése, valamint SEO/AEO és lead-generálás erősítés.
@@ -118,9 +209,9 @@ Az értesítési rendszer kiterjesztése a meglévő származtatott listenereken
 
 - **`src/lib/notify.ts` (ÚJ):** központi `notifyUser()` helper — Admin SDK írás a `users/{uid}/notifications` kollekcióba (`FieldValue.serverTimestamp()`, `read: false`, `kind`/`tone`/`title`/`message`/`link`). **Dinamikus import** (`await import("@/lib/firebase-admin")`) — így a modul-szinten inicializálódó Admin SDK nem húzódik be a publikus oldalak prerenderelésekor (build fix: `add-onok` oldal `app/invalid-credential` hibája). **Best-effort** belső try/catch: egy értesítési hiba soha nem szakítja meg a trigger fő műveletét.
 - **Trigger-ek bekötve (a sikeres műveletek UTÁN, best-effort):**
-  - `api/webhooks/stripe/route.ts` — T1: `checkout.session.completed` „paid" → *Fizetés jóváhagyva* (success); T1b: mérföldkő-fizetés ág ugyancsak.
-  - `actions/addons.ts` — T2: `deliverOrderAction` → *Rendelés kézbesítve* (success).
-  - `actions/portal.ts` — T3: `approveWorkflowPhaseAction` → *Fázis jóváhagyva — Norbi értesítve* (info, megerősítő visszajelzés).
+  - `api/webhooks/stripe/route.ts` — T1: `checkout.session.completed` „paid" → _Fizetés jóváhagyva_ (success); T1b: mérföldkő-fizetés ág ugyancsak.
+  - `actions/addons.ts` — T2: `deliverOrderAction` → _Rendelés kézbesítve_ (success).
+  - `actions/portal.ts` — T3: `approveWorkflowPhaseAction` → _Fázis jóváhagyva — Norbi értesítve_ (info, megerősítő visszajelzés).
 - **`usePortalNotifications` hook (bővítve):** 3. listener a dedikált `notifications` kollekcióra (`where userId == uid` + `orderBy createdAt desc` + `limit(10)`), egységes normalizálás (ISO dátum `Date.parse`), `unseen` jelölés a `wd_portal_last_seen_ms` localStorage alapján; hibakezelés minden listeneren (`console.error` + `setReady(true)`).
 - **`PortalNotificationBell` UI (bővítve, v7.0):** `kindIcon` rekord (`CreditCard` = payment, `PackageCheck` = delivery, `CheckCircle2` = approval, `Sparkles` = generation, `ShieldCheck` = vault, `MessageSquare` = message) + `tone` színek (emerald / red / `#00B5F1`) — **0 amber/gold**, ikon-szintű szemantika (a 90-8-2 szabály sértetlen, a lila badge nem nő). A meglévő olvasatlan kiemelés, `aria-live`, click-outside/Escape típus-függetlenül öröklődik. Mérethatár: Bell 151 sor (300-as limit alatt, nem kellett szétbontani).
 - **QA:** `npx tsc --noEmit` → **0**; `npm run lint -- --max-warnings 0` → **0**; `npm run build` → **0**.

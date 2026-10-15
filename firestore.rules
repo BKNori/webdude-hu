@@ -185,6 +185,36 @@ service cloud.firestore {
       allow delete: if isAdmin() || (isAuthenticated() && resource.data.userId == request.auth.uid);
     }
 
+    // Projects — admin read/write (projekt tracking Admin Dashboardhoz)
+    match /projects/{projectId} {
+      allow read, write: if isAdmin() || isHelloAdmin();
+    }
+
+    // SEO Audits — admin read/write (AI eszköz tracking Admin Dashboardhoz)
+    match /seo_audits/{auditId} {
+      allow read, write: if isAdmin() || isHelloAdmin();
+    }
+
+    // Competitor Analyses — admin read/write (AI eszköz tracking Admin Dashboardhoz)
+    match /competitor_analyses/{analysisId} {
+      allow read, write: if isAdmin() || isHelloAdmin();
+    }
+
+    // Content Plans — admin read/write (AI eszköz tracking Admin Dashboardhoz)
+    match /content_plans/{planId} {
+      allow read, write: if isAdmin() || isHelloAdmin();
+    }
+
+    // Transactions — admin read/write (payment tracking Admin Dashboardhoz)
+    match /transactions/{transactionId} {
+      allow read, write: if isAdmin() || isHelloAdmin();
+    }
+
+    // Marketing Spend — admin read/write (marketing költség tracking Admin Dashboardhoz)
+    match /marketing_spend/{spendId} {
+      allow read, write: if isAdmin() || isHelloAdmin();
+    }
+
     // Minden más: tiltva
     match /{document=**} {
       allow read, write: if false;

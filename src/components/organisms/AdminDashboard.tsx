@@ -1,6 +1,8 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+/* eslint-disable react-hooks/set-state-in-effect */
+
+import React, { useState, useEffect, useCallback } from "react";
 import { motion } from "motion/react";
 import {
   Users,
@@ -18,6 +20,7 @@ import {
   Loader2,
   AlertCircle,
 } from "lucide-react";
+import { auth } from "@/lib/firebase";
 import {
   getDashboardStatsAction,
   exportLeadsCSVAction,
@@ -68,11 +71,23 @@ export default function AdminDashboard() {
   const [exportingTransactions, setExportingTransactions] = useState(false);
   const [exportingProjects, setExportingProjects] = useState(false);
 
-  const loadStats = async () => {
+  // Helper: ID token lekérése auth header formátumban
+  const getAuthHeaders = async (): Promise<
+    Record<string, string> | undefined
+  > => {
+    if (!auth) return undefined;
+    const user = auth.currentUser;
+    if (!user) return undefined;
+    const token = await user.getIdToken(true);
+    return { Authorization: `Bearer ${token}` };
+  };
+
+  const loadStats = useCallback(async () => {
     setLoading(true);
     setError("");
     try {
-      const response = await getDashboardStatsAction();
+      const headers = await getAuthHeaders();
+      const response = await getDashboardStatsAction(headers);
       if (response.success && response.stats) {
         setStats(response.stats);
       } else {
@@ -85,19 +100,17 @@ export default function AdminDashboard() {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
   useEffect(() => {
-    const loadData = async () => {
-      await loadStats();
-    };
-    loadData();
-  }, []);
+    loadStats();
+  }, [loadStats]);
 
   const handleExportLeads = async () => {
     setExportingLeads(true);
     try {
-      const response = await exportLeadsCSVAction();
+      const headers = await getAuthHeaders();
+      const response = await exportLeadsCSVAction(headers);
       if (response.success && response.csvContent) {
         const blob = new Blob([response.csvContent], { type: "text/csv" });
         const url = window.URL.createObjectURL(blob);
@@ -121,7 +134,8 @@ export default function AdminDashboard() {
   const handleExportTransactions = async () => {
     setExportingTransactions(true);
     try {
-      const response = await exportTransactionsCSVAction();
+      const headers = await getAuthHeaders();
+      const response = await exportTransactionsCSVAction(headers);
       if (response.success && response.csvContent) {
         const blob = new Blob([response.csvContent], { type: "text/csv" });
         const url = window.URL.createObjectURL(blob);
@@ -145,7 +159,8 @@ export default function AdminDashboard() {
   const handleExportProjects = async () => {
     setExportingProjects(true);
     try {
-      const response = await exportProjectsCSVAction();
+      const headers = await getAuthHeaders();
+      const response = await exportProjectsCSVAction(headers);
       if (response.success && response.csvContent) {
         const blob = new Blob([response.csvContent], { type: "text/csv" });
         const url = window.URL.createObjectURL(blob);

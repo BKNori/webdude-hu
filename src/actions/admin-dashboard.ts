@@ -9,6 +9,57 @@ import {
 } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import { z } from "zod";
+import { headers } from "next/headers";
+import { getClientUserProfileAction } from "@/actions/portal";
+
+/**
+ * Admin jogosultság ellenőrzése Server Action-ben
+ * - Auth token validálás a request header-ből vagy a komponensből kapott headers-ből
+ * - Admin role vagy hello@webdude.hu email ellenőrzése
+ */
+async function requireAdmin(customHeaders?: HeadersInit) {
+  let token: string | null = null;
+
+  // Próbáljuk meg a komponensből kapott headers-t (Bearer token)
+  if (customHeaders && typeof customHeaders === "object") {
+    const headersObj = customHeaders as Record<string, string>;
+    const authHeader =
+      headersObj["Authorization"] || headersObj["authorization"];
+    if (authHeader && authHeader.startsWith("Bearer ")) {
+      token = authHeader.replace("Bearer ", "");
+    }
+  }
+
+  // Ha nincs token, próbáljuk meg a request header-ből
+  if (!token) {
+    const headersList = await headers();
+    const authHeader = headersList.get("authorization");
+    if (authHeader && authHeader.startsWith("Bearer ")) {
+      token = authHeader.replace("Bearer ", "");
+    }
+  }
+
+  if (!token) {
+    throw new Error("Hiányzó vagy érvénytelen auth token");
+  }
+
+  const userProfile = await getClientUserProfileAction(token);
+
+  if (!userProfile.success) {
+    throw new Error("Érvénytelen felhasználói profil");
+  }
+
+  const isAdmin =
+    userProfile.profile?.role === "admin" ||
+    userProfile.profile?.email === "hello@webdude.hu" ||
+    userProfile.profile?.email === "admin@webdude.hu";
+
+  if (!isAdmin) {
+    throw new Error("Nincs admin jogosultság");
+  }
+
+  return true;
+}
 
 const DashboardStatsSchema = z.object({
   leadsCount: z.number(),
@@ -33,8 +84,11 @@ const DashboardStatsSchema = z.object({
   ),
 });
 
-export async function getDashboardStatsAction() {
+export async function getDashboardStatsAction(customHeaders?: HeadersInit) {
   try {
+    // Admin jogosultság ellenőrzése
+    await requireAdmin(customHeaders);
+
     if (!db) {
       throw new Error("Firestore nem elérhető");
     }
@@ -297,8 +351,11 @@ export async function getDashboardStatsAction() {
   }
 }
 
-export async function exportLeadsCSVAction() {
+export async function exportLeadsCSVAction(customHeaders?: HeadersInit) {
   try {
+    // Admin jogosultság ellenőrzése
+    await requireAdmin(customHeaders);
+
     if (!db) {
       throw new Error("Firestore nem elérhető");
     }
@@ -339,8 +396,11 @@ export async function exportLeadsCSVAction() {
   }
 }
 
-export async function exportTransactionsCSVAction() {
+export async function exportTransactionsCSVAction(customHeaders?: HeadersInit) {
   try {
+    // Admin jogosultság ellenőrzése
+    await requireAdmin(customHeaders);
+
     if (!db) {
       throw new Error("Firestore nem elérhető");
     }
@@ -390,8 +450,11 @@ export async function exportTransactionsCSVAction() {
   }
 }
 
-export async function exportProjectsCSVAction() {
+export async function exportProjectsCSVAction(customHeaders?: HeadersInit) {
   try {
+    // Admin jogosultság ellenőrzése
+    await requireAdmin(customHeaders);
+
     if (!db) {
       throw new Error("Firestore nem elérhető");
     }

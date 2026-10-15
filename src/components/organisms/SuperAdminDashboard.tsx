@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { motion } from "motion/react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "@/lib/firebase";
@@ -21,6 +22,8 @@ import {
   Snowflake,
   AlertTriangle,
   Loader2,
+  Briefcase,
+  ExternalLink,
 } from "lucide-react";
 
 interface ModuleItem {
@@ -183,6 +186,16 @@ const SuperAdminMenu: Record<string, ModuleItem[]> = {
       goal: "Versenytárs vizuális elemzés + Design audit",
     },
   ],
+  "Portfolio Management": [
+    {
+      name: "Portfólió Kezelő",
+      mod: "PortfolioManager",
+      status: "Active",
+      category: "Admin",
+      workflowPhase: "Firestore CRUD",
+      goal: "Projektek szerkesztése és kezelése",
+    },
+  ],
   "System Config": [
     {
       name: "Audit & Compliance",
@@ -207,6 +220,7 @@ const categoryIcons: Record<string, React.ReactNode> = {
   "Vizuális Motor": <Layers className="w-5 h-5" />,
   "Kreatív Motor": <Zap className="w-5 h-5" />,
   "Product Optimizer": <Rocket className="w-5 h-5" />,
+  "Portfolio Management": <Briefcase className="w-5 h-5" />,
   "System Config": <Settings className="w-5 h-5" />,
 };
 
@@ -218,9 +232,11 @@ const workflowIcons: Record<string, React.ReactNode> = {
   Retenció: <Snowflake className="w-4 h-4" />,
   Product: <Rocket className="w-4 h-4" />,
   System: <Activity className="w-4 h-4" />,
+  Admin: <Briefcase className="w-4 h-4" />,
 };
 
 export default function SuperAdminDashboard() {
+  const router = useRouter();
   const [selectedModule, setSelectedModule] = useState<ModuleItem | null>(null);
   const [deploying, setDeploying] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -294,6 +310,14 @@ export default function SuperAdminDashboard() {
     }, 2000);
   };
 
+  const handleModuleClick = (module: ModuleItem) => {
+    if (module.mod === "PortfolioManager") {
+      router.push("/admin/portfolio");
+    } else {
+      setSelectedModule(module);
+    }
+  };
+
   const handleGenerateLeadPage = async (module: ModuleItem) => {
     if (!module) return;
     setDeploying(true);
@@ -341,7 +365,7 @@ export default function SuperAdminDashboard() {
                 {modules.map((module) => (
                   <button
                     key={module.mod}
-                    onClick={() => setSelectedModule(module)}
+                    onClick={() => handleModuleClick(module)}
                     disabled={module.status === "Locked"}
                     className={`w-full text-left p-4 rounded-xl transition-all flex items-center justify-between ${
                       selectedModule?.mod === module.mod
@@ -358,7 +382,9 @@ export default function SuperAdminDashboard() {
                       <span className="font-medium">{module.name}</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      {module.status === "Active" ? (
+                      {module.mod === "PortfolioManager" ? (
+                        <ExternalLink className="w-4 h-4 text-slate-400" />
+                      ) : module.status === "Active" ? (
                         <CheckCircle className="w-4 h-4 text-emerald-500" />
                       ) : (
                         <Lock className="w-4 h-4 text-red-500" />

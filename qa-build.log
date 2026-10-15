@@ -1,0 +1,186 @@
+﻿
+> webdude-hu@0.1.168 build
+> npm run clean && next build --webpack
+
+
+> webdude-hu@0.1.168 clean
+> node -e "require('fs').rmSync('.next',{recursive:true,force:true});"
+
+▲ Next.js 16.2.6 (webpack)
+- Environments: .env.local
+
+node.exe : ⚠ The "middleware" file convention is deprecated. Please use "p
+roxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-
+proxy
+At line:1 char:1
++ & "C:\Program Files\nodejs/node.exe" "C:\Program Files\nodejs/node_mo ..
+.
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (⚠ The "middlewa...leware-to- 
+   proxy:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  Creating an optimized production build ...
+✓ Compiled successfully in 69s
+  Running TypeScript ...
+  Finished TypeScript in 18.9s ...
+  Collecting page data using 15 workers ...
+⚠ Using edge runtime on a page currently disables static generation for th
+at page
+  Generating static pages using 15 workers (0/169) ...
+  Generating static pages using 15 workers (42/169) 
+  Generating static pages using 15 workers (84/169) 
+  Generating static pages using 15 workers (126/169) 
+✓ Generating static pages using 15 workers (169/169) in 7.4s
+  Finalizing page optimization ...
+  Collecting build traces ...
+
+Route (app)                                                                                     Revalidate  Expire
+┌ ○ /
+├ ○ /_not-found
+├ ○ /adatvedelmi-szabalyzat
+├ ○ /admin
+├ ○ /admin/analytics
+├ ○ /admin/dashboard
+├ ○ /admin/email-templates
+├ ○ /admin/leadek
+├ ƒ /admin/leads
+├ ○ /admin/login
+├ ○ /admin/portal-kezelo
+├ ○ /admin/portfolio
+├ ○ /admin/settings
+├ ○ /admin/super-control
+├ ○ /admin/work-log
+├ ○ /ai-automatizacio
+├ ○ /ai-megoldasok
+├ ○ /ai-megoldasok/ai-prompt-sablonok
+├ ƒ /api/chat
+├ ƒ /api/webhooks/stripe
+├ ○ /en
+├ ○ /en/contact
+├ ○ /en/portfolio                                                                                       1h      1y
+├ ○ /en/services                                                                                        1h      1y
+├ ○ /en/services/graphic-design                                                                         1h      1y
+├ ○ /en/services/seo-optimization                                                                       1h      1y
+├ ○ /en/services/web-development                                                                        1h      1y
+├ ○ /en/services/woocommerce-development                                                                1h      1y
+├ ○ /felhasznalasi-feltetelek
+├ ○ /grafika
+├ ○ /hirek
+├ ● /hirek/[slug]
+│ ├ /hirek/2023-05-01-wordpress-karbantartas-webhely-karbantartas-13-kotelezo-feladat-2023-ban
+│ ├ /hirek/2023-05-01-wordpress-oldalak-feltoresenek-lehetseges-modja
+│ ├ /hirek/2023-05-06-utmutato-lepesrol-lepesre-lenyugozo-markaidentitas-letrehozasahoz
+│ └ [+27 more paths]
+├ ƒ /hirek/-/opengraph-image
+├ ○ /i-prompt-sablonok
+├ ○ /kapcsolat
+├ ○ /karbantartas
+├ ○ /munkafolyamatok/strategist-pro/kristofka-munkafolyamat
+├ ○ /munkak                                                                                             1h      1y
+├ ● /munkak/[slug]                                                                                      1h      1y
+│ ├ /munkak/nedelmarket                                                                                 1h      1y
+│ ├ /munkak/leanperial                                                                                  1h      1y
+│ ├ /munkak/btshop                                                                                      1h      1y
+│ └ [+11 more paths]
+├ ○ /norbi
+├ ○ /portal
+├ ○ /portal/ai-muhely
+├ ○ /portal/ai-muhely/banner
+├ ○ /portal/ai-muhely/banner-ai-muhely
+├ ○ /portal/ai-muhely/cip-ai-muhely
+├ ○ /portal/ai-muhely/design-system-ai-muhely
+├ ○ /portal/ai-muhely/icon-design-ai-muhely
+├ ○ /portal/ai-muhely/kristofka
+├ ○ /portal/ai-muhely/logo
+├ ○ /portal/ai-muhely/logo-ai-muhely
+├ ○ /portal/ai-muhely/midjourney
+├ ○ /portal/ai-muhely/midjourney-ai-muhely
+├ ○ /portal/ai-muhely/poster-ai-muhely
+├ ○ /portal/ai-muhely/presentation-ai-muhely
+├ ○ /portal/ai-muhely/seo-audit
+├ ○ /portal/ai-muhely/seo-audit-ai-muhely
+├ ○ /portal/ai-muhely/social-media-ai-muhely
+├ ○ /portal/ai-muhely/szezonalis
+├ ○ /portal/ai-muhely/szezonalis-ai-muhely
+├ ○ /portal/ai-muhely/tartalomtervezo
+├ ○ /portal/ai-muhely/tartalomtervezo-ai-muhely
+├ ○ /portal/ai-muhely/ui-ux
+├ ○ /portal/ai-muhely/ui-ux-ai-muhely
+├ ○ /portal/ai-muhely/versenytars-elemzo
+├ ○ /portal/kreativ-studio
+├ ○ /portal/prompt-sablonok
+├ ○ /portal/vault
+├ ○ /robots.txt
+├ ƒ /rss
+├ ○ /seo-audit
+├ ○ /sitemap.xml
+├ ○ /szia-norbi-vagyok
+├ ○ /szolgaltatasok
+├ ○ /szolgaltatasok/add-onok
+├ ○ /szolgaltatasok/ai-kep-es-videogeneralas                                                            1h      1y
+├ ƒ /szolgaltatasok/ai-kep-es-videogeneralas/opengraph-image
+├ ○ /szolgaltatasok/ai-prompt-engineering                                                               1h      1y
+├ ○ /szolgaltatasok/ai-prompt-engineering/opengraph-image
+├ ○ /szolgaltatasok/ai-workflow-kialakitas                                                              1h      1y
+├ ƒ /szolgaltatasok/ai-workflow-kialakitas/opengraph-image
+├ ○ /szolgaltatasok/arculattervezes
+├ ○ /szolgaltatasok/csomagolas-tervezes                                                                 1h      1y
+├ ○ /szolgaltatasok/egyedi-arculattervezes-logo                                                         1h      1y
+├ ƒ /szolgaltatasok/egyedi-arculattervezes-logo/opengraph-image
+├ ○ /szolgaltatasok/grafikai-tervezes                                                                   1h      1y
+├ ○ /szolgaltatasok/grafikai-tervezes/opengraph-image
+├ ○ /szolgaltatasok/helyi-seo
+├ ○ /szolgaltatasok/logo-tervezes                                                                       1h      1y
+├ ○ /szolgaltatasok/marketing-lead-generalas                                                            1h      1y
+├ ○ /szolgaltatasok/marketing-lead-generalas/opengraph-image
+├ ○ /szolgaltatasok/opengraph-image
+├ ○ /szolgaltatasok/seo-optimalizalas                                                                   1h      1y
+├ ○ /szolgaltatasok/seo-optimalizalas/opengraph-image
+├ ○ /szolgaltatasok/szorolap-tervezes                                                                   1h      1y
+├ ○ /szolgaltatasok/technikai-seo-audit
+├ ○ /szolgaltatasok/weboldal-felujitas
+├ ○ /szolgaltatasok/weboldal-keszites                                                                   1h      1y
+├ ○ /szolgaltatasok/weboldal-keszites/opengraph-image
+├ ○ /szolgaltatasok/weboldal-sebessegoptimalizalas
+├ ○ /szolgaltatasok/webshop-fejlesztes                                                                  1h      1y
+├ ○ /szolgaltatasok/webshop-fejlesztes/opengraph-image
+├ ○ /szolgaltatasok/woocommerce-webshop-keszites                                                        1h      1y
+├ ○ /szolgaltatasok/woocommerce-webshop-keszites/opengraph-image
+├ ○ /szolgaltatasok/wordpress-biztonsag
+├ ○ /szolgaltatasok/wordpress-fejlesztes                                                                1h      1y
+├ ○ /szolgaltatasok/wordpress-karbantartas
+├ ○ /szolgaltatasok/wordpress-virusirtas-es-biztonsag                                                   1h      1y
+├ ○ /szolgaltatasok/wordpress-virusirtas-es-biztonsag/opengraph-image
+├ ○ /szolgaltatasok/wordpress-weboldal-keszites
+├ ○ /szolgaltatasok/wordpress-webshop-keszites                                                          1h      1y
+├ ○ /szolgaltatasok/wordpress-webshop-keszites/opengraph-image
+├ ○ /termekek
+├ ○ /termekek/ai-chatbot-starter
+├ ○ /termekek/ai-muhely
+├ ○ /termekek/ai-workflow-starter-pack
+├ ○ /termekek/banner-ai-muhely
+├ ○ /termekek/cro-booster-kit
+├ ○ /termekek/kristofka-munkafolyamat
+├ ○ /termekek/logo-ai-muhely
+├ ○ /termekek/midjourney-ai-muhely
+├ ○ /termekek/seo-audit-ai-muhely
+├ ○ /termekek/seo-audit-pro
+├ ○ /termekek/szezonalis-ai-muhely
+├ ○ /termekek/tartalomtervezo-ai-muhely
+├ ○ /termekek/ui-ux-ai-muhely
+├ ○ /termekek/versenytares-elemzo-ai-muhely
+├ ○ /termekek/versenytars-elemzo-ai-muhely
+├ ○ /ux-audit
+├ ○ /webfejlesztes
+├ ○ /weboldal-keszites-kecskemet
+└ ○ /webshop
+
+
+ƒ Proxy (Middleware)
+
+○  (Static)   prerendered as static content
+●  (SSG)      prerendered as static HTML (uses generateStaticParams)
+ƒ  (Dynamic)  server-rendered on demand
+
+BUILD_EXIT=0

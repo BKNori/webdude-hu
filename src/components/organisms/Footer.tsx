@@ -27,16 +27,8 @@ export default function Footer({ dictionary }: FooterProps) {
       href: "/szolgaltatasok/weboldal-keszites",
     },
     {
-      name: "WordPress Karbantartás",
-      href: "/szolgaltatasok/wordpress-karbantartas",
-    },
-    {
-      name: "Weboldal Gyorsítás",
-      href: "/szolgaltatasok/weboldal-sebessegoptimalizalas",
-    },
-    {
-      name: "Technikai SEO Audit",
-      href: "/szolgaltatasok/technikai-seo-audit",
+      name: "WordPress Webshop",
+      href: "/szolgaltatasok/woocommerce-webshop-keszites",
     },
     {
       name: "Webshop Fejlesztés",
@@ -47,28 +39,60 @@ export default function Footer({ dictionary }: FooterProps) {
       href: "/szolgaltatasok/wordpress-fejlesztes",
     },
     {
-      name: "WordPress Biztonság",
-      href: "/szolgaltatasok/wordpress-biztonsag",
-    },
-    {
       name: "Weboldal Felújítás",
       href: "/szolgaltatasok/weboldal-felujitas",
     },
     {
-      name: "Helyi SEO (Kecskemét)",
-      href: "/weboldal-keszites-kecskemet",
-    },
-    {
-      name: "Arculattervezés & Logó",
-      href: "/szolgaltatasok/arculattervezes",
+      name: "Helyi SEO",
+      href: "/szolgaltatasok/helyi-seo",
     },
     {
       name: "SEO Optimalizálás",
       href: "/szolgaltatasok/seo-optimalizalas",
     },
     {
-      name: "AI Workflow & Integráció",
-      href: "/szolgaltatasok/ai-workflow-kialakitas",
+      name: "Technikai SEO Audit",
+      href: "/szolgaltatasok/technikai-seo-audit",
+    },
+    {
+      name: "Marketing Lead Generálás",
+      href: "/szolgaltatasok/marketing-lead-generalas",
+    },
+    {
+      name: "WordPress Karbantartás",
+      href: "/szolgaltatasok/wordpress-karbantartas",
+    },
+    {
+      name: "Weboldal Gyorsítás",
+      href: "/szolgaltatasok/weboldal-sebessegoptimalizalas",
+    },
+    {
+      name: "WordPress Biztonság",
+      href: "/szolgaltatasok/wordpress-biztonsag",
+    },
+    {
+      name: "Grafikai Tervezés",
+      href: "/szolgaltatasok/grafikai-tervezes",
+    },
+    {
+      name: "Logó Tervezés",
+      href: "/szolgaltatasok/logo-tervezes",
+    },
+    {
+      name: "Szórólap Tervezés",
+      href: "/szolgaltatasok/szorolap-tervezes",
+    },
+    {
+      name: "Csomagolás Tervezés",
+      href: "/szolgaltatasok/csomagolas-tervezes",
+    },
+    {
+      name: "Egyedi Fejlesztés",
+      href: "/szolgaltatasok/egyedi-arculattervezes-logo",
+    },
+    {
+      name: "Prémium AI & Automatizáció",
+      href: "/termekek",
     },
   ];
 
@@ -207,7 +231,7 @@ export default function Footer({ dictionary }: FooterProps) {
                     src="/assets/logos/ai-promt_logo.webp"
                     alt="AI-Prompt.hu"
                     fill
-                    className="object-contain transition-all duration-300 group-hover:scale-110"
+                    className="object-contain transition-all duration-300 brightness-0 invert group-hover:brightness-100 group-hover:invert-0 group-hover:scale-110"
                   />
                 </div>
               </a>
