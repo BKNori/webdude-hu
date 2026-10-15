@@ -31,7 +31,8 @@ export default function GeneralCaseStudy({ project }: GeneralCaseStudyProps) {
             priority
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-linear-to-b from-black/70 via-black/50 to-bg-base" />
+          <div className="absolute inset-0 bg-slate-950/75 -z-10" />
+          <div className="absolute inset-0 bg-linear-to-b from-black/80 via-slate-950/60 to-bg-base" />
         </div>
 
         <motion.div
@@ -40,7 +41,7 @@ export default function GeneralCaseStudy({ project }: GeneralCaseStudyProps) {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="relative z-10 text-center px-6 max-w-5xl mx-auto"
         >
-          <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold leading-tight mb-6">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold leading-tight mb-6 tracking-tight text-balance">
             {project.title}
           </h1>
           <p className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-8">

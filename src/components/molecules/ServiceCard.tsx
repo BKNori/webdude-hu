@@ -32,20 +32,20 @@ export default function ServiceCard({
       <div className="absolute inset-0 bg-[#00B5F1]/10 opacity-0 group-hover:opacity-100 rounded-3xl transition-opacity duration-500 -z-10" />
 
       {href ? (
-        <Link href={href} className="block">
-          <div className="bg-slate-900/80 border border-slate-700 rounded-3xl p-8 h-full flex flex-col shadow-[0_8px_24px_rgba(15,23,42,0.3)] hover:border-[#00B5F1]/50 hover:shadow-[0_18px_40px_rgba(0, 181, 241,0.2)] hover:-translate-y-1 transition-all duration-300 backdrop-blur-md">
+        <Link href={href} className="block h-full">
+          <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-3xl p-8 h-full flex flex-col shadow-[0_8px_24px_rgba(15,23,42,0.3)] hover:border-brand-primary/50 hover:shadow-[0_18px_40px_rgba(0,181,241,0.2)] hover:-translate-y-1 transition-all duration-300">
             <div className="flex items-center gap-4 mb-4">
-              <div className="w-14 h-14 rounded-lg bg-slate-800/50 border border-slate-700 flex items-center justify-center group-hover:border-[#00B5F1]/50 transition-colors">
+              <div className="w-14 h-14 rounded-xl bg-slate-800/40 border border-slate-700/60 flex items-center justify-center group-hover:border-brand-primary/50 transition-colors">
                 {icon && (
                   <LucideIcon name={icon} className="w-6 h-6 text-[#00B5F1]" />
                 )}
               </div>
-              <h3 className="text-text-primary text-lg font-semibold">
+              <h3 className="text-text-primary text-lg font-semibold tracking-tight">
                 {title}
               </h3>
             </div>
 
-            <p className="text-slate-400 text-sm leading-relaxed flex-1">
+            <p className="text-slate-300 text-sm leading-relaxed flex-1">
               {description}
             </p>
 
@@ -53,7 +53,7 @@ export default function ServiceCard({
               {tags.map((t) => (
                 <span
                   key={t}
-                  className="text-xs font-bold text-[#00B5F1] border border-slate-700 bg-slate-800/50 px-3 py-1 rounded-full group-hover:border-[#00B5F1]/50 transition-colors"
+                  className="text-xs font-semibold text-[#00B5F1] border border-slate-800 bg-slate-950/50 px-3 py-1 rounded-full group-hover:border-brand-primary/40 transition-colors tabular-nums"
                 >
                   {t}
                 </span>
@@ -62,17 +62,17 @@ export default function ServiceCard({
           </div>
         </Link>
       ) : (
-        <div className="bg-slate-900/80 border border-slate-700 rounded-3xl p-8 h-full flex flex-col shadow-[0_8px_24px_rgba(15,23,42,0.3)] hover:border-[#00B5F1]/50 hover:shadow-[0_18px_40px_rgba(0, 181, 241,0.2)] hover:-translate-y-1 transition-all duration-300 backdrop-blur-md">
+        <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-3xl p-8 h-full flex flex-col shadow-[0_8px_24px_rgba(15,23,42,0.3)] hover:border-brand-primary/50 hover:shadow-[0_18px_40px_rgba(0,181,241,0.2)] hover:-translate-y-1 transition-all duration-300">
           <div className="flex items-center gap-4 mb-4">
-            <div className="w-14 h-14 rounded-lg bg-slate-800/50 border border-slate-700 flex items-center justify-center group-hover:border-[#00B5F1]/50 transition-colors">
+            <div className="w-14 h-14 rounded-xl bg-slate-800/40 border border-slate-700/60 flex items-center justify-center group-hover:border-brand-primary/50 transition-colors">
               {icon && (
                 <LucideIcon name={icon} className="w-6 h-6 text-[#00B5F1]" />
               )}
             </div>
-            <h3 className="text-text-primary text-lg font-semibold">{title}</h3>
+            <h3 className="text-text-primary text-lg font-semibold tracking-tight">{title}</h3>
           </div>
 
-          <p className="text-slate-400 text-sm leading-relaxed flex-1">
+          <p className="text-slate-300 text-sm leading-relaxed flex-1">
             {description}
           </p>
 
@@ -80,7 +80,7 @@ export default function ServiceCard({
             {tags.map((t) => (
               <span
                 key={t}
-                className="text-xs font-bold text-[#00B5F1] border border-slate-700 bg-slate-800/50 px-3 py-1 rounded-full group-hover:border-[#00B5F1]/50 transition-colors"
+                className="text-xs font-semibold text-[#00B5F1] border border-slate-800 bg-slate-950/50 px-3 py-1 rounded-full group-hover:border-brand-primary/40 transition-colors tabular-nums"
               >
                 {t}
               </span>

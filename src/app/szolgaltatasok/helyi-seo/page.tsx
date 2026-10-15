@@ -1,25 +1,34 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { 
-  CheckCircle2, 
-  ArrowRight, 
-  MapPin, 
-  Search, 
+import {
+  CheckCircle2,
+  ArrowRight,
+  MapPin,
+  Search,
   HelpCircle,
   Sparkles,
   Compass,
   Building2,
   Navigation,
-  Star
+  Star,
 } from "lucide-react";
-import PricingTable, { type PricingTier } from "@/components/molecules/PricingTable";
+import PricingTable, {
+  type PricingTier,
+} from "@/components/molecules/PricingTable";
 
 export const metadata: Metadata = {
-  title: "Helyi SEO Szakember | Kerülj a Google Térkép Élérére | WebDude",
-  description: "Helyi SEO szolgáltatás helyhez kötött vállalkozásoknak. Kerülj a Google Térkép és a helyi találatok élére, és szerezz több környékbeli ügyfelet.",
+  title:
+    "Helyi SEO Szakember országos szolgáltatással | Kerülj a Google Térkép Élérére | WebDude",
+  description:
+    "Helyi SEO szolgáltatás helyhez kötött vállalkozásoknak országos szolgáltatással. Kerülj a Google Térkép és a helyi találatok élére, és szerezz több környékbeli ügyfelet.",
+  alternates: {
+    canonical: "https://webdude.hu/szolgaltatasok/helyi-seo",
+  },
   openGraph: {
-    title: "Helyi SEO Szakember | Kerülj a Google Térkép Élérére | WebDude",
-    description: "Helyi SEO szolgáltatás helyhez kötött vállalkozásoknak. Kerülj a Google Térkép és a helyi találatok élére, és szerezz több környékbeli ügyfelet.",
+    title:
+      "Helyi SEO Szakember országos szolgáltatással | Kerülj a Google Térkép Élérére | WebDude",
+    description:
+      "Helyi SEO szolgáltatás helyhez kötött vállalkozásoknak országos szolgáltatással. Kerülj a Google Térkép és a helyi találatok élére, és szerezz több környékbeli ügyfelet.",
     url: "https://webdude.hu/szolgaltatasok/helyi-seo",
     type: "website",
   },
@@ -29,13 +38,14 @@ const pricingTiers: PricingTier[] = [
   {
     id: "local-seo-starter",
     name: "Helyi Alapcsomag & Cégprofil",
-    description: "Fizikai üzleteknek, rendelőknek és helyi szakembereknek a Google Térkép láthatóság megalapozásához.",
+    description:
+      "Fizikai üzleteknek, rendelőknek és helyi szakembereknek a Google Térkép láthatóság megalapozásához.",
     features: [
       "Google Cégprofil (Google Business Profile) audit és teljes optimalizálás",
       "NAP konzisztencia ellenőrzése (Név, Cím, Telefonszám egységesség)",
       "Elsődleges kategóriák, nyitvatartások és szolgáltatások pontos beállítása",
       "LocalBusiness strukturált adatok (Schema.org) implementálása a honlapon",
-      "Útmutató a vásárlói értékelések (Google Reviews) gyűjtéséhez"
+      "Útmutató a vásárlói értékelések (Google Reviews) gyűjtéséhez",
     ],
     highlighted: false,
     ctaText: "Projektfelmérés kérése",
@@ -44,14 +54,15 @@ const pricingTiers: PricingTier[] = [
   {
     id: "local-seo-pro",
     name: "Helyi Dominancia Csomag",
-    description: "Versenytársakat megelőző lokális jelenlét célzott városi és környékbeli landing oldalakkal.",
+    description:
+      "Versenytársakat megelőző lokális jelenlét célzott városi és környékbeli landing oldalakkal.",
     features: [
       "Minden, ami az Alapcsomagban szerepel",
       "Helyi kulcsszókutatás és &quot;közelemben&quot; keresési szándék elemzés",
       "Városi / kerületi céloldalak (Local Landing Pages) tervezése és kódolása",
       "Lokális hivatkozásépítés (magyar szaknévsorok és helyi katalógusok)",
       "Google Térkép beágyazás és geokoordináták mikroformátumú bekötése",
-      "Havi helyezéskövetés a helyi 3-as térképes csomagban (Local Map Pack)"
+      "Havi helyezéskövetés a helyi 3-as térképes csomagban (Local Map Pack)",
     ],
     highlighted: true,
     ctaText: "Egyedi árajánlat kérése",
@@ -60,13 +71,14 @@ const pricingTiers: PricingTier[] = [
   {
     id: "local-seo-multi",
     name: "Több Telephelyes Vállalati SEO",
-    description: "Hálózatoknak, franchise rendszereknek és több fiókkal rendelkező vállalkozásoknak.",
+    description:
+      "Hálózatoknak, franchise rendszereknek és több fiókkal rendelkező vállalkozásoknak.",
     features: [
       "Több telephely szinkronizált profilkezelése és auditja",
       "Központi és telephely-specifikus aloldal-architektúra kialakítása",
       "Fejlett értékelés- és hírnévmenedzsment stratégia",
       "Versenytársak helyi térkép-auditja városról városra",
-      "Kiemelt havi riportálás és dedikált szakértői támogatás"
+      "Kiemelt havi riportálás és dedikált szakértői támogatás",
     ],
     highlighted: false,
     ctaText: "Egyedi árajánlat kérése",
@@ -99,13 +111,20 @@ export default function HelyiSeoPage() {
     "@type": "Service",
     name: "Helyi SEO (Local SEO)",
     provider: {
-      "@type": "Person",
-      name: "Norbert - WebDude",
-      url: "https://webdude.hu",
+      "@type": "Organization",
+      "@id": "https://webdude.hu/#organization",
+      name: "WebDude",
+      founder: {
+        "@type": "Person",
+        name: "Balog Norbi",
+        jobTitle: "Full-Stack Webfejlesztő & AI Specialist",
+        description: "26 év grafikai és 16 év webfejlesztői tapasztalat",
+      },
     },
-    description: "Helyi SEO szolgáltatás helyhez kötött vállalkozásoknak. Kerülj a Google Térkép és a helyi találatok élére, és szerezz több környékbeli ügyfelet.",
+    description:
+      "Helyi SEO szolgáltatás helyhez kötött vállalkozásoknak országos szolgáltatással. Kerülj a Google Térkép és a helyi találatok élére, és szerezz több környékbeli ügyfelet.",
     serviceType: "Local SEO and Google Business Profile Optimization",
-    areaServed: "HU",
+    areaServed: { "@type": "Country", name: "Hungary" },
   };
 
   const faqJsonLd = {
@@ -147,10 +166,17 @@ export default function HelyiSeoPage() {
               Google Térkép & Helyi Keresések
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight mb-6">
-              Helyi SEO: Urald a Google keresőt a <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#a855f7]">saját városodban</span>
+              Helyi SEO: Urald a Google keresőt a{" "}
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#a855f7]">
+                saját városodban
+              </span>
             </h1>
             <p className="text-lg sm:text-xl text-slate-300 leading-relaxed mb-8">
-              A környékbeli vásárlók naponta több ezer alkalommal keresnek szolgáltatásokat közvetlenül a közelükben. Ha nem jelensz meg a Google Térkép első 3 helyén, a konkurensed kapja a hívásokat és az üzletet. Tegyük láthatóvá a cégedet ott, ahol a döntések születnek!
+              A környékbeli vásárlók naponta több ezer alkalommal keresnek
+              szolgáltatásokat közvetlenül a közelükben. Ha nem jelensz meg a
+              Google Térkép első 3 helyén, a konkurensed kapja a hívásokat és az
+              üzletet. Tegyük láthatóvá a cégedet ott, ahol a döntések
+              születnek!
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
@@ -171,6 +197,21 @@ export default function HelyiSeoPage() {
         </div>
       </section>
 
+      {/* Direct Answer Block - AEO optimalizált */}
+      <section className="relative py-12 bg-bg-base border-y border-white/5">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <p className="text-base md:text-lg text-slate-300 leading-relaxed">
+            <span className="text-[#00B5F1] font-semibold">
+              WebDude helyi SEO:
+            </span>{" "}
+            Google Cégprofil optimalizálás, NAP konzisztencia, LocalBusiness
+            schema és helyi landing oldalak országos szolgáltatással. 26 év
+            tapasztalat, Top 3 Map Pack fókusz és környékbeli ügyfélszerzés.
+            Egyedi árajánlat kérése az igények alapján.
+          </p>
+        </div>
+      </section>
+
       {/* Local SEO Pillars Bento Grid */}
       <section className="py-24 relative border-b border-slate-800/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -179,7 +220,9 @@ export default function HelyiSeoPage() {
               Hogyan juttatom a cégedet a helyi találatok élére?
             </h2>
             <p className="text-slate-400">
-              A Google algoritmusai a relevanciát, a földrajzi távolságot és a hitelességet mérik. Ezt a három pillért optimalizáljuk tökéletesre.
+              A Google algoritmusai a relevanciát, a földrajzi távolságot és a
+              hitelességet mérik. Ezt a három pillért optimalizáljuk
+              tökéletesre.
             </p>
           </div>
 
@@ -189,9 +232,12 @@ export default function HelyiSeoPage() {
                 <div className="w-12 h-12 rounded-xl bg-sky-950/80 border border-sky-500/30 flex items-center justify-center text-[#00B5F1] mb-6">
                   <Navigation className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">Google Cégprofil Optimalizálás</h3>
+                <h3 className="text-xl font-bold text-white mb-3">
+                  Google Cégprofil Optimalizálás
+                </h3>
                 <p className="text-slate-400 text-sm leading-relaxed">
-                  Kategóriák, nyitvatartás, fotók, termékek és bejegyzések profi felépítése a maximális térképes pontszámért.
+                  Kategóriák, nyitvatartás, fotók, termékek és bejegyzések profi
+                  felépítése a maximális térképes pontszámért.
                 </p>
               </div>
               <div className="mt-6 pt-6 border-t border-slate-800/80 text-xs text-sky-400 flex items-center gap-1.5 font-semibold">
@@ -204,9 +250,12 @@ export default function HelyiSeoPage() {
                 <div className="w-12 h-12 rounded-xl bg-purple-950/80 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-6">
                   <Building2 className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">NAP Konzisztencia & Idézések</h3>
+                <h3 className="text-xl font-bold text-white mb-3">
+                  NAP Konzisztencia & Idézések
+                </h3>
                 <p className="text-slate-400 text-sm leading-relaxed">
-                  A cégnév, cím és telefonszám egységesítése minden internetes adatbázisban, hogy a Google megbízzon a telephelyedben.
+                  A cégnév, cím és telefonszám egységesítése minden internetes
+                  adatbázisban, hogy a Google megbízzon a telephelyedben.
                 </p>
               </div>
               <div className="mt-6 pt-6 border-t border-slate-800/80 text-xs text-purple-400 flex items-center gap-1.5 font-semibold">
@@ -219,9 +268,12 @@ export default function HelyiSeoPage() {
                 <div className="w-12 h-12 rounded-xl bg-sky-950/80 border border-sky-500/30 flex items-center justify-center text-[#00B5F1] mb-6">
                   <Compass className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">Helyi Landing Oldalak</h3>
+                <h3 className="text-xl font-bold text-white mb-3">
+                  Helyi Landing Oldalak
+                </h3>
                 <p className="text-slate-400 text-sm leading-relaxed">
-                  Célzott városi vagy kerületi aloldalak létrehozása a honlapodon helyi kulcsszavakkal és egyedi tartalommal.
+                  Célzott városi vagy kerületi aloldalak létrehozása a
+                  honlapodon helyi kulcsszavakkal és egyedi tartalommal.
                 </p>
               </div>
               <div className="mt-6 pt-6 border-t border-slate-800/80 text-xs text-sky-400 flex items-center gap-1.5 font-semibold">
@@ -235,12 +287,20 @@ export default function HelyiSeoPage() {
                   <Search className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-white">LocalBusiness Strukturált Adatok (Schema)</h3>
-                  <p className="text-slate-400 text-sm">Géppel olvasható geokoordináták és adatok a keresőrobotoknak.</p>
+                  <h3 className="text-xl font-bold text-white">
+                    LocalBusiness Strukturált Adatok (Schema)
+                  </h3>
+                  <p className="text-slate-400 text-sm">
+                    Géppel olvasható geokoordináták és adatok a
+                    keresőrobotoknak.
+                  </p>
                 </div>
               </div>
               <p className="text-slate-400 text-sm leading-relaxed mb-4">
-                A weboldalad kódjába beépítjük a hivatalos Schema.org LocalBusiness jelölést szélességi és hosszúsági koordinátákkal, nyitvatartási adatokkal és a kiszolgált területek listájával. Ez egyértelmű jelet küld a Google és az AI keresők felé.
+                A weboldalad kódjába beépítjük a hivatalos Schema.org
+                LocalBusiness jelölést szélességi és hosszúsági koordinátákkal,
+                nyitvatartási adatokkal és a kiszolgált területek listájával. Ez
+                egyértelmű jelet küld a Google és az AI keresők felé.
               </p>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-4 border-t border-slate-800/80">
                 <div className="flex items-center gap-2 text-xs text-slate-300 font-medium">
@@ -263,9 +323,12 @@ export default function HelyiSeoPage() {
                 <div className="w-12 h-12 rounded-xl bg-purple-950/80 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-6">
                   <Star className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">Értékelésmenedzsment Stratégia</h3>
+                <h3 className="text-xl font-bold text-white mb-3">
+                  Értékelésmenedzsment Stratégia
+                </h3>
                 <p className="text-slate-400 text-sm leading-relaxed">
-                  A pozitív vásárlói vélemények a helyi rangsorolás legfőbb motorjai. Kialakítjuk az automatikus véleménykérő folyamatot.
+                  A pozitív vásárlói vélemények a helyi rangsorolás legfőbb
+                  motorjai. Kialakítjuk az automatikus véleménykérő folyamatot.
                 </p>
               </div>
               <div className="mt-6 pt-6 border-t border-slate-800/80 text-xs text-purple-400 flex items-center gap-1.5 font-semibold">
@@ -284,7 +347,8 @@ export default function HelyiSeoPage() {
               Helyi SEO Csomagok & Stratégia
             </h2>
             <p className="text-slate-400">
-              Válassz az egy telephelyes induló optimalizálástól a több várost lefedő hálózati dominanciáig.
+              Válassz az egy telephelyes induló optimalizálástól a több várost
+              lefedő hálózati dominanciáig.
             </p>
           </div>
 
@@ -310,12 +374,14 @@ export default function HelyiSeoPage() {
 
           <div className="space-y-4">
             {faqs.map((faq, index) => (
-              <div 
+              <div
                 key={index}
                 className="p-6 rounded-xl bg-slate-900/50 border border-slate-800 hover:border-slate-700 transition-colors"
               >
                 <h3 className="text-lg font-bold text-white mb-2 flex items-start gap-3">
-                  <span className="text-[#00B5F1] font-mono text-sm mt-1">0{index + 1}.</span>
+                  <span className="text-[#00B5F1] font-mono text-sm mt-1">
+                    0{index + 1}.
+                  </span>
                   {faq.q}
                 </h3>
                 <p className="text-slate-400 text-sm leading-relaxed pl-8">
@@ -334,7 +400,8 @@ export default function HelyiSeoPage() {
             Szeretnéd, hogy a helyi ügyfelek téged találjanak meg először?
           </h2>
           <p className="text-slate-300 max-w-2xl mx-auto mb-8 text-lg">
-            Írd meg a vállalkozásod nevét és városát, és megvizsgálom a jelenlegi pozícióidat a Google Térképen!
+            Írd meg a vállalkozásod nevét és városát, és megvizsgálom a
+            jelenlegi pozícióidat a Google Térképen!
           </p>
           <Link
             href="/kapcsolat?service=helyi-seo"

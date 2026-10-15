@@ -40,12 +40,17 @@ export default function WeboldalKeszitesPage() {
     "@type": "Service",
     name: "Weboldal készítés",
     description:
-      "Gyors, modern és keresőbarát weboldal készítés kis- és középvállalkozásoknak.",
+      "Gyors, modern és keresőbarát weboldal készítés kis- és középvállalkozásoknak országos szolgáltatással.",
     provider: {
       "@type": "Organization",
       "@id": "https://webdude.hu/#organization",
       name: "WebDude",
-      url: "https://webdude.hu",
+      founder: {
+        "@type": "Person",
+        name: "Balog Norbi",
+        jobTitle: "Full-Stack Webfejlesztő & AI Specialist",
+        description: "26 év grafikai és 16 év webfejlesztői tapasztalat",
+      },
     },
     areaServed: { "@type": "Country", name: "Hungary" },
   };
@@ -194,7 +199,7 @@ export default function WeboldalKeszitesPage() {
               Egyedi, reszponzív weboldalak KKV-knak — Next.js, WordPress,
               WooCommerce és egyedi fejlesztés. 26 év tapasztalat, gyors
               betöltés, SEO-optimalizált és konverzió-fókuszú design országos
-              szolgáltatással.
+              szolgáltatással. Egyedi árajánlat kérése az igények alapján.
             </p>
           </div>
         </section>
@@ -304,7 +309,9 @@ export default function WeboldalKeszitesPage() {
           <div className="max-w-2xl mx-auto px-6">
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
               Indítsd el az{" "}
-              <span className="text-brand-primary italic">új weboldaladat!</span>
+              <span className="text-brand-primary italic">
+                új weboldaladat!
+              </span>
             </h2>
             <p className="text-slate-400 mb-10 text-lg">
               Minden projekt egy ingyenes, kötelezettségmentes konzultációval

@@ -1,26 +1,35 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { 
-  CheckCircle2, 
-  ArrowRight, 
-  Wrench, 
-  ShieldAlert, 
-  Zap, 
+import {
+  CheckCircle2,
+  ArrowRight,
+  Wrench,
+  ShieldAlert,
+  Zap,
   HelpCircle,
   Sparkles,
   RefreshCw,
   Lock,
-  Activity
+  Activity,
 } from "lucide-react";
-import PricingTable, { type PricingTier } from "@/components/molecules/PricingTable";
+import PricingTable, {
+  type PricingTier,
+} from "@/components/molecules/PricingTable";
 import DirectAnswerBlock from "@/components/molecules/DirectAnswerBlock";
 
 export const metadata: Metadata = {
-  title: "WordPress Karbantartás és Hibajavítás | WebDude",
-  description: "Feltört, lassú vagy elavult WordPress weboldalak szakszerű javítása és havi karbantartása. Biztonság, sebesség és nyugalom vállalkozásoknak.",
+  title:
+    "WordPress Karbantartás és Hibajavítás országos szolgáltatással | WebDude",
+  description:
+    "Feltört, lassú vagy elavult WordPress weboldalak szakszerű javítása és havi karbantartása országos szolgáltatással. Biztonság, sebesség és nyugalom vállalkozásoknak.",
+  alternates: {
+    canonical: "https://webdude.hu/szolgaltatasok/wordpress-karbantartas",
+  },
   openGraph: {
-    title: "WordPress Karbantartás és Hibajavítás | WebDude",
-    description: "Feltört, lassú vagy elavult WordPress weboldalak szakszerű javítása és havi karbantartása. Biztonság, sebesség és nyugalom vállalkozásoknak.",
+    title:
+      "WordPress Karbantartás és Hibajavítás országos szolgáltatással | WebDude",
+    description:
+      "Feltört, lassú vagy elavult WordPress weboldalak szakszerű javítása és havi karbantartása országos szolgáltatással. Biztonság, sebesség és nyugalom vállalkozásoknak.",
     url: "https://webdude.hu/szolgaltatasok/wordpress-karbantartas",
     type: "website",
   },
@@ -30,13 +39,14 @@ const pricingTiers: PricingTier[] = [
   {
     id: "wp-repair",
     name: "Azonnali Hibaelhárítás & Mentés",
-    description: "Egyszeri gyorssegély, ha a weboldalad leállt, hibaüzenetet dob, vagy feltörték és vírusossá vált.",
+    description:
+      "Egyszeri gyorssegély, ha a weboldalad leállt, hibaüzenetet dob, vagy feltörték és vírusossá vált.",
     features: [
       "Kritikus hibák (White Screen of Death, 500 error) gyors feltárása",
       "Kártevő- és malware-eltávolítás, tiszta mentés visszaállítása",
       "Összeakadó, hibás pluginek cseréje vagy kompatibilitási javítása",
       "Adatbázis-javítás és sérült fájlok helyreállítása",
-      "Részletes jegyzőkönyv az elvégzett javításokról"
+      "Részletes jegyzőkönyv az elvégzett javításokról",
     ],
     highlighted: false,
     ctaText: "Egyedi árajánlat kérése",
@@ -45,14 +55,15 @@ const pricingTiers: PricingTier[] = [
   {
     id: "wp-care-pro",
     name: "Havi Prémium Karbantartás",
-    description: "Folyamatos biztonság és felügyelet, hogy a weboldalad sose álljon le és mindig a legfrissebb maradjon.",
+    description:
+      "Folyamatos biztonság és felügyelet, hogy a weboldalad sose álljon le és mindig a legfrissebb maradjon.",
     features: [
       "Heti szintű tesztelt mag- és bővítményfrissítések (staging teszttel)",
       "Napi automatikus külső felhős biztonsági mentés (off-site backup)",
       "24/7 Uptime monitorozás és azonnali beavatkozás leálláskor",
       "Folyamatos tűzfal- és biztonsági felügyelet",
       "Havi 2 óra dedikált fejlesztői idő tartalmi vagy technikai módosításokra",
-      "Havi részletes technikai és látogatottsági jelentés"
+      "Havi részletes technikai és látogatottsági jelentés",
     ],
     highlighted: true,
     ctaText: "Egyedi árajánlat kérése",
@@ -61,13 +72,14 @@ const pricingTiers: PricingTier[] = [
   {
     id: "wp-care-ecommerce",
     name: "Webshop & Kiemelt Rendszerfelügyelet",
-    description: "Nagy forgalmú WooCommerce áruházaknak és üzletileg kritikus platformoknak kiemelt rendelkezésre állással.",
+    description:
+      "Nagy forgalmú WooCommerce áruházaknak és üzletileg kritikus platformoknak kiemelt rendelkezésre állással.",
     features: [
       "Minden, ami a Prémium csomagban szerepel",
       "Fizetési kapuk, kosárfolyamat és számlázó integrációk folyamatos tesztelése",
       "Valós idejű óránkénti adatbázis-mentés rendelésvesztés ellen",
       "Kiemelt sürgősségi SLA (garantált 2 órán belüli reagálás)",
-      "Havi 4 óra fejlesztői keretidő új funkciók építésére"
+      "Havi 4 óra fejlesztői keretidő új funkciók építésére",
     ],
     highlighted: false,
     ctaText: "Egyedi árajánlat kérése",
@@ -108,11 +120,18 @@ export default function WordPressKarbantartasPage() {
       "WordPress hibajavítás",
     ],
     provider: {
-      "@type": "Person",
-      name: "Norbert - WebDude",
-      url: "https://webdude.hu",
+      "@type": "Organization",
+      "@id": "https://webdude.hu/#organization",
+      name: "WebDude",
+      founder: {
+        "@type": "Person",
+        name: "Balog Norbi",
+        jobTitle: "Full-Stack Webfejlesztő & AI Specialist",
+        description: "26 év grafikai és 16 év webfejlesztői tapasztalat",
+      },
     },
-    description: "Feltört, lassú vagy elavult WordPress weboldalak szakszerű javítása és havi karbantartása. Biztonság, sebesség és nyugalom vállalkozásoknak.",
+    description:
+      "Feltört, lassú vagy elavult WordPress weboldalak szakszerű javítása és havi karbantartása országos szolgáltatással. Biztonság, sebesség és nyugalom vállalkozásoknak.",
     serviceType: "WordPress Maintenance and Security",
     category: "WordPress",
     audience: {
@@ -122,11 +141,12 @@ export default function WordPressKarbantartasPage() {
     // A WebDude kizárólag egyedi árajánlatot ad — nincs fix árkatalógus.
     offers: {
       "@type": "Offer",
-      description: "Egyedi árajánlat kérése — a karbantartás terjedelmétől függően.",
+      description:
+        "Egyedi árajánlat kérése — a karbantartás terjedelmétől függően.",
       availability: "https://schema.org/InStock",
       url: "https://webdude.hu/kapcsolat?service=wordpress-karbantartas",
     },
-    areaServed: "HU",
+    areaServed: { "@type": "Country", name: "Hungary" },
   };
 
   const faqJsonLd = {
@@ -168,10 +188,15 @@ export default function WordPressKarbantartasPage() {
               Stabilitás, Biztonság & Védelem
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight mb-6">
-              WordPress karbantartás: hogy a weboldalad <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#a855f7]">sose hagyjon cserben</span>
+              WordPress karbantartás: hogy a weboldalad{" "}
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#a855f7]">
+                sose hagyjon cserben
+              </span>
             </h1>
             <p className="text-lg sm:text-xl text-slate-300 leading-relaxed mb-8">
-              Egy leálló weboldal bevételkiesést és presztízsveszteséget okoz. Megelőzöm a hibákat, elhárítom a biztonsági réseket, és ha beütött a baj, azonnal helyreállítom a működést.
+              Egy leálló weboldal bevételkiesést és presztízsveszteséget okoz.
+              Megelőzöm a hibákat, elhárítom a biztonsági réseket, és ha beütött
+              a baj, azonnal helyreállítom a működést.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
@@ -196,7 +221,7 @@ export default function WordPressKarbantartasPage() {
       <DirectAnswerBlock
         id="wp-karbantartas"
         question="Mit tartalmaz a havi WordPress karbantartás?"
-        answer="A havi WordPress karbantartás magában foglalja a WordPress és a bővítmények biztonsági frissítését, a rendszeres mentést, az adatbázis-tisztítást, a Core Web Vitals és a Google PageSpeed ellenőrzését, valamint a spamek és a feltörési kísérletek szűrését. 16 év tapasztalattal gondoskodom arról, hogy a weboldal folyamatosan gyors, biztonságos és elérhető maradjon."
+        answer="A havi WordPress karbantartás magában foglalja a WordPress és a bővítmények biztonsági frissítését, a rendszeres mentést, az adatbázis-tisztítást, a Core Web Vitals és a Google PageSpeed ellenőrzését, valamint a spamek és a feltörési kísérletek szűrését. 16 év tapasztalattal gondoskodom arról, hogy a weboldal folyamatosan gyors, biztonságos és elérhető maradjon országos szolgáltatással. Egyedi árajánlat kérése az igények alapján."
         facts={[
           { label: "Tapasztalat", value: "16 év" },
           { label: "Frissítés", value: "Havi rendszeresség" },
@@ -212,7 +237,9 @@ export default function WordPressKarbantartasPage() {
               A leggyakoribb WordPress veszélyek, amelyeket elhárítok
             </h2>
             <p className="text-slate-400">
-              A legtöbb weboldal-tulajdonos csak akkor kap észbe, amikor a Google tiltólistára teszi a domaint, vagy a vásárlók nem tudnak fizetni.
+              A legtöbb weboldal-tulajdonos csak akkor kap észbe, amikor a
+              Google tiltólistára teszi a domaint, vagy a vásárlók nem tudnak
+              fizetni.
             </p>
           </div>
 
@@ -222,9 +249,13 @@ export default function WordPressKarbantartasPage() {
                 <div className="w-12 h-12 rounded-xl bg-red-950/80 border border-red-500/30 flex items-center justify-center text-red-400 mb-6">
                   <ShieldAlert className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">Vírusok & Feltört Oldalak</h3>
+                <h3 className="text-xl font-bold text-white mb-3">
+                  Vírusok & Feltört Oldalak
+                </h3>
                 <p className="text-slate-400 text-sm leading-relaxed">
-                  Kéretlen átirányítások, spam hivatkozások vagy elérhetetlen adminfelület? Megtisztítom az állományokat és lezárom a biztonsági réseket.
+                  Kéretlen átirányítások, spam hivatkozások vagy elérhetetlen
+                  adminfelület? Megtisztítom az állományokat és lezárom a
+                  biztonsági réseket.
                 </p>
               </div>
               <div className="mt-6 pt-6 border-t border-slate-800/80 text-xs text-red-400 flex items-center gap-1.5 font-semibold">
@@ -237,13 +268,18 @@ export default function WordPressKarbantartasPage() {
                 <div className="w-12 h-12 rounded-xl bg-sky-950/80 border border-sky-500/30 flex items-center justify-center text-[#00B5F1] mb-6">
                   <RefreshCw className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">Elavult Bővítmények</h3>
+                <h3 className="text-xl font-bold text-white mb-3">
+                  Elavult Bővítmények
+                </h3>
                 <p className="text-slate-400 text-sm leading-relaxed">
-                  A halogatott frissítések inkompatibilitási hibákhoz és sebezhetőségekhez vezetnek. Biztonságos tesztkörnyezetben frissítek mindent.
+                  A halogatott frissítések inkompatibilitási hibákhoz és
+                  sebezhetőségekhez vezetnek. Biztonságos tesztkörnyezetben
+                  frissítek mindent.
                 </p>
               </div>
               <div className="mt-6 pt-6 border-t border-slate-800/80 text-xs text-sky-400 flex items-center gap-1.5 font-semibold">
-                <CheckCircle2 className="w-4 h-4" /> Tesztelt frissítési protokoll
+                <CheckCircle2 className="w-4 h-4" /> Tesztelt frissítési
+                protokoll
               </div>
             </div>
 
@@ -252,9 +288,13 @@ export default function WordPressKarbantartasPage() {
                 <div className="w-12 h-12 rounded-xl bg-purple-950/80 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-6">
                   <Lock className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">Adatvesztés Elleni Védelem</h3>
+                <h3 className="text-xl font-bold text-white mb-3">
+                  Adatvesztés Elleni Védelem
+                </h3>
                 <p className="text-slate-400 text-sm leading-relaxed">
-                  Egy szerverhiba vagy rossz beállítás percek alatt letörölheti az egész weboldaladat. Külső, titkosított szerverre mentek rendszeresen.
+                  Egy szerverhiba vagy rossz beállítás percek alatt letörölheti
+                  az egész weboldaladat. Külső, titkosított szerverre mentek
+                  rendszeresen.
                 </p>
               </div>
               <div className="mt-6 pt-6 border-t border-slate-800/80 text-xs text-purple-400 flex items-center gap-1.5 font-semibold">
@@ -268,12 +308,20 @@ export default function WordPressKarbantartasPage() {
                   <Activity className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-white">24/7 Elérhetőség és Uptime Monitorozás</h3>
-                  <p className="text-slate-400 text-sm">Azonnal értesülök róla, ha a weboldalad leállna, még mielőtt a vevőid észrevennék.</p>
+                  <h3 className="text-xl font-bold text-white">
+                    24/7 Elérhetőség és Uptime Monitorozás
+                  </h3>
+                  <p className="text-slate-400 text-sm">
+                    Azonnal értesülök róla, ha a weboldalad leállna, még mielőtt
+                    a vevőid észrevennék.
+                  </p>
                 </div>
               </div>
               <p className="text-slate-400 text-sm leading-relaxed mb-4">
-                Automatizált monitoring rendszerem percenként vizsgálja a weboldalad működését és válaszidejét. Hiba esetén nem kell napokig várnod: proaktívan beavatkozom és helyreállítom a szolgáltatást.
+                Automatizált monitoring rendszerem percenként vizsgálja a
+                weboldalad működését és válaszidejét. Hiba esetén nem kell
+                napokig várnod: proaktívan beavatkozom és helyreállítom a
+                szolgáltatást.
               </p>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-4 border-t border-slate-800/80">
                 <div className="flex items-center gap-2 text-xs text-slate-300 font-medium">
@@ -296,9 +344,13 @@ export default function WordPressKarbantartasPage() {
                 <div className="w-12 h-12 rounded-xl bg-sky-950/80 border border-sky-500/30 flex items-center justify-center text-[#00B5F1] mb-6">
                   <Wrench className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">Dedikált Fejlesztői Keret</h3>
+                <h3 className="text-xl font-bold text-white mb-3">
+                  Dedikált Fejlesztői Keret
+                </h3>
                 <p className="text-slate-400 text-sm leading-relaxed">
-                  Kisebb szöveges vagy vizuális módosítások, új hírlevél feliratkozó, vagy új funkciók? A karbantartás tartalmazza a fejlesztői órákat.
+                  Kisebb szöveges vagy vizuális módosítások, új hírlevél
+                  feliratkozó, vagy új funkciók? A karbantartás tartalmazza a
+                  fejlesztői órákat.
                 </p>
               </div>
               <div className="mt-6 pt-6 border-t border-slate-800/80 text-xs text-sky-400 flex items-center gap-1.5 font-semibold">
@@ -317,7 +369,9 @@ export default function WordPressKarbantartasPage() {
               Karbantartási Csomagok & Rendszerek
             </h2>
             <p className="text-slate-400">
-              Válaszd ki az oldalad méretéhez illeszkedő konstrukciót. Egyedi webshopok és portálok esetén testreszabott üzemeltetési szerződést készítek.
+              Válaszd ki az oldalad méretéhez illeszkedő konstrukciót. Egyedi
+              webshopok és portálok esetén testreszabott üzemeltetési szerződést
+              készítek.
             </p>
           </div>
 
@@ -343,12 +397,14 @@ export default function WordPressKarbantartasPage() {
 
           <div className="space-y-4">
             {faqs.map((faq, index) => (
-              <div 
+              <div
                 key={index}
                 className="p-6 rounded-xl bg-slate-900/50 border border-slate-800 hover:border-slate-700 transition-colors"
               >
                 <h3 className="text-lg font-bold text-white mb-2 flex items-start gap-3">
-                  <span className="text-[#00B5F1] font-mono text-sm mt-1">0{index + 1}.</span>
+                  <span className="text-[#00B5F1] font-mono text-sm mt-1">
+                    0{index + 1}.
+                  </span>
                   {faq.q}
                 </h3>
                 <p className="text-slate-400 text-sm leading-relaxed pl-8">
@@ -367,7 +423,8 @@ export default function WordPressKarbantartasPage() {
             Hiba lépett fel, vagy megbízható karbantartást keresel?
           </h2>
           <p className="text-slate-300 max-w-2xl mx-auto mb-8 text-lg">
-            Írd meg a problémádat vagy az oldalad címét, és gyorsan felmérem a helyzetet!
+            Írd meg a problémádat vagy az oldalad címét, és gyorsan felmérem a
+            helyzetet!
           </p>
           <Link
             href="/kapcsolat?service=wordpress-karbantartas"

@@ -8,9 +8,9 @@ import HeroCarousel from "@/components/molecules/HeroCarousel";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "AI Kép és Videógenerálás Automatizálás | WebDude",
+    title: "AI Kép és Videógenerálás országos szolgáltatással | WebDude",
     description:
-      "Generatív AI megoldások marketing assetek automatikus előállításához: képek, videók, grafikák és kreatív anyagok skálázható, gyors és költséghatékony folyamatokkal.",
+      "Generatív AI megoldások marketing assetek automatikus előállításához országos szolgáltatással: képek, videók, grafikák és kreatív anyagok skálázható, gyors és költséghatékony folyamatokkal.",
     keywords:
       "AI kép generálás, AI videó generálás, generatív AI, marketing automatizálás, asset pipeline, Midjourney, DALL-E, Stable Diffusion",
     alternates: {
@@ -65,12 +65,17 @@ export default async function AiMediaPage() {
     "@type": "Service",
     name: "AI Kép és Videógenerálás Automatizálás",
     description:
-      "Generatív AI megoldások marketing assetek automatikus előállításához: képek, videók, grafikák és kreatív anyagok skálázható, gyors és költséghatékony folyamatokkal.",
+      "Generatív AI megoldások marketing assetek automatikus előállításához országos szolgáltatással: képek, videók, grafikák és kreatív anyagok skálázható, gyors és költséghatékony folyamatokkal.",
     provider: {
       "@type": "Organization",
       "@id": "https://webdude.hu/#organization",
       name: "WebDude",
-      url: "https://webdude.hu",
+      founder: {
+        "@type": "Person",
+        name: "Balog Norbi",
+        jobTitle: "Full-Stack Webfejlesztő & AI Specialist",
+        description: "26 év grafikai és 16 év webfejlesztői tapasztalat",
+      },
     },
     areaServed: { "@type": "Country", name: "Hungary" },
   };
@@ -115,6 +120,23 @@ export default async function AiMediaPage() {
             className="mx-auto"
           />
         </HeroCarousel>
+
+        {/* Direct Answer Block - AEO optimalizált */}
+        <section className="relative py-12 bg-bg-base border-y border-white/5">
+          <div className="max-w-4xl mx-auto px-6 text-center">
+            <p className="text-base md:text-lg text-slate-300 leading-relaxed">
+              <span className="text-[#00B5F1] font-semibold">
+                WebDude AI asset pipeline:
+              </span>{" "}
+              Generatív AI megoldások marketing assetek automatikus
+              előállításához KKV-knak országos szolgáltatással. Képek, videók,
+              grafikák és kreatív anyagok skálázható, gyors és költséghatékony
+              folyamatokkal. 60-90% gyorsabb előállítás, márkakonzisztencia és
+              A/B tesztelés támogatott. Egyedi árajánlat kérése az igények
+              alapján.
+            </p>
+          </div>
+        </section>
 
         {/* Background gradient */}
         <div className="absolute inset-0 bg-linear-to-b from-[#00B5F1]/5 via-transparent to-[#5B21B6]/5" />

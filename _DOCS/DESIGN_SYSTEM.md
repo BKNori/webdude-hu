@@ -41,32 +41,35 @@ A **„Cyber-Arany 2026"** stílus egy prémium, sötét alapú, futurisztikus d
 
 ### 2.2 Szövegszínek (Olvashatósági Hierarchia)
 
-| Token neve       | Hex       | Tailwind class   | WCAG Szint   | Használat                                     |
-| ---------------- | --------- | ---------------- | ------------ | --------------------------------------------- |
-| `text-primary`   | `#e2e8f0` | `text-[#e2e8f0]` | AAA          | Fő szövegtartalom, heading-ek.                |
-| `text-secondary` | `#94a3b8` | `text-slate-400` | AA           | Alcímek, hosszú olvasmányok, meta adatok.     |
-| `text-muted`     | `#64748b` | `text-slate-500` | AA (Large)   | Placeholder, disabled text, kiegészítő label. |
-| `text-inverted`  | `#020617` | `text-slate-950` | AAA (8.5:1)  | Tömör cián (brand-primary) háttér feliratai.    |
+| Token neve       | Hex       | Tailwind class   | WCAG Szint  | Használat                                     |
+| ---------------- | --------- | ---------------- | ----------- | --------------------------------------------- |
+| `text-primary`   | `#e2e8f0` | `text-[#e2e8f0]` | AAA         | Fő szövegtartalom, heading-ek.                |
+| `text-secondary` | `#94a3b8` | `text-slate-400` | AA          | Alcímek, hosszú olvasmányok, meta adatok.     |
+| `text-muted`     | `#64748b` | `text-slate-500` | AA (Large)  | Placeholder, disabled text, kiegészítő label. |
+| `text-inverted`  | `#020617` | `text-slate-950` | AAA (8.5:1) | Tömör cián (brand-primary) háttér feliratai.  |
 
 ### 2.3 Brand Akcentus Színek (Kék-Lila)
 
-| Token neve      | Hex       | Tailwind class                            | Használat                                       |
-| --------------- | --------- | ----------------------------------------- | ----------------------------------------------- |
-| `brand-primary` | `#00B5F1` | `bg-brand-primary` / `text-brand-primary` | Elsődleges CTA gombok, aktív állapotok, ikonok. |
+| Token neve      | Hex       | Tailwind class                            | Használat                                                        |
+| --------------- | --------- | ----------------------------------------- | ---------------------------------------------------------------- |
+| `brand-primary` | `#00B5F1` | `bg-brand-primary` / `text-brand-primary` | Elsődleges CTA gombok, aktív állapotok, ikonok.                  |
 | `cta-from`      | `#075985` | `from-cta-from` / `bg-cta-from`           | CTA gradiens kezdőpont (sky-800); fehér felirattal AAA (7.56:1). |
 | `cta-to`        | `#5B21B6` | `to-cta-to`                               | Gradiens végpont (violet-800); fehér felirattal AAA (8.98:1).    |
-| `cta-hover`     | `#6d28d9` | `hover:bg-cta-hover`                      | Hover háttér (violet-700); fehér felirattal AAA (7.1:1).          |
-| `brand-glow`    | `#00B5F1` | `shadow-[0_0_40px_rgba(0, 181, 241,0.3)]` | Cián glow hatások.                             |
-| `border-color`  | `#334155` | `border-slate-700`                        | Szegélyek, keretek, elválasztók.                |
+| `cta-hover`     | `#6d28d9` | `hover:bg-cta-hover`                      | Hover háttér (violet-700); fehér felirattal AAA (7.1:1).         |
+| `brand-glow`    | `#00B5F1` | `shadow-[0_0_40px_rgba(0, 181, 241,0.3)]` | Cián glow hatások.                                               |
+| `border-color`  | `#334155` | `border-slate-700`                        | Szegélyek, keretek, elválasztók.                                 |
 
 ---
 
 ## 3. Tipográfia
 
-**Címsorok (Headings):** Space Grotesk (Google Fonts – sans-serif, Font weight: 700)
-**Folyószöveg / UI (Body/UI):** Inter (Google Fonts – sans-serif, Font weight: 400, 500, 600)
-Fallback: system-ui, -apple-system, sans-serif
-Betöltés: next/font/google modulon keresztül (FOUT/CLS elkerülése végett)
+**Egységes Sans-Serit Rendszer:** Manrope (Google Fonts – modern geometrikus sans-serif, Font weight: 400, 500, 600, 700, 800)
+
+- **Címsorok (Headings):** Manrope 700, 800 (bold, extrabold)
+- **Folyószöveg / UI (Body/UI):** Manrope 400, 500, 600 (regular, medium, semibold)
+- **Kiemelések:** Manrope 600, 700 (semibold, bold)
+  Fallback: system-ui, -apple-system, sans-serif
+  Betöltés: next/font/google modulon keresztül (FOUT/CLS elkerülése végett, subsets: ['latin', 'latin-ext'] kötelező a magyar ékezetekhez)
 
 ### 3.1 Skála és Vonalvezetés (Line Height)
 
@@ -271,7 +274,7 @@ Képkezelés: Minden fotónak vagy mockuponak tiszta, világos esztétikát kell
 
 **DDR-003 (Kontraszt):** Tömör `brand-primary` (cián) háttéren a felirat `text-slate-950` (8.5:1 AAA); a sötét kék-lila CTA gradiensen (`cta-from` → `cta-to`) és `cta-hover` háttéren a felirat KÖTELEZŐEN `text-white` (7.1–8.98:1 AAA). A kontrasztot színpáronként kell mérni: az áttetsző hátterek, gradiensek és hover állapotok külön ellenőrzést igényelnek. A sikeres build nem WCAG-tanúsítás.
 
-**DDR-004 (Space Grotesk):** A címsorok kizárólag Space Grotesk betűtípust használhatnak (font-weight: 700). A folyószöveg és UI elemek Inter betűtípust (font-weight: 400, 500, 600).
+**DDR-004 (Manrope Uniform Sans):** Az egységes tipográfiai rendszer kizárólag Manrope betűtípust használ. Címsorok: Manrope 700, 800. Folyószöveg és UI elemek: Manrope 400, 500, 600. Kiemelések: Manrope 600, 700. Nincs külön heading, body, mono vagy serif betűtípus - egy modern, geometrikus sans-serif rendszert használunk a tisztaság és elegancia érdekében.
 
 **DDR-005 (90-8-2 Szabály):** 90% sötét alap, 8% üveg / slate felület és legfeljebb 2% kék-lila kiemelés. Szekciónként egyetlen elsődleges CTA.
 

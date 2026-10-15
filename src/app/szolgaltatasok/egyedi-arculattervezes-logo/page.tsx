@@ -91,7 +91,12 @@ export default async function BrandingPage() {
       "@type": "Organization",
       "@id": "https://webdude.hu/#organization",
       name: "WebDude",
-      url: "https://webdude.hu",
+      founder: {
+        "@type": "Person",
+        name: "Balog Norbi",
+        jobTitle: "Full-Stack Webfejlesztő & AI Specialist",
+        description: "26 év grafikai és 16 év webfejlesztői tapasztalat",
+      },
     },
     areaServed: { "@type": "Country", name: "Hungary" },
   };
@@ -202,6 +207,23 @@ export default async function BrandingPage() {
                 </p>
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* Direct Answer Block - AEO optimalizált */}
+        <section className="relative py-12 bg-bg-base border-y border-white/5">
+          <div className="max-w-4xl mx-auto px-6 text-center">
+            <p className="text-base md:text-lg text-slate-300 leading-relaxed">
+              <span className="text-[#00B5F1] font-semibold">
+                WebDude egyedi arculattervezés:
+              </span>{" "}
+              Professzionális logó tervezés és teljes vállalati arculat
+              kialakítása KKV-knak országos szolgáltatással. 26 év grafikai
+              tapasztalat, vektorgrafikus elemek, branding stratégia és
+              konverzió-fókuszú dizájn. Esküvői dekoráció, orvosi arculat és
+              kávézó branding referenciákkal. Egyedi árajánlat kérése az igények
+              alapján.
+            </p>
           </div>
         </section>
 

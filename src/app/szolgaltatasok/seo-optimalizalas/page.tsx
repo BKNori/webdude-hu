@@ -14,15 +14,17 @@ import Hero from "@/components/Hero";
 import { buildBreadcrumbSchema, BreadcrumbItem } from "@/lib/breadcrumb";
 
 export const metadata: Metadata = {
-  title: "SEO szakember Kecskemét | Technikai SEO és tartalom | WebDude",
+  title:
+    "SEO szakember országos szolgáltatással | Technikai SEO és tartalom | WebDude",
   description:
-    "Technikai SEO audit, kulcsszókutatás, tartalomstratégia és helyi SEO vállalkozásoknak. Tudd meg, mi akadályozza a weboldalad jobb Google-helyezését.",
+    "Technikai SEO audit, kulcsszókutatás, tartalomstratégia és helyi SEO vállalkozásoknak országos szolgáltatással. Tudd meg, mi akadályozza a weboldalad jobb Google-helyezését.",
   keywords:
-    "SEO optimalizálás, keresőoptimalizálás, technikai SEO, tartalomstratégia, Google helyezés javítás, SEO szakember Kecskemét, organikus forgalom",
+    "SEO optimalizálás, keresőoptimalizálás, technikai SEO, tartalomstratégia, Google helyezés javítás, SEO szakember országos, organikus forgalom",
   openGraph: {
-    title: "SEO szakember Kecskemét | Technikai SEO és tartalom | WebDude",
+    title:
+      "SEO szakember országos szolgáltatással | Technikai SEO és tartalom | WebDude",
     description:
-      "Technikai SEO audit, kulcsszókutatás, tartalomstratégia és helyi SEO vállalkozásoknak.",
+      "Technikai SEO audit, kulcsszókutatás, tartalomstratégia és helyi SEO vállalkozásoknak országos szolgáltatással.",
     type: "website",
     locale: "hu_HU",
     siteName: "WebDude",
@@ -47,12 +49,17 @@ export default async function SEOOptimizationPage() {
     "@type": "Service",
     name: "SEO Optimalizálás",
     description:
-      "Technikai SEO audit, kulcsszókutatás, tartalomstratégia és helyi SEO vállalkozásoknak.",
+      "Technikai SEO audit, kulcsszókutatás, tartalomstratégia és helyi SEO vállalkozásoknak országos szolgáltatással.",
     provider: {
       "@type": "Organization",
       "@id": "https://webdude.hu/#organization",
       name: "WebDude",
-      url: "https://webdude.hu",
+      founder: {
+        "@type": "Person",
+        name: "Balog Norbi",
+        jobTitle: "Full-Stack Webfejlesztő & AI Specialist",
+        description: "26 év grafikai és 16 év webfejlesztői tapasztalat",
+      },
     },
     areaServed: { "@type": "Country", name: "Hungary" },
   };
@@ -180,7 +187,8 @@ export default async function SEOOptimizationPage() {
               Technikai SEO audit, kulcsszó-stratégia, tartalomoptimalizálás és
               helyi SEO KKV-knak. 26 év tapasztalat, Google Search Console
               bekötés, Core Web Vitals javítás és organikus forgalom növelés
-              országos szolgáltatással.
+              országos szolgáltatással. Egyedi árajánlat kérése az igények
+              alapján.
             </p>
           </div>
         </section>

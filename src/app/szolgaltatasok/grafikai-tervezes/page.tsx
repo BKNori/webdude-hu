@@ -40,12 +40,17 @@ export default function GrafikaiTervezesPage() {
     "@type": "Service",
     name: "Grafikai tervezés és arculattervezés",
     description:
-      "Logó, arculat, marketinganyagok és digitális grafikai tervezés egységes vizuális rendszerben.",
+      "Logó, arculat, marketinganyagok és digitális grafikai tervezés egységes vizuális rendszerben országos szolgáltatással.",
     provider: {
       "@type": "Organization",
       "@id": "https://webdude.hu/#organization",
       name: "WebDude",
-      url: "https://webdude.hu",
+      founder: {
+        "@type": "Person",
+        name: "Balog Norbi",
+        jobTitle: "Full-Stack Webfejlesztő & AI Specialist",
+        description: "26 év grafikai és 16 év webfejlesztői tapasztalat",
+      },
     },
     areaServed: { "@type": "Country", name: "Hungary" },
   };
@@ -179,6 +184,21 @@ export default function GrafikaiTervezesPage() {
             fullHeight={false}
           />
         </div>
+
+        {/* Direct Answer Block - AEO optimalizált "Grafikai Tervezés Áttekintése" */}
+        <section className="relative py-12 bg-bg-base border-y border-white/5">
+          <div className="max-w-4xl mx-auto px-6 text-center">
+            <p className="text-base md:text-lg text-slate-300 leading-relaxed">
+              <span className="text-[#00B5F1] font-semibold">
+                WebDude grafikai tervezés:
+              </span>{" "}
+              Logó, arculat, marketinganyagok és digitális grafikai tervezés
+              egységes vizuális rendszerben országos szolgáltatással. 26 év
+              grafikai tapasztalat, vektoros forrásfájlok, nyomdai előkészítés
+              és UI/UX webdesign. Egyedi árajánlat kérése az igények alapján.
+            </p>
+          </div>
+        </section>
 
         {/* ── Miért a WebDude? (E-E-A-T) ── */}
         <section className="py-24 relative z-10">

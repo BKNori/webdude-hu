@@ -13,18 +13,18 @@ import {
 import { buildBreadcrumbSchema, BreadcrumbItem } from "@/lib/breadcrumb";
 
 export const metadata: Metadata = {
-  title: "Professzionális Logó Tervezés és Arculattervezés | WebDude",
+  title: "Professzionális Logó Tervezés országos szolgáltatással | WebDude",
   description:
-    "Egyedi logó tervezés és teljes vizuális identitás építés. 26 év grafikai tapasztalat, vektoros forrásfájlok, nyomdai előkészítés. Emblém, ami megkülönböztet a versenytársaktól.",
+    "Egyedi logó tervezés és teljes vizuális identitás építés országos szolgáltatással. 26 év grafikai tapasztalat, vektoros forrásfájlok, nyomdai előkészítés. Emblém, ami megkülönböztet a versenytársaktól.",
   keywords:
     "logó tervezés, arculattervezés, brand identity, vizuális identitás, vektoros logo, céges emblém, marketing grafika, országos logó tervezés",
   alternates: {
     canonical: "https://webdude.hu/szolgaltatasok/logo-tervezes",
   },
   openGraph: {
-    title: "Professzionális Logó Tervezés és Arculattervezés | WebDude",
+    title: "Professzionális Logó Tervezés országos szolgáltatással | WebDude",
     description:
-      "Egyedi logó tervezés és teljes vizuális identitás építés. 26 év grafikai tapasztalat, vektoros forrásfájlok, nyomdai előkészítés.",
+      "Egyedi logó tervezés és teljes vizuális identitás építés országos szolgáltatással. 26 év grafikai tapasztalat, vektoros forrásfájlok, nyomdai előkészítés.",
     type: "website",
     locale: "hu_HU",
     siteName: "WebDude",
@@ -162,7 +162,6 @@ const pricingTiers = [
     name: "Logó & Arculati Alapok",
     description:
       "Induló vállalkozásoknak, akik egy profi és felismerhető emblémára vágynak.",
-    price: "Egyedi árajánlat alapján",
     features: [
       "2-3 db egyedi logó koncepció",
       "Színpaletta és betűtípus meghatározása",
@@ -180,7 +179,6 @@ const pricingTiers = [
     name: "Teljes Arculattervezés",
     description:
       "Komplett vizuális identitás: logó, arculat, marketing anyagok és alkalmazás.",
-    price: "Egyedi árajánlat alapján",
     features: [
       "Minden a Logo csomagban",
       "Teljes arculati tervezés",
@@ -198,7 +196,6 @@ const pricingTiers = [
     name: "Vállalati Identitás",
     description:
       "Nagyvállalatok teljes vállalati identitás felépítése több csomagban.",
-    price: "Egyedi árajánlat alapján",
     features: [
       "Minden a Teljes Arculattervezés csomagban",
       "Vállalati arculati stratégiá",
@@ -254,12 +251,17 @@ export default function LogoTervezesPage() {
     "@type": "Service",
     name: "Professzionális Logó Tervezés és Arculattervezés",
     description:
-      "Egyedi logó tervezés és teljes vizuális identitás építés. 26 év grafikai tapasztalat, vektoros forrásfájlok, nyomdai előkészítés.",
+      "Egyedi logó tervezés és teljes vizuális identitás építés országos szolgáltatással. 26 év grafikai tapasztalat, vektoros forrásfájlok, nyomdai előkészítés.",
     provider: {
       "@type": "Organization",
       "@id": "https://webdude.hu/#organization",
       name: "WebDude",
-      url: "https://webdude.hu",
+      founder: {
+        "@type": "Person",
+        name: "Balog Norbi",
+        jobTitle: "Full-Stack Webfejlesztő & AI Specialist",
+        description: "26 év grafikai és 16 év webfejlesztői tapasztalat",
+      },
     },
     areaServed: { "@type": "Country", name: "Hungary" },
   };
@@ -315,7 +317,7 @@ export default function LogoTervezesPage() {
 
           <div className="relative z-10 mx-auto max-w-7xl px-6 py-20 md:py-32">
             <div className="max-w-3xl">
-              <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
+              <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight text-balance">
                 Professzionális{" "}
                 <span className="text-[#00B5F1]">Logó Tervezés</span> és
                 Arculattervezés
@@ -332,6 +334,21 @@ export default function LogoTervezesPage() {
                 Kérek egy ingyenes Logó Konzultációt
               </Link>
             </div>
+          </div>
+        </section>
+
+        {/* Direct Answer Block - AEO optimalizált */}
+        <section className="relative py-12 bg-bg-base border-y border-white/5">
+          <div className="max-w-4xl mx-auto px-6 text-center">
+            <p className="text-base md:text-lg text-slate-300 leading-relaxed">
+              <span className="text-[#00B5F1] font-semibold">
+                WebDude logó tervezés:
+              </span>{" "}
+              Egyedi logó tervezés és teljes vizuális identitás építés KKV-knak
+              országos szolgáltatással. 26 év grafikai tapasztalat, vektoros
+              forrásfájlok, nyomdai előkészítés és Arculati Kézikönyv. Egyedi
+              árajánlat kérése az igények alapján.
+            </p>
           </div>
         </section>
 
@@ -417,11 +434,11 @@ export default function LogoTervezesPage() {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-6xl font-bold mb-6">
-                <span className="text-[#00B5F1]">Árazás</span> és Csomagok
+                <span className="text-[#00B5F1]">Csomagok</span> és lehetőségek
               </h2>
               <p className="text-slate-400 text-xl max-w-2xl mx-auto">
-                Átlátható árazás, nincs rejtett költség. Ingyenes konzultáció
-                minden csomaghoz.
+                Válassza ki az üzleti céljaidnak megfelelő irányt. Egyedi
+                árajánlat minden csomaghoz.
               </p>
             </div>
 
@@ -448,9 +465,6 @@ export default function LogoTervezesPage() {
                   <p className="text-slate-400 mb-6 text-sm leading-relaxed">
                     {tier.description}
                   </p>
-                  <div className="text-3xl font-bold text-[#00B5F1] mb-6">
-                    {tier.price}
-                  </div>
                   <ul className="space-y-3 mb-8">
                     {tier.features.map((feature, index) => (
                       <li

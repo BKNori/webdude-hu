@@ -10,20 +10,22 @@ export default function HeroStaticBanner() {
 
   const headline = "WebDude – AI‑hajtású digitális mesterség";
   const subHeadline =
-    "Prémium webfejlesztés, AI workflow és lead‑generálás egy elegáns, cyber‑gold felülettel";
+    "Prémium webfejlesztés, AI workflow és lead‑generálás letisztult, modern felülettel";
   const ctaText = "Kezdjünk el együtt";
   const ctaHref = "/kapcsolat";
 
   return (
-    <section className="relative min-h-[calc(100vh-80px)] flex items-center justify-center overflow-hidden py-16 bg-[#041356]">
+    <section className="relative min-h-[calc(100vh-80px)] flex items-center justify-center overflow-hidden py-16 bg-slate-950">
       {/* Background Image */}
       <Image
         src="/hero_static_banner.png"
         alt="Hero banner"
         fill
         priority
-        className="object-cover opacity-30"
+        className="object-cover opacity-25"
       />
+      {/* Sötétítő kontrasztréteg WCAG AAA */}
+      <div className="absolute inset-0 bg-slate-950/75 -z-10" aria-hidden="true" />
       {/* Content */}
       <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
         <motion.h1

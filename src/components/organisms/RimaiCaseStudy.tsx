@@ -22,7 +22,8 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
              priority
              className="object-cover"
            />
-          <div className="absolute inset-0 bg-linear-to-b from-black/70 via-black/50 to-bg-base" />
+          <div className="absolute inset-0 bg-slate-950/75 -z-10" />
+          <div className="absolute inset-0 bg-linear-to-b from-black/80 via-slate-950/60 to-bg-base" />
         </div>
 
         <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
@@ -38,7 +39,7 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
               </span>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold leading-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold leading-tight tracking-tight text-balance">
               {project.title}
             </h1>
 

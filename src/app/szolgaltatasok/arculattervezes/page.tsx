@@ -1,24 +1,33 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { 
-  CheckCircle2, 
-  ArrowRight, 
+import {
+  CheckCircle2,
+  ArrowRight,
   HelpCircle,
   Palette,
   Eye,
   Award,
   BookOpen,
   Layers,
-  Sparkles
+  Sparkles,
 } from "lucide-react";
-import PricingTable, { type PricingTier } from "@/components/molecules/PricingTable";
+import PricingTable, {
+  type PricingTier,
+} from "@/components/molecules/PricingTable";
 
 export const metadata: Metadata = {
-  title: "Arculattervezés vállalkozásoknak | Logó és márkaidentitás | WebDude",
-  description: "Egyedi arculattervezés kisvállalkozásoknak és új márkáknak. Logó, színek, tipográfia és alkalmazási útmutató egy összefüggő vizuális rendszerben.",
+  title:
+    "Arculattervezés vállalkozásoknak országos szolgáltatással | Logó és márkaidentitás | WebDude",
+  description:
+    "Egyedi arculattervezés kisvállalkozásoknak és új márkáknak országos szolgáltatással. Logó, színek, tipográfia és alkalmazási útmutató egy összefüggő vizuális rendszerben.",
+  alternates: {
+    canonical: "https://webdude.hu/szolgaltatasok/arculattervezes",
+  },
   openGraph: {
-    title: "Arculattervezés vállalkozásoknak | Logó és márkaidentitás | WebDude",
-    description: "Egyedi arculattervezés kisvállalkozásoknak és új márkáknak. Logó, színek, tipográfia és alkalmazási útmutató egy összefüggő vizuális rendszerben.",
+    title:
+      "Arculattervezés vállalkozásoknak országos szolgáltatással | Logó és márkaidentitás | WebDude",
+    description:
+      "Egyedi arculattervezés kisvállalkozásoknak és új márkáknak országos szolgáltatással. Logó, színek, tipográfia és alkalmazási útmutató egy összefüggő vizuális rendszerben.",
     url: "https://webdude.hu/szolgaltatasok/arculattervezes",
     type: "website",
   },
@@ -28,13 +37,14 @@ const pricingTiers: PricingTier[] = [
   {
     id: "branding-start",
     name: "Alap Arculat & Logó",
-    description: "Induló vállalkozásoknak, akiknek profi, egységes és megbízható megjelenésre van szükségük az azonnali piaci induláshoz.",
+    description:
+      "Induló vállalkozásoknak, akiknek profi, egységes és megbízható megjelenésre van szükségük az azonnali piaci induláshoz.",
     features: [
       "Végleges logótervezés 3 különböző koncepció alapján",
       "Vektoriális és raszteres formátumok (AI, SVG, PDF, PNG)",
       "Elsődleges és másodlagos színpaletta (HEX, RGB, CMYK)",
       "Tipográfiai szabályok és betűtípus-párosítások",
-      "Közösségi média profilkép és borítókép sablonok"
+      "Közösségi média profilkép és borítókép sablonok",
     ],
     highlighted: false,
     ctaText: "Egyedi árajánlat kérése",
@@ -43,14 +53,15 @@ const pricingTiers: PricingTier[] = [
   {
     id: "branding-full",
     name: "Komplett Márkaidentitás",
-    description: "Növekvő márkáknak és átalakuló cégeknek, akik professzionális, minden felületen következetes vizuális jelenlétet akarnak.",
+    description:
+      "Növekvő márkáknak és átalakuló cégeknek, akik professzionális, minden felületen következetes vizuális jelenlétet akarnak.",
     features: [
       "Minden, ami az Alap csomagban szerepel",
       "Kiterjedt Arculati Kézikönyv (Brand Guidelines)",
       "Névjegykártya és levélpapír nyomdai előkészítéssel",
       "E-mail aláírás és prezentációs sablon (PowerPoint/Keynote)",
       "Digitális hirdetéssablonok és közösségi média csomag",
-      "Weboldal UI vizuális stílus-iránymutatás"
+      "Weboldal UI vizuális stílus-iránymutatás",
     ],
     highlighted: true,
     ctaText: "Egyedi árajánlat kérése",
@@ -59,13 +70,14 @@ const pricingTiers: PricingTier[] = [
   {
     id: "branding-custom",
     name: "Prémium Brand Rendszer",
-    description: "Vállalati szintű márkaépítés, átfogó dizájnrendszer, csomagolástervezés és kiadványok egy kézből.",
+    description:
+      "Vállalati szintű márkaépítés, átfogó dizájnrendszer, csomagolástervezés és kiadványok egy kézből.",
     features: [
       "Komplett vizuális audit és piaci pozicionálás",
       "Egyedi ikonográfia és illusztrációs rendszer kidolgozása",
       "Csomagolástervezés, címkék és kiadványgrafika",
       "Jármű- és épületdekorációs látványtervek és nyomdai anyagok",
-      "Konzultáció és szaktanácsadás a márkaimplementáció során"
+      "Konzultáció és szaktanácsadás a márkaimplementáció során",
     ],
     highlighted: false,
     ctaText: "Egyedi árajánlat kérése",
@@ -98,13 +110,20 @@ export default function ArculattervezesPage() {
     "@type": "Service",
     name: "Arculattervezés és márkaidentitás",
     provider: {
-      "@type": "Person",
-      name: "Norbert - WebDude",
-      url: "https://webdude.hu",
+      "@type": "Organization",
+      "@id": "https://webdude.hu/#organization",
+      name: "WebDude",
+      founder: {
+        "@type": "Person",
+        name: "Balog Norbi",
+        jobTitle: "Full-Stack Webfejlesztő & AI Specialist",
+        description: "26 év grafikai és 16 év webfejlesztői tapasztalat",
+      },
     },
-    description: "Egyedi arculattervezés kisvállalkozásoknak és új márkáknak. Logó, színek, tipográfia és alkalmazási útmutató egy összefüggő vizuális rendszerben.",
+    description:
+      "Egyedi arculattervezés kisvállalkozásoknak és új márkáknak országos szolgáltatással. Logó, színek, tipográfia és alkalmazási útmutató egy összefüggő vizuális rendszerben.",
     serviceType: "Branding and Visual Identity",
-    areaServed: "HU",
+    areaServed: { "@type": "Country", name: "Hungary" },
   };
 
   const faqJsonLd = {
@@ -146,10 +165,15 @@ export default function ArculattervezesPage() {
               26 Év Grafikai Tapasztalat & Márkaépítés
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight mb-6">
-              Arculattervezés, amely <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#a855f7]">bizalmat ébreszt</span>
+              Arculattervezés, amely{" "}
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#a855f7]">
+                bizalmat ébreszt
+              </span>
             </h1>
             <p className="text-lg sm:text-xl text-slate-300 leading-relaxed mb-8">
-              A márkád vizuális megjelenése az első másodpercben dönt arról, hogy komolyan vesznek-e. 26 év tapasztalattal építek vizuális rendszereket, amelyek kiemelnek a tömegből.
+              A márkád vizuális megjelenése az első másodpercben dönt arról,
+              hogy komolyan vesznek-e. 26 év tapasztalattal építek vizuális
+              rendszereket, amelyek kiemelnek a tömegből.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
@@ -170,6 +194,22 @@ export default function ArculattervezesPage() {
         </div>
       </section>
 
+      {/* Direct Answer Block - AEO optimalizált */}
+      <section className="relative py-12 bg-bg-base border-y border-white/5">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <p className="text-base md:text-lg text-slate-300 leading-relaxed">
+            <span className="text-[#00B5F1] font-semibold">
+              WebDude arculattervezés:
+            </span>{" "}
+            Egyedi arculattervezés kisvállalkozásoknak és új márkáknak országos
+            szolgáltatással. Logó, színek, tipográfia és alkalmazási útmutató
+            egy összefüggő vizuális rendszerben. 26 év grafikai tapasztalat,
+            Arculati Kézikönyv (Brand Guidelines) és konzisztens vizuális
+            identitás. Egyedi árajánlat kérése az igények alapján.
+          </p>
+        </div>
+      </section>
+
       {/* E-E-A-T & Value Pillars Bento Grid */}
       <section className="py-24 relative border-b border-slate-800/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -178,7 +218,9 @@ export default function ArculattervezesPage() {
               Miért nem elég egy egyszerű sablonlogó?
             </h2>
             <p className="text-slate-400">
-              A generált vagy sablonból vett grafikák nem tükrözik a céged értékeit és gyakran nyomdai hibákhoz vezetnek. Egy átgondolt arculat stratégiai befektetés.
+              A generált vagy sablonból vett grafikák nem tükrözik a céged
+              értékeit és gyakran nyomdai hibákhoz vezetnek. Egy átgondolt
+              arculat stratégiai befektetés.
             </p>
           </div>
 
@@ -189,9 +231,13 @@ export default function ArculattervezesPage() {
                 <div className="w-12 h-12 rounded-xl bg-purple-950/80 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-6">
                   <Award className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">26 Év Grafikai Rutin</h3>
+                <h3 className="text-xl font-bold text-white mb-3">
+                  26 Év Grafikai Rutin
+                </h3>
                 <p className="text-slate-400 text-sm leading-relaxed">
-                  A hagyományos ofszet és digitális nyomdai alapoktól kezdve a modern UI/UX képernyődizájnig mindent átlátok. Nincsenek technikai meglepetések.
+                  A hagyományos ofszet és digitális nyomdai alapoktól kezdve a
+                  modern UI/UX képernyődizájnig mindent átlátok. Nincsenek
+                  technikai meglepetések.
                 </p>
               </div>
               <div className="mt-6 pt-6 border-t border-slate-800/80 text-xs text-purple-400 flex items-center gap-1.5 font-semibold">
@@ -205,13 +251,18 @@ export default function ArculattervezesPage() {
                 <div className="w-12 h-12 rounded-xl bg-sky-950/80 border border-sky-500/30 flex items-center justify-center text-[#00B5F1] mb-6">
                   <Palette className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">Harmonikus Szín & Tipográfia</h3>
+                <h3 className="text-xl font-bold text-white mb-3">
+                  Harmonikus Szín & Tipográfia
+                </h3>
                 <p className="text-slate-400 text-sm leading-relaxed">
-                  Pszichológiailag alátámasztott színhasználat és professzionális betűkészletek, amelyek támogatják az olvashatóságot és a prémium hatást.
+                  Pszichológiailag alátámasztott színhasználat és
+                  professzionális betűkészletek, amelyek támogatják az
+                  olvashatóságot és a prémium hatást.
                 </p>
               </div>
               <div className="mt-6 pt-6 border-t border-slate-800/80 text-xs text-sky-400 flex items-center gap-1.5 font-semibold">
-                <CheckCircle2 className="w-4 h-4" /> Kiemelkedés a versenytársak közül
+                <CheckCircle2 className="w-4 h-4" /> Kiemelkedés a versenytársak
+                közül
               </div>
             </div>
 
@@ -221,9 +272,13 @@ export default function ArculattervezesPage() {
                 <div className="w-12 h-12 rounded-xl bg-purple-950/80 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-6">
                   <BookOpen className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">Arculati Kézikönyv (Brand Book)</h3>
+                <h3 className="text-xl font-bold text-white mb-3">
+                  Arculati Kézikönyv (Brand Book)
+                </h3>
                 <p className="text-slate-400 text-sm leading-relaxed">
-                  Pontos szabályrendszer a logó védőtávolságáról, méretezéséről, helyes és helytelen alkalmazásáról, hogy a márkád bárhol egységes maradjon.
+                  Pontos szabályrendszer a logó védőtávolságáról, méretezéséről,
+                  helyes és helytelen alkalmazásáról, hogy a márkád bárhol
+                  egységes maradjon.
                 </p>
               </div>
               <div className="mt-6 pt-6 border-t border-slate-800/80 text-xs text-purple-400 flex items-center gap-1.5 font-semibold">
@@ -238,12 +293,19 @@ export default function ArculattervezesPage() {
                   <Layers className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-white">Minden Felületen Hiteles Megjelenés</h3>
-                  <p className="text-slate-400 text-sm">A weboldaltól a névjegykártyán át az óriásplakátig.</p>
+                  <h3 className="text-xl font-bold text-white">
+                    Minden Felületen Hiteles Megjelenés
+                  </h3>
+                  <p className="text-slate-400 text-sm">
+                    A weboldaltól a névjegykártyán át az óriásplakátig.
+                  </p>
                 </div>
               </div>
               <p className="text-slate-400 text-sm leading-relaxed mb-4">
-                Nem csupán egy ikont kapsz: egy komplett vizuális eszköztárat hozok létre, amely kiterjed a prezentációs sablonokra, a közösségi média grafikákra, a céges papírokra és a nyomdai reklámeszközökre.
+                Nem csupán egy ikont kapsz: egy komplett vizuális eszköztárat
+                hozok létre, amely kiterjed a prezentációs sablonokra, a
+                közösségi média grafikákra, a céges papírokra és a nyomdai
+                reklámeszközökre.
               </p>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-4 border-t border-slate-800/80">
                 <div className="flex items-center gap-2 text-xs text-slate-300 font-medium">
@@ -267,9 +329,13 @@ export default function ArculattervezesPage() {
                 <div className="w-12 h-12 rounded-xl bg-sky-950/80 border border-sky-500/30 flex items-center justify-center text-[#00B5F1] mb-6">
                   <Eye className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">Azonnali Megkülönböztetés</h3>
+                <h3 className="text-xl font-bold text-white mb-3">
+                  Azonnali Megkülönböztetés
+                </h3>
                 <p className="text-slate-400 text-sm leading-relaxed">
-                  A vevőid néhány pillanat alatt ítélnek. Olyan vizuális arculatot alkotunk, amely stabilitást és magas minőséget sugároz.
+                  A vevőid néhány pillanat alatt ítélnek. Olyan vizuális
+                  arculatot alkotunk, amely stabilitást és magas minőséget
+                  sugároz.
                 </p>
               </div>
               <div className="mt-6 pt-6 border-t border-slate-800/80 text-xs text-sky-400 flex items-center gap-1.5 font-semibold">
@@ -288,7 +354,9 @@ export default function ArculattervezesPage() {
               Arculattervezési Csomagok & Struktúra
             </h2>
             <p className="text-slate-400">
-              Válaszd ki az üzleti céljaidnak megfelelő irányt. Egyedi igények alapján, rejtett költségek nélkül készítem el a személyre szabott ajánlatot.
+              Válaszd ki az üzleti céljaidnak megfelelő irányt. Egyedi igények
+              alapján, rejtett költségek nélkül készítem el a személyre szabott
+              ajánlatot.
             </p>
           </div>
 
@@ -308,18 +376,21 @@ export default function ArculattervezesPage() {
               Minden, amit az arculattervezésről tudni érdemes
             </h2>
             <p className="text-slate-400">
-              Válaszok a legfontosabb kérdésekre a közös munkáról, a formátumokról és a jogokról.
+              Válaszok a legfontosabb kérdésekre a közös munkáról, a
+              formátumokról és a jogokról.
             </p>
           </div>
 
           <div className="space-y-4">
             {faqs.map((faq, index) => (
-              <div 
+              <div
                 key={index}
                 className="p-6 rounded-xl bg-slate-900/50 border border-slate-800 hover:border-slate-700 transition-colors"
               >
                 <h3 className="text-lg font-bold text-white mb-2 flex items-start gap-3">
-                  <span className="text-[#00B5F1] font-mono text-sm mt-1">0{index + 1}.</span>
+                  <span className="text-[#00B5F1] font-mono text-sm mt-1">
+                    0{index + 1}.
+                  </span>
                   {faq.q}
                 </h3>
                 <p className="text-slate-400 text-sm leading-relaxed pl-8">
@@ -338,7 +409,8 @@ export default function ArculattervezesPage() {
             Emeld magasabb szintre a márkád vizuális erejét!
           </h2>
           <p className="text-slate-300 max-w-2xl mx-auto mb-8 text-lg">
-            Kérj egyedi árajánlatot az arculatod megtervezésére vagy megújítására, és építsünk együtt egy emlékezetes márkát!
+            Kérj egyedi árajánlatot az arculatod megtervezésére vagy
+            megújítására, és építsünk együtt egy emlékezetes márkát!
           </p>
           <Link
             href="/kapcsolat?service=arculattervezes"

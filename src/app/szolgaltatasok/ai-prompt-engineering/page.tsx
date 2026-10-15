@@ -11,9 +11,9 @@ import { buildBreadcrumbSchema, BreadcrumbItem } from "@/lib/breadcrumb";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "AI Prompt Engineering | WebDude",
+    title: "AI Prompt Engineering országos szolgáltatással | WebDude",
     description:
-      "AI prompt engineering szolgáltatás: ChatGPT és Claude promptok fejlesztése, optimalizálása és tesztelése. Megbízható AI rendszerek egyedi igényekre.",
+      "AI prompt engineering szolgáltatás: ChatGPT és Claude promptok fejlesztése, optimalizálása és tesztelése országos szolgáltatással. Megbízható AI rendszerek egyedi igényekre.",
     keywords:
       "AI prompt engineering, ChatGPT prompt, Claude prompt, prompt fejlesztés, AI konfiguráció, ChatGPT optimalizálás, prompt szakértő",
     alternates: {
@@ -65,12 +65,17 @@ export default async function AiPromptEngineeringPage() {
     name: "AI Prompt Engineering",
     url: "https://webdude.hu/szolgaltatasok/ai-prompt-engineering",
     description:
-      "AI prompt engineering szolgáltatás: ChatGPT és Claude promptok fejlesztése, optimalizálása és tesztelése. Megbízható AI rendszerek egyedi igényekre.",
+      "AI prompt engineering szolgáltatás: ChatGPT és Claude promptok fejlesztése, optimalizálása és tesztelése országos szolgáltatással. Megbízható AI rendszerek egyedi igényekre.",
     provider: {
       "@type": "Organization",
       "@id": "https://webdude.hu/#organization",
       name: "WebDude",
-      url: "https://webdude.hu",
+      founder: {
+        "@type": "Person",
+        name: "Balog Norbi",
+        jobTitle: "Full-Stack Webfejlesztő & AI Specialist",
+        description: "26 év grafikai és 16 év webfejlesztői tapasztalat",
+      },
     },
     areaServed: { "@type": "Country", name: "Hungary" },
   };
@@ -104,7 +109,8 @@ export default async function AiPromptEngineeringPage() {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(faqSchema).replace(/</g, "\\u003c"),
         }}
-      />      <div className="min-h-screen bg-transparent text-text-primary relative overflow-hidden">
+      />{" "}
+      <div className="min-h-screen bg-transparent text-text-primary relative overflow-hidden">
         {/* Background gradient */}
         <div className="absolute inset-0 bg-linear-to-b from-[#00B5F1]/5 via-transparent to-[#00B5F1]/5" />
         <div className="relative z-10">

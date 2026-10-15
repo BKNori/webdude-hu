@@ -61,10 +61,11 @@ export default function Hero({
             src={backgroundImage}
             alt=""
             fill
-            className="object-cover opacity-60"
+            className="object-cover opacity-35"
             priority
           />
-          <div className="absolute inset-0 bg-linear-to-r from-slate-950/80 via-slate-900/60 to-slate-950/80" />
+          <div className="absolute inset-0 bg-slate-950/75 -z-10" />
+          <div className="absolute inset-0 bg-linear-to-r from-slate-950/90 via-slate-950/70 to-slate-950/90" />
         </div>
       )}
 
@@ -89,12 +90,12 @@ export default function Hero({
               <div className="absolute left-0 top-0 w-1 h-6 bg-[#00B5F1]" />
             </div>
 
-            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold font-sans leading-tight tracking-tight text-text-primary">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold font-sans leading-tight tracking-tight text-text-primary text-balance">
               {title}
             </h1>
 
             <div className="relative">
-              <p className="text-lg md:text-xl max-w-lg mx-auto leading-relaxed text-slate-400">
+              <p className="text-lg md:text-xl max-w-lg mx-auto leading-relaxed text-slate-300 text-balance">
                 {subtitle}
               </p>
             </div>

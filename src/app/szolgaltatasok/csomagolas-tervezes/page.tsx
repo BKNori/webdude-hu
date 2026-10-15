@@ -13,18 +13,20 @@ import {
 import { buildBreadcrumbSchema, BreadcrumbItem } from "@/lib/breadcrumb";
 
 export const metadata: Metadata = {
-  title: "Professzionális Csomagolás Tervezés és Termék Design | WebDude",
+  title:
+    "Professzionális Csomagolás Tervezés országos szolgáltatással | WebDude",
   description:
-    "Egyedi csomagolás tervezés, termék design, label és doboz tervezés. 26 év grafikai tapasztalat, nyomdai előkészítés, mockup vizualizáció.",
+    "Egyedi csomagolás tervezés, termék design, label és doboz tervezés országos szolgáltatással. 26 év grafikai tapasztalat, nyomdai előkészítés, mockup vizualizáció.",
   keywords:
     "csomagolás tervezés, termék design, label tervezés, doboz tervezés, csomagoltatás, termék vizualizáció, nyomdai előkészítés, mockup, országos grafikai tervezés",
   alternates: {
     canonical: "https://webdude.hu/szolgaltatasok/csomagolas-tervezes",
   },
   openGraph: {
-    title: "Professzionális Csomagolás Tervezés és Termék Design | WebDude",
+    title:
+      "Professzionális Csomagolás Tervezés országos szolgáltatással | WebDude",
     description:
-      "Egyedi csomagolás tervezés, termék design, label és doboz tervezés. 26 év grafikai tapasztalat.",
+      "Egyedi csomagolás tervezés, termék design, label és doboz tervezés országos szolgáltatással. 26 év grafikai tapasztalat.",
     type: "website",
     locale: "hu_HU",
     siteName: "WebDude",
@@ -91,7 +93,6 @@ const pricingTiers = [
     id: "label-only",
     name: "Label és Címke",
     description: "Kisebb termékekhez, egyszerű címke és label tervezés.",
-    price: "Egyedi árajánlat alapján",
     features: [
       "Egyedi grafikai tervezés",
       "Nyomdai előkészítés (CMYK)",
@@ -108,7 +109,6 @@ const pricingTiers = [
     id: "full-packaging",
     name: "Teljes Csomagolás Design",
     description: "Doboz, pouch, vagy bármilyen csomagolás teljes tervezése.",
-    price: "Egyedi árajánlat alapján",
     features: [
       "Minden a Label csomagban",
       "3D mockup vizualizáció",
@@ -125,7 +125,6 @@ const pricingTiers = [
     id: "enterprise",
     name: "Vállalati Termékcsalád",
     description: "Több termék csomagolásának egységes tervezése.",
-    price: "Egyedi árajánlat alapján",
     features: [
       "Minden a Teljes Csomagolás csomagban",
       "5+ termék variáció",
@@ -182,12 +181,17 @@ export default function CsomagolasTervezesPage() {
     "@type": "Service",
     name: "Professzionális Csomagolás Tervezés és Termék Design",
     description:
-      "Egyedi csomagolás tervezés, termék design, label és doboz tervezés. 26 év grafikai tapasztalat, nyomdai előkészítés.",
+      "Egyedi csomagolás tervezés, termék design, label és doboz tervezés országos szolgáltatással. 26 év grafikai tapasztalat, nyomdai előkészítés.",
     provider: {
       "@type": "Organization",
       "@id": "https://webdude.hu/#organization",
       name: "WebDude",
-      url: "https://webdude.hu",
+      founder: {
+        "@type": "Person",
+        name: "Balog Norbi",
+        jobTitle: "Full-Stack Webfejlesztő & AI Specialist",
+        description: "26 év grafikai és 16 év webfejlesztői tapasztalat",
+      },
     },
     areaServed: { "@type": "Country", name: "Hungary" },
   };
@@ -243,7 +247,7 @@ export default function CsomagolasTervezesPage() {
 
           <div className="relative z-10 mx-auto max-w-7xl px-6 py-20 md:py-32">
             <div className="max-w-3xl">
-              <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
+              <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight text-balance">
                 Professzionális{" "}
                 <span className="text-[#00B5F1]">Csomagolás Tervezés</span> és
                 Termék Design
@@ -260,6 +264,21 @@ export default function CsomagolasTervezesPage() {
                 Kérek egy ingyenes Termék Design Konzultációt
               </Link>
             </div>
+          </div>
+        </section>
+
+        {/* Direct Answer Block - AEO optimalizált */}
+        <section className="relative py-12 bg-bg-base border-y border-white/5">
+          <div className="max-w-4xl mx-auto px-6 text-center">
+            <p className="text-base md:text-lg text-slate-300 leading-relaxed">
+              <span className="text-[#00B5F1] font-semibold">
+                WebDude csomagolás tervezés:
+              </span>{" "}
+              Egyedi csomagolás tervezés, termék design, label és doboz tervezés
+              KKV-knak országos szolgáltatással. 26 év grafikai tapasztalat,
+              nyomdai előkészítés, mockup vizualizáció és shelf-ready
+              rendererek. Egyedi árajánlat kérése az igények alapján.
+            </p>
           </div>
         </section>
 
@@ -347,11 +366,11 @@ export default function CsomagolasTervezesPage() {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-6xl font-bold mb-6">
-                <span className="text-[#00B5F1]">Árazás</span> és Csomagok
+                <span className="text-[#00B5F1]">Csomagok</span> és lehetőségek
               </h2>
               <p className="text-slate-400 text-xl max-w-2xl mx-auto">
-                Átlátható árazás, nincs rejtett költség. Ingyenes konzultáció
-                minden csomaghoz.
+                Válassza ki a termék kategóriának megfelelő irányt. Egyedi
+                árajánlat minden csomaghoz.
               </p>
             </div>
 
@@ -378,9 +397,6 @@ export default function CsomagolasTervezesPage() {
                   <p className="text-slate-400 mb-6 text-sm leading-relaxed">
                     {tier.description}
                   </p>
-                  <div className="text-3xl font-bold text-[#00B5F1] mb-6">
-                    {tier.price}
-                  </div>
                   <ul className="space-y-3 mb-8">
                     {tier.features.map((feature, index) => (
                       <li

@@ -1,5 +1,5 @@
 import React from "react";
-import { Inter, Space_Grotesk } from "next/font/google";
+import { Manrope } from "next/font/google";
 import { MotionConfig } from "motion/react";
 import PageWrapper from "../components/layout/PageWrapper";
 import Script from "next/script";
@@ -9,18 +9,11 @@ import { getDictionary } from "@/lib/dictionary";
 
 import "./globals.css";
 
-const inter = Inter({
-  subsets: ["latin"],
+const manrope = Manrope({
+  subsets: ["latin", "latin-ext"],
   display: "swap",
-  variable: "--font-inter",
-  preload: true,
-});
-
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-space-grotesk",
-  weight: ["700"],
+  variable: "--font-sans",
+  weight: ["400", "500", "600", "700", "800"],
   preload: true,
 });
 
@@ -150,7 +143,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
             )}
         </head>
         <body
-          className={`${inter.className} ${spaceGrotesk.className} antialiased min-h-screen max-w-[100vw] relative bg-transparent overflow-x-hidden touch-action-pan-y`}
+          className={`${manrope.className} antialiased min-h-screen max-w-[100vw] relative bg-transparent overflow-x-hidden touch-action-pan-y`}
         >
           {/* Skip link for accessibility */}
           <a

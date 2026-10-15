@@ -7,7 +7,7 @@ import { motion, AnimatePresence, useScroll, useTransform } from "motion/react";
 import {
   ArrowRight,
   CheckCircle2,
-  Star,
+  Award,
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
@@ -279,7 +279,7 @@ export default function HeroSectionNew({ content }: HeroSectionNewProps) {
 
       {/* Sötét kontrasztréteg a háttérkép felett (Kék-Lila v7.0 WCAG AAA) */}
       <div
-        className="absolute inset-0 bg-slate-950/60 -z-10"
+        className="absolute inset-0 bg-slate-950/75 -z-10"
         aria-hidden="true"
       />
 
@@ -291,7 +291,7 @@ export default function HeroSectionNew({ content }: HeroSectionNewProps) {
 
       {/* Szövegvédelmi scrim — bal oldali gradient a szöveg WCAG AA kontrasztjához */}
       <div
-        className="absolute inset-0 bg-linear-to-r from-slate-950/90 via-slate-950/55 to-slate-950/25 -z-10"
+        className="absolute inset-0 bg-linear-to-r from-slate-950/95 via-slate-950/70 to-slate-950/35 -z-10"
         aria-hidden="true"
       />
 
@@ -351,7 +351,7 @@ export default function HeroSectionNew({ content }: HeroSectionNewProps) {
                 </div>
 
                 {/* H1 Címsor */}
-                <h1 className="text-4xl sm:text-5xl lg:text-[3.2rem] xl:text-[3.7rem] font-extrabold tracking-tight leading-[1.12] text-white mb-6">
+                <h1 className="text-4xl sm:text-5xl lg:text-[3.2rem] xl:text-[3.7rem] font-extrabold tracking-tight leading-[1.12] text-white mb-6 text-balance">
                   {slide.titlePrefix}
                   <span
                     className="hero-shimmer-text"
@@ -369,7 +369,7 @@ export default function HeroSectionNew({ content }: HeroSectionNewProps) {
                 </h1>
 
                 {/* Alcím */}
-                <p className="text-base sm:text-lg lg:text-xl text-slate-400 leading-relaxed max-w-xl mb-6">
+                <p className="text-base sm:text-lg lg:text-xl text-slate-300 leading-relaxed max-w-xl mb-6 text-balance">
                   {slide.subtitle}
                 </p>
 
@@ -445,20 +445,15 @@ export default function HeroSectionNew({ content }: HeroSectionNewProps) {
                   )}
                 </div>
 
-                {/* Értékelés / Social proof */}
-                <div className="mt-8 flex items-center gap-3 text-slate-400 text-sm">
-                  <div className="flex gap-0.5" aria-label={content.ratingAriaLabel}>
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <Star
-                        key={i}
-                        className="w-4 h-4 text-brand-primary fill-brand-primary"
-                        aria-hidden="true"
-                      />
-                    ))}
+                {/* Tapasztalat és szakmai garancia / Social proof */}
+                <div className="mt-8 flex items-center gap-3 text-slate-300 text-sm">
+                  <div className="flex items-center justify-center w-7 h-7 rounded-lg bg-brand-primary/10 border border-brand-primary/20 text-brand-primary">
+                    <Award className="w-4 h-4" aria-hidden="true" />
                   </div>
                   <span>
-                    <strong className="text-white">4.9/5</strong> —{" "}
-                    {slide.ratingText}
+                    <strong className="text-white font-mono tabular-nums">26+ év</strong> grafika ·{" "}
+                    <strong className="text-white font-mono tabular-nums">16+ év</strong> webfejlesztés —{" "}
+                    <span className="text-slate-400">{slide.ratingText}</span>
                   </span>
                 </div>
               </motion.div>

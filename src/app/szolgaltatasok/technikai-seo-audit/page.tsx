@@ -1,25 +1,34 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { 
-  CheckCircle2, 
-  ArrowRight, 
-  Search, 
+import {
+  CheckCircle2,
+  ArrowRight,
+  Search,
   HelpCircle,
   Sparkles,
   FileSearch,
   Code2,
   Share2,
   Target,
-  BarChart3
+  BarChart3,
 } from "lucide-react";
-import PricingTable, { type PricingTier } from "@/components/molecules/PricingTable";
+import PricingTable, {
+  type PricingTier,
+} from "@/components/molecules/PricingTable";
 
 export const metadata: Metadata = {
-  title: "Technikai SEO Audit | Keresőoptimalizálás | WebDude",
-  description: "Miért nem találják a weboldalad a Google-ben? Átfogó technikai SEO audit és priorizált javítási terv a láthatóság növeléséért.",
+  title:
+    "Technikai SEO Audit országos szolgáltatással | Keresőoptimalizálás | WebDude",
+  description:
+    "Miért nem találják a weboldalad a Google-ben? Átfogó technikai SEO audit és priorizált javítási terv a láthatóság növeléséhez országos szolgáltatással.",
+  alternates: {
+    canonical: "https://webdude.hu/szolgaltatasok/technikai-seo-audit",
+  },
   openGraph: {
-    title: "Technikai SEO Audit | Keresőoptimalizálás | WebDude",
-    description: "Miért nem találják a weboldalad a Google-ben? Átfogó technikai SEO audit és priorizált javítási terv a láthatóság növeléséért.",
+    title:
+      "Technikai SEO Audit országos szolgáltatással | Keresőoptimalizálás | WebDude",
+    description:
+      "Miért nem találják a weboldalad a Google-ben? Átfogó technikai SEO audit és priorizált javítási terv a láthatóság növeléséhez országos szolgáltatással.",
     url: "https://webdude.hu/szolgaltatasok/technikai-seo-audit",
     type: "website",
   },
@@ -29,13 +38,14 @@ const pricingTiers: PricingTier[] = [
   {
     id: "seo-audit-starter",
     name: "Alap SEO Audit & Elemzés",
-    description: "Kisvállalkozói oldalaknak a rejtett indexelési és technikai akadályok gyors felderítéséhez.",
+    description:
+      "Kisvállalkozói oldalaknak a rejtett indexelési és technikai akadályok gyors felderítéséhez.",
     features: [
       "Feltérképezési és indexelési hibák (Google Search Console) feltárása",
       "Kulcsfontosságú meta címkék (Title, Description) auditja",
       "Törött linkek (404-es hibák) és átirányítási láncok listázása",
       "Mobilbarát működés és alapvető sebességelemzés",
-      "Vezetői összefoglaló a legégetőbb teendőkről"
+      "Vezetői összefoglaló a legégetőbb teendőkről",
     ],
     highlighted: false,
     ctaText: "Egyedi árajánlat kérése",
@@ -44,14 +54,15 @@ const pricingTiers: PricingTier[] = [
   {
     id: "seo-audit-pro",
     name: "Mélyreható Technikai & Tartalmi Audit",
-    description: "Növekedni vágyó cégeknek és webáruházaknak átfogó versenytárselemzéssel és javítási tervvel.",
+    description:
+      "Növekedni vágyó cégeknek és webáruházaknak átfogó versenytárselemzéssel és javítási tervvel.",
     features: [
       "Minden, ami az Alap auditban szerepel",
       "Strukturált adatok (Schema.org / JSON-LD) és Rich Snippet audit",
       "Tartalmi kannibalizáció és duplikációk felderítése",
       "Keresési szándék (Search Intent) és kulcsszó-lefedettségi vizsgálat",
       "3 legfontosabb piaci versenytárs technikai összehasonlítása",
-      "Priorizált, lépésről-lépésre kivitelezhető akcióterv"
+      "Priorizált, lépésről-lépésre kivitelezhető akcióterv",
     ],
     highlighted: true,
     ctaText: "Egyedi árajánlat kérése",
@@ -60,13 +71,14 @@ const pricingTiers: PricingTier[] = [
   {
     id: "seo-audit-execution",
     name: "Audit + Komplett Hibajavítás",
-    description: "Nemcsak feltárom a problémákat, de a fejlesztői és technikai beállításokat is elvégzem helyetted.",
+    description:
+      "Nemcsak feltárom a problémákat, de a fejlesztői és technikai beállításokat is elvégzem helyetted.",
     features: [
       "Teljes körű mélyreható technikai és AEO audit",
       "Indexelési és canonical hibák azonnali javítása",
       "Hiányzó strukturált adatok programozása és tesztelése",
       "Belső linkstruktúra és URL architektúra optimalizálása",
-      "Google Search Console és analitikai audit & újraküldés"
+      "Google Search Console és analitikai audit & újraküldés",
     ],
     highlighted: false,
     ctaText: "Egyedi árajánlat kérése",
@@ -99,13 +111,20 @@ export default function TechnikaiSeoAuditPage() {
     "@type": "Service",
     name: "Technikai SEO Audit",
     provider: {
-      "@type": "Person",
-      name: "Norbert - WebDude",
-      url: "https://webdude.hu",
+      "@type": "Organization",
+      "@id": "https://webdude.hu/#organization",
+      name: "WebDude",
+      founder: {
+        "@type": "Person",
+        name: "Balog Norbi",
+        jobTitle: "Full-Stack Webfejlesztő & AI Specialist",
+        description: "26 év grafikai és 16 év webfejlesztői tapasztalat",
+      },
     },
-    description: "Miért nem találják a weboldalad a Google-ben? Átfogó technikai SEO audit és priorizált javítási terv a láthatóság növeléséért.",
+    description:
+      "Miért nem találják a weboldalad a Google-ben? Átfogó technikai SEO audit és priorizált javítási terv a láthatóság növeléséhez országos szolgáltatással.",
     serviceType: "Technical SEO Audit",
-    areaServed: "HU",
+    areaServed: { "@type": "Country", name: "Hungary" },
   };
 
   const faqJsonLd = {
@@ -146,11 +165,17 @@ export default function TechnikaiSeoAuditPage() {
               <Search className="w-3.5 h-3.5 text-[#00B5F1]" />
               Adatalapú Keresőoptimalizálás & Diagnosztika
             </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight mb-6">
-              Tudd meg, mi fogja vissza a weboldaladat a <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#a855f7]">Google-ben</span>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight text-balance mb-6">
+              Tudd meg, mi fogja vissza a weboldaladat a{" "}
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#a855f7]">
+                Google-ben
+              </span>
             </h1>
             <p className="text-lg sm:text-xl text-slate-300 leading-relaxed mb-8">
-              A SEO nem varázslat vagy véletlenek játéka, hanem precíz mérnöki munka. Feltárom az indexelési akadályokat, a technikai hibákat és a hiányzó strukturált adatokat, amelyek gátolják a vásárlószerzést.
+              A SEO nem varázslat vagy véletlenek játéka, hanem precíz mérnöki
+              munka. Feltárom az indexelési akadályokat, a technikai hibákat és
+              a hiányzó strukturált adatokat, amelyek gátolják a
+              vásárlószerzést.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
@@ -171,6 +196,22 @@ export default function TechnikaiSeoAuditPage() {
         </div>
       </section>
 
+      {/* Direct Answer Block - AEO optimalizált */}
+      <section className="relative py-12 bg-bg-base border-y border-white/5">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <p className="text-base md:text-lg text-slate-300 leading-relaxed">
+            <span className="text-[#00B5F1] font-semibold">
+              WebDude technikai SEO audit:
+            </span>{" "}
+            Átfogó technikai SEO audit és priorizált javítási terv a láthatóság
+            növeléséhez KKV-knak országos szolgáltatással. Indexelési és
+            feltérképezési hibák, strukturált adatok (Schema.org), Core Web
+            Vitals optimalizálás és versenytárs elemzés. Egyedi árajánlat kérése
+            az igények alapján.
+          </p>
+        </div>
+      </section>
+
       {/* SEO Pillars Bento Grid */}
       <section className="py-24 relative border-b border-slate-800/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -179,7 +220,8 @@ export default function TechnikaiSeoAuditPage() {
               Milyen területeket vizsgálok át az audit során?
             </h2>
             <p className="text-slate-400">
-              A láthatatlan technikai részletektől a modern AI válaszmotorok (AEO) által megkövetelt strukturált adatokig.
+              A láthatatlan technikai részletektől a modern AI válaszmotorok
+              (AEO) által megkövetelt strukturált adatokig.
             </p>
           </div>
 
@@ -189,9 +231,12 @@ export default function TechnikaiSeoAuditPage() {
                 <div className="w-12 h-12 rounded-xl bg-sky-950/80 border border-sky-500/30 flex items-center justify-center text-[#00B5F1] mb-6">
                   <FileSearch className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">Indexelés & Feltérképezés</h3>
+                <h3 className="text-xl font-bold text-white mb-3">
+                  Indexelés & Feltérképezés
+                </h3>
                 <p className="text-slate-400 text-sm leading-relaxed">
-                  Robots.txt, XML sitemap, noindex direktívák, canonical címkék és szerver hibakódok (404, 500) tüzetes vizsgálata.
+                  Robots.txt, XML sitemap, noindex direktívák, canonical címkék
+                  és szerver hibakódok (404, 500) tüzetes vizsgálata.
                 </p>
               </div>
               <div className="mt-6 pt-6 border-t border-slate-800/80 text-xs text-sky-400 flex items-center gap-1.5 font-semibold">
@@ -204,9 +249,13 @@ export default function TechnikaiSeoAuditPage() {
                 <div className="w-12 h-12 rounded-xl bg-purple-950/80 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-6">
                   <Code2 className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">Strukturált Adatok & AEO</h3>
+                <h3 className="text-xl font-bold text-white mb-3">
+                  Strukturált Adatok & AEO
+                </h3>
                 <p className="text-slate-400 text-sm leading-relaxed">
-                  Schema.org JSON-LD jelölések a Google Rich Snippets és a mesterséges intelligencia keresők (Perplexity, ChatGPT) számára.
+                  Schema.org JSON-LD jelölések a Google Rich Snippets és a
+                  mesterséges intelligencia keresők (Perplexity, ChatGPT)
+                  számára.
                 </p>
               </div>
               <div className="mt-6 pt-6 border-t border-slate-800/80 text-xs text-purple-400 flex items-center gap-1.5 font-semibold">
@@ -219,9 +268,12 @@ export default function TechnikaiSeoAuditPage() {
                 <div className="w-12 h-12 rounded-xl bg-sky-950/80 border border-sky-500/30 flex items-center justify-center text-[#00B5F1] mb-6">
                   <Share2 className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">Belső Linkarchitektúra</h3>
+                <h3 className="text-xl font-bold text-white mb-3">
+                  Belső Linkarchitektúra
+                </h3>
                 <p className="text-slate-400 text-sm leading-relaxed">
-                  Átgondolt siló-struktúra kialakítása, hogy a linkérték és az autoritás a legfontosabb bevételtermelő aloldalakra áramoljon.
+                  Átgondolt siló-struktúra kialakítása, hogy a linkérték és az
+                  autoritás a legfontosabb bevételtermelő aloldalakra áramoljon.
                 </p>
               </div>
               <div className="mt-6 pt-6 border-t border-slate-800/80 text-xs text-sky-400 flex items-center gap-1.5 font-semibold">
@@ -235,12 +287,20 @@ export default function TechnikaiSeoAuditPage() {
                   <BarChart3 className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-white">Versenytárs & Kulcsszó Réshasáb Elemzés</h3>
-                  <p className="text-slate-400 text-sm">Derítsük ki, miben járnak előtted a versenytársaid és hogyan előzheted meg őket.</p>
+                  <h3 className="text-xl font-bold text-white">
+                    Versenytárs & Kulcsszó Réshasáb Elemzés
+                  </h3>
+                  <p className="text-slate-400 text-sm">
+                    Derítsük ki, miben járnak előtted a versenytársaid és hogyan
+                    előzheted meg őket.
+                  </p>
                 </div>
               </div>
               <p className="text-slate-400 text-sm leading-relaxed mb-4">
-                Megkeressük azokat a releváns kifejezéseket, amelyekre van kereslet a piacon, de a te oldaladon még nincs rájuk célzott válasz. Megszüntetjük a tartalmi kannibalizációt, amikor több aloldalad versenyez egymással.
+                Megkeressük azokat a releváns kifejezéseket, amelyekre van
+                kereslet a piacon, de a te oldaladon még nincs rájuk célzott
+                válasz. Megszüntetjük a tartalmi kannibalizációt, amikor több
+                aloldalad versenyez egymással.
               </p>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-4 border-t border-slate-800/80">
                 <div className="flex items-center gap-2 text-xs text-slate-300 font-medium">
@@ -263,9 +323,12 @@ export default function TechnikaiSeoAuditPage() {
                 <div className="w-12 h-12 rounded-xl bg-purple-950/80 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-6">
                   <Target className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">Konverzió & Kattintási Arány (CTR)</h3>
+                <h3 className="text-xl font-bold text-white mb-3">
+                  Konverzió & Kattintási Arány (CTR)
+                </h3>
                 <p className="text-slate-400 text-sm leading-relaxed">
-                  Nem elég megjelenni a találati listán: kattintásra ösztönző címeket és snippeteket készítünk a látogatószám növeléséhez.
+                  Nem elég megjelenni a találati listán: kattintásra ösztönző
+                  címeket és snippeteket készítünk a látogatószám növeléséhez.
                 </p>
               </div>
               <div className="mt-6 pt-6 border-t border-slate-800/80 text-xs text-purple-400 flex items-center gap-1.5 font-semibold">
@@ -284,7 +347,8 @@ export default function TechnikaiSeoAuditPage() {
               SEO Audit Csomagok & Formátum
             </h2>
             <p className="text-slate-400">
-              Válaszd ki a céged jelenlegi helyzetéhez leginkább passzoló auditot. Személyre szabott ajánlattal dolgozom.
+              Válaszd ki a céged jelenlegi helyzetéhez leginkább passzoló
+              auditot. Személyre szabott ajánlattal dolgozom.
             </p>
           </div>
 
@@ -304,18 +368,21 @@ export default function TechnikaiSeoAuditPage() {
               Gyakori kérdések a technikai SEO auditról
             </h2>
             <p className="text-slate-400">
-              Minden, amit a feltárásról, a jelentésről és a hibajavításról tudni érdemes.
+              Minden, amit a feltárásról, a jelentésről és a hibajavításról
+              tudni érdemes.
             </p>
           </div>
 
           <div className="space-y-4">
             {faqs.map((faq, index) => (
-              <div 
+              <div
                 key={index}
                 className="p-6 rounded-xl bg-slate-900/50 border border-slate-800 hover:border-slate-700 transition-colors"
               >
                 <h3 className="text-lg font-bold text-white mb-2 flex items-start gap-3">
-                  <span className="text-[#00B5F1] font-mono text-sm mt-1">0{index + 1}.</span>
+                  <span className="text-[#00B5F1] font-mono text-sm mt-1">
+                    0{index + 1}.
+                  </span>
                   {faq.q}
                 </h3>
                 <p className="text-slate-400 text-sm leading-relaxed pl-8">
@@ -334,7 +401,8 @@ export default function TechnikaiSeoAuditPage() {
             Szeretnéd tudni, miért nem hoz vevőket a weboldalad?
           </h2>
           <p className="text-slate-300 max-w-2xl mx-auto mb-8 text-lg">
-            Kérj auditot most, és tárd fel a weboldalad rejtett forgalomnövelési lehetőségeit!
+            Kérj auditot most, és tárd fel a weboldalad rejtett forgalomnövelési
+            lehetőségeit!
           </p>
           <Link
             href="/kapcsolat?service=technikai-seo-audit"

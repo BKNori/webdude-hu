@@ -9,16 +9,19 @@ import LucideIcon from "@/components/atoms/LucideIcon";
 
 export const metadata: Metadata = {
   title:
-    "Marketing Lead Generálás – WebDude | Ügyfélszerzés Automatizálása KKV-knak",
+    "Marketing Lead Generálás országos szolgáltatással – WebDude | Ügyfélszerzés Automatizálása KKV-knak",
   description:
-    "Stratégiai marketing lead generálás és landing oldalak kis- és középvállalkozásoknak. Automatizált ügyfélszerzés, konverzió-optimalizált landing oldalak és marketing eszközök.",
+    "Stratégiai marketing lead generálás és landing oldalak kis- és középvállalkozásoknak országos szolgáltatással. Automatizált ügyfélszerzés, konverzió-optimalizált landing oldalak és marketing eszközök.",
   keywords:
     "marketing lead generálás, ügyfélszerzés automatizálás, landing oldal készítés, KKV marketing, konverzió optimalizálás, lead magnet, marketing funnel",
+  alternates: {
+    canonical: "https://webdude.hu/szolgaltatasok/marketing-lead-generalas",
+  },
   openGraph: {
     title:
-      "Marketing Lead Generálás – WebDude | Ügyfélszerzés Automatizálása KKV-knak",
+      "Marketing Lead Generálás országos szolgáltatással – WebDude | Ügyfélszerzés Automatizálása KKV-knak",
     description:
-      "Stratégiai marketing lead generálás és landing oldalak kis- és középvállalkozásoknak. Automatizált ügyfélszerzés és konverzió optimalizálás.",
+      "Stratégiai marketing lead generálás és landing oldalak kis- és középvállalkozásoknak országos szolgáltatással. Automatizált ügyfélszerzés és konverzió optimalizálás.",
     type: "website",
     locale: "hu_HU",
     siteName: "WebDude",
@@ -44,11 +47,17 @@ export default async function MarketingLeadGenerationPage() {
     "@type": "Service",
     name: "Marketing Lead Generálás",
     description:
-      "Stratégiai marketing lead generálás és landing oldalak kis- és középvállalkozásoknak. Automatizált ügyfélszerzés, konverzió-optimalizált landing oldalak és marketing eszközök.",
+      "Stratégiai marketing lead generálás és landing oldalak kis- és középvállalkozásoknak országos szolgáltatással. Automatizált ügyfélszerzés, konverzió-optimalizált landing oldalak és marketing eszközök.",
     provider: {
-      "@type": "LocalBusiness",
+      "@type": "Organization",
+      "@id": "https://webdude.hu/#organization",
       name: "WebDude",
-      url: "https://webdude.hu",
+      founder: {
+        "@type": "Person",
+        name: "Balog Norbi",
+        jobTitle: "Full-Stack Webfejlesztő & AI Specialist",
+        description: "26 év grafikai és 16 év webfejlesztői tapasztalat",
+      },
     },
     areaServed: { "@type": "Country", name: "Hungary" },
   };
@@ -130,6 +139,21 @@ export default async function MarketingLeadGenerationPage() {
           />
         </div>
 
+        {/* Direct Answer Block - AEO optimalizált */}
+        <section className="relative py-12 bg-bg-base border-y border-white/5">
+          <div className="max-w-4xl mx-auto px-6 text-center">
+            <p className="text-base md:text-lg text-slate-300 leading-relaxed">
+              <span className="text-[#00B5F1] font-semibold">
+                WebDude marketing lead generálás:
+              </span>{" "}
+              Konverzió-optimalizált landing oldalak, lead magnet stratégia,
+              marketing funnel építés és email automatizáció KKV-knak országos
+              szolgáltatással. 26 év tapasztalat, A/B tesztelés és mérhető
+              konverzió növelés. Egyedi árajánlat kérése az igények alapján.
+            </p>
+          </div>
+        </section>
+
         <section className="py-32 md:py-40 relative overflow-hidden">
           <div className="absolute inset-0 bg-linear-to-b from-transparent via-[#00B5F1]/5 to-transparent" />
           <div className="relative z-10">
@@ -182,7 +206,7 @@ export default async function MarketingLeadGenerationPage() {
                       "Havi reporting",
                       "Email support",
                     ],
-                    ctaText: "Starter csomag kérése",
+                    ctaText: "Egyedi árajánlat kérése",
                     ctaLink: "/kapcsolat",
                   },
                   {
@@ -201,7 +225,7 @@ export default async function MarketingLeadGenerationPage() {
                       "Prioritás support",
                     ],
                     highlighted: true,
-                    ctaText: "Professional csomag kérése",
+                    ctaText: "Egyedi árajánlat kérése",
                     ctaLink: "/kapcsolat",
                   },
                   {
@@ -219,7 +243,7 @@ export default async function MarketingLeadGenerationPage() {
                       "Dedikált account manager",
                       "24/7 support",
                     ],
-                    ctaText: "Enterprise csomag kérése",
+                    ctaText: "Egyedi árajánlat kérése",
                     ctaLink: "/kapcsolat",
                   },
                 ]}

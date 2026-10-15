@@ -1,25 +1,35 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { 
-  CheckCircle2, 
-  ArrowRight, 
-  Gauge, 
-  Zap, 
+import {
+  CheckCircle2,
+  ArrowRight,
+  Gauge,
+  Zap,
   HelpCircle,
   Sparkles,
   Server,
   Layers,
   TrendingUp,
-  Cpu
+  Cpu,
 } from "lucide-react";
-import PricingTable, { type PricingTier } from "@/components/molecules/PricingTable";
+import PricingTable, {
+  type PricingTier,
+} from "@/components/molecules/PricingTable";
 
 export const metadata: Metadata = {
-  title: "Weboldal Sebességoptimalizálás | Gyorsabb Betöltés | WebDude",
-  description: "Lassú a weboldalad? A látogatók és a Google is bünteti. Adatalapú weboldal gyorsítás és Core Web Vitals optimalizálás.",
+  title:
+    "Weboldal Sebességoptimalizálás országos szolgáltatással | Gyorsabb Betöltés | WebDude",
+  description:
+    "Lassú a weboldalad? A látogatók és a Google is bünteti. Adatalapú weboldal gyorsítás és Core Web Vitals optimalizálás országos szolgáltatással.",
+  alternates: {
+    canonical:
+      "https://webdude.hu/szolgaltatasok/weboldal-sebessegoptimalizalas",
+  },
   openGraph: {
-    title: "Weboldal Sebességoptimalizálás | Gyorsabb Betöltés | WebDude",
-    description: "Lassú a weboldalad? A látogatók és a Google is bünteti. Adatalapú weboldal gyorsítás és Core Web Vitals optimalizálás.",
+    title:
+      "Weboldal Sebességoptimalizálás országos szolgáltatással | Gyorsabb Betöltés | WebDude",
+    description:
+      "Lassú a weboldalad? A látogatók és a Google is bünteti. Adatalapú weboldal gyorsítás és Core Web Vitals optimalizálás országos szolgáltatással.",
     url: "https://webdude.hu/szolgaltatasok/weboldal-sebessegoptimalizalas",
     type: "website",
   },
@@ -29,13 +39,14 @@ const pricingTiers: PricingTier[] = [
   {
     id: "speed-audit",
     name: "Sebességi Audit & Feltárás",
-    description: "Pontos diagnosztika a szűk keresztmetszetekről, szerver válaszidőkről és hibás szkriptekről.",
+    description:
+      "Pontos diagnosztika a szűk keresztmetszetekről, szerver válaszidőkről és hibás szkriptekről.",
     features: [
       "Teljes Core Web Vitals (LCP, INP, CLS) analízis",
       "Képek, médiafájlok és betűtípusok betöltési vizsgálata",
       "CSS és JavaScript blokkoló források felderítése",
       "Szerver- és adatbázis lekérdezési sebesség elemzése",
-      "Priorizált, lépésről-lépésre követhető javítási terv"
+      "Priorizált, lépésről-lépésre követhető javítási terv",
     ],
     highlighted: false,
     ctaText: "Egyedi árajánlat kérése",
@@ -44,14 +55,15 @@ const pricingTiers: PricingTier[] = [
   {
     id: "speed-pro",
     name: "Komplett Sebességgyorsítás",
-    description: "A leggyakoribb vállalkozói weboldalak teljes optimalizálása 90+ PageSpeed pontszám eléréséért.",
+    description:
+      "A leggyakoribb vállalkozói weboldalak teljes optimalizálása 90+ PageSpeed pontszám eléréséért.",
     features: [
       "Minden, ami az Audit csomagban szerepel",
       "Képek veszteségmentes tömörítése és modern WebP/AVIF konverzió",
       "Next-gen böngésző és szerveroldali gyorsítótárazás (caching)",
       "Kritikus CSS kinyerése és nem-kritikus JS késleltetése",
       "Adatbázis-takarítás és felesleges lekérések megszüntetése",
-      "Előtte-utána sebességmérés és garancia"
+      "Előtte-utána sebességmérés és garancia",
     ],
     highlighted: true,
     ctaText: "Egyedi árajánlat kérése",
@@ -60,13 +72,14 @@ const pricingTiers: PricingTier[] = [
   {
     id: "speed-enterprise",
     name: "Webshop & Kiemelt Rendszergyorsítás",
-    description: "Komplex WooCommerce áruházak és magas látogatottságú platformok teljesítmény-maximalizálása.",
+    description:
+      "Komplex WooCommerce áruházak és magas látogatottságú platformok teljesítmény-maximalizálása.",
     features: [
       "Pénztár és dinamikus kosár lekérések optimalizálása",
       "Redis / Memcached memóriagyorsítótár bekötése",
       "CDN (Cloudflare / Edge cache) konfiguráció és védelem",
       "Felesleges bővítmények kódjának refaktorálása",
-      "Szerveroldali HTTP/3 és PHP optimalizálási javaslatok"
+      "Szerveroldali HTTP/3 és PHP optimalizálási javaslatok",
     ],
     highlighted: false,
     ctaText: "Egyedi árajánlat kérése",
@@ -99,13 +112,20 @@ export default function WeboldalSebessegoptimalizalasPage() {
     "@type": "Service",
     name: "Weboldal Sebességoptimalizálás",
     provider: {
-      "@type": "Person",
-      name: "Norbert - WebDude",
-      url: "https://webdude.hu",
+      "@type": "Organization",
+      "@id": "https://webdude.hu/#organization",
+      name: "WebDude",
+      founder: {
+        "@type": "Person",
+        name: "Balog Norbi",
+        jobTitle: "Full-Stack Webfejlesztő & AI Specialist",
+        description: "26 év grafikai és 16 év webfejlesztői tapasztalat",
+      },
     },
-    description: "Lassú a weboldalad? A látogatók és a Google is bünteti. Adatalapú weboldal gyorsítás és Core Web Vitals optimalizálás.",
+    description:
+      "Lassú a weboldalad? A látogatók és a Google is bünteti. Adatalapú weboldal gyorsítás és Core Web Vitals optimalizálás országos szolgáltatással.",
     serviceType: "Website Performance Optimization",
-    areaServed: "HU",
+    areaServed: { "@type": "Country", name: "Hungary" },
   };
 
   const faqJsonLd = {
@@ -147,10 +167,17 @@ export default function WeboldalSebessegoptimalizalasPage() {
               Core Web Vitals & PageSpeed Gyorsítás
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight mb-6">
-              Ne veszíts több ügyfelet a <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#a855f7]">lassú betöltés</span> miatt
+              Ne veszíts több ügyfelet a{" "}
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#a855f7]">
+                lassú betöltés
+              </span>{" "}
+              miatt
             </h1>
             <p className="text-lg sm:text-xl text-slate-300 leading-relaxed mb-8">
-              Minden másodperc várakozás 20%-kal csökkenti a bevételedet. A látogatók azonnal visszalépnek, a Google pedig hátrébb sorolja a lassú oldalakat. Adatalapú gyorsítással repítem a zöld zónába a weboldaladat.
+              Minden másodperc várakozás 20%-kal csökkenti a bevételedet. A
+              látogatók azonnal visszalépnek, a Google pedig hátrébb sorolja a
+              lassú oldalakat. Adatalapú gyorsítással repítem a zöld zónába a
+              weboldaladat.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
@@ -171,6 +198,21 @@ export default function WeboldalSebessegoptimalizalasPage() {
         </div>
       </section>
 
+      {/* Direct Answer Block - AEO optimalizált */}
+      <section className="relative py-12 bg-bg-base border-y border-white/5">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <p className="text-base md:text-lg text-slate-300 leading-relaxed">
+            <span className="text-[#00B5F1] font-semibold">
+              WebDude weboldal sebességoptimalizálás:
+            </span>{" "}
+            Adatalapú weboldal gyorsítás, Core Web Vitals optimalizálás és
+            Next-gen képoptimalizálás országos szolgáltatással. 26 év
+            tapasztalat, 90+ PageSpeed pontszám, Brotli tömörítés és Redis
+            caching. Egyedi árajánlat kérése az igények alapján.
+          </p>
+        </div>
+      </section>
+
       {/* Speed Metrics Bento Grid */}
       <section className="py-24 relative border-b border-slate-800/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -179,7 +221,9 @@ export default function WeboldalSebessegoptimalizalasPage() {
               Hogyan gyorsítom fel a weboldaladat a valóságban?
             </h2>
             <p className="text-slate-400">
-              Nem használok csodatevőnek mondott, valójában lassító &quot;all-in-one&quot; bővítményeket. Mérnöki pontossággal optimalizálom az erőforrásokat.
+              Nem használok csodatevőnek mondott, valójában lassító
+              &quot;all-in-one&quot; bővítményeket. Mérnöki pontossággal
+              optimalizálom az erőforrásokat.
             </p>
           </div>
 
@@ -189,9 +233,13 @@ export default function WeboldalSebessegoptimalizalasPage() {
                 <div className="w-12 h-12 rounded-xl bg-sky-950/80 border border-sky-500/30 flex items-center justify-center text-[#00B5F1] mb-6">
                   <Gauge className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">Core Web Vitals Megfelelés</h3>
+                <h3 className="text-xl font-bold text-white mb-3">
+                  Core Web Vitals Megfelelés
+                </h3>
                 <p className="text-slate-400 text-sm leading-relaxed">
-                  LCP (legnagyobb tartalom megjelenése), INP (interakciós válaszidő) és CLS (elrendezés-elmozdulás) optimalizálása a Google elvárásai szerint.
+                  LCP (legnagyobb tartalom megjelenése), INP (interakciós
+                  válaszidő) és CLS (elrendezés-elmozdulás) optimalizálása a
+                  Google elvárásai szerint.
                 </p>
               </div>
               <div className="mt-6 pt-6 border-t border-slate-800/80 text-xs text-sky-400 flex items-center gap-1.5 font-semibold">
@@ -204,13 +252,18 @@ export default function WeboldalSebessegoptimalizalasPage() {
                 <div className="w-12 h-12 rounded-xl bg-purple-950/80 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-6">
                   <Layers className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">Next-Gen Képoptimalizálás</h3>
+                <h3 className="text-xl font-bold text-white mb-3">
+                  Next-Gen Képoptimalizálás
+                </h3>
                 <p className="text-slate-400 text-sm leading-relaxed">
-                  Több megabájtos képek automatikus átalakítása WebP és AVIF formátumokba, reszponzív méretezéssel és késleltetett betöltéssel (Lazy Loading).
+                  Több megabájtos képek automatikus átalakítása WebP és AVIF
+                  formátumokba, reszponzív méretezéssel és késleltetett
+                  betöltéssel (Lazy Loading).
                 </p>
               </div>
               <div className="mt-6 pt-6 border-t border-slate-800/80 text-xs text-purple-400 flex items-center gap-1.5 font-semibold">
-                <CheckCircle2 className="w-4 h-4" /> Akár 80%-kal kisebb oldalsúly
+                <CheckCircle2 className="w-4 h-4" /> Akár 80%-kal kisebb
+                oldalsúly
               </div>
             </div>
 
@@ -219,9 +272,13 @@ export default function WeboldalSebessegoptimalizalasPage() {
                 <div className="w-12 h-12 rounded-xl bg-sky-950/80 border border-sky-500/30 flex items-center justify-center text-[#00B5F1] mb-6">
                   <Cpu className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">Kód Minifikálás & Késleltetés</h3>
+                <h3 className="text-xl font-bold text-white mb-3">
+                  Kód Minifikálás & Késleltetés
+                </h3>
                 <p className="text-slate-400 text-sm leading-relaxed">
-                  A felesleges CSS és JS sorok eltávolítása, a renderelést blokkoló szkriptek aszinkron futtatása és a kritikus CSS beágyazása.
+                  A felesleges CSS és JS sorok eltávolítása, a renderelést
+                  blokkoló szkriptek aszinkron futtatása és a kritikus CSS
+                  beágyazása.
                 </p>
               </div>
               <div className="mt-6 pt-6 border-t border-slate-800/80 text-xs text-sky-400 flex items-center gap-1.5 font-semibold">
@@ -235,12 +292,18 @@ export default function WeboldalSebessegoptimalizalasPage() {
                   <Server className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-white">Szerveroldali Gyorsítótár & Adatbázis Hangolás</h3>
-                  <p className="text-slate-400 text-sm">A lassú szerver válaszidő (TTFB) lefaragása a töredékére.</p>
+                  <h3 className="text-xl font-bold text-white">
+                    Szerveroldali Gyorsítótár & Adatbázis Hangolás
+                  </h3>
+                  <p className="text-slate-400 text-sm">
+                    A lassú szerver válaszidő (TTFB) lefaragása a töredékére.
+                  </p>
                 </div>
               </div>
               <p className="text-slate-400 text-sm leading-relaxed mb-4">
-                Objektum-gyorsítótár (Redis), szerveroldali gzip/brotli tömörítés és adatbázis indexelés. Az oldal nem fog megrogyni a nagyobb forgalmú kampányok idején sem.
+                Objektum-gyorsítótár (Redis), szerveroldali gzip/brotli
+                tömörítés és adatbázis indexelés. Az oldal nem fog megrogyni a
+                nagyobb forgalmú kampányok idején sem.
               </p>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-4 border-t border-slate-800/80">
                 <div className="flex items-center gap-2 text-xs text-slate-300 font-medium">
@@ -263,9 +326,12 @@ export default function WeboldalSebessegoptimalizalasPage() {
                 <div className="w-12 h-12 rounded-xl bg-purple-950/80 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-6">
                   <TrendingUp className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">Mérhető Konverzióugrás</h3>
+                <h3 className="text-xl font-bold text-white mb-3">
+                  Mérhető Konverzióugrás
+                </h3>
                 <p className="text-slate-400 text-sm leading-relaxed">
-                  A gyors oldal azonnal megragadja a figyelmet: a látogatók nem ugranak vissza a keresőbe, hanem megrendelik a termékedet.
+                  A gyors oldal azonnal megragadja a figyelmet: a látogatók nem
+                  ugranak vissza a keresőbe, hanem megrendelik a termékedet.
                 </p>
               </div>
               <div className="mt-6 pt-6 border-t border-slate-800/80 text-xs text-purple-400 flex items-center gap-1.5 font-semibold">
@@ -284,7 +350,8 @@ export default function WeboldalSebessegoptimalizalasPage() {
               Sebességoptimalizálási Csomagok
             </h2>
             <p className="text-slate-400">
-              Válaszd ki a rendszeredhez illeszkedő gyorsítási szintet. Fix díjas meglepetések nélkül, egyedi igényfelméréssel dolgozom.
+              Válaszd ki a rendszeredhez illeszkedő gyorsítási szintet. Fix
+              díjas meglepetések nélkül, egyedi igényfelméréssel dolgozom.
             </p>
           </div>
 
@@ -310,12 +377,14 @@ export default function WeboldalSebessegoptimalizalasPage() {
 
           <div className="space-y-4">
             {faqs.map((faq, index) => (
-              <div 
+              <div
                 key={index}
                 className="p-6 rounded-xl bg-slate-900/50 border border-slate-800 hover:border-slate-700 transition-colors"
               >
                 <h3 className="text-lg font-bold text-white mb-2 flex items-start gap-3">
-                  <span className="text-[#00B5F1] font-mono text-sm mt-1">0{index + 1}.</span>
+                  <span className="text-[#00B5F1] font-mono text-sm mt-1">
+                    0{index + 1}.
+                  </span>
                   {faq.q}
                 </h3>
                 <p className="text-slate-400 text-sm leading-relaxed pl-8">
@@ -334,7 +403,8 @@ export default function WeboldalSebessegoptimalizalasPage() {
             Szeretnéd tudni, mennyit gyorsulhat a te weboldalad?
           </h2>
           <p className="text-slate-300 max-w-2xl mx-auto mb-8 text-lg">
-            Küldd el a weboldalad linkjét, és elkészítem az előzetes sebességi elemzést a legfontosabb javítási javaslatokkal!
+            Küldd el a weboldalad linkjét, és elkészítem az előzetes sebességi
+            elemzést a legfontosabb javítási javaslatokkal!
           </p>
           <Link
             href="/kapcsolat?service=weboldal-sebessegoptimalizalas"

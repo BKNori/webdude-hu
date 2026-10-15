@@ -65,10 +65,10 @@ export default async function ServicesPage() {
     "@context": "https://schema.org",
     "@type": "Person",
     "@id": "https://webdude.hu/#person",
-    name: "Norbi",
+    name: "Balog Norbi",
     jobTitle: "Full-Stack Webfejlesztő & AI Specialist",
     description:
-      "26 év grafikai és 16 év webfejlesztői tapasztalat, Next.js 16, React 19, Tailwind v4, Firebase alapú prémium megoldások Kecskemétről.",
+      "26 év grafikai és 16 év webfejlesztői tapasztalat, Next.js 16, React 19, Tailwind v4, Firebase alapú prémium megoldások országos szolgáltatással.",
     url: "https://webdude.hu",
     worksFor: {
       "@type": "Organization",
@@ -191,9 +191,15 @@ export default async function ServicesPage() {
     description:
       "Prémium digitális szolgáltatások: egyedi weboldal fejlesztés, profi grafikai tervezés, AI prompt engineering és SEO optimalizálás.",
     provider: {
-      "@type": "Person",
-      name: "Norbi (WebDude)",
-      url: "https://webdude.hu",
+      "@type": "Organization",
+      "@id": "https://webdude.hu/#organization",
+      name: "WebDude",
+      founder: {
+        "@type": "Person",
+        name: "Balog Norbi",
+        jobTitle: "Full-Stack Webfejlesztő & AI Specialist",
+        description: "26 év grafikai és 16 év webfejlesztői tapasztalat",
+      },
     },
     hasOfferCatalog: {
       "@type": "OfferCatalog",

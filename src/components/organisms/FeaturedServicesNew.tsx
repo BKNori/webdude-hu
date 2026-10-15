@@ -375,7 +375,7 @@ export default function FeaturedServicesNew({
           {/* Elválasztó felirat */}
           <div className="flex items-center gap-4 mb-6">
             <div className="flex-1 h-px bg-white/6" aria-hidden="true" />
-            <span className="text-slate-600 text-xs uppercase tracking-widest font-semibold">
+            <span className="text-slate-400 text-xs uppercase tracking-widest font-semibold">
               {content.secondary.dividerLabel}
             </span>
             <div className="flex-1 h-px bg-white/6" aria-hidden="true" />
@@ -417,11 +417,11 @@ export default function FeaturedServicesNew({
               <h3 className="text-lg font-bold text-white mb-1">
                 {secondaryService.title}
               </h3>
-              <p className="text-slate-500 text-sm leading-relaxed mb-2">
+              <p className="text-slate-400 text-sm leading-relaxed mb-2">
                 {secondaryService.description}
               </p>
               {/* AEO Mikro-GYIK */}
-              <p className="text-xs text-slate-600 italic">
+              <p className="text-xs text-slate-400 italic">
                 <span
                   className="font-semibold not-italic"
                   style={{ color: `${secondaryService.color}80` }}

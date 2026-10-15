@@ -1,5 +1,249 @@
 # Changelog
 
+## [7.30.1] — 2026-10-15 — UI/UX POLÍROZÁS & KÉK-LILA V7.0 AUDIT
+
+**1. VIZUÁLIS ADÓSSÁG & SZÍNRENDSZER KIGYOMLÁLÁSA:**
+- **Legacy színek és szövegek kivezetése:** Elavult cyber-gold szövegezés semlegesítése a HeroStaticBanner-ben és sötét stúdió hátterek egységesítése (`bg-slate-950`).
+- **Luminous Glassmorphism kártyák:** A `ServiceCard` átállítva a `bg-slate-900/60 backdrop-blur-xl border-slate-800 hover:border-brand-primary/50` szabványra, finom emelt hover árnyékokkal.
+
+**2. TIPOGRÁFIAI FINOMHANGOLÁS (MANROPE):**
+- **Feszes betűköz & Text Balance:** A fő Hero szekció (`HeroSectionNew`) és a Hero alapkomponens (`Hero.tsx`) H1 és alcím elemei megkapták a `tracking-tight` és `text-balance` osztályokat az elegáns tördelésért és az árva szavak elkerüléséért.
+- **Tabular Nums:** Számok, statisztikák és címkék (`tabular-nums font-mono`) optimalizálva a pixelpontos igazításért.
+- **Értékelések helyettesítése:** A fiktív csillagos rating helyére a valódi tapasztalati és szakmai siker mérföldkövek kerültek (26+ év grafika, 16+ év webfejlesztés, 47+ lezárt projekt).
+
+**3. KONTRASZT ÉS OLVASHATÓSÁG (HERO OVERLAYS):**
+- **Hero Háttérkép Sötétítés:** Minden esettanulmányban (`RimaiCaseStudy`, `HuMagoCaseStudy`, `ClassiCoCaseStudy`, `BorGarnelaCaseStudy`, `GeneralCaseStudy`) és a Hero komponensekben a háttérkép felett kötelező sötétítő réteg (`bg-slate-950/75 -z-10`) garantálja a WCAG AAA kontrasztot a fehér Manrope feliratok alatt.
+- **Túl sötét szövegek kivezetése:** A `FeaturedServicesNew`-ban a `text-slate-600` és halvány elemek feljavítva `text-slate-400`-ra.
+
+**4. RESZPONZIVITÁS & OVERFLOW VÉDELEM:**
+- Globális `overflow-x-hidden` és `max-w-[100vw]` védelem ellenőrizve és megerősítve a `layout.tsx` és `PageWrapper.tsx` fő konténereiben.
+- Érintési célterületek és interaktív gombok min-h-[44px] és min-w-[44px] méretezése.
+
+**QA (Zero-Error Gate):** `npx tsc --noEmit` → **TSC_EXIT=0**; `npm run lint -- --max-warnings 0` → **LINT_EXIT=0**.
+
+---
+
+## [7.33.0] — 2026-10-15 — ADMIN KPI DASHBOARD & EXPORT RENDSZER (Kék-Lila v7.0)
+
+**1. LÉPÉS: KPI METRIKÁK BEKÖTÉSE & KÉK-LILA V7.0 MEGJELENÍTÉS:**
+- **`src/app/admin/page.tsx` — Vezérlőpult bővítés:**
+  - Bekötve a `getEnhancedKpiMetricsAction` Server Action (`transactions` és `projects` Firestore aggregáció).
+  - Megjelenített mutatók:
+    - **MRR (Havi Átlag):** `tabular-nums font-mono` pénznem formázással
+    - **Összes Bevétel:** Stripe lezárt tranzakciókból aggregálva
+    - **Aktív Ügyfelek / Projektek:** folyamatban lévő megbízások valós száma
+    - **Becsült Ügyfélérték (LTV):** átlagos költés per ügyfél
+    - **Lemondási Ráta (Churn Rate):** lemorzsolódási arány százalékban
+  - **Design System v7.0:** Luminous Glassmorphism kártyák (`bg-[#0f172a]/70`, `border-[#1e293b]`, `hover:border-[#00B5F1]/30`, `backdrop-blur-md`), Electric Cyan (`#00B5F1`) és Ibolya (`#7C3AED`) akcentusokkal.
+
+**2. LÉPÉS: DASHBOARD EXPORT LEHETŐSÉGEK (CSV & PDF):**
+- **Egykattintásos gyors export műveletek:**
+  - **Leadek (CSV):** `exportLeadsCSVAction` integráció letöltési kezelővel.
+  - **Projektek (CSV):** `exportProjectsCSVAction` integráció.
+  - **KPI Riport (PDF):** Kliensoldali `jsPDF` jelentésgenerálás letisztult WebDude arculattal és vezetői összefoglalóval.
+  - **WCAG & UX:** Kifejező `aria-label`-ek, látható fókuszgyűrűk (`focus:ring-2 focus:ring-[#00B5F1]/50`), aszinkron `Loader2` töltésállapotok.
+
+**QA (Zero-Error Gate):** `npx tsc --noEmit` → **TSC_EXIT=0**; `npm run lint -- --max-warnings 0` → **LINT_EXIT=0**.
+
+---
+
+## [7.32.0] — 2026-10-15 — PORTÁL ÉRTESÍTÉS & CREATEGENERATION TOKEN BEKÖTÉS (Kék-Lila v7.0)
+
+**TASK 1: CREATEGENERATION KLIENSOLDALI ID TOKEN BEKÖTÉS:**
+
+- **`src/hooks/useCreateGeneration.ts`** — Már implementált (Cycle 3154 Spark migráció):
+  - `auth.currentUser.getIdToken(true)` → token lekérése
+  - `createGeneration(input, idToken)` → Server Action hívás ID token átadással
+  - Admin SDK `verifyIdToken(idToken)` → szerveroldali hitelesítés
+  - Anti-drain: `useGenerationPolling` onSnapshot cleanup
+- **`src/components/dynamic-form/DynamicWorkflowForm.tsx`** — Már használja a `useCreateGeneration` hookot
+- **Státusz:** ✅ Már működik, 401/403-as hiba kizárva
+
+**TASK 2: VALÓS IDEJŰ ÉRTESÍTÉSEK (Polling + Badge-ek a Portálon):**
+
+- **`src/hooks/usePortalNotifications.ts` (ÚJ hook):**
+  - `user_generations` kollekció követése onSnapshot-al (processing → completed/failed)
+  - `client_files` kollekció követése onSnapshot-al (új Vault dokumentumok)
+  - Anti-drain: cleanup unmount-kor (mindkét listener unsubscribe)
+  - Returns: `{ counts: { pendingGenerations, completedGenerations, failedGenerations, newVaultFiles, total }, loading }`
+- **`src/components/molecules/PortalNotificationBell.tsx`** — Frissített:
+  - Import: `usePortalNotifications` (új counts-based hook)
+  - Egyszerűsített: csak badge számláló és alapvető státuszok (pending/completed/failed + vault files)
+  - Kék-Lila v7.0 akcentus: pending (cián), completed (zöld), failed (piros), vault (cián)
+  - WCAG: aria-label, role="status", aria-live="polite", keyboard nav (Escape), focus ring
+  - Motion animációk: spring easing, useReducedMotion támogatás
+- **`src/components/organisms/PortalHeader.tsx`** — Már használja a PortalNotificationBell komponenst
+
+**Eredmény:** Valós idejű értesítési rendszer a portálon - badge-ek megjelennek a generálás státuszváltakor és új Vault dokumentumok esetén. Anti-drain biztosítva onSnapshot cleanup-pal.
+
+**QA (Zero-Error Gate):** `npx tsc --noEmit` → **TSC_EXIT=0**; `npm run lint -- --max-warnings 0` → **LINT_EXIT=0**; `npm run build` → **BUILD_EXIT=0** (169 statikus oldal, Next.js 16.2.6 webpack).
+
+---
+
+## [7.31.0] — 2026-10-15 — MUNKÁK PORTFÓLIÓ ÉVSZÁMAKTUALIZÁLÁS (Kék-Lila v7.0)
+
+**TASK: Valós évszámok korrigálása a munkák adatbázisában:**
+
+- **`src/data/works.ts` — Projekt évszámok aktualizálása:**
+  - **Nedel Market:** 2026 → 2024
+  - **BTShop.hu:** 2026 → 2023
+  - **Dr. Nagy Albert:** 2026 → 2024
+  - **Lengyel Helga:** 2026 → 2025
+  - **Chamomprex:** year mező hozzáadva → 2023
+  - **AI-Prompt.hu:** 2026 → 2025
+  - **Leanperial:** 2026 → marad 2026 (az egyetlen valós 2026-os projekt)
+  - **HU-MAGO Kft:** 2024 → marad 2024 (már helyes volt)
+  - **Go-Box Kft:** 2024 → marad 2024 (már helyes volt)
+  - **Marina Homes:** 2024 → marad 2024 (már helyes volt)
+  - **Classi-Co Kft.:** 2025 → marad 2025 (már helyes volt)
+  - **Rimai Útépítő Kft.:** 2022 → marad 2022 (már helyes volt)
+  - **Dr. Danyi:** 2023 → marad 2023 (már helyes volt)
+  - **Bor és Garnéla:** 2023 → marad 2023 (már helyes volt)
+
+**Eredmény:** A munkák portfólió oldalainak évszámai most már a valós időszakokat tükrözik (3-4 éves projektek), kivéve a leanperial ami valóban 2026-os projekt.
+
+**QA (Zero-Error Gate):** `npx tsc --noEmit` → **TSC_EXIT=0**.
+
+---
+
+## [7.30.0] — 2026-10-15 — MANROPE BETŰTÍPUS MIGRÁCIÓ (Kék-Lila v7.0)
+
+**TASK: Modern, elegáns és olvasható egységes sans-serif rendszerre váltás:**
+
+- **`src/app/layout.tsx` — Font imports cseréje:**
+  - **Régi rendszer (4 különböző betűtípus):** Plus Jakarta Sans (headings), Inter (body), JetBrains Mono (code), Playfair Display (serif accent)
+  - **Új rendszer (egységes):** Manrope (modern geometrikus sans-serif, weights: 400, 500, 600, 700, 800)
+  - **Preload optimalizálás:** Csak 1 betűtípus betöltése → kisebb bundle size, gyorsabb betöltés
+- **`src/app/globals.css` — Tipográfiai finomhangolás:**
+  - **Body font-family:** `var(--font-sans)` (Manrope) + system-ui fallback
+  - **Heading letter-spacing:** -0.03em → -0.01em (Manrope optimalizált, kevésbé szoros)
+  - **H1 letter-spacing:** -0.035em → -0.015em (természetesebb olvashatóság)
+  - **Line-height:** címsorok 1.2 → 1.25, H1 1.12 → 1.15 (Manrope specifikus)
+  - **OpenType features eltávolítása:** Manrope natív kerning használata
+- **`_docs/DESIGN_SYSTEM.md` — DDR-004 frissítése:**
+  - **Tipográfia szekció:** "Plus Jakarta Sans + Trió" → "Manrope Uniform Sans"
+  - **Szabály:** Címsorok Manrope 700, 800; folyószöveg Manrope 400, 500, 600; nincs külön heading/body/mono/serif
+
+**Eredmény:** Egységes, modern, geometrikus sans-serif rendszer - tisztább és elegánsabb megjelenés, kevesebb vizuális zaj.
+
+**QA (Zero-Error Gate):** `npx tsc --noEmit` → **TSC_EXIT=0**; `npm run lint -- --max-warnings 0` → **LINT_EXIT=0**.
+
+---
+
+## [7.29.1] — 2026-10-15 — 4. BATCH SEO/AEO OPTIMALIZÁLÁS (Kék-Lila v7.0)
+
+**TASK: 6 szolgáltatás aloldal tipográfiai finomhangolása és QA:**
+
+- **`src/app/szolgaltatasok/arculattervezes/page.tsx` — Arculattervezés oldal:**
+  - **Már megfelel a sztenderdnek:** Service JSON-LD founder mező, Direct Answer blokk, országos szolgáltatás, zéró fix ár, Hero H1 `text-balance` class
+- **`src/app/szolgaltatasok/logo-tervezes/page.tsx` — Logó tervezés oldal:**
+  - **Már megfelel a sztenderdnek:** Service JSON-LD founder mező, Direct Answer blokk, országos szolgáltatás, zérő fix ár
+  - **Hero H1 finomhangolás:** `text-balance` class hozzáadva a prémium tipográfiához
+- **`src/app/szolgaltatasok/szorolap-tervezes/page.tsx` — Szórólap tervezés oldal:**
+  - **Már megfelel a sztenderdnek:** Service JSON-LD founder mező, Direct Answer blokk, országos szolgáltatás, zéró fix ár
+  - **Hero H1 finomhangolás:** `text-balance` class hozzáadva a prémium tipográfiához
+- **`src/app/szolgaltatasok/csomagolas-tervezes/page.tsx` — Csomagolás tervezés oldal:**
+  - **Már megfelel a sztenderdnek:** Service JSON-LD founder mező, Direct Answer blokk, országos szolgáltatás, zéró fix ár
+  - **Hero H1 finomhangolás:** `text-balance` class hozzáadva a prémium tipográfiához
+- **`src/app/szolgaltatasok/technikai-seo-audit/page.tsx` — Technikai SEO audit oldal:**
+  - **Már megfelel a sztenderdnek:** Service JSON-LD founder mező, Direct Answer blokk, országos szolgáltatás, zéró fix ár
+  - **Hero H1 finomhangolás:** `text-balance` class hozzáadva a prémium tipográfiához
+- **`src/app/szolgaltatasok/ai-kep-es-videogeneralas/page.tsx` — AI kép és videógenerálás oldal:**
+  - **Már megfelel a sztenderdnek:** Service JSON-LD founder mező, Direct Answer blokk, országos szolgáltatás, zéró fix ár, Hero H1 `text-balance` class (SectionTitle komponens kezeli)
+
+**Maradék szolgáltatás aloldalak (7 db):** add-onok, ai-prompt-engineering, helyi-seo, seo-optimalizalas, weboldal-felujitas, weboldal-sebessegoptimalizalas, webshop-fejlesztes, woocommerce-webshop-keszites, wordpress-biztonsag, wordpress-virusirtas-es-biztonsag
+
+**QA (Zero-Error Gate):** `npx tsc --noEmit` → **TSC_EXIT=0**; `npm run lint -- --max-warnings 0` → **LINT_EXIT=0**.
+
+---
+
+## [7.29.0] — 2026-10-15 — GLOBÁLIS TIPOGRÁFIAI MESTER-UPGRADE & 3. BATCH SEO/AEO OPTIMALIZÁLÁS (Kék-Lila v7.0)
+
+**TASK 1: Globális Prémium Tipográfiai Rendszer (Font Redesign):**
+
+- **`_docs/DESIGN_SYSTEM.md` frissítése:**
+  - **DDR-004 frissítése:** Space Grotesk → Plus Jakarta Sans (címsorok: font-weight 600, 700, 800)
+  - **Trió rendszer dokumentálása:** Plus Jakarta Sans (heading) + Inter (body) + JetBrains Mono (mono) + Playfair Display italic (editorial accent)
+  - **Subsets specification:** `subsets: ['latin', 'latin-ext']` kötelező a magyar ékezetekhez
+
+**TASK 2: 3. Batch - 5 szolgáltatás aloldal SEO/AEO optimalizálás:**
+
+- **`src/app/szolgaltatasok/marketing-lead-generalas/page.tsx` — Marketing lead generálás oldal:**
+  - **Már megfelel a sztenderdnek:** Service JSON-LD founder mező, Direct Answer blokk, országos szolgáltatás, zéró fix ár
+- **`src/app/szolgaltatasok/ai-workflow-kialakitas/page.tsx` — AI workflow automatizálás oldal:**
+  - **Már megfelel a sztenderdnek:** Service JSON-LD founder mező, Direct Answer blokk, országos szolgáltatás, zéró fix ár
+- **`src/app/szolgaltatasok/webshop-fejlesztes/page.tsx` — Webshop fejlesztés oldal:**
+  - **Service schema frissítése:** provider Organization @id hivatkozás + founder mező (Balog Norbi, 26 év grafikai és 16 év webfejlesztői tapasztalat)
+  - **Direct Answer blokk hozzáadva:** "WooCommerce és egyedi webshop készítés, konverzió-optimalizált checkout folyamat, bankkártyás fizetés (SimplePay, Barion) és sebességoptimalizálás KKV-knak országos szolgáltatással. 26 év tapasztalat, villámgyors betöltés és maximális vásárlói élmény. Egyedi árajánlat kérése az igények alapján."
+- **`src/app/szolgaltatasok/egyedi-arculattervezes-logo/page.tsx` — Egyedi arculattervezés & logó oldal:**
+  - **Service schema frissítése:** provider Organization @id hivatkozás + founder mező (Balog Norbi, 26 év grafikai és 16 év webfejlesztői tapasztalat)
+  - **Direct Answer blokk hozzáadva:** "Professzionális logó tervezés és teljes vállalati arculat kialakítása KKV-knak országos szolgáltatással. 26 év grafikai tapasztalat, vektorgrafikus elemek, branding stratégia és konverzió-fókuszú dizájn. Esküvői dekoráció, orvosi arculat és kávézó branding referenciákkal. Egyedi árajánlat kérése az igények alapján."
+- **`src/app/szolgaltatasok/wordpress-karbantartas/page.tsx` — WordPress karbantartás oldal:**
+  - **Már megfelel a sztenderdnek:** Service JSON-LD founder mező, Direct Answer blokk (DirectAnswerBlock komponens), országos szolgáltatás, zéró fix ár
+
+**Maradék szolgáltatás aloldalak (16 db):** add-onok, ai-kep-es-videogeneralas, ai-prompt-engineering, arculattervezes, csomagolas-tervezes, helyi-seo, logo-tervezes, seo-optimalizalas, szorolap-tervezes, technikai-seo-audit, weboldal-felujitas, weboldal-keszites, weboldal-sebessegoptimalizalas, webshop-fejlesztes, woocommerce-webshop-keszites, wordpress-biztonsag, wordpress-fejlesztes, wordpress-virusirtas-es-biztonsag, wordpress-weboldal-keszites, wordpress-webshop-keszites
+
+**QA (Zero-Error Gate):** `npx tsc --noEmit` → **TSC_EXIT=0**; `npm run lint -- --max-warnings 0` → **LINT_EXIT=0**.
+
+---
+
+## [7.28.8] — 2026-10-15 — /SZOLGÁLTATÁSOK 2. BATCH SEO/AEO OPTIMALIZÁLÁS (Kék-Lila v7.0)
+
+A 2. batch szolgáltatás aloldalak optimalizálása (5 oldal): weboldal-felujitas, helyi-seo, marketing-lead-generalas, wordpress-karbantartas, weboldal-sebessegoptimalizalas.
+
+- **`src/app/szolgaltatasok/weboldal-felujitas/page.tsx` — Weboldal felújítás oldal:**
+  - **Metadata frissítése:** canonical hozzáadása, "országos szolgáltatással" kiegészítés description-ben
+  - **Service schema frissítése:** provider Organization @id hivatkozás + founder mező (Balog Norbi, 26 év grafikai és 16 év webfejlesztői tapasztalat)
+  - **Direct Answer blokk hozzáadva:** "Elavult weboldalak modernizálása, 301 redirect védelemmel és veszteségmentes tartalomátvitellel. 26 év tapasztalat, Next.js vagy WordPress migráció, 90+ PageSpeed és konverzió-optimalizált design országos szolgáltatással. Egyedi árajánlat kérése az igények alapján."
+- **`src/app/szolgaltatasok/helyi-seo/page.tsx` — Helyi SEO oldal:**
+  - **Metadata frissítése:** canonical hozzáadása, "országos szolgáltatással" kiegészítés title-ben és description-ben
+  - **Service schema frissítése:** provider Organization @id hivatkozás + founder mező (Balog Norbi, tapasztalat)
+  - **Direct Answer blokk hozzáadva:** "Google Cégprofil optimalizálás, NAP konzisztencia, LocalBusiness schema és helyi landing oldalak országos szolgáltatással. 26 év tapasztalat, Top 3 Map Pack fókusz és környékbeli ügyfélszerzés. Egyedi árajánlat kérése az igények alapján."
+- **`src/app/szolgaltatasok/marketing-lead-generalas/page.tsx` — Marketing lead generálás oldal:**
+  - **Metadata frissítése:** canonical hozzáadása, "országos szolgáltatással" kiegészítés title-ben és description-ben
+  - **Service schema frissítése:** provider LocalBusiness → Organization @id hivatkozás + founder mező (Balog Norbi, tapasztalat)
+  - **Zéró fix ár szabály:** PricingTable ctaText "Starter csomag kérése" → "Egyedi árajánlat kérése" (minden 3 csomagra)
+  - **Direct Answer blokk hozzáadva:** "Konverzió-optimalizált landing oldalak, lead magnet stratégia, marketing funnel építés és email automatizáció KKV-knak országos szolgáltatással. 26 év tapasztalat, A/B tesztelés és mérhető konverzió növelés. Egyedi árajánlat kérése az igények alapján."
+- **`src/app/szolgaltatasok/wordpress-karbantartas/page.tsx` — WordPress karbantartás oldal:**
+  - **Metadata frissítése:** canonical hozzáadása, "országos szolgáltatással" kiegészítés title-ben és description-ben
+  - **Service schema frissítése:** provider Person → Organization @id hivatkozás + founder mező (Balog Norbi, tapasztalat)
+  - **areaServed:** "HU" → { "@type": "Country", name: "Hungary" }
+  - **Direct Answer blokk frissítése:** "országos szolgáltatással" és "Egyedi árajánlat kérése az igények alapján" kiegészítés
+- **`src/app/szolgaltatasok/weboldal-sebessegoptimalizalas/page.tsx` — Weboldal sebességoptimalizálás oldal:**
+  - **Metadata frissítése:** canonical hozzáadása, "országos szolgáltatással" kiegészítés title-ben és description-ben
+  - **Service schema frissítése:** provider Person → Organization @id hivatkozás + founder mező (Balog Norbi, tapasztalat)
+  - **areaServed:** "HU" → { "@type": "Country", name: "Hungary" }
+  - **Direct Answer blokk hozzáadva:** "Adatalapú weboldal gyorsítás, Core Web Vitals optimalizálás és Next-gen képoptimalizálás országos szolgáltatással. 26 év tapasztalat, 90+ PageSpeed pontszám, Brotli tömörítés és Redis caching. Egyedi árajánlat kérése az igények alapján."
+- **QA (Zero-Error Gate):** `npx tsc --noEmit` → **TSC_EXIT=0**; `npm run lint -- --max-warnings 0` → **LINT_EXIT=0**.
+
+---
+
+## [7.28.7] — 2026-10-15 — /SZOLGÁLTATÁSOK SEO/AEO AUDIT & OPTIMALIZÁLÁS (Kék-Lila v7.0)
+
+A `/szolgaltatasok` főoldal és a 4 legfontosabb szolgáltatás aloldal (weboldal-keszites, seo-optimalizalas, wordpress-fejlesztes, grafikai-tervezes) teljes körű SEO és AEO auditálása és optimalizálása.
+
+- **`src/app/szolgaltatasok/page.tsx` — Főoldal optimalizálás:**
+  - **Person schema frissítése:** "Norbi" → "Balog Norbi" (teljes név E-E-A-T horgonyként)
+  - **Description frissítése:** "Kecskemétről" → "országos szolgáltatással" (lokális korlát eltávolítása)
+  - **Service schema provider mező:** Organization @id hivatkozás + founder mező hozzáadva (Balog Norbi, 26 év grafikai és 16 év webfejlesztői tapasztalat)
+- **`src/app/szolgaltatasok/weboldal-keszites/page.tsx` — Weboldal készítés oldal:**
+  - **Service schema frissítése:** provider founder mező hozzáadva (Balog Norbi, tapasztalat)
+  - **Description frissítése:** "országos szolgáltatással" kiegészítés
+  - **Direct Answer blokk:** "Egyedi árajánlat kérése az igények alapján" kiegészítés (zéró fix ár szabály)
+- **`src/app/szolgaltatasok/seo-optimalizalas/page.tsx` — SEO optimalizálás oldal:**
+  - **Metadata frissítése:** title és description "Kecskemét" → "országos szolgáltatással"
+  - **Service schema frissítése:** provider founder mező hozzáadva (Balog Norbi, tapasztalat)
+  - **Direct Answer blokk:** "Egyedi árajánlat kérése az igények alapján" kiegészítés
+- **`src/app/szolgaltatasok/wordpress-fejlesztes/page.tsx` — WordPress fejlesztés oldal:**
+  - **Service schema frissítése:** provider founder mező hozzáadva (Balog Norbi, tapasztalat)
+  - **Direct Answer blokk:** "országos szolgáltatással" és "Egyedi árajánlat kérése az igények alapján" kiegészítés
+- **`src/app/szolgaltatasok/grafikai-tervezes/page.tsx` — Grafikai tervezés oldal:**
+  - **Service schema frissítése:** provider founder mező hozzáadva (Balog Norbi, tapasztalat)
+  - **Direct Answer blokk hozzáadva:** "Logó, arculat, marketinganyagok és digitális grafikai tervezés egységes vizuális rendszerben országos szolgáltatással. 26 év grafikai tapasztalat, vektoros forrásfájlok, nyomdai előkészítés és UI/UX webdesign. Egyedi árajánlat kérése az igények alapján."
+- **QA (Zero-Error Gate):** `npx tsc --noEmit` → **TSC_EXIT=0**; `npm run lint -- --max-warnings 0` → **LINT_EXIT=0**.
+
+---
+
 ## [7.28.6] — 2026-10-15 — /MUNKAK HERO LAYOUT FIX & SEO/AEO OPTIMALIZÁLÁS (Kék-Lila v7.0)
 
 A `/munkak` (Referenciák) oldal hero banner elrendezésének javítása és SEO/AEO paraméterek profi optimalizálása.

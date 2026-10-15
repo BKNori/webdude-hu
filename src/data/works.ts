@@ -26,7 +26,7 @@ export const works: Work[] = [
       "/assets/portfolio/nedel-market/paprika_eladó_banner1.webp",
     ],
     featured: true,
-    year: 2026,
+    year: 2024,
     client: "Nedel Market",
     challenge:
       "A Nedel Market egy B2B élelmiszer-kereskedelmi vállalkozás, ahol az online kínálatnak naprakészen kellett volna kommuniálnia a helyi irodai könyvelőprogrammal és a szerveren futó adatbázissal. A korábbi, sablonos megoldás nem biztosított valós idejű szinkront, adatvesztéssel és biztonsági résekkel fenyegetett, miközben a b2b vevők egyre inkább online, önkiszolgáló katalógust igényeltek.",
@@ -103,7 +103,7 @@ export const works: Work[] = [
       "/assets/portfolio/btshop/bt-shop-weboldal-screen.webp",
     ],
     featured: true,
-    year: 2026,
+    year: 2023,
     client: "BTShop.hu",
     website: "https://btshop.hu/",
     challenge:
@@ -469,6 +469,7 @@ export const works: Work[] = [
       "/assets/banners/chamomprex kirakat 2.webp",
     ],
     featured: false,
+    year: 2023,
     client: "Chamomprex",
     challenge:
       "A Chamomprex számára olyan nyomtatott és kirakati megjelenést kellett terveznem, amely a fizikai térben is azonnal felismerhetővé teszi a márkát.",
@@ -513,7 +514,7 @@ export const works: Work[] = [
       "/assets/portfolio/drnagyalbert/infuzios-terapia-kecskemeten.jpg",
     ],
     featured: true,
-    year: 2026,
+    year: 2024,
     client: "Dr. Nagy Albert Neurológus",
     website: "https://drnagyalbert.hu",
     challenge:
@@ -559,7 +560,7 @@ export const works: Work[] = [
       "/assets/portfolio/lengyel-helga-eskuvodekoracio/91-masolat-copy.webp",
     ],
     featured: true,
-    year: 2026,
+    year: 2025,
     client: "Lengyel Helga Esküvői Dekoráció",
     website: "https://eskuvodekoracio.hu",
     challenge:
@@ -600,7 +601,7 @@ export const works: Work[] = [
       "/assets/portfolio/ai-promt-hu/ai-promt-hi-banner.webp",
     ],
     featured: true,
-    year: 2026,
+    year: 2025,
     client: "AI-Prompt.hu (Saját fejlesztés)",
     website: "https://ai-prompt.hu",
     challenge:

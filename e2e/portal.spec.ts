@@ -28,12 +28,29 @@ test.describe("Ügyfélportál (/portal) — auth-fal", () => {
     // A `PageWrapper` `#main-content` területe a DOM-ban van.
     await expect(page.locator("#main-content")).toBeAttached();
 
+    // Pontosan egy H1 van az oldalon (akár sr-only az akadálymentesítésért és SEO-ért)
+    const h1 = page.locator("h1");
+    await expect(h1).toHaveCount(1);
+    await expect(h1).toHaveClass(/sr-only/);
+
     // A portálnak van látható tartalma (nem üres oldal).
     const text = (await page.locator("body").innerText()).trim();
     expect(text.length).toBeGreaterThan(20);
 
     // Nincs futásidejű (pageerror) hiba.
     expect(errors).toEqual([]);
+  });
+
+  test("hitelesítés nélkül nem szivárognak ki privát felhasználói vagy rendelési adatok", async ({
+    page,
+  }) => {
+    await page.goto("/portal", { waitUntil: "domcontentloaded" });
+    await dismissConsentBanner(page);
+    await page.waitForLoadState("load");
+
+    // Nem bejelentkezett látogató nem láthatja a belső workflow dashboard elemeit
+    await expect(page.locator("#portal-layout")).toHaveCount(0);
+    await expect(page.getByText("Aktív Projektek & Workflow")).toHaveCount(0);
   });
 
   test("nem küld író hálózati kérést a betöltés során (Anti-Drain)", async ({

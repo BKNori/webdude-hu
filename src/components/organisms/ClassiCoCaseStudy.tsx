@@ -49,7 +49,8 @@ export default function ClassiCoCaseStudy({ project }: ClassiCoCaseStudyProps) {
              priority
              className="object-cover"
            />
-          <div className="absolute inset-0 bg-linear-to-b from-black/80 via-black/60 to-bg-base" />
+          <div className="absolute inset-0 bg-slate-950/75 -z-10" />
+          <div className="absolute inset-0 bg-linear-to-b from-black/85 via-slate-950/70 to-bg-base" />
         </motion.div>
 
         <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
@@ -83,7 +84,7 @@ export default function ClassiCoCaseStudy({ project }: ClassiCoCaseStudyProps) {
                 delay: shouldReduceMotion ? 0 : 0.4,
                 duration: shouldReduceMotion ? 0 : 0.8,
               }}
-              className="text-5xl sm:text-6xl md:text-8xl font-bold leading-tight"
+              className="text-5xl sm:text-6xl md:text-8xl font-bold leading-tight tracking-tight text-balance"
             >
               {project.title}
             </motion.h1>

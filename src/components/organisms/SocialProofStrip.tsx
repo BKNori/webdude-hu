@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "motion/react";
-import { Award, Clock, Palette, Star } from "lucide-react";
+import { Award, Clock, Palette, CheckCircle2 } from "lucide-react";
 import { ProofContent } from "@/types/dictionary";
 
 interface SocialProofStripProps {
@@ -15,13 +15,12 @@ interface SocialProofStripProps {
  *
  * - Végtelenített CSS marquee (marquee-left / marquee-right) a globals.css-ből
  * - Minden szöveg világos (WCAG AA): text-slate-400 a #020617 alapon
- * - Amber kizárólag fémjelzésként (micro badge)
  */
 
 const STAT_DEFAULTS = [
   { icon: Palette, value: "26+", label: "Év grafikai tervezés" },
   { icon: Award, value: "16+", label: "Év webfejlesztés" },
-  { icon: Star, value: "4.9/5", label: "Átlagos értékelés" },
+  { icon: CheckCircle2, value: "47+", label: "Lezárt sikeres projekt" },
   { icon: Clock, value: "24h", label: "Átlagos válaszidő" },
 ];
 

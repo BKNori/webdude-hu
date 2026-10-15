@@ -30,11 +30,53 @@ body {
   min-height: 100vh;
   position: relative;
   overflow-x: hidden;
+  /* Globális simítás és renderelés */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  /* Manrope modern sans-serif */
+  font-family:
+    var(--font-sans),
+    system-ui,
+    -apple-system,
+    sans-serif;
 }
 
 ::selection {
   background-color: rgba(0, 181, 241, 0.3);
   color: rgb(224, 242, 254);
+}
+
+/* ── Globális Tipográfiai Finomhangolás (WebDude 2026) ───────────────────── */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  /* Tökéletes, arányos sortörések */
+  text-wrap: balance;
+  /* Prémium optikai kerning - Manrope optimalizált */
+  letter-spacing: -0.01em;
+  /* Feszes sor magasság címsorokhoz */
+  line-height: 1.25;
+}
+
+h1 {
+  /* Display heading - extra feszes */
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+}
+
+p {
+  /* Szellős, kényelmes olvashatóság */
+  text-wrap: pretty;
+  line-height: 1.7;
+}
+
+/* Számokhoz (statisztikák, KPI-ok) */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
 }
 
 /* Ambient Cyber-Glow fények */
@@ -261,7 +303,7 @@ body::after {
 .premium-btn:hover {
   transform: scale(1.02);
   box-shadow: 0 8px 24px rgba(91, 33, 182, 0.5);
-  background: linear-gradient(135deg, #075985 0%, #5B21B6 100%);
+  background: linear-gradient(135deg, #075985 0%, #5b21b6 100%);
 }
 
 .premium-btn:active {
@@ -306,7 +348,7 @@ body::after {
   content: "";
   position: absolute;
   inset: -2px;
-  background: linear-gradient(45deg, #00B5F1, #38bdf8, #00B5F1);
+  background: linear-gradient(45deg, #00b5f1, #38bdf8, #00b5f1);
   border-radius: 1rem;
   z-index: -1;
   animation: gradient-rotate 3s linear infinite;
@@ -322,7 +364,7 @@ body::after {
   content: "";
   position: absolute;
   inset: -2px;
-  background: linear-gradient(45deg, #00B5F1, #38bdf8, #00B5F1);
+  background: linear-gradient(45deg, #00b5f1, #38bdf8, #00b5f1);
   border-radius: 1rem;
   z-index: -1;
   animation: gradient-rotate 3s linear infinite;
@@ -338,7 +380,7 @@ body::after {
   content: "";
   position: absolute;
   inset: -2px;
-  background: linear-gradient(45deg, #7C3AED, #00B5F1, #7C3AED);
+  background: linear-gradient(45deg, #7c3aed, #00b5f1, #7c3aed);
   border-radius: 1rem;
   z-index: -1;
   animation: gradient-rotate 3s linear infinite;
