@@ -44,6 +44,19 @@ import { ComponentType } from "react";
 const FOCUS_RING =
   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B5F1] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base";
 
+/** Neon flicker keyframe + glow text classes (szolgáltatás almenüjében). */
+const NEON_CSS = `
+  @keyframes neon-flicker {
+    0%, 90%, 100% { box-shadow: 0 0 2px rgba(0,181,241,0.07), 0 0 6px rgba(0,181,241,0.03); }
+    92% { box-shadow: 0 0 7px rgba(0,181,241,0.16), 0 0 14px rgba(0,181,241,0.06); }
+    95% { box-shadow: 0 0 12px rgba(0,181,241,0.10), 0 0 20px rgba(0,181,241,0.04); }
+    97% { box-shadow: 0 0 5px rgba(0,181,241,0.12), 0 0 10px rgba(0,181,241,0.05); }
+    99% { box-shadow: 0 0 3px rgba(0,181,241,0.08), 0 0 6px rgba(0,181,241,0.03); }
+  }
+  .glow-cyan { text-shadow: 0 0 8px rgba(0,181,241,0.35); }
+  .glow-violet { text-shadow: 0 0 8px rgba(124,58,237,0.35); }
+`;
+
 /** Mobilmenü főelem ikonok — a navigációs menüpontokhoz rendelve (HU + EN). */
 const NAV_ICONS: Record<string, ComponentType<{ className?: string }>> = {
   Norbi: User,
@@ -196,138 +209,166 @@ export default function HeaderNavClient({
 
   const renderDropdownContent = (subItems: SubItem[], itemName: string) => {
     if (itemName === "Szolgáltatások") {
-      const col1Hrefs = [
-        "/szolgaltatasok/weboldal-keszites",
-        "/szolgaltatasok/wordpress-weboldal-keszites",
-        "/szolgaltatasok/webshop-fejlesztes",
-        "/szolgaltatasok/woocommerce-webshop-keszites",
-        "/szolgaltatasok/weboldal-felujitas",
-      ];
-      const col2Hrefs = [
-        "/szolgaltatasok/seo-optimalizalas",
-        "/szolgaltatasok/technikai-seo-audit",
-        "/szolgaltatasok/helyi-seo",
-        "/szolgaltatasok/marketing-lead-generalas",
-        "/szolgaltatasok/weboldal-sebessegoptimalizalas",
-      ];
+      const col1Categories = ["Webfejlesztés"];
+      const col2Categories = ["SEO & Marketing"];
+      const col3Categories = ["Design & AI"];
 
-      const col1Items = subItems.filter((s) => col1Hrefs.includes(s.href));
-      const col2Items = subItems.filter((s) => col2Hrefs.includes(s.href));
-      const col3Items = subItems.filter(
-        (s) => !col1Hrefs.includes(s.href) && !col2Hrefs.includes(s.href)
+      const col1Items = subItems.filter((s) =>
+        col1Categories.includes(s.category || "")
+      );
+      const col2Items = subItems.filter((s) =>
+        col2Categories.includes(s.category || "")
+      );
+      const col3Items = subItems.filter((s) =>
+        col3Categories.includes(s.category || "")
       );
 
       return (
-        <div className="grid grid-cols-3 gap-6 p-6">
-          {/* 1. Hasáb: Webfejlesztés */}
-          <div className="flex flex-col gap-1.5">
-            <div className="px-2 pb-2 mb-1 border-b border-slate-800/80">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#00B5F1]">
-                Webfejlesztés
-              </span>
-            </div>
-            {col1Items.map((sub, idx) => {
-              const isCurrent = pathname === sub.href;
-              return (
-                <motion.div
-                  key={sub.name}
-                  initial={{ opacity: 0, y: -4 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.15, delay: idx * 0.02 }}
-                >
-                  <Link
-                    href={sub.href}
-                    aria-current={isCurrent ? "page" : undefined}
-                    className={`block p-2.5 rounded-lg text-sm transition-all ${FOCUS_RING} ${
-                      isCurrent
-                        ? "text-[#00B5F1] bg-[#00B5F1]/15 font-semibold"
-                        : "text-slate-300 hover:text-[#00B5F1] hover:bg-[#00B5F1]/10"
-                    }`}
+        <div className="rounded-2xl border border-slate-800/60 bg-slate-950/70 p-5 shadow-2xl backdrop-blur-xl sm:p-6">
+          <div className="grid grid-cols-1 gap-3 sm:gap-4 lg:grid-cols-3">
+            {/* 1. Os.col: Webfejlesztés */}
+            <div className="flex flex-col gap-2.5">
+              <div className="flex items-center gap-2 pb-2.5 border-b border-slate-800/60">
+                <span className="flex h-2 w-2 rounded-full bg-[#00B5F1] shadow-[0_0_8px_rgba(0,181,241,0.5)]" />
+                <span className="text-[11px] font-bold uppercase tracking-widest text-slate-500">
+                  Webfejlesztés
+                </span>
+              </div>
+              {col1Items.map((sub, idx) => {
+                const isCurrent = pathname === sub.href;
+                return (
+                  <motion.div
+                    key={sub.name}
+                    initial={{ opacity: 0, y: 5 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.2, delay: idx * 0.06 }}
                   >
-                    <div className="font-medium leading-tight">{sub.name}</div>
-                    {sub.description && (
-                      <p className="text-xs text-slate-400 line-clamp-1 mt-0.5">
-                        {sub.description}
-                      </p>
-                    )}
-                  </Link>
-                </motion.div>
-              );
-            })}
-          </div>
+                    <Link
+                      href={sub.href}
+                      aria-current={isCurrent ? "page" : undefined}
+                      className={`flex items-center gap-3 rounded-xl border p-3 text-sm transition-all duration-300 outline-none ${FOCUS_RING} ${isCurrent ? "border-[#00B5F1]/40 bg-gradient-to-br from-[#00B5F1]/10 to-[#00B5F1]/5 shadow-[0_0_20px_rgba(0,181,241,0.15)]" : "border-slate-700/50 bg-gradient-to-b from-slate-900/50 to-slate-900/70 hover:border-[#00B5F1]/30 hover:bg-gradient-to-br hover:from-[#00B5F1]/8 hover:to-slate-900/90 hover:shadow-[0_0_15px_rgba(0,181,241,0.1)]"}`}
+                    >
+                      {sub.icon && (
+                        <sub.icon
+                          className={`w-4 h-4 shrink-0 ${isCurrent ? "text-[#00B5F1] drop-shadow-[0_0_6px_rgba(0,181,241,0.6)]" : "text-[#00B5F1]/60"}`}
+                        />
+                      )}
+                      <div className="min-w-0 flex-1">
+                        <span
+                          className={`block font-medium leading-tight truncate ${isCurrent ? "text-[#00B5F1]" : "text-slate-200"}`}
+                        >
+                          {sub.name}
+                        </span>
+                        {sub.description && (
+                          <span className="block truncate text-[11px] text-slate-500">
+                            {sub.description}
+                          </span>
+                        )}
+                      </div>
+                      {isCurrent && (
+                        <span className="flex h-1.5 w-1.5 shrink-0 rounded-full bg-[#00B5F1] shadow-[0_0_6px_rgba(0,181,241,0.6)]" />
+                      )}
+                    </Link>
+                  </motion.div>
+                );
+              })}
+            </div>
 
-          {/* 2. Hasáb: SEO & Marketing */}
-          <div className="flex flex-col gap-1.5">
-            <div className="px-2 pb-2 mb-1 border-b border-slate-800/80">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#00B5F1]">
-                SEO & Marketing
-              </span>
-            </div>
-            {col2Items.map((sub, idx) => {
-              const isCurrent = pathname === sub.href;
-              return (
-                <motion.div
-                  key={sub.name}
-                  initial={{ opacity: 0, y: -4 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.15, delay: 0.04 + idx * 0.02 }}
-                >
-                  <Link
-                    href={sub.href}
-                    aria-current={isCurrent ? "page" : undefined}
-                    className={`block p-2.5 rounded-lg text-sm transition-all ${FOCUS_RING} ${
-                      isCurrent
-                        ? "text-[#00B5F1] bg-[#00B5F1]/15 font-semibold"
-                        : "text-slate-300 hover:text-[#00B5F1] hover:bg-[#00B5F1]/10"
-                    }`}
+            {/* 2. Os.col: SEO & Marketing */}
+            <div className="flex flex-col gap-2.5">
+              <div className="flex items-center gap-2 pb-2.5 border-b border-slate-800/60">
+                <span className="flex h-2 w-2 rounded-full bg-[#7C3AED] shadow-[0_0_8px_rgba(124,58,237,0.5)]" />
+                <span className="text-[11px] font-bold uppercase tracking-widest text-slate-500">
+                  SEO & Marketing
+                </span>
+              </div>
+              {col2Items.map((sub, idx) => {
+                const isCurrent = pathname === sub.href;
+                return (
+                  <motion.div
+                    key={sub.name}
+                    initial={{ opacity: 0, y: 5 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.2, delay: 0.06 + idx * 0.06 }}
                   >
-                    <div className="font-medium leading-tight">{sub.name}</div>
-                    {sub.description && (
-                      <p className="text-xs text-slate-400 line-clamp-1 mt-0.5">
-                        {sub.description}
-                      </p>
-                    )}
-                  </Link>
-                </motion.div>
-              );
-            })}
-          </div>
+                    <Link
+                      href={sub.href}
+                      aria-current={isCurrent ? "page" : undefined}
+                      className={`flex items-center gap-3 rounded-xl border p-3 text-sm transition-all duration-300 outline-none ${FOCUS_RING} ${isCurrent ? "border-[#7C3AED]/40 bg-gradient-to-br from-[#7C3AED]/10 to-[#7C3AED]/5 shadow-[0_0_20px_rgba(124,58,237,0.15)]" : "border-slate-700/50 bg-gradient-to-b from-slate-900/50 to-slate-900/70 hover:border-[#7C3AED]/30 hover:bg-gradient-to-br hover:from-[#7C3AED]/8 hover:to-slate-900/90 hover:shadow-[0_0_15px_rgba(124,58,237,0.1)]"}`}
+                    >
+                      {sub.icon && (
+                        <sub.icon
+                          className={`w-4 h-4 shrink-0 ${isCurrent ? "text-[#7C3AED] drop-shadow-[0_0_6px_rgba(124,58,237,0.6)]" : "text-[#7C3AED]/60"}`}
+                        />
+                      )}
+                      <div className="min-w-0 flex-1">
+                        <span
+                          className={`block font-medium leading-tight truncate ${isCurrent ? "text-[#7C3AED]" : "text-slate-200"}`}
+                        >
+                          {sub.name}
+                        </span>
+                        {sub.description && (
+                          <span className="block truncate text-[11px] text-slate-500">
+                            {sub.description}
+                          </span>
+                        )}
+                      </div>
+                      {isCurrent && (
+                        <span className="flex h-1.5 w-1.5 shrink-0 rounded-full bg-[#7C3AED] shadow-[0_0_6px_rgba(124,58,237,0.6)]" />
+                      )}
+                    </Link>
+                  </motion.div>
+                );
+              })}
+            </div>
 
-          {/* 3. Hasáb: Karbantartás & Design */}
-          <div className="flex flex-col gap-1.5">
-            <div className="px-2 pb-2 mb-1 border-b border-slate-800/80">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#00B5F1]">
-                Karbantartás & Design
-              </span>
-            </div>
-            {col3Items.map((sub, idx) => {
-              const isCurrent = pathname === sub.href;
-              return (
-                <motion.div
-                  key={sub.name}
-                  initial={{ opacity: 0, y: -4 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.15, delay: 0.08 + idx * 0.02 }}
-                >
-                  <Link
-                    href={sub.href}
-                    aria-current={isCurrent ? "page" : undefined}
-                    className={`block p-2.5 rounded-lg text-sm transition-all ${FOCUS_RING} ${
-                      isCurrent
-                        ? "text-[#00B5F1] bg-[#00B5F1]/15 font-semibold"
-                        : "text-slate-300 hover:text-[#00B5F1] hover:bg-[#00B5F1]/10"
-                    }`}
+            {/* 3. Os.col: Design & AI */}
+            <div className="flex flex-col gap-2.5">
+              <div className="flex items-center gap-2 pb-2.5 border-b border-slate-800/60">
+                <span className="flex h-2 w-2 rounded-full bg-[#06b6d4] shadow-[0_0_8px_rgba(6,182,212,0.5)]" />
+                <span className="text-[11px] font-bold uppercase tracking-widest text-slate-500">
+                  Design & AI
+                </span>
+              </div>
+              {col3Items.map((sub, idx) => {
+                const isCurrent = pathname === sub.href;
+                return (
+                  <motion.div
+                    key={sub.name}
+                    initial={{ opacity: 0, y: 5 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.2, delay: 0.12 + idx * 0.06 }}
                   >
-                    <div className="font-medium leading-tight">{sub.name}</div>
-                    {sub.description && (
-                      <p className="text-xs text-slate-400 line-clamp-1 mt-0.5">
-                        {sub.description}
-                      </p>
-                    )}
-                  </Link>
-                </motion.div>
-              );
-            })}
+                    <Link
+                      href={sub.href}
+                      aria-current={isCurrent ? "page" : undefined}
+                      className={`flex items-center gap-3 rounded-xl border p-3 text-sm transition-all duration-300 outline-none ${FOCUS_RING} ${isCurrent ? "border-[#06b6d4]/40 bg-gradient-to-br from-[#06b6d4]/10 to-[#06b6d4]/5 shadow-[0_0_20px_rgba(6,182,212,0.15)]" : "border-slate-700/50 bg-gradient-to-b from-slate-900/50 to-slate-900/70 hover:border-[#06b6d4]/30 hover:bg-gradient-to-br hover:from-[#06b6d4]/8 hover:to-slate-900/90 hover:shadow-[0_0_15px_rgba(6,182,212,0.1)]"}`}
+                    >
+                      {sub.icon && (
+                        <sub.icon
+                          className={`w-4 h-4 shrink-0 ${isCurrent ? "text-[#06b6d4] drop-shadow-[0_0_6px_rgba(6,182,212,0.6)]" : "text-[#06b6d4]/60"}`}
+                        />
+                      )}
+                      <div className="min-w-0 flex-1">
+                        <span
+                          className={`block font-medium leading-tight truncate ${isCurrent ? "text-[#06b6d4]" : "text-slate-200"}`}
+                        >
+                          {sub.name}
+                        </span>
+                        {sub.description && (
+                          <span className="block truncate text-[11px] text-slate-500">
+                            {sub.description}
+                          </span>
+                        )}
+                      </div>
+                      {isCurrent && (
+                        <span className="flex h-1.5 w-1.5 shrink-0 rounded-full bg-[#06b6d4] shadow-[0_0_6px_rgba(6,182,212,0.6)]" />
+                      )}
+                    </Link>
+                  </motion.div>
+                );
+              })}
+            </div>
           </div>
         </div>
       );
@@ -370,6 +411,7 @@ export default function HeaderNavClient({
 
   return (
     <>
+      <style>{NEON_CSS}</style>
       <motion.nav
         aria-label={labels.mainNav}
         initial={{ y: 0 }}
@@ -429,13 +471,13 @@ export default function HeaderNavClient({
               className="flex items-center gap-2 group"
               aria-label={labels.logoHome}
             >
-              <div className="h-8 flex items-center">
+              <div className="h-12 flex items-center">
                 <NextImage
                   src="/assets/logos/webdude-logo.webp"
                   alt="WebDude — Prémium webfejlesztés és AI automatizáció"
                   width={130}
-                  height={32}
-                  className="h-8 w-auto object-contain relative z-50 transition-all duration-300 group-hover:drop-shadow-[0_0_12px_#00B5F1] group-hover:brightness-125"
+                  height={48}
+                  className="h-12 w-auto object-contain relative z-50 transition-all duration-300 brightness-0 invert group-hover:brightness-100 group-hover:invert-0 group-hover:drop-shadow-[0_0_12px_#00B5F1]"
                   priority
                 />
               </div>
