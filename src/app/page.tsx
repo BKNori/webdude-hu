@@ -104,11 +104,11 @@ export default async function Home() {
                     className="w-8 h-8 text-brand-primary"
                     aria-hidden="true"
                   />
-                  <h3 className="text-lg font-bold text-slate-100">
+                  <h3 className="text-xl md:text-2xl text-white tracking-wider">
                     {dictionary.bentoGrid.expertise.title}
                   </h3>
                 </div>
-                <p className="text-sm text-slate-400 leading-relaxed">
+                <p className="text-sm text-slate-300 leading-relaxed font-normal">
                   {dictionary.bentoGrid.expertise.content}
                 </p>
               </div>
@@ -119,11 +119,11 @@ export default async function Home() {
               <div>
                 <div className="flex items-center gap-3 mb-4">
                   <Cpu className="w-8 h-8 text-brand-primary" aria-hidden="true" />
-                  <h3 className="text-lg font-bold text-slate-100">
+                  <h3 className="text-xl md:text-2xl text-white tracking-wider">
                     {dictionary.bentoGrid.techStack.title}
                   </h3>
                 </div>
-                <p className="text-sm text-slate-400 leading-relaxed">
+                <p className="text-sm text-slate-300 leading-relaxed font-normal">
                   {dictionary.bentoGrid.techStack.content}
                 </p>
               </div>
@@ -137,11 +137,11 @@ export default async function Home() {
                     className="w-8 h-8 text-brand-primary"
                     aria-hidden="true"
                   />
-                  <h3 className="text-lg font-bold text-slate-100">
+                  <h3 className="text-xl md:text-2xl text-white tracking-wider">
                     {dictionary.bentoGrid.timeline.title}
                   </h3>
                 </div>
-                <p className="text-sm text-slate-400 leading-relaxed">
+                <p className="text-sm text-slate-300 leading-relaxed font-normal">
                   {dictionary.bentoGrid.timeline.content}
                 </p>
               </div>

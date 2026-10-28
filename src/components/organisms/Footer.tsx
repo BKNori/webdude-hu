@@ -140,7 +140,7 @@ export default function Footer({ dictionary }: FooterProps) {
             className="md:col-span-2 lg:col-span-1"
           >
             <Link href="/" className="inline-block mb-4 group">
-              <span className="text-2xl font-black font-serif tracking-tighter text-text-primary group-hover:text-[#00B5F1] transition-colors duration-300">
+              <span className="text-3xl font-heading tracking-wider text-text-primary group-hover:text-[#00B5F1] transition-colors duration-300">
                 <span className="text-[#00B5F1]">Web</span>Dude
               </span>
             </Link>

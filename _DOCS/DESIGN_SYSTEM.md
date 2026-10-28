@@ -63,30 +63,39 @@ A **„Cyber-Arany 2026"** stílus egy prémium, sötét alapú, futurisztikus d
 
 ## 3. Tipográfia
 
-**Egységes Sans-Serit Rendszer:** Manrope (Google Fonts – modern geometrikus sans-serif, Font weight: 400, 500, 600, 700, 800)
+**Prémium Duál Tipográfiai Rendszer (Bebas Neue + Plus Jakarta Sans):**
 
-- **Címsorok (Headings):** Manrope 700, 800 (bold, extrabold)
-- **Folyószöveg / UI (Body/UI):** Manrope 400, 500, 600 (regular, medium, semibold)
-- **Kiemelések:** Manrope 600, 700 (semibold, bold)
-  Fallback: system-ui, -apple-system, sans-serif
-  Betöltés: next/font/google modulon keresztül (FOUT/CLS elkerülése végett, subsets: ['latin', 'latin-ext'] kötelező a magyar ékezetekhez)
+> **Szigorú Betűsúly és Faux-Bold Szabály (Weight Restriction & Anti-Faux-Bold):**
+> A `Bebas Neue` betűtípusból **KIZÁRÓLAG a 400-as (Regular) súly létezik**. A böngésző általi szintetikus vastagítás (faux-bold / font-bold / 700) összemossa a karaktereket és az ékezeteket, ezért a `globals.css`-ben a `h1..h6` elemekre globálisan kötelező a `font-weight: 400 !important;`.
+> A folyószöveghez és UI elemekhez alkalmazott **`Plus Jakarta Sans`** ezzel szemben gazdag súlykészlettel rendelkezik (`400`, `500`, `600`), így a menüpontok, gombok és szövegek tűélesen, elegánsan és valódi optikai súlyokkal jelennek meg!
+
+- **Címsorok (H1–H6 & Display Headings):** `Bebas Neue` (Google Fonts – karakteres, magas, keskeny display betűtípus, szigorúan `font-weight: 400 !important`). All-caps megjelenés, feszes sormagasság (`line-height: 1.08` – `1.12`), kötelező `text-wrap: balance;`. Mobilon `clamp(2rem, 8vw, 2.75rem)` védelem a túllógás ellen.
+  - **H1, H2 Betűköz:** `letter-spacing: 0.03em;` a tágas és elegáns olvasási élményért.
+  - **H3–H6 Betűköz (Kártyacímek):** `letter-spacing: 0.06em;` (tracking-wider), megakadályozva a keskeny betűk egymásra torlódását kis méretben.
+  - **Kártyacímek Kontrasztja:** Kártyákon a H3/H4 címek színe kötelezően tűéles hófehér (`text-white`) vagy nagyon világos akcentus (`text-cyan-300` / `text-purple-300`), text-shadow és blur nélkül, legalább `text-xl` vagy `text-2xl` (22–24px) méretben.
+- **Folyószöveg és UI (Body/Text/UI elemek):** `Plus Jakarta Sans` (Google Fonts – modern, geometrikus neo-groteszk sans-serif, weights: `400`, `500`, `600`, `subsets: ['latin', 'latin-ext']`). Kristálytiszta olvashatóság kis méretekben (14–16px) is, töredezés és elvékonyodás nélkül.
+  - **Kártyák és szekciók folyószövege:** Sötétszürke (`text-slate-400` / `text-slate-500`) helyett világosabb, tiszta `text-slate-300` szín és `font-normal` (400) súly.
+- **Interaktív UI elemek (Gombok, Navigáció, Badge-ek):** `Plus Jakarta Sans` 500/600 súlyokkal a határozott, elegáns gombfeliratokért és menüpontokért, natív `-webkit-font-smoothing: antialiased` és `-moz-osx-font-smoothing: grayscale` simítással.
+- **Fallback:** `system-ui`, `-apple-system`, `sans-serif`.
+- **Betöltés:** `next/font/google` modulon keresztül (Zero-CLS / FOUT védelem, `--font-heading` és `--font-sans` CSS változókkal a `layout.tsx`-ben).
 
 ### 3.1 Skála és Vonalvezetés (Line Height)
 
-| Szint   | Tailwind               | Méret   | Vonalvezetés (Line Height) | Használat                               |
-| ------- | ---------------------- | ------- | -------------------------- | --------------------------------------- |
-| Display | `text-5xl md:text-7xl` | 48–72px | `leading-tight`            | Hero szekciók, kritikus állítások.      |
-| H1      | `text-4xl md:text-5xl` | 36–48px | `leading-tight`            | Oldal főcím.                            |
-| H2      | `text-3xl`             | 30px    | `leading-snug`             | Szekció címek.                          |
-| H3      | `text-2xl`             | 24px    | `leading-snug`             | Kártya címek, kiemelt előnyök.          |
-| Body L  | `text-lg`              | 18px    | `leading-relaxed`          | Bevezető szövegek (Lead paragrafus).    |
-| Body    | `text-base`            | 16px    | `leading-relaxed`          | Általános folyószöveg.                  |
-| Small   | `text-sm`              | 14px    | `leading-normal`           | Form labelek, navigációs menük, gombok. |
+| Szint   | Font család         | Tailwind               | Méret   | Betűköz (Tracking) | Használat                               |
+| ------- | ------------------- | ---------------------- | ------- | ------------------ | --------------------------------------- |
+| Display | `Bebas Neue`        | `text-5xl md:text-7xl` | 48–72px | `0.03em`           | Hero szekciók, kritikus állítások.      |
+| H1      | `Bebas Neue`        | `text-4xl md:text-5xl` | 36–48px | `0.03em`           | Oldal főcím (mobilon clamp védett).     |
+| H2      | `Bebas Neue`        | `text-3xl md:text-4xl` | 30–36px | `0.03em`           | Szekció címek.                          |
+| H3      | `Bebas Neue`        | `text-xl md:text-2xl`  | 22–24px | `0.06em`           | Kártya címek, kiemelt előnyök.          |
+| H4      | `Bebas Neue`        | `text-lg md:text-xl`   | 18–20px | `0.06em`           | Al-kártyacímek, lépéscímek.             |
+| Body L  | `Plus Jakarta Sans` | `text-lg`              | 18px    | Normal             | Bevezető szövegek (Lead paragrafus).    |
+| Body    | `Plus Jakarta Sans` | `text-base`            | 16px    | Normal             | Általános folyószöveg (`text-slate-300`).|
+| Small   | `Plus Jakarta Sans` | `text-sm`              | 14px    | Normal / Wide      | Form labelek, navigáció, kártya leírás. |
 
 ### 3.2 Betűvastagság és Transzformáció
 
-- **Uppercase + Tracking Wider:** Minden badge, gombfelirat (CTA) és felső label (kategória) kötelezően `uppercase tracking-wider text-xs md:text-sm` osztályokat kap.
-- **Heading Weight:** A címsorok szigorúan `font-bold` (Space Grotesk 700), `tracking-tight` letter-spacinggel a prémium megjelenésért.
+- **Uppercase + Tracking Wider:** Minden badge, gombfelirat (CTA) és kategória label kötelezően `uppercase tracking-wider` osztályokat kap a kristálytiszta olvashatóságért.
+- **Heading Styling:** A címsorok a Bebas Neue natív karakterkészletét használják `font-heading`, kötelezően `font-weight: 400 !important;` szabállyal, kiküszöbölve a böngésző szintetikus vastagítását. A hangsúly a méretarányon, a szellős betűközön és a tiszta kontraszton van.
 
 ---
 
@@ -274,7 +283,7 @@ Képkezelés: Minden fotónak vagy mockuponak tiszta, világos esztétikát kell
 
 **DDR-003 (Kontraszt):** Tömör `brand-primary` (cián) háttéren a felirat `text-slate-950` (8.5:1 AAA); a sötét kék-lila CTA gradiensen (`cta-from` → `cta-to`) és `cta-hover` háttéren a felirat KÖTELEZŐEN `text-white` (7.1–8.98:1 AAA). A kontrasztot színpáronként kell mérni: az áttetsző hátterek, gradiensek és hover állapotok külön ellenőrzést igényelnek. A sikeres build nem WCAG-tanúsítás.
 
-**DDR-004 (Manrope Uniform Sans):** Az egységes tipográfiai rendszer kizárólag Manrope betűtípust használ. Címsorok: Manrope 700, 800. Folyószöveg és UI elemek: Manrope 400, 500, 600. Kiemelések: Manrope 600, 700. Nincs külön heading, body, mono vagy serif betűtípus - egy modern, geometrikus sans-serif rendszert használunk a tisztaság és elegancia érdekében.
+**DDR-004 (Bebas Neue + Plus Jakarta Sans Prémium Duál Tipográfia — Faux-Bold Mentesség & Tűéles UI):** A projekt a határozott, modern és elegáns duál tipográfiai rendszert alkalmazza. Címsorok (H1–H6): `Bebas Neue` (szigorúan 400-as súly, faux-bold tiltása `font-weight: 400 !important;` szabállyal). Betűköz: H1–H2 esetén `0.03em`, míg a kisebb kártyacímeknél (H3–H6) szellős `0.06em` (tracking-wider). Folyószöveg és UI: `Plus Jakarta Sans` (`400`, `500`, `600`, latin + latin-ext) modern, tiszta geometrikus sans-serif, amely 14–16px méretben is tökéletesen olvasható, megszüntetve a töredezettséget és a vékonyságot. A kártyákon a folyószöveg tiszta `text-slate-300`, a kártyacímek pedig tűéles `text-white` vagy világos akcentus megjelenésűek. A betűtípusok betöltése a Next.js `next/font/google` modulján keresztül történik a `--font-heading` és `--font-sans` CSS változók segítségével.
 
 **DDR-005 (90-8-2 Szabály):** 90% sötét alap, 8% üveg / slate felület és legfeljebb 2% kék-lila kiemelés. Szekciónként egyetlen elsődleges CTA.
 

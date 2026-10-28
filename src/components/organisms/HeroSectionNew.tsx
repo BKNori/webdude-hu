@@ -351,7 +351,7 @@ export default function HeroSectionNew({ content }: HeroSectionNewProps) {
                 </div>
 
                 {/* H1 Címsor */}
-                <h1 className="text-4xl sm:text-5xl lg:text-[3.2rem] xl:text-[3.7rem] font-extrabold tracking-tight leading-[1.12] text-white mb-6 text-balance">
+                <h1 className="text-4xl sm:text-5xl lg:text-[3.2rem] xl:text-[3.7rem] leading-[1.12] text-white mb-6 text-balance">
                   {slide.titlePrefix}
                   <span
                     className="hero-shimmer-text"
@@ -436,7 +436,7 @@ export default function HeroSectionNew({ content }: HeroSectionNewProps) {
                     <Link
                       href={slide.cta2.href}
                       id={slide.cta2.id}
-                      className="inline-flex items-center gap-2 px-6 py-4 rounded-full text-sm font-semibold text-slate-200 border border-slate-700/80 hover:border-brand-primary/60 hover:text-brand-primary hover:bg-brand-primary/5 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base"
+                      className="inline-flex items-center gap-2 px-6 py-4 rounded-full text-base font-semibold text-slate-200 border border-slate-700/80 hover:border-brand-primary/60 hover:text-brand-primary hover:bg-brand-primary/5 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base"
                       aria-label={slide.cta2.text}
                     >
                       {slide.cta2.text}

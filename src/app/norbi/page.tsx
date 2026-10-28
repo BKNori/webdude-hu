@@ -54,7 +54,7 @@ export default function AboutPage() {
               </span>
               <div className="absolute left-0 top-0 w-1 h-6 bg-[#00B5F1]" />
             </div>
-            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold font-sans text-white leading-tight tracking-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold font-heading text-white leading-tight tracking-tight">
               Üdvözöllek!
               <br /> <span className="text-[#00B5F1] italic">
                 WebDude
@@ -104,7 +104,7 @@ export default function AboutPage() {
               </span>
               <div className="absolute left-0 top-0 w-1 h-6 bg-[#00B5F1]" />
             </div>
-            <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold font-sans text-white leading-tight tracking-tight">
+            <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold font-heading text-white leading-tight tracking-tight">
               A Te{" "}
               <span className="italic text-[#00B5F1]">
                 Digitális Partnered.
@@ -124,7 +124,7 @@ export default function AboutPage() {
           {/* Statisztikai Kártyák */}
           <div className="grid md:grid-cols-3 gap-8 mt-20">
             <div className="glass-card glass-card-hover p-10 text-center border border-white/5 group">
-              <span className="text-6xl font-black font-serif block mb-4 text-text-primary group-hover:text-[#00B5F1]">
+              <span className="text-7xl font-heading block mb-4 text-text-primary group-hover:text-[#00B5F1] tracking-wide">
                 200+
               </span>
               <p className="text-sm uppercase tracking-widest font-bold text-slate-400">
@@ -132,7 +132,7 @@ export default function AboutPage() {
               </p>
             </div>
             <div className="glass-card glass-card-hover p-10 text-center border border-white/5 group">
-              <span className="text-6xl font-black font-serif block mb-4 text-text-primary group-hover:text-[#00B5F1]">
+              <span className="text-7xl font-heading block mb-4 text-text-primary group-hover:text-[#00B5F1] tracking-wide">
                 500+
               </span>
               <p className="text-sm uppercase tracking-widest font-bold text-slate-400">
@@ -140,7 +140,7 @@ export default function AboutPage() {
               </p>
             </div>
             <div className="glass-card glass-card-hover p-10 text-center border border-white/5 group">
-              <span className="text-6xl font-black font-serif block mb-4 text-text-primary group-hover:text-[#00B5F1]">
+              <span className="text-7xl font-heading block mb-4 text-text-primary group-hover:text-[#00B5F1] tracking-wide">
                 +150%
               </span>
               <p className="text-sm uppercase tracking-widest font-bold text-slate-400">
@@ -161,7 +161,7 @@ export default function AboutPage() {
               </span>
               <div className="absolute left-0 top-0 w-1 h-6 bg-[#00B5F1]" />
             </div>
-            <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold font-sans text-white leading-tight tracking-tight">
+            <h2 className="text-4xl sm:text-5xl md:text-7xl font-heading text-white leading-tight tracking-wide">
               Utam idáig
             </h2>
           </div>
@@ -182,7 +182,7 @@ export default function AboutPage() {
               </span>
               <div className="absolute left-0 top-0 w-1 h-6 bg-[#00B5F1]" />
             </div>
-            <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold font-sans text-white leading-tight tracking-tight">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-heading text-white leading-tight tracking-wide">
               &ldquo;Segíteni az ügyfeleknek kitűnni a digitális térben
               esztétikus és hatékony megoldásokkal.&rdquo;
             </h2>
@@ -194,14 +194,14 @@ export default function AboutPage() {
                 key={idx}
                 className="glass-card glass-card-hover p-6 relative border border-white/5 group overflow-hidden"
               >
-                <div className="text-[100px] font-black font-serif absolute -top-8 -right-4 text-text-primary opacity-5 group-hover:opacity-10 transition-opacity">
+                <div className="text-[100px] font-heading absolute -top-8 -right-4 text-text-primary opacity-5 group-hover:opacity-10 transition-opacity">
                   {step.icon}
                 </div>
                 <div className="relative z-10">
                   <span className="w-8 h-8 rounded-full bg-transparent border border-white/10 text-text-primary flex items-center justify-center text-sm font-bold mb-6 group-hover:bg-[#00B5F1] group-hover:text-bg-base transition-colors">
                     {step.icon}
                   </span>
-                  <h4 className="text-lg font-black font-outfit mb-3 text-text-primary">
+                  <h4 className="text-lg font-bold mb-3 text-text-primary">
                     {step.title}
                   </h4>
                   <p className="text-sm text-slate-400 leading-relaxed">
@@ -220,7 +220,7 @@ export default function AboutPage() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#00B5F1]/10 rounded-full blur-[100px] pointer-events-none" />
         <div className="max-w-6xl mx-auto px-6 relative z-10">
           <div className="max-w-3xl mx-auto space-y-10">
-            <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold font-sans text-white leading-tight tracking-tight">
+            <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold font-heading text-white leading-tight tracking-tight">
               Dolgozzunk{" "}
               <span className="text-[#00B5F1] italic">együtt!</span>
             </h2>

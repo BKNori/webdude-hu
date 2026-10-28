@@ -162,12 +162,12 @@ export default async function MunkakPage() {
             <div className="absolute left-0 top-0 w-1 h-6 bg-linear-to-b from-[#00B5F1] to-[#5B21B6]" />
           </div>
 
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold font-sans text-white leading-tight tracking-tight mb-6">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold font-heading text-white leading-tight tracking-tight mb-6">
             Eredményorientált{" "}
             <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6] italic pr-4">
               webes megoldások
             </span>
-          </h1>
+          </h2>
 
           <p className="text-lg md:text-xl text-slate-400 max-w-xl leading-relaxed mb-8 mx-auto tracking-wide font-medium">
             Minden projekt egy egyedi üzleti és vizuális kihívás. Nem sablonokat
@@ -197,7 +197,7 @@ export default async function MunkakPage() {
         />
         <div className="max-w-6xl mx-auto px-6 relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-sans text-white leading-tight tracking-tight mb-4">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-heading text-white leading-tight tracking-tight mb-4">
               Mérhető{" "}
               <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6] italic">
                 eredmények
@@ -240,7 +240,7 @@ export default async function MunkakPage() {
       {/* Bento Grid: Projects */}
       <section className="max-w-6xl mx-auto px-6 relative z-10 py-24">
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-sans text-white leading-tight tracking-tight mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-heading text-white leading-tight tracking-tight mb-4">
             Kiemelt{" "}
             <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6] italic">
               munkák & esettanulmányok

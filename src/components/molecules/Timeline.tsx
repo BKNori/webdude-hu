@@ -92,7 +92,7 @@ export default function Timeline() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center text-xl md:text-2xl font-serif font-black mb-10 text-text-primary"
+          className="text-center text-2xl md:text-3xl font-heading mb-10 text-text-primary"
         >
           Alapozó évek
         </motion.h3>
@@ -112,7 +112,7 @@ export default function Timeline() {
                 <span className="text-xs font-bold tracking-widest block mb-1 text-slate-400">
                   {e.year}
                 </span>
-                <h4 className="text-lg font-bold font-outfit text-text-primary leading-tight">
+                <h4 className="text-lg font-bold text-text-primary leading-tight">
                   {e.title}
                 </h4>
                 {e.location && (
@@ -133,9 +133,9 @@ export default function Timeline() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center text-3xl md:text-4xl font-serif font-black mb-16 text-text-primary"
+          className="text-center text-4xl md:text-5xl font-heading mb-16 text-text-primary"
         >
-          Szakmai <span className="text-[#00B5F1] italic">alapkövek</span>
+          Szakmai <span className="text-[#00B5F1]">alapkövek</span>
         </motion.h3>
         <div className="space-y-20">
           {proYears.map((e, i) => (
@@ -156,7 +156,7 @@ export default function Timeline() {
                   <span className="text-[#00B5F1] font-black text-sm tracking-[0.2em] block mb-2 uppercase">
                     {e.year}
                   </span>
-                  <h4 className="text-2xl md:text-3xl font-black mb-4 font-outfit text-text-primary leading-tight">
+                  <h4 className="text-2xl md:text-3xl font-bold mb-4 text-text-primary leading-tight">
                     {e.title}
                   </h4>
                   <p className="text-slate-400 text-base leading-relaxed">
@@ -185,7 +185,7 @@ export default function Timeline() {
         viewport={{ once: true }}
         className="mt-32 text-center max-w-2xl mx-auto glass-card p-10 relative overflow-hidden bg-bg-surface/80 border border-slate-700/60 rounded-3xl shadow-[0_10px_30px_rgba(0, 181, 241,0.08)] hover:border-[#00B5F1]/30 transition-all text-text-primary"
       >
-        <p className="text-2xl md:text-3xl font-serif italic relative z-10 leading-relaxed font-black text-text-primary">
+        <p className="text-xl md:text-2xl font-sans italic relative z-10 leading-relaxed text-text-primary">
           {
             '"A nyomdaipari és informatikai tanulmányaim alapozták meg a grafikai és webes szakértelmemet, amit ma WebDude-ként kamatoztatok."'
           }

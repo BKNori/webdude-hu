@@ -1,5 +1,71 @@
 # Changelog
 
+## [7.36.0] — 2026-10-28 — PRÉMIUM TIPOGRÁFIAI KORREKCIÓ: BEBAS NEUE ANTI-FAUX-BOLD & PLUS JAKARTA SANS FOLYÓSZÖVEG
+
+**1. CÍMSOROK (H1–H6) TISZTÍTÁSA & FAUX-BOLD KIZÁRÁSA (`src/app/globals.css`):**
+- **Faux-Bold teljes tiltása:** Mivel a `Bebas Neue` kizárólag 400-as súlyban érhető el, a böngészők mesterséges vastagítása (`font-bold` / 700) összemosódást és ékezettorzulást okozott. A `globals.css`-ben minden `h1..h6` és `.font-heading` elemre kikényszerítve: `font-weight: 400 !important;`.
+- **Betűköz (Tracking) korrekció:**
+  - `h1, h2`: `letter-spacing: 0.03em;` a tágas és elegáns optikai térközért.
+  - `h3, h4, h5, h6`: `letter-spacing: 0.06em;` (tracking-wider), feloldva a keskeny betűk torlódását kis méretű kártyacímeken.
+- **Kártyacímek kontrasztja és méretnövelése:**
+  - A Folyamat / Audit & Stratégia kártyák (`SystemShowcase.tsx`), az `AnimatedSystemFlow.tsx`, a főoldali Bento kártyák (`page.tsx`), a Szolgáltatások (`FeaturedServicesNew.tsx`), az Esettanulmányok (`CaseStudiesBento.tsx`), az Előnyök (`WhyChooseMeSection.tsx`) és a `ComparisonCard.tsx` H3/H4 címei `text-xl md:text-2xl` méretre nőttek, sötétkék/lila helyett tűéles hófehér (`text-white`) színnel és `tracking-wider` betűközzel jelennek meg, felesleges blur/shadow effektek nélkül.
+
+**2. FOLYÓSZÖVEG & UI MIGRÁCIÓ — PLUS JAKARTA SANS (`src/app/layout.tsx` & `globals.css`):**
+- A túl vékony és kisméretben töredezett `Poiret One` helyett a modern, prémium **`Plus_Jakarta_Sans`** került bevezetésre (`weight: ["400", "500", "600"]`, `subsets: ["latin", "latin-ext"]`, `variable: "--font-sans"`).
+- Karakteres, elegáns **`Bebas Neue` + `Plus Jakarta Sans`** duál rendszer: a címsorok markánsak és tiszták, a navigáció, a gombok és az űrlapok tűélesek, valódi súlyokkal (500/600).
+- A kártyák folyószövegében és leírásaiban a sötét szürke (`text-slate-400`/`text-slate-500`) helyett világosabb, kristálytiszta `text-slate-300` és `font-normal` (400) szerepel.
+- A vékony Poiret One miatti mesterséges gomb-text-shadow szabályok eltávolítva a `globals.css`-ből.
+
+**3. SSOT DOKUMENTÁCIÓ FRISSÍTÉSE (`_docs/DESIGN_SYSTEM.md`):**
+- A 3. Tipográfia fejezet, a tipográfiai skálatáblázat és a DDR-004 döntési napló szinkronizálva az új Bebas Neue 400 + Plus Jakarta Sans 400/500/600 szabályrendszerrel.
+
+---
+
+## [7.35.0] — 2026-10-17 — GLOBÁLIS TIPOGRÁFIAI MIGRÁCIÓ: BEBAS NEUE & POIRET ONE
+
+**1. NEXT/FONT/GOOGLE INTEGRÁCIÓ (`src/app/layout.tsx`):**
+- **Betűtípus páros bevezetése:** A korábbi font-hivatkozások helyére a Google Fonts két prémium, karakteres betűtípusa került:
+  - **Címsorok (H1–H6):** `Bebas_Neue` (`weight: "400"`, `subsets: ["latin", "latin-ext"]`, `variable: "--font-heading"`).
+  - **Folyószöveg és UI:** `Poiret_One` (`weight: "400"`, kötelező `subsets: ["latin", "latin-ext"]` a hibátlan magyar ékezetekhez, `variable: "--font-sans"`).
+- **CSS változók injektálása:** A `body` tag className-jébe csatolva a `${bebasNeue.variable} ${poiretOne.variable}` osztályok, biztosítva a Zero-CLS és FOUT-mentes betöltést.
+
+**2. GLOBÁLIS CSS ÉS MIKRO-TIPOGRÁFIAI KALIBRÁCIÓ (`src/app/globals.css`):**
+- **Tailwind v4 Design Tokens:** `@theme` blokkban definiálva a `--font-sans` és `--font-heading` tokenek, valamint dedikált `.font-heading` és `.font-sans` segédosztályok.
+- **Címsorok (H1–H6):** `font-family: var(--font-heading)`, optimalizált betűköz (`letter-spacing: 0.02em` – `0.025em`) a magas, keskeny betűk tiszta optikai térközéhez, feszes sormagasság (`line-height: 1.1` – `1.15`), `text-wrap: balance` megtartva.
+- **Folyószöveg (p, li, blockquote):** `font-family: var(--font-sans)`, szellős és kényelmes sormagasság (`line-height: 1.65`), 17px bázisméret a finomabb vonalvezetésű Poiret One optimális olvashatóságáért.
+- **UI elemek és űrlapok:** Gombok (`button`, `.premium-btn`), inputok, textarea és select elemek natív antialiasing simítással és határozott olvashatósággal felvértezve.
+
+**3. VIZUÁLIS ELRENDEZÉS-JAVÍTÁS ÉS LEGACY KIGYOMLÁLÁS:**
+- **Gombok és Badge-ek méretnövelése (WCAG AAA kontraszt):** A vékony (weight 400) Poiret One miatt a Button komponens méretei 1-2px-el meg lettek emelve (sm: 12px -> 14px, md: 14px -> 16px, lg: 16px -> 18px), a Badge komponens 	ext-sm-re bővült.
+- **Mobil clamp védelem a Bebas Neue-hoz:** A globals.css-ben a h1-h3 címsorok clamp() skálázást kaptak a horizontális túlcsordulás megelőzésére mobil kijelzőkön.
+- **Univerzális text-smoothing:** Minden szöveges elemre (p, span, li, a, button, input, textarea, select) kiterjesztve a -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; szabály a sötét háttereken való tiszta olvashatóságért.
+- **Legacy talpas/outfit maradványok eltávolítása:** A statisztikai blokkok (`26+`, `200+`, `500+`, `95+`), folyamatlépések és idézetek a `Footer.tsx`, `PricingTable.tsx`, `Timeline.tsx`, `norbi/page.tsx`, `szolgaltatasok/page.tsx` és `en/services/page.tsx` fájlokban átállítva az új display `font-heading` rendszerre.
+- **Törés és overflow védelem:** Ellenőrizve az all-caps Bebas Neue viselkedése – a kondenzált arányok miatt a Hero és szekciócímek stabilak, nem folynak össze és nem lógnak ki a kártyákból.
+
+**4. SSOT DOKUMENTÁCIÓ FRISSÍTÉSE (`_docs/DESIGN_SYSTEM.md`):**
+- A **3. Tipográfia** fejezet és a **DDR-004** döntési napló frissítve a `Bebas Neue` (Headings) és `Poiret One` (Body/UI) rendszerre.
+
+**QA (Zero-Error Gate):** `npx tsc --noEmit` → **TSC_EXIT=0**; `npm run lint -- --max-warnings 0` → **LINT_EXIT=0**.
+
+---
+
+## [7.34.0] — 2026-10-15 — SZOLGÁLTATÁSOK ALMENŰ ÁTTERVEZÉSE — 4 OSZLOP, NEON GLOW
+
+**1. SZOLGÁLTATÁSOK ALMENŰ 4 OSZLOPRA ÁTRENDEZÉSE (HeaderNavClient):**  
+- A korábbi 3 kiegyensúlyozatlan oszlopot (Webfejlesztés / SEO & Marketing / Design & AI — eltérő eleműek) **4 egyenletes oszlopra** bontottam:  
+  1. Web & Webshop (cián glow)  
+  2. SEO & Marketing (cián glow)  
+  3. Design & Karbantartás (lila glow)  
+  4. Karbantartás & AI (sötétlila glow)  
+- **Kategória szintek:** `navigation.ts` minden szolgáltatás elemnek granular kategóriája beállítva (`Web`, `Webshop`, `SEO`, `Marketing`, `Design`, `Karbantartás`, `AI`).  
+- **Neon glow effektus:** minden oszlop külön brand színnel (`#00B5F1`, `#7C3AED`, `#5B21B6`), aktív állapotban `neon-flicker` keyframe animáció (fénycsillánás a kereten), gradient háttér (`bg-gradient-to-b from-slate-900/50 to-slate-900/70`), és hover állapotban élesítve a színek + árnyékok.  
+- **Ikonok:** minden almenüpontnál glow-efektusos ikon, aktív állapotban jobb kontraszt.  
+- **Reszponzív rács:** `grid-cols-2 gap-2 sm:gap-3 lg:grid-cols-4` — mobilon 2, asztalon 4 oszlop.
+
+**QA (Zero-Error Gate):** `npx tsc --noEmit` → **TSC_EXIT=0**; `npm run lint -- --max-warnings 0` → **LINT_EXIT=0**; `npm run build` → **BUILD_EXIT=0** (169 statikus oldal).
+
+---
+
 ## [7.30.1] — 2026-10-15 — UI/UX POLÍROZÁS & KÉK-LILA V7.0 AUDIT
 
 **1. VIZUÁLIS ADÓSSÁG & SZÍNRENDSZER KIGYOMLÁLÁSA:**

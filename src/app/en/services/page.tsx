@@ -254,7 +254,7 @@ export default async function EnServicesPage() {
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
             <div className="bg-bg-elevated border border-slate-600 rounded-2xl p-8 shadow-[0_8px_24px_rgba(15,23,42,0.3)] hover:border-brand-primary/50 hover:shadow-[0_20px_60px_rgba(0, 181, 241,0.2)] hover:-translate-y-1 transition-all duration-300 group">
-              <span className="text-5xl font-black font-serif block mb-3 text-text-primary group-hover:text-brand-primary tracking-tight">
+              <span className="text-6xl font-heading block mb-3 text-text-primary group-hover:text-brand-primary tracking-wide">
                 26+
               </span>
               <p className="text-xs uppercase tracking-[0.2em] font-bold text-slate-400">
@@ -262,7 +262,7 @@ export default async function EnServicesPage() {
               </p>
             </div>
             <div className="bg-bg-elevated border border-slate-600 rounded-2xl p-8 shadow-[0_8px_24px_rgba(15,23,42,0.3)] hover:border-brand-primary/50 hover:shadow-[0_20px_60px_rgba(0, 181, 241,0.2)] hover:-translate-y-1 transition-all duration-300 group">
-              <span className="text-5xl font-black font-serif block mb-3 text-text-primary group-hover:text-brand-primary tracking-tight">
+              <span className="text-6xl font-heading block mb-3 text-text-primary group-hover:text-brand-primary tracking-wide">
                 200+
               </span>
               <p className="text-xs uppercase tracking-[0.2em] font-bold text-slate-400">
@@ -270,7 +270,7 @@ export default async function EnServicesPage() {
               </p>
             </div>
             <div className="bg-bg-elevated border border-slate-600 rounded-2xl p-8 shadow-[0_8px_24px_rgba(15,23,42,0.3)] hover:border-brand-primary/50 hover:shadow-[0_20px_60px_rgba(0, 181, 241,0.2)] hover:-translate-y-1 transition-all duration-300 group">
-              <span className="text-5xl font-black font-serif block mb-3 text-text-primary group-hover:text-brand-primary tracking-tight">
+              <span className="text-6xl font-heading block mb-3 text-text-primary group-hover:text-brand-primary tracking-wide">
                 500+
               </span>
               <p className="text-xs uppercase tracking-[0.2em] font-bold text-slate-400">
@@ -278,7 +278,7 @@ export default async function EnServicesPage() {
               </p>
             </div>
             <div className="bg-bg-elevated border border-slate-600 rounded-2xl p-8 shadow-[0_8px_24px_rgba(15,23,42,0.3)] hover:border-brand-primary/50 hover:shadow-[0_20px_60px_rgba(0, 181, 241,0.2)] hover:-translate-y-1 transition-all duration-300 group">
-              <span className="text-5xl font-black font-serif block mb-3 text-text-primary group-hover:text-brand-primary tracking-tight">
+              <span className="text-6xl font-heading block mb-3 text-text-primary group-hover:text-brand-primary tracking-wide">
                 95+
               </span>
               <p className="text-xs uppercase tracking-[0.2em] font-bold text-slate-400">
@@ -298,7 +298,7 @@ export default async function EnServicesPage() {
               </span>
               <div className="absolute left-0 top-0 w-1 h-6 bg-brand-primary" />
             </div>
-            <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold font-sans text-text-primary leading-tight tracking-tight">
+            <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold font-heading text-text-primary leading-tight tracking-tight">
               {dictionary.services.page.sectionSubtitle}
             </h2>
             <p className="mt-6 text-lg md:text-xl text-slate-400 max-w-lg leading-relaxed mx-auto tracking-wide font-medium">
@@ -330,7 +330,7 @@ export default async function EnServicesPage() {
               </span>
               <div className="absolute left-0 top-0 w-1 h-6 bg-brand-primary" />
             </div>
-            <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold font-sans text-text-primary leading-tight tracking-tight">
+            <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold font-heading text-text-primary leading-tight tracking-tight">
               {dictionary.services.page.processTitle}
             </h2>
             <p className="mt-6 text-lg md:text-xl text-slate-400 max-w-lg leading-relaxed mx-auto tracking-wide font-medium">
@@ -367,7 +367,7 @@ export default async function EnServicesPage() {
                 key={index}
                 className="bg-bg-elevated border border-slate-600 rounded-2xl p-8 shadow-[0_8px_24px_rgba(15,23,42,0.3)] hover:border-brand-primary/50 hover:shadow-[0_20px_60px_rgba(0, 181, 241,0.2)] hover:-translate-y-1 transition-all duration-300 group"
               >
-                <span className="text-6xl font-black font-serif block mb-4 text-brand-primary/30 group-hover:text-brand-primary/50 transition-colors tracking-tight">
+                <span className="text-7xl font-heading block mb-4 text-brand-primary/30 group-hover:text-brand-primary/50 transition-colors tracking-wide">
                   {item.step}
                 </span>
                 <h3 className="text-xl font-bold text-text-primary mb-3 tracking-tight">
@@ -392,7 +392,7 @@ export default async function EnServicesPage() {
               </span>
               <div className="absolute left-0 top-0 w-1 h-6 bg-brand-primary" />
             </div>
-            <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold font-sans text-text-primary leading-tight tracking-tight">
+            <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold font-heading text-text-primary leading-tight tracking-tight">
               How much does a{" "}
               <span className="text-brand-primary italic">website cost</span>?
             </h2>

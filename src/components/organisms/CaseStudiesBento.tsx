@@ -211,12 +211,12 @@ export default function CaseStudiesBento({ content }: CaseStudiesBentoProps) {
                   >
                     {cs.eyebrow}
                   </span>
-                  <h3 className="text-xl font-bold text-white mt-1 leading-snug">
+                  <h3 className="text-xl md:text-2xl text-white mt-1 leading-snug tracking-wider">
                     {cs.title}
                   </h3>
                 </div>
 
-                <p className="text-slate-400 text-sm leading-relaxed">
+                <p className="text-slate-300 text-sm leading-relaxed font-normal">
                   {cs.description}
                 </p>
 

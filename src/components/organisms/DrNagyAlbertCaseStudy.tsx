@@ -121,7 +121,7 @@ export default function DrNagyAlbertCaseStudy() {
               <div className="absolute left-0 top-0 w-1 h-6 bg-[#00B5F1]" />
             </div>
 
-            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold font-sans text-text-primary leading-tight tracking-tight mb-6">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold font-heading text-text-primary leading-tight tracking-tight mb-6">
               Dr. Nagy Albert{" "}
               <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6] italic">
                 Neurológus
@@ -173,7 +173,7 @@ export default function DrNagyAlbertCaseStudy() {
                 </span>
                 <div className="absolute left-0 top-0 w-1 h-6 bg-[#00B5F1]" />
               </div>
-              <h2 className="text-3xl sm:text-4xl font-bold font-sans text-text-primary leading-tight tracking-tight mb-6">
+              <h2 className="text-3xl sm:text-4xl font-bold font-heading text-text-primary leading-tight tracking-tight mb-6">
                 Modern{""}
                 <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6] italic">
                   egészségügyi
@@ -220,7 +220,7 @@ export default function DrNagyAlbertCaseStudy() {
               </span>
               <div className="absolute left-0 top-0 w-1 h-6 bg-[#00B5F1]" />
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-sans text-text-primary leading-tight tracking-tight mb-6">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-heading text-text-primary leading-tight tracking-tight mb-6">
               Amit{" "}
               <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6] italic">
                 csináltam
@@ -283,7 +283,7 @@ export default function DrNagyAlbertCaseStudy() {
               </span>
               <div className="absolute left-0 top-0 w-1 h-6 bg-[#00B5F1]" />
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-sans text-text-primary leading-tight tracking-tight mb-6">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-heading text-text-primary leading-tight tracking-tight mb-6">
               Vizuális{" "}
               <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6] italic">
                 evidenciák
@@ -337,7 +337,7 @@ export default function DrNagyAlbertCaseStudy() {
                 </span>
                 <div className="absolute left-0 top-0 w-1 h-6 bg-[#00B5F1]" />
               </div>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-sans text-text-primary leading-tight tracking-tight mb-6">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-heading text-text-primary leading-tight tracking-tight mb-6">
                 Amit{" "}
                 <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6] italic">
                   elértünk
@@ -376,7 +376,7 @@ export default function DrNagyAlbertCaseStudy() {
             viewport={{ once: true, margin: "-50px" }}
             className="space-y-8"
           >
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold font-sans text-text-primary leading-tight tracking-tight">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold font-heading text-text-primary leading-tight tracking-tight">
               Készen állsz a{" "}
               <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6] italic">
                 következő

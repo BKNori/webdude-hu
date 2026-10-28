@@ -139,7 +139,7 @@ function AccordionItem({ item, index, isOpen, onToggle }: AccordionItemProps) {
           >
             <div className="px-6 pb-6 pt-1">
               <div className="border-t border-white/6 pt-4">
-                <p className="text-slate-400 text-sm leading-relaxed">
+                <p className="text-slate-300 text-sm leading-relaxed font-normal">
                   {item.answer}
                 </p>
               </div>

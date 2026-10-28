@@ -209,9 +209,10 @@ export default function HeaderNavClient({
 
   const renderDropdownContent = (subItems: SubItem[], itemName: string) => {
     if (itemName === "Szolgáltatások") {
-      const col1Categories = ["Webfejlesztés"];
-      const col2Categories = ["SEO & Marketing"];
-      const col3Categories = ["Design & AI"];
+      const col1Categories = ["Web", "Webshop"];
+      const col2Categories = ["SEO", "Marketing"];
+      const col3Categories = ["Design"];
+      const col4Categories = ["Karbantartás", "AI"];
 
       const col1Items = subItems.filter((s) =>
         col1Categories.includes(s.category || "")
@@ -222,15 +223,19 @@ export default function HeaderNavClient({
       const col3Items = subItems.filter((s) =>
         col3Categories.includes(s.category || "")
       );
+      const col4Items = subItems.filter((s) =>
+        col4Categories.includes(s.category || "")
+      );
 
       return (
-        <div className="rounded-2xl border border-slate-800/60 bg-slate-950/70 p-6 shadow-2xl backdrop-blur-xl">
-          <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
-            {/* 1. Os.col: Webfejlesztés */}
-            <div className="flex flex-col gap-1">
-              <div className="px-2 pb-2 mb-2 border-b border-slate-800/60">
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
-                  Webfejlesztés
+        <div className="rounded-2xl border border-slate-800/60 bg-slate-950/70 p-5 shadow-2xl backdrop-blur-xl sm:p-6">
+          <div className="grid grid-cols-2 gap-2 sm:gap-3 lg:grid-cols-4">
+            {/* 1. Os.col: Web & Webshop */}
+            <div className="flex flex-col gap-2.5">
+              <div className="flex items-center gap-2 pb-2.5 border-b border-slate-800/60">
+                <span className="flex h-2 w-2 rounded-full bg-[#00B5F1] shadow-[0_0_8px_rgba(0,181,241,0.5)]" />
+                <span className="text-[11px] font-bold uppercase tracking-widest text-slate-500">
+                  Web & Webshop
                 </span>
               </div>
               {col1Items.map((sub, idx) => {
@@ -245,13 +250,25 @@ export default function HeaderNavClient({
                     <Link
                       href={sub.href}
                       aria-current={isCurrent ? "page" : undefined}
-                      className={`block px-3 py-2 text-sm transition-all duration-200 outline-none ${FOCUS_RING} ${
-                        isCurrent
-                          ? "text-[#00B5F1] font-semibold"
-                          : "text-slate-300 hover:text-[#00B5F1] hover:bg-[#00B5F1]/5"
-                      }`}
+                      className={`flex items-center gap-3 rounded-xl border p-3 text-sm transition-all duration-300 outline-none ${FOCUS_RING} ${isCurrent ? "border-brand-primary/40 bg-brand-primary/5 shadow-[0_0_20px_rgba(0,181,241,0.12)]" : "border-brand-primary/10 bg-gradient-to-b from-slate-900/50 to-slate-900/70 hover:border-brand-primary/30 hover:bg-gradient-to-b hover:from-slate-900/70 hover:to-slate-900/80 hover:shadow-[0_0_14px_rgba(0,181,241,0.08)]"}`}
+                      style={{ animation: isCurrent ? "neon-flicker 3s ease-in-out infinite" : "neon-flicker 7s ease-in-out infinite" }}
                     >
-                      {sub.name}
+                      {sub.icon && (
+                        <sub.icon className={`w-4 h-4 shrink-0 ${isCurrent ? "text-[#00B5F1] glow-cyan" : "text-[#00B5F1]/60"}`} />
+                      )}
+                      <div className="min-w-0 flex-1">
+                        <span className={`block font-medium leading-tight truncate ${isCurrent ? "text-[#00B5F1]" : "text-slate-200"}`}>
+                          {sub.name}
+                        </span>
+                        {sub.description && (
+                          <span className="block truncate text-[11px] text-slate-500">
+                            {sub.description}
+                          </span>
+                        )}
+                      </div>
+                      {isCurrent && (
+                        <span className="flex h-1.5 w-1.5 shrink-0 rounded-full bg-[#00B5F1] shadow-[0_0_6px_rgba(0,181,241,0.6)]" />
+                      )}
                     </Link>
                   </motion.div>
                 );
@@ -259,9 +276,10 @@ export default function HeaderNavClient({
             </div>
 
             {/* 2. Os.col: SEO & Marketing */}
-            <div className="flex flex-col gap-1">
-              <div className="px-2 pb-2 mb-2 border-b border-slate-800/60">
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
+            <div className="flex flex-col gap-2.5">
+              <div className="flex items-center gap-2 pb-2.5 border-b border-slate-800/60">
+                <span className="flex h-2 w-2 rounded-full bg-[#00B5F1] shadow-[0_0_8px_rgba(0,181,241,0.5)]" />
+                <span className="text-[11px] font-bold uppercase tracking-widest text-slate-500">
                   SEO & Marketing
                 </span>
               </div>
@@ -277,24 +295,37 @@ export default function HeaderNavClient({
                     <Link
                       href={sub.href}
                       aria-current={isCurrent ? "page" : undefined}
-                      className={`block px-3 py-2 text-sm transition-all duration-200 outline-none ${FOCUS_RING} ${
-                        isCurrent
-                          ? "text-[#7C3AED] font-semibold"
-                          : "text-slate-300 hover:text-[#7C3AED] hover:bg-[#7C3AED]/5"
-                      }`}
+                      className={`flex items-center gap-3 rounded-xl border p-3 text-sm transition-all duration-300 outline-none ${FOCUS_RING} ${isCurrent ? "border-brand-primary/40 bg-brand-primary/5 shadow-[0_0_20px_rgba(0,181,241,0.12)]" : "border-brand-primary/10 bg-gradient-to-b from-slate-900/50 to-slate-900/70 hover:border-brand-primary/30 hover:bg-gradient-to-b hover:from-slate-900/70 hover:to-slate-900/80 hover:shadow-[0_0_14px_rgba(0,181,241,0.08)]"}`}
+                      style={{ animation: isCurrent ? "neon-flicker 3s ease-in-out infinite" : "neon-flicker 7s ease-in-out infinite" }}
                     >
-                      {sub.name}
+                      {sub.icon && (
+                        <sub.icon className={`w-4 h-4 shrink-0 ${isCurrent ? "text-[#00B5F1] glow-cyan" : "text-[#00B5F1]/60"}`} />
+                      )}
+                      <div className="min-w-0 flex-1">
+                        <span className={`block font-medium leading-tight truncate ${isCurrent ? "text-[#00B5F1]" : "text-slate-200"}`}>
+                          {sub.name}
+                        </span>
+                        {sub.description && (
+                          <span className="block truncate text-[11px] text-slate-500">
+                            {sub.description}
+                          </span>
+                        )}
+                      </div>
+                      {isCurrent && (
+                        <span className="flex h-1.5 w-1.5 shrink-0 rounded-full bg-[#00B5F1] shadow-[0_0_6px_rgba(0,181,241,0.6)]" />
+                      )}
                     </Link>
                   </motion.div>
                 );
               })}
             </div>
 
-            {/* 3. Os.col: Design & AI */}
-            <div className="flex flex-col gap-1">
-              <div className="px-2 pb-2 mb-2 border-b border-slate-800/60">
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
-                  Design & AI
+            {/* 3. Os.col: Design & Karbantartás */}
+            <div className="flex flex-col gap-2.5">
+              <div className="flex items-center gap-2 pb-2.5 border-b border-slate-800/60">
+                <span className="flex h-2 w-2 rounded-full bg-[#7C3AED] shadow-[0_0_8px_rgba(124,58,237,0.5)]" />
+                <span className="text-[11px] font-bold uppercase tracking-widest text-slate-500">
+                  Design & Karbantartás
                 </span>
               </div>
               {col3Items.map((sub, idx) => {
@@ -309,13 +340,70 @@ export default function HeaderNavClient({
                     <Link
                       href={sub.href}
                       aria-current={isCurrent ? "page" : undefined}
-                      className={`block px-3 py-2 text-sm transition-all duration-200 outline-none ${FOCUS_RING} ${
-                        isCurrent
-                          ? "text-[#06b6d4] font-semibold"
-                          : "text-slate-300 hover:text-[#06b6d4] hover:bg-[#06b6d4]/5"
-                      }`}
+                      className={`flex items-center gap-3 rounded-xl border p-3 text-sm transition-all duration-300 outline-none ${FOCUS_RING} ${isCurrent ? "border-brand-secondary/40 bg-brand-secondary/5 shadow-[0_0_20px_rgba(124,58,237,0.12)]" : "border-brand-secondary/10 bg-gradient-to-b from-slate-900/50 to-slate-900/70 hover:border-brand-secondary/30 hover:bg-gradient-to-b hover:from-slate-900/70 hover:to-slate-900/80 hover:shadow-[0_0_14px_rgba(124,58,237,0.08)]"}`}
+                      style={{ animation: isCurrent ? "neon-flicker 3s ease-in-out infinite" : "neon-flicker 7s ease-in-out infinite" }}
                     >
-                      {sub.name}
+                      {sub.icon && (
+                        <sub.icon className={`w-4 h-4 shrink-0 ${isCurrent ? "text-[#7C3AED] glow-violet" : "text-[#7C3AED]/60"}`} />
+                      )}
+                      <div className="min-w-0 flex-1">
+                        <span className={`block font-medium leading-tight truncate ${isCurrent ? "text-[#7C3AED]" : "text-slate-200"}`}>
+                          {sub.name}
+                        </span>
+                        {sub.description && (
+                          <span className="block truncate text-[11px] text-slate-500">
+                            {sub.description}
+                          </span>
+                        )}
+                      </div>
+                      {isCurrent && (
+                        <span className="flex h-1.5 w-1.5 shrink-0 rounded-full bg-[#7C3AED] shadow-[0_0_6px_rgba(124,58,237,0.6)]" />
+                      )}
+                    </Link>
+                  </motion.div>
+                );
+              })}
+            </div>
+
+            {/* 4. Os.col: Karbantartás & AI */}
+            <div className="flex flex-col gap-2.5">
+              <div className="flex items-center gap-2 pb-2.5 border-b border-slate-800/60">
+                <span className="flex h-2 w-2 rounded-full bg-[#5B21B6] shadow-[0_0_8px_rgba(91,33,182,0.5)]" />
+                <span className="text-[11px] font-bold uppercase tracking-widest text-slate-500">
+                  Karbantartás & AI
+                </span>
+              </div>
+              {col4Items.map((sub, idx) => {
+                const isCurrent = pathname === sub.href;
+                return (
+                  <motion.div
+                    key={sub.name}
+                    initial={{ opacity: 0, y: 5 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.2, delay: 0.18 + idx * 0.06 }}
+                  >
+                    <Link
+                      href={sub.href}
+                      aria-current={isCurrent ? "page" : undefined}
+                      className={`flex items-center gap-3 rounded-xl border p-3 text-sm transition-all duration-300 outline-none ${FOCUS_RING} ${isCurrent ? "border-brand-primary/40 bg-brand-primary/5 shadow-[0_0_20px_rgba(0,181,241,0.12)]" : "border-brand-primary/10 bg-gradient-to-b from-slate-900/50 to-slate-900/70 hover:border-brand-primary/30 hover:bg-gradient-to-b hover:from-slate-900/70 hover:to-slate-900/80 hover:shadow-[0_0_14px_rgba(0,181,241,0.08)]"}`}
+                      style={{ animation: isCurrent ? "neon-flicker 3s ease-in-out infinite" : "neon-flicker 7s ease-in-out infinite" }}
+                    >
+                      {sub.icon && (
+                        <sub.icon className={`w-4 h-4 shrink-0 ${isCurrent ? "text-[#00B5F1] glow-cyan" : "text-[#00B5F1]/60"}`} />
+                      )}
+                      <div className="min-w-0 flex-1">
+                        <span className={`block font-medium leading-tight truncate ${isCurrent ? "text-[#00B5F1]" : "text-slate-200"}`}>
+                          {sub.name}
+                        </span>
+                        {sub.description && (
+                          <span className="block truncate text-[11px] text-slate-500">
+                            {sub.description}
+                          </span>
+                        )}
+                      </div>
+                      {isCurrent && (
+                        <span className="flex h-1.5 w-1.5 shrink-0 rounded-full bg-[#00B5F1] shadow-[0_0_6px_rgba(0,181,241,0.6)]" />
+                      )}
                     </Link>
                   </motion.div>
                 );

@@ -1,20 +1,24 @@
-import React from "react";
-import { Manrope } from "next/font/google";
+import { Bebas_Neue, Plus_Jakarta_Sans } from "next/font/google";
 import { MotionConfig } from "motion/react";
 import PageWrapper from "../components/layout/PageWrapper";
 import Script from "next/script";
 import { getClarityScript } from "@/lib/clarity";
 import { getDictionary } from "@/lib/dictionary";
-// import AuroraBackground removed for clean background
 
 import "./globals.css";
 
-const manrope = Manrope({
+const bebasNeue = Bebas_Neue({
+  weight: "400",
   subsets: ["latin", "latin-ext"],
+  variable: "--font-heading",
   display: "swap",
+});
+
+const plusJakartaSans = Plus_Jakarta_Sans({
+  weight: ["400", "500", "600"],
+  subsets: ["latin", "latin-ext"],
   variable: "--font-sans",
-  weight: ["400", "500", "600", "700", "800"],
-  preload: true,
+  display: "swap",
 });
 
 export const metadata = {
@@ -143,7 +147,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
             )}
         </head>
         <body
-          className={`${manrope.className} antialiased min-h-screen max-w-[100vw] relative bg-transparent overflow-x-hidden touch-action-pan-y`}
+          className={`${bebasNeue.variable} ${plusJakartaSans.variable} antialiased min-h-screen max-w-[100vw] relative bg-transparent overflow-x-hidden touch-action-pan-y`}
         >
           {/* Skip link for accessibility */}
           <a

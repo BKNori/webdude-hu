@@ -221,11 +221,11 @@ export default function WhyChooseMeSection({ content }: WhyChooseMeProps) {
                     </div>
                   </div>
 
-                  <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-brand-primary transition-colors">
+                  <h3 className="text-2xl text-white mb-4 tracking-wider group-hover:text-cyan-300 transition-colors">
                     {advantage.title}
                   </h3>
 
-                  <p className="text-slate-400 text-sm leading-relaxed grow">
+                  <p className="text-slate-300 text-sm leading-relaxed grow font-normal">
                     {advantage.description}
                   </p>
                 </div>
@@ -244,7 +244,7 @@ export default function WhyChooseMeSection({ content }: WhyChooseMeProps) {
         >
           <div className="absolute inset-0 bg-linear-to-r from-brand-primary/5 to-brand-secondary/5" />
           <div className="relative z-10">
-            <h3 className="text-3xl md:text-4xl font-bold text-white text-center mb-12">
+            <h3 className="text-3xl md:text-4xl text-white text-center mb-12 tracking-wider">
               {content.benefitsTitle.prefix}
               <span className="text-transparent bg-clip-text bg-linear-to-r from-brand-primary to-brand-secondary">
                 {content.benefitsTitle.highlight}
@@ -264,10 +264,10 @@ export default function WhyChooseMeSection({ content }: WhyChooseMeProps) {
                   <div className="w-16 h-16 rounded-2xl bg-brand-primary/10 border border-brand-primary/20 flex items-center justify-center text-brand-primary mx-auto mb-4">
                     <benefit.icon className="w-8 h-8" aria-hidden="true" />
                   </div>
-                  <h4 className="text-lg font-bold text-white mb-2">
+                  <h4 className="text-xl text-white mb-2 tracking-wider">
                     {benefit.title}
                   </h4>
-                  <p className="text-slate-400 text-sm leading-relaxed">
+                  <p className="text-slate-300 text-sm leading-relaxed font-normal">
                     {benefit.description}
                   </p>
                 </motion.div>

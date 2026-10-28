@@ -302,7 +302,7 @@ export default async function AddonsPage() {
             <Sparkles className="w-3.5 h-3.5" />
             FIX ÁRAS KIEGÉSZÍTŐK
           </span>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-tight mb-8 font-sans">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black font-heading text-white tracking-tight leading-tight mb-8">
             Azonnali Kiegészítő Szolgáltatások{" "}
             <br className="hidden md:inline" />
             <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1]/400 to-[#5B21B6]">

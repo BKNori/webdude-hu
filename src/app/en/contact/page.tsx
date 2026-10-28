@@ -33,12 +33,12 @@ export default function EnContactPage() {
                 </span>
                 <div className="absolute left-0 top-0 w-1 h-6 bg-linear-to-b from-[#00B5F1] to-[#5B21B6]" />
               </div>
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold font-sans text-white leading-tight tracking-tight mb-6">
+              <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold font-heading text-white leading-tight tracking-tight mb-6">
                 Let&apos;s Start Your{" "}
                 <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6] italic pr-4">
                   Project!
                 </span>
-              </h1>
+              </h2>
               <p className="text-lg md:text-xl text-slate-400 max-w-lg leading-relaxed tracking-wide font-medium">
                 Choose a contact method and let&apos;s discuss your ideas
                 directly with me!
@@ -46,9 +46,9 @@ export default function EnContactPage() {
             </div>
 
             <div className="space-y-6">
-              <h2 className="text-2xl font-bold text-white mb-4">
+              <h3 className="text-2xl font-bold font-heading text-white mb-4">
                 Direct Contact Channels
-              </h2>
+              </h3>
               <div className="bg-slate-900/80 backdrop-blur-md border border-slate-800 rounded-2xl p-6 flex items-center gap-6 group hover:border-[#00B5F1]/50 hover:shadow-[0_10px_30px_rgba(0,181,241,0.15)] transition-all duration-300">
                 <div className="w-12 h-12 rounded-xl bg-sky-950/80 border border-sky-500/30 flex items-center justify-center text-[#00B5F1] group-hover:scale-110 transition-transform">
                   <Mail className="w-6 h-6" />

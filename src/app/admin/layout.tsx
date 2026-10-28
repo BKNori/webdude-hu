@@ -133,6 +133,11 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
       icon: <FileText className="w-4 h-4" />,
     },
     {
+      name: "Hírek",
+      href: "/admin/hirek",
+      icon: <FileText className="w-4 h-4" />,
+    },
+    {
       name: "Statisztikák",
       href: "/admin/dashboard",
       icon: <BarChart3 className="w-4 h-4" />,

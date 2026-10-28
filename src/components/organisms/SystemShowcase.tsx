@@ -109,14 +109,14 @@ export default function SystemShowcase({ content }: SystemShowcaseProps) {
               {content.eyebrow}
             </span>
           </div>
-          <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-white mb-4 leading-tight">
+          <h2 className="text-3xl md:text-5xl text-white mb-4 leading-tight">
             {content.title.prefix}
             <span className="text-transparent bg-clip-text bg-linear-to-r from-brand-primary to-brand-secondary">
               {content.title.highlight}
             </span>
             {content.title.suffix}
           </h2>
-          <p className="text-slate-400 text-lg max-w-2xl mx-auto leading-relaxed">
+          <p className="text-slate-300 text-lg max-w-2xl mx-auto leading-relaxed font-normal">
             {content.subtitle}
           </p>
         </motion.div>
@@ -213,13 +213,10 @@ export default function SystemShowcase({ content }: SystemShowcaseProps) {
                         "linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%)",
                     }}
                   >
-                    <h3
-                      className="text-lg font-bold mb-3"
-                      style={{ color: step.color }}
-                    >
+                    <h3 className="text-xl md:text-2xl text-white mb-3 tracking-wider">
                       {step.title}
                     </h3>
-                    <p className="text-slate-400 text-sm leading-relaxed">
+                    <p className="text-slate-300 text-sm leading-relaxed font-normal">
                       {step.description}
                     </p>
                   </motion.div>

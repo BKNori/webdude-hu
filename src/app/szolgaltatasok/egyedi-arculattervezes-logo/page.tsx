@@ -175,7 +175,7 @@ export default async function BrandingPage() {
           <div className="max-w-6xl mx-auto px-6">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
               <div className="glass-card p-8 bg-transparent border border-bg-elevated rounded-2xl hover:border-[#00B5F1] transition-all duration-500 group">
-                <span className="text-5xl font-black font-serif block mb-3 text-text-primary group-hover:text-[#00B5F1]">
+                <span className="text-6xl font-heading block mb-3 text-text-primary group-hover:text-[#00B5F1]">
                   26+
                 </span>
                 <p className="text-xs uppercase tracking-widest font-bold text-slate-400">
@@ -183,7 +183,7 @@ export default async function BrandingPage() {
                 </p>
               </div>
               <div className="glass-card p-8 bg-transparent border border-bg-elevated rounded-2xl hover:border-[#00B5F1] transition-all duration-500 group">
-                <span className="text-5xl font-black font-serif block mb-3 text-text-primary group-hover:text-[#00B5F1]">
+                <span className="text-6xl font-heading block mb-3 text-text-primary group-hover:text-[#00B5F1]">
                   150+
                 </span>
                 <p className="text-xs uppercase tracking-widest font-bold text-slate-400">
@@ -191,7 +191,7 @@ export default async function BrandingPage() {
                 </p>
               </div>
               <div className="glass-card p-8 bg-transparent border border-bg-elevated rounded-2xl hover:border-[#00B5F1] transition-all duration-500 group">
-                <span className="text-5xl font-black font-serif block mb-3 text-text-primary group-hover:text-[#00B5F1]">
+                <span className="text-6xl font-heading block mb-3 text-text-primary group-hover:text-[#00B5F1]">
                   100%
                 </span>
                 <p className="text-xs uppercase tracking-widest font-bold text-slate-400">
@@ -199,7 +199,7 @@ export default async function BrandingPage() {
                 </p>
               </div>
               <div className="glass-card p-8 bg-transparent border border-bg-elevated rounded-2xl hover:border-[#00B5F1] transition-all duration-500 group">
-                <span className="text-5xl font-black font-serif block mb-3 text-text-primary group-hover:text-[#00B5F1]">
+                <span className="text-6xl font-heading block mb-3 text-text-primary group-hover:text-[#00B5F1]">
                   95+
                 </span>
                 <p className="text-xs uppercase tracking-widest font-bold text-slate-400">
@@ -527,7 +527,7 @@ export default async function BrandingPage() {
             <section className="mt-24 py-40 text-center bg-transparent border-t border-slate-700/60 relative overflow-hidden">
               <div className="max-w-6xl mx-auto px-6 relative z-10">
                 <div className="max-w-3xl mx-auto space-y-10">
-                  <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold font-sans text-text-primary leading-tight tracking-tight">
+                  <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold font-heading text-text-primary leading-tight tracking-tight">
                     Készen állsz a{" "}
                     <span className="text-[#00B5F1] italic">következő</span>{" "}
                     szintre?

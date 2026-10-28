@@ -23,7 +23,7 @@ export default function PortfolioHero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-5xl sm:text-6xl md:text-8xl font-black font-sans text-white leading-tight tracking-tight"
+          className="text-5xl sm:text-6xl md:text-8xl font-black font-heading text-white leading-tight tracking-tight"
         >
           Eredmények, nem csak{" "}
           <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6] italic pr-4">

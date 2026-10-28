@@ -90,7 +90,7 @@ export default function Hero({
               <div className="absolute left-0 top-0 w-1 h-6 bg-[#00B5F1]" />
             </div>
 
-            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold font-sans leading-tight tracking-tight text-text-primary text-balance">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold font-heading leading-tight tracking-tight text-text-primary">
               {title}
             </h1>
 

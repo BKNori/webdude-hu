@@ -56,7 +56,7 @@ export default function AboutContentClient() {
               <Sparkles className="w-3.5 h-3.5 text-[#00B5F1]" />
               26 Év Tapasztalat & Digitális Kézművesség
             </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold font-sans text-white leading-tight tracking-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold font-heading text-white leading-tight tracking-tight">
               Nem egy ügynökséggel, hanem{" "}
               <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#a855f7]">
                 velem dolgozol
@@ -114,7 +114,7 @@ export default function AboutContentClient() {
               </span>
               <div className="absolute left-0 top-0 w-1 h-6 bg-linear-to-b from-[#00B5F1] to-[#5B21B6]" />
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-sans text-white leading-tight tracking-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-heading text-white leading-tight tracking-tight">
               A közvetlen partnerség ereje
             </h2>
             <p className="text-lg text-slate-300 leading-relaxed">

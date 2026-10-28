@@ -32,7 +32,7 @@ export default function PricingTable({
       {(title || description) && (
         <div className="text-center mb-16">
           {title && (
-            <h2 className="text-4xl md:text-5xl font-serif font-black text-text-primary mb-4">
+            <h2 className="text-4xl md:text-5xl font-heading text-text-primary mb-4">
               {title}
             </h2>
           )}

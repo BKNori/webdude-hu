@@ -620,3 +620,4 @@ Az ügynök az alábbi esetekben **automatikusan frissíti** ezt a fájlt:
 ---
 
 _ARCHITECTURE.md v1.0 — webdude.hu | Karbantartó: Norbi (WebDude) | Szinkronban tartandó: AGENTS.md, DESIGN_SYSTEM.md, CHANGELOG.md, ROADMAP.md_
+

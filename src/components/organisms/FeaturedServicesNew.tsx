@@ -296,16 +296,16 @@ export default function FeaturedServicesNew({
                     </div>
 
                     {/* Cím és leírás */}
-                    <h3 className="text-xl md:text-2xl font-bold text-white mb-3 group-hover:text-white transition-colors">
+                    <h3 className="text-xl md:text-2xl text-white mb-3 tracking-wider">
                       {service.title}
                     </h3>
-                    <p className="text-slate-400 text-sm leading-relaxed mb-4 flex-1">
+                    <p className="text-slate-300 text-sm leading-relaxed mb-4 flex-1 font-normal">
                       {service.description}
                     </p>
 
                     {/* AEO Mikro-GYIK blokk — Direct Answer ChatGPT/Perplexity számára */}
                     <div
-                      className="mb-4 px-4 py-3 rounded-xl border-l-2 text-xs text-slate-400 leading-relaxed italic"
+                      className="mb-4 px-4 py-3 rounded-xl border-l-2 text-xs text-slate-300 leading-relaxed italic font-normal"
                       style={{
                         borderColor: `${service.color}50`,
                         background: `${service.color}06`,
@@ -414,14 +414,14 @@ export default function FeaturedServicesNew({
               >
                 {secondaryService.eyebrow}
               </span>
-              <h3 className="text-lg font-bold text-white mb-1">
+              <h3 className="text-xl md:text-2xl text-white mb-1 tracking-wider">
                 {secondaryService.title}
               </h3>
-              <p className="text-slate-400 text-sm leading-relaxed mb-2">
+              <p className="text-slate-300 text-sm leading-relaxed mb-2 font-normal">
                 {secondaryService.description}
               </p>
               {/* AEO Mikro-GYIK */}
-              <p className="text-xs text-slate-400 italic">
+              <p className="text-xs text-slate-300 italic font-normal">
                 <span
                   className="font-semibold not-italic"
                   style={{ color: `${secondaryService.color}80` }}

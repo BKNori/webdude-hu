@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Hero from "@/components/Hero";
 import BlogGrid from "@/components/molecules/BlogGrid";
-import { getAllPosts } from "@/lib/mdx";
+import { getBlogPostsFromFirestore } from "@/app/actions/blogPosts";
 
 export const metadata: Metadata = {
   title: "Szakmai Hírek & Insightok – WebDude Blog",
@@ -33,22 +33,22 @@ function buildItemList(posts: BlogPostSchema[]) {
 }
 
 export default async function HirekPage() {
-  const posts = getAllPosts();
+  const posts = await getBlogPostsFromFirestore();
   const visible = posts.filter((p) => p.noindex !== true);
 
   // Konvertálás BlogGrid kompatibilis típusra
   const blogPosts = visible.map((post) => ({
     slug: post.slug,
     title: post.title,
-    excerpt: post.excerpt || "",
+    excerpt: post.excerpt,
     date: post.date,
-    category: "Fejlesztés", // Default érték, mivel a BlogPost típusban nincs category mező
-    coverImage: post.image,
-    readingTime: "3 perc", // Default érték, mivel a BlogPost típusban nincs readingTime mező
+    category: post.category,
+    coverImage: post.coverImage,
+    readingTime: post.readingTime,
   }));
 
   return (
-    <div className="min-h-screen bg-transparent text-text-primary">
+    <div className="min-h-screen bg-[#020617] text-[#e2e8f0]">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -79,7 +79,7 @@ export default async function HirekPage() {
 
         {blogPosts.length === 0 && (
           <div className="text-center py-20">
-            <p className="text-2xl font-serif opacity-50 text-slate-400">
+            <p className="text-2xl font-sans opacity-50 text-slate-400">
               Jelenleg nincs bejegyzés.
             </p>
           </div>

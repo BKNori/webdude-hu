@@ -79,10 +79,10 @@ export default function AnimatedSystemFlow({
                   )}
                 </div>
                 <div className="space-y-1">
-                  <h4 className="text-base font-bold text-text-primary">
+                  <h4 className="text-xl text-white tracking-wider">
                     {step.title}
                   </h4>
-                  <p className="text-xs text-slate-400 leading-relaxed">
+                  <p className="text-xs text-slate-300 leading-relaxed font-normal">
                     {step.label}
                   </p>
                 </div>
