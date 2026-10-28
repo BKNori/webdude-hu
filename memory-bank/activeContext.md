@@ -2,6 +2,18 @@
 
 > **AI DIREKTÍVA:** Ez a fájl a rendszer "élő" memóriája. A 03-workflow.md 5. lépése alapján KÖTELEZŐ ezt a fájlt frissítened minden feladat befejezésekor, vagy mielőtt átadod a vezérlést a felhasználónak (Norbinak). Szigorúan tilos új feladatba kezdened, ha az "Aktuális Munkaterület Állapota" szekcióban hibák vagy félbehagyott fájlok vannak!
 
+## Aktuális állapot — 2026-10-28, [7.36.1] Header Top Bar Auto-Hide & Glassmorphism Finomhangolás (LEZÁRVA)
+- **Top Bar elrejtés görgetéskor:** `HeaderNavClient.tsx` — `scrollY > 20` esetén a felső vékony Top Bar (`max-h-0 opacity-0 overflow-hidden border-transparent pointer-events-none`) zökkenőmentes animációval összecsukódik, és kizárólag a főmenü (Main Navbar) marad a viewport tetején fixen/ragadósan. `scrollY <= 20` esetén azonnal visszanyílik (`max-h-9 opacity-100`).
+- **Glassmorphism:** Le-görgetett állapotban a főmenü határozott prémium sötét üveghatást kap (`bg-slate-950/90 backdrop-blur-xl border-b border-slate-800/80 shadow-lg shadow-black/20`).
+- **Tipográfia & CLS:** Top Bar linkek az új `Plus Jakarta Sans` családot használják (`font-sans font-medium text-xs tracking-wide text-slate-400 hover:text-[#00B5F1]`). Zero CLS, a Mega Menü stabilan a főmenü aljához rögzítve mozog.
+- **QA:** `npx tsc --noEmit` (0 hiba), `npm run lint -- --max-warnings 0` (0 hiba). Git commit & `v7.36.1` tag létrehozva.
+
+## Aktuális állapot — 2026-10-28, [7.36.0] Prémium Tipográfiai Korrekció: Bebas Neue Anti-Faux-Bold & Plus Jakarta Sans Folyószöveg (LEZÁRVA)
+- **Bebas Neue Anti-Faux-Bold:** `globals.css` globálisan kikényszeríti a `font-weight: 400 !important;` szabályt a címsorokra (h1..h6), megszüntetve a böngésző szintetikus vastagítását és az ékezettorzulást.
+- **Tracking:** h1-h2 `letter-spacing: 0.03em;`, h3-h6 kártyacímek `letter-spacing: 0.06em;`. Kártyacímek fehér kontrasztja (`text-white`) és méretnövelése (`text-xl md:text-2xl`).
+- **Plus Jakarta Sans:** `layout.tsx` `--font-sans` betűtípusa `Plus_Jakarta_Sans` (400, 500, 600 súlyokkal) a vékony Poiret One helyett.
+- **QA:** `npx tsc --noEmit` (0 hiba), `npm run lint` (0 hiba), `npm run build` (0 hiba). Git commit & `v7.36.0` tag létrehozva.
+
 ## Aktuális állapot — 2026-10-08, [7.23.0] E2E Smoke Suite hiány-pótlás (Act mód, LEZÁRVA)
 
 - **Cél:** regressziós védelem a Zéró Fix Ár [7.21.0] + Portál értesítések [7.22.0] mély refaktor után. Az infra (Playwright config, `test:e2e`, `smoke-helpers.ts`, 5 meglévő spec) már kész és futott — a feladat **hiány-pótlás** volt, nem nulláról-építés.
