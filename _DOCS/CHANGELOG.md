@@ -1,5 +1,22 @@
 # Changelog
 
+## [7.36.1] — 2026-10-28 — HEADER TOP BAR SCROLL-HIDE & GLASSMORPHISM FINOMHANGOLÁS
+
+**1. TOP BAR DINAMIKUS ELREJTÉSE GÖRGETÉSKOR (`src/components/molecules/HeaderNavClient.tsx`):**
+- **Scroll-Aware viselkedés:** Amikor az oldal tetején állunk (`scrollY <= 20`), a legfelső vékony Top Bar sáv (`Termékek`, `Hírek`, `Ügyfélportál`) teljesen látható (`max-h-9 opacity-100 border-slate-800/50 bg-slate-950/80`).
+- **Finom átmenet:** Lefelé görgetéskor (`scrollY > 20`) a Top Bar zökkenőmentes animációval (`transition-all duration-300 ease-in-out`, `max-h-0 opacity-0 overflow-hidden border-transparent pointer-events-none`) összecsukódik, így nem vesz el értékes vertikális helyet a viewportból, és kizárólag a főmenü (Main Navbar) marad sticky/fix pozícióban a képernyő legtetején. Visszagörgetéskor a Top Bar azonnal és finoman visszanyílik.
+- **Zero CLS & Mega Menü stabilitás:** A Top Bar összecsukódása a fix fejlécen belül történik, nem tolja el az oldal fő tartalmát (`PageWrapper.tsx` `pt-20`), és a lenyíló Mega Menü pozíciója szigorúan a főmenü aljához igazodva mozog.
+
+**2. FŐMENÜ GLASSMORPHISM & TOP BAR TIPOGRÁFIA:**
+- **Sötét üveghatás (Scrolled State):** Görgetés közben a főmenü határozott, prémium glassmorphism stílust kap (`bg-slate-950/90 backdrop-blur-xl border-b border-slate-800/80 shadow-lg shadow-black/20`), míg az oldal tetején diszkrét, áttetszőbb (`bg-slate-950/60 border-slate-800/30`) háttérrel simul be a hero szekcióba.
+- **Top Bar linkek finomhangolása:** A linkek az új `Plus Jakarta Sans` betűtípust (`font-sans font-medium text-xs tracking-wide`) használják diszkrét `text-slate-400 hover:text-[#00B5F1] transition-colors` állapotokkal és aktív cián (`text-[#00B5F1]`) jelöléssel.
+
+**QA Validáció:**
+- `npx tsc --noEmit` → **TSC_EXIT=0**
+- `npm run lint -- --max-warnings 0` → **LINT_EXIT=0**
+
+---
+
 ## [7.36.0] — 2026-10-28 — PRÉMIUM TIPOGRÁFIAI KORREKCIÓ: BEBAS NEUE ANTI-FAUX-BOLD & PLUS JAKARTA SANS FOLYÓSZÖVEG
 
 **1. CÍMSOROK (H1–H6) TISZTÍTÁSA & FAUX-BOLD KIZÁRÁSA (`src/app/globals.css`):**

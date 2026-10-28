@@ -87,6 +87,7 @@ export default function HeaderNavClient({
     null
   );
   const [isScrolled, setIsScrolled] = useState(false);
+  const [showTopBar, setShowTopBar] = useState(true);
   const pathname = usePathname();
   const detectedLang = getLanguageFromPathname(pathname);
   const actualLang = currentLang || detectedLang;
@@ -174,10 +175,13 @@ export default function HeaderNavClient({
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      setIsScrolled(currentScrollY > 50);
+      setIsScrolled(currentScrollY > 20);
+      setShowTopBar(currentScrollY <= 20);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
+    // Initialize state on mount
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -460,10 +464,10 @@ export default function HeaderNavClient({
           duration: 0.4,
           ease: [0.22, 1, 0.36, 1],
         }}
-        className={`fixed top-0 left-0 w-full z-40 transition-all duration-500 backdrop-blur-xl bg-bg-base/80 border-b ${
+        className={`fixed top-0 left-0 w-full z-40 transition-all duration-300 backdrop-blur-xl border-b ${
           isScrolled
-            ? "border-slate-800/80 shadow-[0_8px_24px_rgba(0,0,0,0.4)]"
-            : "border-slate-800/30"
+            ? "bg-slate-950/90 border-slate-800/80 shadow-lg shadow-black/20"
+            : "bg-slate-950/60 border-slate-800/30"
         }`}
       >
         {/* ── TOP BAR ──────────────────────────────────────────────────
@@ -479,7 +483,13 @@ export default function HeaderNavClient({
 
               **Mobilon (`hidden lg:flex`) nem látszik** — a keskeny
               kijelzőn a hamburger menü tartalmazza ezeket is. */}
-        <div className="hidden lg:block border-b border-slate-800/40 bg-bg-base/60">
+        <div
+          className={`hidden lg:block transition-all duration-300 ease-in-out overflow-hidden border-b ${
+            showTopBar
+              ? "max-h-9 opacity-100 border-slate-800/50 bg-slate-950/80"
+              : "max-h-0 opacity-0 border-transparent bg-transparent pointer-events-none"
+          }`}
+        >
           <div className="max-w-7xl mx-auto px-4 md:px-6 h-9 flex items-center justify-end gap-6">
             {topBarItems.map((item) => {
               const Icon = item.icon;
@@ -489,10 +499,10 @@ export default function HeaderNavClient({
                   key={item.href}
                   href={item.href}
                   aria-current={isActive ? "page" : undefined}
-                  className={`group flex items-center gap-1.5 text-xs font-medium tracking-wide transition-colors duration-200 ${FOCUS_RING} ${
+                  className={`group flex items-center gap-1.5 text-xs font-sans font-medium tracking-wide transition-colors duration-200 ${FOCUS_RING} ${
                     isActive
-                      ? "text-brand-primary"
-                      : "text-slate-400 hover:text-brand-primary"
+                      ? "text-[#00B5F1]"
+                      : "text-slate-400 hover:text-[#00B5F1]"
                   }`}
                 >
                   <Icon className="w-3.5 h-3.5 opacity-70 group-hover:opacity-100 transition-opacity" />
