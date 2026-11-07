@@ -1,5 +1,83 @@
 # Changelog
 
+## [7.38.0] — 2026-11-07 — SÜRGŐSSÉGI SEO HELYREÁLLÍTÁS (4 FÁZIS)
+
+**1. PHASE 1: 301-ES ÁTIRÁNYÍTÁSOK & CANONICAL VÉDELEM (`next.config.js`):**
+- 301-es végleges átirányítások beállítása:
+  - `/wordpress-karbantartas` → `/szolgaltatasok/wordpress-karbantartas`
+  - `/seo` és `/seo-optimalizalas` → `/szolgaltatasok/seo-optimalizalas`
+  - `/webshop` → `/szolgaltatasok/webshop-fejlesztes`
+  - `/woocommerce-webshop` → `/szolgaltatasok/woocommerce-webshop-keszites`
+  - `/wordpress-fejlesztes` → `/szolgaltatasok/wordpress-fejlesztes`
+  - `/wordpress-weboldal-keszites` → `/szolgaltatasok/wordpress-weboldal-keszites`
+  - `/grafika` → `/szolgaltatasok/grafikai-tervezes`
+  - `/norbi` → `/szia-norbi-vagyok`
+  - `/szolgaltatasok/weboldal-keszites-kecskemet` → `/weboldal-keszites-kecskemet`
+- Canonical URL audit: `woocommerce-webshop-keszites/page.tsx` hiányzó `alternates.canonical` pótolva (`https://webdude.hu/szolgaltatasok/woocommerce-webshop-keszites`).
+
+**2. PHASE 2: ELVESZTETT 5 KULCSSZÓ REAKTIVÁLÁSA (Tartalom & Metadata):**
+- **"wordpress karbantartás" & "wordpress fejlesztő":**
+  - `src/app/szolgaltatasok/wordpress-fejlesztes/page.tsx` — Title frissítve ("WordPress fejlesztő és WordPress karbantartás | WebDude"), meta description kiegészítve. Új dedikált `<h2>WordPress fejlesztés és WordPress karbantartás</h2>` szekció beillesztve mindkét kulcsszó pontos előfordulásával és E-E-A-T horgonnyal. Service JSON-LD `alternateName` bővítve mindkét alakkal.
+  - `src/app/szolgaltatasok/wordpress-karbantartas/page.tsx` — DirectAnswerBlock és E-E-A-T megerősítve.
+- **"woocommerce webshop":**
+  - `src/app/szolgaltatasok/webshop-fejlesztes/page.tsx` — Title ("WooCommerce webshop készítés és fejlesztés | WebDude"), Hero cím és AEO Direct Answer blokk címsor és folyószöveg kiegészítve az explicit "WooCommerce webshop készítés és fejlesztés" kulcsszóval.
+  - `src/app/szolgaltatasok/woocommerce-webshop-keszites/page.tsx` — Title, Hero és Service JSON-LD megerősítve.
+- **"seo optimalizálás":**
+  - `src/app/szolgaltatasok/seo-optimalizalas/page.tsx` — Title frissítve pontos egyezéssel ("SEO optimalizálás — Technikai SEO és tartalomstratégia | WebDude"), Hero H1 és Direct Answer blokk H2 címsorban az explicit "SEO optimalizálás" kifejezés elhelyezve.
+- **"balog norbert" (Személyes Entitás Horgony):**
+  - `src/lib/structuredData.ts` (HU és EN Person séma): `alternateName: ["Balog Norbi", "WebDude"]` beállítva.
+  - `src/app/szia-norbi-vagyok/page.tsx` — Person JSON-LD-ben `alternateName: ["Balog Norbi", "WebDude"]`, látható szövegben és leírásban "Balog Norbert (WebDude) — 26 év grafikai és 16 év webfejlesztői tapasztalat".
+  - `src/app/layout.tsx` — Root layout founder entitás: `name: "Balog Norbert"`, `alternateName: ["Balog Norbi", "WebDude"]`.
+
+**3. PHASE 3: SITEMAP & ROBOTS.TXT AUDIT (`src/app/sitemap.ts` & `robots.ts`):**
+- `src/app/sitemap.ts` — Fix elavult dátum helyett dinamikus friss `BUILD_DATE = new Date()`.
+- `/szolgaltatasok/wordpress-karbantartas` prioritásának emelése `0.8` → `0.9`-re.
+- `/szolgaltatasok/woocommerce-webshop-keszites` prioritásának emelése `0.7` → `0.9`-re.
+- Ellenőrizve: a robots.txt engedélyezi az összes AI és Google crawlert, fontos oldal nincs `noindex` alatt.
+
+**4. PHASE 4: SERVER COMPONENT (RSC) ÉS XSS VÉDELEM:**
+- `src/app/layout.tsx` — A korábbi Next.js `<Script strategy="afterInteractive">` lecserélve natív szerveroldali `<script type="application/ld+json">`-re, így a Googlebot már az első HTML válaszban azonnal megkapja a LocalBusiness sémát.
+- Minden JSON-LD blokk garantáltan tartalmazza a `.replace(/</g, "\\u003c")` XSS védelmet.
+- Zéró Fix Ár szabály érvényesítve: minden CTA "Egyedi árajánlat kérése".
+
+**QA Validáció:**
+- `npx tsc --noEmit` → **TSC_EXIT=0**
+- `npm run lint` → **LINT_EXIT=0** (0 error, 0 warning)
+
+---
+
+## [7.37.0] — 2026-10-28 — SEO / AIO / GEO AUDIT & FEJLESZTÉS (BATCH 1–5)
+
+**1. METAADATOK OPTIMALIZÁLÁSA (BATCH 1):**
+- `src/app/layout.tsx` — description rövidítése 145–160 karakterre, `alternates.languages` (hu-HU ↔ en-US ↔ x-default) hozzáadása, `robots: { index: true, follow: true }` googleBot beállításokkal
+- `src/app/page.tsx` — description rövidítése 145–160 karakterre, `robots: { index: true, follow: true }` hozzáadása
+- `src/app/szolgaltatasok/page.tsx` — description rövidítése 145–160 karakterre
+- `src/app/ai-megoldasok/layout.tsx` — description rövidítése 145–160 karakterre, `robots: { index: true, follow: true }` hozzáadása
+- `src/app/ai-megoldasok/page.tsx` — duplikált `metadata` export eltávolítása (Next.js 16 App Router: metadata kizárólag a `layout.tsx`-ben), `import { Metadata } from "next"` eltávolítása
+
+**2. SITEMAP BŐVÍTÉS (BATCH 2):**
+- `src/app/sitemap.ts` — `/ai-megoldasok` (priority: 0.9, weekly) és `/ai-megoldasok/ai-prompt-sablonok` (priority: 0.8, monthly) felvétele
+
+**3. GEO DIRECT ANSWER BLOKKOK (BATCH 3):**
+- `src/app/szolgaltatasok/page.tsx` — `DirectAnswerBlock` import és Hero-után beillesztése (40–60 szavas entitás-gazdag válasz: Next.js + WordPress weboldal készítés, SEO/AEO, AI automatizáció, grafikai tervezés KKV-knak)
+- `src/app/ai-megoldasok/page.tsx` — `DirectAnswerBlock` import és Hero-után beillesztése (40–60 szavas AI megoldások válasz: AI munkafolyamatok, AI ügynökök, automatizáció, prompt engineering KKV-knak)
+- `src/app/szolgaltatasok/weboldal-keszites/page.tsx` — 4 FAQ válasz bővítése 40–60 szóra (Direct Answer minőségű, tényalapú, fix ár nélkül)
+
+**4. JSON-LD SÉMÁK & ENTITÁS-HORGONYOK (BATCH 4):**
+- `src/app/layout.tsx` — Person/founder séma bővítése: `@id: "https://webdude.hu/#person"`, teljes név "Balog Norbert", `jobTitle: "Full-Stack Webfejlesztő, Art Director & AI Automatizációs Szakértő"`, 26 év grafikai + 16 év fejlesztői rutin description, `worksFor` Organization hivatkozás
+- `src/app/szolgaltatasok/page.tsx` — Service JSON-LD séma Organization provider-rel (`@id: "https://webdude.hu/#organization"`), `areaServed: Country "Hungary"`, `serializeJsonLd()` XSS védéssel
+- `src/app/ai-megoldasok/layout.tsx` — Service séma provider Person → Organization cseréje a központi horgonnyal, XSS védés megmaradva
+
+**5. ZÉRO FIX ÁR VÉGLEES ÉLENŐRZÉS (BATCH 5):**
+- `src/app/ai-megoldasok/page.tsx` — FAQ fix ár (200–500 ezer Ft / 1–3 millió Ft) cseréje "Egyedi árajánlat alapján" megközelítésre
+- Összes publikus oldal ellenőrzve: nincs `priceRange`, nincs konkrét Ft/EUR összeget, nincs `€€` / `$$` a szövegekben vagy a sémákban
+
+**QA Validáció:**
+- `npx tsc --noEmit` → **TSC_EXIT=0**
+- `npm run lint -- --max-warnings 0` → **LINT_EXIT=0**
+
+---
+
 ## [7.36.1] — 2026-10-28 — HEADER TOP BAR SCROLL-HIDE & GLASSMORPHISM FINOMHANGOLÁS
 
 **1. TOP BAR DINAMIKUS ELREJTÉSE GÖRGETÉSKOR (`src/components/molecules/HeaderNavClient.tsx`):**

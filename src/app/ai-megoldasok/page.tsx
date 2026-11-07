@@ -1,35 +1,10 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Metadata } from "next";
 import AIFeatureCard from "@/components/molecules/AIFeatureCard";
 import AIFAQSection from "@/components/organisms/AIFAQSection";
 import AIBenefitsGrid from "@/components/molecules/AIBenefitsGrid";
-
-export const metadata: Metadata = {
-  title: "Vállalati AI Automatizáció és Egyedi Prompt Tervezés | WebDude",
-  description:
-    "Weboldal, ami dolgozik helyetted — vállalati AI automatizáció, webfejlesztés és grafikai tervezés Kecskemétről, országosan. 26 év grafikai és 16 év webfejlesztői tapasztalat.",
-  alternates: {
-    canonical: "https://webdude.hu/ai-megoldasok",
-  },
-  openGraph: {
-    title: "Vállalati AI Automatizáció és Egyedi Prompt Tervezés | WebDude",
-    description:
-      "Weboldal, ami dolgozik helyetted — vállalati AI automatizáció, webfejlesztés és grafikai tervezés Kecskemétről, országosan.",
-    url: "https://webdude.hu/ai-megoldasok",
-    siteName: "WebDude",
-    images: [
-      {
-        url: "https://webdude.hu/assets/portfolio/ai-promt-hu/ai-promt-hi-banner.webp",
-        width: 1536,
-        height: 857,
-      },
-    ],
-    locale: "hu_HU",
-    type: "website",
-  },
-};
+import DirectAnswerBlock from "@/components/molecules/DirectAnswerBlock";
 
 const aiSolutions = [
   {
@@ -116,7 +91,7 @@ const faqData = [
   {
     question: "Mennyibe kerül egy AI megoldás implementálása?",
     answer:
-      "Az árazás a projekt komplexitásától függ. Egy egyszerű AI workflow automatizáció 200-500 ezer forint között indul, míg komplex, több rendszerre kiterjedő AI integrációk 1-3 millió forint között mozognak. Ingyenes konzultáció keretében pontos árajánlatot készítek.",
+      "Az árazás a projekt komplexitásától és az igényeiktől függ. Egyedi munkafolyamat-tervezés, AI integrációk és automatizációs rendszerek — mindegyik egyedi árajánlat alapján. Ingyenes konzultáció keretében pontos költségbecslést készítek.",
   },
   {
     question: "Hogyan integrálhatom az AI megoldásokat a meglévő rendszerembe?",
@@ -297,11 +272,18 @@ export default function AIMSolutionsPage() {
               href="/kapcsolat"
               className="inline-flex items-center gap-2 px-8 py-4 bg-linear-to-r from-[#075985] to-[#5B21B6] text-white font-bold rounded-full transition-all hover:scale-[1.02] shadow-[0_8px_24px_rgba(0,181,241,0.3)]"
             >
-              Kérek egy ingyenes AI Konzultációt
+              Egyedi árajánlat kérése
             </Link>
           </div>
         </div>
       </section>
+
+      {/* GEO Direct Answer blokk — a Hero alá */}
+      <DirectAnswerBlock
+        id="ai-megoldasok-hero"
+        question="Mit csinál a WebDude AI Megoldások oldalon, kinek és milyen eredménnyel?"
+        answer="AI munkafolyamatok, egyedi AI ügynökök, üzleti automatizáció és prompt engineering KKV-knak a manuális adminisztráció kiváltására és a lead-generálás skálázására, egyedi árajánlat kérése mellett."
+      />
 
       {/* Benefits Section - Bento Grid */}
       <section className="py-16 md:py-24 px-4 md:px-6">
@@ -372,7 +354,7 @@ export default function AIMSolutionsPage() {
               href="/kapcsolat"
               className="inline-flex items-center gap-2 px-10 py-5 bg-linear-to-r from-[#075985] to-[#5B21B6] text-white font-bold rounded-2xl transition-all hover:scale-[1.02] shadow-[0_8px_24px_rgba(0,181,241,0.3)]"
             >
-              Ingyenes Konzultáció
+              Egyedi árajánlat kérése
             </Link>
           </div>
         </div>

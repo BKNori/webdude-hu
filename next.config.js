@@ -45,6 +45,7 @@ const nextConfig = {
   },
   async redirects() {
     return [
+      // ── Meglévő átirányítások ──────────────────────────────────────────────
       {
         source: "/adatvedelmi-nyilatkozat",
         destination: "/adatvedelmi-szabalyzat",
@@ -53,6 +54,59 @@ const nextConfig = {
       {
         source: "/szolgaltatasok/wordpress-weboldal-keszites-kecskemet",
         destination: "/szolgaltatasok/weboldal-keszites",
+        permanent: true,
+      },
+      // ── PHASE 1: SEO sürgősségi helyreállítás (2026-11-07) ───────────────
+      // Régi / rövidített URL-ek → élő kanonikus útvonalakra
+      {
+        source: "/wordpress-karbantartas",
+        destination: "/szolgaltatasok/wordpress-karbantartas",
+        permanent: true,
+      },
+      {
+        source: "/seo",
+        destination: "/szolgaltatasok/seo-optimalizalas",
+        permanent: true,
+      },
+      {
+        source: "/seo-optimalizalas",
+        destination: "/szolgaltatasok/seo-optimalizalas",
+        permanent: true,
+      },
+      {
+        source: "/webshop",
+        destination: "/szolgaltatasok/webshop-fejlesztes",
+        permanent: true,
+      },
+      {
+        source: "/woocommerce-webshop",
+        destination: "/szolgaltatasok/woocommerce-webshop-keszites",
+        permanent: true,
+      },
+      {
+        source: "/wordpress-fejlesztes",
+        destination: "/szolgaltatasok/wordpress-fejlesztes",
+        permanent: true,
+      },
+      {
+        source: "/wordpress-weboldal-keszites",
+        destination: "/szolgaltatasok/wordpress-weboldal-keszites",
+        permanent: true,
+      },
+      {
+        source: "/grafika",
+        destination: "/szolgaltatasok/grafikai-tervezes",
+        permanent: true,
+      },
+      {
+        source: "/norbi",
+        destination: "/szia-norbi-vagyok",
+        permanent: true,
+      },
+      // Régi kecskemét végű service URL-ek
+      {
+        source: "/szolgaltatasok/weboldal-keszites-kecskemet",
+        destination: "/weboldal-keszites-kecskemet",
         permanent: true,
       },
     ];

@@ -15,7 +15,7 @@ import { buildHuJsonLd, serializeJsonLd } from "@/lib/structuredData";
 export const metadata: Metadata = {
   title: "Weboldal készítés, SEO és WordPress fejlesztés | WebDude",
   description:
-    "Weboldal készítés, WordPress fejlesztés, SEO optimalizálás és grafikai tervezés országosan — ügynökségi mellébeszélés nélkül. WebDude: 26 év kreatív és 16 év webfejlesztői tapasztalat online kiszolgálással.",
+    "Weboldal készítés, WordPress, SEO optimalizálás és grafikai tervezés országosan. 26 év kreatív + 16 év webfejlesztői rutin online kiszolgálással.",
   keywords: [
     "weboldal készítés országosan",
     "weboldal készítés Magyarország",
@@ -52,6 +52,10 @@ export const metadata: Metadata = {
     ],
     locale: "hu_HU",
     type: "website",
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
   twitter: {
     card: "summary_large_image",

@@ -51,7 +51,7 @@ export function buildEnJsonLd(dictionary: Dictionary): JsonLdSchema[] {
     "@id": `${SITE_URL}/#person`,
     inLanguage: "en-US",
     name: "Balog Norbert",
-    alternateName: "Norbi",
+    alternateName: ["Balog Norbi", "WebDude"],
     jobTitle: "Web Developer, SEO Expert & Graphic Designer",
     description: `Balog Norbert is a web developer and graphic designer with ${E_E_A_T}. Premium Next.js web development, AI automation, SEO and design — delivered as a remote partner to international clients.`,
     url: `${SITE_URL}/szia-norbi-vagyok`,
@@ -244,10 +244,10 @@ export function buildHuJsonLd(dictionary: Dictionary): JsonLdSchema[] {
     "@type": "Person",
     "@id": "https://webdude.hu/#person",
     name: "Balog Norbert",
-    alternateName: "Norbi",
+    alternateName: ["Balog Norbi", "WebDude"],
     jobTitle: "Webfejlesztő, SEO Szakértő & Grafikai Tervező",
     description:
-      "Balog Norbert 26 év grafikai tervezői és 16 év webfejlesztői tapasztalattal rendelkező szakember. Weboldal készítés, WordPress fejlesztés, SEO optimalizálás és grafikai tervezés — egy kézből, Kecskemétről.",
+      "Balog Norbert (WebDude) — 26 év grafikai és 16 év webfejlesztői tapasztalattal rendelkező szakember. Weboldal készítés, WordPress fejlesztés, SEO optimalizálás és grafikai tervezés — egy kézből, Kecskemétről.",
     url: "https://webdude.hu/szia-norbi-vagyok",
     knowsAbout: [
       "Weboldal készítés",

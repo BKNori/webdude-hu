@@ -15,16 +15,16 @@ import { buildBreadcrumbSchema, BreadcrumbItem } from "@/lib/breadcrumb";
 
 export const metadata: Metadata = {
   title:
-    "SEO szakember országos szolgáltatással | Technikai SEO és tartalom | WebDude",
+    "SEO optimalizálás — Technikai SEO és tartalomstratégia | WebDude",
   description:
-    "Technikai SEO audit, kulcsszókutatás, tartalomstratégia és helyi SEO vállalkozásoknak országos szolgáltatással. Tudd meg, mi akadályozza a weboldalad jobb Google-helyezését.",
+    "SEO optimalizálás: technikai audit, kulcsszókutatás, tartalomstratégia és helyi SEO vállalkozásoknak országos szolgáltatással. 26 év tapasztalat, Google-helyezés javítás, Core Web Vitals.",
   keywords:
     "SEO optimalizálás, keresőoptimalizálás, technikai SEO, tartalomstratégia, Google helyezés javítás, SEO szakember országos, organikus forgalom",
   openGraph: {
     title:
-      "SEO szakember országos szolgáltatással | Technikai SEO és tartalom | WebDude",
+      "SEO optimalizálás — Technikai SEO és tartalomstratégia | WebDude",
     description:
-      "Technikai SEO audit, kulcsszókutatás, tartalomstratégia és helyi SEO vállalkozásoknak országos szolgáltatással.",
+      "SEO optimalizálás: technikai audit, kulcsszókutatás, tartalomstratégia és helyi SEO vállalkozásoknak. 26 év tapasztalat, Core Web Vitals javítás.",
     type: "website",
     locale: "hu_HU",
     siteName: "WebDude",
@@ -47,16 +47,24 @@ export default async function SEOOptimizationPage() {
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
-    name: "SEO Optimalizálás",
+    "@id": "https://webdude.hu/szolgaltatasok/seo-optimalizalas#service",
+    name: "SEO optimalizálás",
+    alternateName: [
+      "keresőoptimalizálás",
+      "technikai SEO",
+      "helyi SEO",
+      "SEO audit",
+    ],
     description:
-      "Technikai SEO audit, kulcsszókutatás, tartalomstratégia és helyi SEO vállalkozásoknak országos szolgáltatással.",
+      "SEO optimalizálás: technikai audit, kulcsszókutatás, tartalomstratégia és helyi SEO vállalkozásoknak országos szolgáltatással.",
     provider: {
       "@type": "Organization",
       "@id": "https://webdude.hu/#organization",
       name: "WebDude",
       founder: {
         "@type": "Person",
-        name: "Balog Norbi",
+        name: "Balog Norbert",
+        alternateName: ["Balog Norbi", "WebDude"],
         jobTitle: "Full-Stack Webfejlesztő & AI Specialist",
         description: "26 év grafikai és 16 év webfejlesztői tapasztalat",
       },
@@ -161,14 +169,14 @@ export default async function SEOOptimizationPage() {
             label="SEO Optimalizálás"
             title={
               <>
-                SEO, ami nem csak látogatókat, hanem{" "}
+                SEO optimalizálás: nem csak látogatókat, hanem{" "}
                 <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6] italic">
                   releváns érdeklődőket
                 </span>{" "}
                 hoz
               </>
             }
-            subtitle="A SEO nem néhány kulcsszó elhelyezését jelenti. Megvizsgálom a weboldalad technikai állapotát, tartalmi szerkezetét, keresési szándékait és konverziós útvonalait, majd priorizált javítási tervet készítek."
+            subtitle="Az SEO optimalizálás nem néhány kulcsszó elhelyezését jelenti. Megvizsgálom a weboldalad technikai állapotát, tartalmi szerkezetét, keresési szándékait és konverziós útvonalait, majd priorizált javítási tervet készítek."
             cta1="Ingyenes SEO konzultáció"
             cta1Link="/kapcsolat"
             cta2="Munkák megtekintése"
@@ -180,6 +188,9 @@ export default async function SEOOptimizationPage() {
         {/* Direct Answer Block - AEO optimalizált "SEO Optimalizálás Áttekintése" */}
         <section className="relative py-12 bg-bg-base border-y border-white/5">
           <div className="max-w-4xl mx-auto px-6 text-center">
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
+              SEO optimalizálás — organikus forgalom és Google-helyezés javítás
+            </h2>
             <p className="text-base md:text-lg text-slate-300 leading-relaxed">
               <span className="text-[#00B5F1] font-semibold">
                 WebDude SEO optimalizálás:
@@ -187,7 +198,8 @@ export default async function SEOOptimizationPage() {
               Technikai SEO audit, kulcsszó-stratégia, tartalomoptimalizálás és
               helyi SEO KKV-knak. 26 év tapasztalat, Google Search Console
               bekötés, Core Web Vitals javítás és organikus forgalom növelés
-              országos szolgáltatással. Egyedi árajánlat kérése az igények
+              országos szolgáltatással. Balog Norbert (WebDude) személyesen
+              végzi az SEO optimalizálást — egyedi árajánlat kérése az igények
               alapján.
             </p>
           </div>

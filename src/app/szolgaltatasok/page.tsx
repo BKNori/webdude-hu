@@ -4,11 +4,12 @@ import Hero from "@/components/Hero";
 import ServiceCard from "@/components/molecules/ServiceCard";
 import { Metadata } from "next";
 import { buildBreadcrumbSchema, BreadcrumbItem } from "@/lib/breadcrumb";
+import DirectAnswerBlock from "@/components/molecules/DirectAnswerBlock";
 
 export const metadata: Metadata = {
   title: "Szolgáltatások – WebDude | Weboldal Készítés, SEO, AI Automatizáció",
   description:
-    "26 év tapasztalattal: egyedi weboldal készítés, SEO optimalizálás, AI automatizáció és grafikai tervezés KKV-knak. Ingyenes konzultáció országosan. Növelje az ügyfélszerzést!",
+    "Egyedi weboldal készítés, SEO optimalizálás, AI automatizáció és grafikai tervezés KKV-knak. 26 év tapasztalat, ingyenes konzultáció országosan.",
   keywords:
     "weboldal készítés, SEO optimalizálás, AI automatizáció, grafikai tervezés, WordPress fejlesztés, webshop készítés, marketing lead generálás, KKV digitális megoldások",
   alternates: {
@@ -76,6 +77,33 @@ export default async function ServicesPage() {
       name: "WebDude",
     },
   };
+
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "Webfejlesztés, SEO, AI Automatizáció & Grafikai Tervezés",
+    description:
+      "Egyedi Next.js és WordPress weboldal készítés, technikai SEO/AEO, AI automatizáció és grafikai tervezés KKV-knak, 26 év grafikai és 16 év fejlesztői tapasztalattal, országos online kiszolgálással, egyedi árajánlat alapján.",
+    provider: {
+      "@type": "Organization",
+      "@id": "https://webdude.hu/#organization",
+      name: "WebDude",
+    },
+    areaServed: {
+      "@type": "Country",
+      name: "Hungary",
+    },
+    serviceType: [
+      "Weboldal készítés",
+      "WordPress fejlesztés",
+      "SEO optimalizálás",
+      "AI automatizáció",
+      "Grafikai tervezés",
+    ],
+  };
+
+  const serializeJsonLd = (schema: Record<string, unknown>): string =>
+    JSON.stringify(schema).replace(/</g, "\\u003c");
 
   const services = [
     {
@@ -533,6 +561,13 @@ export default async function ServicesPage() {
         </div>
       </section>
 
+      {/* GEO Direct Answer blokk — a Hero alá */}
+      <DirectAnswerBlock
+        id="szolgaltatasok-foglalkozasok"
+        question="Mit csinál a WebDude, kinek és milyen eredménnyel?"
+        answer="Egyedi Next.js és WordPress weboldal készítés, technikai SEO/AEO, AI automatizáció és grafikai tervezés KKV-knak — 26 év grafikai és 16 év fejlesztői tapasztalattal, országos online kiszolgálással, egyedi árajánlat alapján."
+      />
+
       {/* Final CTA */}
       <section className="py-40 text-center bg-bg-surface border-t border-slate-800 relative overflow-hidden">
         <div className="max-w-6xl mx-auto px-6 relative z-10">
@@ -563,6 +598,19 @@ export default async function ServicesPage() {
           </div>
         </div>
       </section>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: serializeJsonLd(serviceSchema),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: serializeJsonLd(breadcrumbSchema),
+        }}
+      />
     </div>
   );
 }

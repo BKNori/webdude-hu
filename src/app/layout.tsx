@@ -25,7 +25,26 @@ export const metadata = {
   metadataBase: new URL("https://webdude.hu"),
   title: "WebDude | Full-Stack Webfejlesztés, AI Workflow & Agent Rendszerek",
   description:
-    "Full-stack webfejlesztés, AI workflow és agent rendszerek — egy kézből. 26 év tapasztalat, Next.js 16, React 19, Tailwind v4, Firebase alapú prémium megoldások.",
+    "Full-stack webfejlesztés, AI workflow és agent rendszerek — egy kézből. 26 év grafikai és 16 év webfejlesztői rutin, országos online szolgáltatással.",
+  alternates: {
+    canonical: "https://webdude.hu",
+    languages: {
+      "hu-HU": "https://webdude.hu",
+      "en-US": "https://webdude.hu/en",
+      "x-default": "https://webdude.hu",
+    },
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   verification: {
     google: process.env.NEXT_PUBLIC_GSC_VERIFICATION || "",
   },
@@ -34,7 +53,7 @@ export const metadata = {
     type: "website",
     title: "WebDude | Full-Stack Webfejlesztés, AI Workflow & Agent Rendszerek",
     description:
-      "Full-stack webfejlesztés, AI workflow és agent rendszerek — egy kézből. 26 év tapasztalat, Next.js 16, React 19, Tailwind v4, Firebase alapú prémium megoldások.",
+      "Full-stack webfejlesztés, AI workflow és agent rendszerek — egy kézből. 26 év grafikai és 16 év webfejlesztői rutin, országos online szolgáltatással.",
     images: [{ url: "/og/webdude-og.jpg", width: 1200, height: 630 }],
   },
 };
@@ -97,8 +116,17 @@ export default async function RootLayout({ children }: RootLayoutProps) {
     },
     founder: {
       "@type": "Person",
-      name: "Norbi",
-      jobTitle: "Full-Stack Webfejlesztő & AI Specialist",
+      "@id": "https://webdude.hu/#person",
+      name: "Balog Norbert",
+      alternateName: ["Balog Norbi", "WebDude"],
+      jobTitle: "Full-Stack Webfejlesztő, Art Director & AI Automatizációs Szakértő",
+      description: "Balog Norbert (WebDude) — 26 év grafikai és 16 év webfejlesztői tapasztalattal rendelkező szakértő, Next.js 16, React 19, Tailwind v4, Firebase alapú prémium megoldások tervezett és megvalósított développere.",
+      url: "https://webdude.hu/szia-norbi-vagyok",
+      worksFor: {
+        "@type": "Organization",
+        "@id": "https://webdude.hu/#organization",
+        name: "WebDude",
+      },
     },
   };
 
@@ -125,10 +153,8 @@ export default async function RootLayout({ children }: RootLayoutProps) {
             rel="preconnect"
             href="https://firebasestorage.googleapis.com"
           />
-          <Script
-            id="json-ld"
+          <script
             type="application/ld+json"
-            strategy="afterInteractive"
             dangerouslySetInnerHTML={{
               __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
             }}

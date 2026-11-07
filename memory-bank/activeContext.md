@@ -8,6 +8,14 @@
 - **Tipográfia & CLS:** Top Bar linkek az új `Plus Jakarta Sans` családot használják (`font-sans font-medium text-xs tracking-wide text-slate-400 hover:text-[#00B5F1]`). Zero CLS, a Mega Menü stabilan a főmenü aljához rögzítve mozog.
 - **QA:** `npx tsc --noEmit` (0 hiba), `npm run lint -- --max-warnings 0` (0 hiba). Git commit & `v7.36.1` tag létrehozva.
 
+## Aktuális állapot — 2026-10-28, [7.37.0] SEO / AIO / GEO Audit & Fejlesztés (Batch 1–5) (LEZÁRVA)
+- **Metaadatok optimalizálása:** `layout.tsx`, `page.tsx`, `szolgaltatasok/page.tsx`, `ai-megoldasok/layout.tsx` description 145–160 karakter, `alternates` hreflang hu-HU/en-US/x-default, `robots` metaadatok; `ai-megoldasok/page.tsx` duplikált metadata eltávolítva (Next.js 16 App Router: kizárólag `layout.tsx`-ben)
+- **Sitemap:** `/ai-megoldasok` (priority 0.9, weekly) + `/ai-megoldasok/ai-prompt-sablonok` (priority 0.8, monthly) felvéve
+- **GEO Direct Answer blokkok:** `szolgaltatasok/page.tsx`, `ai-megoldasok/page.tsx` (40–60 szavas entitás-gazdag válasz); `weboldal-keszites/page.tsx` FAQ 40–60 szóra bővítve
+- **JSON-LD séma:** Service Organization provider-rel (`@id: "https://webdude.hu/#organization"`), Person/founder bővítve (Balog Norbert, 26 év grafikai + 16 év fejlesztői rutin, `worksFor` Organization hivatkozás), XSS védés `serializeJsonLd`-del
+- **Zéró Fix Ár:** `ai-megoldasok/page.tsx` FAQ fix ár cseréje "Egyedi árajánlat alapján" megközelítésre; összes publikus oldal ellenőrzve (nincs `priceRange`, nincs konkrét Ft/EUR összeg)
+- **QA:** `npx tsc --noEmit` (0 hiba), `npm run lint -- --max-warnings 0` (0 hiba).
+
 ## Aktuális állapot — 2026-10-28, [7.36.0] Prémium Tipográfiai Korrekció: Bebas Neue Anti-Faux-Bold & Plus Jakarta Sans Folyószöveg (LEZÁRVA)
 - **Bebas Neue Anti-Faux-Bold:** `globals.css` globálisan kikényszeríti a `font-weight: 400 !important;` szabályt a címsorokra (h1..h6), megszüntetve a böngésző szintetikus vastagítását és az ékezettorzulást.
 - **Tracking:** h1-h2 `letter-spacing: 0.03em;`, h3-h6 kártyacímek `letter-spacing: 0.06em;`. Kártyacímek fehér kontrasztja (`text-white`) és méretnövelése (`text-xl md:text-2xl`).

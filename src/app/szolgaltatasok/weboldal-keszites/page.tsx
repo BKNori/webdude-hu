@@ -59,22 +59,22 @@ export default function WeboldalKeszitesPage() {
     {
       question: "Mennyi idő alatt készül el egy új weboldal?",
       answer:
-        "A projekt bonyolultságától függően átlagosan 2-4 hét. Ez magában foglalja a tervezést, az egyedi arculat kialakítását, a kódolást és a SEO optimalizálást is.",
+        "A projekt bonyolultságától és igényeitől függően átlagosan 2–4 hét alatt készül el egy egyedi weboldal. A határidő magában foglalja a koncepció tervezését, az egyedi arculat kialakítását, a fejlesztést (Next.js vagy WordPress), valamint a technikai SEO optimalizálást és a tesztelést is.",
     },
     {
       question: "Sablonokat használsz, vagy egyedi fejlesztést?",
       answer:
-        "Kizárólag egyedi tervezésű és fejlesztésű (Next.js vagy prémium WordPress) oldalakat adok át. Sablonok helyett a vállalkozásod céljaihoz igazított, tiszta kódú megoldásokat alkalmazok.",
+        "NEM használok sablonokat. Minden weboldal egyedi tervezésű és egyedi fejlesztésű, Next.js vagy prémium WordPress alapokon. A vállalkozásod konkrét céljaihoz és célcsoportjához igazított, tiszta kódú megoldást adok át, amely skálázható és karbantartható.",
     },
     {
       question: "Később tudom én is szerkeszteni a tartalmat?",
       answer:
-        "Igen. Ha WordPress alapú az oldal, akkor egy rendkívül könnyen kezelhető admin felületet kapsz. Ha Next.js / headless CMS (pl. Sanity) alapú, akkor is egy intuitív szerkesztőt adok át betanítással.",
+        "Igen, teljesen saját tudással tudod szerkeszteni. WordPress esetén egy intuitive admin felületet kapsz, Next.js / headless CMS (pl. Sanity) esetén egy egyszerű szerkesztőt adok át személyes betanítással, így bármikor módosíthatod a szövegeket és képeket.",
     },
     {
       question: "Mobilon is jól fog kinézni?",
       answer:
-        "Természetesen. Minden általam fejlesztett oldal reszponzív ('Mobile-First'), tehát telefonon, tableten és asztali gépen is tökéletes felhasználói élményt nyújt.",
+        "Természetesen, 100% reszponzív lesz a weboldalad. Mobile-First elven fejlesztett, úgy telefonon, tableten és asztali gépen is tökéletes felhasználói élményt nyújt, és a Google is kedveli a mobilbarát oldalat a keresési találatokban.",
     },
   ];
 

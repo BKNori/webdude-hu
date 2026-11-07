@@ -36,11 +36,12 @@ const profilePageSchema = {
   url: "https://webdude.hu/szia-norbi-vagyok",
   mainEntity: {
     "@type": "Person",
+    "@id": "https://webdude.hu/#person",
     name: "Balog Norbert",
-    alternateName: "WebDude",
+    alternateName: ["Balog Norbi", "WebDude"],
     jobTitle: "Vezető Fejlesztő és Grafikus",
     description:
-      "26+ év grafikai és 16+ év webfejlesztési múlttal rendelkező digitális szakember. Next.js, React, WordPress és AI automatizációs rendszerek építője.",
+      "Balog Norbert (WebDude) — 26 év grafikai és 16 év webfejlesztői tapasztalattal rendelkező digitális szakember. Next.js, React, WordPress és AI automatizációs rendszerek építője.",
     image: "https://webdude.hu/assets/personal/webdude-kep.webp",
     url: "https://webdude.hu/szia-norbi-vagyok",
     sameAs: [
@@ -54,6 +55,7 @@ const profilePageSchema = {
     },
     worksFor: {
       "@type": "Organization",
+      "@id": "https://webdude.hu/#organization",
       name: "WebDude",
       url: "https://webdude.hu",
     },
@@ -63,6 +65,9 @@ const profilePageSchema = {
       "React",
       "TypeScript",
       "WordPress Development",
+      "WordPress karbantartás",
+      "WooCommerce webshop",
+      "SEO optimalizálás",
       "Graphic Design",
       "Branding",
       "Search Engine Optimization (SEO)",

@@ -8,13 +8,17 @@ import DirectAnswerBlock from "@/components/molecules/DirectAnswerBlock";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "WooCommerce Webshop Készítés és Fejlesztés | WebDude",
+    title: "WooCommerce webshop készítés és fejlesztés | WebDude",
     description:
       "16 év tapasztalattal WooCommerce webshop készítés, fejlesztés és optimalizálás. Konverzió-fókuszú e-kereskedelmi rendszerek, fizetési integrációk és teljes körű támogatás.",
     keywords:
       "WooCommerce webshop, WooCommerce fejlesztés, e-kereskedelmi rendszer, webshop készítés, WooCommerce optimalizálás, WordPress webshop",
+    alternates: {
+      canonical:
+        "https://webdude.hu/szolgaltatasok/woocommerce-webshop-keszites",
+    },
     openGraph: {
-      title: "WooCommerce Webshop Készítés és Fejlesztés | WebDude",
+      title: "WooCommerce webshop készítés és fejlesztés | WebDude",
       description:
         "16 év tapasztalattal WooCommerce webshop készítés, fejlesztés és optimalizálás. Konverzió-fókuszú e-kereskedelmi rendszerek, fizetési integrációk és teljes körű támogatás.",
       type: "website",
@@ -59,13 +63,20 @@ export default async function WooCommercePage() {
     "@context": "https://schema.org",
     "@type": "Service",
     "@id": "https://webdude.hu/szolgaltatasok/woocommerce-webshop-keszites#service",
-    name: "WooCommerce Webshop Készítés és Fejlesztés",
+    name: "WooCommerce webshop készítés és fejlesztés",
     description:
       "16 év tapasztalattal WooCommerce webshop készítés, fejlesztés és optimalizálás. Konverzió-fókuszú e-kereskedelmi rendszerek, fizetési integrációk és teljes körű támogatás.",
     provider: {
       "@type": "LocalBusiness",
+      "@id": "https://webdude.hu/#organization",
       name: "WebDude",
-      url: "https://webdude.hu",
+      founder: {
+        "@type": "Person",
+        name: "Balog Norbert",
+        alternateName: ["Balog Norbi", "WebDude"],
+        jobTitle: "Full-Stack Webfejlesztő & AI Specialist",
+        description: "26 év grafikai és 16 év webfejlesztői tapasztalat",
+      },
     },
     category: "E-commerce",
     alternateName: [

@@ -7,18 +7,18 @@ import PricingTable, { PricingTier } from "@/components/molecules/PricingTable";
 import { buildBreadcrumbSchema, BreadcrumbItem } from "@/lib/breadcrumb";
 
 export const metadata: Metadata = {
-  title: "Webshop készítés és WooCommerce fejlesztés | WebDude",
+  title: "WooCommerce webshop készítés és fejlesztés | WebDude",
   description:
-    "Webshop készítés, WooCommerce fejlesztés és konverzióoptimalizálás. Vásárlóbarát, gyors és keresőbarát online értékesítési rendszer.",
+    "WooCommerce webshop készítés és fejlesztés — konverzióoptimalizált, vásárlóbarát és gyors online áruház. Bankkártyás fizetés, SimplePay, Barion integráció. Egyedi árajánlat kérése.",
   keywords:
-    "webshop készítés, WooCommerce fejlesztés, webáruház készítés, e-kereskedelem, online bolt, webshop optimalizálás",
+    "WooCommerce webshop, webshop készítés, WooCommerce fejlesztés, webáruház készítés, e-kereskedelem, online bolt, webshop optimalizálás",
   alternates: {
     canonical: "https://webdude.hu/szolgaltatasok/webshop-fejlesztes",
   },
   openGraph: {
-    title: "Webshop készítés és WooCommerce fejlesztés | WebDude",
+    title: "WooCommerce webshop készítés és fejlesztés | WebDude",
     description:
-      "Vásárlóbarát, gyors és keresőbarát online értékesítési rendszer kis- és középvállalkozásoknak.",
+      "WooCommerce webshop készítés és fejlesztés — vásárlóbarát, gyors és keresőbarát online értékesítési rendszer kis- és középvállalkozásoknak.",
     type: "website",
     locale: "hu_HU",
     siteName: "WebDude",
@@ -38,16 +38,24 @@ export default function WebshopDevPage() {
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
-    name: "Webshop készítés és fejlesztés",
+    "@id": "https://webdude.hu/szolgaltatasok/webshop-fejlesztes#service",
+    name: "WooCommerce webshop készítés és fejlesztés",
+    alternateName: [
+      "WooCommerce webshop",
+      "webshop készítés",
+      "webáruház fejlesztés",
+      "online bolt készítés",
+    ],
     description:
-      "Webshop készítés, WooCommerce fejlesztés és konverzióoptimalizálás. Vásárlóbarát, gyors és keresőbarát online értékesítési rendszer.",
+      "WooCommerce webshop készítés és fejlesztés — konverzióoptimalizált, vásárlóbarát és gyors online áruház. Bankkártyás fizetés (SimplePay, Barion), sebességoptimalizálás és teljes körű támogatás.",
     provider: {
       "@type": "Organization",
       "@id": "https://webdude.hu/#organization",
       name: "WebDude",
       founder: {
         "@type": "Person",
-        name: "Balog Norbi",
+        name: "Balog Norbert",
+        alternateName: ["Balog Norbi", "WebDude"],
         jobTitle: "Full-Stack Webfejlesztő & AI Specialist",
         description: "26 év grafikai és 16 év webfejlesztői tapasztalat",
       },
@@ -166,16 +174,16 @@ export default function WebshopDevPage() {
 
         <div className="relative z-10">
           <Hero
-            label="Webshop Fejlesztés"
+            label="WooCommerce Webshop Fejlesztés"
             title={
               <>
-                Webshop készítés, ami{" "}
+                WooCommerce webshop készítés, ami{" "}
                 <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6] italic">
                   ténylegesen elad
                 </span>
               </>
             }
-            subtitle="Olyan webshopot építek, ami gyors, biztonságos, könnyen kezelhető, és a maximális vásárlási élményre fókuszál."
+            subtitle="Olyan WooCommerce webshopot építek, ami gyors, biztonságos, könnyen kezelhető, és a maximális vásárlási élményre fókuszál."
             cta1="Egyedi árajánlat kérése"
             cta1Link="/kapcsolat"
             cta2="Referenciák"
@@ -187,15 +195,19 @@ export default function WebshopDevPage() {
         {/* Direct Answer Block - AEO optimalizált */}
         <section className="relative py-12 bg-bg-base border-y border-white/5">
           <div className="max-w-4xl mx-auto px-6 text-center">
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
+              WooCommerce webshop készítés és fejlesztés
+            </h2>
             <p className="text-base md:text-lg text-slate-300 leading-relaxed">
               <span className="text-[#00B5F1] font-semibold">
-                WebDude webshop fejlesztés:
+                WebDude WooCommerce webshop készítés:
               </span>{" "}
               WooCommerce és egyedi webshop készítés, konverzió-optimalizált
               checkout folyamat, bankkártyás fizetés (SimplePay, Barion) és
               sebességoptimalizálás KKV-knak országos szolgáltatással. 26 év
               tapasztalat, villámgyors betöltés és maximális vásárlói élmény.
-              Egyedi árajánlat kérése az igények alapján.
+              Balog Norbert (WebDude) személyesen építi a WooCommerce
+              webshopokat — egyedi árajánlat kérése az igények alapján.
             </p>
           </div>
         </section>

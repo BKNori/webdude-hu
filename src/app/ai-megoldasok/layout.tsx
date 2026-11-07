@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title:
     "AI Megoldások | WebDude - AI Automatizáció, Workflow és Prompt Engineering",
   description:
-    "AI alapú automatizációs rendszerek, workflow kialakítás és prompt engineering szolgáltatások. Növelje a hatékonyságot AI megoldásokkal: AI workflow, AI kép és videó generálás, AI prompt engineering.",
+    "AI alapú automatizációs rendszerek, workflow kialakítás és prompt engineering. AI workflow, AI kép és videó generálás, AI prompt engineering országosan.",
   keywords: [
     "AI automatizáció",
     "AI workflow",
@@ -19,11 +19,15 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://webdude.hu/ai-megoldasok",
   },
+  robots: {
+    index: true,
+    follow: true,
+  },
   openGraph: {
     title:
       "AI Megoldások | WebDude - AI Automatizáció, Workflow és Prompt Engineering",
     description:
-      "AI alapú automatizációs rendszerek, workflow kialakítás és prompt engineering szolgáltatások.",
+      "AI alapú automatizációs rendszerek, workflow kialakítás és prompt engineering. AI workflow, AI kép és videó generálás, AI prompt engineering országosan.",
     url: "https://webdude.hu/ai-megoldasok",
     siteName: "WebDude",
     images: [
@@ -42,7 +46,7 @@ export const metadata: Metadata = {
     title:
       "AI Megoldások | WebDude - AI Automatizáció, Workflow és Prompt Engineering",
     description:
-      "AI alapú automatizációs rendszerek, workflow kialakítás és prompt engineering szolgáltatások.",
+      "AI alapú automatizációs rendszerek, workflow kialakítás és prompt engineering. AI workflow, AI kép és videó generálás, AI prompt engineering országosan.",
     images: ["/assets/banners/banner-webdde-copy-2.webp"],
   },
 };
@@ -54,9 +58,9 @@ const jsonLd = {
   description:
     "AI alapú automatizációs rendszerek, workflow kialakítás és prompt engineering szolgáltatások.",
   provider: {
-    "@type": "Person",
-    name: "Norbi (WebDude)",
-    url: "https://webdude.hu",
+    "@type": "Organization",
+    "@id": "https://webdude.hu/#organization",
+    name: "WebDude",
   },
   areaServed: {
     "@type": "Country",

@@ -1,9 +1,16 @@
 # ARCHITECTURE.md — WebDude Rendszerarchitektúra
 
 **webdude.hu | Next.js 16 · React 19 · TypeScript · Firebase**
-**Utolsó frissítés: 2026-10-28 (7.36.1: Header Top Bar scroll-hide & glassmorphism + 7.36.0: Bebas Neue anti-faux-bold & Plus Jakarta Sans)**
+**Utolsó frissítés: 2026-10-28 (7.37.0: SEO/AEO/GEO audit — metaadatok, JSON-LD séma, Direct Answer blokkok, Zéró Fix Ár)**
 
-> **7.36.1 (2026-10-28):** Header scroll-viselkedés és vizuális finomhangolás (`HeaderNavClient.tsx`): dinamikus Top Bar elrejtés lefelé görgetéskor (`scrollY > 20`, `transition-all duration-300 ease-in-out`), sticky navbar Kék-Lila v7.0 sötét üveghatással (`bg-slate-950/90 backdrop-blur-xl border-slate-800/80 shadow-lg`), Plus Jakarta Sans tipográfia a Top Bar linkeken (`text-slate-400 hover:text-[#00B5F1]`). Zero CLS és stabil Mega Menü igazítás. Validáció: `npx tsc --noEmit` (0 hiba), `npm run lint` (0 hiba).
+> **7.37.0 (2026-10-28):** SEO / AIO / GEO audit és fejlesztés (Batch 1–5):
+> - Meta description 145–160 karakter (`layout.tsx`, `page.tsx`, `szolgaltatasok/page.tsx`, `ai-megoldasok/layout.tsx`), `alternates` hreflang hu-HU/en-US/x-default, `robots` metaadatok
+> - `ai-megoldasok/page.tsx` duplikált metadata eltávolítása (metadata kizárólag `layout.tsx`-ben, Next.js 16 App Router szabály)
+> - Sitemap bővítése `/ai-megoldasok` oldallal
+> - GEO Direct Answer blokkok (`szolgaltatasok/page.tsx`, `ai-megoldasok/page.tsx`, `weboldal-keszites/page.tsx` FAQ), 40–60 szó, AEO optimalizált
+> - JSON-LD Service séma Organization provider-rel (`@id: "https://webdude.hu/#organization"`), Person/founder bővítése (Balog Norbert, 26 év grafikai + 16 év fejlesztői rutin)
+> - Zéró Fix Ár végleges ellenőrzése (nincs `priceRange`, nincs konkrét Ft/EUR összeg a publikus oldalon)
+> - Validáció: `npx tsc --noEmit` (0 hiba), `npm run lint -- --max-warnings 0` (0 hiba)
 
 > **7.36.0 (2026-10-28):** Globális tipográfiai korrekció: Bebas Neue 400 faux-bold tiltása (`font-weight: 400 !important`), tágasabb tracking kártyacímeken (`letter-spacing: 0.06em`), hófehér címkontraszt és Plus Jakarta Sans 400/500/600 folyószöveg/UI bevezetése a Poiret One helyett. Validáció: `npx tsc --noEmit` (0 hiba), `npm run lint` (0 hiba).
 

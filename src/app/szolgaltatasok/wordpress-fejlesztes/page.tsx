@@ -7,18 +7,18 @@ import { buildBreadcrumbSchema, BreadcrumbItem } from "@/lib/breadcrumb";
 import DirectAnswerBlock from "@/components/molecules/DirectAnswerBlock";
 
 export const metadata: Metadata = {
-  title: "WordPress fejlesztő vállalkozásoknak | WebDude",
+  title: "WordPress fejlesztő és WordPress karbantartás | WebDude",
   description:
-    "WordPress hibajavítás, egyedi funkciók, sebességoptimalizálás, biztonság és meglévő weboldalak fejlesztése tapasztalt WordPress szakembertől.",
+    "WordPress fejlesztő vállalkozásoknak: hibajavítás, egyedi funkciók, sebességoptimalizálás, biztonság és WordPress karbantartás tapasztalt WordPress szakembertől. Balog Norbert (WebDude), 16 év tapasztalat.",
   keywords:
-    "WordPress fejlesztés, WordPress hibajavítás, WordPress gyorsítás, WordPress biztonság, WooCommerce fejlesztés, WordPress szakember",
+    "WordPress fejlesztés, WordPress fejlesztő, WordPress karbantartás, WordPress hibajavítás, WordPress gyorsítás, WordPress biztonság, WooCommerce fejlesztés, WordPress szakember",
   alternates: {
     canonical: "https://webdude.hu/szolgaltatasok/wordpress-fejlesztes",
   },
   openGraph: {
-    title: "WordPress fejlesztés és karbantartás | WebDude",
+    title: "WordPress fejlesztő és WordPress karbantartás | WebDude",
     description:
-      "Meglévő WordPress oldalak és webshopok professzionális javítása, gyorsítása és fejlesztése.",
+      "Meglévő WordPress oldalak és webshopok professzionális javítása, gyorsítása, fejlesztése és karbantartása.",
     type: "website",
     locale: "hu_HU",
     siteName: "WebDude",
@@ -42,16 +42,17 @@ export default function WordPressDevPage() {
     "@context": "https://schema.org",
     "@type": "Service",
     "@id": "https://webdude.hu/szolgaltatasok/wordpress-fejlesztes#service",
-    name: "WordPress fejlesztés és hibajavítás",
+    name: "WordPress fejlesztés, WordPress karbantartás és hibajavítás",
     description:
-      "WordPress hibajavítás, egyedi funkciók, sebességoptimalizálás, biztonság és meglévő weboldalak fejlesztése országos szolgáltatással.",
+      "WordPress hibajavítás, egyedi funkciók, sebességoptimalizálás, WordPress karbantartás és meglévő weboldalak fejlesztése országos szolgáltatással.",
     provider: {
       "@type": "Organization",
       "@id": "https://webdude.hu/#organization",
       name: "WebDude",
       founder: {
         "@type": "Person",
-        name: "Balog Norbi",
+        name: "Balog Norbert",
+        alternateName: ["Balog Norbi", "WebDude"],
         jobTitle: "Full-Stack Webfejlesztő & AI Specialist",
         description: "26 év grafikai és 16 év webfejlesztői tapasztalat",
       },
@@ -59,6 +60,8 @@ export default function WordPressDevPage() {
     category: "WordPress",
     alternateName: [
       "WordPress fejlesztés",
+      "WordPress fejlesztő",
+      "WordPress karbantartás",
       "egyedi WordPress sablon",
       "WordPress plugin fejlesztés",
       "WordPress optimalizálás",
@@ -169,6 +172,54 @@ export default function WordPressDevPage() {
             { label: "Hibajavítás", value: "Gyors javítás" },
           ]}
         />
+
+        {/* ── WordPress fejlesztés és WordPress karbantartás — AEO dedikált szekció ── */}
+        <section className="py-16 bg-slate-900/30 border-y border-slate-800/60">
+          <div className="max-w-4xl mx-auto px-6">
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
+              WordPress fejlesztés és WordPress karbantartás
+            </h2>
+            <p className="text-slate-300 leading-relaxed mb-4">
+              <span className="text-[#00B5F1] font-semibold">
+                Balog Norbert (WebDude)
+              </span>{" "}
+              — 26 év grafikai és 16 év webfejlesztői tapasztalat — személyesen
+              végzi a WordPress fejlesztést és a WordPress karbantartást
+              vállalkozásoknak. Nem csupán összekattintom a pluginokat: értem a
+              mögöttes PHP és JavaScript kódot is.
+            </p>
+            <ul className="space-y-2 text-slate-400 text-sm">
+              <li className="flex items-start gap-2">
+                <span className="text-[#00B5F1] mt-0.5">✓</span>
+                <span>
+                  <strong className="text-slate-200">WordPress fejlesztő</strong>{" "}
+                  — egyedi témák, bővítmények, WooCommerce integrációk
+                </span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-[#00B5F1] mt-0.5">✓</span>
+                <span>
+                  <strong className="text-slate-200">WordPress karbantartás</strong>{" "}
+                  — havi frissítések, biztonsági mentések, 24/7 felügyelet
+                </span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-[#00B5F1] mt-0.5">✓</span>
+                <span>
+                  <strong className="text-slate-200">Sebességoptimalizálás</strong>{" "}
+                  — 90+ Lighthouse pontszám, Core Web Vitals javítás
+                </span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-[#00B5F1] mt-0.5">✓</span>
+                <span>
+                  <strong className="text-slate-200">Biztonsági audit</strong>{" "}
+                  — malware irtás, tűzfal, sérülékenységvizsgálat
+                </span>
+              </li>
+            </ul>
+          </div>
+        </section>
 
         <section className="py-24 relative z-10">
           <div className="max-w-6xl mx-auto px-6">

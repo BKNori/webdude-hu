@@ -6,7 +6,7 @@ import path from "path";
 import matter from "gray-matter";
 
 const BASE_URL = "https://webdude.hu";
-const BUILD_DATE = new Date("2026-06-28");
+const BUILD_DATE = new Date();
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticPages = [
@@ -72,7 +72,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "monthly" as const,
       priority: 0.8,
     },
-
+    // AI Megoldások főoldal és aloldalak
+    {
+      url: `${BASE_URL}/ai-megoldasok`,
+      lastModified: BUILD_DATE,
+      changeFrequency: "weekly" as const,
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/ai-megoldasok/ai-prompt-sablonok`,
+      lastModified: BUILD_DATE,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    },
     // 1. és 2. prioritású új és megújított szolgáltatás landing oldalak (0.8 - 0.9)
     {
       url: `${BASE_URL}/szolgaltatasok/weboldal-keszites`,
@@ -126,7 +138,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: `${BASE_URL}/szolgaltatasok/wordpress-karbantartas`,
       lastModified: BUILD_DATE,
       changeFrequency: "weekly" as const,
-      priority: 0.8,
+      priority: 0.9,
     },
     {
       url: `${BASE_URL}/szolgaltatasok/weboldal-sebessegoptimalizalas`,
@@ -163,8 +175,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     {
       url: `${BASE_URL}/szolgaltatasok/woocommerce-webshop-keszites`,
       lastModified: BUILD_DATE,
-      changeFrequency: "monthly" as const,
-      priority: 0.7,
+      changeFrequency: "weekly" as const,
+      priority: 0.9,
     },
     {
       url: `${BASE_URL}/szolgaltatasok/wordpress-webshop-keszites`,

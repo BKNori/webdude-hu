@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import { getAddonsAction } from "@/actions/addons";
 import { Addon } from "@/types/addon";
+import DirectAnswerBlock from "@/components/molecules/DirectAnswerBlock";
 
 export const metadata: Metadata = {
   title: "Azonnali Kiegészítő Szolgáltatások (Add-onok) | WebDude",
@@ -296,6 +297,13 @@ export default async function AddonsPage() {
       <div className="absolute bottom-10 right-1/4 w-150 h-150 bg-purple-900/5 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
+
+      {/* GEO Direct Answer blokk — a Hero alá */}
+      <DirectAnswerBlock
+        id="add-onok-hero"
+        question="Mit nyújt az Add-on Áruház, és milyen eredménnyel?"
+        answer="Fix áras, termékesített mikro-szolgáltatások a 26 éves tervezőgrafikusi és 16 éves webfejlesztői tapasztalat alapján: videós UX/UI roast, AI + emberi blogcikk csomag, Lighthouse sebesség-optimalizálás, szezonális banner csomag és Schema.org/AEO integráció — mindegyik egyedi árajánlat alapján."
+      />
         {/* HERO SECTION */}
         <section className="text-center max-w-4xl mx-auto mb-20 md:mb-28 pt-8">
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] uppercase font-mono tracking-widest font-bold text-[#00B5F1] bg-[#00B5F1]/5 border border-[#00B5F1]/20 mb-6 animate-pulse">
