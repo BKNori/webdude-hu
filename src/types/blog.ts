@@ -10,6 +10,8 @@ export interface BlogPost {
   readingTime?: string;
   coverImage?: string;
   featured?: boolean;
+  author?: string;
+  updatedAt?: string;
 }
 
 /** Firestore `blog_posts` kollekció dokumentum típusa. */

@@ -33,6 +33,11 @@ const nextConfig = {
   },
   compress: true,
   poweredByHeader: false,
+  outputFileTracingIncludes: {
+    "/hirek": ["./src/content/blog/**/*"],
+    "/hirek/[slug]": ["./src/content/blog/**/*"],
+    "/sitemap.xml": ["./src/content/blog/**/*"],
+  },
   // Bundle analyzer fallback for server builds
   webpack: (config, { isServer }) => {
     if (!isServer) {

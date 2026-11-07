@@ -1,9 +1,7 @@
 import { MetadataRoute } from "next";
 import { projects } from "@/data/projects";
 import { posts as fallbackPosts } from "@/data/posts";
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
+import { getCombinedBlogPosts } from "@/lib/mdx";
 
 const BASE_URL = "https://webdude.hu";
 const BUILD_DATE = new Date();
@@ -263,30 +261,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.6,
   }));
 
-  // 2. Dynamic blog pages from local MDX files
+  // 2. Dynamic blog pages from local MDX files and Firestore
   let blogPosts: Array<{ slug: string; date: Date }> = [];
   try {
-    const postsDirectory = path.join(process.cwd(), "src", "content", "blog");
-    if (fs.existsSync(postsDirectory)) {
-      const fileNames = fs.readdirSync(postsDirectory);
-      fileNames.forEach((fileName) => {
-        if (!fileName.endsWith(".mdx")) return;
-        const slug = fileName.replace(/\.mdx$/, "");
-        const fullPath = path.join(postsDirectory, fileName);
-        const fileContent = fs.readFileSync(fullPath, "utf-8");
-        const { data } = matter(fileContent);
-
-        // Skip noindex posts
-        if (data.noindex === true) return;
-
-        blogPosts.push({
-          slug,
-          date: data.date ? new Date(data.date) : BUILD_DATE,
-        });
-      });
-    }
+    const allPosts = await getCombinedBlogPosts();
+    blogPosts = allPosts
+      .filter((p) => p.noindex !== true)
+      .map((p) => ({
+        slug: p.slug,
+        date: p.date ? new Date(p.date) : BUILD_DATE,
+      }));
   } catch (e) {
-    console.error("Error reading MDX posts for sitemap:", e);
+    console.error("Error reading posts for sitemap:", e);
   }
 
   // Fallback to static posts if filesystem failed

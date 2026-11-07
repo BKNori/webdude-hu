@@ -1,5 +1,39 @@
 # Changelog
 
+## [7.39.0] — 2026-11-07 — HÍREK (/hirek) HELYREÁLLÍTÁSA, STANDALONE DEPLOY FIX & TELJES SEO/AEO/GEO/AIO AUDIT
+
+**1. PHASE 1: GYÖKÉROK FELTÁRÁSA ÉS ADATFORRÁS FÚZIÓ (`src/lib/mdx.ts`, `next.config.js`, `deploy.ps1`):**
+- **Gyökérok:** A `/hirek` és `/hirek/[slug]` oldalak korábban kizárólag a Firestore `blog_posts` kollekciót kérdezték le az Admin SDK-n keresztül. Mivel a cikkek lokális `.mdx` fájlokban élnek (`src/content/blog`) és a cPanel/standalone környezetben nincs Firestore Admin kulcs, a lekérés üres tömböt adott vissza ("Jelenleg nincs bejegyzés.").
+- **Adatforrás fúzió (`src/lib/mdx.ts`):** Új `getCombinedBlogPosts()` és `getPostBySlugCombined()` motor implementálva. A 30 db helyi `.mdx` cikket golyóálló módon beolvassa, kiegészíti automatikus kategória- és olvasási idő számítással, és try/catch védett fúzióval egyesíti az esetleges Firestore cikkekkel. Firestore hiba esetén is 100%-os biztonsággal megjelenik az összes cikk.
+- **Standalone fájlkövetés (`next.config.js`):** Next.js 16 `outputFileTracingIncludes` konfigurálva a `/hirek`, `/hirek/[slug]` és `/sitemap.xml` útvonalakra (`./src/content/blog/**/*`).
+- **Deploy csomagolás (`deploy.ps1`):** A `src/content` mappa automatikusan átmásolódik a `.next/standalone/src/content` mappába a ZIP csomagolás előtt.
+
+**2. PHASE 2: CIKKEK AUDITJA ÉS AIO ENTITÁS-TISZTÍTÁS (`src/content/blog/*.mdx`):**
+- A 30 db MDX cikk frontmattere átvizsgálva és javítva (pl. `kristofka-workflow` kép, description, és explicit `noindex: false`).
+- **AIO entitás-védelem:** Azok a régebbi vagy nem fókuszba vágó cikkek, amelyek hígítanák a "WebDude = Webfejlesztés, WordPress, SEO, AI Automatizáció" szakértői entitást (pl. Netflix kódok, ingyenes VPN programok, Flipper Zero, After Effects bővítmények), megkapták a `noindex: true` flaget. A 25 db üzleti, WordPress, SEO, e-kereskedelmi és AI szakcikk indexelhető (`noindex: false`) maradt.
+
+**3. PHASE 3: ARCHÍVUM ÉS CIKK OLDALAK TELJES SEO/AEO/GEO/CRO OPTIMALIZÁLÁSA:**
+- **`/hirek/page.tsx`:**
+  - Optimalizált metadata: `<title>` ("Szakmai Hírek, SEO és Webfejlesztés Tudásbázis | WebDude"), 158 karakteres keresőbarát leírás, kanonikus URL.
+  - Sémák: `CollectionPage` + `ItemList` és `BreadcrumbList` (Főoldal -> Hírek) RSC inline XSS-védett scripttel.
+  - AEO Direct Answer Blokk: 40-60 szavas tömör szakmai összefoglaló Balog Norbert 26 év tervezői és 16 év fejlesztői hátterével.
+  - Kék-Lila v7.0 stílus, 0 amber/arany, 0 emoji.
+- **`/hirek/[slug]/page.tsx`:**
+  - `generateStaticParams`: Mind a 30 cikk SSG előgenerálása (`170/170 static pages`).
+  - Dinamikus `generateMetadata`: OpenGraph article típus, szerző, cikk borítókép, `noindex` támogatás.
+  - Sémák: Teljes `TechArticle` séma (Balog Norbert mint Person author, WebDude mint Organization publisher, canonical URL, dátumok) + `BreadcrumbList`.
+  - GEO / AEO TL;DR doboz: "Gyors összefoglaló (TL;DR)" minden cikk tetején az AI keresők (Perplexity, ChatGPT, AI Overviews) számára.
+  - Tartalom: `next-mdx-remote/rsc` integráció a Markdown és beágyazott HTML elemek tökéletes rendereléséhez.
+  - CRO & E-E-A-T blokk: Cikk végi "Egyedi árajánlat kérése" CTA kártya (Zéró Fix Ár) és Balog Norbert szakértői bemutatkozó.
+
+**4. PHASE 4: SITEMAP ÉS QA VALIDÁCIÓ:**
+- `src/app/sitemap.ts`: A `getCombinedBlogPosts()` bekötve, a nem noindex cikkek dinamikusan bekerülnek `priority: 0.7`-tel, míg az archívum `priority: 0.8`.
+- `npx tsc --noEmit` → **TSC_EXIT=0**
+- `npm run lint` → **LINT_EXIT=0** (0 error, 0 warning)
+- `npm run build` → **BUILD_EXIT=0** (170 statikus oldal sikeresen lefordítva, benne az összes `/hirek/[slug]` útvonallal)
+
+---
+
 ## [7.38.0] — 2026-11-07 — SÜRGŐSSÉGI SEO HELYREÁLLÍTÁS (4 FÁZIS)
 
 **1. PHASE 1: 301-ES ÁTIRÁNYÍTÁSOK & CANONICAL VÉDELEM (`next.config.js`):**
