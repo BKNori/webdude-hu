@@ -1,5 +1,37 @@
 # Changelog
 
+## [7.41.0] — 2026-11-12 — EGYEDI BORÍTÓKÉP GENERÁLÁS (25 DB) ÉS RESZPONZÍV DERIVATÍVUMOK (AVIF/WEBP) A BLOGCIKKEKHEZ
+
+**1. EGYEDI BORÍTÓKÉP MOTOR (`scripts/generate-blog-covers.js`):**
+- **Sharp & SVG Generátor:** Létrehozva egy dedikált Node.js build-time képkészítő script, amely dinamikus SVG-ből 1200×630 px méretű, optimalizált `.webp` borítóképeket állít elő.
+- **Kék-Lila v7.0 / Cyber-Dark Vizuális Rendszer:**
+  - Mélysötét `#020617` (Obsidian) alap technikai rács (grid) mintázattal és cyberpunk sarokmarkerekkel.
+  - Kategória-specifikus neon fények és színezett pilulajelvények:
+    * **WordPress:** Electric Cyan (`#00B5F1`)
+    * **SEO & Keresőoptimalizálás:** Vivid Violet (`#7C3AED`)
+    * **AI Automatizáció:** Cyber-Gold / Amber (`#f59e0b`)
+    * **Webshop fejlesztés:** Emerald (`#10b981`)
+    * **Grafikai tervezés:** Pink / Magenta (`#ec4899`)
+    * **Webfejlesztés:** Cyan / Blue (`#06b6d4`)
+  - Szavanként automatikusan tördelve 2-3 sorba a cikk címe nagy kontrasztú hófehér Plus Jakarta Sans tipográfiával.
+  - Szakértői lábléc: `WEBDUDE.HU // BALOG NORBERT` és `26 ÉV GRAFIKA · 16 ÉV FEJLESZTÉS` E-E-A-T horgonnyal.
+- **Generált állományok:** Mind a 25 db indexelhető cikk megkapta a saját, egyedi `.webp` fájlját a `public/assets/blog/covers/<slug>.webp` mappában.
+
+**2. MDX FRONTMATTER SZINKRONIZÁCIÓ (`src/content/blog/*.mdx`):**
+- Mind a 25 szakmai MDX cikk frontmatterében beállításra került a tiszta, egysoros `image: "/assets/blog/covers/<slug>.webp"` és `coverImage: "/assets/blog/covers/<slug>.webp"`.
+- Megszűnt a duplikált fallback kép (`webdude-hero.webp`) használata, minden cikk önálló vizuális identitást kapott.
+
+**3. RESZPONZÍV KÉPMANIFESTUM & DERIVATÍVUMOK (`scripts/generate-responsive-images.js`):**
+- Lefuttatva a `node scripts/generate-responsive-images.js --clean`.
+- A 25 új borítókép automatikusan bekerült a `card` csoportba: elkészült a `[320, 640, 960, 1600, 2000]` felbontású AVIF és WebP derivatívum-készlet.
+- `src/data/responsiveImages.ts` manifestum frissítve (összesen 115 képcsoport, 754 generált fájl, 0 hiányzó URL).
+
+**4. QA VALIDÁCIÓ (ZERO-ERROR GATE):**
+- `npx tsc --noEmit` → **TSC_EXIT=0** (0 hiba)
+- `npm run lint` → **LINT_EXIT=0** (0 error, 0 warning)
+
+---
+
 ## [7.40.0] — 2026-11-12 — AEO/GEO DIRECT ANSWER (TL;DR) BŐVÍTÉS, TECHARTICLE SCHEMA UPGRADE ÉS TARTALMI POLÍROZÁS A HÍREK ARCHÍVUMBAN
 
 **1. PHASE 1: TÍPUS- ÉS PARSER INFRASTRUKTÚRA (`src/types/blog.ts`, `src/lib/mdx.ts`, `src/app/actions/blogPosts.ts`):**

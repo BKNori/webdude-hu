@@ -1,7 +1,14 @@
 # ARCHITECTURE.md — WebDude Rendszerarchitektúra
 
 **webdude.hu | Next.js 16 · React 19 · TypeScript · Firebase**
-**Utolsó frissítés: 2026-11-12 (7.40.0: Hírek AEO/GEO Direct Answer, TechArticle Schema, Blog TL;DR integráció)**
+**Utolsó frissítés: 2026-11-12 (7.41.0: 25 egyedi blog borítókép generálás, frontmatter szinkron, reszponzív derivatívumok)**
+
+> **7.41.0 (2026-11-12):** Blog vizuális konszolidáció:
+> - `scripts/generate-blog-covers.js`: Sharp-alapú SVG -> WebP 1200×630 generátor (Kék-Lila v7.0 / Cyber-Dark téma, kategória glow, automatikus címtördelés, E-E-A-T lábléc).
+> - 25 db egyedi borítókép létrehozva a `public/assets/blog/covers/` könyvtárban.
+> - Mind a 25 indexelhető MDX cikk frontmattere frissítve az egyedi borítóképekre (`image` és `coverImage`).
+> - `scripts/generate-responsive-images.js --clean`: AVIF és WebP reszponzív derivatívumok legenerálva (320w–2000w), `src/data/responsiveImages.ts` manifestum frissítve.
+> - Validáció: `npx tsc --noEmit` (0 hiba), `npm run lint` (0 hiba).
 
 > **7.40.0 (2026-11-12):** Hírek archívum és cikkek teljes körű SEO/AEO/GEO modernizációja:
 > - Új `tldr` frontmatter mező bevezetése mind a 25 indexelhető MDX cikkhez (40-60 szavas, tényalapú Direct Answer blokkok).
