@@ -14,16 +14,21 @@ import {
 } from "lucide-react";
 import PricingTable, { type PricingTier } from "@/components/molecules/PricingTable";
 import DirectAnswerBlock from "@/components/molecules/DirectAnswerBlock";
+import BreadcrumbSchema from "@/components/molecules/BreadcrumbSchema";
 
 export const metadata: Metadata = {
   title: "Feltört WordPress Helyreállítás és Biztonság | WebDude",
   description: "Feltörték a weboldalad? Ne ess pánikba! Azonnali WordPress vírusirtás, helyreállítás, és megelőző biztonsági beállítások vállalkozásoknak.",
+  alternates: {
+    canonical: "https://webdude.hu/szolgaltatasok/wordpress-biztonsag",
+  },
   openGraph: {
     title: "Feltört WordPress Helyreállítás és Biztonság | WebDude",
     description: "Feltörték a weboldalad? Ne ess pánikba! Azonnali WordPress vírusirtás, helyreállítás, és megelőző biztonsági beállítások vállalkozásoknak.",
     url: "https://webdude.hu/szolgaltatasok/wordpress-biztonsag",
     type: "website",
   },
+
 };
 
 const pricingTiers: PricingTier[] = [
@@ -108,9 +113,17 @@ export default function WordPressBiztonsagPage() {
       "malware removal",
     ],
     provider: {
-      "@type": "Person",
-      name: "Norbert - WebDude",
+      "@type": "Organization",
+      "@id": "https://webdude.hu/#organization",
+      name: "WebDude",
       url: "https://webdude.hu",
+      founder: {
+        "@type": "Person",
+        "@id": "https://webdude.hu/#person",
+        name: "Balog Norbert",
+        jobTitle: "Full-Stack Webfejlesztő & AI Specialist",
+        description: "26 év grafikai és 16 év webfejlesztői tapasztalat",
+      },
     },
     description: "Feltörték a weboldalad? Ne ess pánikba! Azonnali WordPress vírusirtás, helyreállítás, és megelőző biztonsági beállítások vállalkozásoknak.",
     serviceType: "WordPress Security and Malware Removal",
@@ -144,6 +157,14 @@ export default function WordPressBiztonsagPage() {
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100">
+      {/* BreadcrumbList JSON-LD */}
+      <BreadcrumbSchema
+        items={[
+          { name: "Főoldal", item: "https://webdude.hu" },
+          { name: "Szolgáltatások", item: "https://webdude.hu/szolgaltatasok" },
+          { name: "WordPress Biztonság", item: "https://webdude.hu/szolgaltatasok/wordpress-biztonsag" },
+        ]}
+      />
       {/* JSON-LD Schemas with XSS Protection */}
       <script
         type="application/ld+json"

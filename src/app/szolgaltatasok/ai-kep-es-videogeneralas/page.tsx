@@ -16,6 +16,15 @@ export async function generateMetadata(): Promise<Metadata> {
     alternates: {
       canonical: "https://webdude.hu/szolgaltatasok/ai-kep-es-videogeneralas",
     },
+    openGraph: {
+      title: "AI Kép és Videógenerálás országos szolgáltatással | WebDude",
+      description:
+        "Generatív AI megoldások marketing assetek automatikus előállításához: képek, videók, grafikák és kreatív anyagok skálázható, gyors és költséghatékony folyamatokkal.",
+      url: "https://webdude.hu/szolgaltatasok/ai-kep-es-videogeneralas",
+      type: "website",
+      locale: "hu_HU",
+      siteName: "WebDude",
+    },
   };
 }
 
@@ -80,6 +89,16 @@ export default async function AiMediaPage() {
     areaServed: { "@type": "Country", name: "Hungary" },
   };
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: FAQ.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: { "@type": "Answer", text: item.a },
+    })),
+  };
+
   return (
     <>
       <script
@@ -92,6 +111,12 @@ export default async function AiMediaPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(serviceSchema).replace(/</g, "\\u003c"),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqSchema).replace(/</g, "\\u003c"),
         }}
       />
       <div className="min-h-screen bg-transparent text-text-primary relative overflow-hidden">

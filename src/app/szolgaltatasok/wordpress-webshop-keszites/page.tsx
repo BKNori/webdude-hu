@@ -68,6 +68,13 @@ export default async function WebshopPage() {
       "@id": "https://webdude.hu/#organization",
       name: "WebDude",
       url: "https://webdude.hu",
+      founder: {
+        "@type": "Person",
+        name: "Balog Norbert",
+        alternateName: ["Balog Norbi", "WebDude"],
+        jobTitle: "Full-Stack Webfejlesztő & AI Specialist",
+        description: "26 év grafikai és 16 év webfejlesztői tapasztalat",
+      },
     },
     category: "E-commerce",
     alternateName: [

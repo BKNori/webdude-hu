@@ -1,4 +1,4 @@
-﻿import Hero from "@/components/Hero";
+import Hero from "@/components/Hero";
 import Button from "@/components/atoms/Button";
 import Badge from "@/components/atoms/Badge";
 import { Metadata } from "next";
@@ -7,6 +7,7 @@ import AnimatedSystemFlow from "@/components/molecules/AnimatedSystemFlow";
 import CaseStudyCard from "@/components/molecules/CaseStudyCard";
 import AiChatMockup from "@/components/molecules/AiChatMockup";
 import PricingTable from "@/components/molecules/PricingTable";
+import DirectAnswerBlock from "@/components/molecules/DirectAnswerBlock";
 import { buildBreadcrumbSchema, BreadcrumbItem } from "@/lib/breadcrumb";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -124,6 +125,22 @@ export default async function AiPromptEngineeringPage() {
             cta2Link="/munkak"
             fullHeight={true}
           />
+
+          {/* Direct Answer Block - AEO optimalizált */}
+          <section className="relative py-12 bg-bg-base border-y border-white/5">
+            <div className="max-w-4xl mx-auto px-6 text-center">
+              <DirectAnswerBlock
+                id="ai-prompt-engineering-hero"
+                question="Mi az AI Prompt Engineering és mikor érdemes igénybe venni?"
+                answer="Az AI prompt engineering az a szaktudás, amely meghatározza, hogyan kommunikálj hatékonyan a ChatGPT, Claude és más AI modellekkel. Professzionális promptrendszerekkel 70–90%-kal megbízhatóbb AI kimenet érhető el, 40–60% időmegtakarítással. Egyedi prompt template-ek, láncolt rendszerek és A/B tesztelés — egyedi árajánlat alapján."
+                facts={[
+                  { label: "Megbízhatóság", value: "+70–90%" },
+                  { label: "Időmegtakarítás", value: "40–60%" },
+                  { label: "Árazás", value: "Egyedi árajánlat" },
+                ]}
+              />
+            </div>
+          </section>
 
           <div className="max-w-6xl mx-auto px-6">
             <div className="mt-12 grid gap-12 md:grid-cols-2 items-start max-w-4xl mx-auto">

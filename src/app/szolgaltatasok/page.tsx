@@ -200,7 +200,7 @@ export default async function ServicesPage() {
       description:
         "WordPress vírusirtás, biztonsági mentések és havi karbantartás, hogy a weboldal mindig biztonságos és gyors legyen. SSL tanúsítvány és biztonsági audit.",
       tags: ["Biztonság", "Backup", "Support"],
-      link: "/szolgaltatasok/wordpress-virusirtas-es-biztonsag",
+      link: "/szolgaltatasok/wordpress-biztonsag",
     },
     {
       title: "Rendszerfejlesztés",
@@ -208,7 +208,7 @@ export default async function ServicesPage() {
       description:
         "Egyedi szoftverfejlesztés és alkalmazásfejlesztés, amelyek megoldják az üzleti problémákat és automatizálják a folyamatokat. Backend, frontend és API integrációk.",
       tags: ["Szoftver", "Backend", "Frontend"],
-      link: "/szolgaltatasok/rendszerfejlesztes",
+      link: "/szolgaltatasok/weboldal-keszites",
     },
   ];
 

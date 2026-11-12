@@ -62,6 +62,34 @@ export default async function MarketingLeadGenerationPage() {
     areaServed: { "@type": "Country", name: "Hungary" },
   };
 
+  const faqs = [
+    {
+      q: "Mennyi idő alatt indulnak el az első leadek?",
+      a: "A landing oldal és az alap funnel felállítása 1-2 hét. Az első leadek jellemzően a landing oldal publikálásától számított 1-2 héten belül érkeznek, az organikus és/vagy fizetett forgalom típusától függően. Folyamatos A/B teszteléssel az eredmények hónapról hónapra javíthatók.",
+    },
+    {
+      q: "Mi a különbség az ingyenes konzultáció és a projekt között?",
+      a: "Az ingyenes konzultáció során felmérjük az üzleti igényeket, meghatározzuk a célközönséget és javaslatot teszünk az optimális lead generálási stratégiára. A projekt az egyedi árajánlat alapján indul: landing oldal tervezés, funnel felépítés, automatizált email kampányok és analytics beállítás.",
+    },
+    {
+      q: "Mennyibe kerül a marketing lead generálás?",
+      a: "Minden projekt egyedi árajánlat alapján kerül árazásra, mivel a szükséges landing oldalak száma, a funnel bonyolultsága és a marketing eszközök eltérnek. Az ingyenes konzultáció után pontos, átlátható ajánlatot kapsz — rejtett költségek nélkül.",
+    },
+  ];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.q,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.a,
+      },
+    })),
+  };
+
   const features = [
     {
       title: "Landing oldal tervezés",
@@ -115,6 +143,13 @@ export default async function MarketingLeadGenerationPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(serviceSchema).replace(/</g, "\\u003c"),
+        }}
+      />
+      <Script
+        id="faq-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqSchema).replace(/</g, "\\u003c"),
         }}
       />
       <div className="bg-bg-base text-text-primary relative overflow-hidden">
@@ -250,6 +285,40 @@ export default async function MarketingLeadGenerationPage() {
                 title="Válassza ki az Önnek megfelelő csomagot"
                 description="Komplett megoldások az ügyfélszerzés automatizálására. Minden csomag tartalmazza a konzultációt, specifikáció kialakítást és marketing auditot. Kérjen személyre szabott árajánlatot."
               />
+            </div>
+          </div>
+        </section>
+
+        {/* GYIK szekció — AEO & FAQPage schema */}
+        <section className="py-24 relative overflow-hidden border-t border-slate-800/60">
+          <div className="absolute inset-0 bg-linear-to-b from-transparent via-[#00B5F1]/5 to-transparent" />
+          <div className="relative z-10">
+            <div className="max-w-4xl mx-auto px-6">
+              <div className="text-center mb-12">
+                <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+                  Gyakori kérdések a lead generálásról
+                </h2>
+                <p className="text-slate-400">
+                  Minden lényeges információ az ügyfélszerzés automatizálásáról.
+                </p>
+              </div>
+              <div className="space-y-4">
+                {faqs.map((faq, index) => (
+                  <details
+                    key={index}
+                    className="group border border-slate-800 bg-transparent rounded-2xl overflow-hidden [&_summary::-webkit-details-marker]:hidden"
+                  >
+                    <summary className="flex items-center justify-between gap-4 p-6 cursor-pointer select-none text-slate-200 hover:text-white transition-colors">
+                      <span className="font-bold text-sm md:text-base">
+                        {faq.q}
+                      </span>
+                    </summary>
+                    <div className="px-6 pb-6 text-sm text-slate-400 leading-relaxed border-t border-slate-800/40 pt-4">
+                      <p>{faq.a}</p>
+                    </div>
+                  </details>
+                ))}
+              </div>
             </div>
           </div>
         </section>

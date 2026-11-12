@@ -1,5 +1,43 @@
 # Changelog
 
+## [7.42.0] — 2026-11-12 — SZOLGÁLTATÁS ALOLDALAK SEO/AEO KONSZOLIDÁCIÓ: JSON-LD, CANONICAL, GYIK ÉS SCHEMA AUDIT
+
+**1. TYPESCRIPT HIBA JAVÍTÁS (`wordpress-biztonsag/page.tsx`):**
+- Törött `serviceJsonLd` objektum javítva (duplikált `"@type"/"name"` mezők az objektumon kívül kerültek — TSC 1128 hiba megszüntetve).
+- `BreadcrumbSchema` import visszaállítva, és a JSX-be `<BreadcrumbSchema items={[...]} />` komponens beágyazva.
+- Eredmény: `npx tsc --noEmit` → **TSC_EXIT=0** (0 hiba).
+
+**2. RÉGI ROUTE TÖRÖLVE:**
+- `src/app/szolgaltatasok/wordpress-virusirtas-es-biztonsag/` mappa **fizikailag törölve** (`Remove-Item -Recurse -Force`).
+- 301-es redirect a `next.config.js`-ben megvolt és érvényes: `/szolgaltatasok/wordpress-virusirtas-es-biztonsag` → `/szolgaltatasok/wordpress-biztonsag`.
+
+**3. HIÁNYZÓ `openGraph` BLOKKOK PÓTOLVA:**
+- `ai-kep-es-videogeneralas/page.tsx`: `openGraph` blokk hozzáadva (title, description, url, type, locale, siteName).
+- `ai-prompt-engineering/page.tsx`: `openGraph` már meglévő volt — ellenőrizve, rendben.
+
+**4. DIRECT ANSWER BLOKK PÓTOLVA:**
+- `ai-prompt-engineering/page.tsx`: 40-60 szavas GEO/AEO Direct Answer összefoglaló blokk (`<DirectAnswerBlock />`) beillesztve a Hero component alá, facts tömbbel (Megbízhatóság, Időmegtakarítás, Árazás).
+- `DirectAnswerBlock` import hozzáadva az importlistához.
+
+**5. GYIK SZEKCIÓ ÉS FAQPage JSON-LD SÉMA PÓTOLVA:**
+- `marketing-lead-generalas/page.tsx`: 3 kérdéses GYIK szekció hozzáadva (UI `<details>`/`<summary>`) + `FAQPage` JSON-LD séma (`<Script id="faq-schema" />`). Zéró Fix Ár szabály betartva (csak egyedi árajánlat).
+- `ai-kep-es-videogeneralas/page.tsx`: `FAQPage` JSON-LD séma hozzáadva (a meglévő 6 kérdéses FAQ UI mellé `faqSchema` objektum + `<script>` injektáció).
+- `ai-workflow-kialakitas/page.tsx`: `FAQPage` JSON-LD séma hozzáadva (az 5 kérdéses FAQ UI mellé `faqSchema` + `<script>` injektáció).
+- `egyedi-arculattervezes-logo/page.tsx`: `FAQPage` JSON-LD séma hozzáadva (5 kérdés a meglévő `<details>` FAQ szekció alapján + `<script>` injektáció).
+
+**6. IMPORT HIBÁK JAVÍTVA:**
+- `szolgaltatasok/page.tsx`: Hiányzó `buildBreadcrumbSchema, BreadcrumbItem` import pótolva (`@/lib/breadcrumb`); felesleges `BreadcrumbSchema` komponens import eltávolítva.
+- `szolgaltatasok/wordpress-fejlesztes/page.tsx`: Felesleges `BreadcrumbSchema` komponens import eltávolítva (a JSON-LD `breadcrumbSchema` objektum + `<script>` tagként van injektálva, nem mint React komponens).
+
+**7. TAKARÍTÁS:**
+- `scripts/audit-services.js` ideiglenes segédscript törölve.
+
+**8. QA VALIDÁCIÓ (ZERO-ERROR GATE):**
+- `npx tsc --noEmit` → **TSC_EXIT=0** (0 hiba)
+- `npm run lint -- --max-warnings 0` → **LINT_EXIT=0** (0 error, 0 warning)
+
+---
+
 ## [7.41.0] — 2026-11-12 — EGYEDI BORÍTÓKÉP GENERÁLÁS (25 DB) ÉS RESZPONZÍV DERIVATÍVUMOK (AVIF/WEBP) A BLOGCIKKEKHEZ
 
 **1. EGYEDI BORÍTÓKÉP MOTOR (`scripts/generate-blog-covers.js`):**

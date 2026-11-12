@@ -61,6 +61,11 @@ const nextConfig = {
         destination: "/szolgaltatasok/weboldal-keszites",
         permanent: true,
       },
+      {
+        source: "/szolgaltatasok/wordpress-virusirtas-es-biztonsag",
+        destination: "/szolgaltatasok/wordpress-biztonsag",
+        permanent: true,
+      },
       // ── PHASE 1: SEO sürgősségi helyreállítás (2026-11-07) ───────────────
       // Régi / rövidített URL-ek → élő kanonikus útvonalakra
       {

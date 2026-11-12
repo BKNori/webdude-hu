@@ -101,6 +101,53 @@ export default async function BrandingPage() {
     areaServed: { "@type": "Country", name: "Hungary" },
   };
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "Mennyi idő a logó tervezése?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Egyszerű logó 3-5 munkanap, komplett arculat 1-2 hét attól függően, hogy milyen komplexitást igényel.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Milyen formátumokban kapom meg?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Vektor formátumok (AI, SVG, EPS), nagy felbontású PNG, és minden szükséges digitális és print formátum.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Módosíthatom később a logót?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Igen, a vektor fájlok lehetővé teszik a korlátlan módosítást és skálázást jövőbeli igények szerint.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Milyen referenciáid vannak?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Esküvői dekoráció branding, Dr Nagy Albert orvosi arculat, Ronch Caffé branding és több mint 150 sikeres projekt különböző iparágakban.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Mennyibe kerül egy arculattervezés projekt?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Egyedi árajánlat kérése a projekt igényei szerint. Ingyenes konzultáció a pontos árhoz.",
+        },
+      },
+    ],
+  };
+
   return (
     <>
       <script
@@ -113,6 +160,12 @@ export default async function BrandingPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqSchema).replace(/</g, "\\u003c"),
         }}
       />
       <div className="min-h-screen bg-transparent text-text-primary relative overflow-hidden">

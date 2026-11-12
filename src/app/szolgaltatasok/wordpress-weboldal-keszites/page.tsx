@@ -14,10 +14,14 @@ import {
 } from "lucide-react";
 import PricingTable, { type PricingTier } from "@/components/molecules/PricingTable";
 import DirectAnswerBlock from "@/components/molecules/DirectAnswerBlock";
+import BreadcrumbSchema from "@/components/molecules/BreadcrumbSchema";
 
 export const metadata: Metadata = {
   title: "WordPress weboldal készítés | Egyedi fejlesztés | WebDude",
   description: "Egyedi WordPress weboldal készítés, felújítás és fejlesztés vállalkozásoknak. Gyors, biztonságos, könnyen kezelhető és SEO-barát megoldások.",
+  alternates: {
+    canonical: "https://webdude.hu/szolgaltatasok/wordpress-weboldal-keszites",
+  },
   openGraph: {
     title: "WordPress weboldal készítés | Egyedi fejlesztés | WebDude",
     description: "Egyedi WordPress weboldal készítés, felújítás és fejlesztés vállalkozásoknak. Gyors, biztonságos, könnyen kezelhető és SEO-barát megoldások.",
@@ -112,6 +116,13 @@ export default function WordPressWeboldalKeszitesPage() {
       "@id": "https://webdude.hu/#organization",
       name: "WebDude",
       url: "https://webdude.hu",
+      founder: {
+        "@type": "Person",
+        name: "Balog Norbert",
+        alternateName: ["Balog Norbi", "WebDude"],
+        jobTitle: "Full-Stack Webfejlesztő & AI Specialist",
+        description: "26 év grafikai és 16 év webfejlesztői tapasztalat",
+      },
     },
     description:
       "Egyedi WordPress weboldal készítés, felújítás és fejlesztés vállalkozásoknak. Gyors, biztonságos, könnyen kezelhető és SEO-barát megoldások.",
@@ -157,6 +168,13 @@ export default function WordPressWeboldalKeszitesPage() {
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100">
+      <BreadcrumbSchema
+        items={[
+          { name: "Főoldal", item: "https://webdude.hu" },
+          { name: "Szolgáltatások", item: "https://webdude.hu/szolgaltatasok" },
+          { name: "WordPress weboldal készítés", item: "https://webdude.hu/szolgaltatasok/wordpress-weboldal-keszites" },
+        ]}
+      />
       {/* JSON-LD Schemas with XSS Protection */}
       <script
         type="application/ld+json"

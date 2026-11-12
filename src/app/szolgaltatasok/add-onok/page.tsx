@@ -16,11 +16,15 @@ import {
 import { getAddonsAction } from "@/actions/addons";
 import { Addon } from "@/types/addon";
 import DirectAnswerBlock from "@/components/molecules/DirectAnswerBlock";
+import BreadcrumbSchema from "@/components/molecules/BreadcrumbSchema";
 
 export const metadata: Metadata = {
   title: "Azonnali Kiegészítő Szolgáltatások (Add-onok) | WebDude",
   description:
     "Fix áras, termékesített mikro-szolgáltatások a 26 éves tervezőgrafikusi és 16 éves webfejlesztői tapasztalatomra építve. Nincs hosszas egyeztetés, garantált szállítási határidő.",
+  alternates: {
+    canonical: "https://webdude.hu/szolgaltatasok/add-onok",
+  },
   openGraph: {
     title: "Azonnali Kiegészítő Szolgáltatások (Add-onok) | WebDude",
     description:
@@ -286,10 +290,19 @@ export default async function AddonsPage() {
 
   return (
     <div className="min-h-screen bg-transparent text-slate-300 relative overflow-hidden py-24 md:py-32">
+      <BreadcrumbSchema
+        items={[
+          { name: "Főoldal", item: "https://webdude.hu" },
+          { name: "Szolgáltatások", item: "https://webdude.hu/szolgaltatasok" },
+          { name: "Add-onok", item: "https://webdude.hu/szolgaltatasok/add-onok" },
+        ]}
+      />
       {/* JSON-LD Schemas injection */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+        }}
       />
 
       {/* Decorative ambient background glows */}
