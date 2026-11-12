@@ -3,6 +3,7 @@ import Link from "next/link";
 import PortfolioGrid from "@/components/molecules/PortfolioGrid";
 import PortfolioHero from "@/components/molecules/PortfolioHero";
 import MunkakFaqSection from "@/components/organisms/MunkakFaqSection";
+import DirectAnswerBlock from "@/components/molecules/DirectAnswerBlock";
 import { works as staticWorks } from "@/data/works";
 
 export const revalidate = 3600; // 1 órás ISR gyorsítótárazás
@@ -151,6 +152,23 @@ export default async function MunkakPage() {
 
       {/* Scroll Video Hero Section */}
       <PortfolioHero />
+
+      {/* GEO / AEO Direct Answer Blokk */}
+      <section className="py-10 bg-slate-950 border-b border-slate-800/80">
+        <div className="max-w-4xl mx-auto px-6">
+          <DirectAnswerBlock
+            id="munkak-direct-answer"
+            question="Milyen webfejlesztési és arculattervezési referenciákkal rendelkezik a WebDude?"
+            answer="A WebDude portfóliója 200+ sikeres projektet ölel fel: egyedi Next.js platformok, komplex WooCommerce webáruházak ERP integrációval, prémium vállalati arculatok és AI automatizációk. 26 év tervezőgrafikusi és 16 év webfejlesztői tapasztalattal minden megoldás skálázható, ultragyors és konverzióra optimalizált, egyedi árajánlat alapján."
+            facts={[
+              { label: "Tapasztalat", value: "26 év grafika · 16 év dev" },
+              { label: "Projektek száma", value: "200+ sikeres átadás" },
+              { label: "Fő technológiák", value: "Next.js · React · WordPress" },
+              { label: "Árazás", value: "Egyedi árajánlat" },
+            ]}
+          />
+        </div>
+      </section>
 
       {/* Text Content Below Video */}
       <section className="py-20 bg-slate-950 border-b border-slate-800/80">

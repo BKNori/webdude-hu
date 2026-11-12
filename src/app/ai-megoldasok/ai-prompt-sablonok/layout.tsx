@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+﻿import { Metadata } from "next";
 import { buildBreadcrumbSchema } from "@/lib/breadcrumb";
 
 export const metadata: Metadata = {
@@ -19,6 +19,7 @@ export const metadata: Metadata = {
         alt: "AI Prompt Sablonok",
       },
     ],
+    locale: "hu_HU",
   },
   twitter: {
     card: "summary_large_image",
@@ -57,34 +58,32 @@ const jsonLd = {
     ],
   },
   provider: {
+    "@type": "Organization",
+    "@id": "https://webdude.hu/#organization",
+    name: "WebDude",
+  },
+  founder: {
     "@type": "Person",
-    name: "Norbi",
-    jobTitle: "Web Developer & AI Specialist",
-    url: "https://webdude.hu",
+    "@id": "https://webdude.hu/#person",
+    name: "Balog Norbert",
+    description: "26 év grafikai tervezési és 16 év webfejlesztői tapasztalat",
   },
 };
 
-/**
- * Breadcrumb (morzsamenü) séma — a projekt AEO-szabványa szerint minden
- * aloldalon kötelező. Az `ai-megoldasok` szülő szekció az anyaútvonal.
- */
+/** 
+ * Breadcrumb (morzsamenü) séma — a projekt AEO-szabványa szerint minden 
+ * aloldalon kötelező. Az i-megoldasok szülő szekció az anyaútvonal. 
+ */ 
 const breadcrumbSchema = buildBreadcrumbSchema([
   { name: "Főoldal", url: "/" },
   { name: "AI Megoldások", url: "/ai-megoldasok" },
   { name: "AI Prompt Sablonok", url: "/ai-megoldasok/ai-prompt-sablonok" },
 ]);
 
-export default function AIPromptSablonokLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function AIPromptSablonokLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
       {children}
-      {/* XSS VÉDELEM: a `<` karakter escape-je kötelező a JSON-LD-ben is.
-          (A korábbi verzió ezt kihagyta — ez volt az egyetlen, nem védett
-          JSON-LD a teljes /ai-megoldasok fa alatt.) */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

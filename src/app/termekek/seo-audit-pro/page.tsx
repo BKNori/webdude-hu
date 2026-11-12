@@ -1,68 +1,11 @@
-import { Metadata } from "next";
 import ProductPortalCta from "@/components/molecules/ProductPortalCta";
 import SEOAuditHeroBanner from "@/components/organisms/SEOAuditHeroBanner";
 import ProofBarSection from "@/components/organisms/ProofBarSection";
 import AEOImpactSection from "@/components/organisms/AEOImpactSection";
 import LeadGenerationForm from "@/components/organisms/LeadGenerationForm";
 
-export const metadata: Metadata = {
-  title: "SEO & AEO Audit Pro - WebDude.hu",
-  description:
-    "SEO & AEO Audit Pro: A 26 éves tapasztalat erejével a találati listák élén. 95+ Lighthouse score alapú technikai alapok, 16 év WordPress & WooCommerce CMS szakértelem.",
-  openGraph: {
-    title: "SEO & AEO Audit Pro - WebDude.hu",
-    description:
-      "SEO & AEO Audit Pro: A 26 éves tapasztalat erejével a találati listák élén.",
-    url: "https://webdude.hu/termekek/seo-audit-pro",
-    siteName: "WebDude",
-    images: [
-      {
-        url: "/og/webdude-og.jpg",
-        width: 1200,
-        height: 630
-      }
-    ],
-    locale: "hu_HU",
-    type: "website"
-  }
-};
-
-const productSchema = {
-  "@context": "https://schema.org",
-  "@type": "Product",
-  name: "SEO & AEO Audit Pro",
-  description:
-    "SEO & AEO Audit Pro: A 26 éves tapasztalat erejével a találati listák élén. 95+ Lighthouse score alapú technikai alapok, 16 év WordPress & WooCommerce CMS szakértelem.",
-  image: "https://webdude.hu/og/webdude-og.jpg",
-  brand: {
-    "@type": "Brand",
-    name: "WebDude"
-  },
-  offers: {
-    "@type": "Offer",
-    availability: "https://schema.org/InStock",
-    url: "https://webdude.hu/termekek/seo-audit-pro",
-    seller: {
-      "@type": "Organization",
-      name: "WebDude.hu"
-    }
-  },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.8",
-    reviewCount: "31"
-  }
-};
-
 export default function SEOAuditProPage() {
   return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(productSchema).replace(/</g, "\\u003c")
-        }}
-      />
       <div className="min-h-screen bg-bg-base">
         {/* Hero-Banner Section */}
         <SEOAuditHeroBanner />
@@ -123,6 +66,5 @@ export default function SEOAuditProPage() {
 
         <ProductPortalCta productName="SEO Audit Pro" />
       </div>
-    </>
   );
 }

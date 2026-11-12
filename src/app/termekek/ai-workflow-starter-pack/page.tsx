@@ -1,46 +1,12 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import ProductAccessGuard from "@/components/molecules/ProductAccessGuard";
 import ProductPortalCta from "@/components/molecules/ProductPortalCta";
 
-const productSchema = {
-  "@context": "https://schema.org",
-  "@type": "Product",
-  name: "AI Workflow Starter Pack",
-  description:
-    "Spórolj heti 15 órát manuális munkával. Automatizáld email kampányokat, lead generálást és ügyfélszolgálatot kész AI workflow sablonokkal. 3.4x organikus elérés, 300 DPI nyomdakész outputok.",
-  image: "https://webdude.hu/og/webdude-og.jpg",
-  brand: {
-    "@type": "Brand",
-    name: "WebDude"
-  },
-  offers: {
-    "@type": "Offer",
-    availability: "https://schema.org/InStock",
-    url: "https://webdude.hu/termekek/ai-workflow-starter-pack",
-    seller: {
-      "@type": "Organization",
-      name: "WebDude.hu"
-    },
-    description: "Egyedi árajánlat kérése",
-  },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.8",
-    reviewCount: "31"
-  }
-};
-
 export default function AIWorkflowStarterPackPage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(productSchema).replace(/</g, "\\u003c")
-        }}
-      />
       <ProductAccessGuard>
         <div className="min-h-screen bg-[#020617]">
           <section className="relative py-24 md:py-32 overflow-hidden">
@@ -51,10 +17,7 @@ export default function AIWorkflowStarterPackPage() {
                   AI Workflow Starter Pack
                 </h1>
                 <p className="text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">
-                  Spórolj heti 15 órát manuális munkával. Automatizáld email
-                  kampányokat, lead generálást és ügyfélszolgálatot kész AI
-                  workflow sablonokkal. 3.4x organikus elérés, 300 DPI
-                  nyomdakész outputok.
+                  Spórolj heti 15 órát manuális munkával. Automatizáld email kampányokat, lead generálást és ügyfélszolgálatot kész AI workflow sablonokkal. 3.4x organikus elérés, 300 DPI nyomdakész outputok.
                 </p>
               </div>
             </div>
@@ -71,8 +34,7 @@ export default function AIWorkflowStarterPackPage() {
                     Heti 15 óra megtakarítás
                   </h3>
                   <p className="text-sm text-slate-400">
-                    Automatizált workflow sablonokkal kiküszöbölöd a manuális
-                    adminisztrációt
+                    Automatizált workflow sablonokkal kiküszöbölöd a manuális adminisztrációt
                   </p>
                 </div>
                 <div className="bg-slate-950/80 border border-slate-800/80 rounded-3xl p-6 shadow-[0_8px_24px_rgba(0,0,0,0.35)] hover:shadow-[0_16px_48px_rgba(0, 181, 241,0.18)] transition-all duration-300">
@@ -109,19 +71,17 @@ export default function AIWorkflowStarterPackPage() {
                 Egyedi árajánlat
               </h2>
               <p className="text-slate-400 mb-8">
-                Az árajánlat a projektméretedhez és az integrációs igényekhez
-                igazodik — nincs dobozos csomag, nincs rejtett költség.
+                Az ajánlat a projektméretedhez és az integrációs igényekhez igazodik — nincs dobozos csomag, nincs rejtett költség.
               </p>
               <div className="bg-[#0f172a] border border-slate-700 rounded-3xl p-8 shadow-[0_16px_48px_rgba(0, 181, 241,0.12)] max-w-md mx-auto">
                 <p className="text-slate-400 mb-6">
-                  Projektszintű felmérés és előre egyeztetett, fix határidő — a
-                  munkakezdés előtt.
+                  Projektszintű felmérés és előre egyeztetett, fix határidő — a munkakezdés előtt.
                 </p>
                 <Link
                   href="/kapcsolat"
                   className="w-full inline-flex items-center justify-center gap-2 px-8 py-4 bg-linear-to-r from-[#00B5F1] to-[#5B21B6] hover:from-[#5B21B6] hover:to-[#5B21B6] text-slate-950 font-bold rounded-full uppercase tracking-wider text-sm transition-all duration-300 hover:scale-[1.02] active:scale-95 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 focus:ring-offset-bg-base"
                 >
-                  Egyedi árajánlat kérése
+                  Egyedi ajánlat kérése
                 </Link>
                 <p className="text-xs text-slate-400 mt-4">
                   Válasz 24 órán belül — közvetlenül tőlem

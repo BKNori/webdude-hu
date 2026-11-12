@@ -119,6 +119,12 @@ const nextConfig = {
         destination: "/weboldal-keszites-kecskemet",
         permanent: true,
       },
+      // ── BATCH 1: Elírt route átirányítás (2026-11-12) ─────────────────
+      {
+        source: "/termekek/versenytares-elemzo-ai-muhely",
+        destination: "/termekek/versenytars-elemzo-ai-muhely",
+        permanent: true,
+      },
     ];
   },
 };

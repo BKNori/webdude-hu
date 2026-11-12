@@ -82,34 +82,6 @@ const depthLevels = [
   { id: "comprehensive", name: "Komplex", description: "Teljes körű audit" }
 ];
 
-const productSchema = {
-  "@context": "https://schema.org",
-  "@type": "Product",
-  name: "SEO Audit AI Műhely",
-  description:
-    "SEO és AEO audit vizualizáció AI eszközökkel. Lighthouse score tracking, kulcsszó stratégia és AI válasz motor optimalizáció. Technikai SEO, tartalom SEO, AEO optimalizáció.",
-  image: "https://webdude.hu/og/webdude-og.jpg",
-  brand: {
-    "@type": "Brand",
-    name: "WebDude"
-  },
-  offers: {
-    "@type": "Offer",
-    availability: "https://schema.org/InStock",
-    url: "https://webdude.hu/termekek/seo-audit-ai-muhely",
-    seller: {
-      "@type": "Organization",
-      name: "WebDude.hu"
-    },
-    description: "Egyedi árajánlat kérése",
-  },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.8",
-    reviewCount: "31"
-  }
-};
-
 export default function SEOAuditAIMuhelyPage() {
   const [selectedAudit, setSelectedAudit] = useState(auditTypes[0]);
   const [selectedFocus, setSelectedFocus] = useState(focusAreas[0]);
@@ -150,12 +122,6 @@ export default function SEOAuditAIMuhelyPage() {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(productSchema).replace(/</g, "\\u003c")
-        }}
-      />
       <div className="min-h-screen bg-bg-base">
         {/* Hero Section */}
         <section className="relative py-24 overflow-hidden">

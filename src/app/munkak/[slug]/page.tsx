@@ -2,6 +2,7 @@ import { works } from "@/data/works";
 import { CASE_STUDY_SEO } from "@/data/caseStudySeo";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
+import DirectAnswerBlock from "@/components/molecules/DirectAnswerBlock";
 import RimaiCaseStudy from "@/components/organisms/RimaiCaseStudy";
 import BorGarnelaCaseStudy from "@/components/organisms/BorGarnelaCaseStudy";
 import HuMagoCaseStudy from "@/components/organisms/HuMagoCaseStudy";
@@ -42,16 +43,32 @@ export async function generateMetadata({
   const project = await getProject(slug);
   if (!project) return { title: "Projekt nem található | WebDude" };
 
-  // 7.12.0: a normalizált route-ok gazdag SEO-adatai (korábban önálló
-  // route mappákban éltek) — prioritás a CASE_STUDY_SEO tábla. E nélkül a
-  // canonical, a keywords és a JSON-LD sémák elvesznének.
-  const seoOverride = CASE_STUDY_SEO[slug];
+  // Prioritás a CASE_STUDY_SEO tábla (slug vagy id alapján)
+  const seoOverride = CASE_STUDY_SEO[slug] || CASE_STUDY_SEO[project.id];
   if (seoOverride) return seoOverride.metadata;
 
   return {
     title: `${project.title} – WebDude Portfólió`,
     description: project.description,
     keywords: project.tags,
+    alternates: {
+      canonical: `https://webdude.hu/munkak/${project.slug}`,
+    },
+    openGraph: {
+      title: `${project.title} | WebDude`,
+      description: project.description,
+      url: `https://webdude.hu/munkak/${project.slug}`,
+      siteName: "WebDude",
+      images: [
+        {
+          url: "https://webdude.hu/assets/banners/webdude-hero.webp",
+          width: 1200,
+          height: 630,
+        },
+      ],
+      locale: "hu_HU",
+      type: "article",
+    },
   };
 }
 
@@ -61,14 +78,35 @@ export default async function ProjectPage({ params }: PageProps) {
 
   if (!p) notFound();
 
-  // 7.12.0: a normalizált route-ok JSON-LD sémái (korábban az önálló
-  // route mappák page/layout szintjén éltek). A metadata API nem tud
-  // strukturált adatot, ezért a sémákat itt rendereljük, szerveroldalon,
-  // XSS-védett formában — Client Componentbe soha nem kerülhetnek.
-  const schemas = CASE_STUDY_SEO[slug]?.schemas ?? [];
+  // CASE_STUDY_SEO bejegyzés feloldása (slug vagy id alapján)
+  const seoData = CASE_STUDY_SEO[slug] || CASE_STUDY_SEO[p.id];
+  const schemas = seoData?.schemas ?? [
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Főoldal", item: "https://webdude.hu" },
+        { "@type": "ListItem", position: 2, name: "Munkák", item: "https://webdude.hu/munkak" },
+        { "@type": "ListItem", position: 3, name: p.title, item: `https://webdude.hu/munkak/${p.slug}` },
+      ],
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "CreativeWork",
+      name: p.title,
+      description: p.description,
+      url: `https://webdude.hu/munkak/${p.slug}`,
+      creator: {
+        "@type": "Person",
+        "@id": "https://webdude.hu/#person",
+        name: "Balog Norbert",
+      },
+    },
+  ];
 
-  // Egy dedikált esettanulmány + az esetleges JSON-LD sémái egyetlen
-  // fragmentben. Üres sémalista esetén csak a komponens renderelődik.
+  const directAnswer = seoData?.directAnswer;
+
+  // Egy dedikált esettanulmány + JSON-LD sémák + Direct Answer sáv
   const withSchemas = (content: React.ReactNode) => (
     <>
       {schemas.map((schema, index) => (
@@ -80,6 +118,21 @@ export default async function ProjectPage({ params }: PageProps) {
           }}
         />
       ))}
+      {directAnswer && (
+        <aside
+          aria-label="Projekt áttekintés"
+          className="relative z-20 border-b border-slate-800/80 bg-slate-950/90 py-8 backdrop-blur-md"
+        >
+          <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+            <DirectAnswerBlock
+              id={`direct-answer-${p.id}`}
+              question={directAnswer.question}
+              answer={directAnswer.answer}
+              facts={directAnswer.facts}
+            />
+          </div>
+        </aside>
+      )}
       {content}
     </>
   );

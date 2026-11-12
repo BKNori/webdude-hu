@@ -1,5 +1,5 @@
 import { MetadataRoute } from "next";
-import { projects } from "@/data/projects";
+import { works } from "@/data/works";
 import { posts as fallbackPosts } from "@/data/posts";
 import { getCombinedBlogPosts } from "@/lib/mdx";
 
@@ -252,8 +252,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ];
 
-  // 1. Dynamic project pages (combining static projects and Firestore portfolio)
-  const projectSlugs = new Set<string>(projects.map((p) => p.slug));
+  // 1. Dynamic project pages (combining static works and Firestore portfolio)
+  const projectSlugs = new Set<string>(works.map((p) => p.slug));
 
   try {
     const { collection, getDocs } = await import("firebase/firestore");
@@ -276,7 +276,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     url: `${BASE_URL}/munkak/${slug}`,
     lastModified: BUILD_DATE,
     changeFrequency: "monthly" as const,
-    priority: 0.6,
+    priority: 0.7,
   }));
 
   // 2. Dynamic blog pages from local MDX files and Firestore

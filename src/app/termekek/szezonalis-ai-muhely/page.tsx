@@ -15,34 +15,6 @@ import {
   Star
 } from "lucide-react";
 
-const productSchema = {
-  "@context": "https://schema.org",
-  "@type": "Product",
-  name: "Szezonalis AI Műhely",
-  description:
-    "Szezonális marketing kampányok AI-generált eszközökkel. Karácsony, Black Friday, Nyár, Őszi és egyedi szezonokhoz komplett kampány sablonok és vizuális tartalom.",
-  image: "https://webdude.hu/og/webdude-og.jpg",
-  brand: {
-    "@type": "Brand",
-    name: "WebDude"
-  },
-  offers: {
-    "@type": "Offer",
-    availability: "https://schema.org/InStock",
-    url: "https://webdude.hu/termekek/szezonalis-ai-muhely",
-    seller: {
-      "@type": "Organization",
-      name: "WebDude.hu"
-    },
-    description: "Egyedi árajánlat kérése",
-  },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.8",
-    reviewCount: "31"
-  }
-};
-
 const seasonalCampaigns = [
   {
     id: "christmas",
@@ -158,12 +130,6 @@ export default function SzezonalisAIMuhelyPage() {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(productSchema).replace(/</g, "\\u003c")
-        }}
-      />
       <ProductAccessGuard>
         <div className="min-h-screen bg-bg-base">
           {/* Hero Section */}

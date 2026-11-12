@@ -15,34 +15,6 @@ import {
   PenTool
 } from "lucide-react";
 
-const productSchema = {
-  "@context": "https://schema.org",
-  "@type": "Product",
-  name: "Tartalomtervező AI Műhely",
-  description:
-    "Professzionális tartalomtervező eszköz AI-vel. Blog bejegyzések, social media tartalom, landing page szövegek és teljes tartalom kalendár generálása. SEO-optimalizált, konverzióra fókuszált.",
-  image: "https://webdude.hu/og/webdude-og.jpg",
-  brand: {
-    "@type": "Brand",
-    name: "WebDude"
-  },
-  offers: {
-    "@type": "Offer",
-    availability: "https://schema.org/InStock",
-    url: "https://webdude.hu/termekek/tartalomtervezo-ai-muhely",
-    seller: {
-      "@type": "Organization",
-      name: "WebDude.hu"
-    },
-    description: "Egyedi árajánlat kérése",
-  },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.8",
-    reviewCount: "31"
-  }
-};
-
 const contentTypes = [
   {
     id: "blog",
@@ -151,12 +123,6 @@ export default function TartalomtervezoAIMuhelyPage() {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(productSchema).replace(/</g, "\\u003c")
-        }}
-      />
       <ProductAccessGuard>
         <div className="min-h-screen bg-bg-base">
           {/* Hero Section */}

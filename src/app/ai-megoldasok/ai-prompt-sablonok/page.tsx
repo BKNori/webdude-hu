@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 import { auth } from "@/lib/firebase";
 import { onAuthStateChanged, User } from "firebase/auth";
+import DirectAnswerBlock from "@/components/molecules/DirectAnswerBlock";
 
 const promptTemplates = [
   {
@@ -474,6 +475,13 @@ export default function AIPromptSablonokPage() {
           </motion.div>
         </div>
       </section>
+
+      {/* AEO Direct Answer blokk — a Hero alá */}
+      <DirectAnswerBlock
+        id="ai-prompt-sablonok-direct-answer"
+        question="Milyen AI prompt sablonokat kínál a WebDude grafikai AI képgeneráláshoz?"
+        answer="A WebDude 18 kategóriában kínál professzionális, tesztelt prompt sablonokat Midjourney, DALL-E és más AI képgenerálókhoz: logótervezés, termékfotó, social media banner, weboldal hero, csomagolás és prezentáció design. A sablonok változókkal személyre szabhatók, egy kattintással másolhatók, és 26 év grafikai tapasztalaton alapulnak."
+      />
 
       {/* Category Filter */}
       <section className="py-8 border-t border-bg-elevated/20">

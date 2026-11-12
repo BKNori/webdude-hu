@@ -1,5 +1,64 @@
 # Changelog
 
+## [7.44.0] — 2026-11-12 — /TERMÉKEK & /AI-MEGOLDÁSOK 4-BATCH SEO/AEO KONSZOLIDÁCIÓ (ROUTE TISZTÍTÁS + JSON-LD SSR ÁTRAKÁS)
+
+**1. ROUTE TISZTÍTÁS ÉS 301 ÁTIRÁNYÍTÁS:**
+- A hibásan elírt `src/app/termekek/versenytares-elemzo-ai-muhely/` mappa **fizikailag törölve**.
+- `next.config.js`: 301 (`permanent: true`) átirányítás `/termekek/versenytares-elemzo-ai-muhely` → `/termekek/versenytars-elemzo-ai-muhely`.
+- `/termekek` gyűjtőoldal: a Versenytárs Elemző AI Műhely kártya linkje javítva a helyes kanonikus URL-re, 40–60 szavas tényalapú AEO `DirectAnswerBlock` a Hero alatt.
+- `/termekek/layout.tsx`: `description` pontosan 150 karakterre bővítve, teljes `openGraph` + `twitter` + `CollectionPage` és `BreadcrumbList` JSON-LD (XSS-védett).
+
+**2–4. TERMÉKOLDALAK TELJES KÖRŰ KONSZOLIDÁCIÓJA (15 ROUTE):**
+- **`seo-audit-pro`, `versenytars-elemzo-ai-muhely`:** a `page.tsx`-ből eltávolítva a duplikált `export const metadata` és a kliensoldali `productSchema` + `<script type="application/ld+json">` blokkok — a teljes `metadata` (canonical + OG + Twitter) és az E-E-A-T `Product` + `BreadcrumbList` sémák mostantól kizárólag a szerveroldali `layout.tsx`-ben élnek.
+- **`termekek/ai-muhely`:** a `page.tsx` megtisztítva (duplikált metadata + dead `productSchema` + duplikált breadcrumb eltávolítva, hibás karakterkódolású szövegek megszüntetve); a `Product` + `BreadcrumbList` JSON-LD áthelyezve a `layout.tsx`-be.
+- **`ai-megoldasok/ai-muhely`:** a `"use client"` `page.tsx`-ből eltávolítva mindkét JSON-LD script; új szerveroldali `layout.tsx` létrehozva teljes `metadata`-val (canonical + OG + Twitter), E-E-A-T `Product` sémával és `BreadcrumbList`-tel.
+- **`ai-chatbot-starter`, `ai-workflow-starter-pack`, `cro-booster-kit`, `banner-ai-muhely`, `logo-ai-muhely`, `midjourney-ai-muhely`, `kristofka-munkafolyamat`, `seo-audit-ai-muhely`, `szezonalis-ai-muhely`, `tartalomtervezo-ai-muhely`, `ui-ux-ai-muhely`:** ellenőrizve — a `layout.tsx`-ek canonical + OG + Twitter + E-E-A-T `Product`/`SoftwareApplication` + `BreadcrumbList` sémákat, `price` nélküli `offers`-t ("Egyedi árajánlat kérése") és `#organization`/`#person` horgonyokat tartalmaznak; a kliens `page.tsx`-ek JSON-LD mentesek.
+- **`ai-prompt-sablonok`:** 40–60 szavas AEO `DirectAnswerBlock` beépítve a Hero alá; a `layout.tsx` duplikált `type` mezője javítva (TS1117).
+
+**5. JAVÍTÁSOK ÉS QA:**
+- 4 db csonkított `page.tsx` (`seo-audit-ai-muhely`, `szezonalis-ai-muhely`, `tartalomtervezo-ai-muhely`, `ui-ux-ai-muhely`) visszaállítva a HEAD változatból, majd a kliens JSON-LD blokkok sebészi eltávolítása — a korábbi munkamenet JSX csonkítása megszüntetve.
+- `npx tsc --noEmit` → **0 hiba**; `npm run lint -- --max-warnings 0` → **0 error, 0 warning**.
+
+---
+
+## [7.43.0] — 2026-11-12 — /MUNKAK GYŰJTŐOLDAL ÉS MIND A 14 ESETTANULMÁNY TELJES KÖRŰ SEO/AEO/GEO ÉS SITEMAP KONSZOLIDÁCIÓJA
+
+**1. SITEMAP SZINKRONIZÁCIÓ (`src/app/sitemap.ts`):**
+- A korábbi elavult `projects.ts` hivatkozás helyett a modern `src/data/works.ts` (`works`) tömbre állítva a projekt URL-ek generálása.
+- Mostantól pontosan a 14 valós, indexelhető esettanulmány URL-je szerepel a sitemapben 0.7-es prioritással és monthly frissítési gyakorisággal.
+- A felesleges `projects` import eltávolítva, zéró unused-vars figyelmeztetés.
+
+**2. GYŰJTŐOLDAL AEO DIRECT ANSWER BLOKK (`src/app/munkak/page.tsx`):**
+- 40–60 szavas, tényalapú AEO Direct Answer blokk (`DirectAnswerBlock`) beépítve a Hero videószekció alá.
+- 4 strukturált kulcsténnyel (Tapasztalat, Projektek száma, Fő technológiák, Zéró Fix Ár / Egyedi árajánlat).
+
+**3. TELJES KÖRŰ ESETTANULMÁNY SEO & JSON-LD LEFEDETTSÉG (`src/data/caseStudySeo.ts`):**
+- A korábbi 4-ről mind a 14 projektre kiterjesztve a `CASE_STUDY_SEO` konfiguráció.
+- **Meglévő 4 projekt frissítve:** `classi-co`, `btshop`, `leanperial`, `nedelmarket` megkapta a központi `"@id": "https://webdude.hu/#organization"` és `"@id": "https://webdude.hu/#person"` ("Balog Norbert", "26 év grafikai tervezési és 16 év webfejlesztői tapasztalat") E-E-A-T horgonyokat, valamint a `BreadcrumbList` sémát és a `directAnswer` adatstruktúrát.
+- **10 új esettanulmány hozzáadva:**
+  * `hu-mago-kft` (Ipari szerszámgyártás & CNC)
+  * `dr-nagy-albert` (Neurológus szakorvosi magánrendelés)
+  * `go-box-kft` (Dobozgyártás és csomagolástechnika B2B)
+  * `ai-prompt-hu` (Saját fejlesztésű AI prompt optimalizáló SaaS)
+  * `lengyel-helga-eskuvodekoracio` (Esküvői dekoráció & virágkötészet)
+  * `rimai-utepito-kft-teljes-koru-digitalis-es-vizualis-arculatepites` (Útépítés & mélyépítés B2B)
+  * `bor-es-garnela` (Gourmet food truck & catering branding)
+  * `dr-danyi` (Szakorvosi magánrendelő portál)
+  * `marina-homes` (Vízparti prémium lakópark ingatlanfejlesztés)
+  * `chamomprex` (Exkluzív kirakat- és névjegy-arculattervezés)
+- Minden bejegyzés rendelkezik 150-160 karakteres descriptionnel, pontos `canonical`-lal, `openGraph` és `twitter` kártyákkal, `Article` + `Project` + `BreadcrumbList` sémákkal és 40-60 szavas `directAnswer` összefoglalóval.
+
+**4. DINAMIKUS OLDAL ARCHITEKTÚRA (`src/app/munkak/[slug]/page.tsx`):**
+- Dupla kulcsos feloldás (`CASE_STUDY_SEO[slug] || CASE_STUDY_SEO[project.id]`), így az egyedi sluggal rendelkező munkák is garantáltan megtalálják a SEO bejegyzést.
+- Robusztus fallback metadata és JSON-LD sémák generálása XSS védelemmel (`.replace(/</g, "\\u003c")`).
+- Központi `directAnswer` renderelés a fejléc alatti `<aside>` szekcióban, DRY elv szerint — megőrizve a 11 egyedi CaseStudy komponens érintetlenségét.
+
+**5. QA VALIDÁCIÓ (ZERO-ERROR GATE):**
+- `npx tsc --noEmit` → **TSC_EXIT=0** (0 hiba)
+- `npm run lint -- --max-warnings 0` → **LINT_EXIT=0** (0 error, 0 warning)
+
+---
+
 ## [7.42.0] — 2026-11-12 — SZOLGÁLTATÁS ALOLDALAK SEO/AEO KONSZOLIDÁCIÓ: JSON-LD, CANONICAL, GYIK ÉS SCHEMA AUDIT
 
 **1. TYPESCRIPT HIBA JAVÍTÁS (`wordpress-biztonsag/page.tsx`):**

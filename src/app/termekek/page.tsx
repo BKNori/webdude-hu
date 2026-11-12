@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "motion/react";
+import DirectAnswerBlock from "@/components/molecules/DirectAnswerBlock";
 import {
   ShoppingBag,
   Zap,
@@ -250,7 +251,7 @@ const products = [
     ],
     icon: ShoppingBag,
     color: "from-green-500 to-emerald-500",
-    href: "/termekek/versenytares-elemzo-ai-muhely",
+    href: "/termekek/versenytars-elemzo-ai-muhely",
   },
 ];
 
@@ -353,6 +354,13 @@ export default function ProductsPage() {
           </div>
         </div>
       </section>
+
+      {/* AEO Direct Answer blokk — a Hero alá */}
+      <DirectAnswerBlock
+        id="termekek-direct-answer"
+        question="Milyen prémium AI & automatizációs megoldások kínál a WebDude, kinek és milyen eredménnyel?"
+        answer="Prémium AI munkafolyamatok, prompt engineering, CRO eszközök és AI műhely sablonok KKV-knak az automatizáció skálázására és a lead-generálásra. 26 év grafikai és 16 év webfejlesztői tapasztalat, egyedi árajánlat kérése."
+      />
 
       {/* Category Filter */}
       <section className="py-8 border-b border-slate-800 bg-bg-surface">

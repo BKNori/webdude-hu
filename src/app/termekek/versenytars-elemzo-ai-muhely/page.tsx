@@ -1,65 +1,7 @@
-import { Metadata } from "next";
 import ProductPortalCta from "@/components/molecules/ProductPortalCta";
-
-export const metadata: Metadata = {
-  title: "Versenytárs Elemző AI Műhely - WebDude.hu",
-  description:
-    "Versenytárs Elemző AI Műhely: Versenytárs vizuális elemzés AI eszközökkel. Design audit, trend elemzés és versenytárs stratégia kialakítás.",
-  openGraph: {
-    title: "Versenytárs Elemző AI Műhely - WebDude.hu",
-    description:
-      "Versenytárs Elemző AI Műhely: Versenytárs vizuális elemzés AI eszközökkel.",
-    url: "https://webdude.hu/termekek/versenytars-elemzo-ai-muhely",
-    siteName: "WebDude",
-    images: [
-      {
-        url: "/og/webdude-og.jpg",
-        width: 1200,
-        height: 630
-      }
-    ],
-    locale: "hu_HU",
-    type: "website"
-  }
-};
-
-const productSchema = {
-  "@context": "https://schema.org",
-  "@type": "Product",
-  name: "Versenytárs Elemző AI Műhely",
-  description:
-    "Versenytárs vizuális elemzés AI eszközökkel. Design audit, trend elemzés és versenytárs stratégia kialakítás. Prémium eszközök marketing stratégia kialakításhoz.",
-  image: "https://webdude.hu/og/webdude-og.jpg",
-  brand: {
-    "@type": "Brand",
-    name: "WebDude"
-  },
-  offers: {
-    "@type": "Offer",
-    availability: "https://schema.org/InStock",
-    url: "https://webdude.hu/termekek/versenytars-elemzo-ai-muhely",
-    seller: {
-      "@type": "Organization",
-      name: "WebDude.hu"
-    },
-    description: "Egyedi árajánlat kérése",
-  },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.8",
-    reviewCount: "31"
-  }
-};
 
 export default function VersenytarsElemzoAIMuhelyPage() {
   return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(productSchema).replace(/</g, "\\u003c")
-        }}
-      />
       <div className="min-h-screen bg-bg-base">
         <section className="relative py-24 overflow-hidden">
           <div className="absolute inset-0 bg-linear-to-b from-brand-primary/5 via-transparent to-transparent" />
@@ -130,6 +72,5 @@ export default function VersenytarsElemzoAIMuhelyPage() {
 
         <ProductPortalCta productName="Versenytárs-elemző AI Műhely" />
       </div>
-    </>
   );
 }

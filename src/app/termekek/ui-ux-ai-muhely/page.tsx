@@ -15,34 +15,6 @@ import {
   Layers
 } from "lucide-react";
 
-const productSchema = {
-  "@context": "https://schema.org",
-  "@type": "Product",
-  name: "UI/UX AI Műhely",
-  description:
-    "Professzionális UI/UX tervező eszköz AI-vel. Landing page tervezés, mobil alkalmazás tervezés, weboldal interface generálás és teljes design system létrehozása. Konverzióra optimalizált, prémium esztétika.",
-  image: "https://webdude.hu/og/webdude-og.jpg",
-  brand: {
-    "@type": "Brand",
-    name: "WebDude"
-  },
-  offers: {
-    "@type": "Offer",
-    availability: "https://schema.org/InStock",
-    url: "https://webdude.hu/termekek/ui-ux-ai-muhely",
-    seller: {
-      "@type": "Organization",
-      name: "WebDude.hu"
-    },
-    description: "Egyedi árajánlat kérése",
-  },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.8",
-    reviewCount: "31"
-  }
-};
-
 const designStyles = [
   {
     id: "minimalist",
@@ -160,12 +132,6 @@ export default function UIUXAIMuhelyPage() {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(productSchema).replace(/</g, "\\u003c")
-        }}
-      />
       <ProductAccessGuard>
         <div className="min-h-screen bg-bg-base">
           {/* Hero Section */}

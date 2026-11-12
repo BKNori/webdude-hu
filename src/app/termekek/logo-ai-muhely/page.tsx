@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import { motion } from "motion/react";
@@ -15,39 +15,11 @@ import {
 } from "lucide-react";
 import ProductAccessGuard from "@/components/molecules/ProductAccessGuard";
 
-const productSchema = {
-  "@context": "https://schema.org",
-  "@type": "Product",
-  name: "Logo AI Műhely",
-  description:
-    "Professzionális AI logó tervező eszköz. Generálj egyedi logókat AI-vel, minimalistától a luxusig. Vektoros outputok, branding guideline-k és teljes identity rendszer.",
-  image: "https://webdude.hu/og/webdude-og.jpg",
-  brand: {
-    "@type": "Brand",
-    name: "WebDude"
-  },
-  offers: {
-    "@type": "Offer",
-    availability: "https://schema.org/InStock",
-    url: "https://webdude.hu/termekek/logo-ai-muhely",
-    seller: {
-      "@type": "Organization",
-      name: "WebDude.hu"
-    },
-    description: "Egyedi árajánlat kérése",
-  },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.8",
-    reviewCount: "31"
-  }
-};
-
 const logoStyles = [
   {
     id: "minimalist",
     name: "Minimalista",
-    description: "Tiszta, egyszerű vonalvezetés",
+    description: "Tiszta, egyszerĹ± vonalvezetĂ©s",
     prompt:
       "minimalist logo design, clean lines, geometric shapes, modern typography, professional aesthetic, scalable vector style",
     color: "from-[#00B5F1] to-sky-500"
@@ -55,7 +27,7 @@ const logoStyles = [
   {
     id: "modern",
     name: "Modern",
-    description: "Kortárs, innovatív",
+    description: "KortĂˇrs, innovatĂ­v",
     prompt:
       "modern logo design, contemporary aesthetic, bold typography, dynamic shapes, innovative visual identity",
     color: "from-purple-500 to-pink-500"
@@ -63,15 +35,15 @@ const logoStyles = [
   {
     id: "corporate",
     name: "Corporate",
-    description: "Professzionális, üzleti",
+    description: "ProfesszionĂˇlis, ĂĽzleti",
     prompt:
       "corporate logo design, professional business aesthetic, trustworthy colors, clean typography, established brand feel",
     color: "from-[#00B5F1] to-[#5B21B6]"
   },
   {
     id: "creative",
-    name: "Kreatív",
-    description: "Színes, dinamikus",
+    name: "KreatĂ­v",
+    description: "SzĂ­nes, dinamikus",
     prompt:
       "creative logo design, vibrant colors, artistic elements, unique composition, eye-catching visual",
     color: "from-green-500 to-emerald-500"
@@ -79,7 +51,7 @@ const logoStyles = [
   {
     id: "luxury",
     name: "Luxus",
-    description: "Elegáns, prémium",
+    description: "ElegĂˇns, prĂ©mium",
     prompt:
       "luxury logo design, elegant aesthetic, premium feel, sophisticated colors, high-end visual identity",
     color: "from-brand-secondary to-brand-primary"
@@ -87,7 +59,7 @@ const logoStyles = [
   {
     id: "tech",
     name: "Tech",
-    description: "Modern, innovatív",
+    description: "Modern, innovatĂ­v",
     prompt:
       "tech logo design, modern innovation aesthetic, digital elements, futuristic but professional, clean tech style",
     color: "from-indigo-500 to-blue-500"
@@ -95,25 +67,25 @@ const logoStyles = [
 ];
 
 const logoTypes = [
-  { id: "wordmark", name: "Wordmark", description: "Szöveg alapú logo" },
-  { id: "symbol", name: "Szimbólum", description: "Ikon alapú logo" },
-  { id: "combination", name: "Kombinált", description: "Szöveg + ikon" },
-  { id: "emblem", name: "Embléma", description: "Pajzs alapú" }
+  { id: "wordmark", name: "Wordmark", description: "SzĂ¶veg alapĂş logo" },
+  { id: "symbol", name: "SzimbĂłlum", description: "Ikon alapĂş logo" },
+  { id: "combination", name: "KombinĂˇlt", description: "SzĂ¶veg + ikon" },
+  { id: "emblem", name: "EmblĂ©ma", description: "Pajzs alapĂş" }
 ];
 
 const colorSchemes = [
   {
     id: "9082",
     name: "90/8/2 (Cyber-Arany)",
-    description: "90% sötét, 8% arany, 2% kiemelő"
+    description: "90% sĂ¶tĂ©t, 8% arany, 2% kiemelĹ‘"
   },
   {
     id: "monochrome",
-    name: "Monokróm",
-    description: "Fekete-fehér árnyalatok"
+    name: "MonokrĂłm",
+    description: "Fekete-fehĂ©r Ăˇrnyalatok"
   },
-  { id: "gradient", name: "Gradiens", description: "Színátmenetes" },
-  { id: "duotone", name: "Duotón", description: "Kétszínű" }
+  { id: "gradient", name: "Gradiens", description: "SzĂ­nĂˇtmenetes" },
+  { id: "duotone", name: "DuotĂłn", description: "KĂ©tszĂ­nĹ±" }
 ];
 
 export default function LogoAIMuhelyPage() {
@@ -160,12 +132,6 @@ export default function LogoAIMuhelyPage() {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(productSchema).replace(/</g, "\\u003c")
-        }}
-      />
       <ProductAccessGuard>
         <div className="min-h-screen bg-bg-base">
           {/* Hero Section */}
@@ -181,7 +147,7 @@ export default function LogoAIMuhelyPage() {
                 >
                   <Sparkles className="w-4 h-4 text-[#00B5F1]" />
                   <span className="text-xs font-bold text-[#00B5F1] uppercase tracking-[0.2em]">
-                    AI Műhely
+                    AI MĹ±hely
                   </span>
                 </motion.div>
                 <motion.h1
@@ -192,13 +158,13 @@ export default function LogoAIMuhelyPage() {
                 >
                   Logo AI{" "}
                   <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6]">
-                    Műhely
+                    MĹ±hely
                   </span>
                 </motion.h1>
                 <p className="text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">
-                  Egyedi arculattervezés és logo generálás Midjourney v6 Master
-                  promptokkal. Prémium vizuális identitás kialakítása. 4.5x
-                  brand felismerés, 89% design konzisztencia, 300 DPI nyomdakész
+                  Egyedi arculattervezĂ©s Ă©s logo generĂˇlĂˇs Midjourney v6 Master
+                  promptokkal. PrĂ©mium vizuĂˇlis identitĂˇs kialakĂ­tĂˇsa. 4.5x
+                  brand felismerĂ©s, 89% design konzisztencia, 300 DPI nyomdakĂ©sz
                   outputok.
                 </p>
               </div>
@@ -223,7 +189,7 @@ export default function LogoAIMuhelyPage() {
                       AI Logo Generator
                     </h2>
                     <p className="text-sm text-text-secondary">
-                      Midjourney v6 Master prompt generálás
+                      Midjourney v6 Master prompt generĂˇlĂˇs
                     </p>
                   </div>
                 </div>
@@ -231,7 +197,7 @@ export default function LogoAIMuhelyPage() {
                 {/* Style Selection */}
                 <div className="mb-8">
                   <label className="text-sm font-bold text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
-                    Stílus választás
+                    StĂ­lus vĂˇlasztĂˇs
                   </label>
                   <div className="grid md:grid-cols-3 gap-4">
                     {logoStyles.map((style) => (
@@ -262,7 +228,7 @@ export default function LogoAIMuhelyPage() {
                 <div className="grid md:grid-cols-2 gap-6 mb-8">
                   <div>
                     <label className="text-sm font-bold text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
-                      Logo típus
+                      Logo tĂ­pus
                     </label>
                     <div className="space-y-2">
                       {logoTypes.map((type) => (
@@ -288,7 +254,7 @@ export default function LogoAIMuhelyPage() {
 
                   <div>
                     <label className="text-sm font-bold text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
-                      Szín séma
+                      SzĂ­n sĂ©ma
                     </label>
                     <div className="space-y-2">
                       {colorSchemes.map((scheme) => (
@@ -319,7 +285,7 @@ export default function LogoAIMuhelyPage() {
                 <div className="space-y-6 mb-8">
                   <div>
                     <label className="text-sm font-bold text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
-                      Cégnév (opcionális)
+                      CĂ©gnĂ©v (opcionĂˇlis)
                     </label>
                     <input
                       type="text"
@@ -332,51 +298,51 @@ export default function LogoAIMuhelyPage() {
 
                   <div>
                     <label className="text-sm font-bold text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
-                      Iparág (opcionális)
+                      IparĂˇg (opcionĂˇlis)
                     </label>
                     <input
                       type="text"
                       value={industry}
                       onChange={(e) => setIndustry(e.target.value)}
-                      placeholder="pl. webfejlesztés, e-kereskedelem, pénzügy"
+                      placeholder="pl. webfejlesztĂ©s, e-kereskedelem, pĂ©nzĂĽgy"
                       className="w-full p-3 rounded-lg border-2 border-bg-elevated bg-bg-base text-text-primary placeholder:text-text-secondary focus:border-[#00B5F1] focus:outline-none transition-all"
                     />
                   </div>
 
                   <div>
                     <label className="text-sm font-bold text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
-                      Szlogen (opcionális)
+                      Szlogen (opcionĂˇlis)
                     </label>
                     <input
                       type="text"
                       value={slogan}
                       onChange={(e) => setSlogan(e.target.value)}
-                      placeholder="pl. Innováció a jövőben, Minőség mindenek felett"
+                      placeholder="pl. InnovĂˇciĂł a jĂ¶vĹ‘ben, MinĹ‘sĂ©g mindenek felett"
                       className="w-full p-3 rounded-lg border-2 border-bg-elevated bg-bg-base text-text-primary placeholder:text-text-secondary focus:border-[#00B5F1] focus:outline-none transition-all"
                     />
                   </div>
 
                   <div>
                     <label className="text-sm font-bold text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
-                      Szín preferenciák (opcionális)
+                      SzĂ­n preferenciĂˇk (opcionĂˇlis)
                     </label>
                     <input
                       type="text"
                       value={colorPreferences}
                       onChange={(e) => setColorPreferences(e.target.value)}
-                      placeholder="pl. kék és narancs, monokróm, pasztell színek"
+                      placeholder="pl. kĂ©k Ă©s narancs, monokrĂłm, pasztell szĂ­nek"
                       className="w-full p-3 rounded-lg border-2 border-bg-elevated bg-bg-base text-text-primary placeholder:text-text-secondary focus:border-[#00B5F1] focus:outline-none transition-all"
                     />
                   </div>
 
                   <div>
                     <label className="text-sm font-bold text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
-                      Egyedi utasítások (opcionális)
+                      Egyedi utasĂ­tĂˇsok (opcionĂˇlis)
                     </label>
                     <textarea
                       value={customInstructions}
                       onChange={(e) => setCustomInstructions(e.target.value)}
-                      placeholder="pl. minimalista design, geometrikus formák, modern tipográfia"
+                      placeholder="pl. minimalista design, geometrikus formĂˇk, modern tipogrĂˇfia"
                       rows={3}
                       className="w-full p-3 rounded-lg border-2 border-bg-elevated bg-bg-base text-text-primary placeholder:text-text-secondary focus:border-[#00B5F1] focus:outline-none transition-all resize-none"
                     />
@@ -394,12 +360,12 @@ export default function LogoAIMuhelyPage() {
                   {isGenerating ? (
                     <>
                       <RefreshCw className="w-5 h-5 animate-spin" />
-                      <span>Generálás folyamatban...</span>
+                      <span>GenerĂˇlĂˇs folyamatban...</span>
                     </>
                   ) : (
                     <>
                       <Zap className="w-5 h-5" />
-                      <span>Midjourney Prompt Generálás</span>
+                      <span>Midjourney Prompt GenerĂˇlĂˇs</span>
                     </>
                   )}
                 </motion.button>
@@ -414,7 +380,7 @@ export default function LogoAIMuhelyPage() {
                   >
                     <div className="flex items-center justify-between mb-4">
                       <h3 className="text-lg font-bold text-text-primary">
-                        Generált Prompt
+                        GenerĂˇlt Prompt
                       </h3>
                       <div className="flex gap-2">
                         <motion.button
@@ -445,9 +411,9 @@ export default function LogoAIMuhelyPage() {
                 transition={{ duration: 0.5 }}
                 className="text-3xl font-bold text-text-primary mb-8 text-center tracking-tight"
               >
-                Funkciók és{" "}
+                FunkciĂłk Ă©s{" "}
                 <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6]">
-                  Előnyök
+                  ElĹ‘nyĂ¶k
                 </span>
               </motion.h2>
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -456,22 +422,22 @@ export default function LogoAIMuhelyPage() {
                     icon: PenTool,
                     title: "Midjourney v6 Master",
                     description:
-                      "Prémium prompt sablonok a legjobb eredményekhez"
+                      "PrĂ©mium prompt sablonok a legjobb eredmĂ©nyekhez"
                   },
                   {
                     icon: Palette,
-                    title: "Egyedi Arculattervezés",
-                    description: "Személyre szabott vizuális identitás"
+                    title: "Egyedi ArculattervezĂ©s",
+                    description: "SzemĂ©lyre szabott vizuĂˇlis identitĂˇs"
                   },
                   {
                     icon: Layers,
-                    title: "Logo Generálás",
-                    description: "Automatikus logo generálás több stílusban"
+                    title: "Logo GenerĂˇlĂˇs",
+                    description: "Automatikus logo generĂˇlĂˇs tĂ¶bb stĂ­lusban"
                   },
                   {
                     icon: Hexagon,
-                    title: "Brand Szimbólumok",
-                    description: "Márka szimbólum tervezés és optimalizálás"
+                    title: "Brand SzimbĂłlumok",
+                    description: "MĂˇrka szimbĂłlum tervezĂ©s Ă©s optimalizĂˇlĂˇs"
                   }
                 ].map((feature, index) => {
                   const FeatureIcon = feature.icon;
@@ -508,9 +474,9 @@ export default function LogoAIMuhelyPage() {
                 transition={{ duration: 0.5 }}
                 className="text-3xl font-bold text-text-primary mb-4 tracking-tight"
               >
-                Készen állsz az{" "}
+                KĂ©szen Ăˇllsz az{" "}
                 <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6]">
-                  Arculattervezésre
+                  ArculattervezĂ©sre
                 </span>
                 ?
               </motion.h2>
@@ -520,7 +486,7 @@ export default function LogoAIMuhelyPage() {
                 transition={{ duration: 0.5, delay: 0.1 }}
                 className="text-text-secondary mb-8"
               >
-                Próbáld ki az AI Logo Generátort és hozz létre lenyűgöző logókat
+                PrĂłbĂˇld ki az AI Logo GenerĂˇtort Ă©s hozz lĂ©tre lenyĹ±gĂ¶zĹ‘ logĂłkat
                 percek alatt!
               </motion.p>
               <motion.button
@@ -531,7 +497,7 @@ export default function LogoAIMuhelyPage() {
                 whileTap={{ scale: 0.98 }}
                 className="inline-flex items-center gap-2 px-8 py-4 bg-linear-to-r from-[#00B5F1] to-[#5B21B6] text-slate-950 font-bold rounded-xl hover:shadow-[0_8px_32px_rgba(0, 181, 241,0.4)] transition-all"
               >
-                Kezdés most
+                KezdĂ©s most
                 <ArrowRight className="w-4 h-4" />
               </motion.button>
             </div>

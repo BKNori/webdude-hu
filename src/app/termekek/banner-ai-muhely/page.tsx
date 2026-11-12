@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import { motion } from "motion/react";
@@ -14,39 +14,11 @@ import {
 } from "lucide-react";
 import ProductAccessGuard from "@/components/molecules/ProductAccessGuard";
 
-const productSchema = {
-  "@context": "https://schema.org",
-  "@type": "Product",
-  name: "Banner AI Műhely",
-  description:
-    "Professzionális banner tervező eszköz AI-vel. Minimalista, modern, elegáns és playful stílusú bannerek generálása. Social media és weboldal bannerek másodpercek alatt.",
-  image: "https://webdude.hu/og/webdude-og.jpg",
-  brand: {
-    "@type": "Brand",
-    name: "WebDude"
-  },
-  offers: {
-    "@type": "Offer",
-    availability: "https://schema.org/InStock",
-    url: "https://webdude.hu/termekek/banner-ai-muhely",
-    seller: {
-      "@type": "Organization",
-      name: "WebDude.hu"
-    },
-    description: "Egyedi árajánlat kérése",
-  },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.8",
-    reviewCount: "31"
-  }
-};
-
 const bannerStyles = [
   {
     id: "minimalist",
     name: "Minimalista",
-    description: "Tiszta, egyszerű vonalvezetés",
+    description: "Tiszta, egyszerĹ± vonalvezetĂ©s",
     prompt:
       "minimalist banner design, clean lines, ample white space, modern typography, professional aesthetic",
     color: "from-[#00B5F1] to-sky-500"
@@ -62,15 +34,15 @@ const bannerStyles = [
   {
     id: "corporate",
     name: "Corporate",
-    description: "Professzionális, üzleti",
+    description: "ProfesszionĂˇlis, ĂĽzleti",
     prompt:
       "corporate banner design, professional business aesthetic, clean typography, trustworthy colors, modern corporate style",
     color: "from-[#00B5F1] to-[#5B21B6]"
   },
   {
     id: "creative",
-    name: "Kreatív",
-    description: "Színes, dinamikus",
+    name: "KreatĂ­v",
+    description: "SzĂ­nes, dinamikus",
     prompt:
       "creative banner design, vibrant colors, dynamic composition, artistic elements, eye-catching visual",
     color: "from-green-500 to-emerald-500"
@@ -78,7 +50,7 @@ const bannerStyles = [
   {
     id: "luxury",
     name: "Luxus",
-    description: "Elegáns, prémium",
+    description: "ElegĂˇns, prĂ©mium",
     prompt:
       "luxury banner design, elegant aesthetic, premium feel, sophisticated colors, high-end visual",
     color: "from-brand-secondary to-brand-primary"
@@ -86,7 +58,7 @@ const bannerStyles = [
   {
     id: "tech",
     name: "Tech",
-    description: "Modern, innovatív",
+    description: "Modern, innovatĂ­v",
     prompt:
       "tech banner design, modern innovation aesthetic, clean tech style, digital elements, futuristic but professional",
     color: "from-indigo-500 to-blue-500"
@@ -104,15 +76,15 @@ const colorPalettes = [
   {
     id: "9082",
     name: "90/8/2 (Cyber-Arany)",
-    description: "90% sötét, 8% arany, 2% kiemelő"
+    description: "90% sĂ¶tĂ©t, 8% arany, 2% kiemelĹ‘"
   },
   {
     id: "monochrome",
-    name: "Monokróm",
-    description: "Fekete-fehér árnyalatok"
+    name: "MonokrĂłm",
+    description: "Fekete-fehĂ©r Ăˇrnyalatok"
   },
-  { id: "vibrant", name: "Vibráns", description: "Erős, élénk színek" },
-  { id: "pastel", name: "Pasztell", description: "Finom, lágy színek" }
+  { id: "vibrant", name: "VibrĂˇns", description: "ErĹ‘s, Ă©lĂ©nk szĂ­nek" },
+  { id: "pastel", name: "Pasztell", description: "Finom, lĂˇgy szĂ­nek" }
 ];
 
 export default function BannerAIMuhelyPage() {
@@ -159,12 +131,6 @@ export default function BannerAIMuhelyPage() {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(productSchema).replace(/</g, "\\u003c")
-        }}
-      />
       <ProductAccessGuard>
         <div className="min-h-screen bg-bg-base">
           {/* Hero Section */}
@@ -180,7 +146,7 @@ export default function BannerAIMuhelyPage() {
                 >
                   <Sparkles className="w-4 h-4 text-[#00B5F1]" />
                   <span className="text-xs font-bold text-[#00B5F1] uppercase tracking-[0.2em]">
-                    AI Műhely
+                    AI MĹ±hely
                   </span>
                 </motion.div>
                 <motion.h1
@@ -191,13 +157,13 @@ export default function BannerAIMuhelyPage() {
                 >
                   Banner AI{" "}
                   <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6]">
-                    Műhely
+                    MĹ±hely
                   </span>
                 </motion.h1>
                 <p className="text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">
-                  Konverziófókuszú banner tervezés Midjourney v6 Master
-                  promptokkal. 90/8/2 színarány és prémium optikai beállítások.
-                  3.2x CTR növekedés, 67% kattintási konverzió, 4K felbontású
+                  KonverziĂłfĂłkuszĂş banner tervezĂ©s Midjourney v6 Master
+                  promptokkal. 90/8/2 szĂ­narĂˇny Ă©s prĂ©mium optikai beĂˇllĂ­tĂˇsok.
+                  3.2x CTR nĂ¶vekedĂ©s, 67% kattintĂˇsi konverziĂł, 4K felbontĂˇsĂş
                   outputok.
                 </p>
               </div>
@@ -222,7 +188,7 @@ export default function BannerAIMuhelyPage() {
                       AI Banner Generator
                     </h2>
                     <p className="text-sm text-text-secondary">
-                      Midjourney v6 Master prompt generálás
+                      Midjourney v6 Master prompt generĂˇlĂˇs
                     </p>
                   </div>
                 </div>
@@ -230,7 +196,7 @@ export default function BannerAIMuhelyPage() {
                 {/* Style Selection */}
                 <div className="mb-8">
                   <label className="text-sm font-bold text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
-                    Stílus választás
+                    StĂ­lus vĂˇlasztĂˇs
                   </label>
                   <div className="grid md:grid-cols-3 gap-4">
                     {bannerStyles.map((style) => (
@@ -261,7 +227,7 @@ export default function BannerAIMuhelyPage() {
                 <div className="grid md:grid-cols-2 gap-6 mb-8">
                   <div>
                     <label className="text-sm font-bold text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
-                      Méretarány
+                      MĂ©retarĂˇny
                     </label>
                     <div className="space-y-2">
                       {aspectRatios.map((ratio) => (
@@ -287,7 +253,7 @@ export default function BannerAIMuhelyPage() {
 
                   <div>
                     <label className="text-sm font-bold text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
-                      Szín paletta
+                      SzĂ­n paletta
                     </label>
                     <div className="space-y-2">
                       {colorPalettes.map((palette) => (
@@ -318,64 +284,64 @@ export default function BannerAIMuhelyPage() {
                 <div className="space-y-6 mb-8">
                   <div>
                     <label className="text-sm font-bold text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
-                      Logo leírása (opcionális)
+                      Logo leĂ­rĂˇsa (opcionĂˇlis)
                     </label>
                     <input
                       type="text"
                       value={logoDescription}
                       onChange={(e) => setLogoDescription(e.target.value)}
-                      placeholder="pl. minimalista kör alakú logó, kék színű, cégneve"
+                      placeholder="pl. minimalista kĂ¶r alakĂş logĂł, kĂ©k szĂ­nĹ±, cĂ©gneve"
                       className="w-full p-3 rounded-lg border-2 border-bg-elevated bg-bg-base text-text-primary placeholder:text-text-secondary focus:border-[#00B5F1] focus:outline-none transition-all"
                     />
                   </div>
 
                   <div>
                     <label className="text-sm font-bold text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
-                      Fő szöveg (opcionális)
+                      FĹ‘ szĂ¶veg (opcionĂˇlis)
                     </label>
                     <input
                       type="text"
                       value={bannerText}
                       onChange={(e) => setBannerText(e.target.value)}
-                      placeholder="pl. 50% kedvezmény minden termékre"
+                      placeholder="pl. 50% kedvezmĂ©ny minden termĂ©kre"
                       className="w-full p-3 rounded-lg border-2 border-bg-elevated bg-bg-base text-text-primary placeholder:text-text-secondary focus:border-[#00B5F1] focus:outline-none transition-all"
                     />
                   </div>
 
                   <div>
                     <label className="text-sm font-bold text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
-                      Háttérkép leírása (opcionális)
+                      HĂˇttĂ©rkĂ©p leĂ­rĂˇsa (opcionĂˇlis)
                     </label>
                     <input
                       type="text"
                       value={imageDescription}
                       onChange={(e) => setImageDescription(e.target.value)}
-                      placeholder="pl. termék fotó, modern irodai háttér, absztrakt minta"
+                      placeholder="pl. termĂ©k fotĂł, modern irodai hĂˇttĂ©r, absztrakt minta"
                       className="w-full p-3 rounded-lg border-2 border-bg-elevated bg-bg-base text-text-primary placeholder:text-text-secondary focus:border-[#00B5F1] focus:outline-none transition-all"
                     />
                   </div>
 
                   <div>
                     <label className="text-sm font-bold text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
-                      CTA gomb szövege (opcionális)
+                      CTA gomb szĂ¶vege (opcionĂˇlis)
                     </label>
                     <input
                       type="text"
                       value={ctaText}
                       onChange={(e) => setCtaText(e.target.value)}
-                      placeholder="pl. Vásárolj most, Tovább, Regisztrálj"
+                      placeholder="pl. VĂˇsĂˇrolj most, TovĂˇbb, RegisztrĂˇlj"
                       className="w-full p-3 rounded-lg border-2 border-bg-elevated bg-bg-base text-text-primary placeholder:text-text-secondary focus:border-[#00B5F1] focus:outline-none transition-all"
                     />
                   </div>
 
                   <div>
                     <label className="text-sm font-bold text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
-                      Egyedi utasítások (opcionális)
+                      Egyedi utasĂ­tĂˇsok (opcionĂˇlis)
                     </label>
                     <textarea
                       value={customInstructions}
                       onChange={(e) => setCustomInstructions(e.target.value)}
-                      placeholder="pl. hangsúly a konverzióra, minimalista design, prémium megjelenés"
+                      placeholder="pl. hangsĂşly a konverziĂłra, minimalista design, prĂ©mium megjelenĂ©s"
                       rows={3}
                       className="w-full p-3 rounded-lg border-2 border-bg-elevated bg-bg-base text-text-primary placeholder:text-text-secondary focus:border-[#00B5F1] focus:outline-none transition-all resize-none"
                     />
@@ -393,12 +359,12 @@ export default function BannerAIMuhelyPage() {
                   {isGenerating ? (
                     <>
                       <RefreshCw className="w-5 h-5 animate-spin" />
-                      <span>Generálás folyamatban...</span>
+                      <span>GenerĂˇlĂˇs folyamatban...</span>
                     </>
                   ) : (
                     <>
                       <Zap className="w-5 h-5" />
-                      <span>Midjourney Prompt Generálás</span>
+                      <span>Midjourney Prompt GenerĂˇlĂˇs</span>
                     </>
                   )}
                 </motion.button>
@@ -413,7 +379,7 @@ export default function BannerAIMuhelyPage() {
                   >
                     <div className="flex items-center justify-between mb-4">
                       <h3 className="text-lg font-bold text-text-primary">
-                        Generált Prompt
+                        GenerĂˇlt Prompt
                       </h3>
                       <div className="flex gap-2">
                         <motion.button
@@ -444,9 +410,9 @@ export default function BannerAIMuhelyPage() {
                 transition={{ duration: 0.5 }}
                 className="text-3xl font-bold text-text-primary mb-8 text-center tracking-tight"
               >
-                Funkciók és{" "}
+                FunkciĂłk Ă©s{" "}
                 <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6]">
-                  Előnyök
+                  ElĹ‘nyĂ¶k
                 </span>
               </motion.h2>
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -455,23 +421,23 @@ export default function BannerAIMuhelyPage() {
                     icon: ImageIcon,
                     title: "Midjourney v6 Master",
                     description:
-                      "Prémium prompt sablonok a legjobb eredményekhez"
+                      "PrĂ©mium prompt sablonok a legjobb eredmĂ©nyekhez"
                   },
                   {
                     icon: Palette,
-                    title: "90/8/2 Színarány",
+                    title: "90/8/2 SzĂ­narĂˇny",
                     description:
-                      "Cyber-Arany identitás a konverzió növeléséhez"
+                      "Cyber-Arany identitĂˇs a konverziĂł nĂ¶velĂ©sĂ©hez"
                   },
                   {
                     icon: Camera,
                     title: "85mm G-Master Optika",
-                    description: "Professzionális optikai beállítások"
+                    description: "ProfesszionĂˇlis optikai beĂˇllĂ­tĂˇsok"
                   },
                   {
                     icon: Zap,
                     title: "Chiaroscuro Lighting",
-                    description: "Fény-árnyék kontraszt a drámai hatásért"
+                    description: "FĂ©ny-ĂˇrnyĂ©k kontraszt a drĂˇmai hatĂˇsĂ©rt"
                   }
                 ].map((feature, index) => {
                   const FeatureIcon = feature.icon;
@@ -508,9 +474,9 @@ export default function BannerAIMuhelyPage() {
                 transition={{ duration: 0.5 }}
                 className="text-3xl font-bold text-text-primary mb-4 tracking-tight"
               >
-                Készen állsz a{" "}
+                KĂ©szen Ăˇllsz a{" "}
                 <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6]">
-                  Banner tervezésre
+                  Banner tervezĂ©sre
                 </span>
                 ?
               </motion.h2>
@@ -520,7 +486,7 @@ export default function BannerAIMuhelyPage() {
                 transition={{ duration: 0.5, delay: 0.1 }}
                 className="text-text-secondary mb-8"
               >
-                Próbáld ki az AI Banner Generátort és hozz létre lenyűgöző
+                PrĂłbĂˇld ki az AI Banner GenerĂˇtort Ă©s hozz lĂ©tre lenyĹ±gĂ¶zĹ‘
                 bannereket percek alatt!
               </motion.p>
               <motion.button
@@ -531,7 +497,7 @@ export default function BannerAIMuhelyPage() {
                 whileTap={{ scale: 0.98 }}
                 className="inline-flex items-center gap-2 px-8 py-4 bg-linear-to-r from-[#00B5F1] to-[#5B21B6] text-slate-950 font-bold rounded-xl hover:shadow-[0_8px_32px_rgba(0, 181, 241,0.4)] transition-all"
               >
-                Kezdés most
+                KezdĂ©s most
                 <ArrowRight className="w-4 h-4" />
               </motion.button>
             </div>

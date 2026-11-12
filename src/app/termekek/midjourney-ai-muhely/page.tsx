@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import { motion } from "motion/react";
@@ -15,39 +15,11 @@ import {
 } from "lucide-react";
 import ProductAccessGuard from "@/components/molecules/ProductAccessGuard";
 
-const productSchema = {
-  "@context": "https://schema.org",
-  "@type": "Product",
-  name: "Midjourney AI Műhely",
-  description:
-    "Professzionális Midjourney prompt generáló eszköz. Hozz létre lenyűgöző képeket AI-vel, marketing assetekhez és vizuális tartalomhoz. Cinematic, photorealistic és artistic stílusok.",
-  image: "https://webdude.hu/og/webdude-og.jpg",
-  brand: {
-    "@type": "Brand",
-    name: "WebDude"
-  },
-  offers: {
-    "@type": "Offer",
-    availability: "https://schema.org/InStock",
-    url: "https://webdude.hu/termekek/midjourney-ai-muhely",
-    seller: {
-      "@type": "Organization",
-      name: "WebDude.hu"
-    },
-    description: "Egyedi árajánlat kérése",
-  },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.8",
-    reviewCount: "31"
-  }
-};
-
 const visualStyles = [
   {
     id: "photorealistic",
-    name: "Fotórealisztikus",
-    description: "Valósághű, részletes",
+    name: "FotĂłrealisztikus",
+    description: "ValĂłsĂˇghĹ±, rĂ©szletes",
     prompt:
       "photorealistic visual, hyper-detailed, realistic lighting, 85mm G-Master optics, professional photography aesthetic",
     color: "from-blue-500 to-sky-500"
@@ -63,15 +35,15 @@ const visualStyles = [
   {
     id: "minimalist",
     name: "Minimalista",
-    description: "Tiszta, egyszerű",
+    description: "Tiszta, egyszerĹ±",
     prompt:
       "minimalist visual, clean composition, ample negative space, modern aesthetic, professional simplicity",
     color: "from-[#00B5F1] to-brand-secondary"
   },
   {
     id: "artistic",
-    name: "Művészi",
-    description: "Kreatív, expresszív",
+    name: "MĹ±vĂ©szi",
+    description: "KreatĂ­v, expresszĂ­v",
     prompt:
       "artistic visual, creative expression, dynamic composition, artistic elements, unique aesthetic",
     color: "from-green-500 to-emerald-500"
@@ -79,7 +51,7 @@ const visualStyles = [
   {
     id: "cinematic",
     name: "Cinematic",
-    description: "Filmes, drámai",
+    description: "Filmes, drĂˇmai",
     prompt:
       "cinematic visual, dramatic lighting, chiaroscuro, film grain aesthetic, movie-like composition",
     color: "from-brand-secondary to-brand-primary"
@@ -87,7 +59,7 @@ const visualStyles = [
   {
     id: "abstract",
     name: "Absztrakt",
-    description: "Koncepcionális",
+    description: "KoncepcionĂˇlis",
     prompt:
       "abstract visual, conceptual design, geometric shapes, modern art aesthetic, creative interpretation",
     color: "from-indigo-500 to-blue-500"
@@ -98,24 +70,24 @@ const lightingOptions = [
   {
     id: "chiaroscuro",
     name: "Chiaroscuro",
-    description: "Fény-árnyék kontraszt"
+    description: "FĂ©ny-ĂˇrnyĂ©k kontraszt"
   },
-  { id: "golden", name: "Golden Hour", description: "Aranyórá fény" },
-  { id: "studio", name: "Studio Lighting", description: "Stúdió fények" },
-  { id: "natural", name: "Natural Light", description: "Természetes fény" }
+  { id: "golden", name: "Golden Hour", description: "AranyĂłrĂˇ fĂ©ny" },
+  { id: "studio", name: "Studio Lighting", description: "StĂşdiĂł fĂ©nyek" },
+  { id: "natural", name: "Natural Light", description: "TermĂ©szetes fĂ©ny" }
 ];
 
 const qualitySettings = [
-  { id: "ultra", name: "Ultra HD", description: "8K felbontás, max részlet" },
+  { id: "ultra", name: "Ultra HD", description: "8K felbontĂˇs, max rĂ©szlet" },
   {
     id: "high",
     name: "High Quality",
-    description: "4K felbontás, magas részlet"
+    description: "4K felbontĂˇs, magas rĂ©szlet"
   },
   {
     id: "standard",
     name: "Standard",
-    description: "2K felbontás, standard részlet"
+    description: "2K felbontĂˇs, standard rĂ©szlet"
   }
 ];
 
@@ -159,12 +131,6 @@ export default function MidjourneyAIMuhelyPage() {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(productSchema).replace(/</g, "\\u003c")
-        }}
-      />
       <ProductAccessGuard>
         <div className="min-h-screen bg-bg-base">
           {/* Hero Section */}
@@ -180,7 +146,7 @@ export default function MidjourneyAIMuhelyPage() {
                 >
                   <Sparkles className="w-4 h-4 text-[#00B5F1]" />
                   <span className="text-xs font-bold text-[#00B5F1] uppercase tracking-[0.2em]">
-                    AI Műhely
+                    AI MĹ±hely
                   </span>
                 </motion.div>
                 <motion.h1
@@ -191,13 +157,13 @@ export default function MidjourneyAIMuhelyPage() {
                 >
                   Midjourney AI{" "}
                   <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6]">
-                    Műhely
+                    MĹ±hely
                   </span>
                 </motion.h1>
                 <p className="text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">
-                  Midjourney v6 integráció prémium vizuálokhoz. 85mm G-Master
-                  optika, chiaroscuro lighting és Cyber-Dark aesthetic. 5.2x
-                  vizuális minőség, 94% social engagement, 8K felbontású
+                  Midjourney v6 integrĂˇciĂł prĂ©mium vizuĂˇlokhoz. 85mm G-Master
+                  optika, chiaroscuro lighting Ă©s Cyber-Dark aesthetic. 5.2x
+                  vizuĂˇlis minĹ‘sĂ©g, 94% social engagement, 8K felbontĂˇsĂş
                   outputok.
                 </p>
               </div>
@@ -222,7 +188,7 @@ export default function MidjourneyAIMuhelyPage() {
                       AI Midjourney Generator
                     </h2>
                     <p className="text-sm text-text-secondary">
-                      Midjourney v6 Master prompt generálás
+                      Midjourney v6 Master prompt generĂˇlĂˇs
                     </p>
                   </div>
                 </div>
@@ -230,7 +196,7 @@ export default function MidjourneyAIMuhelyPage() {
                 {/* Visual Style Selection */}
                 <div className="mb-8">
                   <label className="text-sm font-bold text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
-                    Vizuális stílus
+                    VizuĂˇlis stĂ­lus
                   </label>
                   <div className="grid md:grid-cols-3 gap-4">
                     {visualStyles.map((style) => (
@@ -261,7 +227,7 @@ export default function MidjourneyAIMuhelyPage() {
                 <div className="grid md:grid-cols-2 gap-6 mb-8">
                   <div>
                     <label className="text-sm font-bold text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
-                      Fényezés
+                      FĂ©nyezĂ©s
                     </label>
                     <div className="space-y-2">
                       {lightingOptions.map((lighting) => (
@@ -287,7 +253,7 @@ export default function MidjourneyAIMuhelyPage() {
 
                   <div>
                     <label className="text-sm font-bold text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
-                      Minőség
+                      MinĹ‘sĂ©g
                     </label>
                     <div className="space-y-2">
                       {qualitySettings.map((quality) => (
@@ -318,51 +284,51 @@ export default function MidjourneyAIMuhelyPage() {
                 <div className="space-y-6 mb-8">
                   <div>
                     <label className="text-sm font-bold text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
-                      Téma / Tárgy (opcionális)
+                      TĂ©ma / TĂˇrgy (opcionĂˇlis)
                     </label>
                     <input
                       type="text"
                       value={subject}
                       onChange={(e) => setSubject(e.target.value)}
-                      placeholder="pl. portré, tájkép, termék fotó, épület"
+                      placeholder="pl. portrĂ©, tĂˇjkĂ©p, termĂ©k fotĂł, Ă©pĂĽlet"
                       className="w-full p-3 rounded-lg border-2 border-bg-elevated bg-bg-base text-text-primary placeholder:text-text-secondary focus:border-[#00B5F1] focus:outline-none transition-all"
                     />
                   </div>
 
                   <div>
                     <label className="text-sm font-bold text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
-                      Vizuális leírás (opcionális)
+                      VizuĂˇlis leĂ­rĂˇs (opcionĂˇlis)
                     </label>
                     <input
                       type="text"
                       value={visualDescription}
                       onChange={(e) => setVisualDescription(e.target.value)}
-                      placeholder="pl. modern irodai környezet, természetes fény, absztrakt háttér"
+                      placeholder="pl. modern irodai kĂ¶rnyezet, termĂ©szetes fĂ©ny, absztrakt hĂˇttĂ©r"
                       className="w-full p-3 rounded-lg border-2 border-bg-elevated bg-bg-base text-text-primary placeholder:text-text-secondary focus:border-[#00B5F1] focus:outline-none transition-all"
                     />
                   </div>
 
                   <div>
                     <label className="text-sm font-bold text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
-                      Stílus preferenciák (opcionális)
+                      StĂ­lus preferenciĂˇk (opcionĂˇlis)
                     </label>
                     <input
                       type="text"
                       value={stylePreferences}
                       onChange={(e) => setStylePreferences(e.target.value)}
-                      placeholder="pl. minimalista, drámai, színes, monokróm"
+                      placeholder="pl. minimalista, drĂˇmai, szĂ­nes, monokrĂłm"
                       className="w-full p-3 rounded-lg border-2 border-bg-elevated bg-bg-base text-text-primary placeholder:text-text-secondary focus:border-[#00B5F1] focus:outline-none transition-all"
                     />
                   </div>
 
                   <div>
                     <label className="text-sm font-bold text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
-                      Egyedi utasítások (opcionális)
+                      Egyedi utasĂ­tĂˇsok (opcionĂˇlis)
                     </label>
                     <textarea
                       value={customInstructions}
                       onChange={(e) => setCustomInstructions(e.target.value)}
-                      placeholder="pl. hangsúly a részletekre, drámai kontraszt, prémium megjelenés"
+                      placeholder="pl. hangsĂşly a rĂ©szletekre, drĂˇmai kontraszt, prĂ©mium megjelenĂ©s"
                       rows={3}
                       className="w-full p-3 rounded-lg border-2 border-bg-elevated bg-bg-base text-text-primary placeholder:text-text-secondary focus:border-[#00B5F1] focus:outline-none transition-all resize-none"
                     />
@@ -380,12 +346,12 @@ export default function MidjourneyAIMuhelyPage() {
                   {isGenerating ? (
                     <>
                       <RefreshCw className="w-5 h-5 animate-spin" />
-                      <span>Generálás folyamatban...</span>
+                      <span>GenerĂˇlĂˇs folyamatban...</span>
                     </>
                   ) : (
                     <>
                       <Zap className="w-5 h-5" />
-                      <span>Midjourney Prompt Generálás</span>
+                      <span>Midjourney Prompt GenerĂˇlĂˇs</span>
                     </>
                   )}
                 </motion.button>
@@ -400,7 +366,7 @@ export default function MidjourneyAIMuhelyPage() {
                   >
                     <div className="flex items-center justify-between mb-4">
                       <h3 className="text-lg font-bold text-text-primary">
-                        Generált Prompt
+                        GenerĂˇlt Prompt
                       </h3>
                       <div className="flex gap-2">
                         <motion.button
@@ -431,31 +397,31 @@ export default function MidjourneyAIMuhelyPage() {
                 transition={{ duration: 0.5 }}
                 className="text-3xl font-bold text-text-primary mb-8 text-center tracking-tight"
               >
-                Funkciók és{" "}
+                FunkciĂłk Ă©s{" "}
                 <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6]">
-                  Előnyök
+                  ElĹ‘nyĂ¶k
                 </span>
               </motion.h2>
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {[
                   {
                     icon: ImageIcon,
-                    title: "Midjourney v6 Integráció",
-                    description: "Legújabb Midjourney verzió"
+                    title: "Midjourney v6 IntegrĂˇciĂł",
+                    description: "LegĂşjabb Midjourney verziĂł"
                   },
                   {
                     icon: Camera,
                     title: "85mm G-Master Optika",
-                    description: "Professzionális optikai beállítások"
+                    description: "ProfesszionĂˇlis optikai beĂˇllĂ­tĂˇsok"
                   },
                   {
                     icon: Sun,
                     title: "Chiaroscuro Lighting",
-                    description: "Fény-árnyék kontraszt"
+                    description: "FĂ©ny-ĂˇrnyĂ©k kontraszt"
                   },
                   {
                     icon: Layers,
-                    title: "Prémium Vizuálok",
+                    title: "PrĂ©mium VizuĂˇlok",
                     description: "Cyber-Dark aesthetic"
                   }
                 ].map((feature, index) => {
@@ -493,9 +459,9 @@ export default function MidjourneyAIMuhelyPage() {
                 transition={{ duration: 0.5 }}
                 className="text-3xl font-bold text-text-primary mb-4 tracking-tight"
               >
-                Készen állsz a{" "}
+                KĂ©szen Ăˇllsz a{" "}
                 <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6]">
-                  Vizuális Tervezésre
+                  VizuĂˇlis TervezĂ©sre
                 </span>
                 ?
               </motion.h2>
@@ -505,8 +471,8 @@ export default function MidjourneyAIMuhelyPage() {
                 transition={{ duration: 0.5, delay: 0.1 }}
                 className="text-text-secondary mb-8"
               >
-                Próbáld ki az AI Midjourney Generátort és hozz létre lenyűgöző
-                vizuálokat percek alatt!
+                PrĂłbĂˇld ki az AI Midjourney GenerĂˇtort Ă©s hozz lĂ©tre lenyĹ±gĂ¶zĹ‘
+                vizuĂˇlokat percek alatt!
               </motion.p>
               <motion.button
                 initial={{ opacity: 0, y: 20 }}
@@ -516,7 +482,7 @@ export default function MidjourneyAIMuhelyPage() {
                 whileTap={{ scale: 0.98 }}
                 className="inline-flex items-center gap-2 px-8 py-4 bg-linear-to-r from-[#00B5F1] to-[#5B21B6] text-slate-950 font-bold rounded-xl hover:shadow-[0_8px_32px_rgba(0, 181, 241,0.4)] transition-all"
               >
-                Kezdés most
+                KezdĂ©s most
                 <ArrowRight className="w-4 h-4" />
               </motion.button>
             </div>
