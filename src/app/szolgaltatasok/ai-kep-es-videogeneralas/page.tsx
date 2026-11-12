@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Metadata } from "next";
 import { buildBreadcrumbSchema, BreadcrumbItem } from "@/lib/breadcrumb";
 import HeroCarousel from "@/components/molecules/HeroCarousel";
+import { Check } from "lucide-react";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -270,7 +271,11 @@ export default async function AiMediaPage() {
                 <div className="space-y-4">
                   <div className="flex items-start gap-4">
                     <div className="shrink-0 w-8 h-8 bg-linear-to-r from-[#00B5F1] to-sky-500 rounded-full flex items-center justify-center text-slate-950 font-bold">
-                      ✓
+                      <Check
+                        className="w-4 h-4"
+                        strokeWidth={3}
+                        aria-hidden="true"
+                      />
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold text-text-primary">
@@ -284,7 +289,11 @@ export default async function AiMediaPage() {
                   </div>
                   <div className="flex items-start gap-4">
                     <div className="shrink-0 w-8 h-8 bg-linear-to-r from-[#00B5F1] to-sky-500 rounded-full flex items-center justify-center text-slate-950 font-bold">
-                      ✓
+                      <Check
+                        className="w-4 h-4"
+                        strokeWidth={3}
+                        aria-hidden="true"
+                      />
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold text-text-primary">
@@ -298,7 +307,11 @@ export default async function AiMediaPage() {
                   </div>
                   <div className="flex items-start gap-4">
                     <div className="shrink-0 w-8 h-8 bg-linear-to-r from-[#00B5F1] to-sky-500 rounded-full flex items-center justify-center text-slate-950 font-bold">
-                      ✓
+                      <Check
+                        className="w-4 h-4"
+                        strokeWidth={3}
+                        aria-hidden="true"
+                      />
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold text-text-primary">
@@ -313,7 +326,11 @@ export default async function AiMediaPage() {
                   </div>
                   <div className="flex items-start gap-4">
                     <div className="shrink-0 w-8 h-8 bg-linear-to-r from-[#00B5F1] to-sky-500 rounded-full flex items-center justify-center text-slate-950 font-bold">
-                      ✓
+                      <Check
+                        className="w-4 h-4"
+                        strokeWidth={3}
+                        aria-hidden="true"
+                      />
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold text-text-primary">
@@ -327,7 +344,11 @@ export default async function AiMediaPage() {
                   </div>
                   <div className="flex items-start gap-4">
                     <div className="shrink-0 w-8 h-8 bg-linear-to-r from-[#00B5F1] to-sky-500 rounded-full flex items-center justify-center text-slate-950 font-bold">
-                      ✓
+                      <Check
+                        className="w-4 h-4"
+                        strokeWidth={3}
+                        aria-hidden="true"
+                      />
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold text-text-primary">

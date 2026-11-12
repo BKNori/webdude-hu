@@ -10,6 +10,15 @@ import {
 } from "motion/react";
 import { Work } from "@/types/work";
 import { useRef } from "react";
+import {
+  ShoppingCart,
+  Search,
+  Lock,
+  Palette,
+  Bot,
+  Globe,
+  Rocket,
+} from "lucide-react";
 
 interface HuMagoCaseStudyProps {
   project: Work;
@@ -259,7 +268,11 @@ export default function HuMagoCaseStudy({ project }: HuMagoCaseStudyProps) {
               className="inline-block px-6 py-3 bg-indigo-500/20 border border-indigo-500/40 rounded-full backdrop-blur-sm mb-6"
             >
               <span className="text-indigo-400 text-sm font-bold uppercase tracking-widest">
-                🚀 Innovatív Technológia
+                <Rocket
+                  className="w-4 h-4 inline-block align-[-2px]"
+                  aria-hidden="true"
+                />{" "}
+                Innovatív Technológia
               </span>
             </motion.div>
             <h2 className="text-4xl md:text-6xl font-bold mb-6">
@@ -321,7 +334,11 @@ export default function HuMagoCaseStudy({ project }: HuMagoCaseStudyProps) {
                     transition={{ duration: 0.6, delay: 0.3 }}
                     className="text-center"
                   >
-                    <div className="text-6xl mb-4">🤖</div>
+                    <Bot
+                      className="w-16 h-16 text-indigo-400 mx-auto mb-4"
+                      strokeWidth={1.5}
+                      aria-hidden="true"
+                    />
                     <div className="text-indigo-400 font-bold text-xl">
                       AI Powered
                     </div>
@@ -362,37 +379,37 @@ export default function HuMagoCaseStudy({ project }: HuMagoCaseStudyProps) {
                 title: "Komplex E-kereskedelem",
                 description:
                   "Teljes körű, egyedi WooCommerce webshop fejlesztése, amely maximalizálja a konverziót és optimalizálja a vásárlói élményt.",
-                icon: "🛒",
+                icon: ShoppingCart,
               },
               {
                 title: "Stratégiai SEO",
                 description:
                   "Keresőoptimalizálás a maximális organikus láthatóság és a stabil Google helyezések érdekében hosszú távon.",
-                icon: "🔍",
+                icon: Search,
               },
               {
                 title: "GDPR Adatbiztonság",
                 description:
                   "Precíz és teljes körű GDPR integráció, hogy a weboldal jogilag sebezhetetlen és transzparens legyen.",
-                icon: "🔒",
+                icon: Lock,
               },
               {
                 title: "Offline Branding",
                 description:
                   "Prémium minőségű névjegykártya és termékkatalógus tervezése, ami tökéletes szinergiában van a digitális arculattal.",
-                icon: "🎨",
+                icon: Palette,
               },
               {
                 title: "AI Marketing Tech",
                 description:
                   "Egyedi fejlesztésű AI prompt reklám generátor, ami forradalmasítja a marketing kreatívok gyártását.",
-                icon: "🤖",
+                icon: Bot,
               },
               {
                 title: "Teljes Ökoszisztéma",
                 description:
                   "Digitális és offline világok tökéletes integrációja egy egységes, prémium márkaidentitás alatt.",
-                icon: "🌐",
+                icon: Globe,
               },
             ].map((service, index) => (
               <motion.div
@@ -403,7 +420,11 @@ export default function HuMagoCaseStudy({ project }: HuMagoCaseStudyProps) {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="bg-slate-900/60 border border-slate-800 rounded-3xl p-8 hover:border-indigo-500/50 transition-colors duration-300 group"
               >
-                <div className="text-4xl mb-4">{service.icon}</div>
+                <service.icon
+                  className="w-10 h-10 text-indigo-400 mb-4"
+                  strokeWidth={1.5}
+                  aria-hidden="true"
+                />
                 <h3 className="text-xl font-bold text-white mb-3 group-hover:text-indigo-400 transition-colors">
                   {service.title}
                 </h3>

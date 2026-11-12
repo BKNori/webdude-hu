@@ -3,6 +3,7 @@ import Button from "@/components/atoms/Button";
 import Badge from "@/components/atoms/Badge";
 import { Metadata } from "next";
 import PricingTable from "@/components/molecules/PricingTable";
+import { Check } from "lucide-react";
 import { buildBreadcrumbSchema, BreadcrumbItem } from "@/lib/breadcrumb";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -276,7 +277,11 @@ export default async function AiWorkflowPage() {
                 <div className="space-y-4">
                   <div className="flex items-start gap-4">
                     <div className="shrink-0 w-8 h-8 bg-[#00B5F1] rounded-full flex items-center justify-center text-bg-base font-bold">
-                      ✓
+                      <Check
+                        className="w-4 h-4"
+                        strokeWidth={3}
+                        aria-hidden="true"
+                      />
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold text-text-primary">
@@ -290,7 +295,11 @@ export default async function AiWorkflowPage() {
                   </div>
                   <div className="flex items-start gap-4">
                     <div className="shrink-0 w-8 h-8 bg-[#00B5F1] rounded-full flex items-center justify-center text-bg-base font-bold">
-                      ✓
+                      <Check
+                        className="w-4 h-4"
+                        strokeWidth={3}
+                        aria-hidden="true"
+                      />
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold text-text-primary">
@@ -304,7 +313,11 @@ export default async function AiWorkflowPage() {
                   </div>
                   <div className="flex items-start gap-4">
                     <div className="shrink-0 w-8 h-8 bg-[#00B5F1] rounded-full flex items-center justify-center text-bg-base font-bold">
-                      ✓
+                      <Check
+                        className="w-4 h-4"
+                        strokeWidth={3}
+                        aria-hidden="true"
+                      />
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold text-text-primary">
@@ -318,7 +331,11 @@ export default async function AiWorkflowPage() {
                   </div>
                   <div className="flex items-start gap-4">
                     <div className="shrink-0 w-8 h-8 bg-[#00B5F1] rounded-full flex items-center justify-center text-bg-base font-bold">
-                      ✓
+                      <Check
+                        className="w-4 h-4"
+                        strokeWidth={3}
+                        aria-hidden="true"
+                      />
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold text-text-primary">
@@ -332,7 +349,11 @@ export default async function AiWorkflowPage() {
                   </div>
                   <div className="flex items-start gap-4">
                     <div className="shrink-0 w-8 h-8 bg-[#00B5F1] rounded-full flex items-center justify-center text-bg-base font-bold">
-                      ✓
+                      <Check
+                        className="w-4 h-4"
+                        strokeWidth={3}
+                        aria-hidden="true"
+                      />
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold text-text-primary">

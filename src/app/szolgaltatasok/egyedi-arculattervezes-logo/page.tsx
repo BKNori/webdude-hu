@@ -5,6 +5,7 @@ import Badge from "@/components/atoms/Badge";
 import PricingTable from "@/components/molecules/PricingTable";
 import { buildBreadcrumbSchema, BreadcrumbItem } from "@/lib/breadcrumb";
 import Image from "next/image";
+import { Check } from "lucide-react";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -356,7 +357,11 @@ export default async function BrandingPage() {
                 <div className="space-y-4">
                   <div className="flex items-start gap-4">
                     <div className="shrink-0 w-8 h-8 bg-[#00B5F1] rounded-full flex items-center justify-center text-bg-base font-bold">
-                      ✓
+                      <Check
+                        className="w-4 h-4"
+                        strokeWidth={3}
+                        aria-hidden="true"
+                      />
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold text-text-primary">
@@ -370,7 +375,11 @@ export default async function BrandingPage() {
                   </div>
                   <div className="flex items-start gap-4">
                     <div className="shrink-0 w-8 h-8 bg-[#00B5F1] rounded-full flex items-center justify-center text-bg-base font-bold">
-                      ✓
+                      <Check
+                        className="w-4 h-4"
+                        strokeWidth={3}
+                        aria-hidden="true"
+                      />
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold text-text-primary">
@@ -384,7 +393,11 @@ export default async function BrandingPage() {
                   </div>
                   <div className="flex items-start gap-4">
                     <div className="shrink-0 w-8 h-8 bg-[#00B5F1] rounded-full flex items-center justify-center text-bg-base font-bold">
-                      ✓
+                      <Check
+                        className="w-4 h-4"
+                        strokeWidth={3}
+                        aria-hidden="true"
+                      />
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold text-text-primary">

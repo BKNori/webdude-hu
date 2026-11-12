@@ -10,6 +10,15 @@ import {
 } from "motion/react";
 import { Work } from "@/types/work";
 import { useRef } from "react";
+import {
+  Palette,
+  MonitorSmartphone,
+  PenLine,
+  Search,
+  MapPin,
+  Megaphone,
+  Flame,
+} from "lucide-react";
 
 interface ClassiCoCaseStudyProps {
   project: Work;
@@ -244,7 +253,11 @@ export default function ClassiCoCaseStudy({ project }: ClassiCoCaseStudyProps) {
               className="inline-block px-6 py-3 bg-emerald-500/20 border border-emerald-500/40 rounded-full backdrop-blur-sm mb-6"
             >
               <span className="text-emerald-400 text-sm font-bold uppercase tracking-widest">
-                🔥 Élő Weboldal Demó
+                <Flame
+                  className="w-4 h-4 inline-block align-[-2px]"
+                  aria-hidden="true"
+                />{" "}
+                Élő Weboldal Demó
               </span>
             </motion.div>
             <h2 className="text-4xl md:text-6xl font-bold mb-6">
@@ -339,37 +352,37 @@ export default function ClassiCoCaseStudy({ project }: ClassiCoCaseStudyProps) {
                 title: "Komplex Arculattervezés",
                 description:
                   "Határozott, iparághoz illő vizuális identitás és logó megalkotása, ami megbízhatóságot sugall.",
-                icon: "🎨",
+                icon: Palette,
               },
               {
                 title: "Profi WordPress Weboldal",
                 description:
                   "Modern, villámgyors és reszponzív weboldal felépítése, ami tökéletes felhasználói élményt nyújt.",
-                icon: "💻",
+                icon: MonitorSmartphone,
               },
               {
                 title: "Tartalomírás",
                 description:
                   "Értékesítési fókuszú, bizalomépítő szövegek megírása a weboldalra, amelyek megfogják a látogatókat.",
-                icon: "✍️",
+                icon: PenLine,
               },
               {
                 title: "Keresőoptimalizálás",
                 description:
                   "Technikai és tartalmi SEO, hogy a cég dominálja a helyi kereséseket és organikus forgalmat tereljen.",
-                icon: "🔍",
+                icon: Search,
               },
               {
                 title: "Google Cégprofil",
                 description:
                   "A lokális jelenlét maximalizálása és a Google Cégprofil professzionális felépítése.",
-                icon: "📍",
+                icon: MapPin,
               },
               {
                 title: "Reklámok és Kampányok",
                 description:
                   "Konverziófókuszált vizuális anyagok és hirdetések tervezése a maximális ROI érdekében.",
-                icon: "📢",
+                icon: Megaphone,
               },
             ].map((service, index) => (
               <motion.div
@@ -380,7 +393,11 @@ export default function ClassiCoCaseStudy({ project }: ClassiCoCaseStudyProps) {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="bg-slate-900/60 border border-slate-800 rounded-3xl p-8 hover:border-emerald-500/50 transition-colors duration-300 group"
               >
-                <div className="text-4xl mb-4">{service.icon}</div>
+                <service.icon
+                  className="w-10 h-10 text-emerald-400 mb-4"
+                  strokeWidth={1.5}
+                  aria-hidden="true"
+                />
                 <h3 className="text-xl font-bold text-white mb-3 group-hover:text-emerald-400 transition-colors">
                   {service.title}
                 </h3>

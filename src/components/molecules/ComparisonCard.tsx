@@ -1,3 +1,5 @@
+import { CheckCircle2, XCircle } from "lucide-react";
+
 interface ComparisonCardProps {
   variant: "problem" | "solution";
   title: string;
@@ -20,12 +22,17 @@ export default function ComparisonCard({
       <ul className="mt-6 space-y-3">
         {items.map((it) => (
           <li key={it} className="flex items-start gap-3">
-            <span
-              aria-hidden
-              className={`mt-1 ${isProblem ? "text-slate-500" : "text-sky-500"}`}
-            >
-              {isProblem ? "❌" : "✅"}
-            </span>
+            {isProblem ? (
+              <XCircle
+                className="w-4 h-4 mt-0.5 text-slate-500 shrink-0"
+                aria-hidden="true"
+              />
+            ) : (
+              <CheckCircle2
+                className="w-4 h-4 mt-0.5 text-[#00B5F1] shrink-0"
+                aria-hidden="true"
+              />
+            )}
             <span className="text-sm text-slate-300 font-normal">{it}</span>
           </li>
         ))}

@@ -5,6 +5,7 @@ import { Metadata } from "next";
 import PricingTable from "@/components/molecules/PricingTable";
 import { buildBreadcrumbSchema, BreadcrumbItem } from "@/lib/breadcrumb";
 import DirectAnswerBlock from "@/components/molecules/DirectAnswerBlock";
+import { Check } from "lucide-react";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -299,7 +300,11 @@ export default async function WooCommercePage() {
                 <div className="space-y-4">
                   <div className="flex items-start gap-4">
                     <div className="shrink-0 w-8 h-8 bg-brand-primary rounded-full flex items-center justify-center text-bg-base font-bold">
-                      ✓
+                      <Check
+                        className="w-4 h-4"
+                        strokeWidth={3}
+                        aria-hidden="true"
+                      />
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold text-text-primary">
@@ -313,7 +318,11 @@ export default async function WooCommercePage() {
                   </div>
                   <div className="flex items-start gap-4">
                     <div className="shrink-0 w-8 h-8 bg-brand-primary rounded-full flex items-center justify-center text-bg-base font-bold">
-                      ✓
+                      <Check
+                        className="w-4 h-4"
+                        strokeWidth={3}
+                        aria-hidden="true"
+                      />
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold text-text-primary">
@@ -327,7 +336,11 @@ export default async function WooCommercePage() {
                   </div>
                   <div className="flex items-start gap-4">
                     <div className="shrink-0 w-8 h-8 bg-brand-primary rounded-full flex items-center justify-center text-bg-base font-bold">
-                      ✓
+                      <Check
+                        className="w-4 h-4"
+                        strokeWidth={3}
+                        aria-hidden="true"
+                      />
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold text-text-primary">
@@ -341,7 +354,11 @@ export default async function WooCommercePage() {
                   </div>
                   <div className="flex items-start gap-4">
                     <div className="shrink-0 w-8 h-8 bg-brand-primary rounded-full flex items-center justify-center text-bg-base font-bold">
-                      ✓
+                      <Check
+                        className="w-4 h-4"
+                        strokeWidth={3}
+                        aria-hidden="true"
+                      />
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold text-text-primary">
@@ -355,7 +372,11 @@ export default async function WooCommercePage() {
                   </div>
                   <div className="flex items-start gap-4">
                     <div className="shrink-0 w-8 h-8 bg-brand-primary rounded-full flex items-center justify-center text-bg-base font-bold">
-                      ✓
+                      <Check
+                        className="w-4 h-4"
+                        strokeWidth={3}
+                        aria-hidden="true"
+                      />
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold text-text-primary">

@@ -1,5 +1,30 @@
 # Changelog
 
+## [7.45.0] — 2026-11-12 — KÉK-LILA v7.0 WEBDESIGN & UI/UX TELJES KÓDBÁZIS AUDIT ÉS JAVÍTÁS (4 BATCH)
+
+**1. BATCH 1 — GLOBÁLIS ALAPOK:**
+- `CaseStudyCard.tsx`: a teljes "Soft Premium" világos téma (`bg-white`, `#E7ECF2`, `#4B5563`, `font-mono`) átírva Kék-Lila v7.0 sötét glass stílusra (`bg-slate-900/60 backdrop-blur-xl`, `border-slate-800`, `hover:border-[#00B5F1]/40` glow) — a `/szolgaltatasok/ai-prompt-engineering` oldalon élt a legnagyobb szabálytalanság.
+- **Halott legacy kód törölve:** `NavigationNew.tsx` (világos `bg-white/80` header) és `TrustSectionNew.tsx` (emoji ikonok) — 0 importáló a kódbázisban.
+- Ellenőrizve: `globals.css` (teljes v7.0 token SSOT), `HeaderNavClient` (sötét glass, `FOCUS_RING`, responsive dropdown), `HeroSectionNew` (scrim + overlay kontraszt), `Footer`, `DirectAnswerBlock` — mind hibátlan.
+
+**2. BATCH 2 — MOLEKULÁK ÉS INTERAKCIÓK:**
+- `AIChatWidget`: 💬🤖✕ emoji-k → Lucide `MessageCircle`/`Bot`/`X` ikonok; arany `rgba(255,215,0)` glow árnyékok → kék-lila; `sky-500/violet-700` → `#00B5F1`/`#5B21B6`.
+- `ComparisonCard`: ❌✅ emoji-k → Lucide `XCircle`/`CheckCircle2`.
+- `AIFeatureCard`: ⚡ szövegemoji → Lucide `Zap` ikon.
+
+**3. BATCH 3 — SZOLGÁLTATÁSOK & ESETTANULMÁNYOK:**
+- 27 db nyers `✓` karakter cserélve Lucide `Check` ikonra 6 szolgáltatás oldalon: `ai-kep-es-videogeneralas` (5), `ai-prompt-engineering` (5), `ai-workflow-kialakitas` (5), `egyedi-arculattervezes-logo` (3), `woocommerce-webshop-keszites` (5), `wordpress-fejlesztes` (4).
+- Esettanulmány oldalak emoji-mentesítése: `BorGarnelaCaseStudy` (6 szolgáltatáskártya ikon: Palette/MonitorSmartphone/Search/ClipboardList/Megaphone/Clapperboard), `ClassiCoCaseStudy` (6 ikon + 🔥 Flame badge), `HuMagoCaseStudy` (6 ikon + 🚀 Rocket badge + 🤖 Bot hero ikon), `BtshopCaseStudy` (⚡ Zap badge).
+- `LighthouseAuditor.tsx` törölve (halott kód, ⚠️ emoji).
+
+**4. BATCH 4 — /TERMÉKEK & /AI-MEGOLDÁSOK + QA:**
+- Teljes vizuális ellenőrzés: a termékoldalak és AI Műhely komponensek már v7.0-konformak (sötét kártyák, `#00B5F1` akcentus, egységes `rounded-2xl`).
+- **QA:** `npx tsc --noEmit` → **0 hiba**; `npm run lint -- --max-warnings 0` → **0 error, 0 warning**.
+
+**KIVÉTELEK (szándékos, nem hiba):** `SeoWorkshopGenerator`/`admin` yellow score badge-ek, `CaseStudiesBento` macOS ablak-pötty, `EmailTemplateEditor` világos email preview, `bg-white/*` üvegfelületek sötét témán, `ClientAITools` 💡 (portal kontextus).
+
+---
+
 ## [7.44.0] — 2026-11-12 — /TERMÉKEK & /AI-MEGOLDÁSOK 4-BATCH SEO/AEO KONSZOLIDÁCIÓ (ROUTE TISZTÍTÁS + JSON-LD SSR ÁTRAKÁS)
 
 **1. ROUTE TISZTÍTÁS ÉS 301 ÁTIRÁNYÍTÁS:**

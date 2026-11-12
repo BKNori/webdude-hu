@@ -16,6 +16,7 @@ import {
   SearchCheck,
   Truck,
   Gauge,
+  Zap,
   type LucideIcon,
 } from "lucide-react";
 
@@ -292,7 +293,11 @@ export default function BtshopCaseStudy({ project }: BtshopCaseStudyProps) {
               className="inline-block px-6 py-3 bg-sky-500/20 border border-sky-500/40 rounded-full backdrop-blur-sm mb-6"
             >
               <span className="text-sky-400 text-sm font-bold uppercase tracking-widest">
-                ⚡ Enterprise Fejlesztések
+                <Zap
+                  className="w-4 h-4 inline-block align-[-2px]"
+                  aria-hidden="true"
+                />{" "}
+                Enterprise Fejlesztések
               </span>
             </motion.div>
             <h2 className="text-4xl md:text-6xl font-bold mb-6">

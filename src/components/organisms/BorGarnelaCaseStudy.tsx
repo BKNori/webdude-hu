@@ -10,6 +10,14 @@ import {
 } from "motion/react";
 import { Work } from "@/types/work";
 import { useRef } from "react";
+import {
+  Palette,
+  MonitorSmartphone,
+  Search,
+  ClipboardList,
+  Megaphone,
+  Clapperboard,
+} from "lucide-react";
 
 interface BorGarnelaCaseStudyProps {
   project: Work;
@@ -248,37 +256,37 @@ export default function BorGarnelaCaseStudy({
                 title: "Komplex Arculattervezés",
                 description:
                   "Egyedi, a célközönséget megszólító vizuális identitás megalkotása, ami azonnal felismerhetővé teszi a márkát.",
-                icon: "🎨",
+                icon: Palette,
               },
               {
                 title: "Weboldal Készítés",
                 description:
                   "Modern, gyors és reszponzív weboldal fejlesztése, ami optimalizált a konverzióra és a felhasználói élményre.",
-                icon: "💻",
+                icon: MonitorSmartphone,
               },
               {
                 title: "SEO Optimalizálás",
                 description:
                   "Keresőoptimalizálás, hogy az oldal ne csak szép legyen, de a Google is szeresse, és organikus forgalmat tereljen.",
-                icon: "🔍",
+                icon: Search,
               },
               {
                 title: "Étlap Tervezés",
                 description:
                   "Nyomdai és digitális étlapok designja, ami azonnal eladja az ételeket és a prémium minőséget sugallja.",
-                icon: "📋",
+                icon: ClipboardList,
               },
               {
                 title: "Reklámok és Kampányok",
                 description:
                   "Konverziófókuszált vizuális anyagok készítése hirdetésekhez, ami maximalizálja a ROI-t.",
-                icon: "📢",
+                icon: Megaphone,
               },
               {
                 title: "Videókészítés",
                 description:
                   "Dinamikus és figyelemfelkeltő promóciós videók, ami a márka történetét vizuálisan meséli el.",
-                icon: "🎬",
+                icon: Clapperboard,
               },
             ].map((service, index) => (
               <motion.div
@@ -289,7 +297,11 @@ export default function BorGarnelaCaseStudy({
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="bg-slate-900/60 border border-slate-800 rounded-3xl p-8 hover:border-[#00B5F1]/50 transition-colors duration-300 group"
               >
-                <div className="text-4xl mb-4">{service.icon}</div>
+                <service.icon
+                  className="w-10 h-10 text-[#00B5F1] mb-4"
+                  strokeWidth={1.5}
+                  aria-hidden="true"
+                />
                 <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#00B5F1] transition-colors">
                   {service.title}
                 </h3>

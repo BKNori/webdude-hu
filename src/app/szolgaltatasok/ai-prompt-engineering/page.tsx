@@ -8,6 +8,7 @@ import CaseStudyCard from "@/components/molecules/CaseStudyCard";
 import AiChatMockup from "@/components/molecules/AiChatMockup";
 import PricingTable from "@/components/molecules/PricingTable";
 import DirectAnswerBlock from "@/components/molecules/DirectAnswerBlock";
+import { Check } from "lucide-react";
 import { buildBreadcrumbSchema, BreadcrumbItem } from "@/lib/breadcrumb";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -391,7 +392,11 @@ export default async function AiPromptEngineeringPage() {
                 <div className="space-y-4">
                   <div className="flex items-start gap-4">
                     <div className="shrink-0 w-8 h-8 bg-[#00B5F1] rounded-full flex items-center justify-center text-bg-base font-bold">
-                      ✓
+                      <Check
+                        className="w-4 h-4"
+                        strokeWidth={3}
+                        aria-hidden="true"
+                      />
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold text-text-primary">
@@ -405,7 +410,11 @@ export default async function AiPromptEngineeringPage() {
                   </div>
                   <div className="flex items-start gap-4">
                     <div className="shrink-0 w-8 h-8 bg-[#00B5F1] rounded-full flex items-center justify-center text-bg-base font-bold">
-                      ✓
+                      <Check
+                        className="w-4 h-4"
+                        strokeWidth={3}
+                        aria-hidden="true"
+                      />
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold text-text-primary">
@@ -419,7 +428,11 @@ export default async function AiPromptEngineeringPage() {
                   </div>
                   <div className="flex items-start gap-4">
                     <div className="shrink-0 w-8 h-8 bg-[#00B5F1] rounded-full flex items-center justify-center text-bg-base font-bold">
-                      ✓
+                      <Check
+                        className="w-4 h-4"
+                        strokeWidth={3}
+                        aria-hidden="true"
+                      />
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold text-text-primary">
@@ -433,7 +446,11 @@ export default async function AiPromptEngineeringPage() {
                   </div>
                   <div className="flex items-start gap-4">
                     <div className="shrink-0 w-8 h-8 bg-[#00B5F1] rounded-full flex items-center justify-center text-bg-base font-bold">
-                      ✓
+                      <Check
+                        className="w-4 h-4"
+                        strokeWidth={3}
+                        aria-hidden="true"
+                      />
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold text-text-primary">
@@ -447,7 +464,11 @@ export default async function AiPromptEngineeringPage() {
                   </div>
                   <div className="flex items-start gap-4">
                     <div className="shrink-0 w-8 h-8 bg-[#00B5F1] rounded-full flex items-center justify-center text-bg-base font-bold">
-                      ✓
+                      <Check
+                        className="w-4 h-4"
+                        strokeWidth={3}
+                        aria-hidden="true"
+                      />
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold text-text-primary">

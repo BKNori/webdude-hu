@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { Metadata } from "next";
-import { ShieldCheck, Zap, Cog, ArrowRight } from "lucide-react";
+import { ShieldCheck, Zap, Cog, ArrowRight, Check } from "lucide-react";
 import Hero from "@/components/Hero";
 import { buildBreadcrumbSchema, BreadcrumbItem } from "@/lib/breadcrumb";
 import DirectAnswerBlock from "@/components/molecules/DirectAnswerBlock";
@@ -190,28 +190,44 @@ export default function WordPressDevPage() {
             </p>
             <ul className="space-y-2 text-slate-400 text-sm">
               <li className="flex items-start gap-2">
-                <span className="text-[#00B5F1] mt-0.5">✓</span>
+                <Check
+                  className="w-4 h-4 text-[#00B5F1] mt-0.5 shrink-0"
+                  strokeWidth={2.5}
+                  aria-hidden="true"
+                />
                 <span>
                   <strong className="text-slate-200">WordPress fejlesztő</strong>{" "}
                   — egyedi témák, bővítmények, WooCommerce integrációk
                 </span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-[#00B5F1] mt-0.5">✓</span>
+                <Check
+                  className="w-4 h-4 text-[#00B5F1] mt-0.5 shrink-0"
+                  strokeWidth={2.5}
+                  aria-hidden="true"
+                />
                 <span>
                   <strong className="text-slate-200">WordPress karbantartás</strong>{" "}
                   — havi frissítések, biztonsági mentések, 24/7 felügyelet
                 </span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-[#00B5F1] mt-0.5">✓</span>
+                <Check
+                  className="w-4 h-4 text-[#00B5F1] mt-0.5 shrink-0"
+                  strokeWidth={2.5}
+                  aria-hidden="true"
+                />
                 <span>
                   <strong className="text-slate-200">Sebességoptimalizálás</strong>{" "}
                   — 90+ Lighthouse pontszám, Core Web Vitals javítás
                 </span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-[#00B5F1] mt-0.5">✓</span>
+                <Check
+                  className="w-4 h-4 text-[#00B5F1] mt-0.5 shrink-0"
+                  strokeWidth={2.5}
+                  aria-hidden="true"
+                />
                 <span>
                   <strong className="text-slate-200">Biztonsági audit</strong>{" "}
                   — malware irtás, tűzfal, sérülékenységvizsgálat

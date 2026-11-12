@@ -4,7 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { motion } from "motion/react";
 import { useReducedMotion } from "motion/react";
-import { ArrowRight, CheckCircle } from "lucide-react";
+import { ArrowRight, CheckCircle, Zap } from "lucide-react";
 
 interface AIFeatureCardProps {
   id: number;
@@ -51,7 +51,11 @@ export default function AIFeatureCard({
       <div className="p-8">
         {/* Header */}
         <div className="w-16 h-16 rounded-2xl bg-slate-900/60 border border-white/10 flex items-center justify-center mb-6 group-hover:border-[#00B5F1]/30 transition-colors">
-          <span className="text-2xl text-[#00B5F1]">⚡</span>
+          <Zap
+            className="w-8 h-8 text-[#00B5F1]"
+            strokeWidth={1.5}
+            aria-hidden="true"
+          />
         </div>
 
         {/* Category */}
