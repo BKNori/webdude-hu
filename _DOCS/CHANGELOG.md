@@ -1,5 +1,33 @@
 # Changelog
 
+## [7.40.0] — 2026-11-12 — AEO/GEO DIRECT ANSWER (TL;DR) BŐVÍTÉS, TECHARTICLE SCHEMA UPGRADE ÉS TARTALMI POLÍROZÁS A HÍREK ARCHÍVUMBAN
+
+**1. PHASE 1: TÍPUS- ÉS PARSER INFRASTRUKTÚRA (`src/types/blog.ts`, `src/lib/mdx.ts`, `src/app/actions/blogPosts.ts`):**
+- **Új `tldr?: string` mező:** Bevezetve a `BlogPost`, `BlogPostFrontmatter`, `FirestoreBlogPost` és `FirestoreBlogPostType` típusokba.
+- **Parser fúzió (`src/lib/mdx.ts`):** A `parseMdxFile()` mostantól beolvassa a `tldr` és az `updatedAt` frontmatter mezőket. A Firestore fúziós logikában (`getCombinedBlogPosts` és `getPostBySlugCombined`) szinkronizálva a `tldr` mező és az `updatedAt` időbélyeg fallback.
+- **Zod séma:** A `blogPostSchema` kiegészítve opcionális `tldr: z.string().max(1000).optional()` validációval.
+
+**2. PHASE 2: CIKK OLDAL ÉS STRUKTURÁLT ADATOK (`src/app/hirek/[slug]/page.tsx`):**
+- **GEO / AEO TL;DR Direct Answer doboz:** Frissítve a `post.tldr || post.excerpt` prioritási láncra, biztosítva, hogy az AI válaszgépek (ChatGPT, Perplexity, Google AI Overviews) a dedikált 40-60 szavas szakmai választ idézzék.
+- **TechArticle JSON-LD Séma fejlesztés:**
+  - `dateModified: post.updatedAt || post.date` dinamikus frissítési dátum.
+  - `author` Person entitás leírása kiegészítve az E-E-A-T horgonnyal: `"26 év grafikai tervezési és 16 év webfejlesztői tapasztalat"`.
+  - `.replace(/</g, '\\u003c')` XSS védelem megerősítve.
+- **CRO & Zéró Fix Ár:** Cikk végi "Egyedi árajánlat kérése" CTA kártya és szakértői profil szigorúan fix ármentesen üzemel.
+
+**3. PHASE 3: 25 INDEXELHETŐ MDX CIKK TARTALOMFEJLESZTÉSE (`src/content/blog/*.mdx`):**
+- Mind a 25 szakmai cikk fejlécében bevezetésre került a 40-60 szavas, tényalapú `tldr` AEO/GEO Direct Answer mező.
+- A címek és kivonatok (`title`, `excerpt`) professzionális, keresőoptimalizált formára lettek igazítva.
+- Frissítve az `updatedAt: "2026-11-12"` dátum és a hiteles `author: "Balog Norbert"`, `category` mezők.
+- A `2023-10-18-4421-2.mdx` fájlnév (slug) változatlanul maradt az URL-stabilitás érdekében, míg a frontmattere prémium szakmai tartalommá vált ("Bútorwebáruház Értékesítés Növelése: 7 Lépéses Gyakorlati Útmutató").
+- Az 5 db szórakoztató/profilon kívüli cikk (Netflix kódok, ingyenes VPN, Flipper Zero, After Effects) változatlanul `noindex: true` védelem alatt maradt.
+
+**4. QA VALIDÁCIÓ:**
+- `npx tsc --noEmit` → **TSC_EXIT=0** (0 hiba)
+- `npm run lint` → **LINT_EXIT=0** (0 error, 0 warning)
+
+---
+
 ## [7.39.0] — 2026-11-07 — HÍREK (/hirek) HELYREÁLLÍTÁSA, STANDALONE DEPLOY FIX & TELJES SEO/AEO/GEO/AIO AUDIT
 
 **1. PHASE 1: GYÖKÉROK FELTÁRÁSA ÉS ADATFORRÁS FÚZIÓ (`src/lib/mdx.ts`, `next.config.js`, `deploy.ps1`):**

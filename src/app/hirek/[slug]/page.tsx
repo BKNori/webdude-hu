@@ -98,6 +98,8 @@ export default async function BlogPost({ params }: PageProps) {
       name: "Balog Norbert",
       alternateName: ["Balog Norbi", "WebDude"],
       jobTitle: "Full-Stack Webfejlesztő & AI Automatizációs Szakértő",
+      description:
+        "26 év grafikai tervezési és 16 év webfejlesztői tapasztalat",
       url: "https://webdude.hu/szia-norbi-vagyok",
     },
     publisher: {
@@ -181,14 +183,14 @@ export default async function BlogPost({ params }: PageProps) {
               </h1>
 
               {/* GEO / AEO TL;DR Direct Answer doboz a keresőmotorok és AI ágensek számára */}
-              {post.excerpt && (
+              {(post.tldr || post.excerpt) && (
                 <div className="bg-[#0f172a] border border-[#00B5F1]/30 rounded-2xl p-6 sm:p-8 shadow-[0_4px_24px_rgba(0,181,241,0.08)] relative overflow-hidden">
                   <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#00B5F1] mb-3">
                     <Sparkles className="w-4 h-4 text-[#00B5F1]" />
                     Gyors összefoglaló (TL;DR)
                   </div>
                   <p className="text-base sm:text-lg text-slate-200 leading-relaxed font-medium">
-                    {post.excerpt}
+                    {post.tldr || post.excerpt}
                   </p>
                 </div>
               )}

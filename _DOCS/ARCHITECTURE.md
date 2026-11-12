@@ -1,7 +1,13 @@
 # ARCHITECTURE.md — WebDude Rendszerarchitektúra
 
 **webdude.hu | Next.js 16 · React 19 · TypeScript · Firebase**
-**Utolsó frissítés: 2026-10-28 (7.37.0: SEO/AEO/GEO audit — metaadatok, JSON-LD séma, Direct Answer blokkok, Zéró Fix Ár)**
+**Utolsó frissítés: 2026-11-12 (7.40.0: Hírek AEO/GEO Direct Answer, TechArticle Schema, Blog TL;DR integráció)**
+
+> **7.40.0 (2026-11-12):** Hírek archívum és cikkek teljes körű SEO/AEO/GEO modernizációja:
+> - Új `tldr` frontmatter mező bevezetése mind a 25 indexelhető MDX cikkhez (40-60 szavas, tényalapú Direct Answer blokkok).
+> - `src/app/hirek/[slug]/page.tsx`: TL;DR doboz megjelenítés `post.tldr || post.excerpt` prioritással, TechArticle séma `author` bővítés ("26 év grafikai és 16 év webfejlesztői tapasztalat") és `dateModified` kezelés.
+> - XSS védelem (`.replace(/</g, '\\u003c')`), Zéró Fix Ár és Kék-Lila v7.0 vizuális sztenderdek 100%-os érvényesítése.
+> - Validáció: `npx tsc --noEmit` (0 hiba), `npm run lint` (0 hiba).
 
 > **7.37.0 (2026-10-28):** SEO / AIO / GEO audit és fejlesztés (Batch 1–5):
 > - Meta description 145–160 karakter (`layout.tsx`, `page.tsx`, `szolgaltatasok/page.tsx`, `ai-megoldasok/layout.tsx`), `alternates` hreflang hu-HU/en-US/x-default, `robots` metaadatok

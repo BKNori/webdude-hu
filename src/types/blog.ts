@@ -3,6 +3,7 @@ export interface BlogPost {
   title: string;
   date: string;
   excerpt: string;
+  tldr?: string;
   image?: string;
   noindex?: boolean;
   content?: string;
@@ -20,6 +21,7 @@ export interface FirestoreBlogPost {
   slug: string;
   title: string;
   excerpt: string;
+  tldr?: string;
   content: string;
   coverImage?: string;
   category: string;
@@ -36,6 +38,7 @@ export interface BlogPostFrontmatter {
   title: string;
   date: string;
   excerpt: string;
+  tldr?: string;
   image?: string;
   noindex?: boolean;
 }

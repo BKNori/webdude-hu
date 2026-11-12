@@ -50,6 +50,7 @@ function parseMdxFile(fileName: string): BlogPost | null {
     }
 
     const excerpt = (data.excerpt as string) || (data.description as string) || "";
+    const tldr = (data.tldr as string) || "";
     const category = (data.category as string) || detectCategory(title, slug);
     const readingTime = (data.readingTime as string) || calculateReadingTime(content);
     const coverImage = (data.coverImage as string) || (data.image as string) || "/assets/banners/webdude-hero.webp";
@@ -61,6 +62,7 @@ function parseMdxFile(fileName: string): BlogPost | null {
       title,
       date: dateStr,
       excerpt,
+      tldr,
       content,
       category,
       readingTime,
@@ -68,7 +70,7 @@ function parseMdxFile(fileName: string): BlogPost | null {
       image: coverImage,
       author,
       noindex,
-      updatedAt: dateStr,
+      updatedAt: (data.updatedAt as string) || dateStr,
     };
   } catch (err) {
     console.error(`parseMdxFile hiba a(z) ${fileName} fájlnál:`, err);
@@ -148,6 +150,7 @@ export async function getCombinedBlogPosts(): Promise<BlogPost[]> {
           title: fp.title,
           date: fp.date,
           excerpt: fp.excerpt,
+          tldr: fp.tldr || "",
           content: fp.content,
           coverImage: fp.coverImage || "/assets/banners/webdude-hero.webp",
           image: fp.coverImage || "/assets/banners/webdude-hero.webp",
@@ -156,7 +159,7 @@ export async function getCombinedBlogPosts(): Promise<BlogPost[]> {
           featured: fp.featured,
           noindex: fp.noindex,
           author: fp.author,
-          updatedAt: fp.updatedAt,
+          updatedAt: fp.updatedAt || fp.date,
         });
       }
     }
@@ -184,11 +187,12 @@ export async function getPostBySlugCombined(slug: string): Promise<BlogPost | nu
     const firestorePosts = await getBlogPostsFromFirestore();
     const fp = firestorePosts.find((p) => p.slug === slug);
     if (fp) {
-      return {
+        return {
         slug: fp.slug,
         title: fp.title,
         date: fp.date,
         excerpt: fp.excerpt,
+        tldr: fp.tldr || "",
         content: fp.content,
         coverImage: fp.coverImage || "/assets/banners/webdude-hero.webp",
         image: fp.coverImage || "/assets/banners/webdude-hero.webp",
@@ -197,7 +201,7 @@ export async function getPostBySlugCombined(slug: string): Promise<BlogPost | nu
         featured: fp.featured,
         noindex: fp.noindex,
         author: fp.author,
-        updatedAt: fp.updatedAt,
+        updatedAt: fp.updatedAt || fp.date,
       };
     }
   } catch (err) {

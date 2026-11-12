@@ -22,6 +22,7 @@ const blogPostSchema = z.object({
   slug: z.string().min(3, "A slug legalább 3 karakter kell legyen").max(100),
   title: z.string().min(3, "A cím legalább 3 karakter kell legyen").max(200),
   excerpt: z.string().min(10, "A rövid leírás legalább 10 karakter kell legyen").max(500),
+  tldr: z.string().max(1000).optional(),
   content: z.string().min(50, "A tartalom legalább 50 karakter kell legyen"),
   coverImage: z.string().url("Érvénytelen kép URL").optional().or(z.literal("")),
   category: z.string().min(1, "Kategória megadása kötelező").max(50),
@@ -197,6 +198,7 @@ export interface FirestoreBlogPostType {
   slug: string;
   title: string;
   excerpt: string;
+  tldr?: string;
   content: string;
   coverImage?: string;
   category: string;
