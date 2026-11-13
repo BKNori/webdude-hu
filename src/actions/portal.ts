@@ -107,6 +107,8 @@ interface WorkflowItem {
   createdAt: string;
   approvedByClient?: boolean;
   clientApprovedAt?: string;
+  /** Opcionális egyedi mérföldkő-lista JSON stringként (Gantt demo projektek). */
+  milestonesJson?: string;
 
   // Phase prices and payment statuses
   planningPrice?: number;
@@ -277,10 +279,16 @@ export async function getClientWorkflowsAction(idToken: string) {
               ? parseInt(fields.completedPrice.integerValue)
               : undefined,
             completedPaid: fields.completedPaid?.booleanValue ?? false,
+            milestonesJson: fields.milestonesJson?.stringValue || "",
           });
         }
       });
     }
+
+    // Rendezés memóriában (Firestore index-független, determinisztikus).
+    workflows.sort((a, b) =>
+      (b.createdAt || "").localeCompare(a.createdAt || "")
+    );
 
     return { success: true, workflows };
   } catch (error: unknown) {
@@ -1047,6 +1055,153 @@ export async function getClientUserProfileAction(idToken: string) {
         role: "client",
         allowedTools: [],
       },
+    };
+  }
+}
+
+/**
+ * Superadmin: 1-kattintásos minta projekt létrehozása a portál demóhoz.
+ * Gazdag, valósághű WebDude projektet hoz létre 5 egyedi mérföldkővel
+ * (a Gantt és a mérföldkő-kártyák azonnal teljes pompában mutathatók).
+ */
+export async function createDemoProjectAction(idToken: string) {
+  const user = await verifyUserToken(idToken);
+  if (!user || !user.isAdmin) {
+    return {
+      success: false,
+      error: "Csak adminisztrátorok hozhatnak létre minta projektet.",
+    };
+  }
+
+  const projectId = process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID;
+  if (!projectId)
+    return { success: false, error: "Hiányzó projekt konfiguráció." };
+
+  const today = new Date();
+  const iso = (offsetDays: number) => {
+    const d = new Date(today);
+    d.setDate(d.getDate() + offsetDays);
+    return d.toISOString().slice(0, 10);
+  };
+
+  const milestones = [
+    {
+      id: "demo-m1",
+      title: "Stratégia & Wireframe",
+      description:
+        "Követelményfelmérés, információarchitektúra és alacsony hűségű vázlatok jóváhagyása.",
+      status: "completed",
+      date: iso(-28),
+      progressPercentage: 100,
+      accent: "emerald",
+    },
+    {
+      id: "demo-m2",
+      title: "Kék-Lila v7.0 UI/UX Design",
+      description:
+        "Design system, üvegfelületek, CTA hierarchia és reszponzív makettek.",
+      status: "completed",
+      date: iso(-14),
+      progressPercentage: 100,
+      accent: "emerald",
+    },
+    {
+      id: "demo-m3",
+      title: "Next.js 16 & AI Integráció",
+      description:
+        "Komponensépítés, Server Action-ök és generatív AI munkafolyamatok bekötése.",
+      status: "in_progress",
+      date: iso(0),
+      progressPercentage: 65,
+      accent: "gold",
+    },
+    {
+      id: "demo-m4",
+      title: "Technikai SEO/AEO/GEO Audit",
+      description:
+        "Metaadatok, JSON-LD sémák, canonical-ok és válaszmotor-optimalizálás.",
+      status: "pending",
+      date: iso(14),
+      progressPercentage: 0,
+      accent: "slate",
+    },
+    {
+      id: "demo-m5",
+      title: "Élesítés & Átadás",
+      description:
+        "Produktion deploy, документаáció és az átadási checklista teljesítése.",
+      status: "pending",
+      date: iso(28),
+      progressPercentage: 0,
+      accent: "slate",
+    },
+  ];
+
+  const now = new Date().toISOString();
+
+  try {
+    const url = `https://firestore.googleapis.com/v1/projects/${projectId}/databases/(default)/documents/workflows`;
+
+    const res = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${idToken}`,
+      },
+      body: JSON.stringify({
+        fields: {
+          title: {
+            stringValue: "Minta Prémium Projekt — WebDude Demo",
+          },
+          description: {
+            stringValue:
+              "Demó projekt a portál idővonal-, mérföldkő- és fizetési felületeinek bemutatására.",
+          },
+          clientId: { stringValue: user.uid },
+          status: { stringValue: "development" },
+          content: {
+            stringValue:
+              "1. Stratégia & Wireframe — Kész\n2. Kék-Lila v7.0 UI/UX Design — Kész\n3. Next.js 16 & AI Integráció — Folyamatban (65%)\n4. Technikai SEO/AEO/GEO Audit — Ütemezve\n5. Élesítés & Átadás — Ütemezve",
+          },
+          createdAt: { stringValue: now },
+          approvedByClient: { booleanValue: false },
+          planningPrice: { integerValue: "150000" },
+          planningPaid: { booleanValue: true },
+          developmentPrice: { integerValue: "450000" },
+          developmentPaid: { booleanValue: true },
+          testingPrice: { integerValue: "200000" },
+          testingPaid: { booleanValue: false },
+          ai_integrationPrice: { integerValue: "250000" },
+          ai_integrationPaid: { booleanValue: false },
+          completedPrice: { integerValue: "100000" },
+          completedPaid: { booleanValue: false },
+          milestonesJson: { stringValue: JSON.stringify(milestones) },
+        },
+      }),
+    });
+
+    if (!res.ok) {
+      return {
+        success: false,
+        error: "Nem sikerült létrehozni a minta projektet.",
+      };
+    }
+
+    const created = (await res.json()) as { name?: string };
+    const id = created.name?.split("/").pop() || "";
+
+    return {
+      success: true,
+      message: "Minta projekt sikeresen létrehozva!",
+      workflowId: id,
+    };
+  } catch (error: unknown) {
+    return {
+      success: false,
+      error:
+        error instanceof Error
+          ? error.message
+          : "Hiba a minta projekt létrehozása során.",
     };
   }
 }

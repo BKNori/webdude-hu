@@ -71,17 +71,22 @@ export function usePortalSession(): PortalSession {
         const isAdminUser = authInfo?.isAdmin ?? false;
         setIsAdmin(isAdminUser);
 
+        // Nem kritikus admin listák: hibájuk nem blokkolhatja a portált.
         if (isAdminUser && currentUser.email === "hello@webdude.hu") {
-          const [usersRes, addonsRes] = await Promise.all([
-            listUsersAction(token),
-            getAddonsAction(token),
-          ]);
-          if (usersRes.success && usersRes.users) {
-            setAllUsers(usersRes.users);
-            setUserTools({}); // Initialize empty tools map
-          }
-          if (addonsRes.success && addonsRes.addons) {
-            setAllAddons(addonsRes.addons);
+          try {
+            const [usersRes, addonsRes] = await Promise.all([
+              listUsersAction(token),
+              getAddonsAction(token),
+            ]);
+            if (usersRes.success && usersRes.users) {
+              setAllUsers(usersRes.users);
+              setUserTools({}); // Initialize empty tools map
+            }
+            if (addonsRes.success && addonsRes.addons) {
+              setAllAddons(addonsRes.addons);
+            }
+          } catch {
+            // Admin listák nem elérhetők — a portál attól még működik.
           }
         }
 
@@ -103,9 +108,18 @@ export function usePortalSession(): PortalSession {
             }
             setAllowedTools(userAllowedTools);
           }
+        } else if (isAdminUser && currentUser.email === "hello@webdude.hu") {
+          // Szuperadmin: profil-lekérés hiba esetén is kapja meg az összes eszközt.
+          setAllowedTools([...SUPERADMIN_TOOLS]);
+        } else {
+          setError(
+            profileRes.error ||
+              "Hálózati hiba a profil és a workflow-k lekérése során."
+          );
         }
       } catch {
-        setError("Hálózati hiba a profil és a workflow-k lekérése során.");
+        // Csak a tokent igénylő kritikus hiba esetén mutatunk piros üzenetet.
+        setError("Hálózati hiba a munkamenet inicializálása során.");
       } finally {
         setLoading(false);
       }

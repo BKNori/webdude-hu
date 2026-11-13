@@ -17,6 +17,9 @@ import {
   LogOut,
   Loader2,
   AlertCircle,
+  Printer,
+  Box,
+  ClipboardList,
 } from "lucide-react";
 import { auth } from "@/lib/firebase";
 import { signOut, type User } from "firebase/auth";
@@ -36,7 +39,10 @@ type ToolType =
   | "szezonalis_ai_muhely"
   | "tartalomtervezo_ai_muhely"
   | "ui_ux_ai_muhely"
-  | "versenytars_elemzo_ai_muhely";
+  | "versenytars_elemzo_ai_muhely"
+  | "flyer_ai_muhely"
+  | "packaging_ai_muhely"
+  | "project_scope_ai_muhely";
 
 type ToolCategory = "visual" | "web" | "seo" | "strategy" | "all";
 
@@ -179,6 +185,51 @@ const generatorTools: ToolItem[] = [
       "Egyedi arculattervezés",
       "Logo generálás",
       "Brand szimbólumok",
+    ],
+  },
+  {
+    id: "flyer_ai_muhely",
+    slug: "szorolap-ai-muhely",
+    name: "Nyomdakész Szórólap & Leporelló Stúdió",
+    description:
+      "Milliméter-pontos prepress szórólap- és hajtogatott prospektus tervezés: vágási/kifutós zónák, hajtási mechanika és panelenkénti copywriting.",
+    icon: Printer,
+    category: "visual",
+    features: [
+      "8 nyomdai formátum (A5–DL, göngyölt, Z-fold, bi-fold)",
+      "Prepress műszaki rajz: bleed, safe zone, TAC, Rich Black",
+      "Panelenkénti zónaterv + kész magyar szövegek",
+      "CMYK/Pantone swatch + pt tipográfiai skála + 8 pontos checklist",
+    ],
+  },
+  {
+    id: "packaging_ai_muhely",
+    slug: "csomagolas-ai-muhely",
+    name: "Nyomdakész Csomagolás & Stancrajz Stúdió",
+    description:
+      "FEFCO dobozok, hajtogatott kartonok, rigid box, doypack és palackcímkék: stancrajz-specifikációk, EU compliance és panelenkénti termékterv.",
+    icon: Box,
+    category: "visual",
+    features: [
+      "8 ipari struktúra (FEFCO 0427/0201, rigid box, doypack, zsugorfólia)",
+      "Dieline & prepress: vágósík, hajtósáv, ragasztófül, szálirány",
+      "Panelenkénti másolat + kötelező EU/jogi szimbólumok",
+      "AI packshot/unboxing promptok + 8 pontos prepress checklist",
+    ],
+  },
+  {
+    id: "project_scope_ai_muhely",
+    slug: "projekt-tervezo-ai-muhely",
+    name: "Weboldal Architektúra & Árajánlat Stúdió",
+    description:
+      "Nyers ügyfél-briefből teljes oldaltérkép, SEO/AEO architektúra, 3 csomagszint és kész árajánlat-kísérőlevél — zéró fix árral.",
+    icon: ClipboardList,
+    category: "strategy",
+    features: [
+      "6 projekttípus + 5 technológiai stack + integrációs chipek",
+      "6-10 oldalas sitemap H1/Sekció/Schema/AEO specifikációval",
+      "3 csomagszint (Start/Pro/Enterprise) egyedi árajánlattal",
+      "5 fázisú roadmap + kockázatlista + másolható ügyféllevél",
     ],
   },
   {

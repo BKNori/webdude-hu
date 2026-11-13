@@ -11,51 +11,56 @@ import {
   serverTimestamp,
 } from "firebase/firestore";
 import type {
-  LogoGenerationInput,
+  LogoWorkshopInput,
   LogoGenerationOutput,
   LogoGenerationResult,
 } from "@/types/logo-workshop";
 
+const logoArchetypeSchema = z.enum([
+  "pictorial",
+  "abstract_geometric",
+  "negative_space",
+  "wordmark",
+  "monogram",
+  "monoline",
+  "emblem",
+]);
+
+const constructionGridSchema = z.enum([
+  "golden_ratio",
+  "swiss_modular",
+  "isometric_hex",
+  "bauhaus",
+  "organic",
+]);
+
 const logoGenerationSchema = z.object({
   brandName: z.string().min(2, "Márkanév minimum 2 karakter"),
+  tagline: z.string().max(120).optional(),
   industry: z.string().min(5, "Iparág minimum 5 karakter"),
   targetAudience: z.string().min(5, "Célközönség minimum 5 karakter"),
-  logoStyle: z.enum([
-    "minimalist",
-    "modern",
-    "vintage",
-    "geometric",
-    "typographic",
-    "emblem",
-    "abstract",
-  ]),
-  colorPreference: z.enum([
-    "monochrome",
-    "duotone",
-    "vibrant",
-    "pastel",
-    "dark",
-  ]),
-  additionalRequirements: z.string().optional(),
-  designDirection: z.string().max(600).optional(),
-  colorPalette: z.string().max(600).optional(),
+  logoArchetype: logoArchetypeSchema,
+  constructionGrid: constructionGridSchema,
+  visualStyle: z.string().max(600).optional(),
+  colorPreference: z.string().max(600).optional(),
+  symbolsToInclude: z.string().max(600).optional(),
+  symbolsToAvoid: z.string().max(600).optional(),
 });
 
 /**
- * Server Action to generate Logo AI Műhely content using Groq API.
- * Implements Norbi's 26-year graphic design and branding expertise:
- * Professional logo design principles, color psychology, typography pairing,
- * and Midjourney v6 Master prompt generation.
+ * Server Action: Enterprise Logó & Arculattervező Stúdió.
+ * 26 éves Senior Art Director / vektorgrafikus szemlélettel generál
+ * 3 különböző, produkciós szintű logókoncepciót strukturált JSON-ban.
  */
 export async function addLogoGenerationAction(
   idToken: string,
-  input: LogoGenerationInput
+  input: LogoWorkshopInput
 ): Promise<LogoGenerationResult> {
   // 1. Rate Limiting Check (max 10 generations per hour per client IP)
   const headersList = await headers();
   const req = { headers: headersList } as unknown as Request;
   const identifier = getClientIdentifier(req);
-  const rateLimitResult = checkRateLimit(identifier, 10, 3600000); // 10 requests per hour
+  const rateLimitResult = checkRateLimit(identifier, 10, 3600000);
 
   if (!rateLimitResult.success) {
     return {
@@ -95,121 +100,92 @@ export async function addLogoGenerationAction(
     };
   }
 
-  // 5. Build System Prompt with Norbi's 26-year graphic design expertise
-  const systemPrompt = `You are an Elite Brand Identity Designer with 26 years of professional logo design and branding expertise. Generate logo concepts in valid JSON format.
+  // 5. System Prompt — Senior Art Director / vektorgrafikus Persona
+  const systemPrompt = `You are a Senior Art Director and Vector Graphic Designer with 26 years of experience at Pentagram / Paul Rand level. You design production-ready logos that a professional illustrator can redraw in Adobe Illustrator or CorelDRAW. Generate valid JSON only — no markdown, no text outside JSON.
 
-CRITICAL: You MUST respond with valid JSON only. No markdown, no explanations outside JSON.
+INPUT CONTEXT (Hungarian brand, respond with Hungarian explanations where specified, English prompts where specified):
+- brandName, optional tagline, industry, targetAudience
+- logoArchetype, constructionGrid, visualStyle, colorPreference
+- symbolsToInclude, symbolsToAvoid
 
-JSON Structure:
+JSON STRUCTURE (MUST match exactly):
 {
-  "logoConcept": {
-    "style": string,
-    "description": string,
-    "keyElements": ["element1", "element2"],
-    "tailwindLayout": "Valid Tailwind CSS v4 layout structure for logo display (e.g., 'flex items-center justify-center gap-3')"
+  "concepts": [
+    {
+      "name": "1. Koncepció: <rövid név>",
+      "metaphor": "<magyar: a vizuális metafora és jelentésréteg magyarázata>",
+      "illustratorBlueprint": "<magyar, RÉSZLETES vektoros szerkesztési útmutató Illustrator/CorelDRAW-hoz: pontos szögek fokban, arányok, aranymetszés koordináták, Pathfinder/Shapebuilder kivonások, vonalvastagság javaslatok pt-ban, optikai korrekciók (pl. a kör/forms eltolása a geometriai középponttól), rétegszerkezet>",
+      "recraftSvgPrompt": "<ENGLISH: clean vector logo prompt for Recraft v3 / native SVG generation — flat shapes, geometric precision, named brand text placeholder \\"{{brandName}}\\">",
+      "ideogramPrompt": "<ENGLISH: Ideogram 2.0 prompt with exact \\"{{brandName}}\\" typography instruction, kerning notes, white background>",
+      "midjourneyPrompt": "<ENGLISH Midjourney v6.1 prompt: MUST end with --ar 1:1 --v 6.1 --style raw --no photorealistic, 3d mockup, shadows, gradients, complex details, text artifacts>"
+    }
+  ],
+  "colorSystem": {
+    "primary":   {"name","hex","cmyk","pantone","psychology"},
+    "secondary": {"name","hex","cmyk","pantone","psychology"},
+    "accent":    {"name","hex","cmyk","pantone","psychology"},
+    "base":      {"name","hex","cmyk","pantone","psychology"}
+  },
+  "typographySystem": {
+    "primaryFont":   {"name": "<konkrét Google/Adobe Font>", "weight": "<pl. Bold 700>", "tracking": "<pl. -20>", "ligatureTips": "<magyar: mely betűket érdemes egybekötni / optikailag korrigálni>"},
+    "secondaryFont": {"name": "<kiegészítő font>", "usage": "<magyar: szlogen/arculat használat>"}
   },
   "logoVariants": {
-    "primary": string,
-    "secondary": string,
-    "iconOnly": string,
-    "wordmark": string
-  },
-  "colorPalette": {
-    "primary": string,
-    "secondary": string,
-    "accent": string,
-    "neutral": string,
-    "rationale": string,
-    "psychology": "Color psychology explanation (e.g., 'Primary #00B5F1 evokes trust and professionalism for tech brands')",
-    "alternativePalettes": [
-      {"name": string, "colors": ["#hex1", "#hex2"], "useCase": string}
-    ]
-  },
-  "typography": {
-    "primaryFont": string,
-    "secondaryFont": string,
-    "fontPairing": string,
-    "rationale": string
-  },
-  "iconography": {
-    "iconType": string,
-    "symbolism": string,
-    "usage": string
-  },
-  "midjourneyPrompts": {
-    "primary": string,
-    "secondary": string,
-    "iconOnly": string,
-    "wordmark": string
+    "primaryHorizontal": "<magyar leírás: vízszintes fővariáns elrendezése>",
+    "stackedVertical": "<magyar leírás: függőleges stackelt változat>",
+    "appIconFavicon": "<magyar: 16x16 px favicon — pontos egyszerűsítési szabály, mit hagyunk meg, mit dobunk el>",
+    "monochromeStamp": "<magyar: 1 színű bélyegző/gravírozás verzió leírása>"
   },
   "brandGuidelines": {
-    "logoUsage": ["usage1", "usage2"],
-    "spacing": string,
-    "minimumSize": string,
-    "clearSpace": string,
-    "doNot": ["dont1", "dont2"]
-  },
-  "exportFormats": {
-    "svg": string,
-    "png": string,
-    "pdf": string,
-    "favicon": string
-  },
-  "variations": {
-    "lightMode": string,
-    "darkMode": string,
-    "monochrome": string
+    "clearSpaceRule": "<magyar: védőtávolság a logó X-mérete alapján>",
+    "minSizePx": "<pl. 32px digitális / 120px nyomtatás>",
+    "minSizeMm": "<pl. 15mm nyomtatásban>",
+    "donts": ["<5 konkrét tiltás a logó torzításának megakadályozására, magyarul>"]
   }
 }
 
-COLOR PSYCHOLOGY & HEX PALETTES:
-- Trust/Professional: #00B5F1 (Primary Blue), #1E293B (Slate Dark), #F8FAFC (Light Gray)
-- Innovation/Tech: #8B5CF6 (Purple), #3B82F6 (Blue), #06B6D4 (Cyan)
-- Luxury/Premium: #00B5F1 (Gold), #0F172A (Deep Navy), #E2E8F0 (Silver)
-- Growth/Nature: #10B981 (Emerald), #064E3B (Forest), #ECFDF5 (Mint)
-- Energy/Action: #FF7A00 (Orange), #EF4444 (Red), #FCA5A5 (Coral)
-
-MIDJOURNEY PARAMETERS (v6.0):
-- Aspect Ratio: --ar 1:1 (square for logos)
-- Version: --v 6.0
-- Style: --style raw
-- Quality: --quality 2
-- Stylize: --stylize 250
-- Focus: --no text (for icon-only), --text (for wordmarks)
-- Detail: --detail high, --sharp focus
-
-All text content must be in Hungarian. Apply WebDude Cyber-Gold identity principles. Focus on scalability, memorability, and versatility. Midjourney prompts MUST include: --v 6.0 --style raw --ar 1:1 --quality 2 --stylize 250 parameters.`;
+RULES:
+- EXACTLY 3 concepts, each radically different in metaphor and construction.
+- illustratorBlueprint must be detailed enough that a junior designer can redraw it without guessing: angles, ratios, Pathfinder operations, stroke weights.
+- colorSystem: 4 roles — primary, secondary, accent, base (dark/light). cmyk format "C:85 M:10 Y:0 K:0". pantone like "PMS 2995 C".
+- typographySystem fonts must be real, commercially usable fonts (Google Fonts or Adobe Fonts).
+- All Hungarian text fields in Hungarian; all *_prompt fields in English.
+- WebDude Kék-Lila v7.0 identity awareness: prefer #00B5F1 cyan and #5B21B6/#7C3AED violet family when suitable, but ALWAYS prioritize the brand's industry psychology over house style.
+- symbolsToAvoid must be strictly respected — never include forbidden clichés.`;
 
   // 6. Build User Prompt
-  const styleDescriptions: Record<string, string> = {
-    minimalist: "Minimalista (tiszta, egyszerű, sok negatív tér)",
-    modern: "Modern (friss, innovatív, geometrikus)",
-    vintage: "Vintage (retro, klasszikus, nosztalgikus)",
-    geometric: "Geometrikus (alakzat-alapú, strukturált)",
-    typographic: "Tipográfiai (betű-alapú, kreatív betűkép)",
-    emblem: "Embléma (jelvény-szerű, kompozit)",
-    abstract: "Absztrakt (szimbolikus, művészi)",
+  const archetypeLabels: Record<string, string> = {
+    pictorial: "Pictorial / Szimbólum (Apple/Twitter stílus)",
+    abstract_geometric: "Absztrakt Geometriai Jel (Pentagram stílus)",
+    negative_space: "Negative Space — rejtett forma a negatív térben (FedEx stílus)",
+    wordmark: "Wordmark / Egyedi Tipográfiai Logó (Ligatúra fókusz)",
+    monogram: "Monogram / Lettermark (1-3 betűs összefonódás)",
+    monoline: "Minimalista Monoline / Vonalgrafika",
+    emblem: "Modern Emblem / Kortárs Pecsét",
   };
 
-  const colorDescriptions: Record<string, string> = {
-    monochrome: "Monokróm (egyszínű, fekete-fehér)",
-    duotone: "Duotón (két szín, kontrasztos)",
-    vibrant: "Élénk (telített színek, figyelemfelkeltő)",
-    pastel: "Pasztell (lágy színek, barátságos)",
-    dark: "Sötét (sötét háttér, prémium)",
+  const gridLabels: Record<string, string> = {
+    golden_ratio: "Aranymetszés (Fibonacci φ=1.618 körháló)",
+    swiss_modular: "Svájci Moduláris Rács (Massimo Vignelli stílus)",
+    isometric_hex: "Izometrikus 30°-os Hexa Rács",
+    bauhaus: "Bauhaus Geometriai Alapformák",
+    organic: "Organikus / Szabadkézi Optikai Egyensúly",
   };
 
-  const userPrompt = `Generate logo concept for:
-Brand: ${validatedInput.brandName}
-Industry: ${validatedInput.industry}
-Audience: ${validatedInput.targetAudience}
-Style: ${styleDescriptions[validatedInput.logoStyle]}
-Colors: ${colorDescriptions[validatedInput.colorPreference]}
-Requirements: ${validatedInput.additionalRequirements || "None"}
-Design Direction: ${validatedInput.designDirection || "nincs megadva"}
-Color Palette: ${validatedInput.colorPalette || "nincs megadva"}
+  const userPrompt = `Tervezd meg a(z) "${validatedInput.brandName}" márka logóját és arculatát.
 
-Return valid JSON only. Hungarian language. Apply WebDude Kék-Lila v7.0 identity. Focus on scalability and versatility.`;
+Márkanév: ${validatedInput.brandName}
+Tagline (opcionális): ${validatedInput.tagline || "-"}
+Iparág: ${validatedInput.industry}
+Célcsoport & Pozicionálás: ${validatedInput.targetAudience}
+Logó-architektúra: ${archetypeLabels[validatedInput.logoArchetype]}
+Konstrukciós rács: ${gridLabels[validatedInput.constructionGrid]}
+Stílus irányzat: ${validatedInput.visualStyle || "szabad tervezői döntés"}
+Színpreferencia: ${validatedInput.colorPreference || "szabad tervezői döntés"}
+Kért metaforák/motívumok: ${validatedInput.symbolsToInclude || "-"}
+TILTOTT klisék: ${validatedInput.symbolsToAvoid || "-"}
+
+Adj vissza PONTOSAN 3 merőben eltérő koncepciót a megadott JSON struktúrában. Minden koncepcióhoz teljes illustratorBlueprint, recraftSvgPrompt, ideogramPrompt és midjourneyPrompt mezők kellenek.`;
 
   try {
     // 7. Call Groq API
@@ -228,7 +204,7 @@ Return valid JSON only. Hungarian language. Apply WebDude Kék-Lila v7.0 identit
             { role: "user", content: userPrompt },
           ],
           temperature: 0.7,
-          max_tokens: 2048,
+          max_tokens: 8192,
           response_format: { type: "json_object" },
         }),
       }

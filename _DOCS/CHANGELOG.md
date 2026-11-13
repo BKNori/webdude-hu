@@ -1,5 +1,85 @@
 # Changelog
 
+## [7.51.0] — 2026-11-13 — BRIEF->ARCHITEKTÚRA, SITEMAP & ÁRAJÁNLAT AI MŰHELY (ÚJ GENERÁTOR)
+
+**ÚJ KOMPONENSEK ÉS AKCIÓK:**
+- `src/types/project-scope-workshop.ts`: `ProjectScopeInput` (6 projekttípus, 5 technológiai stack, nyers ügyfél-brief textarea, integrációs lista, ütemezési cél) + `ProjectScopeOutput` (executiveSummary tech->üzleti-előny mátrixszal, sitemapAndSeoArchitecture 6-10 oldallal H1/szekció/Schema.org/AEO fókusz, 3 tierPackages ZÉRÓ FIX ÁRRAL, 5 fázisú milestoneRoadmap, riskAndPreconditions, clientProposalEmail).
+- `src/actions/project-scope-workshop.ts`: Groq `openai/gpt-oss-120b` Server Action — WebDude Lead Architect persona (26 év grafika + 16 év web). Szigorú **ZÉRÓ FIX ÁR** szabály: a `priceLabel` mindig „Egyedi árajánlat alapján", plusz szerveroldali garancia-felülírás ha az AI mégis árat írt volna. Rate-limit + `verifyUserToken` + `ai_generations` mentés.
+- `src/components/organisms/ProjectScopeWorkshopGenerator.tsx`: Kék-Lila v7.0 stúdió — 3 iparági 1-click preset (BTShop-style webshop+ERP, Magánklinika weboldal+SEO, WordPress felújítás+migráció), 6 projekttípus + 5 stack chip, **8 kattintható integrációs chip** (Kulcs-Soft, Foxpost/MPL, GMC, RankMath/AEO, AI Chatbot, Stripe, Többnyelvűség, Helyi SEO), sitemap kártyák Schema badge-ekkel, kiemelt Pro csomagos 3-szintű bento, 5 fázisú roadmap idővonal, kockázatlista és 1-kattintásos másolható **ügyfél árajánlat-kísérőlevél**.
+
+**ROUTING & REGISZTRÁCIÓ:**
+- Új route-ok: `/portal/ai-muhely/projekt-tervezo-ai-muhely` és `/portal/ai-muhely/project-scope` → `ProjectScopeWorkshopGenerator`.
+- `AIWorkshopCollection.tsx`: új „Weboldal Architektúra & Árajánlat Stúdió" kártya a `Stratégia` kategóriában, `project_scope_ai_muhely` tool-kulccsal (`ClipboardList` ikon).
+- `_DOCS/ARCHITECTURE.md`: komponens regiszter frissítve.
+
+**QA:** `npx tsc --noEmit` → **0 hiba**; eslint a 6 érintett fájlon → **0 error, 0 warning**.
+
+---
+
+## [7.50.0] — 2026-11-13 — NYOMDAKÉSZ CSOMAGOLÁS, DOBOZ STANCERAJZ & CÍMKE AI MŰHELY (ÚJ GENERÁTOR)
+
+**ÚJ KOMPONENSEK ÉS AKCIÓK:**
+- `src/types/packaging-workshop.ts`: `PackagingWorkshopInput` (8 ipari struktúra: FEFCO 0427/0201, folding carton tuck, rigid box, doypack, palackcímke, zsugorfólia, kozmetikai tégely+doboz; 6 alapanyag/hordozó; felületnemesítés; stílus/szín preset; USP-k és kötelező EU/jogi információk) + `PackagingGenerationOutput` (conceptOverview, dielineAndPrepressSpecs, panelBreakdown, colorSystem hex+CMYK+Pantone+substrateBehavior, typographyAndCompliance EU 1169/2011, aiPrompts, 8 pontos prepressChecklist).
+- `src/actions/packaging-workshop.ts`: Groq `openai/gpt-oss-120b` Server Action — Senior Packaging Designer / Die-line Engineer persona (26 év csomagolástervezés), FEFCO kódok, sík kiterítés becslés, vágósík/hajtósáv spot-color szabály, ragasztófül-korlátozások, EAN-13+BWR vonalkód, EU compliance (1.2 mm min. betűmagasság, INCI, ℮ jel). Rate-limit + `verifyUserToken` + `ai_generations` mentés.
+- `src/components/organisms/PackagingWorkshopGenerator.tsx`: Kék-Lila v7.0 stúdió — 3 iparági 1-click preset (Arcszérum Doboz+GC1/GC2, Specialty Kávé Doypack, E-Commerce VIP FEFCO 0427), struktúra/alapanyag/felületnemesítés chip-választók, panelenkénti kártyák `CopyButton`-nal (hierarchia-szerep, kötelező szimbólumok, finishing kiemelés), élő szín-swatch-ok hordozó-viselkedéssel, EU compliance lista és 8 pontos prepress checklist.
+
+**ROUTING & REGISZTRÁCIÓ:**
+- Új route-ok: `/portal/ai-muhely/csomagolas-ai-muhely` és `/portal/ai-muhely/packaging` → `PackagingWorkshopGenerator`.
+- `AIWorkshopCollection.tsx`: új „Nyomdakész Csomagolás & Stancrajz Stúdió" kártya a `Vizuális & Grafika` kategóriában, `packaging_ai_muhely` tool-kulccsal (`Box` ikon).
+- `_DOCS/ARCHITECTURE.md`: komponens regiszter frissítve.
+
+**QA:** `npx tsc --noEmit` → **0 hiba**; eslint a teljes `src/` lefedve (components + app/actions/types/lib/hooks külön futtatva) → **0 error, 0 warning**. A monolitikus `npm run lint` a gépen ismételt „Zone Allocation OOM" hibával leállt (~700MB körül), környezeti memóriakorlát miatt — a kód maga tiszta.
+
+---
+
+## [7.49.0] — 2026-11-13 — NYOMDAKÉSZ SZÓRÓLAP & PROSPEKTUS AI MŰHELY (ÚJ GENERÁTOR)
+
+**ÚJ KOMPONENSEK ÉS AKCIÓK:**
+- `src/types/flyer-workshop.ts`: `FlyerWorkshopInput` (8 nyomdai formátum, 5 papír/felület, 4 terjesztési csatorna, stílus/szín preset, offer/CTA) + `FlyerWorkshopOutput` (conceptOverview, prepressSpecs mm-pontosan, panelBreakdown, colorSystem hex+CMYK+Pantone, typographyHierarchy pt-méretekkel, aiPrompts, 8 pontos prepressChecklist).
+- `src/actions/flyer-workshop.ts`: Groq Server Action — Senior Prepress Art Director persona (26 év nyomdaipar), hajtási mechanika mm-szélességekkel (97-100-100 göngyölt, 99-99-99 Z-fold), Rich Black vs. 100%K szabály, TAC/QR/PDF-X szabályok. Rate-limit + `verifyUserToken` + `ai_generations` mentés.
+- `src/components/organisms/FlyerWorkshopGenerator.tsx`: Kék-Lila v7.0 stúdió — 3 iparági 1-click preset (Unboxing Kupon DL, B2B Leporelló, Gastro A5), formátum/papír/csatorna chip-választók, panelenkénti zónaterv-kártyák `CopyButton`-nal, élő CMYK swatch-ok, pt tipográfiai skála, 3 AI prompt-export és 8 pontos prepress checklist.
+
+**ROUTING & REGISZTRÁCIÓ:**
+- Új route-ok: `/portal/ai-muhely/szorolap-ai-muhely` és `/portal/ai-muhely/flyer` → `FlyerWorkshopGenerator`.
+- `AIWorkshopCollection.tsx`: új „Nyomdakész Szórólap & Leporelló Stúdió" kártya a `Vizuális & Grafika` kategóriában, `flyer_ai_muhely` tool-kulccsal.
+- `_DOCS/ARCHITECTURE.md`: komponens regiszter + route táblázat frissítve.
+
+**QA:** `npx tsc --noEmit` → **0 hiba**; `npm run lint -- --max-warnings 0` → **0 error, 0 warning**.
+
+---
+
+## [7.48.0] — 2026-11-13 — LOGÓ AI MŰHELY: ROUTING JAVÍTÁS + ENTERPRISE ARCULATTERVEZŐ STÚDIÓ
+
+**ROUTING:**
+- `/portal/ai-muhely/logo/page.tsx`: a generikus `SingleAITool` ("LOGO_DESIGNER") fallback helyett most a dedikált `LogoWorkshopGenerator` renderelődik — a `logo`, `logo-ai-muhely` és `logo_designer` útvonalak egységesen a profi stúdiót töltik be.
+
+**TÍPUSOK (`src/types/logo-workshop.ts` — teljes újraírás):**
+- `LogoWorkshopInput`: `brandName`, `tagline`, `industry`, `targetAudience`, `logoArchetype` (7 architektúra: pictorial, abstract_geometric, negative_space, wordmark, monogram, monoline, emblem), `constructionGrid` (5 rács: aranymetszés, svájci moduláris, izometrikus hex, bauhaus, organikus), `visualStyle`, `colorPreference`, `symbolsToInclude`, `symbolsToAvoid`.
+- `LogoGenerationOutput`: `concepts[3]` (metaphor + `illustratorBlueprint` + `recraftSvgPrompt` + `ideogramPrompt` + `midjourneyPrompt`), `colorSystem` (primary/secondary/accent/base — hex + CMYK + Pantone + pszichológia), `typographySystem` (primary weight/tracking/ligatureTips + secondary), `logoVariants` (horizontal, stacked, favicon 16px szabály, monokróm bélyegző), `brandGuidelines` (clearSpace, minSizePx/Mm, 5 dont).
+
+**SERVER ACTION (`src/actions/logo-workshop.ts`):**
+- Új Zod séma a kibővített inputmezőkre; Senior Art Director / 26 év vektorgrafikus persona a Groq system promptban — részletes Illustrator/CorelDRAW vektorszerkesztési útmutató (szögek, arányok, Pathfinder műveletek, optikai korrekciók), Recraft v3 SVG / Ideogram 2.0 / Midjourney v6.1 (`--ar 1:1 --v 6.1 --style raw --no photorealistic...`) promptok.
+- Rate-limit, `verifyUserToken`, `GROQ_API_KEY` check és Firestore `ai_generations` mentés megőrizve.
+
+**UI (`src/components/organisms/LogoWorkshopGenerator.tsx` — teljes újraírás, ~700 sor):**
+- 3 iparági 1-click preset: FinTech/AI SaaS "NexaFlow", Prémium Kávézó "Kuro Roast", Építészeti Stúdió "Monolith".
+- Kattintható chip-csoportok: 7 logó-architektúra, 5 konstrukciós rács, design irányzat és színpaletta (meglévő `PresetChips` + `workshop-presets`).
+- Output stúdió: 3 koncepciókártya (részletes vektor-rajz + 3 `CopyButton` prompt-export), élő színpaletta swatch-ok (kattintásra HEX másolás, CMYK/Pantone feltüntetéssel), tipográfiai kártya, 4 arculati variáns és arculati szabályok bento grid.
+- `useWatch`-alapú űrlapállapot (React Compiler-kompatibilis), `queueMicrotask` auth-gate, Kék-Lila v7.0 sötét stúdió.
+
+**PORTÁL JAVÍTÁSOK (folyamatban lévő v7.47.0 batch része):**
+- `firestore.rules`: `isHelloAdmin()` hozzáadva a `workflows` (read/create/update/delete), `vault` (read) és `ai_generations` (read/create/delete) szabályokhoz — a `hello@webdude.hu` szuperadmin a `superadmin` custom claim nélkül is éri el a saját/összes projektjeit.
+- `getClientWorkflowsAction`: memóriában rendezett (index-független), `milestonesJson` mező parse-olása.
+- `getClientFilesAction` (vault): toleráns mező-kiolvasás (hiányzó `uploadedByName`/`size`/`createdAt` esetén alapértelmezés) — megszünteti a „Hiba a fájlok betöltése" hibát.
+- `usePortalSession`: nem kritikus admin-listák hibája nem blokkolja a portált; szuperadmin profil-hiba esetén is megkapja az összes eszközt.
+- `ClientAITools`: `loadHistory` try/catch/finally — a „Generáció Előzmények" nem ragad "Betöltés..." állapotban; üres állapot: „Még nincsenek mentett generációk."
+- `createDemoProjectAction` (új): szuperadmin 1-kattintásos minta projekt 5 egyedi mérföldkővel (Stratégia & Wireframe, Kék-Lila v7.0 UI/UX, Next.js 16 & AI Integráció 65%, SEO/AEO/GEO Audit, Élesítés).
+- **FIGYELEM:** a `firestore.rules` módosítást `firebase deploy --only firestore:rules` paranccsal kell élesíteni!
+
+**QA:** `npx tsc --noEmit` → **0 hiba**; `npm run lint -- --max-warnings 0` → **0 error, 0 warning**.
+
+---
+
 ## [7.46.0] — 2026-11-13 — GLOBÁLIS AUTH JELZŐ + AI MŰHELY PRO SZINTLÉPÉS (4 BATCH)
 
 **1. BATCH 1 — GLOBÁLIS BEJELENTKEZÉSI ÁLLAPOTJELZŐ:**

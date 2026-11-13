@@ -160,24 +160,42 @@ export async function getClientFilesAction(idToken: string, clientId: string) {
       document?: FirestoreVaultDocument;
     }>;
     const files = rawData
-      .filter((item) => item.document)
+      .filter((item) => item.document?.fields)
       .map((item) => {
         const doc = item.document!;
-        const parts = doc.name!.split("/");
-        const id = parts[parts.length - 1];
+        const fields = doc.fields ?? ({} as FirestoreVaultDocument["fields"]);
+        const parts = (doc.name ?? "").split("/");
+        const id = parts[parts.length - 1] || "";
+
+        // Toleráns mező-kiolvasás: a régebbi dokumentumokból hiányozhat
+        // bármely opcionális mező, ilyenkor biztonságos alapértelmezést adunk.
+        const sizeRaw =
+          fields.size?.integerValue ??
+          (fields.size as { doubleValue?: number } | undefined)?.doubleValue ??
+          0;
+        const createdRaw =
+          fields.createdAt?.timestampValue ??
+          (fields.createdAt as { stringValue?: string } | undefined)
+            ?.stringValue ??
+          "";
 
         return {
           id,
-          clientId: doc.fields.clientId.stringValue,
-          name: doc.fields.name.stringValue,
-          url: doc.fields.url.stringValue,
-          size: parseInt(doc.fields.size.integerValue.toString(), 10),
-          uploadedBy: doc.fields.uploadedBy.stringValue,
-          uploadedByName: doc.fields.uploadedByName.stringValue,
-          storagePath: doc.fields.storagePath.stringValue,
-          createdAt: doc.fields.createdAt.timestampValue,
+          clientId: fields.clientId?.stringValue || "",
+          name: fields.name?.stringValue || "Névtelen fájl",
+          url: fields.url?.stringValue || "",
+          size: Number(sizeRaw) || 0,
+          uploadedBy: fields.uploadedBy?.stringValue || "client",
+          uploadedByName: fields.uploadedByName?.stringValue || "Ügyfél",
+          storagePath: fields.storagePath?.stringValue || "",
+          createdAt: createdRaw,
         };
       });
+
+    // Üres kollekció: tiszta [] — soha nem hibaüzenet.
+    if (files.length === 0) {
+      return { success: true, files: [] };
+    }
 
     // Sort by createdAt descending (newest first)
     files.sort(

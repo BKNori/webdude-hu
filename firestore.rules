@@ -77,9 +77,9 @@ service cloud.firestore {
 
     // Workflows — superadmin has full access, authenticated client can only read/update approvals on their own workflows
     match /workflows/{workflowId} {
-      allow read: if isAdmin() || (isAuthenticated() && resource.data.clientId == request.auth.uid);
-      allow create, delete: if isAdmin();
-      allow update: if isAdmin() || (
+      allow read: if isAdmin() || isHelloAdmin() || (isAuthenticated() && resource.data.clientId == request.auth.uid);
+      allow create, delete: if isAdmin() || isHelloAdmin();
+      allow update: if isAdmin() || isHelloAdmin() || (
         isAuthenticated() && 
         resource.data.clientId == request.auth.uid && 
         request.resource.data.diff(resource.data).affectedKeys().hasOnly(['approvedByClient', 'clientApprovedAt'])
@@ -131,7 +131,7 @@ service cloud.firestore {
 
     // Vault (fájlok metaadatai) — superadmin has full access, authenticated client can read/write their own file records
     match /vault/{fileId} {
-      allow read: if isAdmin() || (isAuthenticated() && resource.data.clientId == request.auth.uid);
+      allow read: if isAdmin() || isHelloAdmin() || (isAuthenticated() && resource.data.clientId == request.auth.uid);
       allow create: if isAuthenticated() && (isAdmin() || request.resource.data.clientId == request.auth.uid) && request.resource.data.uploadedBy in ['client', 'admin'];
       allow delete: if isAdmin() || (isAuthenticated() && resource.data.clientId == request.auth.uid && resource.data.uploadedBy == 'client');
       allow update: if false;
@@ -160,9 +160,9 @@ service cloud.firestore {
 
     // AI Generations history — admin has full access, authenticated client can read/create/delete their own generations
     match /ai_generations/{genId} {
-      allow read: if isAdmin() || (isAuthenticated() && resource.data.clientId == request.auth.uid);
-      allow create: if isAuthenticated() && (isAdmin() || request.resource.data.clientId == request.auth.uid);
-      allow delete: if isAdmin() || (isAuthenticated() && resource.data.clientId == request.auth.uid);
+      allow read: if isAdmin() || isHelloAdmin() || (isAuthenticated() && resource.data.clientId == request.auth.uid);
+      allow create: if isAuthenticated() && (isAdmin() || isHelloAdmin() || request.resource.data.clientId == request.auth.uid);
+      allow delete: if isAdmin() || isHelloAdmin() || (isAuthenticated() && resource.data.clientId == request.auth.uid);
       allow update: if false;
     }
 

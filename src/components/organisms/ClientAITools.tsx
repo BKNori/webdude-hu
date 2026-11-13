@@ -295,9 +295,14 @@ export default function ClientAITools({
   // ---- Load History on Auth Change ----
   const loadHistory = async (token: string) => {
     setHistoryLoading(true);
-    const res = await getClientAiGenerationsAction(token);
-    if (res.success && res.generations) setGenerations(res.generations);
-    setHistoryLoading(false);
+    try {
+      const res = await getClientAiGenerationsAction(token);
+      if (res.success && res.generations) setGenerations(res.generations);
+    } catch {
+      // Hálózati hiba esetén sem ragadhat "Betöltés..." állapotban.
+    } finally {
+      setHistoryLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -1347,6 +1352,10 @@ export default function ClientAITools({
         </h4>
         {historyLoading ? (
           <p className="text-slate-500 text-xs">Betöltés...</p>
+        ) : generations.length === 0 ? (
+          <p className="text-slate-500 text-xs">
+            Még nincsenek mentett generációk.
+          </p>
         ) : (
           <ul className="space-y-2 max-h-64 overflow-y-auto">
             {generations.map((gen) => (
