@@ -1,5 +1,30 @@
 # Changelog
 
+## [7.52.0] — 2026-11-13 — NAGYFORMÁTUMÚ DEKOR, ROLL-UP, AUTÓDEKOR & KIRAKAT AI MŰHELY (ÚJ GENERÁTOR)
+
+**ÚJ KOMPONENSEK ÉS AKCIÓK:**
+- `src/types/signage-workshop.ts`: `SignageWorkshopInput` (8 LFP struktúra, 6 hordozó/fólia, 3 távolsági zóna, stílus/szín, CTA) + `SignageGenerationOutput` (conceptOverview 3-másodperces szabállyal, lfpTechnicalSpecs méretarányos DPI/dead-zone/CutContour/fehér tinta, zoneBreakdown magassági sávokkal, colorSystem hex+CMYK+RAL/Pantone/Oracal kódokkal, typographyAndDistanceScale 1:1 mm méretekkel, aiPrompts, 8 pontos lfpPrepressChecklist).
+- `src/actions/signage-workshop.ts`: Groq `openai/gpt-oss-120b` Server Action — Senior LFP & Dekoratőr Art Director persona (26 év): kazetta holttér, hegesztési varrás, OWV perforáció, cast vinyl, CutContour 100%M spot, R10 csúszásgátló, távolsági betűmagasság-szabály. Rate-limit + `verifyUserToken` + `ai_generations` mentés.
+- `src/components/organisms/SignageWorkshopGenerator.tsx`: Kék-Lila v7.0 stúdió — 3 iparági 1-click preset (Konferenciás Roll-up, Kirakat OWV, Furgon Autódekor), formátum/hordozó/távolság chip-választók, magassági zónakártyák `CopyButton`-nal és technikai/dizájn figyelmeztetésekkel, élő CMYK+RAL swatch-ok, távolsági mm tipográfia skála, 3 AI prompt export és 8 pontos checklist.
+
+**ROUTING & REGISZTRÁCIÓ:**
+- Új route-ok: `/portal/ai-muhely/dekor-ai-muhely` és `/portal/ai-muhely/signage` → `SignageWorkshopGenerator`.
+- `AIWorkshopCollection.tsx`: új „Roll-up, Kirakat, Molinó & Autódekor Stúdió" kártya a `Vizuális & Grafika` kategóriában, `signage_ai_muhely` tool-kulccsal (`MonitorPlay` ikon).
+- `_DOCS/ARCHITECTURE.md`: komponens regiszter frissítve.
+
+**QA:** `npx tsc --noEmit` → **0 hiba**; célzott eslint a 6 érintett fájlon → **0 error, 0 warning**.
+
+---
+
+## [7.51.1] — 2026-11-13 — BUILD/LINT OOM MEMÓRIAFIX (INFRA)
+
+- `package.json`: `build` és `lint` szkriptek `cross-env NODE_OPTIONS=--max-old-space-size=8192`-vel futnak (8 GB Node heap a webpack fordításhoz és az eslint-hez).
+- `deploy.bat` + `deploy.ps1`: `NODE_OPTIONS=--max-old-space-size=8192` beállítva a build indítása előtt.
+- `next.config.js`: `experimental.webpackBuildWorker: true` — a webpack memóriakezelése külön worker szálra kerül, drasztikusan csökkentve az OOM esélyét. `output: "standalone"` és `images.unoptimized` érintetlen.
+- Megjegyzés: a helyi gépen a teljes `npm run lint` továbbra is „Zone Allocation OOM"-ot dobhat, ha a szabad RAM < ~2 GB (a gép aktuálisan 0,7 GB szabad / 7,7 GB összes) — a Node heap limit rendben van, a szűk keresztmetszet a fizikai memória.
+
+---
+
 ## [7.51.0] — 2026-11-13 — BRIEF->ARCHITEKTÚRA, SITEMAP & ÁRAJÁNLAT AI MŰHELY (ÚJ GENERÁTOR)
 
 **ÚJ KOMPONENSEK ÉS AKCIÓK:**

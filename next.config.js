@@ -2,6 +2,12 @@
 const nextConfig = {
   output: "standalone", // Enable standalone build for deployment
   cacheComponents: false, // Disable Next.js 16 cache components for build stability
+  experimental: {
+    // Webpack build worker: a webpack memóriakezelése külön worker szálra
+    // kerül -> drasztikusan csökken az OOM (AlignedAlloc / Zone Allocation)
+    // esélye a build során.
+    webpackBuildWorker: true,
+  },
   turbopack: {}, // Enable Turbopack
   images: {
     remotePatterns: [

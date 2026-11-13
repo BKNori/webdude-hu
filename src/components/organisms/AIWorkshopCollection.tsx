@@ -20,6 +20,7 @@ import {
   Printer,
   Box,
   ClipboardList,
+  MonitorPlay,
 } from "lucide-react";
 import { auth } from "@/lib/firebase";
 import { signOut, type User } from "firebase/auth";
@@ -42,7 +43,8 @@ type ToolType =
   | "versenytars_elemzo_ai_muhely"
   | "flyer_ai_muhely"
   | "packaging_ai_muhely"
-  | "project_scope_ai_muhely";
+  | "project_scope_ai_muhely"
+  | "signage_ai_muhely";
 
 type ToolCategory = "visual" | "web" | "seo" | "strategy" | "all";
 
@@ -230,6 +232,21 @@ const generatorTools: ToolItem[] = [
       "6-10 oldalas sitemap H1/Sekció/Schema/AEO specifikációval",
       "3 csomagszint (Start/Pro/Enterprise) egyedi árajánlattal",
       "5 fázisú roadmap + kockázatlista + másolható ügyféllevél",
+    ],
+  },
+  {
+    id: "signage_ai_muhely",
+    slug: "dekor-ai-muhely",
+    name: "Roll-up, Kirakat, Molinó & Autódekor Stúdió",
+    description:
+      "Nagyformátumú dekoráció- és LFP tervező: méretarányos DPI, dead-zone térképek, RAL/Oracal kódok és távolsági olvashatóság.",
+    icon: MonitorPlay,
+    category: "visual",
+    features: [
+      "8 formátum (roll-up, OWV kirakat, autówrap, molinó, sajtófal, dibond)",
+      "LFP mérnöki spec: skálamegfeleltetés, holttér, CutContour, fehér tinta",
+      "Magassági zónaterv kártyák + távolsági mm tipográfia",
+      "CMYK+RAL swatch-ok, 3 AI prompt export, 8 pontos checklist",
     ],
   },
   {
