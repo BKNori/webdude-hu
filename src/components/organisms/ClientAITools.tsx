@@ -30,7 +30,14 @@ import {
   deleteAiGenerationAction,
   type AiGenerationItem,
 } from "@/actions/ai";
-import { auth } from "@/lib/firebase";
+import { auth, db } from "@/lib/firebase";
+import {
+  collection,
+  getDocs,
+  query,
+  where,
+  Timestamp,
+} from "firebase/firestore";
 import TemplateSelector from "@/components/molecules/TemplateSelector";
 import GraphicToolCard from "@/components/molecules/GraphicToolCard";
 
@@ -292,18 +299,67 @@ export default function ClientAITools({
   // ---- Template UI State ----
   const [selectedTemplateIdx, setSelectedTemplateIdx] = useState<number>(-1);
 
+  // ─── Kliensoldali Firestore fallback ──────────────────────────────────
+  // Ha a Server Action sikertelen (pl. cPanelen hiányzó Admin SDK kulcs),
+  // a bejelentkezett felhasználó auth tokenjével közvetlenül olvassa az
+  // `ai_generations` kollekciót (rules: saját rekordok + isHelloAdmin).
+  const loadHistoryFallback = useCallback(async (): Promise<AiGenerationItem[] | null> => {
+    if (!db || !auth?.currentUser) return null;
+    try {
+      const uid = auth.currentUser.uid;
+      const isAdmin = auth.currentUser.email === "hello@webdude.hu";
+      const col = collection(db, "ai_generations");
+      const q = isAdmin ? col : query(col, where("clientId", "==", uid));
+      const snap = await getDocs(q);
+      const items: AiGenerationItem[] = snap.docs.map((d) => {
+        const data = d.data() as Record<string, unknown>;
+        const rawCreated = data.createdAt;
+        const createdAt =
+          rawCreated instanceof Timestamp
+            ? rawCreated.toDate().toISOString()
+            : typeof rawCreated === "string"
+              ? rawCreated
+              : "";
+        return {
+          id: d.id,
+          clientId: (data.clientId as string) ?? "",
+          clientName: (data.clientName as string) ?? "",
+          toolId: (data.toolId as string) ?? "",
+          toolName: (data.toolName as string) ?? "",
+          inputValuesStr:
+            typeof data.inputValues === "string"
+              ? data.inputValues
+              : JSON.stringify(data.inputValues ?? {}),
+          outputText: (data.outputText as string) ?? "",
+          createdAt,
+        };
+      });
+      items.sort((a, b) => b.createdAt.localeCompare(a.createdAt));
+      return items;
+    } catch {
+      return null;
+    }
+  }, []);
+
   // ---- Load History on Auth Change ----
-  const loadHistory = async (token: string) => {
+  const loadHistory = useCallback(async (token: string) => {
     setHistoryLoading(true);
     try {
       const res = await getClientAiGenerationsAction(token);
-      if (res.success && res.generations) setGenerations(res.generations);
+      if (res.success && res.generations) {
+        setGenerations(res.generations);
+      } else {
+        const fallback = await loadHistoryFallback();
+        if (fallback) setGenerations(fallback);
+      }
     } catch {
+      const fallback = await loadHistoryFallback();
+      if (fallback) setGenerations(fallback);
       // Hálózati hiba esetén sem ragadhat "Betöltés..." állapotban.
     } finally {
       setHistoryLoading(false);
     }
-  };
+  }, [loadHistoryFallback]);
 
   useEffect(() => {
     if (!auth) return;
@@ -314,7 +370,7 @@ export default function ClientAITools({
       }
     });
     return unsub;
-  }, []);
+  }, [loadHistory]);
 
   // ---- Helper: Apply Selected Template ----
   const applyTemplate = useCallback(() => {

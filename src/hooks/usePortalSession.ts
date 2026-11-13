@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import type { User } from "firebase/auth";
 import { onAuthStateChanged, signOut } from "firebase/auth";
-import { auth } from "@/lib/firebase";
+import { auth, db } from "@/lib/firebase";
+import { doc, getDoc } from "firebase/firestore";
 import {
   getAddonsAction,
 } from "@/actions/addons";
@@ -66,9 +67,14 @@ export function usePortalSession(): PortalSession {
       try {
         const token = await currentUser.getIdToken(true);
         setIdToken(token);
-        // Determine admin status
+        // Determine admin status — a Firebase Auth user.email maga is
+        // hitelesített (ID token-ből jön), ezért a hello@webdude.hu
+        // fallback akkor is él, ha a verifyUserToken hálózati okból
+        // null-t adna vissza (pl. cPanelen hiányzó env / 500-as action).
         const authInfo = await verifyUserToken(token);
-        const isAdminUser = authInfo?.isAdmin ?? false;
+        const isAdminUser =
+          (authInfo?.isAdmin ?? false) ||
+          currentUser.email === "hello@webdude.hu";
         setIsAdmin(isAdminUser);
 
         // Nem kritikus admin listák: hibájuk nem blokkolhatja a portált.
@@ -90,15 +96,43 @@ export function usePortalSession(): PortalSession {
           }
         }
 
-        // Fetch user profile to get allowedTools
-        const profileRes = await getClientUserProfileAction(token);
-        if (profileRes.success && profileRes.profile) {
+        // Fetch user profile to get allowedTools.
+        // Szerver action hiba / Admin SDK hiánya esetén (cPanel) a
+        // kliensoldali Firestore SDK a fallback — a rules isHelloAdmin()
+        // és a saját-profil olvasás ezt lehetővé teszi.
+        let profileAllowedTools: string[] | null = null;
+        try {
+          const profileRes = await getClientUserProfileAction(token);
+          if (profileRes.success && profileRes.profile) {
+            profileAllowedTools = profileRes.profile.allowedTools || [];
+          }
+        } catch {
+          profileAllowedTools = null;
+        }
+
+        if (profileAllowedTools === null && db) {
+          try {
+            const snap = await getDoc(doc(db, "users", currentUser.uid));
+            if (snap.exists()) {
+              const data = snap.data() as { allowedTools?: string[] };
+              profileAllowedTools = Array.isArray(data.allowedTools)
+                ? data.allowedTools
+                : [];
+            } else {
+              profileAllowedTools = [];
+            }
+          } catch {
+            profileAllowedTools = [];
+          }
+        }
+
+        if (profileAllowedTools !== null) {
           // Superadmin (hello@webdude.hu) gets access to all tools automatically
           if (isAdminUser && currentUser.email === "hello@webdude.hu") {
             setAllowedTools([...SUPERADMIN_TOOLS]);
           } else {
             // Only users assigned by Superadmin get access
-            const userAllowedTools = profileRes.profile.allowedTools || [];
+            const userAllowedTools = profileAllowedTools;
             if (userAllowedTools.length === 0) {
               setError(
                 "Hozzáférés megtagadva. Csak a Superadmin által hozzárendelt felhasználók férhetnek hozzá az ügyfélportálhoz!"
@@ -113,8 +147,7 @@ export function usePortalSession(): PortalSession {
           setAllowedTools([...SUPERADMIN_TOOLS]);
         } else {
           setError(
-            profileRes.error ||
-              "Hálózati hiba a profil és a workflow-k lekérése során."
+            "Hálózati hiba a profil és a workflow-k lekérése során."
           );
         }
       } catch {

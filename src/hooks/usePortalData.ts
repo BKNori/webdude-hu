@@ -1,8 +1,9 @@
 ﻿"use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import type { User } from "firebase/auth";
-import { auth } from "@/lib/firebase";
+import { auth, db } from "@/lib/firebase";
+import { collection, getDocs, query, where } from "firebase/firestore";
 import {
   approveWorkflowPhaseAction,
   deliverOrderAction,
@@ -137,10 +138,14 @@ export function usePortalData({
       setReportError(res.error || "Kézbesítés sikertelen");
     } else {
       setReportSuccess(res.message || "Rendelés kézbesítve");
-      // Refresh orders after delivery
+      // Refresh orders after delivery (server action + kliens SDK fallback)
       const refreshed = await getClientOrdersAction(idToken);
-      if (refreshed?.success && refreshed.orders) {
-        setOrders(refreshed.orders);
+      const refreshedOrders =
+        refreshed?.success && refreshed.orders
+          ? refreshed.orders
+          : await loadOrdersFallback();
+      if (refreshedOrders) {
+        setOrders(refreshedOrders);
       }
     }
   };
@@ -148,12 +153,55 @@ export function usePortalData({
   const refreshOrders = async () => {
     if (!idToken) return;
 
-    // Refresh orders after submission
+    // Refresh orders after submission (server action + kliens SDK fallback)
     const refreshed = await getClientOrdersAction(idToken);
-    if (refreshed?.success && refreshed.orders) {
-      setOrders(refreshed.orders);
+    const refreshedOrders =
+      refreshed?.success && refreshed.orders
+        ? refreshed.orders
+        : await loadOrdersFallback();
+    if (refreshedOrders) {
+      setOrders(refreshedOrders);
     }
   };
+
+  // ─── Kliensoldali Firestore fallback ──────────────────────────────────
+  // Ha a Server Action az Admin SDK / REST hiba miatt `{ success: false }`
+  // értékkel tér vissza (pl. cPanelen hiányzó Service Account kulcs),
+  // a bejelentkezett felhasználó auth tokenjével közvetlenül olvashat
+  // a firestore.rules által engedélyezett dokumentumokat.
+  const isSuperadmin = user?.email === "hello@webdude.hu";
+
+  const loadWorkflowsFallback = useCallback(async (): Promise<Workflow[] | null> => {
+    if (!db || !user) return null;
+    try {
+      const col = collection(db, "workflows");
+      const q = isSuperadmin
+        ? col
+        : query(col, where("clientId", "==", user.uid));
+      const snap = await getDocs(q);
+      return snap.docs.map(
+        (d) => ({ id: d.id, ...(d.data() as object) }) as Workflow
+      );
+    } catch {
+      return null;
+    }
+  }, [user, isSuperadmin]);
+
+  const loadOrdersFallback = useCallback(async (): Promise<Order[] | null> => {
+    if (!db || !user) return null;
+    try {
+      const col = collection(db, "orders");
+      const q = isSuperadmin
+        ? col
+        : query(col, where("clientId", "==", user.uid));
+      const snap = await getDocs(q);
+      return snap.docs.map(
+        (d) => ({ id: d.id, ...(d.data() as object) }) as Order
+      );
+    } catch {
+      return null;
+    }
+  }, [user, isSuperadmin]);
 
   const formatDate = (dateStr: string) => {
     if (!dateStr) return "N/A";
@@ -191,10 +239,14 @@ export function usePortalData({
             const cleanUrl = window.location.pathname;
             window.history.replaceState({}, document.title, cleanUrl);
 
-            // Refresh workflows
+            // Refresh workflows (server action + kliens SDK fallback)
             const updated = await getClientWorkflowsAction(token);
-            if (updated.success && updated.workflows) {
-              setWorkflows(updated.workflows as Workflow[]);
+            const refreshedWorkflows =
+              updated.success && updated.workflows
+                ? (updated.workflows as Workflow[])
+                : await loadWorkflowsFallback();
+            if (refreshedWorkflows) {
+              setWorkflows(refreshedWorkflows);
             }
             onPaymentVerified();
           } else {
@@ -212,7 +264,7 @@ export function usePortalData({
       const cleanUrl = window.location.pathname;
       window.history.replaceState({}, document.title, cleanUrl);
     }
-  }, [user, onPaymentVerified]);
+  }, [user, onPaymentVerified, loadWorkflowsFallback]);
 
   // Adatok egyszeri betöltése bejelentkezés után.
   // Csak érvényes idToken-nal indítunk lekérést (különben az első, még
@@ -228,17 +280,34 @@ export function usePortalData({
 
       if (result.success && result.workflows) {
         if (isMounted) setWorkflows(result.workflows as Workflow[]);
-      } else if (isMounted) {
-        setReportError(result.error || "Nem sikerült letölteni a workflow-kat.");
+      } else {
+        // Server Action hiba -> kliensoldali Firestore fallback
+        const fallbackWorkflows = await loadWorkflowsFallback();
+        if (isMounted) {
+          if (fallbackWorkflows) {
+            setWorkflows(fallbackWorkflows);
+          } else {
+            setReportError(
+              result.error || "Nem sikerült letölteni a workflow-kat."
+            );
+          }
+        }
       }
 
       const ordersRes = await getClientOrdersAction(token);
       if (ordersRes.success && ordersRes.orders) {
         if (isMounted) setOrders(ordersRes.orders);
-      } else if (isMounted) {
-        setReportError(
-          ordersRes.error || "Nem sikerült letölteni a megrendeléseket."
-        );
+      } else {
+        const fallbackOrders = await loadOrdersFallback();
+        if (isMounted) {
+          if (fallbackOrders) {
+            setOrders(fallbackOrders);
+          } else {
+            setReportError(
+              ordersRes.error || "Nem sikerült letölteni a megrendeléseket."
+            );
+          }
+        }
       }
     };
 
@@ -247,7 +316,7 @@ export function usePortalData({
     return () => {
       isMounted = false;
     };
-  }, [user, idToken]);
+  }, [user, idToken, loadWorkflowsFallback, loadOrdersFallback]);
 
   // Jelentések (error/success) továbbítása a host felé.
   useEffect(() => {

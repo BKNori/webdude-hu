@@ -317,6 +317,8 @@ src/
 │       └── Header.tsx
 ├── lib/
 │   ├── firebase.ts         # Firebase app inicializáció (.env.local kulcsok)
+│   ├── firebase-admin.ts   # Admin SDK safe-init (hiányzó Service Account esetén null — zero-500, 7.52.1)
+│   ├── admin-dashboard-client.ts # Admin dashboard statisztika + CSV export kliens SDK fallback (7.52.1)
 │   └── utils.ts            # cn() és egyéb utility segédfüggvények
 ├── hooks/                  # Custom React hookok (pl. useAuth, useFirestore)
 ├── types/                  # Globális TypeScript típusdefiníciók

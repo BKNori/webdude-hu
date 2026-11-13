@@ -21,7 +21,15 @@ import {
   getDownloadURL,
   deleteObject,
 } from "firebase/storage";
-import { storage, auth } from "@/lib/firebase";
+import {
+  collection,
+  deleteDoc,
+  doc,
+  getDocs,
+  query,
+  where,
+} from "firebase/firestore";
+import { db, storage, auth } from "@/lib/firebase";
 import {
   registerUploadedFileAction,
   getClientFilesAction,
@@ -67,6 +75,41 @@ export default function ClientVault() {
     return "other";
   }
 
+  // ─── Kliensoldali Firestore fallback ──────────────────────────────────
+  // Ha a Server Action Admin SDK/REST hiba miatt sikertelen (pl. cPanelen
+  // hiányzó Service Account), a bejelentkezett felhasználó auth tokenjével
+  // közvetlenül olvashatja a `vault` kollekciót (firestore.rules: saját
+  // fájlok + isHelloAdmin teljes hozzáférés).
+  const loadFilesFallback = async (): Promise<VaultFile[] | null> => {
+    if (!db || !auth?.currentUser) return null;
+    try {
+      const uid = auth.currentUser.uid;
+      const isAdmin = auth.currentUser.email === "hello@webdude.hu";
+      const col = collection(db, "vault");
+      const q = isAdmin ? col : query(col, where("clientId", "==", uid));
+      const snap = await getDocs(q);
+      return snap.docs.map((d) => {
+        const data = d.data() as Partial<VaultFile>;
+        return {
+          id: d.id,
+          clientId: data.clientId ?? "",
+          name: data.name ?? "",
+          url: data.url ?? "",
+          size: data.size ?? 0,
+          uploadedBy: data.uploadedBy ?? "client",
+          uploadedByName: data.uploadedByName ?? "",
+          storagePath: data.storagePath ?? "",
+          createdAt:
+            typeof data.createdAt === "string"
+              ? data.createdAt
+              : new Date().toISOString(),
+        };
+      });
+    } catch {
+      return null;
+    }
+  };
+
   const loadFiles = async (showLoadingSpinner = false) => {
     if (!auth?.currentUser) return;
     if (showLoadingSpinner) {
@@ -78,10 +121,20 @@ export default function ClientVault() {
       if (res.success && res.files) {
         setFiles(res.files as VaultFile[]);
       } else {
-        setError(res.error || "Nem sikerült letölteni a fájlokat.");
+        const fallback = await loadFilesFallback();
+        if (fallback) {
+          setFiles(fallback);
+        } else {
+          setError(res.error || "Nem sikerült letölteni a fájlokat.");
+        }
       }
     } catch {
-      setError("Hiba a fájlok betöltése során.");
+      const fallback = await loadFilesFallback();
+      if (fallback) {
+        setFiles(fallback);
+      } else {
+        setError("Hiba a fájlok betöltése során.");
+      }
     } finally {
       setLoading(false);
     }
@@ -101,11 +154,21 @@ export default function ClientVault() {
           if (res.success && res.files) {
             setFiles(res.files as VaultFile[]);
           } else {
-            setError(res.error || "Nem sikerült letölteni a fájlokat.");
+            const fallback = await loadFilesFallback();
+            if (fallback) {
+              setFiles(fallback);
+            } else {
+              setError(res.error || "Nem sikerült letölteni a fájlokat.");
+            }
           }
         }
       } catch {
-        if (isMounted) setError("Hiba a fájlok betöltése során.");
+        if (isMounted) {
+          void loadFilesFallback().then((fallback) => {
+            if (fallback) setFiles(fallback);
+            else setError("Hiba a fájlok betöltése során.");
+          });
+        }
       } finally {
         if (isMounted) setLoading(false);
       }
@@ -238,9 +301,18 @@ export default function ClientVault() {
       try {
         const idToken = await auth.currentUser.getIdToken(true);
 
-        // 1. Delete Firestore record
+        // 1. Delete Firestore record (Server Action, majd kliens SDK fallback)
         const res = await deleteClientFileAction(idToken, file.id);
-        if (res.success) {
+        let deleted = res.success;
+        if (!deleted && db) {
+          try {
+            await deleteDoc(doc(db, "vault", file.id));
+            deleted = true;
+          } catch {
+            deleted = false;
+          }
+        }
+        if (deleted) {
           // 2. Delete from Storage if it's the client's file
           if (storage && file.uploadedBy === "client") {
             try {

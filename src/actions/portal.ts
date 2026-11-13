@@ -9,9 +9,21 @@ import { sendWelcomeEmailAction } from "./mail";
 import { notifyUser } from "@/lib/notify";
 import { ChatMessage } from "@/types/chat";
 
-// Wrapper server actions for re-export compatibility
+// Wrapper server actions for re-export compatibility.
+// Külső try/catch: SOHA nem dobhatnak kezeletlen kivételt (zero-500 szabály).
 export async function getClientOrdersAction(idToken: string) {
-  return await getClientOrders(idToken);
+  try {
+    return await getClientOrders(idToken);
+  } catch (error: unknown) {
+    return {
+      success: false,
+      error:
+        error instanceof Error
+          ? error.message
+          : "Hiba a rendelések lekérése során.",
+      orders: [],
+    };
+  }
 }
 
 export async function deliverOrderAction(
@@ -20,7 +32,17 @@ export async function deliverOrderAction(
   deliveryNotes: string,
   deliveryUrl: string
 ) {
-  return await deliverOrder(idToken, orderId, deliveryNotes, deliveryUrl);
+  try {
+    return await deliverOrder(idToken, orderId, deliveryNotes, deliveryUrl);
+  } catch (error: unknown) {
+    return {
+      success: false,
+      error:
+        error instanceof Error
+          ? error.message
+          : "Hiba a rendelés kézbesítése során.",
+    };
+  }
 }
 
 // Zod schemas for input validation

@@ -4,6 +4,23 @@ import { useEffect, useState } from "react";
 import { Sparkles } from "lucide-react";
 import { getPublishedCaseStudiesAction } from "@/actions/case-study";
 import { CaseStudy } from "@/types/case-study";
+import { works } from "@/data/works";
+
+/**
+ * Statikus fallback: ha a Firestore/Admin SDK elérhetetlen (pl. cPanelen
+ * hiányzó Service Account kulcs), a legfrissebb portfólió-munkákból
+ * készül bemutató kártya — a szekció így is tartalommal jelenik meg.
+ */
+const STATIC_FALLBACK_STUDIES: CaseStudy[] = works.slice(0, 3).map((w) => ({
+  id: `static-${w.id}`,
+  title: w.title,
+  clientName: w.client ?? "WebDude",
+  workflowType: "GeneralAI",
+  impactMetrics: { efficiencyGain: "—", timeSaved: "—" },
+  summary: w.description,
+  status: "published",
+  createdAt: new Date(),
+}));
 
 export default function CaseStudyCarousel() {
   const [studies, setStudies] = useState<CaseStudy[]>([]);
@@ -13,11 +30,15 @@ export default function CaseStudyCarousel() {
     const fetchStudies = async () => {
       try {
         const res = await getPublishedCaseStudiesAction();
-        if (res.success && res.caseStudies) {
+        if (res.success && res.caseStudies && res.caseStudies.length > 0) {
           setStudies(res.caseStudies);
+        } else {
+          // Server Action hiba / üres válasz -> statikus portfólió-adatok
+          setStudies(STATIC_FALLBACK_STUDIES);
         }
       } catch (error) {
         console.error("Case studies fetch error:", error);
+        setStudies(STATIC_FALLBACK_STUDIES);
       } finally {
         setLoading(false);
       }

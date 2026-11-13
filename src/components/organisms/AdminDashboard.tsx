@@ -28,6 +28,12 @@ import {
   exportProjectsCSVAction,
 } from "@/actions/admin-dashboard";
 import {
+  fetchDashboardStatsClient,
+  exportLeadsCsvClient,
+  exportTransactionsCsvClient,
+  exportProjectsCsvClient,
+} from "@/lib/admin-dashboard-client";
+import {
   LineChart,
   Line,
   XAxis,
@@ -91,12 +97,30 @@ export default function AdminDashboard() {
       if (response.success && response.stats) {
         setStats(response.stats);
       } else {
-        setError(
-          response.error || "Hiba történt a statisztikák lekérése során."
-        );
+        // Server Action hiba (pl. cPanelen hiányzó Admin SDK kulcs,
+        // PERMISSION_DENIED) -> kliensoldali Firestore fallback.
+        const fallbackStats = await fetchDashboardStatsClient();
+        if (fallbackStats) {
+          setStats(fallbackStats);
+        } else {
+          setError(
+            response.error ||
+              "Hiba történt a statisztikák lekérése során."
+          );
+        }
       }
     } catch {
-      setError("Hiba történt a statisztikák lekérése során.");
+      // Server Action kivétel -> kliensoldali Firestore fallback
+      try {
+        const fallbackStats = await fetchDashboardStatsClient();
+        if (fallbackStats) {
+          setStats(fallbackStats);
+        } else {
+          setError("Hiba történt a statisztikák lekérése során.");
+        }
+      } catch {
+        setError("Hiba történt a statisztikák lekérése során.");
+      }
     } finally {
       setLoading(false);
     }
@@ -106,26 +130,45 @@ export default function AdminDashboard() {
     loadStats();
   }, [loadStats]);
 
+  const downloadCsv = (csvContent: string, filename: string) => {
+    const blob = new Blob([csvContent], { type: "text/csv" });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    window.URL.revokeObjectURL(url);
+    document.body.removeChild(a);
+  };
+
   const handleExportLeads = async () => {
     setExportingLeads(true);
     try {
       const headers = await getAuthHeaders();
       const response = await exportLeadsCSVAction(headers);
       if (response.success && response.csvContent) {
-        const blob = new Blob([response.csvContent], { type: "text/csv" });
-        const url = window.URL.createObjectURL(blob);
-        const a = document.createElement("a");
-        a.href = url;
-        a.download = response.filename || "leads_export.csv";
-        document.body.appendChild(a);
-        a.click();
-        window.URL.revokeObjectURL(url);
-        document.body.removeChild(a);
+        downloadCsv(response.csvContent, response.filename || "leads_export.csv");
       } else {
-        setError(response.error || "Hiba történt az export során.");
+        // Kliensoldali Firestore fallback (Admin SDK nélkül is működik)
+        const fallback = await exportLeadsCsvClient();
+        if (fallback) {
+          downloadCsv(fallback.csvContent, fallback.filename);
+        } else {
+          setError(response.error || "Hiba történt az export során.");
+        }
       }
     } catch {
-      setError("Hiba történt az export során.");
+      try {
+        const fallback = await exportLeadsCsvClient();
+        if (fallback) {
+          downloadCsv(fallback.csvContent, fallback.filename);
+        } else {
+          setError("Hiba történt az export során.");
+        }
+      } catch {
+        setError("Hiba történt az export során.");
+      }
     } finally {
       setExportingLeads(false);
     }
@@ -137,20 +180,29 @@ export default function AdminDashboard() {
       const headers = await getAuthHeaders();
       const response = await exportTransactionsCSVAction(headers);
       if (response.success && response.csvContent) {
-        const blob = new Blob([response.csvContent], { type: "text/csv" });
-        const url = window.URL.createObjectURL(blob);
-        const a = document.createElement("a");
-        a.href = url;
-        a.download = response.filename || "transactions_export.csv";
-        document.body.appendChild(a);
-        a.click();
-        window.URL.revokeObjectURL(url);
-        document.body.removeChild(a);
+        downloadCsv(
+          response.csvContent,
+          response.filename || "transactions_export.csv"
+        );
       } else {
-        setError(response.error || "Hiba történt az export során.");
+        const fallback = await exportTransactionsCsvClient();
+        if (fallback) {
+          downloadCsv(fallback.csvContent, fallback.filename);
+        } else {
+          setError(response.error || "Hiba történt az export során.");
+        }
       }
     } catch {
-      setError("Hiba történt az export során.");
+      try {
+        const fallback = await exportTransactionsCsvClient();
+        if (fallback) {
+          downloadCsv(fallback.csvContent, fallback.filename);
+        } else {
+          setError("Hiba történt az export során.");
+        }
+      } catch {
+        setError("Hiba történt az export során.");
+      }
     } finally {
       setExportingTransactions(false);
     }
@@ -162,20 +214,29 @@ export default function AdminDashboard() {
       const headers = await getAuthHeaders();
       const response = await exportProjectsCSVAction(headers);
       if (response.success && response.csvContent) {
-        const blob = new Blob([response.csvContent], { type: "text/csv" });
-        const url = window.URL.createObjectURL(blob);
-        const a = document.createElement("a");
-        a.href = url;
-        a.download = response.filename || "projects_export.csv";
-        document.body.appendChild(a);
-        a.click();
-        window.URL.revokeObjectURL(url);
-        document.body.removeChild(a);
+        downloadCsv(
+          response.csvContent,
+          response.filename || "projects_export.csv"
+        );
       } else {
-        setError(response.error || "Hiba történt az export során.");
+        const fallback = await exportProjectsCsvClient();
+        if (fallback) {
+          downloadCsv(fallback.csvContent, fallback.filename);
+        } else {
+          setError(response.error || "Hiba történt az export során.");
+        }
       }
     } catch {
-      setError("Hiba történt az export során.");
+      try {
+        const fallback = await exportProjectsCsvClient();
+        if (fallback) {
+          downloadCsv(fallback.csvContent, fallback.filename);
+        } else {
+          setError("Hiba történt az export során.");
+        }
+      } catch {
+        setError("Hiba történt az export során.");
+      }
     } finally {
       setExportingProjects(false);
     }

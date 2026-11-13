@@ -492,7 +492,13 @@ export default function HeaderNavClient({
           }`}
         >
           <div className="max-w-7xl mx-auto px-4 md:px-6 h-9 flex items-center justify-end gap-6">
-            {topBarItems.map((item) => {
+            {/* Az AuthStatusBadge a Topbarban már megjeleníti a
+                be-/kijelentkezett állapotot — a statikus „Ügyfélportál"
+                topbar link kivétele elkerüli a duplikációt. A badge
+                kijelentkezett állapotban is a /portal-ra mutat. */}
+            {topBarItems
+              .filter((item) => item.href !== "/portal")
+              .map((item) => {
               const Icon = item.icon;
               const isActive = pathname === item.href;
               return (
@@ -612,14 +618,9 @@ export default function HeaderNavClient({
               </motion.div>
             ))}
 
-            {/* Globális bejelentkezési állapotjelző (Auth Badge) */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.3, delay: 0.3 }}
-            >
-              <AuthStatusBadge variant="nav" />
-            </motion.div>
+            {/* A bejelentkezési állapotjelző CSAK a felső Topbarban
+                és a mobilmenüben jelenik meg — az asztali fő navigációs
+                sávban kivettük, hogy ne duplikálódjon a Topbar-pillével. */}
 
             {/* Language Switcher */}
             <motion.div

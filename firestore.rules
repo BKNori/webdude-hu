@@ -97,7 +97,7 @@ service cloud.firestore {
     // Rate limit: Server Action (src/actions/contact.ts) kezeli
     match /leads/{leadId} {
       allow create: if isValidLeadData();
-      allow read, update, delete: if isAdmin();
+      allow read, update, delete: if isAdmin() || isHelloAdmin();
     }
 
     // Portfolio munkák — publikus read, admin write
@@ -126,7 +126,7 @@ service cloud.firestore {
 
     // Settings — admin only
     match /settings/{settingId} {
-      allow read, write: if isAdmin();
+      allow read, write: if isAdmin() || isHelloAdmin();
     }
 
     // Vault (fájlok metaadatai) — superadmin has full access, authenticated client can read/write their own file records

@@ -1,5 +1,34 @@
 # Changelog
 
+## [7.52.1] — 2026-11-13 — PORTÁL 500 & ADMIN PERMISSION_DENIED JAVÍTÁS + NAV DUPLIKÁCIÓ (KRITIKUS BUGFIX)
+
+**HÁTTÉR:** Az éles (cPanel) környezetben a Firebase Admin SDK Service Account környezeti változói (`FIREBASE_ADMIN_CLIENT_EMAIL` / `FIREBASE_ADMIN_PRIVATE_KEY`) hiányoznak. Emiatt a `firebase-admin.ts` top-level `initializeApp(cert(...))` hívása **module-load szinten** dobott kivételt → bármely azt (akár tranzitívan) importáló Server Action 500-as HTTP hibával omlott össze (`/portal`, `CaseStudyCarousel`, `email-templates`, `upload`, `app/actions/*`). A `admin-dashboard.ts` emellett a kliens SDK-t használt szerveroldalon auth nélkül → `7 PERMISSION_DENIED`.
+
+**FŐMENÜ DUPLIKÁCIÓ (`HeaderNavClient.tsx`):**
+- Az asztali fő navigációs sávból eltávolítottuk a `<AuthStatusBadge variant="nav" />` komponenst — a badge mostantól CSAK a felső Topbarban és a mobilmenüben jelenik meg.
+- A Topbar statikus „Ügyfélportál" linkje (`TOP_BAR_ITEMS_HU/EN`) mostantól **kihagyva renderelődik**, így bejelentkezéskor a badge egyértelműen helyettesíti — nincs duplikáció.
+- A `/portal/*` és `/admin/*` útvonalakon a Topbar változatlanul látható.
+
+**ZERO-500 + KLIENS SDK FALLBACK (kettős védelem):**
+- `src/lib/firebase-admin.ts`: **safe-init** — ha a Service Account env változók hiányoznak vagy érvénytelenek, az `adminDb`/`adminStorage` `null`, a `adminApp` `undefined` lesz (a meglévő `if (!adminDb)` guardok `{ success: false }` választ produkálnak), a modul betöltése sosem omolhat össze.
+- `src/hooks/usePortalSession.ts`: a `hello@webdude.hu` szuperadmin-jogosultság mostantól az **authentikált `user.email`-ből is** megállapítható (nem csak a `verifyUserToken` válaszából); a profil lekérése `getClientUserProfileAction` hibája esetén **kliensoldali `getDoc(users/{uid})`-ra** vált (rules: `isHelloAdmin` + saját profil).
+- `src/hooks/usePortalData.ts`: workflow- és rendelés-betöltésnél, valamint a fizetés-utáni és kézbesítés-utáni frissítésnél **kliensoldali Firestore fallback** (`workflows`, `orders` kollekciók, `clientId` szűréssel, szuperadminnak teljes lista).
+- `src/components/organisms/ClientVault.tsx`: fájl-lista és törlés mostantól **kliens SDK-ra** is képes (`vault` kollekció + Storage `deleteObject`).
+- `src/components/organisms/ClientAITools.tsx`: az AI-generálás előzmények (`ai_generations`) betöltése **kliens SDK fallback**-kal rendelkezik.
+- `src/lib/admin-dashboard-client.ts` (**új**): a teljes dashboard-aggregáció (leads/projects/seo_audits/competitor_analyses/content_plans/transactions/marketing_spend, LTV/CAC/churn/conv/átlagos átfutás) és a 3 CSV-export **kliensoldali Firestore SDK-val** fut, a bejelentkezett admin auth tokenjével — a `firestore.rules` `isHelloAdmin()` szabályai alapján.
+- `src/components/organisms/AdminDashboard.tsx`: `getDashboardStatsAction` hibája (`PERMISSION_DENIED` stb.) vagy kivétele esetén automatikusan a kliensoldali fallbackra vált; a 3 CSV-export handler is fallback-t kapott.
+- `src/components/organisms/CaseStudyCarousel.tsx`: ha a `getPublishedCaseStudiesAction` sikertelen vagy üres, **statikus `works.ts` portfólió-adatokból** készül bemutató kártya — a szekció nem tűnik el hibával.
+- `src/actions/portal.ts`: a `getClientOrdersAction` / `deliverOrderAction` wrapper-ek külső `try/catch`-et kaptak (zero-500 szabály).
+
+**FIRESTORE RULES (`firestore.rules`):**
+- `leads`: `read, update, delete` mostantól `isAdmin() || isHelloAdmin()` — a korábbi `isAdmin()`-only szabály 때문에 a kliens SDK fallback `PERMISSION_DENIED`-et kapott volna.
+- `settings`: `read, write` mostantól `isAdmin() || isHelloAdmin()`.
+- ⚠️ **A rules-t újra kell deployolni** (`firebase deploy --only firestore:rules`) ahhoz, hogy a leads/settings kliensoldali fallback működjön.
+
+**QA:** `npx tsc --noEmit` → **0 hiba**; célzott eslint a 10 érintett fájlon → **0 error, 0 warning**.
+
+---
+
 ## [7.52.0] — 2026-11-13 — NAGYFORMÁTUMÚ DEKOR, ROLL-UP, AUTÓDEKOR & KIRAKAT AI MŰHELY (ÚJ GENERÁTOR)
 
 **ÚJ KOMPONENSEK ÉS AKCIÓK:**
