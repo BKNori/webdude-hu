@@ -49,23 +49,15 @@ import {
   Archive,
 } from "lucide-react";
 import { updateClientToolsAction } from "@/actions/admin";
+import { AI_TOOL_CATALOG } from "@/data/ai-tools-catalog";
 
 /**
  * AI modul katalógus a portal-kezelo jogosultság-panelhez.
- * Az azonosítók a generátorok `allowedTools.includes(...)` ellenőrzéseivel
- * egyeznek; a `prompt_templates` kapcsolja a `hasPromptAccess` flaget is.
+ * Az azonosítók a `src/data/ai-tools-catalog.ts` SSOT-ból jönnek;
+ * a generátorok `allowedTools.includes(...)` ellenőrzései ezekre épülnek,
+ * a `prompt_templates` kapcsolja a `hasPromptAccess` flaget is.
  */
-const AI_TOOL_OPTIONS: Array<{ id: string; name: string }> = [
-  { id: "banner_ai_muhely", name: "Banner AI Műhely" },
-  { id: "logo_ai_muhely", name: "Logó AI Műhely" },
-  { id: "seo_audit_ai_muhely", name: "SEO Audit AI Műhely" },
-  { id: "tartalomtervezo_ai_muhely", name: "Tartalomtervező AI Műhely" },
-  { id: "kristofka_workflow", name: "Kristófka Munkafolyamat" },
-  { id: "ui_ux_ai_muhely", name: "UI/UX AI Műhely" },
-  { id: "midjourney_ai_muhely", name: "Midjourney AI Műhely" },
-  { id: "szezonalis_ai_muhely", name: "Szezonális AI Műhely" },
-  { id: "prompt_templates", name: "AI Prompt Sablonok (hasPromptAccess)" },
-];
+const AI_TOOL_OPTIONS = AI_TOOL_CATALOG;
 
 interface UserProfile {
   id: string;

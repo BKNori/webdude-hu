@@ -21,6 +21,7 @@ import {
   Clock,
 } from "lucide-react";
 import Link from "next/link";
+import ToolAccessLock from "@/components/molecules/ToolAccessLock";
 import PresetChips from "@/components/molecules/PresetChips";
 import {
   DESIGN_STYLE_PRESETS,
@@ -183,6 +184,12 @@ export default function SeasonalWorkshopGenerator() {
   };
 
   const selectedSeason = useWatch({ control, name: "season" });
+
+  // Strict access gate: show a locked panel until auth resolves,
+  // then block users without the required tool permission.
+  if (!loading && !isAdmin && !allowedTools.includes("seasonal_workshop_ai_muhely")) {
+    return <ToolAccessLock toolName="Szezonális Műhely" />;
+  }
 
   return (
     <div className="min-h-screen bg-transparent text-text-primary">

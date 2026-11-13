@@ -22,6 +22,7 @@ import {
   Zap,
 } from "lucide-react";
 import Link from "next/link";
+import ToolAccessLock from "@/components/molecules/ToolAccessLock";
 import CopyButton from "@/components/atoms/CopyButton";
 import { auth } from "@/lib/firebase";
 import { addContentWorkshopAction } from "@/actions/content-workshop";
@@ -180,6 +181,12 @@ export default function ContentWorkshopGenerator() {
       setIsGenerating(false);
     }
   };
+
+  // Strict access gate: show a locked panel until auth resolves,
+  // then block users without the required tool permission.
+  if (!loading && !isAdmin && !allowedTools.includes("content_workshop_ai_muhely")) {
+    return <ToolAccessLock toolName="Tartalom AI Műhely" />;
+  }
 
   return (
     <div className="min-h-screen bg-transparent text-text-primary">

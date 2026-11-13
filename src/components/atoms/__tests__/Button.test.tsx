@@ -88,7 +88,9 @@ describe("Button component", () => {
       </Button>
     );
     const link = screen.getByRole("link", { name: /secondary/i });
-    expect(link).toHaveClass("bg-transparent");
+    expect(link).toHaveClass("bg-slate-900/80");
+    expect(link).toHaveClass("border-slate-700");
+    expect(link).toHaveClass("text-text-primary");
   });
 
   test("renders as a link and tracks analytics with async click", async () => {
@@ -133,15 +135,6 @@ describe("Button component", () => {
       success: "true",
     });
   });
-  test("applies secondary variant class when specified", () => {
-    render(
-      <Button variant="secondary" href="/contact">
-        Secondary
-      </Button>
-    );
-    const link = screen.getByRole("link", { name: /secondary/i });
-    expect(link).toHaveClass("bg-transparent");
-  });
   test("onClick works without analytics when no href", () => {
     const handleClick = jest.fn();
     render(
@@ -180,6 +173,64 @@ describe("Button component", () => {
     render(<Button>JustBtn</Button>);
     const btn = screen.getByRole("button", { name: /justbtn/i });
     fireEvent.click(btn);
+    expect(trackEvent).not.toHaveBeenCalled();
+  });
+
+  test("applies ghost variant classes when specified", () => {
+    render(<Button variant="ghost">Ghost</Button>);
+    const btn = screen.getByRole("button", { name: /ghost/i });
+    expect(btn).toHaveClass("bg-transparent");
+    expect(btn).toHaveClass("text-[#00B5F1]");
+  });
+
+  test("applies accent variant classes when specified", () => {
+    render(<Button variant="accent">Accent</Button>);
+    const btn = screen.getByRole("button", { name: /accent/i });
+    expect(btn).toHaveClass("bg-[#7C3AED]");
+    expect(btn).toHaveClass("text-white");
+  });
+
+  test("applies sm size classes when specified", () => {
+    render(<Button size="sm">Small</Button>);
+    const btn = screen.getByRole("button", { name: /small/i });
+    expect(btn).toHaveClass("min-h-[40px]");
+    expect(btn).toHaveClass("px-4");
+  });
+
+  test("blocked click and no analytics when disabled", () => {
+    const handleClick = jest.fn();
+    render(
+      <Button
+        disabled
+        onClick={handleClick}
+        analyticsEvent="cta_click"
+        analyticsParams={{ button_name: "Disabled" }}
+      >
+        DisabledBtn
+      </Button>
+    );
+    const btn = screen.getByRole("button", { name: /disabledbtn/i });
+    fireEvent.click(btn);
+    expect(handleClick).not.toHaveBeenCalled();
+    expect(trackEvent).not.toHaveBeenCalled();
+  });
+
+  test("shows loading state and blocks click and analytics", () => {
+    const handleClick = jest.fn();
+    render(
+      <Button
+        loading
+        onClick={handleClick}
+        analyticsEvent="cta_click"
+        analyticsParams={{ button_name: "Loading" }}
+      >
+        LoadingBtn
+      </Button>
+    );
+    const btn = screen.getByRole("button", { name: /loadingbtn/i });
+    expect(btn).toHaveClass("opacity-50");
+    fireEvent.click(btn);
+    expect(handleClick).not.toHaveBeenCalled();
     expect(trackEvent).not.toHaveBeenCalled();
   });
 });

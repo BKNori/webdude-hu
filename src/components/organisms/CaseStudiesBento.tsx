@@ -197,7 +197,7 @@ export default function CaseStudiesBento({ content }: CaseStudiesBentoProps) {
                   aria-hidden="true"
                 >
                   <div className="w-2.5 h-2.5 rounded-full bg-red-500/60" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/60" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-orange-400/60" />
                   <div className="w-2.5 h-2.5 rounded-full bg-green-500/60" />
                 </div>
               </motion.div>

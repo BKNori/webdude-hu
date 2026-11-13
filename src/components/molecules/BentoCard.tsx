@@ -3,6 +3,7 @@
 import React from "react";
 import { motion } from "motion/react";
 import Image, { type StaticImageData } from "next/image";
+import ResponsiveImage from "@/components/molecules/ResponsiveImage";
 
 interface BentoCardProps {
   title: string;
@@ -39,11 +40,11 @@ export default function BentoCard({
       {image ? (
         <div className="absolute right-6 top-6 h-20 w-32 overflow-hidden rounded-lg opacity-90 group-hover:scale-110 transition-transform duration-300">
           {typeof image === "string" ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
+            <ResponsiveImage
               src={image}
               alt={imageAlt || title}
-              className="h-full w-full object-cover"
+              sizes="128px"
+              className="object-cover"
             />
           ) : (
             <Image

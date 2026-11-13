@@ -18,6 +18,7 @@ import {
   AlertTriangle,
 } from "lucide-react";
 import Link from "next/link";
+import ToolAccessLock from "@/components/molecules/ToolAccessLock";
 import PresetChips from "@/components/molecules/PresetChips";
 import CopyButton from "@/components/atoms/CopyButton";
 import {
@@ -228,6 +229,7 @@ export default function SignageWorkshopGenerator() {
   const [error, setError] = useState<string | null>(null);
   const [profileReady, setProfileReady] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [allowedTools, setAllowedTools] = useState<string[]>([]);
 
   const {
     register,
@@ -267,6 +269,7 @@ export default function SignageWorkshopGenerator() {
           setIsAdmin(
             res.profile.role === "admin" || user.email === "hello@webdude.hu"
           );
+          setAllowedTools(res.profile.allowedTools || []);
         }
       } catch {
         // Profil hiba nem blokkolja a generátort.
@@ -331,6 +334,11 @@ export default function SignageWorkshopGenerator() {
         </p>
       </div>
     );
+  }
+
+  // Strict access gate: block users without the required tool permission.
+  if (!isAdmin && !allowedTools.includes("signage_ai_muhely")) {
+    return <ToolAccessLock toolName="Dekor/Jelzés AI Műhely" />;
   }
 
   const specs = generatedOutput?.lfpTechnicalSpecs;
@@ -656,7 +664,7 @@ export default function SignageWorkshopGenerator() {
                     ))}
                   </ul>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-[11px]">
-                    <p className="text-amber-400/90 bg-amber-500/10 rounded-lg p-2 border border-amber-500/20 flex items-start gap-1.5">
+                    <p className="text-orange-400/90 bg-orange-500/10 rounded-lg p-2 border border-orange-500/20 flex items-start gap-1.5">
                       <AlertTriangle className="w-3 h-3 mt-0.5 shrink-0" />
                       {zone.technicalWarning}
                     </p>

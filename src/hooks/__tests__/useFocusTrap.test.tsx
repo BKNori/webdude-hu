@@ -156,6 +156,25 @@ describe("useFocusTrap hook", () => {
   });
 });
 
+/** Teszt-keret fókuszálható elemek nélküli konténerrel. */
+function EmptyHarness() {
+  const [isOpen, setIsOpen] = useState(false);
+  const containerRef = useFocusTrap<HTMLDivElement>(isOpen);
+
+  return (
+    <div>
+      <button type="button" onClick={() => setIsOpen(true)}>
+        Megnyitás
+      </button>
+      {isOpen && (
+        <div ref={containerRef} role="dialog" aria-modal="true" aria-label="Üres">
+          <p>Nincs interaktív elem</p>
+        </div>
+      )}
+    </div>
+  );
+}
+
 describe("useFocusTrap hook – initialFocusRef", () => {
   it("a megadott elemet fókuszálja megnyitáskor az első helyett", () => {
     render(<PreferredFocusHarness />);
@@ -165,5 +184,39 @@ describe("useFocusTrap hook – initialFocusRef", () => {
     // closeButtonRef-en lévő "Bezárás" gombnak kell megkapnia.
     expect(screen.getByRole("button", { name: "Bezárás" })).toHaveFocus();
     expect(screen.getByRole("link", { name: "Első hivatkozás" })).not.toHaveFocus();
+  });
+});
+
+describe("useFocusTrap hook – üres konténer", () => {
+  it("fókuszálható elemek hiányában a konténer kapja a fókuszt", () => {
+    render(<EmptyHarness />);
+    fireEvent.click(screen.getByRole("button", { name: "Megnyitás" }));
+
+    const dialog = screen.getByRole("dialog", { name: "Üres" });
+    expect(dialog).toHaveFocus();
+    expect(dialog).toHaveAttribute("tabindex", "-1");
+  });
+
+  it("Tab lenyomása üres konténerben a konténeren tartja a fókuszt", () => {
+    render(<EmptyHarness />);
+    fireEvent.click(screen.getByRole("button", { name: "Megnyitás" }));
+
+    const dialog = screen.getByRole("dialog", { name: "Üres" });
+    fireEvent.keyDown(document, { key: "Tab" });
+
+    expect(dialog).toHaveFocus();
+  });
+
+  it("Escape lenyomása onEscape nélkül sem okoz hibát", () => {
+    render(<EmptyHarness />);
+    fireEvent.click(screen.getByRole("button", { name: "Megnyitás" }));
+
+    expect(() =>
+      fireEvent.keyDown(document, { key: "Escape" })
+    ).not.toThrow();
+    // onEscape híján a párbeszédablak nyitva marad.
+    expect(
+      screen.getByRole("dialog", { name: "Üres" })
+    ).toBeInTheDocument();
   });
 });

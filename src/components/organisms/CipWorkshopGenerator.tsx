@@ -21,6 +21,7 @@ import {
   Building2,
 } from "lucide-react";
 import Link from "next/link";
+import ToolAccessLock from "@/components/molecules/ToolAccessLock";
 import { auth } from "@/lib/firebase";
 import { addCipGenerationAction } from "@/actions/cip-workshop";
 import { getClientUserProfileAction } from "@/actions/portal";
@@ -177,6 +178,12 @@ export default function CipWorkshopGenerator() {
       setIsGenerating(false);
     }
   };
+
+  // Strict access gate: show a locked panel until auth resolves,
+  // then block users without the required tool permission.
+  if (!loading && !isAdmin && !allowedTools.includes("cip_ai_muhely")) {
+    return <ToolAccessLock toolName="CIP AI Műhely" />;
+  }
 
   return (
     <div className="min-h-screen bg-transparent text-text-primary">

@@ -19,16 +19,16 @@ import DirectAnswerBlock from "@/components/molecules/DirectAnswerBlock";
 import BreadcrumbSchema from "@/components/molecules/BreadcrumbSchema";
 
 export const metadata: Metadata = {
-  title: "Azonnali Kiegészítő Szolgáltatások (Add-onok) | WebDude",
+  title: "Kiegészítő Szolgáltatások — Egyedi Árajánlattal | WebDude",
   description:
-    "Fix áras, termékesített mikro-szolgáltatások a 26 éves tervezőgrafikusi és 16 éves webfejlesztői tapasztalatomra építve. Nincs hosszas egyeztetés, garantált szállítási határidő.",
+    "Termékesített kiegészítő mikro-szolgáltatások egyedi árajánlat alapján, a 26 éves tervezőgrafikusi és 16 éves webfejlesztői tapasztalatomra építve. Aszinkron onboarding és garantált szállítási határidő.",
   alternates: {
     canonical: "https://webdude.hu/szolgaltatasok/add-onok",
   },
   openGraph: {
-    title: "Azonnali Kiegészítő Szolgáltatások (Add-onok) | WebDude",
+    title: "Kiegészítő Szolgáltatások — Egyedi Árajánlattal | WebDude",
     description:
-      "Fix áras mikromegoldások azonnali indítással. Weboldal audit, SEO cikk, Lighthouse gyorsítás, banner csomag és Schema integráció.",
+      "Termékesített mikromegoldások egyedi árajánlat kéréssel. Weboldal audit, SEO cikk, Lighthouse gyorsítás, banner csomag és Schema integráció.",
     images: [{ url: "/og/webdude-og.jpg", width: 1200, height: 630 }],
   },
 };
@@ -264,7 +264,7 @@ export default async function AddonsPage() {
             name: "Mi az az Add-on Áruház és hogyan működik?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Az Add-on Áruház fix áras, termékesített kiegészítő szolgáltatásokat tartalmaz. Nincs szükség hosszas árajánlatkérésre: kiválasztod a szolgáltatást, a Kliens Portálon keresztül kiegyenlíted, és azonnal megnyílik az aszinkron onboarding felület az adatok megadásához.",
+              text: "Az Add-on Áruház termékesített kiegészítő mikro-szolgáltatásokat kínál egyedi árajánlattal. Kiválasztod a szolgáltatást, egyedi árajánlatot kérsz a Kliens Portálodon, és a megrendelés után megnyílik az aszinkron onboarding felület az adatok megadásához.",
             },
           },
           {
@@ -272,7 +272,7 @@ export default async function AddonsPage() {
             name: "Hogyan történik az aszinkron onboarding és adatgyűjtés?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "A fizetés után a portálodon megjelenik egy dedikált onboarding űrlap. Itt megadhatod a szükséges információkat (pl. weboldal URL, célközönség, arculati színek) a saját tempódban. Nincs szükség élő megbeszélésre, így azonnal indulhat a munka.",
+              text: "A megrendelés kifizetése után a portálodon megjelenik egy dedikált onboarding űrlap. Itt megadhatod a szükséges információkat (pl. weboldal URL, célközönség, arculati színek) a saját tempódban. Nincs szükség élő megbeszélésre, így azonnal indulhat a munka.",
             },
           },
           {
@@ -315,13 +315,13 @@ export default async function AddonsPage() {
       <DirectAnswerBlock
         id="add-onok-hero"
         question="Mit nyújt az Add-on Áruház, és milyen eredménnyel?"
-        answer="Fix áras, termékesített mikro-szolgáltatások a 26 éves tervezőgrafikusi és 16 éves webfejlesztői tapasztalat alapján: videós UX/UI roast, AI + emberi blogcikk csomag, Lighthouse sebesség-optimalizálás, szezonális banner csomag és Schema.org/AEO integráció — mindegyik egyedi árajánlat alapján."
+        answer="Termékesített mikro-szolgáltatások egyedi árajánlat alapján, a 26 éves tervezőgrafikusi és 16 éves webfejlesztői tapasztalat alapján: videós UX/UI roast, AI + emberi blogcikk csomag, Lighthouse sebesség-optimalizálás, szezonális banner csomag és Schema.org/AEO integráció — mindegyik egyedi árajánlat kéréssel."
       />
         {/* HERO SECTION */}
         <section className="text-center max-w-4xl mx-auto mb-20 md:mb-28 pt-8">
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] uppercase font-mono tracking-widest font-bold text-[#00B5F1] bg-[#00B5F1]/5 border border-[#00B5F1]/20 mb-6 animate-pulse">
             <Sparkles className="w-3.5 h-3.5" />
-            FIX ÁRAS KIEGÉSZÍTŐK
+            KIEGÉSZÍTŐ SZOLGÁLTATÁSOK
           </span>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black font-heading text-white tracking-tight leading-tight mb-8">
             Azonnali Kiegészítő Szolgáltatások{" "}
@@ -331,8 +331,7 @@ export default async function AddonsPage() {
             </span>
           </h1>
           <p className="text-base sm:text-lg text-slate-400 leading-relaxed mb-10 max-w-2xl mx-auto">
-            Nincs hosszas egyeztetés, nincsenek rejtett költségek. Fix áras,
-            termékesített mikromegoldások a
+            Termékesített mikromegoldások egyedi árajánlattal, a
             <strong> 26 éves tervezőgrafikusi</strong> és{" "}
             <strong>16 éves webfejlesztői</strong> tapasztalatomra építve,
             garantált szállítási határidővel.
@@ -480,12 +479,12 @@ export default async function AddonsPage() {
               </summary>
               <div className="px-6 pb-6 text-sm text-slate-400 leading-relaxed border-t border-slate-800/40 pt-4">
                 <p>
-                  Az Add-on Áruház fix áras, termékesített kiegészítő
-                  szolgáltatásokat tartalmaz. Nincs szükség hosszas
-                  egyeztetésekre és árajánlatkérésekre: kiválasztod a számodra
-                  szükséges mikro-szolgáltatást, a Kliens Portálodon keresztül
-                  kártyával kiegyenlíted, és azonnal elindul az aszinkron
-                  onboarding folyamat.
+                  Az Add-on Áruház termékesített kiegészítő
+                  mikro-szolgáltatásokat kínál egyedi árajánlattal. Kiválasztod
+                  a számodra szükséges szolgáltatást, a Kliens Portálodon
+                  keresztül egyedi árajánlatot kérsz, és a megrendelés
+                  kifizetése után azonnal megnyílik az aszinkron onboarding
+                  adatlap az adatok megadásához.
                 </p>
               </div>
             </details>

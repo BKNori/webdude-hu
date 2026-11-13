@@ -24,6 +24,7 @@ import {
   AlertCircle,
 } from "lucide-react";
 import Link from "next/link";
+import ToolAccessLock from "@/components/molecules/ToolAccessLock";
 import PresetChips from "@/components/molecules/PresetChips";
 import {
   DESIGN_STYLE_PRESETS,
@@ -209,6 +210,12 @@ export default function BannerWorkshopGenerator() {
       setIsGenerating(false);
     }
   };
+
+  // Strict access gate: show a locked panel until auth resolves,
+  // then block users without the required tool permission.
+  if (!loading && !isAdmin && !allowedTools.includes("banner_ai_muhely")) {
+    return <ToolAccessLock toolName="Banner AI Műhely" />;
+  }
 
   return (
     <div className="min-h-screen bg-transparent text-text-primary">

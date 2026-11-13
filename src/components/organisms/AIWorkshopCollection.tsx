@@ -349,7 +349,9 @@ export default function AIWorkshopCollection() {
     if (!auth) return;
     const unsubscribe = auth.onAuthStateChanged(async (currentUser) => {
       if (!currentUser) {
-        router.push("/admin/login");
+        // Névtelen látogató: a katalógus nyilvános, a kártyák zároltak
+        // maradnak "Hozzáférés igénylése" CTA-val — nincs admin login redirect.
+        setLoading(false);
         return;
       }
       setUser(currentUser);

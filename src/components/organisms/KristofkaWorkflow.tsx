@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "motion/react";
 import jsPDF from "jspdf";
 import {
@@ -20,6 +20,8 @@ import UniversalFileUploader from "@/components/organisms/UniversalFileUploader"
 import { generateKristofkaPitchAction } from "@/actions/ai";
 import { saveToCaseStudyAction } from "@/actions/case-study";
 import { auth } from "@/lib/firebase";
+import { getClientUserProfileAction } from "@/actions/portal";
+import ToolAccessLock from "@/components/molecules/ToolAccessLock";
 
 interface KristofkaResult {
   legacy: string;
@@ -41,6 +43,39 @@ export default function KristofkaWorkflow() {
   const [narrative, setNarrative] = useState("");
   const [tone, setTone] = useState("");
   const [energetikaiBesorolas, setEnergetikaiBesorolas] = useState("unknown");
+  const [accessLoading, setAccessLoading] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [allowedTools, setAllowedTools] = useState<string[]>([]);
+
+  useEffect(() => {
+    if (!auth) {
+      queueMicrotask(() => setAccessLoading(false));
+      return;
+    }
+    const unsub = auth.onAuthStateChanged(async (user) => {
+      if (!user) {
+        setAccessLoading(false);
+        return;
+      }
+      try {
+        const token = await user.getIdToken(true);
+        const res = await getClientUserProfileAction(token);
+        if (res.success && res.profile) {
+          setIsAdmin(
+            res.profile.role === "admin" || user.email === "hello@webdude.hu"
+          );
+          setAllowedTools(res.profile.allowedTools || []);
+        }
+      } catch {
+        // Profil hiba nem blokkolja — a lock panel mutatkozik.
+      } finally {
+        setAccessLoading(false);
+      }
+    });
+    return unsub;
+  }, []);
+
+  const hasToolAccess = isAdmin || allowedTools.includes("kristofka_workflow");
 
   const targetAudienceOptions = [
     "Venture Capital",
@@ -238,6 +273,18 @@ ${result.roi}
     setSuccess("NotebookLM adatcsomag sikeresen letöltve!");
     setTimeout(() => setSuccess(""), 2000);
   };
+
+  if (accessLoading) {
+    return (
+      <div className="min-h-[40vh] flex items-center justify-center">
+        <Loader2 className="w-8 h-8 animate-spin text-sky-500" />
+      </div>
+    );
+  }
+
+  if (!hasToolAccess) {
+    return <ToolAccessLock toolName="Kristófka Munkafolyamat" />;
+  }
 
   return (
     <motion.div

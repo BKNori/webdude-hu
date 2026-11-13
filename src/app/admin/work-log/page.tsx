@@ -27,7 +27,6 @@ import {
 } from "lucide-react";
 import TaskCaptureForm from "@/components/organisms/TaskCaptureForm";
 import { autoAssignAllPendingTasksAction } from "@/actions/dispatcher";
-import jsPDF from "jspdf";
 
 interface WorkLog {
   id: string;
@@ -127,7 +126,8 @@ export default function WorkLogPage() {
     }
   };
 
-  const handleExportPDF = () => {
+  const handleExportPDF = async () => {
+    const { jsPDF } = await import("jspdf");
     const pdf = new jsPDF();
 
     // Set up document
@@ -251,7 +251,7 @@ export default function WorkLogPage() {
   const getStatusColor = (status: string) => {
     switch (status) {
       case "pending":
-        return "text-yellow-500 bg-yellow-500/10 border-yellow-500/30";
+        return "text-orange-400 bg-orange-500/10 border-orange-500/30";
       case "in-progress":
         return "text-blue-500 bg-blue-500/10 border-blue-500/30";
       case "done":

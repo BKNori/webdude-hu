@@ -22,6 +22,7 @@ import {
   Lightbulb,
 } from "lucide-react";
 import Link from "next/link";
+import ToolAccessLock from "@/components/molecules/ToolAccessLock";
 import CopyButton from "@/components/atoms/CopyButton";
 import { auth } from "@/lib/firebase";
 import { addSeoAuditAction } from "@/actions/seo-workshop";
@@ -166,6 +167,12 @@ export default function SeoWorkshopGenerator() {
       setIsGenerating(false);
     }
   };
+
+  // Strict access gate: show a locked panel until auth resolves,
+  // then block users without the required tool permission.
+  if (!loading && !isAdmin && !allowedTools.includes("seo_audit_ai_muhely")) {
+    return <ToolAccessLock toolName="SEO Audit AI Műhely" />;
+  }
 
   return (
     <div className="min-h-screen bg-transparent text-text-primary">
@@ -474,8 +481,8 @@ export default function SeoWorkshopGenerator() {
                               </p>
                               <p className="text-xs text-slate-400">Kritikus</p>
                             </div>
-                            <div className="bg-yellow-500/10 border border-yellow-500/20 rounded-lg p-3 text-center">
-                              <p className="text-lg font-bold text-yellow-400">
+                            <div className="bg-orange-500/10 border border-orange-500/20 rounded-lg p-3 text-center">
+                              <p className="text-lg font-bold text-orange-400">
                                 {generatedOutput.executiveSummary.warnings}
                               </p>
                               <p className="text-xs text-slate-400">

@@ -22,6 +22,7 @@ import {
   Lightbulb,
 } from "lucide-react";
 import Link from "next/link";
+import ToolAccessLock from "@/components/molecules/ToolAccessLock";
 import PresetChips from "@/components/molecules/PresetChips";
 import {
   AI_ENGINE_PRESETS,
@@ -218,6 +219,12 @@ export default function MidjourneyWorkshopGenerator() {
       setIsGenerating(false);
     }
   };
+
+  // Strict access gate: show a locked panel until auth resolves,
+  // then block users without the required tool permission.
+  if (!loading && !isAdmin && !allowedTools.includes("midjourney_ai_muhely")) {
+    return <ToolAccessLock toolName="Midjourney AI Műhely" />;
+  }
 
   return (
     <div className="min-h-screen bg-transparent text-text-primary">

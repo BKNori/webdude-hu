@@ -2,6 +2,23 @@
 
 > **AI DIREKTÍVA:** Ez a fájl a rendszer "élő" memóriája. A 03-workflow.md 5. lépése alapján KÖTELEZŐ ezt a fájlt frissítened minden feladat befejezésekor, vagy mielőtt átadod a vezérlést a felhasználónak (Norbinak). Szigorúan tilos új feladatba kezdened, ha az "Aktuális Munkaterület Állapota" szekcióban hibák vagy félbehagyott fájlok vannak!
 
+## Aktuális állapot — 2026-11-13, [7.54.0] SPRINT 2: NYILVÁNOS KATALÓGUS + GRANULÁLT GENERÁTOR-RBAC + MONOLIT REFAKTORÁLÁS (LEZÁRVA)
+- **Publikus katalógus:** `/termekek` és mind a 10 `/termekek/[slug]` adatlap 100% nyilvános (statikus prerender); `ProductAccessGuard.tsx` törölve; a „500M+ Ft" kifejezés „mért ügyfél-eredmény (ROI)"-ként jelölve.
+- **Szigorú generátor-védelem:** új `ToolAccessLock` molekula + `src/data/ai-tools-catalog.ts` SSOT (32 eszköz-ID); 20 generátor kapott korai lock-panelt (5-nek új `allowedTools` state is kellett: Flyer, Logo, Packaging, ProjectScope, Signage; plusz CompetitorAnalyzer és KristofkaWorkflow, amelyeknek egyáltalán nem volt jogosultság-ellenőrzése); `SingleAITool` most már ténylegesen érvényesíti az `allowedTools`/`isAdmin` propokat; `ClientAITools` zárolása minden eszközre kiterjesztve.
+- **Szuperadmin hozzárendelés:** `/admin/portal-kezelo` és `AdminPanel` eszközlistája a teljes katalógusra kapcsolva — minden AI termék egyenként checkboxolható, mentés azonnal frissíti `allowedTools`-t.
+- **Refaktorálás:** `ClientAITools.tsx` → `client-ai-tools-config.ts` + `HistoryList` + `GenerationOutput`; `PosterWorkshopGenerator.tsx` → 10 eredményszekció-komponens + megosztott `CopyButton`.
+- **QA:** `tsc`/`lint`/`jest` (51/51)/`build` mind EXIT=0.
+- **Következő:** `deploy.bat` futtatása Norbi által; `purchasedAddons`-kompatibilitás csak akkor kell, ha a Firestore-ban léteznek ilyen mezők (jelenleg `allowedTools` az egyetlen forrás).
+
+## Aktuális állapot — 2026-11-13, [7.53.0] SPRINT 1: P0/P1/P2 GYORS JAVÍTÁSOK (LEZÁRVA)
+- **JSON-LD XSS:** `portal/ai-muhely/kristofka/layout.tsx` mostantól `serializeJsonLd()`-t használ; teljes `src/` sweep → 0 védtelen `ld+json` maradt.
+- **Zéró Fix Ár:** `szolgaltatasok/add-onok` metadata + látható szöveg + FAQ (látható és JSON-LD) átírva „egyedi árajánlat kérése"-re; új `portal/vault/layout.tsx` `noindex` metaadatokkal.
+- **Szín-tisztítás:** `yellow-*`/`amber-*` UI-osztályok → `orange-*` (work-log, SeoWorkshop, SignageWorkshop, CaseStudiesBento); `src/` alatt 0 maradék.
+- **Teljesítmény:** `jspdf` dinamikus import a work-log PDF exportban; `BentoCard` string-URL ág → `ResponsiveImage`.
+- **Jest:** `jest.setup.ts` globális `motion/react` mock (jsdom `AggregateError` megszüntetve); Button/Footer/useFocusTrap tesztek valós DOM-ra igazítva + fedettségi bővítés → **51/51 PASS, branch coverage 92.75%**.
+- **QA:** `tsc --noEmit` = 0; `lint --max-warnings 0` = 0; `jest` = EXIT 0; `build` = EXIT 0 (első futás `next/font` Google Fonts lekérdezési hiba tranziens volt, retry zöld).
+- **Következő:** a monolitikus `ClientAITools.tsx` / `PosterWorkshopGenerator.tsx` szétbontása külön sprintben; `deploy.bat` futtatása Norbi által.
+
 ## Aktuális állapot — 2026-10-28, [7.36.1] Header Top Bar Auto-Hide & Glassmorphism Finomhangolás (LEZÁRVA)
 - **Top Bar elrejtés görgetéskor:** `HeaderNavClient.tsx` — `scrollY > 20` esetén a felső vékony Top Bar (`max-h-0 opacity-0 overflow-hidden border-transparent pointer-events-none`) zökkenőmentes animációval összecsukódik, és kizárólag a főmenü (Main Navbar) marad a viewport tetején fixen/ragadósan. `scrollY <= 20` esetén azonnal visszanyílik (`max-h-9 opacity-100`).
 - **Glassmorphism:** Le-görgetett állapotban a főmenü határozott prémium sötét üveghatást kap (`bg-slate-950/90 backdrop-blur-xl border-b border-slate-800/80 shadow-lg shadow-black/20`).

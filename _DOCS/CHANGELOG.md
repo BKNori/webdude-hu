@@ -1,5 +1,62 @@
 # Changelog
 
+## [7.54.0] — 2026-11-13 — SPRINT 2: NYILVÁNOS TERMÉKKATALÓGUS + GRANULÁLT GENERÁTOR-RBAC + MONOLIT REFAKTORÁLÁS
+
+**1. NYILVÁNOS KONVERZÓS KATALÓGUS (`/termekek` + `/termekek/[slug]`):**
+- `src/app/termekek/page.tsx`: a fiók-gate (csak `hello@webdude.hu` láthatta) eltávolítva — a katalógus mostantól 100% nyilvános, statikusan prerenderelődik (SEO/AEO). A „500M+ Ft befektetés generáció" kiegészítve „mért ügyfél-eredmény (ROI)" megjelöléssel; szolgáltatási árak nincsenek.
+- 10 termék-adatlap (`ai-chatbot-starter`, `ai-workflow-starter-pack`, `banner-ai-muhely`, `cro-booster-kit`, `kristofka-munkafolyamat`, `logo-ai-muhely`, `midjourney-ai-muhely`, `szezonalis-ai-muhely`, `tartalomtervezo-ai-muhely`, `ui-ux-ai-muhely`): a `ProductAccessGuard` wrapper eltávolítva — a teljes termékbemutató és a „Egyedi árajánlat kérése" CTA látható minden látogatónak.
+- `ProductAccessGuard.tsx` **törölve** (nem volt több usage).
+- `AIWorkshopCollection`: a névtelen látogató `/admin/login` redirectje megszüntetve — a műhely-katalógus nyilvánosan böngészhető, a nem jogosult kártyák „Hozzáférés igénylése" CTA-val a `/kapcsolat`-ra mutatnak.
+
+**2. SZIGORÚ GENERÁTOR-VÉDELEM (RBAC):**
+- **ÚJ** `src/components/molecules/ToolAccessLock.tsx`: prémium Kék-Lila v7.0 zárolt panel („Prémium AI Modul — Zárolva", „Hozzáférés igénylése" → `/kapcsolat`).
+- **ÚJ** `src/data/ai-tools-catalog.ts`: SSOT az összes AI eszköz `allowedTools` azonosítójához (32 tétel) — a korábbi hiányzó/hibás ID-k (`flyer_ai_muhely`, `packaging_ai_muhely`, `project_scope_ai_muhely`, `signage_ai_muhely`, `cip_ai_muhely`, műhely-változatok, `versenytars_elemzo_ai_muhely` stb.) mostantól egységesek.
+- Korai `ToolAccessLock` return hozzáadva **20 generátorhoz**: 16 `*WorkshopGenerator.tsx` (5-nek — Flyer, Logo, Packaging, ProjectScope, Signage — új `allowedTools` state is kellett), plusz `PosterWorkshopGenerator`, `CompetitorAnalyzer` (`versenytars_elemzo_ai_muhely`) és `KristofkaWorkflow` (`kristofka_workflow`) — utóbbi kettőnek egyáltalán nem volt jogosultság-ellenőrzése.
+- `SingleAITool.tsx`: a eddig figyelmen kívül hagyott `allowedTools`/`isAdmin` propok most már érvényesülnek + saját profil-lekérés fallback; hiányzó jogosultság esetén `ToolAccessLock`, az `onGenerate` is blokkolva.
+- `ClientAITools.tsx`: a zárolás kiterjesztve **minden** eszközre (korábban csak a `graphicsTools` halmazra vonatkozott) — most minden toolkártya és az aktív eszköz `allowedTools`-tagságot kér.
+- Szuperadmin bypass mindenhol megmaradt: `role === "admin"` vagy `hello@webdude.hu` → 100% hozzáférés.
+
+**3. SZUPERADMIN ESZKÖZHOZZÁRENDELÉS:**
+- `/admin/portal-kezelo`: a 9 tételes lokális `AI_TOOL_OPTIONS` lecserélve a teljes `AI_TOOL_CATALOG`-ra — minden jelenlegi AI termék egyenként checkboxolható, a mentés azonnal frissíti a `users/{uid}.allowedTools`-t (`updateClientToolsAction` szigorú superadmin auth változatlanul).
+- `AdminPanel.tsx`: az `availableTools` lista szintén a katalógusra kapcsolva.
+
+**4. MONOLIT REFAKTORÁLÁS:**
+- `ClientAITools.tsx` (1464 sor): a tool-konfigurációk/sablonok a **`src/data/client-ai-tools-config.ts`**-be, az előzmények a **`HistoryList.tsx`**, a kimenet a **`GenerationOutput.tsx`** molekulába költözött; a főfájl orchestrator maradt (auth, kiválasztás, submit, jogosultság).
+- `PosterWorkshopGenerator.tsx` (1317 → ~600 sor): az eredmény-szekciók szétbontva — **`PosterConcept`**, **`PrintSpecs`**, **`ColorPalette`**, **`Typography`**, **`PosterLayout`**, **`Copywriting`**, **`MidjourneyPrompts`**, **`PrintGuidelines`**, **`ExportFormats`**, **`PosterVariations`** organizmusokra + megosztott **`CopyButton`** molekulára (7× deduplikált markup).
+- `_docs/ARCHITECTURE.md` regiszter frissítve (új molekulák + 10 poster szekció).
+
+**QA (MIND 0 HIBA):** `npx tsc --noEmit` → EXIT=0; `npm run lint -- --max-warnings 0` → EXIT=0; `npx jest` → **51/51 PASS**; `npm run build` → EXIT=0 (minden `/termekek/*` oldal statikusan prerenderelődik).
+
+---
+
+## [7.53.0] — 2026-11-13 — SPRINT 1: P0/P1/P2 GYORS JAVÍTÁSOK (JSON-LD XSS, ZÉRÓ FIX ÁR, SZÍN-TISZTÍTÁS, FULLADÁS, JEST FELZÁRKÓZTATÁS)
+
+**P0 — JSON-LD XSS VÉDELEM:**
+- `src/app/portal/ai-muhely/kristofka/layout.tsx`: a két `application/ld+json` blokk mostantól a központi `serializeJsonLd()` helperen (`src/lib/structuredData.ts`) keresztül renderelődik (`.replace(/</g, "\\u003c")`).
+- Teljes lokális sweep a `src/` alatt: minden `ld+json` / `dangerouslySetInnerHTML` előfordulás ellenőrizve — 0 védtelen JSON-LD maradt.
+
+**P0 — ZÉRÓ FIX ÁR SZABÁLY (`szolgaltatasok/add-onok`):**
+- `metadata` (title/description/openGraph), a DirectAnswerBlock válasza, a hero badge („FIX ÁRAS KIEGÉSZÍTŐK" → „KIEGÉSZÍTŐ SZOLGÁLTATÁSOK") és a hero szöveg, valamint a látható FAQ és a JSON-LD `FAQPage` válaszai átírva „egyedi árajánlat kérése" pozicionálásra.
+- `src/app/portal/vault/layout.tsx` (**ÚJ**, Server Component): `noindex/nofollow` robots metaadatokkal — a vault kliensoldali auth-guard mögött van, nem indexelhető.
+
+**P1 — KÉK-LILA v7.0 SZÍN-TISZTÍTÁS:**
+- `yellow-*` / `amber-*` osztályok eltávolítva: `admin/work-log` (pending státusz → `orange-*` szemantikus figyelmeztető), `SeoWorkshopGenerator` (warnings → `orange-*`), `SignageWorkshopGenerator` (technicalWarning → `orange-*`), `CaseStudiesBento` (MacOS ablakpont → `orange-400`).
+- `src/` alatt 0 `yellow-`/`amber-`/`#f59e0b` UI-osztály maradt (a `workshop-presets.ts` kreatív palettái érintetlenek).
+
+**P2 — TELJESÍTMÉNY:**
+- `admin/work-log/page.tsx`: a nehéz `jspdf` import statikusból dinamikusra (`await import("jspdf")` a `handleExportPDF`-ben) — kikerül a kezdeti bundle-ból.
+- `BentoCard.tsx`: a string-URL ág nyers `<img>`-je lecserélve a saját `ResponsiveImage` komponensre (build-time AVIF/WebP srcset, `unoptimized: true` cPanel szabály figyelembe vételével).
+
+**P2 — JEST FELZÁRKÓZTATÁS:**
+- `jest.setup.ts`: globális `motion/react` mock — a `motion.*` komponensek sima DOM elemekké alakulnak (motion-only propok kiszűrve), a hookok stabil stubok. Megszünteti a jsdom `AggregateError`-t.
+- `Button.test.tsx`: duplikált secondary osztály-ellenőrzés eltávolítva; elvárások a v7.0 `Button.tsx` osztályaira igazítva (`bg-slate-900/80`, `border-slate-700`); új fedettségi tesztek (ghost/accent/size/disabled/loading).
+- `Footer.test.tsx`: a grid-ellenőrzések a valós DOM-ra igazítva (grid a wrapperen, `ul` = `space-y-2`); a link-szövegek a valós fallback listára cserélve; új `dictionary` prop teszt + `FooterContact`/`FooterLinks` közvetlen fedettség.
+- `useFocusTrap.test.tsx`: új „üres konténer" és `onEscape`-nélküli Escape ágak.
+
+**QA (MIND 0 HIBA):** `npx tsc --noEmit` → EXIT=0; `npm run lint -- --max-warnings 0` → EXIT=0; `npx jest` → **51/51 PASS**, branch coverage 92.75% → EXIT=0; `npm run build` → EXIT=0 (a first-pass `next/font` Google Fonts hiba tranziens volt, retry sikeres).
+
+---
+
 ## [7.52.2] — 2026-11-13 — GENERÁTOR 500-JAVÍTÁS, PORTÁL MENÜ & WORKSHOP GLASSMORPHISM (KRITIKUS BUGFIX)
 
 **500-AS HIBÁK GYÖKÉROKA ÉS JAVÍTÁSA:**

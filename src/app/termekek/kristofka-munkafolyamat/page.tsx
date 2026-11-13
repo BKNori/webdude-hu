@@ -1,13 +1,11 @@
 ﻿"use client";
 
 import Link from "next/link";
-import ProductAccessGuard from "@/components/molecules/ProductAccessGuard";
 import ProductPortalCta from "@/components/molecules/ProductPortalCta";
 
 export default function KristofkaMunkafolyamatPage() {
   return (
     <>
-      <ProductAccessGuard>
         <div className="min-h-screen bg-[#020617]">
           <section className="relative py-24 md:py-32 overflow-hidden">
             <div className="absolute inset-0 bg-linear-to-b from-[#00B5F1]/5 via-transparent to-transparent" />
@@ -99,7 +97,6 @@ export default function KristofkaMunkafolyamatPage() {
 
           <ProductPortalCta productName="KristĂłfka Munkafolyamat" />
         </div>
-      </ProductAccessGuard>
     </>
   );
 }

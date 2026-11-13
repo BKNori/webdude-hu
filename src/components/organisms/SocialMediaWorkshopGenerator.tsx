@@ -21,6 +21,7 @@ import {
   Share2,
 } from "lucide-react";
 import Link from "next/link";
+import ToolAccessLock from "@/components/molecules/ToolAccessLock";
 import { auth } from "@/lib/firebase";
 import { addSocialMediaGenerationAction } from "@/actions/social-media-workshop";
 import { getClientUserProfileAction } from "@/actions/portal";
@@ -187,6 +188,12 @@ export default function SocialMediaWorkshopGenerator() {
       setIsGenerating(false);
     }
   };
+
+  // Strict access gate: show a locked panel until auth resolves,
+  // then block users without the required tool permission.
+  if (!loading && !isAdmin && !allowedTools.includes("social_media_ai_muhely")) {
+    return <ToolAccessLock toolName="Social Media AI Műhely" />;
+  }
 
   return (
     <div className="min-h-screen bg-transparent text-text-primary">

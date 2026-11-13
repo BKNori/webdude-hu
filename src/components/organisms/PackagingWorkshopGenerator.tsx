@@ -19,6 +19,7 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import Link from "next/link";
+import ToolAccessLock from "@/components/molecules/ToolAccessLock";
 import PresetChips from "@/components/molecules/PresetChips";
 import CopyButton from "@/components/atoms/CopyButton";
 import {
@@ -248,6 +249,7 @@ export default function PackagingWorkshopGenerator() {
   const [error, setError] = useState<string | null>(null);
   const [profileReady, setProfileReady] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [allowedTools, setAllowedTools] = useState<string[]>([]);
 
   const {
     register,
@@ -286,6 +288,7 @@ export default function PackagingWorkshopGenerator() {
           setIsAdmin(
             res.profile.role === "admin" || user.email === "hello@webdude.hu"
           );
+          setAllowedTools(res.profile.allowedTools || []);
         }
       } catch {
         // Profil hiba nem blokkolja a generátort.
@@ -351,6 +354,11 @@ export default function PackagingWorkshopGenerator() {
         </p>
       </div>
     );
+  }
+
+  // Strict access gate: block users without the required tool permission.
+  if (!isAdmin && !allowedTools.includes("packaging_ai_muhely")) {
+    return <ToolAccessLock toolName="Csomagolás AI Műhely" />;
   }
 
   const specs = generatedOutput?.dielineAndPrepressSpecs;

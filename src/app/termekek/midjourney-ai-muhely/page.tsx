@@ -13,7 +13,6 @@ import {
   RefreshCw,
   Layers
 } from "lucide-react";
-import ProductAccessGuard from "@/components/molecules/ProductAccessGuard";
 
 const visualStyles = [
   {
@@ -131,7 +130,6 @@ export default function MidjourneyAIMuhelyPage() {
 
   return (
     <>
-      <ProductAccessGuard>
         <div className="min-h-screen bg-bg-base">
           {/* Hero Section */}
           <section className="relative py-24 overflow-hidden">
@@ -488,7 +486,6 @@ export default function MidjourneyAIMuhelyPage() {
             </div>
           </section>
         </div>
-      </ProductAccessGuard>
     </>
   );
 }

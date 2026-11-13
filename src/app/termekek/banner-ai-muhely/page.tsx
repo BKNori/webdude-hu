@@ -12,7 +12,6 @@ import {
   Copy,
   RefreshCw
 } from "lucide-react";
-import ProductAccessGuard from "@/components/molecules/ProductAccessGuard";
 
 const bannerStyles = [
   {
@@ -131,7 +130,6 @@ export default function BannerAIMuhelyPage() {
 
   return (
     <>
-      <ProductAccessGuard>
         <div className="min-h-screen bg-bg-base">
           {/* Hero Section */}
           <section className="relative py-24 overflow-hidden">
@@ -503,7 +501,6 @@ export default function BannerAIMuhelyPage() {
             </div>
           </section>
         </div>
-      </ProductAccessGuard>
     </>
   );
 }

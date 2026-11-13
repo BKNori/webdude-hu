@@ -13,7 +13,6 @@ import {
   RefreshCw,
   Hexagon
 } from "lucide-react";
-import ProductAccessGuard from "@/components/molecules/ProductAccessGuard";
 
 const logoStyles = [
   {
@@ -132,7 +131,6 @@ export default function LogoAIMuhelyPage() {
 
   return (
     <>
-      <ProductAccessGuard>
         <div className="min-h-screen bg-bg-base">
           {/* Hero Section */}
           <section className="relative py-24 overflow-hidden">
@@ -503,7 +501,6 @@ export default function LogoAIMuhelyPage() {
             </div>
           </section>
         </div>
-      </ProductAccessGuard>
     </>
   );
 }

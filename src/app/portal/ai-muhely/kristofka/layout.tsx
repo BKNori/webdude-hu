@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { serializeJsonLd } from "@/lib/structuredData";
 
 export const metadata: Metadata = {
   title:
@@ -111,11 +112,11 @@ export default function KristofkaLayout({
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(faqJsonLd) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(workflowJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(workflowJsonLd) }}
       />
       {children}
     </>

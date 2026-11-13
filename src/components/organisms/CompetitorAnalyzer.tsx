@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "motion/react";
 import {
   BarChart3,
@@ -15,6 +15,8 @@ import {
 import CopyButton from "@/components/atoms/CopyButton";
 import { auth } from "@/lib/firebase";
 import { analyzeCompetitorsAction } from "@/actions/ai";
+import { getClientUserProfileAction } from "@/actions/portal";
+import ToolAccessLock from "@/components/molecules/ToolAccessLock";
 
 interface AnalysisResult {
   targetUrl: string;
@@ -44,6 +46,39 @@ export default function CompetitorAnalyzer() {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<AnalysisResult | null>(null);
   const [error, setError] = useState("");
+  const [accessLoading, setAccessLoading] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [allowedTools, setAllowedTools] = useState<string[]>([]);
+
+  useEffect(() => {
+    if (!auth) {
+      queueMicrotask(() => setAccessLoading(false));
+      return;
+    }
+    const unsub = auth.onAuthStateChanged(async (user) => {
+      if (!user) {
+        setAccessLoading(false);
+        return;
+      }
+      try {
+        const token = await user.getIdToken(true);
+        const res = await getClientUserProfileAction(token);
+        if (res.success && res.profile) {
+          setIsAdmin(
+            res.profile.role === "admin" || user.email === "hello@webdude.hu"
+          );
+          setAllowedTools(res.profile.allowedTools || []);
+        }
+      } catch {
+        // Profil hiba nem blokkolja — a lock panel mutatkozik.
+      } finally {
+        setAccessLoading(false);
+      }
+    });
+    return unsub;
+  }, []);
+
+  const hasToolAccess = isAdmin || allowedTools.includes("versenytars_elemzo_ai_muhely");
 
   const addCompetitor = () => {
     if (competitorUrls.length < 3) {
@@ -127,6 +162,18 @@ export default function CompetitorAnalyzer() {
     : 0;
   const shouldShowUpsell =
     result && result.targetScore.overallUX < maxCompetitorScore;
+
+  if (accessLoading) {
+    return (
+      <div className="min-h-[40vh] flex items-center justify-center">
+        <Loader2 className="w-8 h-8 animate-spin text-sky-500" />
+      </div>
+    );
+  }
+
+  if (!hasToolAccess) {
+    return <ToolAccessLock toolName="Versenytárs Elemző AI Műhely" />;
+  }
 
   return (
     <div className="space-y-8">

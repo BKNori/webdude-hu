@@ -9,7 +9,9 @@ import {
   saveClientNoteAction as saveAiNoteAction,
 } from "@/actions/ai";
 import { auth } from "@/lib/firebase";
+import { getClientUserProfileAction } from "@/actions/portal";
 import LoadingSpinner from "@/components/atoms/LoadingSpinner";
+import ToolAccessLock from "@/components/molecules/ToolAccessLock";
 
 const toolFormSchema = z.object({
   topic: z.string().min(2, "Kérlek, adj meg egy témát"),
@@ -31,10 +33,15 @@ export default function SingleAITool({
   toolId,
   toolName,
   description,
+  allowedTools,
+  isAdmin,
 }: SingleAIToolProps) {
   const effectiveToolName = toolName ?? toolId;
   const effectiveDescription = description ?? "";
   // const effectiveSystemPrompt = systemPrompt ?? '';
+  const [accessLoading, setAccessLoading] = useState(true);
+  const [profileIsAdmin, setProfileIsAdmin] = useState(false);
+  const [profileAllowedTools, setProfileAllowedTools] = useState<string[]>([]);
   const [generatedText, setGeneratedText] = useState("");
   const [displayedText, setGeneratedDisplayText] = useState("");
   const [isCopied, setIsCopied] = useState(false);
@@ -53,6 +60,41 @@ export default function SingleAITool({
     resolver: zodResolver(toolFormSchema),
     defaultValues: { topic: "", tone: "", keywords: "" },
   });
+
+  // Hozzáférés-ellenőrzés: propok + saját profil-lekérés (védelem, ha a
+  // route nem adja át az allowedTools/isAdmin értékeket).
+  useEffect(() => {
+    if (!auth) {
+      queueMicrotask(() => setAccessLoading(false));
+      return;
+    }
+    const unsub = auth.onAuthStateChanged(async (user) => {
+      if (!user) {
+        setAccessLoading(false);
+        return;
+      }
+      try {
+        const token = await user.getIdToken(true);
+        const res = await getClientUserProfileAction(token);
+        if (res.success && res.profile) {
+          setProfileIsAdmin(
+            res.profile.role === "admin" || user.email === "hello@webdude.hu"
+          );
+          setProfileAllowedTools(res.profile.allowedTools || []);
+        }
+      } catch {
+        // Profil hiba nem blokkolja — a propok alapján döntünk.
+      } finally {
+        setAccessLoading(false);
+      }
+    });
+    return unsub;
+  }, []);
+
+  const hasToolAccess =
+    isAdmin === true ||
+    profileIsAdmin ||
+    [...(allowedTools ?? []), ...profileAllowedTools].includes(toolId);
 
   // typing effect implementation
   useEffect(() => {
@@ -84,6 +126,9 @@ export default function SingleAITool({
   }, [generatedText]);
 
   const onGenerate = async (data: ToolFormInput) => {
+    if (!hasToolAccess) {
+      return;
+    }
     setGeneratedText("");
     setGeneratedDisplayText("");
     setSaveStatus(null);
@@ -165,6 +210,14 @@ export default function SingleAITool({
       });
     }
   };
+
+  if (accessLoading) {
+    return <LoadingSpinner />;
+  }
+
+  if (!hasToolAccess) {
+    return <ToolAccessLock toolName={effectiveToolName} />;
+  }
 
   return (
     <div className="bg-bg-surface/30 border border-slate-800/50 backdrop-blur-md rounded-2xl p-8 max-w-4xl mx-auto hover:border-sky-500/10 transition-all duration-300">

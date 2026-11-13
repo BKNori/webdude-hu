@@ -1,6 +1,6 @@
 import React from "react";
 import { Lock } from "lucide-react";
-import type { ToolConfig } from "@/components/organisms/ClientAITools";
+import type { ToolConfig } from "@/data/client-ai-tools-config";
 
 interface Props {
   /** Tool key identifier */

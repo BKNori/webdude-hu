@@ -11,12 +11,7 @@ import {
   ArrowRight,
   Star,
   CheckCircle,
-  Loader2,
-  AlertCircle,
 } from "lucide-react";
-import { useEffect, useState } from "react";
-import { auth } from "@/lib/firebase";
-import { onAuthStateChanged, User } from "firebase/auth";
 
 const products = [
   {
@@ -102,7 +97,7 @@ const products = [
     features: [
       "4.8x befektetői konverzió",
       "72% pitch idő megtakarítás",
-      "500M+ Ft befektetés generáció",
+      "500M+ Ft generált befektetés — mért ügyfél-eredmény (ROI)",
       "Strategist-Pro AI workflow",
     ],
     icon: Zap,
@@ -265,55 +260,8 @@ const categories = [
 ];
 
 export default function ProductsPage() {
-  const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [isAdmin, setIsAdmin] = useState(false);
-
-  useEffect(() => {
-    if (!auth) return;
-    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
-      if (!currentUser) {
-        setUser(null);
-        setLoading(false);
-        return;
-      }
-      setUser(currentUser);
-      // Check if user is admin (hello@webdude.hu)
-      const isAdminUser = currentUser.email === "hello@webdude.hu";
-      setIsAdmin(isAdminUser);
-      setLoading(false);
-    });
-    return unsubscribe;
-  }, []);
-
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-bg-base flex flex-col items-center justify-center space-y-4">
-        <Loader2 className="w-8 h-8 animate-spin text-[#00B5F1]" />
-        <p className="text-xs font-mono text-slate-400 uppercase tracking-widest animate-pulse font-bold">
-          Betöltés...
-        </p>
-      </div>
-    );
-  }
-
-  if (!user || !isAdmin) {
-    return (
-      <div className="min-h-screen bg-bg-base flex flex-col items-center justify-center space-y-6 px-6">
-        <div className="bg-red-500/10 border border-red-500/30 text-red-400 px-6 py-4 rounded-2xl text-sm flex items-center gap-3 font-mono max-w-md text-center">
-          <AlertCircle className="w-5 h-5" />
-          Hozzáférés megtagadva. Csak a Superadmin férhet hozzá a termékekhez!
-        </div>
-        <Link
-          href="/admin/login"
-          className="px-6 py-3 rounded-xl bg-[#00B5F1] text-slate-950 font-bold hover:bg-[#00B5F1]/400 transition-colors"
-        >
-          Bejelentkezés
-        </Link>
-      </div>
-    );
-  }
-
+  // A /termekek katalógus 100% nyilvános konverziós landing oldal —
+  // a hozzáférés-ellenőrzés a generátoroknál (allowedTools) történik.
   return (
     <div className="min-h-screen bg-transparent">
       {/* Hero Section */}

@@ -255,7 +255,7 @@ export default function HeaderNavClient({
                     <Link
                       href={sub.href}
                       aria-current={isCurrent ? "page" : undefined}
-                      className={`flex items-center gap-3 rounded-xl border p-3 text-sm transition-all duration-300 outline-none ${FOCUS_RING} ${isCurrent ? "border-brand-primary/40 bg-brand-primary/5 shadow-[0_0_20px_rgba(0,181,241,0.12)]" : "border-brand-primary/10 bg-gradient-to-b from-slate-900/50 to-slate-900/70 hover:border-brand-primary/30 hover:bg-gradient-to-b hover:from-slate-900/70 hover:to-slate-900/80 hover:shadow-[0_0_14px_rgba(0,181,241,0.08)]"}`}
+                      className={`flex items-center gap-3 rounded-xl border p-3 text-sm transition-all duration-300 outline-none ${FOCUS_RING} ${isCurrent ? "border-brand-primary/40 bg-brand-primary/5 shadow-[0_0_20px_rgba(0,181,241,0.12)]" : "border-brand-primary/10 bg-linear-to-b from-slate-900/50 to-slate-900/70 hover:border-brand-primary/30 hover:bg-linear-to-b hover:from-slate-900/70 hover:to-slate-900/80 hover:shadow-[0_0_14px_rgba(0,181,241,0.08)]"}`}
                       style={{ animation: isCurrent ? "neon-flicker 3s ease-in-out infinite" : "neon-flicker 7s ease-in-out infinite" }}
                     >
                       {sub.icon && (
@@ -300,7 +300,7 @@ export default function HeaderNavClient({
                     <Link
                       href={sub.href}
                       aria-current={isCurrent ? "page" : undefined}
-                      className={`flex items-center gap-3 rounded-xl border p-3 text-sm transition-all duration-300 outline-none ${FOCUS_RING} ${isCurrent ? "border-brand-primary/40 bg-brand-primary/5 shadow-[0_0_20px_rgba(0,181,241,0.12)]" : "border-brand-primary/10 bg-gradient-to-b from-slate-900/50 to-slate-900/70 hover:border-brand-primary/30 hover:bg-gradient-to-b hover:from-slate-900/70 hover:to-slate-900/80 hover:shadow-[0_0_14px_rgba(0,181,241,0.08)]"}`}
+                      className={`flex items-center gap-3 rounded-xl border p-3 text-sm transition-all duration-300 outline-none ${FOCUS_RING} ${isCurrent ? "border-brand-primary/40 bg-brand-primary/5 shadow-[0_0_20px_rgba(0,181,241,0.12)]" : "border-brand-primary/10 bg-linear-to-b from-slate-900/50 to-slate-900/70 hover:border-brand-primary/30 hover:bg-linear-to-b hover:from-slate-900/70 hover:to-slate-900/80 hover:shadow-[0_0_14px_rgba(0,181,241,0.08)]"}`}
                       style={{ animation: isCurrent ? "neon-flicker 3s ease-in-out infinite" : "neon-flicker 7s ease-in-out infinite" }}
                     >
                       {sub.icon && (
@@ -345,7 +345,7 @@ export default function HeaderNavClient({
                     <Link
                       href={sub.href}
                       aria-current={isCurrent ? "page" : undefined}
-                      className={`flex items-center gap-3 rounded-xl border p-3 text-sm transition-all duration-300 outline-none ${FOCUS_RING} ${isCurrent ? "border-brand-secondary/40 bg-brand-secondary/5 shadow-[0_0_20px_rgba(124,58,237,0.12)]" : "border-brand-secondary/10 bg-gradient-to-b from-slate-900/50 to-slate-900/70 hover:border-brand-secondary/30 hover:bg-gradient-to-b hover:from-slate-900/70 hover:to-slate-900/80 hover:shadow-[0_0_14px_rgba(124,58,237,0.08)]"}`}
+                      className={`flex items-center gap-3 rounded-xl border p-3 text-sm transition-all duration-300 outline-none ${FOCUS_RING} ${isCurrent ? "border-brand-secondary/40 bg-brand-secondary/5 shadow-[0_0_20px_rgba(124,58,237,0.12)]" : "border-brand-secondary/10 bg-linear-to-b from-slate-900/50 to-slate-900/70 hover:border-brand-secondary/30 hover:bg-linear-to-b hover:from-slate-900/70 hover:to-slate-900/80 hover:shadow-[0_0_14px_rgba(124,58,237,0.08)]"}`}
                       style={{ animation: isCurrent ? "neon-flicker 3s ease-in-out infinite" : "neon-flicker 7s ease-in-out infinite" }}
                     >
                       {sub.icon && (
@@ -390,7 +390,7 @@ export default function HeaderNavClient({
                     <Link
                       href={sub.href}
                       aria-current={isCurrent ? "page" : undefined}
-                      className={`flex items-center gap-3 rounded-xl border p-3 text-sm transition-all duration-300 outline-none ${FOCUS_RING} ${isCurrent ? "border-brand-primary/40 bg-brand-primary/5 shadow-[0_0_20px_rgba(0,181,241,0.12)]" : "border-brand-primary/10 bg-gradient-to-b from-slate-900/50 to-slate-900/70 hover:border-brand-primary/30 hover:bg-gradient-to-b hover:from-slate-900/70 hover:to-slate-900/80 hover:shadow-[0_0_14px_rgba(0,181,241,0.08)]"}`}
+                      className={`flex items-center gap-3 rounded-xl border p-3 text-sm transition-all duration-300 outline-none ${FOCUS_RING} ${isCurrent ? "border-brand-primary/40 bg-brand-primary/5 shadow-[0_0_20px_rgba(0,181,241,0.12)]" : "border-brand-primary/10 bg-linear-to-b from-slate-900/50 to-slate-900/70 hover:border-brand-primary/30 hover:bg-linear-to-b hover:from-slate-900/70 hover:to-slate-900/80 hover:shadow-[0_0_14px_rgba(0,181,241,0.08)]"}`}
                       style={{ animation: isCurrent ? "neon-flicker 3s ease-in-out infinite" : "neon-flicker 7s ease-in-out infinite" }}
                     >
                       {sub.icon && (

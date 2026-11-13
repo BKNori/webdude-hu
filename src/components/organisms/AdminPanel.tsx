@@ -9,6 +9,7 @@ import {
   assignAddonToUserAction,
   updateUserToolsAction,
 } from "@/actions/admin";
+import { AI_TOOL_CATALOG } from "@/data/ai-tools-catalog";
 
 // Zod validation schemas
 const registerSchema = z.object({
@@ -85,19 +86,7 @@ export default function AdminPanel({
     defaultValues: { userId: "", allowedTools: [] },
   });
 
-  const availableTools = [
-    { id: "product_desc", name: "Termék Leírás Generátor" },
-    { id: "review_assistant", name: "Vélemény Segéd" },
-    { id: "social_matrix", name: "Social Media Mátrix" },
-    { id: "cart_recovery", name: "Kosár Visszaszerzés" },
-    { id: "midjourney_prompt", name: "Midjourney Prompt" },
-    { id: "banner_concept", name: "Banner Koncepció" },
-    { id: "logo_designer", name: "Logo Tervező" },
-    { id: "ui_ux_designer", name: "UI/UX Tervező" },
-    { id: "seasonal_campaign_designer", name: "Szezonális Kampány Tervező" },
-    { id: "kristofka_workflow", name: "Kristófka Workflow" },
-    { id: "prompt_templates", name: "AI Prompt Sablonok" },
-  ];
+  const availableTools = AI_TOOL_CATALOG;
 
   const onRegisterSubmit = (data: RegisterInput) => {
     setRegisterResult(null);

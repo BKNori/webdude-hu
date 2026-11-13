@@ -1,27 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import Link from "next/link";
-import {
-  Sparkles,
-  Copy,
-  Check,
-  Bot,
-  MessageSquare,
-  FileText,
-  Share2,
-  ShoppingCart,
-  Loader2,
-  RefreshCw,
-  Save,
-  AlertCircle,
-  Trash2,
-  Layout,
-  Palette,
-  Laptop,
-  Calendar,
-  Lock,
-} from "lucide-react";
-import Button from "@/components/atoms/Button";
+import { Bot, AlertCircle, Lock } from "lucide-react";
 import {
   generateAIContentAction,
   saveClientNoteAction,
@@ -40,203 +20,16 @@ import {
 } from "firebase/firestore";
 import TemplateSelector from "@/components/molecules/TemplateSelector";
 import GraphicToolCard from "@/components/molecules/GraphicToolCard";
-
-// ---------- Tool & Category Types ----------
-type ToolType =
-  | "product_desc"
-  | "review_assistant"
-  | "social_matrix"
-  | "cart_recovery"
-  | "midjourney_prompt"
-  | "banner_concept"
-  | "logo_designer"
-  | "ui_ux_designer"
-  | "seasonal_campaign_designer"
-  | "kristofka_workflow";
-
-// Subset of ToolType used for graphics templates
-
-export interface ToolConfig {
-  name: string;
-  icon: React.ComponentType<{ className?: string }>;
-  description: string;
-}
-
-// ---------- Tool Registry ----------
-const tools: Record<ToolType, ToolConfig> = {
-  product_desc: {
-    name: "Termékleírás & AEO",
-    icon: FileText,
-    description:
-      "Konverzió‑optimalizált termékleírás és Schema.org FAQ vázlat.",
-  },
-  review_assistant: {
-    name: "Ügyfélszolgálati Válasz",
-    icon: MessageSquare,
-    description: "Profi válaszok generálása ügyfélpanaszokra és értékelésekre.",
-  },
-  social_matrix: {
-    name: "Kampány Mátrix",
-    icon: Share2,
-    description:
-      "Facebook poszt, Instagram kép‑instrukció és hírlevél generálása.",
-  },
-  cart_recovery: {
-    name: "Kosárelhagyó Email",
-    icon: ShoppingCart,
-    description: "3 stílusú kosárelhagyás‑mentő email sablon.",
-  },
-  midjourney_prompt: {
-    name: "Midjourney v6 Master",
-    icon: Sparkles,
-    description: "Professzionális Midjourney promptok készítése.",
-  },
-  banner_concept: {
-    name: "Banner & Ad Tervező",
-    icon: Layout,
-    description: "Konverzió‑fókuszú banner koncepciók.",
-  },
-  logo_designer: {
-    name: "Logo & Brand Szimbólum",
-    icon: Palette,
-    description: "Vektorgrafikus logótervek és brand elemek.",
-  },
-  ui_ux_designer: {
-    name: "UI/UX Wireframe mockup",
-    icon: Laptop,
-    description: "Weboldal vagy mobilalkalmazás UI vázlatok.",
-  },
-  seasonal_campaign_designer: {
-    name: "Szezonális Vizuál",
-    icon: Calendar,
-    description: "Szezonális kampánygrafikák és prompt‑sablonok.",
-  },
-  kristofka_workflow: {
-    name: "Kristófka Munkafolyamat",
-    icon: Lock,
-    description:
-      "Az ipari ingatlanok hasznosításának és befektetői prezentációjának mesterműve.",
-  },
-};
-
-const marketingTools: ToolType[] = [
-  "product_desc",
-  "review_assistant",
-  "social_matrix",
-  "cart_recovery",
-];
-const graphicsTools: ToolType[] = [
-  "midjourney_prompt",
-  "banner_concept",
-  "logo_designer",
-  "ui_ux_designer",
-  "seasonal_campaign_designer",
-];
-const strategistTools: ToolType[] = ["kristofka_workflow"];
-
-// ---------- Pre‑defined Templates for Graphics ----------
-interface TemplateDef {
-  name: string;
-  values: Record<string, string>;
-}
-
-const graphicsTemplates: Record<ToolType, TemplateDef[]> = {
-  product_desc: [],
-  review_assistant: [],
-  social_matrix: [],
-  cart_recovery: [],
-  kristofka_workflow: [],
-  midjourney_prompt: [
-    {
-      name: "Futuristic Cyberpunk City",
-      values: {
-        imgSubject:
-          "futuristic cyberpunk city skyline at night, neon lights, flying cars",
-        imgStyle: "cinematic",
-        imgAspectRatio: "16:9",
-        imgMood: "dramatic",
-      },
-    },
-    {
-      name: "Minimalist Product Shot",
-      values: {
-        imgSubject:
-          "minimalist product photography of a sleek smartphone on white background",
-        imgStyle: "minimalist_vector",
-        imgAspectRatio: "1:1",
-        imgMood: "bright_clean",
-      },
-    },
-  ],
-  banner_concept: [
-    {
-      name: "Black Friday Sale",
-      values: {
-        bannerTopic: "Black Friday 50% off on all AI services",
-        bannerPlatform: "Facebook Cover",
-        bannerBrandVibe: "cyber_gold",
-      },
-    },
-    {
-      name: "Spring New Arrivals",
-      values: {
-        bannerTopic: "Spring collection launch – fresh designs",
-        bannerPlatform: "Instagram Post",
-        bannerBrandVibe: "clean_minimalist",
-      },
-    },
-  ],
-  logo_designer: [
-    {
-      name: "Tech Startup",
-      values: {
-        logoBrandName: "WebDude AI",
-        logoIndustry: "AI software development",
-        logoCoreValues: "innovation, precision, trust",
-      },
-    },
-    {
-      name: "Creative Agency",
-      values: {
-        logoBrandName: "PixelCraft",
-        logoIndustry: "creative design agency",
-        logoCoreValues: "creativity, boldness, elegance",
-      },
-    },
-  ],
-  ui_ux_designer: [
-    {
-      name: "Landing Page for SaaS",
-      values: {
-        uiTargetAudience: "SMBs looking for automation",
-        uiPageType: "Landing Page",
-      },
-    },
-    {
-      name: "Mobile Checkout Flow",
-      values: {
-        uiTargetAudience: "e‑commerce shoppers",
-        uiPageType: "Checkout",
-      },
-    },
-  ],
-  seasonal_campaign_designer: [
-    {
-      name: "Christmas Luxury Gifts",
-      values: {
-        campaignSeason: "Christmas",
-        campaignProduct: "luxury watches",
-      },
-    },
-    {
-      name: "Summer Beachwear",
-      values: {
-        campaignSeason: "Summer",
-        campaignProduct: "designer swimwear",
-      },
-    },
-  ],
-};
+import HistoryList from "@/components/molecules/HistoryList";
+import GenerationOutput from "@/components/molecules/GenerationOutput";
+import {
+  tools,
+  marketingTools,
+  graphicsTools,
+  strategistTools,
+  graphicsTemplates,
+  type ToolType,
+} from "@/data/client-ai-tools-config";
 
 interface ClientAIToolsProps {
   allowedTools?: string[];
@@ -409,8 +202,8 @@ export default function ClientAITools({
   }, [activeTool, selectedTemplateIdx]);
 
   // ---- Generate Handler ----
-  const handleGenerate = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleGenerate = async (e?: React.FormEvent) => {
+    e?.preventDefault();
     if (!auth?.currentUser) {
       setError("Kérlek, jelentkezz be újra a generáláshoz!");
       return;
@@ -739,10 +532,7 @@ export default function ClientAITools({
         ).map((key) => {
           const opt = tools[key];
           const isSelected = activeTool === key;
-          const cardLocked =
-            !isAdmin &&
-            graphicsTools.includes(key) &&
-            !allowedTools.includes(key);
+          const cardLocked = !isAdmin && !allowedTools.includes(key);
           return (
             <GraphicToolCard
               key={key}
@@ -777,10 +567,7 @@ export default function ClientAITools({
       )}
 
       {(() => {
-        const isLocked =
-          !isAdmin &&
-          graphicsTools.includes(activeTool) &&
-          !allowedTools.includes(activeTool);
+        const isLocked = !isAdmin && !allowedTools.includes(activeTool);
         if (isLocked) {
           return (
             <div className="bg-bg-elevated/20 border border-bg-elevated/50 backdrop-blur-md rounded-2xl p-8 text-center space-y-6 max-w-xl mx-auto shadow-xl">
@@ -1326,139 +1113,32 @@ export default function ClientAITools({
               </form>
 
               {/* Output & Actions Column */}
-              <div className="flex flex-col space-y-4">
-                {/* Generated Text (typewriter) */}
-                <div className="min-h-50 p-4 bg-transparent border border-bg-elevated/40 rounded-xl overflow-y-auto text-sm text-slate-300 font-mono">
-                  {displayedText ||
-                    (loading && (
-                      <span className="animate-pulse text-slate-500">
-                        Generálás...
-                      </span>
-                    ))}
-                </div>
-
-                {/* Action Buttons */}
-                <div className="flex gap-2">
-                  <button
-                    type="submit"
-                    disabled={loading}
-                    className="flex items-center gap-1 px-4 py-2 bg-sky-500/20 hover:bg-sky-500/30 text-sky-500 rounded-md text-sm font-medium transition-colors disabled:opacity-40"
-                    onClick={handleGenerate}
-                  >
-                    {loading ? (
-                      <Loader2 className="w-4 h-4 animate-spin" />
-                    ) : (
-                      <Sparkles className="w-4 h-4" />
-                    )}
-                    Generálás
-                  </button>
-                  <button
-                    type="button"
-                    onClick={handleCopy}
-                    disabled={!fullContent}
-                    className="flex items-center gap-1 px-3 py-2 bg-transparent hover:bg-transparent text-slate-400 rounded-md text-xs transition-colors disabled:opacity-40"
-                  >
-                    {copied ? (
-                      <Check className="w-3 h-3" />
-                    ) : (
-                      <Copy className="w-3 h-3" />
-                    )}
-                    Másolás
-                  </button>
-                  <button
-                    type="button"
-                    onClick={handleSaveNote}
-                    disabled={saveLoading || !fullContent}
-                    className="flex items-center gap-1 px-3 py-2 bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-500 rounded-md text-xs transition-colors disabled:opacity-40"
-                  >
-                    {saveLoading ? (
-                      <Loader2 className="w-3 h-3 animate-spin" />
-                    ) : (
-                      <Save className="w-3 h-3" />
-                    )}
-                    Mentés
-                  </button>
-                  <button
-                    type="button"
-                    onClick={handleReset}
-                    className="flex items-center gap-1 px-3 py-2 bg-gray-600/20 hover:bg-gray-600/30 text-gray-400 rounded-md text-xs transition-colors"
-                  >
-                    <RefreshCw className="w-3 h-3" />
-                    Reset
-                  </button>
-                </div>
-
-                {/* Save Success Indicator */}
-                {saveSuccess && (
-                  <div className="flex items-center gap-2 text-emerald-500 text-sm">
-                    <Check className="w-4 h-4" />
-                    Jegyzet sikeresen elmentve!
-                  </div>
-                )}
-              </div>
+              <GenerationOutput
+                displayedText={displayedText}
+                loading={loading}
+                hasContent={!!fullContent}
+                copied={copied}
+                saveLoading={saveLoading}
+                saveSuccess={saveSuccess}
+                onGenerate={handleGenerate}
+                onCopy={handleCopy}
+                onSaveNote={handleSaveNote}
+                onReset={handleReset}
+              />
             </div>
           </>
         );
       })()}
 
       {/* History Section */}
-      <div className="mt-8">
-        <h4 className="text-sm font-bold text-sky-500 mb-2">
-          Generáció Előzmények
-        </h4>
-        {historyLoading ? (
-          <p className="text-slate-500 text-xs">Betöltés...</p>
-        ) : generations.length === 0 ? (
-          <p className="text-slate-500 text-xs">
-            Még nincsenek mentett generációk.
-          </p>
-        ) : (
-          <ul className="space-y-2 max-h-64 overflow-y-auto">
-            {generations.map((gen) => (
-              <li
-                key={gen.id}
-                className="flex items-center justify-between bg-transparent p-2 rounded-md border border-bg-elevated/20"
-              >
-                <div className="flex items-center gap-2">
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    className="text-xs text-sky-500"
-                    onClick={() => handleLoadFromHistory(gen)}
-                  >
-                    {tools[gen.toolId as ToolType]?.name || gen.toolId}
-                  </Button>
-                  <span className="text-xs text-slate-400">
-                    {new Date(gen.createdAt).toLocaleDateString()}
-                  </span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <button
-                    type="button"
-                    onClick={() =>
-                      handleCopyHistoryText(gen.id, gen.outputText)
-                    }
-                    className={`text-xs ${copiedGenId === gen.id ? "text-emerald-500" : "text-slate-400"} hover:text-sky-500`}
-                  >
-                    {copiedGenId === gen.id ? (
-                      <Check className="w-3 h-3" />
-                    ) : (
-                      <Copy className="w-3 h-3" />
-                    )}
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => handleDeleteHistory(gen.id)}
-                    className="text-xs text-red-500 hover:text-red-300"
-                  >
-                    <Trash2 className="w-3 h-3" />
-                  </button>
-                </div>
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
+      <HistoryList
+        generations={generations}
+        historyLoading={historyLoading}
+        copiedGenId={copiedGenId}
+        onLoad={handleLoadFromHistory}
+        onCopy={handleCopyHistoryText}
+        onDelete={handleDeleteHistory}
+      />
     </div>
   );
 }

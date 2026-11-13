@@ -7,8 +7,6 @@ import { z } from "zod";
 import { motion } from "motion/react";
 import {
   Layout,
-  Copy,
-  Check,
   Sparkles,
   Loader2,
   ArrowLeft,
@@ -16,8 +14,6 @@ import {
   Type,
   Layers,
   Target,
-  Sun,
-  Moon,
   Printer,
 } from "lucide-react";
 import Link from "next/link";
@@ -28,6 +24,17 @@ import type {
   PosterWorkshopInput,
   PosterWorkshopOutput,
 } from "@/types/poster-workshop";
+import { PosterConcept } from "@/components/organisms/PosterConcept";
+import { PrintSpecs } from "@/components/organisms/PrintSpecs";
+import { ColorPalette } from "@/components/organisms/ColorPalette";
+import { Typography } from "@/components/organisms/Typography";
+import { PosterLayout } from "@/components/organisms/PosterLayout";
+import { Copywriting } from "@/components/organisms/Copywriting";
+import { MidjourneyPrompts } from "@/components/organisms/MidjourneyPrompts";
+import { PrintGuidelines } from "@/components/organisms/PrintGuidelines";
+import { ExportFormats } from "@/components/organisms/ExportFormats";
+import { PosterVariations } from "@/components/organisms/PosterVariations";
+import ToolAccessLock from "@/components/molecules/ToolAccessLock";
 
 const posterFormSchema = z.object({
   posterPurpose: z.string().min(10, "Poszter célja minimum 10 karakter"),
@@ -175,6 +182,10 @@ export default function PosterWorkshopGenerator() {
       setIsGenerating(false);
     }
   };
+
+  if (!loading && !isAdmin && !allowedTools.includes("poster_ai_muhely")) {
+    return <ToolAccessLock toolName="Poster AI Műhely" />;
+  }
 
   return (
     <div className="min-h-screen bg-transparent text-text-primary">
@@ -516,778 +527,56 @@ export default function PosterWorkshopGenerator() {
                         animate={{ opacity: 1, y: 0 }}
                         className="space-y-6"
                       >
-                        {/* Poster Concept */}
-                        <motion.div
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
-                        >
-                          <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <Layout className="w-4 h-4 text-sky-500" />
-                            Poszter Koncepció
-                          </h3>
-                          <div className="space-y-3">
-                            <div>
-                              <p className="text-xs text-slate-400 mb-1">
-                                Stílus
-                              </p>
-                              <p className="text-sm text-white">
-                                {generatedOutput.posterConcept.style}
-                              </p>
-                            </div>
-                            <div>
-                              <p className="text-xs text-slate-400 mb-1">
-                                Leírás
-                              </p>
-                              <p className="text-sm text-white">
-                                {generatedOutput.posterConcept.description}
-                              </p>
-                            </div>
-                            <div>
-                              <p className="text-xs text-slate-400 mb-1">
-                                Kulcselemek
-                              </p>
-                              <div className="flex flex-wrap gap-2">
-                                {generatedOutput.posterConcept.keyElements.map(
-                                  (element, index) => (
-                                    <span
-                                      key={index}
-                                      className="px-2 py-1 rounded bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs"
-                                    >
-                                      {element}
-                                    </span>
-                                  )
-                                )}
-                              </div>
-                            </div>
-                          </div>
-                        </motion.div>
+                        <PosterConcept concept={generatedOutput.posterConcept} />
 
-                        {/* Specifications */}
-                        <motion.div
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: 0.1 }}
-                          className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
-                        >
-                          <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <Printer className="w-4 h-4 text-sky-500" />
-                            Nyomdai Specifikációk
-                          </h3>
-                          <div className="space-y-3">
-                            <div className="grid grid-cols-4 gap-3">
-                              <div className="bg-bg-base/50 rounded-xl p-3 border border-gray-800">
-                                <p className="text-xs text-slate-400 mb-1">
-                                  Szélesség
-                                </p>
-                                <p className="text-sm font-bold text-white">
-                                  {
-                                    generatedOutput.specifications.dimensions
-                                      .width
-                                  }
-                                  px
-                                </p>
-                              </div>
-                              <div className="bg-bg-base/50 rounded-xl p-3 border border-gray-800">
-                                <p className="text-xs text-slate-400 mb-1">
-                                  Magasság
-                                </p>
-                                <p className="text-sm font-bold text-white">
-                                  {
-                                    generatedOutput.specifications.dimensions
-                                      .height
-                                  }
-                                  px
-                                </p>
-                              </div>
-                              <div className="bg-bg-base/50 rounded-xl p-3 border border-gray-800">
-                                <p className="text-xs text-slate-400 mb-1">
-                                  Formátum
-                                </p>
-                                <p className="text-sm font-bold text-white">
-                                  {
-                                    generatedOutput.specifications.dimensions
-                                      .format
-                                  }
-                                </p>
-                              </div>
-                              <div className="bg-bg-base/50 rounded-xl p-3 border border-gray-800">
-                                <p className="text-xs text-slate-400 mb-1">
-                                  DPI
-                                </p>
-                                <p className="text-sm font-bold text-white">
-                                  {
-                                    generatedOutput.specifications.dimensions
-                                      .dpi
-                                  }
-                                </p>
-                              </div>
-                            </div>
-                            <div>
-                              <p className="text-xs text-slate-400 mb-1">
-                                Bleed
-                              </p>
-                              <p className="text-sm text-white">
-                                {generatedOutput.specifications.bleed}
-                              </p>
-                            </div>
-                            <div>
-                              <p className="text-xs text-slate-400 mb-1">
-                                Safe Zone
-                              </p>
-                              <p className="text-sm text-white">
-                                {generatedOutput.specifications.safeZone}
-                              </p>
-                            </div>
-                            <div>
-                              <p className="text-xs text-slate-400 mb-1">
-                                Crop Marks
-                              </p>
-                              <p className="text-sm text-white">
-                                {generatedOutput.specifications.cropMarks}
-                              </p>
-                            </div>
-                          </div>
-                        </motion.div>
+                        <PrintSpecs
+                          specifications={generatedOutput.specifications}
+                          delay={0.1}
+                        />
 
-                        {/* Color Palette */}
-                        <motion.div
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: 0.2 }}
-                          className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
-                        >
-                          <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <Palette className="w-4 h-4 text-sky-500" />
-                            Szín Paletta (CMYK)
-                          </h3>
-                          <div className="grid grid-cols-5 gap-3">
-                            <div className="text-center">
-                              <div
-                                className="w-12 h-12 rounded-lg border border-gray-800 shadow-lg mx-auto mb-2"
-                                style={{
-                                  backgroundColor:
-                                    generatedOutput.colorPalette.primary,
-                                }}
-                              />
-                              <p className="text-xs text-slate-400">Primary</p>
-                              <p className="text-xs font-mono text-white">
-                                {generatedOutput.colorPalette.primary}
-                              </p>
-                              <p className="text-xs font-mono text-sky-400">
-                                {
-                                  generatedOutput.colorPalette.cmykValues
-                                    .primary
-                                }
-                              </p>
-                            </div>
-                            <div className="text-center">
-                              <div
-                                className="w-12 h-12 rounded-lg border border-gray-800 shadow-lg mx-auto mb-2"
-                                style={{
-                                  backgroundColor:
-                                    generatedOutput.colorPalette.secondary,
-                                }}
-                              />
-                              <p className="text-xs text-slate-400">
-                                Secondary
-                              </p>
-                              <p className="text-xs font-mono text-white">
-                                {generatedOutput.colorPalette.secondary}
-                              </p>
-                              <p className="text-xs font-mono text-sky-400">
-                                {
-                                  generatedOutput.colorPalette.cmykValues
-                                    .secondary
-                                }
-                              </p>
-                            </div>
-                            <div className="text-center">
-                              <div
-                                className="w-12 h-12 rounded-lg border border-gray-800 shadow-lg mx-auto mb-2"
-                                style={{
-                                  backgroundColor:
-                                    generatedOutput.colorPalette.accent,
-                                }}
-                              />
-                              <p className="text-xs text-slate-400">Accent</p>
-                              <p className="text-xs font-mono text-white">
-                                {generatedOutput.colorPalette.accent}
-                              </p>
-                              <p className="text-xs font-mono text-sky-400">
-                                {generatedOutput.colorPalette.cmykValues.accent}
-                              </p>
-                            </div>
-                            <div className="text-center">
-                              <div
-                                className="w-12 h-12 rounded-lg border border-gray-800 shadow-lg mx-auto mb-2"
-                                style={{
-                                  backgroundColor:
-                                    generatedOutput.colorPalette.background,
-                                }}
-                              />
-                              <p className="text-xs text-slate-400">
-                                Background
-                              </p>
-                              <p className="text-xs font-mono text-white">
-                                {generatedOutput.colorPalette.background}
-                              </p>
-                            </div>
-                            <div className="text-center">
-                              <div
-                                className="w-12 h-12 rounded-lg border border-gray-800 shadow-lg mx-auto mb-2"
-                                style={{
-                                  backgroundColor:
-                                    generatedOutput.colorPalette.text,
-                                }}
-                              />
-                              <p className="text-xs text-slate-400">Text</p>
-                              <p className="text-xs font-mono text-white">
-                                {generatedOutput.colorPalette.text}
-                              </p>
-                            </div>
-                          </div>
-                          <div>
-                            <p className="text-xs text-slate-400 mb-1">
-                              Indoklás
-                            </p>
-                            <p className="text-xs text-white">
-                              {generatedOutput.colorPalette.rationale}
-                            </p>
-                          </div>
-                        </motion.div>
+                        <ColorPalette
+                          colorPalette={generatedOutput.colorPalette}
+                          delay={0.2}
+                        />
 
-                        {/* Typography */}
-                        <motion.div
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: 0.3 }}
-                          className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
-                        >
-                          <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <Type className="w-4 h-4 text-sky-500" />
-                            Tipográfia
-                          </h3>
-                          <div className="space-y-3">
-                            <div className="grid grid-cols-2 gap-3">
-                              <div>
-                                <p className="text-xs text-slate-400 mb-1">
-                                  Főcím Font
-                                </p>
-                                <p className="text-sm text-white">
-                                  {generatedOutput.typography.headlineFont}
-                                </p>
-                              </div>
-                              <div>
-                                <p className="text-xs text-slate-400 mb-1">
-                                  Szövegtörzs Font
-                                </p>
-                                <p className="text-sm text-white">
-                                  {generatedOutput.typography.bodyFont}
-                                </p>
-                              </div>
-                            </div>
-                            <div>
-                              <p className="text-xs text-slate-400 mb-1">
-                                Font Méretek
-                              </p>
-                              <div className="grid grid-cols-4 gap-2 text-xs">
-                                <div className="bg-bg-base/50 rounded-lg p-2 border border-gray-800">
-                                  <p className="text-slate-400">Főcím</p>
-                                  <p className="text-white">
-                                    {
-                                      generatedOutput.typography.fontSizes
-                                        .headline
-                                    }
-                                  </p>
-                                </div>
-                                <div className="bg-bg-base/50 rounded-lg p-2 border border-gray-800">
-                                  <p className="text-slate-400">Alcím</p>
-                                  <p className="text-white">
-                                    {
-                                      generatedOutput.typography.fontSizes
-                                        .subheadline
-                                    }
-                                  </p>
-                                </div>
-                                <div className="bg-bg-base/50 rounded-lg p-2 border border-gray-800">
-                                  <p className="text-slate-400">Szöveg</p>
-                                  <p className="text-white">
-                                    {generatedOutput.typography.fontSizes.body}
-                                  </p>
-                                </div>
-                                <div className="bg-bg-base/50 rounded-lg p-2 border border-gray-800">
-                                  <p className="text-slate-400">Caption</p>
-                                  <p className="text-white">
-                                    {
-                                      generatedOutput.typography.fontSizes
-                                        .caption
-                                    }
-                                  </p>
-                                </div>
-                              </div>
-                            </div>
-                            <div className="grid grid-cols-2 gap-3">
-                              <div>
-                                <p className="text-xs text-slate-400 mb-1">
-                                  Line Height
-                                </p>
-                                <p className="text-sm text-white">
-                                  {generatedOutput.typography.lineHeight}
-                                </p>
-                              </div>
-                              <div>
-                                <p className="text-xs text-slate-400 mb-1">
-                                  Kerning
-                                </p>
-                                <p className="text-sm text-white">
-                                  {generatedOutput.typography.kerning}
-                                </p>
-                              </div>
-                            </div>
-                          </div>
-                        </motion.div>
+                        <Typography
+                          typography={generatedOutput.typography}
+                          delay={0.3}
+                        />
 
-                        {/* Layout */}
-                        <motion.div
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: 0.4 }}
-                          className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
-                        >
-                          <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <Layout className="w-4 h-4 text-sky-500" />
-                            Elrendezés
-                          </h3>
-                          <div className="space-y-3">
-                            <div>
-                              <p className="text-xs text-slate-400 mb-1">
-                                Grid Rendszer
-                              </p>
-                              <p className="text-sm text-white">
-                                {generatedOutput.layout.gridSystem}
-                              </p>
-                            </div>
-                            <div>
-                              <p className="text-xs text-slate-400 mb-1">
-                                Vizuális Hierarchia
-                              </p>
-                              <p className="text-sm text-white">
-                                {generatedOutput.layout.visualHierarchy}
-                              </p>
-                            </div>
-                            <div>
-                              <p className="text-xs text-slate-400 mb-1">
-                                Elem Elhelyezés
-                              </p>
-                              <p className="text-sm text-white">
-                                {generatedOutput.layout.elementPlacement}
-                              </p>
-                            </div>
-                            <div>
-                              <p className="text-xs text-slate-400 mb-1">
-                                Whitespace
-                              </p>
-                              <p className="text-sm text-white">
-                                {generatedOutput.layout.whitespace}
-                              </p>
-                            </div>
-                          </div>
-                        </motion.div>
+                        <PosterLayout
+                          layout={generatedOutput.layout}
+                          delay={0.4}
+                        />
 
-                        {/* Copywriting */}
-                        <motion.div
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: 0.5 }}
-                          className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
-                        >
-                          <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <Type className="w-4 h-4 text-sky-500" />
-                            Copywriting
-                          </h3>
-                          <div className="space-y-3">
-                            <div className="bg-bg-base/50 rounded-xl p-4 border border-gray-800">
-                              <div className="flex items-center justify-between mb-2">
-                                <p className="text-xs text-slate-400">Főcím</p>
-                                <button
-                                  onClick={() =>
-                                    copyToClipboard(
-                                      generatedOutput.copywriting.headline,
-                                      "headline"
-                                    )
-                                  }
-                                  className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-mono hover:bg-sky-500/20 transition-colors"
-                                >
-                                  {copiedStates["headline"] ? (
-                                    <>
-                                      <Check className="w-3 h-3" />
-                                      Másolva
-                                    </>
-                                  ) : (
-                                    <>
-                                      <Copy className="w-3 h-3" />
-                                      Másolás
-                                    </>
-                                  )}
-                                </button>
-                              </div>
-                              <p className="text-sm font-bold text-white">
-                                {generatedOutput.copywriting.headline}
-                              </p>
-                            </div>
-                            <div className="bg-bg-base/50 rounded-xl p-4 border border-gray-800">
-                              <div className="flex items-center justify-between mb-2">
-                                <p className="text-xs text-slate-400">Alcím</p>
-                                <button
-                                  onClick={() =>
-                                    copyToClipboard(
-                                      generatedOutput.copywriting.subheadline,
-                                      "subheadline"
-                                    )
-                                  }
-                                  className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-mono hover:bg-sky-500/20 transition-colors"
-                                >
-                                  {copiedStates["subheadline"] ? (
-                                    <>
-                                      <Check className="w-3 h-3" />
-                                      Másolva
-                                    </>
-                                  ) : (
-                                    <>
-                                      <Copy className="w-3 h-3" />
-                                      Másolás
-                                    </>
-                                  )}
-                                </button>
-                              </div>
-                              <p className="text-sm text-white">
-                                {generatedOutput.copywriting.subheadline}
-                              </p>
-                            </div>
-                            <div className="bg-bg-base/50 rounded-xl p-4 border border-gray-800">
-                              <div className="flex items-center justify-between mb-2">
-                                <p className="text-xs text-slate-400">
-                                  Szövegtörzs
-                                </p>
-                                <button
-                                  onClick={() =>
-                                    copyToClipboard(
-                                      generatedOutput.copywriting.bodyText,
-                                      "body"
-                                    )
-                                  }
-                                  className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-mono hover:bg-sky-500/20 transition-colors"
-                                >
-                                  {copiedStates["body"] ? (
-                                    <>
-                                      <Check className="w-3 h-3" />
-                                      Másolva
-                                    </>
-                                  ) : (
-                                    <>
-                                      <Copy className="w-3 h-3" />
-                                      Másolás
-                                    </>
-                                  )}
-                                </button>
-                              </div>
-                              <p className="text-sm text-white">
-                                {generatedOutput.copywriting.bodyText}
-                              </p>
-                            </div>
-                            <div className="bg-bg-base/50 rounded-xl p-4 border border-gray-800">
-                              <div className="flex items-center justify-between mb-2">
-                                <p className="text-xs text-slate-400">CTA</p>
-                                <button
-                                  onClick={() =>
-                                    copyToClipboard(
-                                      generatedOutput.copywriting.cta,
-                                      "cta"
-                                    )
-                                  }
-                                  className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-mono hover:bg-sky-500/20 transition-colors"
-                                >
-                                  {copiedStates["cta"] ? (
-                                    <>
-                                      <Check className="w-3 h-3" />
-                                      Másolva
-                                    </>
-                                  ) : (
-                                    <>
-                                      <Copy className="w-3 h-3" />
-                                      Másolás
-                                    </>
-                                  )}
-                                </button>
-                              </div>
-                              <p className="text-sm font-bold text-sky-500">
-                                {generatedOutput.copywriting.cta}
-                              </p>
-                            </div>
-                          </div>
-                        </motion.div>
+                        <Copywriting
+                          copywriting={generatedOutput.copywriting}
+                          copiedStates={copiedStates}
+                          onCopy={copyToClipboard}
+                          delay={0.5}
+                        />
 
-                        {/* Midjourney Prompts */}
-                        <motion.div
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: 0.6 }}
-                          className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
-                        >
-                          <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <Sparkles className="w-4 h-4 text-sky-500" />
-                            Midjourney Promptok
-                          </h3>
-                          <div className="space-y-3">
-                            <div className="bg-bg-base/50 rounded-xl p-4 border border-gray-800">
-                              <div className="flex items-center justify-between mb-2">
-                                <p className="text-xs text-slate-400">
-                                  Primary
-                                </p>
-                                <button
-                                  onClick={() =>
-                                    copyToClipboard(
-                                      generatedOutput.midjourneyPrompts.primary,
-                                      "mj-primary"
-                                    )
-                                  }
-                                  className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-mono hover:bg-sky-500/20 transition-colors"
-                                >
-                                  {copiedStates["mj-primary"] ? (
-                                    <>
-                                      <Check className="w-3 h-3" />
-                                      Másolva
-                                    </>
-                                  ) : (
-                                    <>
-                                      <Copy className="w-3 h-3" />
-                                      Másolás
-                                    </>
-                                  )}
-                                </button>
-                              </div>
-                              <p className="text-xs text-white font-mono leading-relaxed whitespace-pre-wrap">
-                                {generatedOutput.midjourneyPrompts.primary}
-                              </p>
-                            </div>
-                            <div className="bg-bg-base/50 rounded-xl p-4 border border-gray-800">
-                              <div className="flex items-center justify-between mb-2">
-                                <p className="text-xs text-slate-400">
-                                  Alternative 1
-                                </p>
-                                <button
-                                  onClick={() =>
-                                    copyToClipboard(
-                                      generatedOutput.midjourneyPrompts
-                                        .alternative1,
-                                      "mj-alt1"
-                                    )
-                                  }
-                                  className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-mono hover:bg-sky-500/20 transition-colors"
-                                >
-                                  {copiedStates["mj-alt1"] ? (
-                                    <>
-                                      <Check className="w-3 h-3" />
-                                      Másolva
-                                    </>
-                                  ) : (
-                                    <>
-                                      <Copy className="w-3 h-3" />
-                                      Másolás
-                                    </>
-                                  )}
-                                </button>
-                              </div>
-                              <p className="text-xs text-white font-mono leading-relaxed whitespace-pre-wrap">
-                                {generatedOutput.midjourneyPrompts.alternative1}
-                              </p>
-                            </div>
-                            <div className="bg-bg-base/50 rounded-xl p-4 border border-gray-800">
-                              <div className="flex items-center justify-between mb-2">
-                                <p className="text-xs text-slate-400">
-                                  Alternative 2
-                                </p>
-                                <button
-                                  onClick={() =>
-                                    copyToClipboard(
-                                      generatedOutput.midjourneyPrompts
-                                        .alternative2,
-                                      "mj-alt2"
-                                    )
-                                  }
-                                  className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-mono hover:bg-sky-500/20 transition-colors"
-                                >
-                                  {copiedStates["mj-alt2"] ? (
-                                    <>
-                                      <Check className="w-3 h-3" />
-                                      Másolva
-                                    </>
-                                  ) : (
-                                    <>
-                                      <Copy className="w-3 h-3" />
-                                      Másolás
-                                    </>
-                                  )}
-                                </button>
-                              </div>
-                              <p className="text-xs text-white font-mono leading-relaxed whitespace-pre-wrap">
-                                {generatedOutput.midjourneyPrompts.alternative2}
-                              </p>
-                            </div>
-                          </div>
-                        </motion.div>
+                        <MidjourneyPrompts
+                          prompts={generatedOutput.midjourneyPrompts}
+                          copiedStates={copiedStates}
+                          onCopy={copyToClipboard}
+                          delay={0.6}
+                        />
 
-                        {/* Print Guidelines */}
-                        <motion.div
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: 0.7 }}
-                          className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
-                        >
-                          <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <Printer className="w-4 h-4 text-sky-500" />
-                            Nyomdai Irányelvek
-                          </h3>
-                          <div className="space-y-3">
-                            <div className="grid grid-cols-2 gap-3">
-                              <div>
-                                <p className="text-xs text-slate-400 mb-1">
-                                  Szín Mód
-                                </p>
-                                <p className="text-sm text-white">
-                                  {generatedOutput.printGuidelines.colorMode}
-                                </p>
-                              </div>
-                              <div>
-                                <p className="text-xs text-slate-400 mb-1">
-                                  Felbontás
-                                </p>
-                                <p className="text-sm text-white">
-                                  {generatedOutput.printGuidelines.resolution}
-                                </p>
-                              </div>
-                              <div>
-                                <p className="text-xs text-slate-400 mb-1">
-                                  Fájl Formátum
-                                </p>
-                                <p className="text-sm text-white">
-                                  {generatedOutput.printGuidelines.fileFormat}
-                                </p>
-                              </div>
-                              <div>
-                                <p className="text-xs text-slate-400 mb-1">
-                                  Szín Profil
-                                </p>
-                                <p className="text-sm text-white">
-                                  {generatedOutput.printGuidelines.colorProfile}
-                                </p>
-                              </div>
-                            </div>
-                            <div>
-                              <p className="text-xs text-slate-400 mb-1">
-                                Ne Tedd
-                              </p>
-                              <ul className="space-y-1">
-                                {generatedOutput.printGuidelines.doNot.map(
-                                  (dont, index) => (
-                                    <li
-                                      key={index}
-                                      className="text-xs text-white"
-                                    >
-                                      {dont}
-                                    </li>
-                                  )
-                                )}
-                              </ul>
-                            </div>
-                          </div>
-                        </motion.div>
+                        <PrintGuidelines
+                          guidelines={generatedOutput.printGuidelines}
+                          delay={0.7}
+                        />
 
-                        {/* Export Formats */}
-                        <motion.div
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: 0.8 }}
-                          className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
-                        >
-                          <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <Layers className="w-4 h-4 text-sky-500" />
-                            Export Formátumok
-                          </h3>
-                          <div className="space-y-3">
-                            <div className="bg-bg-base/50 rounded-xl p-4 border border-gray-800">
-                              <p className="text-xs text-slate-400 mb-1">
-                                Print
-                              </p>
-                              <p className="text-xs text-white">
-                                {generatedOutput.exportFormats.print}
-                              </p>
-                            </div>
-                            <div className="bg-bg-base/50 rounded-xl p-4 border border-gray-800">
-                              <p className="text-xs text-slate-400 mb-1">Web</p>
-                              <p className="text-xs text-white">
-                                {generatedOutput.exportFormats.web}
-                              </p>
-                            </div>
-                            <div className="bg-bg-base/50 rounded-xl p-4 border border-gray-800">
-                              <p className="text-xs text-slate-400 mb-1">
-                                Social
-                              </p>
-                              <p className="text-xs text-white">
-                                {generatedOutput.exportFormats.social}
-                              </p>
-                            </div>
-                          </div>
-                        </motion.div>
+                        <ExportFormats
+                          formats={generatedOutput.exportFormats}
+                          delay={0.8}
+                        />
 
-                        {/* Variations */}
-                        <motion.div
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: 0.9 }}
-                          className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
-                        >
-                          <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <Layers className="w-4 h-4 text-sky-500" />
-                            Változatok
-                          </h3>
-                          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-                            <div className="bg-bg-base/50 rounded-xl p-4 border border-gray-800">
-                              <div className="flex items-center gap-2 mb-2">
-                                <Sun className="w-3 h-3 text-sky-500" />
-                                <p className="text-xs text-slate-400">
-                                  Light Mode
-                                </p>
-                              </div>
-                              <p className="text-xs text-white leading-relaxed">
-                                {generatedOutput.variations.lightMode}
-                              </p>
-                            </div>
-                            <div className="bg-bg-base/50 rounded-xl p-4 border border-gray-800">
-                              <div className="flex items-center gap-2 mb-2">
-                                <Moon className="w-3 h-3 text-sky-500" />
-                                <p className="text-xs text-slate-400">
-                                  Dark Mode
-                                </p>
-                              </div>
-                              <p className="text-xs text-white leading-relaxed">
-                                {generatedOutput.variations.darkMode}
-                              </p>
-                            </div>
-                            <div className="bg-bg-base/50 rounded-xl p-4 border border-gray-800">
-                              <div className="flex items-center gap-2 mb-2">
-                                <Target className="w-3 h-3 text-sky-500" />
-                                <p className="text-xs text-slate-400">
-                                  Grayscale
-                                </p>
-                              </div>
-                              <p className="text-xs text-white leading-relaxed">
-                                {generatedOutput.variations.grayscale}
-                              </p>
-                            </div>
-                          </div>
-                        </motion.div>
+                        <PosterVariations
+                          variations={generatedOutput.variations}
+                          delay={0.9}
+                        />
                       </motion.div>
                     ) : (
                       <div className="bg-bg-elevated/30 backdrop-blur-xl border border-bg-elevated/80 rounded-2xl p-12 flex flex-col items-center justify-center space-y-4 text-center">

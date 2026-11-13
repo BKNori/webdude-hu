@@ -1,6 +1,5 @@
 "use client";
 
-import ProductAccessGuard from "@/components/molecules/ProductAccessGuard";
 import { useState } from "react";
 import { motion } from "motion/react";
 import {
@@ -123,7 +122,6 @@ export default function TartalomtervezoAIMuhelyPage() {
 
   return (
     <>
-      <ProductAccessGuard>
         <div className="min-h-screen bg-bg-base">
           {/* Hero Section */}
           <section className="relative py-24 overflow-hidden">
@@ -485,7 +483,6 @@ export default function TartalomtervezoAIMuhelyPage() {
             </div>
           </section>
         </div>
-      </ProductAccessGuard>
     </>
   );
 }

@@ -21,6 +21,7 @@ import {
   Hexagon,
 } from "lucide-react";
 import Link from "next/link";
+import ToolAccessLock from "@/components/molecules/ToolAccessLock";
 import { auth } from "@/lib/firebase";
 import { addIconGenerationAction } from "@/actions/icon-workshop";
 import { getClientUserProfileAction } from "@/actions/portal";
@@ -170,6 +171,12 @@ export default function IconWorkshopGenerator() {
       setIsGenerating(false);
     }
   };
+
+  // Strict access gate: show a locked panel until auth resolves,
+  // then block users without the required tool permission.
+  if (!loading && !isAdmin && !allowedTools.includes("icon_design_ai_muhely")) {
+    return <ToolAccessLock toolName="Icon Design AI Műhely" />;
+  }
 
   return (
     <div className="min-h-screen bg-transparent text-text-primary">
