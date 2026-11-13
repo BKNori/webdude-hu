@@ -11,11 +11,12 @@ import {
   Award,
 } from "lucide-react";
 import { buildBreadcrumbSchema, BreadcrumbItem } from "@/lib/breadcrumb";
+import DirectAnswerBlock from "@/components/molecules/DirectAnswerBlock";
 
 export const metadata: Metadata = {
   title: "Professzionális Logó Tervezés országos szolgáltatással | WebDude",
   description:
-    "Egyedi logó tervezés és teljes vizuális identitás építés országos szolgáltatással. 26 év grafikai tapasztalat, vektoros forrásfájlok, nyomdai előkészítés. Emblém, ami megkülönböztet a versenytársaktól.",
+    "Egyedi logó tervezés és teljes arculattervezés KKV-knak: vektoros forrásfájlok, nyomdai előkészítés, 26 év grafikai tapasztalat. Egyedi árajánlat kérése.",
   keywords:
     "logó tervezés, arculattervezés, brand identity, vizuális identitás, vektoros logo, céges emblém, marketing grafika, országos logó tervezés",
   alternates: {
@@ -35,6 +36,15 @@ export const metadata: Metadata = {
         height: 630,
         alt: "Professzionális logó tervezés",
       },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Professzionális Logó Tervezés és Arculattervezés | WebDude",
+    description:
+      "Egyedi logó tervezés KKV-knak: vektoros forrásfájlok, nyomdai előkészítés, 26 év grafikai tapasztalat.",
+    images: [
+      "/assets/portfolio/logo-tervezes/dr-nagy-albert-logo3-web-copy.webp",
     ],
   },
 };
@@ -256,13 +266,16 @@ export default function LogoTervezesPage() {
       "@type": "Organization",
       "@id": "https://webdude.hu/#organization",
       name: "WebDude",
-      founder: {
-        "@type": "Person",
-        name: "Balog Norbi",
-        jobTitle: "Full-Stack Webfejlesztő & AI Specialist",
-        description: "26 év grafikai és 16 év webfejlesztői tapasztalat",
-      },
     },
+    founder: {
+      "@type": "Person",
+      "@id": "https://webdude.hu/#person",
+      name: "Balog Norbert",
+      jobTitle: "Full-Stack Webfejlesztő & Grafikai Tervező",
+      description: "26 év grafikai tervezési és 16 év webfejlesztői tapasztalat",
+    },
+    url: "https://webdude.hu/szolgaltatasok/logo-tervezes",
+    serviceType: "Logó tervezés és arculattervezés",
     areaServed: { "@type": "Country", name: "Hungary" },
   };
 
@@ -276,6 +289,22 @@ export default function LogoTervezesPage() {
         "@type": "Answer",
         text: faq.answer,
       },
+    })),
+  };
+
+  const gallerySchema = {
+    "@context": "https://schema.org",
+    "@type": "ImageGallery",
+    name: "Logó Tervezési Portfólió",
+    description:
+      "Különböző iparágakból származó egyedi logó tervezések: orvosi, food truck, SaaS, jogi és ipari branding.",
+    url: "https://webdude.hu/szolgaltatasok/logo-tervezes",
+    associatedMedia: logoProjects.map((project) => ({
+      "@type": "ImageObject",
+      name: `${project.name} logó tervezés`,
+      description: project.description,
+      contentUrl: `https://webdude.hu${project.image}`,
+      representativeOfPage: true,
     })),
   };
 
@@ -299,6 +328,12 @@ export default function LogoTervezesPage() {
           __html: JSON.stringify(faqSchema).replace(/</g, "\\u003c"),
         }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(gallerySchema).replace(/</g, "\\u003c"),
+        }}
+      />
 
       <div className="min-h-screen bg-bg-base text-text-primary">
         {/* Hero Section */}
@@ -309,10 +344,10 @@ export default function LogoTervezesPage() {
               alt="Professzionális logó tervezés"
               fill
               priority
-              className="object-cover object-center -z-20 opacity-20"
+              className="object-cover object-center -z-20 opacity-40"
               sizes="100vw"
             />
-            <div className="absolute inset-0 bg-bg-base/90" />
+            <div className="absolute inset-0 bg-linear-to-r from-bg-base/85 via-bg-base/60 to-bg-base/20" />
           </div>
 
           <div className="relative z-10 mx-auto max-w-7xl px-6 py-20 md:py-32">
@@ -329,7 +364,7 @@ export default function LogoTervezesPage() {
               </p>
               <Link
                 href="/kapcsolat"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-linear-to-r from-cta-from to-[#5B21B6] text-white font-bold rounded-full transition-all hover:scale-[1.02] shadow-[0_8px_24px_rgba(0,181,241,0.3)]"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-linear-to-r from-cta-from to-[#5B21B6] text-white font-bold rounded-full transition-all hover:scale-[1.02] shadow-[0_8px_24px_rgba(0,181,241,0.3)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B5F1] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base"
               >
                 Kérek egy ingyenes Logó Konzultációt
               </Link>
@@ -337,20 +372,17 @@ export default function LogoTervezesPage() {
           </div>
         </section>
 
-        {/* Direct Answer Block - AEO optimalizált */}
-        <section className="relative py-12 bg-bg-base border-y border-white/5">
-          <div className="max-w-4xl mx-auto px-6 text-center">
-            <p className="text-base md:text-lg text-slate-300 leading-relaxed">
-              <span className="text-[#00B5F1] font-semibold">
-                WebDude logó tervezés:
-              </span>{" "}
-              Egyedi logó tervezés és teljes vizuális identitás építés KKV-knak
-              országos szolgáltatással. 26 év grafikai tapasztalat, vektoros
-              forrásfájlok, nyomdai előkészítés és Arculati Kézikönyv. Egyedi
-              árajánlat kérése az igények alapján.
-            </p>
-          </div>
-        </section>
+        {/* AEO Direct Answer Block */}
+        <DirectAnswerBlock
+          id="logo-tervezes-direct-answer"
+          question="Mennyibe kerül egy professzionális logó tervezés Magyarországon?"
+          answer="Egy egyedi logó tervezés árája a projekt komplexitásától függően egyedi árajánlatban kerül meghatározásra. A WebDude csomagjai a Logó & Arculati Alapoktól a Teljes Arculattervezésen át a Vállalati Identitásig terjednek, mindegyik vektoros forrásfájlokkal és nyomdai előkészítéssel."
+          facts={[
+            { label: "Tapasztalat", value: "26 év grafika" },
+            { label: "Ár", value: "Egyedi árajánlat" },
+            { label: "Átadás", value: "Vektoros fájlok" },
+          ]}
+        />
 
         {/* Features Section */}
         <section className="py-16 md:py-24 px-4 md:px-6">
@@ -402,7 +434,7 @@ export default function LogoTervezesPage() {
                   key={project.id}
                   className="group relative bg-bg-surface border border-bg-elevated/80 rounded-2xl overflow-hidden hover:border-[#00B5F1]/50 transition-all"
                 >
-                  <div className="aspect-square relative">
+                  <div className="aspect-square relative bg-white">
                     <Image
                       src={project.image}
                       alt={`${project.name} logó tervezés`}
@@ -478,7 +510,7 @@ export default function LogoTervezesPage() {
                   </ul>
                   <Link
                     href={tier.ctaLink}
-                    className={`inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all ${
+                    className={`inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B5F1] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base ${
                       tier.highlighted
                         ? "bg-[#00B5F1] text-white hover:bg-[#00B5F1]/90"
                         : "bg-bg-elevated text-slate-200 hover:bg-bg-elevated/80"
@@ -538,7 +570,7 @@ export default function LogoTervezesPage() {
               </p>
               <Link
                 href="/kapcsolat"
-                className="inline-flex items-center gap-2 px-10 py-5 bg-linear-to-r from-cta-from to-[#5B21B6] text-white font-bold rounded-2xl transition-all hover:scale-[1.02] shadow-[0_8px_24px_rgba(0,181,241,0.3)]"
+                className="inline-flex items-center gap-2 px-10 py-5 bg-linear-to-r from-cta-from to-[#5B21B6] text-white font-bold rounded-2xl transition-all hover:scale-[1.02] shadow-[0_8px_24px_rgba(0,181,241,0.3)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B5F1] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base"
               >
                 Ingyenes Konzultáció
               </Link>

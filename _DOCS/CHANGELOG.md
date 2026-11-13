@@ -1,5 +1,22 @@
 # Changelog
 
+## [7.45.1] — 2026-11-13 — SZOLGÁLTATÁSOLDALAK VIZUÁLIS ÉS SEO/AEO FINOMHANGOLÁS (/logo-tervezes, /szorolap-tervezes, /csomagolas-tervezes)
+
+**VIZUÁLIS:**
+- Hero háttérképek: `opacity-20` → `opacity-40`, és az uniform `bg-bg-base/90` overlay helyett irányított gradiens maszkolás (`bg-linear-to-r from-bg-base/85 via-bg-base/60 to-bg-base/20`) mind a 3 oldalon — a portfólió kép jobban látszik, a H1 kontraszt megmaradt.
+- Portfólió galériák: a kép konténerek `bg-white` hátteret kaptak (a sötét kártyán a logók, szórólapok és csomagolás mockupok élethűen mutatnak).
+- a11y: mind a CTA linkeken `focus-visible:ring-2 focus-visible:ring-[#00B5F1]` gyűrű.
+
+**SEO/AEO/GEO:**
+- A korábbi inline szöveges Direct Answer szekciók lecserélve a standard `<DirectAnswerBlock />` komponensre (kérdés-válasz + facts chipek) mind a 3 oldalon.
+- Új `ImageGallery` JSON-LD séma mind a 3 oldalon — a portfólió képek `ImageObject` entitásként (erősített AEO/GEO kép-visszaküldés).
+- `Service` séma: `founder` most `#person` (`@id: https://webdude.hu/#person`) horgonyra mutat, név SSOT: "Balog Norbert", `jobTitle` "Grafikai Tervező", plusz `url` és `serviceType` mezők.
+- `twitter` Card metadata (`summary_large_image`) hozzáadva mind a 3 oldalhoz.
+- Meta description optimalizálva ~150 karakterre mind a 3 oldalon.
+- **QA:** `npx tsc --noEmit` → **0 hiba**; `eslint` a 3 fájlon → **0 warning**.
+
+---
+
 ## [7.45.0] — 2026-11-12 — KÉK-LILA v7.0 WEBDESIGN & UI/UX TELJES KÓDBÁZIS AUDIT ÉS JAVÍTÁS (4 BATCH)
 
 **1. BATCH 1 — GLOBÁLIS ALAPOK:**

@@ -11,11 +11,12 @@ import {
   Printer,
 } from "lucide-react";
 import { buildBreadcrumbSchema, BreadcrumbItem } from "@/lib/breadcrumb";
+import DirectAnswerBlock from "@/components/molecules/DirectAnswerBlock";
 
 export const metadata: Metadata = {
   title: "Professzionális Szórólap Tervezés országos szolgáltatással | WebDude",
   description:
-    "Egyedi szórólap tervezés, molinók, roll-up és marketing anyagok nyomdai előkészítéssel országos szolgáltatással. 26 év grafikai tapasztalat, CMYK optimalizálás, kifutó-tervezés.",
+    "Egyedi szórólap, molinó és marketing anyag tervezés nyomdai előkészítéssel: CMYK optimalizálás, kifutó tervezés, 26 év grafikai tapasztalat. Egyedi árajánlat.",
   keywords:
     "szórólap tervezés, molinó tervezés, roll-up tervezés, marketing anyagok, nyomdai előkészítés, CMYK, kifutó, flyer tervezés, plakát tervezés, országos grafikai tervezés",
   alternates: {
@@ -37,6 +38,14 @@ export const metadata: Metadata = {
         alt: "Professzionális szórólap tervezés",
       },
     ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title:
+      "Professzionális Szórólap Tervezés és Nyomdai Előkészítés | WebDude",
+    description:
+      "Egyedi szórólap, molinó és marketing anyag tervezés nyomdai előkészítéssel, 26 év tapasztalattal.",
+    images: ["/assets/portfolio/szorolapok/delta-food-flyer-a5.webp"],
   },
 };
 
@@ -196,13 +205,16 @@ export default function SzorolapTervezesPage() {
       "@type": "Organization",
       "@id": "https://webdude.hu/#organization",
       name: "WebDude",
-      founder: {
-        "@type": "Person",
-        name: "Balog Norbi",
-        jobTitle: "Full-Stack Webfejlesztő & AI Specialist",
-        description: "26 év grafikai és 16 év webfejlesztői tapasztalat",
-      },
     },
+    founder: {
+      "@type": "Person",
+      "@id": "https://webdude.hu/#person",
+      name: "Balog Norbert",
+      jobTitle: "Full-Stack Webfejlesztő & Grafikai Tervező",
+      description: "26 év grafikai tervezési és 16 év webfejlesztői tapasztalat",
+    },
+    url: "https://webdude.hu/szolgaltatasok/szorolap-tervezes",
+    serviceType: "Szórólap tervezés és nyomdai előkészítés",
     areaServed: { "@type": "Country", name: "Hungary" },
   };
 
@@ -216,6 +228,22 @@ export default function SzorolapTervezesPage() {
         "@type": "Answer",
         text: faq.answer,
       },
+    })),
+  };
+
+  const gallerySchema = {
+    "@context": "https://schema.org",
+    "@type": "ImageGallery",
+    name: "Szórólap Tervezési Portfólió",
+    description:
+      "Különböző formátumú marketing anyagok: A5 és A6 szórólapok, 350x190 cm molinók nyomdai előkészítéssel.",
+    url: "https://webdude.hu/szolgaltatasok/szorolap-tervezes",
+    associatedMedia: flyerProjects.map((project) => ({
+      "@type": "ImageObject",
+      name: `${project.name} szórólap tervezés`,
+      description: project.description,
+      contentUrl: `https://webdude.hu${project.image}`,
+      representativeOfPage: true,
     })),
   };
 
@@ -239,6 +267,12 @@ export default function SzorolapTervezesPage() {
           __html: JSON.stringify(faqSchema).replace(/</g, "\\u003c"),
         }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(gallerySchema).replace(/</g, "\\u003c"),
+        }}
+      />
 
       <div className="min-h-screen bg-bg-base text-text-primary">
         {/* Hero Section */}
@@ -249,10 +283,10 @@ export default function SzorolapTervezesPage() {
               alt="Professzionális szórólap tervezés"
               fill
               priority
-              className="object-cover object-center -z-20 opacity-20"
+              className="object-cover object-center -z-20 opacity-40"
               sizes="100vw"
             />
-            <div className="absolute inset-0 bg-bg-base/90" />
+            <div className="absolute inset-0 bg-linear-to-r from-bg-base/85 via-bg-base/60 to-bg-base/20" />
           </div>
 
           <div className="relative z-10 mx-auto max-w-7xl px-6 py-20 md:py-32">
@@ -269,7 +303,7 @@ export default function SzorolapTervezesPage() {
               </p>
               <Link
                 href="/kapcsolat"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-linear-to-r from-cta-from to-cta-to text-white font-bold rounded-full transition-all hover:scale-[1.02] shadow-[0_8px_24px_rgba(0,181,241,0.3)]"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-linear-to-r from-cta-from to-cta-to text-white font-bold rounded-full transition-all hover:scale-[1.02] shadow-[0_8px_24px_rgba(0,181,241,0.3)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B5F1] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base"
               >
                 Kérek egy ingyenes Grafikai Konzultációt
               </Link>
@@ -277,20 +311,17 @@ export default function SzorolapTervezesPage() {
           </div>
         </section>
 
-        {/* Direct Answer Block - AEO optimalizált */}
-        <section className="relative py-12 bg-bg-base border-y border-white/5">
-          <div className="max-w-4xl mx-auto px-6 text-center">
-            <p className="text-base md:text-lg text-slate-300 leading-relaxed">
-              <span className="text-[#00B5F1] font-semibold">
-                WebDude szórólap tervezés:
-              </span>{" "}
-              Egyedi szórólapok, molinók, roll-up és marketing anyagok nyomdai
-              előkészítéssel KKV-knak országos szolgáltatással. 26 év grafikai
-              tapasztalat, CMYK optimalizálás, kifutó tervezés és PDF/X-1a
-              standard. Egyedi árajánlat kérése az igények alapján.
-            </p>
-          </div>
-        </section>
+        {/* AEO Direct Answer Block */}
+        <DirectAnswerBlock
+          id="szorolap-tervezes-direct-answer"
+          question="Mennyibe kerül egy professzionális szórólap tervezés?"
+          answer="Egy egyedi szórólap tervezés árája a formátumtól és a projekt komplexitásától függően egyedi árajánlatban kerül meghatározásra. A WebDude csomagjai az Egyedi Szórólaptól a Teljes Marketing Csomagon át a Vállalati Kampányig terjednek, mindegyik nyomdai előkészítéssel és CMYK optimalizálással."
+          facts={[
+            { label: "Tapasztalat", value: "26 év grafika" },
+            { label: "Ár", value: "Egyedi árajánlat" },
+            { label: "Átadás", value: "Nyomdakész PDF" },
+          ]}
+        />
 
         {/* Features Section */}
         <section className="py-16 md:py-24 px-4 md:px-6">
@@ -343,7 +374,7 @@ export default function SzorolapTervezesPage() {
                   key={project.id}
                   className="group relative bg-bg-surface border border-bg-elevated/80 rounded-2xl overflow-hidden hover:border-[#00B5F1]/50 transition-all"
                 >
-                  <div className="aspect-video relative">
+                  <div className="aspect-video relative bg-white">
                     <Image
                       src={project.image}
                       alt={`${project.name} szórólap tervezés`}
@@ -419,7 +450,7 @@ export default function SzorolapTervezesPage() {
                   </ul>
                   <Link
                     href={tier.ctaLink}
-                    className={`inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all ${
+                    className={`inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B5F1] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base ${
                       tier.highlighted
                         ? "bg-[#00B5F1] text-white hover:bg-[#00B5F1]/90"
                         : "bg-bg-elevated text-slate-200 hover:bg-bg-elevated/80"
@@ -482,7 +513,7 @@ export default function SzorolapTervezesPage() {
               </p>
               <Link
                 href="/kapcsolat"
-                className="inline-flex items-center gap-2 px-10 py-5 bg-linear-to-r from-cta-from to-cta-to text-white font-bold rounded-2xl transition-all hover:scale-[1.02] shadow-[0_8px_24px_rgba(0,181,241,0.3)]"
+                className="inline-flex items-center gap-2 px-10 py-5 bg-linear-to-r from-cta-from to-cta-to text-white font-bold rounded-2xl transition-all hover:scale-[1.02] shadow-[0_8px_24px_rgba(0,181,241,0.3)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B5F1] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base"
               >
                 Ingyenes Konzultáció
               </Link>
