@@ -1,5 +1,30 @@
 # Changelog
 
+## [7.52.2] — 2026-11-13 — GENERÁTOR 500-JAVÍTÁS, PORTÁL MENÜ & WORKSHOP GLASSMORPHISM (KRITIKUS BUGFIX)
+
+**500-AS HIBÁK GYÖKÉROKA ÉS JAVÍTÁSA:**
+- A workshop Server Action-ök a generálás **sikeres** lefutása után a `firebase/firestore` **kliens SDK** `getFirestore()` + `addDoc()` hívással mentettek az `ai_generations` kollekcióba — szerveren nincs inicializált kliens app/auth, ezért a mentés mindig elszállt → a felhasználó „Hiba történt a generálás során" üzenetet kapott, a konzolban `Missing or insufficient permissions`.
+- **`src/lib/ai-generation-store.ts` (ÚJ):** megosztott `saveAiGeneration()` — 1) Firebase Admin SDK (`adminDb`) ha a Service Account env be van állítva, 2) Firestore REST API a felhasználó `idToken`-jével (rules: `clientId == auth.uid`). SOHA nem dob kivételt — a mentés nem kritikus útvonal, a generált tartalom mindig visszajut a felhasználóhoz.
+- **Mind a 17 `*-workshop.ts` Server Action** átállt a segédfüggvényre; a halott kliens-SDK importok eltávolítva.
+- `GROQ_API_KEY` hiánya esetén a Signage action már korábban is strukturált `{ success:false }` választ adott (nem 500) — a külső `try/catch` minden generátornál megmaradt.
+
+**PERMISSION DENIED KONSZOLHIBÁK:**
+- `src/hooks/usePortalNotifications.ts`: a vault-listener a nem létező `client_files` kollekciót figyelte (nincs rules match → minden bejelentkezett portál-látogatónál `PERMISSION_DENIED`). Mostantól a rules által védett **`vault`** kollekciót figyeli (`clientId == uid`).
+
+**ÜGYFÉLPORTÁL MENÜ (`AuthStatusBadge.tsx`):**
+- A bejelentkezett profil-pill mostantól **két részből áll**: a név/pill rész közvetlen `Link` — `/portal`-ra, szuperadmin (`hello@webdude.hu` / `role=admin`) esetén **`/admin/portal-kezelo`**-ra mutat; a chevron gomb a gyorsmenüt (Vezérlőpult, Portál Kezelő, Admin Panel, Kijelentkezés) nyitja.
+- A mobilmenü változatlanul tartalmazza az „Ügyfélportál" tételt (`getNavItems`) és a badge-et.
+
+**GENERÁTOR UI — KÉK-LILA v7.0 GLASSMORPHISM:**
+- Összes `*WorkshopGenerator.tsx`: a kártyák `bg-slate-900/60 backdrop-blur-xl` → **`bg-slate-950/90 backdrop-blur-2xl border-slate-800/60`**; a beviteli mezők `bg-slate-950/80 backdrop-blur-md border-slate-700/60` üvegfelületet kaptak.
+- A hibaüzenetek prémium neon-stílusra váltottak: `bg-red-500/5 border-red-500/40 backdrop-blur-xl shadow-[0_0_24px_rgba(239,68,68,0.15)]` + `AlertTriangle` ikon (Flyer/Signage/Packaging/ProjectScope/Logo generátoroknál).
+
+**ÉRINTETT FÁJLOK:** `src/lib/ai-generation-store.ts` (új), `src/lib/firebase-admin.ts` (már safe-init), 17× `src/actions/*-workshop.ts`, `src/hooks/usePortalNotifications.ts`, `src/components/molecules/AuthStatusBadge.tsx`, 17× `src/components/organisms/*WorkshopGenerator.tsx`.
+
+**QA:** `npx tsc --noEmit` → **0 hiba**; `npm run lint` → **0 error, 0 warning**; `npm run build` → sikeres.
+
+---
+
 ## [7.52.1] — 2026-11-13 — PORTÁL 500 & ADMIN PERMISSION_DENIED JAVÍTÁS + NAV DUPLIKÁCIÓ (KRITIKUS BUGFIX)
 
 **HÁTTÉR:** Az éles (cPanel) környezetben a Firebase Admin SDK Service Account környezeti változói (`FIREBASE_ADMIN_CLIENT_EMAIL` / `FIREBASE_ADMIN_PRIVATE_KEY`) hiányoznak. Emiatt a `firebase-admin.ts` top-level `initializeApp(cert(...))` hívása **module-load szinten** dobott kivételt → bármely azt (akár tranzitívan) importáló Server Action 500-as HTTP hibával omlott össze (`/portal`, `CaseStudyCarousel`, `email-templates`, `upload`, `app/actions/*`). A `admin-dashboard.ts` emellett a kliens SDK-t használt szerveroldalon auth nélkül → `7 PERMISSION_DENIED`.

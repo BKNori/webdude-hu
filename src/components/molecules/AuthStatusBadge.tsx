@@ -186,6 +186,11 @@ export default function AuthStatusBadge({
     ...(isAdmin
       ? [
           {
+            href: "/admin/portal-kezelo",
+            label: "Portál Kezelő",
+            icon: ShieldCheck,
+          },
+          {
             href: "/admin",
             label: "Admin Panel",
             icon: ShieldCheck,
@@ -194,21 +199,31 @@ export default function AuthStatusBadge({
       : []),
   ];
 
+  // A badge egyértelműen kattintható: a név/pill a portálra (adminnak a
+  // Portál Kezelőre) navigál, a chevron a gyorsmenüt nyitja.
+  const pillHref = isAdmin ? "/admin/portal-kezelo" : "/portal";
+
   return (
-    <div ref={containerRef} className="relative">
+    <div ref={containerRef} className="relative flex items-center">
+      <Link
+        href={pillHref}
+        aria-label={
+          isAdmin ? "Portálkezelő megnyitása" : "Ügyfélportál megnyitása"
+        }
+        className={`flex items-center gap-2 rounded-l-full border border-r-0 border-[#00B5F1]/40 bg-slate-900/90 backdrop-blur-xl ${variant === "topbar" ? "py-1 pl-3 pr-2" : "py-1.5 pl-3 pr-2"} text-xs transition-all hover:border-[#00B5F1]/70 hover:shadow-[0_0_16px_rgba(0,181,241,0.25)] ${FOCUS_RING}`}
+      >
+        {pill}
+      </Link>
       <button
         type="button"
         onClick={() => setMenuOpen((prev) => !prev)}
         aria-expanded={menuOpen}
         aria-haspopup="menu"
         aria-label={`Fiók menü — ${displayName}`}
-        className={`flex items-center gap-2 rounded-full border border-[#00B5F1]/40 bg-slate-900/90 backdrop-blur-xl px-3 py-1.5 text-xs transition-all hover:border-[#00B5F1]/70 hover:shadow-[0_0_16px_rgba(0,181,241,0.25)] ${FOCUS_RING} ${
-          variant === "topbar" ? "py-1" : ""
-        }`}
+        className={`flex items-center rounded-r-full border border-[#00B5F1]/40 bg-slate-900/90 backdrop-blur-xl ${variant === "topbar" ? "py-1 px-1.5" : "py-1.5 px-2"} text-slate-400 hover:text-[#00B5F1] hover:border-[#00B5F1]/70 transition-all ${FOCUS_RING}`}
       >
-        {pill}
         <ChevronDown
-          className={`w-3 h-3 text-slate-400 transition-transform duration-200 ${menuOpen ? "rotate-180" : ""}`}
+          className={`w-3 h-3 transition-transform duration-200 ${menuOpen ? "rotate-180" : ""}`}
         />
       </button>
 

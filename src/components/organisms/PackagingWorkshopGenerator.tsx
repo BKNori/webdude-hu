@@ -6,7 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { motion } from "motion/react";
 import {
-  Sparkles,
+  AlertTriangle,
   Loader2,
   ArrowLeft,
   Package,
@@ -237,7 +237,7 @@ const PACKAGING_PRESETS: Array<{
 ];
 
 const inputClass =
-  "w-full px-4 py-3 rounded-xl bg-slate-950/60 border border-slate-800 text-slate-200 text-sm placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-[#00B5F1]/50 focus:border-[#00B5F1]/40 transition-all";
+  "w-full px-4 py-3 rounded-xl bg-slate-950/80 border border-slate-700/60 text-slate-200 text-sm placeholder:text-slate-600 backdrop-blur-md focus:outline-none focus:ring-2 focus:ring-[#00B5F1]/50 focus:border-[#00B5F1]/40 transition-all";
 const labelClass =
   "block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5";
 
@@ -403,7 +403,7 @@ export default function PackagingWorkshopGenerator() {
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
         {/* Termék */}
-        <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800/80 rounded-3xl p-6 md:p-8 space-y-5">
+        <div className="bg-slate-950/90 backdrop-blur-2xl border border-slate-800/60 rounded-3xl p-6 md:p-8 space-y-5">
           <h3 className="text-sm font-black uppercase tracking-widest text-slate-300 flex items-center gap-2">
             <Package className="w-4 h-4 text-[#00B5F1]" />
             Termék & Iparág
@@ -452,7 +452,7 @@ export default function PackagingWorkshopGenerator() {
         </div>
 
         {/* Struktúra & Méret */}
-        <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800/80 rounded-3xl p-6 md:p-8 space-y-6">
+        <div className="bg-slate-950/90 backdrop-blur-2xl border border-slate-800/60 rounded-3xl p-6 md:p-8 space-y-6">
           <h3 className="text-sm font-black uppercase tracking-widest text-slate-300 flex items-center gap-2">
             <Layers className="w-4 h-4 text-[#00B5F1]" />
             Struktúra, Méret & Hordozó
@@ -497,7 +497,7 @@ export default function PackagingWorkshopGenerator() {
         </div>
 
         {/* Stílus, claim, compliance */}
-        <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800/80 rounded-3xl p-6 md:p-8 space-y-5">
+        <div className="bg-slate-950/90 backdrop-blur-2xl border border-slate-800/60 rounded-3xl p-6 md:p-8 space-y-5">
           <h3 className="text-sm font-black uppercase tracking-widest text-slate-300 flex items-center gap-2">
             <ShieldCheck className="w-4 h-4 text-[#00B5F1]" />
             Stílus, Ígéretek & Kötelező Infók
@@ -537,8 +537,8 @@ export default function PackagingWorkshopGenerator() {
         </div>
 
         {error && (
-          <div className="bg-red-500/10 border border-red-500/30 text-red-400 px-4 py-3 rounded-xl text-sm flex items-center gap-2">
-            <Sparkles className="w-4 h-4" />
+          <div className="bg-red-500/5 border border-red-500/40 backdrop-blur-xl shadow-[0_0_24px_rgba(239,68,68,0.15)] text-red-400 px-4 py-3 rounded-xl text-sm flex items-center gap-2">
+            <AlertTriangle className="w-4 h-4" />
             {error}
           </div>
         )}
@@ -570,7 +570,7 @@ export default function PackagingWorkshopGenerator() {
           className="space-y-8 pt-4"
         >
           {/* Koncepció */}
-          <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800/80 rounded-3xl p-6 md:p-8 space-y-3">
+          <div className="bg-slate-950/90 backdrop-blur-2xl border border-slate-800/60 rounded-3xl p-6 md:p-8 space-y-3">
             <h3 className="text-lg font-bold text-white">
               {generatedOutput.conceptOverview.title}
             </h3>
@@ -595,7 +595,7 @@ export default function PackagingWorkshopGenerator() {
 
           {/* Stancrajz / Dieline specifikáció */}
           {specs && (
-            <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800/80 rounded-3xl p-6 md:p-8 space-y-4">
+            <div className="bg-slate-950/90 backdrop-blur-2xl border border-slate-800/60 rounded-3xl p-6 md:p-8 space-y-4">
               <h3 className="text-lg font-bold text-white flex items-center gap-2">
                 <Ruler className="w-5 h-5 text-[#00B5F1]" />
                 Stancrajz & Prepress Specifikáció
@@ -653,7 +653,7 @@ export default function PackagingWorkshopGenerator() {
               {generatedOutput.panelBreakdown.map((panel, idx) => (
                 <div
                   key={idx}
-                  className="bg-slate-900/60 backdrop-blur-xl border border-slate-800/80 rounded-3xl p-5 space-y-3"
+                  className="bg-slate-950/90 backdrop-blur-2xl border border-slate-800/60 rounded-3xl p-5 space-y-3"
                 >
                   <div className="flex items-start justify-between gap-2">
                     <div>
@@ -707,7 +707,7 @@ export default function PackagingWorkshopGenerator() {
 
           {/* Színek + Tipográfia/Compliance */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-            <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800/80 rounded-3xl p-6 space-y-4">
+            <div className="bg-slate-950/90 backdrop-blur-2xl border border-slate-800/60 rounded-3xl p-6 space-y-4">
               <h3 className="text-lg font-bold text-white flex items-center gap-2">
                 <Palette className="w-5 h-5 text-[#00B5F1]" />
                 CMYK + Pantone + HEX (Hordozó-viselkedés)
@@ -741,7 +741,7 @@ export default function PackagingWorkshopGenerator() {
               </div>
             </div>
 
-            <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800/80 rounded-3xl p-6 space-y-4">
+            <div className="bg-slate-950/90 backdrop-blur-2xl border border-slate-800/60 rounded-3xl p-6 space-y-4">
               <h3 className="text-lg font-bold text-white flex items-center gap-2">
                 <Type className="w-5 h-5 text-[#00B5F1]" />
                 Tipográfia & EU Compliance
@@ -781,7 +781,7 @@ export default function PackagingWorkshopGenerator() {
           </div>
 
           {/* AI Promptok */}
-          <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800/80 rounded-3xl p-6 md:p-8 space-y-4">
+          <div className="bg-slate-950/90 backdrop-blur-2xl border border-slate-800/60 rounded-3xl p-6 md:p-8 space-y-4">
             <h3 className="text-lg font-bold text-white flex items-center gap-2">
               <Bot className="w-5 h-5 text-[#00B5F1]" />
               AI Generáló Promptok
@@ -818,7 +818,7 @@ export default function PackagingWorkshopGenerator() {
           </div>
 
           {/* Prepress Checklist */}
-          <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800/80 rounded-3xl p-6 md:p-8 space-y-4">
+          <div className="bg-slate-950/90 backdrop-blur-2xl border border-slate-800/60 rounded-3xl p-6 md:p-8 space-y-4">
             <h3 className="text-lg font-bold text-white flex items-center gap-2">
               <CheckCircle2 className="w-5 h-5 text-emerald-400" />
               Csomagolás Prepress Ellenőrzőlista (8 pont)

@@ -198,7 +198,7 @@ export default function ContentWorkshopGenerator() {
           {/* Authentication Check */}
           {!auth || !auth.currentUser ? (
             <div className="min-h-screen bg-transparent flex flex-col items-center justify-center space-y-6 px-6">
-              <div className="bg-red-500/10 border border-red-500/30 text-red-400 px-6 py-4 rounded-2xl text-sm flex items-center gap-3 font-mono max-w-md text-center">
+              <div className="bg-red-500/5 border border-red-500/40 backdrop-blur-xl shadow-[0_0_24px_rgba(239,68,68,0.15)] text-red-400 px-6 py-4 rounded-2xl text-sm flex items-center gap-3 font-mono max-w-md text-center">
                 <Sparkles className="w-5 h-5" />
                 {error || "Kérlek, jelentkezz be a használatához!"}
               </div>
@@ -263,7 +263,7 @@ export default function ContentWorkshopGenerator() {
                     </div>
 
                     {error && (
-                      <div className="bg-red-500/10 border border-red-500/30 text-red-400 px-4 py-3 rounded-2xl text-xs flex items-center gap-2.5 font-mono">
+                      <div className="bg-red-500/5 border border-red-500/40 backdrop-blur-xl shadow-[0_0_24px_rgba(239,68,68,0.15)] text-red-400 px-4 py-3 rounded-2xl text-xs flex items-center gap-2.5 font-mono">
                         <Sparkles className="w-4 h-4" />
                         {error}
                       </div>

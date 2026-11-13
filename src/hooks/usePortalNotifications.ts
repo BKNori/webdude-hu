@@ -20,7 +20,7 @@ interface NotificationCounts {
 
 /**
  * Valós idejű értesítési mechanizmus a Portál felületéhez.
- * Követi a user_generations (státusz változások) és a client_files (új dokumentumok)
+ * Követi a user_generations (státusz változások) és a vault (új dokumentumok)
  * kollekciókat, és badge számlálót ad vissza.
  * Anti-drain: onSnapshot cleanup a komponens unmount-ján.
  */
@@ -89,9 +89,11 @@ export function usePortalNotifications() {
       }
     );
 
-    // 2. Vault dokumentumok követése (client_files kollekció)
+    // 2. Vault dokumentumok követése (vault kollekció — a rules a clientId
+    // mezőt ellenőrzi; a korábbi "client_files" kollekcióhoz nincs rules
+    // match, ezért minden hallgató permission-denied hibát dobott)
     const vaultQuery = query(
-      collection(db, "client_files"),
+      collection(db, "vault"),
       where("clientId", "==", uid),
       orderBy("createdAt", "desc")
     );

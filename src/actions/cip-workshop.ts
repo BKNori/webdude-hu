@@ -4,12 +4,7 @@ import { z } from "zod";
 import { headers } from "next/headers";
 import { checkRateLimit, getClientIdentifier } from "@/lib/rate-limit";
 import { verifyUserToken } from "./portal";
-import {
-  getFirestore,
-  collection,
-  addDoc,
-  serverTimestamp,
-} from "firebase/firestore";
+import { saveAiGeneration } from "@/lib/ai-generation-store";
 import type {
   CipWorkshopInput,
   CipWorkshopOutput,
@@ -265,15 +260,14 @@ Return valid JSON only. Hungarian language. Apply WebDude Cyber-Gold identity. F
       };
     }
 
-    // 9. Save to Firestore
-    const db = getFirestore();
-    await addDoc(collection(db, "ai_generations"), {
+    // Save to Firestore (Admin SDK vagy REST fallback — soha nem dob hibát)
+    await saveAiGeneration({
+      idToken,
       userId: user.uid,
       userEmail: user.email,
       category: "cip_ai_muhely",
       input: validatedInput,
       output: parsedOutput,
-      createdAt: serverTimestamp(),
     });
 
     return {

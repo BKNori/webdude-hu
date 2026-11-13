@@ -6,6 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { motion } from "motion/react";
 import {
+  AlertTriangle,
   Sparkles,
   Loader2,
   ArrowLeft,
@@ -184,7 +185,7 @@ const INDUSTRY_PRESETS: Array<{
 ];
 
 const inputClass =
-  "w-full px-4 py-3 rounded-xl bg-slate-950/60 border border-slate-800 text-slate-200 text-sm placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-[#00B5F1]/50 focus:border-[#00B5F1]/40 transition-all";
+  "w-full px-4 py-3 rounded-xl bg-slate-950/80 border border-slate-700/60 text-slate-200 text-sm placeholder:text-slate-600 backdrop-blur-md focus:outline-none focus:ring-2 focus:ring-[#00B5F1]/50 focus:border-[#00B5F1]/40 transition-all";
 const labelClass =
   "block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5";
 
@@ -351,7 +352,7 @@ export default function LogoWorkshopGenerator() {
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
         {/* Alapadatok */}
-        <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800/80 rounded-3xl p-6 md:p-8 space-y-5">
+        <div className="bg-slate-950/90 backdrop-blur-2xl border border-slate-800/60 rounded-3xl p-6 md:p-8 space-y-5">
           <h3 className="text-sm font-black uppercase tracking-widest text-slate-300 flex items-center gap-2">
             <PenTool className="w-4 h-4 text-[#00B5F1]" />
             Márka Alapadatok
@@ -408,7 +409,7 @@ export default function LogoWorkshopGenerator() {
         </div>
 
         {/* Architektúra & Rács */}
-        <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800/80 rounded-3xl p-6 md:p-8 space-y-6">
+        <div className="bg-slate-950/90 backdrop-blur-2xl border border-slate-800/60 rounded-3xl p-6 md:p-8 space-y-6">
           <h3 className="text-sm font-black uppercase tracking-widest text-slate-300 flex items-center gap-2">
             <Layers className="w-4 h-4 text-[#00B5F1]" />
             Logó-architektúra & Konstrukció
@@ -432,7 +433,7 @@ export default function LogoWorkshopGenerator() {
         </div>
 
         {/* Stílus & Szín */}
-        <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800/80 rounded-3xl p-6 md:p-8 space-y-6">
+        <div className="bg-slate-950/90 backdrop-blur-2xl border border-slate-800/60 rounded-3xl p-6 md:p-8 space-y-6">
           <h3 className="text-sm font-black uppercase tracking-widest text-slate-300 flex items-center gap-2">
             <Palette className="w-4 h-4 text-[#00B5F1]" />
             Stílus & Színpaletta
@@ -470,8 +471,8 @@ export default function LogoWorkshopGenerator() {
         </div>
 
         {error && (
-          <div className="bg-red-500/10 border border-red-500/30 text-red-400 px-4 py-3 rounded-xl text-sm flex items-center gap-2">
-            <Sparkles className="w-4 h-4" />
+          <div className="bg-red-500/5 border border-red-500/40 backdrop-blur-xl shadow-[0_0_24px_rgba(239,68,68,0.15)] text-red-400 px-4 py-3 rounded-xl text-sm flex items-center gap-2">
+            <AlertTriangle className="w-4 h-4" />
             {error}
           </div>
         )}
@@ -512,7 +513,7 @@ export default function LogoWorkshopGenerator() {
               {generatedOutput.concepts.map((concept, idx) => (
                 <div
                   key={idx}
-                  className="bg-slate-900/60 backdrop-blur-xl border border-slate-800/80 rounded-3xl p-5 space-y-4"
+                  className="bg-slate-950/90 backdrop-blur-2xl border border-slate-800/60 rounded-3xl p-5 space-y-4"
                 >
                   <h4 className="text-sm font-black text-white">
                     {concept.name}
@@ -550,7 +551,7 @@ export default function LogoWorkshopGenerator() {
           </div>
 
           {/* Színrendszer Swatch-ok */}
-          <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800/80 rounded-3xl p-6 md:p-8 space-y-5">
+          <div className="bg-slate-950/90 backdrop-blur-2xl border border-slate-800/60 rounded-3xl p-6 md:p-8 space-y-5">
             <h3 className="text-lg font-bold text-white flex items-center gap-2">
               <Palette className="w-5 h-5 text-[#00B5F1]" />
               Nyomdai & Digitális Színrendszer
@@ -601,7 +602,7 @@ export default function LogoWorkshopGenerator() {
           </div>
 
           {/* Tipográfia */}
-          <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800/80 rounded-3xl p-6 md:p-8 space-y-4">
+          <div className="bg-slate-950/90 backdrop-blur-2xl border border-slate-800/60 rounded-3xl p-6 md:p-8 space-y-4">
             <h3 className="text-lg font-bold text-white flex items-center gap-2">
               <Type className="w-5 h-5 text-[#00B5F1]" />
               Tipográfiai Párosítás
@@ -638,7 +639,7 @@ export default function LogoWorkshopGenerator() {
 
           {/* Variánsok + Guidelines */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-            <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800/80 rounded-3xl p-6 space-y-4">
+            <div className="bg-slate-950/90 backdrop-blur-2xl border border-slate-800/60 rounded-3xl p-6 space-y-4">
               <h3 className="text-lg font-bold text-white flex items-center gap-2">
                 <Grid3X3 className="w-5 h-5 text-[#00B5F1]" />
                 Arculati Variánsok
@@ -671,7 +672,7 @@ export default function LogoWorkshopGenerator() {
               ))}
             </div>
 
-            <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800/80 rounded-3xl p-6 space-y-4">
+            <div className="bg-slate-950/90 backdrop-blur-2xl border border-slate-800/60 rounded-3xl p-6 space-y-4">
               <h3 className="text-lg font-bold text-white flex items-center gap-2">
                 <ShieldCheck className="w-5 h-5 text-[#00B5F1]" />
                 Arculati Szabályok

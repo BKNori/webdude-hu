@@ -4,12 +4,7 @@ import { z } from "zod";
 import { headers } from "next/headers";
 import { checkRateLimit, getClientIdentifier } from "@/lib/rate-limit";
 import { verifyUserToken } from "./portal";
-import {
-  getFirestore,
-  collection,
-  addDoc,
-  serverTimestamp,
-} from "firebase/firestore";
+import { saveAiGeneration } from "@/lib/ai-generation-store";
 import type {
   MidjourneyGenerationInput,
   MidjourneyGenerationOutput,
@@ -318,15 +313,14 @@ Apply the WebDude Kék-Lila v7.0 identity principles and Norbi's 26-year visual 
       };
     }
 
-    // 9. Save to Firestore
-    const db = getFirestore();
-    await addDoc(collection(db, "ai_generations"), {
+    // Save to Firestore (Admin SDK vagy REST fallback — soha nem dob hibát)
+    await saveAiGeneration({
+      idToken,
       userId: user.uid,
       userEmail: user.email,
       category: "midjourney_ai_muhely",
       input: validatedInput,
       output: parsedOutput,
-      createdAt: serverTimestamp(),
     });
 
     return {
