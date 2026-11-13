@@ -45,6 +45,8 @@ const uiuxWorkshopSchema = z.object({
   ]),
   colorPreference: z.enum(["dark", "light", "mixed"]),
   additionalRequirements: z.string().optional(),
+  designDirection: z.string().max(600).optional(),
+  colorPalette: z.string().max(600).optional(),
 });
 
 /**
@@ -226,8 +228,10 @@ Key Features: ${validatedInput.keyFeatures}
 Design Style: ${designStyleDescriptions[validatedInput.designStyle]}
 Color Preference: ${colorPreferenceDescriptions[validatedInput.colorPreference]}
 Additional Requirements: ${validatedInput.additionalRequirements || "None"}
+Design Direction: ${validatedInput.designDirection || "nincs megadva"}
+Color Palette: ${validatedInput.colorPalette || "nincs megadva"}
 
-Apply Norbi's 16+ years UI/UX design and web development expertise with focus on wireframe generation, section layout, and Figma prompt creation. Optimize for WebDude Cyber-Gold identity and Hungarian language.`;
+Apply Norbi's 16+ years UI/UX design and web development expertise with focus on wireframe generation, section layout, and Figma prompt creation. Optimize for WebDude Kék-Lila v7.0 identity and Hungarian language.`;
 
   try {
     // 7. Call Groq API

@@ -56,6 +56,8 @@ const bannerWorkshopSchema = z.object({
     })
     .optional(),
   additionalRequirements: z.string().optional(),
+  designDirection: z.string().max(600).optional(),
+  colorPalette: z.string().max(600).optional(),
 });
 
 /**
@@ -233,8 +235,10 @@ Aspect Ratio: ${aspectRatioDescriptions[validatedInput.aspectRatio]}
 Brand Colors: ${validatedInput.brandColors?.join(", ") || "None"}
 Required Texts: ${JSON.stringify(validatedInput.requiredTexts)}
 Requirements: ${validatedInput.additionalRequirements || "None"}
+Design Direction: ${validatedInput.designDirection || "nincs megadva"}
+Color Palette: ${validatedInput.colorPalette || "nincs megadva"}
 
-Return valid JSON only. Hungarian language. Apply WebDude Cyber-Gold identity. Focus on conversion and visual hierarchy.`;
+Return valid JSON only. Hungarian language. Apply WebDude Kék-Lila v7.0 identity. Focus on conversion and visual hierarchy.`;
 
   try {
     // 7. Call Groq API

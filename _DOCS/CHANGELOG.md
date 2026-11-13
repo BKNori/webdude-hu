@@ -1,5 +1,34 @@
 # Changelog
 
+## [7.46.0] — 2026-11-13 — GLOBÁLIS AUTH JELZŐ + AI MŰHELY PRO SZINTLÉPÉS (4 BATCH)
+
+**1. BATCH 1 — GLOBÁLIS BEJELENTKEZÉSI ÁLLAPOTJELZŐ:**
+- Új `AuthStatusBadge` komponens (`src/components/molecules/`): SSR-biztos hydration (`useSyncExternalStore`), `onAuthStateChanged` + `getClientUserProfileAction` admin-ellenőrzés, null-safe `auth` guard.
+- Nincs belépve: `User` ikonos „Belépés"/„Ügyfélportál" link (`/portal`).
+- Be van lépve: Kék-Lila glass pill — pulzáló `bg-emerald-400` online pont, megjelenítendő név/email, `SZUPERADMIN` badge (role === "admin" vagy `hello@webdude.hu`), gyorsmenü: Vezérlőpult, AI Műhely, Admin Panel (csak admin), Kijelentkezés (`signOut(auth)`).
+- Integrálva a `HeaderNavClient` topbarba, asztali navba és mobilmenübe — így a `/portal/*` oldalakon is látszik, ahol a topbar rejtett.
+- Outside-click és `aria-expanded`/`role="menu"` a11y kezeléssel.
+
+**2. BATCH 2 — AI MŰHELY GYŰJTŐOLDAL:**
+- `AIWorkshopCollection`: az angol–magyar vegyes kártya-bulletök egységesítve professzionális magyar szakmai nyelvre; „MidJourney v6 Master" → „Midjourney v6.1 / v7 & Flux Pro Master".
+- 14+ kártyánál kategória-szűrő (`Összes`, `Vizuális & Grafika`, `Web & UI/UX`, `SEO & Marketing`, `Stratégia`) + belépett üdvözlő sáv („Szuperadmin hozzáférés aktív").
+
+**3. BATCH 3 — VIZUÁLIS GENERÁTOROK PRO SZINT:**
+- Új közös preset library (`src/lib/workshop-presets.ts`): AI motor (Midjourney v6.1/v7, Flux.1 Pro, Ideogram 2.0, Recraft v3), design irányzat (Luminous Glassmorphism, Apple Bento Grid, Quiet Luxury, Neo-Brutalism, 3D Clay, Swiss Grid, Cyber-Cyan Dark Tech, Kinetic Typography), optikai/render (85mm f/1.4, 24mm Tilt-Shift, Macro, Volumetric Rim, Chiaroscuro, Anamorphic Flare, UE5/Octane), 5 képarány (16:9, 1:1, 9:16, 4:5, 21:9) és 10 színpaletta-chip (Kék-Lila Cyber, Smaragd & Arany, Monokróm stb.).
+- `MidjourneyWorkshopGenerator`: preset chipek + haladó paraméterek (`--stylize`, `--style raw`, `--no`, `--sref`, `--cref`) a űrlapon.
+- `Logo`/`Banner`/`Seasonal`/`UiUx` generátorok: kattintható preset chipek, opcionális `designDirection` mező — a Zod sémák, típusok és Server Action promptok egységesen bővültek.
+- Server Action-ok: `midjourney-workshop.ts` Groq promptja most külön `fluxPrompt`/`ideogramPrompt` (szöveges felirat esetén), `negativePrompt` és magyar `expertTips` (26 év grafikai rutin) kimenetet kér; a többi vizuális action promptja is figyelembe veszi az új mezőket.
+- Rate-limit, `verifyUserToken`, Zod validáció és Firestore mentés megőrizve.
+
+**4. BATCH 4 — STRATÉGIAI GENERÁTOROK + QA:**
+- Új újrahasználható `CopyButton` atom (`src/components/atoms/CopyButton.tsx`).
+- `SeoWorkshopGenerator` és `ContentWorkshopGenerator`: „Gyors Példa Betöltése" (1-kattintásos teszt-adat preset) + kimeneti blokkokon `CopyButton`.
+- `CompetitorAnalyzer`: példa URL preset + „Teljes elemzés másolása" gomb.
+- `KristofkaWorkflow`: már rendelkezett per-blokk `handleCopy` gombokkal (legacy/vision/financial/roi) — 1-kattintásos preset nem érhető el, mert kötelező fájlfeltöltést igényel.
+- **QA:** `NODE_OPTIONS=--max-old-space-size=8192 npx tsc --noEmit` → **0 hiba**; `npm run lint -- --max-warnings 0` → **0 error, 0 warning**.
+
+---
+
 ## [7.45.1] — 2026-11-13 — SZOLGÁLTATÁSOLDALAK VIZUÁLIS ÉS SEO/AEO FINOMHANGOLÁS (/logo-tervezes, /szorolap-tervezes, /csomagolas-tervezes)
 
 **VIZUÁLIS:**

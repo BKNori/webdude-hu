@@ -22,6 +22,7 @@ import {
   Zap,
 } from "lucide-react";
 import Link from "next/link";
+import CopyButton from "@/components/atoms/CopyButton";
 import { auth } from "@/lib/firebase";
 import { addContentWorkshopAction } from "@/actions/content-workshop";
 import { getClientUserProfileAction } from "@/actions/portal";
@@ -102,6 +103,7 @@ export default function ContentWorkshopGenerator() {
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm<ContentFormValues>({
     resolver: zodResolver(contentFormSchema),
@@ -113,6 +115,21 @@ export default function ContentWorkshopGenerator() {
       additionalRequirements: "",
     },
   });
+
+  /** 1-Click példa: teszt-adatokkal tölti ki az űrlapot. */
+  const loadExample = () => {
+    setValue("topic", "Professzionális weboldal készítés Kecskeméten");
+    setValue("contentType", "blog-post");
+    setValue("targetAudience", "Kis- és középvállalkozások Kecskeméten");
+    setValue("tone", "professional");
+    setValue("platform", "website");
+    setValue("keywords", "weboldal készítés, kecskemét, webfejlesztés");
+    setValue("callToAction", "Ingyenes konzultáció kérése");
+    setValue(
+      "additionalRequirements",
+      "Fókusz a helyi SEO-ra és az AI válasz motorokra optimalizált struktúrára."
+    );
+  };
 
   const onSubmit = async (data: ContentFormValues) => {
     // Check access
@@ -398,6 +415,15 @@ export default function ContentWorkshopGenerator() {
                         />
                       </div>
 
+                      {/* 1-Click Példa Betöltése */}
+                      <button
+                        type="button"
+                        onClick={loadExample}
+                        className="w-full px-6 py-3 rounded-xl border border-sky-500/30 bg-sky-500/5 text-sky-400 text-xs font-bold uppercase tracking-wider hover:bg-sky-500/15 transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B5F1]"
+                      >
+                        Példa Tartalom Betöltése (1 kattintás)
+                      </button>
+
                       {/* Submit Button */}
                       <motion.button
                         whileHover={{ scale: 1.02 }}
@@ -440,6 +466,13 @@ export default function ContentWorkshopGenerator() {
 
                     {generatedOutput && (
                       <div className="space-y-4">
+                        {/* Teljes terv export gomb */}
+                        <div className="flex justify-end">
+                          <CopyButton
+                            text={JSON.stringify(generatedOutput, null, 2)}
+                            label="Teljes terv másolása"
+                          />
+                        </div>
                         {/* Content Strategy */}
                         <motion.div
                           initial={{ opacity: 0, y: 20 }}

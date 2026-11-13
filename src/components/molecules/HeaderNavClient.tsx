@@ -23,6 +23,7 @@ import {
   Box,
 } from "lucide-react";
 import LanguageSwitcher from "./LanguageSwitcher";
+import AuthStatusBadge from "./AuthStatusBadge";
 import { Language } from "@/types/dictionary";
 import { getLanguageFromPathname } from "@/lib/dictionary";
 import { Dictionary } from "@/types/dictionary";
@@ -510,6 +511,7 @@ export default function HeaderNavClient({
                 </Link>
               );
             })}
+            <AuthStatusBadge variant="topbar" />
           </div>
         </div>
 
@@ -609,6 +611,15 @@ export default function HeaderNavClient({
                 </AnimatePresence>
               </motion.div>
             ))}
+
+            {/* Globális bejelentkezési állapotjelző (Auth Badge) */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.3, delay: 0.3 }}
+            >
+              <AuthStatusBadge variant="nav" />
+            </motion.div>
 
             {/* Language Switcher */}
             <motion.div
@@ -985,6 +996,9 @@ export default function HeaderNavClient({
                   "linear-gradient(to top, #020617 60%, transparent 100%)",
               }}
             >
+              <div className="mb-4">
+                <AuthStatusBadge variant="mobile" />
+              </div>
               <Link
                 href={labels.contactHref}
                 onClick={closeMenu}

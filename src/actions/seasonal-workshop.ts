@@ -55,6 +55,8 @@ const seasonalWorkshopSchema = z.object({
   ]),
   customSeason: z.string().optional(),
   additionalRequirements: z.string().optional(),
+  designDirection: z.string().max(600).optional(),
+  colorPalette: z.string().max(600).optional(),
 });
 
 /**
@@ -247,8 +249,10 @@ Target Audience: ${validatedInput.targetAudience}
 Brand Voice: ${brandVoiceDescriptions[validatedInput.brandVoice]}
 Primary Goal: ${goalDescriptions[validatedInput.primaryGoal]}
 Additional Requirements: ${validatedInput.additionalRequirements || "None"}
+Design Direction: ${validatedInput.designDirection || "nincs megadva"}
+Color Palette: ${validatedInput.colorPalette || "nincs megadva"}
 
-Apply Norbi's 16+ years marketing and visual design expertise with focus on seasonal campaign graphics, moods, and promotional copy generation. Optimize for WebDude Cyber-Gold identity and Hungarian language.`;
+Apply Norbi's 16+ years marketing and visual design expertise with focus on seasonal campaign graphics, moods, and promotional copy generation. Optimize for WebDude Kék-Lila v7.0 identity and Hungarian language.`;
 
   try {
     // 7. Call Groq API

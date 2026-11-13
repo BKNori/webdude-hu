@@ -29,6 +29,10 @@ export interface SeasonalWorkshopInput {
     "sales" | "brand-awareness" | "engagement" | "traffic" | "lead-generation";
   customSeason?: string;
   additionalRequirements?: string;
+  /** 2026-os design irányzat preset (feloldott prompt leírás) */
+  designDirection?: string;
+  /** 2026-os színpaletta preset (feloldott prompt leírás) */
+  colorPalette?: string;
 }
 
 export interface SeasonalWorkshopOutput {

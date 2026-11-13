@@ -22,6 +22,7 @@ import {
   Lightbulb,
 } from "lucide-react";
 import Link from "next/link";
+import CopyButton from "@/components/atoms/CopyButton";
 import { auth } from "@/lib/firebase";
 import { addSeoAuditAction } from "@/actions/seo-workshop";
 import { getClientUserProfileAction } from "@/actions/portal";
@@ -91,6 +92,7 @@ export default function SeoWorkshopGenerator() {
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm<SeoFormValues>({
     resolver: zodResolver(seoFormSchema),
@@ -101,6 +103,20 @@ export default function SeoWorkshopGenerator() {
       additionalRequirements: "",
     },
   });
+
+  /** 1-Click példa: teszt-adatokkal tölti ki az űrlapot. */
+  const loadExample = () => {
+    setValue("url", "https://pelda-webshop.hu");
+    setValue("targetKeywords", "weboldal készítés kecskemét, webshop fejlesztés");
+    setValue("industry", "local-business");
+    setValue("targetAudience", "Kecskeméti kis- és középvállalkozások");
+    setValue("primaryGoal", "local-seo");
+    setValue("competitors", "versenytars1.hu, versenytars2.hu");
+    setValue(
+      "additionalRequirements",
+      "Fókusz a Google Térkép rangsorolásra és az AI válasz motorokra (AEO)."
+    );
+  };
 
   const onSubmit = async (data: SeoFormValues) => {
     // Check access
@@ -370,6 +386,15 @@ export default function SeoWorkshopGenerator() {
                         />
                       </div>
 
+                      {/* 1-Click Példa Betöltése */}
+                      <button
+                        type="button"
+                        onClick={loadExample}
+                        className="w-full px-6 py-3 rounded-xl border border-sky-500/30 bg-sky-500/5 text-sky-400 text-xs font-bold uppercase tracking-wider hover:bg-sky-500/15 transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B5F1]"
+                      >
+                        Példa Audit Betöltése (1 kattintás)
+                      </button>
+
                       {/* Submit Button */}
                       <motion.button
                         whileHover={{ scale: 1.02 }}
@@ -412,6 +437,13 @@ export default function SeoWorkshopGenerator() {
 
                     {generatedOutput && (
                       <div className="space-y-4">
+                        {/* Teljes audit export gomb */}
+                        <div className="flex justify-end">
+                          <CopyButton
+                            text={JSON.stringify(generatedOutput, null, 2)}
+                            label="Teljes audit másolása"
+                          />
+                        </div>
                         {/* Executive Summary */}
                         <motion.div
                           initial={{ opacity: 0, y: 20 }}

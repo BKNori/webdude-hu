@@ -47,6 +47,17 @@ const midjourneyGenerationSchema = z.object({
   ]),
   aspectRatio: z.enum(["16:9", "9:16", "1:1", "4:5", "21:9"]),
   additionalRequirements: z.string().optional(),
+  // 2026-os haladó paraméterek (preset chipek feloldott prompt leírásai)
+  engine: z.string().max(400).optional(),
+  designStyle: z.string().max(600).optional(),
+  optics: z.string().max(600).optional(),
+  colorPalette: z.string().max(600).optional(),
+  customColor: z.string().max(30).optional(),
+  stylize: z.number().min(50).max(750).optional(),
+  styleRaw: z.boolean().optional(),
+  negativePrompt: z.string().max(500).optional(),
+  sref: z.string().max(100).optional(),
+  cref: z.string().max(100).optional(),
 });
 
 /**
@@ -103,7 +114,7 @@ export async function addMidjourneyGenerationAction(
   }
 
   // 5. Build System Prompt with Norbi's 26-year visual and photographic expertise
-  const systemPrompt = `You are an Elite Visual Director and Professional Photographer with 26 years of experience in visual arts, photography, and Midjourney v6 prompt engineering. Your expertise includes:
+  const systemPrompt = `You are an Elite Visual Director and Professional Photographer with 26 years of experience in visual arts, photography, and AI image prompt engineering (Midjourney v6.1/v7, Flux.1 Pro, Ideogram 2.0, Recraft v3). Your expertise includes:
 
 **Photography Principles:**
 - 85mm G-Master lens mastery (bokeh, depth of field, compression)
@@ -113,12 +124,11 @@ export async function addMidjourneyGenerationAction(
 - Professional color grading and color theory
 - Composition rules (rule of thirds, leading lines, negative space)
 
-**Midjourney v6 Expertise:**
-- Advanced parameter usage (--ar, --style raw, --stylize, --chaos, --quality)
-- Photorealistic rendering techniques
-- Cinematic lighting setups
-- Professional camera settings simulation
-- AI prompt optimization for consistent results
+**AI Motor Szakértelem (2026):**
+- Midjourney v6.1/v7: --v 6.1, --style raw, --stylize 50-750, --ar, --sref, --cref, --no
+- Flux.1 Pro: fotórealisztikus render, precíz kompozíció, szövegkezelés
+- Ideogram 2.0: pontos tipográfia, szöveges feliratok, logó-barát kompozíció
+- Recraft v3: tiszta vektoros SVG stílus, skálázható, nyomdai minőség
 
 **Visual Design Philosophy:**
 - WebDude Cyber-Gold identity integration
@@ -163,15 +173,21 @@ Generate a complete Midjourney v6 concept with the following structure:
    - psychology: Color psychology explanation (e.g., 'Primary #00B5F1 evokes trust and professionalism')
    - Rationale for color choices based on mood and style
 
-5. **Midjourney Prompt:** Professional Midjourney v6 prompt with:
+5. **Midjourney Prompt:** Professzionális Midjourney v6.1/v7 prompt a KIVÁLASZTOTT paraméterekkel:
    - Subject description in vivid detail
    - Style specifications (photorealistic, cinematic, artistic, etc.)
    - Lighting setup with specific direction
    - Camera settings (85mm G-Master lens, f/1.8, shutter speed)
-   - Technical parameters: --v 6.0 --style raw --ar [aspect ratio] --quality 2 --stylize 250 --volumetric
+   - Technical parameters: --v 6.1 --style raw --ar [aspect ratio] --stylize [érték] --sref/--cref ha megadva --no [negatív prompt]
    - No buzzwords like "photorealistic", "4K", "8K"
 
-6. **Variations:**
+6. **Flux / Ideogram Prompt:** Ha a képen SZÖVEG vagy FELIRAT is szerepel, adj külön fluxPrompt (Flux.1 Pro stílusban) és ideogramPrompt (Ideogram 2.0 pontos tipográfiával) mezőt is; ha nem kell szöveg, hagyd üresen.
+
+7. **Negatív Prompt:** negativePrompt mező — amit a kép NE tartalmazzon (blurry, watermark, text errors, extra limbs, low quality stb.).
+
+8. **Szakértői Tippek:** expertTips — 3-5 magyar nyelvű, konkrét megvalósítási tipp a 26 év grafikai rutin alapján (tipográfia, kontraszt, elrendezés, nyomdai szempontok).
+
+9. **Variations:**
    - Alternative 1: Different mood or lighting approach
    - Alternative 2: Different composition or perspective
    - Alternative 3: Different color grading or style
@@ -183,17 +199,19 @@ COLOR PSYCHOLOGY & HEX PALETTES:
 - Energy/Dynamic: #FF7A00 (Orange), #EF4444 (Red), #FCA5A5 (Coral)
 - Mystery/Dark: #1E1B4B (Indigo), #312E81 (Purple), #4C1D95 (Deep Purple)
 
-MIDJOURNEY PARAMETERS (v6.0):
+MIDJOURNEY PARAMETERS (v6.1/v7):
 - Aspect Ratio: --ar 16:9 (landscape), --ar 9:16 (portrait), --ar 1:1 (square), --ar 4:5 (Instagram), --ar 21:9 (ultrawide)
-- Version: --v 6.0
+- Version: --v 6.1
 - Style: --style raw
-- Quality: --quality 2
-- Stylize: --stylize 250
+- Stylize: --stylize 50-750
+- Style reference: --sref <url/kód>
+- Character reference: --cref <url/kód>
+- Negative: --no <elemek>
 - Lighting: --volumetric, --cinematic, --golden-hour, --blue-hour
 - Focus: --depth of field, --macro, --wide-angle
 - Detail: --detail high, --sharp focus
 
-Provide the output in structured JSON format with these exact keys: visualConcept (with style, mood, description, keyElements, tailwindLayout), lightingSetup (with type, direction, intensity, colorTemperature, rationale), composition (with framing, perspective, depthOfField, focalPoint), colorGrading (with palette, gradingStyle, contrast, saturation, psychology, rationale), midjourneyPrompt, variations (with alternative1, alternative2, alternative3).`;
+Provide the output in structured JSON format with these exact keys: visualConcept (with style, mood, description, keyElements, tailwindLayout), lightingSetup (with type, direction, intensity, colorTemperature, rationale), composition (with framing, perspective, depthOfField, focalPoint), colorGrading (with palette, gradingStyle, contrast, saturation, psychology, rationale), midjourneyPrompt, fluxPrompt, ideogramPrompt, negativePrompt, expertTips (string tömb, magyar nyelvű tippek), variations (with alternative1, alternative2, alternative3).`;
 
   // 6. Build User Prompt
   const styleDescriptions: Record<string, string> = {
@@ -235,7 +253,17 @@ Lighting: ${lightingDescriptions[validatedInput.lighting]}
 Aspect Ratio: ${validatedInput.aspectRatio}
 Additional Requirements: ${validatedInput.additionalRequirements || "None"}
 
-Apply the WebDude Cyber-Gold identity principles and Norbi's 26-year visual and photographic expertise for professional Midjourney v6 prompt generation.`;
+2026-os Haladó Paraméterek (preset chipek):
+- AI Motor: ${validatedInput.engine || "automatikus választás a legjobb motor alapján"}
+- Design Irányzat: ${validatedInput.designStyle || "nincs megadva"}
+- Optika/Render: ${validatedInput.optics || "nincs megadva"}
+- Színpaletta: ${validatedInput.colorPalette || "nincs megadva"}${validatedInput.customColor ? ` + egyedi szín: ${validatedInput.customColor}` : ""}
+- Stilizáció: --stylize ${validatedInput.stylize ?? 250}${validatedInput.styleRaw === false ? "" : " --style raw bekapcsolva"}
+- Negatív prompt: ${validatedInput.negativePrompt || "nincs megadva"}
+- Stílus referencia (--sref): ${validatedInput.sref || "nincs megadva"}
+- Karakter referencia (--cref): ${validatedInput.cref || "nincs megadva"}
+
+Apply the WebDude Kék-Lila v7.0 identity principles and Norbi's 26-year visual and photographic expertise for professional Midjourney v6.1/v7 & Flux.1 Pro prompt generation.`;
 
   try {
     // 7. Call Groq API

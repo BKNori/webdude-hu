@@ -22,6 +22,13 @@ import {
   Lightbulb,
 } from "lucide-react";
 import Link from "next/link";
+import PresetChips from "@/components/molecules/PresetChips";
+import {
+  AI_ENGINE_PRESETS,
+  DESIGN_STYLE_PRESETS,
+  OPTICS_PRESETS,
+  COLOR_PALETTE_PRESETS,
+} from "@/lib/workshop-presets";
 import { auth } from "@/lib/firebase";
 import { addMidjourneyGenerationAction } from "@/actions/midjourney-workshop";
 import { getClientUserProfileAction } from "@/actions/portal";
@@ -74,6 +81,31 @@ export default function MidjourneyWorkshopGenerator() {
   const [isAdmin, setIsAdmin] = useState(false);
   const [allowedTools, setAllowedTools] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
+
+  // 2026-os haladó preset paraméterek (kattintható chipek)
+  const [engine, setEngine] = useState<string | null>(null);
+  const [designStyle, setDesignStyle] = useState<string | null>(null);
+  const [optics, setOptics] = useState<string | null>(null);
+  const [colorPalette, setColorPalette] = useState<string | null>(null);
+  const [customColor, setCustomColor] = useState("");
+  const [stylize, setStylize] = useState(250);
+  const [styleRaw, setStyleRaw] = useState(true);
+  const [negativePrompt, setNegativePrompt] = useState("");
+  const [sref, setSref] = useState("");
+  const [cref, setCref] = useState("");
+
+  /** A chip id-ket a promptba kerülő leírásokká oldja fel. */
+  const resolveHints = (
+    ids: string | null,
+    options: { id: string; promptHint: string }[]
+  ) => {
+    if (!ids) return undefined;
+    return ids
+      .split("|")
+      .map((id) => options.find((o) => o.id === id)?.promptHint)
+      .filter(Boolean)
+      .join("; ") || undefined;
+  };
 
   useEffect(() => {
     if (!auth) return;
@@ -158,6 +190,18 @@ export default function MidjourneyWorkshopGenerator() {
         lighting: data.lighting,
         aspectRatio: data.aspectRatio,
         additionalRequirements: data.additionalRequirements,
+        engine: resolveHints(engine, AI_ENGINE_PRESETS),
+        designStyle: resolveHints(designStyle, DESIGN_STYLE_PRESETS),
+        optics: resolveHints(optics, OPTICS_PRESETS),
+        colorPalette:
+          resolveHints(colorPalette, COLOR_PALETTE_PRESETS) ||
+          (customColor.trim() ? undefined : undefined),
+        customColor: customColor.trim() || undefined,
+        stylize,
+        styleRaw,
+        negativePrompt: negativePrompt.trim() || undefined,
+        sref: sref.trim() || undefined,
+        cref: cref.trim() || undefined,
       };
 
       const result = await addMidjourneyGenerationAction(idToken, input);
@@ -220,7 +264,7 @@ export default function MidjourneyWorkshopGenerator() {
                         WebDude AI Studio
                       </span>
                       <span className="text-sm font-bold text-white block -mt-0.5">
-                        Midjourney AI Műhely
+                        Midjourney v6.1 / v7 & Flux Pro
                       </span>
                     </div>
                   </div>
@@ -249,10 +293,10 @@ export default function MidjourneyWorkshopGenerator() {
                         Prémium Vizuálok
                       </h1>
                       <p className="text-slate-400 text-sm max-w-2xl leading-relaxed">
-                        Generálj professzionális Midjourney v6 promptokat Norbi
-                        26 éves vizuális és fotográfiai szakértelmével. 85mm
-                        G-Master optika, volumetric lighting és prémium
-                        kompozíció.
+                        Generálj professzionális Midjourney v6.1/v7 és Flux.1
+                        Pro promptokat Norbi 26 éves vizuális és fotográfiai
+                        szakértelmével. 85mm G-Master optika, volumetric
+                        lighting és prémium kompozíció.
                       </p>
                     </div>
 
@@ -364,6 +408,123 @@ export default function MidjourneyWorkshopGenerator() {
                           <option value="4:5">4:5 (Instagram)</option>
                           <option value="21:9">21:9 (Ultrawide)</option>
                         </select>
+                      </div>
+
+                      {/* Haladó Paraméterek — 2026-os preset chipek */}
+                      <div className="space-y-4 rounded-2xl border border-slate-800/60 bg-slate-900/40 p-4">
+                        <p className="text-xs font-bold text-slate-300 uppercase tracking-wider flex items-center gap-2">
+                          <Zap className="w-4 h-4 text-sky-500" />
+                          Haladó Paraméterek (opcionális)
+                        </p>
+
+                        <PresetChips
+                          label="AI Motor"
+                          options={AI_ENGINE_PRESETS}
+                          value={engine}
+                          onChange={setEngine}
+                        />
+
+                        <PresetChips
+                          label="Design Irányzat"
+                          options={DESIGN_STYLE_PRESETS}
+                          value={designStyle}
+                          onChange={setDesignStyle}
+                        />
+
+                        <PresetChips
+                          label="Optika & Render (többszörös)"
+                          options={OPTICS_PRESETS}
+                          value={optics}
+                          onChange={setOptics}
+                          multi
+                        />
+
+                        <PresetChips
+                          label="Színpaletta"
+                          options={COLOR_PALETTE_PRESETS}
+                          value={colorPalette}
+                          onChange={setColorPalette}
+                        />
+
+                        <div className="space-y-1.5">
+                          <label className="text-xs font-bold text-slate-400 uppercase tracking-wider">
+                            Egyedi HEX szín (opcionális)
+                          </label>
+                          <input
+                            type="text"
+                            value={customColor}
+                            onChange={(e) => setCustomColor(e.target.value)}
+                            placeholder="#00B5F1"
+                            className="w-full px-4 py-2.5 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-sky-500/50 focus:ring-2 focus:ring-sky-500/10 text-white placeholder-slate-500 transition-all text-sm font-mono"
+                          />
+                        </div>
+
+                        <div className="space-y-2">
+                          <div className="flex items-center justify-between">
+                            <label className="text-xs font-bold text-slate-400 uppercase tracking-wider">
+                              Stilizáció (--stylize)
+                            </label>
+                            <span className="text-xs font-mono text-sky-400">
+                              {stylize}
+                            </span>
+                          </div>
+                          <input
+                            type="range"
+                            min={50}
+                            max={750}
+                            step={50}
+                            value={stylize}
+                            onChange={(e) => setStylize(Number(e.target.value))}
+                            className="w-full accent-[#00B5F1]"
+                          />
+                          <label className="flex items-center gap-2 text-xs text-slate-400 cursor-pointer">
+                            <input
+                              type="checkbox"
+                              checked={styleRaw}
+                              onChange={(e) => setStyleRaw(e.target.checked)}
+                              className="accent-[#00B5F1]"
+                            />
+                            --style raw (letisztult, fotórealisztikus kimenet)
+                          </label>
+                        </div>
+
+                        <div className="grid sm:grid-cols-2 gap-3">
+                          <div className="space-y-1.5">
+                            <label className="text-xs font-bold text-slate-400 uppercase tracking-wider">
+                              Negatív prompt (--no)
+                            </label>
+                            <input
+                              type="text"
+                              value={negativePrompt}
+                              onChange={(e) =>
+                                setNegativePrompt(e.target.value)
+                              }
+                              placeholder="blurry, watermark, extra limbs..."
+                              className="w-full px-4 py-2.5 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-sky-500/50 focus:ring-2 focus:ring-sky-500/10 text-white placeholder-slate-500 transition-all text-sm"
+                            />
+                          </div>
+                          <div className="space-y-1.5">
+                            <label className="text-xs font-bold text-slate-400 uppercase tracking-wider">
+                              --sref / --cref (opcionális)
+                            </label>
+                            <div className="flex gap-2">
+                              <input
+                                type="text"
+                                value={sref}
+                                onChange={(e) => setSref(e.target.value)}
+                                placeholder="sref"
+                                className="w-1/2 px-3 py-2.5 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-sky-500/50 text-white placeholder-slate-500 transition-all text-sm font-mono"
+                              />
+                              <input
+                                type="text"
+                                value={cref}
+                                onChange={(e) => setCref(e.target.value)}
+                                placeholder="cref"
+                                className="w-1/2 px-3 py-2.5 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-sky-500/50 text-white placeholder-slate-500 transition-all text-sm font-mono"
+                              />
+                            </div>
+                          </div>
+                        </div>
                       </div>
 
                       {/* Additional Requirements */}
@@ -692,6 +853,144 @@ export default function MidjourneyWorkshopGenerator() {
                               {generatedOutput.midjourneyPrompt}
                             </p>
                           </div>
+                        </motion.div>
+
+                        {/* Flux / Ideogram Prompt (ha szöveg kell a képre) */}
+                        {(generatedOutput.fluxPrompt ||
+                          generatedOutput.ideogramPrompt) && (
+                          <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.45 }}
+                            className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
+                          >
+                            <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
+                              <Sparkles className="w-4 h-4 text-sky-500" />
+                              Flux.1 Pro / Ideogram 2.0 Prompt
+                            </h3>
+                            <div className="space-y-3">
+                              {generatedOutput.fluxPrompt && (
+                                <div>
+                                  <div className="flex items-center justify-between mb-1">
+                                    <p className="text-xs text-slate-400">
+                                      Flux.1 Pro (fotórealisztikus)
+                                    </p>
+                                    <button
+                                      onClick={() =>
+                                        copyToClipboard(
+                                          generatedOutput.fluxPrompt || "",
+                                          "flux"
+                                        )
+                                      }
+                                      className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-mono hover:bg-sky-500/20 transition-colors"
+                                    >
+                                      {copiedStates["flux"] ? (
+                                        <Check className="w-3 h-3" />
+                                      ) : (
+                                        <Copy className="w-3 h-3" />
+                                      )}
+                                    </button>
+                                  </div>
+                                  <div className="bg-bg-base/50 rounded-xl p-4 border border-gray-800">
+                                    <p className="text-xs text-white font-mono leading-relaxed whitespace-pre-wrap">
+                                      {generatedOutput.fluxPrompt}
+                                    </p>
+                                  </div>
+                                </div>
+                              )}
+                              {generatedOutput.ideogramPrompt && (
+                                <div>
+                                  <div className="flex items-center justify-between mb-1">
+                                    <p className="text-xs text-slate-400">
+                                      Ideogram 2.0 (pontos tipográfia)
+                                    </p>
+                                    <button
+                                      onClick={() =>
+                                        copyToClipboard(
+                                          generatedOutput.ideogramPrompt || "",
+                                          "ideogram"
+                                        )
+                                      }
+                                      className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-mono hover:bg-sky-500/20 transition-colors"
+                                    >
+                                      {copiedStates["ideogram"] ? (
+                                        <Check className="w-3 h-3" />
+                                      ) : (
+                                        <Copy className="w-3 h-3" />
+                                      )}
+                                    </button>
+                                  </div>
+                                  <div className="bg-bg-base/50 rounded-xl p-4 border border-gray-800">
+                                    <p className="text-xs text-white font-mono leading-relaxed whitespace-pre-wrap">
+                                      {generatedOutput.ideogramPrompt}
+                                    </p>
+                                  </div>
+                                </div>
+                              )}
+                            </div>
+                          </motion.div>
+                        )}
+
+                        {/* Negatív prompt + Szakértői tippek */}
+                        <motion.div
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 0.48 }}
+                          className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
+                        >
+                          <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
+                            <Lightbulb className="w-4 h-4 text-sky-500" />
+                            Negatív Prompt & Szakértői Tippek
+                          </h3>
+                          {generatedOutput.negativePrompt && (
+                            <div>
+                              <div className="flex items-center justify-between mb-1">
+                                <p className="text-xs text-slate-400">
+                                  Negatív prompt (--no)
+                                </p>
+                                <button
+                                  onClick={() =>
+                                    copyToClipboard(
+                                      generatedOutput.negativePrompt || "",
+                                      "negative"
+                                    )
+                                  }
+                                  className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-mono hover:bg-sky-500/20 transition-colors"
+                                >
+                                  {copiedStates["negative"] ? (
+                                    <Check className="w-3 h-3" />
+                                  ) : (
+                                    <Copy className="w-3 h-3" />
+                                  )}
+                                </button>
+                              </div>
+                              <div className="bg-bg-base/50 rounded-xl p-4 border border-gray-800">
+                                <p className="text-xs text-white font-mono leading-relaxed">
+                                  --no {generatedOutput.negativePrompt}
+                                </p>
+                              </div>
+                            </div>
+                          )}
+                          {generatedOutput.expertTips &&
+                            generatedOutput.expertTips.length > 0 && (
+                              <div>
+                                <p className="text-xs text-slate-400 mb-2">
+                                  Szakértői megvalósítási tippek (26 év grafikai
+                                  rutin)
+                                </p>
+                                <ul className="space-y-1.5">
+                                  {generatedOutput.expertTips.map((tip, i) => (
+                                    <li
+                                      key={i}
+                                      className="flex items-start gap-2 text-xs text-slate-300 leading-relaxed"
+                                    >
+                                      <span className="mt-1 w-1.5 h-1.5 rounded-full bg-[#00B5F1] shrink-0" />
+                                      {tip}
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                            )}
                         </motion.div>
 
                         {/* Variations */}

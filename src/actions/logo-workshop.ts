@@ -37,6 +37,8 @@ const logoGenerationSchema = z.object({
     "dark",
   ]),
   additionalRequirements: z.string().optional(),
+  designDirection: z.string().max(600).optional(),
+  colorPalette: z.string().max(600).optional(),
 });
 
 /**
@@ -204,8 +206,10 @@ Audience: ${validatedInput.targetAudience}
 Style: ${styleDescriptions[validatedInput.logoStyle]}
 Colors: ${colorDescriptions[validatedInput.colorPreference]}
 Requirements: ${validatedInput.additionalRequirements || "None"}
+Design Direction: ${validatedInput.designDirection || "nincs megadva"}
+Color Palette: ${validatedInput.colorPalette || "nincs megadva"}
 
-Return valid JSON only. Hungarian language. Apply WebDude Cyber-Gold identity. Focus on scalability and versatility.`;
+Return valid JSON only. Hungarian language. Apply WebDude Kék-Lila v7.0 identity. Focus on scalability and versatility.`;
 
   try {
     // 7. Call Groq API

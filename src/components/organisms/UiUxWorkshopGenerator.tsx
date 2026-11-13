@@ -21,6 +21,12 @@ import {
   TrendingUp,
 } from "lucide-react";
 import Link from "next/link";
+import PresetChips from "@/components/molecules/PresetChips";
+import {
+  DESIGN_STYLE_PRESETS,
+  COLOR_PALETTE_PRESETS,
+  resolvePresetHints,
+} from "@/lib/workshop-presets";
 import { auth } from "@/lib/firebase";
 import { addUiUxWorkshopAction } from "@/actions/uiux-workshop";
 import { getClientUserProfileAction } from "@/actions/portal";
@@ -70,6 +76,8 @@ export default function UiUxWorkshopGenerator() {
   const [isAdmin, setIsAdmin] = useState(false);
   const [allowedTools, setAllowedTools] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
+  const [designDirection, setDesignDirection] = useState<string | null>(null);
+  const [colorPalette, setColorPalette] = useState<string | null>(null);
 
   useEffect(() => {
     if (!auth) return;
@@ -143,6 +151,8 @@ export default function UiUxWorkshopGenerator() {
         designStyle: data.designStyle,
         colorPreference: data.colorPreference,
         additionalRequirements: data.additionalRequirements,
+        designDirection: resolvePresetHints(designDirection, DESIGN_STYLE_PRESETS),
+        colorPalette: resolvePresetHints(colorPalette, COLOR_PALETTE_PRESETS),
       };
 
       const result = await addUiUxWorkshopAction(idToken, input);
@@ -367,6 +377,22 @@ export default function UiUxWorkshopGenerator() {
                           <option value="light">Világos</option>
                           <option value="mixed">Vegyes</option>
                         </select>
+                      </div>
+
+                      {/* Design Irányzat & Színpaletta Preset Chipek */}
+                      <div className="space-y-4 rounded-2xl border border-slate-800/60 bg-slate-900/40 p-4">
+                        <PresetChips
+                          label="Design Irányzat (2026)"
+                          options={DESIGN_STYLE_PRESETS}
+                          value={designDirection}
+                          onChange={setDesignDirection}
+                        />
+                        <PresetChips
+                          label="Színpaletta"
+                          options={COLOR_PALETTE_PRESETS}
+                          value={colorPalette}
+                          onChange={setColorPalette}
+                        />
                       </div>
 
                       {/* Additional Requirements */}

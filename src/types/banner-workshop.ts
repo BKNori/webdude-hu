@@ -28,6 +28,10 @@ export interface BannerWorkshopInput {
     cta?: string;
   };
   additionalRequirements?: string;
+  /** 2026-os design irányzat preset (feloldott prompt leírás) */
+  designDirection?: string;
+  /** 2026-os színpaletta preset (feloldott prompt leírás) */
+  colorPalette?: string;
 }
 
 export interface BannerWorkshopOutput {

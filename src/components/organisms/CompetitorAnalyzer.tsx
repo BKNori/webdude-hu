@@ -12,6 +12,7 @@ import {
   X,
   AlertCircle,
 } from "lucide-react";
+import CopyButton from "@/components/atoms/CopyButton";
 import { auth } from "@/lib/firebase";
 import { analyzeCompetitorsAction } from "@/actions/ai";
 
@@ -229,6 +230,21 @@ export default function CompetitorAnalyzer() {
             </div>
           )}
 
+          {/* 1-Click Példa Betöltése */}
+          <button
+            type="button"
+            onClick={() => {
+              setTargetUrl("https://pelda-webshop.hu");
+              setCompetitorUrls([
+                "https://versenytars-a.hu",
+                "https://versenytars-b.hu",
+              ]);
+            }}
+            className="w-full px-6 py-3 rounded-xl border border-sky-500/30 bg-sky-500/5 text-sky-400 text-xs font-bold uppercase tracking-wider hover:bg-sky-500/15 transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B5F1]"
+          >
+            Példa URL-ek Betöltése (1 kattintás)
+          </button>
+
           <button
             onClick={handleAnalysis}
             disabled={loading}
@@ -257,6 +273,13 @@ export default function CompetitorAnalyzer() {
           transition={{ delay: 0.4 }}
           className="space-y-6"
         >
+          {/* Teljes elemzés export gomb */}
+          <div className="flex justify-end">
+            <CopyButton
+              text={JSON.stringify(result, null, 2)}
+              label="Teljes elemzés másolása"
+            />
+          </div>
           {/* Target Score Card */}
           <div
             className={`glass-card p-8 border ${getScoreBg(result.targetScore.overallUX)}`}

@@ -38,6 +38,8 @@ type ToolType =
   | "ui_ux_ai_muhely"
   | "versenytars_elemzo_ai_muhely";
 
+type ToolCategory = "visual" | "web" | "seo" | "strategy" | "all";
+
 interface ToolItem {
   id: ToolType;
   slug: string;
@@ -45,20 +47,37 @@ interface ToolItem {
   description: string;
   icon: React.ComponentType<{ className?: string }>;
   features: string[];
+  category: Exclude<ToolCategory, "all">;
 }
+
+const CATEGORY_LABELS: Record<Exclude<ToolCategory, "all">, string> = {
+  visual: "Vizuális & Grafika",
+  web: "Web & UI/UX",
+  seo: "SEO & Marketing",
+  strategy: "Stratégia",
+};
+
+const CATEGORY_ORDER: Exclude<ToolCategory, "all">[] = [
+  "visual",
+  "web",
+  "seo",
+  "strategy",
+];
 
 const generatorTools: ToolItem[] = [
   {
     id: "midjourney_prompt",
     slug: "midjourney",
-    name: "Midjourney v6 Master",
+    name: "Midjourney v6.1 / v7 & Flux Pro Master",
     description:
-      "Fotórealisztikus, 3D renderelt vagy minimalista illusztrációs promptok készítése.",
+      "Fotórealisztikus, 3D renderelt vagy minimalista illusztrációs promptok készítése 2026-os motorokkal.",
     icon: Sparkles,
+    category: "visual",
     features: [
-      "Technical parameters (--ar, --v 6.0)",
-      "Volumetric & expert lighting terms",
-      "Hungarian customization tips",
+      "Motorválasztó: Midjourney v6.1/v7, Flux.1 Pro, Ideogram 2.0, Recraft v3",
+      "8 modern stílusirányzat + optikai preset chipek (85mm, tilt-shift, chiaroscuro)",
+      "Képarány, stilizáció, --style raw, negatív prompt, --sref/--cref",
+      "Kattintható színpaletta presetek HEX gépelés nélkül",
     ],
   },
   {
@@ -68,49 +87,53 @@ const generatorTools: ToolItem[] = [
     description:
       "Közösségi média és webáruház bannerek teljes elrendezési terve és promptjai.",
     icon: Layout,
+    category: "visual",
     features: [
-      "Layout hierarchy description",
-      "Psychological color palette (HEX)",
-      "High-converting headline copy",
+      "Elrendezési hierarchia leírása",
+      "Pszichológiai színpaletta (HEX)",
+      "Konverzió-optimalizált headline szöveg",
     ],
   },
   {
     id: "logo_designer",
     slug: "logo",
     name: "Logo & Brand Szimbólum",
-    icon: Palette,
     description:
       "Vektorgrafikus logótervek, modern app ikonok és arculati elemek promptjai.",
+    icon: Palette,
+    category: "visual",
     features: [
-      "3 distinct design concepts",
-      "Flat vector & clean lines prompts",
-      "Minimalist metaphorical descriptions",
+      "3 különböző design koncepció",
+      "Flat vector és letisztult vonalak promptok",
+      "Minimalista metaforikus leírások",
     ],
   },
   {
     id: "ui_ux_designer",
     slug: "ui-ux",
     name: "UI/UX Wireframe mockup",
-    icon: Laptop,
     description:
       "Weboldal szekciók elrendezése és Midjourney UI mockup promptok.",
+    icon: Laptop,
+    category: "web",
     features: [
-      "Section-by-section landing wireframe",
-      "Micro-interaction suggestions",
-      "High-fidelity Figma UI prompt",
+      "Szekciónkénti landing wireframe",
+      "Mikro-interakció javaslatok",
+      "Magas hűségű UI prompt",
     ],
   },
   {
     id: "seasonal_campaign_designer",
     slug: "szezonalis",
     name: "Szezonális Kampány Vizuál",
-    icon: Calendar,
     description:
       "Szezonális akciók kampánygrafikáinak stílusa, hangulata és promptjai.",
+    icon: Calendar,
+    category: "visual",
     features: [
-      "Seasonal vibe & mood description",
-      "Thematic color codes (HEX)",
-      "Product flatlay asset prompt template",
+      "Szezonális hangulat és vibe leírás",
+      "Tematikus színkódok (HEX)",
+      "Termék flatlay asset prompt sablon",
     ],
   },
   {
@@ -120,6 +143,7 @@ const generatorTools: ToolItem[] = [
     description:
       "Ingatlanbefektetői pitch generálás PDF alaprajzokból és kontextus paraméterekből.",
     icon: Sparkles,
+    category: "strategy",
     features: [
       "PDF alaprajz elemzés",
       "Strategist-Pro AI workflow",
@@ -132,10 +156,11 @@ const generatorTools: ToolItem[] = [
     slug: "banner-ai-muhely",
     name: "Banner AI Műhely",
     description:
-      "Konverziófókuszú banner tervezés Midjourney v6 Master promptokkal.",
+      "Konverziófókuszú banner tervezés Midjourney v6.1/v7 és Flux Pro promptokkal.",
     icon: Layout,
+    category: "visual",
     features: [
-      "Midjourney v6 Master promptok",
+      "Midjourney v6.1/v7 és Flux Pro promptok",
       "90/8/2 színarány szabály",
       "85mm G-Master optika",
       "Chiaroscuro lighting",
@@ -146,10 +171,11 @@ const generatorTools: ToolItem[] = [
     slug: "logo-ai-muhely",
     name: "Logo AI Műhely",
     description:
-      "Egyedi arculattervezés és logo generálás Midjourney v6 Master promptokkal.",
+      "Egyedi arculattervezés és logo generálás Midjourney v6.1/v7 és Flux Pro promptokkal.",
     icon: Palette,
+    category: "visual",
     features: [
-      "Midjourney v6 Master promptok",
+      "Midjourney v6.1/v7 és Flux Pro promptok",
       "Egyedi arculattervezés",
       "Logo generálás",
       "Brand szimbólumok",
@@ -159,10 +185,12 @@ const generatorTools: ToolItem[] = [
     id: "midjourney_ai_muhely",
     slug: "midjourney-ai-muhely",
     name: "Midjourney AI Műhely",
-    description: "Midjourney v6 integráció prémium vizuálokhoz.",
+    description:
+      "Midjourney v6.1/v7 és Flux.1 Pro integráció prémium vizuálokhoz.",
     icon: Sparkles,
+    category: "visual",
     features: [
-      "Midjourney v6 integráció",
+      "Midjourney v6.1/v7 és Flux.1 Pro",
       "85mm G-Master optika",
       "Chiaroscuro lighting",
       "Prémium vizuálok",
@@ -174,6 +202,7 @@ const generatorTools: ToolItem[] = [
     name: "SEO Audit AI Műhely",
     description: "SEO és AEO audit vizualizáció AI eszközökkel.",
     icon: Laptop,
+    category: "seo",
     features: [
       "SEO audit vizualizáció",
       "Lighthouse score tracking",
@@ -187,10 +216,11 @@ const generatorTools: ToolItem[] = [
     name: "Szezonalis AI Műhely",
     description: "Szezonalis grafikai kampányok AI eszközökkel.",
     icon: Calendar,
+    category: "visual",
     features: [
-      "Szezonalis kampányok",
+      "Szezonális kampányok",
       "Ünnepi vizuálok",
-      "Midjourney v6 Master promptok",
+      "Midjourney v6.1/v7 és Flux Pro promptok",
       "Automatikus generálás",
     ],
   },
@@ -200,6 +230,7 @@ const generatorTools: ToolItem[] = [
     name: "Tartalomtervező AI Műhely",
     description: "Tartalom és vizuális tervezés AI eszközökkel.",
     icon: Layout,
+    category: "seo",
     features: [
       "Tartalom generálás",
       "Vizuális tervezés",
@@ -213,6 +244,7 @@ const generatorTools: ToolItem[] = [
     name: "UI/UX AI Műhely",
     description: "UI/UX design és wireframe generálás AI eszközökkel.",
     icon: Laptop,
+    category: "web",
     features: [
       "UI/UX design generálás",
       "Wireframe tervezés",
@@ -226,6 +258,7 @@ const generatorTools: ToolItem[] = [
     name: "Versenytárs Elemző AI Műhely",
     description: "Versenytárs vizuális elemzés AI eszközökkel.",
     icon: Sparkles,
+    category: "strategy",
     features: [
       "Versenytárs vizuális elemzés",
       "Design audit",
@@ -242,6 +275,7 @@ export default function AIWorkshopCollection() {
   const [allowedTools, setAllowedTools] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [activeCategory, setActiveCategory] = useState<ToolCategory>("all");
 
   useEffect(() => {
     if (!auth) return;
@@ -307,6 +341,16 @@ export default function AIWorkshopCollection() {
     }
   };
 
+  const displayName =
+    user?.displayName ||
+    user?.email?.split("@")[0] ||
+    "Felhasználó";
+
+  const filteredTools =
+    activeCategory === "all"
+      ? generatorTools
+      : generatorTools.filter((tool) => tool.category === activeCategory);
+
   if (loading) {
     return (
       <div className="min-h-screen bg-bg-base flex flex-col items-center justify-center space-y-4">
@@ -350,11 +394,16 @@ export default function AIWorkshopCollection() {
             >
               Projektek
             </Link>
-            <div className="hidden sm:flex items-center gap-2.5 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-xs">
+            <div className="flex items-center gap-2.5 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-xs">
               <UserCheck className="w-3.5 h-3.5 text-sky-500" />
               <span className="text-slate-400 font-medium truncate max-w-37.5">
                 {user?.email}
               </span>
+              {isAdmin && (
+                <span className="text-[9px] font-black uppercase tracking-widest text-[#a78bfa] bg-[#7C3AED]/15 border border-[#7C3AED]/30 px-1.5 py-0.5 rounded">
+                  Szuperadmin
+                </span>
+              )}
             </div>
             <button
               onClick={handleLogout}
@@ -383,6 +432,46 @@ export default function AIWorkshopCollection() {
             AI motorokkal. A szuperadmin teljes hozzáféréssel rendelkezik, az
             ügyfeleknek pedig egyedileg oszthatók ki a modulok.
           </p>
+          {/* Üdvözlő sáv — belépett státusz */}
+          <div className="flex flex-wrap items-center gap-2 pt-2">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+            </span>
+            <p className="text-xs text-slate-400 font-mono">
+              Üdvözöllek a Kreatív Stúdióban,{" "}
+              <span className="text-slate-200 font-bold">{displayName}</span>
+              {isAdmin && (
+                <span className="text-[#a78bfa]">
+                  {" "}
+                  • Szuperadmin hozzáférés aktív
+                </span>
+              )}
+            </p>
+          </div>
+        </div>
+
+        {/* Kategória szűrő */}
+        <div className="flex flex-wrap items-center gap-2">
+          {(["all", ...CATEGORY_ORDER] as ToolCategory[]).map((cat) => (
+            <button
+              key={cat}
+              type="button"
+              onClick={() => setActiveCategory(cat)}
+              className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider border transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B5F1] ${
+                activeCategory === cat
+                  ? "bg-[#00B5F1]/15 border-[#00B5F1]/50 text-[#00B5F1] shadow-[0_0_14px_rgba(0,181,241,0.15)]"
+                  : "bg-slate-900/60 border-slate-800 text-slate-400 hover:border-[#00B5F1]/30 hover:text-slate-200"
+              }`}
+            >
+              {cat === "all" ? "Összes" : CATEGORY_LABELS[cat]}
+              <span className="ml-1.5 opacity-60 font-mono">
+                {cat === "all"
+                  ? generatorTools.length
+                  : generatorTools.filter((t) => t.category === cat).length}
+              </span>
+            </button>
+          ))}
         </div>
 
         {error && (
@@ -394,7 +483,7 @@ export default function AIWorkshopCollection() {
 
         {/* Collection Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {generatorTools.map((tool) => {
+          {filteredTools.map((tool) => {
             const hasAccess = isAdmin || allowedTools.includes(tool.id);
             const ToolIcon = tool.icon;
 
