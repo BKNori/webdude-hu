@@ -1,9 +1,15 @@
 # 01_CURRENT_TASKS.md — WebDude.hu Projekt
 
-## Aktuális feladatok és állapot (2026-11-14 — v7.61.0)
+## Aktuális feladatok és állapot (2026-11-14 — v7.62.0)
 
 ### 🟢 Legutóbb lezárt sprintek (2026-11-14)
 
+- ✅ **v7.62.0 — Főoldali Hero és Maradék Kliens Organizmusok Modularizálása (`<= 300` sor):**
+  - **`HeroSectionNew.tsx` (`546 → 252` sor):** `heroSlidesConfig.tsx` (211 sor), `HeroBackgroundLayers.tsx` (81 sor, LCP `priority={currentSlide === 0}`) és `HeroSliderControls.tsx` (94 sor); `isolate` kontextus és `hero-cta-*-primary` E2E szelektorok 100%-ban megőrizve.
+  - **`KristofkaWorkflow.tsx` (`637 → 220` sor):** `KristofkaInputForm.tsx` (163 sor) + `KristofkaPitchOutput.tsx` (222 sor, dinamikus `await import("jspdf")` PDF exporttal és NotebookLM Markdown exporttal).
+  - **`AIWorkshopCollection.tsx` (`658 → 287` sor) & `EmailTemplateEditor.tsx` (`588 → 235` sor):** `src/data/ai-workshop-collection-config.ts` (292 sor), `EmailTemplateFormAndPreview.tsx` (232 sor, sandboxolt `<iframe srcDoc="..." sandbox="" />` előnézet) és `EmailTemplatesList.tsx` (121 sor).
+  - **`firestore.rules` & `_docs/ARCHITECTURE.md`:** explicit `match /processed_stripe_events/{eventId} { allow read, write: if false; }` szabály és teljes komponens-regiszter szinkron.
+  - **QA Gate & E2E:** `tsc` (0), `lint` (0), `jest` (51/51 PASS), `audit-contrast.js` (383 fájl, 0 hiba), `playwright test e2e/smoke.spec.ts` (5/5 PASS).
 - ✅ **v7.61.0 — P0 Security Hardening, Sitemap/Noindex Fix & Dynamic Bundle Optimization:**
   - **P0 Szerveroldali Biztonság:** `getEnhancedKpiMetricsAction` (`src/app/actions/getEnhancedKpiMetrics.ts` + `src/app/admin/page.tsx`), `saveToCaseStudyAction` (`src/actions/case-study.ts` + `KristofkaWorkflow.tsx`) és `autoAssignTaskAction` / `autoAssignAllPendingTasksAction` (`src/actions/dispatcher.ts` + `src/app/admin/work-log/page.tsx`) ellátva szerveroldali Firebase ID token / admin jogosultság-ellenőrzéssel, Zod input validációval és cPanel-barát kliens SDK fallbackkel.
   - **P0 Stripe Webhook Hardening (`src/app/api/webhooks/stripe/route.ts`):** 300 másodperces (5 perces) replay-ablak ellenőrzés a `t=` időbélyegre és eseményszintű idempotencia (`processed_stripe_events/{event.id}` + `orderData.status === "paid"` védelem).

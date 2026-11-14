@@ -1,5 +1,38 @@
 # Changelog
 
+## [7.62.0] — 2026-11-14 — SPRINT: FŐOLDALI HERO ÉS MARADÉK KLIENS ORGANIZMUSOK MODULARIZÁLÁSA (`<= 300` SOR)
+
+**1. `HeroSectionNew.tsx` ATOMIC DESIGN MODULARIZÁLÁS (`546 → 252` SOR / FÁJL):**
+- **ÚJ** `src/components/organisms/hero/heroSlidesConfig.tsx` (211 sor): a főoldali Hero 3 diájának alapértelmezett konfigurációja (`SlideData`, `SLIDE_DEFAULTS`) és a nyelvi szótárral (`HeroContent`) összefésülő `buildHeroSlides` függvény.
+- **ÚJ** `src/components/organisms/hero/HeroBackgroundLayers.tsx` (81 sor): a Hero háttérkép-rétege (`ResponsiveImage` LCP `priority={currentSlide === 0}` védelemmel), sötét kontraszt-scrim, CSS mesh grid és Kék-Lila v7.0 radial glow gömbök (`hero-blob-1`, `hero-blob-2`).
+- **ÚJ** `src/components/organisms/hero/HeroSliderControls.tsx` (94 sor): az alsó vezérlősáv (`role="tablist"` pöttyök, `01 / 03` számláló, előző/következő nyilak) és a `HeroScrollHint` görgetésjelző.
+- `src/components/organisms/HeroSectionNew.tsx` (252 sor): vékony karmester (orchestrator) komponens `isolate` kontextussal, 6 másodperces pause-on-hover léptetéssel, `useScroll`/`useTransform` parallaxszal és érintetlen `[id^="hero-cta-"][id$="-primary"]` E2E teszt-szelektorokkal.
+
+**2. `KristofkaWorkflow.tsx` ATOMIC DESIGN MODULARIZÁLÁS (`637 → 220` SOR / FÁJL):**
+- **ÚJ** `src/components/organisms/kristofka/KristofkaInputForm.tsx` (163 sor): a Kristófka Munkafolyamat bemeneti űrlapja (`UniversalFileUploader` PDF alaprajz-feltöltés, célcsoport-, narratíva-, hangvétel- és energetikai besorolás választók, generáló CTA).
+- **ÚJ** `src/components/organisms/kristofka/KristofkaPitchOutput.tsx` (222 sor): a 4 befektetői pitch szekció (örökség, vízió, pénzügy, ROI) másolással, TXT letöltés, dinamikus `await import("jspdf")` PDF export és NotebookLM Markdown adatcsomag export használati kisokossal.
+- `src/components/organisms/KristofkaWorkflow.tsx` (220 sor): vékony karmester komponens Firebase Auth + `ToolAccessLock` RBAC (`kristofka_workflow`), `generateKristofkaPitchAction` és hitelesített `saveToCaseStudyAction(..., idToken)` hívással.
+
+**3. `AIWorkshopCollection.tsx` (`658 → 287` SOR) & `EmailTemplateEditor.tsx` (`588 → 235` SOR) MODULARIZÁLÁS:**
+- **ÚJ** `src/data/ai-workshop-collection-config.ts` (292 sor): a `/portal/ai-muhely` Kreatív Stúdió 18 generátorának statikus katalógus-konfigurációja (`ToolType`, `ToolCategory`, `ToolItem`, `CATEGORY_LABELS`, `CATEGORY_ORDER`, `ADMIN_DEFAULT_ALLOWED_TOOLS`, `generatorTools`).
+- `src/components/organisms/AIWorkshopCollection.tsx` (287 sor): vékony karmester komponens jogosultság-ellenőrzéssel, kategóriaszűrővel és kártyaráccsal.
+- **ÚJ** `src/components/organisms/email-editor/EmailTemplateFormAndPreview.tsx` (232 sor): sablon-szerkesztő űrlap (`templateId`, `name`, `subject`, `category`, dinamikus `{{variable}}` chipek, HTML szerkesztő) és izolált `<iframe srcDoc={formData.htmlContent} sandbox="" />` előnézet.
+- **ÚJ** `src/components/organisms/email-editor/EmailTemplatesList.tsx` (121 sor): sablonkártya-rács és üres állapot szerkesztés, duplikálás és törlés műveletekkel.
+- `src/components/organisms/EmailTemplateEditor.tsx` (235 sor): vékony karmester komponens Firebase Auth `idToken` és Server Action CRUD vezérléssel.
+
+**4. `firestore.rules` KIEGÉSZÍTÉS & `_docs/ARCHITECTURE.md` SZINKRON:**
+- `firestore.rules`: felvéve az explicit `match /processed_stripe_events/{eventId} { allow read, write: if false; }` blokk (dokumentáltan kizárólag szerveroldali Admin SDK írhatja).
+- `_docs/ARCHITECTURE.md`: regisztrálva az összes új alkomponens és konfigurációs modul (`HeroBackgroundLayers`, `HeroSliderControls`, `heroSlidesConfig`, `KristofkaInputForm`, `KristofkaPitchOutput`, `EmailTemplateFormAndPreview`, `EmailTemplatesList`, `AIWorkshopCollection`, `ai-workshop-collection-config`).
+
+**5. TELJES QA GATE & PLAYWRIGHT E2E SMOKE VERIFIKÁCIÓ:**
+- `npx tsc --noEmit` → **0 hiba (EXIT=0)**
+- `npm run lint -- --max-warnings 0` → **0 error, 0 warning (EXIT=0)**
+- `npx jest --no-coverage` → **5/5 suite, 51/51 teszt PASS (EXIT=0)**
+- `node scripts/audit-contrast.js` → **383 vizsgált fájl, 0 kontraszt-hiba (EXIT=0)**
+- `npx playwright test e2e/smoke.spec.ts` → **5/5 teszt PASS (EXIT=0)**
+
+---
+
 ## [7.61.0] — 2026-11-14 — SPRINT: P0 SECURITY HARDENING, SITEMAP/NOINDEX FIX & DYNAMIC BUNDLE OPTIMIZATION
 
 **1. P0 — SZERVEROLDALI BIZTONSÁG ÉS JOGOSULTSÁGOK (KRITIKUS):**

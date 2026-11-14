@@ -215,6 +215,11 @@ service cloud.firestore {
       allow read, write: if isAdmin() || isHelloAdmin();
     }
 
+    // Stripe Webhook Idempotencia — kizárólag szerveroldali Admin SDK írhatja
+    match /processed_stripe_events/{eventId} {
+      allow read, write: if false;
+    }
+
     // Minden más: tiltva
     match /{document=**} {
       allow read, write: if false;
