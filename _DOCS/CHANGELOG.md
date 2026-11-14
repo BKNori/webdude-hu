@@ -1,5 +1,15 @@
 # Changelog
 
+## [7.54.1] — 2026-11-14 — [DOCS] SSOT DOKUMENTÁCIÓS KONSZOLIDÁCIÓ & HIBAJAVÍTÁS
+
+- **`AGENTS.md` & `_docs/AGENTS.md` (v7.1.0 szinkron):** A `_docs/AGENTS.md` elavult `v4.0` verziójában maradt `#041356ff` háttérkód (`#020617` / `bg-bg-base`) és „Cyber-Arany” elnevezések felszámolva; mindkét fájl egységesítve a **Kék-Lila v7.0** palettával (`brand-primary`: `#00B5F1`, `cta-from`: `#075985`, `cta-to`: `#5B21B6`, `cta-hover`: `#6d28d9`), a **Duál Tipográfiával** (`Bebas Neue` `font-weight: 400 !important` címsorok, `Plus Jakarta Sans` `400`/`500`/`600` folyószöveg és UI), a **Zéró Fix Ár** szabállyal, az **Országos pozicionálással** (Kecskemét kizárólag a `/weboldal-keszites-kecskemet` oldalon), valamint a `Balog Norbert` (`alternateName: ["Balog Norbi", "WebDude"]`) JSON-LD founder horgonnyal és a kötelező `.replace(/</g, "\\u003c")` XSS védelemmel.
+- **`_docs/DESIGN_SYSTEM.md`:** Az 1. szekció első mondata „WebDude Kék-Lila v7.0 (Cyber-Cyan & Violet Dark Studio)” névre cserélve; a 7.2-es CTA kódpéldák pontosítva `Plus Jakarta Sans` (`font-sans font-semibold`) gomb-tipográfiára (`Bebas Neue` kizárólag `H1–H6`-ra).
+- **`_docs/WEBDUDE_OS_KNOWLEDGE_BASE.md`:** Frissítve Kék-Lila v7.0 + Duál Tipográfiára (`Bebas Neue` + `Plus Jakarta Sans`), 90-8-2 vizuális és operatív arányra, **Balog Norbert (WebDude)** (26 év grafikai / 16 év webfejlesztői tapasztalat) entitásra, országos long-tail SEO pozicionálásra, valamint a 12.1 FAQ-ból a fix Ft árak törölve (Zéró Fix Ár elv bevezetve).
+- **`_docs/VISUAL_AUDIT_PLAN.md` & `_docs/VISUAL_DESIGNS.md`:** A `VISUAL_AUDIT_PLAN.md`-ben az `#00B5F1 (arany)` elírások `#00B5F1 (Electric Cyan)`-ra javítva és a dokumentum lezárva (beolvadt a Kék-Lila v7.0-ba). A `VISUAL_DESIGNS.md` teljes egészében újjáépítve a **Kék-Lila v7.0** szabvány szerint: 0% arany/amber és Zéró Fix Ár („Egyedi árajánlat kérése” / „Egyedi árajánlat / Portál csomag”), 2026 Multi-Engine paraméterek (`Midjourney v6.1 / Flux.1 Pro / Ideogram 2.0 / Recraft v3`, `electric cyan (#00B5F1) and deep violet (#5B21B6) rim lighting`), duál tipográfiás `BannerHero`, `useReducedMotion()` + a11y védelemmel ellátott `LighthousePerformanceSection`, valamint záró `v7.44.0 QA Audit Protokoll` táblázat.
+- **`_docs/` mappa higiénia:** A lezárt Cycle 136 incidenshez tartozó `corrupted-files-recovery.md` és `corrupted-files-recovery-v2.md` fájlok (mivel a `AdminPanel.tsx`, `QuoteRequestForm.tsx` és `SingleAITool.tsx` már helyreállítva élnek a `src/` alatt) áthelyezve a `_docs/archive/` almappába.
+
+---
+
 ## [7.54.0] — 2026-11-13 — SPRINT 2: NYILVÁNOS TERMÉKKATALÓGUS + GRANULÁLT GENERÁTOR-RBAC + MONOLIT REFAKTORÁLÁS
 
 **1. NYILVÁNOS KONVERZÓS KATALÓGUS (`/termekek` + `/termekek/[slug]`):**

@@ -1,7 +1,9 @@
-# AGENTS.md — WebDude.hu Project Operating System v4.0
+# AGENTS.md — WebDude.hu Project Operating System v7.1.0 (Sync)
 
 **webdude.hu | Next.js 16 · React 19 · TypeScript · Tailwind CSS v4 · Firebase**
-**Státusz: Produkciós (Production-Ready) | Utolsó frissítés: 2026-08-09**
+**Státusz: Produkciós (Production-Ready) | Utolsó frissítés: 2026-11-14 (Kék-Lila v7.0 + SSOT Konszolidáció)**
+
+> ⚠️ **SSOT Megjegyzés:** A projekt elsődleges `AGENTS.md` fájlja a gyökérkönyvtárban található (`./AGENTS.md`). Ez a `_docs/` példány szinkronban tartva követi a Kék-Lila v7.0 és 2026-11-14-i szabályokat.
 
 > Ez a fájl a projekt gyökerében él. Minden AI ügynök (Claude, Gemini, Copilot, Cursor, Codex) számára **KÖTELEZŐ** olvasmány minden munkamenet elején — mielőtt egyetlen sort is írnál. Ez a „README a gépeknek".
 > **Ipari standard:** Az AGENTS.md formátumot az OpenAI, Google Jules, GitHub Copilot, Cursor, Windsurf és más vezető AI fejlesztői eszközök natívan támogatják (2025 augusztusától szabvány).
@@ -78,7 +80,7 @@ webdude-hu/
 │   └── content/                    # MDX fájlok (blog bejegyzések)
 ├── _docs/
 │   ├── ARCHITECTURE.md             # Atomic Design fa, komponens regiszter
-│   ├── DESIGN_SYSTEM.md            # Cyber-Arany paletta, Tailwind konvenciók
+│   ├── DESIGN_SYSTEM.md            # Kék-Lila v7.0 paletta, Tailwind konvenciók
 │   ├── CHANGELOG.md                # Deploy napló
 │   └── WORKFLOW_PROTOCOL.md        # Munkafolyamat szabályok
 ├── public/
@@ -157,17 +159,28 @@ export default function Page() {
 
 > Vizuális módosítás előtt kötelező: `_docs/DESIGN_SYSTEM.md` elolvasása.
 
-**WebDude Cyber-Arany színrendszer:**
+**WebDude Kék-Lila v7.0 színrendszer:**
+
+90% sötét alap, 8% üveg / slate felület, legfeljebb 2% kék-lila kiemelés. CTA gombokon (`#075985` → `#5B21B6`, akcentus `#7C3AED`) KÖTELEZŐEN `text-white` felirat (WCAG AAA); áttetsző háttér és hover esetén külön kontrasztellenőrzés kötelező. Arany/amber brand akcentusként TILOS.
 
 ```
-Háttér:           #041356ff  →  bg-[#020617]
-Kártya/panel:     #0f172a  →  bg-[#0f172a]
-Fő szöveg:        #e2e8f0  →  text-[#e2e8f0]
-Muted szöveg:     #94a3b8  →  text-slate-400
-Arany (brand):    #00B5F1  →  text-sky-500 / bg-sky-500
+Háttér:           #020617  →  bg-[#020617] (bg-bg-base)
+Kártya/panel:     #0f172a  →  bg-[#0f172a] (bg-bg-surface)
+Kiemelt felület:  #1e293b  →  bg-[#1e293b] (bg-bg-elevated)
+Fő szöveg:        #e2e8f0  →  text-[#e2e8f0] (text-text-primary)
+Muted szöveg:     #94a3b8  →  text-slate-400 (text-text-secondary)
+Brand (Cián):     #00B5F1  →  brand-primary (text-brand-primary / bg-brand-primary)
+Gradiens kezdet:  #075985  →  cta-from (from-cta-from)
+Gradiens vége:    #5B21B6  →  cta-to (to-cta-to)
+Brand Hover:      #6d28d9  →  cta-hover (hover:bg-cta-hover)
 Siker:            #10b981  →  text-emerald-500
 Hiba:             #ef4444  →  text-red-500
 ```
+
+**Duál Tipográfia (Bebas Neue + Plus Jakarta Sans):**
+
+- **Címsorok (H1–H6):** `Bebas Neue` (`font-heading`), szigorúan `font-weight: 400 !important` (faux-bold tiltott).
+- **Folyószöveg és UI (gombok, navigáció, kártyaleírások):** `Plus Jakarta Sans` (`font-sans`, súlyok: `400`, `500`, `600`, `latin-ext` támogatással).
 
 **Spacing — szigorú 8px Grid:**
 
@@ -204,6 +217,11 @@ sm: 640px  |  md: 768px  |  lg: 1024px  |  xl: 1280px
 - Firebase biztonsági ellenőrzés Server Action-ben is (nem csak frontenden)
 - Zod séma: frontend validáció ÉS Server Action validáció — mindkettő kötelező
 
+**Zéró Fix Ár & Országos Pozicionálás (CRO Szabályok):**
+
+- **Zéró Fix Ár:** Szigorúan tilos fix árakat vagy pénznemeket ("Ft", "HUF", "EUR", "€", "$", illetve JSON-LD `priceRange` / konkrét `price`) szerepeltetni publikus oldalakon vagy sémákban. Minden ajánlatnál az **"Egyedi árajánlat kérése"** CTA kötelező.
+- **Országos pozicionálás:** A WebDude országosan elérhető prémium szolgáltató; a "Kecskemét" helyi kulcsszó kizárólag a dedikált `/weboldal-keszites-kecskemet` lokális landing oldalon szerepelhet.
+
 ---
 
 ## 🔍 9. SEO & AEO (ANSWER ENGINE OPTIMIZATION)
@@ -225,22 +243,35 @@ export const metadata: Metadata = {
 **AEO — AI keresők (ChatGPT, Perplexity, Gemini) számára:**
 
 - FAQ blokkok: kérdés-válasz formátumban, `FAQPage` JSON-LD Schema-val
-- Entity-based JSON-LD: `LocalBusiness`, `Person`, `Service` típusok
+- Entity-based JSON-LD: `LocalBusiness`, `Person`, `Service` típusok (`priceRange` és fix összeg NÉLKÜL — Zéró Fix Ár szabály!)
+- Országos kulcsszó-fókusz: helyi ("Kecskemét") SEO kulcsszó kizárólag a `/weboldal-keszites-kecskemet` aloldalon használható
 - Tiszta heading hierarchia (H1 → H2 → H3), egyetlen H1/oldal
 - Strukturált tartalom: listák, táblázatok, definíciók AI-barát formátumban
 
-**JSON-LD minta (`layout.tsx` vagy page szinten):**
+**JSON-LD minta (`layout.tsx` vagy Server Component szinten, kötelező XSS védelemmel):**
 
 ```typescript
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
+  "@id": "https://webdude.hu/#organization",
   name: "WebDude",
   url: "https://webdude.hu",
   description: "...",
-  founder: { "@type": "Person", name: "Norbi" },
+  founder: {
+    "@type": "Person",
+    "@id": "https://webdude.hu/#person",
+    name: "Balog Norbert",
+    alternateName: ["Balog Norbi", "WebDude"],
+  },
 };
-// <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+// Minden JSON-LD renderelésnél KÖTELEZŐ a .replace(/</g, "\\u003c") XSS védelem:
+// <script
+//   type="application/ld+json"
+//   dangerouslySetInnerHTML={{
+//     __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+//   }}
+// />
 ```
 
 ---
@@ -541,16 +572,7 @@ Biztonság > Teljesítmény > SEO/AEO > UX > Vizuális Design
 
 ---
 
-_AGENTS.md v4.0 — webdude.hu | Karbantartó: Norbi (WebDude)_
-_Kompatibilis: Claude, Gemini, GitHub Copilot, Cursor, Codex, Windsurf_
-
----
-
-**Frissítés után:** `_docs/CHANGELOG.md`-be `[DOCS]` bejegyzés.
-
----
-
-_AGENTS.md v4.0 — webdude.hu | Karbantartó: Norbi (WebDude)_
+_AGENTS.md v7.1.0 — webdude.hu | Karbantartó: Balog Norbert (WebDude)_
 _Kompatibilis: Claude, Gemini, GitHub Copilot, Cursor, Codex, Windsurf_
 
 ---

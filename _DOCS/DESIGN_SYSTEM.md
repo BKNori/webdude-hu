@@ -8,7 +8,7 @@
 
 ## 1. Dizájn Alapfilozófia & Vizuális Identitás
 
-A **„Cyber-Arany 2026"** stílus egy prémium, sötét alapú, futurisztikus digitális stúdió vizuális rendszer, amely a Cyberpunk és Soft-Premium esztétikát követi kék-lila (sky/violet) akcentusokkal.
+A **WebDude Kék-Lila v7.0 (Cyber-Cyan & Violet Dark Studio)** stílus egy prémium, sötét alapú, futurisztikus digitális stúdió vizuális rendszer, amely a Cyberpunk és Soft-Premium esztétikát követi kék-lila (sky/violet) akcentusokkal.
 
 > **v7.0 színmigrációs megjegyzés (2026-09-16):** A Cyber-Arany (#f59e0b = amber-500) paletta teljes egészében lecserélődött a kék-lila palettára. Az `amber-*` Tailwind osztályok és a `gold-*` tokenek eltávolítva, helyettük `brand-primary` / `cta-from` / `cta-to` tokenek és `sky-*` / `violet-*` paletta él. **Arany/amber használata brand akcentusként SZIGORÚAN TILOS.** CTA gombokon a szöveg KÖTELEZŐEN `text-white`.
 
@@ -163,12 +163,14 @@ Kerüljük a random z-index értékeket. Szigorú hierarchia:
 
 ### 7.2 Konverziós Gombok (CTA)
 
+> **Tipográfiai szabály (Gombok vs. Címsorok):** Minden CTA és UI gomb kötelezően a `Plus Jakarta Sans` (`font-sans font-semibold`) betűtípust használja a tűéles olvashatóság érdekében. A `Bebas Neue` (`font-heading font-normal`) kizárólag a `H1–H6` címsorokra vonatkozik!
+
 ```typescript
 // Elsődleges (Brand) - A figyelem mágnes
 // CIÁN háttér: sötét felirat (8.4:1 AAA); HOVER lila háttér: FEHÉR felirat (8.9:1 AAA)
 <button className="
   bg-[#00B5F1] hover:bg-[#5B21B6]
-  text-slate-950 hover:text-white font-bold
+  text-slate-950 hover:text-white font-sans font-semibold
   px-8 py-4 rounded-full
   uppercase tracking-wider text-sm
   transition-all duration-300 hover:scale-[1.02] active:scale-95
@@ -179,16 +181,15 @@ Kerüljük a random z-index értékeket. Szigorú hierarchia:
 <button className="
   border border-slate-700 hover:border-[#00B5F1]
   text-text-primary hover:text-[#00B5F1]
-  bg-transparent
+  bg-transparent font-sans font-semibold
   px-8 py-4 rounded-full
-  font-medium
   transition-all duration-300
 ">
 
 // Akcentus (violet-600, fehér szöveg — WCAG AA 5.7:1; hover violet-700: AAA 7.1:1)
 <button className="
   bg-[#7C3AED] hover:bg-[#6d28d9]
-  text-white font-bold
+  text-white font-sans font-semibold
   px-8 py-4 rounded-full
   uppercase tracking-wider text-sm
   transition-all duration-300 hover:scale-[1.02] active:scale-95
@@ -200,7 +201,7 @@ Kerüljük a random z-index értékeket. Szigorú hierarchia:
 <button className="
   bg-linear-to-r from-cta-from to-cta-to
   hover:from-[#0369a1] hover:to-[#6d28d9]
-  text-white font-semibold
+  text-white font-sans font-semibold
   px-8 py-4 rounded-xl
   transition-all duration-300 hover:scale-[1.02] active:scale-95
   shadow-lg shadow-purple-950/50

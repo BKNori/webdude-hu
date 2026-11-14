@@ -1,9 +1,9 @@
 # VISUAL_AUDIT_PLAN.md — WebDude Vizuális Audit és Egységesítés
 
 **webdude.hu | Next.js 16 · React 19 · TypeScript · Tailwind CSS v4**
-**Audit dátum: 2026-09-09**
-**Státusz: KÉSZ - Electric Cyan rendszer implementálva**
-**Cél: Egységes Electric Cyan design rendszer implementálása WOW hatással**
+**Audit dátum: 2026-09-09 | Lezárva: 2026-11-14**
+**Státusz: LEZÁRT / ARCHÍV — Beolvadt a WebDude Kék-Lila v7.0 rendszerbe (`_docs/DESIGN_SYSTEM.md`)**
+**Cél: Egységes Electric Cyan v5.0 alapozás → Kék-Lila v7.0 SSOT integráció**
 
 ---
 
@@ -38,8 +38,8 @@
 ### 1.3 Stílus Keveredés
 
 - **Soft Premium v3.0:** Világos alap (#F8FAFC), kék (#00B5F1) és narancs (#FF7A00) akcentusok - BTShop esettanulány
-- **Cyber-Arany:** Sötét alap (#020617), arany (#00B5F1) akcentusok - Eredeti rendszer
-- **Electric Cyan v5.0:** Sötét alap (#020617), Electric Cyan (#00B5F1) akcentusok - Jelenlegi rendszer
+- **Cyber-Arany (Archív):** Sötét alap (#020617), Electric Cyan (#00B5F1) átmeneti akcentusok - Korábbi rendszer (v7.0-ban betiltva az amber/arany)
+- **Electric Cyan v5.0:** Sötét alap (#020617), Electric Cyan (#00B5F1) akcentusok - Átmeneti rendszer (beolvadt a Kék-Lila v7.0 rendszerbe)
 
 **Összegzés:** A rendszer 2026-09-09-án teljesen átállt az Electric Cyan v5.0 rendszerre. Minden komponens konzisztens.
 
@@ -75,14 +75,14 @@
 
 **Szigorú tiltólista:**
 
-- Arany (#00B5F1, sky-500) - TILOS a brand szín helyett
+- Arany / Amber (#f59e0b, amber-500) - TILOS brand akcentusként
 - Narancs (#FF7A00) - TILOS
 - Zöld (emerald-400) - TILOS
 - Világos háttér (#F8FAFC) - TILOS (kivéve speciális esetek)
 
-### 2.2 Arany Glow Effektek
+### 2.2 Electric Cyan Glow Effektek
 
-**Vertikális arany vonalak:**
+**Vertikális Electric Cyan vonalak:**
 
 ```tsx
 <div className="absolute top-0 left-1/4 w-px h-full bg-linear-to-b from-transparent via-sky-500/20 to-transparent animate-pulse" />
@@ -90,14 +90,14 @@
 <div className="absolute top-0 left-3/4 w-px h-full bg-linear-to-b from-transparent via-sky-500/20 to-transparent animate-pulse delay-500" />
 ```
 
-**Arany glow kártyák:**
+**Electric Cyan glow kártyák:**
 
 ```tsx
 className =
   "hover:border-sky-500/50 hover:shadow-[0_20px_60px_rgba(0, 181, 241,0.2)]";
 ```
 
-**Arany glow gombok:**
+**Electric Cyan glow gombok:**
 
 ```tsx
 className =
@@ -122,7 +122,7 @@ className =
 #### 3.2.1 Header (HeaderNavClient.tsx)
 
 - **Jelenlegi:** cyan-500, sky-500 keveredés
-- **Cél:** Egységes #00B5F1 (arany)
+- **Cél:** Egységes #00B5F1 (Electric Cyan)
 - **Módosítások:**
   - `hover:text-cyan-500` → `hover:text-sky-500`
   - `hover:bg-cyan-500/10` → `hover:bg-sky-500/10`
@@ -134,7 +134,7 @@ className =
 #### 3.2.2 Footer (Footer.tsx)
 
 - **Jelenlegi:** sky-500 lézer effektek
-- **Cél:** #00B5F1 arany glow effektek (megtartani)
+- **Cél:** #00B5F1 (Electric Cyan) glow effektek (megtartani)
 - **Módosítások:**
   - `via-sky-500/20` → megtartani (ez már jó)
   - `via-sky-500/10` → megtartani (ez már jó)
@@ -143,7 +143,7 @@ className =
 #### 3.2.3 HeroSectionNew (HeroSectionNew.tsx)
 
 - **Jelenlegi:** sky-500, FF7A00, emerald-400 keveredés
-- **Cél:** #00B5F1 (arany) dominancia
+- **Cél:** #00B5F1 (Electric Cyan) dominancia
 - **Módosítások:**
   - `from-sky-500/20 to-sky-500/5` → megtartani (ez már jó)
   - `text-sky-400` → megtartani (ez már jó)
@@ -158,7 +158,7 @@ className =
 #### 3.2.4 Munkák oldal (munkak/page.tsx)
 
 - **Jelenlegi:** sky-500/violet-700
-- **Cél:** #00B5F1 (arany) konzisztencia
+- **Cél:** #00B5F1 (Electric Cyan) konzisztencia
 - **Módosítások:**
   - `text-sky-500` → megtartani (ez már jó)
   - `bg-sky-500` → megtartani (ez már jó)
@@ -174,7 +174,7 @@ className =
 #### 3.2.5 Kapcsolat oldal (kapcsolat/page.tsx)
 
 - **Jelenlegi:** sky-500
-- **Cél:** #00B5F1 (arany) konzisztencia
+- **Cél:** #00B5F1 (Electric Cyan) konzisztencia
 - **Módosítások:**
   - `text-sky-500` → megtartani (ez már jó)
   - `from-sky-400 to-violet-700` → megtartani (ez már jó)
@@ -188,7 +188,7 @@ className =
 #### 3.2.6 BTShop esettanulmány (munkak/btshop/page.tsx)
 
 - **Jelenlegi:** Világos alap (#F8FAFC), kék (#00B5F1) és narancs (#FF7A00)
-- **Cél:** Sötét alap (#020617), arany (#00B5F1) dominancia
+- **Cél:** Sötét alap (#020617), #00B5F1 (Electric Cyan) dominancia
 - **Módosítások:**
   - `bg-[#F8FAFC]` → `bg-bg-base` (#020617)
   - `text-[#111827]` → `text-text-primary` (#e2e8f0)
@@ -204,27 +204,27 @@ className =
 
 #### 3.2.7 Szolgáltatások oldal (szolgaltatasok/page.tsx)
 
-- **Jelenlegi:** Nem auditált részletesen, de valószínűleg arany akcentusok
-- **Cél:** #00B5F1 (arany) konzisztencia
+- **Jelenlegi:** Korábbi vegyes akcentusok egységesítése
+- **Cél:** #00B5F1 (Electric Cyan) konzisztencia
 - **Módosítások:**
-  - Összes narancs (FF7A00) → arany (sky-500)
-  - Összes kék (#00B5F1, cyan-500) → arany (sky-500)
+  - Összes narancs (FF7A00) → Electric Cyan (sky-500)
+  - Összes eltérő kék token → Electric Cyan (sky-500)
 
 ---
 
 ## 4. WOW HATÁS JAVÍTÁSOK
 
-### 4.1 Arany Glow Animációk
+### 4.1 Electric Cyan Glow Animációk
 
-- Vertikális arany vonalak minden szekcióban
-- Arany glow hover effektek minden kártyán
-- Arany pulzáló animációk a CTA gombokon
+- Vertikális Electric Cyan vonalak minden szekcióban
+- Electric Cyan glow hover effektek minden kártyán
+- Electric Cyan pulzáló animációk a CTA gombokon
 
 ### 4.2 Glassmorphism
 
 - Glassmorphism kártyák sötét háttérrel
 - Backdrop blur effektek
-- Finom arany border glow effektek
+- Finom Electric Cyan border glow effektek
 
 ### 4.3 Motion Animációk
 
@@ -298,9 +298,12 @@ Az egységesítés után a DESIGN_SYSTEM.md frissítése megtörtént:
 3. ✅ szolgaltatasok/page.tsx átírása (gold → cyan)
 4. ✅ VISUAL_AUDIT_PLAN.md frissítése (státusz: KÉSZ)
 
-**Validáció:** Függőben - TypeScript, lint és build parancsok futtatása
+**Validáció:** Teljesítve — `npx tsc --noEmit`, `npm run lint -- --max-warnings 0` és `npm run build` hibamentesen lefutott.
 
-**Következő lépések:**
+---
 
-- CHANGELOG.md frissítése
-- ARCHITECTURE.md ellenőrzése
+## 9. DOKUMENTUM LEZÁRÁSA — KÉK-LILA v7.0 INTEGRÁCIÓ (2026-11-14)
+
+> **Státusz: LEZÁRT ARCHÍVUM.** Az ebben a tervben rögzített **Electric Cyan v5.0** vizuális egységesítés maradéktalanul megvalósult, majd továbbfejlődött és teljes egészében beolvadt a **WebDude Kék-Lila v7.0** rendszerbe (`#020617` sötét alap, `#00B5F1` Electric Cyan + `#075985 → #5B21B6` kék-lila CTA gradiens, `#7C3AED` akcentus).
+>
+> **Aktuális Single Source of Truth (SSOT):** Minden új vizuális és komponensfejlesztési döntéshez kizárólag a `_docs/DESIGN_SYSTEM.md` és a gyökérkönyvtári `AGENTS.md` (7. szekció) irányadó.

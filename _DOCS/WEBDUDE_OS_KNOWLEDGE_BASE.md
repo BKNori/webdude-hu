@@ -1,35 +1,48 @@
 # WEBDUDE OS KNOWLEDGE BASE — Source of Truth for NotebookLM
 
 **webdude.hu | Next.js 16 · React 19 · TypeScript · Firebase**
-**Utolsó frissítés: 2026-07-13**
+**Utolsó frissítés: 2026-11-14 (Kék-Lila v7.0 + SSOT Konszolidáció)**
 **Célközönség:** NotebookLM AI Copilot 24/7 Támogatás
 
-> Ez a dokumentum a WebDude OS központi tudásbázisa, amely a NotebookLM számára az "alapigazságokat" (Source of Truth) tartalmazza. A WebDude 26 éves vizuális és 16 éves szakmai DNS-ét tükrözi, és biztosítja, hogy az AI Copilot pontos, projektspecifikus szakmai válaszokat tud adni.
+> Ez a dokumentum a WebDude OS központi tudásbázisa, amely a NotebookLM számára az "alapigazságokat" (Source of Truth) tartalmazza. Balog Norbert (WebDude) 26 év grafikai és 16 év webfejlesztői tapasztalatát tükrözi, és biztosítja, hogy az AI Copilot pontos, projektspecifikus szakmai válaszokat tud adni.
 
 ---
 
-## 1. Brand Identitás & Cyber-Arany Szabályok
+## 1. Brand Identitás & Kék-Lila v7.0 Szabályok
 
-### 1.1 90-8-2 Szabály (WebDude Alapfilozófia)
+### 1.1 90-8-2 Szabály (Vizuális és Operatív Alapfilozófia)
+**Vizuális arányrendszer (Kék-Lila v7.0):**
+- **90%** `#020617` sötét alap (`bg-bg-base`)
+- **8%** `#0f172a` slate / glass felület (`bg-bg-surface`)
+- **2%** kék-lila akcentus (`brand-primary` `#00B5F1`, `cta-from` `#075985` → `cta-to` `#5B21B6`, `cta-hover` `#6d28d9`)
+
+**Operatív arányrendszer:**
 - **90%** automatizáció (AI, workflow, CI/CD)
 - **8%** emberi felügyelet (review, stratégia)
 - **2%** manuális beavatkozás (kritikus hibák)
 
-### 1.2 Cyber-Arany Színrendszer
+### 1.2 Kék-Lila v7.0 Színrendszer
+> **Szigorú tilalom:** Arany / amber (`#f59e0b`, `amber-*`, `gold-*`) használata brand akcentusként **SZIGORÚAN TILOS**. CTA gombokon a felirat kötelezően `text-white` (WCAG AAA).
+
 ```
-Háttér:           #020617  →  bg-[#020617]
-Kártya/panel:     #0f172a  →  bg-[#0f172a]
-Fő szöveg:        #e2e8f0  →  text-[#e2e8f0]
-Muted szöveg:     #94a3b8  →  text-slate-400
-Arany (brand GOLD): #00B5F1  →  text-sky-500 / bg-sky-500
-Siker (SUCCESS):  #10b981  →  text-emerald-500
-Hiba (ERROR):     #ef4444  →  text-red-500
+Háttér (Level 0):  #020617  →  bg-[#020617] (bg-bg-base)
+Kártya/panel:      #0f172a  →  bg-[#0f172a] (bg-bg-surface)
+Kiemelt felület:   #1e293b  →  bg-[#1e293b] (bg-bg-elevated)
+Fő szöveg:         #e2e8f0  →  text-[#e2e8f0] (text-text-primary)
+Muted szöveg:      #94a3b8  →  text-slate-400 (text-text-secondary)
+Brand (Cián):      #00B5F1  →  brand-primary (text-brand-primary / bg-brand-primary)
+Gradiens kezdet:   #075985  →  cta-from (from-cta-from)
+Gradiens vége:     #5B21B6  →  cta-to (to-cta-to)
+Brand Hover:       #6d28d9  →  cta-hover (hover:bg-cta-hover)
+Siker (SUCCESS):   #10b981  →  text-emerald-500
+Hiba (ERROR):      #ef4444  →  text-red-500
 ```
 
-### 1.3 Tipográfia & Spacing
-- **Betűtípus:** Font-mono (kódok, UI elemek), sans-serif (tartalom)
-- **Spacing Grid:** 8px rendszer (4, 8, 12, 16, 24, 32, 48, 64, 96, 128px)
-- **Random pixelértékek TILOS** (pl. 13px, 27px)
+### 1.3 Duál Tipográfia & Spacing
+- **Címsorok (H1–H6):** `Bebas Neue` (`font-heading`), szigorúan `font-weight: 400 !important` (faux-bold tilos).
+- **Folyószöveg és UI (gombok, navigáció, kártyaleírások):** `Plus Jakarta Sans` (`font-sans`, súlyok: `400`, `500`, `600`, `latin-ext` támogatással).
+- **Spacing Grid:** 8px rendszer (4, 8, 12, 16, 24, 32, 48, 64, 96, 128px).
+- **Random pixelértékek TILOS** (pl. 13px, 27px).
 
 ### 1.4 Bento Grid Elrendezés
 - **Aszimmetrikus kártyák:** Metric, title, description
@@ -38,10 +51,10 @@ Hiba (ERROR):     #ef4444  →  text-red-500
 - **Reszponzív töréspontok:** sm:640px, md:768px, lg:1024px, xl:1280px
 
 ### 1.5 Vizuális WOW Elemek
-- **hover:border-sky-500:** Arany csillogás hover állapotban
+- **hover:border-brand-primary:** Electric Cyan kiemelés hover állapotban
 - **shadow-xl:** Térbeli hatás a sötét háttérből való kiemelkedéshez
 - **line-clamp-3:** Egyforma szöveghossz a grid rácsának stabilitásához
-- **Cyber-Arany szegély:** border-2 border-sky-500/50 shadow-lg shadow-sky-500/10 (AI válaszokhoz)
+- **Kék-Lila v7.0 szegély:** border-2 border-brand-primary/50 shadow-lg shadow-brand-primary/10 (AI válaszokhoz)
 
 ---
 
@@ -101,7 +114,7 @@ atoms → molecules → organisms → pages
 ### 3.3 Közvetlen Chat-Protokollok
 - **WorkflowChat:** 24/7 AI Copilot támogatás
 - **Context Injection:** Projektspecifikus metaadatok (onboarding, projektfázis)
-- **Persona:** Norbi (WebDude) 26 éves tapasztalat hangvétele
+- **Persona:** Balog Norbert (WebDude) — 26 év grafikai és 16 év webfejlesztői tapasztalat hangvétele
 - **Proaktív státuszfrissítés:** Projekt státusz ellenőrzés, CTA beszúrás
 
 ### 3.4 Social Proof Automatizálás
@@ -121,7 +134,7 @@ atoms → molecules → organisms → pages
 - **Cél:** Dokumentumkezelő és előnézet rendszer
 - **Fájltípusok:** PDF (iframe preview), JPG (img preview)
 - **Biztonság:** clientId alapú hozzáférés, admin jogosultság
-- **UI:** Drag & drop feltöltés, fájl ikonok, Cyber-Arany dizájn
+- **UI:** Drag & drop feltöltés, fájl ikonok, Kék-Lila v7.0 dizájn
 
 ---
 
@@ -192,17 +205,24 @@ export const metadata: Metadata = {
 
 ### 5.3 JSON-LD Minták
 ```typescript
-// LocalBusiness
+// LocalBusiness (Zéró Fix Ár: priceRange TILOS!)
 const localBusinessSchema = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
+  '@id': 'https://webdude.hu/#organization',
   name: 'WebDude.hu',
   url: 'https://webdude.hu',
   description: 'Prémium webfejlesztési és AI automatizációs ügynökség',
-  founder: { '@type': 'Person', name: 'Norbi (WebDude)' },
+  founder: {
+    '@type': 'Person',
+    '@id': 'https://webdude.hu/#person',
+    name: 'Balog Norbert',
+    alternateName: ['Balog Norbi', 'WebDude'],
+    description: '26 év grafikai és 16 év webfejlesztői tapasztalat',
+  },
 };
 
-// FAQPage
+// FAQPage (XSS védelem kötelező: JSON.stringify(schema).replace(/</g, '\\u003c'))
 const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
@@ -222,7 +242,8 @@ const faqSchema = {
 ### 5.4 Kulcsszó Stratégia
 - **Primary:** "webfejlesztés", "Next.js", "React", "TypeScript", "AI automatizáció"
 - **Secondary:** "webshop fejlesztés", "SEO optimalizálás", "Firebase", "Tailwind CSS"
-- **Long-tail:** "Next.js 16 webfejlesztés Kecskemét", "React 19 TypeScript projekt", "AI workflow automatizáció"
+- **Long-tail (Országos pozicionálás):** "Next.js 16 webfejlesztés országosan", "React 19 TypeScript projekt", "AI workflow automatizáció"
+- **Lokális kivétel:** A "Kecskemét" helyi kulcsszó kizárólag a dedikált `/weboldal-keszites-kecskemet` oldalon szerepelhet.
 
 ### 5.5 Tartalomstratégia
 - **E-E-A-T fókusz:** Tapasztalat, szakértelem, szerzői hitelesség, megbízhatóság
@@ -391,16 +412,16 @@ const shouldReduceMotion = useReducedMotion();
 
 ### 12.1 Fejlesztés
 - **Mennyi idő alatt készül el egy oldal?** Egy egyszerű bemutatkozó oldal 1–3 hét, egy komplexebb webshop 4–12 hét.
-- **Mennyibe kerül egy weboldal vagy webshop?** Bemutatkozó oldal 300.000–600.000 Ft, webshop 800.000–2.000.000 Ft között indul.
+- **Mennyibe kerül egy weboldal vagy webshop?** A Zéró Fix Ár elve alapján nem dolgozom fix árcédulákkal: minden projekt egyedi igényekre szabott, és az ingyenes konzultáció valamint technikai felmérés után kapsz pontos, rejtett költségektől mentes egyedi árajánlatot.
 - **Milyen technológiákat használsz?** Next.js 16, React 19, TypeScript, Tailwind CSS v4, Firebase és AI automatizáció.
 
 ### 12.2 SEO
 - **Milyen SEO szolgáltatásokat nyújtasz?** Technikai SEO audit, Lighthouse optimalizálás, Schema.org JSON-LD implementáció, kulcsszó kutatás és tartalomstratégia tervezés.
-- **Segít a WebDude a szövegírásban is?** Igen — AI-asszisztensünk képes előszűrni és javaslatot tenni SEO-barát szövegekre.
+- **Segítesz a szövegírásban is?** Igen — AI-asszisztált munkafolyamatommal segítek az AEO/SEO-barát szövegek strukturálásában és finomításában.
 
 ### 12.3 Karbantartás
 - **Hogyan működik a havi karbantartás?** Automatizált frissítések, napi biztonsági mentések és havi audit jelentés.
-- **Milyen garanciát vállaltok?** Átadást követően 30 napos hibajavítási garanciát biztosítunk.
+- **Milyen garanciát vállalsz?** Átadást követően 30 napos hibajavítási garanciát biztosítok.
 
 ### 12.4 AI Műhely
 - **Mi az a Kristófka Workflow?** Ingatlanbefektetői pitch generálás PDF alaprajzokból AI segítségével.
@@ -408,12 +429,12 @@ const shouldReduceMotion = useReducedMotion();
 
 ---
 
-## 13. Persona: Norbi (WebDude)
+## 13. Persona: Balog Norbert (WebDude)
 
 ### 13.1 Szakmai Háttér
-- **26 év** grafikai és **16 év** webfejlesztői rutin
+- **Név / Identitás:** **Balog Norbert (WebDude)** — 26 év grafikai és 16 év webfejlesztői tapasztalat
 - **Szakterület:** Next.js 16, React 19, TypeScript, Tailwind CSS v4, Firebase, AI automatizáció
-- **Pozicionálás:** Elite Lead Architect, Next.js 16 / React 19 Szakértő, CRO és SEO/AEO specialista
+- **Pozicionálás:** Elite Lead Architect, Next.js 16 / React 19 Szakértő, CRO és SEO/AEO specialista (országos elérés)
 
 ### 13.2 Kommunikációs Stílus
 - **Tömör:** Rövid, lényegretörő válaszok
