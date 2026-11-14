@@ -12,7 +12,7 @@ const config = {
   /**
    * KIZÁRÓLAG az élő forráskód tesztjei futnak a Jest alatt (jsdom).
    * Az `e2e/**` Playwright specifikációk a `npm run test:e2e`-vel futnak,
-   * a `_mentesek/**` pedig archivált másolat (nem élő kód).
+   * a `_mentesek/**` archivált másolat, a `_docs/**` pedig dokumentáció.
    */
   testMatch: [
     '<rootDir>/src/**/__tests__/**/*.{test,spec}.{ts,tsx}',
@@ -23,10 +23,16 @@ const config = {
     '<rootDir>/.next/',
     '<rootDir>/e2e/',
     '<rootDir>/_mentesek/',
+    '<rootDir>/_docs/',
     '<rootDir>/deploy_dist/',
     '<rootDir>/functions/',
   ],
-  modulePathIgnorePatterns: ['<rootDir>/.next/', '<rootDir>/_mentesek/'],
+  modulePathIgnorePatterns: [
+    '<rootDir>/.next/',
+    '<rootDir>/_mentesek/',
+    '<rootDir>/_docs/',
+    '<rootDir>/e2e/',
+  ],
   collectCoverage: true,
   coverageThreshold: {
     global: {

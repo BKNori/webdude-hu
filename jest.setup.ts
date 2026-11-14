@@ -101,3 +101,37 @@ jest.mock("motion/react", () => {
     stagger: jest.fn((value: unknown) => value),
   };
 });
+
+/**
+ * Globális `next/link` mock a jsdom környezethez, hogy a `<Link href="...">`
+ * kattintások ne váltsanak ki `Error: Not implemented: navigation` console.error-t.
+ */
+jest.mock("next/link", () => {
+  const React = jest.requireActual<typeof import("react")>("react");
+  const MockLink = React.forwardRef(
+    (
+      props: React.AnchorHTMLAttributes<HTMLAnchorElement> & { href: string },
+      ref: React.Ref<HTMLAnchorElement>,
+    ) => {
+      const { href, onClick, children, ...rest } = props;
+      return React.createElement(
+        "a",
+        {
+          href,
+          ref,
+          ...rest,
+          onClick: (e: React.MouseEvent<HTMLAnchorElement>) => {
+            e.preventDefault();
+            onClick?.(e);
+          },
+        },
+        children,
+      );
+    },
+  );
+  MockLink.displayName = "NextLinkMock";
+  return {
+    __esModule: true,
+    default: MockLink,
+  };
+});

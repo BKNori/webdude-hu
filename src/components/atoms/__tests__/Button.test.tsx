@@ -75,10 +75,13 @@ describe("Button component", () => {
     expect(trackEvent).not.toHaveBeenCalled();
   });
 
-  test("applies primary variant class by default", () => {
+  test("applies Kék-Lila v7.0 primary variant classes by default", () => {
     render(<Button>Primary</Button>);
     const btn = screen.getByRole("button", { name: /primary/i });
     expect(btn).toHaveClass("bg-linear-to-r");
+    expect(btn).toHaveClass("from-[#075985]");
+    expect(btn).toHaveClass("to-[#5B21B6]");
+    expect(btn).toHaveClass("text-white");
   });
 
   test("applies secondary variant class when specified", () => {

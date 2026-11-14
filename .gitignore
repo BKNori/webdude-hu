@@ -26,11 +26,16 @@
 .DS_Store
 *.pem
 
-# debug
+# debug & logs
+*.log
+dev-server.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
+build_out.txt
+lint_*.txt
+ts_errors.txt
 
 # env files (can opt-in for committing if needed)
 .env*

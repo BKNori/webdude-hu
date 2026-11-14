@@ -144,9 +144,9 @@ export const COLOR_PALETTE_PRESETS: PresetOption[] = [
   },
   {
     id: "smaragd-arany",
-    label: "Smaragd & Arany",
-    promptHint: "emerald green #10B981 and gold #F59E0B accents on dark charcoal",
-    colors: ["#10B981", "#F59E0B", "#111827"],
+    label: "Smaragd & Cián",
+    promptHint: "emerald green #10B981 and electric cyan #00B5F1 accents on dark charcoal",
+    colors: ["#10B981", "#00B5F1", "#111827"],
   },
   {
     id: "monokrom",
@@ -187,8 +187,8 @@ export const COLOR_PALETTE_PRESETS: PresetOption[] = [
   {
     id: "sunset-warm",
     label: "Naplemente Meleg",
-    promptHint: "warm sunset gradient: amber #F59E0B, coral #FB7185, peach #FED7AA",
-    colors: ["#F59E0B", "#FB7185", "#FED7AA"],
+    promptHint: "warm sunset gradient: violet #7C3AED, coral #FB7185, peach #FED7AA",
+    colors: ["#7C3AED", "#FB7185", "#FED7AA"],
   },
   {
     id: "steel-tech",

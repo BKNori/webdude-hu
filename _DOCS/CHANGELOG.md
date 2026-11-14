@@ -1,5 +1,28 @@
 # Changelog
 
+## [7.55.0] — 2026-11-14 — SPRINT: TECHNIKAI ADÓSSÁG & QA HIGIÉNIA FELOLDÁSA
+
+**1. KÉK-LILA v7.0 SZÍN-HIGIÉNIA (0% AMBER/ARANY MARADÉK):**
+- `public/assets/portfolio/btshop/btshop-hero-placeholder.svg` és `btshop-dashboard-placeholder.svg`: ellenőrizve (Kék-Lila v7.0 `#00B5F1` és `#7C3AED` tokenek), a hero placeholder felirata frissítve `WebDude.hu • Kék-Lila v7.0`-ra.
+- `src/components/organisms/FlyerWorkshopGenerator.tsx`: a papírminták maradék `#b45309` és `#fbbf24` (`gold/silver foil`) értékei lecserélve `#64748b` és `#7C3AED` (`cyan/violet metallic foil`) Kék-Lila v7.0 kompatibilis értékekre.
+- `src/lib/workshop-presets.ts`: a két maradék `#F59E0B` preset szín (`Smaragd & Arany`, `Naplemente Meleg`) átalakítva `#00B5F1` (`Smaragd & Cián`) és `#7C3AED` értékekre — a teljes `src/` és `public/` alatt **0 db** `#f59e0b` / `#d97706` / `#fbbf24` / `#b45309` maradt.
+
+**2. DEAD CODE & GYÖKÉR FÁJL-HIGIÉNIA:**
+- A `HeroSlider.tsx` már korábban archiválva lett (`_mentesek/20261008_techdebt-cleanup/`); a három további árva (0 helyen importált) Hero komponens — `AIHeroSlider.tsx`, `HeroSectionClient.tsx`, `HeroStaticBanner.tsx` — áthelyezve a `_mentesek/20261114_techdebt-cleanup/` archívumba, és státuszuk (`HeroSection`-nel együtt) rögzítve a `_docs/ARCHITECTURE.md`-ben.
+- A projekt gyökerében felgyülemlett ideiglenes napló- és segédfájlok (`qa-*.log`, `build_out.txt`, `lint_*.txt`, `ts_errors.txt`, `fix_prompt_engineering.*`) törölve; a `.gitignore` kiegészítve a `*.log`, `dev-server.log`, `build_out.txt`, `lint_*.txt`, `ts_errors.txt` szabályokkal (a `_mentesek/` mellett).
+
+**3. JEST KONFIGURÁCIÓ & UNIT TESZT FEJLESZTÉS:**
+- `jest.config.js`: a `testPathIgnorePatterns` és `modulePathIgnorePatterns` kiegészítve a `<rootDir>/_docs/` és `<rootDir>/e2e/` útvonalakkal (a `<rootDir>/_mentesek/` mellett).
+- `jest.setup.ts`: globális `next/link` mock hozzáadva (`e.preventDefault()` a kattintásoknál), amely megszüntette a jsdom `Error: Not implemented: navigation` konzolhibáit.
+- `Button.test.tsx` & `Footer.test.tsx`: kiegészítve a Kék-Lila v7.0 osztály-ellenőrzésekkel (`from-[#075985]`, `to-[#5B21B6]`, `text-white`, `bg-bg-base`, `border-slate-800`, `text-[#00B5F1]`).
+
+**4. QA GATE (MIND 0 HIBA):**
+- `npx tsc --noEmit` → **0 hiba (EXIT=0)**
+- `npm run lint -- --max-warnings 0` → **0 error, 0 warning (EXIT=0)**
+- `npx jest` → **5/5 suite, 51/51 teszt PASS, 0 console.error** (95.91% statements, 92.75% branches, 100% lines)
+
+---
+
 ## [7.54.1] — 2026-11-14 — [DOCS] SSOT DOKUMENTÁCIÓS KONSZOLIDÁCIÓ & HIBAJAVÍTÁS
 
 - **`AGENTS.md` & `_docs/AGENTS.md` (v7.1.0 szinkron):** A `_docs/AGENTS.md` elavult `v4.0` verziójában maradt `#041356ff` háttérkód (`#020617` / `bg-bg-base`) és „Cyber-Arany” elnevezések felszámolva; mindkét fájl egységesítve a **Kék-Lila v7.0** palettával (`brand-primary`: `#00B5F1`, `cta-from`: `#075985`, `cta-to`: `#5B21B6`, `cta-hover`: `#6d28d9`), a **Duál Tipográfiával** (`Bebas Neue` `font-weight: 400 !important` címsorok, `Plus Jakarta Sans` `400`/`500`/`600` folyószöveg és UI), a **Zéró Fix Ár** szabállyal, az **Országos pozicionálással** (Kecskemét kizárólag a `/weboldal-keszites-kecskemet` oldalon), valamint a `Balog Norbert` (`alternateName: ["Balog Norbi", "WebDude"]`) JSON-LD founder horgonnyal és a kötelező `.replace(/</g, "\\u003c")` XSS védelemmel.

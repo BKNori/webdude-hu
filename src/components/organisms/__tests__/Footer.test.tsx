@@ -14,10 +14,15 @@ describe("Footer", () => {
     jest.useRealTimers();
   });
 
-  it("renders current year", () => {
-    render(<Footer />);
+  it("renders current year and Kék-Lila v7.0 base styling", () => {
+    const { container } = render(<Footer />);
     const yearText = screen.getByText(/2023/);
     expect(yearText).toBeInTheDocument();
+    const footerEl = container.querySelector("footer");
+    expect(footerEl).toHaveClass("bg-bg-base");
+    expect(footerEl).toHaveClass("border-slate-800");
+    const brandAccent = screen.getByText("Web");
+    expect(brandAccent).toHaveClass("text-[#00B5F1]");
   });
 
   it("renders services list inside a responsive grid wrapper", () => {

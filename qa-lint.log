@@ -1,5 +1,0 @@
-﻿
-> webdude-hu@0.1.168 lint
-> eslint --max-warnings 0
-
-LINT_EXIT=0

@@ -139,13 +139,13 @@ const PAPER_OPTIONS: PresetOption[] = [
     id: "120g_kraft_natur",
     label: "120g Kraft Natur",
     promptHint: "120gsm recycled kraft natural paper",
-    colors: ["#b45309"],
+    colors: ["#64748b"],
   },
   {
     id: "300g_kreativ_karton_pregelesc",
     label: "300g Karton + Prégelés",
-    promptHint: "300gsm creative card gold/silver foil",
-    colors: ["#fbbf24"],
+    promptHint: "300gsm creative card cyan/violet metallic foil",
+    colors: ["#7C3AED"],
   },
 ];
 

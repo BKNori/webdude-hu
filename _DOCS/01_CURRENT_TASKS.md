@@ -1,6 +1,18 @@
 # 01_CURRENT_TASKS.md — WebDude.hu Projekt
 
-## Aktuális feladatok és állapot (2026-10-02)
+## Aktuális feladatok és állapot (2026-11-14 — v7.55.0)
+
+### 🟢 Legutóbb lezárt sprintek (2026-11-14)
+
+- ✅ **v7.55.0 — Technikai Adósság & QA Higiénia Feloldása:**
+  - **Kék-Lila v7.0 Szín-higiénia:** BTShop placeholder SVG-k (`btshop-hero-placeholder.svg`, `btshop-dashboard-placeholder.svg`), `FlyerWorkshopGenerator.tsx` és `workshop-presets.ts` megtisztítva — 0 db `#f59e0b` / `#d97706` / `#fbbf24` / `#b45309` maradt a teljes `src/` és `public/` alatt.
+  - **Dead Code & Gyökér-higiénia:** Az árva `AIHeroSlider.tsx`, `HeroSectionClient.tsx`, `HeroStaticBanner.tsx` komponensek archiválva (`_mentesek/20261114_techdebt-cleanup/`), a gyökérbeli ideiglenes `.log` / `.txt` / segédszkriptek törölve, a `.gitignore` kiegészítve (`*.log`, `dev-server.log`, `_mentesek/`).
+  - **Jest & Unit Tesztek:** `jest.config.js` kizárja a `_mentesek/**`, `_docs/**`, `e2e/**` mappákat; `jest.setup.ts` `next/link` mockkal 0 `console.error`; `Button.test.tsx` és `Footer.test.tsx` Kék-Lila v7.0 asserciókkal (51/51 PASS).
+- ✅ **v7.54.1 — SSOT Dokumentációs Konszolidáció:** `AGENTS.md`, `_docs/AGENTS.md`, `_docs/DESIGN_SYSTEM.md`, `_docs/WEBDUDE_OS_KNOWLEDGE_BASE.md`, `_docs/VISUAL_AUDIT_PLAN.md` és `_docs/VISUAL_DESIGNS.md` teljes v7.0 szinkronizációja; lezárt recovery dokumentumok archiválva (`_docs/archive/`).
+- ✅ **v7.54.0 — Nyilvános Termékkatalógus + Granulált Generátor-RBAC + Monolit Refaktorálás:** `/termekek` nyilvános konverziós katalógus, 20 generátoron `ToolAccessLock` RBAC, `ClientAITools` és `PosterWorkshopGenerator` moduláris refaktorálása.
+- ✅ **v7.40.0–v7.44.0 — Teljes Körű SEO/AEO/GEO Konszolidáció:** `/hirek`, `/szolgaltatasok`, `/munkak` (14 esettanulmány), `/termekek` és `/ai-megoldasok` szerveroldali JSON-LD, E-E-A-T (`Balog Norbert`) és Zéró Fix Ár egységesítése.
+
+---
 
 ### 🟢 Befejezve: Git History Cleanup — Tömeges tárhely felszabadítás
 
@@ -8,6 +20,7 @@
 **Státusz:** ✅ COMPLETED
 
 **Végrehajtott lépések:**
+
 1. `.gitignore` frissítés (deploy_dist/, deploy*.zip kizárva)
 2. `git filter-branch` — functions/node_modules törlése a history-ból
 3. `git filter-branch` — .firebase/logs törlése a history-ból
@@ -15,6 +28,7 @@
 5. `git push origin master --force` (GitHub.sync)
 
 **Eredmény:**
+
 - Git pack méret: 566,74 MB → 156,24 MB (**410 MB felszabadulva, 72% reduction**)
 - TypeScript validáció: ✅ 0 hiba
 - GitHub.remote: ✅ sikeres force push
@@ -28,16 +42,19 @@
 **Forrás:** `_docs/ROADMAP.md` — középtávú fejlesztések + technikai adósságok (2026-10-02-i állapot)
 
 #### 🟠 1. Portál funkciók (ügyfél-elégedettség / transzparencia)
+
 - ✅ **Valós idejű értesítések (badge) — LEZÁRVA [7.20.5]:** a `PortalNotificationBell` + `usePortalNotifications` (3× `onSnapshot` a Phase 2 [7.22.0] óta: user_generations + vault + users/{uid}/notifications, `limit(10)`, tiszta cleanup, error callback) él; a createGeneration `failed` státuszt is jelzi. A dead-end `portal-notifications.ts` **törölve** (YAGNI).
-- ✅ **Vault dokumentum-előnézet — LEZÁRVA [Cycle 3151]:** a `DocumentPreviewModal` molekula (PDF-`iframe` + kép `<img>`, glassmorphism, `motion/react`, `useFocusTrap` ESC/fókuszcsapda, Bezárás/Megnyitás/Letöltés/Link-másolás) él és a `ClientVault` Eye-gombjához van bekötve. *(2026-10-14: a modal valódi buborék-zárási hiba javítva + a nyers hex színek a Kék-Lila v7.0 tokenekre cserélve.)*
+- ✅ **Vault dokumentum-előnézet — LEZÁRVA [Cycle 3151]:** a `DocumentPreviewModal` molekula (PDF-`iframe` + kép `<img>`, glassmorphism, `motion/react`, `useFocusTrap` ESC/fókuszcsapda, Bezárás/Megnyitás/Letöltés/Link-másolás) él és a `ClientVault` Eye-gombjához van bekötve. _(2026-10-14: a modal valódi buborék-zárási hiba javítva + a nyers hex színek a Kék-Lila v7.0 tokenekre cserélve.)_
 
 #### 🟠 2. Admin UI (adat-alapú döntéshozatal)
+
 - **KPI dashboard bővítése** — Revenue, Churn rate, LTV metrikák
   (`src/app/admin/dashboard/`, `src/app/actions/getEnhancedKpiMetrics.ts`).
 - **Export funkciók egységesítése** — a `src/app/actions/exportLeads.ts` és `exportProjects.ts`
   különálló akciók; PDF (jspdf) + CSV formátumok egységes felületen, letöltés-dialógussal.
 
 #### 🟡 3. Technikai adósság (stabilitás / hiba-észlelés)
+
 - **Playwright E2E smoke suite** — ✅ **HIÁNY-PÓTLÁS LEZÁRVA [7.23.0]:** a meglévő infra (Playwright config, `test:e2e`, `smoke-helpers.ts`) mellé 3 új spec készült:
   - `e2e/stripe-webhook.spec.ts` — biztonsági őr: érvénytelen/hiányzó `stripe-signature` fejléccel a route elutasítja a kérést (**0 Firestore írás**, pozitív happy-path szándékosan nem fedett).
   - `e2e/munkak-slug.spec.ts` — dinamikus `GeneralCaseStudy` slug (200 + 1 H1 + JSON-LD) + ismeretlen slug → 404.
