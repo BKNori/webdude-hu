@@ -2,6 +2,7 @@
 
 import { motion } from "motion/react";
 import Image from "next/image";
+import { CheckCircle2 } from "lucide-react";
 import Button from "@/components/atoms/Button";
 import GeometricIcon from "@/components/atoms/GeometricIcon";
 import { useMotionPreset } from "@/hooks/useMotionPreset";
@@ -55,48 +56,40 @@ export default function AboutSection() {
 
             <ul className="space-y-4 text-slate-400">
               <li className="flex items-start gap-3">
-                <span
-                  className="text-sky-500 font-bold mt-0.5"
+                <CheckCircle2
+                  className="w-5 h-5 text-brand-primary shrink-0 mt-0.5"
                   aria-hidden="true"
-                >
-                  ✓
-                </span>
+                />
                 <span>
                   Kecskemétről dolgozom, de az egész országból vannak elégedett
                   ügyfeleim.
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <span
-                  className="text-sky-500 font-bold mt-0.5"
+                <CheckCircle2
+                  className="w-5 h-5 text-brand-primary shrink-0 mt-0.5"
                   aria-hidden="true"
-                >
-                  ✓
-                </span>
+                />
                 <span>
                   Személyes kapcsolat és közvetlen kommunikáció a sikeres
                   projekt alapja.
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <span
-                  className="text-sky-500 font-bold mt-0.5"
+                <CheckCircle2
+                  className="w-5 h-5 text-brand-primary shrink-0 mt-0.5"
                   aria-hidden="true"
-                >
-                  ✓
-                </span>
+                />
                 <span>
                   Amikor velem dolgozol, nem egy projektmenedzserrel beszélsz,
                   hanem közvetlenül velem.
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <span
-                  className="text-sky-500 font-bold mt-0.5"
+                <CheckCircle2
+                  className="w-5 h-5 text-brand-primary shrink-0 mt-0.5"
                   aria-hidden="true"
-                >
-                  ✓
-                </span>
+                />
                 <span>
                   Én tervezem, kódolom és valósítom meg az elképzelésedet –
                   hatékonyan, sallangok nélkül.

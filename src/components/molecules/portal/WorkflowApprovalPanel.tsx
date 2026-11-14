@@ -30,7 +30,7 @@ export default function WorkflowApprovalPanel({
           <div className="flex items-center gap-2">
             <CheckCircle2 className="w-5 h-5 shrink-0" />
             <div>
-              <span className="font-bold block">✓ Fázis jóváhagyva</span>
+              <span className="font-bold block">Fázis jóváhagyva</span>
               {workflow.clientApprovedAt && (
                 <span className="text-[10px] text-emerald-500/70 font-mono block">
                   Jóváhagyva: {formatDate(workflow.clientApprovedAt)}

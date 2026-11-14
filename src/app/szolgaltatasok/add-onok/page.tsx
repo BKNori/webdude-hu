@@ -21,7 +21,7 @@ import BreadcrumbSchema from "@/components/molecules/BreadcrumbSchema";
 export const metadata: Metadata = {
   title: "Kiegészítő Szolgáltatások — Egyedi Árajánlattal | WebDude",
   description:
-    "Termékesített kiegészítő mikro-szolgáltatások egyedi árajánlat alapján, a 26 éves tervezőgrafikusi és 16 éves webfejlesztői tapasztalatomra építve. Aszinkron onboarding és garantált szállítási határidő.",
+    "Termékesített mikroszolgáltatások KKV-knak: weboldal audit, SEO cikk, Lighthouse gyorsítás, banner csomag és Schema integráció 26 év tapasztalattal, egyedi árajánlattal.",
   alternates: {
     canonical: "https://webdude.hu/szolgaltatasok/add-onok",
   },

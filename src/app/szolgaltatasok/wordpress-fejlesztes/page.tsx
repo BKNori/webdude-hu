@@ -9,7 +9,7 @@ import DirectAnswerBlock from "@/components/molecules/DirectAnswerBlock";
 export const metadata: Metadata = {
   title: "WordPress fejlesztő és WordPress karbantartás | WebDude",
   description:
-    "WordPress fejlesztő vállalkozásoknak: hibajavítás, egyedi funkciók, sebességoptimalizálás, biztonság és WordPress karbantartás tapasztalt WordPress szakembertől. Balog Norbert (WebDude), 16 év tapasztalat.",
+    "WordPress fejlesztés KKV-knak: hibajavítás, egyedi funkciók, sebességoptimalizálás, biztonság és karbantartás Balog Norbert 16 év CMS tapasztalatával.",
   keywords:
     "WordPress fejlesztés, WordPress fejlesztő, WordPress karbantartás, WordPress hibajavítás, WordPress gyorsítás, WordPress biztonság, WooCommerce fejlesztés, WordPress szakember",
   alternates: {

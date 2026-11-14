@@ -6,14 +6,14 @@ import { getCombinedBlogPosts } from "@/lib/mdx";
 export const metadata: Metadata = {
   title: "Szakmai Hírek, SEO és Webfejlesztés Tudásbázis | WebDude",
   description:
-    "Gyakorlati esettanulmányok, WordPress fejlesztés, technikai SEO, webshop optimalizálás és AI automatizációs útmutatók Balog Norbert (WebDude) 26 év tapasztalatával.",
+    "Gyakorlati esettanulmányok, WordPress fejlesztés, technikai SEO, webshop optimalizálás és AI automatizációs útmutatók Balog Norbert 26 év tapasztalatával.",
   alternates: {
     canonical: "https://webdude.hu/hirek",
   },
   openGraph: {
     title: "Szakmai Hírek, SEO és Webfejlesztés Tudásbázis | WebDude",
     description:
-      "Gyakorlati esettanulmányok, WordPress fejlesztés, technikai SEO, webshop optimalizálás és AI automatizációs útmutatók Balog Norbert (WebDude) 26 év tapasztalatával.",
+      "Gyakorlati esettanulmányok, WordPress fejlesztés, technikai SEO, webshop optimalizálás és AI automatizációs útmutatók Balog Norbert 26 év tapasztalatával.",
     url: "https://webdude.hu/hirek",
     siteName: "WebDude",
     locale: "hu_HU",

@@ -1,6 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "motion/react";
+import { Zap } from "lucide-react";
 import type {
   ClientAIToolFormValues,
   ToolType,
@@ -171,10 +172,16 @@ export default function AIToolsMarketingForms({
               <option value="10_coupon">10% kuponkód limitált ideig</option>
             </select>
           </div>
-          <div className="bg-transparent border border-slate-800/60 p-4 rounded-2xl text-[11px] text-slate-400 leading-relaxed font-mono">
-            💡 A kosárelhagyás a webáruházak egyik legfontosabb kihívása. Ez az
-            eszköz 3 különálló megközelítést (pszichológiai nyomást) kínál a
-            vásárlók visszacsábításához.
+          <div className="bg-transparent border border-slate-800/60 p-4 rounded-2xl text-[11px] text-slate-400 leading-relaxed font-mono flex items-start gap-2.5">
+            <Zap
+              className="w-4 h-4 text-brand-primary shrink-0 mt-0.5"
+              aria-hidden="true"
+            />
+            <span>
+              A kosárelhagyás a webáruházak egyik legfontosabb kihívása. Ez az
+              eszköz 3 különálló megközelítést (pszichológiai nyomást) kínál a
+              vásárlók visszacsábításához.
+            </span>
           </div>
         </motion.div>
       )}

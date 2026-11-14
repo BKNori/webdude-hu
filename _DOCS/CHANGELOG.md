@@ -1,5 +1,60 @@
 # Changelog
 
+## [7.60.0] — 2026-11-14 — SPRINT: NYOMDAI AI MŰHELYEK MODULARIZÁLÁSA (`<= 300` SOR) & REGISZTER TISZTÍTÁS
+
+**1. NYOMDAI AI MŰHELY GENERÁTOROK ATOMIC DESIGN MODULARIZÁLÁSA (`<= 300` SOR / FÁJL, KÉK-LILA v7.0):**
+- **`FlyerWorkshopGenerator` (`822 → 197` sor):**
+  - **ÚJ** `src/components/organisms/flyer-workshop/FlyerInputForm.tsx` (280 sor): `flyerFormSchema`, 1-kattintásos kampány presetek (`FLYER_PRESETS`), 8 formátum és hajtás (`FORMAT_OPTIONS`), 5 papír/felületnemesítés (`PAPER_OPTIONS`), 4 terjesztési csatorna (`CHANNEL_OPTIONS`), stílus/színpaletta chipek és Kék-Lila v7.0 generáló CTA.
+  - **ÚJ** `src/components/organisms/flyer-workshop/FlyerOutputStudio.tsx` (289 sor): koncepció és tekintetvezetés, prepress és hajtási műszaki rajz, panelenkénti zónaterv és szöveg másolással, CMYK/Pantone/HEX swatch-ok, nyomdai tipográfiai skála, 3 AI prompt export és 8 pontos prepress checklist.
+  - `src/components/organisms/FlyerWorkshopGenerator.tsx` (197 sor): vékony karmester (orchestrator) komponens `ToolAccessLock` (`flyer_ai_muhely`), Firebase Auth és `addFlyerGenerationAction` hívással.
+- **`PackagingWorkshopGenerator` (`852 → 197` sor):**
+  - **ÚJ** `src/components/organisms/packaging-workshop/PackagingInputForm.tsx` (294 sor): `packagingFormSchema`, 1-kattintásos iparági presetek (`PACKAGING_PRESETS` — az `"Arany"` említések megtisztítva), 8 ipari struktúra (`STRUCTURE_OPTIONS`), 6 hordozó (`SUBSTRATE_OPTIONS`), 5 felületnemesítés (`FINISHING_OPTIONS`), USP-k, EU kötelező infók és Kék-Lila v7.0 generáló CTA.
+  - **ÚJ** `src/components/organisms/packaging-workshop/PackagingOutputStudio.tsx` (289 sor): polcmegjelenés és unboxing koncepció, FEFCO stancrajz/dieline specifikáció, panelenkénti tervezés, hordozó-viselkedéses CMYK/Pantone swatch-ok, EU 1169/2011 compliance, 4 AI prompt export és 8 pontos prepress checklist.
+  - `src/components/organisms/PackagingWorkshopGenerator.tsx` (197 sor): vékony karmester (orchestrator) komponens `ToolAccessLock` (`packaging_ai_muhely`), Firebase Auth és `addPackagingGenerationAction` hívással.
+- **`SignageWorkshopGenerator` (`820 → 197` sor):**
+  - **ÚJ** `src/components/organisms/signage-workshop/SignageInputForm.tsx` (281 sor): `signageFormSchema`, 1-kattintásos presetek (`SIGNAGE_PRESETS` — az `"Arany"` említés `"Cián akcentus"`-ra javítva), 8 nagyformátumú struktúra (`FORMAT_OPTIONS`), 6 hordozó/fólia (`SUBSTRATE_OPTIONS`), 3 olvasási távolság (`DISTANCE_OPTIONS`), 3 másodperces CTA és Kék-Lila v7.0 generáló CTA.
+  - **ÚJ** `src/components/organisms/signage-workshop/SignageOutputStudio.tsx` (298 sor): 3 másodperces szabály és távolsági logika, LFP mérnöki specifikáció és holttér térkép, magassági zónaterv, CMYK + RAL/Pantone színek, 1:1 mm távolsági tipográfia, 3 AI prompt export és 8 pontos LFP prepress checklist.
+  - `src/components/organisms/SignageWorkshopGenerator.tsx` (197 sor): vékony karmester (orchestrator) komponens `ToolAccessLock` (`signage_ai_muhely`), Firebase Auth és `addSignageGenerationAction` hívással.
+
+**2. `_docs/ARCHITECTURE.md` TELJES "CYBER-ARANY" MENTESÍTÉSE & REGISZTER BŐVÍTÉS:**
+- Minden bent maradt `"Cyber-Arany"` említés (`ProjectTimelineGantt`, `ProductPortalCta`, `TimelineMilestoneItem`, `BtshopFinalCta`, `BannerWorkshopGenerator`, `MidjourneyWorkshopGenerator`, `SeoWorkshopGenerator`, `ContentWorkshopGenerator`, `UiUxWorkshopGenerator`, `SeasonalWorkshopGenerator`, `/portal/ai-muhely/*` oldalak és ADR-004) lecserélve `"Kék-Lila v7.0"` kifejezésre.
+- A komponens- és oldal-regiszter kiegészítve a 6 új nyomdai műhely-alkomponenssel (`FlyerInputForm`, `FlyerOutputStudio`, `PackagingInputForm`, `PackagingOutputStudio`, `SignageInputForm`, `SignageOutputStudio`) és a `/portal/ai-muhely/*` útvonalakkal.
+
+**3. TELJES QA GATE VERIFIKÁCIÓ:**
+- `npx tsc --noEmit` → **0 hiba (EXIT=0)**
+- `npm run lint -- --max-warnings 0` → **0 error, 0 warning (EXIT=0)**
+- `npx jest --no-coverage` → **5/5 suite, 51/51 teszt PASS (EXIT=0)**
+- `node scripts/audit-contrast.js` → **374 vizsgált fájl, 0 kontraszt-hiba (EXIT=0)**
+
+---
+
+## [7.59.0] — 2026-11-14 — SPRINT: ARCHITEKTÚRA, DESIGN & SEO POLISH AUDIT JAVÍTÁSOK
+
+**1. DOKUMENTÁCIÓS & META DESCRIPTION PONTOSÍTÁS (145–160 KARAKTER SZABÁLY):**
+- `_docs/ARCHITECTURE.md` §3.1: a bent maradt `"WebDude Soft Premium v3.0"` megnevezés lecserélve `"WebDude Kék-Lila v7.0"`-ra; a `NavigationNew` sor archiváltként jelölve (`HeaderNavClient` váltotta).
+- 11 oldal `metadata.description` mezője tömörítve 145–160 karakteres, SERP-csonkításmentes, KKV-konverziófókuszú leírásra (egyes számú E-E-A-T kommunikációval és Zéró Fix Ár modellel): `src/app/szolgaltatasok/page.tsx` (150 kar.), `src/app/ai-megoldasok/ai-prompt-sablonok/layout.tsx` (150 kar.), `src/app/hirek/page.tsx` (153 kar.), `src/app/szolgaltatasok/add-onok/page.tsx` (156 kar.), `src/app/szolgaltatasok/arculattervezes/page.tsx` (153 kar.), `src/app/szolgaltatasok/helyi-seo/page.tsx` (153 kar.), `src/app/szolgaltatasok/marketing-lead-generalas/page.tsx` (156 kar.), `src/app/szolgaltatasok/seo-optimalizalas/page.tsx` (154 kar.), `src/app/szolgaltatasok/webshop-fejlesztes/page.tsx` (156 kar.), `src/app/szolgaltatasok/wordpress-fejlesztes/page.tsx` (155 kar.), `src/app/szolgaltatasok/wordpress-karbantartas/page.tsx` (155 kar.).
+
+**2. ZÉRÓ EMOJI & SZÖVEGES CHECKMARK TISZTÍTÁS A PUBLIKUS ÉS PORTÁL UI-BAN:**
+- `src/components/molecules/AIBenefitsGrid.tsx`: a szöveges `✓` karakter lecserélve `<CheckCircle2 className="w-8 h-8 text-brand-primary" strokeWidth={1.5} aria-hidden="true" />` ikonra.
+- `src/components/organisms/AboutSection.tsx`: a 4 db szöveges `✓` listajel lecserélve `<CheckCircle2 className="w-5 h-5 text-brand-primary shrink-0 mt-0.5" aria-hidden="true" />` ikonra.
+- `src/components/organisms/SingleAITool.tsx`: a `"Másolva! ✓"` szöveg lecserélve `<Check className="w-3.5 h-3.5 text-emerald-400" />` + `<Copy className="w-3.5 h-3.5" />` `lucide-react` ikonokra.
+- `src/components/organisms/portal/PortalWorkflowCard.tsx`, `src/components/molecules/portal/WorkflowApprovalPanel.tsx`, `src/components/molecules/portal/WorkflowMilestonePayment.tsx`: a `<CheckCircle2>` melletti redundáns szöveges `✓` karakterek eltávolítva.
+- `src/components/organisms/ai-tools/AIToolsMarketingForms.tsx`: a `💡` Unicode emoji lecserélve `<Zap className="w-4 h-4 text-brand-primary shrink-0 mt-0.5" aria-hidden="true" />` ikonra.
+
+**3. `LogoWorkshopGenerator.tsx` ATOMIC DESIGN MODULARIZÁLÁS (`717 → 191` SOR, KÉK-LILA v7.0):**
+- **ÚJ** `src/components/organisms/logo-workshop/LogoInputForm.tsx` (264 sor): a Logó AI Műhely paraméterező űrlapja, Zod sémája (`logoFormSchema`), 1-kattintásos iparági presetjei (`INDUSTRY_PRESETS` — az `"Arany"` színpaletta-említés `"Smaragd & Cián paletta"`-ra javítva), 7 logó archetípus (`ARCHETYPE_OPTIONS`), 5 konstrukciós rács (`GRID_OPTIONS`) és Kék-Lila v7.0 generáló CTA gomb.
+- **ÚJ** `src/components/organisms/logo-workshop/LogoOutputStudio.tsx` (234 sor): a Logó AI Műhely eredmény-stúdiója (3 koncepció kártya Recraft v3 / Ideogram 2.0 / Midjourney v6.1 másolható promptokkal, 4-elemes nyomdai/digitális színrendszer swatch, tipográfiai párosítás, 4 arculati variáns és arculati szabályok `<XCircle>` ikonokkal).
+- `src/components/organisms/LogoWorkshopGenerator.tsx` (717 → **191 sor**): vékony karmester (orchestrator) komponensre karcsúsítva; javítva a fejléc elírása (`Professzionális Logó & Arculattervezés`); a `ToolAccessLock` RBAC (`logo_ai_muhely`), a Firebase Auth és az `addLogoGenerationAction` Server Action 100%-ban regressziómentes.
+- `_docs/ARCHITECTURE.md`: a komponens-regiszter frissítve az új `LogoInputForm` és `LogoOutputStudio` organizmusokkal.
+
+**4. TELJES QA GATE VERIFIKÁCIÓ:**
+- `npx tsc --noEmit` → **0 hiba (EXIT=0)**
+- `npm run lint -- --max-warnings 0` → **0 error, 0 warning (EXIT=0)**
+- `npx jest --no-coverage` → **5/5 suite, 51/51 teszt PASS (EXIT=0)**
+- `node scripts/audit-contrast.js` → **368 vizsgált fájl, 0 kontraszt-hiba (EXIT=0)**
+
+---
+
 ## [7.58.0] — 2026-11-14 — SPRINT: POSTERWORKSHOPGENERATOR (`<= 300` SOR) MODULARIZÁLÁS & E2E VERIFIKÁCIÓ
 
 **1. `PosterWorkshopGenerator.tsx` ATOMIC DESIGN MODULARIZÁLÁS (`606 → 214` SOR, KÉK-LILA v7.0):**

@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   title:
     "Arculattervezés vállalkozásoknak országos szolgáltatással | Logó és márkaidentitás | WebDude",
   description:
-    "Egyedi arculattervezés kisvállalkozásoknak és új márkáknak országos szolgáltatással. Logó, színek, tipográfia és alkalmazási útmutató egy összefüggő vizuális rendszerben.",
+    "Egyedi arculattervezés KKV-knak és új márkáknak országosan. Logó, színpaletta, tipográfia és arculati kézikönyv egységes, konverziófókuszú rendszerben.",
   alternates: {
     canonical: "https://webdude.hu/szolgaltatasok/arculattervezes",
   },
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     title:
       "Arculattervezés vállalkozásoknak országos szolgáltatással | Logó és márkaidentitás | WebDude",
     description:
-      "Egyedi arculattervezés kisvállalkozásoknak és új márkáknak országos szolgáltatással. Logó, színek, tipográfia és alkalmazási útmutató egy összefüggő vizuális rendszerben.",
+      "Egyedi arculattervezés KKV-knak és új márkáknak országosan. Logó, színpaletta, tipográfia és arculati kézikönyv egységes, konverziófókuszú rendszerben.",
     url: "https://webdude.hu/szolgaltatasok/arculattervezes",
     type: "website",
   },

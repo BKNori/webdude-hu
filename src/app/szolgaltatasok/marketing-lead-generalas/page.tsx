@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title:
     "Marketing Lead Generálás országos szolgáltatással – WebDude | Ügyfélszerzés Automatizálása KKV-knak",
   description:
-    "Stratégiai marketing lead generálás és landing oldalak kis- és középvállalkozásoknak országos szolgáltatással. Automatizált ügyfélszerzés, konverzió-optimalizált landing oldalak és marketing eszközök.",
+    "Stratégiai marketing lead generálás és konverzió-optimalizált landing oldalak KKV-knak országosan. Automatizált ügyfélszerzés és mérhető üzleti növekedés.",
   keywords:
     "marketing lead generálás, ügyfélszerzés automatizálás, landing oldal készítés, KKV marketing, konverzió optimalizálás, lead magnet, marketing funnel",
   alternates: {

@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   title:
     "Helyi SEO Szakember országos szolgáltatással | Kerülj a Google Térkép Élérére | WebDude",
   description:
-    "Helyi SEO szolgáltatás helyhez kötött vállalkozásoknak országos szolgáltatással. Kerülj a Google Térkép és a helyi találatok élére, és szerezz több környékbeli ügyfelet.",
+    "Helyi SEO szolgáltatás vállalkozásoknak országosan. Kerülj a Google Térkép és a helyi találatok élére, optimalizált cégprofillal és több környékbeli ügyféllel.",
   alternates: {
     canonical: "https://webdude.hu/szolgaltatasok/helyi-seo",
   },
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     title:
       "Helyi SEO Szakember országos szolgáltatással | Kerülj a Google Térkép Élérére | WebDude",
     description:
-      "Helyi SEO szolgáltatás helyhez kötött vállalkozásoknak országos szolgáltatással. Kerülj a Google Térkép és a helyi találatok élére, és szerezz több környékbeli ügyfelet.",
+      "Helyi SEO szolgáltatás vállalkozásoknak országosan. Kerülj a Google Térkép és a helyi találatok élére, optimalizált cégprofillal és több környékbeli ügyféllel.",
     url: "https://webdude.hu/szolgaltatasok/helyi-seo",
     type: "website",
   },

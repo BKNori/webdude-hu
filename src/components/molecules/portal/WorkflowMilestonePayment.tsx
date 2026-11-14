@@ -39,7 +39,7 @@ export default function WorkflowMilestonePayment({
           <div className="flex items-center gap-2">
             <CheckCircle2 className="w-5 h-5 shrink-0" />
             <div>
-              <span className="font-bold block">✓ Mérföldkő kiegyenlítve</span>
+              <span className="font-bold block">Mérföldkő kiegyenlítve</span>
               <span className="text-[10px] text-emerald-500/70 font-mono block">
                 Díj: {phasePrice.toLocaleString("hu-HU")} Ft • Fizetve
               </span>

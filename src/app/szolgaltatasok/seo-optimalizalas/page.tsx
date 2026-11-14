@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   title:
     "SEO optimalizálás — Technikai SEO és tartalomstratégia | WebDude",
   description:
-    "SEO optimalizálás: technikai audit, kulcsszókutatás, tartalomstratégia és helyi SEO vállalkozásoknak országos szolgáltatással. 26 év tapasztalat, Google-helyezés javítás, Core Web Vitals.",
+    "SEO optimalizálás KKV-knak országosan: technikai audit, kulcsszókutatás, tartalomstratégia és Core Web Vitals javítás 26 év szakmai tapasztalattal.",
   keywords:
     "SEO optimalizálás, keresőoptimalizálás, technikai SEO, tartalomstratégia, Google helyezés javítás, SEO szakember országos, organikus forgalom",
   openGraph: {

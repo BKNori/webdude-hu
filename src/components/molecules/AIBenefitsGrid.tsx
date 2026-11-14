@@ -3,6 +3,7 @@
 import React from "react";
 import { motion } from "motion/react";
 import { useReducedMotion } from "motion/react";
+import { CheckCircle2 } from "lucide-react";
 
 interface BenefitItem {
   title: string;
@@ -55,7 +56,11 @@ export default function AIBenefitsGrid({ benefits }: AIBenefitsGridProps) {
           className="group bg-slate-950/80 backdrop-blur-2xl ring-1 ring-white/5 rounded-3xl p-6 md:p-8 hover:border-[#00B5F1]/40 hover:shadow-[0_18px_40px_rgba(0,181,241,0.15)] transition-all duration-300"
         >
           <div className="w-16 h-16 rounded-2xl bg-slate-900/60 border border-white/10 flex items-center justify-center mb-6 group-hover:border-[#00B5F1]/30 transition-colors group">
-            <span className="text-2xl text-[#00B5F1]">✓</span>
+            <CheckCircle2
+              className="w-8 h-8 text-brand-primary"
+              strokeWidth={1.5}
+              aria-hidden="true"
+            />
           </div>
           <h3 className="text-xl font-bold text-slate-200 mb-3">
             {benefit.title}

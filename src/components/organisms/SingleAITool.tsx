@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
+import { Check, Copy } from "lucide-react";
 import {
   generateAIContentAction as generateAiContentAction,
   saveClientNoteAction as saveAiNoteAction,
@@ -308,9 +309,19 @@ export default function SingleAITool({
                 <button
                   type="button"
                   onClick={handleCopyToClipboard}
-                  className="text-xs text-sky-500 hover:text-violet-700 font-bold uppercase tracking-wider transition-colors"
+                  className="inline-flex items-center gap-1.5 text-xs text-brand-primary hover:text-violet-400 font-bold uppercase tracking-wider transition-colors"
                 >
-                  {isCopied ? "Másolva! ✓" : "Másolás"}
+                  {isCopied ? (
+                    <>
+                      <Check className="w-3.5 h-3.5 text-emerald-400" />
+                      <span>Másolva!</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="w-3.5 h-3.5" />
+                      <span>Másolás</span>
+                    </>
+                  )}
                 </button>
               )}
             </div>

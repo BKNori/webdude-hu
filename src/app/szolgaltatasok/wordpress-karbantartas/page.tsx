@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   title:
     "WordPress Karbantartás és Hibajavítás országos szolgáltatással | WebDude",
   description:
-    "Feltört, lassú vagy elavult WordPress weboldalak szakszerű javítása és havi karbantartása országos szolgáltatással. Biztonság, sebesség és nyugalom vállalkozásoknak.",
+    "Feltört, lassú vagy elavult WordPress weboldalak szakszerű javítása és havi karbantartása KKV-knak országosan. Biztonság, sebesség és nyugalom.",
   alternates: {
     canonical: "https://webdude.hu/szolgaltatasok/wordpress-karbantartas",
   },
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     title:
       "WordPress Karbantartás és Hibajavítás országos szolgáltatással | WebDude",
     description:
-      "Feltört, lassú vagy elavult WordPress weboldalak szakszerű javítása és havi karbantartása országos szolgáltatással. Biztonság, sebesség és nyugalom vállalkozásoknak.",
+      "Feltört, lassú vagy elavult WordPress weboldalak szakszerű javítása és havi karbantartása KKV-knak országosan. Biztonság, sebesség és nyugalom.",
     url: "https://webdude.hu/szolgaltatasok/wordpress-karbantartas",
     type: "website",
   },

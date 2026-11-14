@@ -9,7 +9,7 @@ import { buildBreadcrumbSchema, BreadcrumbItem } from "@/lib/breadcrumb";
 export const metadata: Metadata = {
   title: "WooCommerce webshop készítés és fejlesztés | WebDude",
   description:
-    "WooCommerce webshop készítés és fejlesztés — konverzióoptimalizált, vásárlóbarát és gyors online áruház. Bankkártyás fizetés, SimplePay, Barion integráció. Egyedi árajánlat kérése.",
+    "WooCommerce webshop készítés és fejlesztés KKV-knak: konverzió-optimalizált, villámgyors online áruház SimplePay, Barion és számlázó integrációval.",
   keywords:
     "WooCommerce webshop, webshop készítés, WooCommerce fejlesztés, webáruház készítés, e-kereskedelem, online bolt, webshop optimalizálás",
   alternates: {

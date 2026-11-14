@@ -1,14 +1,14 @@
-﻿import { Metadata } from "next";
+import { Metadata } from "next";
 import { buildBreadcrumbSchema } from "@/lib/breadcrumb";
 
 export const metadata: Metadata = {
   title: "AI Prompt Sablonok | Grafikai AI Prompt Könyvtár | WebDude",
   description:
-    "Professzionális, tesztelt AI prompt sablonok Midjourney, DALL-E és más AI képgenerálókhoz. Logo design, termékfotó, social media banner és weboldal hero promptok.",
+    "Professzionális, tesztelt AI prompt sablonok Midjourney, DALL-E és képgenerálókhoz. Logó design, termékfotó, social media banner és hero promptok KKV-knak.",
   openGraph: {
     title: "AI Prompt Sablonok | Grafikai AI Prompt Könyvtár",
     description:
-      "Professzionális, tesztelt AI prompt sablonok Midjourney, DALL-E és más AI képgenerálókhoz. Logo design, termékfotó, social media banner és weboldal hero promptok.",
+      "Professzionális, tesztelt AI prompt sablonok Midjourney, DALL-E és képgenerálókhoz. Logó design, termékfotó, social media banner és hero promptok KKV-knak.",
     type: "website",
     url: "https://webdude.hu/ai-megoldasok/ai-prompt-sablonok",
     images: [

@@ -118,7 +118,7 @@ export default function PortalWorkflowCard({
                     <CheckCircle2 className="w-5 h-5 shrink-0" />
                     <div>
                       <span className="font-bold block">
-                        ✓ Mérföldkő kiegyenlítve
+                        Mérföldkő kiegyenlítve
                       </span>
                       <span className="text-[10px] text-emerald-500/70 font-mono block">
                         Díj:{" "}
@@ -173,7 +173,7 @@ export default function PortalWorkflowCard({
                 <CheckCircle2 className="w-5 h-5 shrink-0" />
                 <div>
                   <span className="font-bold block">
-                    ✓ Fázis jóváhagyva
+                    Fázis jóváhagyva
                   </span>
                   {wf.clientApprovedAt && (
                     <span className="text-[10px] text-emerald-500/70 font-mono block">

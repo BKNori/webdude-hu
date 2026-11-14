@@ -1,9 +1,20 @@
 # 01_CURRENT_TASKS.md — WebDude.hu Projekt
 
-## Aktuális feladatok és állapot (2026-11-14 — v7.58.0)
+## Aktuális feladatok és állapot (2026-11-14 — v7.60.0)
 
 ### 🟢 Legutóbb lezárt sprintek (2026-11-14)
 
+- ✅ **v7.60.0 — Nyomdai AI Műhelyek Modularizálása (`<= 300` sor) & Regiszter Tisztítás:**
+  - **`FlyerWorkshopGenerator` (`822 → 197` sor):** `FlyerInputForm.tsx` (280 sor) + `FlyerOutputStudio.tsx` (289 sor).
+  - **`PackagingWorkshopGenerator` (`852 → 197` sor):** `PackagingInputForm.tsx` (294 sor) + `PackagingOutputStudio.tsx` (289 sor).
+  - **`SignageWorkshopGenerator` (`820 → 197` sor):** `SignageInputForm.tsx` (281 sor) + `SignageOutputStudio.tsx` (298 sor).
+  - **`_docs/ARCHITECTURE.md` Tisztítás:** 0 db `"Cyber-Arany"` említés maradt; mind a 6 új alkomponens és az összes `/portal/ai-muhely/*` útvonal regisztrálva.
+  - **QA Gate:** `tsc` (0), `lint` (0), `jest` (51/51 PASS), `audit-contrast.js` (374 fájl, 0 hiba).
+- ✅ **v7.59.0 — Architektúra, Design & SEO Polish Audit Javítások:**
+  - **Dokumentáció & Meta Description (145–160 kar.):** `_docs/ARCHITECTURE.md` §3.1 frissítve `"WebDude Kék-Lila v7.0"`-ra; 11 oldal `metadata.description` mezője tömörítve 150–156 karakteres, SERP-csonkításmentes leírásra.
+  - **Zéró Emoji & Szöveges Checkmark Tisztítás:** `AIBenefitsGrid.tsx`, `AboutSection.tsx`, `SingleAITool.tsx`, `PortalWorkflowCard.tsx`, `WorkflowApprovalPanel.tsx`, `WorkflowMilestonePayment.tsx` és `AIToolsMarketingForms.tsx` megtisztítva (`lucide-react` `CheckCircle2`, `Check`, `Zap`).
+  - **`LogoWorkshopGenerator.tsx` Modularizálás (`717 → 191` sor):** 2 új alkomponens a `src/components/organisms/logo-workshop/` alatt (`LogoInputForm.tsx` 264 sor, `LogoOutputStudio.tsx` 234 sor).
+  - **QA Gate:** `tsc` (0), `lint` (0), `jest` (51/51 PASS), `audit-contrast.js` (368 fájl, 0 hiba).
 - ✅ **v7.58.0 — PosterWorkshopGenerator (`<= 300` sor) Modularizálás & Teljes E2E Verifikáció:**
   - **`PosterWorkshopGenerator.tsx` Modularizálás (`606 → 214` sor):** 2 új alkomponens a `src/components/organisms/poster-workshop/` alatt (`PosterInputForm.tsx` 292 sor, `PosterOutputPanel.tsx` 92 sor); `ToolAccessLock` RBAC, `addPosterGenerationAction` és Kék-Lila v7.0 tokenek 100%-ban megőrizve.
   - **Teljes QA & E2E Verifikáció:** `tsc` (0), `lint` (0), `jest` (51/51 PASS), `playwright test e2e/smoke.spec.ts` (**5/5 PASS, 16.6s**).
