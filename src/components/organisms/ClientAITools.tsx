@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useCallback } from "react";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { Lock } from "lucide-react";
 import {
@@ -12,17 +13,10 @@ import {
   type AiGenerationItem,
 } from "@/actions/ai";
 import { auth, db } from "@/lib/firebase";
-import {
-  collection,
-  getDocs,
-  query,
-  where,
-  Timestamp,
-} from "firebase/firestore";
+import { collection, getDocs, query, where, Timestamp } from "firebase/firestore";
 import TemplateSelector from "@/components/molecules/TemplateSelector";
 import HistoryList from "@/components/molecules/HistoryList";
 import GenerationOutput from "@/components/molecules/GenerationOutput";
-import KristofkaWorkflow from "@/components/organisms/KristofkaWorkflow";
 import AIToolsCategoryAndSelector from "@/components/organisms/ai-tools/AIToolsCategoryAndSelector";
 import AIToolsMarketingForms from "@/components/organisms/ai-tools/AIToolsMarketingForms";
 import AIToolsGraphicsForms from "@/components/organisms/ai-tools/AIToolsGraphicsForms";
@@ -39,21 +33,19 @@ import {
   type ToolType,
 } from "@/lib/aiToolsRegistry";
 
+const KristofkaWorkflow = dynamic(() => import("@/components/organisms/KristofkaWorkflow"), {
+  ssr: false,
+});
+
 interface ClientAIToolsProps {
   allowedTools?: string[];
   isAdmin?: boolean;
 }
 
-export default function ClientAITools({
-  allowedTools = [],
-  isAdmin = false,
-}: ClientAIToolsProps) {
-  const [activeCategory, setActiveCategory] =
-    useState<ToolCategory>("marketing");
+export default function ClientAITools({ allowedTools = [], isAdmin = false }: ClientAIToolsProps) {
+  const [activeCategory, setActiveCategory] = useState<ToolCategory>("marketing");
   const [activeTool, setActiveTool] = useState<ToolType>("product_desc");
-  const [formValues, setFormValues] = useState<ClientAIToolFormValues>(
-    DEFAULT_AI_TOOL_FORM_VALUES
-  );
+  const [formValues, setFormValues] = useState<ClientAIToolFormValues>(DEFAULT_AI_TOOL_FORM_VALUES);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [displayedText, setDisplayedText] = useState("");
@@ -74,15 +66,13 @@ export default function ClientAITools({
     []
   );
 
-  // ─── Kliensoldali Firestore fallback (`ai_generations` kollekció) ─────────
   const loadHistoryFallback = useCallback(async (): Promise<AiGenerationItem[] | null> => {
     if (!db || !auth?.currentUser) return null;
     try {
       const uid = auth.currentUser.uid;
       const isHelloAdmin = auth.currentUser.email === "hello@webdude.hu";
       const col = collection(db, "ai_generations");
-      const q = isHelloAdmin ? col : query(col, where("clientId", "==", uid));
-      const snap = await getDocs(q);
+      const snap = await getDocs(isHelloAdmin ? col : query(col, where("clientId", "==", uid)));
       const items: AiGenerationItem[] = snap.docs.map((d) => {
         const data = d.data() as Record<string, unknown>;
         const rawCreated = data.createdAt;
@@ -99,9 +89,7 @@ export default function ClientAITools({
           toolId: (data.toolId as string) ?? "",
           toolName: (data.toolName as string) ?? "",
           inputValuesStr:
-            typeof data.inputValues === "string"
-              ? data.inputValues
-              : JSON.stringify(data.inputValues ?? {}),
+            typeof data.inputValues === "string" ? data.inputValues : JSON.stringify(data.inputValues ?? {}),
           outputText: (data.outputText as string) ?? "",
           createdAt,
         };
@@ -113,43 +101,37 @@ export default function ClientAITools({
     }
   }, []);
 
-  const loadHistory = useCallback(async (token: string) => {
-    setHistoryLoading(true);
-    try {
-      const res = await getClientAiGenerationsAction(token);
-      if (res.success && res.generations) {
-        setGenerations(res.generations);
-      } else {
+  const loadHistory = useCallback(
+    async (token: string) => {
+      setHistoryLoading(true);
+      try {
+        const res = await getClientAiGenerationsAction(token);
+        if (res.success && res.generations) setGenerations(res.generations);
+        else {
+          const fallback = await loadHistoryFallback();
+          if (fallback) setGenerations(fallback);
+        }
+      } catch {
         const fallback = await loadHistoryFallback();
         if (fallback) setGenerations(fallback);
+      } finally {
+        setHistoryLoading(false);
       }
-    } catch {
-      const fallback = await loadHistoryFallback();
-      if (fallback) setGenerations(fallback);
-    } finally {
-      setHistoryLoading(false);
-    }
-  }, [loadHistoryFallback]);
+    },
+    [loadHistoryFallback]
+  );
 
   useEffect(() => {
     if (!auth) return;
-    const unsub = auth.onAuthStateChanged(async (currUser) => {
-      if (currUser) {
-        const token = await currUser.getIdToken(true);
-        void loadHistory(token);
-      }
+    return auth.onAuthStateChanged(async (currUser) => {
+      if (currUser) void loadHistory(await currUser.getIdToken(true));
     });
-    return unsub;
   }, [loadHistory]);
 
   const applyTemplate = useCallback(() => {
     if (selectedTemplateIdx < 0) return;
     const tmpl = graphicsTemplates[activeTool]?.[selectedTemplateIdx];
-    if (!tmpl) return;
-    setFormValues((prev) => ({
-      ...prev,
-      ...(tmpl.values as Partial<ClientAIToolFormValues>),
-    }));
+    if (tmpl) setFormValues((prev) => ({ ...prev, ...(tmpl.values as Partial<ClientAIToolFormValues>) }));
   }, [activeTool, selectedTemplateIdx]);
 
   const handleGenerate = async (e?: React.FormEvent) => {
@@ -206,13 +188,7 @@ export default function ClientAITools({
     setSaveSuccess(false);
     try {
       const idToken = await auth.currentUser.getIdToken(true);
-      const title = buildNoteTitle(activeTool, formValues);
-      const res = await saveClientNoteAction(
-        idToken,
-        title,
-        fullContent,
-        activeTool
-      );
+      const res = await saveClientNoteAction(idToken, buildNoteTitle(activeTool, formValues), fullContent, activeTool);
       if (res.success) {
         setSaveSuccess(true);
         setTimeout(() => setSaveSuccess(false), 3000);
@@ -254,12 +230,9 @@ export default function ClientAITools({
     if (marketingTools.includes(toolId)) setActiveCategory("marketing");
     else if (graphicsTools.includes(toolId)) setActiveCategory("graphics");
     else setActiveCategory("strategist");
-
     handleReset();
     try {
-      const parsed = JSON.parse(gen.inputValuesStr || "{}") as Partial<
-        ClientAIToolFormValues
-      >;
+      const parsed = JSON.parse(gen.inputValuesStr || "{}") as Partial<ClientAIToolFormValues>;
       setFormValues((prev) => ({ ...prev, ...parsed }));
     } catch {}
     setFullContent(gen.outputText);
@@ -278,37 +251,25 @@ export default function ClientAITools({
     if (!auth?.currentUser) return;
     const idToken = await auth.currentUser.getIdToken(true);
     const res = await deleteAiGenerationAction(idToken, id);
-    if (res.success) {
-      setGenerations((prev) => prev.filter((g) => g.id !== id));
-    } else {
-      setError(res.error || "A törlés sikertelen.");
-    }
+    if (res.success) setGenerations((prev) => prev.filter((g) => g.id !== id));
+    else setError(res.error || "A törlés sikertelen.");
   };
 
   const changeCategory = (cat: ToolCategory) => {
     setActiveCategory(cat);
-    setActiveTool(
-      cat === "marketing"
-        ? "product_desc"
-        : cat === "graphics"
-          ? "midjourney_prompt"
-          : "kristofka_workflow"
-    );
+    setActiveTool(cat === "marketing" ? "product_desc" : cat === "graphics" ? "midjourney_prompt" : "kristofka_workflow");
     setDisplayedText("");
     setFullContent("");
     setError("");
     setSelectedTemplateIdx(-1);
   };
 
-  const currentTemplates = graphicsTools.includes(activeTool)
-    ? graphicsTemplates[activeTool]
-    : [];
+  const currentTemplates = graphicsTools.includes(activeTool) ? graphicsTemplates[activeTool] : [];
   const isLocked = !isAdmin && !allowedTools.includes(activeTool);
 
   return (
     <div className="bg-linear-to-br from-bg-base via-bg-surface to-bg-base backdrop-blur-xl border border-bg-elevated/80 rounded-3xl p-6 md:p-8 shadow-2xl relative overflow-hidden space-y-6">
       <div className="absolute -right-24 -top-24 w-48 h-48 rounded-full bg-brand-primary/5 blur-3xl pointer-events-none" />
-
       <AIToolsCategoryAndSelector
         activeCategory={activeCategory}
         activeTool={activeTool}
@@ -325,25 +286,18 @@ export default function ClientAITools({
           setSelectedTemplateIdx(-1);
         }}
       />
-
       {isLocked ? (
         <div className="bg-bg-elevated/20 border border-bg-elevated/50 backdrop-blur-md rounded-2xl p-8 text-center space-y-6 max-w-xl mx-auto shadow-xl">
           <div className="w-16 h-16 rounded-full bg-brand-primary/10 border border-brand-primary/20 flex items-center justify-center text-brand-primary mx-auto animate-pulse">
             <Lock className="w-8 h-8" strokeWidth={1.5} />
           </div>
           <div className="space-y-2">
-            <h4 className="text-lg font-heading font-normal uppercase tracking-wide text-white">
-              Prémium AI Tervező Zárolva
-            </h4>
+            <h4 className="text-lg font-heading font-normal uppercase tracking-wide text-white">Prémium AI Tervező Zárolva</h4>
             <p className="text-xs text-slate-400 leading-relaxed max-w-sm mx-auto">
-              Ez a kreatív tervező modul nem érhető el az Ön aktuális
-              csomagjában. Igényeljen hozzáférést a WebDude AI Workshophoz!
+              Ez a kreatív tervező modul nem érhető el az Ön aktuális csomagjában. Igényeljen hozzáférést a WebDude AI Workshophoz!
             </p>
           </div>
-          <Link
-            href="/kapcsolat"
-            className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-linear-to-r from-cta-from to-cta-to hover:bg-cta-hover text-white font-sans font-semibold text-xs uppercase tracking-wider transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary"
-          >
+          <Link href="/kapcsolat" className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-linear-to-r from-cta-from to-cta-to hover:bg-cta-hover text-white font-sans font-semibold text-xs uppercase tracking-wider transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary">
             Hozzáférés igénylése
           </Link>
         </div>
@@ -352,59 +306,18 @@ export default function ClientAITools({
       ) : (
         <>
           {activeCategory === "graphics" && currentTemplates.length > 0 && (
-            <TemplateSelector
-              templates={currentTemplates}
-              selectedIdx={selectedTemplateIdx}
-              setSelectedIdx={setSelectedTemplateIdx}
-              applyTemplate={applyTemplate}
-              loading={loading}
-            />
+            <TemplateSelector templates={currentTemplates} selectedIdx={selectedTemplateIdx} setSelectedIdx={setSelectedTemplateIdx} applyTemplate={applyTemplate} loading={loading} />
           )}
-
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
             <form onSubmit={handleGenerate} className="space-y-4">
-              {activeCategory === "marketing" && (
-                <AIToolsMarketingForms
-                  activeTool={activeTool}
-                  values={formValues}
-                  loading={loading}
-                  onChange={handleFieldChange}
-                />
-              )}
-              {activeCategory === "graphics" && (
-                <AIToolsGraphicsForms
-                  activeTool={activeTool}
-                  values={formValues}
-                  loading={loading}
-                  onChange={handleFieldChange}
-                />
-              )}
+              {activeCategory === "marketing" && <AIToolsMarketingForms activeTool={activeTool} values={formValues} loading={loading} onChange={handleFieldChange} />}
+              {activeCategory === "graphics" && <AIToolsGraphicsForms activeTool={activeTool} values={formValues} loading={loading} onChange={handleFieldChange} />}
             </form>
-
-            <GenerationOutput
-              displayedText={displayedText}
-              loading={loading}
-              hasContent={!!fullContent}
-              copied={copied}
-              saveLoading={saveLoading}
-              saveSuccess={saveSuccess}
-              onGenerate={handleGenerate}
-              onCopy={handleCopy}
-              onSaveNote={handleSaveNote}
-              onReset={handleReset}
-            />
+            <GenerationOutput displayedText={displayedText} loading={loading} hasContent={!!fullContent} copied={copied} saveLoading={saveLoading} saveSuccess={saveSuccess} onGenerate={handleGenerate} onCopy={handleCopy} onSaveNote={handleSaveNote} onReset={handleReset} />
           </div>
         </>
       )}
-
-      <HistoryList
-        generations={generations}
-        historyLoading={historyLoading}
-        copiedGenId={copiedGenId}
-        onLoad={handleLoadFromHistory}
-        onCopy={handleCopyHistoryText}
-        onDelete={handleDeleteHistory}
-      />
+      <HistoryList generations={generations} historyLoading={historyLoading} copiedGenId={copiedGenId} onLoad={handleLoadFromHistory} onCopy={handleCopyHistoryText} onDelete={handleDeleteHistory} />
     </div>
   );
 }

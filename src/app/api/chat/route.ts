@@ -47,7 +47,28 @@ const FRIENDLY_ERRORS: Record<string, string> = {
   config: "Az AI asszisztens jelenleg nem elérhető. Kérlek, írj emailt, és szívesen segítek!",
   upstream: "Az AI asszisztens nem tudott válaszolni. Kérlek, próbáld meg újra!",
   generic: "Valami hiba történt. Kérlek, próbáld meg újra!",
+  validation: "Érvénytelen vagy túl hosszú üzenet érkezett.",
 };
+
+const chatMessagePartSchema = z
+  .object({
+    type: z.string().max(64),
+    text: z.string().max(4000).optional(),
+  })
+  .passthrough();
+
+const chatMessageSchema = z
+  .object({
+    id: z.string().max(128).optional(),
+    role: z.enum(["system", "user", "assistant", "tool"]),
+    content: z.string().max(4000).optional(),
+    parts: z.array(chatMessagePartSchema).max(20).optional(),
+  })
+  .passthrough();
+
+const chatRequestBodySchema = z.object({
+  messages: z.array(chatMessageSchema).min(1).max(40),
+});
 
 /** Hiba → felhasználóbarát kód + HTTP státusz. */
 function toFriendlyError(error: unknown): {
@@ -121,7 +142,22 @@ export async function POST(req: Request) {
     // `ChatConfigError` 503-at vált, nem egy rejtélyes TypeError.
     const groq = getGroq();
 
-    const { messages } = (await req.json()) as { messages: UIMessage[] };
+    const rawBody = await req.json();
+    const parsedBody = chatRequestBodySchema.safeParse(rawBody);
+    if (!parsedBody.success) {
+      return new Response(
+        JSON.stringify({
+          error: FRIENDLY_ERRORS.validation,
+          code: "validation",
+        }),
+        {
+          status: 400,
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+    }
+
+    const messages = parsedBody.data.messages as unknown as UIMessage[];
 
     const result = await streamText({
       model: groq("openai/gpt-oss-120b"),

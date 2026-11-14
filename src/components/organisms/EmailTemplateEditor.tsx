@@ -478,8 +478,11 @@ export default function EmailTemplateEditor() {
                     <div className="text-sm text-slate-500">Tárgy:</div>
                     <div className="font-bold">{formData.subject}</div>
                   </div>
-                  <div
-                    dangerouslySetInnerHTML={{ __html: formData.htmlContent }}
+                  <iframe
+                    srcDoc={formData.htmlContent}
+                    sandbox=""
+                    title="Email sablon előnézet"
+                    className="w-full min-h-[420px] rounded-lg border border-slate-200 bg-white"
                   />
                 </div>
               </div>

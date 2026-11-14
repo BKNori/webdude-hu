@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from "react";
 import { motion } from "motion/react";
-import jsPDF from "jspdf";
 import {
   Building2,
   FileText,
@@ -131,17 +130,20 @@ export default function KristofkaWorkflow() {
 
         // Save to case study
         try {
-          await saveToCaseStudyAction({
-            title: `Kristófka Stratégia - ${new Date().toLocaleDateString("hu-HU")}`,
-            clientName: "Anonimizált Ügyfél",
-            workflowType: "Kristófka",
-            impactMetrics: {
-              efficiencyGain: "30%",
-              timeSaved: "12h",
+          await saveToCaseStudyAction(
+            {
+              title: `Kristófka Stratégia - ${new Date().toLocaleDateString("hu-HU")}`,
+              clientName: "Anonimizált Ügyfél",
+              workflowType: "Kristófka",
+              impactMetrics: {
+                efficiencyGain: "30%",
+                timeSaved: "12h",
+              },
+              summary: `${res.result.legacy.substring(0, 100)}...`,
+              status: "published",
             },
-            summary: `${res.result.legacy.substring(0, 100)}...`,
-            status: "published",
-          });
+            idToken
+          );
         } catch (error) {
           console.error("Case study save error:", error);
         }
@@ -161,9 +163,10 @@ export default function KristofkaWorkflow() {
     setTimeout(() => setSuccess(""), 2000);
   };
 
-  const handlePDFExport = () => {
+  const handlePDFExport = async () => {
     if (!result) return;
 
+    const { jsPDF } = await import("jspdf");
     const doc = new jsPDF();
     let yPosition = 20;
 

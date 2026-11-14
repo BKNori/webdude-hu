@@ -10,9 +10,8 @@ export const metadata: Metadata = {
     canonical: "https://webdude.hu/portal/ai-muhely/kristofka"
   },
   robots: {
-    index: true,
-    follow: true,
-    "max-image-preview": "large"
+    index: false,
+    follow: false,
   },
   openGraph: {
     title:

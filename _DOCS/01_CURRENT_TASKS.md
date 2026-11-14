@@ -1,9 +1,15 @@
 # 01_CURRENT_TASKS.md — WebDude.hu Projekt
 
-## Aktuális feladatok és állapot (2026-11-14 — v7.60.0)
+## Aktuális feladatok és állapot (2026-11-14 — v7.61.0)
 
 ### 🟢 Legutóbb lezárt sprintek (2026-11-14)
 
+- ✅ **v7.61.0 — P0 Security Hardening, Sitemap/Noindex Fix & Dynamic Bundle Optimization:**
+  - **P0 Szerveroldali Biztonság:** `getEnhancedKpiMetricsAction` (`src/app/actions/getEnhancedKpiMetrics.ts` + `src/app/admin/page.tsx`), `saveToCaseStudyAction` (`src/actions/case-study.ts` + `KristofkaWorkflow.tsx`) és `autoAssignTaskAction` / `autoAssignAllPendingTasksAction` (`src/actions/dispatcher.ts` + `src/app/admin/work-log/page.tsx`) ellátva szerveroldali Firebase ID token / admin jogosultság-ellenőrzéssel, Zod input validációval és cPanel-barát kliens SDK fallbackkel.
+  - **P0 Stripe Webhook Hardening (`src/app/api/webhooks/stripe/route.ts`):** 300 másodperces (5 perces) replay-ablak ellenőrzés a `t=` időbélyegre és eseményszintű idempotencia (`processed_stripe_events/{event.id}` + `orderData.status === "paid"` védelem).
+  - **P1 Sitemap & Portál `noindex`:** `/en/portfolio` és angol szolgáltatás/kapcsolat útvonalak felvéve a `src/app/sitemap.ts`-be; a zárt `/portal/ai-muhely/*` útvonalak eltávolítva a sitemapből; `src/app/portal/layout.tsx`, `src/app/portal/page.tsx` és `src/app/portal/ai-muhely/kristofka/layout.tsx` `robots: { index: false, follow: false }` védelemmel ellátva.
+  - **P1 Dinamikus Bundle Optimalizáció & Hardening:** `jspdf` dinamikus `await import("jspdf")` betöltése (`KristofkaWorkflow.tsx`, `src/app/admin/page.tsx`), `KristofkaWorkflow` `next/dynamic` lazy-loading a `ClientAITools.tsx`-ben (296 sor), `HeroSectionNew.tsx` Zéró Fix Ár javítás (`"Egyedi árazás, garantált határidők"`), `/api/chat` Zod tömb- és hossz-validáció, valamint `EmailTemplateEditor.tsx` sandboxolt `<iframe srcDoc="..." sandbox="" />` előnézet.
+  - **QA Gate:** `tsc` (0), `lint` (0), `jest` (51/51 PASS), `audit-contrast.js` (375 fájl, 0 hiba).
 - ✅ **v7.60.0 — Nyomdai AI Műhelyek Modularizálása (`<= 300` sor) & Regiszter Tisztítás:**
   - **`FlyerWorkshopGenerator` (`822 → 197` sor):** `FlyerInputForm.tsx` (280 sor) + `FlyerOutputStudio.tsx` (289 sor).
   - **`PackagingWorkshopGenerator` (`852 → 197` sor):** `PackagingInputForm.tsx` (294 sor) + `PackagingOutputStudio.tsx` (289 sor).

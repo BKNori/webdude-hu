@@ -1,5 +1,42 @@
 # Changelog
 
+## [7.61.0] — 2026-11-14 — SPRINT: P0 SECURITY HARDENING, SITEMAP/NOINDEX FIX & DYNAMIC BUNDLE OPTIMIZATION
+
+**1. P0 — SZERVEROLDALI BIZTONSÁG ÉS JOGOSULTSÁGOK (KRITIKUS):**
+- **`src/app/actions/getEnhancedKpiMetrics.ts` & `src/app/admin/page.tsx`:**
+  - Bevezetve a szerveroldali admin-ellenőrzés (`extractAndVerifyAdmin(authHeader)` a `getClientUserProfileAction` és `headers()` alapján: `role === "admin" || email === "hello@webdude.hu" || email === "admin@webdude.hu"`), valamint cPanel-barát kliensoldali Firestore (`db`) fallback, ha az `adminDb` nem inicializálódott.
+  - A `src/app/admin/page.tsx` a KPI lekérésekor átadja az aktuális admin felhasználó `Bearer ${idToken}` fejlécét.
+- **`src/actions/case-study.ts` (`saveToCaseStudyAction`) & `src/components/organisms/KristofkaWorkflow.tsx`:**
+  - Bevezetve a szigorú `caseStudyInputSchema` Zod validáció (`title`, `clientName`, `workflowType`, `impactMetrics`, `summary`, `status`) és a szerveroldali `resolveAndVerifyCaseStudyCaller(idToken)` jogosultság-ellenőrzés (`admin` vagy `kristofka_workflow` `allowedTools` hozzáférés), valamint a kliensoldali `db` fallback.
+  - A `KristofkaWorkflow.tsx` a Case Study mentésekor átadja a hitelesített felhasználó `idToken`-jét.
+- **`src/actions/dispatcher.ts` & `src/app/admin/work-log/page.tsx`:**
+  - Az `autoAssignTaskAction` és `autoAssignAllPendingTasksAction` Server Action-ök kiegészítve szerveroldali `requireAdmin(authHeader)` jogosultság-ellenőrzéssel és `taskIdSchema` Zod validációval.
+  - A `src/app/admin/work-log/page.tsx` az automatikus kiosztáskor átadja az admin `idToken`-jét.
+- **`src/app/api/webhooks/stripe/route.ts`:**
+  - **5 perces (300 mp) Replay Window:** a `verifyStripeSignature` ellenőrzi a `t=` időbélyeg korát (`Math.abs(nowSec - timestampSec) > 300`), elutasítva a lejárt vagy visszajátszott webhook kéréseket.
+  - **Eseményszintű Idempotencia:** a `processed_stripe_events/{event.id}` dokumentum és az `orderData.status === "paid"` ellenőrzés garantálja, hogy duplikált Stripe kézbesítés esetén a rendszer `200 OK { received: true, duplicate: true }` válasszal térjen vissza többszörös teljesítés nélkül; az `addonNameMap` megtisztítva a Unicode emojiktól.
+
+**2. P1 — SITEMAP, PORTÁL NOINDEX, CHAT VALIDÁCIÓ ÉS TELJESÍTMÉNY OPTIMALIZÁLÁS:**
+- **`src/app/sitemap.ts` & Portál `noindex` védelem:**
+  - Hozzáadva az angol nyelvű oldalak (`/en/portfolio`, `/en/services`, `/en/services/*`, `/en/contact`) a `sitemap.ts`-hez `alternates.languages` (`hu`/`en`) jelöléssel; mind a 14 nyilvános `/termekek/*` aloldal szerepel a sitemapben.
+  - Eltávolítva az összes hitelesítés mögötti `/portal/ai-muhely/*` URL a publikus `sitemap.ts`-ből.
+  - A `src/app/portal/layout.tsx`, `src/app/portal/page.tsx` és `src/app/portal/ai-muhely/kristofka/layout.tsx` egyaránt `robots: { index: false, follow: false }` direktívával védve a keresőrobotoktól.
+- **Dinamikus `jspdf` Import & `KristofkaWorkflow` Lazy-Loading:**
+  - A `src/components/organisms/KristofkaWorkflow.tsx` és a `src/app/admin/page.tsx` fájlokban a statikus top-level `import jsPDF from "jspdf"` lecserélve dinamikus `const { jsPDF } = await import("jspdf")` betöltésre közvetlenül a PDF-exportáló függvényeken belül (~300 KB megtakarítás az elsődleges kliens bundle-ből).
+  - A `src/components/organisms/ClientAITools.tsx` (296 sor, `<= 300` soros limit alatt) `next/dynamic` (`ssr: false`) segítségével lusta betöltéssel (lazy-loading) tölti be a `KristofkaWorkflow` komponenst.
+- **Zéró Fix Ár Fallback, Chat API Zod Validáció & Sandboxed Email Előnézet:**
+  - `src/components/organisms/HeroSectionNew.tsx`: a `"Fix árak, fix határidők"` szöveg lecserélve `"Egyedi árazás, garantált határidők"`-re.
+  - `src/app/api/chat/route.ts`: bevezetve a `chatRequestBodySchema` Zod validáció (minimum 1, maximum 40 üzenet, maximált szöveghossz üzenetenként és részenként), amely `400 Bad Request` státusszal utasítja el a túlméretezett vagy hibás szerkezetű payloadokat.
+  - `src/components/organisms/EmailTemplateEditor.tsx`: a nyers `dangerouslySetInnerHTML` előnézet lecserélve izolált `<iframe srcDoc={formData.htmlContent} sandbox="" title="Email sablon előnézet" />` megjelenítésre.
+
+**3. TELJES QA GATE VERIFIKÁCIÓ:**
+- `npx tsc --noEmit` → **0 hiba (EXIT=0)**
+- `npm run lint -- --max-warnings 0` → **0 error, 0 warning (EXIT=0)**
+- `npx jest --no-coverage` → **5/5 suite, 51/51 teszt PASS (EXIT=0)**
+- `node scripts/audit-contrast.js` → **375 vizsgált fájl, 0 kontraszt-hiba (EXIT=0)**
+
+---
+
 ## [7.60.0] — 2026-11-14 — SPRINT: NYOMDAI AI MŰHELYEK MODULARIZÁLÁSA (`<= 300` SOR) & REGISZTER TISZTÍTÁS
 
 **1. NYOMDAI AI MŰHELY GENERÁTOROK ATOMIC DESIGN MODULARIZÁLÁSA (`<= 300` SOR / FÁJL, KÉK-LILA v7.0):**

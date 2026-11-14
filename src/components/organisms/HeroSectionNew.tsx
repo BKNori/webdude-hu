@@ -75,7 +75,7 @@ const SLIDE_DEFAULTS: SlideData[] = [
     trustPoints: [
       "Közvetlen kommunikáció — nincs közvetítő",
       "30 napos hibajavítási garancia",
-      "Fix árak, fix határidők",
+      "Egyedi árazás, garantált határidők",
     ],
     cta1: {
       text: "Kérj projektfelmérést",

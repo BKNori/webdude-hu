@@ -21,7 +21,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         },
       },
     },
-    // English homepage — /en prefix, hreflang kapcsolat a HU változattal
+    // English homepage & main EN routes — /en prefix, hreflang kapcsolat a HU változattal
     {
       url: `${BASE_URL}/en`,
       lastModified: BUILD_DATE,
@@ -31,6 +31,90 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         languages: {
           "hu-HU": BASE_URL,
           "en-US": `${BASE_URL}/en`,
+        },
+      },
+    },
+    {
+      url: `${BASE_URL}/en/portfolio`,
+      lastModified: BUILD_DATE,
+      changeFrequency: "weekly" as const,
+      priority: 0.85,
+      alternates: {
+        languages: {
+          "hu-HU": `${BASE_URL}/munkak`,
+          "en-US": `${BASE_URL}/en/portfolio`,
+        },
+      },
+    },
+    {
+      url: `${BASE_URL}/en/services`,
+      lastModified: BUILD_DATE,
+      changeFrequency: "monthly" as const,
+      priority: 0.85,
+      alternates: {
+        languages: {
+          "hu-HU": `${BASE_URL}/szolgaltatasok`,
+          "en-US": `${BASE_URL}/en/services`,
+        },
+      },
+    },
+    {
+      url: `${BASE_URL}/en/services/web-development`,
+      lastModified: BUILD_DATE,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+      alternates: {
+        languages: {
+          "hu-HU": `${BASE_URL}/szolgaltatasok/weboldal-keszites`,
+          "en-US": `${BASE_URL}/en/services/web-development`,
+        },
+      },
+    },
+    {
+      url: `${BASE_URL}/en/services/woocommerce-development`,
+      lastModified: BUILD_DATE,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+      alternates: {
+        languages: {
+          "hu-HU": `${BASE_URL}/szolgaltatasok/woocommerce-webshop-keszites`,
+          "en-US": `${BASE_URL}/en/services/woocommerce-development`,
+        },
+      },
+    },
+    {
+      url: `${BASE_URL}/en/services/seo-optimization`,
+      lastModified: BUILD_DATE,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+      alternates: {
+        languages: {
+          "hu-HU": `${BASE_URL}/szolgaltatasok/seo-optimalizalas`,
+          "en-US": `${BASE_URL}/en/services/seo-optimization`,
+        },
+      },
+    },
+    {
+      url: `${BASE_URL}/en/services/graphic-design`,
+      lastModified: BUILD_DATE,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+      alternates: {
+        languages: {
+          "hu-HU": `${BASE_URL}/szolgaltatasok/grafikai-tervezes`,
+          "en-US": `${BASE_URL}/en/services/graphic-design`,
+        },
+      },
+    },
+    {
+      url: `${BASE_URL}/en/contact`,
+      lastModified: BUILD_DATE,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+      alternates: {
+        languages: {
+          "hu-HU": `${BASE_URL}/kapcsolat`,
+          "en-US": `${BASE_URL}/en/contact`,
         },
       },
     },
@@ -333,38 +417,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }));
 
-  // 4. AI Workshop pages
-  const aiWorkshops = [
-    "banner",
-    "logo",
-    "midjourney",
-    "ui-ux",
-    "seo-audit",
-    "szezonalis",
-    "tartalomtervezo",
-    "kristofka",
-    "banner-ai-muhely",
-    "logo-ai-muhely",
-    "midjourney-ai-muhely",
-    "seo-audit-ai-muhely",
-    "szezonalis-ai-muhely",
-    "tartalomtervezo-ai-muhely",
-    "ui-ux-ai-muhely",
-    "versenytars-elemzo-ai-muhely",
-  ];
-
-  const aiWorkshopPages = aiWorkshops.map((slug) => ({
-    url: `${BASE_URL}/portal/ai-muhely/${slug}`,
-    lastModified: BUILD_DATE,
-    changeFrequency: "monthly" as const,
-    priority: 0.6,
-  }));
-
   return [
     ...staticPages,
     ...projectPages,
     ...blogPages,
     ...productPages,
-    ...aiWorkshopPages,
   ];
 }

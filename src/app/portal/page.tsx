@@ -1,4 +1,4 @@
-﻿import React from "react";
+import React from "react";
 import PortalDashboard from "@/components/organisms/PortalDashboard";
 import { Metadata } from "next";
 
@@ -6,6 +6,10 @@ export const metadata: Metadata = {
   title: "Ügyfélportál | WebDude",
   description:
     "Zárt ügyfélkapu a fejlesztési és AI munkafolyamatok nyomon követésére.",
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export default function PortalPage() {

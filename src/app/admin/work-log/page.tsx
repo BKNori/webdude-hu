@@ -11,7 +11,7 @@ import {
   deleteDoc,
   Timestamp,
 } from "firebase/firestore";
-import { db } from "@/lib/firebase";
+import { db, auth } from "@/lib/firebase";
 import {
   Clock,
   Plus,
@@ -201,7 +201,10 @@ export default function WorkLogPage() {
     setAiTriageResult(null);
 
     try {
-      const result = await autoAssignAllPendingTasksAction();
+      const idToken = auth?.currentUser
+        ? await auth.currentUser.getIdToken(true)
+        : undefined;
+      const result = await autoAssignAllPendingTasksAction(idToken);
       if (result.success) {
         setAiTriageResult(
           `AI Triage kész: ${result.assigned} feladat kiosztva, ${result.failed} feladat felülvizsgálatra vár.`

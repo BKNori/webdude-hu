@@ -8,13 +8,16 @@ import {
   doc,
   updateDoc,
   getDoc,
+  setDoc,
   arrayUnion,
 } from "firebase/firestore";
 import { createHmac, timingSafeEqual } from "crypto";
 
 export const dynamic = "force-dynamic";
 
-// 1. Signature Verification Helper using standard Web Crypto / Node Crypto
+const STRIPE_WEBHOOK_TOLERANCE_SECONDS = 300; // 5 perc replay-ablak
+
+// 1. Signature Verification Helper using standard Web Crypto / Node Crypto + Replay Window Check
 function verifyStripeSignature(
   rawBody: string,
   signatureHeader: string,
@@ -28,14 +31,25 @@ function verifyStripeSignature(
 
   for (const part of parts) {
     const [key, value] = part.split("=");
-    if (key?.trim() === "t") {
+    if (key?.trim() === "t" && value) {
       timestamp = value.trim();
-    } else if (key?.trim() === "v1") {
+    } else if (key?.trim() === "v1" && value) {
       signature = value.trim();
     }
   }
 
   if (!timestamp || !signature) return false;
+
+  const timestampSec = Number(timestamp);
+  if (!Number.isFinite(timestampSec) || timestampSec <= 0) {
+    return false;
+  }
+
+  const nowSec = Math.floor(Date.now() / 1000);
+  if (Math.abs(nowSec - timestampSec) > STRIPE_WEBHOOK_TOLERANCE_SECONDS) {
+    console.warn("Stripe webhook timestamp outside 300s replay window.");
+    return false;
+  }
 
   const signedPayload = `${timestamp}.${rawBody}`;
   const hmac = createHmac("sha256", webhookSecret);
@@ -65,15 +79,16 @@ export async function POST(req: Request) {
   const signature = headerList.get("stripe-signature") || "";
   const rawBody = await req.text();
 
-  // Verify signature to prevent spoofing
+  // Verify signature + 300s replay window to prevent spoofing and replay attacks
   const isValid = verifyStripeSignature(rawBody, signature, webhookSecret);
   if (!isValid) {
-    console.warn("Invalid Stripe signature received on webhook.");
+    console.warn("Invalid or expired Stripe signature received on webhook.");
     return new NextResponse("Unauthorized", { status: 400 });
   }
 
   try {
     const event = JSON.parse(rawBody) as {
+      id?: string;
       type: string;
       data: {
         object: {
@@ -96,27 +111,53 @@ export async function POST(req: Request) {
       const session = event.data.object;
 
       if (session.payment_status === "paid") {
+        if (!db) {
+          console.error("Firestore is not initialized.");
+          return new NextResponse("Database Error", { status: 500 });
+        }
+
+        // Esemény-szintű idempotencia ellenőrzés (processed_stripe_events/{eventId})
+        const eventId = event.id || `session_${session.id}`;
+        const processedEventRef = doc(db, "processed_stripe_events", eventId);
+        const processedEventSnap = await getDoc(processedEventRef);
+
+        if (processedEventSnap.exists()) {
+          console.log(`Duplicate Stripe webhook event ignored: ${eventId}`);
+          return NextResponse.json(
+            { received: true, duplicate: true },
+            { status: 200 }
+          );
+        }
+
         const metadata = session.metadata || {};
         const orderId = metadata.orderId;
         const workflowId = metadata.workflowId;
         const phase = metadata.phase;
         const clientId = metadata.clientId;
 
-        if (!db) {
-          console.error("Firestore is not initialized.");
-          return new NextResponse("Database Error", { status: 500 });
-        }
-
         // Case 1: Purchased from AddonStore (has orderId metadata)
         if (orderId) {
           console.log(`Processing paid AddonStore order: ${orderId}`);
           const orderRef = doc(db, "orders", orderId);
-          await updateDoc(orderRef, { status: "paid" });
-
-          // Fetch the order document to unlock the tool in user profile
           const orderSnap = await getDoc(orderRef);
+
           if (orderSnap.exists()) {
             const orderData = orderSnap.data();
+            if (orderData.status === "paid") {
+              await setDoc(processedEventRef, {
+                eventId,
+                type: event.type,
+                orderId,
+                processedAt: new Date().toISOString(),
+              });
+              return NextResponse.json(
+                { received: true, duplicate: true },
+                { status: 200 }
+              );
+            }
+
+            await updateDoc(orderRef, { status: "paid" });
+
             const orderClientId = orderData.clientId;
             const orderAddonId = orderData.addonId;
 
@@ -159,10 +200,10 @@ export async function POST(req: Request) {
 
             // 1. Create a paid order in orders collection
             const addonNameMap: Record<string, string> = {
-              addon_speed_opt: "⚡ Webhely Sebesség Optimalizálás",
-              addon_seo_article: "🚀 Extra AI SEO Cikk (1 db)",
-              addon_security_pack: "🛡️ Prémium Biztonsági Csomag (1 év)",
-              addon_ai_chatbot: "🤖 Egyedi AI Chatbot Asszisztens",
+              addon_speed_opt: "Webhely Sebesség Optimalizálás",
+              addon_seo_article: "Extra AI SEO Cikk (1 db)",
+              addon_security_pack: "Prémium Biztonsági Csomag (1 év)",
+              addon_ai_chatbot: "Egyedi AI Chatbot Asszisztens",
             };
 
             await addDoc(collection(db, "orders"), {
@@ -210,6 +251,14 @@ export async function POST(req: Request) {
             });
           }
         }
+
+        // Rögzítjük a feldolgozott Stripe eseményt az idempotencia érdekében
+        await setDoc(processedEventRef, {
+          eventId,
+          type: event.type,
+          sessionId: session.id,
+          processedAt: new Date().toISOString(),
+        });
       }
     }
 

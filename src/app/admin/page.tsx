@@ -12,7 +12,6 @@ import {
   exportLeadsCSVAction,
   exportProjectsCSVAction,
 } from "@/actions/admin-dashboard";
-import jsPDF from "jspdf";
 import {
   Brain,
   Zap,
@@ -116,7 +115,9 @@ export default function AdminDashboard() {
 
           // 3. Fetch Enhanced KPI Metrics
           try {
-            const kpiRes = await getEnhancedKpiMetricsAction();
+            const kpiRes = await getEnhancedKpiMetricsAction({
+              Authorization: `Bearer ${idToken}`,
+            });
             if (kpiRes.success && kpiRes.data) {
               setKpiMetrics(kpiRes.data);
             }
@@ -205,10 +206,11 @@ export default function AdminDashboard() {
     }
   };
 
-  const handleExportPdfReport = () => {
+  const handleExportPdfReport = async () => {
     if (typeof window === "undefined") return;
     setExportingPdf(true);
     try {
+      const { jsPDF } = await import("jspdf");
       const doc = new jsPDF();
       const currentDate = new Date().toLocaleDateString("hu-HU");
 
