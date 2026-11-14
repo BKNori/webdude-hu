@@ -1,5 +1,28 @@
 # Changelog
 
+## [7.57.0] — 2026-11-14 — SPRINT: CLIENTAITOOLS MONOLIT SZÉTBONTÁSA (`<= 300` SOR) & SMOKE E2E VERIFIKÁCIÓ
+
+**1. `ClientAITools.tsx` ATOMIC DESIGN MODULARIZÁLÁS (`1144 → 288` SOR, KÉK-LILA v7.0 & WCAG AA):**
+- **ÚJ** `src/lib/aiToolsRegistry.ts` (280 sor): központi típus- és eszközregiszter (`ToolCategory`, `ToolType`, `ToolConfig`, `TemplateDef`, `ClientAIToolFormValues`, `DEFAULT_AI_TOOL_FORM_VALUES`, `tools`, `marketingTools`, `graphicsTools`, `strategistTools`, `graphicsTemplates`), valamint a tiszta `buildToolInputs` és `buildNoteTitle` segédfüggvények; a `src/data/client-ai-tools-config.ts` 100% visszafelé kompatibilisen re-exportálja az elemeket.
+- **ÚJ** `src/components/organisms/ai-tools/AIToolsCategoryAndSelector.tsx` (140 sor): az Élő AI Generátor fejléce, a kategória-fülek (`Marketing & Szövegírás`, `Grafika & Tervezés`, `Strategist Pro` — WCAG AA `role="tablist"` / `role="tab"` / `aria-selected` / `focus-visible`), az eszközválasztó `GraphicToolCard` kártyarács, az aktív eszköz leírása és a globális `role="alert"` hibaüzenet.
+- **ÚJ** `src/components/organisms/ai-tools/AIToolsMarketingForms.tsx` (176 sor): a 4 marketing eszköz (`product_desc`, `review_assistant`, `social_matrix`, `cart_recovery`) animált input űrlapjai (`AnimatePresence`).
+- **ÚJ** `src/components/organisms/ai-tools/AIToolsGraphicsForms.tsx` (288 sor): az 5 grafikai eszköz (`midjourney_prompt`, `banner_concept`, `logo_designer`, `ui_ux_designer`, `seasonal_campaign_designer`) animált input űrlapjai Kék-Lila v7.0 tokenekkel (`AnimatePresence`).
+- `src/components/organisms/ClientAITools.tsx` (1144 → **288 sor**): tiszta karmester (orchestrator) komponensre karcsúsítva; a 16 különálló input state egyetlen típusos `formValues: ClientAIToolFormValues` állapotba konszolidálva; az `ai_generations` kliensoldali Firestore fallback (`loadHistoryFallback`), a `KristofkaWorkflow` integráció (`activeTool === "kristofka_workflow"`), a `GenerationOutput` és a `HistoryList` 100%-ban regressziómentesen működik.
+- `_docs/ARCHITECTURE.md`: a komponens-regiszter frissítve az új `AIToolsCategoryAndSelector`, `AIToolsMarketingForms` és `AIToolsGraphicsForms` organizmusokkal.
+
+**2. TELJES QA GATE & PLAYWRIGHT E2E SMOKE VERIFIKÁCIÓ:**
+- `npx tsc --noEmit` → **0 hiba (EXIT=0)**
+- `npm run lint -- --max-warnings 0` → **0 error, 0 warning (EXIT=0)**
+- `npx jest --no-coverage` → **5/5 suite, 51/51 teszt PASS (EXIT=0)**
+- `npx playwright test e2e/smoke.spec.ts` (előzetes 3000-es port ellenőrzéssel: `PORT_3000_COUNT=0`) → **5/5 teszt PASS (`27.5s`, EXIT=0)**:
+  1. Főoldal (`/`): HTTP 200, 1 db `<h1>`, Kék-Lila v7.0 CTA gomb (`from-cta-from`, `text-white`), 0 konzolhiba (`17.1s`)
+  2. Szolgáltatások (`/szolgaltatasok`): HTTP 200, JSON-LD jelenlét és Zéró Fix Ár megfelelőség (`11.0s`)
+  3. Kiemelt Esettanulmány (`/munkak/btshop`): HTTP 200, JSON-LD jelenlét és Zéró Fix Ár megfelelőség (`11.8s`)
+  4. Kapcsolat (`/kapcsolat`): Űrlap mezők és kliensoldali Zod validáció, Anti-Drain 0 Firestore írás (`13.2s`)
+  5. Ügyfélportál (`/portal`): Nem bejelentkezett látogatáskor autentikációs védelem és 0 adatszivárgás (`10.5s`)
+
+---
+
 ## [7.56.0] — 2026-11-14 — SPRINT: PORTALDASHBOARD MODULARIZÁLÁS & PLAYWRIGHT E2E SMOKE SUITE
 
 **1. PORTALDASHBOARD ATOMIC DESIGN MODULARIZÁLÁS (`<= 300` SOR, KÉK-LILA v7.0 & WCAG AA):**

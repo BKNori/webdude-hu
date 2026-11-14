@@ -1,9 +1,12 @@
 # 01_CURRENT_TASKS.md — WebDude.hu Projekt
 
-## Aktuális feladatok és állapot (2026-11-14 — v7.56.0)
+## Aktuális feladatok és állapot (2026-11-14 — v7.57.0)
 
 ### 🟢 Legutóbb lezárt sprintek (2026-11-14)
 
+- ✅ **v7.57.0 — ClientAITools Monolit Szétbontása (`<= 300` sor) & Smoke E2E Verifikáció:**
+  - **`ClientAITools.tsx` Modularizálás (`1144 → 288` sor):** új központi regiszter (`src/lib/aiToolsRegistry.ts`, 280 sor) és 3 új alkomponens a `src/components/organisms/ai-tools/` alatt (`AIToolsCategoryAndSelector.tsx` 140 sor, `AIToolsMarketingForms.tsx` 176 sor, `AIToolsGraphicsForms.tsx` 288 sor); `ai_generations` kliens SDK fallback és `KristofkaWorkflow` integráció 100%-ban megőrizve.
+  - **Playwright Smoke E2E Verifikáció:** `npx playwright test e2e/smoke.spec.ts` **5/5 PASS (`27.5s`, EXIT=0)**.
 - ✅ **v7.56.0 — PortalDashboard Modularizálás & Playwright E2E Smoke Suite:**
   - **PortalDashboard Atomic Design szétbontás (`<= 300` sor):** `PortalDashboard.tsx` 126 soros karmesterré karcsúsítva; új `PortalHeroAndTabs.tsx` (WCAG AA `tablist`/`tab` + Kék-Lila v7.0) és `PortalClientWorkspace.tsx` organizmusok a `src/components/organisms/portal/` alatt; `_docs/ARCHITECTURE.md` regiszter frissítve.
   - **Playwright E2E Smoke Suite (`e2e/smoke.spec.ts`):** egyesített smoke teszt a `/`, `/szolgaltatasok`, `/munkak/btshop`, `/kapcsolat` (Zod kliensoldali validáció + Anti-Drain 0 Firestore írás) és `/portal` (auth-fal) útvonalakra.
