@@ -1,5 +1,21 @@
 # Changelog
 
+## [7.58.0] — 2026-11-14 — SPRINT: POSTERWORKSHOPGENERATOR (`<= 300` SOR) MODULARIZÁLÁS & E2E VERIFIKÁCIÓ
+
+**1. `PosterWorkshopGenerator.tsx` ATOMIC DESIGN MODULARIZÁLÁS (`606 → 214` SOR, KÉK-LILA v7.0):**
+- **ÚJ** `src/components/organisms/poster-workshop/PosterInputForm.tsx` (292 sor): a Poster AI Műhely bal oldali paraméterező űrlapja és Zod sémája (`posterFormSchema`, `PosterFormValues`), valamint a statikus méret- (`POSTER_SIZE_OPTIONS`), stílus- (`POSTER_STYLE_OPTIONS`) és nyomdai specifikáció (`POSTER_PRINT_SPEC_OPTIONS`) opciók; Duál Tipográfiával (`Bebas Neue` H1 + `Plus Jakarta Sans` UI) és Kék-Lila v7.0 (`from-cta-from to-cta-to hover:bg-cta-hover text-white`) generáló CTA gombbal.
+- **ÚJ** `src/components/organisms/poster-workshop/PosterOutputPanel.tsx` (92 sor): a Poster AI Műhely jobb oldali eredmény-panelje, amely az üres várakozó állapotot vagy a 10 nyomdai specifikációs eredmény-szekciót (`PosterConcept`, `PrintSpecs`, `ColorPalette`, `Typography`, `PosterLayout`, `Copywriting`, `MidjourneyPrompts`, `PrintGuidelines`, `ExportFormats`, `PosterVariations`) rendereli animáltan.
+- `src/components/organisms/PosterWorkshopGenerator.tsx` (606 → **214 sor**): tiszta karmester (orchestrator) komponensre karcsúsítva; a `ToolAccessLock` RBAC védelem (`poster_ai_muhely`), a Firebase Auth profil-ellenőrzés (`getClientUserProfileAction`), a Server Action hívás (`addPosterGenerationAction`) és a vágólap-kezelés 100%-ban regressziómentesen működik.
+- `_docs/ARCHITECTURE.md`: a komponens-regiszter frissítve az új `PosterInputForm` és `PosterOutputPanel` organizmusokkal.
+
+**2. TELJES QA GATE & PLAYWRIGHT E2E SMOKE VERIFIKÁCIÓ:**
+- `npx tsc --noEmit` → **0 hiba (EXIT=0)**
+- `npm run lint -- --max-warnings 0` → **0 error, 0 warning (EXIT=0)**
+- `npx jest --no-coverage` → **5/5 suite, 51/51 teszt PASS (EXIT=0)**
+- `npx playwright test e2e/smoke.spec.ts` (`PORT_3000_COUNT=0`) → **5/5 teszt PASS (`16.6s`, EXIT=0)**
+
+---
+
 ## [7.57.0] — 2026-11-14 — SPRINT: CLIENTAITOOLS MONOLIT SZÉTBONTÁSA (`<= 300` SOR) & SMOKE E2E VERIFIKÁCIÓ
 
 **1. `ClientAITools.tsx` ATOMIC DESIGN MODULARIZÁLÁS (`1144 → 288` SOR, KÉK-LILA v7.0 & WCAG AA):**
