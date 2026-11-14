@@ -148,7 +148,7 @@ export default function PortalWorkflowCard({
                     onClick={() =>
                       onPay(wf.id, phase)
                     }
-                    className="flex items-center justify-center gap-1.5 px-4 py-2 bg-linear-to-r from-sky-500 to-violet-700 text-bg-base font-bold text-xs uppercase tracking-wider rounded-xl hover:scale-[1.02] transition-all cursor-pointer shrink-0 disabled:opacity-50"
+                    className="flex items-center justify-center gap-1.5 px-4 py-2 bg-linear-to-r from-cta-from to-cta-to hover:bg-cta-hover text-white font-sans font-semibold text-xs uppercase tracking-wider rounded-xl hover:scale-[1.02] transition-all cursor-pointer shrink-0 disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary"
                   >
                     {actionLoading ===
                     `pay_${wf.id}_${phase}` ? (
@@ -200,7 +200,7 @@ export default function PortalWorkflowCard({
                 type="button"
                 disabled={actionLoading === wf.id}
                 onClick={() => onApprove(wf.id)}
-                className="flex items-center justify-center gap-1.5 px-4 py-2 bg-linear-to-r from-sky-500 to-violet-700 text-bg-base font-bold text-xs uppercase tracking-wider rounded-xl hover:scale-[1.02] transition-all cursor-pointer shrink-0 disabled:opacity-50"
+                className="flex items-center justify-center gap-1.5 px-4 py-2 bg-linear-to-r from-cta-from to-cta-to hover:bg-cta-hover text-white font-sans font-semibold text-xs uppercase tracking-wider rounded-xl hover:scale-[1.02] transition-all cursor-pointer shrink-0 disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary"
               >
                 {actionLoading === wf.id ? (
                   <Loader2 className="w-3.5 h-3.5 animate-spin" />

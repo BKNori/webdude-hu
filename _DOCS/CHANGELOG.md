@@ -1,5 +1,28 @@
 # Changelog
 
+## [7.56.0] — 2026-11-14 — SPRINT: PORTALDASHBOARD MODULARIZÁLÁS & PLAYWRIGHT E2E SMOKE SUITE
+
+**1. PORTALDASHBOARD ATOMIC DESIGN MODULARIZÁLÁS (`<= 300` SOR, KÉK-LILA v7.0 & WCAG AA):**
+- **ÚJ** `src/components/organisms/portal/PortalHeroAndTabs.tsx` (79 sor): a portál belső címsor-blokkja (`Aktív Projektek & Workflow`, `Bebas Neue` `font-heading font-normal` `<h2>`) és a szuperadmin nézetváltó fülei (`Kliens Nézet / Portál` vs. `Rendszer Admin`), kiegészítve teljes WCAG AA `role="tablist"` / `role="tab"` / `aria-selected` / `aria-controls` / `focus-visible:ring-2 focus-visible:ring-brand-primary` attribútumokkal és Kék-Lila v7.0 dizájntokenekkel.
+- **ÚJ** `src/components/organisms/portal/PortalClientWorkspace.tsx` (104 sor): a kliensoldali portál munkaterület (`role="tabpanel"`) önálló organizmusba kiszervezve (`PortalWorkflowGrid`, `PortalOnboardingSection`, `AddonStore`, `PortalOrdersSection`, `ProjectTimelineGantt`, 2 oszlopos `ClientVault` + `ClientAITools`, valamint `CaseStudyCarousel`).
+- `src/components/organisms/PortalDashboard.tsx` (197 → **126 sor**): tiszta karmester (orchestrator) komponensre karcsúsítva; a `usePortalSession` és `usePortalData` Anti-Drain hookok, valamint az összes prop és funkció 100%-ban regressziómentesen megőrizve.
+- `src/components/organisms/portal/PortalWorkflowCard.tsx`: a mérföldkő-fizető és fázis-jóváhagyó CTA gombok frissítve a Kék-Lila v7.0 `from-cta-from to-cta-to hover:bg-cta-hover text-white` (WCAG AAA) gradiensre és `focus-visible` fókuszgyűrűre.
+- `_docs/ARCHITECTURE.md`: a komponens-regiszter frissítve az új `PortalHeroAndTabs` és `PortalClientWorkspace` organizmusokkal.
+
+**2. PLAYWRIGHT E2E SMOKE SUITE & ANTI-DRAIN VÉDELEM (`e2e/smoke.spec.ts`):**
+- **ÚJ** `e2e/smoke.spec.ts`: átfogó, egyesített Playwright E2E smoke tesztcsomag a 4 kritikus pillérre:
+  1. **Főoldal (`/`):** HTTP 200, pontosan 1 db `<h1>`, Kék-Lila v7.0 elsődleges CTA gomb (`from-cta-from`, `text-white`) láthatósága és érvényes `href` attribútuma, 0 saját konzolhiba (`watchConsoleErrors`).
+  2. **Szolgáltatások (`/szolgaltatasok`) & Kiemelt Esettanulmány (`/munkak/btshop`):** HTTP 200, pontosan 1 db `<h1>`, `script[type="application/ld+json"]` strukturált adatok jelenléte és valid JSON-LD formátuma a DOM-ban, valamint **Zéró Fix Ár** megfelelőség (nincs fix `"Ft"` árcédula vagy `"priceRange"`).
+  3. **Kapcsolat (`/kapcsolat`):** az „Egyszerű üzenet” űrlap mezőinek (`name`, `email`, `projectType`, `message`) jelenléte és a kliensoldali Zod validáció működése üres beküldéskor (`aria-invalid="true"` és validációs hibaüzenetek megjelenése) **0 éles Firestore/Server Action írással (Anti-Drain szabály)**.
+  4. **Ügyfélportál (`/portal`):** nem bejelentkezett látogatáskor HTTP 200, autentikációs védelem (`#portal-layout` és privát adatok / `private_prompts` nem szivárognak ki), 0 hálózati írás.
+
+**3. QA GATE (MIND 0 HIBA):**
+- `npx tsc --noEmit` → **0 hiba (EXIT=0)**
+- `npm run lint -- --max-warnings 0` → **0 error, 0 warning (EXIT=0)**
+- `npx jest` → **5/5 suite, 51/51 teszt PASS (EXIT=0)**
+
+---
+
 ## [7.55.0] — 2026-11-14 — SPRINT: TECHNIKAI ADÓSSÁG & QA HIGIÉNIA FELOLDÁSA
 
 **1. KÉK-LILA v7.0 SZÍN-HIGIÉNIA (0% AMBER/ARANY MARADÉK):**
