@@ -145,7 +145,7 @@ export default function EnGraphicDesignPage() {
               </div>
 
               <div className="grid md:grid-cols-3 gap-8">
-                <div className="bg-slate-900/60 backdrop-blur-md p-8 rounded-2xl border border-slate-800 hover:border-[#00B5F1]/40 transition-all duration-300">
+                <div className="bg-slate-900/60 backdrop-blur-xl p-8 rounded-2xl border border-slate-800/80 hover:border-[#00B5F1]/40 transition-colors duration-300">
                   <PenTool className="w-10 h-10 text-[#00B5F1] mb-6" />
                   <h3 className="text-xl font-bold text-white mb-3">
                     Custom-designed UI/UX
@@ -156,7 +156,7 @@ export default function EnGraphicDesignPage() {
                     conversion-optimised design.
                   </p>
                 </div>
-                <div className="bg-slate-900/60 backdrop-blur-md p-8 rounded-2xl border border-slate-800 hover:border-[#5B21B6]/80 transition-all duration-300">
+                <div className="bg-slate-900/60 backdrop-blur-xl p-8 rounded-2xl border border-slate-800/80 hover:border-[#5B21B6]/80 transition-colors duration-300">
                   <Layers className="w-10 h-10 text-[#00B5F1] mb-6" />
                   <h3 className="text-xl font-bold text-white mb-3">
                     Complete Brand Identity
@@ -166,7 +166,7 @@ export default function EnGraphicDesignPage() {
                     graphics – everything you need for a consistent presence.
                   </p>
                 </div>
-                <div className="bg-slate-900/60 backdrop-blur-md p-8 rounded-2xl border border-slate-800 hover:border-[#00B5F1]/40 transition-all duration-300">
+                <div className="bg-slate-900/60 backdrop-blur-xl p-8 rounded-2xl border border-slate-800/80 hover:border-[#00B5F1]/40 transition-colors duration-300">
                   <ArrowRight className="w-10 h-10 text-[#00B5F1] mb-6" />
                   <h3 className="text-xl font-bold text-white mb-3">
                     Print-Ready Materials
@@ -223,7 +223,7 @@ export default function EnGraphicDesignPage() {
               </p>
               <Link
                 href="/en#contact"
-                className="inline-flex items-center gap-3 px-8 py-4 rounded-full font-bold text-slate-950 bg-linear-to-r from-[#00B5F1] to-[#5B21B6] hover:shadow-[0_8px_32px_rgba(0,181,241,0.35)] transition-all duration-300"
+                className="inline-flex items-center gap-3 px-8 py-4 rounded-full font-bold text-white bg-linear-to-r from-[#075985] to-[#5B21B6] hover:shadow-[0_8px_32px_rgba(0,181,241,0.35)] transition-[box-shadow,transform] duration-300"
               >
                 Request a custom quote <ArrowRight className="w-5 h-5" />
               </Link>

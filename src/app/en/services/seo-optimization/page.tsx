@@ -182,7 +182,7 @@ export default function EnSeoOptimizationPage() {
                 return (
                   <div
                     key={index}
-                    className="bg-slate-900/60 backdrop-blur-md p-8 rounded-2xl border border-slate-800 hover:border-[#00B5F1]/40 transition-all duration-300 group"
+                    className="bg-slate-900/60 backdrop-blur-xl p-8 rounded-2xl border border-slate-800/80 hover:border-[#00B5F1]/40 transition-colors duration-300 group"
                   >
                     <div className="w-12 h-12 rounded-xl bg-slate-950 border border-[#00B5F1]/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                       <Icon className="w-6 h-6 text-[#00B5F1]" />
@@ -242,7 +242,7 @@ export default function EnSeoOptimizationPage() {
             </p>
             <Link
               href="/en#contact"
-              className="inline-flex items-center gap-3 px-8 py-4 rounded-full font-bold text-slate-950 bg-linear-to-r from-[#00B5F1] to-[#5B21B6] hover:shadow-[0_8px_32px_rgba(0,181,241,0.35)] transition-all duration-300"
+              className="inline-flex items-center gap-3 px-8 py-4 rounded-full font-bold text-white bg-linear-to-r from-[#075985] to-[#5B21B6] hover:shadow-[0_8px_32px_rgba(0,181,241,0.35)] transition-[box-shadow,transform] duration-300"
             >
               Contact <ArrowRight className="w-5 h-5" />
             </Link>

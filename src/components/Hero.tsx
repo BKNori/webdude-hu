@@ -2,7 +2,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 
 interface HeroProps {
   title?: React.ReactNode;
@@ -31,6 +31,8 @@ export default function Hero({
   noOverlay = false,
   videoBackground,
 }: HeroProps) {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <section
       className={`relative overflow-hidden bg-transparent pt-32 pb-40 ${fullHeight ? "min-h-screen flex items-center" : ""}`}
@@ -78,9 +80,13 @@ export default function Hero({
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 20 }}
+            animate={shouldReduceMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
+            transition={
+              shouldReduceMotion
+                ? { duration: 0 }
+                : { duration: 0.8, ease: [0.22, 1, 0.36, 1] }
+            }
             className="space-y-8"
           >
             <div className="inline-block relative pl-6">
@@ -104,7 +110,7 @@ export default function Hero({
               {cta1 && cta1Link && (
                 <Link
                   href={cta1Link}
-                  className="px-8 py-4 bg-linear-to-r from-[#00B5F1] to-[#5B21B6] text-slate-950 rounded-full font-bold hover:scale-105 active:scale-95 transition-transform duration-300 shadow-[0_0_20px_rgba(0, 181, 241,0.3)] min-h-11 min-w-11"
+                  className="px-8 py-4 bg-linear-to-r from-[#075985] to-[#5B21B6] text-white rounded-full font-bold hover:scale-105 active:scale-95 transition-transform duration-300 shadow-[0_0_20px_rgba(0,181,241,0.3)] min-h-11 min-w-11"
                 >
                   {cta1}
                 </Link>
@@ -112,7 +118,7 @@ export default function Hero({
               {cta2 && cta2Link && (
                 <Link
                   href={cta2Link}
-                  className="px-8 py-4 bg-transparent border-2 border-[#00B5F1] text-[#00B5F1] hover:bg-[#00B5F1]/10 rounded-full font-bold active:scale-95 transition-all duration-300 min-h-11 min-w-11"
+                  className="px-8 py-4 bg-transparent border-2 border-[#00B5F1] text-[#00B5F1] hover:bg-[#00B5F1]/10 rounded-full font-bold active:scale-95 transition-[background-color,transform] duration-300 min-h-11 min-w-11"
                 >
                   {cta2}
                 </Link>

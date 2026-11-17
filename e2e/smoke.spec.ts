@@ -266,4 +266,51 @@ test.describe("WebDude E2E Smoke Suite (v7.65.0)", () => {
     expect(writes).toEqual([]);
     expect(errors).toEqual([]);
   });
+
+  test("5. Angol (/en) i18n: HTTP 200, egyetlen <h1>, canonical/hreflang, JSON-LD és Zéró Fix Ár", async ({
+    page,
+  }) => {
+    const errors = watchConsoleErrors(page);
+
+    for (const enPath of ["/en", "/en/services", "/en/portfolio", "/en/contact"]) {
+      const response = await page.goto(enPath, { waitUntil: "domcontentloaded" });
+      expect(response?.status()).toBe(200);
+      await page.waitForLoadState("load");
+      await dismissConsentBanner(page);
+
+      // Pontosan egy H1
+      await expect(page.locator("h1")).toHaveCount(1);
+
+      // Canonical és hreflang ellenőrzés
+      const canonical = await page
+        .locator('link[rel="canonical"]')
+        .first()
+        .getAttribute("href");
+      expect(canonical).toContain(enPath);
+      await expect(
+        page.locator('link[rel="alternate"][hreflang="hu-HU"]')
+      ).toHaveCount(1);
+      await expect(
+        page.locator('link[rel="alternate"][hreflang="en-US"]')
+      ).toHaveCount(1);
+
+      // Érvényes JSON-LD
+      const ldJsonRaw = await page
+        .locator('script[type="application/ld+json"]')
+        .allTextContents();
+      expect(ldJsonRaw.length).toBeGreaterThan(0);
+      for (const raw of ldJsonRaw) {
+        expect(() => JSON.parse(raw)).not.toThrow();
+        expect(raw).not.toContain('"priceRange"');
+      }
+
+      // Zéró Fix Ár
+      const bodyText = (await page.locator("body").innerText()) ?? "";
+      for (const pattern of FIXED_PRICE_PATTERNS) {
+        expect(bodyText.match(pattern)).toBeNull();
+      }
+    }
+
+    expect(errors).toEqual([]);
+  });
 });

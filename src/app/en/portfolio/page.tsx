@@ -25,7 +25,7 @@ export default async function EnPortfolioPage() {
       name: work.title,
       description: work.description,
       image: work.image,
-      url: `https://webdude.hu/en/portfolio/${work.slug}`,
+      url: `https://webdude.hu/munkak/${work.slug}`,
     })),
   };
 
@@ -43,7 +43,14 @@ export default async function EnPortfolioPage() {
           __html: JSON.stringify(portfolioSchema).replace(/</g, "\\u003c"),
         }}
       />
-      <PortfolioHero />
+      <PortfolioHero
+        badge="Portfolio"
+        titlePrefix="Results, Not Just "
+        titleHighlight="Design"
+        subtitle="Every project is a distinct challenge answered with craft and engineering. Explore the case studies below."
+        ctaLabel="Request a custom quote →"
+        ctaHref="/en/contact"
+      />
       <PortfolioGrid projects={staticWorks} />
     </div>
   );

@@ -1,9 +1,14 @@
 # 01_CURRENT_TASKS.md — WebDude.hu Projekt
 
-## Aktuális feladatok és állapot (2026-11-17 — v7.65.0)
+## Aktuális feladatok és állapot (2026-11-17 — v7.66.0)
 
 ### 🟢 Legutóbb lezárt sprintek (2026-11-17)
 
+- ✅ **v7.66.0 — Teljes Playwright E2E Konszolidáció, `/en` i18n & SEO/hreflang Audit & CI Szinkron:**
+  - **Teljes E2E Suite (`31/31 PASS`):** `e2e/hirek.spec.ts` frissítve a `CollectionPage` → `mainEntity.ItemList` sémára; `e2e/smoke.spec.ts` kiegészítve az angol `/en` útvonalak (`canonical`, `hreflang`, JSON-LD, Zéró Fix Ár) ellenőrzésével; mind a 9 spec fájl (31 teszt) 100% PASS.
+  - **`/en` i18n & CTA Kontraszt:** `Hero.tsx` és a 4 `/en/services/*` aloldal CTA gombjai `text-slate-950`-ről Kék-Lila v7.0 `from-[#075985] to-[#5B21B6] text-white` WCAG AAA-ra javítva + `useReducedMotion()`; `PortfolioHero.tsx` lokalizált `/en/portfolio`-hoz; `en.json` egyes számú szöveghigiénia és `/en` snapshot tipográfia szinkron.
+  - **CI Pipeline (`.github/workflows/ci.yml`):** kiegészítve a `npx jest --no-coverage` és `node scripts/audit-contrast.js` kapukkal.
+  - **Teljes QA Gate:** `tsc` (0), `lint --max-warnings 0` (0), `jest` (51/51 PASS), `audit-contrast.js` (383 fájl, 0 hiba), `npm run build` (`176/176` oldal, `BUILD_EXIT=0`), `npx playwright test` (31/31 PASS).
 - ✅ **v7.65.0 — Portál Értesítési Motor (Anti-Drain), Esettanulmány Higiéniák & E2E Smoke Kiterjesztés:**
   - **Anti-Drain Értesítések (`usePortalNotifications.ts` & `PortalNotificationBell.tsx`):** Folyamatos `onSnapshot` streamek megszüntetve; 60 mp-es `document.visibilityState === "visible"` alapú `getDocs(..., limit(10))` polling, manuális frissítés (`RefreshCw`), Kék-Lila v7.0 olvasatlan badge (`aria-live="polite"`) és `localStorage`-alapú `markAllAsRead()`.
   - **Esettanulmány Higiéniák (`RimaiCaseStudy.tsx`, `GeneralCaseStudy.tsx`):** 0 db `#f59e0b`/`amber-*`/`yellow-*` a `src/` és `public/` alatt, 0 árva komponens, teljes `useReducedMotion()` és Kék-Lila v7.0 CTA kontraszt (`text-white`).
@@ -86,7 +91,7 @@
 
 #### 🟠 1. Portál funkciók (ügyfél-elégedettség / transzparencia)
 
-- ✅ **Valós idejű értesítések (badge) — LEZÁRVA [7.20.5]:** a `PortalNotificationBell` + `usePortalNotifications` (3× `onSnapshot` a Phase 2 [7.22.0] óta: user_generations + vault + users/{uid}/notifications, `limit(10)`, tiszta cleanup, error callback) él; a createGeneration `failed` státuszt is jelzi. A dead-end `portal-notifications.ts` **törölve** (YAGNI).
+- ✅ **Értesítési rendszer (Anti-Drain) — LEZÁRVA [7.65.0]:** a `PortalNotificationBell` + `usePortalNotifications` 60 másodperces, láthatóság-érzékeny (`document.visibilityState === "visible"`) `getDocs(..., limit(10))` pollinggal működik (zéró folyamatos `onSnapshot`), manuális frissítéssel és `markAllAsRead()` támogatással.
 - ✅ **Vault dokumentum-előnézet — LEZÁRVA [Cycle 3151]:** a `DocumentPreviewModal` molekula (PDF-`iframe` + kép `<img>`, glassmorphism, `motion/react`, `useFocusTrap` ESC/fókuszcsapda, Bezárás/Megnyitás/Letöltés/Link-másolás) él és a `ClientVault` Eye-gombjához van bekötve. _(2026-10-14: a modal valódi buborék-zárási hiba javítva + a nyers hex színek a Kék-Lila v7.0 tokenekre cserélve.)_
 
 #### 🟠 2. Admin UI (adat-alapú döntéshozatal)

@@ -49,7 +49,7 @@ export default function EnContactPage() {
               <h3 className="text-2xl font-bold font-heading text-white mb-4">
                 Direct Contact Channels
               </h3>
-              <div className="bg-slate-900/80 backdrop-blur-md border border-slate-800 rounded-2xl p-6 flex items-center gap-6 group hover:border-[#00B5F1]/50 hover:shadow-[0_10px_30px_rgba(0,181,241,0.15)] transition-all duration-300">
+              <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800/80 rounded-2xl p-6 flex items-center gap-6 group hover:border-[#00B5F1]/40 hover:shadow-[0_10px_30px_rgba(0,181,241,0.15)] transition-[border-color,box-shadow] duration-300">
                 <div className="w-12 h-12 rounded-xl bg-sky-950/80 border border-sky-500/30 flex items-center justify-center text-[#00B5F1] group-hover:scale-110 transition-transform">
                   <Mail className="w-6 h-6" />
                 </div>
@@ -65,7 +65,7 @@ export default function EnContactPage() {
                   </a>
                 </div>
               </div>
-              <div className="bg-slate-900/80 backdrop-blur-md border border-slate-800 rounded-2xl p-6 flex items-center gap-6 group hover:border-[#00B5F1]/50 hover:shadow-[0_10px_30px_rgba(0,181,241,0.15)] transition-all duration-300">
+              <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800/80 rounded-2xl p-6 flex items-center gap-6 group hover:border-[#00B5F1]/40 hover:shadow-[0_10px_30px_rgba(0,181,241,0.15)] transition-[border-color,box-shadow] duration-300">
                 <div className="w-12 h-12 rounded-xl bg-sky-950/80 border border-sky-500/30 flex items-center justify-center text-[#00B5F1] group-hover:scale-110 transition-transform">
                   <Phone className="w-6 h-6" />
                 </div>
@@ -81,7 +81,7 @@ export default function EnContactPage() {
                   </a>
                 </div>
               </div>
-              <div className="bg-slate-900/80 backdrop-blur-md border border-slate-800 rounded-2xl p-6 flex items-center gap-6 group hover:border-[#00B5F1]/50 hover:shadow-[0_10px_30px_rgba(0,181,241,0.15)] transition-all duration-300">
+              <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800/80 rounded-2xl p-6 flex items-center gap-6 group hover:border-[#00B5F1]/40 hover:shadow-[0_10px_30px_rgba(0,181,241,0.15)] transition-[border-color,box-shadow] duration-300">
                 <div className="w-12 h-12 rounded-xl bg-sky-950/80 border border-sky-500/30 flex items-center justify-center text-[#00B5F1] group-hover:scale-110 transition-transform">
                   <MapPin className="w-6 h-6" />
                 </div>

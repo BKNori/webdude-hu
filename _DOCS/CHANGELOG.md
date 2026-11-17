@@ -1,5 +1,28 @@
 # Changelog
 
+## [7.66.0] — 2026-11-17 — Teljes Playwright E2E Konszolidáció, `/en` i18n & SEO/hreflang Audit, CI Pipeline Szinkron
+
+- **Playwright E2E Suite Konszolidáció (`31/31 PASS`):**
+  - `e2e/hirek.spec.ts`: a `/hirek` JSON-LD teszt frissítve a tényleges `CollectionPage` → `mainEntity.ItemList` Schema.org hierarchiára.
+  - `e2e/smoke.spec.ts`: kiegészítve az angol `/en` útvonalak (`/en`, `/en/services`, `/en/portfolio`, `/en/contact`) HTTP 200, egyetlen `<h1>`, `canonical`, `hreflang` (`hu-HU` / `en-US`), JSON-LD és Zéró Fix Ár ellenőrzésével (Anti-Drain: 0 DB írás).
+  - Teljes `e2e/*.spec.ts` csomag (9 spec fájl, 31 teszt `chromium` + `mobile-chrome` projektekkel): **31/31 PASS (0 flake)**.
+- **`/en` i18n, Kontraszt & Kék-Lila v7.0 Audit:**
+  - `src/components/Hero.tsx` & `src/app/en/services/{web-development,graphic-design,seo-optimization,woocommerce-development}/page.tsx`: a `text-slate-950` gradiens CTA gombok javítva `from-[#075985] to-[#5B21B6] text-white` WCAG AAA feliratra; `Hero.tsx` bővítve `useReducedMotion()` védelemmel.
+  - `src/components/molecules/PortfolioHero.tsx` & `src/app/en/portfolio/page.tsx`: `useReducedMotion()` és lokalizációs propok bevezetve, `CollectionPage.hasPart` URL-ek `/munkak/[slug]` útvonalra igazítva.
+  - `src/app/en/page.tsx`, `src/app/en/contact/page.tsx`, `src/app/en/services/page.tsx` & `src/dictionaries/en.json`: snapshot tipográfia szinkronizálva a magyar főoldallal, Luminous Glassmorphism (`bg-slate-900/60 backdrop-blur-xl`), célzott CSS átmenetek (`transition-all` kivezetve) és egyes számú szóhasználat (`"Digital Services"`).
+- **CI/CD & Backlog Szinkron:**
+  - `.github/workflows/ci.yml`: hozzáadva a `npx jest --no-coverage` és `node scripts/audit-contrast.js` kapuk a `master` build elé.
+  - `_docs/01_CURRENT_TASKS.md` & `_docs/ROADMAP.md`: lezárt Portál/Admin/E2E tételek szinkronizálva, `CI/CD` ellenőrző lépések naprakésszé téve.
+- **QA Gate & Build (Zero-Error Kapuk):**
+  - `npx tsc --noEmit` → **0 hiba (EXIT=0)**
+  - `npm run lint -- --max-warnings 0` → **0 error, 0 warning (EXIT=0)**
+  - `npx jest --no-coverage` → **5/5 suite, 51/51 teszt PASS (EXIT=0)**
+  - `node scripts/audit-contrast.js` → **383 vizsgált fájl, 0 kontraszt-hiba (EXIT=0)**
+  - `npm run build` → **BUILD_EXIT=0 (176 statikus/dinamikus útvonal)**
+  - `npx playwright test` → **31/31 PASS (EXIT=0)**
+
+---
+
 ## [7.65.0] — 2026-11-17 — Portál Értesítési Motor (Anti-Drain), Esettanulmány Higiéniák & E2E Smoke Kiterjesztés
 
 - **Portál Értesítési Motor — Spark-barát Anti-Drain Polling (`usePortalNotifications` & `PortalNotificationBell`):**

@@ -139,7 +139,7 @@ export default function EnWebDevelopmentPage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-2xl p-8 hover:border-[#00B5F1]/50 transition-all duration-300">
+              <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800/80 rounded-2xl p-8 hover:border-[#00B5F1]/40 transition-colors duration-300">
                 <Code className="w-10 h-10 text-[#00B5F1] mb-6" />
                 <h3 className="text-xl font-bold text-white mb-3">
                   Clean, modern code
@@ -149,7 +149,7 @@ export default function EnWebDevelopmentPage() {
                   WordPress foundations, ensuring speed and future-proofing.
                 </p>
               </div>
-              <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-2xl p-8 hover:border-[#5B21B6]/80 transition-all duration-300">
+              <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800/80 rounded-2xl p-8 hover:border-[#5B21B6]/80 transition-colors duration-300">
                 <PenTool className="w-10 h-10 text-[#00B5F1] mb-6" />
                 <h3 className="text-xl font-bold text-white mb-3">
                   Custom-designed UI/UX
@@ -160,7 +160,7 @@ export default function EnWebDevelopmentPage() {
                   conversion-optimised design.
                 </p>
               </div>
-              <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-2xl p-8 hover:border-[#00B5F1]/50 transition-all duration-300">
+              <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800/80 rounded-2xl p-8 hover:border-[#00B5F1]/40 transition-colors duration-300">
                 <Search className="w-10 h-10 text-[#00B5F1] mb-6" />
                 <h3 className="text-xl font-bold text-white mb-3">
                   Built-in SEO (AEO)
@@ -189,7 +189,7 @@ export default function EnWebDevelopmentPage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="bg-slate-900/80 backdrop-blur-md border border-slate-700 rounded-2xl p-8 hover:border-[#00B5F1]/50 transition-all duration-300">
+              <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800/80 rounded-2xl p-8 hover:border-[#00B5F1]/40 transition-colors duration-300">
                 <h3 className="text-2xl font-bold text-white mb-4">
                   Introduction / Landing
                 </h3>
@@ -213,7 +213,7 @@ export default function EnWebDevelopmentPage() {
                 </Link>
               </div>
 
-              <div className="bg-slate-900/80 backdrop-blur-md border border-[#00B5F1]/50 rounded-2xl p-8 hover:border-[#00B5F1]/70 transition-all duration-300 relative">
+              <div className="bg-slate-900/60 backdrop-blur-xl border border-[#00B5F1]/50 rounded-2xl p-8 hover:border-[#00B5F1]/70 transition-colors duration-300 relative">
                 <div className="absolute top-0 right-0 bg-[#00B5F1] text-slate-950 text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg">
                   RECOMMENDED
                 </div>
@@ -240,7 +240,7 @@ export default function EnWebDevelopmentPage() {
                 </Link>
               </div>
 
-              <div className="bg-slate-900/80 backdrop-blur-md border border-slate-700 rounded-2xl p-8 hover:border-[#5B21B6]/50 transition-all duration-300">
+              <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800/80 rounded-2xl p-8 hover:border-[#5B21B6]/50 transition-colors duration-300">
                 <h3 className="text-2xl font-bold text-white mb-4">
                   Premium (Next.js / React)
                 </h3>
@@ -310,7 +310,7 @@ export default function EnWebDevelopmentPage() {
             </p>
             <Link
               href="/en#contact"
-              className="inline-flex items-center gap-3 px-8 py-4 rounded-full font-bold text-slate-950 bg-linear-to-r from-[#00B5F1] to-[#5B21B6] hover:shadow-[0_8px_32px_rgba(0,181,241,0.35)] hover:scale-105 transition-all duration-300"
+              className="inline-flex items-center gap-3 px-8 py-4 rounded-full font-bold text-white bg-linear-to-r from-[#075985] to-[#5B21B6] hover:shadow-[0_8px_32px_rgba(0,181,241,0.35)] hover:scale-105 transition-[box-shadow,transform] duration-300"
             >
               Request a custom quote <ArrowRight className="w-5 h-5" />
             </Link>

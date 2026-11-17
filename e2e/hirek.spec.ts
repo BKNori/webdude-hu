@@ -40,9 +40,18 @@ test.describe("Hírek oldal (/hirek) — tartalmi ellenőrzések", () => {
     const types = await schemas.evaluateAll((nodes) =>
       nodes.map((n) => {
         try {
-          const parsed = JSON.parse(n.textContent ?? "{}");
+          const parsed = JSON.parse(n.textContent ?? "{}") as {
+            "@type"?: unknown;
+            mainEntity?: { "@type"?: unknown };
+          };
           const t = parsed["@type"];
-          return Array.isArray(t) ? t.join("+") : String(t ?? "");
+          const nested = parsed?.mainEntity?.["@type"];
+          return [
+            Array.isArray(t) ? t.join("+") : String(t ?? ""),
+            Array.isArray(nested) ? nested.join("+") : String(nested ?? ""),
+          ]
+            .filter(Boolean)
+            .join("+");
         } catch {
           return "PARSE_HIBA";
         }
@@ -51,7 +60,7 @@ test.describe("Hírek oldal (/hirek) — tartalmi ellenőrzések", () => {
 
     // Nincs hibásan serializált séma (a 7.17.0/7.18.0 JSON-LD sprintjeinek őre).
     expect(types).not.toContain("PARSE_HIBA");
-    // A blogoldal a bejegyzéslistát `ItemList`-ként jelöli.
+    // A blogoldal a bejegyzéslistát `CollectionPage` -> `ItemList`-ként jelöli.
     expect(types.some((t) => t.includes("ItemList"))).toBe(true);
   });
 });

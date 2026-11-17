@@ -253,7 +253,7 @@ export default async function EnServicesPage() {
       <section className="py-24 bg-bg-surface border-y border-slate-700">
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
-            <div className="bg-bg-elevated border border-slate-600 rounded-2xl p-8 shadow-[0_8px_24px_rgba(15,23,42,0.3)] hover:border-brand-primary/50 hover:shadow-[0_20px_60px_rgba(0, 181, 241,0.2)] hover:-translate-y-1 transition-all duration-300 group">
+            <div className="bg-bg-elevated border border-slate-600 rounded-2xl p-8 shadow-[0_8px_24px_rgba(15,23,42,0.3)] hover:border-brand-primary/50 hover:shadow-[0_20px_60px_rgba(0,181,241,0.2)] hover:-translate-y-1 transition-[border-color,box-shadow,transform] duration-300 group">
               <span className="text-6xl font-heading block mb-3 text-text-primary group-hover:text-brand-primary tracking-wide">
                 26+
               </span>
@@ -261,7 +261,7 @@ export default async function EnServicesPage() {
                 Years Experience
               </p>
             </div>
-            <div className="bg-bg-elevated border border-slate-600 rounded-2xl p-8 shadow-[0_8px_24px_rgba(15,23,42,0.3)] hover:border-brand-primary/50 hover:shadow-[0_20px_60px_rgba(0, 181, 241,0.2)] hover:-translate-y-1 transition-all duration-300 group">
+            <div className="bg-bg-elevated border border-slate-600 rounded-2xl p-8 shadow-[0_8px_24px_rgba(15,23,42,0.3)] hover:border-brand-primary/50 hover:shadow-[0_20px_60px_rgba(0,181,241,0.2)] hover:-translate-y-1 transition-[border-color,box-shadow,transform] duration-300 group">
               <span className="text-6xl font-heading block mb-3 text-text-primary group-hover:text-brand-primary tracking-wide">
                 200+
               </span>
@@ -269,7 +269,7 @@ export default async function EnServicesPage() {
                 Projects Delivered
               </p>
             </div>
-            <div className="bg-bg-elevated border border-slate-600 rounded-2xl p-8 shadow-[0_8px_24px_rgba(15,23,42,0.3)] hover:border-brand-primary/50 hover:shadow-[0_20px_60px_rgba(0, 181, 241,0.2)] hover:-translate-y-1 transition-all duration-300 group">
+            <div className="bg-bg-elevated border border-slate-600 rounded-2xl p-8 shadow-[0_8px_24px_rgba(15,23,42,0.3)] hover:border-brand-primary/50 hover:shadow-[0_20px_60px_rgba(0,181,241,0.2)] hover:-translate-y-1 transition-[border-color,box-shadow,transform] duration-300 group">
               <span className="text-6xl font-heading block mb-3 text-text-primary group-hover:text-brand-primary tracking-wide">
                 500+
               </span>
@@ -277,7 +277,7 @@ export default async function EnServicesPage() {
                 Leads Generated
               </p>
             </div>
-            <div className="bg-bg-elevated border border-slate-600 rounded-2xl p-8 shadow-[0_8px_24px_rgba(15,23,42,0.3)] hover:border-brand-primary/50 hover:shadow-[0_20px_60px_rgba(0, 181, 241,0.2)] hover:-translate-y-1 transition-all duration-300 group">
+            <div className="bg-bg-elevated border border-slate-600 rounded-2xl p-8 shadow-[0_8px_24px_rgba(15,23,42,0.3)] hover:border-brand-primary/50 hover:shadow-[0_20px_60px_rgba(0,181,241,0.2)] hover:-translate-y-1 transition-[border-color,box-shadow,transform] duration-300 group">
               <span className="text-6xl font-heading block mb-3 text-text-primary group-hover:text-brand-primary tracking-wide">
                 95+
               </span>
@@ -365,7 +365,7 @@ export default async function EnServicesPage() {
             ].map((item, index) => (
               <div
                 key={index}
-                className="bg-bg-elevated border border-slate-600 rounded-2xl p-8 shadow-[0_8px_24px_rgba(15,23,42,0.3)] hover:border-brand-primary/50 hover:shadow-[0_20px_60px_rgba(0, 181, 241,0.2)] hover:-translate-y-1 transition-all duration-300 group"
+                className="bg-bg-elevated border border-slate-600 rounded-2xl p-8 shadow-[0_8px_24px_rgba(15,23,42,0.3)] hover:border-brand-primary/50 hover:shadow-[0_20px_60px_rgba(0,181,241,0.2)] hover:-translate-y-1 transition-[border-color,box-shadow,transform] duration-300 group"
               >
                 <span className="text-7xl font-heading block mb-4 text-brand-primary/30 group-hover:text-brand-primary/50 transition-colors tracking-wide">
                   {item.step}
@@ -428,7 +428,7 @@ export default async function EnServicesPage() {
             ].map((faq, index) => (
               <div
                 key={index}
-                className="bg-bg-elevated border border-slate-600 rounded-2xl p-6 hover:border-brand-primary/50 transition-all duration-300"
+                className="bg-bg-elevated border border-slate-600 rounded-2xl p-6 hover:border-brand-primary/50 transition-colors duration-300"
               >
                 <h3 className="text-lg font-bold text-text-primary mb-2 tracking-tight">
                   {faq.question}

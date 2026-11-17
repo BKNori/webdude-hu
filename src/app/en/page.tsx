@@ -46,11 +46,11 @@ export default async function EnHomePage() {
               <div>
                 <div className="flex items-center gap-3 mb-4">
                   <Icon className="w-8 h-8 text-[#00B5F1]" aria-hidden="true" />
-                  <h3 className="text-[#00B5F1] font-semibold text-lg">
+                  <h3 className="text-xl md:text-2xl text-white tracking-wider">
                     {title}
                   </h3>
                 </div>
-                <p className="text-slate-300 text-sm leading-relaxed">
+                <p className="text-slate-300 text-sm leading-relaxed font-normal">
                   {content}
                 </p>
               </div>

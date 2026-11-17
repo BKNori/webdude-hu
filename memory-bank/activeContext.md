@@ -2,6 +2,12 @@
 
 > **AI DIREKTÍVA:** Ez a fájl a rendszer "élő" memóriája. A 03-workflow.md 5. lépése alapján KÖTELEZŐ ezt a fájlt frissítened minden feladat befejezésekor, vagy mielőtt átadod a vezérlést a felhasználónak (Norbinak). Szigorúan tilos új feladatba kezdened, ha az "Aktuális Munkaterület Állapota" szekcióban hibák vagy félbehagyott fájlok vannak!
 
+## Aktuális állapot — 2026-11-17, [7.66.0] SPRINT: TELJES PLAYWRIGHT E2E KONSZOLIDÁCIÓ, /EN I18N & SEO/HREFLANG AUDIT (LEZÁRVA)
+- **Batch 1 (Teljes E2E Suite):** `e2e/hirek.spec.ts` igazítva a `CollectionPage -> mainEntity.ItemList` sémára; `e2e/smoke.spec.ts` bővítve a `/en` i18n/hreflang/canonical/Zéró Fix Ár teszttel; teljes 9 spec / 31 tesztes Playwright futás (`chromium` + `mobile-chrome`) **31/31 PASS (0 flake)**.
+- **Batch 2 (`/en` i18n & Kontraszt):** `Hero.tsx` + 4 `/en/services/*` oldal CTA gombjai `text-slate-950`-ről `from-[#075985] to-[#5B21B6] text-white` WCAG AAA-ra javítva (`useReducedMotion()` hozzáadva); `PortfolioHero.tsx` lokalizálva `/en/portfolio`-hoz; `en.json` egyes számú szöveg és `/en` snapshot tipográfia + glassmorphism szinkronban.
+- **Batch 3 (CI Pipeline):** `.github/workflows/ci.yml` kiegészítve a `npx jest --no-coverage` és `node scripts/audit-contrast.js` kapukkal.
+- **Batch 4 (QA Gate & Build):** `tsc` (0), `lint --max-warnings 0` (0), `jest` (51/51 PASS), `audit-contrast.js` (383 fájl, 0 hiba), `npm run build` (`176/176` oldal, `BUILD_EXIT=0`), `npx playwright test` (31/31 PASS).
+
 ## Aktuális állapot — 2026-11-17, [7.65.0] SPRINT: PORTÁL ÉRTESÍTÉSI MOTOR (ANTI-DRAIN), ESETTANULMÁNY HIGIÉNIA & E2E KITERJESZTÉS (LEZÁRVA)
 - **Batch 1 (Anti-Drain Értesítések):** `usePortalNotifications.ts` átszervezve `onSnapshot`-ról Spark-barát, `document.visibilityState === "visible"` 60 mp-es `getDocs(..., limit(10))` pollingra + manuális `refresh()` + `localStorage` alapú `markAllAsRead()`; `PortalNotificationBell.tsx` Kék-Lila v7.0 olvasatlan badge-dzsel (`aria-live="polite"`), `RefreshCw` és `CheckCheck` vezérlőkkel, `PortalHeader.tsx` `useReducedMotion()` védelemmel.
 - **Batch 2 (Esettanulmány Kép/SVG Higiéniák):** `src/` és `public/` sweep 0 `#f59e0b` / `amber-*` / `yellow-*` találattal; 0 árva komponens; `RimaiCaseStudy.tsx` és `GeneralCaseStudy.tsx` `useReducedMotion()` + Kék-Lila v7.0 CTA (`text-white`).

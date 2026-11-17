@@ -157,7 +157,7 @@ export default function EnWooCommercePage() {
               </p>
               <a
                 href="/en#contact"
-                className="inline-flex items-center gap-3 px-8 py-4 rounded-full font-bold text-slate-950 bg-linear-to-r from-[#00B5F1] to-[#5B21B6] hover:shadow-[0_8px_32px_rgba(0,181,241,0.35)] transition-all duration-300"
+                className="inline-flex items-center gap-3 px-8 py-4 rounded-full font-bold text-white bg-linear-to-r from-[#075985] to-[#5B21B6] hover:shadow-[0_8px_32px_rgba(0,181,241,0.35)] transition-[box-shadow,transform] duration-300"
               >
                 Request a custom quote
               </a>

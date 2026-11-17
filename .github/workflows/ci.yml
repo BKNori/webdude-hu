@@ -28,6 +28,12 @@ jobs:
       - name: Run ESLint (0 warning kapu)
         run: npm run lint -- --max-warnings 0
 
+      - name: Run Jest Unit Tests
+        run: npx jest --no-coverage
+
+      - name: Run WCAG Contrast Audit
+        run: node scripts/audit-contrast.js
+
       - name: Build Next.js
         run: npm run build
         env:

@@ -1,7 +1,7 @@
 # ROADMAP.md — WebDude OS Fejlesztési Terv
 
 **webdude.hu | Next.js 16 · React 19 · TypeScript · Firebase**
-**Utolsó frissítés: 2026-11-17 (v7.65.0)**
+**Utolsó frissítés: 2026-11-17 (v7.66.0)**
 
 > Ez a dokumentum a WebDude.hu projekt stratégiai fejlesztési ütemterve. A feladatok üzleti és technikai prioritás alapján vannak csoportosítva.
 > A jelenlegi projekt állapota: **Production Ready** (Cycle 132)
@@ -90,14 +90,12 @@
   - ✅ Integrációs / biztonsági tesztek (`stripe-webhook.spec.ts` Anti-Drain HMAC őr)
 - **Időzítés:** BEFEJEZVE (`v7.65.0`)
 
-### 2. CI/CD pipeline automatizáció
+### 2. CI/CD pipeline automatizáció ✅ (Verify Gate)
 
-- **Jelenlegi állapot:** Manuális `deploy.bat` alapú élesítés
-- **Cél:** GitHub Actions automatizált build és deploy
-- **Előnyök:**
-  - Automatikus tesztek futtatása minden PR-n
-  - Rollback lehetőség hiba esetén
-  - Staging environment
+- **Jelenlegi állapot:** `.github/workflows/ci.yml` aktív a `master` ágon (`tsc --noEmit`, `eslint --max-warnings 0`, `jest --no-coverage`, `audit-contrast.js`, `npm run build`); a cPanel élesítés manuális `deploy.bat`/`deploy.ps1` marad
+- **Elvégzett bővítések (`v7.66.0`):**
+  - ✅ Automatikus TypeScript, ESLint, Jest, WCAG kontraszt-audit és production build minden push/PR-en
+  - ⏳ Opcionális: automatikus staging/remote deploy kulcsok beállítása után
 
 ### 3. Monitoring és logging bevezetése
 
