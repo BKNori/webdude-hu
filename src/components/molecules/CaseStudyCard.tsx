@@ -1,5 +1,5 @@
 "use client";
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import React from "react";
 import Button from "@/components/atoms/Button";
 
@@ -29,10 +29,17 @@ export default function CaseStudyCard({
   metrics = [],
   className = "",
 }: CaseStudyCardProps) {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <motion.article
-      whileHover={{ translateY: -6 }}
-      className={`flex flex-col justify-between rounded-2xl bg-slate-900/60 backdrop-blur-xl border border-slate-800 p-8 shadow-[0_8px_24px_rgba(2,6,23,0.4)] hover:border-[#00B5F1]/40 hover:shadow-[0_18px_40px_rgba(0,181,241,0.12)] transition-all duration-500 ${className}`}
+      whileHover={shouldReduceMotion ? undefined : { y: -6 }}
+      transition={
+        shouldReduceMotion
+          ? { duration: 0 }
+          : { type: "spring", stiffness: 100, damping: 20 }
+      }
+      className={`flex flex-col justify-between rounded-2xl bg-slate-900/60 backdrop-blur-xl border border-slate-800 p-8 shadow-[0_8px_24px_rgba(2,6,23,0.4)] hover:border-[#00B5F1]/40 hover:shadow-[0_18px_40px_rgba(0,181,241,0.12)] transition-[border-color,box-shadow,transform] duration-500 ${className}`}
     >
       <div className="space-y-6">
         {/* Header */}

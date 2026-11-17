@@ -348,11 +348,15 @@ select {
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 8px 32px rgba(15, 23, 42, 0.08);
   border-radius: 1.5rem;
-  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  transition-property: transform, box-shadow, border-color, background-color, opacity;
+  transition-duration: 0.3s;
+  transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .glass-card-hover {
-  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  transition-property: transform, box-shadow, border-color, background-color, opacity;
+  transition-duration: 0.3s;
+  transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .glass-card-hover:hover {
@@ -372,7 +376,9 @@ select {
   border: none;
   border-radius: 1rem;
   box-shadow: 0 4px 16px rgba(7, 89, 133, 0.45);
-  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  transition-property: transform, box-shadow, border-color, background-color, opacity;
+  transition-duration: 0.3s;
+  transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .premium-btn:hover {
@@ -396,7 +402,9 @@ select {
   box-shadow:
     0 0 30px rgba(0, 181, 241, 0.5),
     0 0 60px rgba(0, 181, 241, 0.3);
-  transition: all 0.3s ease;
+  transition-property: transform, box-shadow, border-color, background-color, opacity;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
 }
 
 .glow-brand-2 {
@@ -409,7 +417,9 @@ select {
   box-shadow:
     0 0 30px rgba(0, 181, 241, 0.5),
     0 0 60px rgba(0, 181, 241, 0.3);
-  transition: all 0.3s ease;
+  transition-property: transform, box-shadow, border-color, background-color, opacity;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
 }
 
 /* Gradient border-ek */
@@ -576,7 +586,9 @@ select {
 }
 
 .tilt-card {
-  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  transition-property: transform, box-shadow, border-color, background-color, opacity;
+  transition-duration: 0.4s;
+  transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
   transform-style: preserve-3d;
 }
 
@@ -587,7 +599,9 @@ select {
 
 /* Hover effektek erősítése */
 .hover-lift {
-  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  transition-property: transform, box-shadow, border-color, background-color, opacity;
+  transition-duration: 0.3s;
+  transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .hover-lift:hover {
@@ -607,39 +621,51 @@ select {
   box-shadow:
     0 0 30px rgba(0, 181, 241, 0.6),
     0 0 60px rgba(0, 181, 241, 0.4);
-  transition: all 0.3s ease;
+  transition-property: transform, box-shadow, border-color, background-color, opacity;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
 }
 
 .hover-glow-brand-2:hover {
   box-shadow:
     0 0 30px rgba(0, 181, 241, 0.6),
     0 0 60px rgba(0, 181, 241, 0.4);
-  transition: all 0.3s ease;
+  transition-property: transform, box-shadow, border-color, background-color, opacity;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
 }
 
 .hover-glow-brand-3:hover {
   box-shadow:
     0 0 30px rgba(124, 58, 237, 0.6),
     0 0 60px rgba(124, 58, 237, 0.4);
-  transition: all 0.3s ease;
+  transition-property: transform, box-shadow, border-color, background-color, opacity;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
 }
 
 .hover-border-brand:hover {
   border-color: rgba(0, 181, 241, 0.6);
   box-shadow: 0 0 20px rgba(0, 181, 241, 0.3);
-  transition: all 0.3s ease;
+  transition-property: transform, box-shadow, border-color, background-color, opacity;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
 }
 
 .hover-border-brand-2:hover {
   border-color: rgba(0, 181, 241, 0.6);
   box-shadow: 0 0 20px rgba(0, 181, 241, 0.3);
-  transition: all 0.3s ease;
+  transition-property: transform, box-shadow, border-color, background-color, opacity;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
 }
 
 .hover-border-brand-3:hover {
   border-color: rgba(124, 58, 237, 0.6);
   box-shadow: 0 0 20px rgba(124, 58, 237, 0.3);
-  transition: all 0.3s ease;
+  transition-property: transform, box-shadow, border-color, background-color, opacity;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
 }
 
 /* Fénygömb lebegési animációk */

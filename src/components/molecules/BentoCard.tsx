@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import Image, { type StaticImageData } from "next/image";
 import ResponsiveImage from "@/components/molecules/ResponsiveImage";
 
@@ -26,13 +26,19 @@ export default function BentoCard({
   image,
   imageAlt,
 }: BentoCardProps) {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 20 }}
+      whileInView={shouldReduceMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.3 }}
-      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-      className={`group relative overflow-hidden bg-slate-900/80 backdrop-blur-md border border-slate-700 rounded-3xl p-8 shadow-[0_8px_24px_rgba(15,23,42,0.3)] hover:border-[#00B5F1]/50 hover:shadow-[0_18px_40px_rgba(0, 181, 241,0.2)] hover:-translate-y-1 transition-all duration-300 ${className}`}
+      transition={
+        shouldReduceMotion
+          ? { duration: 0 }
+          : { type: "spring", stiffness: 100, damping: 20 }
+      }
+      className={`group relative overflow-hidden bg-slate-900/60 backdrop-blur-xl border border-slate-800/80 rounded-3xl p-8 shadow-[0_8px_24px_rgba(15,23,42,0.3)] hover:border-[#00B5F1]/40 hover:shadow-[0_18px_40px_rgba(0,181,241,0.2)] hover:-translate-y-1 transition-[border-color,box-shadow,transform] duration-300 ${className}`}
     >
       {/* Gradient overlay */}
       <div className="absolute inset-0 bg-linear-to-br from-[#00B5F1]/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

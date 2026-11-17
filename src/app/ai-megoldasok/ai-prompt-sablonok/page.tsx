@@ -117,7 +117,7 @@ const promptTemplates = [
     title: "3D Illusztráció",
     description: "Stílusos 3D illusztráció marketing anyagokhoz",
     prompt:
-      "Stylized 3D illustration for {MATERIAL_TYPE} marketing materials, featuring abstract geometric shapes, soft lighting, gradient colors of yellow and amber, modern aesthetic, clean composition, high quality render, suitable for digital platforms, professional business use.",
+      "Stylized 3D illustration for {MATERIAL_TYPE} marketing materials, featuring abstract geometric shapes, soft lighting, gradient colors of cyan (#00B5F1) and deep violet (#5B21B6), modern aesthetic, clean composition, high quality render, suitable for digital platforms, professional business use.",
     variables: [
       { name: "MATERIAL_TYPE", label: "Anyag Típus", placeholder: "marketing" },
     ],

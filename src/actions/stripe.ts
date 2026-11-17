@@ -20,22 +20,22 @@ export const ADDONS_CONFIG: Record<
   { name: string; price: number | null; desc: string }
 > = {
   addon_seo_article: {
-    name: "🚀 Extra AI SEO Cikk (1 db)",
+    name: "Extra AI SEO Cikk (1 db)",
     price: null,
     desc: "Konverzió-optimalizált, keresőbarát szakcikk megírása és publikálása.",
   },
   addon_speed_opt: {
-    name: "⚡ Webhely Sebesség Optimalizálás",
+    name: "Webhely Sebesség Optimalizálás",
     price: null,
     desc: "Lighthouse pontszámok maximalizálása, betöltési sebesség radikális növelése.",
   },
   addon_security_pack: {
-    name: "🛡️ Prémium Biztonsági Csomag (1 év)",
+    name: "Prémium Biztonsági Csomag (1 év)",
     price: null,
     desc: "Automatikus tűzfal, folyamatos malware scannelés és heti mentések.",
   },
   addon_ai_chatbot: {
-    name: "🤖 Egyedi AI Chatbot Asszisztens",
+    name: "Egyedi AI Chatbot Asszisztens",
     price: null,
     desc: "Saját tudásbázissal és egyedi stílussal rendelkező chatbot integrációja.",
   },

@@ -366,7 +366,7 @@ export default function GoBoxCaseStudy() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-bg-surface">
+      <section className="py-24 md:py-32 bg-bg-surface">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <motion.div
             variants={fadeInUp}

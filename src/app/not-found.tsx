@@ -41,7 +41,7 @@ export default function NotFound() {
 
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight mb-4">
           Ezt az oldalt nem találjuk, de a Te weboldaladat{" "}
-          <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#a855f7]">
+          <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6]">
             rendbe tudjuk tenni!
           </span>
         </h1>

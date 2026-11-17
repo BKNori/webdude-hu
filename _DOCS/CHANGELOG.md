@@ -1,5 +1,30 @@
 # Changelog
 
+## [7.63.0] — 2026-11-17 — SPRINT: UI/UX & ANIMÁCIÓS KONSZOLIDÁCIÓ (KÉK-LILA v7.0, LUMINOUS GLASSMORPHISM, SPRING FIZIKA)
+
+**1. BATCH 1 — BRAND, PROMPT-SZÖVEG ÉS EMOJI TISZTÍTÁS:**
+- `src/app/not-found.tsx`: a H1 kiemelő gradiens `#a855f7` színe lecserélve a Kék-Lila v7.0 SSOT tokenre (`from-[#00B5F1] to-[#5B21B6]`).
+- `src/app/ai-megoldasok/ai-prompt-sablonok/page.tsx`: a 3D illusztrációs prompt-példában a régi `"yellow and amber"` gradiens utalás frissítve `"cyan (#00B5F1) and deep violet (#5B21B6)"` palettára.
+- `src/actions/stripe.ts` (`ADDONS_CONFIG`) és `src/app/admin/portal-kezelo/page.tsx` (`ai_integration` `<option>` mindkét űrlapon): nyers Unicode emojik eltávolítva a UI feliratokból.
+
+**2. BATCH 2 — LAYOUT TÉRKÖZÖK (BREATHING ROOM) & GLASSMORPHISM EGYSÉGESÍTÉS:**
+- `src/app/page.tsx` és `src/app/en/page.tsx`: a főoldali snapshot szekciók vertikális ritmusa szinkronizálva a `_docs/DESIGN_SYSTEM.md` szabvánnyal (`py-24 md:py-32`).
+- `src/components/organisms/GoBoxCaseStudy.tsx`: a záró CTA szekció térköze növelve (`py-20` → `py-24 md:py-32`).
+- `src/components/molecules/BentoCard.tsx`: kártyafelület harmonizálva a `ServiceCard` prémium Luminous Glassmorphism mintájával (`bg-slate-900/60 backdrop-blur-xl border-slate-800/80 hover:border-[#00B5F1]/40`).
+
+**3. BATCH 3 — `transition-all` KIVEZETÉSE & `motion/react` SPRING FIZIKA (`useReducedMotion`):**
+- `src/app/globals.css`: `.glass-card`, `.glass-card-hover`, `.premium-btn`, `.glow-brand-hover:hover`, `.glow-brand-2-hover:hover`, `.tilt-card`, `.hover-lift`, `.hover-glow-brand*:hover` és `.hover-border-brand*:hover` osztályokban a drága `transition: all` szűkítve célzott GPU/CSS tulajdonságokra (`transition-property: transform, box-shadow, border-color, background-color, opacity`).
+- `src/components/molecules/BentoCard.tsx`, `src/components/molecules/CaseStudyCard.tsx`, `src/components/molecules/ServiceCard.tsx`: `transition-all` lecserélve `transition-[border-color,box-shadow,transform]` osztályra; `motion/react` belépő/hover animációk egységesítve a `PortfolioGrid` rugó-fizikájával (`type: "spring", stiffness: 100, damping: 20`) és `useReducedMotion()` támogatással.
+- `src/app/page.tsx` és `src/app/en/page.tsx`: snapshot kártyák `transition-all` osztályai lecserélve `transition-[border-color,box-shadow,transform]` átmenetekre.
+
+**4. BATCH 4 — TELJES QA GATE & KONTRASZT-AUDIT:**
+- `npx tsc --noEmit` → **0 hiba (EXIT=0)**
+- `npm run lint -- --max-warnings 0` → **0 error, 0 warning (EXIT=0)**
+- `npx jest --no-coverage` → **5/5 suite, 51/51 teszt PASS (EXIT=0)**
+- `node scripts/audit-contrast.js` → **382 vizsgált fájl, 0 kontraszt-hiba (EXIT=0)**
+
+---
+
 ## [7.62.0] — 2026-11-14 — SPRINT: FŐOLDALI HERO ÉS MARADÉK KLIENS ORGANIZMUSOK MODULARIZÁLÁSA (`<= 300` SOR)
 
 **1. `HeroSectionNew.tsx` ATOMIC DESIGN MODULARIZÁLÁS (`546 → 252` SOR / FÁJL):**

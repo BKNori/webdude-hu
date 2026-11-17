@@ -33,7 +33,7 @@ export default async function EnHomePage() {
       {/* DESIGN NOTE: v7.0 — amber/gold FORBIDDEN, blue-violet only (#00B5F1/#5B21B6) */}
       <section
         aria-label={dictionary.home.snapshot.ariaLabel}
-        className="max-w-7xl mx-auto px-4 py-12"
+        className="max-w-7xl mx-auto px-4 py-24 md:py-32"
       >
         {/* Hidden H2 — maintains the H1 → H2 → H3 heading hierarchy */}
         <h2 className="sr-only">{dictionary.home.snapshot.heading}</h2>
@@ -41,7 +41,7 @@ export default async function EnHomePage() {
           {snapshotCards.map(({ icon: Icon, title, content }) => (
             <div
               key={title}
-              className="bg-slate-900/60 backdrop-blur-xl border border-slate-800 hover:border-[#00B5F1]/30 rounded-2xl p-6 transition-all duration-300 flex flex-col justify-between"
+              className="bg-slate-900/60 backdrop-blur-xl border border-slate-800 hover:border-[#00B5F1]/30 rounded-2xl p-6 transition-[border-color,box-shadow,transform] duration-300 flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center gap-3 mb-4">

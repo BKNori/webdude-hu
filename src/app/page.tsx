@@ -95,13 +95,13 @@ export default async function Home() {
         {/* DESIGN NOTE: v7.0 — amber/arany TILOS, kizárólag kék-lila (#00B5F1/#5B21B6) */}
         <section
           aria-label="Szakmai háttér és szakterületek"
-          className="max-w-7xl mx-auto px-4 py-16 md:py-20"
+          className="max-w-7xl mx-auto px-4 py-24 md:py-32"
         >
           {/* Rejtett H2 — a H1 → H2 → H3 heading-hierarchia fenntartásához */}
           <h2 className="sr-only">{dictionary.home.snapshot.heading}</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* 1. Kártya — Szakértői Háttér (Balog Norbert E-E-A-T) */}
-            <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800 hover:border-brand-primary/30 rounded-2xl p-6 transition-all duration-300 flex flex-col justify-between">
+            <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800 hover:border-brand-primary/30 rounded-2xl p-6 transition-[border-color,box-shadow,transform] duration-300 flex flex-col justify-between">
               <div>
                 <div className="flex items-center gap-3 mb-4">
                   <Award
@@ -119,7 +119,7 @@ export default async function Home() {
             </div>
 
             {/* 2. Kártya — Szakterületek (Weboldal, WordPress, SEO, Grafika) */}
-            <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800 hover:border-brand-primary/30 rounded-2xl p-6 transition-all duration-300 flex flex-col justify-between">
+            <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800 hover:border-brand-primary/30 rounded-2xl p-6 transition-[border-color,box-shadow,transform] duration-300 flex flex-col justify-between">
               <div>
                 <div className="flex items-center gap-3 mb-4">
                   <Cpu className="w-8 h-8 text-brand-primary" aria-hidden="true" />
@@ -134,7 +134,7 @@ export default async function Home() {
             </div>
 
             {/* 3. Kártya — Projekt Időzítés & Garancia */}
-            <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800 hover:border-brand-primary/30 rounded-2xl p-6 transition-all duration-300 flex flex-col justify-between">
+            <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800 hover:border-brand-primary/30 rounded-2xl p-6 transition-[border-color,box-shadow,transform] duration-300 flex flex-col justify-between">
               <div>
                 <div className="flex items-center gap-3 mb-4">
                   <Clock

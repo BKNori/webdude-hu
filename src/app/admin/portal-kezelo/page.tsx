@@ -870,7 +870,7 @@ export default function PortalKezeloPage() {
                   <option value="development">Fejlesztés</option>
                   <option value="testing">Tesztelés / QA</option>
                   <option value="ai_integration">
-                    🚀 AI Integráció & AEO Optimalizálás
+                    AI Integráció & AEO Optimalizálás
                   </option>
                   <option value="completed">Átadva / Kész</option>
                 </select>
@@ -1042,7 +1042,7 @@ export default function PortalKezeloPage() {
                               <option value="development">Fejlesztés</option>
                               <option value="testing">Tesztelés / QA</option>
                               <option value="ai_integration">
-                                🚀 AI Integráció & AEO Optimalizálás
+                                AI Integráció & AEO Optimalizálás
                               </option>
                               <option value="completed">Átadva / Kész</option>
                             </select>
