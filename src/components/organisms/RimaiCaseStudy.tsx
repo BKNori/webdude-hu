@@ -2,7 +2,7 @@
 
 import ResponsiveImage from "@/components/molecules/ResponsiveImage";
 import Link from "next/link";
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import { Work } from "@/types/work";
 
 interface RimaiCaseStudyProps {
@@ -10,6 +10,16 @@ interface RimaiCaseStudyProps {
 }
 
 export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
+  const shouldReduceMotion = useReducedMotion();
+  const fadeUp = (delay = 0) => ({
+    initial: shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 20 },
+    whileInView: shouldReduceMotion ? { opacity: 1 } : { opacity: 1, y: 0 },
+    viewport: { once: true },
+    transition: shouldReduceMotion
+      ? { duration: 0 }
+      : { type: "spring" as const, stiffness: 100, damping: 20, delay },
+  });
+
   return (
     <div className="min-h-screen bg-bg-base text-text-primary">
       {/* Hero Szekció - 100vh */}
@@ -28,9 +38,9 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
 
         <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 30 }}
+            animate={shouldReduceMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
+            transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.8 }}
             className="space-y-8"
           >
             <div className="inline-block px-4 py-2 bg-sky-500/10 border border-sky-500/20 rounded-full">
@@ -50,9 +60,9 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
             {/* Statisztikák */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-8">
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
+                initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 20 }}
+                animate={shouldReduceMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
+                transition={shouldReduceMotion ? { duration: 0 } : { delay: 0.2 }}
                 className="bg-slate-900/50 backdrop-blur-sm border border-sky-500/20 rounded-2xl p-6"
               >
                 <div className="text-3xl md:text-4xl font-bold text-sky-400 mb-2">
@@ -61,9 +71,9 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
                 <div className="text-sm text-slate-400">Autonómia</div>
               </motion.div>
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
+                initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 20 }}
+                animate={shouldReduceMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
+                transition={shouldReduceMotion ? { duration: 0 } : { delay: 0.3 }}
                 className="bg-slate-900/50 backdrop-blur-sm border border-sky-500/20 rounded-2xl p-6"
               >
                 <div className="text-3xl md:text-4xl font-bold text-sky-400 mb-2">
@@ -72,9 +82,9 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
                 <div className="text-sm text-slate-400">Felépítve</div>
               </motion.div>
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
+                initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 20 }}
+                animate={shouldReduceMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
+                transition={shouldReduceMotion ? { duration: 0 } : { delay: 0.4 }}
                 className="bg-slate-900/50 backdrop-blur-sm border border-sky-500/20 rounded-2xl p-6"
               >
                 <div className="text-3xl md:text-4xl font-bold text-sky-400 mb-2">
@@ -88,11 +98,11 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
               <motion.a
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 0.5 }}
+                transition={shouldReduceMotion ? { duration: 0 } : { delay: 0.5 }}
                 href={project.website}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-sky-500 hover:bg-sky-400 text-black font-bold rounded-full transition-all duration-300 hover:scale-105"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-linear-to-r from-[#075985] to-[#5B21B6] hover:to-[#6d28d9] text-white font-bold rounded-full transition-[transform,box-shadow,background-color] duration-300 hover:scale-105 shadow-lg shadow-[#5B21B6]/30"
               >
                 Megtekintés →
               </motion.a>
@@ -105,10 +115,7 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
       <section className="py-24 px-6">
         <div className="max-w-6xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            {...fadeUp(0)}
             className="mb-16"
           >
             <h2 className="text-3xl md:text-5xl font-bold mb-4">
@@ -121,10 +128,7 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
+              {...fadeUp(0)}
               className="md:col-span-2 relative aspect-2/1 rounded-2xl overflow-hidden group hover:scale-[1.02] transition-transform duration-300"
             >
               <ResponsiveImage
@@ -142,10 +146,7 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
+              {...fadeUp(0.1)}
               className="relative aspect-square rounded-2xl overflow-hidden group hover:scale-[1.02] transition-transform duration-300"
             >
               <ResponsiveImage
@@ -161,10 +162,7 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
+              {...fadeUp(0.2)}
               className="relative aspect-2/1 rounded-2xl overflow-hidden group hover:scale-[1.02] transition-transform duration-300"
             >
               <ResponsiveImage
@@ -188,10 +186,7 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
       <section className="py-24 px-6 bg-slate-900/30">
         <div className="max-w-6xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            {...fadeUp(0)}
             className="mb-16"
           >
             <h2 className="text-3xl md:text-5xl font-bold mb-4">
@@ -204,10 +199,7 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+              {...fadeUp(0)}
               className="space-y-6"
             >
               <div className="bg-slate-900/50 border border-sky-500/20 rounded-2xl p-8">
@@ -229,10 +221,7 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+              {...fadeUp(0.1)}
               className="space-y-6"
             >
               <div className="relative aspect-video rounded-2xl overflow-hidden group">
@@ -260,10 +249,7 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
       <section className="py-24 px-6">
         <div className="max-w-6xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            {...fadeUp(0)}
             className="mb-16"
           >
             <h2 className="text-3xl md:text-5xl font-bold mb-4">
@@ -276,10 +262,7 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
+              {...fadeUp(0)}
               className="relative aspect-square rounded-2xl overflow-hidden group"
             >
               <ResponsiveImage
@@ -291,10 +274,7 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
+              {...fadeUp(0.1)}
               className="relative aspect-square rounded-2xl overflow-hidden group"
             >
               <ResponsiveImage
@@ -306,10 +286,7 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
+              {...fadeUp(0.2)}
               className="relative aspect-square rounded-2xl overflow-hidden group"
             >
               <ResponsiveImage
@@ -327,10 +304,7 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
       <section className="py-24 px-6 bg-linear-to-br from-sky-500/10 to-brand-secondary/10 border-y border-sky-500/20">
         <div className="max-w-6xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            {...fadeUp(0)}
             className="text-center"
           >
             <h2 className="text-3xl md:text-5xl font-bold mb-12">
@@ -341,10 +315,7 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
               {project.results?.map((result, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  {...fadeUp(index * 0.1)}
                   className="bg-slate-900/50 backdrop-blur-sm border border-sky-500/20 rounded-2xl p-6"
                 >
                   <div className="text-sky-400 font-bold text-lg mb-2">
@@ -368,10 +339,7 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
       <section className="py-24 px-6">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            {...fadeUp(0)}
             className="space-y-8"
           >
             <h2 className="text-3xl md:text-5xl font-bold">
@@ -385,13 +353,13 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
             <div className="flex flex-wrap justify-center gap-6">
               <Link
                 href="/kapcsolat"
-                className="px-8 py-4 bg-sky-500 hover:bg-sky-400 text-black font-bold rounded-full transition-all duration-300 hover:scale-105"
+                className="px-8 py-4 bg-linear-to-r from-[#075985] to-[#5B21B6] hover:to-[#6d28d9] text-white font-bold rounded-full transition-[transform,box-shadow,background-color] duration-300 hover:scale-105 shadow-lg shadow-[#5B21B6]/30"
               >
                 Ajánlatot kérek →
               </Link>
               <Link
                 href="/munkak"
-                className="px-8 py-4 border border-slate-600 hover:border-sky-500 text-slate-300 hover:text-sky-400 font-bold rounded-full transition-all duration-300"
+                className="px-8 py-4 border border-slate-600 hover:border-sky-500 text-slate-300 hover:text-sky-400 font-bold rounded-full transition-colors duration-300"
               >
                 Vissza a munkákhoz
               </Link>

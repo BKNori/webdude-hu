@@ -1,9 +1,14 @@
 # 01_CURRENT_TASKS.md — WebDude.hu Projekt
 
-## Aktuális feladatok és állapot (2026-11-17 — v7.64.0)
+## Aktuális feladatok és állapot (2026-11-17 — v7.65.0)
 
 ### 🟢 Legutóbb lezárt sprintek (2026-11-17)
 
+- ✅ **v7.65.0 — Portál Értesítési Motor (Anti-Drain), Esettanulmány Higiéniák & E2E Smoke Kiterjesztés:**
+  - **Anti-Drain Értesítések (`usePortalNotifications.ts` & `PortalNotificationBell.tsx`):** Folyamatos `onSnapshot` streamek megszüntetve; 60 mp-es `document.visibilityState === "visible"` alapú `getDocs(..., limit(10))` polling, manuális frissítés (`RefreshCw`), Kék-Lila v7.0 olvasatlan badge (`aria-live="polite"`) és `localStorage`-alapú `markAllAsRead()`.
+  - **Esettanulmány Higiéniák (`RimaiCaseStudy.tsx`, `GeneralCaseStudy.tsx`):** 0 db `#f59e0b`/`amber-*`/`yellow-*` a `src/` és `public/` alatt, 0 árva komponens, teljes `useReducedMotion()` és Kék-Lila v7.0 CTA kontraszt (`text-white`).
+  - **Playwright E2E Smoke (`e2e/smoke.spec.ts`):** Kiterjesztve `/munkak/rimai-utepito-kft-teljes-koru-digitalis-es-vizualis-arculatepites`, `/munkak/dr-danyi`, `/munkak/nem-letezik-xyz-404` (404) és `/portal` `noindex` ellenőrzésekkel (0 DB írás).
+  - **QA Gate:** `tsc` (0), `lint --max-warnings 0` (0), `jest` (5/5 suite, 51/51 PASS), `audit-contrast.js` (383 fájl, 0 hiba).
 - ✅ **v7.64.0 — Portál Vault Előnéző, Admin KPI Bővítés & Workflow Token Audit:**
   - **Portál Vault Előnéző (`ClientVault.tsx` & `DocumentPreviewModal.tsx`):** Kék-Lila v7.0 glassmorphism, akadálymentes **"Előnézet" (`Eye`)** gomb közvetlenül a letöltés mellett `aria-label` és `focus-visible` gyűrűvel, beágyazott interaktív elemek megszüntetve, `role="dialog"` / `aria-modal="true"` / `ESC` / `useReducedMotion()` végig érvényesítve.
   - **Admin KPI & Egységes Export (`getEnhancedKpiMetrics.ts`, `AdminExportToolbar.tsx`, `admin-kpi-pdf.ts`, `src/app/admin/page.tsx`, `AdminDashboard.tsx`):** `revenueByService` és `CAC` / `LTV` metrikák `NaN`-biztos `0` fallbackekkel, egységesített 4 gombos **CSV (Leadek, Projektek, Tranzakciók) + PDF (dinamikus jsPDF)** export vezérlősáv `Loader2` és `aria-label` támogatással.

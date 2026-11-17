@@ -1,5 +1,24 @@
 # Changelog
 
+## [7.65.0] — 2026-11-17 — Portál Értesítési Motor (Anti-Drain), Esettanulmány Higiéniák & E2E Smoke Kiterjesztés
+
+- **Portál Értesítési Motor — Spark-barát Anti-Drain Polling (`usePortalNotifications` & `PortalNotificationBell`):**
+  - `src/hooks/usePortalNotifications.ts`: Folyamatos `onSnapshot` streamek megszüntetve; láthatóság-érzékeny (`document.visibilityState === "visible"`), 60 másodperces késleltetett `getDocs(..., limit(10))` polling (`user_generations`, `vault`, `notifications`), `visibilitychange` védelem, manuális `refresh()` és `localStorage`-alapú `markAllAsRead()` + `unreadCount`.
+  - `src/components/molecules/PortalNotificationBell.tsx`: Kék-Lila v7.0 olvasatlan badge (`#075985` → `#5B21B6`, `text-white`), `aria-live="polite"`, manuális frissítés gomb (`RefreshCw`), "Olvasott" (`CheckCheck`) gomb és `useReducedMotion()` védelem.
+  - `src/components/organisms/portal/PortalHeader.tsx` & `PortalHeroAndTabs.tsx`: `useReducedMotion()` és célzott `transition-colors` szinkronizálva.
+- **Esettanulmány Higiéniák & `useReducedMotion()`:**
+  - `public/` és `src/` teljes sweep: 0 db `#f59e0b` / `amber-*` / `yellow-*` maradvány; minden dedikált esettanulmány aktívan importálva (`_docs/ARCHITECTURE.md` szinkronban, 0 árva komponens), `ResponsiveImage` (`sizes`, `alt`, `aspect-*`) egységes.
+  - `src/components/organisms/RimaiCaseStudy.tsx` & `GeneralCaseStudy.tsx`: Kék-Lila v7.0 CTA gombok (`text-white`), célzott átmenetek és teljes `useReducedMotion()` támogatás.
+- **Playwright E2E Smoke Suite (`e2e/smoke.spec.ts`):**
+  - Kiterjesztve a `/munkak/rimai-utepito-kft-teljes-koru-digitalis-es-vizualis-arculatepites` és `/munkak/dr-danyi` dinamikus esettanulmányokra, `/munkak/nem-letezik-xyz-404` 404 ellenőrzésre, főoldali H1 hossz/kép ellenőrzésre és a `/portal` `noindex` meta védelmére (Anti-Drain: 0 éles DB írás).
+- **QA Gate (Zero-Error Kapuk):**
+  - `npx tsc --noEmit` → **0 hiba (EXIT=0)**
+  - `npm run lint -- --max-warnings 0` → **0 error, 0 warning (EXIT=0)**
+  - `npx jest --no-coverage` → **5/5 suite, 51/51 teszt PASS (EXIT=0)**
+  - `node scripts/audit-contrast.js` → **383 vizsgált fájl, 0 kontraszt-hiba (EXIT=0)**
+
+---
+
 ## [7.64.0] — 2026-11-17 — Portál Vault Előnéző, Admin KPI Bővítés (CAC / Revenue by Service), Export Toolbar & Token-Lánc Hardening
 
 - **Portál Vault Dokumentum-Előnéző (`ClientVault` & `DocumentPreviewModal`):**

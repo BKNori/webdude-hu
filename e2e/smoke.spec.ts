@@ -27,7 +27,7 @@ const FIXED_PRICE_PATTERNS: RegExp[] = [
   /\d{2,7}\s*Ft/i, // pl. „49000 Ft”
 ];
 
-test.describe("WebDude E2E Smoke Suite (v7.56.0)", () => {
+test.describe("WebDude E2E Smoke Suite (v7.65.0)", () => {
   test("1. Főoldal (/): HTTP 200, egyetlen <h1>, Kék-Lila v7.0 CTA gomb, 0 konzolhiba", async ({
     page,
   }) => {
@@ -42,6 +42,8 @@ test.describe("WebDude E2E Smoke Suite (v7.56.0)", () => {
     const h1 = page.locator("h1");
     await expect(h1).toHaveCount(1);
     await expect(h1).toBeVisible();
+    const h1Text = (await h1.textContent()) ?? "";
+    expect(h1Text.trim().length).toBeGreaterThan(5);
 
     // 2) Kék-Lila v7.0 elsődleges Hero CTA gomb látható, fehér szöveggel (WCAG AAA)
     const primaryCta = page
@@ -126,7 +128,45 @@ test.describe("WebDude E2E Smoke Suite (v7.56.0)", () => {
       expect(bodyText.match(pattern)).toBeNull();
     }
 
+    // Látható hero kép
+    await expect(page.locator("img").first()).toBeVisible();
+
     expect(errors).toEqual([]);
+  });
+
+  test("2/C. Dinamikus és további esettanulmány (/munkak/[slug]) + 404 ellenőrzés", async ({
+    page,
+  }) => {
+    const errors = watchConsoleErrors(page);
+
+    for (const slugPath of [
+      "/munkak/rimai-utepito-kft-teljes-koru-digitalis-es-vizualis-arculatepites",
+      "/munkak/dr-danyi",
+    ]) {
+      const res = await page.goto(slugPath, { waitUntil: "domcontentloaded" });
+      expect(res?.status()).toBe(200);
+      await page.waitForLoadState("load");
+      await dismissConsentBanner(page);
+
+      await expect(page.locator("h1")).toHaveCount(1);
+      await expect(page.locator("img").first()).toBeVisible();
+
+      const ldJsonScripts = page.locator('script[type="application/ld+json"]');
+      expect(await ldJsonScripts.count()).toBeGreaterThan(0);
+
+      const bodyText = (await page.locator("body").innerText()) ?? "";
+      for (const pattern of FIXED_PRICE_PATTERNS) {
+        expect(bodyText.match(pattern)).toBeNull();
+      }
+    }
+
+    // A 200-as esettanulmány oldalakon 0 saját futásidejű / hálózati hiba
+    expect(errors).toEqual([]);
+
+    const notFoundRes = await page.goto("/munkak/nem-letezik-xyz-404", {
+      waitUntil: "domcontentloaded",
+    });
+    expect(notFoundRes?.status()).toBe(404);
   });
 
   test("3. Kapcsolat (/kapcsolat): Űrlap mezők és kliensoldali Zod validáció (Anti-Drain: 0 Firestore írás)", async ({
@@ -203,9 +243,14 @@ test.describe("WebDude E2E Smoke Suite (v7.56.0)", () => {
     await page.waitForLoadState("load");
     await dismissConsentBanner(page);
 
-    // A fő tartalomterület és az akadálymentes H1 jelen van
+    // A fő tartalomterület és az akadálymentes H1 jelen van + robots noindex védelem
     await expect(page.locator("#main-content")).toBeAttached();
     await expect(page.locator("h1")).toHaveCount(1);
+    const robotsContent = await page
+      .locator('meta[name="robots"]')
+      .first()
+      .getAttribute("content");
+    expect(robotsContent).toMatch(/noindex/i);
 
     // Nem bejelentkezett látogató NEM láthatja a belső portál dashboardot
     await expect(page.locator("#portal-layout")).toHaveCount(0);

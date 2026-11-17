@@ -1,7 +1,7 @@
 # ROADMAP.md — WebDude OS Fejlesztési Terv
 
 **webdude.hu | Next.js 16 · React 19 · TypeScript · Firebase**
-**Utolsó frissítés: 2026-11-17 (v7.64.0)**
+**Utolsó frissítés: 2026-11-17 (v7.65.0)**
 
 > Ez a dokumentum a WebDude.hu projekt stratégiai fejlesztési ütemterve. A feladatok üzleti és technikai prioritás alapján vannak csoportosítva.
 > A jelenlegi projekt állapota: **Production Ready** (Cycle 132)
@@ -82,13 +82,13 @@
 
 ## 📋 WebDude OS - Technikai Adósságok
 
-### 1. E2E és integrációs tesztelés
+### 1. E2E és integrációs tesztelés ✅
 
-- **Jelenlegi állapot:** 32 egységteszt fut sikeresen
-- **Hiányzó:**
-  - E2E tesztek (Playwright) kritikus felhasználói útvonalakra
-  - Integrációs tesztek (Firebase interactions, Stripe webhooks)
-- **Időzítés:** Élesítés után, amikor stabil a forgalom
+- **Jelenlegi állapot:** 51 Jest egységteszt + Playwright E2E Smoke Suite (`e2e/smoke.spec.ts`, `stripe-webhook.spec.ts`, `munkak-slug.spec.ts`, `pricing-zero-fixed.spec.ts`)
+- **Elvégzett bővítések:**
+  - ✅ E2E tesztek (Playwright) kritikus felhasználói útvonalakra (`/`, `/szolgaltatasok`, `/munkak/[slug]`, `/kapcsolat`, `/portal`)
+  - ✅ Integrációs / biztonsági tesztek (`stripe-webhook.spec.ts` Anti-Drain HMAC őr)
+- **Időzítés:** BEFEJEZVE (`v7.65.0`)
 
 ### 2. CI/CD pipeline automatizáció
 

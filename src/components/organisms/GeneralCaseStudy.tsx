@@ -52,7 +52,7 @@ export default function GeneralCaseStudy({ project }: GeneralCaseStudyProps) {
               href={project.website}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-linear-to-r from-[#00B5F1] to-[#5B21B6] text-white font-bold rounded-full transition-all hover:scale-[1.02] shadow-[0_8px_24px_rgba(0,181,241,0.3)]"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-linear-to-r from-[#075985] to-[#5B21B6] text-white font-bold rounded-full transition-[transform,box-shadow] duration-300 hover:scale-[1.02] shadow-[0_8px_24px_rgba(0,181,241,0.3)]"
             >
               <span>Weboldal megtekintése</span>
             </Link>
@@ -60,7 +60,7 @@ export default function GeneralCaseStudy({ project }: GeneralCaseStudyProps) {
         </motion.div>
       </section>
 
-      {/* Gallery Section — Luminous Glassmorphism + Cyber-Arany glow */}
+      {/* Gallery Section — Luminous Glassmorphism + Electric Cyan glow */}
       {project.gallery && project.gallery.length > 0 && (
         <section className="relative py-20 px-6 overflow-hidden">
           {/* Mesh grid háttér */}
@@ -203,13 +203,13 @@ export default function GeneralCaseStudy({ project }: GeneralCaseStudyProps) {
           <div className="flex flex-wrap justify-center gap-6">
             <Link
               href="/kapcsolat"
-              className="px-8 py-4 bg-[#00B5F1] hover:bg-[#5B21B6] text-slate-950 font-bold rounded-full transition-all duration-300 hover:scale-105"
+              className="px-8 py-4 bg-linear-to-r from-[#075985] to-[#5B21B6] hover:to-[#6d28d9] text-white font-bold rounded-full transition-[transform,box-shadow,background-color] duration-300 hover:scale-105 shadow-[0_8px_24px_rgba(0,181,241,0.25)]"
             >
               Ajánlatot kérek →
             </Link>
             <Link
               href="/munkak"
-              className="px-8 py-4 border border-slate-600 hover:border-[#00B5F1] text-slate-400 hover:text-[#00B5F1] font-bold rounded-full transition-all duration-300"
+              className="px-8 py-4 border border-slate-600 hover:border-[#00B5F1] text-slate-300 hover:text-[#00B5F1] font-bold rounded-full transition-colors duration-300"
             >
               Vissza a munkákhoz
             </Link>

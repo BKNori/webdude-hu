@@ -53,7 +53,7 @@ export default function PortalHeroAndTabs({
             aria-selected={activeTab === "portal"}
             aria-controls="portal-panel-client"
             onClick={() => onTabChange("portal")}
-            className={`pb-4 px-6 font-sans text-xs font-semibold uppercase tracking-wider cursor-pointer border-b-2 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary rounded-t-lg ${
+            className={`pb-4 px-6 font-sans text-xs font-semibold uppercase tracking-wider cursor-pointer border-b-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary rounded-t-lg ${
               activeTab === "portal"
                 ? "border-brand-primary text-brand-primary"
                 : "border-transparent text-slate-400 hover:text-brand-primary"
@@ -68,7 +68,7 @@ export default function PortalHeroAndTabs({
             aria-selected={activeTab === "admin"}
             aria-controls="portal-panel-admin"
             onClick={() => onTabChange("admin")}
-            className={`pb-4 px-6 font-sans text-xs font-semibold uppercase tracking-wider cursor-pointer border-b-2 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary rounded-t-lg ${
+            className={`pb-4 px-6 font-sans text-xs font-semibold uppercase tracking-wider cursor-pointer border-b-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary rounded-t-lg ${
               activeTab === "admin"
                 ? "border-brand-primary text-brand-primary"
                 : "border-transparent text-slate-400 hover:text-brand-primary"
