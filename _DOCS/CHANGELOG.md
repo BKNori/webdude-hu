@@ -1,27 +1,22 @@
 # Changelog
 
-## [7.64.0] — 2026-11-17 — SPRINT: PORTÁL VAULT ELŐNÉZŐ, ADMIN KPI BŐVÍTÉS & WORKFLOW TOKEN AUDIT
+## [7.64.0] — 2026-11-17 — Portál Vault Előnéző, Admin KPI Bővítés (CAC / Revenue by Service), Export Toolbar & Token-Lánc Hardening
 
-**1. BATCH 1 — DIAGNOSZTIKA & ÁLLAPOTFELMÉRÉS (`01_CURRENT_TASKS.md` & `ROADMAP.md`):**
-- Áttekintve a `ClientVault.tsx` + `DocumentPreviewModal.tsx`, a `getEnhancedKpiMetrics.ts` + `/admin` + `AdminDashboard.tsx`, valamint a `DynamicWorkflowForm.tsx` → `useCreateGeneration.ts` → `createGeneration.ts` lánc állapota.
-
-**2. BATCH 2 — PORTÁL: VAULT DOKUMENTUM-ELŐNÉZŐ (`ClientVault.tsx` & `DocumentPreviewModal.tsx`):**
-- `src/components/organisms/ClientVault.tsx`: Kék-Lila v7.0 glassmorphism (`bg-slate-900/60 backdrop-blur-xl border-slate-800/80`) és `transition-all` kivezetése; az "Előnézet" (`Eye` ikon) gomb közvetlenül a "Letöltés" mellett látható felirattal, `aria-label` és `focus-visible` gyűrűvel, valamint érvényes WCAG DOM-struktúrával (beágyazott interaktív elemek megszüntetve).
-- `src/components/molecules/DocumentPreviewModal.tsx`: `role="dialog"`, `aria-modal="true"`, `useFocusTrap` (ESC bezárás + fókuszcsapda), `useReducedMotion()` tiszteletben tartása a háttér és a spring modál kártya animációinál is, Kék-Lila v7.0 glassmorphism (`bg-slate-900/90 backdrop-blur-xl border-slate-800/80`).
-
-**3. BATCH 3 — ADMIN KPI BŐVÍTÉS, EGYSÉGES EXPORT & WORKFLOW TOKEN AUDIT:**
-- `src/app/actions/getEnhancedKpiMetrics.ts`: bővítve **szolgáltatásonkénti bevétel-bontással (`revenueByService`)** és **CAC (`marketing_spend` alapú)** + **LTV** mutatókkal, közös `aggregateEnhancedKpiMetrics` helperrel (`adminDb` és kliens SDK `db` fallback) és `NaN`-mentes `0` / `[]` fallbackekkel.
-- **ÚJ** `src/components/molecules/AdminExportToolbar.tsx` & `src/lib/admin-kpi-pdf.ts`: egységesített 4 gombos vezérlősáv (**Leadek CSV**, **Projektek CSV**, **Tranzakciók CSV**, **KPI Riport PDF** dinamikus `await import("jspdf")`-fel), `Loader2` töltésjelzővel, `aria-label`-ekkel és `font-mono tabular-nums` pénzügyi megjelenítéssel bekötve mind az `src/app/admin/page.tsx` (CAC kártya + `revenueByService` bontás hozzáadva), mind a `src/components/organisms/AdminDashboard.tsx` (`useReducedMotion()` és üres állapot kezelés hozzáadva) oldalakon.
-- **Aszinkron Generálás Token-Lánc (`DynamicWorkflowForm` → `useCreateGeneration` → `createGeneration`):**
-  - `src/hooks/useCreateGeneration.ts`: javítva a `setStarting(false)` hiánya a sikeres ágon (korábban `busy` `true` maradt a válasz után is) + szigorú `idToken` ellenőrzés.
-  - `src/app/actions/createGeneration.ts`: `createGenerationInputSchema` Zod validáció (`workflowId`, `params`) + biztonságos Groq válaszkezelés.
-  - `src/components/dynamic-form/DynamicWorkflowForm.tsx`: `useReducedMotion()`, `text-white` WCAG AAA CTA gomb és Lucide `Lock` ikon a nyers `🔒` emoji helyett.
-
-**4. BATCH 4 — TELJES QA GATE & DOKUMENTÁCIÓ SZINKRON:**
-- `npx tsc --noEmit` → **0 hiba (EXIT=0)**
-- `npm run lint -- --max-warnings 0` → **0 error, 0 warning (EXIT=0)**
-- `npx jest --no-coverage` → **5/5 suite, 51/51 teszt PASS (EXIT=0)**
-- `node scripts/audit-contrast.js` → **383 vizsgált fájl, 0 kontraszt-hiba (EXIT=0)**
+- **Portál Vault Dokumentum-Előnéző (`ClientVault` & `DocumentPreviewModal`):**
+  - `src/components/organisms/ClientVault.tsx`: Kék-Lila v7.0 glassmorphism (`bg-slate-900/60 backdrop-blur-xl border-slate-800/80`), `transition-all` kivezetve; dedikált **"Előnézet" (`Eye` ikon)** gomb a "Letöltés" mellett `aria-label` és `focus-visible` gyűrűvel, a beágyazott interaktív (`role="button"` konténer) struktúra megszüntetve.
+  - `src/components/molecules/DocumentPreviewModal.tsx`: Teljes WCAG AA dialógus (`role="dialog"`, `aria-modal="true"`, `useFocusTrap` ESC és fókuszcsapda), `useReducedMotion()` támogatás és Kék-Lila v7.0 glassmorphism.
+- **Admin KPI Bővítés & Egységes Export Vezérlősáv:**
+  - `src/app/actions/getEnhancedKpiMetrics.ts`: Kiegészítve szolgáltatásonkénti bevétel-bontással (`revenueByService`), valamint CAC (`marketing_spend`) és LTV mutatókkal, közös `aggregateEnhancedKpiMetrics` helperrel és `NaN`-biztos `0` / `[]` fallbackekkel.
+  - `src/components/molecules/AdminExportToolbar.tsx` & `src/lib/admin-kpi-pdf.ts`: Új, 4 gombos egységes vezérlősáv (**Leadek CSV**, **Projektek CSV**, **Tranzakciók CSV**, **KPI Riport PDF** dinamikus `await import("jspdf")` betöltéssel), `Loader2` töltésjelzővel és `aria-label`-ekkel bekötve a `/admin` és `AdminDashboard` felületekre.
+- **Aszinkron Generálás Token-Lánc Hardening:**
+  - `src/hooks/useCreateGeneration.ts`: Sikeres ágon a hiányzó `setStarting(false)` pótolva + üres `idToken` védelem.
+  - `src/app/actions/createGeneration.ts`: `createGenerationInputSchema` Zod validáció és biztonságos Groq válaszellenőrzés.
+  - `src/components/dynamic-form/DynamicWorkflowForm.tsx`: `useReducedMotion()`, `text-white` WCAG AAA CTA és Lucide `Lock` ikon.
+- **QA Gate (Zero-Error Kapuk):**
+  - `npx tsc --noEmit` → **0 hiba (EXIT=0)**
+  - `npm run lint -- --max-warnings 0` → **0 error, 0 warning (EXIT=0)**
+  - `npx jest --no-coverage` → **5/5 suite, 51/51 teszt PASS (EXIT=0)**
+  - `node scripts/audit-contrast.js` → **383 vizsgált fájl, 0 kontraszt-hiba (EXIT=0)**
 
 ---
 
