@@ -1,7 +1,7 @@
 # ROADMAP.md — WebDude OS Fejlesztési Terv
 
 **webdude.hu | Next.js 16 · React 19 · TypeScript · Firebase**
-**Utolsó frissítés: 2026-11-17 (v7.66.0)**
+**Utolsó frissítés: 2026-11-17 (v7.66.1)**
 
 > Ez a dokumentum a WebDude.hu projekt stratégiai fejlesztési ütemterve. A feladatok üzleti és technikai prioritás alapján vannak csoportosítva.
 > A jelenlegi projekt állapota: **Production Ready** (Cycle 132)

@@ -31,7 +31,10 @@ export default function EnGraphicDesignPage() {
   const breadcrumbItems: BreadcrumbItem[] = [
     { name: "Home", url: withLocale("/", "en") },
     { name: "Services", url: withLocale("/szolgaltatasok", "en") },
-    { name: "Graphic Design", url: withLocale("/szolgaltatasok/grafikai-tervezes", "en") },
+    {
+      name: "Graphic Design",
+      url: withLocale("/szolgaltatasok/grafikai-tervezes", "en"),
+    },
   ];
   const breadcrumbSchema = buildBreadcrumbSchema(breadcrumbItems);
 
@@ -124,9 +127,9 @@ export default function EnGraphicDesignPage() {
                   WebDude graphic design:
                 </span>{" "}
                 26 years of design experience: logo design, complete brand
-                identity, print collateral and UI/UX design produced in Adobe CC and
-                Figma. Because identity and code come from the same hand, nothing
-                is lost between concept and shipped interface.
+                identity, print collateral and UI/UX design produced in Adobe CC
+                and Figma. Because identity and code come from the same hand,
+                nothing is lost between concept and shipped interface.
               </p>
             </div>
           </section>
@@ -151,8 +154,8 @@ export default function EnGraphicDesignPage() {
                     Custom-designed UI/UX
                   </h3>
                   <p className="text-slate-400 text-sm leading-relaxed">
-                    No dozen templates. With 26 years of visual experience, every
-                    website gets pixel-perfect, brand-consistent and
+                    No dozen templates. With 26 years of visual experience,
+                    every website gets pixel-perfect, brand-consistent and
                     conversion-optimised design.
                   </p>
                 </div>
@@ -162,8 +165,9 @@ export default function EnGraphicDesignPage() {
                     Complete Brand Identity
                   </h3>
                   <p className="text-slate-400 text-sm leading-relaxed">
-                    Logo, color palette, typography, brand guidelines and applied
-                    graphics – everything you need for a consistent presence.
+                    Logo, color palette, typography, brand guidelines and
+                    applied graphics – everything you need for a consistent
+                    presence.
                   </p>
                 </div>
                 <div className="bg-slate-900/60 backdrop-blur-xl p-8 rounded-2xl border border-slate-800/80 hover:border-[#00B5F1]/40 transition-colors duration-300">
@@ -218,8 +222,8 @@ export default function EnGraphicDesignPage() {
                 <span className="text-[#00B5F1] italic">brand identity</span>
               </h2>
               <p className="text-slate-400 mb-10 text-lg">
-                Request a free consultation and let&apos;s discuss your visual identity
-                needs.
+                Request a free consultation and let&apos;s discuss your visual
+                identity needs.
               </p>
               <Link
                 href="/en#contact"

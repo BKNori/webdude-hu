@@ -22,6 +22,10 @@
 # production
 /build
 
+# Google Drive szinkronizációs ideiglenes fájlok
+**/.tmp.driveupload/
+.tmp.driveupload/
+
 # misc
 .DS_Store
 *.pem

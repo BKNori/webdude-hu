@@ -1,9 +1,13 @@
 # 01_CURRENT_TASKS.md — WebDude.hu Projekt
 
-## Aktuális feladatok és állapot (2026-11-17 — v7.66.0)
+## Aktuális feladatok és állapot (2026-11-17 — v7.66.1)
 
 ### 🟢 Legutóbb lezárt sprintek (2026-11-17)
 
+- ✅ **v7.66.1 — Git/Drive Temp Higiénia & Esettanulmány Retina Hero Master-Csere:**
+  - **Git & `.gitignore` Higiénia:** `_DOCS/.tmp.driveupload` eltávolítva a Git indexből (`git rm -r --cached`), `.gitignore` bővítve `**/.tmp.driveupload/` és `.tmp.driveupload/` szabályokkal.
+  - **Go-Box & HU-MAGO Retina Hero Masterek:** `src/data/works.ts` (`hu-mago-kft` `image`/`bannerImage` → 1920×960 `humago-allo-banner-a-shopbansss-cssopy-copy.webp`) és `src/data/caseStudySeo.ts` OG/Schema kép-URL-ek javítva; `node scripts/generate-responsive-images.js --clean` eltávolította a 10 régi `Gemini_Generated_Image` derivatívumot és frissítette a manifestumot (114 kép / 746 fájl, 2000w variánsokkal).
+  - **QA Gate & Smoke:** `tsc` (0), `lint --max-warnings 0` (0), `jest` (51/51 PASS), `audit-contrast.js` (383 fájl, 0 hiba), `npm run build` (`176/176` oldal, `BUILD_EXIT=0`), `playwright test e2e/smoke.spec.ts` (`7/7 PASS`).
 - ✅ **v7.66.0 — Teljes Playwright E2E Konszolidáció, `/en` i18n & SEO/hreflang Audit & CI Szinkron:**
   - **Teljes E2E Suite (`31/31 PASS`):** `e2e/hirek.spec.ts` frissítve a `CollectionPage` → `mainEntity.ItemList` sémára; `e2e/smoke.spec.ts` kiegészítve az angol `/en` útvonalak (`canonical`, `hreflang`, JSON-LD, Zéró Fix Ár) ellenőrzésével; mind a 9 spec fájl (31 teszt) 100% PASS.
   - **`/en` i18n & CTA Kontraszt:** `Hero.tsx` és a 4 `/en/services/*` aloldal CTA gombjai `text-slate-950`-ről Kék-Lila v7.0 `from-[#075985] to-[#5B21B6] text-white` WCAG AAA-ra javítva + `useReducedMotion()`; `PortfolioHero.tsx` lokalizált `/en/portfolio`-hoz; `en.json` egyes számú szöveghigiénia és `/en` snapshot tipográfia szinkron.

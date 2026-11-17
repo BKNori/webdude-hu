@@ -1,5 +1,24 @@
 # Changelog
 
+## [7.66.1] — 2026-11-17 — Git/Drive Temp Higiénia & Esettanulmány Retina Hero Master-Csere
+
+- **Git & Google Drive Higiénia:**
+  - `_DOCS/.tmp.driveupload/113334` eltávolítva a Git indexből (`git rm -r --cached`).
+  - `.gitignore` kiegészítve a `**/.tmp.driveupload/` és `.tmp.driveupload/` szabályokkal a jövőbeli szinkronizációs temp fájlok kizárására.
+- **Go-Box & HU-MAGO Retina Hero Masterek & Reszponzív Derivatívumok:**
+  - `src/data/works.ts`: a `hu-mago-kft` `image` és `bannerImage` mezője az elavult 1376×768-as `Gemini_Generated_Image_h2e2i2h2e2i2h2e2.jfif`-ről átállítva a 1920×960-as `/assets/portfolio/hu-mago-kft/humago-allo-banner-a-shopbansss-cssopy-copy.webp` masterre (a `go-box-kft` és mindkét `*CaseStudy.tsx` már a 2635×1200 `repulo-dobozok.webp` és 1920×960 `humago-allo-banner` mastereket használta).
+  - `src/data/caseStudySeo.ts`: a `hu-mago-kft` és `go-box-kft` OG / Twitter / Schema.org `image` URL-ek kijavítva a valós `/assets/portfolio/{hu-mago-kft,go-box-kft}/...` master fájlokra.
+  - `node scripts/generate-responsive-images.js --clean`: `src/data/responsiveImages.ts` frissítve (114 kép / 746 generált fájl), a feleslegessé vált 10 db `Gemini_Generated_Image_h2e2i2h2e2i2h2e2` derivatívum törölve, a `2000w` AVIF/WebP variánsok legenerálva és ellenőrizve (`repulo-dobozok-2000w.webp` 2000×911, `humago-allo-banner-...-2000w.webp` 2000×1000).
+- **QA Gate, Build & E2E Smoke:**
+  - `npx tsc --noEmit` → **0 hiba (EXIT=0)**
+  - `npm run lint -- --max-warnings 0` → **0 error, 0 warning (EXIT=0)**
+  - `npx jest --no-coverage` → **5/5 suite, 51/51 teszt PASS (EXIT=0)**
+  - `node scripts/audit-contrast.js` → **383 vizsgált fájl, 0 kontraszt-hiba (EXIT=0)**
+  - `npm run build` → **BUILD_EXIT=0 (176 statikus/dinamikus útvonal)**
+  - `npx playwright test e2e/smoke.spec.ts` → **7/7 PASS (`37.2s`, EXIT=0)**
+
+---
+
 ## [7.66.0] — 2026-11-17 — Teljes Playwright E2E Konszolidáció, `/en` i18n & SEO/hreflang Audit, CI Pipeline Szinkron
 
 - **Playwright E2E Suite Konszolidáció (`31/31 PASS`):**

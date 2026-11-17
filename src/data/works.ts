@@ -330,9 +330,9 @@ export const works: Work[] = [
       "Nyomdai anyagok",
     ],
     image:
-      "/assets/portfolio/hu-mago-kft/Gemini_Generated_Image_h2e2i2h2e2i2h2e2.jfif",
+      "/assets/portfolio/hu-mago-kft/humago-allo-banner-a-shopbansss-cssopy-copy.webp",
     bannerImage:
-      "/assets/portfolio/hu-mago-kft/Gemini_Generated_Image_h2e2i2h2e2i2h2e2.jfif",
+      "/assets/portfolio/hu-mago-kft/humago-allo-banner-a-shopbansss-cssopy-copy.webp",
     gallery: [
       "/assets/portfolio/hu-mago-kft/humago-fal-copy.webp",
       "/assets/portfolio/hu-mago-kft/hu-mago-magazin-mocdddkup-copy.webp",

@@ -2,6 +2,11 @@
 
 > **AI DIREKTÍVA:** Ez a fájl a rendszer "élő" memóriája. A 03-workflow.md 5. lépése alapján KÖTELEZŐ ezt a fájlt frissítened minden feladat befejezésekor, vagy mielőtt átadod a vezérlést a felhasználónak (Norbinak). Szigorúan tilos új feladatba kezdened, ha az "Aktuális Munkaterület Állapota" szekcióban hibák vagy félbehagyott fájlok vannak!
 
+## Aktuális állapot — 2026-11-17, [7.66.1] SPRINT: GIT/DRIVE TEMP HIGIÉNIA & ESETTANULMÁNY RETINA HERO MASTER-CSERE (LEZÁRVA)
+- **Batch 1 (Git/Drive Higiénia):** `_DOCS/.tmp.driveupload` törölve a Git indexből (`git rm -r --cached`), `.gitignore` kiegészítve `**/.tmp.driveupload/` és `.tmp.driveupload/` mintákkal.
+- **Batch 2 (Retina Hero Masterek):** `src/data/works.ts` (`hu-mago-kft` `image` + `bannerImage`) frissítve a 1920×960-as `humago-allo-banner-a-shopbansss-cssopy-copy.webp` masterre (Go-Box 2635×1200 `repulo-dobozok.webp` és a `*CaseStudy.tsx` hero hivatkozások már szinkronban); `src/data/caseStudySeo.ts` OG/Schema image URL-ek javítva; `node scripts/generate-responsive-images.js --clean` (114 kép / 746 fájl, 10 régi `Gemini_Generated_Image` derivatívum törölve).
+- **Batch 3 (QA Gate, Build & Commit):** `tsc` (0), `lint --max-warnings 0` (0), `jest` (51/51 PASS), `audit-contrast.js` (383 fájl, 0 hiba), `npm run build` (`176/176` oldal, `BUILD_EXIT=0`), `npx playwright test e2e/smoke.spec.ts` (`7/7 PASS`, 37.2s).
+
 ## Aktuális állapot — 2026-11-17, [7.66.0] SPRINT: TELJES PLAYWRIGHT E2E KONSZOLIDÁCIÓ, /EN I18N & SEO/HREFLANG AUDIT (LEZÁRVA)
 - **Batch 1 (Teljes E2E Suite):** `e2e/hirek.spec.ts` igazítva a `CollectionPage -> mainEntity.ItemList` sémára; `e2e/smoke.spec.ts` bővítve a `/en` i18n/hreflang/canonical/Zéró Fix Ár teszttel; teljes 9 spec / 31 tesztes Playwright futás (`chromium` + `mobile-chrome`) **31/31 PASS (0 flake)**.
 - **Batch 2 (`/en` i18n & Kontraszt):** `Hero.tsx` + 4 `/en/services/*` oldal CTA gombjai `text-slate-950`-ről `from-[#075985] to-[#5B21B6] text-white` WCAG AAA-ra javítva (`useReducedMotion()` hozzáadva); `PortfolioHero.tsx` lokalizálva `/en/portfolio`-hoz; `en.json` egyes számú szöveg és `/en` snapshot tipográfia + glassmorphism szinkronban.

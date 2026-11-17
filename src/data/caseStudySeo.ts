@@ -508,9 +508,9 @@ export const CASE_STUDY_SEO: Record<string, CaseStudySeoEntry> = {
         siteName: "WebDude",
         images: [
           {
-            url: "https://webdude.hu/assets/portfolio/hu-mago/humago_mockup.webp",
-            width: 1200,
-            height: 630,
+            url: "https://webdude.hu/assets/portfolio/hu-mago-kft/humago-allo-banner-a-shopbansss-cssopy-copy.webp",
+            width: 1920,
+            height: 960,
           },
         ],
         locale: "hu_HU",
@@ -521,7 +521,7 @@ export const CASE_STUDY_SEO: Record<string, CaseStudySeoEntry> = {
         title: "HU-MÁGÓ Kft. — Ipari Weboldal & Arculat | WebDude",
         description:
           "Precíziós ipari szerszámgyártó vállalat prémium B2B weboldala és digitális arculata.",
-        images: ["https://webdude.hu/assets/portfolio/hu-mago/humago_mockup.webp"],
+        images: ["https://webdude.hu/assets/portfolio/hu-mago-kft/humago-allo-banner-a-shopbansss-cssopy-copy.webp"],
       },
     },
     directAnswer: {
@@ -540,7 +540,7 @@ export const CASE_STUDY_SEO: Record<string, CaseStudySeoEntry> = {
         headline: "HU-MÁGÓ Kft. — Ipari Szerszámgyártó Vállalati Weboldal",
         description:
           "Precíziós szerszámtervező és gépipari vállalat prémium weboldal fejlesztése és arculati modernizációja.",
-        image: "https://webdude.hu/assets/portfolio/hu-mago/humago_mockup.webp",
+        image: "https://webdude.hu/assets/portfolio/hu-mago-kft/humago-allo-banner-a-shopbansss-cssopy-copy.webp",
         author: NORBI_PERSON,
         publisher: WEBDUDE_ORG,
         datePublished: "2026-02-15",
@@ -688,9 +688,9 @@ export const CASE_STUDY_SEO: Record<string, CaseStudySeoEntry> = {
         siteName: "WebDude",
         images: [
           {
-            url: "https://webdude.hu/assets/portfolio/go-box/repulo-dobozok.webp",
-            width: 1200,
-            height: 630,
+            url: "https://webdude.hu/assets/portfolio/go-box-kft/repulo-dobozok.webp",
+            width: 2635,
+            height: 1200,
           },
         ],
         locale: "hu_HU",
@@ -701,7 +701,7 @@ export const CASE_STUDY_SEO: Record<string, CaseStudySeoEntry> = {
         title: "Go-Box Kft. — Csomagolástechnika & Dobozgyártás | WebDude",
         description:
           "Ipari csomagolóanyag gyártó vállalat nagy volumenű B2B ajánlatkérő weboldala.",
-        images: ["https://webdude.hu/assets/portfolio/go-box/repulo-dobozok.webp"],
+        images: ["https://webdude.hu/assets/portfolio/go-box-kft/repulo-dobozok.webp"],
       },
     },
     directAnswer: {
@@ -720,7 +720,7 @@ export const CASE_STUDY_SEO: Record<string, CaseStudySeoEntry> = {
         headline: "Go-Box Kft. — Csomagolóanyag Gyártó B2B Weboldal",
         description:
           "Dobozgyártó és csomagolástechnikai vállalat digitális transzformációja és ajánlatkérő rendszerének kiépítése.",
-        image: "https://webdude.hu/assets/portfolio/go-box/repulo-dobozok.webp",
+        image: "https://webdude.hu/assets/portfolio/go-box-kft/repulo-dobozok.webp",
         author: NORBI_PERSON,
         publisher: WEBDUDE_ORG,
         datePublished: "2026-03-20",
