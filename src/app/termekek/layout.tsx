@@ -45,6 +45,9 @@ const collectionPageJsonLd = {
     "@type": "Organization",
     "@id": "https://webdude.hu/#organization",
     name: "WebDude",
+    foundingDate: "2009",
+    telephone: "+36 70 323 8003",
+    email: "hello@webdude.hu",
   },
   about: {
     "@type": "Thing",

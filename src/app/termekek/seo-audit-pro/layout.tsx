@@ -53,7 +53,10 @@ const productJsonLd = {
     seller: {
       "@type": "Organization",
       "@id": "https://webdude.hu/#organization",
-      name: "WebDude.hu",
+      name: "WebDude",
+      foundingDate: "2009",
+      telephone: "+36 70 323 8003",
+      email: "hello@webdude.hu",
     },
     description: "Egyedi árajánlat kérése",
   },
@@ -66,7 +69,9 @@ const productJsonLd = {
     "@type": "Person",
     "@id": "https://webdude.hu/#person",
     name: "Balog Norbert",
-    description: "26 év grafikai tervezési és 16 év webfejlesztői tapasztalat",
+    alternateName: ["Balog Norbi", "WebDude"],
+    jobTitle: "Full-Stack Webfejlesztő, Art Director & AI Automatizációs Szakértő",
+    description: "26 év tervezőgrafikai és 16 év webfejlesztői tapasztalat",
   },
 } as const;
 

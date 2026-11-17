@@ -1,47 +1,51 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { 
-  CheckCircle2, 
-  ArrowRight, 
-  ShieldAlert, 
-  Lock, 
+import {
+  CheckCircle2,
+  ArrowRight,
+  ShieldAlert,
+  Lock,
   HelpCircle,
   Sparkles,
   Search,
   FileCode,
   Flame,
-  ShieldCheck
+  ShieldCheck,
 } from "lucide-react";
-import PricingTable, { type PricingTier } from "@/components/molecules/PricingTable";
+import PricingTable, {
+  type PricingTier,
+} from "@/components/molecules/PricingTable";
 import DirectAnswerBlock from "@/components/molecules/DirectAnswerBlock";
 import BreadcrumbSchema from "@/components/molecules/BreadcrumbSchema";
 
 export const metadata: Metadata = {
   title: "Feltört WordPress Helyreállítás és Biztonság | WebDude",
-  description: "Feltörték a weboldalad? Ne ess pánikba! Azonnali WordPress vírusirtás, helyreállítás, és megelőző biztonsági beállítások vállalkozásoknak.",
+  description:
+    "Feltörték a weboldalad? Ne ess pánikba! Azonnali WordPress vírusirtás, helyreállítás, és megelőző biztonsági beállítások vállalkozásoknak.",
   alternates: {
     canonical: "https://webdude.hu/szolgaltatasok/wordpress-biztonsag",
   },
   openGraph: {
     title: "Feltört WordPress Helyreállítás és Biztonság | WebDude",
-    description: "Feltörték a weboldalad? Ne ess pánikba! Azonnali WordPress vírusirtás, helyreállítás, és megelőző biztonsági beállítások vállalkozásoknak.",
+    description:
+      "Feltörték a weboldalad? Ne ess pánikba! Azonnali WordPress vírusirtás, helyreállítás, és megelőző biztonsági beállítások vállalkozásoknak.",
     url: "https://webdude.hu/szolgaltatasok/wordpress-biztonsag",
     type: "website",
   },
-
 };
 
 const pricingTiers: PricingTier[] = [
   {
     id: "sec-emergency",
     name: "Sürgősségi Vírusirtás & Mentés",
-    description: "Azonnali beavatkozás, ha a weboldaladat feltörték, spammel árasztották el, vagy a Google feketelistára tette.",
+    description:
+      "Azonnali beavatkozás, ha a weboldaladat feltörték, spammel árasztották el, vagy a Google feketelistára tette.",
     features: [
       "Kártevők, malware-ek, rejtett backdoorok teljeskörű eltávolítása",
       "Fertőzött WordPress mag- és bővítményfájlok steril cseréje",
       "Adatbázis-tisztítás és rosszindulatú admin-fiókok törlése",
       "Google De-Blacklist kérelmezése (feketelista-eltávolítás)",
-      "Minden biztonsági kulcs, só (salt) és jelszó lecserélése"
+      "Minden biztonsági kulcs, só (salt) és jelszó lecserélése",
     ],
     highlighted: false,
     ctaText: "Azonnali segítség kérése",
@@ -50,14 +54,15 @@ const pricingTiers: PricingTier[] = [
   {
     id: "sec-hardening",
     name: "Komplett Rendszerkeményítés",
-    description: "Megelőző védelem működő oldalaknak: zárjuk le a réseket, mielőtt a hackerek találnák meg őket.",
+    description:
+      "Megelőző védelem működő oldalaknak: zárjuk le a réseket, mielőtt a hackerek találnák meg őket.",
     features: [
       "Minden, ami a Vírusirtás csomagban szerepel",
       "Alapértelmezett wp-login és admin útvonalak maszkolása",
       "Kétfaktoros hitelesítés (2FA) és Brute-Force támadás elleni védelem",
       "Fájlszerkesztés letiltása a vezérlőpulton és XML-RPC lekapcsolása",
       "Alkalmazás szintű webes tűzfal (WAF) konfigurálása",
-      "Biztonsági audit jegyzőkönyv és tanácsadás"
+      "Biztonsági audit jegyzőkönyv és tanácsadás",
     ],
     highlighted: true,
     ctaText: "Projektfelmérés kérése",
@@ -66,13 +71,14 @@ const pricingTiers: PricingTier[] = [
   {
     id: "sec-continuous",
     name: "Folyamatos Védelmi Pajzs",
-    description: "Teljes nyugalmat biztosító havi biztonsági felügyelet üzletileg kritikus platformoknak és webshopoknak.",
+    description:
+      "Teljes nyugalmat biztosító havi biztonsági felügyelet üzletileg kritikus platformoknak és webshopoknak.",
     features: [
       "24/7 valós idejű integritás- és fájlváltozás-ellenőrzés",
       "Napi külső titkosított biztonsági mentés (off-site backup)",
       "Proaktív sebezhetőség-figyelés a használt bővítményekhez",
       "Azonnali beavatkozás és prioritásos helyreállítási garancia",
-      "Havi biztonsági jelentés a blokkolt támadási kísérletekről"
+      "Havi biztonsági jelentés a blokkolt támadási kísérletekről",
     ],
     highlighted: false,
     ctaText: "Egyedi árajánlat kérése",
@@ -117,15 +123,21 @@ export default function WordPressBiztonsagPage() {
       "@id": "https://webdude.hu/#organization",
       name: "WebDude",
       url: "https://webdude.hu",
+      foundingDate: "2009",
+      telephone: "+36 70 323 8003",
+      email: "hello@webdude.hu",
       founder: {
         "@type": "Person",
         "@id": "https://webdude.hu/#person",
         name: "Balog Norbert",
-        jobTitle: "Full-Stack Webfejlesztő & AI Specialist",
-        description: "26 év grafikai és 16 év webfejlesztői tapasztalat",
+        alternateName: ["Balog Norbi", "WebDude"],
+        jobTitle:
+          "Full-Stack Webfejlesztő, Art Director & AI Automatizációs Szakértő",
+        description: "26 év tervezőgrafikai és 16 év webfejlesztői tapasztalat",
       },
     },
-    description: "Feltörték a weboldalad? Ne ess pánikba! Azonnali WordPress vírusirtás, helyreállítás, és megelőző biztonsági beállítások vállalkozásoknak.",
+    description:
+      "Feltörték a weboldalad? Ne ess pánikba! Azonnali WordPress vírusirtás, helyreállítás, és megelőző biztonsági beállítások vállalkozásoknak.",
     serviceType: "WordPress Security and Malware Removal",
     category: "WordPress Security",
     audience: {
@@ -162,7 +174,10 @@ export default function WordPressBiztonsagPage() {
         items={[
           { name: "Főoldal", item: "https://webdude.hu" },
           { name: "Szolgáltatások", item: "https://webdude.hu/szolgaltatasok" },
-          { name: "WordPress Biztonság", item: "https://webdude.hu/szolgaltatasok/wordpress-biztonsag" },
+          {
+            name: "WordPress Biztonság",
+            item: "https://webdude.hu/szolgaltatasok/wordpress-biztonsag",
+          },
         ]}
       />
       {/* JSON-LD Schemas with XSS Protection */}
@@ -180,18 +195,18 @@ export default function WordPressBiztonsagPage() {
       />
 
       {/* Hero Section */}
-            <DirectAnswerBlock
+      <DirectAnswerBlock
         id="wp-biztonsag"
         question="Mit kell tenni, ha feltörték a WordPress weboldalamat?"
         answer="Feltörés esetén az első lépés az azonnali biztonsági mentés, majd a fertőzött fájlok és a visszaírt hozzáférési pontok teljes eltávolítása. Ezután jön a keményítés: jelszó-erősítés, kétlépéses azonosítás, frissítések és a támadási felület csökkentése. 16 év tapasztalattal végzem el a tisztítást és a megelőző beállításokat."
         facts={[
-            { label: "Tapasztalat", value: "16 év" },
-            { label: "Válaszidő", value: "Sürgősség szerint" },
-            { label: "Árazás", value: "Egyedi árajánlat" },
+          { label: "Tapasztalat", value: "16 év" },
+          { label: "Válaszidő", value: "Sürgősség szerint" },
+          { label: "Árazás", value: "Egyedi árajánlat" },
         ]}
       />
 
-<section className="relative pt-32 pb-20 overflow-hidden border-b border-slate-800/80">
+      <section className="relative pt-32 pb-20 overflow-hidden border-b border-slate-800/80">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,var(--tw-gradient-stops))] from-sky-900/20 via-slate-950 to-slate-950 pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl">
@@ -200,10 +215,16 @@ export default function WordPressBiztonsagPage() {
               Azonnali Vírusirtás & Sebezhetőség Zárás
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight mb-6">
-              Feltört WordPress weboldal helyreállítása és <span className="text-transparent bg-clip-text bg-linear-to-r from-brand-primary to-[#a855f7]">maximális biztonság</span>
+              Feltört WordPress weboldal helyreállítása és{" "}
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-brand-primary to-[#a855f7]">
+                maximális biztonság
+              </span>
             </h1>
             <p className="text-lg sm:text-xl text-slate-300 leading-relaxed mb-8">
-              A feltört weboldal azonnali presztízs- és bevételkiesést okoz, a Google pedig napokon belül kitilthatja a keresőből. Ne ess pánikba: kigyomlálom a kártevőket, helyreállítom a működést, és nepátható védelmi pajzsot építek a honlapod köré.
+              A feltört weboldal azonnali presztízs- és bevételkiesést okoz, a
+              Google pedig napokon belül kitilthatja a keresőből. Ne ess
+              pánikba: kigyomlálom a kártevőket, helyreállítom a működést, és
+              nepátható védelmi pajzsot építek a honlapod köré.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
@@ -232,7 +253,9 @@ export default function WordPressBiztonsagPage() {
               Miért nem elég egy egyszerű vírusirtó plugin letöltése?
             </h2>
             <p className="text-slate-400">
-              Az ingyenes bővítmények gyakran átlépnek a mélyen elrejtett backdoorokon és nem javítják meg a sérült fájlokat. A profi biztonság kézi kódvizsgálatot igényel.
+              Az ingyenes bővítmények gyakran átlépnek a mélyen elrejtett
+              backdoorokon és nem javítják meg a sérült fájlokat. A profi
+              biztonság kézi kódvizsgálatot igényel.
             </p>
           </div>
 
@@ -242,9 +265,13 @@ export default function WordPressBiztonsagPage() {
                 <div className="w-12 h-12 rounded-xl bg-red-950/80 border border-red-500/30 flex items-center justify-center text-red-400 mb-6">
                   <ShieldAlert className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">Rejtett Backdoorok Irtása</h3>
+                <h3 className="text-xl font-bold text-white mb-3">
+                  Rejtett Backdoorok Irtása
+                </h3>
                 <p className="text-slate-400 text-sm leading-relaxed">
-                  A hackerek hátsó ajtókat hagynak a fájlrendszerben, hogy hetekkel később újra feltörhessék az oldalt. Minden gyanús kódrészletet felderítek és törlök.
+                  A hackerek hátsó ajtókat hagynak a fájlrendszerben, hogy
+                  hetekkel később újra feltörhessék az oldalt. Minden gyanús
+                  kódrészletet felderítek és törlök.
                 </p>
               </div>
               <div className="mt-6 pt-6 border-t border-slate-800/80 text-xs text-red-400 flex items-center gap-1.5 font-semibold">
@@ -257,9 +284,13 @@ export default function WordPressBiztonsagPage() {
                 <div className="w-12 h-12 rounded-xl bg-sky-950/80 border border-sky-500/30 flex items-center justify-center text-brand-primary mb-6">
                   <Lock className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">Rendszerkeményítés (Hardening)</h3>
+                <h3 className="text-xl font-bold text-white mb-3">
+                  Rendszerkeményítés (Hardening)
+                </h3>
                 <p className="text-slate-400 text-sm leading-relaxed">
-                  wp-config védelme, .htaccess szabályok szigorítása, fájlfuttatási tiltások a feltöltési könyvtárakban és brute-force elleni korlátozás.
+                  wp-config védelme, .htaccess szabályok szigorítása,
+                  fájlfuttatási tiltások a feltöltési könyvtárakban és
+                  brute-force elleni korlátozás.
                 </p>
               </div>
               <div className="mt-6 pt-6 border-t border-slate-800/80 text-xs text-sky-400 flex items-center gap-1.5 font-semibold">
@@ -272,13 +303,18 @@ export default function WordPressBiztonsagPage() {
                 <div className="w-12 h-12 rounded-xl bg-purple-950/80 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-6">
                   <Search className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">Google Feketelista Feloldás</h3>
+                <h3 className="text-xl font-bold text-white mb-3">
+                  Google Feketelista Feloldás
+                </h3>
                 <p className="text-slate-400 text-sm leading-relaxed">
-                  Ha a Google vagy a vírusirtók megjelölték az oldaladat, hivatalos felülvizsgálati kérelmet nyújtok be a tiszta állapot bizonyításával.
+                  Ha a Google vagy a vírusirtók megjelölték az oldaladat,
+                  hivatalos felülvizsgálati kérelmet nyújtok be a tiszta állapot
+                  bizonyításával.
                 </p>
               </div>
               <div className="mt-6 pt-6 border-t border-slate-800/80 text-xs text-purple-400 flex items-center gap-1.5 font-semibold">
-                <CheckCircle2 className="w-4 h-4" /> Piros figyelmeztetés törlése
+                <CheckCircle2 className="w-4 h-4" /> Piros figyelmeztetés
+                törlése
               </div>
             </div>
 
@@ -288,12 +324,20 @@ export default function WordPressBiztonsagPage() {
                   <FileCode className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-white">Biztonságos Adatbázis- és Fájlhelyreállítás</h3>
-                  <p className="text-slate-400 text-sm">Adatvesztés nélküli helyreállítási folyamat tiszta forrásokból.</p>
+                  <h3 className="text-xl font-bold text-white">
+                    Biztonságos Adatbázis- és Fájlhelyreállítás
+                  </h3>
+                  <p className="text-slate-400 text-sm">
+                    Adatvesztés nélküli helyreállítási folyamat tiszta
+                    forrásokból.
+                  </p>
                 </div>
               </div>
               <p className="text-slate-400 text-sm leading-relaxed mb-4">
-                Soha nem írom felül felelőtlenül az adataidat. Először teljes nyers mentést készítek a jelenlegi állapotról, majd izolált környezetben analizálom az adatbázist és a kódokat, hogy egyetlen megrendelés vagy blogbejegyzés se vesszen kárba.
+                Soha nem írom felül felelőtlenül az adataidat. Először teljes
+                nyers mentést készítek a jelenlegi állapotról, majd izolált
+                környezetben analizálom az adatbázist és a kódokat, hogy
+                egyetlen megrendelés vagy blogbejegyzés se vesszen kárba.
               </p>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-4 border-t border-slate-800/80">
                 <div className="flex items-center gap-2 text-xs text-slate-300 font-medium">
@@ -316,9 +360,12 @@ export default function WordPressBiztonsagPage() {
                 <div className="w-12 h-12 rounded-xl bg-emerald-950/80 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mb-6">
                   <ShieldCheck className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">Megelőzés: Olcsóbb mint a Kár</h3>
+                <h3 className="text-xl font-bold text-white mb-3">
+                  Megelőzés: Olcsóbb mint a Kár
+                </h3>
                 <p className="text-slate-400 text-sm leading-relaxed">
-                  A proaktív biztonsági beállítások töredékébe kerülnek annak, mint amikor napokig áll az üzleted egy zsarolóvírus miatt.
+                  A proaktív biztonsági beállítások töredékébe kerülnek annak,
+                  mint amikor napokig áll az üzleted egy zsarolóvírus miatt.
                 </p>
               </div>
               <div className="mt-6 pt-6 border-t border-slate-800/80 text-xs text-emerald-400 flex items-center gap-1.5 font-semibold">
@@ -337,7 +384,8 @@ export default function WordPressBiztonsagPage() {
               Biztonsági Szintek & Beavatkozások
             </h2>
             <p className="text-slate-400">
-              Válaszd az akut vészhelyzet elhárítását vagy az előrelátó, megelőző védelmi felügyeletet.
+              Válaszd az akut vészhelyzet elhárítását vagy az előrelátó,
+              megelőző védelmi felügyeletet.
             </p>
           </div>
 
@@ -363,12 +411,14 @@ export default function WordPressBiztonsagPage() {
 
           <div className="space-y-4">
             {faqs.map((faq, index) => (
-              <div 
+              <div
                 key={index}
                 className="p-6 rounded-xl bg-slate-900/50 border border-slate-800 hover:border-slate-700 transition-colors"
               >
                 <h3 className="text-lg font-bold text-white mb-2 flex items-start gap-3">
-                  <span className="text-brand-primary font-mono text-sm mt-1">0{index + 1}.</span>
+                  <span className="text-brand-primary font-mono text-sm mt-1">
+                    0{index + 1}.
+                  </span>
                   {faq.q}
                 </h3>
                 <p className="text-slate-400 text-sm leading-relaxed pl-8">
@@ -387,7 +437,8 @@ export default function WordPressBiztonsagPage() {
             Feltörték a weboldalad, vagy védelemre van szükséged?
           </h2>
           <p className="text-slate-300 max-w-2xl mx-auto mb-8 text-lg">
-            Írj azonnal, add meg a címet, és gyorsan megkezdem a diagnosztikát és a védelmet!
+            Írj azonnal, add meg a címet, és gyorsan megkezdem a diagnosztikát
+            és a védelmet!
           </p>
           <Link
             href="/kapcsolat?service=sec-emergency"

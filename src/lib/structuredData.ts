@@ -22,6 +22,50 @@ export function serializeJsonLd(schema: JsonLdSchema): string {
   return JSON.stringify(schema).replace(/</g, "\\u003c");
 }
 
+/** Központi E-E-A-T alapító entitás (beágyazáshoz Organization.founder mezőben). */
+export const CANONICAL_FOUNDER_REF = {
+  "@type": "Person",
+  "@id": `${SITE_URL}/#person`,
+  name: "Balog Norbert",
+  alternateName: ["Balog Norbi", "WebDude"],
+  jobTitle:
+    "Full-Stack Webfejlesztő, Art Director & AI Automatizációs Szakértő",
+  description:
+    "Balog Norbert (WebDude) — 26 év tervezőgrafikai és 16 év webfejlesztői tapasztalattal rendelkező szakember.",
+  url: `${SITE_URL}/szia-norbi-vagyok`,
+} as const;
+
+/** Központi E-E-A-T Person entitás (SSOT). */
+export const CANONICAL_PERSON_ENTITY = {
+  ...CANONICAL_FOUNDER_REF,
+  description:
+    "Balog Norbert (WebDude) — 26 év tervezőgrafikai és 16 év webfejlesztői tapasztalattal rendelkező szakértő. Next.js 16, React 19, Tailwind v4, Firebase, WordPress és AI automatizációs rendszerek.",
+  worksFor: {
+    "@type": "Organization",
+    "@id": `${SITE_URL}/#organization`,
+    name: "WebDude",
+    url: SITE_URL,
+  },
+} as const;
+
+/** Központi E-E-A-T Organization entitás (SSOT). */
+export const CANONICAL_ORGANIZATION_ENTITY = {
+  "@type": "Organization",
+  "@id": `${SITE_URL}/#organization`,
+  name: "WebDude",
+  url: SITE_URL,
+  foundingDate: "2009",
+  telephone: "+36 70 323 8003",
+  email: "hello@webdude.hu",
+  logo: {
+    "@type": "ImageObject",
+    url: `${SITE_URL}/og/webdude-og.jpg`,
+    width: 1200,
+    height: 630,
+  },
+  founder: CANONICAL_FOUNDER_REF,
+} as const;
+
 const EN_PAGE_URL = `${SITE_URL}${EN_PREFIX}`;
 
 /** E-E-A-T horgony — angol hitelességi bizonyíték, minden sémába beégetve. */
@@ -89,6 +133,9 @@ export function buildEnJsonLd(dictionary: Dictionary): JsonLdSchema[] {
     inLanguage: "en-US",
     name: "WebDude",
     url: SITE_URL,
+    foundingDate: "2009",
+    telephone: "+36 70 323 8003",
+    email: "hello@webdude.hu",
     logo: {
       "@type": "ImageObject",
       url: `${SITE_URL}/og/webdude-og.jpg`,
@@ -98,8 +145,10 @@ export function buildEnJsonLd(dictionary: Dictionary): JsonLdSchema[] {
     description: `WebDude is the premium web development and AI automation practice of Balog Norbert, backed by ${E_E_A_T}. Next.js 16, React 19 and Firebase solutions, delivered as a remote partner to clients worldwide.`,
     founder: {
       "@type": "Person",
+      "@id": `${SITE_URL}/#person`,
       name: "Balog Norbert",
-      jobTitle: "Web Developer, SEO Expert & Graphic Designer",
+      alternateName: ["Balog Norbi", "WebDude"],
+      jobTitle: "Full-Stack Webfejlesztő, Art Director & AI Automatizációs Szakértő",
     },
     contactPoint: {
       "@type": "ContactPoint",
@@ -125,6 +174,7 @@ export function buildEnJsonLd(dictionary: Dictionary): JsonLdSchema[] {
     inLanguage: "en-US",
     name: "WebDude",
     url: SITE_URL,
+    foundingDate: "2009",
     description: `Premium web development, AI automation, SEO and graphic design. ${E_E_A_T}. Headquarters in Kecskemét, Hungary; delivery as a remote partner worldwide.`,
     telephone: "+36 70 323 8003",
     email: "hello@webdude.hu",
@@ -137,7 +187,12 @@ export function buildEnJsonLd(dictionary: Dictionary): JsonLdSchema[] {
     geo: { "@type": "GeoCoordinates", latitude: 46.908, longitude: 19.693 },
     logo: `${SITE_URL}/og/webdude-og.jpg`,
     areaServed: "Worldwide",
-    founder: { "@type": "Person", name: "Balog Norbert" },
+    founder: {
+      "@type": "Person",
+      "@id": `${SITE_URL}/#person`,
+      name: "Balog Norbert",
+      alternateName: ["Balog Norbi", "WebDude"],
+    },
   };
 
   // Service séma — fő szolgáltatási kategóriák (EN)
@@ -293,11 +348,9 @@ export function buildHuJsonLd(dictionary: Dictionary): JsonLdSchema[] {
       height: 630,
     },
     foundingDate: "2009",
-    founder: {
-      "@type": "Person",
-      "@id": "https://webdude.hu/#person",
-      name: "Balog Norbert",
-    },
+    telephone: "+36 70 323 8003",
+    email: "hello@webdude.hu",
+    founder: CANONICAL_FOUNDER_REF,
     areaServed: {
       "@type": "Country",
       name: "Hungary",
@@ -398,7 +451,7 @@ export function buildHuJsonLd(dictionary: Dictionary): JsonLdSchema[] {
         "@type": "HowToStep",
         position: 2,
         name: "Stratégia és tervezés",
-        text: "Kidolgozom a részletes tervet, fix árajánlatot és ütemezést adok.",
+        text: "Kidolgozom a részletes tervet, egyedi árajánlatot és ütemezést adok.",
       },
       {
         "@type": "HowToStep",

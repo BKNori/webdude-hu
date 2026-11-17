@@ -69,8 +69,9 @@ export default async function RootLayout({ children }: RootLayoutProps) {
     "@type": "LocalBusiness",
     "@id": "https://webdude.hu/#organization",
     name: "WebDude",
+    foundingDate: "2009",
     description:
-      "Full-stack webfejlesztés, AI workflow és agent rendszerek — egy kézből. 26 év grafikai és 16 év webfejlesztői tapasztalat, Next.js 16, React 19, Tailwind v4, Firebase alapú prémium megoldások Kecskemétről.",
+      "Full-stack webfejlesztés, AI workflow és agent rendszerek — egy kézből. 26 év tervezőgrafikai és 16 év webfejlesztői tapasztalat, Next.js 16, React 19, Tailwind v4, Firebase alapú prémium megoldások Kecskemétről.",
     url: "https://webdude.hu",
     telephone: "+36 70 323 8003",
     email: "hello@webdude.hu",
@@ -120,7 +121,8 @@ export default async function RootLayout({ children }: RootLayoutProps) {
       name: "Balog Norbert",
       alternateName: ["Balog Norbi", "WebDude"],
       jobTitle: "Full-Stack Webfejlesztő, Art Director & AI Automatizációs Szakértő",
-      description: "Balog Norbert (WebDude) — 26 év grafikai és 16 év webfejlesztői tapasztalattal rendelkező szakértő, Next.js 16, React 19, Tailwind v4, Firebase alapú prémium megoldások tervezett és megvalósított développere.",
+      description:
+        "Balog Norbert (WebDude) — 26 év tervezőgrafikai és 16 év webfejlesztői tapasztalattal rendelkező szakértő, Next.js 16, React 19, Tailwind v4, Firebase alapú prémium megoldások tervezője és fejlesztője.",
       url: "https://webdude.hu/szia-norbi-vagyok",
       worksFor: {
         "@type": "Organization",

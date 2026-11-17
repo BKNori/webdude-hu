@@ -75,6 +75,10 @@ export default async function HirekPage() {
       "@type": "Organization",
       "@id": `${baseUrl}/#organization`,
       name: "WebDude",
+      url: baseUrl,
+      foundingDate: "2009",
+      telephone: "+36 70 323 8003",
+      email: "hello@webdude.hu",
     },
     mainEntity: {
       "@type": "ItemList",

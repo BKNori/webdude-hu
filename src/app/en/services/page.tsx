@@ -131,9 +131,20 @@ export default async function EnServicesPage() {
     description:
       "Premium digital services: custom web development, professional graphic design, AI prompt engineering and SEO optimisation.",
     provider: {
-      "@type": "Person",
-      name: "Norbi (WebDude)",
+      "@type": "Organization",
+      "@id": "https://webdude.hu/#organization",
+      name: "WebDude",
       url: "https://webdude.hu",
+      foundingDate: "2009",
+      telephone: "+36 70 323 8003",
+      email: "hello@webdude.hu",
+      founder: {
+        "@type": "Person",
+        "@id": "https://webdude.hu/#person",
+        name: "Balog Norbert",
+        alternateName: ["Balog Norbi", "WebDude"],
+        url: "https://webdude.hu/szia-norbi-vagyok",
+      },
     },
     hasOfferCatalog: {
       "@type": "OfferCatalog",

@@ -39,8 +39,10 @@ const contactPageSchema = {
   url: "https://webdude.hu/kapcsolat",
   mainEntity: {
     "@type": "ProfessionalService",
+    "@id": "https://webdude.hu/#organization",
     name: "WebDude",
     url: "https://webdude.hu",
+    foundingDate: "2009",
     email: "hello@webdude.hu",
     telephone: "+36 70 323 8003",
     address: {
@@ -51,8 +53,11 @@ const contactPageSchema = {
     },
     founder: {
       "@type": "Person",
+      "@id": "https://webdude.hu/#person",
       name: "Balog Norbert",
-      jobTitle: "Vezető Fejlesztő és Tervező",
+      alternateName: ["Balog Norbi", "WebDude"],
+      jobTitle: "Full-Stack Webfejlesztő, Art Director & AI Automatizációs Szakértő",
+      description: "26 év tervezőgrafikai és 16 év webfejlesztői tapasztalat",
       url: "https://webdude.hu/szia-norbi-vagyok",
     },
     contactPoint: {

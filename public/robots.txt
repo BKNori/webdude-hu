@@ -1,27 +1,55 @@
-# WebDude - robots.txt konfiguráció
+# WebDude - robots.txt konfiguráció (AEO / GEO & Biztonság)
 User-agent: *
 Allow: /
+Disallow: /_next/
+Disallow: /api/
+Disallow: /admin/
+Disallow: /portal/
+Disallow: /login
+Disallow: /newsite/
 
-# AI kereső botok engedélyezése (AEO)
+# AI kereső és válaszmotor botok engedélyezése publikus útvonalakra (AEO / GEO)
 User-agent: GPTBot
 Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /portal/
+Disallow: /login
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /portal/
+Disallow: /login
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /portal/
+Disallow: /login
 
 User-agent: PerplexityBot
 Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /portal/
+Disallow: /login
 
 User-agent: ClaudeBot
 Allow: /
-
-# Technikai Next.js és API útvonalak tiltása
-Disallow: /_next/
 Disallow: /api/
-Disallow: /newsite/
+Disallow: /admin/
+Disallow: /portal/
+Disallow: /login
 
-# Sitemaps elérhetősége
+User-agent: Google-Extended
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /portal/
+Disallow: /login
+
+# Sitemap elérhetősége
 Sitemap: https://webdude.hu/sitemap.xml
-
-# Crawl-delay beállítása (opcionális, ha túl sok bot terhelné a szervert)
-Crawl-delay: 10
-
-# Lokális SEO és Brand védelem
-# Szenvedélyem a design és a kód - Kecskemét, 2026

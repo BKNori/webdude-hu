@@ -6,6 +6,11 @@ import { Metadata } from "next";
 import { ArrowRight, Clock, Calendar, User, Sparkles } from "lucide-react";
 import { buildBreadcrumbSchema, BreadcrumbItem } from "@/lib/breadcrumb";
 import { getCombinedBlogPosts, getPostBySlugCombined } from "@/lib/mdx";
+import {
+  CANONICAL_ORGANIZATION_ENTITY,
+  CANONICAL_PERSON_ENTITY,
+  serializeJsonLd,
+} from "@/lib/structuredData";
 import { MDXRemote } from "next-mdx-remote/rsc";
 
 interface PageProps {
@@ -78,7 +83,7 @@ export default async function BlogPost({ params }: PageProps) {
 
   const breadcrumbSchema = buildBreadcrumbSchema(breadcrumbItems);
 
-  // TechArticle séma SEO/AEO/GEO és Tudásgráf integrációhoz
+  // TechArticle séma SEO/AEO/GEO és Tudásgráf integrációhoz (SSOT entitás horgonyokkal)
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "TechArticle",
@@ -92,29 +97,28 @@ export default async function BlogPost({ params }: PageProps) {
       "@type": "WebPage",
       "@id": canonicalUrl,
     },
-    author: {
-      "@type": "Person",
-      "@id": "https://webdude.hu/#person",
-      name: "Balog Norbert",
-      alternateName: ["Balog Norbi", "WebDude"],
-      jobTitle: "Full-Stack Webfejlesztő & AI Automatizációs Szakértő",
-      description:
-        "26 év grafikai tervezési és 16 év webfejlesztői tapasztalat",
-      url: "https://webdude.hu/szia-norbi-vagyok",
-    },
-    publisher: {
-      "@type": "Organization",
-      "@id": "https://webdude.hu/#organization",
-      name: "WebDude",
-      url: "https://webdude.hu",
-      logo: {
-        "@type": "ImageObject",
-        url: "https://webdude.hu/assets/logos/webdude-logo.webp",
-      },
-    },
+    author: CANONICAL_PERSON_ENTITY,
+    publisher: CANONICAL_ORGANIZATION_ENTITY,
     articleSection: post.category || "Webfejlesztés",
     inLanguage: "hu-HU",
   };
+
+  const faqSchema =
+    post.faq && post.faq.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "@id": `${canonicalUrl}#faq`,
+          mainEntity: post.faq.map((item) => ({
+            "@type": "Question",
+            name: item.question,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: item.answer,
+            },
+          })),
+        }
+      : null;
 
   const formattedDate = new Date(post.date).toLocaleDateString("hu-HU", {
     year: "numeric",
@@ -128,15 +132,23 @@ export default async function BlogPost({ params }: PageProps) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema).replace(/</g, "\\u003c"),
+          __html: serializeJsonLd(breadcrumbSchema),
         }}
       />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(articleSchema).replace(/</g, "\\u003c"),
+          __html: serializeJsonLd(articleSchema),
         }}
       />
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: serializeJsonLd(faqSchema),
+          }}
+        />
+      )}
 
       <div className="min-h-screen bg-[#020617] text-[#e2e8f0] pt-32 pb-24">
         {/* Háttérfények */}

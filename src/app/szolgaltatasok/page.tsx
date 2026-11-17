@@ -66,15 +66,20 @@ export default async function ServicesPage() {
     "@context": "https://schema.org",
     "@type": "Person",
     "@id": "https://webdude.hu/#person",
-    name: "Balog Norbi",
-    jobTitle: "Full-Stack Webfejlesztő & AI Specialist",
+    name: "Balog Norbert",
+    alternateName: ["Balog Norbi", "WebDude"],
+    jobTitle:
+      "Full-Stack Webfejlesztő, Art Director & AI Automatizációs Szakértő",
     description:
-      "26 év grafikai és 16 év webfejlesztői tapasztalat, Next.js 16, React 19, Tailwind v4, Firebase alapú prémium megoldások országos szolgáltatással.",
-    url: "https://webdude.hu",
+      "26 év tervezőgrafikai és 16 év webfejlesztői tapasztalat, Next.js 16, React 19, Tailwind v4, Firebase alapú prémium megoldások országos szolgáltatással.",
+    url: "https://webdude.hu/szia-norbi-vagyok",
     worksFor: {
       "@type": "Organization",
       "@id": "https://webdude.hu/#organization",
       name: "WebDude",
+      foundingDate: "2009",
+      telephone: "+36 70 323 8003",
+      email: "hello@webdude.hu",
     },
   };
 
@@ -83,11 +88,14 @@ export default async function ServicesPage() {
     "@type": "Service",
     name: "Webfejlesztés, SEO, AI Automatizáció & Grafikai Tervezés",
     description:
-      "Egyedi Next.js és WordPress weboldal készítés, technikai SEO/AEO, AI automatizáció és grafikai tervezés KKV-knak, 26 év grafikai és 16 év fejlesztői tapasztalattal, országos online kiszolgálással, egyedi árajánlat alapján.",
+      "Egyedi Next.js és WordPress weboldal készítés, technikai SEO/AEO, AI automatizáció és grafikai tervezés KKV-knak, 26 év tervezőgrafikai és 16 év fejlesztői tapasztalattal, országos online kiszolgálással, egyedi árajánlat alapján.",
     provider: {
       "@type": "Organization",
       "@id": "https://webdude.hu/#organization",
       name: "WebDude",
+      foundingDate: "2009",
+      telephone: "+36 70 323 8003",
+      email: "hello@webdude.hu",
     },
     areaServed: {
       "@type": "Country",
@@ -222,11 +230,17 @@ export default async function ServicesPage() {
       "@type": "Organization",
       "@id": "https://webdude.hu/#organization",
       name: "WebDude",
+      foundingDate: "2009",
+      telephone: "+36 70 323 8003",
+      email: "hello@webdude.hu",
       founder: {
         "@type": "Person",
-        name: "Balog Norbi",
-        jobTitle: "Full-Stack Webfejlesztő & AI Specialist",
-        description: "26 év grafikai és 16 év webfejlesztői tapasztalat",
+        "@id": "https://webdude.hu/#person",
+        name: "Balog Norbert",
+        alternateName: ["Balog Norbi", "WebDude"],
+        jobTitle:
+          "Full-Stack Webfejlesztő, Art Director & AI Automatizációs Szakértő",
+        description: "26 év tervezőgrafikai és 16 év webfejlesztői tapasztalat",
       },
     },
     hasOfferCatalog: {

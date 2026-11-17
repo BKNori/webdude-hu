@@ -63,9 +63,13 @@ export default function EnWooCommercePage() {
     description:
       "16 years of experience in WooCommerce webshop development and optimisation. Conversion-focused e-commerce systems, payment integrations and full support.",
     provider: {
-      "@type": "LocalBusiness",
+      "@type": "Organization",
+      "@id": "https://webdude.hu/#organization",
       name: "WebDude",
       url: "https://webdude.hu",
+      foundingDate: "2009",
+      telephone: "+36 70 323 8003",
+      email: "hello@webdude.hu",
     },
     areaServed: { "@type": "Country", name: "Hungary" },
   };

@@ -100,6 +100,9 @@ export default async function ProjectPage({ params }: PageProps) {
         "@type": "Person",
         "@id": "https://webdude.hu/#person",
         name: "Balog Norbert",
+        alternateName: ["Balog Norbi", "WebDude"],
+        jobTitle: "Full-Stack Webfejlesztő, Art Director & AI Automatizációs Szakértő",
+        url: "https://webdude.hu/szia-norbi-vagyok",
       },
     },
   ];

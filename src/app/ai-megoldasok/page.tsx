@@ -111,27 +111,34 @@ export default function AIMSolutionsPage() {
             "@context": "https://schema.org",
             "@type": "Organization",
             "@id": "https://webdude.hu/#organization",
-            name: "WebDude.hu",
+            name: "WebDude",
             url: "https://webdude.hu",
+            foundingDate: "2009",
+            telephone: "+36 70 323 8003",
+            email: "hello@webdude.hu",
             description:
               "Weboldal, ami dolgozik helyetted — vállalati AI automatizáció, webfejlesztés és grafikai tervezés Kecskemétről, országosan.",
             founder: {
               "@type": "Person",
-              name: "Norbi (WebDude)",
-              jobTitle: "Webfejlesztő és Grafikai Tervező",
+              "@id": "https://webdude.hu/#person",
+              name: "Balog Norbert",
+              alternateName: ["Balog Norbi", "WebDude"],
+              jobTitle:
+                "Full-Stack Webfejlesztő, Art Director & AI Automatizációs Szakértő",
               description:
-                "26 éves grafikai és 16 éves webfejlesztői tapasztalattal rendelkező szakértő.",
+                "26 év tervezőgrafikai és 16 év webfejlesztői tapasztalattal rendelkező szakértő.",
               url: "https://webdude.hu/szia-norbi-vagyok",
             },
             contactPoint: {
               "@type": "ContactPoint",
               telephone: "+36 70 323 8003",
+              email: "hello@webdude.hu",
               contactType: "customer service",
               availableLanguage: "Hungarian",
             },
             sameAs: [
               "https://www.facebook.com/webdude.hu",
-              "https://www.linkedin.com/company/webdude-hu",
+              "https://www.linkedin.com/company/webdude",
             ],
           }).replace(/</g, "\\u003c"),
         }}
@@ -142,12 +149,14 @@ export default function AIMSolutionsPage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
-            "@id": "https://webdude.hu/#localbusiness",
-            name: "WebDude.hu",
+            "@id": "https://webdude.hu/#organization",
+            name: "WebDude",
+            foundingDate: "2009",
             image:
               "https://webdude.hu/assets/portfolio/ai-promt-hu/ai-promt-hi-banner.webp",
             url: "https://webdude.hu",
             telephone: "+36 70 323 8003",
+            email: "hello@webdude.hu",
             address: {
               "@type": "PostalAddress",
               addressLocality: "Kecskemét",
@@ -182,14 +191,17 @@ export default function AIMSolutionsPage() {
             "@context": "https://schema.org",
             "@type": "Person",
             "@id": "https://webdude.hu/#person",
-            name: "Norbi (WebDude)",
-            jobTitle: "Webfejlesztő és Grafikai Tervező",
+            name: "Balog Norbert",
+            alternateName: ["Balog Norbi", "WebDude"],
+            jobTitle:
+              "Full-Stack Webfejlesztő, Art Director & AI Automatizációs Szakértő",
             description:
-              "26 éves grafikai és 16 éves webfejlesztői tapasztalattal rendelkező szakértő. Next.js 16, React 19, TypeScript és AI automatizáció specialista.",
+              "26 év tervezőgrafikai és 16 év webfejlesztői tapasztalattal rendelkező szakértő. Next.js 16, React 19, TypeScript és AI automatizáció specialista.",
             url: "https://webdude.hu/szia-norbi-vagyok",
             worksFor: {
               "@type": "Organization",
-              name: "WebDude.hu",
+              "@id": "https://webdude.hu/#organization",
+              name: "WebDude",
               url: "https://webdude.hu",
             },
             address: {
@@ -199,7 +211,7 @@ export default function AIMSolutionsPage() {
             },
             sameAs: [
               "https://www.facebook.com/webdude.hu",
-              "https://www.linkedin.com/company/webdude-hu",
+              "https://www.linkedin.com/company/webdude",
             ],
           }).replace(/</g, "\\u003c"),
         }}
@@ -212,13 +224,16 @@ export default function AIMSolutionsPage() {
             "@type": "Service",
             name: "Vállalati AI Automatizáció és Egyedi Prompt Tervezés",
             description:
-              "Weboldal, ami dolgozik helyetted — vállalati AI automatizáció, webfejlesztés és grafikai tervezés Kecskemétről, országosan. 26 év grafikai és 16 év webfejlesztői tapasztalat.",
+              "Weboldal, ami dolgozik helyetted — vállalati AI automatizáció, webfejlesztés és grafikai tervezés Kecskemétről, országosan. 26 év tervezőgrafikai és 16 év webfejlesztői tapasztalat.",
             provider: {
               "@type": "Person",
-              name: "Norbi (WebDude)",
-              jobTitle: "Webfejlesztő és Grafikai Tervező",
+              "@id": "https://webdude.hu/#person",
+              name: "Balog Norbert",
+              alternateName: ["Balog Norbi", "WebDude"],
+              jobTitle:
+                "Full-Stack Webfejlesztő, Art Director & AI Automatizációs Szakértő",
               description:
-                "26 éves grafikai és 16 éves webfejlesztői tapasztalattal rendelkező szakértő.",
+                "26 év tervezőgrafikai és 16 év webfejlesztői tapasztalattal rendelkező szakértő.",
               url: "https://webdude.hu/szia-norbi-vagyok",
             },
             url: "https://webdude.hu/ai-megoldasok",

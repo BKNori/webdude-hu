@@ -1,3 +1,8 @@
+export interface BlogFaqItem {
+  question: string;
+  answer: string;
+}
+
 export interface BlogPost {
   slug: string;
   title: string;
@@ -13,6 +18,7 @@ export interface BlogPost {
   featured?: boolean;
   author?: string;
   updatedAt?: string;
+  faq?: BlogFaqItem[];
 }
 
 /** Firestore `blog_posts` kollekció dokumentum típusa. */
@@ -41,4 +47,5 @@ export interface BlogPostFrontmatter {
   tldr?: string;
   image?: string;
   noindex?: boolean;
+  faq?: BlogFaqItem[];
 }

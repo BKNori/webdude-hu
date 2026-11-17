@@ -1,5 +1,7 @@
 import type { MetadataRoute } from "next";
 
+const DISALLOWED_PATHS = ["/api/", "/admin/", "/portal/", "/login"];
+
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
@@ -7,18 +9,22 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/", "/admin/"],
+        disallow: DISALLOWED_PATHS,
       },
-      // AI Answer Engine crawlerek — explicit engedélyezés (AEO kritikus!)
-      // Ezek indexelik az oldalt ChatGPT, Perplexity, Claude, Gemini válaszaiba
-      { userAgent: "GPTBot", allow: "/" },
-      { userAgent: "ChatGPT-User", allow: "/" },
-      { userAgent: "ClaudeBot", allow: "/" },
-      { userAgent: "anthropic-ai", allow: "/" },
-      { userAgent: "PerplexityBot", allow: "/" },
-      { userAgent: "Googlebot-Extended", allow: "/" },
-      { userAgent: "cohere-ai", allow: "/" },
-      { userAgent: "Google-Extended", allow: "/" },
+      // AI Answer Engine crawlerek — explicit engedélyezés publikus útvonalakra (AEO/GEO)
+      { userAgent: "GPTBot", allow: "/", disallow: DISALLOWED_PATHS },
+      { userAgent: "OAI-SearchBot", allow: "/", disallow: DISALLOWED_PATHS },
+      { userAgent: "ChatGPT-User", allow: "/", disallow: DISALLOWED_PATHS },
+      { userAgent: "PerplexityBot", allow: "/", disallow: DISALLOWED_PATHS },
+      { userAgent: "ClaudeBot", allow: "/", disallow: DISALLOWED_PATHS },
+      { userAgent: "anthropic-ai", allow: "/", disallow: DISALLOWED_PATHS },
+      { userAgent: "Google-Extended", allow: "/", disallow: DISALLOWED_PATHS },
+      {
+        userAgent: "Googlebot-Extended",
+        allow: "/",
+        disallow: DISALLOWED_PATHS,
+      },
+      { userAgent: "cohere-ai", allow: "/", disallow: DISALLOWED_PATHS },
     ],
     sitemap: "https://webdude.hu/sitemap.xml",
   };

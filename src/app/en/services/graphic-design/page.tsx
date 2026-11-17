@@ -49,6 +49,9 @@ export default function EnGraphicDesignPage() {
       "@id": "https://webdude.hu/#organization",
       name: "WebDude",
       url: "https://webdude.hu",
+      foundingDate: "2009",
+      telephone: "+36 70 323 8003",
+      email: "hello@webdude.hu",
     },
     areaServed: { "@type": "Country", name: "Hungary" },
   };

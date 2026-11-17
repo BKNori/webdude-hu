@@ -11,7 +11,7 @@
  * van; itt a **bejegyzés-navigáció** és a **JSON-LD** maradt.
  */
 import { test, expect } from "@playwright/test";
-import { dismissConsentBanner } from "./smoke-helpers";
+import { dismissConsentBanner, watchConsoleErrors } from "./smoke-helpers";
 
 test.describe("Hírek oldal (/hirek) — tartalmi ellenőrzések", () => {
   test.beforeEach(async ({ page }) => {
@@ -62,5 +62,43 @@ test.describe("Hírek oldal (/hirek) — tartalmi ellenőrzések", () => {
     expect(types).not.toContain("PARSE_HIBA");
     // A blogoldal a bejegyzéslistát `CollectionPage` -> `ItemList`-ként jelöli.
     expect(types.some((t) => t.includes("ItemList"))).toBe(true);
+  });
+
+  test("2026-os GEO/AEO szakcikk részletoldal: TechArticle + FAQPage JSON-LD és egyetlen <h1>", async ({
+    page,
+  }) => {
+    const errors = watchConsoleErrors(page);
+
+    const res = await page.goto(
+      "/hirek/2026-11-17-ai-keresooptimalizalas-geo-aeo-utmutato-cegeknek",
+      { waitUntil: "domcontentloaded" }
+    );
+    expect(res?.status()).toBe(200);
+    await page.waitForLoadState("load");
+    await dismissConsentBanner(page);
+
+    expect(await page.locator("h1").count()).toBe(1);
+    await expect(page.getByText("Gyors összefoglaló (TL;DR)")).toBeVisible();
+    await expect(page.locator("article table").first()).toBeVisible();
+
+    const parsedSchemas = await page
+      .locator('script[type="application/ld+json"]')
+      .evaluateAll((nodes) =>
+        nodes.map((n) => JSON.parse(n.textContent ?? "{}"))
+      );
+
+    const schemaTypes = parsedSchemas.map((s) => s["@type"]);
+    expect(schemaTypes).toContain("BreadcrumbList");
+    expect(schemaTypes).toContain("TechArticle");
+    expect(schemaTypes).toContain("FAQPage");
+
+    const techArticle = parsedSchemas.find((s) => s["@type"] === "TechArticle");
+    expect(techArticle?.author?.name).toBe("Balog Norbert");
+    expect(techArticle?.publisher?.foundingDate).toBe("2009");
+
+    const faqPage = parsedSchemas.find((s) => s["@type"] === "FAQPage");
+    expect(Array.isArray(faqPage?.mainEntity)).toBe(true);
+    expect(faqPage.mainEntity.length).toBe(4);
+    expect(errors).toEqual([]);
   });
 });

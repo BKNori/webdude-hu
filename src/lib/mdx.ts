@@ -1,25 +1,132 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import { BlogPost } from "@/types/blog";
+import { BlogFaqItem, BlogPost } from "@/types/blog";
 
 const postsDirectory = path.join(process.cwd(), "src", "content", "blog");
 
+/** Tisztítja a Markdown formázásokat a JSON-LD FAQPage szövegéből. */
+function stripMarkdownFormatting(text: string): string {
+  return text
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
+    .replace(/[`*_~]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+/**
+ * Kinyeri a GYIK (FAQ) tételeket a cikk `faq` frontmatteréből vagy a Markdown
+ * `## Gyakori kérdések` / `## GYIK` szekciójából a `### Kérdés` blokkok alapján.
+ */
+function extractFaqItems(
+  rawFaq: unknown,
+  content: string
+): BlogFaqItem[] | undefined {
+  if (Array.isArray(rawFaq)) {
+    const parsed = rawFaq
+      .filter(
+        (item): item is { question: string; answer: string } =>
+          typeof item === "object" &&
+          item !== null &&
+          typeof (item as { question?: unknown }).question === "string" &&
+          typeof (item as { answer?: unknown }).answer === "string"
+      )
+      .map((item) => ({
+        question: item.question.trim(),
+        answer: item.answer.trim(),
+      }))
+      .filter((item) => item.question.length > 0 && item.answer.length > 0);
+    if (parsed.length > 0) return parsed;
+  }
+
+  const lines = content.split(/\r?\n/);
+  const items: BlogFaqItem[] = [];
+  let inFaqSection = false;
+  let currentQuestion = "";
+  let currentAnswerLines: string[] = [];
+
+  const flushCurrent = () => {
+    if (currentQuestion && currentAnswerLines.length > 0) {
+      const answer = stripMarkdownFormatting(currentAnswerLines.join(" "));
+      if (answer.length > 0) {
+        items.push({
+          question: stripMarkdownFormatting(currentQuestion),
+          answer,
+        });
+      }
+    }
+    currentQuestion = "";
+    currentAnswerLines = [];
+  };
+
+  for (const line of lines) {
+    const trimmed = line.trim();
+    if (/^##\s+/.test(trimmed)) {
+      if (inFaqSection) {
+        flushCurrent();
+        break;
+      }
+      if (/^##\s+.*(?:gyakori\s+kérdések|gyik|faq)/i.test(trimmed)) {
+        inFaqSection = true;
+      }
+      continue;
+    }
+
+    if (!inFaqSection) continue;
+
+    if (/^###\s+/.test(trimmed)) {
+      flushCurrent();
+      currentQuestion = trimmed.replace(/^###\s+/, "");
+      continue;
+    }
+
+    if (currentQuestion && trimmed.length > 0 && !trimmed.startsWith("---")) {
+      currentAnswerLines.push(trimmed.replace(/^[-*]\s+/, ""));
+    }
+  }
+
+  if (inFaqSection) flushCurrent();
+  return items.length > 0 ? items : undefined;
+}
+
 function detectCategory(title: string, slug: string): string {
   const text = `${title} ${slug}`.toLowerCase();
-  if (text.includes("wordpress") || text.includes("wp-") || text.includes("phpmyadmin")) {
+  if (
+    text.includes("wordpress") ||
+    text.includes("wp-") ||
+    text.includes("phpmyadmin")
+  ) {
     return "WordPress";
   }
-  if (text.includes("seo") || text.includes("google") || text.includes("cegprofil")) {
+  if (
+    text.includes("seo") ||
+    text.includes("google") ||
+    text.includes("cegprofil")
+  ) {
     return "SEO & Keresőoptimalizálás";
   }
-  if (text.includes("ai") || text.includes("promt") || text.includes("prompt") || text.includes("intelligencia")) {
+  if (
+    text.includes("ai") ||
+    text.includes("promt") ||
+    text.includes("prompt") ||
+    text.includes("intelligencia")
+  ) {
     return "AI Automatizáció";
   }
-  if (text.includes("marka") || text.includes("grafik") || text.includes("arculat") || text.includes("design") || text.includes("csomagol")) {
+  if (
+    text.includes("marka") ||
+    text.includes("grafik") ||
+    text.includes("arculat") ||
+    text.includes("design") ||
+    text.includes("csomagol")
+  ) {
     return "Grafikai tervezés";
   }
-  if (text.includes("woocommerce") || text.includes("webshop") || text.includes("rendeles")) {
+  if (
+    text.includes("woocommerce") ||
+    text.includes("webshop") ||
+    text.includes("rendeles")
+  ) {
     return "Webshop fejlesztés";
   }
   return "Webfejlesztés";
@@ -49,13 +156,19 @@ function parseMdxFile(fileName: string): BlogPost | null {
       dateStr = String(rawDate).split("T")[0];
     }
 
-    const excerpt = (data.excerpt as string) || (data.description as string) || "";
+    const excerpt =
+      (data.excerpt as string) || (data.description as string) || "";
     const tldr = (data.tldr as string) || "";
     const category = (data.category as string) || detectCategory(title, slug);
-    const readingTime = (data.readingTime as string) || calculateReadingTime(content);
-    const coverImage = (data.coverImage as string) || (data.image as string) || "/assets/banners/webdude-hero.webp";
+    const readingTime =
+      (data.readingTime as string) || calculateReadingTime(content);
+    const coverImage =
+      (data.coverImage as string) ||
+      (data.image as string) ||
+      "/assets/banners/webdude-hero.webp";
     const author = (data.author as string) || "Balog Norbert";
     const noindex = Boolean(data.noindex);
+    const faq = extractFaqItems(data.faq, content);
 
     return {
       slug,
@@ -71,6 +184,7 @@ function parseMdxFile(fileName: string): BlogPost | null {
       author,
       noindex,
       updatedAt: (data.updatedAt as string) || dateStr,
+      faq,
     };
   } catch (err) {
     console.error(`parseMdxFile hiba a(z) ${fileName} fájlnál:`, err);
@@ -137,7 +251,8 @@ export async function getCombinedBlogPosts(): Promise<BlogPost[]> {
 
   // 2. Firestore cikkek kiegészítése/felülírása try/catch védelemmel
   try {
-    const { getBlogPostsFromFirestore } = await import("@/app/actions/blogPosts");
+    const { getBlogPostsFromFirestore } =
+      await import("@/app/actions/blogPosts");
     const firestorePosts = await getBlogPostsFromFirestore();
     if (firestorePosts && Array.isArray(firestorePosts)) {
       for (const fp of firestorePosts) {
@@ -164,17 +279,24 @@ export async function getCombinedBlogPosts(): Promise<BlogPost[]> {
       }
     }
   } catch (err) {
-    console.warn("getCombinedBlogPosts: Firestore lekérés sikertelen, lokális MDX cikkek aktívak", err);
+    console.warn(
+      "getCombinedBlogPosts: Firestore lekérés sikertelen, lokális MDX cikkek aktívak",
+      err
+    );
   }
 
   const all = Array.from(postsMap.values());
-  return all.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  return all.sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
 }
 
 /**
  * Egyedi cikk lekérdezése slug alapján: először lokális MDX, majd Firestore fallback.
  */
-export async function getPostBySlugCombined(slug: string): Promise<BlogPost | null> {
+export async function getPostBySlugCombined(
+  slug: string
+): Promise<BlogPost | null> {
   // 1. Lokális MDX keresése
   const localPost = getPostBySlug(slug);
   if (localPost) {
@@ -183,11 +305,12 @@ export async function getPostBySlugCombined(slug: string): Promise<BlogPost | nu
 
   // 2. Firestore fallback
   try {
-    const { getBlogPostsFromFirestore } = await import("@/app/actions/blogPosts");
+    const { getBlogPostsFromFirestore } =
+      await import("@/app/actions/blogPosts");
     const firestorePosts = await getBlogPostsFromFirestore();
     const fp = firestorePosts.find((p) => p.slug === slug);
     if (fp) {
-        return {
+      return {
         slug: fp.slug,
         title: fp.title,
         date: fp.date,
@@ -205,7 +328,10 @@ export async function getPostBySlugCombined(slug: string): Promise<BlogPost | nu
       };
     }
   } catch (err) {
-    console.warn(`getPostBySlugCombined: Firestore lekérés sikertelen a(z) ${slug} cikkhez`, err);
+    console.warn(
+      `getPostBySlugCombined: Firestore lekérés sikertelen a(z) ${slug} cikkhez`,
+      err
+    );
   }
 
   return null;

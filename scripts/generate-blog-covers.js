@@ -30,30 +30,48 @@ const CATEGORY_THEMES = {
   },
   "SEO & Keresőoptimalizálás": {
     badge: "SEO & STRATÉGIA",
-    primary: "#7C3AED",      // Vivid Violet
-    secondary: "#00B5F1",    // Cyan
+    primary: "#7C3AED", // Vivid Violet
+    secondary: "#00B5F1", // Cyan
     badgeBg: "rgba(124, 58, 237, 0.18)",
     badgeBorder: "rgba(124, 58, 237, 0.45)",
     badgeText: "#c4b5fd",
     glowColor: "rgba(124, 58, 237, 0.4)",
   },
+  "SEO & AEO": {
+    badge: "SEO & AEO / GEO",
+    primary: "#00B5F1", // Electric Cyan
+    secondary: "#7C3AED", // Vivid Violet
+    badgeBg: "rgba(0, 181, 241, 0.18)",
+    badgeBorder: "rgba(124, 58, 237, 0.45)",
+    badgeText: "#38bdf8",
+    glowColor: "rgba(0, 181, 241, 0.4)",
+  },
   "AI Automatizáció": {
     badge: "AI AUTOMATIZÁCIÓ",
-    primary: "#f59e0b",      // Cyber-Gold / Amber
-    secondary: "#7C3AED",    // Violet
-    badgeBg: "rgba(245, 158, 11, 0.15)",
-    badgeBorder: "rgba(245, 158, 11, 0.4)",
-    badgeText: "#fcd34d",
-    glowColor: "rgba(245, 158, 11, 0.35)",
+    primary: "#00B5F1", // Electric Cyan
+    secondary: "#5B21B6", // Deep Violet
+    badgeBg: "rgba(0, 181, 241, 0.16)",
+    badgeBorder: "rgba(91, 33, 182, 0.45)",
+    badgeText: "#38bdf8",
+    glowColor: "rgba(91, 33, 182, 0.38)",
   },
   "Webshop fejlesztés": {
     badge: "WEBSHOP FEJLESZTÉS",
-    primary: "#10b981",      // Emerald
-    secondary: "#00B5F1",    // Cyan
+    primary: "#10b981", // Emerald
+    secondary: "#00B5F1", // Cyan
     badgeBg: "rgba(16, 185, 129, 0.15)",
     badgeBorder: "rgba(16, 185, 129, 0.4)",
     badgeText: "#6ee7b7",
     glowColor: "rgba(16, 185, 129, 0.35)",
+  },
+  "E-kereskedelem": {
+    badge: "B2B E-KERESKEDELEM",
+    primary: "#00B5F1", // Electric Cyan
+    secondary: "#10b981", // Emerald
+    badgeBg: "rgba(0, 181, 241, 0.16)",
+    badgeBorder: "rgba(16, 185, 129, 0.4)",
+    badgeText: "#38bdf8",
+    glowColor: "rgba(0, 181, 241, 0.35)",
   },
   "Grafikai tervezés": {
     badge: "GRAFIKAI TERVEZÉS",

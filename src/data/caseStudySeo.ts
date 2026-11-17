@@ -36,8 +36,9 @@ const NORBI_PERSON = {
   "@type": "Person",
   "@id": "https://webdude.hu/#person",
   name: "Balog Norbert",
-  jobTitle: "Full-Stack Webfejlesztő & AI Specialist",
-  description: "26 év grafikai tervezési és 16 év webfejlesztői tapasztalat",
+  alternateName: ["Balog Norbi", "WebDude"],
+  jobTitle: "Full-Stack Webfejlesztő, Art Director & AI Automatizációs Szakértő",
+  description: "26 év tervezőgrafikai és 16 év webfejlesztői tapasztalat",
   url: "https://webdude.hu/szia-norbi-vagyok",
 };
 const WEBDUDE_ORG = {
@@ -45,6 +46,9 @@ const WEBDUDE_ORG = {
   "@id": "https://webdude.hu/#organization",
   name: "WebDude",
   url: "https://webdude.hu",
+  foundingDate: "2009",
+  telephone: "+36 70 323 8003",
+  email: "hello@webdude.hu",
   logo: {
     "@type": "ImageObject",
     url: WEBDUDE_LOGO,

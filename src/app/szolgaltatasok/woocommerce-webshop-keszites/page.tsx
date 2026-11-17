@@ -63,7 +63,8 @@ export default async function WooCommercePage() {
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
-    "@id": "https://webdude.hu/szolgaltatasok/woocommerce-webshop-keszites#service",
+    "@id":
+      "https://webdude.hu/szolgaltatasok/woocommerce-webshop-keszites#service",
     name: "WooCommerce webshop készítés és fejlesztés",
     description:
       "16 év tapasztalattal WooCommerce webshop készítés, fejlesztés és optimalizálás. Konverzió-fókuszú e-kereskedelmi rendszerek, fizetési integrációk és teljes körű támogatás.",
@@ -71,12 +72,17 @@ export default async function WooCommercePage() {
       "@type": "LocalBusiness",
       "@id": "https://webdude.hu/#organization",
       name: "WebDude",
+      foundingDate: "2009",
+      telephone: "+36 70 323 8003",
+      email: "hello@webdude.hu",
       founder: {
         "@type": "Person",
+        "@id": "https://webdude.hu/#person",
         name: "Balog Norbert",
         alternateName: ["Balog Norbi", "WebDude"],
-        jobTitle: "Full-Stack Webfejlesztő & AI Specialist",
-        description: "26 év grafikai és 16 év webfejlesztői tapasztalat",
+        jobTitle:
+          "Full-Stack Webfejlesztő, Art Director & AI Automatizációs Szakértő",
+        description: "26 év tervezőgrafikai és 16 év webfejlesztői tapasztalat",
       },
     },
     category: "E-commerce",
@@ -148,15 +154,15 @@ export default async function WooCommercePage() {
 
           {/* Direct Answer Block - AEO optimalizált "WooCommerce Webshop Áttekintése" */}
           <DirectAnswerBlock
-          id="wc-webshop"
-          question="Mit érdemes tudni egy WooCommerce webshop készítése előtt?"
-          answer="Egy WooCommerce webshop készítésekor a legfontosabb a konverzióra optimalizált termékbevitel, a megbízható fizetési és szállítási integráció, valamint az automatikus készletkezelés. 16 év tapasztalattal építek olyan rendszereket, amelyek 90 feletti Google PageSpeed pontszámot érnek el, és GDPR-kompatibilisak."
-          facts={[
-            { label: "Tapasztalat", value: "16 év" },
-            { label: "Kezdeti átadás", value: "2–4 hét" },
-            { label: "Árazás", value: "Egyedi árajánlat" },
-          ]}
-        />
+            id="wc-webshop"
+            question="Mit érdemes tudni egy WooCommerce webshop készítése előtt?"
+            answer="Egy WooCommerce webshop készítésekor a legfontosabb a konverzióra optimalizált termékbevitel, a megbízható fizetési és szállítási integráció, valamint az automatikus készletkezelés. 16 év tapasztalattal építek olyan rendszereket, amelyek 90 feletti Google PageSpeed pontszámot érnek el, és GDPR-kompatibilisak."
+            facts={[
+              { label: "Tapasztalat", value: "16 év" },
+              { label: "Kezdeti átadás", value: "2–4 hét" },
+              { label: "Árazás", value: "Egyedi árajánlat" },
+            ]}
+          />
 
           <div className="max-w-6xl mx-auto px-6">
             <div className="mt-12 grid gap-12 md:grid-cols-2 items-start max-w-4xl mx-auto">

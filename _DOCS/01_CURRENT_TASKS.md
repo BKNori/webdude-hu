@@ -1,9 +1,13 @@
 # 01_CURRENT_TASKS.md — WebDude.hu Projekt
 
-## Aktuális feladatok és állapot (2026-11-17 — v7.66.1)
+## Aktuális feladatok és állapot (2026-11-17 — v7.67.0)
 
 ### 🟢 Legutóbb lezárt sprintek (2026-11-17)
 
+- ✅ **v7.67.0 — Teljes SEO/AIO/AEO/GEO + JSON-LD Schema Audit & 3 Új 2026-os Szakcikk:**
+  - **Globális Schema & Crawler Konszolidáció:** `structuredData.ts` (`CANONICAL_PERSON_ENTITY`, `CANONICAL_ORGANIZATION_ENTITY`), root `layout.tsx`, `szolgaltatasok/**`, `termekek/**`, `ai-megoldasok/**`, `munkak/**`, `kapcsolat/**`, `weboldal-keszites-kecskemet` (`+36 70 323 8003`), `/en/services/*` és `hirek/[slug]` (`TechArticle` + automatikus `FAQPage` `extractFaqItems()`-ből) egységesítve (`#organization` `foundingDate: "2009"`, `#person` `Balog Norbert` + `alternateName`); `robots.ts` & `public/robots.txt` AI crawler szinkron.
+  - **3 Új 2026-os Szakcikk (`src/content/blog/*.mdx`):** `2026-11-17-ai-keresooptimalizalas-geo-aeo-utmutato-cegeknek.mdx`, `2026-11-17-nextjs-16-vs-wordpress-weboldal-fejlesztes-2026.mdx`, `2026-11-17-b2b-woocommerce-webshop-erp-szerver-integracio.mdx` — egyedi Kék-Lila v7.0 borítóképek (`generate-blog-covers.js`) és reszponzív derivatívumok (`generate-responsive-images.js`: 117 kép / 776 fájl).
+  - **QA Gate, Build & E2E:** `tsc` (0), `lint --max-warnings 0` (0), `jest` (51/51 PASS), `audit-contrast.js` (383 fájl, 0 hiba), `npm run build` (`179/179` oldal, `BUILD_EXIT=0`), `playwright test e2e/hirek.spec.ts e2e/smoke.spec.ts` (`10/10 PASS`).
 - ✅ **v7.66.1 — Git/Drive Temp Higiénia & Esettanulmány Retina Hero Master-Csere:**
   - **Git & `.gitignore` Higiénia:** `_DOCS/.tmp.driveupload` eltávolítva a Git indexből (`git rm -r --cached`), `.gitignore` bővítve `**/.tmp.driveupload/` és `.tmp.driveupload/` szabályokkal.
   - **Go-Box & HU-MAGO Retina Hero Masterek:** `src/data/works.ts` (`hu-mago-kft` `image`/`bannerImage` → 1920×960 `humago-allo-banner-a-shopbansss-cssopy-copy.webp`) és `src/data/caseStudySeo.ts` OG/Schema kép-URL-ek javítva; `node scripts/generate-responsive-images.js --clean` eltávolította a 10 régi `Gemini_Generated_Image` derivatívumot és frissítette a manifestumot (114 kép / 746 fájl, 2000w variánsokkal).

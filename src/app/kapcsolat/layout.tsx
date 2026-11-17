@@ -21,12 +21,13 @@ const kapcsolatJsonLd = {
     },
     {
       "@type": "LocalBusiness",
-      "@id": "https://webdude.hu/#localbusiness",
+      "@id": "https://webdude.hu/#organization",
       name: "WebDude",
       url: "https://webdude.hu",
+      foundingDate: "2009",
       description:
-        "Prémium webfejlesztés, grafikai tervezés és AI automatizáció országosan. Egyedi weboldalak, arculattervezés és AI megoldások. 26 év grafikai és 16 év webfejlesztői tapasztalattal.",
-      telephone: "+36703238003",
+        "Prémium webfejlesztés, grafikai tervezés és AI automatizáció országosan. Egyedi weboldalak, arculattervezés és AI megoldások. 26 év tervezőgrafikai és 16 év webfejlesztői tapasztalattal.",
+      telephone: "+36 70 323 8003",
       email: "hello@webdude.hu",
       address: {
         "@type": "PostalAddress",
@@ -48,18 +49,21 @@ const kapcsolatJsonLd = {
       ],
       areaServed: {
         "@type": "Country",
-        name: "Magyarország",
+        name: "Hungary",
       },
       founder: {
         "@type": "Person",
-        name: "Norbi (WebDude)",
-        jobTitle: "Webfejlesztő és Grafikai Tervező",
+        "@id": "https://webdude.hu/#person",
+        name: "Balog Norbert",
+        alternateName: ["Balog Norbi", "WebDude"],
+        jobTitle: "Full-Stack Webfejlesztő, Art Director & AI Automatizációs Szakértő",
         description:
-          "16+ év webfejlesztő és 26+ év grafikai tapasztalattal rendelkező digitális szakember. Egyedi weboldalak, arculartervezés és AI automatizáció országosan. Közvetlen együttműködés, nincs ügynökségi bonyolultság.",
+          "26 év tervezőgrafikai és 16 év webfejlesztői tapasztalattal rendelkező digitális szakember. Egyedi weboldalak, arculattervezés és AI automatizáció országosan. Közvetlen együttműködés, nincs ügynökségi bonyolultság.",
+        url: "https://webdude.hu/szia-norbi-vagyok",
       },
       sameAs: [
         "https://www.facebook.com/webdude.hu",
-        "https://www.linkedin.com/company/webdude-hu",
+        "https://www.linkedin.com/company/webdude",
       ],
       knowsAbout: [
         "Webfejlesztés",

@@ -1,5 +1,29 @@
 # Changelog
 
+## [7.67.0] — 2026-11-17 — Teljes SEO/AIO/AEO/GEO + JSON-LD Schema Audit & 3 Új 2026-os Szakcikk
+
+- **Globális E-E-A-T, JSON-LD & AI Crawler Konszolidáció:**
+  - `src/lib/structuredData.ts`: Központi `CANONICAL_FOUNDER_REF`, `CANONICAL_PERSON_ENTITY` (`@id: "https://webdude.hu/#person"`, `name: "Balog Norbert"`, `alternateName: ["Balog Norbi", "WebDude"]`, `jobTitle: "Full-Stack Webfejlesztő, Art Director & AI Automatizációs Szakértő"`) és `CANONICAL_ORGANIZATION_ENTITY` (`@id: "https://webdude.hu/#organization"`, `name: "WebDude"`, `foundingDate: "2009"`, `+36 70 323 8003`, `hello@webdude.hu`); EN/HU sémák összehangolása és Zéró Fix Ár szövegjavítás (`"egyedi árajánlatot"`).
+  - Teljes `src/app/**` & `src/data/caseStudySeo.ts` audit: minden szolgáltatás, termék, portfólió, kapcsolat, AI megoldás, `szia-norbi-vagyok`, `/en/services/*` és `weboldal-keszites-kecskemet` route egységesítve (régi `"Norbi (WebDude)"`, `"WebDude Norbi"`, `"Balog Norbi"` és placeholder telefonszám `+36-20-000-0000` megszüntetve; összes útvonal 0 Schema hibával, XSS `.replace(/</g, "\\u003c")` / `serializeJsonLd` védelemmel).
+  - `src/types/blog.ts`, `src/lib/mdx.ts` & `src/app/hirek/[slug]/page.tsx`: `BlogFaqItem` és `extractFaqItems()` bevezetve a `faq` frontmatter / `## Gyakori kérdések` blokkok automatikus kinyerésére; a `/hirek/[slug]` részletoldal a `TechArticle` (`mainEntityOfPage`, `datePublished`, `dateModified`, `author` `#person`, `publisher` `#organization` + `foundingDate: "2009"`) mellett automatikusan kibocsátja az `FAQPage` JSON-LD sémát is.
+  - `src/app/robots.ts` & `public/robots.txt`: Szinkronizált AI crawler szabályozás (`GPTBot`, `OAI-SearchBot`, `ChatGPT-User`, `PerplexityBot`, `ClaudeBot`, `Google-Extended` explicit engedélyezve publikus utakra, `/portal/`, `/admin/`, `/api/`, `/login` tiltva).
+- **3 Új High-Converting 2026 Szakcikk (`src/content/blog/*.mdx`):**
+  - `2026-11-17-ai-keresooptimalizalas-geo-aeo-utmutato-cegeknek.mdx` (`SEO & AEO`, 150 kar. `excerpt`, 49 szavas `tldr`, 1200+ szó, összehasonlító JSX táblázat, 4 kérdéses `GYIK`, E-E-A-T és belső kereszthivatkozások).
+  - `2026-11-17-nextjs-16-vs-wordpress-weboldal-fejlesztes-2026.mdx` (`Webfejlesztés`, 154 kar. `excerpt`, 48 szavas `tldr`, 1090+ szó, Next.js 16 vs. Egyedi WordPress táblázat, `/munkak/classi-co` és `/munkak/rimai-utepito-...` hivatkozások).
+  - `2026-11-17-b2b-woocommerce-webshop-erp-szerver-integracio.mdx` (`E-kereskedelem`, 155 kar. `excerpt`, 43 szavas `tldr`, 925+ szó, Kézi vs. ERP-integrált táblázat, `/munkak/nedelmarket` és `/munkak/btshop` esettanulmány-linkek).
+- **Blog Borítóképek & Reszponzív Derivatívumok:**
+  - `scripts/generate-blog-covers.js`: Bővítve `"SEO & AEO"` és `"E-kereskedelem"` Kék-Lila v7.0 témákkal (amber eltávolítva), mind a 28 indexelhető borítókép generálva (`public/assets/blog/covers/*.webp`).
+  - `node scripts/generate-responsive-images.js`: `src/data/responsiveImages.ts` frissítve (117 kép / 776 generált fájl, új blog borítókép AVIF/WebP variánsokkal).
+- **QA Gate, Build & E2E Smoke:**
+  - `npx tsc --noEmit` → **0 hiba (EXIT=0)**
+  - `npm run lint -- --max-warnings 0` → **0 error, 0 warning (EXIT=0)**
+  - `npx jest --no-coverage` → **5/5 suite, 51/51 teszt PASS (EXIT=0)**
+  - `node scripts/audit-contrast.js` → **383 vizsgált fájl, 0 kontraszt-hiba (EXIT=0)**
+  - `npm run build` → **BUILD_EXIT=0 (179/179 statikus/dinamikus útvonal)**
+  - `npx playwright test e2e/hirek.spec.ts e2e/smoke.spec.ts` → **10/10 PASS (`41.0s`, EXIT=0)**
+
+---
+
 ## [7.66.1] — 2026-11-17 — Git/Drive Temp Higiénia & Esettanulmány Retina Hero Master-Csere
 
 - **Git & Google Drive Higiénia:**

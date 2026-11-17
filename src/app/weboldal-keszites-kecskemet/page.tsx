@@ -105,10 +105,13 @@ export default function WeboldalKeszitesKecskemetPage() {
   const localBusinessJsonLd = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    name: "WebDude - Weboldal készítés Kecskemét",
+    "@id": "https://webdude.hu/#organization",
+    name: "WebDude",
+    foundingDate: "2009",
     image: "https://webdude.hu/og/weboldal-keszites-kecskemet.jpg",
     url: "https://webdude.hu/weboldal-keszites-kecskemet",
-    telephone: "+36-20-000-0000",
+    telephone: "+36 70 323 8003",
+    email: "hello@webdude.hu",
     address: {
       "@type": "PostalAddress",
       streetAddress: "Kecskemét",
@@ -127,6 +130,14 @@ export default function WeboldalKeszitesKecskemetPage() {
       opens: "09:00",
       closes: "18:00",
     },
+    founder: {
+      "@type": "Person",
+      "@id": "https://webdude.hu/#person",
+      name: "Balog Norbert",
+      alternateName: ["Balog Norbi", "WebDude"],
+      jobTitle: "Full-Stack Webfejlesztő, Art Director & AI Automatizációs Szakértő",
+      description: "26 év tervezőgrafikai és 16 év webfejlesztői tapasztalat",
+    },
   };
 
   const serviceJsonLd = {
@@ -135,8 +146,11 @@ export default function WeboldalKeszitesKecskemetPage() {
     name: "Weboldal készítés Kecskemét",
     provider: {
       "@type": "Person",
-      name: "Norbert - WebDude",
-      url: "https://webdude.hu",
+      "@id": "https://webdude.hu/#person",
+      name: "Balog Norbert",
+      alternateName: ["Balog Norbi", "WebDude"],
+      jobTitle: "Full-Stack Webfejlesztő, Art Director & AI Automatizációs Szakértő",
+      url: "https://webdude.hu/szia-norbi-vagyok",
     },
     description:
       "Weboldal készítés Kecskeméten és országosan. WordPress, egyedi webfejlesztés, SEO és grafikai tervezés közvetlenül a WebDude-tól.",

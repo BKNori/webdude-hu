@@ -223,11 +223,12 @@ export default async function AddonsPage() {
         "@id": "https://webdude.hu/#organization",
         name: "WebDude",
         url: "https://webdude.hu",
+        foundingDate: "2009",
         logo: "https://webdude.hu/assets/logos/webdude-logo.webp",
         image: "https://webdude.hu/og/webdude-og.jpg",
         description:
-          "Prémium webfejlesztési, grafikai és AI-automatizációs szolgáltatások Norbitól.",
-        telephone: "+36703238003",
+          "Prémium webfejlesztési, grafikai és AI-automatizációs szolgáltatások Balog Norberttől (WebDude).",
+        telephone: "+36 70 323 8003",
         email: "hello@webdude.hu",
         address: {
           "@type": "PostalAddress",
@@ -236,9 +237,11 @@ export default async function AddonsPage() {
         founder: {
           "@type": "Person",
           "@id": "https://webdude.hu/#person",
-          name: "WebDude Norbi",
-          jobTitle: "Lead Architect & Senior Developer",
-          description: "26 év grafikai és 16 év programozási tapasztalat.",
+          name: "Balog Norbert",
+          alternateName: ["Balog Norbi", "WebDude"],
+          jobTitle:
+            "Full-Stack Webfejlesztő, Art Director & AI Automatizációs Szakértő",
+          description: "26 év tervezőgrafikai és 16 év webfejlesztői tapasztalat.",
         },
       },
       ...addons.map((addon) => ({

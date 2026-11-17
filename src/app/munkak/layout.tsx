@@ -36,11 +36,15 @@ const munkakJsonLd = {
     },
     {
       "@type": "Organization",
+      "@id": "https://webdude.hu/#organization",
       name: "WebDude",
       url: "https://webdude.hu",
+      foundingDate: "2009",
+      telephone: "+36 70 323 8003",
+      email: "hello@webdude.hu",
       logo: "https://webdude.hu/assets/logos/webdude-logo.webp",
       description:
-        "Prémium webfejlesztés, grafikai tervezés és AI automatizáció Kecskemétről. 26 év grafikai és 16 év webfejlesztői tapasztalattal.",
+        "Prémium webfejlesztés, grafikai tervezés és AI automatizáció Kecskemétről. 26 év tervezőgrafikai és 16 év webfejlesztői tapasztalattal.",
       address: {
         "@type": "PostalAddress",
         addressLocality: "Kecskemét",
@@ -48,14 +52,17 @@ const munkakJsonLd = {
       },
       founder: {
         "@type": "Person",
-        name: "Norbi (WebDude)",
-        jobTitle: "Webfejlesztő és Grafikai Tervező",
+        "@id": "https://webdude.hu/#person",
+        name: "Balog Norbert",
+        alternateName: ["Balog Norbi", "WebDude"],
+        jobTitle: "Full-Stack Webfejlesztő, Art Director & AI Automatizációs Szakértő",
         description:
-          "16+ év webfejlesztő és 26+ év grafikai tapasztalattal rendelkező digitális szakember. Egyedi weboldalak, arculattervezés és AI automatizáció Kecskemétről.",
+          "26 év tervezőgrafikai és 16 év webfejlesztői tapasztalattal rendelkező digitális szakember. Egyedi weboldalak, arculattervezés és AI automatizáció Kecskemétről.",
+        url: "https://webdude.hu/szia-norbi-vagyok",
       },
       sameAs: [
         "https://www.facebook.com/webdude.hu",
-        "https://www.linkedin.com/company/webdude-hu",
+        "https://www.linkedin.com/company/webdude",
       ],
     },
   ],

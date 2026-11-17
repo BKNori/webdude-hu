@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description:
     "Maximalizáld üzleti hatékonyságodat a Kristófka Workflow-val. Személyre szabott AI-vezérelt stratégia, döntéstámogatás és automatizált munkafolyamatok a WebDude szakértelmével.",
   alternates: {
-    canonical: "https://webdude.hu/portal/ai-muhely/kristofka"
+    canonical: "https://webdude.hu/portal/ai-muhely/kristofka",
   },
   robots: {
     index: false,
@@ -21,8 +21,8 @@ export const metadata: Metadata = {
     url: "https://webdude.hu/portal/ai-muhely/kristofka",
     siteName: "WebDude",
     locale: "hu_HU",
-    type: "website"
-  }
+    type: "website",
+  },
 };
 
 const faqJsonLd = {
@@ -34,26 +34,26 @@ const faqJsonLd = {
       name: "Milyen típusú cégeknek ajánlott a Kristófka Workflow?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Közép- és nagyvállalatoknak, akik automatizálni szeretnék döntéshozatali folyamataikat."
-      }
+        text: "Közép- és nagyvállalatoknak, akik automatizálni szeretnék döntéshozatali folyamataikat.",
+      },
     },
     {
       "@type": "Question",
       name: "Hogyan integrálható a meglévő folyamatokba?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "A workflow közvetlen támogatást nyújt a WebDude portálon keresztül, API-alapú vagy manuális konzultációs formában."
-      }
+        text: "A workflow közvetlen támogatást nyújt a WebDude portálon keresztül, API-alapú vagy manuális konzultációs formában.",
+      },
     },
     {
       "@type": "Question",
       name: "Biztonságos az üzleti adatok kezelése?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Igen, a WebDude szigorú adatvédelmi protokolljait követve, titkosított csatornákon keresztül."
-      }
-    }
-  ]
+        text: "Igen, a WebDude szigorú adatvédelmi protokolljait követve, titkosított csatornákon keresztül.",
+      },
+    },
+  ],
 };
 
 const workflowJsonLd = {
@@ -70,10 +70,14 @@ const workflowJsonLd = {
   },
   provider: {
     "@type": "Organization",
-    name: "WebDude.hu",
+    "@id": "https://webdude.hu/#organization",
+    name: "WebDude",
     url: "https://webdude.hu",
+    foundingDate: "2009",
+    telephone: "+36 70 323 8003",
+    email: "hello@webdude.hu",
     description:
-      "Prémium webfejlesztési és AI automatizációs ügynökség Kecskeméten."
+      "Prémium webfejlesztési, grafikai tervezési és AI automatizációs szolgáltatások Kecskemétről országosan.",
   },
   featureList: [
     "PDF alaprajz feltöltés és elemzés",
@@ -82,28 +86,28 @@ const workflowJsonLd = {
     "Hangvétel beállítás (Szakmai/Analitikus, Inspiráló/Vizionárius, Rövid/Direkt)",
     "Energetikai besorolás figyelembevétele (Modernizált, Átlagos, Felújítandó)",
     "Professzionális PDF export",
-    "NotebookLM adatcsomag export"
+    "NotebookLM adatcsomag export",
   ],
   input: {
     "@type": "PropertyValue",
     name: "Bemeneti paraméterek",
     value:
-      "PDF alaprajz, célcsoport, narratíva, hangvétel, energetikai besorolás"
+      "PDF alaprajz, célcsoport, narratíva, hangvétel, energetikai besorolás",
   },
   output: {
     "@type": "PropertyValue",
     name: "Kimeneti formátum",
     value:
-      "Befektetői pitch (legacy, vision, financial, ROI szekciók), PDF export, NotebookLM Markdown export"
+      "Befektetői pitch (legacy, vision, financial, ROI szekciók), PDF export, NotebookLM Markdown export",
   },
   screenshot: "https://webdude.hu/banners/kristofka-workflow.png",
   softwareVersion: "1.0",
   datePublished: "2026-07-13",
-  inLanguage: "hu-HU"
+  inLanguage: "hu-HU",
 };
 
 export default function KristofkaLayout({
-  children
+  children,
 }: {
   children: React.ReactNode;
 }) {

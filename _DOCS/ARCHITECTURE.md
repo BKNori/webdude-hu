@@ -1,7 +1,13 @@
 # ARCHITECTURE.md — WebDude Rendszerarchitektúra
 
 **webdude.hu | Next.js 16 · React 19 · TypeScript · Firebase**
-**Utolsó frissítés: 2026-11-12 (7.41.0: 25 egyedi blog borítókép generálás, frontmatter szinkron, reszponzív derivatívumok)**
+**Utolsó frissítés: 2026-11-17 (7.67.0: Teljes SEO/AIO/AEO/GEO + JSON-LD SSOT Audit, automatikus blog FAQPage séma & 3 új 2026-os szakcikk)**
+
+> **7.67.0 (2026-11-17):** SEO/AIO/AEO/GEO & JSON-LD Tudásgráf Konszolidáció:
+> - `src/lib/structuredData.ts`: `CANONICAL_FOUNDER_REF`, `CANONICAL_PERSON_ENTITY` (`@id: https://webdude.hu/#person`, `Balog Norbert`) és `CANONICAL_ORGANIZATION_ENTITY` (`@id: https://webdude.hu/#organization`, `WebDude`, `foundingDate: "2009"`) exportok; minden `src/app/**` route egységesítve.
+> - `src/lib/mdx.ts`, `src/types/blog.ts` & `src/app/hirek/[slug]/page.tsx`: `extractFaqItems()` bevezetve a `faq` frontmatter és `## Gyakori kérdések` blokkok automatikus `FAQPage` JSON-LD generálásához a `TechArticle` séma mellett.
+> - `src/app/robots.ts` & `public/robots.txt`: AI crawlerek (`GPTBot`, `OAI-SearchBot`, `ChatGPT-User`, `PerplexityBot`, `ClaudeBot`, `Google-Extended`) szinkronizálva publikus útvonalakra, `/portal/`, `/admin/`, `/api/`, `/login` tiltva.
+> - 3 új 2026-os high-converting MDX szakcikk + `generate-blog-covers.js` Kék-Lila v7.0 borítóképek + `generate-responsive-images.js` (117 kép / 776 fájl).
 
 > **7.41.0 (2026-11-12):** Blog vizuális konszolidáció:
 > - `scripts/generate-blog-covers.js`: Sharp-alapú SVG -> WebP 1200×630 generátor (Kék-Lila v7.0 / Cyber-Dark téma, kategória glow, automatikus címtördelés, E-E-A-T lábléc).
@@ -596,14 +602,15 @@ dangerouslySetInnerHTML={{
 - **Szövezés:** Mentes a marketing sallangoktól, entitás-gazdag
 - **Cél:** ChatGPT, Perplexity, Gemini AI keresők könnyen ki tudják emelni
 
-### 9.4 Person Entitás (Norbi)
+### 9.4 Person Entitás (Balog Norbert — E-E-A-T)
 
 ```json
 {
   "@type": "Person",
   "@id": "https://webdude.hu/#person",
-  "name": "Norbi",
-  "jobTitle": "Full-Stack Webfejlesztő & AI Specialist",
+  "name": "Balog Norbert",
+  "alternateName": ["Balog Norbi", "WebDude"],
+  "jobTitle": "Full-Stack Webfejlesztő, Art Director & AI Automatizációs Szakértő",
   "knowsAbout": [
     "Next.js 16",
     "React 19",
@@ -613,7 +620,7 @@ dangerouslySetInnerHTML={{
     "AI workflow automatizáció",
     "ChatGPT",
     "Claude",
-    "SEO és AEO optimalizálás"
+    "SEO és AEO/GEO optimalizálás"
   ],
   "worksFor": {
     "@type": "Organization",
