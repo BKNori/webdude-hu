@@ -1,9 +1,15 @@
 # 01_CURRENT_TASKS.md — WebDude.hu Projekt
 
-## Aktuális feladatok és állapot (2026-11-14 — v7.62.0)
+## Aktuális feladatok és állapot (2026-11-17 — v7.64.0)
 
-### 🟢 Legutóbb lezárt sprintek (2026-11-14)
+### 🟢 Legutóbb lezárt sprintek (2026-11-17)
 
+- ✅ **v7.64.0 — Portál Vault Előnéző, Admin KPI Bővítés & Workflow Token Audit:**
+  - **Portál Vault Előnéző (`ClientVault.tsx` & `DocumentPreviewModal.tsx`):** Kék-Lila v7.0 glassmorphism, akadálymentes **"Előnézet" (`Eye`)** gomb közvetlenül a letöltés mellett `aria-label` és `focus-visible` gyűrűvel, beágyazott interaktív elemek megszüntetve, `role="dialog"` / `aria-modal="true"` / `ESC` / `useReducedMotion()` végig érvényesítve.
+  - **Admin KPI & Egységes Export (`getEnhancedKpiMetrics.ts`, `AdminExportToolbar.tsx`, `admin-kpi-pdf.ts`, `src/app/admin/page.tsx`, `AdminDashboard.tsx`):** `revenueByService` és `CAC` / `LTV` metrikák `NaN`-biztos `0` fallbackekkel, egységesített 4 gombos **CSV (Leadek, Projektek, Tranzakciók) + PDF (dinamikus jsPDF)** export vezérlősáv `Loader2` és `aria-label` támogatással.
+  - **Aszinkron Generálás Token-Lánc (`DynamicWorkflowForm.tsx` → `useCreateGeneration.ts` → `createGeneration.ts`):** `setStarting(false)` beragadt-loading bug javítva, `createGenerationInputSchema` Zod validáció, `useReducedMotion()` és `text-white` WCAG AAA CTA.
+  - **QA Gate:** `tsc` (0), `lint --max-warnings 0` (0), `jest` (5/5 suite, 51/51 PASS), `audit-contrast.js` (383 fájl, 0 hiba).
+- ✅ **v7.63.0 — UI/UX & Animációs Konszolidáció:** Kék-Lila v7.0 gradiens- és prompt-tisztítás, nyers Unicode emojik eltávolítása (`stripe.ts`, `portal-kezelo`), főoldali és GoBox térköz-ritmus szinkron (`py-24 md:py-32`), `BentoCard` Luminous Glassmorphism, `transition-all` kivezetése és `motion/react` spring fizika (`useReducedMotion()`).
 - ✅ **v7.62.0 — Főoldali Hero és Maradék Kliens Organizmusok Modularizálása (`<= 300` sor):**
   - **`HeroSectionNew.tsx` (`546 → 252` sor):** `heroSlidesConfig.tsx` (211 sor), `HeroBackgroundLayers.tsx` (81 sor, LCP `priority={currentSlide === 0}`) és `HeroSliderControls.tsx` (94 sor); `isolate` kontextus és `hero-cta-*-primary` E2E szelektorok 100%-ban megőrizve.
   - **`KristofkaWorkflow.tsx` (`637 → 220` sor):** `KristofkaInputForm.tsx` (163 sor) + `KristofkaPitchOutput.tsx` (222 sor, dinamikus `await import("jspdf")` PDF exporttal és NotebookLM Markdown exporttal).
@@ -80,10 +86,8 @@
 
 #### 🟠 2. Admin UI (adat-alapú döntéshozatal)
 
-- **KPI dashboard bővítése** — Revenue, Churn rate, LTV metrikák
-  (`src/app/admin/dashboard/`, `src/app/actions/getEnhancedKpiMetrics.ts`).
-- **Export funkciók egységesítése** — a `src/app/actions/exportLeads.ts` és `exportProjects.ts`
-  különálló akciók; PDF (jspdf) + CSV formátumok egységes felületen, letöltés-dialógussal.
+- ✅ **KPI dashboard bővítése — LEZÁRVA [7.64.0]:** MRR, összes bevétel, LTV, CAC (`marketing_spend`), Churn Rate és szolgáltatásonkénti bevétel-bontás (`revenueByService`) `0` / `[]` safe fallbackekkel (`src/app/actions/getEnhancedKpiMetrics.ts`, `src/app/admin/page.tsx`, `src/components/organisms/AdminDashboard.tsx`).
+- ✅ **Export funkciók egységesítése — LEZÁRVA [7.64.0]:** egységes 4 gombos `AdminExportToolbar` molekula (Leadek CSV, Projektek CSV, Tranzakciók CSV, dinamikus jsPDF KPI Riport PDF) töltésjelzővel (`Loader2`) és `aria-label` attribútumokkal (`src/components/molecules/AdminExportToolbar.tsx`, `src/lib/admin-kpi-pdf.ts`).
 
 #### 🟡 3. Technikai adósság (stabilitás / hiba-észlelés)
 

@@ -7,17 +7,122 @@ import { collection, getDocs, query, where } from "firebase/firestore";
 import { getClientUserProfileAction } from "@/actions/portal";
 import type { QueryDocumentSnapshot } from "firebase-admin/firestore";
 
+export interface ServiceRevenueItem {
+  service: string;
+  revenue: number;
+}
+
 export interface EnhancedKpiMetrics {
   mrr: number;
   totalRevenue: number;
   activeClients: number;
   estimatedLtv: number;
+  cac: number;
   churnRate: number;
+  revenueByService: ServiceRevenueItem[];
 }
 
 export type AuthHeaderInput =
   | string
   | { Authorization?: string; authorization?: string };
+
+interface RawTransactionDoc {
+  amount?: unknown;
+  clientId?: unknown;
+  serviceType?: unknown;
+  service?: unknown;
+  addonName?: unknown;
+}
+
+interface RawProjectDoc {
+  status?: unknown;
+}
+
+interface RawSpendDoc {
+  amount?: unknown;
+}
+
+function safeFiniteNumber(value: unknown): number {
+  const num = Number(value);
+  return Number.isFinite(num) ? num : 0;
+}
+
+function aggregateEnhancedKpiMetrics(
+  transactions: RawTransactionDoc[],
+  projects: RawProjectDoc[],
+  marketingSpendDocs: RawSpendDoc[]
+): EnhancedKpiMetrics {
+  let totalRevenue = 0;
+  const clientPayments: Record<string, number> = {};
+  const revenueByServiceMap = new Map<string, number>();
+
+  for (const data of transactions) {
+    const amount = safeFiniteNumber(data.amount);
+    totalRevenue += amount;
+
+    if (data.clientId) {
+      const clientId = String(data.clientId);
+      clientPayments[clientId] = (clientPayments[clientId] || 0) + amount;
+    }
+
+    const rawService = data.serviceType || data.service || data.addonName;
+    const serviceLabel =
+      typeof rawService === "string" && rawService.trim()
+        ? rawService.trim()
+        : "Egyéb";
+    revenueByServiceMap.set(
+      serviceLabel,
+      (revenueByServiceMap.get(serviceLabel) || 0) + amount
+    );
+  }
+
+  let activeCount = 0;
+  let cancelledCount = 0;
+  for (const data of projects) {
+    if (data.status === "active" || data.status === "in_progress") {
+      activeCount++;
+    }
+    if (data.status === "cancelled") {
+      cancelledCount++;
+    }
+  }
+
+  let totalMarketingSpend = 0;
+  for (const data of marketingSpendDocs) {
+    totalMarketingSpend += safeFiniteNumber(data.amount);
+  }
+
+  const uniqueClientsCount = Object.keys(clientPayments).length;
+  const totalProjectsCount = projects.length;
+
+  const estimatedLtv =
+    uniqueClientsCount > 0 ? Math.round(totalRevenue / uniqueClientsCount) : 0;
+  const cac =
+    uniqueClientsCount > 0 && totalMarketingSpend > 0
+      ? Math.round(totalMarketingSpend / uniqueClientsCount)
+      : 0;
+  const churnRate =
+    totalProjectsCount > 0
+      ? Number(((cancelledCount / totalProjectsCount) * 100).toFixed(1))
+      : 0;
+  const mrr = totalRevenue > 0 ? Math.round(totalRevenue / 12) : 0;
+
+  const revenueByService: ServiceRevenueItem[] = Array.from(
+    revenueByServiceMap.entries()
+  )
+    .map(([service, revenue]) => ({ service, revenue }))
+    .sort((a, b) => b.revenue - a.revenue);
+
+  return {
+    mrr,
+    totalRevenue,
+    activeClients: activeCount,
+    estimatedLtv,
+    cac,
+    churnRate,
+    revenueByService,
+  };
+}
 
 async function extractAndVerifyAdmin(
   authInput?: AuthHeaderInput
@@ -74,44 +179,34 @@ export async function getEnhancedKpiMetricsAction(
   try {
     await extractAndVerifyAdmin(authHeader);
 
-    let totalRevenue = 0;
-    const clientPayments: Record<string, number> = {};
-    let activeCount = 0;
-    let cancelledCount = 0;
-    let totalProjectsCount = 0;
-
     if (adminDb) {
-      const [transactionsSnap, projectsSnap] = await Promise.all([
+      const [transactionsSnap, projectsSnap, spendSnap] = await Promise.all([
         adminDb
           .collection("transactions")
           .where("status", "==", "completed")
           .get(),
         adminDb.collection("projects").get(),
+        adminDb.collection("marketing_spend").get(),
       ]);
 
-      transactionsSnap.forEach((doc: QueryDocumentSnapshot) => {
-        const data = doc.data();
-        const amount = Number(data.amount) || 0;
-        totalRevenue += amount;
-        if (data.clientId) {
-          clientPayments[String(data.clientId)] =
-            (clientPayments[String(data.clientId)] || 0) + amount;
-        }
-      });
+      const metrics = aggregateEnhancedKpiMetrics(
+        transactionsSnap.docs.map(
+          (doc: QueryDocumentSnapshot) => doc.data() as RawTransactionDoc
+        ),
+        projectsSnap.docs.map(
+          (doc: QueryDocumentSnapshot) => doc.data() as RawProjectDoc
+        ),
+        spendSnap.docs.map(
+          (doc: QueryDocumentSnapshot) => doc.data() as RawSpendDoc
+        )
+      );
 
-      totalProjectsCount = projectsSnap.size;
-      projectsSnap.forEach((doc: QueryDocumentSnapshot) => {
-        const data = doc.data();
-        if (data.status === "active" || data.status === "in_progress") {
-          activeCount++;
-        }
-        if (data.status === "cancelled") {
-          cancelledCount++;
-        }
-      });
-    } else if (db) {
+      return { success: true, data: metrics };
+    }
+
+    if (db) {
       // cPanel-barát fallback, ha az Admin SDK nincs inicializálva
-      const [transactionsSnap, projectsSnap] = await Promise.all([
+      const [transactionsSnap, projectsSnap, spendSnap] = await Promise.all([
         getDocs(
           query(
             collection(db, "transactions"),
@@ -119,52 +214,21 @@ export async function getEnhancedKpiMetricsAction(
           )
         ),
         getDocs(collection(db, "projects")),
+        getDocs(collection(db, "marketing_spend")),
       ]);
 
-      transactionsSnap.forEach((docSnap) => {
-        const data = docSnap.data();
-        const amount = Number(data.amount) || 0;
-        totalRevenue += amount;
-        if (data.clientId) {
-          clientPayments[String(data.clientId)] =
-            (clientPayments[String(data.clientId)] || 0) + amount;
-        }
-      });
+      const metrics = aggregateEnhancedKpiMetrics(
+        transactionsSnap.docs.map((d) => d.data() as RawTransactionDoc),
+        projectsSnap.docs.map((d) => d.data() as RawProjectDoc),
+        spendSnap.docs.map((d) => d.data() as RawSpendDoc)
+      );
 
-      totalProjectsCount = projectsSnap.size;
-      projectsSnap.forEach((docSnap) => {
-        const data = docSnap.data();
-        if (data.status === "active" || data.status === "in_progress") {
-          activeCount++;
-        }
-        if (data.status === "cancelled") {
-          cancelledCount++;
-        }
-      });
-    } else {
-      return {
-        success: false,
-        error: "Firestore adatbázis nem elérhető.",
-      };
+      return { success: true, data: metrics };
     }
 
-    const uniqueClientsCount = Object.keys(clientPayments).length || 1;
-    const estimatedLtv = Math.round(totalRevenue / uniqueClientsCount);
-    const totalProjects = totalProjectsCount || 1;
-    const churnRate = Number(
-      ((cancelledCount / totalProjects) * 100).toFixed(1)
-    );
-    const mrr = Math.round(totalRevenue / 12);
-
     return {
-      success: true,
-      data: {
-        mrr,
-        totalRevenue,
-        activeClients: activeCount,
-        estimatedLtv,
-        churnRate,
-      },
+      success: false,
+      error: "Firestore adatbázis nem elérhető.",
     };
   } catch (error) {
     return {

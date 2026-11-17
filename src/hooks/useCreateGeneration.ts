@@ -26,10 +26,16 @@ export function useCreateGeneration() {
         return false;
       }
 
+      setGenerationId(null);
       setStarting(true);
       try {
         // ID token átadás — a szerver verifyIdToken-nel hitelesít (Admin SDK)
         const idToken = await auth.currentUser.getIdToken(true);
+        if (!idToken) {
+          setStartError("Hiányzó hitelesítési token");
+          setStarting(false);
+          return false;
+        }
         const res = await createGeneration({ workflowId, params }, idToken);
 
         if (!res.success || !res.generationId) {
@@ -39,6 +45,7 @@ export function useCreateGeneration() {
         }
 
         setGenerationId(res.generationId);
+        setStarting(false);
         return true;
       } catch (err) {
         setStartError(

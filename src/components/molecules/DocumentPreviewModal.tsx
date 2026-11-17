@@ -80,7 +80,7 @@ export default function DocumentPreviewModal({
           <motion.div
             aria-hidden="true"
             className="absolute inset-0 bg-slate-950/80 backdrop-blur-2xl"
-            transition={{ duration: 0.3 }}
+            transition={{ duration: reducedMotion ? 0 : 0.3 }}
           />
 
           <motion.div
@@ -93,8 +93,12 @@ export default function DocumentPreviewModal({
             animate="animate"
             exit="exit"
             onClick={(event) => event.stopPropagation()}
-            className="relative w-full max-w-5xl h-[85vh] mx-auto flex flex-col rounded-3xl bg-slate-900 border border-brand-primary/20 shadow-[0_24px_80px_-12px_rgba(0,181,241,0.35)] overflow-hidden z-10"
-            transition={{ duration: reducedMotion ? 0 : 0.5 }}
+            className="relative w-full max-w-5xl h-[85vh] mx-auto flex flex-col rounded-3xl bg-slate-900/90 backdrop-blur-xl border border-slate-800/80 shadow-[0_24px_80px_-12px_rgba(0,181,241,0.35)] overflow-hidden z-10"
+            transition={
+              reducedMotion
+                ? { duration: 0 }
+                : { type: "spring", stiffness: 120, damping: 20 }
+            }
           >
             {/* Header */}
             <div className="flex items-center justify-between px-6 py-4 border-b border-slate-800/40 bg-slate-900/90">

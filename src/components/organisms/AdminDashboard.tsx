@@ -3,7 +3,7 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 
 import React, { useState, useEffect, useCallback } from "react";
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import {
   Users,
   Briefcase,
@@ -15,11 +15,12 @@ import {
   DollarSign,
   TrendingUp,
   TrendingDown,
-  Download,
   ArrowRight,
   Loader2,
   AlertCircle,
 } from "lucide-react";
+import AdminExportToolbar from "@/components/molecules/AdminExportToolbar";
+import { exportAdminKpiPdf } from "@/lib/admin-kpi-pdf";
 import { auth } from "@/lib/firebase";
 import {
   getDashboardStatsAction,
@@ -70,12 +71,22 @@ interface DashboardStats {
 }
 
 export default function AdminDashboard() {
+  const shouldReduceMotion = useReducedMotion();
   const [stats, setStats] = useState<DashboardStats | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [exportingLeads, setExportingLeads] = useState(false);
   const [exportingTransactions, setExportingTransactions] = useState(false);
   const [exportingProjects, setExportingProjects] = useState(false);
+  const [exportingPdf, setExportingPdf] = useState(false);
+
+  const cardEnterProps = (delay = 0) => ({
+    initial: shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 20 },
+    animate: shouldReduceMotion ? { opacity: 1 } : { opacity: 1, y: 0 },
+    transition: shouldReduceMotion
+      ? { duration: 0 }
+      : { type: "spring" as const, stiffness: 100, damping: 20, delay },
+  });
 
   // Helper: ID token lekérése auth header formátumban
   const getAuthHeaders = async (): Promise<
@@ -242,6 +253,30 @@ export default function AdminDashboard() {
     }
   };
 
+  const handleExportPdfReport = async () => {
+    if (!stats) return;
+    setExportingPdf(true);
+    try {
+      await exportAdminKpiPdf({
+        mrr: stats.monthlyRevenue,
+        totalRevenue: stats.revenueByService.reduce(
+          (sum, item) => sum + item.revenue,
+          0
+        ),
+        estimatedLtv: stats.ltv,
+        cac: stats.cac,
+        churnRate: Number(stats.churnRate.toFixed(1)),
+        activeClients: stats.activeProjectsCount,
+        leadsCount: stats.leadsCount,
+        revenueByService: stats.revenueByService,
+      });
+    } catch {
+      setError("Hiba történt a PDF jelentés készítésekor.");
+    } finally {
+      setExportingPdf(false);
+    }
+  };
+
   const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat("hu-HU", {
       style: "currency",
@@ -304,64 +339,21 @@ export default function AdminDashboard() {
     <div className="min-h-screen bg-bg-base text-slate-200 py-12">
       <div className="max-w-7xl mx-auto px-6 space-y-8">
         {/* Header */}
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <h1 className="text-4xl font-bold text-white">Admin Dashboard</h1>
             <p className="text-slate-400 mt-2">Üzleti KPI és statisztikák</p>
           </div>
-          <div className="flex gap-2">
-            <button
-              onClick={handleExportLeads}
-              disabled={exportingLeads}
-              className="px-4 py-2 bg-blue-500/10 hover:bg-blue-500/20 text-blue-500 font-bold rounded-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 text-sm"
-            >
-              {exportingLeads ? (
-                <>
-                  <Loader2 className="w-4 h-4 animate-spin" />
-                  Export...
-                </>
-              ) : (
-                <>
-                  <Download className="w-4 h-4" />
-                  Lead-ek
-                </>
-              )}
-            </button>
-            <button
-              onClick={handleExportTransactions}
-              disabled={exportingTransactions}
-              className="px-4 py-2 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-500 font-bold rounded-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 text-sm"
-            >
-              {exportingTransactions ? (
-                <>
-                  <Loader2 className="w-4 h-4 animate-spin" />
-                  Export...
-                </>
-              ) : (
-                <>
-                  <Download className="w-4 h-4" />
-                  Tranzakciók
-                </>
-              )}
-            </button>
-            <button
-              onClick={handleExportProjects}
-              disabled={exportingProjects}
-              className="px-4 py-2 bg-purple-500/10 hover:bg-purple-500/20 text-purple-500 font-bold rounded-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 text-sm"
-            >
-              {exportingProjects ? (
-                <>
-                  <Loader2 className="w-4 h-4 animate-spin" />
-                  Export...
-                </>
-              ) : (
-                <>
-                  <Download className="w-4 h-4" />
-                  Projektek
-                </>
-              )}
-            </button>
-          </div>
+          <AdminExportToolbar
+            onExportLeads={handleExportLeads}
+            onExportProjects={handleExportProjects}
+            onExportTransactions={handleExportTransactions}
+            onExportPdf={handleExportPdfReport}
+            exportingLeads={exportingLeads}
+            exportingProjects={exportingProjects}
+            exportingTransactions={exportingTransactions}
+            exportingPdf={exportingPdf}
+          />
         </div>
 
         {error && (
@@ -377,8 +369,7 @@ export default function AdminDashboard() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               {/* Leads */}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
+                {...cardEnterProps(0)}
                 className="glass-card p-6 space-y-4"
               >
                 <div className="flex items-center justify-between">
@@ -390,7 +381,7 @@ export default function AdminDashboard() {
                   </span>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-white">
+                  <div className="text-3xl font-bold text-white font-mono tabular-nums">
                     {stats.leadsCount}
                   </div>
                   <div className="text-sm text-slate-400">Lead-ek</div>
@@ -399,9 +390,7 @@ export default function AdminDashboard() {
 
               {/* Active Projects */}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 }}
+                {...cardEnterProps(0.1)}
                 className="glass-card p-6 space-y-4"
               >
                 <div className="flex items-center justify-between">
@@ -413,7 +402,7 @@ export default function AdminDashboard() {
                   </span>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-white">
+                  <div className="text-3xl font-bold text-white font-mono tabular-nums">
                     {stats.activeProjectsCount}
                   </div>
                   <div className="text-sm text-slate-400">Projektek</div>
@@ -422,9 +411,7 @@ export default function AdminDashboard() {
 
               {/* Completed Projects */}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
+                {...cardEnterProps(0.2)}
                 className="glass-card p-6 space-y-4"
               >
                 <div className="flex items-center justify-between">
@@ -436,7 +423,7 @@ export default function AdminDashboard() {
                   </span>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-white">
+                  <div className="text-3xl font-bold text-white font-mono tabular-nums">
                     {stats.completedProjectsCount}
                   </div>
                   <div className="text-sm text-slate-400">Projektek</div>
@@ -445,9 +432,7 @@ export default function AdminDashboard() {
 
               {/* Lead Conversion Rate */}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
+                {...cardEnterProps(0.3)}
                 className="glass-card p-6 space-y-4"
               >
                 <div className="flex items-center justify-between">
@@ -459,7 +444,7 @@ export default function AdminDashboard() {
                   </span>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-white">
+                  <div className="text-3xl font-bold text-white font-mono tabular-nums">
                     {stats.leadConversionRate.toFixed(1)}%
                   </div>
                   <div className="text-sm text-slate-400">Lead → Projekt</div>
@@ -471,9 +456,7 @@ export default function AdminDashboard() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {/* Average Completion Time */}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
+                {...cardEnterProps(0.4)}
                 className="glass-card p-6 space-y-4"
               >
                 <div className="flex items-center justify-between">
@@ -485,7 +468,7 @@ export default function AdminDashboard() {
                   </span>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-white">
+                  <div className="text-3xl font-bold text-white font-mono tabular-nums">
                     {stats.avgCompletionTime.toFixed(1)} nap
                   </div>
                   <div className="text-sm text-slate-400">
@@ -496,9 +479,7 @@ export default function AdminDashboard() {
 
               {/* Onboarding */}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
+                {...cardEnterProps(0.5)}
                 className="glass-card p-6 space-y-4"
               >
                 <div className="flex items-center justify-between">
@@ -510,7 +491,7 @@ export default function AdminDashboard() {
                   </span>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-white">
+                  <div className="text-3xl font-bold text-white font-mono tabular-nums">
                     {stats.onboardingLeadsCount}
                   </div>
                   <div className="text-sm text-slate-400">
@@ -524,9 +505,7 @@ export default function AdminDashboard() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {/* Churn Rate */}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6 }}
+                {...cardEnterProps(0.6)}
                 className="glass-card p-6 space-y-4"
               >
                 <div className="flex items-center justify-between">
@@ -538,7 +517,7 @@ export default function AdminDashboard() {
                   </span>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-white">
+                  <div className="text-3xl font-bold text-white font-mono tabular-nums">
                     {stats.churnRate.toFixed(1)}%
                   </div>
                   <div className="text-sm text-slate-400">
@@ -549,9 +528,7 @@ export default function AdminDashboard() {
 
               {/* LTV (Lifetime Value) */}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.7 }}
+                {...cardEnterProps(0.7)}
                 className="glass-card p-6 space-y-4"
               >
                 <div className="flex items-center justify-between">
@@ -563,7 +540,7 @@ export default function AdminDashboard() {
                   </span>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-white">
+                  <div className="text-3xl font-bold text-white font-mono tabular-nums">
                     {formatCurrency(stats.ltv)}
                   </div>
                   <div className="text-sm text-slate-400">
@@ -574,9 +551,7 @@ export default function AdminDashboard() {
 
               {/* CAC (Customer Acquisition Cost) */}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.8 }}
+                {...cardEnterProps(0.8)}
                 className="glass-card p-6 space-y-4"
               >
                 <div className="flex items-center justify-between">
@@ -588,7 +563,7 @@ export default function AdminDashboard() {
                   </span>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-white">
+                  <div className="text-3xl font-bold text-white font-mono tabular-nums">
                     {formatCurrency(stats.cac)}
                   </div>
                   <div className="text-sm text-slate-400">
@@ -600,9 +575,7 @@ export default function AdminDashboard() {
 
             {/* AI Tools Activity */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
+              {...cardEnterProps(0.6)}
               className="glass-card p-6 space-y-4"
             >
               <h3 className="text-xl font-bold text-white flex items-center gap-2">
@@ -648,9 +621,7 @@ export default function AdminDashboard() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
               {/* Project Status Pie Chart */}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.7 }}
+                {...cardEnterProps(0.7)}
                 className="glass-card p-6"
               >
                 <h3 className="text-lg font-bold text-white mb-4">
@@ -686,9 +657,7 @@ export default function AdminDashboard() {
 
               {/* AI Tool Usage Bar Chart */}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.8 }}
+                {...cardEnterProps(0.8)}
                 className="glass-card p-6"
               >
                 <h3 className="text-lg font-bold text-white mb-4">
@@ -714,42 +683,44 @@ export default function AdminDashboard() {
 
             {/* Revenue by Service Chart */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.9 }}
+              {...cardEnterProps(0.9)}
               className="glass-card p-6"
             >
               <h3 className="text-lg font-bold text-white mb-4">
                 Bevétel Szolgáltatásonként
               </h3>
-              <ResponsiveContainer width="100%" height={250}>
-                <BarChart data={revenueByServiceData}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
-                  <XAxis dataKey="service" stroke="#94a3b8" />
-                  <YAxis
-                    stroke="#94a3b8"
-                    tickFormatter={(value) => formatCurrency(Number(value))}
-                  />
-                  <Tooltip
-                    contentStyle={{
-                      backgroundColor: "#0f172a",
-                      border: "1px solid #334155",
-                      borderRadius: "8px",
-                    }}
-                    formatter={(value) => formatCurrency(Number(value))}
-                  />
-                  <Bar dataKey="revenue" fill="#00B5F1" />
-                </BarChart>
-              </ResponsiveContainer>
+              {revenueByServiceData.length > 0 ? (
+                <ResponsiveContainer width="100%" height={250}>
+                  <BarChart data={revenueByServiceData}>
+                    <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
+                    <XAxis dataKey="service" stroke="#94a3b8" />
+                    <YAxis
+                      stroke="#94a3b8"
+                      tickFormatter={(value) => formatCurrency(Number(value))}
+                    />
+                    <Tooltip
+                      contentStyle={{
+                        backgroundColor: "#0f172a",
+                        border: "1px solid #334155",
+                        borderRadius: "8px",
+                      }}
+                      formatter={(value) => formatCurrency(Number(value))}
+                    />
+                    <Bar dataKey="revenue" fill="#00B5F1" />
+                  </BarChart>
+                </ResponsiveContainer>
+              ) : (
+                <p className="text-xs font-mono text-slate-400 py-8 text-center">
+                  Még nincs lezárt tranzakciós bontás (0 Ft).
+                </p>
+              )}
             </motion.div>
 
             {/* Revenue Section */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
               {/* Revenue Card */}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
+                {...cardEnterProps(0.5)}
                 className="glass-card p-6 space-y-4"
               >
                 <div className="flex items-center justify-between">
@@ -757,7 +728,7 @@ export default function AdminDashboard() {
                     <DollarSign className="w-6 h-6 text-emerald-500" />
                   </div>
                   <div
-                    className={`flex items-center gap-1 text-sm ${isPositiveTrend(stats.revenueTrend) ? "text-emerald-500" : "text-red-500"}`}
+                    className={`flex items-center gap-1 text-sm font-mono tabular-nums ${isPositiveTrend(stats.revenueTrend) ? "text-emerald-500" : "text-red-500"}`}
                   >
                     {isPositiveTrend(stats.revenueTrend) ? (
                       <TrendingUp className="w-4 h-4" />
@@ -768,7 +739,7 @@ export default function AdminDashboard() {
                   </div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-white">
+                  <div className="text-3xl font-bold text-white font-mono tabular-nums">
                     {formatCurrency(stats.monthlyRevenue)}
                   </div>
                   <div className="text-sm text-slate-400">
@@ -779,9 +750,7 @@ export default function AdminDashboard() {
 
               {/* Revenue Chart */}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6 }}
+                {...cardEnterProps(0.6)}
                 className="glass-card p-6 lg:col-span-2"
               >
                 <h3 className="text-lg font-bold text-white mb-4">
@@ -813,9 +782,7 @@ export default function AdminDashboard() {
 
             {/* Quick Actions */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.7 }}
+              {...cardEnterProps(0.7)}
               className="glass-card p-6 space-y-4"
             >
               <h3 className="text-xl font-bold text-white flex items-center gap-2">
@@ -825,7 +792,7 @@ export default function AdminDashboard() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <button
                   onClick={() => (window.location.href = "/admin/leadek")}
-                  className="px-6 py-4 bg-bg-elevated/50 hover:bg-bg-elevated rounded-xl transition-all text-left group"
+                  className="px-6 py-4 bg-bg-elevated/50 hover:bg-bg-elevated rounded-xl transition-colors text-left group"
                 >
                   <div className="text-white font-bold group-hover:text-sky-500 transition-colors">
                     Lead-ek Kezelése
@@ -836,7 +803,7 @@ export default function AdminDashboard() {
                 </button>
                 <button
                   onClick={() => (window.location.href = "/admin/portfolio")}
-                  className="px-6 py-4 bg-bg-elevated/50 hover:bg-bg-elevated rounded-xl transition-all text-left group"
+                  className="px-6 py-4 bg-bg-elevated/50 hover:bg-bg-elevated rounded-xl transition-colors text-left group"
                 >
                   <div className="text-white font-bold group-hover:text-sky-500 transition-colors">
                     Portfolio Menedzsment
@@ -849,7 +816,7 @@ export default function AdminDashboard() {
                   onClick={() =>
                     (window.location.href = "/admin/portal-kezelo")
                   }
-                  className="px-6 py-4 bg-bg-elevated/50 hover:bg-bg-elevated rounded-xl transition-all text-left group"
+                  className="px-6 py-4 bg-bg-elevated/50 hover:bg-bg-elevated rounded-xl transition-colors text-left group"
                 >
                   <div className="text-white font-bold group-hover:text-sky-500 transition-colors">
                     Portál Kezelő
@@ -862,7 +829,7 @@ export default function AdminDashboard() {
                   onClick={() =>
                     (window.location.href = "/portal/kreativ-studio")
                   }
-                  className="px-6 py-4 bg-bg-elevated/50 hover:bg-bg-elevated rounded-xl transition-all text-left group"
+                  className="px-6 py-4 bg-bg-elevated/50 hover:bg-bg-elevated rounded-xl transition-colors text-left group"
                 >
                   <div className="text-white font-bold group-hover:text-sky-500 transition-colors">
                     Kreatív Stúdió

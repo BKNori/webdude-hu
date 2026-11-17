@@ -11,7 +11,15 @@ import {
 import {
   exportLeadsCSVAction,
   exportProjectsCSVAction,
+  exportTransactionsCSVAction,
 } from "@/actions/admin-dashboard";
+import {
+  exportLeadsCsvClient,
+  exportProjectsCsvClient,
+  exportTransactionsCsvClient,
+} from "@/lib/admin-dashboard-client";
+import { exportAdminKpiPdf } from "@/lib/admin-kpi-pdf";
+import AdminExportToolbar from "@/components/molecules/AdminExportToolbar";
 import {
   Brain,
   Zap,
@@ -25,9 +33,7 @@ import {
   FolderKanban,
   DollarSign,
   Briefcase,
-  Download,
-  FileText,
-  Loader2,
+  BarChart3,
 } from "lucide-react";
 
 interface AIStats {
@@ -59,6 +65,7 @@ export default function AdminDashboard() {
   // Export állapotok
   const [exportingLeads, setExportingLeads] = useState(false);
   const [exportingProjects, setExportingProjects] = useState(false);
+  const [exportingTransactions, setExportingTransactions] = useState(false);
   const [exportingPdf, setExportingPdf] = useState(false);
 
   useEffect(() => {
@@ -152,28 +159,45 @@ export default function AdminDashboard() {
     return { Authorization: `Bearer ${token}` };
   };
 
+  const triggerCsvDownload = (csvContent: string, filename: string) => {
+    const blob = new Blob([csvContent], {
+      type: "text/csv;charset=utf-8;",
+    });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    window.URL.revokeObjectURL(url);
+    document.body.removeChild(a);
+  };
+
   const handleExportLeads = async () => {
     setExportingLeads(true);
     try {
       const headers = await getAuthHeaders();
       const response = await exportLeadsCSVAction(headers);
       if (response.success && response.csvContent) {
-        const blob = new Blob([response.csvContent], {
-          type: "text/csv;charset=utf-8;",
-        });
-        const url = window.URL.createObjectURL(blob);
-        const a = document.createElement("a");
-        a.href = url;
-        a.download = response.filename || "leads_export.csv";
-        document.body.appendChild(a);
-        a.click();
-        window.URL.revokeObjectURL(url);
-        document.body.removeChild(a);
+        triggerCsvDownload(
+          response.csvContent,
+          response.filename || "leads_export.csv"
+        );
       } else {
-        alert(response.error || "Hiba történt a leadek exportálása során.");
+        const fallback = await exportLeadsCsvClient();
+        if (fallback) {
+          triggerCsvDownload(fallback.csvContent, fallback.filename);
+        } else {
+          setError(response.error || "Hiba történt a leadek exportálása során.");
+        }
       }
     } catch {
-      alert("Hiba történt a leadek exportálása során.");
+      const fallback = await exportLeadsCsvClient().catch(() => null);
+      if (fallback) {
+        triggerCsvDownload(fallback.csvContent, fallback.filename);
+      } else {
+        setError("Hiba történt a leadek exportálása során.");
+      }
     } finally {
       setExportingLeads(false);
     }
@@ -185,24 +209,59 @@ export default function AdminDashboard() {
       const headers = await getAuthHeaders();
       const response = await exportProjectsCSVAction(headers);
       if (response.success && response.csvContent) {
-        const blob = new Blob([response.csvContent], {
-          type: "text/csv;charset=utf-8;",
-        });
-        const url = window.URL.createObjectURL(blob);
-        const a = document.createElement("a");
-        a.href = url;
-        a.download = response.filename || "projects_export.csv";
-        document.body.appendChild(a);
-        a.click();
-        window.URL.revokeObjectURL(url);
-        document.body.removeChild(a);
+        triggerCsvDownload(
+          response.csvContent,
+          response.filename || "projects_export.csv"
+        );
       } else {
-        alert(response.error || "Hiba történt a projektek exportálása során.");
+        const fallback = await exportProjectsCsvClient();
+        if (fallback) {
+          triggerCsvDownload(fallback.csvContent, fallback.filename);
+        } else {
+          setError(response.error || "Hiba történt a projektek exportálása során.");
+        }
       }
     } catch {
-      alert("Hiba történt a projektek exportálása során.");
+      const fallback = await exportProjectsCsvClient().catch(() => null);
+      if (fallback) {
+        triggerCsvDownload(fallback.csvContent, fallback.filename);
+      } else {
+        setError("Hiba történt a projektek exportálása során.");
+      }
     } finally {
       setExportingProjects(false);
+    }
+  };
+
+  const handleExportTransactions = async () => {
+    setExportingTransactions(true);
+    try {
+      const headers = await getAuthHeaders();
+      const response = await exportTransactionsCSVAction(headers);
+      if (response.success && response.csvContent) {
+        triggerCsvDownload(
+          response.csvContent,
+          response.filename || "transactions_export.csv"
+        );
+      } else {
+        const fallback = await exportTransactionsCsvClient();
+        if (fallback) {
+          triggerCsvDownload(fallback.csvContent, fallback.filename);
+        } else {
+          setError(
+            response.error || "Hiba történt a tranzakciók exportálása során."
+          );
+        }
+      }
+    } catch {
+      const fallback = await exportTransactionsCsvClient().catch(() => null);
+      if (fallback) {
+        triggerCsvDownload(fallback.csvContent, fallback.filename);
+      } else {
+        setError("Hiba történt a tranzakciók exportálása során.");
+      }
+    } finally {
+      setExportingTransactions(false);
     }
   };
 
@@ -210,70 +269,21 @@ export default function AdminDashboard() {
     if (typeof window === "undefined") return;
     setExportingPdf(true);
     try {
-      const { jsPDF } = await import("jspdf");
-      const doc = new jsPDF();
-      const currentDate = new Date().toLocaleDateString("hu-HU");
-
-      // Címsor és branding
-      doc.setFontSize(20);
-      doc.setTextColor(0, 181, 241); // Electric Cyan
-      doc.text("WebDude.hu - Vezetoi KPI & Statisztikai Jelentes", 20, 20);
-
-      doc.setFontSize(10);
-      doc.setTextColor(120, 120, 120);
-      doc.text(`Generálva: ${currentDate} | Adminisztrációs Összefoglaló`, 20, 28);
-
-      doc.setDrawColor(30, 41, 59);
-      doc.line(20, 32, 190, 32);
-
-      // Pénzügyi és Üzleti KPI Szekció
-      doc.setFontSize(14);
-      doc.setTextColor(240, 240, 240);
-      doc.text("1. Pénzügyi és Ügyfél Metrikák", 20, 42);
-
-      doc.setFontSize(10);
-      doc.setTextColor(50, 50, 50);
-
-      const mrrFormatted = kpiMetrics
-        ? new Intl.NumberFormat("hu-HU", { style: "currency", currency: "HUF" }).format(kpiMetrics.mrr)
-        : "N/A";
-      const totalRevFormatted = kpiMetrics
-        ? new Intl.NumberFormat("hu-HU", { style: "currency", currency: "HUF" }).format(kpiMetrics.totalRevenue)
-        : "N/A";
-      const ltvFormatted = kpiMetrics
-        ? new Intl.NumberFormat("hu-HU", { style: "currency", currency: "HUF" }).format(kpiMetrics.estimatedLtv)
-        : "N/A";
-      const churnFormatted = kpiMetrics ? `${kpiMetrics.churnRate}%` : "0%";
-      const activeClientsFormatted = kpiMetrics ? `${kpiMetrics.activeClients} ügyfél / projekt` : "N/A";
-
-      doc.text(`- Havi Visszatérő Bevétel (MRR átlag): ${mrrFormatted}`, 25, 52);
-      doc.text(`- Összes Bevétel (Stripe lezárt tranzakciók): ${totalRevFormatted}`, 25, 60);
-      doc.text(`- Becsült Ügyfélérték (LTV): ${ltvFormatted}`, 25, 68);
-      doc.text(`- Lemondási Ráta (Churn Rate): ${churnFormatted}`, 25, 76);
-      doc.text(`- Aktív Ügyfelek és Projektek száma: ${activeClientsFormatted}`, 25, 84);
-
-      // CRM és Működési Statisztikák
-      doc.setFontSize(14);
-      doc.setTextColor(240, 240, 240);
-      doc.text("2. CRM és Működési Állapot", 20, 100);
-
-      doc.setFontSize(10);
-      doc.setTextColor(50, 50, 50);
-      doc.text(`- Beérkezett Leadek száma: ${leadsCount ?? 0} db`, 25, 110);
-      doc.text(`- Nyilvántartott Portfólió Munkák: ${portfolioCount ?? 0} db`, 25, 118);
-      doc.text(`- Lefuttatott AI Generálások: ${aiStats?.totalGenerations ?? 0} alkalom`, 25, 126);
-
-      // Lábléc
-      doc.setDrawColor(200, 200, 200);
-      doc.line(20, 270, 190, 270);
-      doc.setFontSize(8);
-      doc.setTextColor(150, 150, 150);
-      doc.text("Bizalmas - WebDude.hu belső vezetői dokumentáció", 20, 276);
-
-      doc.save(`webdude_kpi_report_${new Date().toISOString().split("T")[0]}.pdf`);
+      await exportAdminKpiPdf({
+        mrr: kpiMetrics?.mrr ?? 0,
+        totalRevenue: kpiMetrics?.totalRevenue ?? 0,
+        estimatedLtv: kpiMetrics?.estimatedLtv ?? 0,
+        cac: kpiMetrics?.cac ?? 0,
+        churnRate: kpiMetrics?.churnRate ?? 0,
+        activeClients: kpiMetrics?.activeClients ?? 0,
+        leadsCount: leadsCount ?? 0,
+        portfolioCount: portfolioCount ?? 0,
+        totalGenerations: aiStats?.totalGenerations ?? 0,
+        revenueByService: kpiMetrics?.revenueByService ?? [],
+      });
     } catch (err) {
       console.error("PDF export hiba:", err);
-      alert("Hiba történt a PDF jelentés készítésekor.");
+      setError("Hiba történt a PDF jelentés készítésekor.");
     } finally {
       setExportingPdf(false);
     }
@@ -300,52 +310,16 @@ export default function AdminDashboard() {
         </div>
 
         {/* Quick Export Toolbar */}
-        <div className="flex flex-wrap items-center gap-2.5">
-          <button
-            type="button"
-            onClick={handleExportLeads}
-            disabled={exportingLeads}
-            aria-label="Leadek exportálása CSV formátumban"
-            className="px-3.5 py-2 bg-[#0f172a]/70 hover:bg-[#1e293b] border border-[#1e293b] hover:border-[#00B5F1]/40 text-[#00B5F1] font-mono text-xs rounded-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-[#00B5F1]/50 shadow-sm"
-          >
-            {exportingLeads ? (
-              <Loader2 className="w-3.5 h-3.5 animate-spin" />
-            ) : (
-              <Download className="w-3.5 h-3.5" />
-            )}
-            <span>Leadek (CSV)</span>
-          </button>
-
-          <button
-            type="button"
-            onClick={handleExportProjects}
-            disabled={exportingProjects}
-            aria-label="Projektek exportálása CSV formátumban"
-            className="px-3.5 py-2 bg-[#0f172a]/70 hover:bg-[#1e293b] border border-[#1e293b] hover:border-purple-500/40 text-purple-400 font-mono text-xs rounded-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-purple-500/50 shadow-sm"
-          >
-            {exportingProjects ? (
-              <Loader2 className="w-3.5 h-3.5 animate-spin" />
-            ) : (
-              <Download className="w-3.5 h-3.5" />
-            )}
-            <span>Projektek (CSV)</span>
-          </button>
-
-          <button
-            type="button"
-            onClick={handleExportPdfReport}
-            disabled={exportingPdf}
-            aria-label="Vezetői KPI jelentés letöltése PDF formátumban"
-            className="px-3.5 py-2 bg-gradient-to-r from-[#075985] to-[#5B21B6] hover:opacity-90 text-white font-mono text-xs font-semibold rounded-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-[#00B5F1]/50 shadow-md shadow-sky-950/30"
-          >
-            {exportingPdf ? (
-              <Loader2 className="w-3.5 h-3.5 animate-spin text-white" />
-            ) : (
-              <FileText className="w-3.5 h-3.5 text-white" />
-            )}
-            <span>KPI Riport (PDF)</span>
-          </button>
-        </div>
+        <AdminExportToolbar
+          onExportLeads={handleExportLeads}
+          onExportProjects={handleExportProjects}
+          onExportTransactions={handleExportTransactions}
+          onExportPdf={handleExportPdfReport}
+          exportingLeads={exportingLeads}
+          exportingProjects={exportingProjects}
+          exportingTransactions={exportingTransactions}
+          exportingPdf={exportingPdf}
+        />
       </div>
 
       {error && (
@@ -365,15 +339,15 @@ export default function AdminDashboard() {
           <span className="text-[10px] font-mono text-slate-500">Stripe & Firestore Aggregáció</span>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {/* MRR */}
-          <div className="bg-[#0f172a]/70 border border-[#1e293b] hover:border-[#00B5F1]/30 rounded-2xl p-5 transition-all duration-200 backdrop-blur-md shadow-lg">
+          <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800/80 hover:border-[#00B5F1]/40 rounded-2xl p-5 transition-colors duration-200 shadow-lg">
             <div className="flex justify-between items-start mb-2">
               <span className="text-xs font-medium text-slate-400 font-mono uppercase tracking-wider">
                 MRR (Átlag)
               </span>
               <div className="w-8 h-8 rounded-lg bg-[#00B5F1]/10 flex items-center justify-center">
-                <DollarSign className="w-4 h-4 text-[#00B5F1]" />
+                <DollarSign className="w-4 h-4 text-[#00B5F1]" aria-hidden="true" />
               </div>
             </div>
             <p className="text-2xl font-bold text-white mb-1 font-mono tabular-nums">
@@ -383,13 +357,13 @@ export default function AdminDashboard() {
           </div>
 
           {/* Összes Bevétel */}
-          <div className="bg-[#0f172a]/70 border border-[#1e293b] hover:border-[#00B5F1]/30 rounded-2xl p-5 transition-all duration-200 backdrop-blur-md shadow-lg">
+          <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800/80 hover:border-[#00B5F1]/40 rounded-2xl p-5 transition-colors duration-200 shadow-lg">
             <div className="flex justify-between items-start mb-2">
               <span className="text-xs font-medium text-slate-400 font-mono uppercase tracking-wider">
                 Összes Bevétel
               </span>
               <div className="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center">
-                <TrendingUp className="w-4 h-4 text-emerald-400" />
+                <TrendingUp className="w-4 h-4 text-emerald-400" aria-hidden="true" />
               </div>
             </div>
             <p className="text-2xl font-bold text-white mb-1 font-mono tabular-nums">
@@ -399,13 +373,13 @@ export default function AdminDashboard() {
           </div>
 
           {/* Aktív Ügyfelek / Projektek */}
-          <div className="bg-[#0f172a]/70 border border-[#1e293b] hover:border-[#00B5F1]/30 rounded-2xl p-5 transition-all duration-200 backdrop-blur-md shadow-lg">
+          <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800/80 hover:border-[#00B5F1]/40 rounded-2xl p-5 transition-colors duration-200 shadow-lg">
             <div className="flex justify-between items-start mb-2">
               <span className="text-xs font-medium text-slate-400 font-mono uppercase tracking-wider">
                 Aktív Ügyfelek
               </span>
               <div className="w-8 h-8 rounded-lg bg-purple-500/10 flex items-center justify-center">
-                <Briefcase className="w-4 h-4 text-purple-400" />
+                <Briefcase className="w-4 h-4 text-purple-400" aria-hidden="true" />
               </div>
             </div>
             <p className="text-2xl font-bold text-white mb-1 font-mono tabular-nums">
@@ -415,13 +389,13 @@ export default function AdminDashboard() {
           </div>
 
           {/* LTV */}
-          <div className="bg-[#0f172a]/70 border border-[#1e293b] hover:border-[#00B5F1]/30 rounded-2xl p-5 transition-all duration-200 backdrop-blur-md shadow-lg">
+          <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800/80 hover:border-[#00B5F1]/40 rounded-2xl p-5 transition-colors duration-200 shadow-lg">
             <div className="flex justify-between items-start mb-2">
               <span className="text-xs font-medium text-slate-400 font-mono uppercase tracking-wider">
                 Ügyfélérték (LTV)
               </span>
               <div className="w-8 h-8 rounded-lg bg-[#00B5F1]/10 flex items-center justify-center">
-                <UsersIcon className="w-4 h-4 text-[#00B5F1]" />
+                <UsersIcon className="w-4 h-4 text-[#00B5F1]" aria-hidden="true" />
               </div>
             </div>
             <p className="text-2xl font-bold text-white mb-1 font-mono tabular-nums">
@@ -430,14 +404,30 @@ export default function AdminDashboard() {
             <p className="text-[11px] text-slate-400 font-sans">Átlagos költés / ügyfél</p>
           </div>
 
+          {/* CAC */}
+          <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800/80 hover:border-[#00B5F1]/40 rounded-2xl p-5 transition-colors duration-200 shadow-lg">
+            <div className="flex justify-between items-start mb-2">
+              <span className="text-xs font-medium text-slate-400 font-mono uppercase tracking-wider">
+                CAC (Ügyfélszerzés)
+              </span>
+              <div className="w-8 h-8 rounded-lg bg-[#5B21B6]/20 flex items-center justify-center">
+                <TrendingUp className="w-4 h-4 text-violet-300" aria-hidden="true" />
+              </div>
+            </div>
+            <p className="text-2xl font-bold text-white mb-1 font-mono tabular-nums">
+              {kpiLoading ? "..." : kpiMetrics ? formatHUF(kpiMetrics.cac) : "0 Ft"}
+            </p>
+            <p className="text-[11px] text-slate-400 font-sans">Marketing költés / ügyfél</p>
+          </div>
+
           {/* Churn Rate */}
-          <div className="bg-[#0f172a]/70 border border-[#1e293b] hover:border-[#00B5F1]/30 rounded-2xl p-5 transition-all duration-200 backdrop-blur-md shadow-lg">
+          <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800/80 hover:border-[#00B5F1]/40 rounded-2xl p-5 transition-colors duration-200 shadow-lg">
             <div className="flex justify-between items-start mb-2">
               <span className="text-xs font-medium text-slate-400 font-mono uppercase tracking-wider">
                 Churn Rate
               </span>
               <div className="w-8 h-8 rounded-lg bg-rose-500/10 flex items-center justify-center">
-                <TrendingDown className="w-4 h-4 text-rose-400" />
+                <TrendingDown className="w-4 h-4 text-rose-400" aria-hidden="true" />
               </div>
             </div>
             <p className="text-2xl font-bold text-white mb-1 font-mono tabular-nums">
@@ -446,11 +436,62 @@ export default function AdminDashboard() {
             <p className="text-[11px] text-slate-400 font-sans">Projekt lemorzsolódás</p>
           </div>
         </div>
+
+        {/* Bevétel Szolgáltatásonként (revenueByService) */}
+        <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800/80 rounded-2xl p-5 space-y-3">
+          <div className="flex items-center justify-between">
+            <h3 className="text-xs font-bold text-slate-200 font-mono uppercase tracking-wider flex items-center gap-2">
+              <BarChart3 className="w-4 h-4 text-[#00B5F1]" aria-hidden="true" />
+              Bevétel Szolgáltatásonként
+            </h3>
+            <span className="text-[10px] font-mono text-slate-400 tabular-nums">
+              {kpiMetrics?.revenueByService.length ?? 0} kategória
+            </span>
+          </div>
+
+          {kpiLoading ? (
+            <p className="text-xs text-slate-400 font-mono">Adatok betöltése...</p>
+          ) : kpiMetrics && kpiMetrics.revenueByService.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              {kpiMetrics.revenueByService.map((item) => {
+                const share =
+                  kpiMetrics.totalRevenue > 0
+                    ? Math.round((item.revenue / kpiMetrics.totalRevenue) * 100)
+                    : 0;
+                return (
+                  <div
+                    key={item.service}
+                    className="p-3 rounded-xl bg-slate-950/60 border border-slate-800/80 space-y-1.5"
+                  >
+                    <div className="flex items-center justify-between text-xs gap-2">
+                      <span className="text-slate-200 font-medium truncate">
+                        {item.service}
+                      </span>
+                      <span className="text-[#00B5F1] font-mono font-bold tabular-nums shrink-0">
+                        {formatHUF(item.revenue)} ({share}%)
+                      </span>
+                    </div>
+                    <div className="w-full h-1.5 rounded-full bg-slate-800 overflow-hidden">
+                      <div
+                        className="h-full bg-linear-to-r from-[#00B5F1] to-[#5B21B6] rounded-full"
+                        style={{ width: `${Math.min(100, Math.max(0, share))}%` }}
+                      />
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          ) : (
+            <p className="text-xs text-slate-400 font-mono">
+              Még nincs lezárt tranzakciós bontás (0 Ft).
+            </p>
+          )}
+        </div>
       </div>
 
       {/* Top Cards Grid */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-        <div className="bg-[#0f0f1a] border border-gray-800 rounded-2xl p-6 hover:border-[#00B5F1]/20 transition-all">
+        <div className="bg-[#0f0f1a] border border-gray-800 rounded-2xl p-6 hover:border-[#00B5F1]/20 transition-colors">
           <div className="flex justify-between items-start mb-2">
             <h2 className="text-xs font-semibold text-gray-400 font-mono uppercase tracking-wider">
               Összes Lead
@@ -468,7 +509,7 @@ export default function AdminDashboard() {
           </div>
         </div>
 
-        <div className="bg-[#0f0f1a] border border-gray-800 rounded-2xl p-6 hover:border-[#00B5F1]/20 transition-all">
+        <div className="bg-[#0f0f1a] border border-gray-800 rounded-2xl p-6 hover:border-[#00B5F1]/20 transition-colors">
           <div className="flex justify-between items-start mb-2">
             <h2 className="text-xs font-semibold text-gray-400 font-mono uppercase tracking-wider">
               Portfólió Munkák
@@ -486,7 +527,7 @@ export default function AdminDashboard() {
           </div>
         </div>
 
-        <div className="bg-[#0f0f1a] border border-gray-800 rounded-2xl p-6 hover:border-[#00B5F1]/20 transition-all">
+        <div className="bg-[#0f0f1a] border border-gray-800 rounded-2xl p-6 hover:border-[#00B5F1]/20 transition-colors">
           <div className="flex justify-between items-start mb-2">
             <h2 className="text-xs font-semibold text-gray-400 font-mono uppercase tracking-wider">
               AI Generálások
@@ -504,7 +545,7 @@ export default function AdminDashboard() {
           </div>
         </div>
 
-        <div className="bg-[#0f0f1a] border border-gray-800 rounded-2xl p-6 hover:border-[#00B5F1]/20 transition-all">
+        <div className="bg-[#0f0f1a] border border-gray-800 rounded-2xl p-6 hover:border-[#00B5F1]/20 transition-colors">
           <div className="flex justify-between items-start mb-2">
             <h2 className="text-xs font-semibold text-gray-400 font-mono uppercase tracking-wider">
               Rendszer Státusz

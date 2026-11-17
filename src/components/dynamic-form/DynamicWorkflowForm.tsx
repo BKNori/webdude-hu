@@ -3,8 +3,8 @@
 import { useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { motion } from "motion/react";
-import { Copy, Check, AlertCircle } from "lucide-react";
+import { motion, useReducedMotion } from "motion/react";
+import { Copy, Check, AlertCircle, Lock } from "lucide-react";
 import { WorkflowUISchema } from "@/types/workflow";
 import {
   generateZodSchema,
@@ -32,6 +32,7 @@ export function DynamicWorkflowForm({
   isProUser,
   dailyLimitReached,
 }: DynamicWorkflowFormProps) {
+  const shouldReduceMotion = useReducedMotion();
   const [showProUpsell, setShowProUpsell] = useState(false);
   const [copied, setCopied] = useState(false);
 
@@ -97,26 +98,34 @@ export function DynamicWorkflowForm({
   if (showProUpsell) {
     return (
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+        initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 20 }}
+        animate={shouldReduceMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
+        transition={
+          shouldReduceMotion
+            ? { duration: 0 }
+            : { type: "spring", stiffness: 100, damping: 20 }
+        }
         className="bg-linear-to-r from-[#00B5F1]/10 to-[#7C3AED]/10 border border-[#00B5F1]/20 rounded-2xl p-8"
       >
         <div className="text-center space-y-4">
-          <h3 className="text-2xl font-bold text-text-primary">
-            Napi limit elérve 🔒
+          <h3 className="text-2xl font-bold text-text-primary inline-flex items-center justify-center gap-2">
+            <Lock className="w-5 h-5 text-[#00B5F1]" aria-hidden="true" />
+            <span>Napi limit elérve</span>
           </h3>
           <p className="text-text-secondary">
             Frissíts Pro csomagra korlátlan generálásért!
           </p>
           <button
+            type="button"
             onClick={() => setShowProUpsell(false)}
-            className="px-8 py-3 bg-linear-to-r from-[#00B5F1] to-[#5B21B6] text-slate-950 font-bold rounded-xl hover:shadow-[0_8px_32px_rgba(0, 181, 241,0.4)] transition-all"
+            className="px-8 py-3 bg-linear-to-r from-[#075985] to-[#5B21B6] text-white font-bold rounded-xl hover:shadow-[0_8px_32px_rgba(0,181,241,0.4)] transition-shadow"
           >
             Frissítés most
           </button>
           <button
+            type="button"
             onClick={() => setShowProUpsell(false)}
-            className="text-text-secondary text-sm"
+            className="text-text-secondary text-sm block mx-auto"
           >
             Bezárás
           </button>
@@ -127,8 +136,13 @@ export function DynamicWorkflowForm({
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
+      initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 20 }}
+      animate={shouldReduceMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
+      transition={
+        shouldReduceMotion
+          ? { duration: 0 }
+          : { type: "spring", stiffness: 100, damping: 20 }
+      }
       className="bg-bg-surface border border-bg-elevated rounded-2xl p-8 shadow-[0_8px_32px_rgba(0,0,0,0.4)]"
     >
       <div className="mb-6">
@@ -148,10 +162,10 @@ export function DynamicWorkflowForm({
         ))}
 
         <motion.button
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
+          whileHover={shouldReduceMotion ? undefined : { scale: 1.02 }}
+          whileTap={shouldReduceMotion ? undefined : { scale: 0.98 }}
           type="submit"
-          className="w-full px-8 py-4 bg-linear-to-r from-[#075985] to-[#5B21B6] text-white font-bold rounded-xl hover:shadow-[0_8px_32px_rgba(91,33,182,0.45)] transition-all"
+          className="w-full px-8 py-4 bg-linear-to-r from-[#075985] to-[#5B21B6] text-white font-bold rounded-xl hover:shadow-[0_8px_32px_rgba(91,33,182,0.45)] transition-shadow"
         >
           Generálás indítása
         </motion.button>

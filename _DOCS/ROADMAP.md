@@ -1,7 +1,7 @@
 # ROADMAP.md — WebDude OS Fejlesztési Terv
 
 **webdude.hu | Next.js 16 · React 19 · TypeScript · Firebase**
-**Utolsó frissítés: 2026-07-13**
+**Utolsó frissítés: 2026-11-17 (v7.64.0)**
 
 > Ez a dokumentum a WebDude.hu projekt stratégiai fejlesztési ütemterve. A feladatok üzleti és technikai prioritás alapján vannak csoportosítva.
 > A jelenlegi projekt állapota: **Production Ready** (Cycle 132)
@@ -60,22 +60,22 @@
   - ✅ Dinamikus upsell logikák (AEO Audit vs UX Roast Audit vs AI+Emberi Blogcikk Csomag)
 - **Üzleti érték:** Portál konverzió növelése, ügyfél-retenció, E-E-A-T építés
 
-### 2. Admin felület funkciók
+### 2. Admin felület funkciók ✅
 
-- **Jelenlegi állapot:** Alap CRM és workflow kezelő
-- **Bővítési lehetőségek:**
-  - Részletesebb KPI dashboard (revenue, churn rate, LTV)
-  - Export funkciók (leadek CSV, munkafolyamatok PDF)
-  - Email template editor (automatikus értesítések)
+- **Jelenlegi állapot:** Teljes Kék-Lila v7.0 KPI dashboard és egységesített export központ (`v7.64.0`)
+- **Elvégzett bővítések:**
+  - ✅ Részletesebb KPI dashboard (MRR, összes bevétel, churn rate, LTV, CAC, `revenueByService`)
+  - ✅ Egységesített export funkciók (`AdminExportToolbar`: Leadek/Projektek/Tranzakciók CSV + dinamikus jsPDF KPI Riport PDF)
+  - ✅ Email template editor (`EmailTemplateEditor` sandboxolt `<iframe srcDoc="..." sandbox="" />` előnézettel)
 - **Üzleti érték:** Admin hatékonyság növelése, adat-alapú döntéshozatal
 
-### 3. Portál funkcionalitás
+### 3. Portál funkcionalitás ✅
 
-- **Jelenlegi állapot:** Alap ügyfélportál (workflow-k, AI eszközök)
-- **Bővítési lehetőségek:**
-  - Valós idejű értesítések (WebSocket vagy Firebase Cloud Messaging)
-  - Dokumentum előnéző a Vaultban (PDF, képek)
-  - Projekt idővonal vizualizáció (Gantt chart)
+- **Jelenlegi állapot:** Teljes Kék-Lila v7.0 ügyfélportál (`v7.64.0`)
+- **Elvégzett bővítések:**
+  - ✅ Valós idejű értesítések (`PortalNotificationBell` + `usePortalNotifications` 3× `onSnapshot`)
+  - ✅ Dokumentum előnéző a Vaultban (`ClientVault` + akadálymentes `DocumentPreviewModal` PDF/kép előnézettel)
+  - ✅ Projekt idővonal vizualizáció (`ProjectTimelineGantt` chart)
 - **Üzleti érték:** Ügyfél-elégedettség növelése, transzparencia
 
 ---

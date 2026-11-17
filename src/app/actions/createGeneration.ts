@@ -4,10 +4,16 @@ import { getAuth } from "firebase-admin/auth";
 import { adminApp, adminDb } from "@/lib/firebase-admin";
 import { logger } from "@/lib/logger";
 import type { DocumentReference } from "firebase-admin/firestore";
+import { z } from "zod";
 import {
   GenerationInput,
   CreateGenerationResponse,
 } from "@/types/generation";
+
+const createGenerationInputSchema = z.object({
+  workflowId: z.string().trim().min(1, "Érvénytelen workflow azonosító"),
+  params: z.record(z.unknown()),
+});
 
 // Groq API hívás
 async function callGroqAPI(prompt: string): Promise<string> {
@@ -47,8 +53,14 @@ async function callGroqAPI(prompt: string): Promise<string> {
     throw new Error(`Groq API hiba: ${response.status}`);
   }
 
-  const data = await response.json();
-  return data.choices[0].message.content;
+  const data = (await response.json()) as {
+    choices?: Array<{ message?: { content?: string } }>;
+  };
+  const content = data?.choices?.[0]?.message?.content;
+  if (!content) {
+    throw new Error("A Groq API nem adott vissza tartalmat.");
+  }
+  return content;
 }
 
 export async function createGeneration(
@@ -61,9 +73,18 @@ export async function createGeneration(
   // „sikertelen" értesítést. (null marad, ha a hiba a dok létrehozása előtt jött.)
   let generationRef: DocumentReference | null = null;
   try {
+    const parsedInput = createGenerationInputSchema.safeParse(input);
+    if (!parsedInput.success) {
+      return {
+        success: false,
+        error: "Érvénytelen generálási bemeneti adatok.",
+      };
+    }
+    const validInput = parsedInput.data;
+
     logger.info('createGeneration: indítás', {
       layer: 'ServerActions',
-      meta: { workflowId: input.workflowId },
+      meta: { workflowId: validInput.workflowId },
     });
 
     // Admin SDK ellenőrzés (Spark csomag — nincs Cloud Functions)
@@ -73,7 +94,7 @@ export async function createGeneration(
     }
 
     // ID token verifikáció (a kliens SDK auth.currentUser szerveren nem elérhető)
-    if (!idToken) {
+    if (!idToken || typeof idToken !== "string" || !idToken.trim()) {
       return { success: false, error: "Hiányzó autentikációs token" };
     }
 

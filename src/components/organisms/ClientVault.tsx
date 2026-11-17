@@ -382,7 +382,7 @@ export default function ClientVault() {
   };
 
   return (
-    <div className="bg-bg-surface/40 backdrop-blur-xl border border-bg-elevated/80 rounded-3xl p-6 md:p-8 shadow-2xl relative overflow-hidden space-y-6">
+    <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800/80 rounded-3xl p-6 md:p-8 shadow-2xl relative overflow-hidden space-y-6">
       {/* Background glow decorator */}
       <div className="absolute -left-24 -bottom-24 w-48 h-48 rounded-full bg-sky-500/5 blur-3xl pointer-events-none" />
 
@@ -430,7 +430,7 @@ export default function ClientVault() {
         onDragLeave={handleDrag}
         onDrop={handleDrop}
         onClick={triggerSelectFile}
-        className={`border-2 border-dashed rounded-2xl p-8 text-center cursor-pointer transition-all duration-300 ${
+        className={`border-2 border-dashed rounded-2xl p-8 text-center cursor-pointer transition-[border-color,background-color] duration-300 ${
           dragActive
             ? "border-sky-500 bg-sky-500/5"
             : "border-bg-elevated hover:border-sky-500/40 hover:bg-transparent"
@@ -471,7 +471,7 @@ export default function ClientVault() {
           </div>
           <div className="h-1.5 w-full bg-gray-800 rounded-full overflow-hidden">
             <div
-              className="h-full bg-linear-to-r from-sky-500 to-violet-700 rounded-full transition-all duration-150"
+              className="h-full bg-linear-to-r from-sky-500 to-violet-700 rounded-full transition-[width] duration-150"
               style={{ width: `${progress}%` }}
             />
           </div>
@@ -498,102 +498,113 @@ export default function ClientVault() {
             {files.map((file) => {
               const FileIcon = getFileIcon(file.name);
               const isAdminUpload = file.uploadedBy === "admin";
+              const isPreviewable = canPreview(file.name);
 
               return (
                 <div
                   key={file.id}
-                  onClick={
-                    canPreview(file.name)
-                      ? () => setPreviewFile(file)
-                      : undefined
-                  }
-                  onKeyDown={
-                    canPreview(file.name)
-                      ? (event) => {
-                          if (event.key === "Enter" || event.key === " ") {
-                            event.preventDefault();
-                            setPreviewFile(file);
-                          }
-                        }
-                      : undefined
-                  }
-                  role={canPreview(file.name) ? "button" : undefined}
-                  tabIndex={canPreview(file.name) ? 0 : undefined}
-                  aria-label={
-                    canPreview(file.name)
-                      ? `${file.name} — előnézet megnyitása`
-                      : undefined
-                  }
-                  className={`bg-transparent border border-bg-elevated/50 hover:border-sky-500/30 rounded-2xl p-4 flex items-center justify-between gap-4 transition-all duration-300 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2 focus-visible:ring-offset-bg-surface${
-                    canPreview(file.name) ? " cursor-pointer" : ""
-                  }`}
+                  className="bg-slate-900/60 backdrop-blur-xl border border-slate-800/80 hover:border-[#00B5F1]/40 rounded-2xl p-4 flex items-center justify-between gap-4 transition-[border-color,background-color] duration-300 group"
                 >
-                  <div className="flex items-center gap-3 min-w-0">
-                    <div className="w-10 h-10 rounded-xl bg-bg-elevated/40 flex items-center justify-center text-sky-500/80 shrink-0">
-                      <FileIcon className="w-5 h-5" />
-                    </div>
-                    <div className="min-w-0 font-mono">
-                      <h5
-                        className="text-xs font-bold text-white truncate max-w-50"
-                        title={file.name}
-                      >
-                        {file.name}
-                      </h5>
-                      <div className="flex flex-wrap items-center gap-x-2 text-[9px] text-slate-500 mt-0.5">
-                        <span>{formatBytes(file.size)}</span>
-                        <span>•</span>
-                        <span>{formatDate(file.createdAt)}</span>
-                        <span>•</span>
-                        <span
-                          className={
-                            isAdminUpload
-                              ? "text-sky-500/80 font-bold"
-                              : "text-slate-400"
-                          }
+                  {isPreviewable ? (
+                    <button
+                      type="button"
+                      onClick={() => setPreviewFile(file)}
+                      aria-label={`${file.name} — előnézet megnyitása`}
+                      className="flex items-center gap-3 min-w-0 flex-1 text-left rounded-xl cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B5F1] focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+                    >
+                      <div className="w-10 h-10 rounded-xl bg-slate-800/60 border border-slate-700/60 flex items-center justify-center text-[#00B5F1] shrink-0">
+                        <FileIcon className="w-5 h-5" aria-hidden="true" />
+                      </div>
+                      <div className="min-w-0 font-mono">
+                        <h5
+                          className="text-xs font-bold text-white group-hover:text-[#00B5F1] transition-colors truncate max-w-50"
+                          title={file.name}
                         >
-                          {file.uploadedByName}
-                        </span>
+                          {file.name}
+                        </h5>
+                        <div className="flex flex-wrap items-center gap-x-2 text-[9px] text-slate-400 mt-0.5 tabular-nums">
+                          <span>{formatBytes(file.size)}</span>
+                          <span>•</span>
+                          <span>{formatDate(file.createdAt)}</span>
+                          <span>•</span>
+                          <span
+                            className={
+                              isAdminUpload
+                                ? "text-[#00B5F1] font-bold"
+                                : "text-slate-400"
+                            }
+                          >
+                            {file.uploadedByName}
+                          </span>
+                        </div>
+                      </div>
+                    </button>
+                  ) : (
+                    <div className="flex items-center gap-3 min-w-0 flex-1">
+                      <div className="w-10 h-10 rounded-xl bg-slate-800/60 border border-slate-700/60 flex items-center justify-center text-[#00B5F1] shrink-0">
+                        <FileIcon className="w-5 h-5" aria-hidden="true" />
+                      </div>
+                      <div className="min-w-0 font-mono">
+                        <h5
+                          className="text-xs font-bold text-white truncate max-w-50"
+                          title={file.name}
+                        >
+                          {file.name}
+                        </h5>
+                        <div className="flex flex-wrap items-center gap-x-2 text-[9px] text-slate-400 mt-0.5 tabular-nums">
+                          <span>{formatBytes(file.size)}</span>
+                          <span>•</span>
+                          <span>{formatDate(file.createdAt)}</span>
+                          <span>•</span>
+                          <span
+                            className={
+                              isAdminUpload
+                                ? "text-[#00B5F1] font-bold"
+                                : "text-slate-400"
+                            }
+                          >
+                            {file.uploadedByName}
+                          </span>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  )}
 
-                  <div className="flex gap-1.5 shrink-0">
-                    {canPreview(file.name) && (
+                  <div className="flex items-center gap-1.5 shrink-0">
+                    {isPreviewable && (
                       <button
                         type="button"
-                        onClick={(event) => {
-                          event.stopPropagation();
-                          setPreviewFile(file);
-                        }}
-                        className="p-2 bg-bg-elevated/50 hover:bg-sky-500/10 text-slate-400 hover:text-sky-500 rounded-lg transition-colors cursor-pointer"
+                        onClick={() => setPreviewFile(file)}
+                        aria-label={`${file.name} — előnézet`}
+                        className="inline-flex items-center gap-1.5 px-2.5 py-2 bg-slate-800/70 hover:bg-[#00B5F1]/15 border border-slate-700/70 hover:border-[#00B5F1]/40 text-slate-300 hover:text-[#00B5F1] rounded-lg text-[11px] font-medium transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B5F1] focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
                         title="Előnézet"
                       >
-                        <Eye className="w-3.5 h-3.5" />
+                        <Eye className="w-3.5 h-3.5" aria-hidden="true" />
+                        <span className="hidden sm:inline">Előnézet</span>
                       </button>
                     )}
                     <a
                       href={file.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      onClick={(event) => event.stopPropagation()}
-                      className="p-2 bg-bg-elevated/50 hover:bg-sky-500/10 text-slate-400 hover:text-sky-500 rounded-lg transition-colors cursor-pointer"
+                      download
+                      aria-label={`${file.name} — letöltés`}
+                      className="p-2 bg-slate-800/70 hover:bg-[#00B5F1]/15 border border-slate-700/70 hover:border-[#00B5F1]/40 text-slate-300 hover:text-[#00B5F1] rounded-lg transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B5F1] focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
                       title="Letöltés"
                     >
-                      <Download className="w-3.5 h-3.5" />
+                      <Download className="w-3.5 h-3.5" aria-hidden="true" />
                     </a>
 
                     {/* Clients cannot delete admin-uploaded files */}
                     {!isAdminUpload && (
                       <button
                         type="button"
-                        onClick={(event) => {
-                          event.stopPropagation();
-                          handleDelete(file);
-                        }}
-                        className="p-2 bg-bg-elevated/50 hover:bg-red-500/10 text-slate-400 hover:text-red-400 rounded-lg transition-colors cursor-pointer"
+                        onClick={() => handleDelete(file)}
+                        aria-label={`${file.name} — törlés`}
+                        className="p-2 bg-slate-800/70 hover:bg-red-500/15 border border-slate-700/70 hover:border-red-500/40 text-slate-400 hover:text-red-400 rounded-lg transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
                         title="Törlés"
                       >
-                        <Trash2 className="w-3.5 h-3.5" />
+                        <Trash2 className="w-3.5 h-3.5" aria-hidden="true" />
                       </button>
                     )}
                   </div>
