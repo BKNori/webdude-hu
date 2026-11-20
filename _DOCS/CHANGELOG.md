@@ -1,5 +1,12 @@
 # Changelog
 
+## [7.72.1] — 2026-11-20 — AI Workflow Architektúra Valódi Vizuál (`ai-workflow-architektura.webp`)
+
+- **Képfeldolgozás & Komponenscsere (`/szolgaltatasok/ai-workflow-kialakitas`):**
+  - `public/assets/services/ai-workflow-architektura.jpg` konvertálva `sharp`-pal `public/assets/services/ai-workflow-architektura.webp` formátumba (`quality: 88`, max `1200×1200`), a nyers `.jpg` forrás törölve.
+  - [src/app/szolgaltatasok/ai-workflow-kialakitas/page.tsx](file:///c:/CLI-PROJECTS/webdude-hu/src/app/szolgaltatasok/ai-workflow-kialakitas/page.tsx): a jobb oldali „AI Workflow Architektúra" szöveges placeholder lecserélve `ResponsiveImage` komponensre (`sizes="(max-width: 1024px) 100vw, 50vw"`, `aspect-square`, `rounded-3xl`, `hover:scale-[1.03]`).
+  - [scripts/generate-responsive-images.js](file:///c:/CLI-PROJECTS/webdude-hu/scripts/generate-responsive-images.js): `collectCardImages()` kibővítve a `public/assets/services/*` képek automatikus gyűjtésével, `--clean` újragenerálva (`src/data/responsiveImages.ts` frissítve).
+
 ## [7.72.0] — 2026-11-20 — Egységes Publikus Hero Bannerek, Irányított Scrim & 60 FPS CSS Parallax
 
 - **14 db Tiszta `hero-*.webp` Banner & Placeholder Rendszer:**

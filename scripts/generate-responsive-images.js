@@ -218,6 +218,7 @@ function collectCaseStudyImages() {
       found.add(match[1]);
     }
   }
+
   return [...found];
 }
 
@@ -232,6 +233,7 @@ function collectGalleryImages() {
       found.add(match[1]);
     }
   }
+
   return [...found];
 }
 
@@ -272,6 +274,16 @@ function collectCardImages() {
         )
       )) {
         if (match[1].startsWith("/assets/")) found.add(match[1]);
+      }
+    }
+  }
+
+  // 4) public/assets/services/*.{webp,jpg,png} — szolgáltatásoldali illusztrációk
+  const servicesDir = path.join(PUBLIC_DIR, "assets/services");
+  if (fs.existsSync(servicesDir)) {
+    for (const entry of fs.readdirSync(servicesDir, { withFileTypes: true })) {
+      if (entry.isFile() && /\.(webp|jpe?g|png)$/i.test(entry.name)) {
+        found.add(`/assets/services/${entry.name}`);
       }
     }
   }

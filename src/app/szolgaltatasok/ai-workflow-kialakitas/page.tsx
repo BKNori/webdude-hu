@@ -1,6 +1,7 @@
 import Hero from "@/components/Hero";
 import Button from "@/components/atoms/Button";
 import Badge from "@/components/atoms/Badge";
+import ResponsiveImage from "@/components/molecules/ResponsiveImage";
 import { Metadata } from "next";
 import PricingTable from "@/components/molecules/PricingTable";
 import { Check } from "lucide-react";
@@ -161,12 +162,13 @@ export default async function AiWorkflowPage() {
                 </div>
               </div>
 
-              <div className="rounded-2xl overflow-hidden border border-slate-200/90 dark:border-slate-700/60">
-                <div className="bg-linear-to-br from-[#00B5F1]/20 to-[#00B5F1]/5 p-12 flex items-center justify-center min-h-100">
-                  <p className="text-2xl text-[#0369A1] dark:text-[#00B5F1] font-semibold text-center">
-                    AI Workflow Architektúra
-                  </p>
-                </div>
+              <div className="relative aspect-square overflow-hidden rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-2xl">
+                <ResponsiveImage
+                  src="/assets/services/ai-workflow-architektura.webp"
+                  alt="AI Workflow Architektúra — automatizált vállalati munkafolyamat rendszer"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-[1.03]"
+                />
               </div>
             </div>
 
