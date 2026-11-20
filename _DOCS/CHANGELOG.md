@@ -1,5 +1,20 @@
 # Changelog
 
+## [7.76.0] — 2026-11-20 — Angol (/en) Felület Teljes Lezárása (/en/about, /en/privacy-policy, /en/terms & 0 Magyar Link)
+
+### Hozzáadva
+- **Angol Rólam oldal ([src/app/en/about/page.tsx](file:///c:/CLI-PROJECTS/webdude-hu/src/app/en/about/page.tsx)):** Server Component `SubpageHero` (`/assets/banners/hero-rolam.webp`), angol `<DirectAnswerBlock />`, portré, tapasztalati mérföldkövek (26+ év grafika, 16+ év webfejlesztés, 47+ ügyfél), tech stack, 5 lépéses munkamódszer, `ProfilePage` + `Person` + `BreadcrumbList` JSON-LD és kétirányú `hreflang`.
+- **Angol Jogi oldalak ([src/app/en/privacy-policy/page.tsx](file:///c:/CLI-PROJECTS/webdude-hu/src/app/en/privacy-policy/page.tsx), [src/app/en/terms/page.tsx](file:///c:/CLI-PROJECTS/webdude-hu/src/app/en/terms/page.tsx)):** GDPR-kompatibilis angol Adatvédelmi Szabályzat és Felhasználási Feltételek kompakt `SubpageHero` (`/assets/banners/hero-jogi.webp`) fejléccel, Zéró Fix Ár szövegezéssel, `WebPage` + `BreadcrumbList` JSON-LD-vel és kétirányú `hreflang`-gal.
+- **Playwright E2E (`e2e/en-pages.spec.ts`):** Az `/en/about`, `/en/privacy-policy` és `/en/terms` oldalak HTTP 200, H1, `hreflang`, JSON-LD, képbetöltés, `/en` globális link-izoláció (`Header`, `Footer`, `CookieConsent`) és `LanguageSwitcher` kétirányú váltási tesztje.
+
+### Módosítva
+- **Kétirányú `hreflang` pár oldalak:** `src/app/szia-norbi-vagyok/page.tsx` (+ `layout.tsx`), `src/app/adatvedelmi-szabalyzat/page.tsx` és `src/app/felhasznalasi-feltetelek/page.tsx` kiegészítve az angol `alternates.languages` (`en-US`) hivatkozásokkal.
+- **Globális navigáció, lábléc és sütibanner szinkron:**
+  - `src/lib/i18n.ts` + `src/components/molecules/LanguageSwitcher.tsx`: `switchLocalePath()` kétirányú útvonal-leképezés (beleértve a 3 új HU ↔ EN oldalpárt és az összes EN szolgáltatásaloldalt).
+  - `src/config/navigation.en.ts`, `src/config/navigation.ts`, `src/components/molecules/HeaderNavClient.tsx`: `/en/*` alatt az About → `/en/about`, Services → `/en/services`, Portfolio → `/en/portfolio`, CTA → `/en/contact`, top barBlog (`/hirek`) → `/en/contact`.
+  - `src/components/organisms/Footer.tsx`, `src/types/dictionary.ts`, `src/dictionaries/hu.json`, `src/dictionaries/en.json`: `footer.privacyHref`, `footer.termsHref`, `footer.serviceLinkItems`, `footer.quickLinkItems`, `cookie.privacyHref` (`/en/privacy-policy`) frissítve — 0 magyarra visszadobó link az `/en/*` felületeken.
+- **SEO / AI Discovery:** `src/app/sitemap.ts` és `public/llms.txt` bővítve az `/en/about`, `/en/privacy-policy` és `/en/terms` útvonalakkal.
+
 ## [7.75.0] — 2026-11-20 — Teljes Playwright E2E Lefedettség, CI Szinkron & Legacy Takarítás
 
 ### Hozzáadva / Bővítve

@@ -5,7 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "motion/react";
 import { Globe, Check } from "lucide-react";
 import { Language } from "@/types/dictionary";
-import { stripLocale, withLocale } from "@/lib/i18n";
+import { switchLocalePath } from "@/lib/i18n";
 
 interface LanguageSwitcherProps {
   currentLang: Language;
@@ -22,10 +22,8 @@ export default function LanguageSwitcher({ currentLang }: LanguageSwitcherProps)
   ];
 
   const handleLanguageChange = (lang: Language) => {
-    // A magyar URL prefix nélküli, az angol "/en" prefixet kap.
-    // withLocale biztonságosan cseréli a prefixet (nem globális replace).
-    const target = lang === "en" ? withLocale(pathname, "en") : stripLocale(pathname);
-    router.push(target === "" ? "/" : target);
+    const target = switchLocalePath(pathname, lang);
+    router.push(target);
     setIsOpen(false);
   };
 

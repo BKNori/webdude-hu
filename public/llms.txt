@@ -36,6 +36,7 @@
 - [SEO & AEO Optimization (EN)](https://webdude.hu/en/services/seo-optimization): Technical SEO, structured data knowledge graphs and answer engine visibility.
 - [Graphic Design & Brand Identity (EN)](https://webdude.hu/en/services/graphic-design): Logos, visual brand systems and digital product UI/UX.
 - [Portfolio (EN)](https://webdude.hu/en/portfolio): Real client case studies and measurable business outcomes.
+- [About Balog Norbert (EN)](https://webdude.hu/en/about): Solo full-stack web developer and art director with 26+ years design and 16+ years engineering experience.
 - [Contact (EN)](https://webdude.hu/en/contact): Direct consultation and custom project quote requests.
 
 ## Kiemelt Esettanulmányok (Case Studies)
@@ -56,5 +57,7 @@
 
 ## Optional / Legal
 
-- [Adatvédelmi Szabályzat](https://webdude.hu/adatvedelmi-szabalyzat)
-- [Felhasználási Feltételek](https://webdude.hu/felhasznalasi-feltetelek)
+- [Adatvédelmi Szabályzat (HU)](https://webdude.hu/adatvedelmi-szabalyzat)
+- [Felhasználási Feltételek (HU)](https://webdude.hu/felhasznalasi-feltetelek)
+- [Privacy Policy (EN)](https://webdude.hu/en/privacy-policy)
+- [Terms of Service (EN)](https://webdude.hu/en/terms)

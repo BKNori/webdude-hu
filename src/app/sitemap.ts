@@ -114,6 +114,36 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       ),
     },
     {
+      url: `${BASE_URL}/en/about`,
+      lastModified: BUILD_DATE,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+      alternates: buildBilingualAlternates(
+        `${BASE_URL}/szia-norbi-vagyok`,
+        `${BASE_URL}/en/about`
+      ),
+    },
+    {
+      url: `${BASE_URL}/en/privacy-policy`,
+      lastModified: BUILD_DATE,
+      changeFrequency: "yearly" as const,
+      priority: 0.3,
+      alternates: buildBilingualAlternates(
+        `${BASE_URL}/adatvedelmi-szabalyzat`,
+        `${BASE_URL}/en/privacy-policy`
+      ),
+    },
+    {
+      url: `${BASE_URL}/en/terms`,
+      lastModified: BUILD_DATE,
+      changeFrequency: "yearly" as const,
+      priority: 0.3,
+      alternates: buildBilingualAlternates(
+        `${BASE_URL}/felhasznalasi-feltetelek`,
+        `${BASE_URL}/en/terms`
+      ),
+    },
+    {
       url: `${BASE_URL}/munkak`,
       lastModified: BUILD_DATE,
       changeFrequency: "weekly" as const,
@@ -162,7 +192,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: BUILD_DATE,
       changeFrequency: "monthly" as const,
       priority: 0.8,
-      alternates: buildHuOnlyAlternates(`${BASE_URL}/szia-norbi-vagyok`),
+      alternates: buildBilingualAlternates(
+        `${BASE_URL}/szia-norbi-vagyok`,
+        `${BASE_URL}/en/about`
+      ),
     },
     // AI Megoldások főoldal és aloldalak
     {
@@ -386,12 +419,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: BUILD_DATE,
       changeFrequency: "yearly" as const,
       priority: 0.3,
+      alternates: buildBilingualAlternates(
+        `${BASE_URL}/felhasznalasi-feltetelek`,
+        `${BASE_URL}/en/terms`
+      ),
     },
     {
       url: `${BASE_URL}/adatvedelmi-szabalyzat`,
       lastModified: BUILD_DATE,
       changeFrequency: "yearly" as const,
       priority: 0.3,
+      alternates: buildBilingualAlternates(
+        `${BASE_URL}/adatvedelmi-szabalyzat`,
+        `${BASE_URL}/en/privacy-policy`
+      ),
     },
   ];
 

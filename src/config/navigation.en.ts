@@ -1,17 +1,11 @@
 import type { NavItem } from "./navigation";
 
 /**
- * EN főoldali navigáció — anchor-alapú menü.
- *
- * Az `/en` alatt csak a főoldal él angolul, ezért minden menüpont a `/en`
- * oldal szekcióira hivatkozik (nincs dropdown / subItem).
- * A szekció-ID-k egyeznek a komponensekkel: #about (WhyChooseMeSection),
- * #services (FeaturedServicesNew), #cases (CaseStudiesBento),
- * #faq (FaqSectionAEO), #contact (FinalCta).
+ * EN globális navigáció — az `/en/*` aloldalak valós útvonalaira mutat.
  */
 export const NAV_ITEMS_EN: NavItem[] = [
-  { name: "About", href: "/en#about" },
-  { name: "Services", href: "/en#services" },
-  { name: "Portfolio", href: "/en#cases" },
+  { name: "About", href: "/en/about" },
+  { name: "Services", href: "/en/services" },
+  { name: "Portfolio", href: "/en/portfolio" },
   { name: "FAQ", href: "/en#faq" },
 ];

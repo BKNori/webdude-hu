@@ -10,6 +10,11 @@ export const metadata: Metadata = {
     "Grafikai tervezésből indultam, ma már komplex Next.js rendszereket és AI automatizációkat építek. Ismerd meg a WebDude mögött álló szakembert.",
   alternates: {
     canonical: "https://webdude.hu/szia-norbi-vagyok",
+    languages: {
+      "hu-HU": "https://webdude.hu/szia-norbi-vagyok",
+      "en-US": "https://webdude.hu/en/about",
+      "x-default": "https://webdude.hu/szia-norbi-vagyok",
+    },
   },
   openGraph: {
     title: "Balog Norbert – WebDude | 26 év tapasztalat",

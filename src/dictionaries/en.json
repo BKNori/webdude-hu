@@ -609,7 +609,9 @@
     "copyright": "© 2024 WebDude. All rights reserved.",
     "rightsReserved": "All rights reserved.",
     "privacyPolicy": "Privacy Policy",
+    "privacyHref": "/en/privacy-policy",
     "termsOfService": "Terms of Service",
+    "termsHref": "/en/terms",
     "phone": "+36 70 323 8003",
     "email": "hello@webdude.hu",
     "address": "Hungary · remote partner serving clients worldwide",
@@ -617,69 +619,69 @@
     "serviceLinkItems": [
       {
         "label": "Web Development",
-        "href": "/en#services"
+        "href": "/en/services/web-development"
       },
       {
         "label": "WordPress Development",
-        "href": "/en#services"
+        "href": "/en/services/web-development"
       },
       {
         "label": "E-commerce Development",
-        "href": "/en#services"
+        "href": "/en/services/woocommerce-development"
       },
       {
         "label": "SEO Optimisation",
-        "href": "/en#services"
+        "href": "/en/services/seo-optimization"
       },
       {
         "label": "Technical SEO Audit",
-        "href": "/en#services"
+        "href": "/en/services/seo-optimization"
       },
       {
         "label": "AI Automation",
-        "href": "/en#services"
+        "href": "/en/services"
       },
       {
         "label": "AI Prompt Engineering",
-        "href": "/en#services"
+        "href": "/en/services"
       },
       {
         "label": "Graphic Design",
-        "href": "/en#services"
+        "href": "/en/services/graphic-design"
       },
       {
         "label": "Brand Identity",
-        "href": "/en#services"
+        "href": "/en/services/graphic-design"
       },
       {
         "label": "Website Maintenance",
-        "href": "/en#services"
+        "href": "/en/services"
       },
       {
         "label": "Speed Optimisation",
-        "href": "/en#services"
+        "href": "/en/services"
       },
       {
         "label": "Request a custom quote",
-        "href": "/en#contact"
+        "href": "/en/contact"
       }
     ],
     "quickLinkItems": [
       {
         "label": "About me",
-        "href": "/en#about"
+        "href": "/en/about"
       },
       {
         "label": "Case studies",
-        "href": "/en#cases"
+        "href": "/en/portfolio"
       },
       {
         "label": "Services",
-        "href": "/en#services"
+        "href": "/en/services"
       },
       {
         "label": "Contact",
-        "href": "/en#contact"
+        "href": "/en/contact"
       }
     ]
   },
@@ -727,7 +729,7 @@
     "description": "I use cookies to improve user experience and analyse website traffic. These insights help me deliver a faster, better service.",
     "moreInfo": "More information:",
     "privacyPolicy": "Privacy Policy",
-    "privacyHref": "/adatvedelmi-szabalyzat",
+    "privacyHref": "/en/privacy-policy",
     "accept": "Accept",
     "decline": "Decline"
   },

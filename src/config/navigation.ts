@@ -242,9 +242,9 @@ export const TOP_BAR_ITEMS_HU: TopBarItem[] = [
   { name: "Ügyfélportál", href: "/portal", icon: Lock },
 ];
 
-/** A top bar angol tartalma. */
+/** A top bar angol tartalma — minden link az /en/* útvonalon marad. */
 export const TOP_BAR_ITEMS_EN: TopBarItem[] = [
-  { name: "Blog", href: "/hirek", icon: Newspaper },
+  { name: "Free Quote", href: "/en/contact", icon: Globe },
   { name: "Client Portal", href: "/portal", icon: Lock },
 ];
 

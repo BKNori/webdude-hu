@@ -125,6 +125,10 @@ export default function Footer({ dictionary }: FooterProps) {
       }))
     : fallbackQuickLinks;
 
+  const homeHref = dictionary?.privacyHref?.startsWith("/en") ? "/en" : "/";
+  const privacyHref = dictionary?.privacyHref ?? "/adatvedelmi-szabalyzat";
+  const termsHref = dictionary?.termsHref ?? "/felhasznalasi-feltetelek";
+
   return (
     <footer className="public-footer bg-bg-base border-t border-slate-800 mt-0 relative overflow-hidden">
       {/* Top luminous aurora fényvonal + lágy glow */}
@@ -159,7 +163,7 @@ export default function Footer({ dictionary }: FooterProps) {
             transition={colTransition(0)}
             className="md:col-span-2 lg:col-span-1"
           >
-            <Link href="/" className="inline-block mb-4 group">
+            <Link href={homeHref} className="inline-block mb-4 group">
               <span className="text-3xl font-heading tracking-wider text-text-primary group-hover:text-[#0369A1] dark:group-hover:text-[#00B5F1] transition-colors duration-300">
                 <span className="text-[#00B5F1] footer-brand-web">Web</span>Dude
               </span>
@@ -633,13 +637,13 @@ export default function Footer({ dictionary }: FooterProps) {
             </p>
             <div className="flex items-center gap-6 text-xs">
               <Link
-                href="/adatvedelmi-szabalyzat"
+                href={privacyHref}
                 className="text-slate-600 dark:text-slate-400 hover:text-[#0369A1] dark:hover:text-sky-500 transition-colors hover:translate-x-1 transform duration-300 inline-block"
               >
                 {dictionary?.privacyPolicy ?? "Adatvédelmi nyilatkozat"}
               </Link>
               <Link
-                href="/felhasznalasi-feltetelek"
+                href={termsHref}
                 className="text-slate-600 dark:text-slate-400 hover:text-[#0369A1] dark:hover:text-sky-500 transition-colors hover:translate-x-1 transform duration-300 inline-block"
               >
                 {dictionary?.termsOfService ?? "Felhasználási feltételek"}

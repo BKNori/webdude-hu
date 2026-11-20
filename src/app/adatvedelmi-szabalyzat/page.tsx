@@ -8,6 +8,11 @@ export const metadata: Metadata = {
     "WebDude adatvédelmi szabályzat és adatkezelési tájékoztató. GDPR megfelelő adatkezelés és személyes adatok védelme.",
   alternates: {
     canonical: "https://webdude.hu/adatvedelmi-szabalyzat",
+    languages: {
+      "hu-HU": "https://webdude.hu/adatvedelmi-szabalyzat",
+      "en-US": "https://webdude.hu/en/privacy-policy",
+      "x-default": "https://webdude.hu/adatvedelmi-szabalyzat",
+    },
   },
   openGraph: {
     title: "Adatvédelmi Szabályzat | WebDude",

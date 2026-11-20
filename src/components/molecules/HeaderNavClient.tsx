@@ -130,7 +130,7 @@ export default function HeaderNavClient({
     mobileNav: isEn ? "Mobile navigation" : "Mobilnavigáció",
     mobileNavList: isEn ? "Mobile navigation list" : "Mobilnavigáció lista",
     contact: isEn ? "Contact us" : "Kapcsolatfelvétel",
-    contactHref: isEn ? "/en#contact" : "/kapcsolat",
+    contactHref: isEn ? "/en/contact" : "/kapcsolat",
     contactLabel: dictionary?.nav?.contact ?? (isEn ? "Contact" : "Kapcsolat"),
     contactCtaLabel: isEn
       ? `${dictionary?.nav?.contact ?? "Contact"} — ${dictionary?.nav?.cta ?? "Request a custom quote"}`

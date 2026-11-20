@@ -77,3 +77,61 @@ export function buildLanguageAlternates(
     "x-default": absoluteUrl("hu", path),
   };
 }
+
+/** Kétirányú HU <-> EN útvonal-párok a LanguageSwitcher determinisztikus váltásához. */
+export const BILINGUAL_ROUTE_PAIRS: ReadonlyArray<
+  readonly [hu: string, en: string]
+> = [
+  ["/", "/en"],
+  ["/szia-norbi-vagyok", "/en/about"],
+  ["/szolgaltatasok", "/en/services"],
+  ["/szolgaltatasok/weboldal-keszites", "/en/services/web-development"],
+  [
+    "/szolgaltatasok/woocommerce-webshop-keszites",
+    "/en/services/woocommerce-development",
+  ],
+  ["/szolgaltatasok/seo-optimalizalas", "/en/services/seo-optimization"],
+  ["/szolgaltatasok/grafikai-tervezes", "/en/services/graphic-design"],
+  ["/munkak", "/en/portfolio"],
+  ["/kapcsolat", "/en/contact"],
+  ["/adatvedelmi-szabalyzat", "/en/privacy-policy"],
+  ["/felhasznalasi-feltetelek", "/en/terms"],
+];
+
+const HU_TO_EN_MAP = new Map<string, string>([
+  ...BILINGUAL_ROUTE_PAIRS,
+  ["/norbi", "/en/about"],
+]);
+
+const EN_TO_HU_MAP = new Map<string, string>(
+  BILINGUAL_ROUTE_PAIRS.map(([hu, en]) => [en, hu])
+);
+
+function normalizePathname(pathname: string): string {
+  if (!pathname || pathname === "/") return "/";
+  return pathname.endsWith("/") ? pathname.slice(0, -1) : pathname;
+}
+
+/**
+ * Pontos nyelvváltó útvonal feloldása az aktuális pathname alapján.
+ * Ha létezik 1:1 kétirányú pár (pl. /szia-norbi-vagyok <-> /en/about), oda vált;
+ * egynyelvű oldalnál biztonságosan a célnyelv főoldalára (/ vagy /en) tér vissza.
+ */
+export function switchLocalePath(
+  pathname: string | null | undefined,
+  targetLang: Language
+): string {
+  const normalized = normalizePathname(pathname ?? "/");
+
+  if (targetLang === "en") {
+    if (normalized === EN_PREFIX || normalized.startsWith(`${EN_PREFIX}/`)) {
+      return normalized;
+    }
+    return HU_TO_EN_MAP.get(normalized) ?? EN_PREFIX;
+  }
+
+  if (normalized === "/" || !normalized.startsWith(`${EN_PREFIX}`)) {
+    return normalized;
+  }
+  return EN_TO_HU_MAP.get(normalized) ?? "/";
+}

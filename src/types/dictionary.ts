@@ -380,7 +380,9 @@ export interface Dictionary {
     /** Lábléc jogi szöveg (a évszámot a komponens adja hozzá). */
     rightsReserved: string;
     privacyPolicy: string;
+    privacyHref: string;
     termsOfService: string;
+    termsHref: string;
     phone: string;
     email: string;
     address: string;

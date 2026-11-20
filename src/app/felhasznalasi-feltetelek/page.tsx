@@ -8,6 +8,11 @@ export const metadata: Metadata = {
     "WebDude felhasználási feltételek és jogi nyilatkozatok. Prémium webfejlesztési, grafikai és AI-automatizációs szolgáltatások.",
   alternates: {
     canonical: "https://webdude.hu/felhasznalasi-feltetelek",
+    languages: {
+      "hu-HU": "https://webdude.hu/felhasznalasi-feltetelek",
+      "en-US": "https://webdude.hu/en/terms",
+      "x-default": "https://webdude.hu/felhasznalasi-feltetelek",
+    },
   },
   openGraph: {
     title: "Felhasználási Feltételek | WebDude",
