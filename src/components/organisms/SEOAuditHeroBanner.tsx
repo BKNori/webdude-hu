@@ -4,6 +4,7 @@ import { motion } from "motion/react";
 import { Shield, TrendingUp, Zap } from "lucide-react";
 import Image from "next/image";
 import HeroBackdrop from "@/components/molecules/HeroBackdrop";
+import ResponsiveImage from "@/components/molecules/ResponsiveImage";
 
 interface SEOAuditHeroBannerProps {
   heroVisual?: string;
@@ -107,16 +108,14 @@ export default function SEOAuditHeroBanner({
                 />
               </div>
             ) : (
-              <div className="aspect-video rounded-2xl bg-linear-to-br from-[#0369A1]/15 to-transparent dark:from-brand-primary/20 dark:to-transparent border border-[#0369A1]/25 dark:border-brand-primary/20 flex items-center justify-center">
-                <div className="text-center space-y-4">
-                  <Shield className="w-24 h-24 text-[#0369A1]/50 dark:text-brand-primary/50 mx-auto" />
-                  <p className="text-sm text-[#334155] dark:text-slate-400">
-                    High-end analytical dashboard interface
-                  </p>
-                  <p className="text-xs text-[#475569] dark:text-slate-500">
-                    Midjourney v6 Master prompt alapján
-                  </p>
-                </div>
+              <div className="relative aspect-square overflow-hidden rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-2xl">
+                <ResponsiveImage
+                  src="/assets/services/seo-audit-pro.webp"
+                  alt="SEO és AEO Audit Pro — technikai keresőoptimalizálási és teljesítmény-analitikai rendszer"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  priority
+                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-[1.03]"
+                />
               </div>
             )}
           </motion.div>

@@ -329,6 +329,16 @@ export const responsiveImageManifest: Record<string, ResponsiveImageVariants> = 
     "avif": "/assets/responsive/services/ai-workflow-architektura-320w.avif 320w, /assets/responsive/services/ai-workflow-architektura-640w.avif 640w, /assets/responsive/services/ai-workflow-architektura-960w.avif 960w, /assets/responsive/services/ai-workflow-architektura-1600w.avif 1600w, /assets/responsive/services/ai-workflow-architektura-2000w.avif 2000w",
     "webp": "/assets/responsive/services/ai-workflow-architektura-320w.webp 320w, /assets/responsive/services/ai-workflow-architektura-640w.webp 640w, /assets/responsive/services/ai-workflow-architektura-960w.webp 960w, /assets/responsive/services/ai-workflow-architektura-1600w.webp 1600w, /assets/responsive/services/ai-workflow-architektura-2000w.webp 2000w"
   },
+  "/assets/services/product-lead-hero.webp": {
+    "fallback": "/assets/services/product-lead-hero.webp",
+    "avif": "/assets/responsive/services/product-lead-hero-320w.avif 320w, /assets/responsive/services/product-lead-hero-640w.avif 640w, /assets/responsive/services/product-lead-hero-960w.avif 960w, /assets/responsive/services/product-lead-hero-1600w.avif 1600w, /assets/responsive/services/product-lead-hero-2000w.avif 2000w",
+    "webp": "/assets/responsive/services/product-lead-hero-320w.webp 320w, /assets/responsive/services/product-lead-hero-640w.webp 640w, /assets/responsive/services/product-lead-hero-960w.webp 960w, /assets/responsive/services/product-lead-hero-1600w.webp 1600w, /assets/responsive/services/product-lead-hero-2000w.webp 2000w"
+  },
+  "/assets/services/seo-audit-pro.webp": {
+    "fallback": "/assets/services/seo-audit-pro.webp",
+    "avif": "/assets/responsive/services/seo-audit-pro-320w.avif 320w, /assets/responsive/services/seo-audit-pro-640w.avif 640w, /assets/responsive/services/seo-audit-pro-960w.avif 960w, /assets/responsive/services/seo-audit-pro-1600w.avif 1600w, /assets/responsive/services/seo-audit-pro-2000w.avif 2000w",
+    "webp": "/assets/responsive/services/seo-audit-pro-320w.webp 320w, /assets/responsive/services/seo-audit-pro-640w.webp 640w, /assets/responsive/services/seo-audit-pro-960w.webp 960w, /assets/responsive/services/seo-audit-pro-1600w.webp 1600w, /assets/responsive/services/seo-audit-pro-2000w.webp 2000w"
+  },
   "/assets/portfolio/btshop/btshop-dashboard-placeholder.webp": {
     "fallback": "/assets/portfolio/btshop/btshop-dashboard-placeholder.webp",
     "avif": "/assets/responsive/portfolio/btshop/btshop-dashboard-placeholder-320w.avif 320w, /assets/responsive/portfolio/btshop/btshop-dashboard-placeholder-640w.avif 640w, /assets/responsive/portfolio/btshop/btshop-dashboard-placeholder-960w.avif 960w, /assets/responsive/portfolio/btshop/btshop-dashboard-placeholder-1600w.avif 1600w, /assets/responsive/portfolio/btshop/btshop-dashboard-placeholder-2000w.avif 2000w",

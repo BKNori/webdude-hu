@@ -1,5 +1,14 @@
 # Changelog
 
+## [7.74.1] — 2026-11-20 — SEO Audit Pro & Product Lead Hero Vizuálok + Gyökér Takarítás
+
+- **Képfeldolgozás & Komponenscsere:**
+  - Konvertálva `sharp`-pal `1200×1200` (`quality: 88`) `.webp` formátumba: `public/assets/services/seo-audit-pro.webp` és `public/assets/services/product-lead-hero.webp`; nyers források törölve.
+  - [SEOAuditHeroBanner.tsx](file:///c:/CLI-PROJECTS/webdude-hu/src/components/organisms/SEOAuditHeroBanner.tsx) & [ProductLeadHero.tsx](file:///c:/CLI-PROJECTS/webdude-hu/src/components/organisms/ProductLeadHero.tsx): az alapértelmezett szöveges/ikonos placeholder blokkok lecserélve `ResponsiveImage` komponensre (`aspect-square`, `rounded-3xl`, `border-slate-200/80 dark:border-slate-800`, `hover:scale-[1.03]`, `heroVisual` override megőrzésével).
+- **Reszponzív derivatívumok & Takarítás:**
+  - `node scripts/generate-responsive-images.js --clean` lefuttatva (mindkét új kép AVIF + WebP variánsai generálva, `src/data/responsiveImages.ts` frissítve).
+  - Ellenőrizve és tisztán tartva a gyökérkönyvtár (nincsenek ideiglenes segédszkriptek a repóban).
+
 ## [7.74.0] — 2026-11-20 — Additív SEO / AIO / AEO / GEO, Kétirányú Hreflang, `llms.txt` & Schema.org Bővítés
 
 - **Batch 1 — Alap Infrastruktúra, H1, `llms.txt` & Sitemap:**

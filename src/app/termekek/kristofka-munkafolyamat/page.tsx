@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Link from "next/link";
 import ProductPortalCta from "@/components/molecules/ProductPortalCta";

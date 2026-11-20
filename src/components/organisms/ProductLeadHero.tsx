@@ -4,6 +4,7 @@ import { motion } from "motion/react";
 import { Shield, Zap, ArrowRight, CheckCircle } from "lucide-react";
 import Image from "next/image";
 import HeroBackdrop from "@/components/molecules/HeroBackdrop";
+import ResponsiveImage from "@/components/molecules/ResponsiveImage";
 
 interface ProductLeadHeroProps {
   productName: string;
@@ -134,8 +135,14 @@ export default function ProductLeadHero({
                 />
               </div>
             ) : (
-              <div className="aspect-video rounded-2xl bg-linear-to-br from-brand-primary/20 to-transparent border border-brand-primary/20 flex items-center justify-center">
-                <Shield className="w-24 h-24 text-brand-primary/50" />
+              <div className="relative aspect-square overflow-hidden rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-2xl">
+                <ResponsiveImage
+                  src="/assets/services/product-lead-hero.webp"
+                  alt="WebDude Enterprise Webarchitektúra és Minőségbiztosítási Rendszer"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  priority
+                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-[1.03]"
+                />
               </div>
             )}
           </motion.div>
