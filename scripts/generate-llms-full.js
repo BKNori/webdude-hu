@@ -187,7 +187,7 @@ function main() {
   lines.push("");
   for (const w of works) {
     lines.push(`### ${w.title}`);
-    lines.push(`- **URL:** ${SITE_URL}/munkak/${w.slug}`);
+    lines.push(`- **URL (HU):** ${SITE_URL}/munkak/${w.slug} | **URL (EN):** ${SITE_URL}/en/portfolio/${w.slug}`);
     lines.push(`- **Ügyfél:** ${w.client || w.title} (${w.year || ""}) — **Kategória:** ${w.category}`);
     lines.push(`- **Leírás:** ${stripMarkdown(w.description)}`);
     if (Array.isArray(w.results) && w.results.length > 0) {

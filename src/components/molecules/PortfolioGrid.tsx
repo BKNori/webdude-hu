@@ -13,6 +13,7 @@ interface PortfolioCardProps {
   project: Work;
   index: number;
   caseStudyLabel: string;
+  basePath: string;
 }
 
 /**
@@ -20,7 +21,12 @@ interface PortfolioCardProps {
  * pointer-követő fény és rugó-fizikás 3D dőlés (spring tilt).
  * A `featured: true` projektek a Bento Gridben kétszeres szélességet kapnak.
  */
-function PortfolioCard({ project, index, caseStudyLabel }: PortfolioCardProps) {
+function PortfolioCard({
+  project,
+  index,
+  caseStudyLabel,
+  basePath,
+}: PortfolioCardProps) {
   const shouldReduceMotion = useHydratedReducedMotion();
   const cardRef = useRef<HTMLElement>(null);
 
@@ -123,7 +129,7 @@ function PortfolioCard({ project, index, caseStudyLabel }: PortfolioCardProps) {
         />
         {isFeatured && (
           <span className="absolute top-4 left-4 z-20 rounded-full bg-[#00B5F1] px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-slate-950 shadow-[0_0_24px_rgba(0,181,241,0.45)]">
-            Kiemelt
+            {basePath.startsWith("/en") ? "Featured" : "Kiemelt"}
           </span>
         )}
       </div>
@@ -147,7 +153,7 @@ function PortfolioCard({ project, index, caseStudyLabel }: PortfolioCardProps) {
 
           <h3 className="mb-3 text-xl font-bold text-[#0F172A] dark:text-white transition-colors group-hover:text-[#0369A1] dark:group-hover:text-[#00B5F1] md:text-2xl">
             <Link
-              href={`/munkak/${project.slug}`}
+              href={`${basePath}/${project.slug}`}
               className="before:absolute before:inset-0 before:z-10 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0369A1] dark:focus-visible:ring-[#00B5F1] focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-slate-950"
             >
               {project.title}
@@ -192,9 +198,11 @@ function PortfolioCard({ project, index, caseStudyLabel }: PortfolioCardProps) {
 export default function PortfolioGrid({
   projects,
   caseStudyLabel = "Esettanulmány",
+  basePath = "/munkak",
 }: {
   projects: Work[];
   caseStudyLabel?: string;
+  basePath?: string;
 }) {
   return (
     <div className="relative">
@@ -218,6 +226,7 @@ export default function PortfolioGrid({
             project={project}
             index={index}
             caseStudyLabel={caseStudyLabel}
+            basePath={basePath}
           />
         ))}
       </div>

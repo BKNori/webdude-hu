@@ -1,5 +1,17 @@
 # Changelog
 
+## [7.79.0] — 2026-11-20 — Nemzetközi Portfólió Lezárása (`/en/portfolio/[slug]`) & Dinamikus Nyelvváltás
+
+### Hozzáadva
+- **Angol Esettanulmány Adatréteg ([src/data/caseStudiesEn.ts](file:///c:/CLI-PROJECTS/webdude-hu/src/data/caseStudiesEn.ts)):** Típusbiztos, 100%-os lefedettség mind a **14** `works.ts` projekthez (`title`, `subtitle`, `category`, `seoTitle`, `seoDescription`, 40–60 szavas `directAnswer`, `challenge`, `solution`, `deliverables`, `metrics`, `faq`, Zéró Fix Ár, látható „Kecskemét” mentes).
+- **Dinamikus Angol Esettanulmány Oldal ([src/app/en/portfolio/[slug]/page.tsx](file:///c:/CLI-PROJECTS/webdude-hu/src/app/en/portfolio/%5Bslug%5D/page.tsx)):** Server Component `generateStaticParams()`, `ResponsiveImage` + `.hero-parallax-img`, `<DirectAnswerBlock />`, eredmények, technológiai stack, projekt GYIK, alacsony küszöbű CTA (`/en/contact`, `/en/free-seo-aeo-checker`), kapcsolódó angol esettanulmányok, `CreativeWork` + `BreadcrumbList` + `FAQPage` JSON-LD (`serializeJsonLd`) és kétirányú `hreflang`.
+- **Playwright E2E ([e2e/v779-en-portfolio.spec.ts](file:///c:/CLI-PROJECTS/webdude-hu/e2e/v779-en-portfolio.spec.ts)):** `/en/portfolio` 14 kártya EN link-izolációja, `/en/portfolio/btshop` és `/en/portfolio/classi-co` HTTP 200, H1, kétirányú `hreflang`, `CreativeWork` + `FAQPage` JSON-LD, képbetöltés és dinamikus `LanguageSwitcher` oda-vissza váltás ellenőrzése.
+
+### Módosítva
+- **Portfólió rács & Angol gyűjtőoldal ([PortfolioGrid.tsx](file:///c:/CLI-PROJECTS/webdude-hu/src/components/molecules/PortfolioGrid.tsx), [en/portfolio/page.tsx](file:///c:/CLI-PROJECTS/webdude-hu/src/app/en/portfolio/page.tsx)):** `basePath` prop (alapértelmezett `/munkak`, angol nézeten `/en/portfolio`), angol kártyacímkék és `Featured` badge, valamint `hasPart` JSON-LD URL-ek javítása `/en/portfolio/[slug]`-ra.
+- **Kétirányú `hreflang` & Dinamikus Nyelvváltás ([munkak/[slug]/page.tsx](file:///c:/CLI-PROJECTS/webdude-hu/src/app/munkak/%5Bslug%5D/page.tsx), [i18n.ts](file:///c:/CLI-PROJECTS/webdude-hu/src/lib/i18n.ts)):** `switchLocalePath()` támogatja a `/munkak/<slug>` ↔ `/en/portfolio/<slug>` párokat; a magyar esettanulmányok megkapták a visszafelé mutató `en-US` alternatívát.
+- **Sitemap & AI Discovery ([sitemap.ts](file:///c:/CLI-PROJECTS/webdude-hu/src/app/sitemap.ts), [public/llms.txt](file:///c:/CLI-PROJECTS/webdude-hu/public/llms.txt), [scripts/generate-llms-full.js](file:///c:/CLI-PROJECTS/webdude-hu/scripts/generate-llms-full.js)):** Valamennyi `/en/portfolio/[slug]` útvonal felvéve kétirányú `alternates`-szel és frissített `llms-full.txt` kimenettel.
+
 ## [7.78.0] — 2026-11-20 — Ingyenes SEO & AI-Készség (AEO/GEO) Gyorsellenőrző Lead-Mágnes + Cikk-CTA
 
 ### Hozzáadva

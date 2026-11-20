@@ -46,12 +46,12 @@
 
 ## Kiemelt Esettanulmányok (Case Studies)
 
-- [BTShop.hu — B2B E-commerce & ERP](https://webdude.hu/munkak/btshop): 3200+ termékes webáruház Next.js migrációja és UI/UX újratervezése (+40% konverzió).
-- [Nedel Market — B2B WooCommerce & Szerver Integráció](https://webdude.hu/munkak/nedelmarket): Helyi irodai szerver és könyvelőrendszer valós idejű összekötése.
-- [Leanperial — Quiet Luxury Weboldal](https://webdude.hu/munkak/leanperial): Nemzetközi executive search platform 100/100 SEO alappal.
-- [AI-Prompt.hu — AI Prompt Platform](https://webdude.hu/munkak/ai-prompt-hu): Egyedi Next.js AI ökoszisztéma és prompt-optimalizáló rendszer.
-- [Go-Box Kft. — Arculat, Weboldal & Webshop](https://webdude.hu/munkak/go-box-kft): Teljes ipari márkaépítés és digitális értékesítési rendszer.
-- [Dr. Nagy Albert — Orvosi Arculat & Weboldal](https://webdude.hu/munkak/dr-nagy-albert): Prémium egészségügyi digitális jelenlét és páciens-élmény.
+- [BTShop.hu — B2B E-commerce & ERP](https://webdude.hu/munkak/btshop) ([EN](https://webdude.hu/en/portfolio/btshop)): 3200+ termékes webáruház Next.js migrációja és UI/UX újratervezése (+40% konverzió).
+- [Nedel Market — B2B WooCommerce & Szerver Integráció](https://webdude.hu/munkak/nedelmarket) ([EN](https://webdude.hu/en/portfolio/nedelmarket)): Helyi irodai szerver és könyvelőrendszer valós idejű összekötése.
+- [Leanperial — Quiet Luxury Weboldal](https://webdude.hu/munkak/leanperial) ([EN](https://webdude.hu/en/portfolio/leanperial)): Nemzetközi executive search platform 100/100 SEO alappal.
+- [AI-Prompt.hu — AI Prompt Platform](https://webdude.hu/munkak/ai-prompt-hu) ([EN](https://webdude.hu/en/portfolio/ai-prompt-hu)): Egyedi Next.js AI ökoszisztéma és prompt-optimalizáló rendszer.
+- [Go-Box Kft. — Arculat, Weboldal & Webshop](https://webdude.hu/munkak/go-box-kft) ([EN](https://webdude.hu/en/portfolio/go-box-kft)): Teljes ipari márkaépítés és digitális értékesítési rendszer.
+- [Dr. Nagy Albert — Orvosi Arculat & Weboldal](https://webdude.hu/munkak/dr-nagy-albert) ([EN](https://webdude.hu/en/portfolio/dr-nagy-albert)): Prémium egészségügyi digitális jelenlét és páciens-élmény.
 
 ## Kiemelt Tudásbázis Cikkek (Blog)
 

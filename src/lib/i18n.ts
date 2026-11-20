@@ -128,11 +128,22 @@ export function switchLocalePath(
     if (normalized === EN_PREFIX || normalized.startsWith(`${EN_PREFIX}/`)) {
       return normalized;
     }
+    if (normalized.startsWith("/munkak/") && normalized.length > "/munkak/".length) {
+      const slug = normalized.slice("/munkak/".length);
+      return `/en/portfolio/${slug}`;
+    }
     return HU_TO_EN_MAP.get(normalized) ?? EN_PREFIX;
   }
 
   if (normalized === "/" || !normalized.startsWith(`${EN_PREFIX}`)) {
     return normalized;
+  }
+  if (
+    normalized.startsWith("/en/portfolio/") &&
+    normalized.length > "/en/portfolio/".length
+  ) {
+    const slug = normalized.slice("/en/portfolio/".length);
+    return `/munkak/${slug}`;
   }
   return EN_TO_HU_MAP.get(normalized) ?? "/";
 }

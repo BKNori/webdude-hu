@@ -476,11 +476,32 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     console.error("Error querying Firestore projects for sitemap:", e);
   }
 
+  const staticWorkSlugs = new Set(works.map((w) => w.slug));
+
   const projectPages = Array.from(projectSlugs).map((slug) => ({
     url: `${BASE_URL}/munkak/${slug}`,
     lastModified: BUILD_DATE,
     changeFrequency: "monthly" as const,
     priority: 0.7,
+    ...(staticWorkSlugs.has(slug)
+      ? {
+          alternates: buildBilingualAlternates(
+            `${BASE_URL}/munkak/${slug}`,
+            `${BASE_URL}/en/portfolio/${slug}`
+          ),
+        }
+      : {}),
+  }));
+
+  const enProjectPages = works.map((w) => ({
+    url: `${BASE_URL}/en/portfolio/${w.slug}`,
+    lastModified: BUILD_DATE,
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+    alternates: buildBilingualAlternates(
+      `${BASE_URL}/munkak/${w.slug}`,
+      `${BASE_URL}/en/portfolio/${w.slug}`
+    ),
   }));
 
   // 2. Dynamic blog pages from local MDX files and Firestore
@@ -546,6 +567,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   return [
     ...staticPages,
     ...projectPages,
+    ...enProjectPages,
     ...blogPages,
     ...productPages,
   ];

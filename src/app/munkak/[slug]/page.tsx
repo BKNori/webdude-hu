@@ -43,16 +43,37 @@ export async function generateMetadata({
   const project = await getProject(slug);
   if (!project) return { title: "Projekt nem található | WebDude" };
 
+  const huUrl = `https://webdude.hu/munkak/${project.slug}`;
+  const enUrl = `https://webdude.hu/en/portfolio/${project.slug}`;
+
   // Prioritás a CASE_STUDY_SEO tábla (slug vagy id alapján)
   const seoOverride = CASE_STUDY_SEO[slug] || CASE_STUDY_SEO[project.id];
-  if (seoOverride) return seoOverride.metadata;
+  if (seoOverride) {
+    return {
+      ...seoOverride.metadata,
+      alternates: {
+        ...seoOverride.metadata.alternates,
+        canonical: seoOverride.metadata.alternates?.canonical ?? huUrl,
+        languages: {
+          "hu-HU": huUrl,
+          "en-US": enUrl,
+          "x-default": huUrl,
+        },
+      },
+    };
+  }
 
   return {
     title: `${project.title} – WebDude Portfólió`,
     description: project.description,
     keywords: project.tags,
     alternates: {
-      canonical: `https://webdude.hu/munkak/${project.slug}`,
+      canonical: huUrl,
+      languages: {
+        "hu-HU": huUrl,
+        "en-US": enUrl,
+        "x-default": huUrl,
+      },
     },
     openGraph: {
       title: `${project.title} | WebDude`,

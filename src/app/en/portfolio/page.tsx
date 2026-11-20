@@ -2,6 +2,7 @@ import PortfolioGrid from "@/components/molecules/PortfolioGrid";
 import PortfolioHero from "@/components/molecules/PortfolioHero";
 import DirectAnswerBlock from "@/components/molecules/DirectAnswerBlock";
 import { works as staticWorks } from "@/data/works";
+import { EN_CASE_STUDIES } from "@/data/caseStudiesEn";
 import { buildBreadcrumbSchema, BreadcrumbItem } from "@/lib/breadcrumb";
 import { withLocale } from "@/lib/i18n";
 import { getDictionary } from "@/lib/dictionary";
@@ -10,6 +11,18 @@ export const revalidate = 3600; // 1 hour ISR cache
 
 export default async function EnPortfolioPage() {
   const dictionary = await getDictionary("en");
+  const enProjects = staticWorks.map((work) => {
+    const enEntry = EN_CASE_STUDIES[work.slug];
+    if (!enEntry) return work;
+    return {
+      ...work,
+      title: enEntry.title,
+      description: enEntry.subtitle,
+      category: enEntry.category,
+      results: enEntry.metrics.map((m) => `${m.value} (${m.label})`),
+    };
+  });
+
   const breadcrumbItems: BreadcrumbItem[] = [
     { name: "Home", url: withLocale("/", "en") },
     { name: "Portfolio", url: withLocale("/munkak", "en") },
@@ -23,12 +36,12 @@ export default async function EnPortfolioPage() {
     description:
       "Real client results, conversion-optimised Next.js websites and custom digital systems. 26 years of experience, measurable growth.",
     url: "https://webdude.hu/en/portfolio",
-    hasPart: staticWorks.map((work) => ({
+    hasPart: enProjects.map((work) => ({
       "@type": "CreativeWork",
       name: work.title,
       description: work.description,
       image: work.image,
-      url: `https://webdude.hu/munkak/${work.slug}`,
+      url: `https://webdude.hu/en/portfolio/${work.slug}`,
     })),
   };
 
@@ -62,8 +75,9 @@ export default async function EnPortfolioPage() {
       />
       <div className="max-w-6xl mx-auto px-6 py-20">
         <PortfolioGrid
-          projects={staticWorks}
+          projects={enProjects}
           caseStudyLabel={dictionary.portfolio.caseStudyLabel}
+          basePath="/en/portfolio"
         />
       </div>
     </div>
