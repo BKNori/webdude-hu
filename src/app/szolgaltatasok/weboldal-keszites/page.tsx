@@ -180,6 +180,7 @@ export default function WeboldalKeszitesPage() {
       <div className="bg-[#F8FAFC] dark:bg-[#0B1120] text-text-primary relative overflow-hidden min-h-screen">
         <div className="relative z-10">
           <Hero
+            backgroundImage="/assets/banners/hero-webfejlesztes.webp"
             label="Weboldal Készítés"
             title={
               <>

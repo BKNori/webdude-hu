@@ -163,6 +163,7 @@ export default async function MarketingLeadGenerationPage() {
         <div className="absolute inset-0 bg-linear-to-b from-[#00B5F1]/5 via-transparent to-[#00B5F1]/5" />
         <div className="relative z-10">
           <Hero
+            backgroundImage="/assets/banners/hero-marketing.webp"
             label="Marketing Lead Generálás"
             title={
               <>

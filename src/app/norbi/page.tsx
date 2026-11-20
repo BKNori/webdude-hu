@@ -1,4 +1,5 @@
 import React from "react";
+import HeroBackdrop from "@/components/molecules/HeroBackdrop";
 import Image from "next/image";
 import Link from "next/link";
 import Timeline from "@/components/molecules/Timeline";
@@ -42,6 +43,10 @@ export default function AboutPage() {
     <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#0B1120] text-[#0F172A] dark:text-[#F8FAFC]">
       {/* 1. Hero Szekció (Személyes felütés) */}
       <section className="relative min-h-screen flex items-center justify-center pt-32 pb-24 overflow-hidden">
+        <HeroBackdrop
+          src="/assets/banners/hero-rolam.webp"
+          alt="WebDude — Balog Norbert"
+        />
         <div className="max-w-6xl mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8">
             <div className="inline-block relative pl-6">

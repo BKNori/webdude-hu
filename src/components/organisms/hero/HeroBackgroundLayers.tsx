@@ -34,7 +34,7 @@ export default function HeroBackgroundLayers({
           >
             <ResponsiveImage
               alt={slide.bgAlt}
-              className="object-cover opacity-15 dark:opacity-75"
+              className="object-cover hero-parallax-img opacity-48 dark:opacity-65"
               priority={currentSlide === 0}
               sizes="100vw"
               src={slide.bgImage}
@@ -45,13 +45,17 @@ export default function HeroBackgroundLayers({
 
       {/* Tiszta CSS mesh grid — nincs WebGL */}
       <div
-        className="absolute inset-0 bg-mesh-grid opacity-40 dark:opacity-30 pointer-events-none -z-10"
+        className="absolute inset-0 bg-mesh-grid opacity-30 dark:opacity-25 pointer-events-none -z-10"
         aria-hidden="true"
       />
 
-      {/* Kalibrált Dual Theme szövegvédelmi scrim (Luminous Daylight + Luminous Slate) */}
+      {/* Kalibrált Dual Theme irányított szövegvédelmi scrim (Luminous Daylight + Luminous Slate) */}
       <div
-        className="absolute inset-0 bg-linear-to-r from-[#F8FAFC]/96 via-[#F8FAFC]/85 to-[#F1F5F9]/60 dark:from-[#0B1120]/92 dark:via-[#0B1120]/68 dark:to-[#0B1120]/30 -z-10"
+        className="absolute inset-0 bg-linear-to-r from-[#F8FAFC]/92 via-[#F8FAFC]/56 to-transparent dark:from-[#0B1120]/90 dark:via-[#0B1120]/50 dark:to-transparent -z-10"
+        aria-hidden="true"
+      />
+      <div
+        className="absolute inset-0 bg-linear-to-t from-bg-base via-transparent to-[#F8FAFC]/35 dark:from-bg-base dark:via-transparent dark:to-[#0B1120]/35 -z-10"
         aria-hidden="true"
       />
 

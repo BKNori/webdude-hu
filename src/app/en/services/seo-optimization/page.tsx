@@ -135,6 +135,7 @@ export default function EnSeoOptimizationPage() {
 
         <div className="relative z-10">
           <Hero
+            backgroundImage="/assets/banners/hero-seo.webp"
             label="SEO Optimisation"
             title={
               <>

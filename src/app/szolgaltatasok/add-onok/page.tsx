@@ -17,6 +17,7 @@ import { getAddonsAction } from "@/actions/addons";
 import { Addon } from "@/types/addon";
 import DirectAnswerBlock from "@/components/molecules/DirectAnswerBlock";
 import BreadcrumbSchema from "@/components/molecules/BreadcrumbSchema";
+import HeroBackdrop from "@/components/molecules/HeroBackdrop";
 
 export const metadata: Metadata = {
   title: "Kiegészítő Szolgáltatások — Egyedi Árajánlattal | WebDude",
@@ -322,6 +323,7 @@ export default async function AddonsPage() {
       />
         {/* HERO SECTION */}
         <section className="text-center max-w-4xl mx-auto mb-20 md:mb-28 pt-8">
+        <HeroBackdrop src="/assets/banners/hero-szolgaltatasok.webp" />
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] uppercase font-mono tracking-widest font-bold text-[#0369A1] dark:text-[#00B5F1] bg-[#00B5F1]/5 border border-[#00B5F1]/20 mb-6 animate-pulse">
             <Sparkles className="w-3.5 h-3.5" />
             KIEGÉSZÍTŐ SZOLGÁLTATÁSOK

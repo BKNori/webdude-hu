@@ -6,6 +6,7 @@ import PricingTable from "@/components/molecules/PricingTable";
 import { buildBreadcrumbSchema, BreadcrumbItem } from "@/lib/breadcrumb";
 import Image from "next/image";
 import { Check } from "lucide-react";
+import HeroBackdrop from "@/components/molecules/HeroBackdrop";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -178,6 +179,7 @@ export default async function BrandingPage() {
       <div className="min-h-screen bg-transparent text-text-primary relative overflow-hidden">
         {/* Hero Section with 3 Banners */}
         <section className="relative w-full h-screen min-h-150 overflow-hidden">
+        <HeroBackdrop src="/assets/banners/hero-grafika.webp" />
           <div className="absolute inset-0 grid grid-cols-1 md:grid-cols-3">
             <div className="relative h-full">
               <Image

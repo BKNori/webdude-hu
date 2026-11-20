@@ -53,10 +53,10 @@ export default function BorGarnelaCaseStudy({
              alt="Bor és Garnéla Food Truck - Eros Pista Fesztivál"
              sizes="100vw"
              priority
-             className="object-cover"
+             className="object-cover opacity-55 dark:opacity-65"
            />
-          <div className="absolute inset-0 bg-[#F8FAFC]/82 dark:bg-slate-950/75 -z-10" />
-          <div className="absolute inset-0 bg-linear-to-b from-[#F8FAFC]/90 via-[#F8FAFC]/75 to-bg-base dark:from-black/85 dark:via-slate-950/70 dark:to-bg-base" />
+          <div className="absolute inset-0 bg-linear-to-r from-[#F8FAFC]/85 via-[#F8FAFC]/50 to-transparent dark:from-[#0B1120]/85 dark:via-[#0B1120]/45 dark:to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-t from-bg-base via-transparent to-[#F8FAFC]/35 dark:from-bg-base dark:via-transparent dark:to-[#0B1120]/40" />
         </motion.div>
 
         <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">

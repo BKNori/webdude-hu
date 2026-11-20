@@ -29,6 +29,76 @@ export const responsiveImageManifest: Record<string, ResponsiveImageVariants> = 
     "avif": "/assets/banners/responsive/webdude%20banner%202000x1000-640w.avif 640w, /assets/banners/responsive/webdude%20banner%202000x1000-1024w.avif 1024w, /assets/banners/responsive/webdude%20banner%202000x1000-1600w.avif 1600w, /assets/banners/responsive/webdude%20banner%202000x1000-2000w.avif 2000w",
     "webp": "/assets/banners/responsive/webdude%20banner%202000x1000-640w.webp 640w, /assets/banners/responsive/webdude%20banner%202000x1000-1024w.webp 1024w, /assets/banners/responsive/webdude%20banner%202000x1000-1600w.webp 1600w, /assets/banners/responsive/webdude%20banner%202000x1000-2000w.webp 2000w"
   },
+  "/assets/banners/hero-szolgaltatasok.webp": {
+    "fallback": "/assets/banners/hero-szolgaltatasok.webp",
+    "avif": "/assets/banners/responsive/hero-szolgaltatasok-640w.avif 640w, /assets/banners/responsive/hero-szolgaltatasok-1024w.avif 1024w, /assets/banners/responsive/hero-szolgaltatasok-1600w.avif 1600w, /assets/banners/responsive/hero-szolgaltatasok-2000w.avif 2000w",
+    "webp": "/assets/banners/responsive/hero-szolgaltatasok-640w.webp 640w, /assets/banners/responsive/hero-szolgaltatasok-1024w.webp 1024w, /assets/banners/responsive/hero-szolgaltatasok-1600w.webp 1600w, /assets/banners/responsive/hero-szolgaltatasok-2000w.webp 2000w"
+  },
+  "/assets/banners/hero-kapcsolat.webp": {
+    "fallback": "/assets/banners/hero-kapcsolat.webp",
+    "avif": "/assets/banners/responsive/hero-kapcsolat-640w.avif 640w, /assets/banners/responsive/hero-kapcsolat-1024w.avif 1024w, /assets/banners/responsive/hero-kapcsolat-1600w.avif 1600w, /assets/banners/responsive/hero-kapcsolat-2000w.avif 2000w",
+    "webp": "/assets/banners/responsive/hero-kapcsolat-640w.webp 640w, /assets/banners/responsive/hero-kapcsolat-1024w.webp 1024w, /assets/banners/responsive/hero-kapcsolat-1600w.webp 1600w, /assets/banners/responsive/hero-kapcsolat-2000w.webp 2000w"
+  },
+  "/assets/banners/hero-hirek.webp": {
+    "fallback": "/assets/banners/hero-hirek.webp",
+    "avif": "/assets/banners/responsive/hero-hirek-640w.avif 640w, /assets/banners/responsive/hero-hirek-1024w.avif 1024w, /assets/banners/responsive/hero-hirek-1600w.avif 1600w, /assets/banners/responsive/hero-hirek-2000w.avif 2000w",
+    "webp": "/assets/banners/responsive/hero-hirek-640w.webp 640w, /assets/banners/responsive/hero-hirek-1024w.webp 1024w, /assets/banners/responsive/hero-hirek-1600w.webp 1600w, /assets/banners/responsive/hero-hirek-2000w.webp 2000w"
+  },
+  "/assets/banners/hero-rolam.webp": {
+    "fallback": "/assets/banners/hero-rolam.webp",
+    "avif": "/assets/banners/responsive/hero-rolam-640w.avif 640w, /assets/banners/responsive/hero-rolam-1024w.avif 1024w, /assets/banners/responsive/hero-rolam-1600w.avif 1600w, /assets/banners/responsive/hero-rolam-2000w.avif 2000w",
+    "webp": "/assets/banners/responsive/hero-rolam-640w.webp 640w, /assets/banners/responsive/hero-rolam-1024w.webp 1024w, /assets/banners/responsive/hero-rolam-1600w.webp 1600w, /assets/banners/responsive/hero-rolam-2000w.webp 2000w"
+  },
+  "/assets/banners/hero-webfejlesztes.webp": {
+    "fallback": "/assets/banners/hero-webfejlesztes.webp",
+    "avif": "/assets/banners/responsive/hero-webfejlesztes-640w.avif 640w, /assets/banners/responsive/hero-webfejlesztes-1024w.avif 1024w, /assets/banners/responsive/hero-webfejlesztes-1600w.avif 1600w, /assets/banners/responsive/hero-webfejlesztes-2000w.avif 2000w",
+    "webp": "/assets/banners/responsive/hero-webfejlesztes-640w.webp 640w, /assets/banners/responsive/hero-webfejlesztes-1024w.webp 1024w, /assets/banners/responsive/hero-webfejlesztes-1600w.webp 1600w, /assets/banners/responsive/hero-webfejlesztes-2000w.webp 2000w"
+  },
+  "/assets/banners/hero-webshop.webp": {
+    "fallback": "/assets/banners/hero-webshop.webp",
+    "avif": "/assets/banners/responsive/hero-webshop-640w.avif 640w, /assets/banners/responsive/hero-webshop-1024w.avif 1024w, /assets/banners/responsive/hero-webshop-1600w.avif 1600w, /assets/banners/responsive/hero-webshop-2000w.avif 2000w",
+    "webp": "/assets/banners/responsive/hero-webshop-640w.webp 640w, /assets/banners/responsive/hero-webshop-1024w.webp 1024w, /assets/banners/responsive/hero-webshop-1600w.webp 1600w, /assets/banners/responsive/hero-webshop-2000w.webp 2000w"
+  },
+  "/assets/banners/hero-wordpress.webp": {
+    "fallback": "/assets/banners/hero-wordpress.webp",
+    "avif": "/assets/banners/responsive/hero-wordpress-640w.avif 640w, /assets/banners/responsive/hero-wordpress-1024w.avif 1024w, /assets/banners/responsive/hero-wordpress-1600w.avif 1600w, /assets/banners/responsive/hero-wordpress-2000w.avif 2000w",
+    "webp": "/assets/banners/responsive/hero-wordpress-640w.webp 640w, /assets/banners/responsive/hero-wordpress-1024w.webp 1024w, /assets/banners/responsive/hero-wordpress-1600w.webp 1600w, /assets/banners/responsive/hero-wordpress-2000w.webp 2000w"
+  },
+  "/assets/banners/hero-seo.webp": {
+    "fallback": "/assets/banners/hero-seo.webp",
+    "avif": "/assets/banners/responsive/hero-seo-640w.avif 640w, /assets/banners/responsive/hero-seo-1024w.avif 1024w, /assets/banners/responsive/hero-seo-1600w.avif 1600w, /assets/banners/responsive/hero-seo-2000w.avif 2000w",
+    "webp": "/assets/banners/responsive/hero-seo-640w.webp 640w, /assets/banners/responsive/hero-seo-1024w.webp 1024w, /assets/banners/responsive/hero-seo-1600w.webp 1600w, /assets/banners/responsive/hero-seo-2000w.webp 2000w"
+  },
+  "/assets/banners/hero-grafika.webp": {
+    "fallback": "/assets/banners/hero-grafika.webp",
+    "avif": "/assets/banners/responsive/hero-grafika-640w.avif 640w, /assets/banners/responsive/hero-grafika-1024w.avif 1024w, /assets/banners/responsive/hero-grafika-1600w.avif 1600w, /assets/banners/responsive/hero-grafika-2000w.avif 2000w",
+    "webp": "/assets/banners/responsive/hero-grafika-640w.webp 640w, /assets/banners/responsive/hero-grafika-1024w.webp 1024w, /assets/banners/responsive/hero-grafika-1600w.webp 1600w, /assets/banners/responsive/hero-grafika-2000w.webp 2000w"
+  },
+  "/assets/banners/hero-marketing.webp": {
+    "fallback": "/assets/banners/hero-marketing.webp",
+    "avif": "/assets/banners/responsive/hero-marketing-640w.avif 640w, /assets/banners/responsive/hero-marketing-1024w.avif 1024w, /assets/banners/responsive/hero-marketing-1600w.avif 1600w, /assets/banners/responsive/hero-marketing-2000w.avif 2000w",
+    "webp": "/assets/banners/responsive/hero-marketing-640w.webp 640w, /assets/banners/responsive/hero-marketing-1024w.webp 1024w, /assets/banners/responsive/hero-marketing-1600w.webp 1600w, /assets/banners/responsive/hero-marketing-2000w.webp 2000w"
+  },
+  "/assets/banners/hero-ai-megoldasok.webp": {
+    "fallback": "/assets/banners/hero-ai-megoldasok.webp",
+    "avif": "/assets/banners/responsive/hero-ai-megoldasok-640w.avif 640w, /assets/banners/responsive/hero-ai-megoldasok-1024w.avif 1024w, /assets/banners/responsive/hero-ai-megoldasok-1600w.avif 1600w, /assets/banners/responsive/hero-ai-megoldasok-2000w.avif 2000w",
+    "webp": "/assets/banners/responsive/hero-ai-megoldasok-640w.webp 640w, /assets/banners/responsive/hero-ai-megoldasok-1024w.webp 1024w, /assets/banners/responsive/hero-ai-megoldasok-1600w.webp 1600w, /assets/banners/responsive/hero-ai-megoldasok-2000w.webp 2000w"
+  },
+  "/assets/banners/hero-termekek.webp": {
+    "fallback": "/assets/banners/hero-termekek.webp",
+    "avif": "/assets/banners/responsive/hero-termekek-640w.avif 640w, /assets/banners/responsive/hero-termekek-1024w.avif 1024w, /assets/banners/responsive/hero-termekek-1600w.avif 1600w, /assets/banners/responsive/hero-termekek-2000w.avif 2000w",
+    "webp": "/assets/banners/responsive/hero-termekek-640w.webp 640w, /assets/banners/responsive/hero-termekek-1024w.webp 1024w, /assets/banners/responsive/hero-termekek-1600w.webp 1600w, /assets/banners/responsive/hero-termekek-2000w.webp 2000w"
+  },
+  "/assets/banners/hero-kecskemet.webp": {
+    "fallback": "/assets/banners/hero-kecskemet.webp",
+    "avif": "/assets/banners/responsive/hero-kecskemet-640w.avif 640w, /assets/banners/responsive/hero-kecskemet-1024w.avif 1024w, /assets/banners/responsive/hero-kecskemet-1600w.avif 1600w, /assets/banners/responsive/hero-kecskemet-2000w.avif 2000w",
+    "webp": "/assets/banners/responsive/hero-kecskemet-640w.webp 640w, /assets/banners/responsive/hero-kecskemet-1024w.webp 1024w, /assets/banners/responsive/hero-kecskemet-1600w.webp 1600w, /assets/banners/responsive/hero-kecskemet-2000w.webp 2000w"
+  },
+  "/assets/banners/hero-jogi.webp": {
+    "fallback": "/assets/banners/hero-jogi.webp",
+    "avif": "/assets/banners/responsive/hero-jogi-640w.avif 640w, /assets/banners/responsive/hero-jogi-1024w.avif 1024w, /assets/banners/responsive/hero-jogi-1600w.avif 1600w, /assets/banners/responsive/hero-jogi-2000w.avif 2000w",
+    "webp": "/assets/banners/responsive/hero-jogi-640w.webp 640w, /assets/banners/responsive/hero-jogi-1024w.webp 1024w, /assets/banners/responsive/hero-jogi-1600w.webp 1600w, /assets/banners/responsive/hero-jogi-2000w.webp 2000w"
+  },
   "/assets/portfolio/nedel-market/nedel_market_banner.webp": {
     "fallback": "/assets/portfolio/nedel-market/nedel_market_banner.webp",
     "avif": "/assets/responsive/portfolio/nedel-market/nedel_market_banner-320w.avif 320w, /assets/responsive/portfolio/nedel-market/nedel_market_banner-640w.avif 640w, /assets/responsive/portfolio/nedel-market/nedel_market_banner-960w.avif 960w, /assets/responsive/portfolio/nedel-market/nedel_market_banner-1600w.avif 1600w, /assets/responsive/portfolio/nedel-market/nedel_market_banner-2000w.avif 2000w",

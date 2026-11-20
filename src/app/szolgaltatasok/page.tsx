@@ -290,7 +290,7 @@ export default async function ServicesPage() {
         cta2="Munkák megtekintése"
         cta2Link="/munkak"
         fullHeight={true}
-        backgroundImage="/assets/banners/szeged-terkozeves.webp"
+        backgroundImage="/assets/banners/hero-szolgaltatasok.webp"
       />
 
       {/* Direct Answer Block - AEO optimalizált "Szolgáltatások Áttekintése" */}

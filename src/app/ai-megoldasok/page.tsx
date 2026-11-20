@@ -1,11 +1,11 @@
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { Metadata } from "next";
 import AIFeatureCard from "@/components/molecules/AIFeatureCard";
 import AIFAQSection from "@/components/organisms/AIFAQSection";
 import AIBenefitsGrid from "@/components/molecules/AIBenefitsGrid";
 import DirectAnswerBlock from "@/components/molecules/DirectAnswerBlock";
+import HeroBackdrop from "@/components/molecules/HeroBackdrop";
 import Surface from "@/components/atoms/Surface";
 import { CANONICAL_PERSON_ENTITY, serializeJsonLd } from "@/lib/structuredData";
 
@@ -210,22 +210,14 @@ export default function AIMSolutionsPage() {
 
       {/* Hero Section with Banner */}
       <section className="relative min-h-140 md:min-h-160 overflow-hidden bg-[#F8FAFC] dark:bg-[#0B1120] border-b border-slate-200/80 dark:border-white/10 flex items-center">
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/assets/portfolio/ai-promt-hu/ai-promt-hi-banner.webp"
-            alt="Vállalati AI Automatizáció és Egyedi Prompt Tervezés"
-            fill
-            priority
-            className="object-cover object-center opacity-12 dark:opacity-35"
-            sizes="100vw"
-          />
-          <div className="absolute inset-0 bg-linear-to-r from-[#F8FAFC]/92 via-[#F8FAFC]/82 to-[#F8FAFC]/70 dark:from-[#0B1120]/95 dark:via-[#0B1120]/80 dark:to-[#0B1120]/65" />
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_65%_55%_at_50%_45%,rgba(248,250,252,0.88)_0%,transparent_100%)] dark:bg-none" />
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0 bg-grid-mesh opacity-25 dark:opacity-35"
-          />
-        </div>
+        <HeroBackdrop
+          src="/assets/banners/hero-ai-megoldasok.webp"
+          alt="Vállalati AI Automatizáció és Egyedi Prompt Tervezés"
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 bg-grid-mesh opacity-25 dark:opacity-35 z-0"
+        />
 
         <div className="relative z-10 mx-auto max-w-7xl px-6 py-24 md:py-32 w-full">
           <div className="max-w-3xl">

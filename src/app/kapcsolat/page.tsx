@@ -97,7 +97,7 @@ export default function ContactPage() {
           cta1="Írj emailt"
           cta1Link="mailto:hello@webdude.hu"
           fullHeight={true}
-          backgroundImage="/assets/banners/wordpress-weboldalak-keszitese-grafikai-tervezes.webp"
+          backgroundImage="/assets/banners/hero-kapcsolat.webp"
         />
 
         <Surface tone="night-lift" aurora grid className="py-24 md:py-32">

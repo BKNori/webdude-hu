@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Leanperial — "Quiet Luxury" esettanulmány (WebDude OS v7.0 / Kék-Lila).
  *
  * TISZTA React Server Component (RSC): nincs kliensoldali állapot, nincs
@@ -62,9 +62,10 @@ export default function LeanperialCaseStudy() {
             alt="Leanperial — Quiet Luxury weboldal, prémium executive search felület mockup"
             sizes="100vw"
             priority
-            className="object-cover opacity-40"
+            className="object-cover hero-parallax-img opacity-50 dark:opacity-60"
           />
-          <div className="absolute inset-0 bg-linear-to-b from-bg-base/70 via-bg-base/60 to-bg-base" />
+          <div className="absolute inset-0 bg-linear-to-r from-[#F8FAFC]/88 via-[#F8FAFC]/52 to-transparent dark:from-[#0B1120]/85 dark:via-[#0B1120]/45 dark:to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-t from-bg-base via-transparent to-[#F8FAFC]/35 dark:from-bg-base dark:via-transparent dark:to-[#0B1120]/40" />
         </div>
 
         {/* Ambient cyan + lila glow (a 90-8-2 szabály 2%-a) */}

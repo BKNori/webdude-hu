@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import HeroBackdrop from "@/components/molecules/HeroBackdrop";
 import {
   CheckCircle2,
   ArrowRight,
@@ -195,7 +196,10 @@ export default function WeboldalKeszitesKecskemetPage() {
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 overflow-hidden border-b border-slate-200/80 dark:border-slate-800/80 bg-[#F8FAFC] dark:bg-[#0B1120]">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,var(--tw-gradient-stops))] from-sky-100/70 via-[#F8FAFC] to-[#F8FAFC] dark:from-sky-900/20 dark:via-slate-950 dark:to-slate-950 pointer-events-none" />
+        <HeroBackdrop
+          src="/assets/banners/hero-kecskemet.webp"
+          alt="Weboldal készítés Kecskeméten — WebDude"
+        />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#0369A1]/10 dark:bg-sky-950/80 border border-[#0369A1]/25 dark:border-sky-500/30 text-[#0369A1] dark:text-sky-400 text-xs font-medium uppercase tracking-wider mb-6">

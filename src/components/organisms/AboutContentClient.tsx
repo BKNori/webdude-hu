@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Timeline from "@/components/molecules/Timeline";
 import Surface from "@/components/atoms/Surface";
+import HeroBackdrop from "@/components/molecules/HeroBackdrop";
 import { motion } from "motion/react";
 import { useHydratedReducedMotion } from "@/hooks/useMotionPreset";
 import {
@@ -49,6 +50,10 @@ export default function AboutContentClient() {
     <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#0B1120] text-[#0F172A] dark:text-[#F8FAFC]">
       {/* 1. Hero Szekció (Személyes felütés) */}
       <section className="relative min-h-[85vh] flex items-center justify-center pt-28 pb-24 overflow-hidden bg-[#F8FAFC] dark:bg-[#0B1120] border-b border-slate-200/80 dark:border-white/10">
+        <HeroBackdrop
+          src="/assets/banners/hero-rolam.webp"
+          alt="Balog Norbert — WebDude 26 év tapasztalat"
+        />
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
           <div className="absolute top-20 right-20 w-96 h-96 bg-linear-to-br from-[#0369A1]/10 to-[#6D28D9]/10 dark:from-[#00B5F1]/18 dark:to-[#7C3AED]/16 rounded-full blur-[120px]" />
           <div className="absolute bottom-20 left-20 w-80 h-80 bg-linear-to-br from-[#6D28D9]/10 to-transparent dark:from-[#7C3AED]/16 dark:to-transparent rounded-full blur-[100px]" />

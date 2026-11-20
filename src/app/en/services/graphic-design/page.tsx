@@ -112,6 +112,7 @@ export default function EnGraphicDesignPage() {
         <div className="absolute inset-0 bg-linear-to-b from-[#0369A1]/5 via-transparent to-[#6D28D9]/5 dark:from-[#00B5F1]/5 dark:via-transparent dark:to-[#5B21B6]/5" />
         <div className="relative z-10">
           <Hero
+            backgroundImage="/assets/banners/hero-grafika.webp"
             label="Service"
             title="Graphic Design & Brand Identity"
             subtitle="26 years of graphic design experience: logo, brand identity, marketing materials and digital graphic design in a unified visual system. Pixel-perfect quality produced in Adobe CC and Figma."

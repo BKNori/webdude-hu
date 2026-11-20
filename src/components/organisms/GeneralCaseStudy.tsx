@@ -30,10 +30,10 @@ export default function GeneralCaseStudy({ project }: GeneralCaseStudyProps) {
             alt={project.title}
             sizes="100vw"
             priority
-            className="object-cover"
+            className="object-cover hero-parallax-img opacity-55 dark:opacity-65"
           />
-          <div className="absolute inset-0 bg-[#F8FAFC]/82 dark:bg-slate-950/75 -z-10" />
-          <div className="absolute inset-0 bg-linear-to-b from-[#F8FAFC]/90 via-[#F8FAFC]/75 to-bg-base dark:from-black/80 dark:via-slate-950/60 dark:to-bg-base" />
+          <div className="absolute inset-0 bg-linear-to-r from-[#F8FAFC]/88 via-[#F8FAFC]/52 to-transparent dark:from-[#0B1120]/85 dark:via-[#0B1120]/45 dark:to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-t from-bg-base via-transparent to-[#F8FAFC]/35 dark:from-bg-base dark:via-transparent dark:to-[#0B1120]/40" />
         </div>
 
         <motion.div

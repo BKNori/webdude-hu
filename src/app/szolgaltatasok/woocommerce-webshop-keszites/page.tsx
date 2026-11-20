@@ -142,6 +142,7 @@ export default async function WooCommercePage() {
         <div className="absolute inset-0 bg-linear-to-b from-brand-primary/5 via-transparent to-brand-primary/5" />
         <div className="relative z-10">
           <Hero
+            backgroundImage="/assets/banners/hero-webshop.webp"
             label="Szolgáltatás"
             title="WooCommerce Webshop Készítés"
             subtitle="16 év tapasztalattal WooCommerce webshop készítés és fejlesztés. Konverzió-fókuszú e-kereskedelmi rendszerek, fizetési integrációk és teljes körű támogatás az online értékesítéshez."

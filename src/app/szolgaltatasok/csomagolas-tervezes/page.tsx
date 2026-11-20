@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { buildBreadcrumbSchema, BreadcrumbItem } from "@/lib/breadcrumb";
 import DirectAnswerBlock from "@/components/molecules/DirectAnswerBlock";
+import HeroBackdrop from "@/components/molecules/HeroBackdrop";
 
 export const metadata: Metadata = {
   title:
@@ -273,6 +274,7 @@ export default function CsomagolasTervezesPage() {
       <div className="min-h-screen bg-bg-base text-text-primary">
         {/* Hero Section */}
         <section className="relative min-h-150 md:min-h-175 overflow-hidden">
+        <HeroBackdrop src="/assets/banners/hero-grafika.webp" />
           <div className="absolute inset-0 z-0">
             <Image
               src="/assets/portfolio/csomagolas-tervezes/stand-up-pouch-packaging-mockup-copy-2.webp"

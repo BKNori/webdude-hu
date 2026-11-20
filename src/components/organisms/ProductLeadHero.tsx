@@ -3,6 +3,7 @@
 import { motion } from "motion/react";
 import { Shield, Zap, ArrowRight, CheckCircle } from "lucide-react";
 import Image from "next/image";
+import HeroBackdrop from "@/components/molecules/HeroBackdrop";
 
 interface ProductLeadHeroProps {
   productName: string;
@@ -23,8 +24,9 @@ export default function ProductLeadHero({
 }: ProductLeadHeroProps) {
   return (
     <section className="relative py-24 overflow-hidden bg-bg-base">
+      <HeroBackdrop src="/assets/banners/hero-termekek.webp" />
       {/* Background Pattern */}
-      <div className="absolute inset-0 bg-linear-to-b from-brand-primary/5 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-linear-to-b from-brand-primary/5 via-transparent to-transparent pointer-events-none" />
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         <div className="grid md:grid-cols-2 gap-12 items-center">

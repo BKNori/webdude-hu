@@ -3,6 +3,7 @@ import { Metadata } from "next";
 import PricingTable from "@/components/molecules/PricingTable";
 import { buildBreadcrumbSchema, BreadcrumbItem } from "@/lib/breadcrumb";
 import DirectAnswerBlock from "@/components/molecules/DirectAnswerBlock";
+import HeroBackdrop from "@/components/molecules/HeroBackdrop";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -295,6 +296,7 @@ export default async function WebshopPage() {
               className="mt-24 pt-16 border-t border-slate-200/90 dark:border-slate-800/80"
               aria-labelledby="wp-webshop-faq-heading"
             >
+        <HeroBackdrop src="/assets/banners/hero-webshop.webp" />
               <h2
                 id="wp-webshop-faq-heading"
                 className="text-3xl lg:text-4xl font-bold text-[#0F172A] dark:text-slate-100 text-center mb-4"

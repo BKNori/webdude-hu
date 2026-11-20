@@ -19,7 +19,7 @@ export default function EnContactPage() {
         cta1="Send Email"
         cta1Link="mailto:hello@webdude.hu"
         fullHeight={true}
-        backgroundImage="/assets/banners/wordpress-weboldalak-keszitese-grafikai-tervezes.webp"
+        backgroundImage="/assets/banners/hero-kapcsolat.webp"
       />
 
       <section className="relative z-10 py-24 bg-[#F1F5F9] dark:bg-[#111C33]">

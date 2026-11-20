@@ -1,9 +1,9 @@
 "use client";
 import React from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { motion } from "motion/react";
 import { useHydratedReducedMotion } from "@/hooks/useMotionPreset";
+import ResponsiveImage from "@/components/molecules/ResponsiveImage";
 
 interface HeroProps {
   title?: React.ReactNode;
@@ -57,32 +57,23 @@ export default function Hero({
         </div>
       )}
 
-      {/* Background image — Dual Theme scrim (Luminous Daylight + Luminous Slate) */}
+      {/* Background image — Irányított Dual Theme scrim + 60 FPS CSS Parallax */}
       {backgroundImage && !videoBackground && (
-        <div className="absolute inset-0 z-0">
-          <Image
+        <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
+          <ResponsiveImage
             src={backgroundImage}
             alt=""
-            fill
-            className="object-cover opacity-12 dark:opacity-30"
+            sizes="100vw"
             priority
-          />
-          <div className="absolute inset-0 bg-linear-to-b from-[#F8FAFC]/92 via-[#F8FAFC]/82 to-[#F1F5F9]/96 dark:from-[#0B1120]/90 dark:via-[#0B1120]/75 dark:to-[#0B1120]/95" />
-          <div
-            aria-hidden="true"
-            className="absolute inset-0 dark:hidden"
-            style={{
-              background:
-                "radial-gradient(ellipse 70% 60% at 50% 50%, rgba(248, 250, 252, 0.88) 0%, transparent 80%)",
-            }}
+            className="object-cover hero-parallax-img opacity-50 dark:opacity-60"
           />
           <div
             aria-hidden="true"
-            className="absolute inset-0 hidden dark:block"
-            style={{
-              background:
-                "radial-gradient(ellipse 70% 60% at 50% 50%, rgba(11, 17, 32, 0.78) 0%, transparent 80%)",
-            }}
+            className="absolute inset-0 bg-linear-to-r from-[#F8FAFC]/90 via-[#F8FAFC]/62 to-[#F1F5F9]/25 dark:from-[#0B1120]/88 dark:via-[#0B1120]/55 dark:to-[#0B1120]/20"
+          />
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 bg-linear-to-t from-bg-base via-transparent to-[#F8FAFC]/40 dark:from-bg-base dark:via-transparent dark:to-[#0B1120]/45"
           />
         </div>
       )}

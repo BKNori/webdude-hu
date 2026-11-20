@@ -126,7 +126,7 @@ export default async function HirekPage() {
         }
         subtitle="Gyakorlati esettanulmányok, WordPress fejlesztés, technikai SEO, WooCommerce webshopok és AI automatizáció — valós ügyfélprojektek tapasztalatai alapján."
         fullHeight={false}
-        backgroundImage="/assets/banners/banner-webdde-copy-2-1536x857.webp"
+        backgroundImage="/assets/banners/hero-hirek.webp"
       />
 
       {/* AEO Direct Answer Blokk — a H1 alatt és a cikklista felett */}

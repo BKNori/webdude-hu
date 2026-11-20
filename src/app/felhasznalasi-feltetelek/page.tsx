@@ -1,4 +1,5 @@
 import React from "react";
+import HeroBackdrop from "@/components/molecules/HeroBackdrop";
 
 export const metadata = {
   title: "Felhasználási Feltételek | WebDude",
@@ -8,22 +9,24 @@ export const metadata = {
 
 export default function FelhasznalasiFeltetelek() {
   return (
-    <div className="py-20 md:py-32 relative z-10 bg-[#F8FAFC] dark:bg-[#0B1120] text-[#0F172A] dark:text-[#F8FAFC]">
+    <div className="relative overflow-hidden py-20 md:py-32 z-10 bg-[#F8FAFC] dark:bg-[#0B1120] text-[#0F172A] dark:text-[#F8FAFC]">
+      <div className="relative mb-12 overflow-hidden rounded-3xl max-w-4xl mx-auto p-8 md:p-12 border border-slate-200/80 dark:border-white/10">
+        <HeroBackdrop src="/assets/banners/hero-jogi.webp" />
+        <div className="relative z-10 text-center md:text-left">
+          <span className="text-xs uppercase font-black tracking-[0.4em] text-[#0369A1] dark:text-[#00B5F1] mb-2 block">
+            Jogi Dokumentum
+          </span>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#0F172A] dark:text-white tracking-tight">
+            Felhasználási{" "}
+            <span className="text-[#0369A1] dark:text-[#00B5F1] italic">Feltételek</span>
+          </h1>
+          <p className="mt-4 text-[#475569] dark:text-slate-300 text-sm">
+            Utolsó módosítás: 2026. június 19.
+          </p>
+        </div>
+      </div>
       <div className="max-w-6xl mx-auto px-6">
         <div className="max-w-4xl mx-auto">
-          {/* Header section with brand color */}
-          <div className="mb-12 text-center md:text-left">
-            <span className="text-xs uppercase font-black tracking-[0.4em] text-[#0369A1] dark:text-[#00B5F1] mb-2 block">
-              Jogi Dokumentum
-            </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#0F172A] dark:text-white tracking-tight">
-              Felhasználási{" "}
-              <span className="text-[#0369A1] dark:text-[#00B5F1] italic">Feltételek</span>
-            </h1>
-            <p className="mt-4 text-[#475569] dark:text-slate-400 text-sm">
-              Utolsó módosítás: 2026. június 19.
-            </p>
-          </div>
 
           {/* Main content wrapped in a premium glass card */}
           <div className="luminous-card p-8 md:p-12 space-y-12">

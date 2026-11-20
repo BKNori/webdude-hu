@@ -98,6 +98,7 @@ export default function EnWebDevelopmentPage() {
 
         <div className="relative z-10">
           <Hero
+            backgroundImage="/assets/banners/hero-webfejlesztes.webp"
             label="Web Development"
             title={
               <>

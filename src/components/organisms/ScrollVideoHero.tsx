@@ -64,8 +64,15 @@ export default function ScrollVideoHero({
           </div>
         )}
 
-        {/* Dual-theme scrim overlay for text readability */}
-        <div className="absolute inset-0 bg-white/80 dark:bg-slate-900/45 backdrop-blur-[2px] dark:backdrop-blur-none pointer-events-none" />
+        {/* Dual-theme directional scrim overlay for text readability without blur */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-linear-to-r from-[#F8FAFC]/82 via-[#F8FAFC]/45 to-[#F8FAFC]/20 dark:from-[#0B1120]/75 dark:via-[#0B1120]/40 dark:to-[#0B1120]/20 pointer-events-none"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-linear-to-t from-bg-base/85 via-transparent to-[#F8FAFC]/30 dark:from-bg-base/85 dark:via-transparent dark:to-[#0B1120]/30 pointer-events-none"
+        />
 
         {/* Content overlay */}
         {children && (

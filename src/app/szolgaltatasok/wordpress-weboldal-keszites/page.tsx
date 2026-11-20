@@ -15,6 +15,7 @@ import {
 import PricingTable, { type PricingTier } from "@/components/molecules/PricingTable";
 import DirectAnswerBlock from "@/components/molecules/DirectAnswerBlock";
 import BreadcrumbSchema from "@/components/molecules/BreadcrumbSchema";
+import HeroBackdrop from "@/components/molecules/HeroBackdrop";
 
 export const metadata: Metadata = {
   title: "WordPress weboldal készítés | Egyedi fejlesztés | WebDude",
@@ -195,6 +196,7 @@ export default function WordPressWeboldalKeszitesPage() {
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 overflow-hidden border-b border-slate-200/90 dark:border-slate-800/80">
+        <HeroBackdrop src="/assets/banners/hero-wordpress.webp" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,var(--tw-gradient-stops))] from-sky-500/10 via-[#F8FAFC] to-[#F8FAFC] dark:from-sky-900/20 dark:via-slate-950 dark:to-slate-950 pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl">

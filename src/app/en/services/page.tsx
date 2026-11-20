@@ -246,7 +246,7 @@ export default async function EnServicesPage() {
         cta2={dictionary.services.page.cta2}
         cta2Link="/en#cases"
         fullHeight={true}
-        backgroundImage="/assets/banners/szeged-terkozeves.webp"
+        backgroundImage="/assets/banners/hero-szolgaltatasok.webp"
       />
 
       {/* Direct Answer Block - AEO optimised "Services Overview" */}

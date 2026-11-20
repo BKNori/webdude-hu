@@ -6,6 +6,7 @@ import { Metadata } from "next";
 import { buildBreadcrumbSchema, BreadcrumbItem } from "@/lib/breadcrumb";
 import HeroCarousel from "@/components/molecules/HeroCarousel";
 import { Check } from "lucide-react";
+import HeroBackdrop from "@/components/molecules/HeroBackdrop";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -155,6 +156,7 @@ export default async function AiMediaPage() {
 
         {/* Direct Answer Block - AEO optimalizált */}
         <section className="relative py-12 bg-bg-base border-y border-slate-200/80 dark:border-white/5">
+        <HeroBackdrop src="/assets/banners/hero-ai-megoldasok.webp" />
           <div className="max-w-4xl mx-auto px-6 text-center">
             <p className="text-base md:text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
               <span className="text-[#0369A1] dark:text-[#00B5F1] font-semibold">

@@ -170,6 +170,7 @@ export default async function SEOOptimizationPage() {
 
         <div className="relative z-10">
           <Hero
+            backgroundImage="/assets/banners/hero-seo.webp"
             label="SEO Optimalizálás"
             title={
               <>

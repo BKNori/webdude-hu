@@ -93,6 +93,7 @@ export default function EnWooCommercePage() {
         <div className="absolute inset-0 bg-linear-to-b from-[#0369A1]/5 via-transparent to-[#0369A1]/5 dark:from-[#00B5F1]/5 dark:via-transparent dark:to-[#00B5F1]/5" />
         <div className="relative z-10">
           <Hero
+            backgroundImage="/assets/banners/hero-webshop.webp"
             label="Service"
             title="WooCommerce Development"
             subtitle="16 years of experience in WooCommerce webshop development and optimisation. Conversion-focused e-commerce systems, payment integrations and full support for online value."

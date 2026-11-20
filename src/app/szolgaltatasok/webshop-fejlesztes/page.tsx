@@ -178,6 +178,7 @@ export default function WebshopDevPage() {
 
         <div className="relative z-10">
           <Hero
+            backgroundImage="/assets/banners/hero-webshop.webp"
             label="WooCommerce Webshop Fejlesztés"
             title={
               <>

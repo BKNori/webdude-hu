@@ -171,6 +171,7 @@ export default function GrafikaiTervezesPage() {
 
         <div className="relative z-10">
           <Hero
+            backgroundImage="/assets/banners/hero-grafika.webp"
             label="Grafikai Tervezés"
             title={
               <>

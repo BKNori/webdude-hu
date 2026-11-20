@@ -1,5 +1,16 @@
 # Changelog
 
+## [7.72.0] — 2026-11-20 — Egységes Publikus Hero Bannerek, Irányított Scrim & 60 FPS CSS Parallax
+
+- **14 db Tiszta `hero-*.webp` Banner & Placeholder Rendszer:**
+  - Megőrizve a 3 meglévő valódi grafika (`hero-szolgaltatasok.webp`, `hero-kapcsolat.webp`, `hero-hirek.webp`), és létrehozva a [scripts/generate-hero-placeholders.js](file:///c:/CLI-PROJECTS/webdude-hu/scripts/generate-hero-placeholders.js) (`sharp` alapú `1920×1080` RGB WebP generátor `fs.existsSync()` felülírás elleni védelemmel, `--force` opcióval) a maradék 11 Photoshop-kompatibilis `hero-*.webp` sablonhoz.
+  - Mind a 14 `hero-*.webp` kép felvéve a [scripts/generate-responsive-images.js](file:///c:/CLI-PROJECTS/webdude-hu/scripts/generate-responsive-images.js) `hero` csoportjába (`640/1024/1600/2000w` AVIF + WebP, `17 kép → 136 fájl`, `src/data/responsiveImages.ts` manifestum frissítve).
+- **Láthatóság, Irányított Maszkolás & 0 JS Scroll-Driven Parallax:**
+  - [src/app/globals.css](file:///c:/CLI-PROJECTS/webdude-hu/src/app/globals.css): Új `.hero-parallax-img` osztály `@supports (animation-timeline: view())` blokkban, kizárólag GPU-kompozitált `translate3d` + `scale(1.12)` mozgással, `will-change: transform`, valamint `@media (prefers-reduced-motion: reduce)` és `@media (hover: none)` védelemmel.
+  - [src/components/molecules/HeroBackdrop.tsx](file:///c:/CLI-PROJECTS/webdude-hu/src/components/molecules/HeroBackdrop.tsx) & [src/components/organisms/SubpageHero.tsx](file:///c:/CLI-PROJECTS/webdude-hu/src/components/organisms/SubpageHero.tsx): Új, tiszta Server Componentek (`ResponsiveImage` `sizes="100vw"` + `priority`, `.hero-parallax-img`, `opacity-50 dark:opacity-60`, irányított balról-jobbra + alulról-felfelé Dual Theme scrim).
+  - [src/components/Hero.tsx](file:///c:/CLI-PROJECTS/webdude-hu/src/components/Hero.tsx), [src/components/organisms/hero/HeroBackgroundLayers.tsx](file:///c:/CLI-PROJECTS/webdude-hu/src/components/organisms/hero/HeroBackgroundLayers.tsx), [src/components/organisms/ScrollVideoHero.tsx](file:///c:/CLI-PROJECTS/webdude-hu/src/components/organisms/ScrollVideoHero.tsx) és a `*CaseStudy.tsx` hero szekciók frissítve a magasabb kép-/videóláthatóságra (`backdrop-blur` eltávolítva a `ScrollVideoHero`-ból, `next/image` helyett `ResponsiveImage` a `Hero.tsx`-ben).
+  - Minden publikus oldal (`/szolgaltatasok/*`, `/en/*`, `/kapcsolat`, `/hirek`, `/szia-norbi-vagyok`, `/norbi`, `/ai-megoldasok`, `/termekek/*`, `/weboldal-keszites-kecskemet`, jogi oldalak) bekötve a megfelelő `hero-*.webp` képpel.
+
 ## [7.71.0] — 2026-11-20 — Biztonsági (P0) & Architektúra / SEO / Higiénia (P1–P2) Javítások
 
 - **Batch 1 — P0 Server Action Védelem (`verifyUserToken` + Zod + Rate Limit):**

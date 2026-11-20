@@ -146,6 +146,7 @@ export default function WordPressDevPage() {
 
         <div className="relative z-10">
           <Hero
+            backgroundImage="/assets/banners/hero-wordpress.webp"
             label="WordPress Fejlesztés"
             title={
               <>

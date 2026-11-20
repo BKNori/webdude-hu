@@ -1,5 +1,6 @@
 import Link from "next/link";
 import DirectAnswerBlock from "@/components/molecules/DirectAnswerBlock";
+import HeroBackdrop from "@/components/molecules/HeroBackdrop";
 import ProductsCatalogClient, {
   type CatalogProduct,
   type ProductCategory,
@@ -275,6 +276,10 @@ export default function ProductsPage() {
     <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#0B1120] text-[#0F172A] dark:text-[#F8FAFC]">
       {/* Hero Section */}
       <section className="relative py-24 overflow-hidden bg-[#F8FAFC] dark:bg-bg-surface">
+        <HeroBackdrop
+          src="/assets/banners/hero-termekek.webp"
+          alt="Prémium AI és Automatizációs Megoldások"
+        />
         <div className="max-w-6xl mx-auto px-6 relative z-10">
           <div className="text-center space-y-6">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0369A1]/10 dark:bg-[#00B5F1]/10 border border-[#0369A1]/25 dark:border-[#00B5F1]/20">

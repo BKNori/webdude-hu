@@ -123,6 +123,7 @@ export default async function AiPromptEngineeringPage() {
         <div className="absolute inset-0 bg-linear-to-b from-[#00B5F1]/5 via-transparent to-[#00B5F1]/5" />
         <div className="relative z-10">
           <Hero
+            backgroundImage="/assets/banners/hero-ai-megoldasok.webp"
             label="Szolgáltatás"
             title="AI Prompt Engineering"
             subtitle="Professzionális AI prompt engineering szolgáltatás: ChatGPT, Claude és egyedi AI modellek prompt fejlesztése, optimalizálása és konfigurációja a maximális hatékonyság és megbízhatóság érdekében."
