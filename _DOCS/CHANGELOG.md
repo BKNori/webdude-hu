@@ -1,5 +1,10 @@
 # Changelog
 
+## [7.72.2] — 2026-11-20 — Repo Takarítás & Next.js 16 `proxy.ts` Migráció
+
+- **Repo takarítás:** Törölve a felesleges, 2,6 MB-os duplikált `public/assets/szolgaltatasok/ai-workflow-architektura.jpg` forrásfájl.
+- **Next.js 16 `proxy.ts` migráció:** [src/middleware.ts](file:///c:/CLI-PROJECTS/webdude-hu/src/middleware.ts) átállítva a Next.js 16 szabványos [src/proxy.ts](file:///c:/CLI-PROJECTS/webdude-hu/src/proxy.ts) konvenciójára (`export function proxy(request: NextRequest)` + `config`), megszüntetve a build-időben megjelenő `middleware` deprecation figyelmeztetést.
+
 ## [7.72.1] — 2026-11-20 — AI Workflow Architektúra Valódi Vizuál (`ai-workflow-architektura.webp`)
 
 - **Képfeldolgozás & Komponenscsere (`/szolgaltatasok/ai-workflow-kialakitas`):**
