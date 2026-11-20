@@ -569,7 +569,11 @@
       "subtitle": "Let's get your project moving today.",
       "cta": {
         "label": "Book a free AI consultation",
-        "href": "/en#contact"
+        "href": "/en/contact"
+      },
+      "secondaryCta": {
+        "label": "Free SEO & AI Checker",
+        "href": "/en/free-seo-aeo-checker"
       }
     }
   },
@@ -678,6 +682,10 @@
       {
         "label": "Services",
         "href": "/en/services"
+      },
+      {
+        "label": "Free SEO & AI Checker",
+        "href": "/en/free-seo-aeo-checker"
       },
       {
         "label": "Contact",

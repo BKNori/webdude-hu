@@ -106,6 +106,7 @@ export default function Footer({ dictionary }: FooterProps) {
     { name: "Rólam", href: "/szia-norbi-vagyok" },
     { name: "Munkáim", href: "/munkak" },
     { name: "Hírek", href: "/hirek" },
+    { name: "Ingyenes SEO & AI Ellenőrző", href: "/ingyenes-seo-aeo-elemzes" },
     { name: "Kapcsolat", href: "/kapcsolat" },
   ];
 

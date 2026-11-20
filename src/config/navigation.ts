@@ -23,6 +23,7 @@ import {
   PenTool,
   FileText,
   Box,
+  Gauge,
 } from "lucide-react";
 
 export interface NavItem {
@@ -75,6 +76,13 @@ export const NAV_ITEMS: NavItem[] = [
         icon: Copy,
         description: "Professzionális AI prompt sablonok gyűjteménye",
         category: "Sablonok",
+      },
+      {
+        name: "Ingyenes SEO & AI Ellenőrző",
+        href: "/ingyenes-seo-aeo-elemzes",
+        icon: Gauge,
+        description: "10 pontos SEO, Schema.org AEO és AI-bot diagnosztika",
+        category: "SEO & AI",
       },
     ],
   },
@@ -136,6 +144,13 @@ export const NAV_ITEMS: NavItem[] = [
         href: "/szolgaltatasok/technikai-seo-audit",
         icon: Search,
         description: "Indexelési hibák és rejtett akadályok feltárása",
+        category: "SEO",
+      },
+      {
+        name: "Ingyenes SEO & AI Ellenőrző",
+        href: "/ingyenes-seo-aeo-elemzes",
+        icon: Gauge,
+        description: "Azonnali 10 pontos online SEO & AI-készség teszt",
         category: "SEO",
       },
       {

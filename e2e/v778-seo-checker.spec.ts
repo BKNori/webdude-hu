@@ -106,4 +106,54 @@ test.describe("v7.78.0 Ingyenes SEO & AI-Készség Gyorsellenőrző", () => {
 
     expect(errors).toEqual([]);
   });
+
+  test("4. Főoldal (/) és /en tartalmazza az ingyenes SEO/AEO gyorsellenőrző CTA / Footer linket", async ({
+    page,
+  }) => {
+    const errors = watchConsoleErrors(page);
+
+    await page.goto("/", { waitUntil: "domcontentloaded" });
+    await page.waitForLoadState("load");
+    await dismissConsentBanner(page);
+    await expect(
+      page.locator('a[href="/ingyenes-seo-aeo-elemzes"]').first()
+    ).toBeAttached();
+
+    await page.goto("/en", { waitUntil: "domcontentloaded" });
+    await page.waitForLoadState("load");
+    await dismissConsentBanner(page);
+    await expect(
+      page.locator('a[href="/en/free-seo-aeo-checker"]').first()
+    ).toBeAttached();
+
+    expect(errors).toEqual([]);
+  });
+
+  test("5. Új 2026-11-20 BOFU szakcikk: HTTP 200, TechArticle + FAQPage JSON-LD és SeoQuickCheckBanner", async ({
+    page,
+  }) => {
+    const errors = watchConsoleErrors(page);
+
+    const res = await page.goto(
+      "/hirek/2026-11-20-ugynokseg-vs-senior-szabaduszo-webfejleszto",
+      { waitUntil: "domcontentloaded" }
+    );
+    expect(res?.status()).toBe(200);
+    await page.waitForLoadState("load");
+    await dismissConsentBanner(page);
+
+    await expect(page.locator("h1")).toHaveCount(1);
+    await expect(
+      page.locator('a[href="/ingyenes-seo-aeo-elemzes"]').first()
+    ).toBeVisible();
+
+    const ldJsonRaw = await page
+      .locator('script[type="application/ld+json"]')
+      .allTextContents();
+    const schemas = ldJsonRaw.map((raw) => JSON.parse(raw));
+    expect(schemas.some((s) => s["@type"] === "TechArticle")).toBe(true);
+    expect(schemas.some((s) => s["@type"] === "FAQPage")).toBe(true);
+
+    expect(errors).toEqual([]);
+  });
 });

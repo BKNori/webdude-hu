@@ -570,6 +570,10 @@
       "cta": {
         "label": "Kérj ajánlatot",
         "href": "/kapcsolat"
+      },
+      "secondaryCta": {
+        "label": "Ingyenes SEO & AI Ellenőrző",
+        "href": "/ingyenes-seo-aeo-elemzes"
       }
     }
   },
@@ -678,6 +682,10 @@
       {
         "label": "Hírek",
         "href": "/hirek"
+      },
+      {
+        "label": "Ingyenes SEO & AI Ellenőrző",
+        "href": "/ingyenes-seo-aeo-elemzes"
       },
       {
         "label": "Kapcsolat",

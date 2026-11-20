@@ -114,6 +114,7 @@ export interface FinalCtaContent {
   title: string;
   subtitle: string;
   cta: CtaContent;
+  secondaryCta?: CtaContent;
 }
 
 export interface HomeContent {

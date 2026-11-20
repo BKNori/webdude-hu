@@ -71,6 +71,15 @@ export default function FinalCta({ content }: FinalCtaProps) {
               >
                 {content.cta.label}
               </Button>
+              {content.secondaryCta ? (
+                <Button
+                  href={content.secondaryCta.href}
+                  variant="secondary"
+                  className="px-7 py-4 text-base"
+                >
+                  {content.secondaryCta.label}
+                </Button>
+              ) : null}
             </div>
           </FadeUpMotion>
         </div>

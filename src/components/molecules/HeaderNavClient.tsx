@@ -21,6 +21,7 @@ import {
   PenTool,
   FileText,
   Box,
+  Gauge,
 } from "lucide-react";
 import LanguageSwitcher from "./LanguageSwitcher";
 import AuthStatusBadge from "./AuthStatusBadge";
@@ -70,9 +71,10 @@ const NAV_ICONS: Record<string, ComponentType<{ className?: string }>> = {
   "Logó Tervezés": PenTool,
   "Szórólap Tervezés": FileText,
   "Csomagolás Tervezés": Box,
-  // EN anchor-menü (/en)
+  // EN menü (/en)
   About: User,
   Services: Layers,
+  "Free SEO & AI Checker": Gauge,
   Portfolio: Briefcase,
   FAQ: HelpCircle,
 };

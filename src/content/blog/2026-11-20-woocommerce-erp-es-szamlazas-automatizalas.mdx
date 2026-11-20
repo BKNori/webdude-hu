@@ -1,0 +1,54 @@
+---
+title: "WooCommerce ERP, Raktárkészlet- és Számlázás-Automatizálás: Így Spórolsz Napi Több Óra Kézi Munkát"
+date: "2026-11-20"
+updatedAt: "2026-11-20"
+author: "Balog Norbert"
+category: "Webshop & Automatizáció"
+excerpt: "WooCommerce webshop ERP, raktárkészlet és számlázás automatizálás a gyakorlatban: Kulcs-Soft szinkron, XML feedek, Billingo/Számlázz.hu és futár API."
+tldr: "Amikor egy WooCommerce webshop eléri a napi több tucat rendelést vagy a több ezres termékszámot, a kézi készletfrissítés és számlázás komoly hibaforrássá válik. Valós ügyfélprojekteken (mint a 3200+ termékes btshop.hu) bizonyított módon építek kétirányú ERP-szinkront, futárszolgálati API-kat és automatizált számlázást egyedi árajánlat alapján."
+noindex: false
+tags: ["WooCommerce", "ERP integráció", "Kulcs-Soft", "Számlázz.hu", "Webshop automatizálás"]
+image: "/assets/blog/covers/2026-11-17-b2b-woocommerce-webshop-erp-szerver-integracio.webp"
+coverImage: "/assets/blog/covers/2026-11-17-b2b-woocommerce-webshop-erp-szerver-integracio.webp"
+---
+
+## Hol törik el leggyakrabban egy növekvő webáruház napi folyamata?
+
+Egy induló webshopnál még kényelmesen belefér, hogy a tulajdonos reggel kézzel átír két árat, délután kiállítja a számlát a Számlázz.hu vagy Billingo felületén, majd begépeli a vevő címét a futárszolgálat rendszerébe. Pár száz terméknél és napi 15–30 rendelésnél viszont ez a kézi adminisztráció már nem csak időrabló, hanem veszélyes is: eladott, de valójában kifogyott raktárkészlethez, hibás számlaadatokhoz és elégedetlen vevőkhöz vezet.
+
+A [3200+ termékes BTShop.hu esettanulmányban](/munkak/btshop) pontosan ezt a problémát oldottam meg mérnöki szinten: a webáruházat kétirányú API híddal kötöttem össze az ügyfél saját szerverén futó Kulcs-Soft ügyviteli rendszerével, az MPL/Foxpost csomagkezeléssel és a napi Google Merchant Center termékfeeddel. Hasonló helyi szerver-integrációt építettem fel a B2B fókuszú [Nedel Market rendszerénél](/munkak/nedelmarket) is.
+
+## Az automatizált WooCommerce ökoszisztéma 4 alappillére
+
+| Automatizált réteg | Tipikus integrált rendszerek | Mit szüntet meg a gyakorlatban? |
+| :--- | :--- | :--- |
+| **Készlet & Árszinkron (ERP)** | Kulcs-Soft, Billingo, egyedi lokális vagy felhős ERP / XML-CSV | Túladott készletet, elavult árakat, kézi CSV feltöltést |
+| **Automata Számlázás** | Számlázz.hu, Billingo API (előleg, végszámla, sztornó) | Kézi számlaírást és adószám-elgépeléseket |
+| **Logisztika & Címke** | Foxpost, MPL, GLS, Packeta API | Címadatok átmásolását és sorban állást |
+| **Marketing Feed & SEO** | Google Merchant Center XML, GA4, egyedi SEO plugin | Elutasított hirdetéseket és hibás termékstátuszokat |
+
+## Mire figyelek az egyedi WooCommerce webshop fejlesztésénél?
+
+Amikor [egyedi WooCommerce webshop készítésbe](/szolgaltatasok/woocommerce-webshop-keszites) fogok, nem sablonos „mindent megoldó” tömeg-bővítményekkel terhelem túl az oldalt. Egy több ezres katalógusnál a legkisebb szinkronizációs ciklusnak is megbízhatónak, naplózhatónak és hibatűrőnek kell lennie:
+
+1. **Idempotens és kötegelt (batch) szinkron:** Ha egy ERP végpont pillanatnyilag lassabb, a szinkron nem fagyasztja le a vásárlói pénztárat, és nem duplázza meg a rendeléseket.
+2. **Átmeneti cache védelem:** A nagy adatforgalmú XML/JSON feedek külön optimalizált útvonalon futnak, így a böngésző látogatók mindig azonnali oldalbetöltést élveznek.
+3. **Adatbiztonság és visszakövethetőség:** Minden automatizált készletmozgásról és számlázási API-válaszról strukturált napló készül, így hiba esetén másodpercek alatt visszafejthető az ok.
+
+## Mikor érdemes belevágni a webshop automatizálásba?
+
+Nem érdemes megvárni, amíg a csomagolás mellett már éjszakába nyúló adminisztrációra megy el minden energiád. Ha már meglévő ügyviteli szoftvert, nagykereskedelmi XML-forrást vagy több futárszolgálatot használsz, érdemes átnéznünk a folyamataidat, és összeállítani egy mérnöki szempontból tiszta automatizálási tervet a [kapcsolati oldalon keresztül](/kapcsolat).
+
+## Gyakori kérdések
+
+### Bármelyik magyar számlázóval és ügyviteli programmal összeköthető a WooCommerce?
+
+Igen, amíg a célrendszer rendelkezik dokumentált REST API-val, webhookokkal vagy strukturált XML/CSV adatkapcsolattal (például Kulcs-Soft, Számlázz.hu, Billingo, valamint egyedi lokális szerverek), megvalósítható a biztonságos kétirányú automatizálás.
+
+### Nem lassítja le a webshopot a folyamatos készletszinkronizáció?
+
+Akkor nem, ha szakszerűen építjük fel: a szinkron feladatokat aszinkron háttérfolyamatokba (Action Scheduler / szerveroldali cron) szervezem kis kötegekben, így a vásárlók a frontend oldalon semmilyen terhelést nem érzékelnek belőle.
+
+### Meglévő WooCommerce webáruházhoz is tudok ERP-szinkront vagy futár API-t fejleszteni?
+
+Igen, nem szükséges elölről kezdeni a teljes webshopot — egy célzott technikai audit után megtervezem és biztonságosan beépítem az integrációt a meglévő működő áruházadba egyedi árajánlat alapján.

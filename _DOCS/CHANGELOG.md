@@ -1,5 +1,18 @@
 # Changelog
 
+## [7.80.0] — 2026-11-20 — Lead-Mágnes Navigációs Aktiválás & 3 BOFU Ügyfélszerző Szakcikk
+
+### Hozzáadva
+- **3 db magas konverziójú BOFU szakcikk (`src/content/blog/2026-11-20-*.mdx`):**
+  - `2026-11-20-ugynokseg-vs-senior-szabaduszo-webfejleszto.mdx`
+  - `2026-11-20-lassu-vagy-feltort-wordpress-weboldal-javitasa.mdx`
+  - `2026-11-20-woocommerce-erp-es-szamlazas-automatizalas.mdx`
+  - Mindhárom cikk `tldr` összefoglalóval, összehasonlító táblázattal, látható `## Gyakori kérdések` szekcióval (`FAQPage` séma), Zéró Fix Árral és egyes szám első személyű szövegezéssel készült (`31` indexelhető cikk a `llms-full.txt`-ben).
+- **E2E tesztbővítés ([e2e/v778-seo-checker.spec.ts](file:///c:/CLI-PROJECTS/webdude-hu/e2e/v778-seo-checker.spec.ts)):** A `/` és `/en` főoldali SEO/AEO gyorsellenőrző linkek, valamint a `2026-11-20-ugynokseg-vs-senior-szabaduszo-webfejleszto` cikk `TechArticle` + `FAQPage` + CTA ellenőrzése.
+
+### Módosítva
+- **Navigáció, Lábléc & Főoldali FinalCta ([navigation.ts](file:///c:/CLI-PROJECTS/webdude-hu/src/config/navigation.ts), [navigation.en.ts](file:///c:/CLI-PROJECTS/webdude-hu/src/config/navigation.en.ts), [HeaderNavClient.tsx](file:///c:/CLI-PROJECTS/webdude-hu/src/components/molecules/HeaderNavClient.tsx), [Footer.tsx](file:///c:/CLI-PROJECTS/webdude-hu/src/components/organisms/Footer.tsx), [FinalCta.tsx](file:///c:/CLI-PROJECTS/webdude-hu/src/components/organisms/FinalCta.tsx)):** Bekötve az ingyenes SEO & AI gyorsellenőrző (`/ingyenes-seo-aeo-elemzes` ↔ `/en/free-seo-aeo-checker`) a HU/EN menükbe, a `footer.quickLinkItems` listába és másodlagos gombként a főoldali `FinalCta` blokkba (`dictionary.ts`, `hu.json`, `en.json`).
+
 ## [7.79.0] — 2026-11-20 — Nemzetközi Portfólió Lezárása (`/en/portfolio/[slug]`) & Dinamikus Nyelvváltás
 
 ### Hozzáadva
