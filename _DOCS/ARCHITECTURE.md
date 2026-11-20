@@ -1,7 +1,7 @@
 # ARCHITECTURE.md — WebDude Rendszerarchitektúra
 
 **webdude.hu | Next.js 16 · React 19 · TypeScript · Firebase**
-**Utolsó frissítés: 2026-11-20 (7.74.0: Mélységi SEO / AIO / AEO / GEO, Kétirányú hreflang, `public/llms.txt` & Termék FAQPage Sémák)**
+**Utolsó frissítés: 2026-11-20 (7.75.0: Teljes Playwright E2E Lefedettség (`e2e/v774-regression.spec.ts`), `check:i18n` CI Gate & Legacy Takarítás)**
 
 > **7.74.0 (2026-11-20):** Additív SEO / AIO / AEO / GEO & Schema.org Tudásgráf Bővítés:
 >

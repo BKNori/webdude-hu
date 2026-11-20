@@ -1,5 +1,21 @@
 # Changelog
 
+## [7.75.0] — 2026-11-20 — Teljes Playwright E2E Lefedettség, CI Szinkron & Legacy Takarítás
+
+### Hozzáadva / Bővítve
+- **Playwright Regressziós E2E Csomag (`e2e/v774-regression.spec.ts`):**
+  - `GET /llms.txt` 200 OK és entitás-ellenőrzés (`WebDude`, `Balog Norbert`, `https://webdude.hu`).
+  - Kétirányú `hreflang` ellenőrzés (`hu-HU` ↔ `en-US` ↔ `x-default`) a `/szolgaltatasok` ↔ `/en/services` és `/kapcsolat` ↔ `/en/contact` útvonalpárokon.
+  - Egyetlen látható `<h1>` garancia az `/szolgaltatasok/ai-kep-es-videogeneralas` és `/szolgaltatasok/egyedi-arculattervezes-logo` oldalakon.
+  - EN i18n szivárgásmentesség és Dual Theme (`light` → `dark`) váltás tesztelése a `/en` és `/en/contact` oldalakon (`HeroDashboardMockup`, `Footer`, `ContactFormWrapper`).
+  - Teljes képbetöltési ellenőrzés (`naturalWidth > 0`) a `/`, `/szolgaltatasok/ai-workflow-kialakitas` és `/termekek/seo-audit-pro` oldalakon.
+- **E2E Helper (`e2e/smoke-helpers.ts`):** A `dismissConsentBanner` kibővítve az angol `Reject` / `Accept` gombok kezelésére.
+- **CI Pipeline (`.github/workflows/ci.yml`):** Beépítve a `Run i18n Dictionary Parity Check` (`npm run check:i18n`) lépés a TypeScript és ESLint kapuk mellé.
+
+### Takarítás & Ellenőrzés
+- **Legacy `src/components/Header.js`:** Ellenőrizve, hogy 0 hivatkozás létezik rá és maga a fájl már korábban eltávolításra került (`Test-Path` = `False`).
+- **Validáció:** `npm run check:i18n`, `npx tsc --noEmit`, `npm run lint -- --max-warnings 0`, `npx jest --no-coverage`, `node scripts/audit-contrast.js`, `npm run build` és `npx playwright test` sikeresen lefutott 0 hibával.
+
 ## [7.74.1] — 2026-11-20 — SEO Audit Pro & Product Lead Hero Vizuálok + Gyökér Takarítás
 
 - **Képfeldolgozás & Komponenscsere:**

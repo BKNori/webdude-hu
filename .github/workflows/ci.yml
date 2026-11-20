@@ -22,6 +22,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Run i18n Dictionary Parity Check
+        run: npm run check:i18n
+
       - name: Run TypeScript Strict Check
         run: npx tsc --noEmit
 

@@ -91,7 +91,7 @@ export async function visit(page: Page, path: string): Promise<void> {
 /** A cookie consent banner elutasítása, ha látható. */
 export async function dismissConsentBanner(page: Page): Promise<void> {
   const bannerButton = page
-    .getByRole("button", { name: /elutasítom|elfogadom/i })
+    .getByRole("button", { name: /elutasítom|elfogadom|reject|accept/i })
     .first();
 
   try {
