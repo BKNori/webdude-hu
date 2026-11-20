@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import { buildBreadcrumbSchema } from "@/lib/breadcrumb";
 
 export const metadata: Metadata = {
@@ -81,6 +81,29 @@ const breadcrumbSchema = buildBreadcrumbSchema([
   { name: "AI Chatbot Starter", url: "/termekek/ai-chatbot-starter" },
 ]);
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Milyen rendszerekbe integrálható az AI Chatbot Starter?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Next.js, WordPress, WooCommerce és bármilyen egyedi weboldalba percek alatt beilleszthető, saját céges tudásbázisra tanítva.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Mennyibe kerül a bevezetése?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Minden projekt egyedi árajánlat alapján készül a tudásbázis méretétől és a kívánt CRM/lead integrációtól függően.",
+      },
+    },
+  ],
+};
+
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
@@ -94,6 +117,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(breadcrumbSchema).replace(/</g, "\\u003c"),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqSchema).replace(/</g, "\\u003c"),
         }}
       />
       {children}

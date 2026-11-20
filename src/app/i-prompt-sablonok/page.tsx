@@ -4,6 +4,9 @@ import CopyButton from "./CopyButton";
 export const metadata: Metadata = {
   title: "AI Prompt Sablonok | WebDude",
   description: "Professzionális AI prompt sablonok gyűjteménye.",
+  alternates: {
+    canonical: "https://webdude.hu/ai-megoldasok/ai-prompt-sablonok",
+  },
   robots: "noindex, nofollow",
 };
 
@@ -272,7 +275,7 @@ export default function PromptTemplatesPage() {
                   {template.title}
                 </h2>
                 <div className="relative">
-                  <pre className="bg-slate-900 dark:bg-slate-950/50 rounded-xl p-6 text-sm text-slate-200 overflow-x-auto whitespace-pre-wrap break-words border border-slate-800">
+                  <pre className="bg-slate-100 dark:bg-slate-950/60 rounded-xl p-6 text-sm text-[#0F172A] dark:text-slate-200 overflow-x-auto whitespace-pre-wrap break-words border border-slate-200 dark:border-slate-800">
                     {template.prompt}
                   </pre>
                   <CopyButton text={template.prompt} />

@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { Search, Code, PenTool, ArrowRight } from "lucide-react";
 import Hero from "@/components/Hero";
+import DirectAnswerBlock from "@/components/molecules/DirectAnswerBlock";
 import { buildBreadcrumbSchema, BreadcrumbItem } from "@/lib/breadcrumb";
 import { withLocale } from "@/lib/i18n";
 
@@ -118,19 +119,12 @@ export default function EnWebDevelopmentPage() {
         </div>
 
         {/* Direct Answer Block - AEO optimised "Web Development Overview" */}
-        <section className="relative py-12 bg-[#F1F5F9] dark:bg-bg-base border-y border-slate-200/80 dark:border-white/5">
-          <div className="max-w-4xl mx-auto px-6 text-center">
-            <p className="text-base md:text-lg text-[#334155] dark:text-slate-300 leading-relaxed">
-              <span className="text-[#0369A1] dark:text-[#00B5F1] font-semibold">
-                WebDude web development:
-              </span>{" "}
-              Custom, responsive websites for SMEs — Next.js, WordPress,
-              WooCommerce and custom development. 26 years of experience, fast
-              loading, SEO-optimised and conversion-focused design delivered as
-              a remote partner worldwide.
-            </p>
-          </div>
-        </section>
+        <DirectAnswerBlock
+          id="en-webdev-direct-answer"
+          badgeLabel="Direct Answer"
+          question="What kind of websites does WebDude build for businesses?"
+          answer="Custom, responsive websites for SMEs — Next.js, WordPress, WooCommerce and custom development. 26 years of graphic design and 16 years of web development experience, fast loading, SEO-optimised and conversion-focused design delivered as a remote partner worldwide."
+        />
 
         {/* ── E-E-A-T Bento Grid ── */}
         <section className="py-24 relative z-10 bg-[#F8FAFC] dark:bg-transparent">
@@ -298,6 +292,29 @@ export default function EnWebDevelopmentPage() {
                   </p>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── Related Services & Case Studies ── */}
+        <section className="py-16 border-t border-slate-200/80 dark:border-slate-800 relative z-10 bg-[#F8FAFC] dark:bg-transparent">
+          <div className="max-w-6xl mx-auto px-6">
+            <h2 className="text-2xl md:text-3xl font-bold text-[#0F172A] dark:text-white mb-6 text-center">
+              Related Solutions & Case Studies
+            </h2>
+            <div className="grid md:grid-cols-3 gap-6">
+              <Link href="/en/services/seo-optimization" className="luminous-card p-6 rounded-2xl block hover:border-[#0369A1]/50 dark:hover:border-[#00B5F1]/50 transition-colors">
+                <h3 className="text-lg font-bold text-[#0369A1] dark:text-[#00B5F1] mb-2">SEO & AEO Optimisation</h3>
+                <p className="text-sm text-[#334155] dark:text-slate-400">Technical SEO, Schema.org knowledge graphs and answer engine readiness.</p>
+              </Link>
+              <Link href="/en/services/woocommerce-development" className="luminous-card p-6 rounded-2xl block hover:border-[#0369A1]/50 dark:hover:border-[#00B5F1]/50 transition-colors">
+                <h3 className="text-lg font-bold text-[#0369A1] dark:text-[#00B5F1] mb-2">WooCommerce Development</h3>
+                <p className="text-sm text-[#334155] dark:text-slate-400">Conversion-focused online stores with payment and ERP integrations.</p>
+              </Link>
+              <Link href="/en/portfolio" className="luminous-card p-6 rounded-2xl block hover:border-[#0369A1]/50 dark:hover:border-[#00B5F1]/50 transition-colors">
+                <h3 className="text-lg font-bold text-[#0369A1] dark:text-[#00B5F1] mb-2">Explore Client Case Studies</h3>
+                <p className="text-sm text-[#334155] dark:text-slate-400">See real conversion lifts (+40% on BTShop) and 95+ Lighthouse scores.</p>
+              </Link>
             </div>
           </div>
         </section>

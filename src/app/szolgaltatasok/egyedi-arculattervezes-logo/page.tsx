@@ -215,6 +215,7 @@ export default async function BrandingPage() {
 
           <div className="relative z-10 max-w-6xl mx-auto px-6 h-full flex flex-col justify-center py-24">
             <SectionTitle
+              as="h1"
               center
               eyebrow="Szolgáltatás"
               title="Egyedi Arculattervezés & Logó"

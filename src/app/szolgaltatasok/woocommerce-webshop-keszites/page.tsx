@@ -34,7 +34,7 @@ const FAQ = [
   },
   {
     q: "Milyen fizetési módokat integráltok?",
-    a: "Barion, SimplePay, Stripe, PayPal, bankkártyás fizetés, utánvét és SZÉP kártya. Minden fizetési szolgáltató whichet nem. és teljes körű compliance.",
+    a: "Barion, SimplePay, Stripe, PayPal, bankkártyás fizetés, utánvét és SZÉP kártya. Minden fizetési szolgáltató biztonságosan és teljes körű compliance-szel integrálva.",
   },
   {
     q: "Biztosítod a webshop biztonságát?",

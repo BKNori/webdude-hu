@@ -21,6 +21,23 @@ export async function generateMetadata(): Promise<Metadata> {
     alternates: {
       canonical: "https://webdude.hu/szolgaltatasok/ai-prompt-engineering",
     },
+    openGraph: {
+      title: "AI Prompt Engineering országos szolgáltatással | WebDude",
+      description:
+        "AI prompt engineering szolgáltatás: ChatGPT és Claude promptok fejlesztése, optimalizálása és tesztelése országos szolgáltatással.",
+      url: "https://webdude.hu/szolgaltatasok/ai-prompt-engineering",
+      siteName: "WebDude",
+      locale: "hu_HU",
+      type: "website",
+      images: [{ url: "https://webdude.hu/og/webdude-og.jpg", width: 1200, height: 630 }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "AI Prompt Engineering országos szolgáltatással | WebDude",
+      description:
+        "ChatGPT és Claude promptok fejlesztése, optimalizálása és tesztelése vállalkozásoknak.",
+      images: ["https://webdude.hu/og/webdude-og.jpg"],
+    },
   };
 }
 

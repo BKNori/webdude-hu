@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import AboutContentClient from "@/components/organisms/AboutContentClient";
+import DirectAnswerBlock from "@/components/molecules/DirectAnswerBlock";
 import { buildBreadcrumbSchema } from "@/lib/breadcrumb";
 import { serializeJsonLd } from "@/lib/structuredData";
 
@@ -116,6 +117,11 @@ export default function SziaNorbiVagyokPage() {
         }}
       />
       <AboutContentClient />
+      <DirectAnswerBlock
+        id="szia-norbi-direct-answer"
+        question="Ki áll a WebDude mögött, és milyen tapasztalattal dolgozik?"
+        answer="Balog Norbert (WebDude) egyéni webfejlesztő és art director vagyok, 26+ év tervezőgrafikai és 16+ év full-stack webfejlesztői tapasztalattal. Next.js 16, React 19, TypeScript, WordPress/WooCommerce és AI workflow rendszereket építek közvetlen kommunikációval — ügynökségi közvetítők nélkül, egyedi árajánlat alapján."
+      />
     </>
   );
 }

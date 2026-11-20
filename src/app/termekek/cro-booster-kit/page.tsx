@@ -2,13 +2,16 @@
 
 import Link from "next/link";
 import ProductPortalCta from "@/components/molecules/ProductPortalCta";
+import HeroBackdrop from "@/components/molecules/HeroBackdrop";
+import DirectAnswerBlock from "@/components/molecules/DirectAnswerBlock";
 
 export default function CROBoosterKitPage() {
   return (
     <>
         <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#0B1120] text-[#0F172A] dark:text-[#F8FAFC]">
           <section className="relative py-24 md:py-32 overflow-hidden">
-            <div className="absolute inset-0 bg-linear-to-b from-[#0369A1]/5 dark:from-[#00B5F1]/5 via-transparent to-transparent" />
+            <HeroBackdrop src="/assets/banners/hero-termekek.webp" />
+            <div className="absolute inset-0 bg-linear-to-b from-[#0369A1]/5 dark:from-[#00B5F1]/5 via-transparent to-transparent pointer-events-none" />
             <div className="max-w-6xl mx-auto px-6 relative z-10">
               <div className="text-center space-y-6">
                 <h1 className="text-4xl md:text-6xl font-bold text-[#0F172A] dark:text-text-primary tracking-tight">
@@ -20,6 +23,12 @@ export default function CROBoosterKitPage() {
               </div>
             </div>
           </section>
+
+          <DirectAnswerBlock
+            id="cro-booster-kit-direct-answer"
+            question="Hogyan növeli a weboldal konverzióját a CRO Booster Kit?"
+            answer="A/B tesztelési keretrendszer, hőtérképes (heatmap) viselkedéselemzés és ügyfélút-optimalizáció webshopok és B2B landing oldalak számára. Segít csökkenteni a visszafordulási arányt és növelni a meglévő hirdetési forgalomból származó megkeresések számát — egyedi árajánlat alapján."
+          />
 
           <section className="py-16 md:py-24 border-t border-slate-200 dark:border-slate-800/80 bg-[#F1F5F9] dark:bg-transparent">
             <div className="max-w-4xl mx-auto px-6">

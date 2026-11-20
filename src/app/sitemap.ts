@@ -173,12 +173,28 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       alternates: buildHuOnlyAlternates(`${BASE_URL}/ai-megoldasok`),
     },
     {
+      url: `${BASE_URL}/ai-megoldasok/ai-muhely`,
+      lastModified: BUILD_DATE,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+      alternates: buildHuOnlyAlternates(`${BASE_URL}/ai-megoldasok/ai-muhely`),
+    },
+    {
       url: `${BASE_URL}/ai-megoldasok/ai-prompt-sablonok`,
       lastModified: BUILD_DATE,
       changeFrequency: "monthly" as const,
       priority: 0.8,
       alternates: buildHuOnlyAlternates(
         `${BASE_URL}/ai-megoldasok/ai-prompt-sablonok`
+      ),
+    },
+    {
+      url: `${BASE_URL}/munkafolyamatok/strategist-pro/kristofka-munkafolyamat`,
+      lastModified: BUILD_DATE,
+      changeFrequency: "monthly" as const,
+      priority: 0.75,
+      alternates: buildHuOnlyAlternates(
+        `${BASE_URL}/munkafolyamatok/strategist-pro/kristofka-munkafolyamat`
       ),
     },
     // 1. és 2. prioritású új és megújított szolgáltatás landing oldalak (0.8 - 0.9)

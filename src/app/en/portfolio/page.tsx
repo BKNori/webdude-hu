@@ -1,5 +1,6 @@
 import PortfolioGrid from "@/components/molecules/PortfolioGrid";
 import PortfolioHero from "@/components/molecules/PortfolioHero";
+import DirectAnswerBlock from "@/components/molecules/DirectAnswerBlock";
 import { works as staticWorks } from "@/data/works";
 import { buildBreadcrumbSchema, BreadcrumbItem } from "@/lib/breadcrumb";
 import { withLocale } from "@/lib/i18n";
@@ -52,6 +53,12 @@ export default async function EnPortfolioPage() {
         subtitle="Every project is a distinct challenge answered with craft and engineering. Explore the case studies below."
         ctaLabel="Request a custom quote →"
         ctaHref="/en/contact"
+      />
+      <DirectAnswerBlock
+        id="en-portfolio-direct-answer"
+        badgeLabel="Direct Answer"
+        question="What measurable results has WebDude delivered for web development and e-commerce clients?"
+        answer="Balog Norbert (WebDude) has delivered custom Next.js web applications, WooCommerce stores with live ERP synchronization, and complete brand identities across 47+ client engagements — achieving +40% conversion lifts, +60% mobile UX improvements, and 95+ Lighthouse performance scores with 26+ years of design and 16+ years of engineering experience."
       />
       <div className="max-w-6xl mx-auto px-6 py-20">
         <PortfolioGrid

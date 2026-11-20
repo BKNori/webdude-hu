@@ -4,6 +4,7 @@ import { Metadata } from "next";
 import { PenTool, Layers, ArrowRight, MousePointerClick } from "lucide-react";
 import Hero from "@/components/Hero";
 import PricingTable, { PricingTier } from "@/components/molecules/PricingTable";
+import DirectAnswerBlock from "@/components/molecules/DirectAnswerBlock";
 import { buildBreadcrumbSchema, BreadcrumbItem } from "@/lib/breadcrumb";
 
 export const metadata: Metadata = {
@@ -14,14 +15,28 @@ export const metadata: Metadata = {
     "grafikai tervezés, arculattervezés, logó tervezés, webdesign, UI/UX tervezés, marketing grafika, országosan",
   alternates: {
     canonical: "https://webdude.hu/szolgaltatasok/grafikai-tervezes",
+    languages: {
+      "hu-HU": "https://webdude.hu/szolgaltatasok/grafikai-tervezes",
+      "en-US": "https://webdude.hu/en/services/graphic-design",
+      "x-default": "https://webdude.hu/szolgaltatasok/grafikai-tervezes",
+    },
   },
   openGraph: {
     title: "Grafikai tervezés és arculattervezés országosan | WebDude",
     description:
       "Logó, arculat, marketinganyagok és digitális grafikai tervezés egységes vizuális rendszerben.",
+    url: "https://webdude.hu/szolgaltatasok/grafikai-tervezes",
     type: "website",
     locale: "hu_HU",
     siteName: "WebDude",
+    images: [{ url: "https://webdude.hu/og/webdude-og.jpg", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Grafikai tervezés és arculattervezés országosan | WebDude",
+    description:
+      "Logó, arculat, marketinganyagok és digitális grafikai tervezés egységes vizuális rendszerben. 26 év grafikai tapasztalat.",
+    images: ["https://webdude.hu/og/webdude-og.jpg"],
   },
 };
 
@@ -192,19 +207,11 @@ export default function GrafikaiTervezesPage() {
         </div>
 
         {/* Direct Answer Block - AEO optimalizált "Grafikai Tervezés Áttekintése" */}
-        <section className="relative py-12 bg-bg-base border-y border-slate-200/80 dark:border-white/5">
-          <div className="max-w-4xl mx-auto px-6 text-center">
-            <p className="text-base md:text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
-              <span className="text-[#0369A1] dark:text-[#00B5F1] font-semibold">
-                WebDude grafikai tervezés:
-              </span>{" "}
-              Logó, arculat, marketinganyagok és digitális grafikai tervezés
-              egységes vizuális rendszerben országos szolgáltatással. 26 év
-              grafikai tapasztalat, vektoros forrásfájlok, nyomdai előkészítés
-              és UI/UX webdesign. Egyedi árajánlat kérése az igények alapján.
-            </p>
-          </div>
-        </section>
+        <DirectAnswerBlock
+          id="grafikai-tervezes-direct-answer"
+          question="Miért érdemes a grafikai tervezést és a webfejlesztést egy kézből rendelni?"
+          answer="Logó, arculat, marketinganyagok és digitális grafikai tervezés egységes vizuális rendszerben országos szolgáltatással. 26 év grafikai tapasztalat, vektoros forrásfájlok, nyomdai előkészítés és UI/UX webdesign — így semmi sem vész el a koncepció és a kész weboldal között. Egyedi árajánlat kérése az igények alapján."
+        />
 
         {/* ── Miért a WebDude? (E-E-A-T) ── */}
         <section className="py-24 relative z-10">
@@ -297,6 +304,29 @@ export default function GrafikaiTervezesPage() {
                   </p>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── Kapcsolódó Arculati Referenciák & Szolgáltatások ── */}
+        <section className="py-16 border-t border-slate-200/80 dark:border-white/5 relative z-10">
+          <div className="max-w-6xl mx-auto px-6">
+            <h2 className="text-2xl md:text-3xl font-bold text-[#0F172A] dark:text-white mb-6 text-center">
+              Kapcsolódó Referenciák & Arculati Megoldások
+            </h2>
+            <div className="grid md:grid-cols-3 gap-6">
+              <Link href="/munkak/go-box-kft" className="luminous-card p-6 rounded-2xl block hover:border-[#0369A1]/50 dark:hover:border-[#00B5F1]/50 transition-colors">
+                <h3 className="text-lg font-bold text-[#0369A1] dark:text-[#00B5F1] mb-2">Go-Box Kft. Arculat & Webshop</h3>
+                <p className="text-sm text-slate-700 dark:text-slate-300">Teljes ipari márkaidentitás, dobozgrafika és digitális értékesítési rendszer.</p>
+              </Link>
+              <Link href="/munkak/dr-nagy-albert" className="luminous-card p-6 rounded-2xl block hover:border-[#0369A1]/50 dark:hover:border-[#00B5F1]/50 transition-colors">
+                <h3 className="text-lg font-bold text-[#0369A1] dark:text-[#00B5F1] mb-2">Dr. Nagy Albert Arculat</h3>
+                <p className="text-sm text-slate-700 dark:text-slate-300">Prémium egészségügyi vizuális identitás és bizalomépítő weboldal.</p>
+              </Link>
+              <Link href="/szolgaltatasok/arculattervezes" className="luminous-card p-6 rounded-2xl block hover:border-[#0369A1]/50 dark:hover:border-[#00B5F1]/50 transition-colors">
+                <h3 className="text-lg font-bold text-[#0369A1] dark:text-[#00B5F1] mb-2">Komplett Arculattervezés</h3>
+                <p className="text-sm text-slate-700 dark:text-slate-300">Logó, színpaletta, tipográfia és teljes arculati kézikönyv (Brand Guidelines).</p>
+              </Link>
             </div>
           </div>
         </section>

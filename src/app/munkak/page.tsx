@@ -21,6 +21,11 @@ export const metadata: Metadata = {
     "webfejlesztő referenciák, esettanulmányok, Next.js projektek, webshop fejlesztés, WordPress migráció, prémium weboldal készítés, grafikai tervezés, arculattervezés, konverzió optimalizálás",
   alternates: {
     canonical: "https://webdude.hu/munkak",
+    languages: {
+      "hu-HU": "https://webdude.hu/munkak",
+      "en-US": "https://webdude.hu/en/portfolio",
+      "x-default": "https://webdude.hu/munkak",
+    },
   },
   openGraph: {
     title: "Webfejlesztő Referenciák & Esettanulmányok | WebDude.hu",

@@ -2,6 +2,7 @@ import Hero from "@/components/Hero";
 import Button from "@/components/atoms/Button";
 import Badge from "@/components/atoms/Badge";
 import ResponsiveImage from "@/components/molecules/ResponsiveImage";
+import DirectAnswerBlock from "@/components/molecules/DirectAnswerBlock";
 import { Metadata } from "next";
 import PricingTable from "@/components/molecules/PricingTable";
 import { Check } from "lucide-react";
@@ -128,19 +129,11 @@ export default async function AiWorkflowPage() {
           />
 
           {/* Direct Answer Block - AEO optimalizált "AI workflow áttekintés" */}
-          <section className="relative py-12 bg-bg-base border-y border-slate-200/80 dark:border-white/5">
-            <div className="max-w-4xl mx-auto px-6 text-center">
-              <p className="text-base md:text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
-                <span className="text-[#0369A1] dark:text-[#00B5F1] font-semibold">
-                  AI workflow automatizálás:
-                </span>{" "}
-                ChatGPT, Claude és egyedi AI eszközök integrációja,
-                konfigurációja és testreszabása vállalkozások számára. 40-70%
-                időmegtakarítás, szigorú adatvédelem, titkosított kapcsolatok.
-                Egyszerű workflow 1-2 hét, komplex rendszer 4-8 hét.
-              </p>
-            </div>
-          </section>
+          <DirectAnswerBlock
+            id="ai-workflow-direct-answer"
+            question="Hogyan gyorsítja fel az üzleti folyamatokat a WebDude AI workflow automatizálás?"
+            answer="ChatGPT, Claude és egyedi AI eszközök integrációja, konfigurációja és testreszabása vállalkozások számára. 40-70% időmegtakarítás, szigorú adatvédelem, titkosított kapcsolatok. Egyszerű workflow 1-2 hét, komplex rendszer 4-8 hét — egyedi árajánlat kérése az igények alapján."
+          />
 
           <div className="max-w-6xl mx-auto px-6">
             <div className="mt-12 grid gap-12 md:grid-cols-2 items-start max-w-4xl mx-auto">
@@ -532,6 +525,12 @@ export default async function AiWorkflowPage() {
                     href="/szolgaltatasok/wordpress-webshop-keszites"
                   >
                     WordPress Webshop Készítés
+                  </Button>
+                  <Button variant="secondary" href="/munkak/ai-prompt-hu">
+                    AI-Prompt.hu Esettanulmány
+                  </Button>
+                  <Button variant="secondary" href="/hirek/2026-07-14-kristofka-workflow-szuletese-amikor-a-26-eves-tervezoi-rutin-talalkozik-az-ai-val">
+                    Kristófka Workflow Cikk
                   </Button>
                   <Button variant="secondary" href="/munkak">
                     Portfólió

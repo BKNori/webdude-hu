@@ -1,0 +1,60 @@
+# WebDude
+
+> Balog Norbert (WebDude) egyéni webfejlesztői, grafikai és AI-automatizációs gyakorlata: 26+ év tervezőgrafikai és 16+ év full-stack webfejlesztői tapasztalattal (Next.js 16, React 19, TypeScript, Tailwind CSS v4, WordPress / WooCommerce, Firebase). Közvetlen kivitelezés ügynökségi közvetítők nélkül — országosan magyarul és távmunkában nemzetközi ügyfeleknek angolul. Minden projekt egyedi árajánlat alapján indul.
+
+## Fő Magyar Oldalak (HU)
+
+- [Főoldal](https://webdude.hu): Next.js 16 webfejlesztés, WordPress rendszerek, grafikai tervezés és vállalati AI automatizáció egy kézből.
+- [Szolgáltatások](https://webdude.hu/szolgaltatasok): Teljes körű webfejlesztési, webshop, SEO/AEO, grafikai és AI automatizációs szolgáltatások.
+- [Portfólió / Munkáim](https://webdude.hu/munkak): Valós ügyfél-esettanulmányok mérhető konverziós és teljesítményeredményekkel.
+- [Szia, Norbi vagyok](https://webdude.hu/szia-norbi-vagyok): Balog Norbert szakmai bemutatkozása, 26 év grafikai és 16 év webfejlesztői múltja.
+- [AI Megoldások](https://webdude.hu/ai-megoldasok): Vállalati AI workflow kialakítás, egyedi prompt engineering és automatizációs rendszerek.
+- [Termékek & AI Műhelyek](https://webdude.hu/termekek): Kész AI munkafolyamatok, SEO & AEO Audit Pro, CRO és chatbot megoldások.
+- [Szakmai Hírek & Tudásbázis](https://webdude.hu/hirek): Gyakorlati cikkek Next.js, WordPress, WooCommerce, technikai SEO és AI témákban.
+- [Kapcsolat & Ajánlatkérés](https://webdude.hu/kapcsolat): Közvetlen kapcsolatfelvétel és egyedi árajánlat kérése.
+
+## Kiemelt Szolgáltatások (HU)
+
+- [Weboldal készítés](https://webdude.hu/szolgaltatasok/weboldal-keszites): Egyedi Next.js és WordPress weboldalak 95+ Lighthouse teljesítménnyel.
+- [Webshop fejlesztés](https://webdude.hu/szolgaltatasok/webshop-fejlesztes): Konverzió-optimalizált webáruházak és ERP integrációk.
+- [WooCommerce webshop készítés](https://webdude.hu/szolgaltatasok/woocommerce-webshop-keszites): Skálázható WooCommerce rendszerek fizetési és számlázási integrációval.
+- [WordPress fejlesztés](https://webdude.hu/szolgaltatasok/wordpress-fejlesztes): Egyedi sablonok, biztonságos bővítmény-architektúra és gyorsítás.
+- [SEO & AEO optimalizálás](https://webdude.hu/szolgaltatasok/seo-optimalizalas): Technikai SEO, Schema.org tudásgráf és AI keresőkre optimalizálás.
+- [Technikai SEO audit](https://webdude.hu/szolgaltatasok/technikai-seo-audit): Core Web Vitals, crawlability és strukturált adat vizsgálat.
+- [Grafikai tervezés](https://webdude.hu/szolgaltatasok/grafikai-tervezes): Logó, teljes arculat, csomagolás és digitális UI/UX tervezés.
+- [Arculattervezés](https://webdude.hu/szolgaltatasok/arculattervezes): Egységes vizuális márkaidentitás és arculati kézikönyv.
+- [AI Workflow kialakítás](https://webdude.hu/szolgaltatasok/ai-workflow-kialakitas): ChatGPT, Claude és egyedi vállalati automatizációs pipeline-ok.
+- [AI Prompt Engineering](https://webdude.hu/szolgaltatasok/ai-prompt-engineering): Megbízható, strukturált LLM munkafolyamatok üzleti folyamatokra.
+- [Weboldal készítés Kecskeméten](https://webdude.hu/weboldal-keszites-kecskemet): Helyi fókuszú webfejlesztés és személyes konzultáció Kecskeméten és Bács-Kiskun vármegyében.
+
+## English Pages (EN)
+
+- [WebDude English Home](https://webdude.hu/en): Custom Next.js 16 web development, AI workflow automation, SEO/AEO and graphic design by Balog Norbert (26+ years design, 16+ years dev).
+- [Services (EN)](https://webdude.hu/en/services): Full-stack web development, WooCommerce, SEO/AEO and graphic design delivered remotely worldwide.
+- [Web Development (EN)](https://webdude.hu/en/services/web-development): High-speed Next.js 16 and custom WordPress business websites.
+- [WooCommerce Development (EN)](https://webdude.hu/en/services/woocommerce-development): Conversion-focused e-commerce systems with secure payment and ERP integrations.
+- [SEO & AEO Optimization (EN)](https://webdude.hu/en/services/seo-optimization): Technical SEO, structured data knowledge graphs and answer engine visibility.
+- [Graphic Design & Brand Identity (EN)](https://webdude.hu/en/services/graphic-design): Logos, visual brand systems and digital product UI/UX.
+- [Portfolio (EN)](https://webdude.hu/en/portfolio): Real client case studies and measurable business outcomes.
+- [Contact (EN)](https://webdude.hu/en/contact): Direct consultation and custom project quote requests.
+
+## Kiemelt Esettanulmányok (Case Studies)
+
+- [BTShop.hu — B2B E-commerce & ERP](https://webdude.hu/munkak/btshop): 3200+ termékes webáruház Next.js migrációja és UI/UX újratervezése (+40% konverzió).
+- [Nedel Market — B2B WooCommerce & Szerver Integráció](https://webdude.hu/munkak/nedelmarket): Helyi irodai szerver és könyvelőrendszer valós idejű összekötése.
+- [Leanperial — Quiet Luxury Weboldal](https://webdude.hu/munkak/leanperial): Nemzetközi executive search platform 100/100 SEO alappal.
+- [AI-Prompt.hu — AI Prompt Platform](https://webdude.hu/munkak/ai-prompt-hu): Egyedi Next.js AI ökoszisztéma és prompt-optimalizáló rendszer.
+- [Go-Box Kft. — Arculat, Weboldal & Webshop](https://webdude.hu/munkak/go-box-kft): Teljes ipari márkaépítés és digitális értékesítési rendszer.
+- [Dr. Nagy Albert — Orvosi Arculat & Weboldal](https://webdude.hu/munkak/dr-nagy-albert): Prémium egészségügyi digitális jelenlét és páciens-élmény.
+
+## Kiemelt Tudásbázis Cikkek (Blog)
+
+- [Next.js 16 vs. WordPress Weboldal Fejlesztés 2026](https://webdude.hu/hirek/2026-11-17-nextjs-16-vs-wordpress-weboldal-fejlesztes-2026): Architekturális és üzleti összehasonlítás magyar KKV-knak.
+- [AI Keresőoptimalizálás (GEO & AEO) Útmutató Cégeknek](https://webdude.hu/hirek/2026-11-17-ai-keresooptimalizalas-geo-aeo-utmutato-cegeknek): Hogyan idézzenek a ChatGPT, Perplexity és Gemini válaszmotorok.
+- [B2B WooCommerce Webshop & ERP Szerver Integráció](https://webdude.hu/hirek/2026-11-17-b2b-woocommerce-webshop-erp-szerver-integracio): Valós idejű készlet- és számlaszinkronizáció a gyakorlatban.
+- [Kristófka Workflow Születése](https://webdude.hu/hirek/2026-07-14-kristofka-workflow-szuletese-amikor-a-26-eves-tervezoi-rutin-talalkozik-az-ai-val): Amikor a 26 éves tervezői rutin találkozik az AI automatizációval.
+
+## Optional / Legal
+
+- [Adatvédelmi Szabályzat](https://webdude.hu/adatvedelmi-szabalyzat)
+- [Felhasználási Feltételek](https://webdude.hu/felhasznalasi-feltetelek)

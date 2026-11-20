@@ -1,10 +1,30 @@
 import React from "react";
+import type { Metadata } from "next";
 import HeroBackdrop from "@/components/molecules/HeroBackdrop";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Felhasználási Feltételek | WebDude",
   description:
     "WebDude felhasználási feltételek és jogi nyilatkozatok. Prémium webfejlesztési, grafikai és AI-automatizációs szolgáltatások.",
+  alternates: {
+    canonical: "https://webdude.hu/felhasznalasi-feltetelek",
+  },
+  openGraph: {
+    title: "Felhasználási Feltételek | WebDude",
+    description:
+      "WebDude felhasználási feltételek és jogi nyilatkozatok. Prémium webfejlesztési, grafikai és AI-automatizációs szolgáltatások.",
+    url: "https://webdude.hu/felhasznalasi-feltetelek",
+    siteName: "WebDude",
+    locale: "hu_HU",
+    type: "website",
+    images: [{ url: "https://webdude.hu/og/webdude-og.jpg", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Felhasználási Feltételek | WebDude",
+    description: "WebDude felhasználási feltételek és jogi nyilatkozatok.",
+    images: ["https://webdude.hu/og/webdude-og.jpg"],
+  },
 };
 
 export default function FelhasznalasiFeltetelek() {

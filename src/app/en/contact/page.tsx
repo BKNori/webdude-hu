@@ -1,5 +1,6 @@
 import ContactFormWrapper from "@/components/organisms/ContactFormWrapper";
 import Hero from "@/components/Hero";
+import DirectAnswerBlock from "@/components/molecules/DirectAnswerBlock";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { getDictionary } from "@/lib/dictionary";
 
@@ -25,6 +26,14 @@ export default async function EnContactPage() {
       />
 
       <section className="relative z-10 py-24 bg-[#F1F5F9] dark:bg-[#111C33]">
+        <div className="mb-12">
+          <DirectAnswerBlock
+            id="en-contact-direct-answer"
+            badgeLabel="Direct Answer"
+            question="How do I start a web development, AI automation or design project with WebDude?"
+            answer="You work directly with Balog Norbert from the very first message — no account managers or agency intermediaries. Share your goals via the quote form or email hello@webdude.hu, and I will respond personally within 24 hours with a tailored technical plan and custom quote based on your exact requirements."
+          />
+        </div>
         <div className="max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-start">
           {/* Left side: Heading and contact info */}
           <div className="space-y-12">

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import HeroBackdrop from "@/components/molecules/HeroBackdrop";
+import DirectAnswerBlock from "@/components/molecules/DirectAnswerBlock";
 import {
   CheckCircle2,
   ArrowRight,
@@ -143,6 +144,10 @@ export default function WeboldalKeszitesKecskemetPage() {
       "@type": "LocalBusiness",
       "@id": "https://webdude.hu/#localbusiness",
     },
+    publisher: {
+      "@type": "Organization",
+      "@id": "https://webdude.hu/#organization",
+    },
     description: KECSKEMET_META_DESCRIPTION,
     serviceType: "Web Development and Local SEO",
     areaServed: [
@@ -236,6 +241,12 @@ export default function WeboldalKeszitesKecskemetPage() {
           </div>
         </div>
       </section>
+
+      <DirectAnswerBlock
+        id="kecskemet-direct-answer"
+        question="Miért érdemes a WebDude-ot választani weboldal készítéshez Kecskeméten?"
+        answer="Balog Norbert (WebDude) személyes kecskeméti egyeztetéssel, 26 év grafikai és 16 év webfejlesztői tapasztalattal épít villámgyors Next.js és WordPress weboldalakat, valamint lokális SEO rendszereket. Közvetlen kommunikáció ügynökségi közvetítők nélkül, egyedi árajánlat alapján."
+      />
 
       {/* DEDICATED SECTION: Személyes találkozó és konzultáció Kecskeméten (CRITICAL LOCAL SEO & CONVERSION) */}
       <section

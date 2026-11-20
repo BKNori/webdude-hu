@@ -3,6 +3,7 @@ import Link from "next/link";
 import Hero from "@/components/Hero";
 import Surface from "@/components/atoms/Surface";
 import ServiceCard from "@/components/molecules/ServiceCard";
+import DirectAnswerBlock from "@/components/molecules/DirectAnswerBlock";
 import { buildBreadcrumbSchema, BreadcrumbItem } from "@/lib/breadcrumb";
 import { getDictionary } from "@/lib/dictionary";
 import { withLocale } from "@/lib/i18n";
@@ -250,15 +251,13 @@ export default async function EnServicesPage() {
       />
 
       {/* Direct Answer Block - AEO optimised "Services Overview" */}
-      <Surface tone="night-lift" className="py-12">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <p className="text-base md:text-lg text-slate-700 dark:text-slate-200 leading-relaxed">
-            <span className="text-[#0369A1] dark:text-[#00B5F1] font-semibold">
-              WebDude digital services:
-            </span>{" "}
-            {dictionary.services.page.directAnswer}
-          </p>
-        </div>
+      <Surface tone="night-lift" className="py-4">
+        <DirectAnswerBlock
+          id="en-services-direct-answer"
+          badgeLabel="Direct Answer"
+          question="What digital services does WebDude provide for SMEs and international clients?"
+          answer={dictionary.services.page.directAnswer}
+        />
       </Surface>
 
       {/* Social Proof Section — Dual Theme */}

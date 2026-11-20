@@ -10,6 +10,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import Hero from "@/components/Hero";
+import DirectAnswerBlock from "@/components/molecules/DirectAnswerBlock";
 import { buildBreadcrumbSchema, BreadcrumbItem } from "@/lib/breadcrumb";
 import { withLocale } from "@/lib/i18n";
 
@@ -155,19 +156,12 @@ export default function EnSeoOptimizationPage() {
         </div>
 
         {/* Direct Answer Block - AEO optimised "SEO Optimisation Overview" */}
-        <section className="relative py-12 bg-[#F1F5F9] dark:bg-bg-base border-y border-slate-200/80 dark:border-white/5">
-          <div className="max-w-4xl mx-auto px-6 text-center">
-            <p className="text-base md:text-lg text-[#334155] dark:text-slate-300 leading-relaxed">
-              <span className="text-[#0369A1] dark:text-[#00B5F1] font-semibold">
-                WebDude SEO optimisation:
-              </span>{" "}
-              Technical SEO audit, keyword strategy, content optimisation and
-              local SEO for SMEs. 26 years of experience, Google Search Console
-              integration, Core Web Vitals improvement and organic traffic growth
-              delivered as a remote partner worldwide.
-            </p>
-          </div>
-        </section>
+        <DirectAnswerBlock
+          id="en-seo-direct-answer"
+          badgeLabel="Direct Answer"
+          question="What does WebDude SEO and AEO optimisation include?"
+          answer="Technical SEO audit, keyword strategy, content optimisation, Schema.org knowledge graphs and Core Web Vitals tuning for SMEs. Backed by 26 years of design and 16 years of web development experience, I help businesses rank on Google and get cited by AI search engines worldwide."
+        />
 
         <section className="py-24 relative overflow-hidden z-10 bg-[#F8FAFC] dark:bg-transparent">
           <div className="max-w-6xl mx-auto px-6">
@@ -230,6 +224,28 @@ export default function EnSeoOptimizationPage() {
                   </p>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="py-16 border-t border-slate-200/80 dark:border-slate-800 relative z-10 bg-[#F8FAFC] dark:bg-transparent">
+          <div className="max-w-6xl mx-auto px-6">
+            <h2 className="text-2xl md:text-3xl font-bold text-[#0F172A] dark:text-white mb-6 text-center">
+              Related Solutions & Case Studies
+            </h2>
+            <div className="grid md:grid-cols-3 gap-6">
+              <Link href="/en/services/web-development" className="luminous-card p-6 rounded-2xl block hover:border-[#0369A1]/50 dark:hover:border-[#00B5F1]/50 transition-colors">
+                <h3 className="text-lg font-bold text-[#0369A1] dark:text-[#00B5F1] mb-2">Custom Web Development</h3>
+                <p className="text-sm text-[#334155] dark:text-slate-400">Clean Next.js 16 architecture built for 95+ Core Web Vitals scores.</p>
+              </Link>
+              <Link href="/en/services/woocommerce-development" className="luminous-card p-6 rounded-2xl block hover:border-[#0369A1]/50 dark:hover:border-[#00B5F1]/50 transition-colors">
+                <h3 className="text-lg font-bold text-[#0369A1] dark:text-[#00B5F1] mb-2">WooCommerce Development</h3>
+                <p className="text-sm text-[#334155] dark:text-slate-400">Search-friendly product architectures and high-converting online stores.</p>
+              </Link>
+              <Link href="/en/portfolio" className="luminous-card p-6 rounded-2xl block hover:border-[#0369A1]/50 dark:hover:border-[#00B5F1]/50 transition-colors">
+                <h3 className="text-lg font-bold text-[#0369A1] dark:text-[#00B5F1] mb-2">Explore Client Results</h3>
+                <p className="text-sm text-[#334155] dark:text-slate-400">Review measurable SEO and conversion gains across 47+ client projects.</p>
+              </Link>
             </div>
           </div>
         </section>

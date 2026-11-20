@@ -9,6 +9,8 @@ interface DirectAnswerBlockProps {
   facts?: { label: string; value: string }[];
   /** Opcionális felület-tónus (Luminous Slate kompatibilitás). */
   tone?: "night" | "slate" | "paper";
+  /** Opcionális badge felirat (alapértelmezetten "Gyors válasz", EN oldalakon "Direct Answer"). */
+  badgeLabel?: string;
 }
 
 /**
@@ -26,6 +28,7 @@ export default function DirectAnswerBlock({
   question,
   answer,
   facts,
+  badgeLabel = "Gyors válasz",
 }: DirectAnswerBlockProps) {
   return (
     <section
@@ -47,7 +50,7 @@ export default function DirectAnswerBlock({
               className="w-1.5 h-1.5 rounded-full bg-[#0369A1] dark:bg-brand-primary"
               aria-hidden="true"
             />
-            Gyors válasz
+            {badgeLabel}
           </span>
           <h2
             id={id ? `${id}-heading` : undefined}

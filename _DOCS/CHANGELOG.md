@@ -1,5 +1,19 @@
 # Changelog
 
+## [7.74.0] — 2026-11-20 — Additív SEO / AIO / AEO / GEO, Kétirányú Hreflang, `llms.txt` & Schema.org Bővítés
+
+- **Batch 1 — Alap Infrastruktúra, H1, `llms.txt` & Sitemap:**
+  - [SectionTitle.tsx](file:///c:/CLI-PROJECTS/webdude-hu/src/components/atoms/SectionTitle.tsx) (`as?: "h1" | "h2"` prop, alapértelmezett `"h2"`), `as="h1"` beállítva a [ai-kep-es-videogeneralas/page.tsx](file:///c:/CLI-PROJECTS/webdude-hu/src/app/szolgaltatasok/ai-kep-es-videogeneralas/page.tsx) és [egyedi-arculattervezes-logo/page.tsx](file:///c:/CLI-PROJECTS/webdude-hu/src/app/szolgaltatasok/egyedi-arculattervezes-logo/page.tsx) oldalakon.
+  - [DirectAnswerBlock.tsx](file:///c:/CLI-PROJECTS/webdude-hu/src/components/molecules/DirectAnswerBlock.tsx) bővítve `badgeLabel?: string` proppal az angol útvonalakhoz (`"Direct Answer"`).
+  - Létrehozva a [public/llms.txt](file:///c:/CLI-PROJECTS/webdude-hu/public/llms.txt) (hivatalos Markdown formátum, HU + EN szolgáltatások, esettanulmányok, szakcikkek, E-E-A-T horgony, Zéró Fix Ár).
+  - [src/app/sitemap.ts](file:///c:/CLI-PROJECTS/webdude-hu/src/app/sitemap.ts) kiegészítve a hiányzó egyedi útvonalakkal (`/ai-megoldasok/ai-muhely`, `/munkafolyamatok/strategist-pro/kristofka-munkafolyamat`).
+- **Batch 2 — Kétirányú `hreflang`, Canonical & Dual Theme Higiénia:**
+  - Pótolva a visszafelé mutató `alternates.languages` (`hu-HU ↔ en-US ↔ x-default`) és Twitter Card metaadatok a HU párokon (`munkak`, `kapcsolat`, `szolgaltatasok`, `weboldal-keszites`, `woocommerce-webshop-keszites`, `seo-optimalizalas`, `grafikai-tervezes`, `ai-prompt-engineering`, jogi oldalak).
+  - Duplikátum-védelem: `/norbi` canonical → `/szia-norbi-vagyok` (`noindex`), `/i-prompt-sablonok` canonical → `/ai-megoldasok/ai-prompt-sablonok` + Dual Theme `<pre>` kontrasztjavítás; `termekek/seo-audit-pro/layout.tsx` és `woocommerce-webshop-keszites/page.tsx` elgépelések javítva.
+- **Batch 3–5 — Angol (`/en/*`), Magyar Szolgáltatás-, Termék- & Személyes Oldalak Additív AEO/GEO Mélyítése:**
+  - Egységesített `<DirectAnswerBlock />` + additív kapcsolódó esettanulmány/cikk belső linkháló az összes `/en/services/*`, `/en/portfolio`, `/en/contact` és kiemelt HU szolgáltatásoldalon (`weboldal-keszites`, `webshop-fejlesztes`, `seo-optimalizalas`, `grafikai-tervezes`, `arculattervezes`, `ai-workflow-kialakitas`), valamint `szia-norbi-vagyok` és `weboldal-keszites-kecskemet` (`#organization` publisher bekötéssel).
+  - Termékoldalakon (`/termekek/seo-audit-pro`, `ai-chatbot-starter`, `ai-workflow-starter-pack`, `cro-booster-kit`, `kristofka-munkafolyamat`) hozzáadva `HeroBackdrop`, `<DirectAnswerBlock />` és szerveroldali `FAQPage` JSON-LD séma (többesszám és UTF-8 mojibake is javítva).
+
 ## [7.73.0] — 2026-11-20 — Teljes i18n Paritás, Könnyűsúlyú Globális Szótár & `check:i18n` Automatizáció
 
 - **Könnyűsúlyú Globális Szótár-átadás (`RootLayout` → `PageWrapper`):**

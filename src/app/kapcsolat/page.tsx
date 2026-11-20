@@ -12,6 +12,11 @@ export const metadata: Metadata = {
     "Kérj ajánlatot közvetlenül Norbitól! Nincs projektmenedzseri réteg: 26 év tapasztalattal tervezek és fejlesztek Next.js rendszereket országosan.",
   alternates: {
     canonical: "https://webdude.hu/kapcsolat",
+    languages: {
+      "hu-HU": "https://webdude.hu/kapcsolat",
+      "en-US": "https://webdude.hu/en/contact",
+      "x-default": "https://webdude.hu/kapcsolat",
+    },
   },
   openGraph: {
     title: "Kapcsolat & Konzultáció | WebDude | Közvetlen Megbeszélés",

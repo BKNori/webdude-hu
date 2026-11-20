@@ -4,6 +4,7 @@ import { Metadata } from "next";
 import { ShoppingCart, Zap, CreditCard, ArrowRight } from "lucide-react";
 import Hero from "@/components/Hero";
 import PricingTable, { PricingTier } from "@/components/molecules/PricingTable";
+import DirectAnswerBlock from "@/components/molecules/DirectAnswerBlock";
 import { buildBreadcrumbSchema, BreadcrumbItem } from "@/lib/breadcrumb";
 
 export const metadata: Metadata = {
@@ -198,24 +199,11 @@ export default function WebshopDevPage() {
         </div>
 
         {/* Direct Answer Block - AEO optimalizált */}
-        <section className="relative py-12 bg-bg-base border-y border-slate-200/80 dark:border-white/5">
-          <div className="max-w-4xl mx-auto px-6 text-center">
-            <h2 className="text-2xl md:text-3xl font-bold text-[#0F172A] dark:text-white mb-4">
-              WooCommerce webshop készítés és fejlesztés
-            </h2>
-            <p className="text-base md:text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
-              <span className="text-[#0369A1] dark:text-[#00B5F1] font-semibold">
-                WebDude WooCommerce webshop készítés:
-              </span>{" "}
-              WooCommerce és egyedi webshop készítés, konverzió-optimalizált
-              checkout folyamat, bankkártyás fizetés (SimplePay, Barion) és
-              sebességoptimalizálás KKV-knak országos szolgáltatással. 26 év
-              tapasztalat, villámgyors betöltés és maximális vásárlói élmény.
-              Balog Norbert (WebDude) személyesen építi a WooCommerce
-              webshopokat — egyedi árajánlat kérése az igények alapján.
-            </p>
-          </div>
-        </section>
+        <DirectAnswerBlock
+          id="webshop-fejlesztes-direct-answer"
+          question="Mit tartalmaz a WebDude WooCommerce és egyedi webshop fejlesztése?"
+          answer="WooCommerce és egyedi webshop készítés, konverzió-optimalizált checkout folyamat, bankkártyás fizetés (SimplePay, Barion) és sebességoptimalizálás KKV-knak országos szolgáltatással. 26 év tapasztalat, villámgyors betöltés és maximális vásárlói élmény. Balog Norbert (WebDude) személyesen építi a WooCommerce webshopokat — egyedi árajánlat kérése az igények alapján."
+        />
 
         {/* ── Miért kulcsfontosságú a profi webshop? ── */}
         <section className="py-24 relative z-10">
@@ -312,6 +300,29 @@ export default function WebshopDevPage() {
                   </p>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── Kapcsolódó Esettanulmányok & Szakmai Útmutatók ── */}
+        <section className="py-16 border-t border-slate-200/80 dark:border-white/5 relative z-10">
+          <div className="max-w-6xl mx-auto px-6">
+            <h2 className="text-2xl md:text-3xl font-bold text-[#0F172A] dark:text-white mb-6 text-center">
+              Kapcsolódó Webshop Referenciák & Szakcikkek
+            </h2>
+            <div className="grid md:grid-cols-3 gap-6">
+              <Link href="/munkak/btshop" className="luminous-card p-6 rounded-2xl block hover:border-[#0369A1]/50 dark:hover:border-[#00B5F1]/50 transition-colors">
+                <h3 className="text-lg font-bold text-[#0369A1] dark:text-[#00B5F1] mb-2">BTShop.hu (+40% konverzió)</h3>
+                <p className="text-sm text-slate-700 dark:text-slate-300">3200+ termékes B2B webáruház Next.js migrációja és Kulcs-Soft ERP híd.</p>
+              </Link>
+              <Link href="/munkak/nedelmarket" className="luminous-card p-6 rounded-2xl block hover:border-[#0369A1]/50 dark:hover:border-[#00B5F1]/50 transition-colors">
+                <h3 className="text-lg font-bold text-[#0369A1] dark:text-[#00B5F1] mb-2">Nedel Market B2B Rendszer</h3>
+                <p className="text-sm text-slate-700 dark:text-slate-300">WooCommerce és helyi irodai szerver valós idejű szinkronizálása.</p>
+              </Link>
+              <Link href="/hirek/2026-11-17-b2b-woocommerce-webshop-erp-szerver-integracio" className="luminous-card p-6 rounded-2xl block hover:border-[#0369A1]/50 dark:hover:border-[#00B5F1]/50 transition-colors">
+                <h3 className="text-lg font-bold text-[#0369A1] dark:text-[#00B5F1] mb-2">WooCommerce & ERP Útmutató</h3>
+                <p className="text-sm text-slate-700 dark:text-slate-300">Hogyan automatizáld a készlet-, ár- és számlaszinkronizációt hibák nélkül.</p>
+              </Link>
             </div>
           </div>
         </section>

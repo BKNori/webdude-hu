@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import { buildBreadcrumbSchema } from "@/lib/breadcrumb";
 
 export const metadata: Metadata = {
@@ -81,6 +81,29 @@ const breadcrumbSchema = buildBreadcrumbSchema([
   { name: "CRO Booster Kit", url: "/termekek/cro-booster-kit" },
 ]);
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Milyen típusú oldalaknál alkalmazható a CRO Booster Kit?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "WooCommerce webáruházaknál, Next.js landing oldalaknál és B2B szolgáltatási értékesítési tölcséreknél egyaránt hatékony.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Mikor láthatók az első mérhető konverziós eredmények?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Az első A/B tesztek és CTA/checkout finomítások után jellemzően 14–30 napon belül mérhető az elmozdulás a GA4 konverziókban.",
+      },
+    },
+  ],
+};
+
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
@@ -94,6 +117,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(breadcrumbSchema).replace(/</g, "\\u003c"),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqSchema).replace(/</g, "\\u003c"),
         }}
       />
       {children}

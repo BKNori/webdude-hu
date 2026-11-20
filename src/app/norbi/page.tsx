@@ -5,9 +5,30 @@ import Link from "next/link";
 import Timeline from "@/components/molecules/Timeline";
 
 export const metadata = {
-  title: "Rólam – WebDude | Norbi vagyok Kecskemétről",
+  title: "Rólam – WebDude | Balog Norbert (26 év tapasztalat)",
   description:
-    "Több mint 16 év WordPress és 26 év grafikai tapasztalattal rendelkező digitális szakember bemutatkozása.",
+    "Több mint 16 év WordPress/Next.js és 26 év grafikai tapasztalattal rendelkező digitális szakember bemutatkozása.",
+  alternates: {
+    canonical: "https://webdude.hu/szia-norbi-vagyok",
+  },
+  robots: { index: false, follow: true },
+  openGraph: {
+    title: "Rólam – WebDude | Balog Norbert",
+    description:
+      "Több mint 16 év webfejlesztői és 26 év grafikai tapasztalattal rendelkező digitális szakember bemutatkozása.",
+    url: "https://webdude.hu/szia-norbi-vagyok",
+    siteName: "WebDude",
+    locale: "hu_HU",
+    type: "profile",
+    images: [{ url: "https://webdude.hu/assets/personal/webdude-kep.webp", width: 1000, height: 1250 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Rólam – WebDude | Balog Norbert",
+    description:
+      "Több mint 16 év webfejlesztői és 26 év grafikai tapasztalattal rendelkező digitális szakember bemutatkozása.",
+    images: ["https://webdude.hu/assets/personal/webdude-kep.webp"],
+  },
 };
 
 export default function AboutPage() {

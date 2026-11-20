@@ -6,6 +6,25 @@ export const metadata: Metadata = {
   title: "Adatvédelmi Szabályzat | WebDude",
   description:
     "WebDude adatvédelmi szabályzat és adatkezelési tájékoztató. GDPR megfelelő adatkezelés és személyes adatok védelme.",
+  alternates: {
+    canonical: "https://webdude.hu/adatvedelmi-szabalyzat",
+  },
+  openGraph: {
+    title: "Adatvédelmi Szabályzat | WebDude",
+    description:
+      "WebDude adatvédelmi szabályzat és adatkezelési tájékoztató. GDPR megfelelő adatkezelés és személyes adatok védelme.",
+    url: "https://webdude.hu/adatvedelmi-szabalyzat",
+    siteName: "WebDude",
+    locale: "hu_HU",
+    type: "website",
+    images: [{ url: "https://webdude.hu/og/webdude-og.jpg", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Adatvédelmi Szabályzat | WebDude",
+    description: "WebDude adatvédelmi szabályzat és GDPR tájékoztató.",
+    images: ["https://webdude.hu/og/webdude-og.jpg"],
+  },
 };
 
 export default function AdatvedelmiSzabalyzat() {

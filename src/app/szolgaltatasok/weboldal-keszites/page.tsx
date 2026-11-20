@@ -5,6 +5,7 @@ import { Search, Code, PenTool, ArrowRight } from "lucide-react";
 import Hero from "@/components/Hero";
 import Surface from "@/components/atoms/Surface";
 import PricingTable, { PricingTier } from "@/components/molecules/PricingTable";
+import DirectAnswerBlock from "@/components/molecules/DirectAnswerBlock";
 import { buildBreadcrumbSchema, BreadcrumbItem } from "@/lib/breadcrumb";
 import { serializeJsonLd } from "@/lib/structuredData";
 
@@ -16,6 +17,11 @@ export const metadata: Metadata = {
     "weboldal készítés, prémium weboldal, egyedi weboldal, webfejlesztés, SEO weboldal, KKV weboldal",
   alternates: {
     canonical: "https://webdude.hu/szolgaltatasok/weboldal-keszites",
+    languages: {
+      "hu-HU": "https://webdude.hu/szolgaltatasok/weboldal-keszites",
+      "en-US": "https://webdude.hu/en/services/web-development",
+      "x-default": "https://webdude.hu/szolgaltatasok/weboldal-keszites",
+    },
   },
   openGraph: {
     title: "Weboldal készítés vállalkozásoknak | WebDude",
@@ -200,18 +206,12 @@ export default function WeboldalKeszitesPage() {
         </div>
 
         {/* Direct Answer Block - AEO optimalizált "Weboldal Készítés Áttekintése" */}
-        <Surface tone="night-lift" className="py-12">
-          <div className="max-w-4xl mx-auto px-6 text-center">
-            <p className="text-base md:text-lg text-slate-700 dark:text-slate-200 leading-relaxed">
-              <span className="text-[#0369A1] dark:text-[#00B5F1] font-semibold">
-                WebDude weboldal készítés:
-              </span>{" "}
-              Egyedi, reszponzív weboldalak KKV-knak — Next.js, WordPress,
-              WooCommerce és egyedi fejlesztés. 26 év tapasztalat, gyors
-              betöltés, SEO-optimalizált és konverzió-fókuszú design országos
-              szolgáltatással. Egyedi árajánlat kérése az igények alapján.
-            </p>
-          </div>
+        <Surface tone="night-lift" className="py-4">
+          <DirectAnswerBlock
+            id="weboldal-keszites-direct-answer"
+            question="Milyen weboldalakat készít a WebDude vállalkozásoknak?"
+            answer="Egyedi, reszponzív weboldalak KKV-knak — Next.js, WordPress, WooCommerce és egyedi fejlesztés. 26 év tapasztalat, gyors betöltés, SEO-optimalizált és konverzió-fókuszú design országos szolgáltatással. Egyedi árajánlat kérése az igények alapján."
+          />
         </Surface>
 
         {/* ── E-E-A-T Bento Grid (Dual Theme) ── */}
@@ -319,6 +319,29 @@ export default function WeboldalKeszitesPage() {
                   </p>
                 </div>
               ))}
+            </div>
+          </div>
+        </Surface>
+
+        {/* ── Kapcsolódó Esettanulmányok & Szakmai Cikkek (Belső Linkháló) ── */}
+        <Surface tone="night-lift" className="py-16">
+          <div className="max-w-6xl mx-auto px-6">
+            <h2 className="text-2xl md:text-3xl text-[#0F172A] dark:text-white mb-6 text-center">
+              Kapcsolódó Esettanulmányok & Szakmai Útmutatók
+            </h2>
+            <div className="grid md:grid-cols-3 gap-6">
+              <Link href="/munkak/leanperial" className="luminous-card p-6 block hover:border-[#0369A1]/50 dark:hover:border-[#00B5F1]/50 transition-colors">
+                <h3 className="text-lg font-semibold text-[#0369A1] dark:text-[#00B5F1] mb-2">Leanperial Esettanulmány</h3>
+                <p className="text-sm text-slate-700 dark:text-slate-300">100/100 SEO, Quiet Luxury dizájn és villámgyors egyedi weboldal felépítése.</p>
+              </Link>
+              <Link href="/hirek/2026-11-17-nextjs-16-vs-wordpress-weboldal-fejlesztes-2026" className="luminous-card p-6 block hover:border-[#0369A1]/50 dark:hover:border-[#00B5F1]/50 transition-colors">
+                <h3 className="text-lg font-semibold text-[#0369A1] dark:text-[#00B5F1] mb-2">Next.js 16 vs. WordPress (2026)</h3>
+                <p className="text-sm text-slate-700 dark:text-slate-300">Mikor érdemes egyedi React/Next.js architektúrát vagy WordPress rendszert választani?</p>
+              </Link>
+              <Link href="/szolgaltatasok/seo-optimalizalas" className="luminous-card p-6 block hover:border-[#0369A1]/50 dark:hover:border-[#00B5F1]/50 transition-colors">
+                <h3 className="text-lg font-semibold text-[#0369A1] dark:text-[#00B5F1] mb-2">Technikai SEO & AEO</h3>
+                <p className="text-sm text-slate-700 dark:text-slate-300">Hogyan érj el tartós Google-helyezéseket és AI válaszmotor-idézettséget.</p>
+              </Link>
             </div>
           </div>
         </Surface>

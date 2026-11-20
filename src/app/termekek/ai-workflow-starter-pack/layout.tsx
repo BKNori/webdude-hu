@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import { buildBreadcrumbSchema } from "@/lib/breadcrumb";
 
 export const metadata: Metadata = {
@@ -81,6 +81,29 @@ const breadcrumbSchema = buildBreadcrumbSchema([
   { name: "AI Workflow Starter Pack", url: "/termekek/ai-workflow-starter-pack" },
 ]);
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Milyen feladatokat automatizál az AI Workflow Starter Pack?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Email kampány-előkészítést, ügyfél-előminősítést, SEO tartalomvázlat-készítést és 300 DPI-s grafikai/marketing anyagok automatizált generálását.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Tartalmazza a csomag a bevezetési támogatást?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Igen, minden bevezetés egyedi igényfelmérés alapján történik, személyre szabott integrációval és 1 év frissítéssel.",
+      },
+    },
+  ],
+};
+
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
@@ -94,6 +117,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(breadcrumbSchema).replace(/</g, "\\u003c"),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqSchema).replace(/</g, "\\u003c"),
         }}
       />
       {children}

@@ -1,7 +1,14 @@
 # ARCHITECTURE.md — WebDude Rendszerarchitektúra
 
 **webdude.hu | Next.js 16 · React 19 · TypeScript · Firebase**
-**Utolsó frissítés: 2026-11-20 (7.72.0: Egységes Publikus Hero Bannerek, 14 db `hero-*.webp`, Irányított Scrim & 60 FPS CSS Parallax)**
+**Utolsó frissítés: 2026-11-20 (7.74.0: Mélységi SEO / AIO / AEO / GEO, Kétirányú hreflang, `public/llms.txt` & Termék FAQPage Sémák)**
+
+> **7.74.0 (2026-11-20):** Additív SEO / AIO / AEO / GEO & Schema.org Tudásgráf Bővítés:
+>
+> - `SectionTitle` (`as?: "h1" | "h2"`) + `DirectAnswerBlock` (`badgeLabel?: string` EN támogatással); H1 hierarchia javítva az `ai-kep-es-videogeneralas` és `egyedi-arculattervezes-logo` oldalakon.
+> - Kétirányú `hreflang` (`hu-HU ↔ en-US ↔ x-default`) + Twitter Card metaadatok pótolva a HU-EN oldalpárokon; duplikátum canonical (`/norbi` → `/szia-norbi-vagyok`, `/i-prompt-sablonok` → `/ai-megoldasok/ai-prompt-sablonok`); `src/app/sitemap.ts` szinkronizálva (`/ai-megoldasok/ai-muhely`, `/munkafolyamatok/strategist-pro/kristofka-munkafolyamat`).
+> - Létrehozva a [public/llms.txt](file:///c:/CLI-PROJECTS/webdude-hu/public/llms.txt) AI keresőágenseknek (HU + EN szolgáltatások, esettanulmányok, tudásbázis cikkek, Zéró Fix Ár).
+> - Egységesített `<DirectAnswerBlock />` + belső keresztlinkek (`munkak/*`, `hirek/*`, `szolgaltatasok/*`) az `/en/*` és kiemelt HU szolgáltatás- és termékoldalakon (`/termekek/*` `FAQPage` JSON-LD sémákkal kiegészítve).
 
 > **7.72.0 (2026-11-20):** Publikus Hero Bannerek Egységesítése & CSS Scroll-Driven Parallax:
 >

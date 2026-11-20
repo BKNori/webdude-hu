@@ -6,6 +6,7 @@ interface SectionTitleProps {
   description?: string;
   className?: string;
   center?: boolean;
+  as?: "h1" | "h2";
 }
 
 export default function SectionTitle({
@@ -14,8 +15,10 @@ export default function SectionTitle({
   description,
   className = "",
   center = false,
+  as = "h2",
 }: SectionTitleProps) {
   const textAlign = center ? "text-center" : "";
+  const HeadingTag = as;
   return (
     <div
       className={`max-w-3xl ${center ? "mx-auto" : ""} ${className} ${textAlign}`}
@@ -25,9 +28,9 @@ export default function SectionTitle({
           {eyebrow}
         </p>
       ) : null}
-      <h2 className="text-[clamp(1.5rem,4vw,2.5rem)] sm:text-[clamp(1.875rem,5vw,3rem)] md:text-[clamp(2rem,5.5vw,3.5rem)] lg:text-[clamp(2.25rem,6vw,4rem)] font-extrabold tracking-tight text-text-primary mb-6 leading-tight wrap-break-word">
+      <HeadingTag className="text-[clamp(1.5rem,4vw,2.5rem)] sm:text-[clamp(1.875rem,5vw,3rem)] md:text-[clamp(2rem,5.5vw,3.5rem)] lg:text-[clamp(2.25rem,6vw,4rem)] font-extrabold tracking-tight text-text-primary mb-6 leading-tight wrap-break-word">
         {title}
-      </h2>
+      </HeadingTag>
       {description ? (
         <p className="text-[clamp(1rem,2.5vw,1.125rem)] md:text-[clamp(1.125rem,3vw,1.25rem)] text-slate-700 dark:text-slate-400 leading-relaxed wrap-break-word">
           {description}

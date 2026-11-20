@@ -11,6 +11,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import Hero from "@/components/Hero";
+import DirectAnswerBlock from "@/components/molecules/DirectAnswerBlock";
 import { buildBreadcrumbSchema, BreadcrumbItem } from "@/lib/breadcrumb";
 
 export const metadata: Metadata = {
@@ -25,12 +26,26 @@ export const metadata: Metadata = {
       "SEO optimalizálás — Technikai SEO és tartalomstratégia | WebDude",
     description:
       "SEO optimalizálás: technikai audit, kulcsszókutatás, tartalomstratégia és helyi SEO vállalkozásoknak. 26 év tapasztalat, Core Web Vitals javítás.",
+    url: "https://webdude.hu/szolgaltatasok/seo-optimalizalas",
     type: "website",
     locale: "hu_HU",
     siteName: "WebDude",
+    images: [{ url: "https://webdude.hu/og/webdude-og.jpg", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "SEO optimalizálás — Technikai SEO és tartalomstratégia | WebDude",
+    description:
+      "SEO optimalizálás: technikai audit, kulcsszókutatás, tartalomstratégia és Core Web Vitals javítás 26 év tapasztalattal.",
+    images: ["https://webdude.hu/og/webdude-og.jpg"],
   },
   alternates: {
     canonical: "https://webdude.hu/szolgaltatasok/seo-optimalizalas",
+    languages: {
+      "hu-HU": "https://webdude.hu/szolgaltatasok/seo-optimalizalas",
+      "en-US": "https://webdude.hu/en/services/seo-optimization",
+      "x-default": "https://webdude.hu/szolgaltatasok/seo-optimalizalas",
+    },
   },
 };
 
@@ -191,24 +206,11 @@ export default async function SEOOptimizationPage() {
         </div>
 
         {/* Direct Answer Block - AEO optimalizált "SEO Optimalizálás Áttekintése" */}
-        <section className="relative py-12 bg-bg-base border-y border-slate-200/80 dark:border-white/5">
-          <div className="max-w-4xl mx-auto px-6 text-center">
-            <h2 className="text-2xl md:text-3xl font-bold text-[#0F172A] dark:text-white mb-4">
-              SEO optimalizálás — organikus forgalom és Google-helyezés javítás
-            </h2>
-            <p className="text-base md:text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
-              <span className="text-[#0369A1] dark:text-[#00B5F1] font-semibold">
-                WebDude SEO optimalizálás:
-              </span>{" "}
-              Technikai SEO audit, kulcsszó-stratégia, tartalomoptimalizálás és
-              helyi SEO KKV-knak. 26 év tapasztalat, Google Search Console
-              bekötés, Core Web Vitals javítás és organikus forgalom növelés
-              országos szolgáltatással. Balog Norbert (WebDude) személyesen
-              végzi az SEO optimalizálást — egyedi árajánlat kérése az igények
-              alapján.
-            </p>
-          </div>
-        </section>
+        <DirectAnswerBlock
+          id="seo-optimalizalas-direct-answer"
+          question="Mit tartalmaz a WebDude SEO és AEO optimalizálási szolgáltatása?"
+          answer="Technikai SEO audit, kulcsszó-stratégia, tartalomoptimalizálás és helyi SEO KKV-knak. 26 év tapasztalat, Google Search Console bekötés, Core Web Vitals javítás és organikus forgalom növelés országos szolgáltatással. Balog Norbert (WebDude) személyesen végzi az SEO optimalizálást — egyedi árajánlat kérése az igények alapján."
+        />
 
         <section className="py-24 relative overflow-hidden z-10">
           <div className="max-w-6xl mx-auto px-6">
@@ -276,6 +278,28 @@ export default async function SEOOptimizationPage() {
           </div>
         </section>
 
+        <section className="py-16 border-t border-slate-200/80 dark:border-white/5 relative z-10">
+          <div className="max-w-6xl mx-auto px-6">
+            <h2 className="text-2xl md:text-3xl font-bold text-[#0F172A] dark:text-white mb-6 text-center">
+              Kapcsolódó SEO & AEO Források
+            </h2>
+            <div className="grid md:grid-cols-3 gap-6">
+              <Link href="/hirek/2026-11-17-ai-keresooptimalizalas-geo-aeo-utmutato-cegeknek" className="luminous-card p-6 rounded-2xl block hover:border-[#0369A1]/50 dark:hover:border-[#00B5F1]/50 transition-colors">
+                <h3 className="text-lg font-bold text-[#0369A1] dark:text-[#00B5F1] mb-2">GEO & AEO Útmutató Cégeknek</h3>
+                <p className="text-sm text-slate-700 dark:text-slate-300">Hogyan kerülj be a ChatGPT, Perplexity és Google AI Overviews válaszai közé.</p>
+              </Link>
+              <Link href="/szolgaltatasok/technikai-seo-audit" className="luminous-card p-6 rounded-2xl block hover:border-[#0369A1]/50 dark:hover:border-[#00B5F1]/50 transition-colors">
+                <h3 className="text-lg font-bold text-[#0369A1] dark:text-[#00B5F1] mb-2">Technikai SEO Audit</h3>
+                <p className="text-sm text-slate-700 dark:text-slate-300">Mélyreható indexelési, Schema.org és Core Web Vitals diagnosztika.</p>
+              </Link>
+              <Link href="/termekek/seo-audit-pro" className="luminous-card p-6 rounded-2xl block hover:border-[#0369A1]/50 dark:hover:border-[#00B5F1]/50 transition-colors">
+                <h3 className="text-lg font-bold text-[#0369A1] dark:text-[#00B5F1] mb-2">SEO & AEO Audit Pro</h3>
+                <p className="text-sm text-slate-700 dark:text-slate-300">Komplett, azonnal bevethető SEO/AEO akcióterv és prioritási lista.</p>
+              </Link>
+            </div>
+          </div>
+        </section>
+
         <section className="py-32 text-center relative z-10">
           <div className="max-w-2xl mx-auto px-6">
             <h2 className="text-3xl md:text-5xl font-bold text-[#0F172A] dark:text-white mb-6">
@@ -283,7 +307,7 @@ export default async function SEOOptimizationPage() {
               weboldaladat is?
             </h2>
             <p className="text-slate-600 dark:text-slate-400 mb-10 text-lg">
-              Kérj egy SEO audiot, és derítsük ki, miért nem hoz elég érdeklődőt
+              Kérj egy SEO auditot, és derítsük ki, miért nem hoz elég érdeklődőt
               az oldalad.
             </p>
             <Link

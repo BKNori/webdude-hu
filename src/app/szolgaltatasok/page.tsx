@@ -16,6 +16,11 @@ export const metadata: Metadata = {
     "weboldal készítés, SEO optimalizálás, AI automatizáció, grafikai tervezés, WordPress fejlesztés, webshop készítés, marketing lead generálás, KKV digitális megoldások",
   alternates: {
     canonical: "https://webdude.hu/szolgaltatasok",
+    languages: {
+      "hu-HU": "https://webdude.hu/szolgaltatasok",
+      "en-US": "https://webdude.hu/en/services",
+      "x-default": "https://webdude.hu/szolgaltatasok",
+    },
   },
   openGraph: {
     title:

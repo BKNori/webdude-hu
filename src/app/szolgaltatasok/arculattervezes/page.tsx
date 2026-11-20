@@ -15,6 +15,7 @@ import {
 import PricingTable, {
   type PricingTier,
 } from "@/components/molecules/PricingTable";
+import DirectAnswerBlock from "@/components/molecules/DirectAnswerBlock";
 
 export const metadata: Metadata = {
   title:
@@ -202,20 +203,11 @@ export default function ArculattervezesPage() {
       </section>
 
       {/* Direct Answer Block - AEO optimalizált */}
-      <section className="relative py-12 bg-bg-base border-y border-slate-200/80 dark:border-white/5">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <p className="text-base md:text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
-            <span className="text-[#0369A1] dark:text-[#00B5F1] font-semibold">
-              WebDude arculattervezés:
-            </span>{" "}
-            Egyedi arculattervezés kisvállalkozásoknak és új márkáknak országos
-            szolgáltatással. Logó, színek, tipográfia és alkalmazási útmutató
-            egy összefüggő vizuális rendszerben. 26 év grafikai tapasztalat,
-            Arculati Kézikönyv (Brand Guidelines) és konzisztens vizuális
-            identitás. Egyedi árajánlat kérése az igények alapján.
-          </p>
-        </div>
-      </section>
+      <DirectAnswerBlock
+        id="arculattervezes-direct-answer"
+        question="Mit tartalmaz egy komplett céges arculattervezés a WebDude-nál?"
+        answer="Egyedi arculattervezés kisvállalkozásoknak és új márkáknak országos szolgáltatással. Logó, színek, tipográfia és alkalmazási útmutató egy összefüggő vizuális rendszerben. 26 év grafikai tapasztalat, Arculati Kézikönyv (Brand Guidelines) és konzisztens vizuális identitás. Egyedi árajánlat kérése az igények alapján."
+      />
 
       {/* E-E-A-T & Value Pillars Bento Grid */}
       <section className="py-24 relative border-b border-slate-200/90 dark:border-slate-800/80">
@@ -405,6 +397,29 @@ export default function ArculattervezesPage() {
                 </p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Kapcsolódó Esettanulmányok & Szakmai Útmutatók */}
+      <section className="py-16 border-t border-slate-200/80 dark:border-slate-800/80">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl sm:text-3xl font-bold text-[#0F172A] dark:text-white mb-6 text-center">
+            Kapcsolódó Arculati Esettanulmányok & Szolgáltatások
+          </h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            <Link href="/munkak/rimai-utepito-kft-teljes-koru-digitalis-es-vizualis-arculatepites" className="luminous-card p-6 rounded-2xl block hover:border-[#0369A1]/50 dark:hover:border-[#00B5F1]/50 transition-colors">
+              <h3 className="text-lg font-bold text-[#0369A1] dark:text-[#00B5F1] mb-2">Rimai Útépítő Kft. Arculat</h3>
+              <p className="text-sm text-slate-700 dark:text-slate-300">Teljes körű digitális és vizuális arculatépítés az építőiparban.</p>
+            </Link>
+            <Link href="/munkak/lengyel-helga-eskuvodekoracio" className="luminous-card p-6 rounded-2xl block hover:border-[#0369A1]/50 dark:hover:border-[#00B5F1]/50 transition-colors">
+              <h3 className="text-lg font-bold text-[#0369A1] dark:text-[#00B5F1] mb-2">Lengyel Helga Márkaidentitás</h3>
+              <p className="text-sm text-slate-700 dark:text-slate-300">Elegáns logó, névjegy, nyomdai és webes vizuális rendszer egy kézből.</p>
+            </Link>
+            <Link href="/szolgaltatasok/weboldal-keszites" className="luminous-card p-6 rounded-2xl block hover:border-[#0369A1]/50 dark:hover:border-[#00B5F1]/50 transition-colors">
+              <h3 className="text-lg font-bold text-[#0369A1] dark:text-[#00B5F1] mb-2">Weboldal Készítés</h3>
+              <p className="text-sm text-slate-700 dark:text-slate-300">Az elkészült arculatod közvetlenül Next.js vagy WordPress weboldallá alakítva.</p>
+            </Link>
           </div>
         </div>
       </section>

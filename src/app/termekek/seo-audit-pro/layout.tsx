@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "SEO & AEO Audit Pro | WebDude",
     description:
-      "SEO & AEO Audit Pro: A 26 éves tapasztalat erejével a találati listák élén. 95+ Lighthouse score alapú technikai alapok, 16 év WordPress & WooCommerce CMS szakértelem. Egydi árajánlat kérése.",
+      "SEO & AEO Audit Pro: A 26 éves tapasztalat erejével a találati listák élén. 95+ Lighthouse score alapú technikai alapok, 16 év WordPress & WooCommerce CMS szakértelem. Egyedi árajánlat kérése.",
     url: "https://webdude.hu/termekek/seo-audit-pro",
     siteName: "WebDude",
     images: [
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "SEO & AEO Audit Pro | WebDude",
     description:
-      "SEO & AEO Audit Pro: A 26 éves tapasztalat erejével a találati listák élén. 95+ Lighthouse score alapú technikai alapok, 16 év WordPress & WooCommerce CMS szakértelem. Egydi árajánlat kérése.",
+      "SEO & AEO Audit Pro: A 26 éves tapasztalat erejével a találati listák élén. 95+ Lighthouse score alapú technikai alapok, 16 év WordPress & WooCommerce CMS szakértelem. Egyedi árajánlat kérése.",
     images: ["/og/webdude-og.jpg"],
   },
 };
@@ -39,7 +39,7 @@ const productJsonLd = {
   "@type": "Product",
   name: "SEO & AEO Audit Pro",
   description:
-    "SEO & AEO Audit Pro: A 26 éves tapasztalat erejével a találati listák élén. 95+ Lighthouse score alapú technikai alapok, 16év WordPress & WooCommerce CMS szakértelem.",
+    "SEO & AEO Audit Pro: A 26 éves tapasztalat erejével a találati listák élén. 95+ Lighthouse score alapú technikai alapok, 16 év WordPress & WooCommerce CMS szakértelem.",
   image: "https://webdude.hu/og/webdude-og.jpg",
   brand: {
     "@type": "Brand",
@@ -81,6 +81,29 @@ const breadcrumbSchema = buildBreadcrumbSchema([
   { name: "SEO & AEO Audit Pro", url: "/termekek/seo-audit-pro" },
 ] as const);
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Mit vizsgál az SEO & AEO Audit Pro?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "A Core Web Vitals teljesítményt, a technikai crawlability-t, a Schema.org JSON-LD entitásokat és az AI válaszmotorokban (ChatGPT, Perplexity, Gemini) való idézhetőséget.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Milyen gyorsan készül el az audit?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Általában 3–5 munkanapon belül kézhez kapod a priorizált technikai és tartalmi javítási tervet — egyedi árajánlat alapján.",
+      },
+    },
+  ],
+};
+
 export default function SEOAuditAIMuhelyLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
@@ -94,6 +117,12 @@ export default function SEOAuditAIMuhelyLayout({ children }: { children: React.R
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(breadcrumbSchema).replace(/</g, "\\u003c"),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqSchema).replace(/</g, "\\u003c"),
         }}
       />
       {children}

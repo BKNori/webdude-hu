@@ -1,4 +1,6 @@
 import Hero from "@/components/Hero";
+import Link from "next/link";
+import DirectAnswerBlock from "@/components/molecules/DirectAnswerBlock";
 import { Metadata } from "next";
 import { buildBreadcrumbSchema, BreadcrumbItem } from "@/lib/breadcrumb";
 import { withLocale } from "@/lib/i18n";
@@ -74,8 +76,27 @@ export default function EnWooCommercePage() {
     areaServed: { "@type": "Country", name: "Hungary" },
   };
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: FAQ.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.a,
+      },
+    })),
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqSchema).replace(/</g, "\\u003c"),
+        }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -105,18 +126,12 @@ export default function EnWooCommercePage() {
           />
 
           {/* Direct Answer Block - AEO optimised "WooCommerce Webshop Overview" */}
-          <section className="relative py-12 bg-[#F1F5F9] dark:bg-bg-base border-y border-slate-200/80 dark:border-white/5">
-            <div className="max-w-4xl mx-auto px-6 text-center">
-              <p className="text-base md:text-lg text-[#334155] dark:text-slate-300 leading-relaxed">
-                <span className="text-[#0369A1] dark:text-[#00B5F1] font-semibold">
-                  WebDude WooCommerce development:
-                </span>{" "}
-                16 years of experience in WooCommerce webshop development and
-                optimisation. Conversion-focused e-commerce systems, payment
-                integrations and full support delivered as a remote partner worldwide.
-              </p>
-            </div>
-          </section>
+          <DirectAnswerBlock
+            id="en-woocommerce-direct-answer"
+            badgeLabel="Direct Answer"
+            question="How does WebDude build high-converting WooCommerce stores?"
+            answer="With 16 years of web development and 26 years of design experience, I build custom WooCommerce stores featuring fast Core Web Vitals, secure payment gateways, invoicing/ERP sync, and GDPR compliance — delivered as a remote partner worldwide."
+          />
 
           {/* FAQ Section */}
           <section className="py-24 border-t border-slate-200/80 dark:border-slate-800 relative z-10 bg-[#F8FAFC] dark:bg-transparent">
@@ -132,10 +147,7 @@ export default function EnWooCommercePage() {
 
               <div className="space-y-6">
                 {FAQ.map((faq, index) => (
-                  <div
-                    key={index}
-                    className="luminous-card rounded-2xl p-6"
-                  >
+                  <div key={index} className="luminous-card rounded-2xl p-6">
                     <h3 className="text-lg font-semibold text-[#0369A1] dark:text-[#00B5F1] mb-3">
                       {faq.q}
                     </h3>
@@ -148,17 +160,66 @@ export default function EnWooCommercePage() {
             </div>
           </section>
 
+          {/* Related Services & Case Studies */}
+          <section className="py-16 border-t border-slate-200/80 dark:border-slate-800 relative z-10 bg-[#F8FAFC] dark:bg-transparent">
+            <div className="max-w-6xl mx-auto px-6">
+              <h2 className="text-2xl md:text-3xl font-bold text-[#0F172A] dark:text-white mb-6 text-center">
+                Related E-commerce & Growth Solutions
+              </h2>
+              <div className="grid md:grid-cols-3 gap-6">
+                <Link
+                  href="/en/services/web-development"
+                  className="luminous-card p-6 rounded-2xl block hover:border-[#0369A1]/50 dark:hover:border-[#00B5F1]/50 transition-colors"
+                >
+                  <h3 className="text-lg font-bold text-[#0369A1] dark:text-[#00B5F1] mb-2">
+                    Custom Web Development
+                  </h3>
+                  <p className="text-sm text-[#334155] dark:text-slate-400">
+                    Next.js 16 headless storefronts and ultra-fast corporate web
+                    platforms.
+                  </p>
+                </Link>
+                <Link
+                  href="/en/services/seo-optimization"
+                  className="luminous-card p-6 rounded-2xl block hover:border-[#0369A1]/50 dark:hover:border-[#00B5F1]/50 transition-colors"
+                >
+                  <h3 className="text-lg font-bold text-[#0369A1] dark:text-[#00B5F1] mb-2">
+                    E-commerce SEO & AEO
+                  </h3>
+                  <p className="text-sm text-[#334155] dark:text-slate-400">
+                    Product schema, organic category growth and AI answer engine
+                    visibility.
+                  </p>
+                </Link>
+                <Link
+                  href="/en/portfolio"
+                  className="luminous-card p-6 rounded-2xl block hover:border-[#0369A1]/50 dark:hover:border-[#00B5F1]/50 transition-colors"
+                >
+                  <h3 className="text-lg font-bold text-[#0369A1] dark:text-[#00B5F1] mb-2">
+                    View Store Case Studies
+                  </h3>
+                  <p className="text-sm text-[#334155] dark:text-slate-400">
+                    Discover BTShop (+40% conversion) and Nedel Market ERP
+                    integration.
+                  </p>
+                </Link>
+              </div>
+            </div>
+          </section>
+
           {/* CTA */}
           <section className="py-24 md:py-32 text-center relative z-10 bg-[#EAF1FA] dark:bg-transparent">
             <div className="max-w-2xl mx-auto px-6">
               <h2 className="text-3xl md:text-5xl font-bold text-[#0F172A] dark:text-white mb-6">
                 Start your{" "}
-                <span className="text-[#0369A1] dark:text-[#00B5F1] italic">e-commerce</span>{" "}
+                <span className="text-[#0369A1] dark:text-[#00B5F1] italic">
+                  e-commerce
+                </span>{" "}
                 journey
               </h2>
               <p className="text-[#334155] dark:text-slate-400 mb-10 text-lg">
-                Request a free consultation and let&apos;s discuss your online store
-                needs.
+                Request a free consultation and let&apos;s discuss your online
+                store needs.
               </p>
               <a
                 href="/en#contact"

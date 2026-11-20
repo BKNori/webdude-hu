@@ -1,4 +1,5 @@
 import ProductPortalCta from "@/components/molecules/ProductPortalCta";
+import DirectAnswerBlock from "@/components/molecules/DirectAnswerBlock";
 import SEOAuditHeroBanner from "@/components/organisms/SEOAuditHeroBanner";
 import ProofBarSection from "@/components/organisms/ProofBarSection";
 import AEOImpactSection from "@/components/organisms/AEOImpactSection";
@@ -9,6 +10,12 @@ export default function SEOAuditProPage() {
       <div className="min-h-screen bg-bg-base">
         {/* Hero-Banner Section */}
         <SEOAuditHeroBanner />
+
+        <DirectAnswerBlock
+          id="seo-audit-pro-direct-answer"
+          question="Mit nyújt az SEO & AEO Audit Pro vállalkozásoknak?"
+          answer="Teljes körű technikai SEO, Core Web Vitals és AEO (Answer Engine Optimization) diagnosztika 26 év grafikai és 16 év webfejlesztői tapasztalattal. Nem sablonos automatikus exportot kapsz, hanem kézzel ellenőrzött Schema.org, indexelési és konverziós akciótervet egyedi árajánlat alapján."
+        />
 
         {/* Proof-Bar Section */}
         <ProofBarSection />
@@ -27,13 +34,13 @@ export default function SEOAuditProPage() {
                 <strong className="text-[#0369A1] dark:text-[#00B5F1]">
                   26 év grafikai és 16 év webfejlesztői rutin
                 </strong>{" "}
-                - minden auditunk a gyakorlati tapasztalatunkon alapul. Nem
+                — minden auditom a gyakorlati tapasztalatomon alapul. Nem
                 automatizált eszköz, hanem szakértői elemzés.
               </p>
               <p className="text-lg leading-relaxed">
                 A hagyományos SEO halott. Az entitás-alapú keresőoptimalizálás
-                és az AEO (Answer Engine Optimization) a jövő. Mi nem csak
-                rangsorolunk, mi domináljuk a válaszokat.
+                és az AEO (Answer Engine Optimization) a jövő. Én nem csak
+                rangsorolok, hanem dominálom a válaszokat.
               </p>
               <div className="grid md:grid-cols-2 gap-4 mt-8">
                 <div className="luminous-card rounded-lg p-4">

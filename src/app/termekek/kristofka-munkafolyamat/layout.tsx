@@ -81,6 +81,29 @@ const breadcrumbSchema = buildBreadcrumbSchema([
   { name: "Kristófka Munkafolyamat", url: "/termekek/kristofka-munkafolyamat" },
 ]);
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Mire használható a Kristófka Munkafolyamat?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Ingatlanfejlesztési és befektetési projektekhez generál strukturált befektetői pitch anyagot PDF alaprajzokból és kontextus-paraméterekből, 72%-kal csökkentve az előkészítési időt.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Testreszabható más iparágakra is ez a Strategist-Pro workflow?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Igen, a többlépcsős dokumentum-elemző és ajánlatgeneráló AI pipeline bármilyen B2B tanácsadói vagy projektalapú iparágra adaptálható egyedi árajánlat alapján.",
+      },
+    },
+  ],
+};
+
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
@@ -94,6 +117,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(breadcrumbSchema).replace(/</g, "\\u003c"),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqSchema).replace(/</g, "\\u003c"),
         }}
       />
       {children}

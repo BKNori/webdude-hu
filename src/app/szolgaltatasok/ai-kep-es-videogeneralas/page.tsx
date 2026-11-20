@@ -148,6 +148,7 @@ export default async function AiMediaPage() {
           <SectionTitle
             center
             eyebrow="Szolgáltatás"
+            as="h1"
             title="AI Kép- és Videógenerálás"
             description="Generatív AI megoldások marketing assetek automatikus előállításához: képek, videók, grafikák és kreatív anyagok skálázható, gyors és költséghatékony folyamatokkal."
             className="mx-auto"
