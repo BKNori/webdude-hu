@@ -3,10 +3,12 @@ import PortfolioHero from "@/components/molecules/PortfolioHero";
 import { works as staticWorks } from "@/data/works";
 import { buildBreadcrumbSchema, BreadcrumbItem } from "@/lib/breadcrumb";
 import { withLocale } from "@/lib/i18n";
+import { getDictionary } from "@/lib/dictionary";
 
 export const revalidate = 3600; // 1 hour ISR cache
 
 export default async function EnPortfolioPage() {
+  const dictionary = await getDictionary("en");
   const breadcrumbItems: BreadcrumbItem[] = [
     { name: "Home", url: withLocale("/", "en") },
     { name: "Portfolio", url: withLocale("/munkak", "en") },
@@ -52,7 +54,10 @@ export default async function EnPortfolioPage() {
         ctaHref="/en/contact"
       />
       <div className="max-w-6xl mx-auto px-6 py-20">
-        <PortfolioGrid projects={staticWorks} />
+        <PortfolioGrid
+          projects={staticWorks}
+          caseStudyLabel={dictionary.portfolio.caseStudyLabel}
+        />
       </div>
     </div>
   );

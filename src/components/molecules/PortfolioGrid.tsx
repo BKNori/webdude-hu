@@ -12,6 +12,7 @@ import { Work } from "@/types/work";
 interface PortfolioCardProps {
   project: Work;
   index: number;
+  caseStudyLabel: string;
 }
 
 /**
@@ -19,7 +20,7 @@ interface PortfolioCardProps {
  * pointer-követő fény és rugó-fizikás 3D dőlés (spring tilt).
  * A `featured: true` projektek a Bento Gridben kétszeres szélességet kapnak.
  */
-function PortfolioCard({ project, index }: PortfolioCardProps) {
+function PortfolioCard({ project, index, caseStudyLabel }: PortfolioCardProps) {
   const shouldReduceMotion = useHydratedReducedMotion();
   const cardRef = useRef<HTMLElement>(null);
 
@@ -175,7 +176,7 @@ function PortfolioCard({ project, index }: PortfolioCardProps) {
               {kpiHighlight}
             </span>
             <span className="inline-flex shrink-0 items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#334155] dark:text-slate-300 transition-colors group-hover:text-[#0369A1] dark:group-hover:text-[#00B5F1]">
-              Esettanulmány
+              {caseStudyLabel}
               <ArrowUpRight
                 aria-hidden="true"
                 className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1"
@@ -188,7 +189,13 @@ function PortfolioCard({ project, index }: PortfolioCardProps) {
   );
 }
 
-export default function PortfolioGrid({ projects }: { projects: Work[] }) {
+export default function PortfolioGrid({
+  projects,
+  caseStudyLabel = "Esettanulmány",
+}: {
+  projects: Work[];
+  caseStudyLabel?: string;
+}) {
   return (
     <div className="relative">
       {/* Mesh grid háttér — Electric Cyan */}
@@ -206,7 +213,12 @@ export default function PortfolioGrid({ projects }: { projects: Work[] }) {
           a grid-flow-row-dense automatikusan kitölti a réseket, így nincs hézag. */}
       <div className="relative grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8 grid-flow-row-dense">
         {projects.map((project, index) => (
-          <PortfolioCard key={project.id} project={project} index={index} />
+          <PortfolioCard
+            key={project.id}
+            project={project}
+            index={index}
+            caseStudyLabel={caseStudyLabel}
+          />
         ))}
       </div>
     </div>

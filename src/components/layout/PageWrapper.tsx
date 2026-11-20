@@ -6,28 +6,22 @@ import HeaderNavClient from "../molecules/HeaderNavClient";
 import Footer from "../organisms/Footer";
 import WebDudeChat from "../organisms/WebDudeChat";
 import CookieConsent from "../organisms/CookieConsent";
-import { Dictionary } from "@/types/dictionary";
-import { getDictionarySync } from "@/lib/dictionary";
+import type { GlobalDictionary, Language } from "@/types/dictionary";
 
 interface PageWrapperProps {
   children: React.ReactNode;
-  dictionary?: Dictionary;
+  dictionaries: Record<Language, GlobalDictionary>;
 }
 
 export default function PageWrapper({
   children,
-  dictionary: dictionaryProp,
+  dictionaries,
 }: PageWrapperProps) {
   const pathname = usePathname();
   const isAdmin = pathname.startsWith("/admin");
 
-  // Calculate current language from pathname
-  const currentLang = pathname.startsWith("/en") ? "en" : "hu";
-
-  // A szótár forrása MINDIG a pathname alapjú feloldás (a root layout csak a
-  // HU szótárat adja át — /en alatt ezért a szinkron felülírja). Így a
-  // Header/Footer és a navigáció automatikusan angolul jelenik meg /en alatt.
-  const dictionary = getDictionarySync(currentLang) ?? dictionaryProp;
+  const currentLang: Language = pathname.startsWith("/en") ? "en" : "hu";
+  const globalDict = dictionaries[currentLang];
 
   if (isAdmin) {
     return (
@@ -39,13 +33,13 @@ export default function PageWrapper({
 
   return (
     <div className="relative z-10 flex flex-col min-h-screen max-w-[100vw] overflow-x-hidden">
-      <HeaderNavClient dictionary={dictionary} currentLang={currentLang} />
+      <HeaderNavClient dictionary={globalDict} currentLang={currentLang} />
       <main id="main-content" tabIndex={-1} className="grow pt-20">
         {children}
       </main>
-      <Footer dictionary={dictionary?.footer} />
-      <WebDudeChat />
-      <CookieConsent />
+      <Footer dictionary={globalDict.footer} />
+      <WebDudeChat dictionary={globalDict.chat} locale={currentLang} />
+      <CookieConsent dictionary={globalDict.cookie} />
     </div>
   );
 }

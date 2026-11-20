@@ -1,5 +1,4 @@
 {
-
   "home": {
     "meta": {
       "title": "Weboldal készítés, SEO és WordPress fejlesztés | WebDude",
@@ -34,8 +33,14 @@
             "30 napos hibajavítási garancia",
             "Fix árak, fix határidők"
           ],
-          "cta1": { "label": "Beszéljük át a projekted", "href": "/kapcsolat" },
-          "cta2": { "label": "Referenciák megtekintése", "href": "/munkak" },
+          "cta1": {
+            "label": "Beszéljük át a projekted",
+            "href": "/kapcsolat"
+          },
+          "cta2": {
+            "label": "Referenciák megtekintése",
+            "href": "/munkak"
+          },
           "bgImage": "/assets/banners/webdude-hero.webp",
           "bgAlt": "WebDude — Weboldal készítés, WordPress, SEO és grafikai tervezés Kecskemétről",
           "ratingText": "47+ elégedett ügyfél"
@@ -58,7 +63,10 @@
             "Mobil-első, akadálymentes design",
             "Biztonságos felhő architektúra"
           ],
-          "cta1": { "label": "Egyedi árajánlat kérése", "href": "/kapcsolat" },
+          "cta1": {
+            "label": "Egyedi árajánlat kérése",
+            "href": "/kapcsolat"
+          },
           "cta2": {
             "label": "Webshop fejlesztés részletei",
             "href": "/szolgaltatasok/webshop-fejlesztes"
@@ -85,13 +93,55 @@
             "Azonnali produktivitási ugrás",
             "Modern, jövőbiztos infrastruktúra"
           ],
-          "cta1": { "label": "AI Megoldások felfedezése", "href": "/szolgaltatasok" },
-          "cta2": { "label": "Prompt sablonok", "href": "/portal/prompt-sablonok" },
+          "cta1": {
+            "label": "AI Megoldások felfedezése",
+            "href": "/szolgaltatasok"
+          },
+          "cta2": {
+            "label": "Prompt sablonok",
+            "href": "/portal/prompt-sablonok"
+          },
           "bgImage": "/assets/banners/webdude banner 2000x1000.webp",
           "bgAlt": "WebDude — AI Prompt Platform",
           "ratingText": "100% egyedi AI integráció"
         }
-      ]
+      ],
+      "experienceYearsDesign": "26+ év",
+      "experienceLabelDesign": "grafika",
+      "experienceYearsDev": "16+ év",
+      "experienceLabelDev": "webfejlesztés",
+      "dashboard": {
+        "liveAriaLabel": "Élő rendszer",
+        "liveText": "Live",
+        "cards": [
+          {
+            "id": "traffic",
+            "label": "Organikus forgalom",
+            "value": "+184%",
+            "sub": "6 hónap alatt"
+          },
+          {
+            "id": "conversion",
+            "label": "Konverzió növekedés",
+            "value": "+40%",
+            "sub": "A/B tesztelés után"
+          },
+          {
+            "id": "lighthouse",
+            "label": "Lighthouse Score",
+            "value": "97 / 100",
+            "sub": "Core Web Vitals"
+          }
+        ],
+        "techBadges": [
+          "Next.js 16",
+          "React 19",
+          "AI Automation",
+          "Grafika"
+        ],
+        "floatingTopText": "Lighthouse 97/100",
+        "floatingBottomText": "Új lead érkezett"
+      }
     },
     "snapshot": {
       "ariaLabel": "Szakmai háttér és szakterületek",
@@ -126,10 +176,22 @@
         "Figma Design"
       ],
       "stats": [
-        { "label": "Év grafikai tervezés", "value": "26+" },
-        { "label": "Év webfejlesztés", "value": "16+" },
-        { "label": "Átlagos értékelés", "value": "4.9/5" },
-        { "label": "Átlagos válaszidő", "value": "24h" }
+        {
+          "label": "Év grafikai tervezés",
+          "value": "26+"
+        },
+        {
+          "label": "Év webfejlesztés",
+          "value": "16+"
+        },
+        {
+          "label": "Átlagos értékelés",
+          "value": "4.9/5"
+        },
+        {
+          "label": "Átlagos válaszidő",
+          "value": "24h"
+        }
       ]
     },
     "system": {
@@ -141,7 +203,10 @@
         "suffix": " weboldal?"
       },
       "subtitle": "4 atomi fázis — auditot követő AI-tervezéstől az élesítésig, mérhető KPI-okkal minden lépésnél.",
-      "cta": { "label": "Egyedi árajánlat kérése", "href": "/kapcsolat" },
+      "cta": {
+        "label": "Egyedi árajánlat kérése",
+        "href": "/kapcsolat"
+      },
       "steps": [
         {
           "id": "audit",
@@ -188,7 +253,11 @@
           "title": "Weboldal készítés",
           "description": "Prémium, villámgyors weboldalak és webshopok — Next.js 16, WordPress vagy teljesen egyedi fejlesztésben. Beépített SEO, Schema.org JSON-LD és Firebase backend.",
           "directAnswer": "Mennyi idő alatt készül el? 2–6 hét, a projekt komplexitásától függően.",
-          "tags": ["Egyedi fejlesztés", "Lighthouse 95+", "Mobile-first"],
+          "tags": [
+            "Egyedi fejlesztés",
+            "Lighthouse 95+",
+            "Mobile-first"
+          ],
           "features": [
             "LCP < 2.5s garantálva",
             "Biztonságos, karbantartható kód",
@@ -202,8 +271,14 @@
           "title": "WordPress fejlesztés",
           "description": "Egyedi WordPress témák, WooCommerce webshopok és plugin fejlesztés. Gyors, biztonságos, karbantartható — saját admin felülettel.",
           "directAnswer": "WordPress vagy egyedi weboldal? WordPress KKV-knak, egyedi fejlesztés komplexebb rendszerekhez.",
-          "tags": ["WordPress", "WooCommerce", "Egyedi téma"],
-          "features": ["Könnyű szerkeszthetőség"],
+          "tags": [
+            "WordPress",
+            "WooCommerce",
+            "Egyedi téma"
+          ],
+          "features": [
+            "Könnyű szerkeszthetőség"
+          ],
           "href": "/szolgaltatasok/wordpress-fejlesztes"
         },
         {
@@ -212,8 +287,14 @@
           "title": "SEO optimalizálás",
           "description": "Technikai SEO audit, tartalom-optimalizálás és AEO (AI-keresők számára) — hogy megtaláljanak Google-on és ChatGPT-n is.",
           "directAnswer": "Mikor lesznek SEO eredmények? 3–6 hónapon belül mérhető organikus forgalom-növekedés.",
-          "tags": ["Technikai SEO", "Kulcsszó stratégia", "AEO / AI Search"],
-          "features": ["+40–180% organikus forgalom (mért)"],
+          "tags": [
+            "Technikai SEO",
+            "Kulcsszó stratégia",
+            "AEO / AI Search"
+          ],
+          "features": [
+            "+40–180% organikus forgalom (mért)"
+          ],
           "href": "/szolgaltatasok/seo-optimalizalas"
         },
         {
@@ -222,8 +303,15 @@
           "title": "Grafikai tervezés",
           "description": "26 éves grafikai tapasztalattal: logó, arculattervezés, nyomdai anyagok és UI/UX design — pixel-perfect minőségben, Adobe CC és Figma eszközökkel.",
           "directAnswer": "Mit tartalmaz az arculattervezés? Logó, színpaletta, tipográfia, brand book és alkalmazott grafikai elemek.",
-          "tags": ["Logó & Arculat", "UI/UX Design", "Nyomdai anyagok"],
-          "features": ["26 év grafikai rutin", "Nyomtatásra kész anyagok"],
+          "tags": [
+            "Logó & Arculat",
+            "UI/UX Design",
+            "Nyomdai anyagok"
+          ],
+          "features": [
+            "26 év grafikai rutin",
+            "Nyomtatásra kész anyagok"
+          ],
           "href": "/munkak"
         }
       ],
@@ -233,7 +321,11 @@
         "title": "AI Automatizáció",
         "description": "OpenAI GPT-4, Groq LLM integráció, AI chatbot és CRM automatizáció. Kevesebb manualitás, több lead — meglévő vállalkozásodra ráépítve.",
         "directAnswer": "Kinek ajánlott az AI automatizáció? Olyan vállalkozásoknak, akik ismétlődő folyamataikat szeretnék hatékonyabbá tenni.",
-        "tags": ["GPT-4 integráció", "Chatbot", "CRM automatizáció"],
+        "tags": [
+          "GPT-4 integráció",
+          "Chatbot",
+          "CRM automatizáció"
+        ],
         "href": "/szolgaltatasok/ai-prompt-engineering",
         "detailsLabel": "Részletek"
       },
@@ -277,11 +369,24 @@
           "title": "Webshop újratervezés — +40% konverzió",
           "description": "A btshop.hu B2B logisztikai webshop teljeskörű Next.js migrációja és UI/UX újratervezése. Eredmény: 40%-kal több megrendelés, Lighthouse 96/100, és 60%-kal jobb mobilos élmény.",
           "kpis": [
-            { "label": "Konverzió növekedés", "value": "+40%" },
-            { "label": "Lighthouse Score", "value": "96/100" },
-            { "label": "Mobilos javulás", "value": "+60%" }
+            {
+              "label": "Konverzió növekedés",
+              "value": "+40%"
+            },
+            {
+              "label": "Lighthouse Score",
+              "value": "96/100"
+            },
+            {
+              "label": "Mobilos javulás",
+              "value": "+60%"
+            }
           ],
-          "tags": ["Next.js", "WooCommerce Migration", "B2B Logisztika"],
+          "tags": [
+            "Next.js",
+            "WooCommerce Migration",
+            "B2B Logisztika"
+          ],
           "href": "/munkak",
           "imgPlaceholder": "B2B",
           "image": "/assets/portfolio/btshop/btshop-banner-2.webp"
@@ -294,11 +399,25 @@
           "title": "AI prompt platform — nulláról 3 hónap alatt",
           "description": "Az AI-Prompt.hu platform teljes tervezése és fejlesztése: React 19 alapú UI, Groq LLM integráció, user portal és lead-generáló automatizáció. 180 nap alatt stabil, bevételt termelő rendszer.",
           "kpis": [
-            { "label": "Organikus forgalom", "value": "+184%" },
-            { "label": "AI automatizáció", "value": "9 eszköz" },
-            { "label": "Build idő", "value": "3 hónap" }
+            {
+              "label": "Organikus forgalom",
+              "value": "+184%"
+            },
+            {
+              "label": "AI automatizáció",
+              "value": "9 eszköz"
+            },
+            {
+              "label": "Build idő",
+              "value": "3 hónap"
+            }
           ],
-          "tags": ["React 19", "Groq LLM", "Firebase", "Lead Gen"],
+          "tags": [
+            "React 19",
+            "Groq LLM",
+            "Firebase",
+            "Lead Gen"
+          ],
           "href": "/munkak",
           "imgPlaceholder": "AI",
           "image": "/assets/portfolio/ai-promt-hu/ai-promt-hi-banner-2.webp"
@@ -379,7 +498,10 @@
           "description": "A projekt átadása nem a vége, hanem az eleje — opcionális havi support és karbantartás is elérhető."
         }
       ],
-      "cta": { "label": "Ismerj meg jobban", "href": "/szia-norbi-vagyok" }
+      "cta": {
+        "label": "Ismerj meg jobban",
+        "href": "/szia-norbi-vagyok"
+      }
     },
     "faq": {
       "ariaLabel": "Gyakran ismételt kérdések — Weboldal, WordPress, SEO, Grafika",
@@ -445,16 +567,22 @@
       "eyebrow": "VÉGÜL",
       "title": "Készen állsz a szintlépésre?",
       "subtitle": "Indítsd be a projektedet még ma!",
-      "cta": { "label": "Kérj ajánlatot", "href": "/kapcsolat" }
+      "cta": {
+        "label": "Kérj ajánlatot",
+        "href": "/kapcsolat"
+      }
     }
   },
-
-    "common": {
+  "common": {
     "title": "WebDude",
     "description": "Full-stack webfejlesztés, AI workflow és agent rendszerek — egy kézből. 26 év tapasztalat, Next.js 16, React 19, Tailwind v4, Firebase alapú prémium megoldások.",
     "loading": "Betöltés...",
     "error": "Hiba történt",
-    "skipToContent": "Ugrás a fő tartalomra"
+    "skipToContent": "Ugrás a fő tartalomra",
+    "themeToggle": {
+      "toLight": "Váltás világos módra",
+      "toDark": "Váltás sötét módra"
+    }
   },
   "nav": {
     "home": "Főoldal",
@@ -487,24 +615,72 @@
     "address": "Kecskemét, Magyarország",
     "description": "Prémium webfejlesztés, grafikai tervezés és AI automatizáció országosan.",
     "serviceLinkItems": [
-      { "label": "Weboldal Készítés", "href": "/szolgaltatasok/weboldal-keszites" },
-      { "label": "WordPress Karbantartás", "href": "/szolgaltatasok/wordpress-karbantartas" },
-      { "label": "Weboldal Gyorsítás", "href": "/szolgaltatasok/weboldal-sebessegoptimalizalas" },
-      { "label": "Technikai SEO Audit", "href": "/szolgaltatasok/technikai-seo-audit" },
-      { "label": "Webshop Fejlesztés", "href": "/szolgaltatasok/webshop-fejlesztes" },
-      { "label": "WordPress Fejlesztés", "href": "/szolgaltatasok/wordpress-fejlesztes" },
-      { "label": "WordPress Biztonság", "href": "/szolgaltatasok/wordpress-biztonsag" },
-      { "label": "Weboldal Felújítás", "href": "/szolgaltatasok/weboldal-felujitas" },
-      { "label": "Helyi SEO (Kecskemét)", "href": "/weboldal-keszites-kecskemet" },
-      { "label": "Arculattervezés & Logó", "href": "/szolgaltatasok/arculattervezes" },
-      { "label": "SEO Optimalizálás", "href": "/szolgaltatasok/seo-optimalizalas" },
-      { "label": "AI Workflow & Integráció", "href": "/szolgaltatasok/ai-workflow-kialakitas" }
+      {
+        "label": "Weboldal Készítés",
+        "href": "/szolgaltatasok/weboldal-keszites"
+      },
+      {
+        "label": "WordPress Karbantartás",
+        "href": "/szolgaltatasok/wordpress-karbantartas"
+      },
+      {
+        "label": "Weboldal Gyorsítás",
+        "href": "/szolgaltatasok/weboldal-sebessegoptimalizalas"
+      },
+      {
+        "label": "Technikai SEO Audit",
+        "href": "/szolgaltatasok/technikai-seo-audit"
+      },
+      {
+        "label": "Webshop Fejlesztés",
+        "href": "/szolgaltatasok/webshop-fejlesztes"
+      },
+      {
+        "label": "WordPress Fejlesztés",
+        "href": "/szolgaltatasok/wordpress-fejlesztes"
+      },
+      {
+        "label": "WordPress Biztonság",
+        "href": "/szolgaltatasok/wordpress-biztonsag"
+      },
+      {
+        "label": "Weboldal Felújítás",
+        "href": "/szolgaltatasok/weboldal-felujitas"
+      },
+      {
+        "label": "Helyi SEO (Kecskemét)",
+        "href": "/weboldal-keszites-kecskemet"
+      },
+      {
+        "label": "Arculattervezés & Logó",
+        "href": "/szolgaltatasok/arculattervezes"
+      },
+      {
+        "label": "SEO Optimalizálás",
+        "href": "/szolgaltatasok/seo-optimalizalas"
+      },
+      {
+        "label": "AI Workflow & Integráció",
+        "href": "/szolgaltatasok/ai-workflow-kialakitas"
+      }
     ],
     "quickLinkItems": [
-      { "label": "Rólam", "href": "/szia-norbi-vagyok" },
-      { "label": "Munkáim", "href": "/munkak" },
-      { "label": "Hírek", "href": "/hirek" },
-      { "label": "Kapcsolat", "href": "/kapcsolat" }
+      {
+        "label": "Rólam",
+        "href": "/szia-norbi-vagyok"
+      },
+      {
+        "label": "Munkáim",
+        "href": "/munkak"
+      },
+      {
+        "label": "Hírek",
+        "href": "/hirek"
+      },
+      {
+        "label": "Kapcsolat",
+        "href": "/kapcsolat"
+      }
     ]
   },
   "language": {
@@ -544,5 +720,109 @@
       "faqTitle": "Mennyibe kerül egy weboldal?",
       "faqSection": "Gyakori Kérdések"
     }
+  },
+  "cookie": {
+    "ariaLabel": "Cookie-k és analitika beállítások",
+    "title": "Cookie-k és Analitika",
+    "description": "Sütiket használok a felhasználói élmény javításához és a weboldal forgalmának elemzéséhez. Az adatok segítenek jobb szolgáltatást nyújtani.",
+    "moreInfo": "További információ:",
+    "privacyPolicy": "Adatvédelmi Szabályzat",
+    "privacyHref": "/adatvedelmi-szabalyzat",
+    "accept": "Elfogadom",
+    "decline": "Elutasítom"
+  },
+  "chat": {
+    "triggerAriaLabel": "WebDude AI Asszisztens megnyitása",
+    "closeAriaLabel": "Bezárás",
+    "title": "WebDude Asszisztens",
+    "subtitle": "Projekt Előkészítés",
+    "welcomeDefault": "Szia! Én vagyok Norbi mesterséges projekt-előkészítő asszisztense. Segítek megismerni a korábbi munkáimat és rögzíteni a projekttervedet.",
+    "welcomeWordPress": "Szia! Látom, a WordPress karbantartás érdekel. Szeretnéd, ha átnézném a weboldalad biztonságát?",
+    "promptDefault": "Milyen terület iránt érdeklődsz leginkább?",
+    "promptWordPress": "Miben segíthetek a WordPress oldalad kapcsán?",
+    "quickReplies": [
+      {
+        "text": "SaaS / Webapp fejlesztés",
+        "category": "saas"
+      },
+      {
+        "text": "WordPress / Webshop",
+        "category": "wordpress"
+      },
+      {
+        "text": "Prémium arculattervezés",
+        "category": "design"
+      },
+      {
+        "text": "Vállalati AI automatizáció",
+        "category": "ai"
+      }
+    ],
+    "wpQuickReplies": [
+      {
+        "text": "WordPress biztonsági ellenőrzést szeretnék",
+        "category": "wordpress"
+      },
+      {
+        "text": "Szeretném gyorsabbá tenni a weboldalam",
+        "category": "wordpress"
+      },
+      {
+        "text": "Érdekel a napi automatizált mentés",
+        "category": "wordpress"
+      },
+      {
+        "text": "Kérnék egy egyedi karbantartási tervet",
+        "category": "wordpress"
+      }
+    ],
+    "fetchingPortfolio": "Referenciák lekérése...",
+    "featuredPortfolioTitle": "Kiemelt Referenciák:",
+    "viewProjectLabel": "Megtekintés",
+    "noPortfolioFound": "Nem találtam az adott kategóriában referenciát.",
+    "savingLead": "Projektterv elmentése...",
+    "leadSavedTitle": "Lead elmentve!",
+    "leadSavedSubtitle": "Norbi 24 órán belül felveszi a kapcsolatot.",
+    "genericError": "Valami hiba történt. Kérlek, próbáld meg újra!",
+    "placeholderSending": "Válasz küldése...",
+    "placeholderIdle": "Írj egy üzenetet...",
+    "sendAriaLabel": "Küldés"
+  },
+  "contact": {
+    "tabQuote": "Részletes ajánlatkérés",
+    "tabSimple": "Egyszerű üzenet",
+    "formTitle": "Közvetlen üzenet",
+    "successTitle": "Sikeres üzenetküldés!",
+    "successDescription": "Köszönöm az érdeklődést, Norbi hamarosan (általában 24 órán belül) felveszi veled a kapcsolatot a megadott email címen.",
+    "newMessageButton": "Új üzenet küldése",
+    "submittingLabel": "Küldés folyamatban...",
+    "submitButton": "Üzenet Küldése →",
+    "fields": {
+      "nameLabel": "Neved",
+      "namePlaceholder": "Kovács János",
+      "emailLabel": "Email címed",
+      "emailPlaceholder": "janos@ceged.hu",
+      "projectTypeLabel": "Projekt típusa",
+      "projectTypePlaceholder": "Válassz projekt típust...",
+      "messageLabel": "Üzenet (Projekt rövid leírása)",
+      "messagePlaceholder": "Mesélj röviden a megvalósítandó ötletről..."
+    },
+    "projectTypes": {
+      "webdesign": "Weboldal tervezés",
+      "webfejlesztes": "Webfejlesztés",
+      "wordpress": "WordPress projekt",
+      "grafikai": "Grafikai tervezés",
+      "ai": "AI megoldás",
+      "egyeb": "Egyéb"
+    },
+    "validation": {
+      "nameMin": "A névnek legalább 2 karakterből kell állnia!",
+      "emailInvalid": "Kérlek, érvényes email címet adj meg!",
+      "projectTypeRequired": "Kérlek, válassz projekt típust!",
+      "messageMin": "Az üzenetnek legalább 10 karakterből kell állnia!"
+    }
+  },
+  "portfolio": {
+    "caseStudyLabel": "Esettanulmány"
   }
 }

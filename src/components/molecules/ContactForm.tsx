@@ -6,24 +6,46 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { submitContactForm } from "@/actions/contact";
 import { trackEvent } from "@/lib/analytics";
+import type { ContactFormContent } from "@/types/dictionary";
 
-// Zod séma a kapcsolatfelvételi űrlap validálásához
-const contactSchema = z.object({
-  name: z
-    .string()
-    .min(2, { message: "A névnek legalább 2 karakterből kell állnia!" }),
-  email: z.string().email({ message: "Kérlek, érvényes email címet adj meg!" }),
-  projectType: z
-    .string()
-    .min(1, { message: "Kérlek, válassz projekt típust!" }),
-  message: z
-    .string()
-    .min(10, { message: "Az üzenetnek legalább 10 karakterből kell állnia!" }),
-});
+function buildContactSchema(validation?: ContactFormContent["validation"]) {
+  return z.object({
+    name: z.string().min(2, {
+      message:
+        validation?.nameMin ?? "A névnek legalább 2 karakterből kell állnia!",
+    }),
+    email: z.string().email({
+      message:
+        validation?.emailInvalid ?? "Kérlek, érvényes email címet adj meg!",
+    }),
+    projectType: z.string().min(1, {
+      message:
+        validation?.projectTypeRequired ?? "Kérlek, válassz projekt típust!",
+    }),
+    message: z.string().min(10, {
+      message:
+        validation?.messageMin ??
+        "Az üzenetnek legalább 10 karakterből kell állnia!",
+    }),
+  });
+}
 
-type ContactFormData = z.infer<typeof contactSchema>;
+type ContactFormData = {
+  name: string;
+  email: string;
+  projectType: string;
+  message: string;
+};
 
-export default function ContactForm() {
+interface ContactFormProps {
+  dictionary?: ContactFormContent;
+}
+
+export default function ContactForm({ dictionary }: ContactFormProps) {
+  const contactSchema = React.useMemo(
+    () => buildContactSchema(dictionary?.validation),
+    [dictionary?.validation]
+  );
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState<boolean | null>(null);
 
@@ -104,24 +126,24 @@ export default function ContactForm() {
             </svg>
           </div>
           <h3 className="text-2xl font-black text-[#0369A1] dark:text-sky-500">
-            Sikeres üzenetküldés!
+            {dictionary?.successTitle ?? "Sikeres üzenetküldés!"}
           </h3>
           <p className="text-[#334155] dark:text-slate-300 max-w-sm mx-auto text-sm leading-relaxed">
-            Köszönöm az érdeklődést, Norbi hamarosan (általában 24 órán belül)
-            felveszi veled a kapcsolatot a megadott email címen.
+            {dictionary?.successDescription ??
+              "Köszönöm az érdeklődést, Norbi hamarosan (általában 24 órán belül) felveszi veled a kapcsolatot a megadott email címen."}
           </p>
           <button
             type="button"
             onClick={() => setSubmitSuccess(null)}
             className="mt-6 px-6 py-3 bg-[#0369A1]/10 dark:bg-sky-500/10 border border-[#0369A1] dark:border-sky-500 text-[#0369A1] dark:text-sky-400 hover:bg-[#0369A1] dark:hover:bg-sky-500 hover:text-white dark:hover:text-slate-950 rounded-xl font-bold text-xs uppercase tracking-wider transition-all duration-300"
           >
-            Új üzenet küldése
+            {dictionary?.newMessageButton ?? "Új üzenet küldése"}
           </button>
         </div>
       ) : (
         <>
           <h3 className="text-2xl font-black mb-8 text-[#0F172A] dark:text-text-primary relative z-10">
-            Közvetlen üzenet
+            {dictionary?.formTitle ?? "Közvetlen üzenet"}
           </h3>
           <form
             onSubmit={handleSubmit(onSubmit, onError)}
@@ -133,12 +155,12 @@ export default function ContactForm() {
                 htmlFor="name"
                 className="text-xs uppercase tracking-widest font-bold mb-2 block text-[#475569] dark:text-slate-400"
               >
-                Neved
+                {dictionary?.fields.nameLabel ?? "Neved"}
               </label>
               <input
                 id="name"
                 type="text"
-                placeholder="Kovács János"
+                placeholder={dictionary?.fields.namePlaceholder ?? "Kovács János"}
                 aria-invalid={errors.name ? "true" : "false"}
                 {...register("name")}
                 className={`w-full bg-white dark:bg-[#0B1120]/60 border rounded-xl px-5 py-4 text-[#0F172A] dark:text-text-primary placeholder:text-slate-400 dark:placeholder:text-slate-500 outline-none transition-all duration-200 focus:ring-1 ${
@@ -160,12 +182,12 @@ export default function ContactForm() {
                 htmlFor="email"
                 className="text-xs uppercase tracking-widest font-bold mb-2 block text-[#475569] dark:text-slate-400"
               >
-                Email címed
+                {dictionary?.fields.emailLabel ?? "Email címed"}
               </label>
               <input
                 id="email"
                 type="email"
-                placeholder="janos@ceged.hu"
+                placeholder={dictionary?.fields.emailPlaceholder ?? "janos@ceged.hu"}
                 aria-invalid={errors.email ? "true" : "false"}
                 {...register("email")}
                 className={`w-full bg-white dark:bg-[#0B1120]/60 border rounded-xl px-5 py-4 text-[#0F172A] dark:text-text-primary placeholder:text-slate-400 dark:placeholder:text-slate-500 outline-none transition-all duration-200 focus:ring-1 ${
@@ -187,7 +209,7 @@ export default function ContactForm() {
                 htmlFor="projectType"
                 className="text-xs uppercase tracking-widest font-bold mb-2 block text-[#475569] dark:text-slate-400"
               >
-                Projekt típusa
+                {dictionary?.fields.projectTypeLabel ?? "Projekt típusa"}
               </label>
               <select
                 id="projectType"
@@ -203,43 +225,43 @@ export default function ContactForm() {
                   value=""
                   className="bg-white dark:bg-[#0F172A] text-[#0F172A] dark:text-slate-100"
                 >
-                  Válassz projekt típust...
+                  {dictionary?.fields.projectTypePlaceholder ?? "Válassz projekt típust..."}
                 </option>
                 <option
                   value="webdesign"
                   className="bg-white dark:bg-[#0F172A] text-[#0F172A] dark:text-slate-100"
                 >
-                  Weboldal tervezés
+                  {dictionary?.projectTypes.webdesign ?? "Weboldal tervezés"}
                 </option>
                 <option
                   value="webfejlesztes"
                   className="bg-white dark:bg-[#0F172A] text-[#0F172A] dark:text-slate-100"
                 >
-                  Webfejlesztés
+                  {dictionary?.projectTypes.webfejlesztes ?? "Webfejlesztés"}
                 </option>
                 <option
                   value="wordpress"
                   className="bg-white dark:bg-[#0F172A] text-[#0F172A] dark:text-slate-100"
                 >
-                  WordPress projekt
+                  {dictionary?.projectTypes.wordpress ?? "WordPress projekt"}
                 </option>
                 <option
                   value="grafikai"
                   className="bg-white dark:bg-[#0F172A] text-[#0F172A] dark:text-slate-100"
                 >
-                  Grafikai tervezés
+                  {dictionary?.projectTypes.grafikai ?? "Grafikai tervezés"}
                 </option>
                 <option
                   value="ai"
                   className="bg-white dark:bg-[#0F172A] text-[#0F172A] dark:text-slate-100"
                 >
-                  AI megoldás
+                  {dictionary?.projectTypes.ai ?? "AI megoldás"}
                 </option>
                 <option
                   value="egyeb"
                   className="bg-white dark:bg-[#0F172A] text-[#0F172A] dark:text-slate-100"
                 >
-                  Egyéb
+                  {dictionary?.projectTypes.egyeb ?? "Egyéb"}
                 </option>
               </select>
               {errors.projectType && (
@@ -255,12 +277,15 @@ export default function ContactForm() {
                 htmlFor="message"
                 className="text-xs uppercase tracking-widest font-bold mb-2 block text-[#475569] dark:text-slate-400"
               >
-                Üzenet (Projekt rövid leírása)
+                {dictionary?.fields.messageLabel ?? "Üzenet (Projekt rövid leírása)"}
               </label>
               <textarea
                 id="message"
                 rows={5}
-                placeholder="Mesélj röviden a megvalósítandó ötletről..."
+                placeholder={
+                  dictionary?.fields.messagePlaceholder ??
+                  "Mesélj röviden a megvalósítandó ötletről..."
+                }
                 aria-invalid={errors.message ? "true" : "false"}
                 {...register("message")}
                 className={`w-full bg-white dark:bg-[#0B1120]/60 border rounded-xl px-5 py-4 text-[#0F172A] dark:text-text-primary placeholder:text-slate-400 dark:placeholder:text-slate-500 outline-none transition-all duration-200 focus:ring-1 ${
@@ -304,10 +329,10 @@ export default function ContactForm() {
                       d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                     ></path>
                   </svg>
-                  Küldés folyamatban...
+                  {dictionary?.submittingLabel ?? "Küldés folyamatban..."}
                 </>
               ) : (
-                "Üzenet Küldése →"
+                dictionary?.submitButton ?? "Üzenet Küldése →"
               )}
             </button>
           </form>

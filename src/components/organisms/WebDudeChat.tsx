@@ -6,6 +6,7 @@ import type { UIMessage as Message } from "ai";
 import { DefaultChatTransport } from "ai";
 import { motion, AnimatePresence } from "motion/react";
 import { usePathname } from "next/navigation";
+import type { ChatContent, Language } from "@/types/dictionary";
 
 // Spacings and physics matching DESIGN_SYSTEM.md cinematic spring style
 const cinematicTransition = {
@@ -22,14 +23,22 @@ const cinematicTransition = {
  * tiltja az emoji-használatot a prémium pozicionálás miatt — az
  * ikonográfiát a `lucide-react` vektoros ikonok adják.
  */
-const quickReplies = [
+const defaultQuickReplies = [
   { text: "SaaS / Webapp fejlesztés", category: "saas" },
   { text: "WordPress / Webshop", category: "wordpress" },
   { text: "Prémium arculattervezés", category: "design" },
   { text: "Vállalati AI automatizáció", category: "ai" },
 ];
 
-export default function WebDudeChat() {
+interface WebDudeChatProps {
+  dictionary?: ChatContent;
+  locale?: Language;
+}
+
+export default function WebDudeChat({
+  dictionary,
+  locale = "hu",
+}: WebDudeChatProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState("");
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -39,6 +48,7 @@ export default function WebDudeChat() {
   const { messages, status, sendMessage, error } = useChat({
     transport: new DefaultChatTransport({
       api: "/api/chat",
+      body: { locale },
     }),
   });
 
@@ -49,7 +59,7 @@ export default function WebDudeChat() {
   );
 
   const currentQuickReplies = isWordPressPage
-    ? [
+    ? (dictionary?.wpQuickReplies ?? [
         {
           text: "WordPress biztonsági ellenőrzést szeretnék",
           category: "wordpress",
@@ -66,8 +76,8 @@ export default function WebDudeChat() {
           text: "Kérnék egy egyedi karbantartási tervet",
           category: "wordpress",
         },
-      ]
-    : quickReplies;
+      ])
+    : (dictionary?.quickReplies ?? defaultQuickReplies);
 
   // Refs to prevent event listener stale closure issues
   const messagesRef = useRef(messages);
@@ -164,7 +174,7 @@ export default function WebDudeChat() {
         className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-linear-to-r from-[#075985] to-[#5B21B6] text-white border border-slate-200 dark:border-slate-700 shadow-lg shadow-sky-900/20 dark:shadow-sky-500/20 hover:from-[#0369A1] hover:to-[#6D28D9] transition-all focus:outline-none focus:ring-2 focus:ring-[#0369A1] dark:focus:ring-sky-500/50 cursor-pointer"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
-        aria-label="WebDude AI Asszisztens megnyitása"
+        aria-label={dictionary?.triggerAriaLabel ?? "WebDude AI Asszisztens megnyitása"}
       >
         <AnimatePresence mode="wait">
           {isOpen ? (
@@ -251,17 +261,17 @@ export default function WebDudeChat() {
                 </div>
                 <div>
                   <h3 className="font-bold text-sm text-[#0F172A] dark:text-text-primary">
-                    WebDude Asszisztens
+                    {dictionary?.title ?? "WebDude Asszisztens"}
                   </h3>
                   <p className="text-[10px] uppercase tracking-wider text-[#475569] dark:text-slate-400 font-semibold">
-                    Projekt Előkészítés
+                    {dictionary?.subtitle ?? "Projekt Előkészítés"}
                   </p>
                 </div>
               </div>
               <button
                 onClick={() => setIsOpen(false)}
                 className="rounded-lg p-1.5 text-[#475569] dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-bg-elevated hover:text-[#0F172A] dark:hover:text-text-primary transition-colors cursor-pointer"
-                aria-label="Bezárás"
+                aria-label={dictionary?.closeAriaLabel ?? "Bezárás"}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -287,13 +297,17 @@ export default function WebDudeChat() {
                   <div className="text-center space-y-3 px-2">
                     <p className="text-[#334155] dark:text-slate-400 text-sm leading-relaxed mt-4">
                       {isWordPressPage
-                        ? "Szia! Látom, a WordPress karbantartás érdekel. Szeretnéd, ha átnézném a weboldalad biztonságát?"
-                        : "Szia! Én vagyok Norbi mesterséges projekt-előkészítő asszisztense. Segíthetek megismerni a korábbi munkáinkat és rögzíteni a projekttervedet."}
+                        ? (dictionary?.welcomeWordPress ??
+                            "Szia! Látom, a WordPress karbantartás érdekel. Szeretnéd, ha átnézném a weboldalad biztonságát?")
+                        : (dictionary?.welcomeDefault ??
+                            "Szia! Én vagyok Norbi mesterséges projekt-előkészítő asszisztense. Segítek megismerni a korábbi munkáimat és rögzíteni a projekttervedet.")}
                     </p>
                     <p className="text-xs text-[#0369A1] dark:text-sky-400 font-medium">
                       {isWordPressPage
-                        ? "Miben segíthetek a WordPress oldalad kapcsán?"
-                        : "Milyen terület iránt érdeklődsz leginkább?"}
+                        ? (dictionary?.promptWordPress ??
+                            "Miben segíthetek a WordPress oldalad kapcsán?")
+                        : (dictionary?.promptDefault ??
+                            "Milyen terület iránt érdeklődsz leginkább?")}
                     </p>
                   </div>
 
@@ -380,12 +394,12 @@ export default function WebDudeChat() {
                                         d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                                       />
                                     </svg>
-                                    <span>Referenciák lekérése...</span>
+                                    <span>{dictionary?.fetchingPortfolio ?? "Referenciák lekérése..."}</span>
                                   </div>
                                 ) : (
                                   <div className="space-y-2">
                                     <span className="text-[11px] uppercase tracking-wider font-bold text-[#0369A1] dark:text-sky-400 block">
-                                      Kiemelt Referenciák:
+                                      {dictionary?.featuredPortfolioTitle ?? "Kiemelt Referenciák:"}
                                     </span>
                                     {toolPart.output?.items &&
                                     toolPart.output.items.length > 0 ? (
@@ -420,7 +434,7 @@ export default function WebDudeChat() {
                                                   href={`/munkak#${item.slug}`}
                                                   className="inline-flex items-center gap-1 text-[10px] text-[#0369A1] dark:text-sky-400 font-semibold mt-2 hover:underline"
                                                 >
-                                                  Megtekintés
+                                                  {dictionary?.viewProjectLabel ?? "Megtekintés"}
                                                   <svg
                                                     xmlns="http://www.w3.org/2000/svg"
                                                     fill="none"
@@ -443,8 +457,8 @@ export default function WebDudeChat() {
                                       </div>
                                     ) : (
                                       <span className="text-xs text-[#475569] dark:text-slate-500 italic">
-                                        Nem találtunk az adott kategóriában
-                                        referenciát.
+                                        {dictionary?.noPortfolioFound ??
+                                          "Nem találtam az adott kategóriában referenciát."}
                                       </span>
                                     )}
                                   </div>
@@ -492,7 +506,7 @@ export default function WebDudeChat() {
                                         d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                                       />
                                     </svg>
-                                    <span>Projektterv elmentése...</span>
+                                    <span>{dictionary?.savingLead ?? "Projektterv elmentése..."}</span>
                                   </div>
                                 ) : (
                                   <div className="rounded-xl bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-200 dark:border-emerald-500/30 p-3 text-center">
@@ -511,11 +525,11 @@ export default function WebDudeChat() {
                                           d="M4.5 12.75l6 6 9-13.5"
                                         />
                                       </svg>
-                                      Lead elmentve!
+                                      {dictionary?.leadSavedTitle ?? "Lead elmentve!"}
                                     </span>
                                     <span className="text-[10px] text-[#334155] dark:text-slate-400 mt-1 block">
-                                      Norbi 24 órán belül felveszi a
-                                      kapcsolatot.
+                                      {dictionary?.leadSavedSubtitle ??
+                                        "Norbi 24 órán belül felveszi a kapcsolatot."}
                                     </span>
                                   </div>
                                 )}
@@ -556,7 +570,8 @@ export default function WebDudeChat() {
                   className="rounded-xl bg-red-50 dark:bg-red-500/10 border border-red-200 dark:border-red-500/20 p-3 text-center text-xs text-red-700 dark:text-red-400"
                 >
                   {error.message ||
-                    "Valami hiba történt. Kérlek, próbáld meg újra!"}
+                    (dictionary?.genericError ??
+                      "Valami hiba történt. Kérlek, próbáld meg újra!")}
                 </div>
               )}
 
@@ -574,7 +589,9 @@ export default function WebDudeChat() {
                   value={input}
                   onChange={handleInputChange}
                   placeholder={
-                    isLoading ? "Válasz küldése..." : "Írj egy üzenetet..."
+                    isLoading
+                      ? (dictionary?.placeholderSending ?? "Válasz küldése...")
+                      : (dictionary?.placeholderIdle ?? "Írj egy üzenetet...")
                   }
                   disabled={isLoading}
                   className="w-full rounded-xl bg-white dark:bg-transparent border border-slate-300 dark:border-bg-elevated text-[#0F172A] dark:text-text-primary placeholder:text-slate-500 dark:placeholder:text-slate-400 px-4 py-3 pr-12 text-sm focus:border-[#0369A1] dark:focus:border-sky-500/50 focus:ring-1 focus:ring-[#0369A1] dark:focus:ring-sky-500/50 outline-none transition-all disabled:opacity-55"
@@ -583,7 +600,7 @@ export default function WebDudeChat() {
                   type="submit"
                   disabled={!input.trim() || isLoading}
                   className="absolute right-2.5 top-1/2 -translate-y-1/2 flex h-8 w-8 items-center justify-center rounded-lg bg-[#0369A1] dark:bg-sky-500 text-white dark:text-slate-950 font-bold uppercase transition-all duration-300 hover:bg-violet-700 hover:text-white disabled:bg-slate-200 dark:disabled:bg-bg-elevated disabled:text-slate-500 cursor-pointer disabled:cursor-not-allowed"
-                  aria-label="Küldés"
+                  aria-label={dictionary?.sendAriaLabel ?? "Küldés"}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

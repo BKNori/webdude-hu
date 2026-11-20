@@ -1,4 +1,9 @@
-import { DEFAULT_LANGUAGE, Dictionary, Language } from "@/types/dictionary";
+import {
+  DEFAULT_LANGUAGE,
+  Dictionary,
+  GlobalDictionary,
+  Language,
+} from "@/types/dictionary";
 import { localeFromPathname } from "@/lib/i18n";
 import huDictionary from "@/dictionaries/hu.json";
 import enDictionary from "@/dictionaries/en.json";
@@ -31,6 +36,20 @@ export function getDictionarySync(
   lang: Language = DEFAULT_LANGUAGE
 ): Dictionary {
   return DICTIONARIES[lang] ?? DICTIONARIES[DEFAULT_LANGUAGE];
+}
+
+/**
+ * Könnyűsúlyú globális szótár-szelet (csak nav, footer, cookie, chat, common),
+ * hogy a RootLayout ne küldje át a teljes főoldali tartalmat a kliens bundle-be.
+ */
+export function pickGlobalDictionary(dict: Dictionary): GlobalDictionary {
+  return {
+    common: dict.common,
+    nav: dict.nav,
+    footer: dict.footer,
+    cookie: dict.cookie,
+    chat: dict.chat,
+  };
 }
 
 /**

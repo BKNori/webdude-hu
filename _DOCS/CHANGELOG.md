@@ -1,5 +1,15 @@
 # Changelog
 
+## [7.73.0] — 2026-11-20 — Teljes i18n Paritás, Könnyűsúlyú Globális Szótár & `check:i18n` Automatizáció
+
+- **Könnyűsúlyú Globális Szótár-átadás (`RootLayout` → `PageWrapper`):**
+  - [src/lib/dictionary.ts](file:///c:/CLI-PROJECTS/webdude-hu/src/lib/dictionary.ts) (`pickGlobalDictionary` + `GlobalDictionary`), [src/app/layout.tsx](file:///c:/CLI-PROJECTS/webdude-hu/src/app/layout.tsx) és [src/components/layout/PageWrapper.tsx](file:///c:/CLI-PROJECTS/webdude-hu/src/components/layout/PageWrapper.tsx): a `getDictionarySync` kliens-import eltávolítva; a `RootLayout` kizárólag a globális szeleteket (`common`, `nav`, `footer`, `cookie`, `chat`) adja át `{ hu, en }` bontásban a `PageWrapper`-nek.
+- **100%-os Szótár-bekötés & Angol CRO/AEO/Dual Theme Javítások:**
+  - Bővítve a [src/types/dictionary.ts](file:///c:/CLI-PROJECTS/webdude-hu/src/types/dictionary.ts), [hu.json](file:///c:/CLI-PROJECTS/webdude-hu/src/dictionaries/hu.json) és [en.json](file:///c:/CLI-PROJECTS/webdude-hu/src/dictionaries/en.json): `common.themeToggle`, `home.hero.experience*`, `home.hero.dashboard`, `cookie`, `chat`, `contact`, `portfolio`.
+  - Bekötve: [HeroSectionNew.tsx](file:///c:/CLI-PROJECTS/webdude-hu/src/components/organisms/HeroSectionNew.tsx), [HeroDashboardMockup.tsx](file:///c:/CLI-PROJECTS/webdude-hu/src/components/molecules/HeroDashboardMockup.tsx), [CookieConsent.tsx](file:///c:/CLI-PROJECTS/webdude-hu/src/components/organisms/CookieConsent.tsx) (magyar többesszám is javítva), [WebDudeChat.tsx](file:///c:/CLI-PROJECTS/webdude-hu/src/components/organisms/WebDudeChat.tsx) + [api/chat/route.ts](file:///c:/CLI-PROJECTS/webdude-hu/src/app/api/chat/route.ts) (`locale` paraméter alapú angol válaszadás), [ContactForm.tsx](file:///c:/CLI-PROJECTS/webdude-hu/src/components/molecules/ContactForm.tsx), [ContactFormWrapper.tsx](file:///c:/CLI-PROJECTS/webdude-hu/src/components/organisms/ContactFormWrapper.tsx), [PortfolioGrid.tsx](file:///c:/CLI-PROJECTS/webdude-hu/src/components/molecules/PortfolioGrid.tsx), valamint `en/services/woocommerce-development/page.tsx` (`"local payment gateways"`).
+- **Automatizált i18n-őr & Dokumentáció:**
+  - Létrehozva a [scripts/check-i18n.js](file:///c:/CLI-PROJECTS/webdude-hu/scripts/check-i18n.js) (`npm run check:i18n`), a [dictionary.test.ts](file:///c:/CLI-PROJECTS/webdude-hu/src/lib/__tests__/dictionary.test.ts) Jest teszt és a [_docs/I18N_GUIDE.md](file:///c:/CLI-PROJECTS/webdude-hu/_docs/I18N_GUIDE.md) 3 lépéses útmutató.
+
 ## [7.72.2] — 2026-11-20 — Repo Takarítás & Next.js 16 `proxy.ts` Migráció
 
 - **Repo takarítás:** Törölve a felesleges, 2,6 MB-os duplikált `public/assets/szolgaltatasok/ai-workflow-architektura.jpg` forrásfájl.

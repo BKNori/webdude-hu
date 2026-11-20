@@ -25,12 +25,11 @@ import {
 import LanguageSwitcher from "./LanguageSwitcher";
 import AuthStatusBadge from "./AuthStatusBadge";
 import ThemeToggle from "@/components/atoms/ThemeToggle";
-import { Language } from "@/types/dictionary";
-import { getLanguageFromPathname } from "@/lib/dictionary";
-import { Dictionary } from "@/types/dictionary";
+import { Dictionary, GlobalDictionary, Language } from "@/types/dictionary";
+import { localeFromPathname } from "@/lib/i18n";
 
 interface HeaderNavClientProps {
-  dictionary?: Dictionary;
+  dictionary?: GlobalDictionary | Dictionary;
   currentLang?: Language;
 }
 import {
@@ -91,7 +90,7 @@ export default function HeaderNavClient({
   const [isScrolled, setIsScrolled] = useState(false);
   const [showTopBar, setShowTopBar] = useState(true);
   const pathname = usePathname();
-  const detectedLang = getLanguageFromPathname(pathname);
+  const detectedLang = localeFromPathname(pathname);
   const actualLang = currentLang || detectedLang;
   const isEn = actualLang === "en";
 

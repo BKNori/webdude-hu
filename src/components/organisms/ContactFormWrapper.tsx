@@ -5,8 +5,15 @@ import { motion, AnimatePresence } from "motion/react";
 import QuoteRequestForm from "@/components/organisms/QuoteRequestForm";
 import ContactForm from "@/components/molecules/ContactForm";
 import { MessageSquare, ClipboardList } from "lucide-react";
+import type { ContactFormContent } from "@/types/dictionary";
 
-export default function ContactFormWrapper() {
+interface ContactFormWrapperProps {
+  dictionary?: ContactFormContent;
+}
+
+export default function ContactFormWrapper({
+  dictionary,
+}: ContactFormWrapperProps) {
   const [activeForm, setActiveForm] = useState<"quote" | "simple">("quote");
 
   return (
@@ -21,11 +28,11 @@ export default function ContactFormWrapper() {
               ? "bg-[#0369A1] dark:bg-[#00B5F1] text-white dark:text-slate-950 shadow-[0_4px_12px_rgba(3,105,161,0.2)] dark:shadow-[0_4px_12px_rgba(0,181,241,0.2)]"
               : "text-[#334155] dark:text-slate-300 hover:text-[#0F172A] dark:hover:text-white hover:bg-white/60 dark:hover:bg-white/5"
           }`}
-          aria-label="Részletes ajánlatkérés"
+          aria-label={dictionary?.tabQuote ?? "Részletes ajánlatkérés"}
           aria-pressed={activeForm === "quote"}
         >
           <ClipboardList className="w-4 h-4" />
-          Részletes ajánlatkérés
+          {dictionary?.tabQuote ?? "Részletes ajánlatkérés"}
         </button>
         <button
           type="button"
@@ -35,11 +42,11 @@ export default function ContactFormWrapper() {
               ? "bg-[#0369A1] dark:bg-[#00B5F1] text-white dark:text-slate-950 shadow-[0_4px_12px_rgba(3,105,161,0.2)] dark:shadow-[0_4px_12px_rgba(0,181,241,0.2)]"
               : "text-[#334155] dark:text-slate-300 hover:text-[#0F172A] dark:hover:text-white hover:bg-white/60 dark:hover:bg-white/5"
           }`}
-          aria-label="Egyszerű üzenet"
+          aria-label={dictionary?.tabSimple ?? "Egyszerű üzenet"}
           aria-pressed={activeForm === "simple"}
         >
           <MessageSquare className="w-4 h-4" />
-          Egyszerű üzenet
+          {dictionary?.tabSimple ?? "Egyszerű üzenet"}
         </button>
       </div>
 
@@ -64,7 +71,7 @@ export default function ContactFormWrapper() {
               exit={{ opacity: 0, y: -15 }}
               transition={{ duration: 0.25 }}
             >
-              <ContactForm />
+              <ContactForm dictionary={dictionary} />
             </motion.div>
           )}
         </AnimatePresence>

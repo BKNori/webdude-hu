@@ -214,13 +214,13 @@ export default function HeroSectionNew({ content }: HeroSectionNewProps) {
                   </div>
                   <span>
                     <strong className="text-[#0F172A] dark:text-white font-mono tabular-nums">
-                      26+ év
+                      {content.experienceYearsDesign}
                     </strong>{" "}
-                    grafika ·{" "}
+                    {content.experienceLabelDesign} ·{" "}
                     <strong className="text-[#0F172A] dark:text-white font-mono tabular-nums">
-                      16+ év
+                      {content.experienceYearsDev}
                     </strong>{" "}
-                    webfejlesztés —{" "}
+                    {content.experienceLabelDev} —{" "}
                     <span className="text-slate-600 dark:text-slate-400">{slide.ratingText}</span>
                   </span>
                 </div>
@@ -233,7 +233,7 @@ export default function HeroSectionNew({ content }: HeroSectionNewProps) {
             style={shouldReduceMotion ? undefined : { y: panelY }}
             className="relative flex items-center justify-center lg:justify-end"
           >
-            <HeroDashboardMockup />
+            <HeroDashboardMockup content={content.dashboard} />
           </motion.div>
         </div>
 

@@ -30,7 +30,7 @@ const FAQ = [
   },
   {
     q: "What payment methods do you integrate?",
-    a: "Barion, SimplePay, Stripe, PayPal, credit card, cash on delivery and SZÉP card. Every payment provider integrated with full compliance.",
+    a: "Barion, SimplePay, Stripe, PayPal, credit card, cash on delivery and local payment gateways. Every payment provider integrated with full compliance.",
   },
   {
     q: "Do you ensure webshop security?",

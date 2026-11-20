@@ -68,6 +68,7 @@ const chatMessageSchema = z
 
 const chatRequestBodySchema = z.object({
   messages: z.array(chatMessageSchema).min(1).max(40),
+  locale: z.enum(["hu", "en"]).optional(),
 });
 
 /** Hiba → felhasználóbarát kód + HTTP státusz. */
@@ -158,11 +159,16 @@ export async function POST(req: Request) {
     }
 
     const messages = parsedBody.data.messages as unknown as UIMessage[];
+    const locale = parsedBody.data.locale ?? "hu";
+    const languageInstruction =
+      locale === "en"
+        ? "\n- CRITICAL LANGUAGE RULE: The user is browsing the English version of the site (/en). You MUST respond exclusively in natural, professional English, using first-person singular (I / my) when referring to Norbi's work, and never mention fixed prices."
+        : "\n- NYELVI SZABÁLY: Magyarul válaszolj, tegeződve, egyes szám első személyben.";
 
     const result = await streamText({
       model: groq("openai/gpt-oss-120b"),
       messages: await convertToModelMessages(messages),
-      system: `Te a WebDude.hu digitális projektmenedzsere és lead minősítő asszisztense vagy.
+      system: `Te a WebDude.hu digitális projektmenedzsere és lead minősítő asszisztense vagy.${languageInstruction}
 A megbízód Norbi (WebDude), aki egy high-end digitális kézműves, fejlesztő és designer.
 Szakterületeid, amelyekben szolgáltatásokat kínálunk az ügyfeleknek:
 1. Egyedi SaaS/Webapp fejlesztés (Next.js 16, React 19, Tailwind CSS 4, Node.js standalone backend)

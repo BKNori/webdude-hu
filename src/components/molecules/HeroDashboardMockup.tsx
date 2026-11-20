@@ -3,6 +3,7 @@
 import React from "react";
 import { motion } from "motion/react";
 import { useHydratedReducedMotion } from "@/hooks/useMotionPreset";
+import type { HeroDashboardContent } from "@/types/dictionary";
 import {
   ArrowUpRight,
   BarChart3,
@@ -32,7 +33,17 @@ interface KpiCard {
   sub: string;
 }
 
-const dashboardCards: KpiCard[] = [
+interface HeroDashboardMockupProps {
+  content?: HeroDashboardContent;
+}
+
+const CARD_ICONS: Record<string, React.ElementType> = {
+  traffic: TrendingUp,
+  conversion: BarChart3,
+  lighthouse: Zap,
+};
+
+const DEFAULT_DASHBOARD_CARDS: KpiCard[] = [
   {
     id: "traffic",
     icon: TrendingUp,
@@ -56,15 +67,26 @@ const dashboardCards: KpiCard[] = [
   },
 ];
 
-const techBadges = [
-  { label: "Next.js 16", icon: Globe },
-  { label: "React 19", icon: Code2 },
-  { label: "AI Automation", icon: Bot },
-  { label: "Grafika", icon: Palette },
-];
+const BADGE_ICONS = [Globe, Code2, Bot, Palette];
+const DEFAULT_BADGE_LABELS = ["Next.js 16", "React 19", "AI Automation", "Grafika"];
 
-export default function HeroDashboardMockup() {
+export default function HeroDashboardMockup({ content }: HeroDashboardMockupProps) {
   const shouldReduceMotion = useHydratedReducedMotion();
+
+  const dashboardCards: KpiCard[] = content?.cards?.length
+    ? content.cards.map((c) => ({
+        ...c,
+        icon: CARD_ICONS[c.id] ?? TrendingUp,
+      }))
+    : DEFAULT_DASHBOARD_CARDS;
+
+  const badgeLabels = content?.techBadges?.length
+    ? content.techBadges
+    : DEFAULT_BADGE_LABELS;
+  const techBadges = badgeLabels.map((label, idx) => ({
+    label,
+    icon: BADGE_ICONS[idx % BADGE_ICONS.length],
+  }));
 
   return (
     <motion.div
@@ -100,13 +122,13 @@ export default function HeroDashboardMockup() {
           </span>
           <div
             className="flex items-center gap-1.5 text-[10px] text-emerald-700 dark:text-emerald-400 font-bold uppercase tracking-wider"
-            aria-label="Élő rendszer"
+            aria-label={content?.liveAriaLabel ?? "Élő rendszer"}
           >
             <span
               className="w-1.5 h-1.5 rounded-full bg-emerald-600 dark:bg-emerald-400 hero-pulse-dot"
               aria-hidden="true"
             />
-            Live
+            {content?.liveText ?? "Live"}
           </div>
         </div>
 
@@ -193,7 +215,7 @@ export default function HeroDashboardMockup() {
       >
         <div className="px-4 py-3 rounded-2xl border border-sky-300 bg-white/95 text-[#0369A1] shadow-[0_8px_28px_rgba(3,105,161,0.14)] dark:border-sky-500/40 dark:border-t-white/25 dark:bg-[#0F172A]/90 backdrop-blur-md dark:text-sky-300 text-xs font-bold flex items-center gap-2 dark:shadow-[0_8px_32px_rgba(0,181,241,0.18)]">
           <CheckCircle2 className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" aria-hidden="true" />
-          Lighthouse 97/100
+          {content?.floatingTopText ?? "Lighthouse 97/100"}
         </div>
       </motion.div>
 
@@ -216,7 +238,7 @@ export default function HeroDashboardMockup() {
       >
         <div className="px-4 py-3 rounded-2xl border border-sky-300 bg-white/95 text-[#0369A1] shadow-[0_8px_28px_rgba(3,105,161,0.14)] dark:border-[#00B5F1]/30 dark:border-t-white/25 dark:bg-[#0F172A]/90 backdrop-blur-md dark:text-[#00B5F1] text-xs font-bold flex items-center gap-2 dark:shadow-[0_8px_32px_rgba(0,181,241,0.18)]">
           <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
-          Új lead érkezett
+          {content?.floatingBottomText ?? "Új lead érkezett"}
         </div>
       </motion.div>
     </motion.div>

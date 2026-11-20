@@ -1,8 +1,10 @@
 import ContactFormWrapper from "@/components/organisms/ContactFormWrapper";
 import Hero from "@/components/Hero";
 import { Mail, Phone, MapPin } from "lucide-react";
+import { getDictionary } from "@/lib/dictionary";
 
-export default function EnContactPage() {
+export default async function EnContactPage() {
+  const dictionary = await getDictionary("en");
   return (
     <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#0B1120] text-[#0F172A] dark:text-[#F8FAFC]">
       <Hero
@@ -109,7 +111,7 @@ export default function EnContactPage() {
                 hours!
               </p>
             </div>
-            <ContactFormWrapper />
+            <ContactFormWrapper dictionary={dictionary.contact} />
           </div>
         </div>
       </section>

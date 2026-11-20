@@ -179,6 +179,22 @@ export interface HeroSlideContent {
   mockup?: HeroMockupContent;
 }
 
+export interface HeroDashboardCardContent {
+  id: string;
+  label: string;
+  value: string;
+  sub: string;
+}
+
+export interface HeroDashboardContent {
+  liveAriaLabel: string;
+  liveText: string;
+  cards: HeroDashboardCardContent[];
+  techBadges: string[];
+  floatingTopText: string;
+  floatingBottomText: string;
+}
+
 export interface HeroContent {
   ariaLabel: string;
   highlightsAriaLabel: string;
@@ -189,6 +205,11 @@ export interface HeroContent {
   prevLabel: string;
   nextLabel: string;
   scrollHint: string;
+  experienceYearsDesign: string;
+  experienceLabelDesign: string;
+  experienceYearsDev: string;
+  experienceLabelDev: string;
+  dashboard: HeroDashboardContent;
   slides: HeroSlideContent[];
 }
 
@@ -240,6 +261,85 @@ export interface LinkItem {
   href: string;
 }
 
+export interface CookieConsentContent {
+  ariaLabel: string;
+  title: string;
+  description: string;
+  moreInfo: string;
+  privacyPolicy: string;
+  privacyHref: string;
+  accept: string;
+  decline: string;
+}
+
+export interface ChatQuickReplyContent {
+  text: string;
+  category: string;
+}
+
+export interface ChatContent {
+  triggerAriaLabel: string;
+  closeAriaLabel: string;
+  title: string;
+  subtitle: string;
+  welcomeDefault: string;
+  welcomeWordPress: string;
+  promptDefault: string;
+  promptWordPress: string;
+  quickReplies: ChatQuickReplyContent[];
+  wpQuickReplies: ChatQuickReplyContent[];
+  fetchingPortfolio: string;
+  featuredPortfolioTitle: string;
+  viewProjectLabel: string;
+  noPortfolioFound: string;
+  savingLead: string;
+  leadSavedTitle: string;
+  leadSavedSubtitle: string;
+  genericError: string;
+  placeholderSending: string;
+  placeholderIdle: string;
+  sendAriaLabel: string;
+}
+
+export interface ContactFormContent {
+  tabQuote: string;
+  tabSimple: string;
+  formTitle: string;
+  successTitle: string;
+  successDescription: string;
+  newMessageButton: string;
+  submittingLabel: string;
+  submitButton: string;
+  fields: {
+    nameLabel: string;
+    namePlaceholder: string;
+    emailLabel: string;
+    emailPlaceholder: string;
+    projectTypeLabel: string;
+    projectTypePlaceholder: string;
+    messageLabel: string;
+    messagePlaceholder: string;
+  };
+  projectTypes: {
+    webdesign: string;
+    webfejlesztes: string;
+    wordpress: string;
+    grafikai: string;
+    ai: string;
+    egyeb: string;
+  };
+  validation: {
+    nameMin: string;
+    emailInvalid: string;
+    projectTypeRequired: string;
+    messageMin: string;
+  };
+}
+
+export interface PortfolioContent {
+  caseStudyLabel: string;
+}
+
 export interface Dictionary {
   /** Főoldal tartalom — a natív JSON i18n SSOT-ja. */
   home: HomeContent;
@@ -249,6 +349,10 @@ export interface Dictionary {
     loading: string;
     error: string;
     skipToContent: string;
+    themeToggle: {
+      toLight: string;
+      toDark: string;
+    };
   };
   nav: {
     home: string;
@@ -286,6 +390,10 @@ export interface Dictionary {
     /** Localizált gyorslinkek (locale-aware href-ekkel). */
     quickLinkItems: LinkItem[];
   };
+  cookie: CookieConsentContent;
+  chat: ChatContent;
+  contact: ContactFormContent;
+  portfolio: PortfolioContent;
   language: {
     switch: string;
     hungarian: string;
@@ -325,6 +433,11 @@ export interface Dictionary {
     };
   };
 }
+
+export type GlobalDictionary = Pick<
+  Dictionary,
+  "common" | "nav" | "footer" | "cookie" | "chat"
+>;
 
 export type Language = "hu" | "en";
 

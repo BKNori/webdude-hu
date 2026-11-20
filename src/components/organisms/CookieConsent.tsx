@@ -4,8 +4,13 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion } from "motion/react";
 import Button from "@/components/atoms/Button";
+import type { CookieConsentContent } from "@/types/dictionary";
 
-export default function CookieConsent() {
+interface CookieConsentProps {
+  dictionary?: CookieConsentContent;
+}
+
+export default function CookieConsent({ dictionary }: CookieConsentProps) {
   const [showConsent, setShowConsent] = useState(false);
   const [mounted, setMounted] = useState(false);
 
@@ -95,26 +100,25 @@ export default function CookieConsent() {
        */
       className="fixed bottom-4 left-4 right-4 md:left-8 md:right-8 z-30 pointer-events-none"
       role="dialog"
-      aria-label="Cookie-k és analitika beállítások"
+      aria-label={dictionary?.ariaLabel ?? "Cookie-k és analitika beállítások"}
     >
       <div className="max-h-[70vh] overflow-y-auto overscroll-contain bg-bg-surface border border-sky-500/50 rounded-2xl p-6 md:p-8 shadow-2xl backdrop-blur-xl bg-opacity-95 pointer-events-auto">
         <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6">
           <div className="flex-1">
             <h2 className="text-lg font-bold text-text-primary mb-2">
-              Cookie-k és Analitika
+              {dictionary?.title ?? "Cookie-k és Analitika"}
             </h2>
-            <p className="text-sm text-slate-400 mb-2">
-              Sütiket használunk a felhasználói élmény javításához és a weboldal
-              forgalmának elemzéséhez. Az adatok segítenek nekünk jobb
-              szolgáltatást nyújtani.
+            <p className="text-sm text-text-secondary mb-2">
+              {dictionary?.description ??
+                "Sütiket használok a felhasználói élmény javításához és a weboldal forgalmának elemzéséhez. Az adatok segítenek jobb szolgáltatást nyújtani."}
             </p>
-            <p className="text-xs text-slate-500">
-              További információ:{" "}
+            <p className="text-xs text-text-muted">
+              {dictionary?.moreInfo ?? "További információ:"}{" "}
               <Link
-                href="/adatvedelmi-szabalyzat"
-                className="text-sky-500 hover:text-violet-700 underline"
+                href={dictionary?.privacyHref ?? "/adatvedelmi-szabalyzat"}
+                className="text-[#0369A1] dark:text-sky-400 hover:text-violet-700 dark:hover:text-violet-300 underline"
               >
-                Adatvédelmi Szabályzat
+                {dictionary?.privacyPolicy ?? "Adatvédelmi Szabályzat"}
               </Link>
             </p>
           </div>
@@ -124,7 +128,7 @@ export default function CookieConsent() {
               variant="primary"
               className="flex-1 md:flex-none"
             >
-              Elfogadom
+              {dictionary?.accept ?? "Elfogadom"}
             </Button>
             <Button
               onClick={handleDecline}
@@ -132,7 +136,7 @@ export default function CookieConsent() {
               className="flex-1 md:flex-none"
               analyticsEvent="cookie_consent_declined"
             >
-              Elutasítom
+              {dictionary?.decline ?? "Elutasítom"}
             </Button>
           </div>
         </div>

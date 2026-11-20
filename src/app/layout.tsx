@@ -3,7 +3,7 @@ import { MotionConfig } from "motion/react";
 import PageWrapper from "../components/layout/PageWrapper";
 import Script from "next/script";
 import { getClarityScript } from "@/lib/clarity";
-import { getDictionary } from "@/lib/dictionary";
+import { getDictionary, pickGlobalDictionary } from "@/lib/dictionary";
 import {
   CANONICAL_LOCALBUSINESS_ENTITY,
   serializeJsonLd,
@@ -67,7 +67,14 @@ interface RootLayoutProps {
 }
 
 export default async function RootLayout({ children }: RootLayoutProps) {
-  const dictionary = await getDictionary("hu");
+  const [huDict, enDict] = await Promise.all([
+    getDictionary("hu"),
+    getDictionary("en"),
+  ]);
+  const globalDictionaries = {
+    hu: pickGlobalDictionary(huDict),
+    en: pickGlobalDictionary(enDict),
+  };
 
   return (
     <MotionConfig reducedMotion="user">
@@ -139,7 +146,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
           </div>
 
           {/* Fő tartalom réteg */}
-          <PageWrapper dictionary={dictionary}>{children}</PageWrapper>
+          <PageWrapper dictionaries={globalDictionaries}>{children}</PageWrapper>
         </body>
       </html>
     </MotionConfig>
