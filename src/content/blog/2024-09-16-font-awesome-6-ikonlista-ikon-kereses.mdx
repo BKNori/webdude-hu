@@ -1,7 +1,7 @@
 ---
 title: 'Font Awesome 6 Ikonlista és Ikonkereső: Webfejlesztői Útmutató'
 date: '2024-09-16'
-updatedAt: '2026-11-12'
+updatedAt: "2026-11-20"
 excerpt: >-
   Gyors és egyszerű Font Awesome 6 ikonkeresés webfejlesztőknek: osztálynevek,
   SVG beillesztés, CDN integráció és a legnépszerűbb UI ikonok gyűjteménye.
@@ -50,3 +50,17 @@ coverImage: "/assets/blog/covers/2024-09-16-font-awesome-6-ikonlista-ikon-kerese
 &nbsp;
 
 <input id="search-bar" type="text" placeholder="Search Font Awesome Icons..." />
+
+## Gyakori kérdések
+
+### Font Awesome betűtípust vagy inline SVG ikonokat érdemesebb használni teljesítmény szempontból?
+
+Modern Next.js projektekben én inline SVG komponenseket (pl. Lucide React) használok a teljes Font Awesome CSS/font csomag helyett, így nulla felesleges bájt és nulla CLS terheli az oldalt.
+
+### Hogyan tartható akadálymentesen (WCAG AA) az ikonok használata?
+
+A dekoratív ikonokat mindig `aria-hidden="true"` attribútummal rejtem el a képernyőolvasók elől, az önálló ikongombokhoz pedig egyértelmű `aria-label` szöveget adok.
+
+### Milyen előnye van az egységes ikonkészletnek a márkaarculatban?
+
+Az azonos vonalvastagságú és geometriájú ikonok professzionális, koherens felületet teremtenek, amely észrevétlenül segíti a felhasználói navigációt.

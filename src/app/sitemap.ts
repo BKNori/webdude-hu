@@ -469,10 +469,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const allPosts = await getCombinedBlogPosts();
     blogPosts = allPosts
       .filter((p) => p.noindex !== true)
-      .map((p) => ({
-        slug: p.slug,
-        date: p.date ? new Date(p.date) : BUILD_DATE,
-      }));
+      .map((p) => {
+        const rawLastMod = p.updatedAt || p.date;
+        const parsedLastMod = rawLastMod ? new Date(rawLastMod) : BUILD_DATE;
+        return {
+          slug: p.slug,
+          date: Number.isNaN(parsedLastMod.getTime())
+            ? BUILD_DATE
+            : parsedLastMod,
+        };
+      });
   } catch (e) {
     console.error("Error reading posts for sitemap:", e);
   }

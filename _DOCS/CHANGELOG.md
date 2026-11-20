@@ -1,5 +1,17 @@
 # Changelog
 
+## [7.77.0] — 2026-11-20 — SEO / AIO / GEO Rések Lezárása (`llms-full.txt`, RSS 2.0 `/feed.xml`, 28/28 Blog `FAQPage`)
+
+### Hozzáadva
+- **Teljes AI kontextus generátor ([scripts/generate-llms-full.js](file:///c:/CLI-PROJECTS/webdude-hu/scripts/generate-llms-full.js) & [public/llms-full.txt](file:///c:/CLI-PROJECTS/webdude-hu/public/llms-full.txt)):** Determinisztikus (0 AI-token költségű) script (`npm run generate:llms-full` a `package.json`-ban), amely egyetlen tiszta Markdown fájlba foglalja a HU + EN szolgáltatásokat, esettanulmány-eredményeket, főoldali GYIK-eket és mind a 28 indexelhető szakcikk `tldr` + kulcs-GYIK adatait (Zéró Fix Ár, E-E-A-T). A [public/llms.txt](file:///c:/CLI-PROJECTS/webdude-hu/public/llms.txt) bővítve a `llms-full.txt` és `feed.xml` hivatkozásokkal.
+- **Dinamikus RSS 2.0 hírfolyam ([src/app/feed.xml/route.ts](file:///c:/CLI-PROJECTS/webdude-hu/src/app/feed.xml/route.ts)):** `getCombinedBlogPosts()` alapú, `noindex` cikkeket kiszűrő RSS 2.0 XML végpont (`application/rss+xml; charset=utf-8`, biztonságos XML/CDATA escape).
+- **Látható GYIK + `FAQPage` JSON-LD 25 régebbi szakcikknél (`src/content/blog/*.mdx`):** Mind a 25 korábban GYIK nélküli indexelhető cikk végéhez additív módon (ZÉRÓ törléssel) hozzáfűzve 3–3 cikk-specifikus kérdés-válasz (`## Gyakori kérdések`, Zéró Fix Ár, egyes szám első személy) és `updatedAt: "2026-11-20"`, így mind a **28/28** indexelhető cikk rendelkezik látható GYIK-kal és automatikus `FAQPage` sémával.
+- **Playwright E2E ([e2e/v777-seo-feeds.spec.ts](file:///c:/CLI-PROJECTS/webdude-hu/e2e/v777-seo-feeds.spec.ts)):** `/llms-full.txt`, `/feed.xml`, `<link rel="alternate" type="application/rss+xml">`, régebbi cikk `FAQPage` séma és `Organization` `sameAs` ellenőrzése.
+
+### Módosítva
+- **RSS Autodiscovery & Proxy ([src/app/layout.tsx](file:///c:/CLI-PROJECTS/webdude-hu/src/app/layout.tsx), [src/proxy.ts](file:///c:/CLI-PROJECTS/webdude-hu/src/proxy.ts)):** `metadata.alternates.types` + explicit `<link rel="alternate" type="application/rss+xml" ... />` bekötés; `/feed.xml` és `/llms*` felvétele a proxy kivételek közé.
+- **Entitás & Sitemap szinkron ([src/lib/structuredData.ts](file:///c:/CLI-PROJECTS/webdude-hu/src/lib/structuredData.ts), [src/app/sitemap.ts](file:///c:/CLI-PROJECTS/webdude-hu/src/app/sitemap.ts)):** `CANONICAL_ORGANIZATION_ENTITY` bővítve a `sameAs` profillistával; blogcikkek `sitemap.ts` `lastModified` dátuma frissítve `p.updatedAt ?? p.date`-re.
+
 ## [7.76.0] — 2026-11-20 — Angol (/en) Felület Teljes Lezárása (/en/about, /en/privacy-policy, /en/terms & 0 Magyar Link)
 
 ### Hozzáadva

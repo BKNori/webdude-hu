@@ -69,6 +69,12 @@ export const CANONICAL_ORGANIZATION_ENTITY = {
     width: 1200,
     height: 630,
   },
+  sameAs: [
+    "https://www.facebook.com/webdude.hu",
+    "https://www.linkedin.com/company/webdude",
+    "https://twitter.com/webdude_hu",
+    "https://github.com/BKNori",
+  ],
   founder: CANONICAL_FOUNDER_REF,
 } as const;
 

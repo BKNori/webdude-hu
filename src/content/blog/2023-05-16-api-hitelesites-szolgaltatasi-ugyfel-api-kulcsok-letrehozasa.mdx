@@ -1,7 +1,7 @@
 ---
 title: 'Biztonságos API Hitelesítés: Szolgáltatási API Kulcsok Kezelése'
 date: '2023-05-16'
-updatedAt: '2026-11-12'
+updatedAt: "2026-11-20"
 excerpt: >-
   Hogyan hozzunk létre és tároljunk biztonságosan API kulcsokat a modern
   webfejlesztésben? Részletes útmutató fejlesztőknek a hash-elésről, rotációról
@@ -138,3 +138,17 @@ module.exports = myApplicationServiceClient;
  
 
 Forrás: authress.io
+
+## Gyakori kérdések
+
+### Miért veszélyes az API kulcsokat kliensoldali JavaScript kódban vagy Git repóban tárolni?
+
+Bármi, ami a böngészőbe kerülő bundle-ben szerepel, nyilvánosan kiolvasható, így illetéktelenek visszaélhetnek a kvótákkal vagy a backend adatokkal; én minden titkos kulcsot szigorúan szerveroldali környezeti változókban tartok.
+
+### Mikor válasszam az API kulcsot és mikor az OAuth / JWT tokent?
+
+Szerver-szerver kommunikációhoz megfelelőek a szigorúan korlátozott jogosultságú API kulcsok, míg felhasználói munkamenetekhez rövid élettartamú JWT vagy OAuth2 tokeneket alkalmazok.
+
+### Hogyan védek egy nyilvános Next.js végpontot a visszaélések ellen?
+
+Szerveroldali Zod validációval, rate limitinggel, kulcsrotációval és a minimálisan szükséges jogosultságok (least privilege) betartásával.

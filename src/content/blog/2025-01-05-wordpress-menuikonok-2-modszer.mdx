@@ -3,7 +3,7 @@ title: >-
   WordPress Menüikonok Beállítása: 2 Egyszerű Módszer CSS és Bővítmény
   Segítségével
 date: '2025-01-05'
-updatedAt: '2026-11-12'
+updatedAt: "2026-11-20"
 excerpt: >-
   Hogyan teheted látványosabbá és felhasználóbarátabbá a weboldalad navigációját
   menüikonokkal? Részletes útmutató Font Awesome kódolással és bővítményes
@@ -112,3 +112,17 @@ Menüikonok hozzáadása a WordPress webhelyéhez kiváló módja annak, hogy ja
 Ebből a cikkből két módszert tanult meg, hogyan adhat hozzá menüikonokat a WordPress navigációs menüjéhez:
 * <strong>Manuális kódolás</strong> – ez a módszer nagyobb rugalmasságot biztosít, de némi CSS-ismeretet igényel.
 * <strong>Menüikon-bővítmény használata</strong> – kezdőbarátabb módszer, de ne feledje, hogy túl sok beépülő modul használata lelassíthatja a WordPress webhelyét.
+
+## Gyakori kérdések
+
+### CSS-sel vagy dedikált bővítménnyel érdemesebb menüikonokat adni WordPressben?
+
+Ha csak néhány ikont szeretnél és fontos a maximális sebesség, az egyedi CSS osztály + inline SVG sokkal tisztább megoldás; bővítményt csak akkor ajánlok, ha a szerkesztők rendszeresen cserélik őket.
+
+### Okozhatnak-e a menüikonok mobilon elrendezési vagy kattinthatósági hibát?
+
+Igen, ha nincs megfelelő térköz és minimális érintési felület (44×44 px); ezért minden menümódosítást ellenőrzök mobil nézetben is.
+
+### Mire figyeljünk a menüikonok akadálymentességénél?
+
+A szöveg melletti ikonokra mindig kerüljön `aria-hidden="true"`, így a képernyőolvasók nem olvassák fel feleslegesen a dekoratív elemeket.

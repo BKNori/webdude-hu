@@ -4,7 +4,7 @@ import type { NextRequest } from "next/server";
 export function proxy(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
-  // Skip proxy for static files, API routes, and admin routes
+  // Skip proxy for static files, API routes, feeds, AI discovery, and admin routes
   if (
     pathname.startsWith("/_next") ||
     pathname.startsWith("/api") ||
@@ -13,6 +13,8 @@ export function proxy(request: NextRequest) {
     pathname.startsWith("/robots") ||
     pathname.startsWith("/sitemap") ||
     pathname.startsWith("/rss") ||
+    pathname.startsWith("/feed.xml") ||
+    pathname.startsWith("/llms") ||
     pathname.startsWith("/og") ||
     pathname.includes(".")
   ) {
@@ -46,6 +48,6 @@ export const config = {
      * - robots.txt (robots file)
      * - sitemap.xml (sitemap file)
      */
-    "/((?!api|_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|rss).*)",
+    "/((?!api|_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|rss|feed\\.xml|llms).*)",
   ],
 };

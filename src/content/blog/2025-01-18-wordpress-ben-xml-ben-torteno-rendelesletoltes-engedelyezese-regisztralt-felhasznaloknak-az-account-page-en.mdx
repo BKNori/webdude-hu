@@ -3,7 +3,7 @@ title: >-
   WooCommerce XML Rendelésletöltés Engedélyezése a Felhasználói Fiókban (Account
   Page)
 date: '2025-01-18'
-updatedAt: '2026-11-12'
+updatedAt: "2026-11-20"
 excerpt: >-
   Hogyan engedélyezhető az automatikus XML rendelésletöltés a regisztrált
   vásárlóknak a WooCommerce fiókoldalon? Részletes fejlesztői és bővítményes
@@ -528,3 +528,17 @@ Ha szeretnéd a gombot a sablonod dizájnjához igazítani, ezt egy kis CSS seg�
 <hr />
 
 Ezáltal a vásárlóid könnyen letölthetik a kosaruk tartalmát Excel fájlként. Ha kérdésed van, vagy elakadsz, szólj nyugodtan!
+
+## Gyakori kérdések
+
+### Biztonságos-e az egyedi XML/CSV rendelésletöltő kódrészlet beépítése WooCommerce fiókoldalra?
+
+Csak akkor, ha szigorúan ellenőrizzük a bejelentkezett felhasználói jogosultságot (`current_user_id`), hogy senki ne férhessen hozzá más vásárlók rendeléseihez, valamint megfelelően escape-eljük a cellákat.
+
+### Hová érdemes beilleszteni az egyedi WooCommerce PHP funkciókat?
+
+Soha ne a szülő téma `functions.php` fájljába írd, mert a következő frissítés felülírja; használj child theme-et vagy dedikált egyedi mini-bővítményt (mu-plugin / custom plugin).
+
+### Megvalósítok-e komplexebb WooCommerce B2B és ERP XML/API exportokat is?
+
+Igen, egyedi fejlesztésben az ügyfélszintű exportokon túl automatizált raktár-, számlázó- és ügyviteli (pl. Kulcs-Soft) integrációkat is készítek.

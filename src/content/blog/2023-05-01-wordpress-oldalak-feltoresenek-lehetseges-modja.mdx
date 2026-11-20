@@ -1,7 +1,7 @@
 ---
 title: WordPress Oldalak Feltörésének Módjai és Hatékony Védelmi Módszerek
 date: '2023-05-01'
-updatedAt: '2026-11-12'
+updatedAt: "2026-11-20"
 excerpt: >-
   Milyen biztonsági réseken keresztül törik fel leggyakrabban a WordPress
   oldalakat? Részletes technikai áttekintés a támadási felületekről és a
@@ -364,3 +364,17 @@ Biztonsági beépülő modulok
 * Korlátozza a bejelentkezési kísérleteket, hogy megakadályozza a Brute Force támadásokat
 * Nevezze át a fájlt, és csak belsőleg vagy bizonyos IP-címekről engedélyezze a hozzáférést.wp-admin.php
 Forrás: hacktricks (https://book.hacktricks.xyz/network-services-pentesting/pentesting-web/wordpress)
+
+## Gyakori kérdések
+
+### Melyek a leggyakoribb támadási vektorok egy WordPress oldal feltörésénél?
+
+Tapasztalataim szerint a legtöbb incidens elavult bővítmények sérülékenységéből, gyenge admin jelszavak elleni brute force támadásokból és rosszul beállított fájl-jogosultságokból ered.
+
+### Elég egy biztonsági bővítmény telepítése a teljes védelemhez?
+
+Önmagában nem elég: én a többrétegű védelemben hiszek, amely magában foglalja a wp-login védelmét, kétfaktoros hitelesítést, XML-RPC korlátozást, minimális bővítményszámot és szerveroldali tűzfalat.
+
+### Mit teszek, ha már megtörtént a feltörés egy WordPress weboldalon?
+
+Izolálom a kártékony fájlokat, összevetem a magfájlokat a tiszta verzióval, ellenőrzöm az adatbázist rejtett admin felhasználókra, majd zárom a támadási rést.

@@ -1,0 +1,330 @@
+# WebDude — Teljes AI Kontextus & Szakmai Tudásbázis (llms-full.txt)
+
+> Balog Norbert (WebDude) egyéni webfejlesztő, art director és AI automatizációs szakember: 26+ év tervezőgrafikai és 16+ év full-stack webfejlesztői tapasztalattal.
+> Közvetlen kivitelezés ügynökségi közvetítők nélkül — országosan magyarul (`https://webdude.hu`) és távmunkában nemzetközi ügyfeleknek angolul (`https://webdude.hu/en`). Minden projekt egyedi árajánlat alapján indul (Zéró Fix Ár politika).
+
+## Kapcsolat & Kanonikus Entitások
+
+- **Márkanév / Szervezet:** WebDude (`https://webdude.hu/#organization`)
+- **Szakértő / Alapító:** Balog Norbert (`https://webdude.hu/#person`)
+- **Alapítva:** 2009 (webfejlesztői gyakorlat), 26+ év grafikai tervezés, 16+ év webfejlesztés
+- **Weboldal (HU):** https://webdude.hu
+- **Weboldal (EN):** https://webdude.hu/en
+- **Rólam (HU / EN):** https://webdude.hu/szia-norbi-vagyok | https://webdude.hu/en/about
+- **Kapcsolat (HU / EN):** https://webdude.hu/kapcsolat | https://webdude.hu/en/contact
+- **Jogi oldalak (HU / EN):** https://webdude.hu/adatvedelmi-szabalyzat | https://webdude.hu/en/privacy-policy | https://webdude.hu/felhasznalasi-feltetelek | https://webdude.hu/en/terms
+- **Email:** hello@webdude.hu | **Telefon:** +36 70 323 8003
+- **RSS 2.0 Feed:** https://webdude.hu/feed.xml
+- **Rövid AI áttekintő:** https://webdude.hu/llms.txt
+
+## Szolgáltatások (Magyar — HU)
+
+## Core Services (English — EN)
+
+## Kiemelt Ügyfél-esettanulmányok & Mérhető Eredmények
+
+### Nedel Market: Komplett B2B Kereskedelmi Ökoszisztéma és Helyi Szerver Integráció
+- **URL:** https://webdude.hu/munkak/nedelmarket
+- **Ügyfél:** Nedel Market (2024) — **Kategória:** webshop
+- **Leírás:** Több mint egy WooCommerce katalógus. Egy teljesen integrált rendszer, amely összeköti a modern online értékesítést az irodai könyvelőprogrammal és egy egyedileg épített, tükörmentett helyi szerverkörnyezettel — Wordfence védelmet, RankMath SEO-t és GA4 analitikával.
+- **Eredmények:** Valós idejű könyvelőprogram-szinkron helyi szerveren | Wordfence tűzfal — 0-24 órás, blokkoló védelem | RankMath AEO/SEO struktúra (AI-keresőknek is) | GA4 + Search Console + Bing Webmaster analitika | Automatizált RAID/Backup, zéró adatvesztés
+
+### Leanperial — Quiet Luxury Weboldal Fejlesztése & Kártevőmentesítés
+- **URL:** https://webdude.hu/munkak/leanperial
+- **Ügyfél:** Leanperial (2026) — **Kategória:** weboldal
+- **Leírás:** Egy nemzetközi luxusmárka-tanácsadó számára építettem prémium „Quiet Luxury” weboldalt egyedi WordPress + Kadence alapon: teljes kártevőirtás, DNS- és SSL-újjáépítés, SMTP-hitelesítés, valamint technikai SEO-tökéletesítés — az eredmény egy ultragyors, 100/100 SEO pontszámú, vírusmentes platform.
+- **Eredmények:** 100/100 SEO pontszám | 100% kártevőmentes, biztonságos platform | Ultragyors, WebP-optimalizált betöltés | Megbízható SMTP hitelesítés (SPF/DKIM) | Prémium Quiet Luxury felhasználói élmény
+
+### btshop.hu — 3200 termékes E-commerce Nagyhatalom & Kulcs-Soft Integráció
+- **URL:** https://webdude.hu/munkak/btshop
+- **Ügyfél:** BTShop.hu (2023) — **Kategória:** webshop
+- **Leírás:** Teljes körű WooCommerce automatizációt építettem a btshop.hu számára: valós idejű Kulcs-Soft könyvelőprogram-szinkronizációt, Google Merchant Center feed motort és egy egyedi fejlesztésű SEO plugint készítettem hozzá.
+- **Eredmények:** 3200+ Aktív termék valós idejű szinkronban | 100% Automatizált megrendelés- és készletkezelés | 3 Logisztikai és marketing API integráció | 1 Saját fejlesztésű WordPress SEO Plugin | Zéró manuális adminisztráció
+
+### Classi-Co Kft. – Térkövezés és Beton Kivitelezés Komplex Digitális Megjelenés
+- **URL:** https://webdude.hu/munkak/classi-co
+- **Ügyfél:** Classi-Co Kft. (2025) — **Kategória:** weboldal
+- **Leírás:** Megbízható, klasszikus építőipari vállalkozás teljes körű digitális transzformációja: arculattervezés, WordPress weboldal, SEO, tartalomírás és Google Cégprofil optimalizálás.
+- **Eredmények:** Komplex arculattervezés és logó | Prémium WordPress weboldal | Lokális SEO dominancia | Értékesítési fókuszú tartalomírás | Google Cégprofil optimalizálás | Offline branding integráció
+
+### Rimai Útépítő Kft. – Teljes Körű Digitális és Vizuális Arculatépítés
+- **URL:** https://webdude.hu/munkak/rimai-utepito-kft-teljes-koru-digitalis-es-vizualis-arculatepites
+- **Ügyfél:** Rimai Útépítő Kft. (Rimai Norbert Cégvezető) (2022) — **Kategória:** arculat
+- **Leírás:** Egyedi, marketing szemléletű weboldalt és teljes arculatot terveztem a Rimai Útépítő Kft. számára. Fókuszban a gyorsaság, a vizuális minőség és az A-tól Z-ig tartó megoldás állt.
+- **Eredmények:** 100% Autonómia a tervezésben és kivitelezésben | 0-ról felépített teljes online jelenlét | 360° Arculattervezés (Online & Print) | Zökkenőmentes együttműködés és módosítások nélküli átadás | Stabil, jól konvertáló online bázis
+
+### Dr. Danyi – Fogászati és Implantológiai Klinika Digitális Identitás
+- **URL:** https://webdude.hu/munkak/dr-danyi
+- **Ügyfél:** Dr. Danyi Fogászati és Implantológiai Klinika (2023) — **Kategória:** grafika
+- **Leírás:** Prémium orvosi arculatot és weboldalt készítettem a szegedi fogászati és implantológiai szakrendelés számára. A klinika modern, empatikus vizuális identitását én terveztem meg.
+- **Eredmények:** Modern, empatikus orvosi arculat | SEO-optimalizált weboldal | Online időpontfoglalás rendszer | Egységes szakmai kommunikáció | Patient-központú UX design
+
+### Bor és Garnéla – Premium Food Truck Branding és Weboldal
+- **URL:** https://webdude.hu/munkak/bor-es-garnela
+- **Ügyfél:** Bor és Garnéla (2023) — **Kategória:** branding
+- **Leírás:** Komplex prémium food truck branding és teljes körű digitális megjelenítés: Eros Pista Fesztivál branding, arculattervezés, weboldal fejlesztés, SEO, étlap design és marketing anyagok.
+- **Eredmények:** Komplex prémium arculattervezés | Eros Pista Fesztivál dedikált branding | SEO-optimalizált WordPress weboldal | Professzionális étlap design | Konverziófókuszált marketing anyagok | Promóciós videók és vizuális kampányok
+
+### HU-MAGO Kft. – Ipari Gépkereskedelem Digitális Transzformáció és AI Tech
+- **URL:** https://webdude.hu/munkak/hu-mago-kft
+- **Ügyfél:** HU-MAGO Kft. (2024) — **Kategória:** weboldal
+- **Leírás:** Komplex digitális transzformációs projekt: e-kereskedelem, SEO, GDPR, prémium branding és innovatív AI prompt reklám generátor fejlesztés.
+- **Eredmények:** Komplex e-kereskedelmi rendszer | Stratégiai SEO infrastruktúra | GDPR-kompatibilis adatkezelés | Prémium offline branding | AI prompt reklám generátor | Teljes digitális ökoszisztéma
+
+### Go-Box Kft. – Dobozgyár Teljes Körű Digitális Transzformáció & B2B Webáruház
+- **URL:** https://webdude.hu/munkak/go-box-kft
+- **Ügyfél:** Go-Box Kft. (2024) — **Kategória:** webshop
+- **Leírás:** Komplett digitális megjelenés egy dobozgyár és dobozkereskedelmi vállalkozás számára: modern ipari arculattervezés logóval és teljes identitással, prémium weboldal a szolgáltatások bemutatásával, valamint egy villámgyors, egyedi WordPress/WooCommerce alapú B2B webshop a dobozok online értékesítéséhez — beépített, egyedi megrendelő űrlapokkal. Search Console és Analytics bekötésével SEO/AEO optimalizáltam a weboldalt, hogy a Go-Box Kft. maximális láthatóságot kapjon az ipari és B2B keresésben, mérhető ROI-val.
+- **Eredmények:** Komplet branding: logó, arculat, névjegykártya | Modern weboldal a szolgáltatások bemutatásával | B2B WooCommerce webshop egyedi megrendelő űrlapokkal | SEO/AEO optimalizáció: Search Console és Analytics bekötés | Prémium ipari márkaidentitás | Teljes szövegezés és marketing stratégia
+
+### Marina Homes Lakópark – Real Estate Branding és Weboldal
+- **URL:** https://webdude.hu/munkak/marina-homes
+- **Ügyfél:** Marina Homes Lakópark (2024) — **Kategória:** branding
+- **Leírás:** A Marina Homes lakópark számára modern, prémium ingatlanos arculatot terveztem és weboldalt fejlesztettem a teljes online jelenléttel együtt.
+- **Eredmények:** Modern lakópark arculattervezés | WordPress weboldal lakásokkal | Prémium vizuális identitás | Marketing anyagok | Egységes brand consistency
+
+### Chamomprex – Névjegy és Kirakat Arculattervezés
+- **URL:** https://webdude.hu/munkak/chamomprex
+- **Ügyfél:** Chamomprex (2023) — **Kategória:** arculat
+- **Leírás:** Egyedi névjegyet és kirakatgrafikát terveztem a Chamomprex számára, teljes nyomdai előkészítéssel és valósághű mockup vizualizációval.
+- **Eredmények:** Egyedi névjegyarculat | Kirakatgrafika tervezés | Nyomdai előkészítés | Valósághű mockup vizualizáció | Egységes márkamegjelenés
+
+### Dr. Nagy Albert – Neurológus Digitális Megjelenés és Internetes Fizetési Rendszer
+- **URL:** https://webdude.hu/munkak/dr-nagy-albert
+- **Ügyfél:** Dr. Nagy Albert Neurológus (2024) — **Kategória:** arculat
+- **Leírás:** Teljes körű digitális transzformáció egy kecskeméti neurológus szakrendelő számára: logó, arculat, névjegykártya, molinók, reklámok, weboldal, internetes fizetés (e-recept és távkonzultáció), Search Console és Analytics bekötés.
+- **Eredmények:** Komplet branding: logó, arculat, névjegykártya | Marketing anyagok: molinók, reklámok, Facebook bannerek | Weboldal fejlesztés modern e-recept rendszerrel | Internetes fizetés: távkonzultáció és online rendelés | SEO/AEO optimalizáció: Search Console és Analytics bekötés | Prémium neurológus márkaidentitás | Teljes szövegezés és marketing stratégia
+
+### Lengyel Helga – Esküvői Dekoráció Virágkötész Branding és Weboldal
+- **URL:** https://webdude.hu/munkak/lengyel-helga-eskuvodekoracio
+- **Ügyfél:** Lengyel Helga Esküvői Dekoráció (2025) — **Kategória:** branding
+- **Leírás:** Teljes körű branding és digitális megjelenés Lengyel Helga tehetséges esküvői dekoratőr és virágkötész számára: logó, arculat, névjegykártya, molinók, reklámok, WooCommerce webshop, SEO és AEO optimalizáció.
+- **Eredmények:** Komplet branding: logó, arculat, névjegykártya | Marketing anyagok: molinók, reklámok, Facebook bannerek | WooCommerce webshop termékrendszerezéssel | SEO/AEO optimalizáció: Search Console és Analytics bekötés | Prémium esküvői virágkötész márkaidentitás | Teljes szövegezés és marketing stratégia
+
+### AI-Prompt.hu – AI Prompt Optimalizáló Platform
+- **URL:** https://webdude.hu/munkak/ai-prompt-hu
+- **Ügyfél:** AI-Prompt.hu (Saját fejlesztés) (2025) — **Kategória:** ai-fejlesztes
+- **Leírás:** Saját fejlesztésű AI prompt optimalizáló platform: intelligens prompt engineering, struktúrált kimenetek és prompt sablon kezelés rendszer.
+- **Eredmények:** Intelligens prompt engineering rendszer | Struktúrált kimenet támogatás (JSON, CSV, XML) | Prompt sablon és template kezelés | API integráció (OpenAI, Anthropic, Google AI) | Firebase alapú backend és auth | Reszponzív modern UI
+
+## Gyakori Kérdések — Főoldal (HU)
+
+- **Mennyi idő alatt készül el egy weboldal?** Egy egyszerű bemutatkozó oldal általában 2–4 hét, egy komplexebb webshop vagy portál 4–10 hét. Az első konzultáción pontosan meghatározom a határidőt — amit megígérek, azt tartom.
+- **WordPress vagy egyedi weboldal fejlesztés — melyik a jobb?** WordPress ideális KKV-knak, akik maguk szeretnék szerkeszteni a tartalmat és standard funkciókra van szükségük (blog, bemutatkozó, WooCommerce webshop). Egyedi Next.js fejlesztés nagyobb rendszerekhez ajánlott, ahol maximális sebesség, komplex logika vagy egyedi integráció kell. Mindkettőhöz egyforma tapasztalattal rendelkezem.
+- **Mennyibe kerül egy WordPress weboldal karbantartása?** Az alap WordPress karbantartási csomag tartalmaz havi plugin- és core-frissítéseket, napi biztonsági mentést, Lighthouse auditot és 1 óra tartalomfrissítési segítséget. Az ár a projekt komplexitásától függ — az első konzultáción konkrét ajánlatot adok.
+- **Hogyan segít a SEO optimalizálás a vállalkozásomnak?** A technikai SEO és tartalomoptimalizálás együtt növeli az organikus (fizetés nélküli) Google-forgalmadat. Elvégzem a weboldal sebességoptimalizálást (Lighthouse 95+), a kulcsszó-stratégia kialakítását, Schema.org JSON-LD implementációt, és az AEO optimalizálást is — hogy az AI-alapú keresőkben (ChatGPT, Perplexity, Gemini) is megjelenj.
+- **Mikor lesznek mérhető SEO eredmények?** A technikai SEO változások (sebesség, Core Web Vitals, struktúrált adatok) hatása néhány héten belül mérhető. A kulcsszó-helyezések javulása általában 3–6 hónap, hosszú távú organikus forgalom-növekedés 6–12 hónap alatt valósul meg — az iparág versenyességétől függően.
+- **Mit tartalmaz az arculattervezési csomag?** Az alap arculattervezés tartalmaz: logó tervezést (3 koncepció, 2 körös korrekció), színpalettát, tipográfiai rendszert és alapvető brand guide-ot. Igény szerint bővíthető névjegy, fejléc, közösségi média sablon és nyomdai anyagok tervezésével. 26 év grafikai tapasztalattal, Adobe CC és Figma eszközökkel dolgozom.
+- **Miért válasszak téged ügynökség helyett?** Közvetlenül velem, a WebDude-dal dolgozol — nincs projektmenedzser közvetítő, nincs kommunikációs veszteség. 26 év grafikai és 16 év webfejlesztői tapasztalatom van, és minden projektben az elejétől a végéig én vagyok jelen. Egy ügynökségnél ugyanez 2–3× annyiba kerül, és jellemzően egy junior fejlesztő valósítja meg.
+- **Milyen garanciát vállalsz az elkészült munkára?** Átadást követően 30 napos hibajavítási garanciát biztosítok — minden felmerülő problémát plusz díj nélkül megoldok. Ezen felül opcionális havi karbantartási csomagok érhetők el, amelyek tartalmazzák a frissítéseket, napi biztonsági mentést és havi Lighthouse auditot.
+- **Mennyibe kerül egy weboldal vagy webshop?** Az árajánlat mindig a projekt valós komplexitásához igazodik — a felmérés után fix, előre egyeztetett összeget és határidőt kapsz, rejtett költségek nélkül. Nincs dobozos csomag: minden rendszer más, ezért egyedileg tervezem meg az árat is. Kérj ingyenes projektfelmérést!
+
+## Frequently Asked Questions — Home (EN)
+
+- **How long does it take to build a website?** A straightforward brochure website usually takes 2–4 weeks, while a more complex store or portal takes 4–10 weeks. The exact deadline is confirmed during the first free consultation, in writing, and I keep the deadlines I promise, with regular progress updates along the way.
+- **WordPress or a custom-built website — which is better?** WordPress is ideal for businesses that want to edit content themselves and rely on standard features such as a blog or a WooCommerce store. Custom Next.js development is recommended for larger systems that need maximum speed, complex logic or bespoke integrations. I have equal depth of experience in both.
+- **What does WordPress maintenance involve?** The standard WordPress maintenance package covers monthly plugin and core updates, daily backups, a Lighthouse audit and one hour of content update support. Pricing depends on the complexity of the project — you receive a concrete proposal during the first consultation.
+- **How does SEO optimisation help my business?** Technical SEO and content optimisation together increase your organic, unpaid Google traffic. I handle speed optimisation to Lighthouse 95+, keyword strategy, Schema.org JSON-LD implementation and Answer Engine Optimisation — so your business also surfaces inside AI search tools such as ChatGPT, Perplexity and Gemini.
+- **When will I see measurable SEO results?** Technical SEO changes such as speed, Core Web Vitals and structured data show measurable effects within a few weeks. Keyword ranking improvements typically appear in 3–6 months, and long-term organic traffic growth builds over 6–12 months, depending on how competitive your industry is.
+- **What does a brand identity package include?** A core brand identity package includes logo design with three concepts and two revision rounds, a colour palette, a typographic system and a fundamental brand guide. It can be extended with business cards, letterheads, social media templates and print collateral. Design work is produced in Adobe CC and Figma with 26 years of practice behind it.
+- **Why work with you instead of an agency?** You work directly with me — no project manager in between, no communication loss. I bring 26 years of graphic design and 16 years of web development experience, and I stay personally involved from first brief to launch. An agency typically charges two to three times more for the same scope, often delivered by a junior developer.
+- **What guarantee do you offer on delivered work?** I provide a 30-day fix guarantee after handover: any issue that appears is resolved at no additional cost. Optional monthly maintenance packages are also available, covering updates, daily backups and a monthly Lighthouse audit so your site keeps performing after launch.
+- **What does a website or online store cost?** Every quote is based on the real complexity of your project — after the assessment you receive a fixed, pre-agreed amount and deadline with no hidden costs. There are no off-the-shelf packages: every system is different, so the scope and the quote are designed individually. Request a free project assessment to start.
+
+## Szakmai Tudásbázis & Cikkek (28 indexelhető cikk)
+
+### Next.js 16 vagy Egyedi WordPress? Weboldal Architektúra Döntési Útmutató Cégvezetőknek (2026)
+- **URL:** https://webdude.hu/hirek/2026-11-17-nextjs-16-vs-wordpress-weboldal-fejlesztes-2026 | **Kategória:** Webfejlesztés | **Dátum:** 2026-11-17 (frissítve: 2026-11-17)
+- **TL;DR:** A Next.js 16 és az egyedi fejlesztésű WordPress nem ellenségei egymásnak, hanem két eltérő üzleti feladat eszközei. 16 év fejlesztői rutinnal tartalmi, szerkesztőségi weboldalakhoz egyedi, sablonmentes WordPress architektúrát javaslok; extrém sebességű landingekhez, egyedi ügyfélportálokhoz és mély AI-munkafolyamatokhoz viszont a Next.js 16 + React 19 biztosítja a legjobb megtérülést.
+  - *GYIK — Melyik a jobb SEO szempontból: a WordPress vagy a Next.js 16?* Megfelelő kivitelezéssel mindkettő képes első helyezésekre, de a Next.js 16 alapból jobb Core Web Vitals értékeket (LCP, INP, CLS), tisztább HTML forráskódot és bővítmény-független Schema.org tudásgráfot biztosít. Emiatt versenyképes kulcsszavakon és AI válaszmotorokban (GEO/AEO) könnyebb vele technikai előnyt szerezni.
+  - *GYIK — Drágább fenntartani egy Next.js weboldalt, mint egy WordPress oldalt?* Gyakran éppen ellenkezőleg: mivel a Next.js nem igényel heti rendszerességű WordPress core és harmadik feles plugin-frissítéseket, illetve biztonsági mentés-vadászatot, az éves üzemeltetési és hibajavítási kockázata sokkal alacsonyabb. Minden projekt egyedi igényekre szabva, tiszta egyedi ajánlat alapján készül el.
+  - *GYIK — Át lehet költöztetni egy meglévő WordPress weboldalt Next.js 16-ra SEO veszteség nélkül?* Igen. Megfelelő 301-es átirányítási térképpel, a kanonikus URL-ek megőrzésével és a metaadatok átemelésével egy jól megtervezett migráció nem csökkenti a forgalmat — sőt a drasztikus sebességnövekedés miatt jellemzően javítja a helyezéseket.
+
+### B2B WooCommerce Webshop és Könyvelőprogram / ERP Integráció: Automatizált Készlet és Nullázott Adminisztráció
+- **URL:** https://webdude.hu/hirek/2026-11-17-b2b-woocommerce-webshop-erp-szerver-integracio | **Kategória:** E-kereskedelem | **Dátum:** 2026-11-17 (frissítve: 2026-11-17)
+- **TL;DR:** A növekvő WooCommerce webshopok legnagyobb növekedési gátja a kézi készletkezelés és számlázás. Egyedi API-alapú könyvelőprogram és helyi szerver / ERP szinkron segítségével valós időben frissíthetők a több ezer tételes árak és készletek, automatizálható a logisztika, miközben szigorú szerveroldali biztonsági páncél védi a tranzakciókat.
+  - *GYIK — Milyen könyvelő- és ügyviteli rendszerekkel köthető össze a WooCommerce?* Gyakorlatilag minden olyan szoftverrel, amely rendelkezik REST API-val, webhook támogatással, időzített XML/JSON/CSV adatexporttal vagy védett adatbázis-kapcsolattal (például Kulcs-Soft, Számlázz.hu, Billingo, egyedi helyi raktárszerverek és vállalati ERP-k).
+  - *GYIK — Lassítani fogja a szinkronizáció a webshop betöltését a vásárlók számára?* Nem, ha az architektúra helyesen van megépítve. A szinkron folyamatokat aszinkron háttérfeladatként (Queue / Action Scheduler) és delta frissítéssel futtatom, így a frontend látogatói továbbra is a gyorsítótárazott, azonnali termékoldalakat kapják.
+  - *GYIK — Kezelhetők-e az egyedi B2B partneri árak és mennyiségi kedvezmények is?* Igen. A szinkron során nemcsak a darabszám és az alapár frissíthető, hanem a vevőcsoportokhoz tartozó egyedi árszabás, egyedi minimum rendelési mennyiség és adószám-alapú B2B számlázási logika is automatizálható.
+
+### AI Keresőoptimalizálás (GEO, AEO és AIO) 2026-ban: Így szerezz ügyfeleket a ChatGPT és Google AI válaszokból
+- **URL:** https://webdude.hu/hirek/2026-11-17-ai-keresooptimalizalas-geo-aeo-utmutato-cegeknek | **Kategória:** SEO & AEO | **Dátum:** 2026-11-17 (frissítve: 2026-11-17)
+- **TL;DR:** 2026-ban a B2B és prémium B2C vásárlók többsége már nem tíz kék linken keresztül keres szolgáltatót, hanem a ChatGPT, a Perplexity és a Google AI Overviews összefoglalóira hagyatkozik. A láthatóság kulcsa a hagyományos SEO mellé épített AEO (válaszoptimalizálás), GEO (generatív motoroptimalizálás), hiteles E-E-A-T személyi entitás és XSS-biztos Schema.org tudásgráf.
+  - *GYIK — Mi a különbség a hagyományos SEO és a GEO között?* A hagyományos SEO a Google találati listáján való minél jobb helyezésre koncentrál kulcsszavakkal, technikai sebességgel és linkprofillal. A GEO (Generative Engine Optimization) célja, hogy az AI válaszmotorok — például a ChatGPT, a Perplexity vagy a Google AI Overviews — megbízható forrásként idézzék a márkádat és a szakmai válaszaidat. A kettő együtt működik leghatékonyabban.
+  - *GYIK — Szükséges-e külön kódolás az AEO-hoz és a Schema.org tudásgráfhoz?* Alapszinten sablonokkal is létrehozhatók egyszerű sémák, de az összekapcsolt #organization, #person, Service, TechArticle és FAQPage gráfok megbízhatóan egyedi szerveroldali implementációval építhetők fel. Így garantálható, hogy ne legyenek hibás mezők, árkonfliktusok vagy kliensoldali renderelési késlekedések.
+  - *GYIK — Mikorra látszik az eredménye egy teljes SEO és GEO átalakításnak?* A technikai hibajavítások, a gyorsabb HTML kiszolgálás és az új JSON-LD struktúra általában 2–6 héten belül megjelenik a Google Search Console és az AI keresők indexében. A mély szakmai cikkek és esettanulmányok által generált tartós organikus és AI-hivatkozásos lead-áramlás jellemzően 2–4 hónap alatt épül fel stabilan.
+
+### A Kristófka Workflow Születése: Amikor a 26 Éves Tervezői Rutin Találkozik az AI-val
+- **URL:** https://webdude.hu/hirek/2026-07-14-kristofka-workflow-szuletese-amikor-a-26-eves-tervezoi-rutin-talalkozik-az-ai-val | **Kategória:** AI Automatizáció | **Dátum:** 2026-07-14 (frissítve: 2026-11-20)
+- **TL;DR:** A Kristófka Workflow egy egyedi kontextus-injektált mesterséges intelligencia rendszer, amely Balog Norbert 26 éves grafikai tervezői és 16 éves webfejlesztői tapasztalatát ötvözi a modern RAG architektúrával. A platform nem általános válaszokat ad, hanem piacspecifikus, azonnal kivitelezhető digitális és vizuális stratégiát épít a hazai KKV-k számára.
+  - *GYIK — Mitől más a Kristófka Workflow egy általános ChatGPT-beszélgetéshez képest?* Beépített módszertannal, pontos iparági szerepkörökkel és determinisztikus kimeneti szerkezettel működik, amely a 26 éves grafikai és 16 éves webfejlesztői tapasztalatom logikáját követi.
+  - *GYIK — Kinek készült a Kristófka Workflow és a hozzá tartozó AI Műhely?* Olyan vállalkozásoknak és kreatív csapatoknak, akik nem üres sablonokra, hanem reprodukálható, üzletileg átgondolt koncepciókra és előkészített projekt-specifikációkra vágynak.
+  - *GYIK — Hogyan tudom kipróbálni vagy saját cégemre szabni ezt az AI munkafolyamatot?* A kapcsolatfelvétel után egy rövid konzultáción felmérem az igényeidet, és egyedi árajánlat alapján a te vállalkozásod adataira és hangnemére szabom a teljes rendszert.
+
+### Miért Kerülnek a WooCommerce Levelek a Promóciók vagy Spam Mappába? (És Hogyan Javítsd Ki!)
+- **URL:** https://webdude.hu/hirek/2026-02-24-woocommerce-levelek-promociok-mappaba | **Kategória:** Webshop fejlesztés | **Dátum:** 2026-02-24 (frissítve: 2026-11-20)
+- **TL;DR:** A WooCommerce rendelési emailek spam vagy promóciók mappába kerülését a PHP mail() funkció elavultsága és a hiányzó DNS hitelesítések okozzák. A hiba végleges megoldásához dedikált tranzakciós SMTP szolgáltató (pl. Brevo, Mailgun) beállítása, valamint a domain SPF, DKIM és DMARC rekordjainak hibátlan konfigurálása szükséges a maximális kézbesítési arányért.
+  - *GYIK — Miért kerülnek a WooCommerce rendelési visszaigazolások a Spam vagy Promóciók mappába?* Leggyakrabban azért, mert a webshop alapértelmezett PHP mail() függvényén keresztül küld levelet, vagy hiányoznak a hitelesített SMTP, SPF, DKIM és DMARC DNS-rekordok.
+  - *GYIK — Mi az a három DNS rekord, aminek mindenképp rendben kell lennie a webshop domainjén?* Az SPF (engedélyezett küldő szerverek), a DKIM (kriptográfiai aláírás) és a DMARC (irányelv a hibásan aláírt levelek kezelésére) — ezek nélkül a Gmail könnyen gyanúsnak minősíti a visszaigazolókat.
+  - *GYIK — Hogyan segítek egy webshop kézbesítési hibáinak gyors kijavításában?* Átnézem a DNS-zónát, beállítom a hitelesített SMTP küldést, és tesztelem a kézbesítési pontszámot, hogy minden számla és rendelési értesítő az elsődleges beérkezőbe jusson.
+
+### WooCommerce XML Rendelésletöltés Engedélyezése a Felhasználói Fiókban (Account Page)
+- **URL:** https://webdude.hu/hirek/2025-01-18-wordpress-ben-xml-ben-torteno-rendelesletoltes-engedelyezese-regisztralt-felhasznaloknak-az-account-page-en | **Kategória:** Webshop fejlesztés | **Dátum:** 2025-01-18 (frissítve: 2026-11-20)
+- **TL;DR:** A B2B és nagykereskedelmi WooCommerce webáruházakban alapkövetelmény a rendelési adatok XML formátumú letöltésének biztosítása a Saját Fiók oldalon. A megvalósítás történhet dedikált export bővítménnyel vagy egyedi PHP függvénnyel a functions.php fájlban, tehermentesítve az ügyfélszolgálatot és felgyorsítva a könyvelési adatáramlást.
+  - *GYIK — Biztonságos-e az egyedi XML/CSV rendelésletöltő kódrészlet beépítése WooCommerce fiókoldalra?* Csak akkor, ha szigorúan ellenőrizzük a bejelentkezett felhasználói jogosultságot (currentuserid), hogy senki ne férhessen hozzá más vásárlók rendeléseihez, valamint megfelelően escape-eljük a cellákat.
+  - *GYIK — Hová érdemes beilleszteni az egyedi WooCommerce PHP funkciókat?* Soha ne a szülő téma functions.php fájljába írd, mert a következő frissítés felülírja; használj child theme-et vagy dedikált egyedi mini-bővítményt (mu-plugin / custom plugin).
+  - *GYIK — Megvalósítok-e komplexebb WooCommerce B2B és ERP XML/API exportokat is?* Igen, egyedi fejlesztésben az ügyfélszintű exportokon túl automatizált raktár-, számlázó- és ügyviteli (pl. Kulcs-Soft) integrációkat is készítek.
+
+### 100+ Lenyűgöző AI Prompt Példa Vállalkozóknak és Marketingeseknek
+- **URL:** https://webdude.hu/hirek/2025-01-13-100-lenyugozo-ai-pelda-amelyet-mindenki-hasznalhat | **Kategória:** AI Automatizáció | **Dátum:** 2025-01-13 (frissítve: 2026-11-20)
+- **TL;DR:** A mesterséges intelligencia leghatékonyabb üzleti felhasználása a marketingtartalmak előállításában és a kommunikáció automatizálásában rejlik. A több mint 100 gyakorlati példa azonnal használható sablonokat nyújt hírlevelek, SEO cikkek, hirdetésszövegek és ügyfélszolgálati válaszok gyors és professzionális megírásához.
+  - *GYIK — Miért érdemes sablonok helyett kontextusgazdag AI promptokat építeni?* Minél pontosabb szerepet, célcsoportot, elvárt formátumot és korlátot adsz meg az LLM-nek, annál kevesebb utómunkát igényel a kimenet a valódi üzleti munkában.
+  - *GYIK — Milyen vállalati folyamatokban hoz leggyorsabb megtérülést a prompt engineering?* Ügyfélkérdések előszűrésében, ajánlat-előkészítésben, SEO tartalomstruktúrák összeállításában, ügyfélszolgálati összegzőkben és belső dokumentációban.
+  - *GYIK — Készítek-e egyedi, vállalkozásra szabott AI prompt könyvtárakat és munkafolyamatokat?* Igen, az AI Prompt Engineering és AI Műhely megoldásaimban iparágra szabott, azonnal bevethető prompt-rendszereket tervezek egyedi árajánlat alapján.
+
+### 25 Legjobb AI Művészeti Prompt és Kreatív Koncepció Midjourney és DALL-E Modellekhez
+- **URL:** https://webdude.hu/hirek/2025-01-07-a-25-legjobb-mesterseges-intelligencia-muveszeti-otlet-a-kreativitas-felkeltesehez-ai-art-prompt-ideas | **Kategória:** AI Automatizáció | **Dátum:** 2025-01-07 (frissítve: 2026-11-20)
+- **TL;DR:** Az AI művészeti generálásban a minőségi kimenet kulcsa a részletes stílusreferenciákban, a színharmóniákban és a textúraleírásokban rejlik. A 25 bevált kreatív prompt segítségével lenyűgöző digitális illusztrációk, borítóképek és marketingvizuálok hozhatók létre Midjourney és Stable Diffusion környezetben minimális időráfordítással.
+  - *GYIK — Hogyan őrizhető meg az egységes márka-esztétika több különböző AI illusztrációnál?* Kötött stílus-modulok, fix színhőmérséklet, állandó világítási leírások és ugyanazon vizuális referenciák következetes újrafelhasználásával a promptokban.
+  - *GYIK — Mire használhatók legjobban az AI művészeti koncepciók egy üzleti weboldalon?* Egyedi hero bannerekhez, cikkborítókhoz, szolgáltatási hangulatképekhez és absztrakt technológiai illusztrációkhoz, elkerülve az elcsépelt stock fotókat.
+  - *GYIK — Készítek-e komplett vizuális arculatot AI-támogatott és klasszikus grafikai munkával ötvözve?* Igen, 26+ év tervezőgrafikai tapasztalatommal ötvözöm a generatív koncepcióalkotást és a professzionális Photoshop/vektoros utómunkát egyedi árajánlat alapján.
+
+### WordPress Menüikonok Beállítása: 2 Egyszerű Módszer CSS és Bővítmény Segítségével
+- **URL:** https://webdude.hu/hirek/2025-01-05-wordpress-menuikonok-2-modszer | **Kategória:** WordPress | **Dátum:** 2025-01-05 (frissítve: 2026-11-20)
+- **TL;DR:** A WordPress navigációs menüpontok ikonokkal való kiegészítése növeli a weboldal felhasználói élményét (UX) és segíti a vizuális tájékozódást mobilon is. A megvalósítás történhet egyéni CSS osztályokkal és Font Awesome ikonokkal a gyorsaság érdekében, vagy dedikált Menu Icons bővítménnyel a kódolásmentes beállításért.
+  - *GYIK — CSS-sel vagy dedikált bővítménnyel érdemesebb menüikonokat adni WordPressben?* Ha csak néhány ikont szeretnél és fontos a maximális sebesség, az egyedi CSS osztály + inline SVG sokkal tisztább megoldás; bővítményt csak akkor ajánlok, ha a szerkesztők rendszeresen cserélik őket.
+  - *GYIK — Okozhatnak-e a menüikonok mobilon elrendezési vagy kattinthatósági hibát?* Igen, ha nincs megfelelő térköz és minimális érintési felület (44×44 px); ezért minden menümódosítást ellenőrzök mobil nézetben is.
+  - *GYIK — Mire figyeljünk a menüikonok akadálymentességénél?* A szöveg melletti ikonokra mindig kerüljön aria-hidden="true", így a képernyőolvasók nem olvassák fel feleslegesen a dekoratív elemeket.
+
+### AI Képalkotás Kulcsszavak: Művészi Stílusok, Fények és Paraméterek Midjourney-hez
+- **URL:** https://webdude.hu/hirek/2024-12-30-hasznos-ai-kepalkotas-kulcsszavak-egy-jo-promthoz-a-kepalkotashoz | **Kategória:** AI Automatizáció | **Dátum:** 2024-12-30 (frissítve: 2026-11-20)
+- **TL;DR:** A profi AI képgenerálás titka a pontos technikai leírásokban rejlik: a lencsetípusok (pl. 85mm f/1.4), a világítási stílusok (chiaroscuro, golden hour, cinematic lighting) és a renderelő motorok (Unreal Engine 5) megadása garantálja a fotorealisztikus, prémium minőségű illusztrációkat a digitális marketingben.
+  - *GYIK — Milyen struktúrában érdemes összeállítani egy Midjourney képgeneráló promptot?* Nálam a legjobban bevált sorrend: [Téma / Fő alak] + [Környezet / Háttér] + [Világítás & Kameraállás] + [Stílus / Esztétika] + [Technikai paraméterek, pl. képarány].
+  - *GYIK — Miért érdemes angol kulcsszavakat használni a vizuális AI modelleknél?* A legtöbb képgeneráló modell tanítóanyaga túlnyomórészt angol nyelvű fotós és művészeti kifejezésekre épül, így az angol világítási és stílus-kulcsszavak sokkal kiszámíthatóbb eredményt adnak.
+  - *GYIK — Hogyan optimalizálom a generált AI képeket weboldalra élesítés előtt?* Minden képet színhűségre retusálok, WebP/AVIF reszponzív méretekre konvertálok, és pontos alt szöveggel látom el a maximális Core Web Vitals teljesítményért.
+
+### Ingatlanhirdetések Kezelése WordPress Alapon: MLS On The Fly™ Integráció
+- **URL:** https://webdude.hu/hirek/2024-12-26-emelje-fel-hirdeteseit-mls-on-the-fly-talalkozasa-a-wordpressel | **Kategória:** WordPress | **Dátum:** 2024-12-26 (frissítve: 2026-11-20)
+- **TL;DR:** Az ingatlanközvetítő weboldalak számára az MLS (Multiple Listing Service) adatintegráció teszi lehetővé a hirdetések automatikus, valós idejű szinkronizálását WordPress felületeken. A modern API-kapcsolat kiküszöböli a kézi adatrögzítést, biztosítja az adatok pontosságát és professzionális keresési élményt nyújt a vevőknek.
+  - *GYIK — Miben segít az MLS-integráció egy ingatlanközvetítő WordPress weboldalán?* Automatizálja a friss ingatlanadatok szinkronizálását, így nem kell kézzel duplikálni az adatlapokat, miközben a keresők és látogatók mindig naprakész kínálatot látnak.
+  - *GYIK — Hogyan hat a több száz ingatlanos hirdetés a WordPress oldal sebességére?* Megfelelő gyorsítótárazás, optimalizált képméretezés (WebP/AVIF) és indexelt kereső-lekérdezések nélkül lelassulhat az oldal; én ezeket már az architektúra szintjén optimalizálom.
+  - *GYIK — Vállalok-e egyedi ingatlanportál vagy MLS/CRM szinkronizált weboldal fejlesztést?* Igen, WordPress vagy Next.js alapon is építek gyors, SEO-optimalizált ingatlanhirdetési rendszereket egyedi árajánlat alapján.
+
+### 40+ Alap AI Prompt Grafikai Tervezéshez: Logó, Banner és Social Media Sablonok
+- **URL:** https://webdude.hu/hirek/2024-09-21-40-alap-ai-promt-a-grafikai-tervezeshez | **Kategória:** AI Automatizáció | **Dátum:** 2024-09-21 (frissítve: 2026-11-20)
+- **TL;DR:** A strukturált AI promptok drasztikusan felgyorsítják a grafikai tervezési folyamatot a logókoncepcióktól a marketingbannerekig. A cikkben található 40+ tesztelt prompt sablon segítségével pontos stílusmeghatározással, kompozíciós utasításokkal és tipográfiai irányelvekkel érhetők el kiemelkedő vizuális eredmények Midjourney és ChatGPT környezetben.
+  - *GYIK — Kiváltják-e a grafikai AI promptok a hivatásos grafikus munkáját?* Az AI remek inspirációs és koncepciógyorsító társ, viszont nyomdakész vektoros logót, pontos CMYK arculatot és üzleti stratégiára épülő dizájnt továbbra is szakember tud biztonságosan leszállítani.
+  - *GYIK — Mitől lesz igazán jól használható egy grafikai tervezési prompt?* Attól, hogy pontosan definiálod a műfajt, a célközönséget, a hangulatot, a színharmóniát, a kompozíciót és az elkerülendő stílusjegyeket is.
+  - *GYIK — Hogyan építem be az AI képgenerálást a saját 26+ éves grafikai munkafolyamatomba?* Gyors látványtervekre és egyedi kampányháttér-koncepciókra használom, majd Photoshopban és vektoros eszközökkel készítem el belőlük a pixelpontos, használatra kész végterméket.
+
+### Font Awesome 6 Ikonlista és Ikonkereső: Webfejlesztői Útmutató
+- **URL:** https://webdude.hu/hirek/2024-09-16-font-awesome-6-ikonlista-ikon-kereses | **Kategória:** Webfejlesztés | **Dátum:** 2024-09-16 (frissítve: 2026-11-20)
+- **TL;DR:** A Font Awesome 6 több ezer modern vektoriális ikont biztosít a webfejlesztéshez CSS osztályok és SVG formátumok révén. Az ikonok beilleszthetők lokális csomagként vagy CDN segítségével, optimális skálázhatóságot, kis hálózati terhelést és akadálymentes (ARIA-kompatibilis) megjelenést nyújtva a kezelőfelületeken.
+  - *GYIK — Font Awesome betűtípust vagy inline SVG ikonokat érdemesebb használni teljesítmény szempontból?* Modern Next.js projektekben én inline SVG komponenseket (pl. Lucide React) használok a teljes Font Awesome CSS/font csomag helyett, így nulla felesleges bájt és nulla CLS terheli az oldalt.
+  - *GYIK — Hogyan tartható akadálymentesen (WCAG AA) az ikonok használata?* A dekoratív ikonokat mindig aria-hidden="true" attribútummal rejtem el a képernyőolvasók elől, az önálló ikongombokhoz pedig egyértelmű aria-label szöveget adok.
+  - *GYIK — Milyen előnye van az egységes ikonkészletnek a márkaarculatban?* Az azonos vonalvastagságú és geometriájú ikonok professzionális, koherens felületet teremtenek, amely észrevétlenül segíti a felhasználói navigációt.
+
+### WordPress Rendszergazda (Admin) Hozzáadása phpMyAdmin Adatbázisból
+- **URL:** https://webdude.hu/hirek/2024-09-12-adjon-hozza-wordpress-rendszergazdai-felhasznalot-a-phpmyadmin-segitsegevel | **Kategória:** WordPress | **Dátum:** 2024-09-12 (frissítve: 2026-11-20)
+- **TL;DR:** Kizárás vagy jelszóvesztés esetén a phpMyAdmin felületén közvetlenül a wpusers és wpusermeta táblákba szúrható be új WordPress rendszergazdai fiók. Az MD5 jelszótitkosítás és a helyes felhasználói jogosultsági szintek (wpcapabilities = administrator és wpuserlevel = 10) azonnali hozzáférést biztosítanak a vezérlőpulthoz.
+  - *GYIK — Mikor lehet szükség phpMyAdmin segítségével WordPress admin felhasználót létrehozni?* Akkor, ha kizártad magad az admin felületről, nem érkezik meg a jelszó-visszaállító email, vagy egy biztonsági incidens után vissza kell venned az irányítást az adatbázis felett.
+  - *GYIK — Mire kell kiemelten figyelni a wpusers és wpusermeta táblák szerkesztésénél?* Az adatbázisban a wp prefix helyett egyedi tábla-előtagod is lehet, és módosítás előtt mindig készíts teljes SQL biztonsági mentést, valamint az wpcapabilities mezőt pontosan add meg.
+  - *GYIK — Mit tegyek az új admin fiók létrehozása után az admin belépést követően?* Azonnal változtasd le a jelszót a WordPress vezérlőpulton belül erősebb, modernebb titkosításúra, ellenőrizd az admin felhasználók listáját, és töröld az ismeretlen fiókokat.
+
+### Melyik a Legjobb Ingyenes WordPress SEO Bővítmény? Rank Math vs Yoast vs AIOSEO
+- **URL:** https://webdude.hu/hirek/2024-09-06-melyik-a-legjobb-ingyenes-seo-megoldas-a-wordpress-weboldalakhoz-es-miert | **Kategória:** WordPress | **Dátum:** 2024-09-06 (frissítve: 2026-11-20)
+- **TL;DR:** A WordPress weboldalakhoz a Rank Math nyújtja a legteljesebb ingyenes eszköztárat, beleértve a gazdag Schema.org jelöléseket, a 404-figyelőt és az automatikus átirányításokat. Míg a Yoast SEO felhasználóbarát, de funkcióiban korlátozott, a Rank Math és az AIOSEO modern és erőforrás-takarékos alternatívát kínál a Google rangsor javításához.
+  - *GYIK — Rank Math vagy Yoast SEO jobb választás egy modern WordPress weboldalhoz?* Én többnyire a Rank Math-ot vagy a könnyűsúlyú The SEO Frameworköt preferálom: a Rank Math az ingyenes verzióban is fejlett Schema.org és több kulcsszavas elemzést ad, felesleges bloat nélkül.
+  - *GYIK — Elég egy SEO bővítmény telepítése a jó Google és AI keresős helyezésekhez?* Nem: a bővítmény csak technikai eszköz a kezedben; a valódi eredményhez gyors tárhely, tiszta HTML/heading hierarchia, egyedi Schema tudásgráf és stratégiai tartalom szükséges.
+  - *GYIK — Segítek-e egy meglévő WordPress weboldal SEO bővítményének szakszerű finomhangolásában?* Igen, technikai SEO audit keretében átnézem és optimalizálom a meglévő WordPress + Rank Math/Yoast beállításokat egyedi árajánlat alapján.
+
+### Google Értékelés Törlése 2026: Saját és Mások Által Írt Vélemények Kezelése
+- **URL:** https://webdude.hu/hirek/2024-07-16-google-ertekeles-torlese | **Kategória:** SEO & Keresőoptimalizálás | **Dátum:** 2024-07-16 (frissítve: 2026-11-20)
+- **TL;DR:** A Google Térképen és Cégprofilban szereplő értékelések törlése kétféleképpen történhet: a felhasználó saját véleményét a profiljából azonnal törölheti, míg a cégtulajdonos a csaló, rágalmazó vagy összeférhetetlen kritikákat a Google moderációs űrlapján keresztül kérvényezheti vizsgálatra a hivatalos irányelvek alapján.
+  - *GYIK — Lehet-e saját magam által írt Google értékelést utólag szerkeszteni vagy törölni?* Igen, Google-fiókodba belépve a Google Térképen az 'Ön hozzájárulásai / Vélemények' menüpontban bármikor módosíthatod vagy végleg törölheted a saját korábbi értékeléseidet.
+  - *GYIK — Hogyan jelölhetek meg cégtulajdonosként egy valótlan, rosszindulatú értékelést?* A Google Cégprofil kezelőfelületén az adott vélemény melletti három pontra kattintva a 'Vélemény bejelentése jogsértőként' opcióval tudod elindítani a felülvizsgálatot.
+  - *GYIK — Miért fontos a Google értékelések kezelése a helyi SEO szempontjából?* Az értékelések száma, minősége és a tulajdonosi válaszok aktivitása közvetlen bizalmi és lokális rangsorolási jelzés a Google algoritmusa és a leendő ügyfelek számára.
+
+### 23 Ingyenes Mesterséges Intelligencia Eszköz Munkafolyamatok Automatizálásához
+- **URL:** https://webdude.hu/hirek/2024-06-19-23-olyan-ingyenes-mesterseges-intelligencia-eszkoz-amelyet-nem-fogsz-elhinni | **Kategória:** AI Automatizáció | **Dátum:** 2024-06-19 (frissítve: 2026-11-20)
+- **TL;DR:** Az ingyenes generatív AI eszközök (Luma Labs, Perplexity, SciSpace, Suno) radikálisan felgyorsítják a digitális tartalomgyártást, a piackutatást és az üzleti folyamatokat. A modern vállalkozások ezen eszközök tudatos integrálásával költséghatékonyan növelhetik kapacitásaikat a vizuális tervezéstől az automatizált ügyfélszolgálatig.
+  - *GYIK — Hogyan válasszam ki a vállalkozásomhoz leginkább illő AI eszközöket a hatalmas kínálatból?* Ne eszközöket gyűjts, hanem ismétlődő szűk keresztmetszeteket azonosíts: szöveghez/elemzéshez LLM (ChatGPT, Claude), automatizációhoz API-alapú workflow, vizuálokhoz célzott képgeneráló rendszerek.
+  - *GYIK — Biztonságos ingyenes AI eszközökbe céges vagy ügyféladatokat feltölteni?* Ingyenes publikus felületekre ne tölts fel érzékeny üzleti vagy személyes adatot; üzleti használatra én dedikált API-kapcsolatokat és adatmegőrzés nélküli vállalati környezeteket építek.
+  - *GYIK — Segítek-e egyedi AI munkafolyamatok kiválasztásában és összekötésében?* Igen, az AI Workflow kialakítás szolgáltatásom keretében egyedi árajánlat alapján megtervezem és beüzemelem a cégedre szabott automatizált folyamatokat.
+
+### GDPR Magyarul: A 4 Legjobb WordPress Adatvédelmi és Süti (Cookie) Bővítmény
+- **URL:** https://webdude.hu/hirek/2024-01-18-gdpr-magyarul-adatvedelmi-bovitmeny-wordpress-hez-4-plugin | **Kategória:** WordPress | **Dátum:** 2024-01-18 (frissítve: 2026-11-20)
+- **TL;DR:** A GDPR-megfelelőséghez a WordPress oldalakon elengedhetetlen a marketing és analitikai sütik (GA4, Facebook Pixel) előzetes blokkolása a felhasználó kifejezett hozzájárulásáig. A Complianz, Cookiebot és hasonló bevált bővítmények automatikus szkript-blokkolást, süti-szabályzat generálást és részletes auditnaplót nyújtanak a bírságok elkerülése érdekében.
+  - *GYIK — Elég egy GDPR bővítményt telepíteni ahhoz, hogy jogilag teljesen rendben legyen a WordPress oldal?* A bővítmény csak a technikai hozzájárulás-kezelést (Consent Mode, sütiblokkolás) oldja meg; emellett az adatvédelmi tájékoztatónak is tükröznie kell a ténylegesen használt szkripteket és adatfeldolgozókat.
+  - *GYIK — Lassítják-e a süti-kezelő bővítmények az oldal betöltését?* Egy nehezebb, sok külső fájlt betöltő plugin ronthatja az LCP értéket, ezért mindig könnyűsúlyú megoldást vagy egyedi, natív süti-bannert építek be.
+  - *GYIK — Mit kell biztosítania egy modern sütibannernek 2026-ban?* Az elfogadás mellett az elutasításnak ugyanolyan egyértelműnek és egykattintásosnak kell lennie, és a hozzájárulás előtt egyetlen marketing/analitikai süti sem futhat le.
+
+### Közösségi Média Marketingterv Létrehozása a Semmiből: Útmutató Kezdőknek
+- **URL:** https://webdude.hu/hirek/2023-10-27-utmutato-kezdoknek-kozossegimedia-marketingterv-letrehozasahoz-a-semmibol | **Kategória:** SEO & Keresőoptimalizálás | **Dátum:** 2023-10-27 (frissítve: 2026-11-20)
+- **TL;DR:** A hatékony közösségi média marketingterv alapja a releváns platformok kiválasztása, a heti tartalomritmus kialakítása és az egységes arculati megjelenés. A stratégia fókuszában a közönség engagementje, a szakértői márkaépítés és a weboldalra terelt konverziós forgalom áll, elkerülve a felesleges kampányköltéseket.
+  - *GYIK — Melyik közösségi platformmal érdemes elindulnia egy B2B vagy helyi vállalkozásnak?* Ne legyél jelen mindenhol egyszerre: válaszd ki azt az 1–2 csatornát (például LinkedIn B2B-re, Instagram/Facebook B2C-re), ahol a tényleges célcsoportod aktívan keresgél.
+  - *GYIK — Hogyan kapcsolódik a közösségi média a saját weboldalamhoz?* A közösségi csatornák szerepe a figyelem felkeltése, de a bizalomépítésnek és az ajánlatkérésnek mindig a saját, kontrollált weboldaladon kell lezárulnia.
+  - *GYIK — Miben tudok segíteni a közösségi média vizuális és technikai támogatásában?* Egységes social sablonok, kampánylanding oldalak és mérhető konverziós követés (GA4, UTM) kialakításával támogatom a megjelenésedet egyedi árajánlat alapján.
+
+### Bútorwebáruház Értékesítés Növelése: 7 Lépéses Gyakorlati Útmutató
+- **URL:** https://webdude.hu/hirek/2023-10-18-4421-2 | **Kategória:** Webshop fejlesztés | **Dátum:** 2023-10-18 (frissítve: 2026-11-20)
+- **TL;DR:** A bútorértékesítésben és lakberendezési webshopokban a konverzió növelése a vizuális bizalomépítésre, a részletes termékadatlapokra és a helyi keresőoptimalizálásra támaszkodik. A 7 lépéses stratégia a vevői fájdalompontok kezelésére, a virtuális bemutatótér-élményre és a célzott lokális kampányokra építve növeli a kosárértéket és a vásárlási hajlandóságot.
+  - *GYIK — Milyen speciális UX funkciók növelik leginkább egy bútorwebáruház konverzióját?* A nagy felbontású, valós méreteket és szövetvariációkat mutató termékgaléria, a részletes méret/anyag szűrők, valamint az egyértelmű szállítási és összeszerelési információk.
+  - *GYIK — Melyik platformot javaslom prémium bútorwebáruház építéséhez?* Kisebb és közepes katalógushoz kiváló a jól optimalizált WooCommerce, nagy termékforgalomnál és egyedi konfigurátoroknál viszont a Next.js alapú egyedi frontend nyújt villámgyors élményt.
+  - *GYIK — Hogyan csökkenthető a kosárelhagyás nagy értékű termékeknél?* Átlátható szállítási határidőkkel, gyors mobilos pénztárral, bizalomépítő referenciákkal és közvetlen konzultációs vagy ajánlatkérő lehetőséggel.
+
+### Google Értékelés Törlése és Kifogásolása Tulajdonosként: Lépésről Lépésre
+- **URL:** https://webdude.hu/hirek/2023-09-04-hogy-lehet-kifogasolni-es-torolni-egy-google-bussines-ertekelest-tulajdonoskent-google-ertekeles-torlese | **Kategória:** SEO & Keresőoptimalizálás | **Dátum:** 2023-09-04 (frissítve: 2026-11-20)
+- **TL;DR:** A Google Cégprofil tulajdonosai a megtévesztő, spam vagy személyeskedő negatív véleményeket a Google szabályzatának (Irányelvek megsértése) hivatkozásával jelenthetik be törlésre. A bejelentés során a konkrét irányelvsértést kell megjelölni a moderátorok felé, miközben a professzionális, higgzt nyilvános válasz azonnal enyhíti a hírnévkockázatot.
+  - *GYIK — Mikor van reális esély egy negatív Google értékelés töröltetésére?* Akkor, ha az értékelés bizonyítottan sérti a Google tartalmi irányelveit — például spam, hamis profil, összeférhetetlenség (volt dolgozó vagy versenytárs), gyűlöletbeszéd vagy teljesen témán kívüli szöveg.
+  - *GYIK — Mi a legjobb teendő, ha egy elégedetlen, de valós ügyfél írt kritikát?* A valós, szabályzatba nem ütköző kritikát a Google nem törli; ilyenkor egy higgadt, segítőkész és szakmai nyilvános válasz a legerősebb reputációvédő eszköz a leendő érdeklődők szemében.
+  - *GYIK — Hogyan előzhető meg, hogy egy-két igazságtalan értékelés rontsa az átlagot?* Tudatos, folyamatos elégedett-ügyfél értékeléskérési folyamattal, amellyel természetesen felülreprezentálható a valós ügyfélélmény.
+
+### WordPress Japán SEO Hack: Felismerés, Elemzés és Végleges Kármentesítés
+- **URL:** https://webdude.hu/hirek/2023-05-22-a-wordpress-hack-kodot-bont-ki-japan-seo-hack-es-futtat-a-feltoltott-zip-fajlbol | **Kategória:** WordPress | **Dátum:** 2023-05-22 (frissítve: 2026-11-20)
+- **TL;DR:** A WordPress japán kulcsszavas SEO hack (Japanese Keyword Hack) során a támadók automatikusan generált spam aloldalakat hoznak létre a feltöltött ZIP archívumokból, súlyosan károsítva a Google indexelést. A kármentesítéshez a fertőzött .htaccess, core fájlok és sitemapek tisztítása, a Search Console-ban az elutasítás, valamint a biztonsági rés bezárása szükséges.
+  - *GYIK — Hogyan ismerem fel a Japán SEO (Japanese Keyword) WordPress hacket?* A Google találatokban japán karakteres, spam jellegű termékoldalak jelennek meg a domained alatt, miközben a látogatók gyakran átirányítást vagy hamis tartalmat látnak.
+  - *GYIK — Miért nem találja meg minden víruskereső a dinamikusan betöltött ZIP-alapú kártevőt?* Mert a rosszindulatú kód nem klasszikus PHP eval hívásként bújik meg, hanem ártatlannak tűnő ZIP csomagból futásidőben bontja ki magát; ezért végzek kézi fájlrendszer-, .htaccess- és adatbázis-elemzést.
+  - *GYIK — Mit érdemes tenni a fertőzés végleges megszüntetése után?* Minden jelszó, FTP/DB hitelesítő adat és WP salt cseréje után frissítem a környezetet, visszaállítom a Search Console indexhigiénét, és bekötöm a folyamatos védelmet.
+
+### Mi az a Márkaépítés (Branding) és Miért Kulcsfontosságú a Vállalkozásodnak?
+- **URL:** https://webdude.hu/hirek/2023-05-16-mi-az-a-markaepites-miert-fontos | **Kategória:** Grafikai tervezés | **Dátum:** 2023-05-16 (frissítve: 2026-11-20)
+- **TL;DR:** A márkaépítés (branding) a vállalkozás identitásának, értékeinek és vizuális nyelvének tudatos megtervezése, amely megalapozza az ügyfelek bizalmát és a prémium árképzést. A tudatos branding hosszú távon csökkenti az ügyfélszerzési költségeket (CAC) és tartós versenyelőnyt teremt az árversenyben vergődő piacokon.
+  - *GYIK — Miért érdemes már kisvállalkozásként is tudatos márkaépítésbe fogni?* Egy tiszta, hiteles márka megkülönböztet a tömegből, bizalmat épít már az első kattintáskor, és leveszi a válladról a kizárólagos árverseny kényszerét.
+  - *GYIK — Miben segít a 26+ éves grafikai hátterem a márkaépítés során?* Művészeti és nyomdaipari alapokkal ötvözöm a modern digitális UI/UX-et, így a logótól a weboldalig minden elem ugyanazt a prémium minőséget közvetíti.
+  - *GYIK — Hogyan mérhető egy sikeres márkaépítés eredménye a weboldalon?* Növekvő márkakeresésekben, magasabb ajánlatkérési konverzióban, hosszabb oldalon töltött időben és erősebb visszatérő látogatói arányban mutatkozik meg.
+
+### Biztonságos API Hitelesítés: Szolgáltatási API Kulcsok Kezelése
+- **URL:** https://webdude.hu/hirek/2023-05-16-api-hitelesites-szolgaltatasi-ugyfel-api-kulcsok-letrehozasa | **Kategória:** Webfejlesztés | **Dátum:** 2023-05-16 (frissítve: 2026-11-20)
+- **TL;DR:** A modern API-k biztonságos hitelesítéséhez a sima szöveges API-kulcsok helyett sózott és hash-elt tárolást, egyedi hatóköröket (scopes) és rendszeres kulcsrotációt kell alkalmazni. Ez megakadályozza az illetéktelen hozzáférést és a bérlői adatok szivárgását mind B2B integrációknál, mind mikroszolgáltatás-architektúrákban.
+  - *GYIK — Miért veszélyes az API kulcsokat kliensoldali JavaScript kódban vagy Git repóban tárolni?* Bármi, ami a böngészőbe kerülő bundle-ben szerepel, nyilvánosan kiolvasható, így illetéktelenek visszaélhetnek a kvótákkal vagy a backend adatokkal; én minden titkos kulcsot szigorúan szerveroldali környezeti változókban tartok.
+  - *GYIK — Mikor válasszam az API kulcsot és mikor az OAuth / JWT tokent?* Szerver-szerver kommunikációhoz megfelelőek a szigorúan korlátozott jogosultságú API kulcsok, míg felhasználói munkamenetekhez rövid élettartamú JWT vagy OAuth2 tokeneket alkalmazok.
+  - *GYIK — Hogyan védek egy nyilvános Next.js végpontot a visszaélések ellen?* Szerveroldali Zod validációval, rate limitinggel, kulcsrotációval és a minimálisan szükséges jogosultságok (least privilege) betartásával.
+
+### Google Cégprofil Regisztráció és Hitelesítés Lépésről Lépésre
+- **URL:** https://webdude.hu/hirek/2023-05-11-regisztracio-a-cegprofilra | **Kategória:** SEO & Keresőoptimalizálás | **Dátum:** 2023-05-11 (frissítve: 2026-11-20)
+- **TL;DR:** A Google Cégprofil regisztrációja a helyi SEO és a térképes megjelenés (Google Maps) legfontosabb eszköze. A pontos cégnév, kategória, nyitvatartási idő és cím megadása után a hitelesítés videóval vagy postai úton történik, amely közvetlenül növeli a telefonos megkeresések és az organikus helyi leadek számát.
+  - *GYIK — Mennyi ideig tart a Google Cégprofil hitelesítése?* Digitális (telefonos, emailes vagy videós) hitelesítés esetén sokszor perceken vagy néhány napon belül aktiválható a profil, postai kódnál pedig jellemzően 1–2 hetet vesz igénybe.
+  - *GYIK — Miért fontos a pontos kategória és NAP adatok megadása?* A név, cím és telefonszám (NAP) következetessége a helyi SEO egyik alappillére: a Google ebből azonosítja egyértelműen a vállalkozásodat a Térképen és a helyi találatok között.
+  - *GYIK — Segítek-e a Google Cégprofil és a weboldal helyi SEO összehangolásában?* Igen, a Cégprofil optimalizálása mellett a weboldalad LocalBusiness Schema.org adatait és tartalmát is összekapcsolom vele egyedi árajánlat alapján.
+
+### Márkaidentitás Kialakítása Lépésről Lépésre: Útmutató Vállalkozóknak
+- **URL:** https://webdude.hu/hirek/2023-05-06-utmutato-lepesrol-lepesre-lenyugozo-markaidentitas-letrehozasahoz | **Kategória:** Grafikai tervezés | **Dátum:** 2023-05-06 (frissítve: 2026-11-20)
+- **TL;DR:** A sikeres márkaidentitás a piaci pozicionáláson, a vizuális harmónián és az egységes kommunikáción alapul. A folyamat lépései magukban foglalják a célközönség meghatározását, az arculati színek és tipográfia kiválasztását, a reszponzív logórendszer megtervezését és a részletes brand book összeállítását a hosszú távú márkaérték növeléséért.
+  - *GYIK — Mi a különbség a logó és a teljes márkaidentitás között?* A logó csak egyetlen azonosító jel; a teljes márkaidentitás viszont magában foglalja a színpalettát, a tipográfiai rendszert, a képi világot, a hangnemet és az arculati kézikönyvet is.
+  - *GYIK — Hogyan indul nálam egy márkaidentitás-tervezési projekt?* 26+ éves grafikai tervezői tapasztalatomra építve először feltárom a célpiacodat és a versenytársaidat, majd ebből építek egységes vizuális koncepciót print és digitális felületekre egyaránt.
+  - *GYIK — Miért fontos az arculati szabályzat a későbbi webfejlesztés előtt?* Ha az arculat koncepciója már az induláskor egységes, a weboldal és minden marketinganyag konzisztens lesz, ami gyorsabb kivitelezést és erősebb ügyfélbizalmat eredményez.
+
+### WordPress Oldalak Feltörésének Módjai és Hatékony Védelmi Módszerek
+- **URL:** https://webdude.hu/hirek/2023-05-01-wordpress-oldalak-feltoresenek-lehetseges-modja | **Kategória:** WordPress | **Dátum:** 2023-05-01 (frissítve: 2026-11-20)
+- **TL;DR:** A WordPress weboldalak feltörése leggyakrabban elavult bővítményeken, gyenge jelszavakon és felügyelet nélküli feltöltési könyvtárakon keresztül történik. A hatékony védekezés alappillérei a kétlépcsős hitelesítés (2FA), az egyedi bejelentkezési URL, a fájlrendszer-jogosultságok szigorítása és a WAF tűzfal alkalmazása a rosszindulatú kódinjekciók kivédésére.
+  - *GYIK — Melyek a leggyakoribb támadási vektorok egy WordPress oldal feltörésénél?* Tapasztalataim szerint a legtöbb incidens elavult bővítmények sérülékenységéből, gyenge admin jelszavak elleni brute force támadásokból és rosszul beállított fájl-jogosultságokból ered.
+  - *GYIK — Elég egy biztonsági bővítmény telepítése a teljes védelemhez?* Önmagában nem elég: én a többrétegű védelemben hiszek, amely magában foglalja a wp-login védelmét, kétfaktoros hitelesítést, XML-RPC korlátozást, minimális bővítményszámot és szerveroldali tűzfalat.
+  - *GYIK — Mit teszek, ha már megtörtént a feltörés egy WordPress weboldalon?* Izolálom a kártékony fájlokat, összevetem a magfájlokat a tiszta verzióval, ellenőrzöm az adatbázist rejtett admin felhasználókra, majd zárom a támadási rést.
+
+### WordPress Karbantartás: 13 Kötelező Feladat a Stabil Működéshez
+- **URL:** https://webdude.hu/hirek/2023-05-01-wordpress-karbantartas-webhely-karbantartas-13-kotelezo-feladat-2023-ban | **Kategória:** WordPress | **Dátum:** 2023-05-01 (frissítve: 2026-11-20)
+- **TL;DR:** A rendszeres WordPress karbantartás elengedhetetlen a weboldal sebességének, biztonságának és konverziós erejének fenntartásához. A 13 kötelező lépés felöleli a napi biztonsági mentéseket, a PHP és bővítmény-frissítéseket, az adatbázis-tisztítást, a 404-es hibák megszüntetését és a szerveroldali gyorsítótárazást, garantálva a zavartalan üzletmenetet.
+  - *GYIK — Milyen gyakran javaslom a WordPress karbantartási feladatok elvégzését?* Nálam a kritikus biztonsági mentések és az uptime-figyelés naponta automatikusan futnak, a bővítmények és a WordPress mag frissítését pedig hetente, tesztelt lépésekben végzem el a leállások elkerülésére.
+  - *GYIK — Mi történhet, ha elmarad a rendszeres WordPress frissítés és karbantartás?* Elavult bővítményeknél megnő a biztonsági rések és a feltörések kockázata, felhalmozódik az adatbázis-hulladék, és lassul a betöltés, ami rontja a Google-helyezéseket és a látogatói bizalmat.
+  - *GYIK — Vállalok-e folyamatos, egyedi WordPress karbantartást meglévő weboldalakra?* Igen, egyedi árajánlat alapján személyesen kezelem a biztonsági mentéseket, frissítéseket, adatbázis-tisztítást és sebességoptimalizálást közvetlen kommunikációval.

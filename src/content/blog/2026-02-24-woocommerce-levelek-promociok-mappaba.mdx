@@ -3,7 +3,7 @@ title: >-
   Miért Kerülnek a WooCommerce Levelek a Promóciók vagy Spam Mappába? (És Hogyan
   Javítsd Ki!)
 date: '2026-02-24'
-updatedAt: '2026-11-12'
+updatedAt: "2026-11-20"
 excerpt: >-
   Nem érkeznek meg a WooCommerce rendelés-visszaigazoló levelek a vásárlókhoz?
   SMTP beállítás, SPF, DKIM és DMARC hitelesítés a hibátlan kézbesítésért.
@@ -96,3 +96,16 @@ A webshop üzemeltetés nem csak a termékek feltöltéséből áll. Egy profi h
 
 <b>WebDude - Prémium WordPress webfejlesztés és karbantartás</b>
 
+## Gyakori kérdések
+
+### Miért kerülnek a WooCommerce rendelési visszaigazolások a Spam vagy Promóciók mappába?
+
+Leggyakrabban azért, mert a webshop alapértelmezett PHP `mail()` függvényén keresztül küld levelet, vagy hiányoznak a hitelesített SMTP, SPF, DKIM és DMARC DNS-rekordok.
+
+### Mi az a három DNS rekord, aminek mindenképp rendben kell lennie a webshop domainjén?
+
+Az SPF (engedélyezett küldő szerverek), a DKIM (kriptográfiai aláírás) és a DMARC (irányelv a hibásan aláírt levelek kezelésére) — ezek nélkül a Gmail könnyen gyanúsnak minősíti a visszaigazolókat.
+
+### Hogyan segítek egy webshop kézbesítési hibáinak gyors kijavításában?
+
+Átnézem a DNS-zónát, beállítom a hitelesített SMTP küldést, és tesztelem a kézbesítési pontszámot, hogy minden számla és rendelési értesítő az elsődleges beérkezőbe jusson.

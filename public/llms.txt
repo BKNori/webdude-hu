@@ -1,6 +1,9 @@
 # WebDude
 
 > Balog Norbert (WebDude) egyéni webfejlesztői, grafikai és AI-automatizációs gyakorlata: 26+ év tervezőgrafikai és 16+ év full-stack webfejlesztői tapasztalattal (Next.js 16, React 19, TypeScript, Tailwind CSS v4, WordPress / WooCommerce, Firebase). Közvetlen kivitelezés ügynökségi közvetítők nélkül — országosan magyarul és távmunkában nemzetközi ügyfeleknek angolul. Minden projekt egyedi árajánlat alapján indul.
+>
+> Teljes, strukturált AI kontextus (szolgáltatások, esettanulmány-eredmények, szakcikk-kivonatok és GYIK-ek): https://webdude.hu/llms-full.txt
+> RSS 2.0 tudásbázis feed: https://webdude.hu/feed.xml
 
 ## Fő Magyar Oldalak (HU)
 

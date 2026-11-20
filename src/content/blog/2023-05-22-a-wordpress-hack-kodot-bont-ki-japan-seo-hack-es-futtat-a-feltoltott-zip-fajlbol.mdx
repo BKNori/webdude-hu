@@ -1,7 +1,7 @@
 ---
 title: 'WordPress Japán SEO Hack: Felismerés, Elemzés és Végleges Kármentesítés'
 date: '2023-05-22'
-updatedAt: '2026-11-12'
+updatedAt: "2026-11-20"
 excerpt: >-
   Hogyan ismerhető fel és távolítható el a japán kulcsszavas SEO spam hack a
   WordPress oldalakról? Részletes esettanulmány a ZIP-ből kibontott kódokról és
@@ -392,3 +392,16 @@ Ez a fajta feltörés, a dinamikusan betöltött zip fájl használata új volt 
 
 Technikailag nagyon szépen kivitelezett és jól rejtett hack. Ebben az esetben azonban ez csak egy nem biztonságos vagy kiszivárgott, már meglévő Wordpress-felhasználó jelszavának a használata tette lehetővé, ami elkerülhető lett volna.
 
+## Gyakori kérdések
+
+### Hogyan ismerem fel a Japán SEO (Japanese Keyword) WordPress hacket?
+
+A Google találatokban japán karakteres, spam jellegű termékoldalak jelennek meg a domained alatt, miközben a látogatók gyakran átirányítást vagy hamis tartalmat látnak.
+
+### Miért nem találja meg minden víruskereső a dinamikusan betöltött ZIP-alapú kártevőt?
+
+Mert a rosszindulatú kód nem klasszikus PHP eval hívásként bújik meg, hanem ártatlannak tűnő ZIP csomagból futásidőben bontja ki magát; ezért végzek kézi fájlrendszer-, .htaccess- és adatbázis-elemzést.
+
+### Mit érdemes tenni a fertőzés végleges megszüntetése után?
+
+Minden jelszó, FTP/DB hitelesítő adat és WP salt cseréje után frissítem a környezetet, visszaállítom a Search Console indexhigiénét, és bekötöm a folyamatos védelmet.

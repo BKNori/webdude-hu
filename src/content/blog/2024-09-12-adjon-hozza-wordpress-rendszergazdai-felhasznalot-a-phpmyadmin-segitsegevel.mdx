@@ -1,7 +1,7 @@
 ---
 title: WordPress Rendszergazda (Admin) Hozzáadása phpMyAdmin Adatbázisból
 date: '2024-09-12'
-updatedAt: '2026-11-12'
+updatedAt: "2026-11-20"
 excerpt: >-
   Nem tudsz belépni a WordPress admin felületre? Útmutató új rendszergazdai fiók
   létrehozásához közvetlenül a MySQL/MariaDB adatbázisból phpMyAdmin
@@ -93,3 +93,17 @@ Ha az újonnan létrehozott felhasználó nem tudja használni a WordPress vizu�
   * <strong>user_id</strong> – Ugyanaz az azonosító, mint az előző 8. lépésben
   * <strong>rich_editing</strong> –`true`
 * Kattintson <strong>az Indítás gombra</strong>
+
+## Gyakori kérdések
+
+### Mikor lehet szükség phpMyAdmin segítségével WordPress admin felhasználót létrehozni?
+
+Akkor, ha kizártad magad az admin felületről, nem érkezik meg a jelszó-visszaállító email, vagy egy biztonsági incidens után vissza kell venned az irányítást az adatbázis felett.
+
+### Mire kell kiemelten figyelni a wp_users és wp_usermeta táblák szerkesztésénél?
+
+Az adatbázisban a wp_ prefix helyett egyedi tábla-előtagod is lehet, és módosítás előtt mindig készíts teljes SQL biztonsági mentést, valamint az wp_capabilities mezőt pontosan add meg.
+
+### Mit tegyek az új admin fiók létrehozása után az admin belépést követően?
+
+Azonnal változtasd le a jelszót a WordPress vezérlőpulton belül erősebb, modernebb titkosításúra, ellenőrizd az admin felhasználók listáját, és töröld az ismeretlen fiókokat.

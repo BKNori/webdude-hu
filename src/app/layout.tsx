@@ -37,6 +37,14 @@ export const metadata = {
       "en-US": "https://webdude.hu/en",
       "x-default": "https://webdude.hu",
     },
+    types: {
+      "application/rss+xml": [
+        {
+          url: "https://webdude.hu/feed.xml",
+          title: "WebDude Blog RSS Feed",
+        },
+      ],
+    },
   },
   robots: {
     index: true,
@@ -106,6 +114,12 @@ export default async function RootLayout({ children }: RootLayoutProps) {
           <link
             rel="preconnect"
             href="https://firebasestorage.googleapis.com"
+          />
+          <link
+            rel="alternate"
+            type="application/rss+xml"
+            title="WebDude Blog RSS Feed"
+            href="https://webdude.hu/feed.xml"
           />
           <script
             type="application/ld+json"
