@@ -60,7 +60,7 @@ export async function generateAICopilotResponseAction(
     let liveWebContext = "";
     if (needsSearch) {
       try {
-        liveWebContext = await tavilySearchAction(userMessage);
+        liveWebContext = await tavilySearchAction(userMessage, idToken);
       } catch (error) {
         console.error("Tavily search error:", error);
         // Fallback: continue without web context

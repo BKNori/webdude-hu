@@ -1,19 +1,12 @@
-"use client";
-
 import Link from "next/link";
-import { motion } from "motion/react";
 import DirectAnswerBlock from "@/components/molecules/DirectAnswerBlock";
-import {
-  ShoppingBag,
-  Zap,
-  Shield,
-  Sparkles,
-  ArrowRight,
-  Star,
-  CheckCircle,
-} from "lucide-react";
+import ProductsCatalogClient, {
+  type CatalogProduct,
+  type ProductCategory,
+} from "@/components/organisms/ProductsCatalogClient";
+import { ShoppingBag, ArrowRight } from "lucide-react";
 
-const products = [
+const products: CatalogProduct[] = [
   {
     id: 1,
     name: "AI Workflow Starter Pack",
@@ -28,7 +21,7 @@ const products = [
       "300 DPI nyomdakész outputok",
       "1 év ingyenes frissítés",
     ],
-    icon: Zap,
+    iconName: "zap",
     color: "from-[#00B5F1] to-brand-secondary",
     href: "/termekek/ai-workflow-starter-pack",
   },
@@ -46,7 +39,7 @@ const products = [
       "AI válasz motor optimalizáció",
       "Schema.org JSON-LD implementáció",
     ],
-    icon: Shield,
+    iconName: "shield",
     color: "from-blue-500 to-sky-500",
     href: "/termekek/seo-audit-pro",
   },
@@ -64,7 +57,7 @@ const products = [
       "30 nap alatt dupla konverzió",
       "Kész A/B teszt sablonok",
     ],
-    icon: Sparkles,
+    iconName: "sparkles",
     color: "from-purple-500 to-pink-500",
     href: "/termekek/cro-booster-kit",
   },
@@ -82,7 +75,7 @@ const products = [
       "Magyar nyelvű AI válaszok",
       "5 perc alatt integrálható",
     ],
-    icon: ShoppingBag,
+    iconName: "shopping-bag",
     color: "from-green-500 to-emerald-500",
     href: "/termekek/ai-chatbot-starter",
   },
@@ -100,7 +93,7 @@ const products = [
       "500M+ Ft generált befektetés — mért ügyfél-eredmény (ROI)",
       "Strategist-Pro AI workflow",
     ],
-    icon: Zap,
+    iconName: "zap",
     color: "from-[#00B5F1] to-brand-secondary",
     href: "/termekek/kristofka-munkafolyamat",
   },
@@ -118,7 +111,7 @@ const products = [
       "4K felbontású outputok",
       "Midjourney v6 Master promptok",
     ],
-    icon: Shield,
+    iconName: "shield",
     color: "from-blue-500 to-sky-500",
     href: "/termekek/banner-ai-muhely",
   },
@@ -136,7 +129,7 @@ const products = [
       "300 DPI nyomdakész outputok",
       "Midjourney v6 Master promptok",
     ],
-    icon: Sparkles,
+    iconName: "sparkles",
     color: "from-purple-500 to-pink-500",
     href: "/termekek/logo-ai-muhely",
   },
@@ -154,7 +147,7 @@ const products = [
       "8K felbontású outputok",
       "85mm G-Master optika",
     ],
-    icon: ShoppingBag,
+    iconName: "shopping-bag",
     color: "from-green-500 to-emerald-500",
     href: "/termekek/midjourney-ai-muhely",
   },
@@ -172,7 +165,7 @@ const products = [
       "24/7 monitoring",
       "AI válasz motor optimalizáció",
     ],
-    icon: Shield,
+    iconName: "shield",
     color: "from-blue-500 to-sky-500",
     href: "/termekek/seo-audit-ai-muhely",
   },
@@ -190,7 +183,7 @@ const products = [
       "4K felbontású outputok",
       "Midjourney v6 Master promptok",
     ],
-    icon: Shield,
+    iconName: "shield",
     color: "from-blue-500 to-sky-500",
     href: "/termekek/szezonalis-ai-muhely",
   },
@@ -208,7 +201,7 @@ const products = [
       "SEO-optimalizált outputok",
       "Social media tartalmak",
     ],
-    icon: Sparkles,
+    iconName: "sparkles",
     color: "from-purple-500 to-pink-500",
     href: "/termekek/tartalomtervezo-ai-muhely",
   },
@@ -226,7 +219,7 @@ const products = [
       "Figma kompatibilis outputok",
       "Felhasználói élmény optimalizálás",
     ],
-    icon: Sparkles,
+    iconName: "sparkles",
     color: "from-purple-500 to-pink-500",
     href: "/termekek/ui-ux-ai-muhely",
   },
@@ -244,23 +237,39 @@ const products = [
       "Stratégiai insightok",
       "Design audit és trend elemzés",
     ],
-    icon: ShoppingBag,
+    iconName: "shopping-bag",
     color: "from-green-500 to-emerald-500",
     href: "/termekek/versenytars-elemzo-ai-muhely",
   },
 ];
 
-const categories = [
+const categories: ProductCategory[] = [
   { name: "Összes", count: products.length },
-  { name: "AI Automatizáció", count: 2 },
-  { name: "SEO Optimalizálás", count: 1 },
-  { name: "Konverzió Optimalizálás", count: 1 },
-  { name: "AI Megoldások", count: 1 },
-  { name: "AI Műhely", count: 9 },
+  {
+    name: "AI Automatizáció",
+    count: products.filter((p) => p.category === "AI Automatizáció").length,
+  },
+  {
+    name: "SEO Optimalizálás",
+    count: products.filter((p) => p.category === "SEO Optimalizálás").length,
+  },
+  {
+    name: "Konverzió Optimalizálás",
+    count: products.filter((p) => p.category === "Konverzió Optimalizálás")
+      .length,
+  },
+  {
+    name: "AI Megoldások",
+    count: products.filter((p) => p.category === "AI Megoldások").length,
+  },
+  {
+    name: "AI Műhely",
+    count: products.filter((p) => p.category === "AI Műhely").length,
+  },
 ];
 
 export default function ProductsPage() {
-  // A /termekek katalógus 100% nyilvános konverziós landing oldal —
+  // A /termekek katalógus 100% nyilvános Server Component konverziós landing oldal —
   // a hozzáférés-ellenőrzés a generátoroknál (allowedTools) történik.
   return (
     <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#0B1120] text-[#0F172A] dark:text-[#F8FAFC]">
@@ -268,37 +277,22 @@ export default function ProductsPage() {
       <section className="relative py-24 overflow-hidden bg-[#F8FAFC] dark:bg-bg-surface">
         <div className="max-w-6xl mx-auto px-6 relative z-10">
           <div className="text-center space-y-6">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0369A1]/10 dark:bg-[#00B5F1]/10 border border-[#0369A1]/25 dark:border-[#00B5F1]/20"
-            >
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0369A1]/10 dark:bg-[#00B5F1]/10 border border-[#0369A1]/25 dark:border-[#00B5F1]/20">
               <ShoppingBag className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
               <span className="text-xs font-bold text-[#0369A1] dark:text-[#00B5F1] uppercase tracking-[0.2em]">
                 AI & Automatizáció
               </span>
-            </motion.div>
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-4xl md:text-6xl font-bold text-[#0F172A] dark:text-text-primary tracking-tight"
-            >
+            </div>
+            <h1 className="text-4xl md:text-6xl font-bold text-[#0F172A] dark:text-text-primary tracking-tight">
               Prémium AI &{" "}
               <span className="text-transparent bg-clip-text bg-linear-to-r from-[#0369A1] to-[#6D28D9] dark:from-[#00B5F1] dark:to-[#A78BFA]">
                 Automatizációs Megoldások
               </span>
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-lg text-[#334155] dark:text-slate-400 max-w-2xl mx-auto tracking-wide font-medium"
-            >
+            </h1>
+            <p className="text-lg text-[#334155] dark:text-slate-400 max-w-2xl mx-auto tracking-wide font-medium">
               Kész, azonnal integrálható AI munkafolyamatok, prompt engineering
               és automatizációs megoldások vállalkozásoknak.
-            </motion.p>
+            </p>
           </div>
         </div>
       </section>
@@ -310,103 +304,8 @@ export default function ProductsPage() {
         answer="Prémium AI munkafolyamatok, prompt engineering, CRO eszközök és AI műhely sablonok KKV-knak az automatizáció skálázására és a lead-generálásra. 26 év grafikai és 16 év webfejlesztői tapasztalat, egyedi árajánlat kérése."
       />
 
-      {/* Category Filter */}
-      <section className="py-8 border-b border-slate-200 dark:border-slate-800 bg-[#F1F5F9] dark:bg-bg-surface">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="flex flex-wrap gap-3 justify-center">
-            {categories.map((category) => (
-              <button
-                key={category.name}
-                className="px-4 py-2 rounded-lg bg-white dark:bg-slate-900/80 border border-slate-300 dark:border-slate-700 text-[#334155] dark:text-slate-400 hover:border-[#0369A1]/50 dark:hover:border-[#00B5F1]/50 hover:text-[#0369A1] dark:hover:text-[#00B5F1] transition-all text-sm font-medium shadow-[0_4px_12px_rgba(15,23,42,0.06)] dark:shadow-[0_4px_12px_rgba(15,23,42,0.3)]"
-              >
-                {category.name} ({category.count})
-              </button>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Products Grid */}
-      <section className="py-16 bg-[#F8FAFC] dark:bg-bg-surface">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
-            {products.map((product, index) => {
-              const ProductIcon = product.icon;
-              return (
-                <motion.div
-                  key={product.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="group luminous-card rounded-2xl overflow-hidden"
-                >
-                  <div className="p-6">
-                    {/* Header */}
-                    <div className="flex items-start justify-between mb-4">
-                      <div className="w-14 h-14 rounded-xl bg-linear-to-br from-[#0369A1]/10 to-[#6D28D9]/10 dark:from-[#00B5F1]/10 dark:to-[#5B21B6]/10 border border-[#0369A1]/25 dark:border-[#00B5F1]/20 flex items-center justify-center group-hover:border-[#0369A1]/50 dark:group-hover:border-[#00B5F1]/50 transition-colors">
-                        <ProductIcon className="w-7 h-7 text-[#0369A1] dark:text-[#00B5F1]" />
-                      </div>
-                      <div className="flex items-center gap-1 text-[#0369A1] dark:text-[#00B5F1]">
-                        <Star className="w-4 h-4 fill-current" />
-                        <span className="text-sm font-medium">
-                          {product.rating}
-                        </span>
-                        <span className="text-[#475569] dark:text-slate-400 text-sm">
-                          ({product.reviews})
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Category */}
-                    <span className="text-xs font-bold text-[#0369A1] dark:text-[#00B5F1] uppercase tracking-wider mb-2 block">
-                      {product.category}
-                    </span>
-
-                    {/* Title */}
-                    <h3 className="text-xl font-bold text-[#0F172A] dark:text-text-primary mb-3 group-hover:text-[#0369A1] dark:group-hover:text-[#00B5F1] transition-colors">
-                      {product.name}
-                    </h3>
-
-                    {/* Description */}
-                    <p className="text-[#334155] dark:text-slate-400 text-sm mb-4 line-clamp-2">
-                      {product.description}
-                    </p>
-
-                    {/* Features */}
-                    <div className="space-y-2 mb-6">
-                      {product.features.map((feature, idx) => (
-                        <div
-                          key={idx}
-                          className="flex items-center gap-2 text-sm text-[#334155] dark:text-slate-400"
-                        >
-                          <CheckCircle className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
-                          <span>{feature}</span>
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* Price - Removed, replaced with CTA */}
-                    <div className="mb-6">
-                      <p className="text-sm text-[#475569] dark:text-slate-400 mb-2">
-                        Egyedi árazás a projekt igényei szerint
-                      </p>
-                    </div>
-
-                    {/* CTA */}
-                    <Link
-                      href="/kapcsolat"
-                      className="flex items-center justify-center gap-2 w-full py-3 bg-linear-to-r from-[#075985] to-[#5B21B6] hover:from-[#0369A1] hover:to-[#6D28D9] text-white font-bold rounded-xl hover:shadow-[0_8px_24px_rgba(3,105,161,0.3)] transition-all group-hover:scale-[1.02]"
-                    >
-                      <span>Egyedi árajánlat kérése</span>
-                      <ArrowRight className="w-4 h-4" />
-                    </Link>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+      {/* Interaktív szűrő és kártyarács (Client leaf komponens) */}
+      <ProductsCatalogClient products={products} categories={categories} />
 
       {/* CTA Section */}
       <section className="py-16 border-t border-slate-200 dark:border-slate-800 bg-[#F1F5F9] dark:bg-bg-surface">

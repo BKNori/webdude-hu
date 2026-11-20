@@ -1,7 +1,8 @@
 "use client";
 
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
 import ScrollVideoHero from "@/components/organisms/ScrollVideoHero";
+import { useHydratedReducedMotion } from "@/hooks/useMotionPreset";
 
 interface PortfolioHeroProps {
   badge?: string;
@@ -20,7 +21,7 @@ export default function PortfolioHero({
   ctaLabel = "Kapcsolat →",
   ctaHref = "/kapcsolat",
 }: PortfolioHeroProps) {
-  const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = useHydratedReducedMotion();
 
   return (
     <ScrollVideoHero videoSrc="/webdude-websites-promo.mp4" scrollHeight={120}>
@@ -82,8 +83,8 @@ export default function PortfolioHero({
           transition={
             shouldReduceMotion ? { duration: 0 } : { duration: 0.8, delay: 0.6 }
           }
-          whileHover={shouldReduceMotion ? undefined : { scale: 1.05 }}
-          whileTap={shouldReduceMotion ? undefined : { scale: 0.95 }}
+          whileHover={shouldReduceMotion ? { scale: 1 } : { scale: 1.05 }}
+          whileTap={shouldReduceMotion ? { scale: 1 } : { scale: 0.95 }}
           href={ctaHref}
           className="inline-block px-10 py-5 bg-linear-to-r from-[#075985] to-[#5B21B6] hover:to-[#6d28d9] text-white rounded-full font-bold text-lg shadow-[0_8px_24px_rgba(0,181,241,0.2)] hover:shadow-[0_18px_40px_rgba(0,181,241,0.3)] transition-[background-color,box-shadow,transform] duration-300 focus:outline-none focus:ring-2 focus:ring-[#00B5F1] focus:ring-offset-2 focus:ring-offset-bg-base"
         >

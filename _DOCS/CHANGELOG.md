@@ -1,5 +1,18 @@
 # Changelog
 
+## [7.71.0] — 2026-11-20 — Biztonsági (P0) & Architektúra / SEO / Higiénia (P1–P2) Javítások
+
+- **Batch 1 — P0 Server Action Védelem (`verifyUserToken` + Zod + Rate Limit):**
+  - [src/app/actions/multiAgentWorkflow.ts](file:///c:/CLI-PROJECTS/webdude-hu/src/app/actions/multiAgentWorkflow.ts) (`executeMultiAgentWorkflow`): kötelező `verifyUserToken` autentikáció (`401`/`403`), `checkRateLimit` (5 kérés / óra a 6 szekvenciális LLM-hívás védelmére) és szigorú Zod séma-validáció (max 12 000 karakteres payload).
+  - [src/actions/lighthouse.ts](file:///c:/CLI-PROJECTS/webdude-hu/src/actions/lighthouse.ts) (`runLighthouseAuditAction`): kötelező `verifyUserToken`, `checkRateLimit` (10 kérés / óra), Zod + `new URL(...)` SSRF-védelem (`http:`/`https:` protokoll, `localhost`, `.local`, `.internal` és privát IPv4/IPv6 tartományok tiltása), valamint `clientId` kényszerítés a hitelesített `uid`-ra (kivéve `superadmin`).
+  - [src/actions/tavily.ts](file:///c:/CLI-PROJECTS/webdude-hu/src/actions/tavily.ts) (`tavilySearchAction`): kötelező `verifyUserToken`, Zod query-validáció (3–500 karakter) és `checkRateLimit` (20 kérés / óra); a hívók ([ai-copilot.ts](file:///c:/CLI-PROJECTS/webdude-hu/src/actions/ai-copilot.ts), [dispatcher.ts](file:///c:/CLI-PROJECTS/webdude-hu/src/actions/dispatcher.ts)) továbbadják az ellenőrzött tokent.
+
+- **Batch 2 — P1/P2 Teljesítmény, Hydration, SEO & Repo Takarítás:**
+  - [src/components/molecules/PortfolioHero.tsx](file:///c:/CLI-PROJECTS/webdude-hu/src/components/molecules/PortfolioHero.tsx): átállítva hydration-biztos `useHydratedReducedMotion()` hookra és állandó `whileTap` / `whileHover` objektumokra.
+  - [src/app/termekek/page.tsx](file:///c:/CLI-PROJECTS/webdude-hu/src/app/termekek/page.tsx) + [src/components/organisms/ProductsCatalogClient.tsx](file:///c:/CLI-PROJECTS/webdude-hu/src/components/organisms/ProductsCatalogClient.tsx): `"use client"` eltávolítva a `page.tsx`-ből (tiszta Server Component váz), az interaktív kategóriaszűrő és animált kártyarács kliens falevél komponensbe szervezve.
+  - [src/app/en/portfolio/page.tsx](file:///c:/CLI-PROJECTS/webdude-hu/src/app/en/portfolio/page.tsx): igazolva, hogy `/en/portfolio/[slug]` nem létezik, így a `hasPart` JSON-LD URL-ek helyesen a valós `/munkak/[slug]` útvonalakra mutatnak (nincs 404).
+  - **Repo-higiénia:** törölve a használaton kívüli `src/components/Header.js` és `scripts/gen_logo_demo.js`.
+
 ## [7.70.1] — 2026-11-20 — Hírek Editorial Tipográfia & Táblázatok + React Hydration Javítás
 
 - **Hírek Cikkoldal Editorial Tipográfia & Táblázatok (`/hirek/[slug]`):**

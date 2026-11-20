@@ -27,7 +27,7 @@ const taskIdSchema = z
   .min(1, "A taskId nem lehet üres.")
   .max(128, "Érvénytelen taskId.");
 
-async function requireAdmin(authInput?: DispatcherAuthInput): Promise<void> {
+async function requireAdmin(authInput?: DispatcherAuthInput): Promise<string> {
   let token: string | null = null;
 
   if (typeof authInput === "string" && authInput.trim()) {
@@ -68,6 +68,8 @@ async function requireAdmin(authInput?: DispatcherAuthInput): Promise<void> {
   if (!isAdmin) {
     throw new Error("Nincs admin jogosultság a feladatok kiosztásához.");
   }
+
+  return token;
 }
 
 export async function autoAssignTaskAction(
@@ -79,7 +81,7 @@ export async function autoAssignTaskAction(
   }
 
   try {
-    await requireAdmin(authHeader);
+    const verifiedToken = await requireAdmin(authHeader);
 
     const parsedTaskId = taskIdSchema.safeParse(taskId);
     if (!parsedTaskId.success) {
@@ -128,7 +130,8 @@ export async function autoAssignTaskAction(
 
     const aiResult = await generateAICopilotResponseAction(
       "dummy-workflow-id",
-      prompt
+      prompt,
+      verifiedToken
     );
 
     if (!aiResult.success || !aiResult.response) {

@@ -1,5 +1,7 @@
 "use server";
 
+import { headers } from "next/headers";
+import { z } from "zod";
 import {
   MultiAgentInput,
   MultiAgentResult,
@@ -7,6 +9,35 @@ import {
   AgentType,
 } from "@/types/multiAgent";
 import { callLLMWithHelicone } from "@/lib/helicone";
+import { verifyUserToken } from "@/actions/portal";
+import { checkRateLimit, getClientIdentifier } from "@/lib/rate-limit";
+
+const multiAgentInputSchema = z.object({
+  workflowId: z.string().trim().min(1, "Hiányzó workflowId.").max(128),
+  userId: z.string().trim().min(1, "Hiányzó userId.").max(128),
+  params: z
+    .record(z.string().max(64), z.unknown())
+    .refine(
+      (val) => JSON.stringify(val).length <= 12000,
+      "A bemeneti paraméterek mérete maximum 12 000 karakter lehet."
+    ),
+});
+
+async function resolveBearerToken(
+  explicitToken?: string
+): Promise<string | null> {
+  if (explicitToken && explicitToken.trim()) {
+    return explicitToken.startsWith("Bearer ")
+      ? explicitToken.slice(7).trim()
+      : explicitToken.trim();
+  }
+  const headersList = await headers();
+  const authHeader = headersList.get("authorization");
+  if (authHeader && authHeader.startsWith("Bearer ")) {
+    return authHeader.slice(7).trim();
+  }
+  return null;
+}
 
 // Ágens végrehajtás wrapper Helicone monitoringgal
 async function executeAgent(
@@ -108,13 +139,54 @@ async function executeAuditorAgent(
   return executeAgent("auditor", prompt, "openai", "gpt-4o");
 }
 
-// Fő orchestration függvény
+// Fő orchestration függvény (Auth + Zod + Rate Limit védelemmel)
 export async function executeMultiAgentWorkflow(
-  input: MultiAgentInput
+  input: MultiAgentInput,
+  idToken?: string
 ): Promise<MultiAgentResult> {
+  const token = await resolveBearerToken(idToken);
+  if (!token) {
+    throw new Error("401 Unauthorized: Hiányzó hitelesítési token.");
+  }
+
+  const user = await verifyUserToken(token);
+  if (!user) {
+    throw new Error(
+      "401 Unauthorized: Érvénytelen vagy lejárt hitelesítési token."
+    );
+  }
+
+  const headersList = await headers();
+  const req = { headers: headersList } as unknown as Request;
+  const identifier = getClientIdentifier(req);
+  const rateLimitResult = checkRateLimit(
+    `multi-agent:${user.uid}:${identifier}`,
+    5,
+    3600000
+  );
+  if (!rateLimitResult.success) {
+    throw new Error(
+      "429 Too Many Requests: Túl sok multi-agent futtatás. Kérlek, várj egy órát!"
+    );
+  }
+
+  const validation = multiAgentInputSchema.safeParse(input);
+  if (!validation.success) {
+    throw new Error(
+      "400 Bad Request: Érvénytelen workflow bemeneti paraméterek."
+    );
+  }
+
+  const validatedInput = validation.data;
+  if (!user.isAdmin && validatedInput.userId !== user.uid) {
+    throw new Error(
+      "403 Forbidden: Nincs jogosultságod más felhasználó nevében futtatni a munkafolyamatot."
+    );
+  }
+
   const startTime = Date.now();
 
-  const personaResult = await executePersonaAgent(input);
+  const personaResult = await executePersonaAgent(validatedInput);
   const copywriterResult = await executeCopywriterAgent(personaResult);
   const creativeResult = await executeCreativeDirectorAgent(personaResult);
   const seoResult = await executeSeoOptimizerAgent(copywriterResult);
