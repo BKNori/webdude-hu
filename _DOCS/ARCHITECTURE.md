@@ -1,7 +1,7 @@
 # ARCHITECTURE.md — WebDude Rendszerarchitektúra
 
 **webdude.hu | Next.js 16 · React 19 · TypeScript · Firebase**
-**Utolsó frissítés: 2026-11-21 (7.82.0: Nemzetközi Tudásbázis — `/en/insights` + 3 Angol BOFU/GEO Szakcikk & Playwright `workers: 2` Stabilizálás)**
+**Utolsó frissítés: 2026-11-21 (7.83.0: Önellenzőrzés, Dedikált Angol `/en/insights` Borítóképek & Repo-Sterilitás)**
 
 > **7.74.0 (2026-11-20):** Additív SEO / AIO / AEO / GEO & Schema.org Tudásgráf Bővítés:
 >

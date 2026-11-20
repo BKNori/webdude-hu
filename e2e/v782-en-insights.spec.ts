@@ -114,7 +114,7 @@ test.describe("v7.82.0 Angol Tudásbázis (/en/insights)", () => {
               hasCover: imgs.some(
                 (im) =>
                   (im.currentSrc || im.getAttribute("src") || "").includes(
-                    "2026-11-17-ai-keresooptimalizalas-geo-aeo-utmutato-cegeknek"
+                    "en-ai-search-geo-aeo-guide-for-businesses"
                   ) &&
                   im.complete &&
                   im.naturalWidth > 0

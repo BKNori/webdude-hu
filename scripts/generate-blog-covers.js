@@ -10,6 +10,8 @@
 
 const fs = require("fs");
 const path = require("path");
+const vm = require("vm");
+const ts = require("typescript");
 const matter = require("gray-matter");
 const sharp = require("sharp");
 
@@ -118,6 +120,33 @@ const CATEGORY_THEMES = {
     badgeText: "#6ee7b7",
     glowColor: "rgba(16, 185, 129, 0.35)",
   },
+  "AI Search & GEO": {
+    badge: "AI SEARCH & GEO",
+    primary: "#00B5F1",
+    secondary: "#7C3AED",
+    badgeBg: "rgba(0, 181, 241, 0.18)",
+    badgeBorder: "rgba(124, 58, 237, 0.45)",
+    badgeText: "#38bdf8",
+    glowColor: "rgba(0, 181, 241, 0.4)",
+  },
+  "Architecture & Speed": {
+    badge: "WEB ARCHITECTURE",
+    primary: "#06b6d4",
+    secondary: "#5B21B6",
+    badgeBg: "rgba(6, 182, 212, 0.16)",
+    badgeBorder: "rgba(91, 33, 182, 0.45)",
+    badgeText: "#67e8f9",
+    glowColor: "rgba(6, 182, 212, 0.38)",
+  },
+  "Strategy & ROI": {
+    badge: "EXECUTIVE STRATEGY",
+    primary: "#7C3AED",
+    secondary: "#00B5F1",
+    badgeBg: "rgba(124, 58, 237, 0.18)",
+    badgeBorder: "rgba(0, 181, 241, 0.45)",
+    badgeText: "#c4b5fd",
+    glowColor: "rgba(124, 58, 237, 0.38)",
+  },
 };
 
 function escapeXml(unsafe) {
@@ -171,8 +200,12 @@ function wrapText(text, maxCharsPerLine = 34, maxLines = 3) {
 /**
  * SVG template generálása 1200x630 méretben
  */
-function buildCoverSvg({ title, category }) {
+function buildCoverSvg({ title, category, lang = "hu" }) {
   const theme = CATEGORY_THEMES[category] || CATEGORY_THEMES["Webfejlesztés"];
+  const eeaFooter =
+    lang === "en"
+      ? "26+ YRS DESIGN · 16+ YRS DEV"
+      : "26 ÉV GRAFIKA · 16 ÉV FEJLESZTÉS";
 
   let fontSize = 46;
   let lineHeight = 58;
@@ -282,7 +315,7 @@ function buildCoverSvg({ title, category }) {
     <text x="110" y="0" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="500" fill="#94a3b8" letter-spacing="0.08em">// BALOG NORBERT</text>
 
     <!-- Jobb oldali E-E-A-T Horgony -->
-    <text x="1040" y="0" text-anchor="end" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" fill="#64748b" letter-spacing="0.1em">26 ÉV GRAFIKA · 16 ÉV FEJLESZTÉS</text>
+    <text x="1040" y="0" text-anchor="end" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" fill="#64748b" letter-spacing="0.1em">${eeaFooter}</text>
   </g>
 </svg>`;
 }
@@ -366,8 +399,44 @@ async function main() {
   }
 
   console.log("\n============================================");
-  console.log(`[SIKER] Legenerált képek: ${generatedCount} db`);
+  console.log(`[SIKER] Legenerált magyar képek: ${generatedCount} db`);
   console.log(`[SIKER] Frissített MDX fájlok: ${updatedMdxCount} db`);
+
+  // 3. Angol /en/insights cikkek egyedi borítóinak generálása
+  const enInsightsPath = path.join(ROOT, "src", "data", "enInsights.ts");
+  if (fs.existsSync(enInsightsPath)) {
+    const rawTs = fs.readFileSync(enInsightsPath, "utf-8");
+    const { outputText } = ts.transpileModule(rawTs, {
+      compilerOptions: {
+        module: ts.ModuleKind.CommonJS,
+        target: ts.ScriptTarget.ES2020,
+      },
+    });
+    const mod = { exports: {} };
+    vm.runInNewContext(outputText, { exports: mod.exports, module: mod });
+    const enPosts = Array.isArray(mod.exports.EN_INSIGHTS)
+      ? mod.exports.EN_INSIGHTS
+      : [];
+
+    let enGenerated = 0;
+    for (const post of enPosts) {
+      const coverFileName = `en-${post.slug}.webp`;
+      const coverFilePath = path.join(OUTPUT_DIR, coverFileName);
+      const svgString = buildCoverSvg({
+        title: post.title,
+        category: post.category,
+        lang: "en",
+      });
+      await sharp(Buffer.from(svgString))
+        .webp({ quality: 85, effort: 4 })
+        .toFile(coverFilePath);
+      const stats = fs.statSync(coverFilePath);
+      console.log(`[EN IMAGE] ${coverFileName} (${Math.round(stats.size / 1024)} KB)`);
+      enGenerated++;
+    }
+    console.log(`[SIKER] Legenerált angol borítóképek: ${enGenerated} db`);
+  }
+
   console.log("============================================");
 }
 

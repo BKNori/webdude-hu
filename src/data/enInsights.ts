@@ -56,7 +56,7 @@ export const EN_INSIGHTS: EnInsightPost[] = [
     date: "2026-11-21",
     updatedAt: "2026-11-21",
     coverImage:
-      "/assets/blog/covers/2026-11-17-ai-keresooptimalizalas-geo-aeo-utmutato-cegeknek.webp",
+      "/assets/blog/covers/en-ai-search-geo-aeo-guide-for-businesses.webp",
     coverAlt:
       "AI Search Optimization GEO and AEO structured entity guide visual",
     excerpt:
@@ -174,7 +174,7 @@ export const EN_INSIGHTS: EnInsightPost[] = [
     date: "2026-11-21",
     updatedAt: "2026-11-21",
     coverImage:
-      "/assets/blog/covers/2026-11-17-nextjs-16-vs-wordpress-weboldal-fejlesztes-2026.webp",
+      "/assets/blog/covers/en-nextjs-vs-custom-wordpress-2026.webp",
     coverAlt:
       "Next.js App Router vs Custom WordPress engineering comparison banner",
     excerpt:
@@ -295,7 +295,7 @@ export const EN_INSIGHTS: EnInsightPost[] = [
     date: "2026-11-21",
     updatedAt: "2026-11-21",
     coverImage:
-      "/assets/blog/covers/2026-11-20-ugynokseg-vs-senior-szabaduszo-webfejleszto.webp",
+      "/assets/blog/covers/en-senior-freelancer-vs-digital-agency.webp",
     coverAlt:
       "Hiring a Senior Full-Stack Freelancer vs Digital Agency comparison visual",
     excerpt:

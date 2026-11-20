@@ -1,5 +1,12 @@
 # Changelog
 
+## [7.83.0] — 2026-11-21 — Önellenzőrzés, Dedikált Angol Cikk-Borítók & Repo-Sterilitás
+
+### Added & Changed
+- **Dedikált Angol Cikk-Borítók (`scripts/generate-blog-covers.js`, `src/data/enInsights.ts`, `public/assets/blog/covers/en-*.webp`):** A `CATEGORY_THEMES` bővítve az angol kategóriákkal (`AI Search & GEO`, `Architecture & Speed`, `Strategy & ROI`), angol nyelvű SVG E-E-A-T lábléccel (`26+ YRS DESIGN · 16+ YRS DEV`), és mindhárom `/en/insights/[slug]` cikk megkapta saját egyedi `1200x630` `.webp` borítóját + reszponzív képvariánsait.
+- **Repo-Sterilitás (`scripts/`):** Eltávolítva a korábbi egyszer használatos WP-kinyerő, HTML-importáló, MDX-javító és `_amber-*` migrációs segédszkriptek (15 db), így kizárólag a karbantartott generáló és QA szkriptek maradtak a `scripts/` mappában.
+- **SEO / AEO / i18n Ellenőrzés (`src/app/hirek/[slug]/page.tsx`, `src/app/en/insights/[slug]/page.tsx`):** Ellenőrizve a duplikált `FAQPage` sémák mentessége, a `canonical` URL-ek és a kétirányú `/hirek` ↔ `/en/insights` `hreflang` kapcsolatok; a `v782-en-insights.spec.ts` borítókép-ellenőrzése szinkronizálva az új `en-*.webp` fájlnévre.
+
 ## [7.82.0] — 2026-11-21 — Nemzetközi Tudásbázis (`/en/insights` + 3 Angol BOFU/GEO Szakcikk) & Playwright Stabilizálás
 
 ### Added & Changed
