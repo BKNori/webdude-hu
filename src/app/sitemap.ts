@@ -144,6 +144,26 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       ),
     },
     {
+      url: `${BASE_URL}/ingyenes-seo-aeo-elemzes`,
+      lastModified: BUILD_DATE,
+      changeFrequency: "monthly" as const,
+      priority: 0.85,
+      alternates: buildBilingualAlternates(
+        `${BASE_URL}/ingyenes-seo-aeo-elemzes`,
+        `${BASE_URL}/en/free-seo-aeo-checker`
+      ),
+    },
+    {
+      url: `${BASE_URL}/en/free-seo-aeo-checker`,
+      lastModified: BUILD_DATE,
+      changeFrequency: "monthly" as const,
+      priority: 0.85,
+      alternates: buildBilingualAlternates(
+        `${BASE_URL}/ingyenes-seo-aeo-elemzes`,
+        `${BASE_URL}/en/free-seo-aeo-checker`
+      ),
+    },
+    {
       url: `${BASE_URL}/munkak`,
       lastModified: BUILD_DATE,
       changeFrequency: "weekly" as const,

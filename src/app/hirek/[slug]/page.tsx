@@ -13,6 +13,7 @@ import {
 } from "@/lib/structuredData";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { mdxComponents } from "@/components/mdx/MDXComponents";
+import SeoQuickCheckBanner from "@/components/molecules/SeoQuickCheckBanner";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -295,6 +296,9 @@ export default async function BlogPost({ params }: PageProps) {
               </Link>
             </div>
           </section>
+
+          {/* Alacsony küszöbű lead-mágnes CTA — Ingyenes SEO & AI Gyorsellenőrző */}
+          <SeoQuickCheckBanner />
 
           {/* CRO Konverziós CTA kártya (Zéró Fix Ár szabállyal) */}
           <section className="mt-12">

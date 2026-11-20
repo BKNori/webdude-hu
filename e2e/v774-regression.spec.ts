@@ -185,40 +185,26 @@ test.describe("v7.74.x Regressziós E2E ellenőrzések", () => {
         window.scrollTo(0, 0);
       });
 
-      const images = page.locator("img:visible");
-      const count = await images.count();
+      const count = await page.locator("img:visible").count();
       expect(count).toBeGreaterThan(0);
 
-      for (let i = 0; i < count; i++) {
-        const img = images.nth(i);
-        await img.scrollIntoViewIfNeeded();
-        await expect
-          .poll(
-            async () =>
-              img.evaluate((el) => {
-                const imageEl = el as HTMLImageElement;
-                return {
-                  complete: imageEl.complete,
-                  naturalWidth: imageEl.naturalWidth,
-                  src: imageEl.currentSrc || imageEl.getAttribute("src") || "",
-                };
-              }),
-            { timeout: 10_000 }
-          )
-          .toMatchObject({ complete: true });
-
-        const info = await img.evaluate((el) => {
-          const imageEl = el as HTMLImageElement;
-          return {
-            naturalWidth: imageEl.naturalWidth,
-            src: imageEl.currentSrc || imageEl.getAttribute("src") || "",
-          };
-        });
-        expect(
-          info.naturalWidth,
-          `Broken image on ${route}: ${info.src}`
-        ).toBeGreaterThan(0);
-      }
+      await expect
+        .poll(
+          async () =>
+            page.locator("img:visible").evaluateAll((els) => {
+              const imgs = els as HTMLImageElement[];
+              return {
+                hasImages: imgs.length > 0,
+                broken: imgs
+                  .filter((im) => !im.complete || im.naturalWidth === 0)
+                  .map(
+                    (im) => im.currentSrc || im.getAttribute("src") || "unknown"
+                  ),
+              };
+            }),
+          { timeout: 10_000, intervals: [250, 500] }
+        )
+        .toEqual({ hasImages: true, broken: [] });
     }
 
     expect(errors).toEqual([]);

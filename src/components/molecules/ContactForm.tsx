@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -53,11 +53,29 @@ export default function ContactForm({ dictionary }: ContactFormProps) {
     register,
     handleSubmit,
     reset,
+    setValue,
     formState: { errors },
     getValues,
   } = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
   });
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const topic = params.get("tema") || params.get("topic");
+    const auditedUrl = params.get("url")?.trim();
+    if (topic === "seo-aeo-audit" || auditedUrl) {
+      const isEn = Boolean(dictionary);
+      setValue("projectType", "webfejlesztes");
+      const urlText = auditedUrl ? ` (${auditedUrl})` : "";
+      setValue(
+        "message",
+        isEn
+          ? `I would like to request the free 10-minute video UX & SEO/AEO audit for my website${urlText}.`
+          : `Szeretném kérni az ingyenes, 10 perces videós UX & SEO/AEO elemzést a weboldalamhoz${urlText}.`
+      );
+    }
+  }, [dictionary, setValue]);
 
   const onError = () => {
     trackEvent("form_error", {

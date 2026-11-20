@@ -1,11 +1,24 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useSyncExternalStore } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import QuoteRequestForm from "@/components/organisms/QuoteRequestForm";
 import ContactForm from "@/components/molecules/ContactForm";
 import { MessageSquare, ClipboardList } from "lucide-react";
 import type { ContactFormContent } from "@/types/dictionary";
+
+const emptySubscribe = () => () => {};
+
+function getAuditPrefillSnapshot(): boolean {
+  const params = new URLSearchParams(window.location.search);
+  const topic = params.get("tema") || params.get("topic");
+  const targetUrl = params.get("url");
+  return topic === "seo-aeo-audit" || Boolean(targetUrl);
+}
+
+function getAuditPrefillServerSnapshot(): boolean {
+  return false;
+}
 
 interface ContactFormWrapperProps {
   dictionary?: ContactFormContent;
@@ -14,7 +27,15 @@ interface ContactFormWrapperProps {
 export default function ContactFormWrapper({
   dictionary,
 }: ContactFormWrapperProps) {
-  const [activeForm, setActiveForm] = useState<"quote" | "simple">("quote");
+  const [userSelectedForm, setUserSelectedForm] = useState<
+    "quote" | "simple" | null
+  >(null);
+  const hasAuditQuery = useSyncExternalStore(
+    emptySubscribe,
+    getAuditPrefillSnapshot,
+    getAuditPrefillServerSnapshot
+  );
+  const activeForm = userSelectedForm ?? (hasAuditQuery ? "simple" : "quote");
 
   return (
     <div className="space-y-6">
@@ -22,7 +43,7 @@ export default function ContactFormWrapper({
       <div className="flex gap-2 p-1 bg-slate-200/80 dark:bg-[#0B1120]/80 backdrop-blur-md border border-slate-300/80 dark:border-white/12 rounded-2xl max-w-md mx-auto">
         <button
           type="button"
-          onClick={() => setActiveForm("quote")}
+          onClick={() => setUserSelectedForm("quote")}
           className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-xl transition-all duration-300 text-xs font-bold uppercase tracking-wider focus:outline-none focus:ring-2 focus:ring-[#0369A1] dark:focus:ring-[#00B5F1] focus:ring-offset-2 focus:ring-offset-bg-base ${
             activeForm === "quote"
               ? "bg-[#0369A1] dark:bg-[#00B5F1] text-white dark:text-slate-950 shadow-[0_4px_12px_rgba(3,105,161,0.2)] dark:shadow-[0_4px_12px_rgba(0,181,241,0.2)]"
@@ -36,7 +57,7 @@ export default function ContactFormWrapper({
         </button>
         <button
           type="button"
-          onClick={() => setActiveForm("simple")}
+          onClick={() => setUserSelectedForm("simple")}
           className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-xl transition-all duration-300 text-xs font-bold uppercase tracking-wider focus:outline-none focus:ring-2 focus:ring-[#0369A1] dark:focus:ring-[#00B5F1] focus:ring-offset-2 focus:ring-offset-bg-base ${
             activeForm === "simple"
               ? "bg-[#0369A1] dark:bg-[#00B5F1] text-white dark:text-slate-950 shadow-[0_4px_12px_rgba(3,105,161,0.2)] dark:shadow-[0_4px_12px_rgba(0,181,241,0.2)]"

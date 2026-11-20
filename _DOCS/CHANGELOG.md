@@ -1,5 +1,18 @@
 # Changelog
 
+## [7.78.0] — 2026-11-20 — Ingyenes SEO & AI-Készség (AEO/GEO) Gyorsellenőrző Lead-Mágnes + Cikk-CTA
+
+### Hozzáadva
+- **Determinisztikus SEO / AEO / GEO Elemző Motor ([src/lib/seoQuickCheck.ts](file:///c:/CLI-PROJECTS/webdude-hu/src/lib/seoQuickCheck.ts)) & Unit Tesztek ([seoQuickCheck.test.ts](file:///c:/CLI-PROJECTS/webdude-hu/src/lib/__tests__/seoQuickCheck.test.ts)):** 0 Ft AI-token költségű, 10 pontos (0–100 pontos) elemző motor szigorú **SSRF-védelemmel** (`http:`/`https:` kényszerítés, DNS lookup + privát/loopback/link-local IPv4/IPv6 tartományok tiltása, max 3 redirect hop ellenőrzés, `6s` timeout, max `1 MB` body).
+- **Publikus API Végpont ([src/app/api/public/seo-quick-check/route.ts](file:///c:/CLI-PROJECTS/webdude-hu/src/app/api/public/seo-quick-check/route.ts)):** Zod bemenet-validáció és memóriás IP rate limit (`10 kérés / 10 perc / IP`).
+- **Interaktív Diagnosztikai UI & Kétnyelvű Eszközoldalak ([SeoQuickCheckTool.tsx](file:///c:/CLI-PROJECTS/webdude-hu/src/components/organisms/SeoQuickCheckTool.tsx), [src/app/ingyenes-seo-aeo-elemzes/page.tsx](file:///c:/CLI-PROJECTS/webdude-hu/src/app/ingyenes-seo-aeo-elemzes/page.tsx), [src/app/en/free-seo-aeo-checker/page.tsx](file:///c:/CLI-PROJECTS/webdude-hu/src/app/en/free-seo-aeo-checker/page.tsx)):** Dual Theme kördiagram/pontszámjelző, 10 pontos ellenőrzőlista és alacsony küszöbű konverziós CTA („Kérem az ingyenes, 10 perces videós UX & SEO elemzést”), `WebApplication` + `FAQPage` + `BreadcrumbList` JSON-LD sémákkal és kétirányú `hreflang`-gal.
+- **Kontextuális Cikk-CTA ([SeoQuickCheckBanner.tsx](file:///c:/CLI-PROJECTS/webdude-hu/src/components/molecules/SeoQuickCheckBanner.tsx)):** Additív módon beillesztve a [src/app/hirek/[slug]/page.tsx](file:///c:/CLI-PROJECTS/webdude-hu/src/app/hirek/%5Bslug%5D/page.tsx) cikkek aljára.
+- **Playwright E2E ([e2e/v778-seo-checker.spec.ts](file:///c:/CLI-PROJECTS/webdude-hu/e2e/v778-seo-checker.spec.ts)):** Az eszközoldalak SEO/JSON-LD ellenőrzése, SSRF `400` elutasítási teszt (`127.0.0.1`, `localhost:3000`, `192.168.1.1`) és a cikkoldali CTA jelenléte.
+
+### Módosítva
+- **Ajánlatkérő űrlap előtöltés ([ContactFormWrapper.tsx](file:///c:/CLI-PROJECTS/webdude-hu/src/components/organisms/ContactFormWrapper.tsx), [ContactForm.tsx](file:///c:/CLI-PROJECTS/webdude-hu/src/components/molecules/ContactForm.tsx)):** Opcionális `?tema=seo-aeo-audit&url=...` / `?topic=seo-aeo-audit&url=...` query paraméterek esetén automatikusan az egyszerű üzenet lapra vált és előtölti a kért videós audit leírását.
+- **Navigáció, Sitemap & AI Discovery:** Frissítve a [src/lib/i18n.ts](file:///c:/CLI-PROJECTS/webdude-hu/src/lib/i18n.ts) (`BILINGUAL_ROUTE_PAIRS`), [src/app/sitemap.ts](file:///c:/CLI-PROJECTS/webdude-hu/src/app/sitemap.ts), [public/llms.txt](file:///c:/CLI-PROJECTS/webdude-hu/public/llms.txt) és [scripts/generate-llms-full.js](file:///c:/CLI-PROJECTS/webdude-hu/scripts/generate-llms-full.js).
+
 ## [7.77.0] — 2026-11-20 — SEO / AIO / GEO Rések Lezárása (`llms-full.txt`, RSS 2.0 `/feed.xml`, 28/28 Blog `FAQPage`)
 
 ### Hozzáadva

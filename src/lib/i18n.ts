@@ -96,6 +96,7 @@ export const BILINGUAL_ROUTE_PAIRS: ReadonlyArray<
   ["/kapcsolat", "/en/contact"],
   ["/adatvedelmi-szabalyzat", "/en/privacy-policy"],
   ["/felhasznalasi-feltetelek", "/en/terms"],
+  ["/ingyenes-seo-aeo-elemzes", "/en/free-seo-aeo-checker"],
 ];
 
 const HU_TO_EN_MAP = new Map<string, string>([
