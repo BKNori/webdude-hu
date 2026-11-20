@@ -51,5 +51,61 @@ Disallow: /admin/
 Disallow: /portal/
 Disallow: /login
 
+User-agent: anthropic-ai
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /portal/
+Disallow: /login
+
+User-agent: Googlebot-Extended
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /portal/
+Disallow: /login
+
+User-agent: cohere-ai
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /portal/
+Disallow: /login
+
+User-agent: Amazonbot
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /portal/
+Disallow: /login
+
+User-agent: CCBot
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /portal/
+Disallow: /login
+
+User-agent: Bytespider
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /portal/
+Disallow: /login
+
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /portal/
+Disallow: /login
+
+User-agent: FacebookBot
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /portal/
+Disallow: /login
+
 # Sitemap elérhetősége
 Sitemap: https://webdude.hu/sitemap.xml

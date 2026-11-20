@@ -16,17 +16,42 @@ import {
 import PricingTable, {
   type PricingTier,
 } from "@/components/molecules/PricingTable";
+import {
+  CANONICAL_LOCALBUSINESS_ENTITY,
+  serializeJsonLd,
+} from "@/lib/structuredData";
+import { buildBreadcrumbSchema } from "@/lib/breadcrumb";
+
+const KECSKEMET_META_DESCRIPTION =
+  "Weboldal készítés Kecskeméten és országosan: Next.js és WordPress fejlesztés, helyi SEO, grafika. 26 év tapasztalat, személyes konzultáció, egyedi árajánlat.";
 
 export const metadata: Metadata = {
   title: "Weboldal készítés Kecskemét | WebDude",
-  description:
-    "Weboldal készítés Kecskeméten és országosan. WordPress, egyedi webfejlesztés, SEO és grafikai tervezés közvetlenül a WebDude-tól.",
+  description: KECSKEMET_META_DESCRIPTION,
+  alternates: {
+    canonical: "https://webdude.hu/weboldal-keszites-kecskemet",
+  },
   openGraph: {
     title: "Weboldal készítés Kecskemét | WebDude",
-    description:
-      "Weboldal készítés Kecskeméten és országosan. WordPress, egyedi webfejlesztés, SEO és grafikai tervezés közvetlenül a WebDude-tól.",
+    description: KECSKEMET_META_DESCRIPTION,
     url: "https://webdude.hu/weboldal-keszites-kecskemet",
+    siteName: "WebDude",
+    images: [
+      {
+        url: "https://webdude.hu/og/webdude-og.jpg",
+        width: 1200,
+        height: 630,
+        alt: "WebDude — weboldal készítés Kecskemét",
+      },
+    ],
+    locale: "hu_HU",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Weboldal készítés Kecskemét | WebDude",
+    description: KECSKEMET_META_DESCRIPTION,
+    images: ["https://webdude.hu/og/webdude-og.jpg"],
   },
 };
 
@@ -102,64 +127,36 @@ const faqs = [
 ];
 
 export default function WeboldalKeszitesKecskemetPage() {
+  // SSOT: /#localbusiness horgony (NAP, geo, nyitvatartás) — priceRange NÉLKÜL.
   const localBusinessJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "@id": "https://webdude.hu/#organization",
-    name: "WebDude",
-    foundingDate: "2009",
-    image: "https://webdude.hu/og/weboldal-keszites-kecskemet.jpg",
-    url: "https://webdude.hu/weboldal-keszites-kecskemet",
-    telephone: "+36 70 323 8003",
-    email: "hello@webdude.hu",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "Kecskemét",
-      addressLocality: "Kecskemét",
-      postalCode: "6000",
-      addressCountry: "HU",
-    },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: 46.9074,
-      longitude: 19.6917,
-    },
-    openingHoursSpecification: {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      opens: "09:00",
-      closes: "18:00",
-    },
-    founder: {
-      "@type": "Person",
-      "@id": "https://webdude.hu/#person",
-      name: "Balog Norbert",
-      alternateName: ["Balog Norbi", "WebDude"],
-      jobTitle: "Full-Stack Webfejlesztő, Art Director & AI Automatizációs Szakértő",
-      description: "26 év tervezőgrafikai és 16 év webfejlesztői tapasztalat",
-    },
+    ...CANONICAL_LOCALBUSINESS_ENTITY,
+    image: "https://webdude.hu/og/webdude-og.jpg",
   };
 
   const serviceJsonLd = {
     "@context": "https://schema.org",
     "@type": "Service",
+    "@id": "https://webdude.hu/weboldal-keszites-kecskemet#service",
     name: "Weboldal készítés Kecskemét",
     provider: {
-      "@type": "Person",
-      "@id": "https://webdude.hu/#person",
-      name: "Balog Norbert",
-      alternateName: ["Balog Norbi", "WebDude"],
-      jobTitle: "Full-Stack Webfejlesztő, Art Director & AI Automatizációs Szakértő",
-      url: "https://webdude.hu/szia-norbi-vagyok",
+      "@type": "LocalBusiness",
+      "@id": "https://webdude.hu/#localbusiness",
     },
-    description:
-      "Weboldal készítés Kecskeméten és országosan. WordPress, egyedi webfejlesztés, SEO és grafikai tervezés közvetlenül a WebDude-tól.",
+    description: KECSKEMET_META_DESCRIPTION,
     serviceType: "Web Development and Local SEO",
-    areaServed: {
-      "@type": "AdministrativeArea",
-      name: "Kecskemét",
-    },
+    areaServed: [
+      { "@type": "AdministrativeArea", name: "Kecskemét" },
+      { "@type": "Country", name: "Hungary" },
+    ],
   };
+
+  const breadcrumbJsonLd = buildBreadcrumbSchema([
+    { name: "Főoldal", url: "/" },
+    {
+      name: "Weboldal készítés Kecskemét",
+      url: "/weboldal-keszites-kecskemet",
+    },
+  ]);
 
   const faqJsonLd = {
     "@context": "https://schema.org",
@@ -180,20 +177,20 @@ export default function WeboldalKeszitesKecskemetPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(localBusinessJsonLd).replace(/</g, "\\u003c"),
+          __html: serializeJsonLd(localBusinessJsonLd),
         }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(serviceJsonLd).replace(/</g, "\\u003c"),
-        }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(serviceJsonLd) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(faqJsonLd).replace(/</g, "\\u003c"),
-        }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(faqJsonLd) }}
       />
 
       {/* Hero Section */}

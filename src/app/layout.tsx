@@ -4,6 +4,10 @@ import PageWrapper from "../components/layout/PageWrapper";
 import Script from "next/script";
 import { getClarityScript } from "@/lib/clarity";
 import { getDictionary } from "@/lib/dictionary";
+import {
+  CANONICAL_LOCALBUSINESS_ENTITY,
+  serializeJsonLd,
+} from "@/lib/structuredData";
 
 import "./globals.css";
 
@@ -64,73 +68,6 @@ interface RootLayoutProps {
 
 export default async function RootLayout({ children }: RootLayoutProps) {
   const dictionary = await getDictionary("hu");
-  const jsonLd: Record<string, unknown> = {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "@id": "https://webdude.hu/#organization",
-    name: "WebDude",
-    foundingDate: "2009",
-    description:
-      "Full-stack webfejlesztés, AI workflow és agent rendszerek — egy kézből. 26 év tervezőgrafikai és 16 év webfejlesztői tapasztalat, Next.js 16, React 19, Tailwind v4, Firebase alapú prémium megoldások Kecskemétről.",
-    url: "https://webdude.hu",
-    telephone: "+36 70 323 8003",
-    email: "hello@webdude.hu",
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Kecskemét",
-      addressRegion: "Bács-Kiskun",
-      addressCountry: "HU",
-    },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: 46.908,
-      longitude: 19.693,
-    },
-    openingHoursSpecification: {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      opens: "09:00",
-      closes: "16:00",
-    },
-    logo: {
-      "@type": "ImageObject",
-      url: "https://webdude.hu/og/webdude-og.jpg",
-      width: 1200,
-      height: 630,
-    },
-    contactPoint: {
-      "@type": "ContactPoint",
-      telephone: "+36 70 323 8003",
-      email: "hello@webdude.hu",
-      contactType: "customer service",
-      areaServed: "HU",
-      availableLanguage: "Hungarian",
-    },
-    sameAs: [
-      "https://www.facebook.com/webdude.hu",
-      "https://www.linkedin.com/company/webdude",
-      "https://twitter.com/webdude_hu",
-    ],
-    areaServed: {
-      "@type": "Country",
-      name: "Hungary",
-    },
-    founder: {
-      "@type": "Person",
-      "@id": "https://webdude.hu/#person",
-      name: "Balog Norbert",
-      alternateName: ["Balog Norbi", "WebDude"],
-      jobTitle: "Full-Stack Webfejlesztő, Art Director & AI Automatizációs Szakértő",
-      description:
-        "Balog Norbert (WebDude) — 26 év tervezőgrafikai és 16 év webfejlesztői tapasztalattal rendelkező szakértő, Next.js 16, React 19, Tailwind v4, Firebase alapú prémium megoldások tervezője és fejlesztője.",
-      url: "https://webdude.hu/szia-norbi-vagyok",
-      worksFor: {
-        "@type": "Organization",
-        "@id": "https://webdude.hu/#organization",
-        name: "WebDude",
-      },
-    },
-  };
 
   return (
     <MotionConfig reducedMotion="user">
@@ -142,7 +79,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
         <head>
           <meta
             name="viewport"
-            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+            content="width=device-width, initial-scale=1.0"
           />
           {/* Preconnect for performance */}
           <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -158,7 +95,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{
-              __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+              __html: serializeJsonLd(CANONICAL_LOCALBUSINESS_ENTITY),
             }}
           />
           {process.env.NODE_ENV === "production" &&

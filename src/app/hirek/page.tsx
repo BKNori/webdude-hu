@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 import Hero from "@/components/Hero";
 import BlogGrid from "@/components/molecules/BlogGrid";
 import { getCombinedBlogPosts } from "@/lib/mdx";
+import {
+  CANONICAL_ORGANIZATION_ENTITY,
+  serializeJsonLd,
+} from "@/lib/structuredData";
 
 export const metadata: Metadata = {
   title: "Szakmai Hírek, SEO és Webfejlesztés Tudásbázis | WebDude",
@@ -16,8 +20,23 @@ export const metadata: Metadata = {
       "Gyakorlati esettanulmányok, WordPress fejlesztés, technikai SEO, webshop optimalizálás és AI automatizációs útmutatók Balog Norbert 26 év tapasztalatával.",
     url: "https://webdude.hu/hirek",
     siteName: "WebDude",
+    images: [
+      {
+        url: "https://webdude.hu/og/webdude-og.jpg",
+        width: 1200,
+        height: 630,
+        alt: "WebDude szakmai tudásbázis",
+      },
+    ],
     locale: "hu_HU",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Szakmai Hírek, SEO és Webfejlesztés Tudásbázis | WebDude",
+    description:
+      "Gyakorlati esettanulmányok, WordPress fejlesztés, technikai SEO, webshop optimalizálás és AI automatizációs útmutatók Balog Norbert 26 év tapasztalatával.",
+    images: ["https://webdude.hu/og/webdude-og.jpg"],
   },
 };
 
@@ -71,15 +90,7 @@ export default async function HirekPage() {
     name: "Szakmai Hírek, SEO és Webfejlesztés Tudásbázis | WebDude",
     description:
       "Gyakorlati esettanulmányok, WordPress fejlesztés, technikai SEO, webshop optimalizálás és AI automatizációs útmutatók Balog Norbert (WebDude) 26 év tapasztalatával.",
-    publisher: {
-      "@type": "Organization",
-      "@id": `${baseUrl}/#organization`,
-      name: "WebDude",
-      url: baseUrl,
-      foundingDate: "2009",
-      telephone: "+36 70 323 8003",
-      email: "hello@webdude.hu",
-    },
+    publisher: CANONICAL_ORGANIZATION_ENTITY,
     mainEntity: {
       "@type": "ItemList",
       itemListElement: blogPosts.map((p: BlogPostSchema, i: number) => ({
@@ -96,15 +107,11 @@ export default async function HirekPage() {
       {/* Sémák RSC inline scriptként XSS védelemmel */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema).replace(/</g, "\\u003c"),
-        }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumbSchema) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(collectionSchema).replace(/</g, "\\u003c"),
-        }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(collectionSchema) }}
       />
 
       <Hero

@@ -46,6 +46,12 @@ export const CANONICAL_PERSON_ENTITY = {
     name: "WebDude",
     url: SITE_URL,
   },
+  sameAs: [
+    "https://github.com/BKNori",
+    "https://www.facebook.com/webdude.hu",
+    "https://www.linkedin.com/in/balognorbert",
+    "https://twitter.com/webdude_hu",
+  ],
 } as const;
 
 /** Központi E-E-A-T Organization entitás (SSOT). */
@@ -65,6 +71,68 @@ export const CANONICAL_ORGANIZATION_ENTITY = {
   },
   founder: CANONICAL_FOUNDER_REF,
 } as const;
+
+/**
+ * Központi LocalBusiness entitás — NAP, Geo, nyitvatartás (SSOT).
+ * Külön @id: "/#localbusiness" az /#organization konfliktus elkerülésére.
+ * ZERO FIXED PRICE: nincs priceRange, nincs Ft/HUF/EUR összeg.
+ */
+export const CANONICAL_LOCALBUSINESS_ENTITY: JsonLdSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": `${SITE_URL}/#localbusiness`,
+  name: "WebDude",
+  url: SITE_URL,
+  foundingDate: "2009",
+  telephone: "+36 70 323 8003",
+  email: "hello@webdude.hu",
+  description:
+    "Full-stack webfejlesztés, AI workflow és agent rendszerek — egy kézből. Balog Norbert: 26 év tervezőgrafikai és 16 év webfejlesztői tapasztalattal, Kecskemétről, országosan.",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Kecskemét",
+    addressRegion: "Bács-Kiskun",
+    postalCode: "6000",
+    addressCountry: "HU",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 46.908,
+    longitude: 19.693,
+  },
+  openingHoursSpecification: {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    opens: "09:00",
+    closes: "17:00",
+  },
+  logo: {
+    "@type": "ImageObject",
+    url: `${SITE_URL}/og/webdude-og.jpg`,
+    width: 1200,
+    height: 630,
+  },
+  areaServed: { "@type": "Country", name: "Hungary" },
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: "+36 70 323 8003",
+    email: "hello@webdude.hu",
+    contactType: "customer service",
+    areaServed: "HU",
+    availableLanguage: "Hungarian",
+  },
+  sameAs: [
+    "https://www.facebook.com/webdude.hu",
+    "https://www.linkedin.com/company/webdude",
+    "https://twitter.com/webdude_hu",
+  ],
+  founder: {
+    "@type": "Person",
+    "@id": `${SITE_URL}/#person`,
+    name: "Balog Norbert",
+    alternateName: ["Balog Norbi", "WebDude"],
+  },
+};
 
 const EN_PAGE_URL = `${SITE_URL}${EN_PREFIX}`;
 
@@ -223,21 +291,25 @@ export function buildEnJsonLd(dictionary: Dictionary): JsonLdSchema[] {
     step: [
       {
         "@type": "HowToStep",
+        position: 1,
         name: "Free discovery call",
         text: "Book a free consultation: we discuss your goals, audience and requirements — no obligations.",
       },
       {
         "@type": "HowToStep",
+        position: 2,
         name: "Custom quote and roadmap",
         text: "You receive a detailed scope with a custom quote and a realistic delivery schedule.",
       },
       {
         "@type": "HowToStep",
+        position: 3,
         name: "Design and development",
         text: "I design and build your solution with regular demos and direct communication throughout.",
       },
       {
         "@type": "HowToStep",
+        position: 4,
         name: "Launch and handover",
         text: "We launch together, with documentation, training and a 30-day bug-fix guarantee.",
       },

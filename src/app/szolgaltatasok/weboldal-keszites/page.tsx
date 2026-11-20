@@ -5,6 +5,7 @@ import { Search, Code, PenTool, ArrowRight } from "lucide-react";
 import Hero from "@/components/Hero";
 import PricingTable, { PricingTier } from "@/components/molecules/PricingTable";
 import { buildBreadcrumbSchema, BreadcrumbItem } from "@/lib/breadcrumb";
+import { serializeJsonLd } from "@/lib/structuredData";
 
 export const metadata: Metadata = {
   title: "Weboldal készítés vállalkozásoknak | WebDude",
@@ -19,9 +20,25 @@ export const metadata: Metadata = {
     title: "Weboldal készítés vállalkozásoknak | WebDude",
     description:
       "Gyors, modern és keresőbarát weboldal készítés kis- és középvállalkozásoknak.",
+    url: "https://webdude.hu/szolgaltatasok/weboldal-keszites",
     type: "website",
     locale: "hu_HU",
     siteName: "WebDude",
+    images: [
+      {
+        url: "https://webdude.hu/og/webdude-og.jpg",
+        width: 1200,
+        height: 630,
+        alt: "WebDude — weboldal készítés vállalkozásoknak",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Weboldal készítés vállalkozásoknak | WebDude",
+    description:
+      "Gyors, modern és keresőbarát weboldal készítés kis- és középvállalkozásoknak.",
+    images: ["https://webdude.hu/og/webdude-og.jpg"],
   },
 };
 
@@ -44,18 +61,6 @@ export default function WeboldalKeszitesPage() {
     provider: {
       "@type": "Organization",
       "@id": "https://webdude.hu/#organization",
-      name: "WebDude",
-      foundingDate: "2009",
-      telephone: "+36 70 323 8003",
-      email: "hello@webdude.hu",
-      founder: {
-        "@type": "Person",
-        "@id": "https://webdude.hu/#person",
-        name: "Balog Norbert",
-        alternateName: ["Balog Norbi", "WebDude"],
-        jobTitle: "Full-Stack Webfejlesztő, Art Director & AI Automatizációs Szakértő",
-        description: "26 év tervezőgrafikai és 16 év webfejlesztői tapasztalat",
-      },
     },
     areaServed: { "@type": "Country", name: "Hungary" },
   };
@@ -155,19 +160,19 @@ export default function WeboldalKeszitesPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema).replace(/</g, "\\u003c"),
+          __html: serializeJsonLd(breadcrumbSchema),
         }}
       />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(serviceSchema).replace(/</g, "\\u003c"),
+          __html: serializeJsonLd(serviceSchema),
         }}
       />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(faqSchema).replace(/</g, "\\u003c"),
+          __html: serializeJsonLd(faqSchema),
         }}
       />
 

@@ -5,6 +5,7 @@ import ServiceCard from "@/components/molecules/ServiceCard";
 import { Metadata } from "next";
 import { buildBreadcrumbSchema, BreadcrumbItem } from "@/lib/breadcrumb";
 import DirectAnswerBlock from "@/components/molecules/DirectAnswerBlock";
+import { CANONICAL_PERSON_ENTITY, serializeJsonLd } from "@/lib/structuredData";
 
 export const metadata: Metadata = {
   title: "Szolgáltatások – WebDude | Weboldal Készítés, SEO, AI Automatizáció",
@@ -62,56 +63,7 @@ export default async function ServicesPage() {
 
   const breadcrumbSchema = buildBreadcrumbSchema(breadcrumbItems);
 
-  const personSchema = {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "@id": "https://webdude.hu/#person",
-    name: "Balog Norbert",
-    alternateName: ["Balog Norbi", "WebDude"],
-    jobTitle:
-      "Full-Stack Webfejlesztő, Art Director & AI Automatizációs Szakértő",
-    description:
-      "26 év tervezőgrafikai és 16 év webfejlesztői tapasztalat, Next.js 16, React 19, Tailwind v4, Firebase alapú prémium megoldások országos szolgáltatással.",
-    url: "https://webdude.hu/szia-norbi-vagyok",
-    worksFor: {
-      "@type": "Organization",
-      "@id": "https://webdude.hu/#organization",
-      name: "WebDude",
-      foundingDate: "2009",
-      telephone: "+36 70 323 8003",
-      email: "hello@webdude.hu",
-    },
-  };
-
-  const serviceSchema = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    name: "Webfejlesztés, SEO, AI Automatizáció & Grafikai Tervezés",
-    description:
-      "Egyedi Next.js és WordPress weboldal készítés, technikai SEO/AEO, AI automatizáció és grafikai tervezés KKV-knak, 26 év tervezőgrafikai és 16 év fejlesztői tapasztalattal, országos online kiszolgálással, egyedi árajánlat alapján.",
-    provider: {
-      "@type": "Organization",
-      "@id": "https://webdude.hu/#organization",
-      name: "WebDude",
-      foundingDate: "2009",
-      telephone: "+36 70 323 8003",
-      email: "hello@webdude.hu",
-    },
-    areaServed: {
-      "@type": "Country",
-      name: "Hungary",
-    },
-    serviceType: [
-      "Weboldal készítés",
-      "WordPress fejlesztés",
-      "SEO optimalizálás",
-      "AI automatizáció",
-      "Grafikai tervezés",
-    ],
-  };
-
-  const serializeJsonLd = (schema: Record<string, unknown>): string =>
-    JSON.stringify(schema).replace(/</g, "\\u003c");
+  // serializeJsonLd SSOT-ból importálva (@/lib/structuredData — K-05 fix)
 
   const services = [
     {
@@ -223,26 +175,22 @@ export default async function ServicesPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Service",
+    "@id": "https://webdude.hu/szolgaltatasok#service",
     name: "WebDude Digitális Szolgáltatások",
     description:
-      "Prémium digitális szolgáltatások: egyedi weboldal fejlesztés, profi grafikai tervezés, AI prompt engineering és SEO optimalizálás.",
+      "Egyedi Next.js és WordPress weboldal készítés, technikai SEO/AEO, AI automatizáció és grafikai tervezés KKV-knak — 26 év tervezőgrafikai és 16 év webfejlesztői tapasztalattal, országos online kiszolgálással, egyedi árajánlat alapján.",
     provider: {
       "@type": "Organization",
       "@id": "https://webdude.hu/#organization",
-      name: "WebDude",
-      foundingDate: "2009",
-      telephone: "+36 70 323 8003",
-      email: "hello@webdude.hu",
-      founder: {
-        "@type": "Person",
-        "@id": "https://webdude.hu/#person",
-        name: "Balog Norbert",
-        alternateName: ["Balog Norbi", "WebDude"],
-        jobTitle:
-          "Full-Stack Webfejlesztő, Art Director & AI Automatizációs Szakértő",
-        description: "26 év tervezőgrafikai és 16 év webfejlesztői tapasztalat",
-      },
     },
+    areaServed: { "@type": "Country", name: "Hungary" },
+    serviceType: [
+      "Weboldal készítés",
+      "WordPress fejlesztés",
+      "SEO optimalizálás",
+      "AI automatizáció",
+      "Grafikai tervezés",
+    ],
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: "Digitális Szolgáltatások",
@@ -310,27 +258,19 @@ export default async function ServicesPage() {
     <div className="bg-bg-base text-text-primary">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema).replace(/</g, "\\u003c"),
-        }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumbSchema) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(personSchema).replace(/</g, "\\u003c"),
-        }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(CANONICAL_PERSON_ENTITY) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
-        }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(faqSchema).replace(/</g, "\\u003c"),
-        }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(faqSchema) }}
       />
       <Hero
         label="KKV & Marketing Szolgáltatások"
@@ -612,19 +552,6 @@ export default async function ServicesPage() {
           </div>
         </div>
       </section>
-
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: serializeJsonLd(serviceSchema),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: serializeJsonLd(breadcrumbSchema),
-        }}
-      />
     </div>
   );
 }

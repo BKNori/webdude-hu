@@ -1,5 +1,35 @@
 # Changelog
 
+## [7.68.0] — 2026-11-20 — Átfogó SEO / AIO / AEO / GEO & Schema.org Audit (Batch #1–#4)
+
+- **Batch #1 — SSOT Tudásgráf & Kritikus Schema Javítások:**
+  - `src/lib/structuredData.ts`: Új `CANONICAL_LOCALBUSINESS_ENTITY` (`@id: "https://webdude.hu/#localbusiness"`, NAP, geo, `09:00–17:00` nyitvatartás, `priceRange` nélkül — Zéró Fix Ár szabály), amivel megszűnt az `/#organization` vs. `LocalBusiness` típusütközés. A `CANONICAL_PERSON_ENTITY` megkapta a `sameAs` mezőket, az EN `HowTo` lépések pedig a `position` mezőt.
+  - `src/app/layout.tsx`: Az inline `LocalBusiness` séma törölve és lecserélve a központi `serializeJsonLd(CANONICAL_LOCALBUSINESS_ENTITY)` hívásra; a viewport meta-ból eltávolítva a `maximum-scale=1.0, user-scalable=no` (WCAG AA akadálymentesítés).
+  - `src/app/ai-megoldasok/page.tsx`: Teljes `metadata` export hozzáadva (`title`, `description`, `canonical`, `openGraph`, `twitter`, `robots`), a duplikált `@id` sémák egységesítve SSOT entitásokra és `serializeJsonLd()` használatára (`BreadcrumbList`, `CANONICAL_PERSON_ENTITY`, `Service` az `/#organization` provider-rel, `FAQPage`).
+  - `src/app/szolgaltatasok/page.tsx`: A lokális `serializeJsonLd` törölve, SSOT import bevezetve.
+
+- **Batch #2 — Hiányzó Metadata, Lokális SEO & SSOT Egységesítés:**
+  - `src/app/szolgaltatasok/page.tsx`: Duplikált `BreadcrumbList` és átfedő inline `Person`/`Service` sémák egységesítve `CANONICAL_PERSON_ENTITY`-re és egyetlen `Service` sémára (`/#organization` provider).
+  - `src/app/weboldal-keszites-kecskemet/page.tsx`: Hozzáadva az `alternates.canonical`, `openGraph` képek és `twitter` card; JSON-LD szett átállítva a `/#localbusiness` SSOT horgonyra (`Service`, `BreadcrumbList`, `FAQPage`, `priceRange` nélkül) és `serializeJsonLd()` XSS védelemmel.
+  - `src/app/munkak/page.tsx`: `CollectionPage.publisher` átállítva `CANONICAL_ORGANIZATION_ENTITY`-re (logó URL egységesítve `webdude-og.jpg`-re), `serializeJsonLd()` használatával.
+  - `src/app/kapcsolat/page.tsx`: Új `twitter` card és `BreadcrumbList` séma, javított OG képútvonal (`/assets/banners/...`), `ContactPage.mainEntity` átállítva `/#localbusiness` horgonyra, `serializeJsonLd()` használatával.
+  - `src/app/hirek/page.tsx`: Új OG kép és `twitter` card, `CollectionPage.publisher` átállítva `CANONICAL_ORGANIZATION_ENTITY`-re, `serializeJsonLd()` használatával.
+  - `src/app/szolgaltatasok/weboldal-keszites/page.tsx`: Új OG `url` + kép és `twitter` card, `Service.provider` átállítva `/#organization` horgonyra, `serializeJsonLd()` használatával.
+
+- **Batch #3 — Tudásbázis Cikkek & E-E-A-T Profiloldal:**
+  - `src/app/hirek/[slug]/page.tsx`: Biztonságos `description` fallback (`excerpt || tldr || title`), `twitter` card metadata, valamint a `TechArticle` séma bővítése `url`, `keywords` és `wordCount` mezőkkel.
+  - `src/app/szia-norbi-vagyok/page.tsx`: Új `twitter` card, `openGraph.locale` és `BreadcrumbList` séma (`buildBreadcrumbSchema`), a `Person` séma `knowsAbout` listájának deduplikálása és bővítése AEO/GEO/AI témákkal, `worksFor` SSOT horgonyra tisztítva, `serializeJsonLd()` használatával.
+
+- **Batch #4 — AI Crawlerek & Hreflang Sitemap:**
+  - `src/app/robots.ts` & `public/robots.txt`: Szinkronizált AI crawler szabályozás bővítve az `Amazonbot`, `CCBot`, `Bytespider`, `Applebot-Extended` és `FacebookBot` botokkal (`anthropic-ai`, `Googlebot-Extended` és `cohere-ai` szintén szinkronizálva `public/robots.txt`-ben).
+  - `src/app/sitemap.ts`: Kétirányú `alternates.languages` (`hu-HU`, `en-US`, `x-default`) hozzáadva az összes kétnyelvű HU/EN párhoz, valamint `hu-HU` + `x-default` jelölés a főbb magyar aloldalakhoz.
+
+- **QA Gate (Batch #1–#4 után):**
+  - `npx tsc --noEmit` → **0 hiba (EXIT=0)**
+  - `npm run lint` → **0 hiba (EXIT=0)**
+
+---
+
 ## [7.67.0] — 2026-11-17 — Teljes SEO/AIO/AEO/GEO + JSON-LD Schema Audit & 3 Új 2026-os Szakcikk
 
 - **Globális E-E-A-T, JSON-LD & AI Crawler Konszolidáció:**

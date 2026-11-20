@@ -2,6 +2,8 @@ import ContactFormWrapper from "@/components/organisms/ContactFormWrapper";
 import Hero from "@/components/Hero";
 import type { Metadata } from "next";
 import { Mail, Phone, MapPin } from "lucide-react";
+import { buildBreadcrumbSchema } from "@/lib/breadcrumb";
+import { serializeJsonLd } from "@/lib/structuredData";
 
 export const metadata: Metadata = {
   title: "Kapcsolat & Konzultáció | WebDude | Közvetlen Megbeszélés",
@@ -18,7 +20,7 @@ export const metadata: Metadata = {
     siteName: "WebDude",
     images: [
       {
-        url: "/banners/wordpress-weboldalak-keszitese-grafikai-tervezes.webp",
+        url: "/assets/banners/wordpress-weboldalak-keszitese-grafikai-tervezes.webp",
         width: 1920,
         height: 1080,
         alt: "WebDude kapcsolat - weboldal készítés és grafikai tervezés",
@@ -27,7 +29,19 @@ export const metadata: Metadata = {
     locale: "hu_HU",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Kapcsolat & Konzultáció | WebDude | Közvetlen Megbeszélés",
+    description:
+      "Kérj ajánlatot közvetlenül Norbitól! Nincs projektmenedzseri réteg: 26 év tapasztalattal tervezek és fejlesztek Next.js rendszereket országosan.",
+    images: ["/assets/banners/wordpress-weboldalak-keszitese-grafikai-tervezes.webp"],
+  },
 };
+
+const breadcrumbSchema = buildBreadcrumbSchema([
+  { name: "Főoldal", url: "/" },
+  { name: "Kapcsolat", url: "/kapcsolat" },
+]);
 
 // JSON-LD: ContactPage + ProfessionalService sémák (Answer Engine Optimization)
 const contactPageSchema = {
@@ -37,29 +51,14 @@ const contactPageSchema = {
   description:
     "Kérj ajánlatot közvetlenül Norbitól! Nincs projektmenedzseri réteg: 26 év tapasztalattal tervezek és fejlesztek Next.js rendszereket országosan.",
   url: "https://webdude.hu/kapcsolat",
+  // SSOT horgony: a teljes NAP/geo az /#localbusiness node-on él (layout.tsx).
   mainEntity: {
-    "@type": "ProfessionalService",
-    "@id": "https://webdude.hu/#organization",
+    "@type": "LocalBusiness",
+    "@id": "https://webdude.hu/#localbusiness",
     name: "WebDude",
     url: "https://webdude.hu",
-    foundingDate: "2009",
-    email: "hello@webdude.hu",
     telephone: "+36 70 323 8003",
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Kecskemét",
-      postalCode: "6000",
-      addressCountry: "HU",
-    },
-    founder: {
-      "@type": "Person",
-      "@id": "https://webdude.hu/#person",
-      name: "Balog Norbert",
-      alternateName: ["Balog Norbi", "WebDude"],
-      jobTitle: "Full-Stack Webfejlesztő, Art Director & AI Automatizációs Szakértő",
-      description: "26 év tervezőgrafikai és 16 év webfejlesztői tapasztalat",
-      url: "https://webdude.hu/szia-norbi-vagyok",
-    },
+    email: "hello@webdude.hu",
     contactPoint: {
       "@type": "ContactPoint",
       telephone: "+36 70 323 8003",
@@ -75,9 +74,11 @@ export default function ContactPage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(contactPageSchema).replace(/</g, "\\u003c"),
-        }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(contactPageSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumbSchema) }}
       />
 
       <div className="min-h-screen bg-slate-950 text-slate-100">

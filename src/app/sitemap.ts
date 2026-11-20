@@ -6,20 +6,34 @@ import { getCombinedBlogPosts } from "@/lib/mdx";
 const BASE_URL = "https://webdude.hu";
 const BUILD_DATE = new Date();
 
+function buildBilingualAlternates(huUrl: string, enUrl: string) {
+  return {
+    languages: {
+      "hu-HU": huUrl,
+      "en-US": enUrl,
+      "x-default": huUrl,
+    },
+  };
+}
+
+function buildHuOnlyAlternates(huUrl: string) {
+  return {
+    languages: {
+      "hu-HU": huUrl,
+      "x-default": huUrl,
+    },
+  };
+}
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const staticPages = [
-    // Főoldal és főkategóriák
+  const staticPages: MetadataRoute.Sitemap = [
+    // Főoldal és főkategóriák (kétirányú hreflang + x-default)
     {
       url: BASE_URL,
       lastModified: BUILD_DATE,
       changeFrequency: "weekly" as const,
       priority: 1,
-      alternates: {
-        languages: {
-          "hu-HU": BASE_URL,
-          "en-US": `${BASE_URL}/en`,
-        },
-      },
+      alternates: buildBilingualAlternates(BASE_URL, `${BASE_URL}/en`),
     },
     // English homepage & main EN routes — /en prefix, hreflang kapcsolat a HU változattal
     {
@@ -27,132 +41,128 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: BUILD_DATE,
       changeFrequency: "weekly" as const,
       priority: 1,
-      alternates: {
-        languages: {
-          "hu-HU": BASE_URL,
-          "en-US": `${BASE_URL}/en`,
-        },
-      },
+      alternates: buildBilingualAlternates(BASE_URL, `${BASE_URL}/en`),
     },
     {
       url: `${BASE_URL}/en/portfolio`,
       lastModified: BUILD_DATE,
       changeFrequency: "weekly" as const,
       priority: 0.85,
-      alternates: {
-        languages: {
-          "hu-HU": `${BASE_URL}/munkak`,
-          "en-US": `${BASE_URL}/en/portfolio`,
-        },
-      },
+      alternates: buildBilingualAlternates(
+        `${BASE_URL}/munkak`,
+        `${BASE_URL}/en/portfolio`
+      ),
     },
     {
       url: `${BASE_URL}/en/services`,
       lastModified: BUILD_DATE,
       changeFrequency: "monthly" as const,
       priority: 0.85,
-      alternates: {
-        languages: {
-          "hu-HU": `${BASE_URL}/szolgaltatasok`,
-          "en-US": `${BASE_URL}/en/services`,
-        },
-      },
+      alternates: buildBilingualAlternates(
+        `${BASE_URL}/szolgaltatasok`,
+        `${BASE_URL}/en/services`
+      ),
     },
     {
       url: `${BASE_URL}/en/services/web-development`,
       lastModified: BUILD_DATE,
       changeFrequency: "monthly" as const,
       priority: 0.8,
-      alternates: {
-        languages: {
-          "hu-HU": `${BASE_URL}/szolgaltatasok/weboldal-keszites`,
-          "en-US": `${BASE_URL}/en/services/web-development`,
-        },
-      },
+      alternates: buildBilingualAlternates(
+        `${BASE_URL}/szolgaltatasok/weboldal-keszites`,
+        `${BASE_URL}/en/services/web-development`
+      ),
     },
     {
       url: `${BASE_URL}/en/services/woocommerce-development`,
       lastModified: BUILD_DATE,
       changeFrequency: "monthly" as const,
       priority: 0.8,
-      alternates: {
-        languages: {
-          "hu-HU": `${BASE_URL}/szolgaltatasok/woocommerce-webshop-keszites`,
-          "en-US": `${BASE_URL}/en/services/woocommerce-development`,
-        },
-      },
+      alternates: buildBilingualAlternates(
+        `${BASE_URL}/szolgaltatasok/woocommerce-webshop-keszites`,
+        `${BASE_URL}/en/services/woocommerce-development`
+      ),
     },
     {
       url: `${BASE_URL}/en/services/seo-optimization`,
       lastModified: BUILD_DATE,
       changeFrequency: "monthly" as const,
       priority: 0.8,
-      alternates: {
-        languages: {
-          "hu-HU": `${BASE_URL}/szolgaltatasok/seo-optimalizalas`,
-          "en-US": `${BASE_URL}/en/services/seo-optimization`,
-        },
-      },
+      alternates: buildBilingualAlternates(
+        `${BASE_URL}/szolgaltatasok/seo-optimalizalas`,
+        `${BASE_URL}/en/services/seo-optimization`
+      ),
     },
     {
       url: `${BASE_URL}/en/services/graphic-design`,
       lastModified: BUILD_DATE,
       changeFrequency: "monthly" as const,
       priority: 0.8,
-      alternates: {
-        languages: {
-          "hu-HU": `${BASE_URL}/szolgaltatasok/grafikai-tervezes`,
-          "en-US": `${BASE_URL}/en/services/graphic-design`,
-        },
-      },
+      alternates: buildBilingualAlternates(
+        `${BASE_URL}/szolgaltatasok/grafikai-tervezes`,
+        `${BASE_URL}/en/services/graphic-design`
+      ),
     },
     {
       url: `${BASE_URL}/en/contact`,
       lastModified: BUILD_DATE,
       changeFrequency: "monthly" as const,
       priority: 0.8,
-      alternates: {
-        languages: {
-          "hu-HU": `${BASE_URL}/kapcsolat`,
-          "en-US": `${BASE_URL}/en/contact`,
-        },
-      },
+      alternates: buildBilingualAlternates(
+        `${BASE_URL}/kapcsolat`,
+        `${BASE_URL}/en/contact`
+      ),
     },
     {
       url: `${BASE_URL}/munkak`,
       lastModified: BUILD_DATE,
       changeFrequency: "weekly" as const,
       priority: 0.9,
+      alternates: buildBilingualAlternates(
+        `${BASE_URL}/munkak`,
+        `${BASE_URL}/en/portfolio`
+      ),
     },
     {
       url: `${BASE_URL}/szolgaltatasok`,
       lastModified: BUILD_DATE,
       changeFrequency: "monthly" as const,
       priority: 0.9,
+      alternates: buildBilingualAlternates(
+        `${BASE_URL}/szolgaltatasok`,
+        `${BASE_URL}/en/services`
+      ),
     },
     {
       url: `${BASE_URL}/termekek`,
       lastModified: BUILD_DATE,
       changeFrequency: "weekly" as const,
       priority: 0.8,
+      alternates: buildHuOnlyAlternates(`${BASE_URL}/termekek`),
     },
     {
       url: `${BASE_URL}/hirek`,
       lastModified: BUILD_DATE,
       changeFrequency: "weekly" as const,
       priority: 0.8,
+      alternates: buildHuOnlyAlternates(`${BASE_URL}/hirek`),
     },
     {
       url: `${BASE_URL}/kapcsolat`,
       lastModified: BUILD_DATE,
       changeFrequency: "monthly" as const,
       priority: 0.8,
+      alternates: buildBilingualAlternates(
+        `${BASE_URL}/kapcsolat`,
+        `${BASE_URL}/en/contact`
+      ),
     },
     {
       url: `${BASE_URL}/szia-norbi-vagyok`,
       lastModified: BUILD_DATE,
       changeFrequency: "monthly" as const,
       priority: 0.8,
+      alternates: buildHuOnlyAlternates(`${BASE_URL}/szia-norbi-vagyok`),
     },
     // AI Megoldások főoldal és aloldalak
     {
@@ -160,12 +170,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: BUILD_DATE,
       changeFrequency: "weekly" as const,
       priority: 0.9,
+      alternates: buildHuOnlyAlternates(`${BASE_URL}/ai-megoldasok`),
     },
     {
       url: `${BASE_URL}/ai-megoldasok/ai-prompt-sablonok`,
       lastModified: BUILD_DATE,
       changeFrequency: "monthly" as const,
       priority: 0.8,
+      alternates: buildHuOnlyAlternates(
+        `${BASE_URL}/ai-megoldasok/ai-prompt-sablonok`
+      ),
     },
     // 1. és 2. prioritású új és megújított szolgáltatás landing oldalak (0.8 - 0.9)
     {
@@ -173,48 +187,73 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: BUILD_DATE,
       changeFrequency: "weekly" as const,
       priority: 0.9,
+      alternates: buildBilingualAlternates(
+        `${BASE_URL}/szolgaltatasok/weboldal-keszites`,
+        `${BASE_URL}/en/services/web-development`
+      ),
     },
     {
       url: `${BASE_URL}/szolgaltatasok/webshop-fejlesztes`,
       lastModified: BUILD_DATE,
       changeFrequency: "weekly" as const,
       priority: 0.9,
+      alternates: buildHuOnlyAlternates(
+        `${BASE_URL}/szolgaltatasok/webshop-fejlesztes`
+      ),
     },
     {
       url: `${BASE_URL}/szolgaltatasok/wordpress-fejlesztes`,
       lastModified: BUILD_DATE,
       changeFrequency: "weekly" as const,
       priority: 0.9,
+      alternates: buildHuOnlyAlternates(
+        `${BASE_URL}/szolgaltatasok/wordpress-fejlesztes`
+      ),
     },
     {
       url: `${BASE_URL}/szolgaltatasok/wordpress-weboldal-keszites`,
       lastModified: BUILD_DATE,
       changeFrequency: "weekly" as const,
       priority: 0.9,
+      alternates: buildHuOnlyAlternates(
+        `${BASE_URL}/szolgaltatasok/wordpress-weboldal-keszites`
+      ),
     },
     {
       url: `${BASE_URL}/szolgaltatasok/seo-optimalizalas`,
       lastModified: BUILD_DATE,
       changeFrequency: "weekly" as const,
       priority: 0.9,
+      alternates: buildBilingualAlternates(
+        `${BASE_URL}/szolgaltatasok/seo-optimalizalas`,
+        `${BASE_URL}/en/services/seo-optimization`
+      ),
     },
     {
       url: `${BASE_URL}/szolgaltatasok/grafikai-tervezes`,
       lastModified: BUILD_DATE,
       changeFrequency: "weekly" as const,
       priority: 0.9,
+      alternates: buildBilingualAlternates(
+        `${BASE_URL}/szolgaltatasok/grafikai-tervezes`,
+        `${BASE_URL}/en/services/graphic-design`
+      ),
     },
     {
       url: `${BASE_URL}/szolgaltatasok/arculattervezes`,
       lastModified: BUILD_DATE,
       changeFrequency: "weekly" as const,
       priority: 0.9,
+      alternates: buildHuOnlyAlternates(
+        `${BASE_URL}/szolgaltatasok/arculattervezes`
+      ),
     },
     {
       url: `${BASE_URL}/weboldal-keszites-kecskemet`,
       lastModified: BUILD_DATE,
       changeFrequency: "weekly" as const,
       priority: 0.9,
+      alternates: buildHuOnlyAlternates(`${BASE_URL}/weboldal-keszites-kecskemet`),
     },
     {
       url: `${BASE_URL}/szolgaltatasok/wordpress-karbantartas`,
@@ -259,6 +298,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: BUILD_DATE,
       changeFrequency: "weekly" as const,
       priority: 0.9,
+      alternates: buildBilingualAlternates(
+        `${BASE_URL}/szolgaltatasok/woocommerce-webshop-keszites`,
+        `${BASE_URL}/en/services/woocommerce-development`
+      ),
     },
     {
       url: `${BASE_URL}/szolgaltatasok/wordpress-webshop-keszites`,

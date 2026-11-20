@@ -5,6 +5,10 @@ import PortfolioHero from "@/components/molecules/PortfolioHero";
 import MunkakFaqSection from "@/components/organisms/MunkakFaqSection";
 import DirectAnswerBlock from "@/components/molecules/DirectAnswerBlock";
 import { works as staticWorks } from "@/data/works";
+import {
+  CANONICAL_ORGANIZATION_ENTITY,
+  serializeJsonLd,
+} from "@/lib/structuredData";
 
 export const revalidate = 3600; // 1 órás ISR gyorsítótárazás
 
@@ -86,27 +90,7 @@ const portfolioSchema = {
     "@type": "Thing",
     name: "Webfejlesztés, webshop és arculattervezés referenciák",
   },
-  publisher: {
-    "@type": "Organization",
-    "@id": "https://webdude.hu/#organization",
-    name: "WebDude",
-    url: "https://webdude.hu",
-    foundingDate: "2009",
-    telephone: "+36 70 323 8003",
-    email: "hello@webdude.hu",
-    logo: {
-      "@type": "ImageObject",
-      url: "https://webdude.hu/assets/logos/webdude-logo.webp",
-    },
-    founder: {
-      "@type": "Person",
-      "@id": "https://webdude.hu/#person",
-      name: "Balog Norbert",
-      alternateName: ["Balog Norbi", "WebDude"],
-      jobTitle: "Full-Stack Webfejlesztő, Art Director & AI Automatizációs Szakértő",
-      url: "https://webdude.hu/szia-norbi-vagyok",
-    },
-  },
+  publisher: CANONICAL_ORGANIZATION_ENTITY,
   mainEntity: {
     "@type": "ItemList",
     numberOfItems: orderedWorks.length,
@@ -145,15 +129,11 @@ export default async function MunkakPage() {
     <div className="min-h-screen bg-slate-950 text-slate-100">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(portfolioSchema).replace(/</g, "\\u003c"),
-        }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(portfolioSchema) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema).replace(/</g, "\\u003c"),
-        }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumbSchema) }}
       />
 
       {/* Scroll Video Hero Section */}

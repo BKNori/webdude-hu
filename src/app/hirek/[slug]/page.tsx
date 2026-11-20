@@ -32,18 +32,22 @@ export async function generateMetadata({
   if (!post) return { title: "A cikk nem található | WebDude" };
 
   const canonicalUrl = `https://webdude.hu/hirek/${slug}`;
+  const description =
+    post.excerpt ||
+    post.tldr ||
+    `${post.title} — Balog Norbert (WebDude) szakmai cikke.`;
   const imageUrl = post.coverImage?.startsWith("http")
     ? post.coverImage
     : `https://webdude.hu${post.coverImage || "/assets/banners/webdude-hero.webp"}`;
 
   const meta: Metadata = {
     title: `${post.title} | WebDude`,
-    description: post.excerpt,
+    description,
     alternates: { canonical: canonicalUrl },
     openGraph: {
       type: "article",
       title: `${post.title} | WebDude`,
-      description: post.excerpt,
+      description,
       url: canonicalUrl,
       publishedTime: post.date,
       modifiedTime: post.updatedAt || post.date,
@@ -51,6 +55,12 @@ export async function generateMetadata({
       images: [{ url: imageUrl, alt: post.title }],
       siteName: "WebDude",
       locale: "hu_HU",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${post.title} | WebDude`,
+      description,
+      images: [imageUrl],
     },
   };
 
@@ -71,9 +81,21 @@ export default async function BlogPost({ params }: PageProps) {
   if (!post) notFound();
 
   const canonicalUrl = `https://webdude.hu/hirek/${slug}`;
+  const description =
+    post.excerpt ||
+    post.tldr ||
+    `${post.title} — Balog Norbert (WebDude) szakmai cikke.`;
   const imageUrl = post.coverImage?.startsWith("http")
     ? post.coverImage
     : `https://webdude.hu${post.coverImage || "/assets/banners/webdude-hero.webp"}`;
+
+  const wordCount = post.content
+    ? post.content.trim().split(/\s+/).filter(Boolean).length
+    : 0;
+  const articleCategory = post.category || "Webfejlesztés";
+  const articleKeywords = Array.from(
+    new Set([articleCategory, "WebDude", "Balog Norbert", "SEO", "Webfejlesztés"])
+  );
 
   const breadcrumbItems: BreadcrumbItem[] = [
     { name: "Főoldal", url: "/" },
@@ -88,8 +110,9 @@ export default async function BlogPost({ params }: PageProps) {
     "@context": "https://schema.org",
     "@type": "TechArticle",
     "@id": `${canonicalUrl}#article`,
+    url: canonicalUrl,
     headline: post.title,
-    description: post.excerpt,
+    description,
     image: imageUrl,
     datePublished: post.date,
     dateModified: post.updatedAt || post.date,
@@ -99,7 +122,9 @@ export default async function BlogPost({ params }: PageProps) {
     },
     author: CANONICAL_PERSON_ENTITY,
     publisher: CANONICAL_ORGANIZATION_ENTITY,
-    articleSection: post.category || "Webfejlesztés",
+    articleSection: articleCategory,
+    keywords: articleKeywords,
+    ...(wordCount > 0 ? { wordCount } : {}),
     inLanguage: "hu-HU",
   };
 

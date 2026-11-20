@@ -25,6 +25,11 @@ export default function robots(): MetadataRoute.Robots {
         disallow: DISALLOWED_PATHS,
       },
       { userAgent: "cohere-ai", allow: "/", disallow: DISALLOWED_PATHS },
+      { userAgent: "Amazonbot", allow: "/", disallow: DISALLOWED_PATHS },
+      { userAgent: "CCBot", allow: "/", disallow: DISALLOWED_PATHS },
+      { userAgent: "Bytespider", allow: "/", disallow: DISALLOWED_PATHS },
+      { userAgent: "Applebot-Extended", allow: "/", disallow: DISALLOWED_PATHS },
+      { userAgent: "FacebookBot", allow: "/", disallow: DISALLOWED_PATHS },
     ],
     sitemap: "https://webdude.hu/sitemap.xml",
   };
