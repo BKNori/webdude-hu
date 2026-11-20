@@ -88,9 +88,9 @@ export default function EnWooCommercePage() {
           __html: JSON.stringify(serviceSchema).replace(/</g, "\\u003c"),
         }}
       />
-      <div className="min-h-screen bg-transparent text-text-primary relative overflow-hidden">
+      <div className="min-h-screen bg-[#F8FAFC] dark:bg-transparent text-[#0F172A] dark:text-text-primary relative overflow-hidden">
         {/* Background gradient */}
-        <div className="absolute inset-0 bg-linear-to-b from-[#00B5F1]/5 via-transparent to-[#00B5F1]/5" />
+        <div className="absolute inset-0 bg-linear-to-b from-[#0369A1]/5 via-transparent to-[#0369A1]/5 dark:from-[#00B5F1]/5 dark:via-transparent dark:to-[#00B5F1]/5" />
         <div className="relative z-10">
           <Hero
             label="Service"
@@ -104,10 +104,10 @@ export default function EnWooCommercePage() {
           />
 
           {/* Direct Answer Block - AEO optimised "WooCommerce Webshop Overview" */}
-          <section className="relative py-12 bg-bg-base border-y border-white/5">
+          <section className="relative py-12 bg-[#F1F5F9] dark:bg-bg-base border-y border-slate-200/80 dark:border-white/5">
             <div className="max-w-4xl mx-auto px-6 text-center">
-              <p className="text-base md:text-lg text-slate-300 leading-relaxed">
-                <span className="text-[#00B5F1] font-semibold">
+              <p className="text-base md:text-lg text-[#334155] dark:text-slate-300 leading-relaxed">
+                <span className="text-[#0369A1] dark:text-[#00B5F1] font-semibold">
                   WebDude WooCommerce development:
                 </span>{" "}
                 16 years of experience in WooCommerce webshop development and
@@ -118,13 +118,13 @@ export default function EnWooCommercePage() {
           </section>
 
           {/* FAQ Section */}
-          <section className="py-24 border-t border-slate-800 relative z-10">
+          <section className="py-24 border-t border-slate-200/80 dark:border-slate-800 relative z-10 bg-[#F8FAFC] dark:bg-transparent">
             <div className="max-w-4xl mx-auto px-6">
               <div className="text-center mb-16">
-                <h2 className="text-3xl font-bold text-white mb-4">
+                <h2 className="text-3xl font-bold text-[#0F172A] dark:text-white mb-4">
                   Frequently Asked Questions
                 </h2>
-                <p className="text-slate-400">
+                <p className="text-[#475569] dark:text-slate-400">
                   Direct answers to the most important WooCommerce questions.
                 </p>
               </div>
@@ -133,12 +133,12 @@ export default function EnWooCommercePage() {
                 {FAQ.map((faq, index) => (
                   <div
                     key={index}
-                    className="bg-slate-900/80 border border-white/5 rounded-2xl p-6 hover:border-[#00B5F1]/20 transition-colors"
+                    className="luminous-card rounded-2xl p-6"
                   >
-                    <h3 className="text-lg font-semibold text-[#00B5F1] mb-3">
+                    <h3 className="text-lg font-semibold text-[#0369A1] dark:text-[#00B5F1] mb-3">
                       {faq.q}
                     </h3>
-                    <p className="text-slate-400 text-sm leading-relaxed">
+                    <p className="text-[#334155] dark:text-slate-400 text-sm leading-relaxed">
                       {faq.a}
                     </p>
                   </div>
@@ -148,14 +148,14 @@ export default function EnWooCommercePage() {
           </section>
 
           {/* CTA */}
-          <section className="py-32 text-center relative z-10">
+          <section className="py-24 md:py-32 text-center relative z-10 bg-[#EAF1FA] dark:bg-transparent">
             <div className="max-w-2xl mx-auto px-6">
-              <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+              <h2 className="text-3xl md:text-5xl font-bold text-[#0F172A] dark:text-white mb-6">
                 Start your{" "}
-                <span className="text-[#00B5F1] italic">e-commerce</span>{" "}
+                <span className="text-[#0369A1] dark:text-[#00B5F1] italic">e-commerce</span>{" "}
                 journey
               </h2>
-              <p className="text-slate-400 mb-10 text-lg">
+              <p className="text-[#334155] dark:text-slate-400 mb-10 text-lg">
                 Request a free consultation and let&apos;s discuss your online store
                 needs.
               </p>

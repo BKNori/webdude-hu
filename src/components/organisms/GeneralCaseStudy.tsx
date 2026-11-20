@@ -2,7 +2,8 @@
 
 import ResponsiveImage from "@/components/molecules/ResponsiveImage";
 import Link from "next/link";
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
+import { useHydratedReducedMotion } from "@/hooks/useMotionPreset";
 import { Work } from "@/types/work";
 
 interface GeneralCaseStudyProps {
@@ -10,7 +11,7 @@ interface GeneralCaseStudyProps {
 }
 
 export default function GeneralCaseStudy({ project }: GeneralCaseStudyProps) {
-  const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = useHydratedReducedMotion();
 
   const heroSrc =
     project.bannerImage ||
@@ -31,8 +32,8 @@ export default function GeneralCaseStudy({ project }: GeneralCaseStudyProps) {
             priority
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-slate-950/75 -z-10" />
-          <div className="absolute inset-0 bg-linear-to-b from-black/80 via-slate-950/60 to-bg-base" />
+          <div className="absolute inset-0 bg-[#F8FAFC]/82 dark:bg-slate-950/75 -z-10" />
+          <div className="absolute inset-0 bg-linear-to-b from-[#F8FAFC]/90 via-[#F8FAFC]/75 to-bg-base dark:from-black/80 dark:via-slate-950/60 dark:to-bg-base" />
         </div>
 
         <motion.div
@@ -44,7 +45,7 @@ export default function GeneralCaseStudy({ project }: GeneralCaseStudyProps) {
           <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold leading-tight mb-6 tracking-tight text-balance">
             {project.title}
           </h1>
-          <p className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-8">
+          <p className="text-lg md:text-xl text-[#475569] dark:text-slate-400 max-w-2xl mx-auto mb-8">
             {project.description}
           </p>
           {project.website && (
@@ -76,7 +77,7 @@ export default function GeneralCaseStudy({ project }: GeneralCaseStudyProps) {
 
           <div className="relative max-w-7xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold mb-10 text-center">
-              Projekt <span className="text-[#00B5F1]">Galéria</span>
+              Projekt <span className="text-[#0369A1] dark:text-[#00B5F1]">Galéria</span>
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {project.gallery.map((image, index) => (
@@ -105,7 +106,7 @@ export default function GeneralCaseStudy({ project }: GeneralCaseStudyProps) {
                       : { y: -8, rotateX: 2, scale: 1.02 }
                   }
                   style={{ transformPerspective: 1200 }}
-                  className="group relative aspect-video overflow-hidden rounded-2xl border border-white/10 bg-slate-950/80 backdrop-blur-2xl ring-1 ring-white/5 transition-colors duration-300 hover:border-sky-500/40 hover:ring-[#00B5F1]/50 hover:shadow-[0_0_52px_-12px_rgba(0, 181, 241,0.55)]"
+                  className="group relative aspect-video overflow-hidden rounded-2xl border border-slate-200/80 dark:border-white/10 bg-white/95 dark:bg-slate-950/80 shadow-[0_12px_32px_rgba(15,23,42,0.06)] backdrop-blur-2xl ring-1 ring-slate-200/80 dark:ring-white/5 transition-colors duration-300 hover:border-sky-500/40 hover:ring-[#00B5F1]/50 hover:shadow-[0_0_52px_-12px_rgba(0, 181, 241,0.55)]"
                 >
                   <ResponsiveImage
                     src={image}
@@ -128,7 +129,7 @@ export default function GeneralCaseStudy({ project }: GeneralCaseStudyProps) {
         <div className="max-w-5xl mx-auto">
           <div className="grid gap-12">
             {showChallenge && (
-              <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-slate-950/80 backdrop-blur-2xl p-8 transition-colors duration-300 hover:border-sky-500/40 hover:shadow-[0_0_52px_-16px_rgba(0, 181, 241,0.5)]">
+              <div className="group relative overflow-hidden rounded-2xl border border-slate-200/80 dark:border-white/10 bg-white/95 dark:bg-slate-950/80 shadow-[0_12px_32px_rgba(15,23,42,0.06)] backdrop-blur-2xl p-8 transition-colors duration-300 hover:border-sky-500/40 hover:shadow-[0_0_52px_-16px_rgba(0, 181, 241,0.5)]">
                 <div
                   aria-hidden="true"
                   className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
@@ -137,16 +138,16 @@ export default function GeneralCaseStudy({ project }: GeneralCaseStudyProps) {
                       "radial-gradient(520px circle at 12% 0%, rgba(0, 181, 241,0.14), transparent 62%)",
                   }}
                 />
-                <h3 className="relative text-xl font-bold text-[#00B5F1] mb-4">
+                <h3 className="relative text-xl font-bold text-[#0369A1] dark:text-[#00B5F1] mb-4">
                   A Kihívás
                 </h3>
-                <p className="relative text-slate-400 leading-relaxed">
+                <p className="relative text-[#475569] dark:text-slate-400 leading-relaxed">
                   {project.challenge}
                 </p>
               </div>
             )}
             {showSolution && (
-              <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-slate-950/80 backdrop-blur-2xl p-8 transition-colors duration-300 hover:border-sky-500/40 hover:shadow-[0_0_52px_-16px_rgba(0, 181, 241,0.5)]">
+              <div className="group relative overflow-hidden rounded-2xl border border-slate-200/80 dark:border-white/10 bg-white/95 dark:bg-slate-950/80 shadow-[0_12px_32px_rgba(15,23,42,0.06)] backdrop-blur-2xl p-8 transition-colors duration-300 hover:border-sky-500/40 hover:shadow-[0_0_52px_-16px_rgba(0, 181, 241,0.5)]">
                 <div
                   aria-hidden="true"
                   className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
@@ -155,15 +156,15 @@ export default function GeneralCaseStudy({ project }: GeneralCaseStudyProps) {
                       "radial-gradient(520px circle at 12% 0%, rgba(0, 181, 241,0.14), transparent 62%)",
                   }}
                 />
-                <h3 className="relative text-xl font-bold text-[#00B5F1] mb-4">
+                <h3 className="relative text-xl font-bold text-[#0369A1] dark:text-[#00B5F1] mb-4">
                   A Megoldás
                 </h3>
-                <p className="relative text-slate-400 leading-relaxed">
+                <p className="relative text-[#475569] dark:text-slate-400 leading-relaxed">
                   {project.solution}
                 </p>
               </div>
             )}
-            <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-slate-950/80 backdrop-blur-2xl p-8 transition-colors duration-300 hover:border-sky-500/40 hover:shadow-[0_0_52px_-16px_rgba(0, 181, 241,0.5)]">
+            <div className="group relative overflow-hidden rounded-2xl border border-slate-200/80 dark:border-white/10 bg-white/95 dark:bg-slate-950/80 shadow-[0_12px_32px_rgba(15,23,42,0.06)] backdrop-blur-2xl p-8 transition-colors duration-300 hover:border-sky-500/40 hover:shadow-[0_0_52px_-16px_rgba(0, 181, 241,0.5)]">
               <div
                 aria-hidden="true"
                 className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
@@ -172,14 +173,14 @@ export default function GeneralCaseStudy({ project }: GeneralCaseStudyProps) {
                     "radial-gradient(520px circle at 12% 0%, rgba(0, 181, 241,0.14), transparent 62%)",
                 }}
               />
-              <h3 className="relative text-xl font-bold text-[#00B5F1] mb-4">
+              <h3 className="relative text-xl font-bold text-[#0369A1] dark:text-[#00B5F1] mb-4">
                 Az Eredmény
               </h3>
               <div className="relative space-y-3">
                 {project.results?.map((result, index) => (
                   <div
                     key={index}
-                    className="flex items-start gap-3 text-slate-400"
+                    className="flex items-start gap-3 text-[#475569] dark:text-slate-400"
                   >
                     <span
                       aria-hidden="true"
@@ -197,7 +198,7 @@ export default function GeneralCaseStudy({ project }: GeneralCaseStudyProps) {
       <section className="py-24 px-6">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-5xl font-bold mb-8">
-            Készen állsz a <span className="text-[#00B5F1]">következő</span>{" "}
+            Készen állsz a <span className="text-[#0369A1] dark:text-[#00B5F1]">következő</span>{" "}
             szintre?
           </h2>
           <div className="flex flex-wrap justify-center gap-6">
@@ -209,7 +210,7 @@ export default function GeneralCaseStudy({ project }: GeneralCaseStudyProps) {
             </Link>
             <Link
               href="/munkak"
-              className="px-8 py-4 border border-slate-600 hover:border-[#00B5F1] text-slate-300 hover:text-[#00B5F1] font-bold rounded-full transition-colors duration-300"
+              className="px-8 py-4 border border-slate-300 dark:border-slate-600 hover:border-[#0369A1] dark:hover:border-[#00B5F1] text-[#334155] dark:text-slate-300 hover:text-[#0369A1] dark:hover:text-[#00B5F1] font-bold rounded-full transition-colors duration-300"
             >
               Vissza a munkákhoz
             </Link>

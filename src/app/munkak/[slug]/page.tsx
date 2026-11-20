@@ -124,7 +124,7 @@ export default async function ProjectPage({ params }: PageProps) {
       {directAnswer && (
         <aside
           aria-label="Projekt áttekintés"
-          className="relative z-20 border-b border-slate-800/80 bg-slate-950/90 py-8 backdrop-blur-md"
+          className="relative z-20 border-b border-slate-200/80 dark:border-slate-800/80 bg-[#F8FAFC]/95 dark:bg-slate-950/90 py-8 backdrop-blur-md"
         >
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
             <DirectAnswerBlock

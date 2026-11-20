@@ -65,29 +65,29 @@ export default function AnimatedSystemFlow({
                   hidden: { opacity: 0, y: 12 },
                   show: { opacity: 1, y: 0, transition: { delay: i * 0.12 } },
                 }}
-                className="relative bg-bg-surface/90 backdrop-blur-md border rounded-2xl p-6 flex flex-col gap-4 border-slate-700/80 hover:border-[#00B5F1]/50 transition-colors duration-300 shadow-xl"
+                className="relative bg-white dark:bg-bg-surface/90 backdrop-blur-md border rounded-2xl p-6 flex flex-col gap-4 border-slate-200/90 dark:border-slate-700/80 hover:border-[#0369A1]/50 dark:hover:border-[#00B5F1]/50 transition-colors duration-300 shadow-sm dark:shadow-xl"
               >
                 <div className="flex items-center justify-between">
-                  <div className="w-8 h-8 rounded-full flex items-center justify-center bg-[#00B5F1]/10 border border-[#00B5F1]/30 text-[#00B5F1] text-sm font-black font-mono">
+                  <div className="w-8 h-8 rounded-full flex items-center justify-center bg-sky-500/10 border border-sky-600/30 text-[#0369A1] dark:bg-[#00B5F1]/10 dark:border-[#00B5F1]/30 dark:text-[#00B5F1] text-sm font-black font-mono">
                     0{step.id}
                   </div>
                   {Icon && (
                     <Icon
-                      className="w-5 h-5 text-slate-400"
+                      className="w-5 h-5 text-slate-600 dark:text-slate-400"
                       strokeWidth={1.5}
                     />
                   )}
                 </div>
                 <div className="space-y-1">
-                  <h4 className="text-xl text-white tracking-wider">
+                  <h4 className="text-xl text-[#0F172A] dark:text-white tracking-wider">
                     {step.title}
                   </h4>
-                  <p className="text-xs text-slate-300 leading-relaxed font-normal">
+                  <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
                     {step.label}
                   </p>
                 </div>
                 {i < stepsToUse.length - 1 && (
-                  <div className="hidden md:block absolute -right-4 top-1/2 -translate-y-1/2 w-4 h-px bg-slate-700" />
+                  <div className="hidden md:block absolute -right-4 top-1/2 -translate-y-1/2 w-4 h-px bg-slate-300 dark:bg-slate-700" />
                 )}
               </motion.div>
             );

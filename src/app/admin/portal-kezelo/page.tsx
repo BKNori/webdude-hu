@@ -972,7 +972,7 @@ export default function PortalKezeloPage() {
               <button
                 type="submit"
                 disabled={actionLoading === "create_workflow"}
-                className="w-full flex items-center justify-center gap-1.5 py-3 rounded-xl bg-[#00B5F1] hover:bg-[#5B21B6] text-gray-900 font-bold text-xs uppercase tracking-wider transition-all disabled:opacity-50"
+                className="w-full flex items-center justify-center gap-1.5 py-3 rounded-xl bg-[#00B5F1] hover:bg-[#5B21B6] hover:text-white text-gray-900 font-bold text-xs uppercase tracking-wider transition-all disabled:opacity-50"
               >
                 {actionLoading === "create_workflow" ? (
                   <Loader2 className="w-4 h-4 animate-spin" />
@@ -1495,7 +1495,7 @@ export default function PortalKezeloPage() {
               <button
                 type="submit"
                 disabled={actionLoading === "create_client"}
-                className="w-full flex items-center justify-center gap-1.5 py-3 rounded-xl bg-[#00B5F1] hover:bg-[#5B21B6] text-gray-900 font-bold text-xs uppercase tracking-wider transition-all disabled:opacity-50"
+                className="w-full flex items-center justify-center gap-1.5 py-3 rounded-xl bg-[#00B5F1] hover:bg-[#5B21B6] hover:text-white text-gray-900 font-bold text-xs uppercase tracking-wider transition-all disabled:opacity-50"
               >
                 {actionLoading === "create_client" ? (
                   <Loader2 className="w-4 h-4 animate-spin" />
@@ -1712,7 +1712,7 @@ export default function PortalKezeloPage() {
                                 type="button"
                                 disabled={toolsSaving}
                                 onClick={() => void handleSaveClientTools(u)}
-                                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#00B5F1] hover:bg-[#5B21B6] disabled:opacity-50 text-white text-[10px] font-bold uppercase tracking-wider font-mono transition-all cursor-pointer"
+                                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#00B5F1] hover:bg-[#5B21B6] hover:text-white disabled:opacity-50 text-slate-950 text-[10px] font-bold uppercase tracking-wider font-mono transition-all cursor-pointer"
                               >
                                 {toolsSaving ? (
                                   <Loader2 className="w-3.5 h-3.5 animate-spin" />
@@ -1748,7 +1748,7 @@ export default function PortalKezeloPage() {
                                 Fájlok a széfben
                               </h5>
 
-                              <label className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#00B5F1] hover:bg-[#5B21B6] text-gray-900 font-bold text-[10px] uppercase tracking-wider font-mono cursor-pointer transition-all">
+                              <label className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#00B5F1] hover:bg-[#5B21B6] hover:text-white text-gray-900 font-bold text-[10px] uppercase tracking-wider font-mono cursor-pointer transition-all">
                                 <Upload className="w-3 h-3" />
                                 Új fájl feltöltése
                                 <input

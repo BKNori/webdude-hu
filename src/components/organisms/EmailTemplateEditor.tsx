@@ -208,7 +208,7 @@ export default function EmailTemplateEditor() {
           </div>
           <button
             onClick={handleNewTemplate}
-            className="px-6 py-3 bg-sky-500 hover:bg-violet-700 text-bg-base font-bold rounded-xl transition-all duration-300 flex items-center gap-2"
+            className="px-6 py-3 bg-sky-500 hover:bg-violet-700 hover:text-white text-bg-base font-bold rounded-xl transition-all duration-300 flex items-center gap-2"
           >
             <Plus className="w-4 h-4" />
             Új Sablon

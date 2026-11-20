@@ -12,14 +12,14 @@ export default function ContactFormWrapper() {
   return (
     <div className="space-y-6">
       {/* Form Selector Tabs */}
-      <div className="flex gap-2 p-1 bg-bg-surface/60 backdrop-blur-md border border-bg-elevated/40 rounded-2xl max-w-md mx-auto">
+      <div className="flex gap-2 p-1 bg-slate-200/80 dark:bg-[#0B1120]/80 backdrop-blur-md border border-slate-300/80 dark:border-white/12 rounded-2xl max-w-md mx-auto">
         <button
           type="button"
           onClick={() => setActiveForm("quote")}
-          className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-xl transition-all duration-300 text-xs font-bold uppercase tracking-wider focus:outline-none focus:ring-2 focus:ring-[#00B5F1] focus:ring-offset-2 focus:ring-offset-bg-base ${
+          className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-xl transition-all duration-300 text-xs font-bold uppercase tracking-wider focus:outline-none focus:ring-2 focus:ring-[#0369A1] dark:focus:ring-[#00B5F1] focus:ring-offset-2 focus:ring-offset-bg-base ${
             activeForm === "quote"
-              ? "bg-sky-500 text-bg-base shadow-[0_4px_12px_rgba(0, 181, 241,0.2)]"
-              : "text-slate-400 hover:text-white hover:bg-bg-elevated/30"
+              ? "bg-[#0369A1] dark:bg-[#00B5F1] text-white dark:text-slate-950 shadow-[0_4px_12px_rgba(3,105,161,0.2)] dark:shadow-[0_4px_12px_rgba(0,181,241,0.2)]"
+              : "text-[#334155] dark:text-slate-300 hover:text-[#0F172A] dark:hover:text-white hover:bg-white/60 dark:hover:bg-white/5"
           }`}
           aria-label="Részletes ajánlatkérés"
           aria-pressed={activeForm === "quote"}
@@ -30,10 +30,10 @@ export default function ContactFormWrapper() {
         <button
           type="button"
           onClick={() => setActiveForm("simple")}
-          className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-xl transition-all duration-300 text-xs font-bold uppercase tracking-wider focus:outline-none focus:ring-2 focus:ring-[#00B5F1] focus:ring-offset-2 focus:ring-offset-bg-base ${
+          className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-xl transition-all duration-300 text-xs font-bold uppercase tracking-wider focus:outline-none focus:ring-2 focus:ring-[#0369A1] dark:focus:ring-[#00B5F1] focus:ring-offset-2 focus:ring-offset-bg-base ${
             activeForm === "simple"
-              ? "bg-sky-500 text-bg-base shadow-[0_4px_12px_rgba(0, 181, 241,0.2)]"
-              : "text-slate-400 hover:text-white hover:bg-bg-elevated/30"
+              ? "bg-[#0369A1] dark:bg-[#00B5F1] text-white dark:text-slate-950 shadow-[0_4px_12px_rgba(3,105,161,0.2)] dark:shadow-[0_4px_12px_rgba(0,181,241,0.2)]"
+              : "text-[#334155] dark:text-slate-300 hover:text-[#0F172A] dark:hover:text-white hover:bg-white/60 dark:hover:bg-white/5"
           }`}
           aria-label="Egyszerű üzenet"
           aria-pressed={activeForm === "simple"}

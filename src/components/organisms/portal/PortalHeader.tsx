@@ -3,7 +3,8 @@
 import Link from "next/link";
 import type { User } from "firebase/auth";
 import { Copy, Layers, LogOut, Sparkles, UserCheck } from "lucide-react";
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
+import { useHydratedReducedMotion } from "@/hooks/useMotionPreset";
 import PortalNotificationBell from "@/components/molecules/PortalNotificationBell";
 
 interface PortalHeaderProps {
@@ -21,7 +22,7 @@ export default function PortalHeader({
   isAdmin,
   onLogout,
 }: PortalHeaderProps) {
-  const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = useHydratedReducedMotion();
 
   return (
     <header className="border-b border-sky-500/20 bg-bg-surface/80 backdrop-blur-xl sticky top-0 z-50">

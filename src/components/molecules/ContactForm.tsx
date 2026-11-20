@@ -103,24 +103,24 @@ export default function ContactForm() {
               />
             </svg>
           </div>
-          <h3 className="text-2xl font-black text-sky-500">
+          <h3 className="text-2xl font-black text-[#0369A1] dark:text-sky-500">
             Sikeres üzenetküldés!
           </h3>
-          <p className="text-slate-300 max-w-sm mx-auto text-sm leading-relaxed">
+          <p className="text-[#334155] dark:text-slate-300 max-w-sm mx-auto text-sm leading-relaxed">
             Köszönöm az érdeklődést, Norbi hamarosan (általában 24 órán belül)
             felveszi veled a kapcsolatot a megadott email címen.
           </p>
           <button
             type="button"
             onClick={() => setSubmitSuccess(null)}
-            className="mt-6 px-6 py-3 bg-sky-500/10 border border-sky-500 text-sky-500 hover:bg-sky-500 hover:text-bg-base rounded-xl font-bold text-xs uppercase tracking-wider transition-all duration-300"
+            className="mt-6 px-6 py-3 bg-[#0369A1]/10 dark:bg-sky-500/10 border border-[#0369A1] dark:border-sky-500 text-[#0369A1] dark:text-sky-400 hover:bg-[#0369A1] dark:hover:bg-sky-500 hover:text-white dark:hover:text-slate-950 rounded-xl font-bold text-xs uppercase tracking-wider transition-all duration-300"
           >
             Új üzenet küldése
           </button>
         </div>
       ) : (
         <>
-          <h3 className="text-2xl font-black mb-8 text-text-primary relative z-10">
+          <h3 className="text-2xl font-black mb-8 text-[#0F172A] dark:text-text-primary relative z-10">
             Közvetlen üzenet
           </h3>
           <form
@@ -131,7 +131,7 @@ export default function ContactForm() {
             <div>
               <label
                 htmlFor="name"
-                className="text-xs uppercase tracking-widest font-bold mb-2 block text-slate-400"
+                className="text-xs uppercase tracking-widest font-bold mb-2 block text-[#475569] dark:text-slate-400"
               >
                 Neved
               </label>
@@ -141,10 +141,10 @@ export default function ContactForm() {
                 placeholder="Kovács János"
                 aria-invalid={errors.name ? "true" : "false"}
                 {...register("name")}
-                className={`w-full bg-transparent border rounded-xl px-5 py-4 text-text-primary placeholder:text-slate-500 outline-none transition-all duration-200 focus:ring-1 ${
+                className={`w-full bg-white dark:bg-[#0B1120]/60 border rounded-xl px-5 py-4 text-[#0F172A] dark:text-text-primary placeholder:text-slate-400 dark:placeholder:text-slate-500 outline-none transition-all duration-200 focus:ring-1 ${
                   errors.name
                     ? "border-red-500 focus:border-red-500 focus:ring-red-500"
-                    : "border-bg-elevated focus:border-sky-500 focus:ring-sky-500"
+                    : "border-slate-300 dark:border-slate-700/80 focus:border-[#0369A1] dark:focus:border-sky-500 focus:ring-[#0369A1] dark:focus:ring-sky-500"
                 }`}
               />
               {errors.name && (
@@ -158,7 +158,7 @@ export default function ContactForm() {
             <div>
               <label
                 htmlFor="email"
-                className="text-xs uppercase tracking-widest font-bold mb-2 block text-slate-400"
+                className="text-xs uppercase tracking-widest font-bold mb-2 block text-[#475569] dark:text-slate-400"
               >
                 Email címed
               </label>
@@ -168,10 +168,10 @@ export default function ContactForm() {
                 placeholder="janos@ceged.hu"
                 aria-invalid={errors.email ? "true" : "false"}
                 {...register("email")}
-                className={`w-full bg-transparent border rounded-xl px-5 py-4 text-text-primary placeholder:text-slate-500 outline-none transition-all duration-200 focus:ring-1 ${
+                className={`w-full bg-white dark:bg-[#0B1120]/60 border rounded-xl px-5 py-4 text-[#0F172A] dark:text-text-primary placeholder:text-slate-400 dark:placeholder:text-slate-500 outline-none transition-all duration-200 focus:ring-1 ${
                   errors.email
                     ? "border-red-500 focus:border-red-500 focus:ring-red-500"
-                    : "border-bg-elevated focus:border-sky-500 focus:ring-sky-500"
+                    : "border-slate-300 dark:border-slate-700/80 focus:border-[#0369A1] dark:focus:border-sky-500 focus:ring-[#0369A1] dark:focus:ring-sky-500"
                 }`}
               />
               {errors.email && (
@@ -185,7 +185,7 @@ export default function ContactForm() {
             <div>
               <label
                 htmlFor="projectType"
-                className="text-xs uppercase tracking-widest font-bold mb-2 block text-slate-400"
+                className="text-xs uppercase tracking-widest font-bold mb-2 block text-[#475569] dark:text-slate-400"
               >
                 Projekt típusa
               </label>
@@ -193,19 +193,54 @@ export default function ContactForm() {
                 id="projectType"
                 aria-invalid={errors.projectType ? "true" : "false"}
                 {...register("projectType")}
-                className={`w-full bg-transparent border rounded-xl px-5 py-4 text-text-primary outline-none transition-all duration-200 focus:ring-1 ${
+                className={`w-full bg-white dark:bg-[#0B1120]/60 border rounded-xl px-5 py-4 text-[#0F172A] dark:text-text-primary outline-none transition-all duration-200 focus:ring-1 ${
                   errors.projectType
                     ? "border-red-500 focus:border-red-500 focus:ring-red-500"
-                    : "border-bg-elevated focus:border-sky-500 focus:ring-sky-500"
+                    : "border-slate-300 dark:border-slate-700/80 focus:border-[#0369A1] dark:focus:border-sky-500 focus:ring-[#0369A1] dark:focus:ring-sky-500"
                 }`}
               >
-                <option value="">Válassz projekt típust...</option>
-                <option value="webdesign">Weboldal tervezés</option>
-                <option value="webfejlesztes">Webfejlesztés</option>
-                <option value="wordpress">WordPress projekt</option>
-                <option value="grafikai">Grafikai tervezés</option>
-                <option value="ai">AI megoldás</option>
-                <option value="egyeb">Egyéb</option>
+                <option
+                  value=""
+                  className="bg-white dark:bg-[#0F172A] text-[#0F172A] dark:text-slate-100"
+                >
+                  Válassz projekt típust...
+                </option>
+                <option
+                  value="webdesign"
+                  className="bg-white dark:bg-[#0F172A] text-[#0F172A] dark:text-slate-100"
+                >
+                  Weboldal tervezés
+                </option>
+                <option
+                  value="webfejlesztes"
+                  className="bg-white dark:bg-[#0F172A] text-[#0F172A] dark:text-slate-100"
+                >
+                  Webfejlesztés
+                </option>
+                <option
+                  value="wordpress"
+                  className="bg-white dark:bg-[#0F172A] text-[#0F172A] dark:text-slate-100"
+                >
+                  WordPress projekt
+                </option>
+                <option
+                  value="grafikai"
+                  className="bg-white dark:bg-[#0F172A] text-[#0F172A] dark:text-slate-100"
+                >
+                  Grafikai tervezés
+                </option>
+                <option
+                  value="ai"
+                  className="bg-white dark:bg-[#0F172A] text-[#0F172A] dark:text-slate-100"
+                >
+                  AI megoldás
+                </option>
+                <option
+                  value="egyeb"
+                  className="bg-white dark:bg-[#0F172A] text-[#0F172A] dark:text-slate-100"
+                >
+                  Egyéb
+                </option>
               </select>
               {errors.projectType && (
                 <span className="text-red-500 text-xs font-semibold mt-1 block">
@@ -218,7 +253,7 @@ export default function ContactForm() {
             <div>
               <label
                 htmlFor="message"
-                className="text-xs uppercase tracking-widest font-bold mb-2 block text-slate-400"
+                className="text-xs uppercase tracking-widest font-bold mb-2 block text-[#475569] dark:text-slate-400"
               >
                 Üzenet (Projekt rövid leírása)
               </label>
@@ -228,10 +263,10 @@ export default function ContactForm() {
                 placeholder="Mesélj röviden a megvalósítandó ötletről..."
                 aria-invalid={errors.message ? "true" : "false"}
                 {...register("message")}
-                className={`w-full bg-transparent border rounded-xl px-5 py-4 text-text-primary placeholder:text-slate-500 outline-none transition-all duration-200 focus:ring-1 ${
+                className={`w-full bg-white dark:bg-[#0B1120]/60 border rounded-xl px-5 py-4 text-[#0F172A] dark:text-text-primary placeholder:text-slate-400 dark:placeholder:text-slate-500 outline-none transition-all duration-200 focus:ring-1 ${
                   errors.message
                     ? "border-red-500 focus:border-red-500 focus:ring-red-500"
-                    : "border-bg-elevated focus:border-sky-500 focus:ring-sky-500"
+                    : "border-slate-300 dark:border-slate-700/80 focus:border-[#0369A1] dark:focus:border-sky-500 focus:ring-[#0369A1] dark:focus:ring-sky-500"
                 }`}
               />
               {errors.message && (
@@ -245,12 +280,12 @@ export default function ContactForm() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-linear-to-r from-sky-500 to-violet-700 hover:from-violet-700 hover:to-sky-800 disabled:from-slate-700 disabled:to-slate-800 text-bg-base disabled:text-slate-400 font-bold py-4 rounded-xl uppercase tracking-widest text-sm shadow-xl shadow-sky-500/20 hover:-translate-y-1 disabled:transform-none transition-all duration-300 flex items-center justify-center gap-2"
+              className="w-full bg-linear-to-r from-[#075985] to-[#5B21B6] hover:from-[#0369A1] hover:to-[#6D28D9] disabled:from-slate-700 disabled:to-slate-800 text-white disabled:text-slate-400 font-bold py-4 rounded-xl uppercase tracking-widest text-sm shadow-xl shadow-sky-500/20 hover:-translate-y-1 disabled:transform-none transition-all duration-300 flex items-center justify-center gap-2"
             >
               {isSubmitting ? (
                 <>
                   <svg
-                    className="animate-spin -ml-1 mr-3 h-5 w-5 text-bg-base"
+                    className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"

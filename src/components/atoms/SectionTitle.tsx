@@ -21,7 +21,7 @@ export default function SectionTitle({
       className={`max-w-3xl ${center ? "mx-auto" : ""} ${className} ${textAlign}`}
     >
       {eyebrow ? (
-        <p className="text-[clamp(0.75rem,1.5vw,0.875rem)] uppercase tracking-[0.5em] text-slate-400 mb-4 wrap-break-word">
+        <p className="text-[clamp(0.75rem,1.5vw,0.875rem)] uppercase tracking-[0.5em] text-slate-600 dark:text-slate-400 mb-4 wrap-break-word">
           {eyebrow}
         </p>
       ) : null}
@@ -29,7 +29,7 @@ export default function SectionTitle({
         {title}
       </h2>
       {description ? (
-        <p className="text-[clamp(1rem,2.5vw,1.125rem)] md:text-[clamp(1.125rem,3vw,1.25rem)] text-slate-400 leading-relaxed wrap-break-word">
+        <p className="text-[clamp(1rem,2.5vw,1.125rem)] md:text-[clamp(1.125rem,3vw,1.25rem)] text-slate-700 dark:text-slate-400 leading-relaxed wrap-break-word">
           {description}
         </p>
       ) : null}

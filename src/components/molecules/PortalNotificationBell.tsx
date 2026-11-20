@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion, AnimatePresence, useReducedMotion } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
+import { useHydratedReducedMotion } from "@/hooks/useMotionPreset";
 import {
   Bell,
   Sparkles,
@@ -28,7 +29,7 @@ export default function PortalNotificationBell() {
     markAllAsRead,
   } = usePortalNotifications();
   const [open, setOpen] = useState(false);
-  const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = useHydratedReducedMotion();
   const spring = shouldReduceMotion
     ? { duration: 0 }
     : { type: "spring" as const, stiffness: 300, damping: 22 };

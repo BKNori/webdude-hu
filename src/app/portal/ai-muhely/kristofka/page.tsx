@@ -51,7 +51,7 @@ export default function KristofkaPage() {
                   .getElementById("kristofka-workflow")
                   ?.scrollIntoView({ behavior: "smooth" })
               }
-              className="px-8 py-4 bg-[#00B5F1] hover:bg-[#5B21B6] text-bg-base font-bold rounded-xl transition-all duration-300 flex items-center gap-2"
+              className="px-8 py-4 bg-[#00B5F1] hover:bg-[#5B21B6] hover:text-white text-bg-base font-bold rounded-xl transition-all duration-300 flex items-center gap-2"
             >
               <Sparkles className="w-5 h-5" />
               Indítsd el a Kristófka Workflow-t

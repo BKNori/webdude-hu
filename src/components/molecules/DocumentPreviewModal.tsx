@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, AnimatePresence, useReducedMotion } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
+import { useHydratedReducedMotion } from "@/hooks/useMotionPreset";
 import {
   X,
   Download,
@@ -32,7 +33,7 @@ export default function DocumentPreviewModal({
   fileType,
 }: DocumentPreviewModalProps) {
   const [isCopying, setIsCopying] = useState(false);
-  const reducedMotion = useReducedMotion();
+  const reducedMotion = useHydratedReducedMotion();
 
   const requestClose = useCallback(() => onClose(), [onClose]);
 

@@ -172,7 +172,7 @@ export default function WeboldalKeszitesKecskemetPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100">
+    <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#0B1120] text-[#0F172A] dark:text-slate-100">
       {/* JSON-LD Schemas with XSS Protection */}
       <script
         type="application/ld+json"
@@ -194,21 +194,21 @@ export default function WeboldalKeszitesKecskemetPage() {
       />
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 overflow-hidden border-b border-slate-800/80">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,var(--tw-gradient-stops))] from-sky-900/20 via-slate-950 to-slate-950 pointer-events-none" />
+      <section className="relative pt-32 pb-20 overflow-hidden border-b border-slate-200/80 dark:border-slate-800/80 bg-[#F8FAFC] dark:bg-[#0B1120]">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,var(--tw-gradient-stops))] from-sky-100/70 via-[#F8FAFC] to-[#F8FAFC] dark:from-sky-900/20 dark:via-slate-950 dark:to-slate-950 pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sky-950/80 border border-sky-500/30 text-sky-400 text-xs font-medium uppercase tracking-wider mb-6">
-              <MapPin className="w-3.5 h-3.5 text-[#00B5F1]" />
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#0369A1]/10 dark:bg-sky-950/80 border border-[#0369A1]/25 dark:border-sky-500/30 text-[#0369A1] dark:text-sky-400 text-xs font-medium uppercase tracking-wider mb-6">
+              <MapPin className="w-3.5 h-3.5 text-[#0369A1] dark:text-[#00B5F1]" />
               Kecskemét & Bács-Kiskun Vármegye
             </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight mb-6">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#0F172A] dark:text-white tracking-tight leading-tight mb-6">
               Profi weboldal készítés{" "}
-              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#a855f7]">
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#0369A1] to-[#6D28D9] dark:from-[#00B5F1] dark:to-[#a855f7]">
                 Kecskeméten
               </span>
             </h1>
-            <p className="text-lg sm:text-xl text-slate-300 leading-relaxed mb-8">
+            <p className="text-lg sm:text-xl text-[#334155] dark:text-slate-300 leading-relaxed mb-8">
               Közvetlen kapcsolat, helyi elérhetőség és prémium digitális
               kivitelezés. Olyan eladásorientált weboldalt készítek kecskeméti
               vállalkozásodnak, amely kiemel a helyi versenytársak közül és
@@ -217,14 +217,14 @@ export default function WeboldalKeszitesKecskemetPage() {
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
                 href="/kapcsolat?service=kecskemet"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-semibold text-white bg-linear-to-r from-cta-from to-[#5B21B6] hover:from-[#0369a1] hover:to-[#6d28d9] shadow-lg shadow-sky-950/50 transition-all duration-300 group"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-semibold text-white bg-linear-to-r from-cta-from to-[#5B21B6] hover:from-[#0369a1] hover:to-[#6d28d9] shadow-lg shadow-sky-950/40 transition-all duration-300 group"
               >
                 Egyedi árajánlat kérése
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </Link>
               <Link
                 href="#szemelyes-talalkozo"
-                className="inline-flex items-center justify-center px-6 py-4 rounded-xl font-medium text-slate-300 bg-slate-900 border border-slate-800 hover:border-slate-700 hover:text-white transition-colors"
+                className="inline-flex items-center justify-center px-6 py-4 rounded-xl font-medium text-[#0F172A] dark:text-slate-300 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-800 hover:border-[#0369A1]/50 dark:hover:border-slate-700 hover:text-[#0369A1] dark:hover:text-white transition-colors"
               >
                 Személyes konzultáció
               </Link>
@@ -236,19 +236,19 @@ export default function WeboldalKeszitesKecskemetPage() {
       {/* DEDICATED SECTION: Személyes találkozó és konzultáció Kecskeméten (CRITICAL LOCAL SEO & CONVERSION) */}
       <section
         id="szemelyes-talalkozo"
-        className="py-24 relative border-b border-slate-800/80 bg-slate-900/30"
+        className="py-24 relative border-b border-slate-200/80 dark:border-slate-800/80 bg-[#F1F5F9] dark:bg-slate-900/30"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-purple-950/80 border border-purple-500/30 text-purple-400 text-xs font-medium uppercase tracking-wider mb-6">
-                <Coffee className="w-3.5 h-3.5 text-[#00B5F1]" />
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#6D28D9]/10 dark:bg-purple-950/80 border border-[#6D28D9]/25 dark:border-purple-500/30 text-[#6D28D9] dark:text-purple-400 text-xs font-medium uppercase tracking-wider mb-6">
+                <Coffee className="w-3.5 h-3.5 text-[#0369A1] dark:text-[#00B5F1]" />
                 Közvetlen Kapcsolat & Bizalom
               </div>
-              <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
+              <h2 className="text-3xl sm:text-4xl font-bold text-[#0F172A] dark:text-white mb-6">
                 Személyes találkozó és konzultáció Kecskeméten
               </h2>
-              <p className="text-slate-300 text-base sm:text-lg leading-relaxed mb-6">
+              <p className="text-[#334155] dark:text-slate-300 text-base sm:text-lg leading-relaxed mb-6">
                 A sikeres webes projekt alapja az őszinte, közvetlen
                 kommunikáció. Nem egy arctalan ügynökség vagyok sokadik
                 közvetítővel: velem, a fejlesztővel és tervezővel beszélsz az
@@ -256,14 +256,14 @@ export default function WeboldalKeszitesKecskemetPage() {
               </p>
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-sky-950 border border-sky-500/30 flex items-center justify-center text-[#00B5F1] shrink-0 mt-0.5">
+                  <div className="w-8 h-8 rounded-lg bg-[#0369A1]/10 dark:bg-sky-950 border border-[#0369A1]/25 dark:border-sky-500/30 flex items-center justify-center text-[#0369A1] dark:text-[#00B5F1] shrink-0 mt-0.5">
                     <Users2 className="w-4 h-4" />
                   </div>
                   <div>
-                    <h4 className="text-white font-semibold text-sm">
+                    <h4 className="text-[#0F172A] dark:text-white font-semibold text-sm">
                       Szemtől szembeni bizalom
                     </h4>
-                    <p className="text-slate-400 text-xs mt-0.5">
+                    <p className="text-[#475569] dark:text-slate-400 text-xs mt-0.5">
                       Üljünk le egy kávé mellé Kecskemét belvárosában vagy az
                       irodádban, és beszéljük át pontosan az üzleti céljaidat.
                     </p>
@@ -271,14 +271,14 @@ export default function WeboldalKeszitesKecskemetPage() {
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-purple-950 border border-purple-500/30 flex items-center justify-center text-purple-400 shrink-0 mt-0.5">
+                  <div className="w-8 h-8 rounded-lg bg-[#6D28D9]/10 dark:bg-purple-950 border border-[#6D28D9]/25 dark:border-purple-500/30 flex items-center justify-center text-[#6D28D9] dark:text-purple-400 shrink-0 mt-0.5">
                     <Clock className="w-4 h-4" />
                   </div>
                   <div>
-                    <h4 className="text-white font-semibold text-sm">
+                    <h4 className="text-[#0F172A] dark:text-white font-semibold text-sm">
                       Gyors reagálás és helyi elérhetőség
                     </h4>
-                    <p className="text-slate-400 text-xs mt-0.5">
+                    <p className="text-[#475569] dark:text-slate-400 text-xs mt-0.5">
                       Helyben vagyok: ha sürgős módosítás, fotózás vagy
                       személyes egyeztetés szükséges, azonnal rendelkezésre
                       állok.
@@ -287,14 +287,14 @@ export default function WeboldalKeszitesKecskemetPage() {
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-sky-950 border border-sky-500/30 flex items-center justify-center text-[#00B5F1] shrink-0 mt-0.5">
+                  <div className="w-8 h-8 rounded-lg bg-[#0369A1]/10 dark:bg-sky-950 border border-[#0369A1]/25 dark:border-sky-500/30 flex items-center justify-center text-[#0369A1] dark:text-[#00B5F1] shrink-0 mt-0.5">
                     <Compass className="w-4 h-4" />
                   </div>
                   <div>
-                    <h4 className="text-white font-semibold text-sm">
+                    <h4 className="text-[#0F172A] dark:text-white font-semibold text-sm">
                       Helyi piaci és vásárlói ismeret
                     </h4>
-                    <p className="text-slate-400 text-xs mt-0.5">
+                    <p className="text-[#475569] dark:text-slate-400 text-xs mt-0.5">
                       Pontosan ismerem a kecskeméti és Bács-Kiskun vármegyei
                       vásárlói szokásokat, a helyi konkurenciát és az
                       elvárásokat.
@@ -305,37 +305,37 @@ export default function WeboldalKeszitesKecskemetPage() {
             </div>
 
             {/* Local Proof Card */}
-            <div className="p-8 rounded-2xl bg-slate-900/80 border border-slate-800 relative overflow-hidden shadow-2xl">
-              <div className="absolute top-0 right-0 w-48 h-48 bg-linear-to-br from-[#00B5F1]/10 to-purple-600/10 blur-3xl pointer-events-none" />
-              <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
-                <MapPin className="w-5 h-5 text-[#00B5F1]" />
+            <div className="luminous-card p-8 rounded-2xl relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-48 h-48 bg-linear-to-br from-[#0369A1]/10 to-purple-600/10 dark:from-[#00B5F1]/10 dark:to-purple-600/10 blur-3xl pointer-events-none" />
+              <h3 className="text-xl font-bold text-[#0F172A] dark:text-white mb-6 flex items-center gap-2">
+                <MapPin className="w-5 h-5 text-[#0369A1] dark:text-[#00B5F1]" />
                 Kecskeméti Helyi Előnyök
               </h3>
-              <ul className="space-y-4 text-sm text-slate-300">
+              <ul className="space-y-4 text-sm text-[#334155] dark:text-slate-300">
                 <li className="flex items-center gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
+                  <CheckCircle2 className="w-5 h-5 text-emerald-600 dark:text-emerald-400 shrink-0" />
                   <span>
                     Kecskemét-fókuszú lokális SEO és kulcsszó-optimalizálás
                   </span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
+                  <CheckCircle2 className="w-5 h-5 text-emerald-600 dark:text-emerald-400 shrink-0" />
                   <span>Google Térkép (Maps) és Cégprofil integráció</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
+                  <CheckCircle2 className="w-5 h-5 text-emerald-600 dark:text-emerald-400 shrink-0" />
                   <span>
                     Egyetlen felelős: nem adom át alvállalkozóknak a munkát
                   </span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
+                  <CheckCircle2 className="w-5 h-5 text-emerald-600 dark:text-emerald-400 shrink-0" />
                   <span>
                     26 év tapasztalat grafika, nyomda és webfejlesztés terén
                   </span>
                 </li>
               </ul>
-              <div className="mt-8 pt-6 border-t border-slate-800">
+              <div className="mt-8 pt-6 border-t border-slate-200 dark:border-slate-800">
                 <Link
                   href="/kapcsolat?service=kecskemet"
                   className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold text-white bg-linear-to-r from-cta-from to-[#5B21B6] hover:from-[#0369a1] hover:to-[#6d28d9] transition-all duration-200"
@@ -350,55 +350,55 @@ export default function WeboldalKeszitesKecskemetPage() {
       </section>
 
       {/* Bento Grid: Why WebDude */}
-      <section className="py-24 relative border-b border-slate-800/80">
+      <section className="py-24 relative border-b border-slate-200/80 dark:border-slate-800/80 bg-[#F8FAFC] dark:bg-[#0B1120]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#0F172A] dark:text-white mb-4">
               Miért éri meg velem dolgozni?
             </h2>
-            <p className="text-slate-400">
+            <p className="text-[#475569] dark:text-slate-400">
               Professzionális webes jelenlét, amely valódi vásárlókat és
               megkereséseket hoz kecskeméti cégednek.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="p-8 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-[#00B5F1]/50 transition-colors duration-300">
-              <div className="w-12 h-12 rounded-xl bg-sky-950/80 border border-sky-500/30 flex items-center justify-center text-[#00B5F1] mb-6">
+            <div className="luminous-card p-8 rounded-2xl">
+              <div className="w-12 h-12 rounded-xl bg-[#0369A1]/10 dark:bg-sky-950/80 border border-[#0369A1]/25 dark:border-sky-500/30 flex items-center justify-center text-[#0369A1] dark:text-[#00B5F1] mb-6">
                 <Laptop className="w-6 h-6" />
               </div>
-              <h3 className="text-xl font-bold text-white mb-3">
+              <h3 className="text-xl font-bold text-[#0F172A] dark:text-white mb-3">
                 Modern Technológia
               </h3>
-              <p className="text-slate-400 text-sm leading-relaxed">
+              <p className="text-[#334155] dark:text-slate-400 text-sm leading-relaxed">
                 Next.js, React vagy tiszta kódú WordPress. Nem lassú, elavult
                 sablonokat tákolok, hanem jövőbiztos és villámgyors kódbázist
                 építek.
               </p>
             </div>
 
-            <div className="p-8 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-[#00B5F1]/50 transition-colors duration-300">
-              <div className="w-12 h-12 rounded-xl bg-purple-950/80 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-6">
+            <div className="luminous-card p-8 rounded-2xl">
+              <div className="w-12 h-12 rounded-xl bg-[#6D28D9]/10 dark:bg-purple-950/80 border border-[#6D28D9]/25 dark:border-purple-500/30 flex items-center justify-center text-[#6D28D9] dark:text-purple-400 mb-6">
                 <Sparkles className="w-6 h-6" />
               </div>
-              <h3 className="text-xl font-bold text-white mb-3">
+              <h3 className="text-xl font-bold text-[#0F172A] dark:text-white mb-3">
                 Grafika & Web Egy Kézben
               </h3>
-              <p className="text-slate-400 text-sm leading-relaxed">
+              <p className="text-[#334155] dark:text-slate-400 text-sm leading-relaxed">
                 Nem kell külön grafikust és fejlesztőt keresned. A logótól, az
                 arculati színektől a kódolásig és a nyomdai anyagokig mindent
                 megtervezek.
               </p>
             </div>
 
-            <div className="p-8 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-[#00B5F1]/50 transition-colors duration-300">
-              <div className="w-12 h-12 rounded-xl bg-sky-950/80 border border-sky-500/30 flex items-center justify-center text-[#00B5F1] mb-6">
+            <div className="luminous-card p-8 rounded-2xl">
+              <div className="w-12 h-12 rounded-xl bg-[#0369A1]/10 dark:bg-sky-950/80 border border-[#0369A1]/25 dark:border-sky-500/30 flex items-center justify-center text-[#0369A1] dark:text-[#00B5F1] mb-6">
                 <ShieldCheck className="w-6 h-6" />
               </div>
-              <h3 className="text-xl font-bold text-white mb-3">
+              <h3 className="text-xl font-bold text-[#0F172A] dark:text-white mb-3">
                 Biztonság & Garancia
               </h3>
-              <p className="text-slate-400 text-sm leading-relaxed">
+              <p className="text-[#334155] dark:text-slate-400 text-sm leading-relaxed">
                 Maximális védelem a feltörések ellen, rendszeres mentések és
                 átadás után sem engedem el a kezed: elérhető vagyok a jövőben
                 is.
@@ -409,13 +409,16 @@ export default function WeboldalKeszitesKecskemetPage() {
       </section>
 
       {/* Pricing Table Section - Zero Fixed Price Rule */}
-      <section id="csomagok" className="py-24 border-b border-slate-800/80">
+      <section
+        id="csomagok"
+        className="py-24 border-b border-slate-200/80 dark:border-slate-800/80 bg-[#F1F5F9] dark:bg-[#111C33]"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#0F172A] dark:text-white mb-4">
               Csomagok & Szolgáltatási Struktúra
             </h2>
-            <p className="text-slate-400">
+            <p className="text-[#475569] dark:text-slate-400">
               Minden vállalkozás más és más fázisban van. Személyre szabott
               árajánlatot adok a konkrét céljaid alapján.
             </p>
@@ -426,34 +429,31 @@ export default function WeboldalKeszitesKecskemetPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-24 border-b border-slate-800/80">
+      <section className="py-24 border-b border-slate-200/80 dark:border-slate-800/80 bg-[#F8FAFC] dark:bg-[#0B1120]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900 border border-slate-800 text-slate-400 text-xs font-medium uppercase tracking-wider mb-4">
-              <HelpCircle className="w-3.5 h-3.5 text-[#00B5F1]" />
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-[#475569] dark:text-slate-400 text-xs font-medium uppercase tracking-wider mb-4">
+              <HelpCircle className="w-3.5 h-3.5 text-[#0369A1] dark:text-[#00B5F1]" />
               Kecskeméti GYIK
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#0F172A] dark:text-white mb-4">
               Gyakori kérdések a kecskeméti weboldal készítésről
             </h2>
-            <p className="text-slate-400">
+            <p className="text-[#475569] dark:text-slate-400">
               Minden lényeges információ a helyi együttműködés menetéről.
             </p>
           </div>
 
           <div className="space-y-4">
             {faqs.map((faq, index) => (
-              <div
-                key={index}
-                className="p-6 rounded-xl bg-slate-900/50 border border-slate-800 hover:border-slate-700 transition-colors"
-              >
-                <h3 className="text-lg font-bold text-white mb-2 flex items-start gap-3">
-                  <span className="text-[#00B5F1] font-mono text-sm mt-1">
+              <div key={index} className="luminous-card p-6 rounded-xl">
+                <h3 className="text-lg font-bold text-[#0F172A] dark:text-white mb-2 flex items-start gap-3">
+                  <span className="text-[#0369A1] dark:text-[#00B5F1] font-mono text-sm mt-1">
                     0{index + 1}.
                   </span>
                   {faq.q}
                 </h3>
-                <p className="text-slate-400 text-sm leading-relaxed pl-8">
+                <p className="text-[#334155] dark:text-slate-400 text-sm leading-relaxed pl-8">
                   {faq.a}
                 </p>
               </div>
@@ -463,12 +463,12 @@ export default function WeboldalKeszitesKecskemetPage() {
       </section>
 
       {/* Bottom CTA */}
-      <section className="py-20 relative overflow-hidden">
+      <section className="py-20 relative overflow-hidden bg-[#EAF1FA] dark:bg-[#111C33]">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-6">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0F172A] dark:text-white mb-6">
             Találkozzunk Kecskeméten egy kötetlen konzultációra!
           </h2>
-          <p className="text-slate-300 max-w-2xl mx-auto mb-8 text-lg">
+          <p className="text-[#334155] dark:text-slate-300 max-w-2xl mx-auto mb-8 text-lg">
             Beszéljük át a weboldalad vagy új projekted terveit. Írj nekem most,
             és 24 órán belül egyeztetünk egy időpontot!
           </p>

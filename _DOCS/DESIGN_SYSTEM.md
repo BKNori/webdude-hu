@@ -1,4 +1,4 @@
-# DESIGN_SYSTEM.md — WebDude Kék-Lila v7.0
+# DESIGN_SYSTEM.md — WebDude Kék-Lila v7.2 (Dual Theme: Luminous Daylight & Luminous Slate)
 
 **webdude.hu | Tailwind CSS 4 · Next.js 16 · React 19 · Motion**
 
@@ -8,45 +8,62 @@
 
 ## 1. Dizájn Alapfilozófia & Vizuális Identitás
 
-A **WebDude Kék-Lila v7.0 (Cyber-Cyan & Violet Dark Studio)** stílus egy prémium, sötét alapú, futurisztikus digitális stúdió vizuális rendszer, amely a Cyberpunk és Soft-Premium esztétikát követi kék-lila (sky/violet) akcentusokkal.
+A **WebDude Kék-Lila v7.2 (Dual Theme: Luminous Daylight + Luminous Slate)** rendszer két koherens, tetőtől talpig megtervezett prémium témát kínál az Electric Cyan (`#00B5F1` / `#0369A1`) és Violet (`#7C3AED` / `#6D28D9`) márkaidentitás megőrzésével, **fekete–fehér zebra-hatás nélkül**:
 
-> **v7.0 színmigrációs megjegyzés (2026-09-16):** A Cyber-Arany (#f59e0b = amber-500) paletta teljes egészében lecserélődött a kék-lila palettára. Az `amber-*` Tailwind osztályok és a `gold-*` tokenek eltávolítva, helyettük `brand-primary` / `cta-from` / `cta-to` tokenek és `sky-*` / `violet-*` paletta él. **Arany/amber használata brand akcentusként SZIGORÚAN TILOS.** CTA gombokon a szöveg KÖTELEZŐEN `text-white`.
+> **v7.0 színmigrációs megjegyzés (2026-09-16):** A Cyber-Arany (#f59e0b = amber-500) paletta teljes egészében lecserélődött a kék-lila palettára. **Arany/amber használata brand akcentusként SZIGORÚAN TILOS.** CTA gombokon a szöveg KÖTELEZŐEN `text-white`.
+>
+> **v7.70.0 Dual Theme frissítés (2026-11-20 — DDR-006):**
+>
+> - **Luminous Daylight (`[data-theme="light"]` — Alapértelmezett):** minden új látogatónak ez nyílik meg (`localStorage` kulcs: `webdude-theme`, zero-FOUC `<head>` pre-paint script). Légies, gyöngyház-fehér és jégkék felületek (`#F8FAFC` ↔ `#F1F5F9` ↔ `#EAF1FA`), `#FFFFFF` kártyák (`border-[#E2E8F0]` + többrétegű lágy árnyék), `#0F172A` főcímek, `#334155` / `#475569` szöveg, `#0369A1` cián és `#6D28D9` lila akcentusok.
+> - **Luminous Slate (`[data-theme="dark"]` — Éjszakai mód):** 100%-ban megőrzi a `v7.69.0` sötét palettát (`#0B1120` ↔ `#111C33` ↔ `#16223B`, `.luminous-card` `#16223B/80` üveg-palaszürke kártyák, `#00B5F1` / `#A78BFA` akcentusok).
+> - **Admin & Portál izoláció:** az `#admin-layout` és `#portal-layout` fix `data-theme="dark"` attribútumot kap.
 
-- **SÖTÉT STÚDIÓ:** 90% sötét alap, 8% Luminous Glassmorphism / slate felület, legfeljebb 2% kék-lila brand kiemelés (CTA és hover).
-- **KONTRAST & LEGIBILITY:** Kék-lila akcentusok a sötét háttéren, WCAG AA (min 4.5:1) kontrasztarány betartásával; CTA feliratokon AAA cél.
-- **KÉK-LILA BRAND:** Brand akcentus színek: `#00B5F1` (cyan akcentus), `#075985` → `#5B21B6` (CTA gradiens), `#7C3AED` (akcentus, fehér szöveggel AAA).
+- **KONTRAST & LEGIBILITY:** Minden felületen szigorúan kötelező a WCAG AA (min 4.5:1) kontrasztarány; CTA feliratokon AAA cél (`text-white`). **Világos módban `#00B5F1` és `slate-400` szövegként TILOS** — helyette `#0369A1` (5.9:1 AA) és `#334155` / `#475569` használatos.
+- **KÉK-LILA BRAND:** Brand akcentus színek: `#0369A1` / `#00B5F1` (cián), `#6D28D9` / `#A78BFA` (lila), `#075985` → `#5B21B6` (CTA gradiens, `text-white` kötelező).
 
 **Szigorú Tiltólista:**
 
-- Világos háttér fő oldalfelületként (#F8FAFC, #FFFFFF).
+- Fekete–fehér zebra-hatás (sötét fejléc vagy sötét szekció keverése világos szekciókkal ugyanabban a témában).
+- Kontraszttalan világos cián (`#00B5F1`) vagy halványszürke (`slate-400`) szöveg világos (`light`) módban.
 - Arany/amber (#f59e0b, #d97706, #fbbf24, #b45309) akcentusok brand színként — TILOS.
-- Sötét szöveg (`text-slate-950`) kék-lila CTA háttéren — a fehér szöveg a kötelező.
+- Sötét szöveg (`text-slate-950`) kék-lila CTA gradiensen — a fehér szöveg a kötelező.
 - Élénk, telített színek (piros, zöld, narancs) használata brand akcentusként.
 - Serif (talpas) betűtípusok a UI elemeken.
-- Nagyméretű, túlzott drop shadow-k.
+- Nagyméretű, túlzott drop shadow-k és nehéz WebGL a Hero-ban.
 - Zsúfolt, szellőtelen elrendezések.
 
 ---
 
 ## 2. Színpaletta (Color Tokens)
 
-### 2.1 Alap Háttérszínek (Z-tengely Hierarchia)
+### 2.1 Alap Háttérszínek (Z-tengely Hierarchia — Dual Theme)
 
-| Token neve    | Hex          | Tailwind class    | Használat                                       |
-| ------------- | ------------ | ----------------- | ----------------------------------------------- |
-| `bg-base`     | `#020617`    | `bg-[#020617]`    | (Level 0) Teljes oldal háttér, fő canvas.       |
-| `bg-surface`  | `#0f172a`    | `bg-[#0f172a]`    | (Level 1) Kártyák, panelek, formok.             |
-| `bg-elevated` | `#1e293b`    | `bg-[#1e293b]`    | (Level 2) Hover állapotok, dropdownok, modálok. |
-| `bg-overlay`  | `#020617/60` | `bg-[#020617]/60` | Backdrop blur alapja, fókuszt elzáró réteg.     |
+| Token neve       | Light (`Default`) | Dark (`Luminous Slate`) | Tailwind class      | Használat                                                     |
+| ---------------- | ----------------- | ----------------------- | ------------------- | ------------------------------------------------------------- |
+| `bg-base`        | `#F8FAFC`         | `#020617`               | `bg-bg-base`        | Globális oldal / Footer alap (admin/portál fix dark).         |
+| `night-950`      | `#EEF2F7`         | `#070C1A`               | `bg-night-950`      | Topbar, legsötétebb/legmélyebb elválasztó sávok.              |
+| `night-900`      | `#F8FAFC`         | `#0B1120`               | `bg-night-900`      | Alap szekció (`<Surface tone="night">`).                      |
+| `night-800`      | `#F1F5F9`         | `#111C33`               | `bg-night-800`      | Lélegző kiemelt szekció (`night-lift` / `slate`).             |
+| `night-700`      | `#EAF1FA`         | `#16223B`               | `bg-night-700`      | Váltakozó kiemelt szekció (`slate-lift`).                     |
+| `slate-card`     | `#FFFFFF`         | `#16223B`               | `bg-slate-card`     | `.luminous-card` kártya alap (Light fehér, Dark `#16223B/80`).|
+| `slate-elevated` | `#F8FAFC`         | `#1E293B`               | `bg-slate-elevated` | Emelt kártya / hover felület.                                 |
+| `bg-surface`     | `#FFFFFF`         | `#0F172A`               | `bg-bg-surface`     | Kártyák, panelek, űrlapok (szemantikus alias).                |
+| `bg-elevated`    | `#F1F5F9`         | `#1E293B`               | `bg-bg-elevated`    | Hover állapotok, dropdownok, modálok.                         |
+| `bg-overlay`     | `#020617/60`      | `#020617/60`            | `bg-[#020617]/60`   | Backdrop blur alapja, fókuszt elzáró réteg.                   |
 
-### 2.2 Szövegszínek (Olvashatósági Hierarchia)
+### 2.2 Szövegszínek (Olvashatósági Hierarchia — Sötét & Világos)
 
-| Token neve       | Hex       | Tailwind class   | WCAG Szint  | Használat                                     |
-| ---------------- | --------- | ---------------- | ----------- | --------------------------------------------- |
-| `text-primary`   | `#e2e8f0` | `text-[#e2e8f0]` | AAA         | Fő szövegtartalom, heading-ek.                |
-| `text-secondary` | `#94a3b8` | `text-slate-400` | AA          | Alcímek, hosszú olvasmányok, meta adatok.     |
-| `text-muted`     | `#64748b` | `text-slate-500` | AA (Large)  | Placeholder, disabled text, kiegészítő label. |
-| `text-inverted`  | `#020617` | `text-slate-950` | AAA (8.5:1) | Tömör cián (brand-primary) háttér feliratai.  |
+| Token neve        | Hex       | Tailwind class         | WCAG Szint      | Használat                                           |
+| ----------------- | --------- | ---------------------- | --------------- | --------------------------------------------------- |
+| `text-primary`    | `#e2e8f0` | `text-[#e2e8f0]`       | AAA             | Fő szövegtartalom, heading-ek sötét alapon.         |
+| `text-secondary`  | `#94a3b8` | `text-slate-400`       | AA              | Alcímek, hosszú olvasmányok, meta sötét alapon.     |
+| `text-muted`      | `#64748b` | `text-slate-500`       | AA (Large)      | Placeholder, disabled text sötét alapon.            |
+| `ink-900`         | `#0F172A` | `text-ink-900`         | AAA (>15:1)     | Címsorok, kiemelt értékek világos (`paper`) alapon. |
+| `ink-700`         | `#334155` | `text-ink-700`         | AAA (~10:1)     | Fő folyószöveg világos (`paper`) alapon.            |
+| `ink-600`         | `#475569` | `text-ink-600`         | AA (~7.2:1)     | Másodlagos szöveg, kártya leírás világos alapon.    |
+| `brand-on-light`  | `#0369A1` | `text-brand-on-light`  | AA (~5.9:1)     | Brand link, badge, ikon világos (`paper`) alapon.   |
+| `accent-on-light` | `#6D28D9` | `text-accent-on-light` | AA/AAA (~7.1:1) | Másodlagos akcentus világos (`paper`) alapon.       |
+| `text-inverted`   | `#020617` | `text-slate-950`       | AAA (8.5:1)     | Tömör cián (`brand-primary`) háttér feliratai.      |
 
 ### 2.3 Brand Akcentus Színek (Kék-Lila)
 
@@ -81,16 +98,16 @@ A **WebDude Kék-Lila v7.0 (Cyber-Cyan & Violet Dark Studio)** stílus egy prém
 
 ### 3.1 Skála és Vonalvezetés (Line Height)
 
-| Szint   | Font család         | Tailwind               | Méret   | Betűköz (Tracking) | Használat                               |
-| ------- | ------------------- | ---------------------- | ------- | ------------------ | --------------------------------------- |
-| Display | `Bebas Neue`        | `text-5xl md:text-7xl` | 48–72px | `0.03em`           | Hero szekciók, kritikus állítások.      |
-| H1      | `Bebas Neue`        | `text-4xl md:text-5xl` | 36–48px | `0.03em`           | Oldal főcím (mobilon clamp védett).     |
-| H2      | `Bebas Neue`        | `text-3xl md:text-4xl` | 30–36px | `0.03em`           | Szekció címek.                          |
-| H3      | `Bebas Neue`        | `text-xl md:text-2xl`  | 22–24px | `0.06em`           | Kártya címek, kiemelt előnyök.          |
-| H4      | `Bebas Neue`        | `text-lg md:text-xl`   | 18–20px | `0.06em`           | Al-kártyacímek, lépéscímek.             |
-| Body L  | `Plus Jakarta Sans` | `text-lg`              | 18px    | Normal             | Bevezető szövegek (Lead paragrafus).    |
-| Body    | `Plus Jakarta Sans` | `text-base`            | 16px    | Normal             | Általános folyószöveg (`text-slate-300`).|
-| Small   | `Plus Jakarta Sans` | `text-sm`              | 14px    | Normal / Wide      | Form labelek, navigáció, kártya leírás. |
+| Szint   | Font család         | Tailwind               | Méret   | Betűköz (Tracking) | Használat                                 |
+| ------- | ------------------- | ---------------------- | ------- | ------------------ | ----------------------------------------- |
+| Display | `Bebas Neue`        | `text-5xl md:text-7xl` | 48–72px | `0.03em`           | Hero szekciók, kritikus állítások.        |
+| H1      | `Bebas Neue`        | `text-4xl md:text-5xl` | 36–48px | `0.03em`           | Oldal főcím (mobilon clamp védett).       |
+| H2      | `Bebas Neue`        | `text-3xl md:text-4xl` | 30–36px | `0.03em`           | Szekció címek.                            |
+| H3      | `Bebas Neue`        | `text-xl md:text-2xl`  | 22–24px | `0.06em`           | Kártya címek, kiemelt előnyök.            |
+| H4      | `Bebas Neue`        | `text-lg md:text-xl`   | 18–20px | `0.06em`           | Al-kártyacímek, lépéscímek.               |
+| Body L  | `Plus Jakarta Sans` | `text-lg`              | 18px    | Normal             | Bevezető szövegek (Lead paragrafus).      |
+| Body    | `Plus Jakarta Sans` | `text-base`            | 16px    | Normal             | Általános folyószöveg (`text-slate-300`). |
+| Small   | `Plus Jakarta Sans` | `text-sm`              | 14px    | Normal / Wide      | Form labelek, navigáció, kártya leírás.   |
 
 ### 3.2 Betűvastagság és Transzformáció
 
@@ -228,19 +245,19 @@ Minden inputnak rendelkeznie kell fókusz- és hibaállapottal.
 
 ## 8. Animációk és Mikrointerakciók
 
-**Átmenetek:** `300ms – 500ms ease-out`
+**Átmenetek:** `300ms – 500ms ease-out` (célzott `transition-[transform,box-shadow,background-color,border-color]`, a `transition-all` kerülendő)
 **Hover effekt:** `translateY(-4px)` és `scale(1.02)`
+**Eyebrow tech-badge:** `.eyebrow-badge` (`font-mono text-[11px] uppercase tracking-[0.18em]`)
 
 ```typescript
-// Framer Motion alapértelmezett transition objektum
+// Motion alapértelmezett spring preset (kötelező useReducedMotion védelemmel)
 const softTransition = {
   type: "spring",
-  stiffness: 300,
-  damping: 30,
-  mass: 0.8,
+  stiffness: 100,
+  damping: 20,
 };
 
-// Példa egy elegáns fade-up animációra (Hero szekciókhoz)
+// Példa egy elegáns fade-up animációra (Hero / szekció reveal)
 const fadeUpVariants = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: softTransition },
@@ -278,16 +295,18 @@ Képkezelés: Minden fotónak vagy mockuponak tiszta, világos esztétikát kell
 
 ## 11. Dizájn Döntési Napló (DDR)
 
-**DDR-001 (Sötét Téma):** A Kék-Lila v7.0 rendszer kizárólag sötét témát használ (`bg-bg-base`).
+**DDR-001 (Alap Sötét Canvas & Luminous Slate Evolúció):** A Kék-Lila v7.0 sötét alapot használja bázisként (`bg-bg-base`), amelyet a v7.2-től a publikus oldalakon az egységes DDR-006 **Luminous Slate** rétegek váltanak fel (`night` `#0B1120`, `night-lift` / `slate` `#111C33`, `slate-lift` `#16223B`), 0% vakító fehér szekcióval.
 
-**DDR-002 (Fényhatás / glow):** Visszafogott kék-lila árnyékok támogatják a térbeliséget. A glow kizárólag brand kiemeléseknél használható.
+**DDR-002 (Fényhatás / glow):** Visszafogott kék-lila aurora és árnyékok támogatják a térbeliséget (`border-t-white/15`–`border-t-white/20` üvegperemmel). A glow kizárólag brand kiemeléseknél használható, WebGL nélkül.
 
-**DDR-003 (Kontraszt):** Tömör `brand-primary` (cián) háttéren a felirat `text-slate-950` (8.5:1 AAA); a sötét kék-lila CTA gradiensen (`cta-from` → `cta-to`) és `cta-hover` háttéren a felirat KÖTELEZŐEN `text-white` (7.1–8.98:1 AAA). A kontrasztot színpáronként kell mérni: az áttetsző hátterek, gradiensek és hover állapotok külön ellenőrzést igényelnek. A sikeres build nem WCAG-tanúsítás.
+**DDR-003 (Kontraszt):** Tömör `brand-primary` (cián `#00B5F1`) háttéren a felirat `text-slate-950` (8.5:1 AAA); a sötét kék-lila CTA gradiensen (`cta-from` → `cta-to`) és `cta-hover` háttéren a felirat KÖTELEZŐEN `text-white` (7.1–8.98:1 AAA). Luminous Slate (`#0B1120`–`#1E293B`) felületen a címsorok `#F8FAFC` / `text-white`, a folyószöveg `#CBD5E1` (`slate-300`), min. 4.5:1 AA kontraszttal.
 
-**DDR-004 (Bebas Neue + Plus Jakarta Sans Prémium Duál Tipográfia — Faux-Bold Mentesség & Tűéles UI):** A projekt a határozott, modern és elegáns duál tipográfiai rendszert alkalmazza. Címsorok (H1–H6): `Bebas Neue` (szigorúan 400-as súly, faux-bold tiltása `font-weight: 400 !important;` szabállyal). Betűköz: H1–H2 esetén `0.03em`, míg a kisebb kártyacímeknél (H3–H6) szellős `0.06em` (tracking-wider). Folyószöveg és UI: `Plus Jakarta Sans` (`400`, `500`, `600`, latin + latin-ext) modern, tiszta geometrikus sans-serif, amely 14–16px méretben is tökéletesen olvasható, megszüntetve a töredezettséget és a vékonyságot. A kártyákon a folyószöveg tiszta `text-slate-300`, a kártyacímek pedig tűéles `text-white` vagy világos akcentus megjelenésűek. A betűtípusok betöltése a Next.js `next/font/google` modulján keresztül történik a `--font-heading` és `--font-sans` CSS változók segítségével.
+**DDR-004 (Bebas Neue + Plus Jakarta Sans Prémium Duál Tipográfia — Faux-Bold Mentesség & Tűéles UI):** A projekt a határozott, modern és elegáns duál tipográfiai rendszert alkalmazza. Címsorok (H1–H6): `Bebas Neue` (szigorúan 400-as súly, faux-bold tiltása `font-weight: 400 !important;` szabállyal). Betűköz: H1–H2 esetén `0.03em`, míg a kisebb kártyacímeknél (H3–H6) szellős `0.06em` (tracking-wider). Folyószöveg és UI: `Plus Jakarta Sans` (`400`, `500`, `600`, latin + latin-ext) modern, tiszta geometrikus sans-serif, amely 14–16px méretben is tökéletesen olvasható, megszüntetve a töredezettséget és a vékonyságot. Eyebrow badge-eken `font-mono` technikai tipográfia alkalmazható. A betűtípusok betöltése a Next.js `next/font/google` modulján keresztül történik a `--font-heading` és `--font-sans` CSS változók segítségével.
 
-**DDR-005 (90-8-2 Szabály):** 90% sötét alap, 8% üveg / slate felület és legfeljebb 2% kék-lila kiemelés. Szekciónként egyetlen elsődleges CTA.
+**DDR-005 (Fókuszált Akcentus Szabály):** A felületek 90+%-a semleges Luminous Slate (`#0B1120` / `#111C33` / `#16223B` / `#1E293B`) vászon és kártya, legfeljebb 2% kék-lila kiemeléssel. Szekciónként maximum egy elsődleges CTA.
+
+**DDR-006 (Dual Theme — Luminous Daylight Default + Luminous Slate Dark):** A `<html data-theme="light" suppressHydrationWarning>` és `<head>` pre-paint script segítségével az alapértelmezett mód a 100%-ban koherens világos **Luminous Daylight** (`#F8FAFC` ↔ `#F1F5F9` ↔ `#EAF1FA`), míg a `ThemeToggle` kapcsolóval és a Tailwind v4 `@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *))` segítségével minden oldal átváltható a `v7.69.0` **Luminous Slate** (`#0B1120` ↔ `#111C33` ↔ `#16223B`) sötét módra (`localStorage` kulcs: `webdude-theme`). Az `#admin-layout` és `#portal-layout` fix `data-theme="dark"` izolációban marad.
 
 ---
 
-DESIGN_SYSTEM.md v7.0 — webdude.hu | AI Agent direktíva: Ez a fájl az igazság egyedüli forrása a vizuális implementációhoz.
+DESIGN_SYSTEM.md v7.2 — webdude.hu | AI Agent direktíva: Ez a fájl az igazság egyedüli forrása a vizuális implementációhoz.

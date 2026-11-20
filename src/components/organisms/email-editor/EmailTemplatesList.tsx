@@ -45,7 +45,7 @@ export default function EmailTemplatesList({
           <p className="text-slate-400">Még nincsenek email sablonok.</p>
           <button
             onClick={onNewTemplate}
-            className="mt-4 px-6 py-3 bg-sky-500 hover:bg-violet-700 text-bg-base font-bold rounded-xl transition-all flex items-center gap-2 mx-auto"
+            className="mt-4 px-6 py-3 bg-sky-500 hover:bg-violet-700 hover:text-white text-bg-base font-bold rounded-xl transition-all flex items-center gap-2 mx-auto"
           >
             <Plus className="w-4 h-4" />
             Első Sablon Létrehozása

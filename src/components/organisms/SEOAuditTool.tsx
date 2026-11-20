@@ -138,7 +138,7 @@ export default function SEOAuditTool() {
           <button
             onClick={handleAudit}
             disabled={loading}
-            className="w-full px-6 py-3 bg-sky-500 hover:bg-violet-700 text-bg-base font-bold rounded-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            className="w-full px-6 py-3 bg-sky-500 hover:bg-violet-700 hover:text-white text-bg-base font-bold rounded-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
           >
             {loading ? (
               <>
@@ -417,7 +417,7 @@ export default function SEOAuditTool() {
                 </p>
                 <button
                   onClick={() => (window.location.href = "/kapcsolat")}
-                  className="px-8 py-4 bg-sky-500 hover:bg-violet-700 text-bg-base font-bold rounded-xl transition-all duration-300 flex items-center justify-center gap-2 mx-auto"
+                  className="px-8 py-4 bg-sky-500 hover:bg-violet-700 hover:text-white text-bg-base font-bold rounded-xl transition-all duration-300 flex items-center justify-center gap-2 mx-auto"
                 >
                   {result.jsonLdSchema.missingTypes.length > 3
                     ? "Kérd a WebDude AEO Auditot"

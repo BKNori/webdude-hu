@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { motion } from "motion/react";
-import { useReducedMotion } from "motion/react";
+import { useHydratedReducedMotion } from "@/hooks/useMotionPreset";
 import { ArrowRight, CheckCircle, Zap } from "lucide-react";
 
 interface AIFeatureCardProps {
@@ -23,7 +23,7 @@ export default function AIFeatureCard({
   features,
   href,
 }: AIFeatureCardProps) {
-  const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = useHydratedReducedMotion();
 
   const cardVariants = shouldReduceMotion
     ? {
@@ -46,30 +46,30 @@ export default function AIFeatureCard({
       whileInView="visible"
       viewport={{ once: true, margin: "-50px" }}
       whileHover={shouldReduceMotion ? {} : { y: -4, scale: 1.02 }}
-      className="group relative bg-slate-950/80 backdrop-blur-2xl ring-1 ring-white/5 rounded-3xl overflow-hidden hover:border-[#00B5F1]/40 hover:shadow-[0_18px_40px_rgba(0,181,241,0.15)] transition-all duration-300"
+      className="luminous-card group relative overflow-hidden"
     >
       <div className="p-8">
         {/* Header */}
-        <div className="w-16 h-16 rounded-2xl bg-slate-900/60 border border-white/10 flex items-center justify-center mb-6 group-hover:border-[#00B5F1]/30 transition-colors">
+        <div className="w-16 h-16 rounded-2xl bg-[#0369A1]/10 dark:bg-[#00B5F1]/12 border border-[#0369A1]/25 dark:border-[#00B5F1]/25 flex items-center justify-center mb-6 group-hover:border-[#0369A1]/50 dark:group-hover:border-[#00B5F1]/50 transition-colors">
           <Zap
-            className="w-8 h-8 text-[#00B5F1]"
+            className="w-8 h-8 text-[#0369A1] dark:text-[#00B5F1]"
             strokeWidth={1.5}
             aria-hidden="true"
           />
         </div>
 
         {/* Category */}
-        <span className="text-xs font-bold text-[#00B5F1] uppercase tracking-wider mb-3 block">
+        <span className="eyebrow-badge text-[#0369A1] dark:text-[#00B5F1] mb-3 block">
           {category}
         </span>
 
         {/* Title */}
-        <h3 className="text-2xl font-bold text-slate-200 mb-4 group-hover:text-[#00B5F1] transition-colors">
+        <h3 className="text-2xl font-bold text-[#0F172A] dark:text-white mb-4 group-hover:text-[#0369A1] dark:group-hover:text-[#00B5F1] transition-colors">
           {name}
         </h3>
 
         {/* Description */}
-        <p className="text-slate-400 text-base mb-6 line-clamp-2 leading-relaxed">
+        <p className="text-[#334155] dark:text-slate-300 text-base mb-6 line-clamp-2 leading-relaxed">
           {description}
         </p>
 
@@ -78,10 +78,10 @@ export default function AIFeatureCard({
           {features.map((feature, idx) => (
             <div
               key={idx}
-              className="flex items-center gap-3 text-sm text-slate-300"
+              className="flex items-center gap-3 text-sm text-[#334155] dark:text-slate-300"
             >
               <CheckCircle
-                className="w-4 h-4 text-[#00B5F1]"
+                className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]"
                 strokeWidth={1.5}
               />
               <span>{feature}</span>

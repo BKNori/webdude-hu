@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import React from "react";
 
@@ -47,7 +47,7 @@ export default function SocialMediaIcons({
           target="_blank"
           rel="noopener noreferrer"
           aria-label={`${icon.name} — megnyitás új ablakban`}
-          className="inline-flex items-center justify-center text-slate-400 hover:text-[#00B5F1] transition-colors hover:scale-110 transform duration-300 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B5F1] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base"
+          className="inline-flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-[#0369A1] dark:hover:text-[#00B5F1] transition-colors hover:scale-110 transform duration-300 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B5F1] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base"
         >
           <span
             aria-hidden="true"

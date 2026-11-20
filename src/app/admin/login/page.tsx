@@ -255,7 +255,7 @@ export default function AdminLogin() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full px-4 py-3 bg-[#00B5F1] text-gray-900 font-bold rounded-lg hover:bg-[#5B21B6] transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm uppercase tracking-wider"
+              className="w-full px-4 py-3 bg-[#00B5F1] text-gray-900 font-bold rounded-lg hover:bg-[#5B21B6] hover:text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm uppercase tracking-wider"
             >
               {loading ? "Küldés..." : "E-mail küldése"}
             </button>
@@ -297,7 +297,7 @@ export default function AdminLogin() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full px-4 py-3 bg-[#00B5F1] text-gray-900 font-bold rounded-lg hover:bg-[#5B21B6] transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm uppercase tracking-wider"
+              className="w-full px-4 py-3 bg-[#00B5F1] text-gray-900 font-bold rounded-lg hover:bg-[#5B21B6] hover:text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm uppercase tracking-wider"
             >
               {loading ? "Küldés..." : "Magic Link küldése"}
             </button>
@@ -370,7 +370,7 @@ export default function AdminLogin() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full px-4 py-3 bg-[#00B5F1] text-gray-900 font-bold rounded-lg hover:bg-[#5B21B6] transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm uppercase tracking-wider"
+              className="w-full px-4 py-3 bg-[#00B5F1] text-gray-900 font-bold rounded-lg hover:bg-[#5B21B6] hover:text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm uppercase tracking-wider"
             >
               {loading ? "Bejelentkezés..." : "Bejelentkezés"}
             </button>

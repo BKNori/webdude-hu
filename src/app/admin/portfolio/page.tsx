@@ -451,7 +451,7 @@ export default function AdminPortfolio() {
           </button>
           <button
             onClick={openCreateModal}
-            className="px-5 py-2.5 bg-[#00B5F1] hover:bg-[#5B21B6] text-bg-base font-bold rounded-lg transition-colors text-sm uppercase tracking-wider"
+            className="px-5 py-2.5 bg-[#00B5F1] hover:bg-[#5B21B6] hover:text-white text-bg-base font-bold rounded-lg transition-colors text-sm uppercase tracking-wider"
           >
             + Új Projekt
           </button>
@@ -912,7 +912,7 @@ export default function AdminPortfolio() {
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2 bg-[#00B5F1] hover:bg-[#5B21B6] text-bg-base font-bold rounded-lg transition-colors text-sm uppercase tracking-wider"
+                  className="px-5 py-2 bg-[#00B5F1] hover:bg-[#5B21B6] hover:text-white text-bg-base font-bold rounded-lg transition-colors text-sm uppercase tracking-wider"
                 >
                   Mentés
                 </button>

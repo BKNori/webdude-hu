@@ -52,7 +52,7 @@ const faqSchema = {
 
 export default function MunkakFaqSection() {
   return (
-    <section className="mt-24 rounded-3xl border border-slate-800/80 bg-slate-900/40 px-6 py-16 md:px-12">
+    <section className="mt-24 rounded-3xl border border-slate-200/90 dark:border-white/10 dark:border-t-white/20 bg-[#F1F5F9] dark:bg-[#111C33]/85 px-6 py-16 md:px-12 shadow-[0_12px_32px_rgba(15,23,42,0.06)] dark:shadow-[0_12px_36px_rgba(2,6,23,0.35)]">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -62,38 +62,35 @@ export default function MunkakFaqSection() {
 
       <div className="mx-auto max-w-3xl">
         <div className="text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+          <h2 className="text-3xl font-bold tracking-tight text-[#0F172A] dark:text-white sm:text-4xl">
             Mielőtt{" "}
-            <span className="bg-linear-to-r from-[#00B5F1] to-[#5B21B6] bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-[#0369A1] to-[#6D28D9] dark:from-[#00B5F1] dark:to-[#A78BFA] bg-clip-text text-transparent">
               kérdeznél
             </span>
           </h2>
-          <p className="mt-4 text-lg text-slate-400">
+          <p className="mt-4 text-lg text-[#334155] dark:text-slate-300">
             A leggyakoribb kérdések — egyenesen, mellébeszélés nélkül.
           </p>
         </div>
 
         <dl className="mt-12 space-y-6">
           {FAQ_ITEMS.map((item) => (
-            <div
-              key={item.question}
-              className="rounded-2xl border border-white/10 bg-slate-950/60 p-6 backdrop-blur-xl transition-colors duration-300 hover:border-[#00B5F1]/40"
-            >
-              <dt className="text-lg font-bold text-slate-100">
+            <div key={item.question} className="luminous-card p-6">
+              <dt className="text-lg font-bold text-[#0F172A] dark:text-white">
                 {item.question}
               </dt>
-              <dd className="mt-3 leading-relaxed text-slate-400">
+              <dd className="mt-3 leading-relaxed text-[#334155] dark:text-slate-300">
                 {item.answer}
               </dd>
             </div>
           ))}
         </dl>
 
-        <p className="mt-10 text-center text-slate-500">
+        <p className="mt-10 text-center text-[#334155] dark:text-slate-300">
           Van még kérdésed?{" "}
           <Link
             href="/kapcsolat"
-            className="font-semibold text-[#00B5F1] hover:underline"
+            className="font-semibold text-[#0369A1] dark:text-[#00B5F1] hover:underline"
           >
             Írj nekem
           </Link>{" "}

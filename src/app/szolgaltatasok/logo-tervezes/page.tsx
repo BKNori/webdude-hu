@@ -275,7 +275,8 @@ export default function LogoTervezesPage() {
       "@id": "https://webdude.hu/#person",
       name: "Balog Norbert",
       alternateName: ["Balog Norbi", "WebDude"],
-      jobTitle: "Full-Stack Webfejlesztő, Art Director & AI Automatizációs Szakértő",
+      jobTitle:
+        "Full-Stack Webfejlesztő, Art Director & AI Automatizációs Szakértő",
       description: "26 év tervezőgrafikai és 16 év webfejlesztői tapasztalat",
     },
     url: "https://webdude.hu/szolgaltatasok/logo-tervezes",
@@ -348,7 +349,7 @@ export default function LogoTervezesPage() {
               alt="Professzionális logó tervezés"
               fill
               priority
-              className="object-cover object-center -z-20 opacity-40"
+              className="object-cover object-center -z-20 opacity-15 dark:opacity-40"
               sizes="100vw"
             />
             <div className="absolute inset-0 bg-linear-to-r from-bg-base/85 via-bg-base/60 to-bg-base/20" />
@@ -358,10 +359,10 @@ export default function LogoTervezesPage() {
             <div className="max-w-3xl">
               <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight text-balance">
                 Professzionális{" "}
-                <span className="text-[#00B5F1]">Logó Tervezés</span> és
+                <span className="text-[#0369A1] dark:text-[#00B5F1]">Logó Tervezés</span> és
                 Arculattervezés
               </h1>
-              <p className="text-xl md:text-2xl text-slate-300 mb-8 leading-relaxed">
+              <p className="text-xl md:text-2xl text-slate-700 dark:text-slate-300 mb-8 leading-relaxed">
                 26 év grafikai tapasztalat. Egyedi emblém, ami megkülönböztet a
                 versenytársaktól. Vektoros forrásfájlok, nyomdai előkészítés és
                 teljes vizuális identitás építés.
@@ -393,9 +394,9 @@ export default function LogoTervezesPage() {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-6xl font-bold mb-6">
-                Miért <span className="text-[#00B5F1]">WebDude</span> Logó?
+                Miért <span className="text-[#0369A1] dark:text-[#00B5F1]">WebDude</span> Logó?
               </h2>
-              <p className="text-slate-400 text-xl max-w-2xl mx-auto">
+              <p className="text-slate-600 dark:text-slate-400 text-xl max-w-2xl mx-auto">
                 26 év grafikai tapasztalat, ami garantálja a minőséget és a
                 professzionalizmust
               </p>
@@ -407,11 +408,11 @@ export default function LogoTervezesPage() {
                   key={index}
                   className="p-6 bg-bg-surface border border-bg-elevated/80 rounded-2xl hover:border-[#00B5F1]/50 transition-all"
                 >
-                  <feature.icon className="w-12 h-12 text-[#00B5F1] mb-4" />
-                  <h3 className="text-lg font-semibold mb-2 text-slate-200">
+                  <feature.icon className="w-12 h-12 text-[#0369A1] dark:text-[#00B5F1] mb-4" />
+                  <h3 className="text-lg font-semibold mb-2 text-slate-800 dark:text-slate-200">
                     {feature.title}
                   </h3>
-                  <p className="text-slate-400 text-sm leading-relaxed">
+                  <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
                     {feature.description}
                   </p>
                 </div>
@@ -421,13 +422,13 @@ export default function LogoTervezesPage() {
         </section>
 
         {/* Logo Showcase Gallery */}
-        <section className="py-16 md:py-24 px-4 md:px-6 bg-linear-to-b from-bg-base to-slate-900/30">
+        <section className="py-16 md:py-24 px-4 md:px-6 bg-linear-to-b from-bg-base to-[#F1F5F9] dark:to-slate-900/30">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-6xl font-bold mb-6">
-                Logó <span className="text-[#00B5F1]">Portfólió</span>
+                Logó <span className="text-[#0369A1] dark:text-[#00B5F1]">Portfólió</span>
               </h2>
-              <p className="text-slate-400 text-xl max-w-2xl mx-auto">
+              <p className="text-slate-600 dark:text-slate-400 text-xl max-w-2xl mx-auto">
                 Készített munkák különböző iparágakból - orvostól gasztronóig
               </p>
             </div>
@@ -448,14 +449,14 @@ export default function LogoTervezesPage() {
                   </div>
                   <div className="p-4">
                     <div className="flex items-center justify-between mb-2">
-                      <h3 className="text-lg font-semibold text-slate-200">
+                      <h3 className="text-lg font-semibold text-slate-800 dark:text-slate-200">
                         {project.name}
                       </h3>
-                      <span className="text-xs text-[#00B5F1] font-medium bg-[#00B5F1]/10 px-2 py-1 rounded-full">
+                      <span className="text-xs text-[#0369A1] dark:text-[#00B5F1] font-medium bg-[#00B5F1]/10 px-2 py-1 rounded-full">
                         {project.category}
                       </span>
                     </div>
-                    <p className="text-slate-400 text-sm leading-relaxed">
+                    <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
                       {project.description}
                     </p>
                   </div>
@@ -470,9 +471,9 @@ export default function LogoTervezesPage() {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-6xl font-bold mb-6">
-                <span className="text-[#00B5F1]">Csomagok</span> és lehetőségek
+                <span className="text-[#0369A1] dark:text-[#00B5F1]">Csomagok</span> és lehetőségek
               </h2>
-              <p className="text-slate-400 text-xl max-w-2xl mx-auto">
+              <p className="text-slate-600 dark:text-slate-400 text-xl max-w-2xl mx-auto">
                 Válassza ki az üzleti céljaidnak megfelelő irányt. Egyedi
                 árajánlat minden csomaghoz.
               </p>
@@ -483,42 +484,42 @@ export default function LogoTervezesPage() {
                 <div
                   key={tier.id}
                   className={`relative p-8 rounded-2xl border transition-all ${
-                    tier.highlighted
-                      ? "border-[#00B5F1] bg-[#00B5F1]/5 shadow-[0_8px_24px_rgba(0,181,241,0.2)]"
-                      : "border-bg-elevated/80 bg-bg-surface"
-                  }`}
+ tier.highlighted
+ ? "border-[#00B5F1] bg-[#00B5F1]/5 shadow-[0_8px_24px_rgba(0,181,241,0.2)]"
+ : "border-bg-elevated/80 bg-bg-surface"
+ }`}
                 >
                   {tier.highlighted && (
                     <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                      <span className="bg-[#00B5F1] text-white text-xs font-bold px-3 py-1 rounded-full">
+                      <span className="bg-linear-to-r from-[#075985] to-[#5B21B6] text-white text-xs font-bold px-3 py-1 rounded-full">
                         Népszerű
                       </span>
                     </div>
                   )}
-                  <h3 className="text-2xl font-bold mb-2 text-slate-200">
+                  <h3 className="text-2xl font-bold mb-2 text-slate-800 dark:text-slate-200">
                     {tier.name}
                   </h3>
-                  <p className="text-slate-400 mb-6 text-sm leading-relaxed">
+                  <p className="text-slate-600 dark:text-slate-400 mb-6 text-sm leading-relaxed">
                     {tier.description}
                   </p>
                   <ul className="space-y-3 mb-8">
                     {tier.features.map((feature, index) => (
                       <li
                         key={index}
-                        className="flex items-start gap-3 text-slate-300 text-sm"
+                        className="flex items-start gap-3 text-slate-700 dark:text-slate-300 text-sm"
                       >
-                        <CheckCircle className="w-5 h-5 text-[#00B5F1] shrink-0 mt-0.5" />
+                        <CheckCircle className="w-5 h-5 text-[#0369A1] dark:text-[#00B5F1] shrink-0 mt-0.5" />
                         <span>{feature}</span>
                       </li>
                     ))}
                   </ul>
                   <Link
                     href={tier.ctaLink}
-                    className={`inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B5F1] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base ${
-                      tier.highlighted
-                        ? "bg-[#00B5F1] text-white hover:bg-[#00B5F1]/90"
-                        : "bg-bg-elevated text-slate-200 hover:bg-bg-elevated/80"
-                    }`}
+                    className={`inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold transition-[transform,background-color,box-shadow] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B5F1] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base ${
+ tier.highlighted
+ ? "bg-linear-to-r from-[#075985] to-[#5B21B6] text-white hover:from-[#0369A1] hover:to-[#6D28D9]"
+ : "bg-bg-elevated text-[#0F172A] dark:text-slate-200 border border-slate-300 dark:border-slate-700 hover:border-[#0369A1]/50"
+ }`}
                   >
                     {tier.ctaText}
                     <ArrowRight className="w-4 h-4" />
@@ -534,9 +535,9 @@ export default function LogoTervezesPage() {
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-6xl font-bold mb-6">
-                <span className="text-[#00B5F1]">Gyakori</span> Kérdések
+                <span className="text-[#0369A1] dark:text-[#00B5F1]">Gyakori</span> Kérdések
               </h2>
-              <p className="text-slate-400 text-xl max-w-2xl mx-auto">
+              <p className="text-slate-600 dark:text-slate-400 text-xl max-w-2xl mx-auto">
                 Minden, amit tudnod kell a logó tervezésről
               </p>
             </div>
@@ -547,10 +548,10 @@ export default function LogoTervezesPage() {
                   key={index}
                   className="bg-bg-surface border border-bg-elevated/80 rounded-2xl p-6"
                 >
-                  <h3 className="text-lg font-semibold text-slate-200 mb-3">
+                  <h3 className="text-lg font-semibold text-slate-800 dark:text-slate-200 mb-3">
                     {faq.question}
                   </h3>
-                  <p className="text-slate-400 text-sm leading-relaxed">
+                  <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
                     {faq.answer}
                   </p>
                 </div>
@@ -565,9 +566,9 @@ export default function LogoTervezesPage() {
             <div className="space-y-8">
               <h2 className="text-4xl md:text-6xl font-bold">
                 Készen áll az{" "}
-                <span className="text-[#00B5F1]">egyedi emblémre</span>?
+                <span className="text-[#0369A1] dark:text-[#00B5F1]">egyedi emblémre</span>?
               </h2>
-              <p className="text-slate-400 text-xl max-w-2xl mx-auto">
+              <p className="text-slate-600 dark:text-slate-400 text-xl max-w-2xl mx-auto">
                 Ingyenes konzultáció keretében együtt találjuk meg a legjobb
                 vizuális megoldást az Ön márkájának. 26 év grafikai tapasztalat
                 a háttad.

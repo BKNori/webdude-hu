@@ -161,7 +161,7 @@ export default function WebDudeChat() {
       <motion.button
         id="chat-trigger-btn"
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-sky-500 text-bg-base border border-bg-elevated shadow-lg shadow-sky-500/10 transition-all focus:outline-none focus:ring-2 focus:ring-sky-500/50 cursor-pointer"
+        className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-linear-to-r from-[#075985] to-[#5B21B6] text-white border border-slate-200 dark:border-slate-700 shadow-lg shadow-sky-900/20 dark:shadow-sky-500/20 hover:from-[#0369A1] hover:to-[#6D28D9] transition-all focus:outline-none focus:ring-2 focus:ring-[#0369A1] dark:focus:ring-sky-500/50 cursor-pointer"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
         aria-label="WebDude AI Asszisztens megnyitása"
@@ -210,8 +210,8 @@ export default function WebDudeChat() {
               </svg>
               {/* Pulse notification dot */}
               <span className="absolute -top-1 -right-1 flex h-3 w-3">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75"></span>
-                <span className="relative inline-flex h-3 w-3 rounded-full bg-sky-500"></span>
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-300 opacity-75"></span>
+                <span className="relative inline-flex h-3 w-3 rounded-full bg-sky-400"></span>
               </span>
             </div>
           )}
@@ -227,12 +227,12 @@ export default function WebDudeChat() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 40, scale: 0.95 }}
             transition={cinematicTransition}
-            className="fixed bottom-24 right-6 z-50 flex h-150 w-[92vw] max-w-110 flex-col overflow-hidden rounded-3xl bg-bg-surface border border-bg-elevated shadow-2xl shadow-sky-500/5 focus:outline-none"
+            className="fixed bottom-24 right-6 z-50 flex h-150 w-[92vw] max-w-110 flex-col overflow-hidden rounded-3xl bg-white/95 dark:bg-[#0F172A]/95 backdrop-blur-xl border border-slate-200 dark:border-slate-800 shadow-2xl shadow-slate-900/15 dark:shadow-sky-500/10 focus:outline-none"
           >
             {/* Header */}
-            <div className="flex items-center justify-between border-b border-bg-elevated/60 bg-transparent px-6 py-4">
+            <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800/80 bg-slate-50/70 dark:bg-transparent px-6 py-4">
               <div className="flex items-center gap-3">
-                <div className="relative flex h-10 w-10 items-center justify-center rounded-full border border-sky-500/30 bg-bg-surface text-sky-500">
+                <div className="relative flex h-10 w-10 items-center justify-center rounded-full border border-[#0369A1]/25 dark:border-sky-500/30 bg-white dark:bg-bg-surface text-[#0369A1] dark:text-sky-500">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -247,20 +247,20 @@ export default function WebDudeChat() {
                       d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25"
                     />
                   </svg>
-                  <span className="absolute bottom-0 right-0 block h-2.5 w-2.5 rounded-full bg-emerald-500 ring-2 ring-bg-base" />
+                  <span className="absolute bottom-0 right-0 block h-2.5 w-2.5 rounded-full bg-emerald-500 ring-2 ring-white dark:ring-bg-base" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-sm text-text-primary">
+                  <h3 className="font-bold text-sm text-[#0F172A] dark:text-text-primary">
                     WebDude Asszisztens
                   </h3>
-                  <p className="text-[10px] uppercase tracking-wider text-slate-400 font-semibold">
+                  <p className="text-[10px] uppercase tracking-wider text-[#475569] dark:text-slate-400 font-semibold">
                     Projekt Előkészítés
                   </p>
                 </div>
               </div>
               <button
                 onClick={() => setIsOpen(false)}
-                className="rounded-lg p-1.5 text-slate-400 hover:bg-bg-elevated hover:text-text-primary transition-colors"
+                className="rounded-lg p-1.5 text-[#475569] dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-bg-elevated hover:text-[#0F172A] dark:hover:text-text-primary transition-colors cursor-pointer"
                 aria-label="Bezárás"
               >
                 <svg
@@ -281,16 +281,16 @@ export default function WebDudeChat() {
             </div>
 
             {/* Message History Container */}
-            <div className="flex-1 overflow-y-auto px-5 py-4 space-y-4 scrollbar-thin scrollbar-thumb-bg-elevated scrollbar-track-transparent">
+            <div className="flex-1 overflow-y-auto px-5 py-4 space-y-4 scrollbar-thin scrollbar-thumb-slate-300 dark:scrollbar-thumb-bg-elevated scrollbar-track-transparent">
               {messages.length === 0 && (
                 <div className="flex flex-col h-full justify-between py-4">
                   <div className="text-center space-y-3 px-2">
-                    <p className="text-slate-400 text-sm leading-relaxed mt-4">
+                    <p className="text-[#334155] dark:text-slate-400 text-sm leading-relaxed mt-4">
                       {isWordPressPage
                         ? "Szia! Látom, a WordPress karbantartás érdekel. Szeretnéd, ha átnézném a weboldalad biztonságát?"
                         : "Szia! Én vagyok Norbi mesterséges projekt-előkészítő asszisztense. Segíthetek megismerni a korábbi munkáinkat és rögzíteni a projekttervedet."}
                     </p>
-                    <p className="text-xs text-sky-500/80 font-medium">
+                    <p className="text-xs text-[#0369A1] dark:text-sky-400 font-medium">
                       {isWordPressPage
                         ? "Miben segíthetek a WordPress oldalad kapcsán?"
                         : "Milyen terület iránt érdeklődsz leginkább?"}
@@ -303,7 +303,7 @@ export default function WebDudeChat() {
                       <button
                         key={index}
                         onClick={() => handleQuickReply(reply.text)}
-                        className="w-full text-left bg-transparent border border-bg-elevated hover:border-sky-500/50 hover:text-sky-500 rounded-2xl px-4 py-3 text-xs text-slate-300 font-medium transition-all duration-300"
+                        className="w-full text-left bg-slate-50 dark:bg-transparent border border-slate-200 dark:border-bg-elevated hover:border-[#0369A1]/50 dark:hover:border-sky-500/50 hover:text-[#0369A1] dark:hover:text-sky-400 hover:bg-sky-50/60 dark:hover:bg-sky-500/5 rounded-2xl px-4 py-3 text-xs text-[#334155] dark:text-slate-300 font-medium transition-all duration-300 cursor-pointer"
                       >
                         {reply.text}
                       </button>
@@ -324,8 +324,8 @@ export default function WebDudeChat() {
                     <div
                       className={`rounded-2xl px-4 py-3 text-sm leading-relaxed ${
                         isUser
-                          ? "bg-sky-500/10 text-sky-500 border border-sky-500/20 rounded-tr-none"
-                          : "bg-bg-elevated/50 text-text-primary border border-bg-elevated/40 rounded-tl-none"
+                          ? "bg-[#0369A1]/10 dark:bg-sky-500/10 text-[#075985] dark:text-sky-400 border border-[#0369A1]/25 dark:border-sky-500/20 rounded-tr-none"
+                          : "bg-slate-100 dark:bg-bg-elevated/50 text-[#0F172A] dark:text-text-primary border border-slate-200 dark:border-bg-elevated/40 rounded-tl-none"
                       } max-w-[88%]`}
                     >
                       {message.parts.map(
@@ -357,12 +357,12 @@ export default function WebDudeChat() {
                             return (
                               <div
                                 key={partIdx}
-                                className="mt-3 pt-3 border-t border-bg-elevated/60"
+                                className="mt-3 pt-3 border-t border-slate-200 dark:border-bg-elevated/60"
                               >
                                 {toolPart.state !== "output-available" ? (
-                                  <div className="flex items-center gap-2 text-xs text-slate-400">
+                                  <div className="flex items-center gap-2 text-xs text-[#475569] dark:text-slate-400">
                                     <svg
-                                      className="animate-spin h-3.5 w-3.5 text-sky-500"
+                                      className="animate-spin h-3.5 w-3.5 text-[#0369A1] dark:text-sky-500"
                                       viewBox="0 0 24 24"
                                       fill="none"
                                     >
@@ -384,67 +384,65 @@ export default function WebDudeChat() {
                                   </div>
                                 ) : (
                                   <div className="space-y-2">
-                                    <span className="text-[11px] uppercase tracking-wider font-bold text-sky-500/80 block">
+                                    <span className="text-[11px] uppercase tracking-wider font-bold text-[#0369A1] dark:text-sky-400 block">
                                       Kiemelt Referenciák:
                                     </span>
                                     {toolPart.output?.items &&
                                     toolPart.output.items.length > 0 ? (
                                       <div className="grid grid-cols-1 gap-2">
-                                        {toolPart.output.items
-                                          .slice(0, 3)
-                                          .map(
-                                            (
-                                              item: {
-                                                title: string;
-                                                tag: string;
-                                                description: string;
-                                                slug?: string;
-                                              },
-                                              idx: number
-                                            ) => (
-                                              <div
-                                                key={idx}
-                                                className="bg-transparent border border-bg-elevated rounded-xl p-3 hover:border-sky-500/40 transition-colors"
-                                              >
-                                                <div className="flex justify-between items-start">
-                                                  <h4 className="text-sky-500 font-bold text-xs">
-                                                    {item.title}
-                                                  </h4>
-                                                  <span className="text-[9px] px-1.5 py-0.5 rounded bg-bg-elevated text-slate-400">
-                                                    {item.tag}
-                                                  </span>
-                                                </div>
-                                                <p className="text-[11px] text-slate-400 mt-1 line-clamp-2">
-                                                  {item.description}
-                                                </p>
-                                                {item.slug && (
-                                                  <a
-                                                    href={`/munkak#${item.slug}`}
-                                                    className="inline-flex items-center gap-1 text-[10px] text-sky-500 font-semibold mt-2 hover:underline"
-                                                  >
-                                                    Megtekintés
-                                                    <svg
-                                                      xmlns="http://www.w3.org/2000/svg"
-                                                      fill="none"
-                                                      viewBox="0 0 24 24"
-                                                      strokeWidth={2.5}
-                                                      stroke="currentColor"
-                                                      className="h-2.5 w-2.5"
-                                                    >
-                                                      <path
-                                                        strokeLinecap="round"
-                                                        strokeLinejoin="round"
-                                                        d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
-                                                      />
-                                                    </svg>
-                                                  </a>
-                                                )}
+                                        {toolPart.output.items.slice(0, 3).map(
+                                          (
+                                            item: {
+                                              title: string;
+                                              tag: string;
+                                              description: string;
+                                              slug?: string;
+                                            },
+                                            idx: number
+                                          ) => (
+                                            <div
+                                              key={idx}
+                                              className="bg-white dark:bg-transparent border border-slate-200 dark:border-bg-elevated rounded-xl p-3 hover:border-[#0369A1]/40 dark:hover:border-sky-500/40 transition-colors"
+                                            >
+                                              <div className="flex justify-between items-start">
+                                                <h4 className="text-[#0369A1] dark:text-sky-400 font-bold text-xs">
+                                                  {item.title}
+                                                </h4>
+                                                <span className="text-[9px] px-1.5 py-0.5 rounded bg-slate-100 dark:bg-bg-elevated text-[#475569] dark:text-slate-400">
+                                                  {item.tag}
+                                                </span>
                                               </div>
-                                            )
-                                          )}
+                                              <p className="text-[11px] text-[#334155] dark:text-slate-400 mt-1 line-clamp-2">
+                                                {item.description}
+                                              </p>
+                                              {item.slug && (
+                                                <a
+                                                  href={`/munkak#${item.slug}`}
+                                                  className="inline-flex items-center gap-1 text-[10px] text-[#0369A1] dark:text-sky-400 font-semibold mt-2 hover:underline"
+                                                >
+                                                  Megtekintés
+                                                  <svg
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    fill="none"
+                                                    viewBox="0 0 24 24"
+                                                    strokeWidth={2.5}
+                                                    stroke="currentColor"
+                                                    className="h-2.5 w-2.5"
+                                                  >
+                                                    <path
+                                                      strokeLinecap="round"
+                                                      strokeLinejoin="round"
+                                                      d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
+                                                    />
+                                                  </svg>
+                                                </a>
+                                              )}
+                                            </div>
+                                          )
+                                        )}
                                       </div>
                                     ) : (
-                                      <span className="text-xs text-slate-500 italic">
+                                      <span className="text-xs text-[#475569] dark:text-slate-500 italic">
                                         Nem találtunk az adott kategóriában
                                         referenciát.
                                       </span>
@@ -471,12 +469,12 @@ export default function WebDudeChat() {
                             return (
                               <div
                                 key={partIdx}
-                                className="mt-3 pt-3 border-t border-bg-elevated/60"
+                                className="mt-3 pt-3 border-t border-slate-200 dark:border-bg-elevated/60"
                               >
                                 {toolPart.state !== "output-available" ? (
-                                  <div className="flex items-center gap-2 text-xs text-slate-400">
+                                  <div className="flex items-center gap-2 text-xs text-[#475569] dark:text-slate-400">
                                     <svg
-                                      className="animate-spin h-3.5 w-3.5 text-sky-500"
+                                      className="animate-spin h-3.5 w-3.5 text-[#0369A1] dark:text-sky-500"
                                       viewBox="0 0 24 24"
                                       fill="none"
                                     >
@@ -497,8 +495,8 @@ export default function WebDudeChat() {
                                     <span>Projektterv elmentése...</span>
                                   </div>
                                 ) : (
-                                  <div className="rounded-xl bg-emerald-500/10 border border-emerald-500/30 p-3 text-center">
-                                    <span className="text-emerald-400 text-xs font-bold flex items-center justify-center gap-1.5">
+                                  <div className="rounded-xl bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-200 dark:border-emerald-500/30 p-3 text-center">
+                                    <span className="text-emerald-700 dark:text-emerald-400 text-xs font-bold flex items-center justify-center gap-1.5">
                                       <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         fill="none"
@@ -515,7 +513,7 @@ export default function WebDudeChat() {
                                       </svg>
                                       Lead elmentve!
                                     </span>
-                                    <span className="text-[10px] text-slate-400 mt-1 block">
+                                    <span className="text-[10px] text-[#334155] dark:text-slate-400 mt-1 block">
                                       Norbi 24 órán belül felveszi a
                                       kapcsolatot.
                                     </span>
@@ -536,11 +534,11 @@ export default function WebDudeChat() {
               {/* Streaming loading bubble */}
               {isLoading && messages[messages.length - 1]?.role === "user" && (
                 <div className="flex justify-start">
-                  <div className="rounded-2xl rounded-tl-none bg-bg-elevated/50 border border-bg-elevated/40 px-4 py-3 max-w-[88%]">
+                  <div className="rounded-2xl rounded-tl-none bg-slate-100 dark:bg-bg-elevated/50 border border-slate-200 dark:border-bg-elevated/40 px-4 py-3 max-w-[88%]">
                     <div className="flex gap-1.5 py-1">
-                      <span className="h-2 w-2 animate-bounce rounded-full bg-sky-500/80 [animation-delay:-0.3s]" />
-                      <span className="h-2 w-2 animate-bounce rounded-full bg-sky-500/80 [animation-delay:-0.15s]" />
-                      <span className="h-2 w-2 animate-bounce rounded-full bg-sky-500/80" />
+                      <span className="h-2 w-2 animate-bounce rounded-full bg-[#0369A1]/80 dark:bg-sky-500/80 [animation-delay:-0.3s]" />
+                      <span className="h-2 w-2 animate-bounce rounded-full bg-[#0369A1]/80 dark:bg-sky-500/80 [animation-delay:-0.15s]" />
+                      <span className="h-2 w-2 animate-bounce rounded-full bg-[#0369A1]/80 dark:bg-sky-500/80" />
                     </div>
                   </div>
                 </div>
@@ -555,7 +553,7 @@ export default function WebDudeChat() {
                 <div
                   role="alert"
                   aria-live="polite"
-                  className="rounded-xl bg-red-500/10 border border-red-500/20 p-3 text-center text-xs text-red-400"
+                  className="rounded-xl bg-red-50 dark:bg-red-500/10 border border-red-200 dark:border-red-500/20 p-3 text-center text-xs text-red-700 dark:text-red-400"
                 >
                   {error.message ||
                     "Valami hiba történt. Kérlek, próbáld meg újra!"}
@@ -568,7 +566,7 @@ export default function WebDudeChat() {
             {/* Input Bar Form */}
             <form
               onSubmit={handleSubmit}
-              className="border-t border-bg-elevated/60 bg-transparent px-4 py-3"
+              className="border-t border-slate-200 dark:border-bg-elevated/60 bg-slate-50/70 dark:bg-transparent px-4 py-3"
             >
               <div className="relative flex items-center">
                 <input
@@ -579,12 +577,12 @@ export default function WebDudeChat() {
                     isLoading ? "Válasz küldése..." : "Írj egy üzenetet..."
                   }
                   disabled={isLoading}
-                  className="w-full rounded-xl bg-transparent border border-bg-elevated text-text-primary px-4 py-3 pr-12 text-sm focus:border-sky-500/50 focus:ring-1 focus:ring-sky-500/50 outline-none transition-all disabled:opacity-55"
+                  className="w-full rounded-xl bg-white dark:bg-transparent border border-slate-300 dark:border-bg-elevated text-[#0F172A] dark:text-text-primary placeholder:text-slate-500 dark:placeholder:text-slate-400 px-4 py-3 pr-12 text-sm focus:border-[#0369A1] dark:focus:border-sky-500/50 focus:ring-1 focus:ring-[#0369A1] dark:focus:ring-sky-500/50 outline-none transition-all disabled:opacity-55"
                 />
                 <button
                   type="submit"
                   disabled={!input.trim() || isLoading}
-                  className="absolute right-2.5 top-1/2 -translate-y-1/2 flex h-8 w-8 items-center justify-center rounded-lg bg-sky-500 text-bg-base font-bold uppercase transition-all duration-300 hover:bg-violet-700 disabled:bg-bg-elevated disabled:text-slate-500"
+                  className="absolute right-2.5 top-1/2 -translate-y-1/2 flex h-8 w-8 items-center justify-center rounded-lg bg-[#0369A1] dark:bg-sky-500 text-white dark:text-slate-950 font-bold uppercase transition-all duration-300 hover:bg-violet-700 hover:text-white disabled:bg-slate-200 dark:disabled:bg-bg-elevated disabled:text-slate-500 cursor-pointer disabled:cursor-not-allowed"
                   aria-label="Küldés"
                 >
                   <svg

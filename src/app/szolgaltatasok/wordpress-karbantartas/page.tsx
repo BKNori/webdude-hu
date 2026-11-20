@@ -168,7 +168,7 @@ export default function WordPressKarbantartasPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100">
+    <div className="min-h-screen bg-[#F8FAFC] dark:bg-slate-950 text-[#0F172A] dark:text-slate-100">
       {/* JSON-LD Schemas with XSS Protection */}
       <script
         type="application/ld+json"
@@ -184,21 +184,21 @@ export default function WordPressKarbantartasPage() {
       />
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 overflow-hidden border-b border-slate-800/80">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,var(--tw-gradient-stops))] from-sky-900/20 via-slate-950 to-slate-950 pointer-events-none" />
+      <section className="relative pt-32 pb-20 overflow-hidden border-b border-slate-200/90 dark:border-slate-800/80">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,var(--tw-gradient-stops))] from-sky-500/10 via-[#F8FAFC] to-[#F8FAFC] dark:from-sky-900/20 dark:via-slate-950 dark:to-slate-950 pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sky-950/80 border border-sky-500/30 text-sky-400 text-xs font-medium uppercase tracking-wider mb-6">
-              <Sparkles className="w-3.5 h-3.5 text-[#00B5F1]" />
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sky-50 dark:bg-sky-950/80 border border-sky-200 dark:border-sky-500/30 text-[#0369A1] dark:text-sky-400 text-xs font-medium uppercase tracking-wider mb-6">
+              <Sparkles className="w-3.5 h-3.5 text-[#0369A1] dark:text-[#00B5F1]" />
               Stabilitás, Biztonság & Védelem
             </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight mb-6">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#0F172A] dark:text-white tracking-tight leading-tight mb-6">
               WordPress karbantartás: hogy a weboldalad{" "}
-              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#a855f7]">
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#0369A1] to-[#6D28D9] dark:from-[#00B5F1] dark:to-[#a855f7]">
                 sose hagyjon cserben
               </span>
             </h1>
-            <p className="text-lg sm:text-xl text-slate-300 leading-relaxed mb-8">
+            <p className="text-lg sm:text-xl text-slate-700 dark:text-slate-300 leading-relaxed mb-8">
               Egy leálló weboldal bevételkiesést és presztízsveszteséget okoz.
               Megelőzöm a hibákat, elhárítom a biztonsági réseket, és ha beütött
               a baj, azonnal helyreállítom a működést.
@@ -213,7 +213,7 @@ export default function WordPressKarbantartasPage() {
               </Link>
               <Link
                 href="#csomagok"
-                className="inline-flex items-center justify-center px-6 py-4 rounded-xl font-medium text-slate-300 bg-slate-900 border border-slate-800 hover:border-slate-700 hover:text-white transition-colors"
+                className="inline-flex items-center justify-center px-6 py-4 rounded-xl font-medium text-slate-700 bg-white border border-slate-300 hover:border-[#0369A1]/50 hover:text-[#0369A1] dark:text-slate-300 dark:bg-slate-900 dark:border-slate-800 dark:hover:border-slate-700 dark:hover:text-white transition-colors"
               >
                 Karbantartási csomagok
               </Link>
@@ -235,13 +235,13 @@ export default function WordPressKarbantartasPage() {
       />
 
       {/* Pain Points & Problem Solving Bento Grid */}
-      <section className="py-24 relative border-b border-slate-800/80">
+      <section className="py-24 relative border-b border-slate-200/90 dark:border-slate-800/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#0F172A] dark:text-white mb-4">
               A leggyakoribb WordPress veszélyek, amelyeket elhárítok
             </h2>
-            <p className="text-slate-400">
+            <p className="text-slate-600 dark:text-slate-400">
               A legtöbb weboldal-tulajdonos csak akkor kap észbe, amikor a
               Google tiltólistára teszi a domaint, vagy a vásárlók nem tudnak
               fizetni.
@@ -249,116 +249,116 @@ export default function WordPressKarbantartasPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="p-8 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-[#00B5F1]/50 transition-colors duration-300 flex flex-col justify-between">
+            <div className="p-8 rounded-2xl bg-white dark:bg-slate-900/60 border border-slate-200/90 dark:border-slate-800 hover:border-[#00B5F1]/50 transition-colors duration-300 flex flex-col justify-between">
               <div>
-                <div className="w-12 h-12 rounded-xl bg-red-950/80 border border-red-500/30 flex items-center justify-center text-red-400 mb-6">
+                <div className="w-12 h-12 rounded-xl bg-red-50 dark:bg-red-950/80 border border-red-200 dark:border-red-500/30 flex items-center justify-center text-red-700 dark:text-red-400 mb-6">
                   <ShieldAlert className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">
+                <h3 className="text-xl font-bold text-[#0F172A] dark:text-white mb-3">
                   Vírusok & Feltört Oldalak
                 </h3>
-                <p className="text-slate-400 text-sm leading-relaxed">
+                <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
                   Kéretlen átirányítások, spam hivatkozások vagy elérhetetlen
                   adminfelület? Megtisztítom az állományokat és lezárom a
                   biztonsági réseket.
                 </p>
               </div>
-              <div className="mt-6 pt-6 border-t border-slate-800/80 text-xs text-red-400 flex items-center gap-1.5 font-semibold">
+              <div className="mt-6 pt-6 border-t border-slate-200/90 dark:border-slate-800/80 text-xs text-red-700 dark:text-red-400 flex items-center gap-1.5 font-semibold">
                 <CheckCircle2 className="w-4 h-4" /> Teljes kártevőirtás
               </div>
             </div>
 
-            <div className="p-8 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-[#00B5F1]/50 transition-colors duration-300 flex flex-col justify-between">
+            <div className="p-8 rounded-2xl bg-white dark:bg-slate-900/60 border border-slate-200/90 dark:border-slate-800 hover:border-[#00B5F1]/50 transition-colors duration-300 flex flex-col justify-between">
               <div>
-                <div className="w-12 h-12 rounded-xl bg-sky-950/80 border border-sky-500/30 flex items-center justify-center text-[#00B5F1] mb-6">
+                <div className="w-12 h-12 rounded-xl bg-sky-50 dark:bg-sky-950/80 border border-sky-200 dark:border-sky-500/30 flex items-center justify-center text-[#0369A1] dark:text-[#00B5F1] mb-6">
                   <RefreshCw className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">
+                <h3 className="text-xl font-bold text-[#0F172A] dark:text-white mb-3">
                   Elavult Bővítmények
                 </h3>
-                <p className="text-slate-400 text-sm leading-relaxed">
+                <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
                   A halogatott frissítések inkompatibilitási hibákhoz és
                   sebezhetőségekhez vezetnek. Biztonságos tesztkörnyezetben
                   frissítek mindent.
                 </p>
               </div>
-              <div className="mt-6 pt-6 border-t border-slate-800/80 text-xs text-sky-400 flex items-center gap-1.5 font-semibold">
+              <div className="mt-6 pt-6 border-t border-slate-200/90 dark:border-slate-800/80 text-xs text-[#0369A1] dark:text-sky-400 flex items-center gap-1.5 font-semibold">
                 <CheckCircle2 className="w-4 h-4" /> Tesztelt frissítési
                 protokoll
               </div>
             </div>
 
-            <div className="p-8 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-[#00B5F1]/50 transition-colors duration-300 flex flex-col justify-between">
+            <div className="p-8 rounded-2xl bg-white dark:bg-slate-900/60 border border-slate-200/90 dark:border-slate-800 hover:border-[#00B5F1]/50 transition-colors duration-300 flex flex-col justify-between">
               <div>
-                <div className="w-12 h-12 rounded-xl bg-purple-950/80 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-6">
+                <div className="w-12 h-12 rounded-xl bg-violet-50 dark:bg-purple-950/80 border border-violet-200 dark:border-purple-500/30 flex items-center justify-center text-[#6D28D9] dark:text-purple-400 mb-6">
                   <Lock className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">
+                <h3 className="text-xl font-bold text-[#0F172A] dark:text-white mb-3">
                   Adatvesztés Elleni Védelem
                 </h3>
-                <p className="text-slate-400 text-sm leading-relaxed">
+                <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
                   Egy szerverhiba vagy rossz beállítás percek alatt letörölheti
                   az egész weboldaladat. Külső, titkosított szerverre mentek
                   rendszeresen.
                 </p>
               </div>
-              <div className="mt-6 pt-6 border-t border-slate-800/80 text-xs text-purple-400 flex items-center gap-1.5 font-semibold">
+              <div className="mt-6 pt-6 border-t border-slate-200/90 dark:border-slate-800/80 text-xs text-[#6D28D9] dark:text-purple-400 flex items-center gap-1.5 font-semibold">
                 <CheckCircle2 className="w-4 h-4" /> Napi/heti off-site mentés
               </div>
             </div>
 
-            <div className="md:col-span-2 p-8 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-[#00B5F1]/50 transition-colors duration-300">
+            <div className="md:col-span-2 p-8 rounded-2xl bg-white dark:bg-slate-900/60 border border-slate-200/90 dark:border-slate-800 hover:border-[#00B5F1]/50 transition-colors duration-300">
               <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-4">
-                <div className="w-12 h-12 rounded-xl bg-sky-950/80 border border-sky-500/30 flex items-center justify-center text-[#00B5F1]">
+                <div className="w-12 h-12 rounded-xl bg-sky-50 dark:bg-sky-950/80 border border-sky-200 dark:border-sky-500/30 flex items-center justify-center text-[#0369A1] dark:text-[#00B5F1]">
                   <Activity className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-white">
+                  <h3 className="text-xl font-bold text-[#0F172A] dark:text-white">
                     24/7 Elérhetőség és Uptime Monitorozás
                   </h3>
-                  <p className="text-slate-400 text-sm">
+                  <p className="text-slate-600 dark:text-slate-400 text-sm">
                     Azonnal értesülök róla, ha a weboldalad leállna, még mielőtt
                     a vevőid észrevennék.
                   </p>
                 </div>
               </div>
-              <p className="text-slate-400 text-sm leading-relaxed mb-4">
+              <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4">
                 Automatizált monitoring rendszerem percenként vizsgálja a
                 weboldalad működését és válaszidejét. Hiba esetén nem kell
                 napokig várnod: proaktívan beavatkozom és helyreállítom a
                 szolgáltatást.
               </p>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-4 border-t border-slate-800/80">
-                <div className="flex items-center gap-2 text-xs text-slate-300 font-medium">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-4 border-t border-slate-200/90 dark:border-slate-800/80">
+                <div className="flex items-center gap-2 text-xs text-slate-700 dark:text-slate-300 font-medium">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-700 dark:text-emerald-400 shrink-0" />
                   <span>Azonnali SMS/Email riasztás</span>
                 </div>
-                <div className="flex items-center gap-2 text-xs text-slate-300 font-medium">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                <div className="flex items-center gap-2 text-xs text-slate-700 dark:text-slate-300 font-medium">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-700 dark:text-emerald-400 shrink-0" />
                   <span>SSL tanúsítvány felügyelet</span>
                 </div>
-                <div className="flex items-center gap-2 text-xs text-slate-300 font-medium">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                <div className="flex items-center gap-2 text-xs text-slate-700 dark:text-slate-300 font-medium">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-700 dark:text-emerald-400 shrink-0" />
                   <span>Sebesség- és válaszidő mérés</span>
                 </div>
               </div>
             </div>
 
-            <div className="p-8 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-[#00B5F1]/50 transition-colors duration-300 flex flex-col justify-between">
+            <div className="p-8 rounded-2xl bg-white dark:bg-slate-900/60 border border-slate-200/90 dark:border-slate-800 hover:border-[#00B5F1]/50 transition-colors duration-300 flex flex-col justify-between">
               <div>
-                <div className="w-12 h-12 rounded-xl bg-sky-950/80 border border-sky-500/30 flex items-center justify-center text-[#00B5F1] mb-6">
+                <div className="w-12 h-12 rounded-xl bg-sky-50 dark:bg-sky-950/80 border border-sky-200 dark:border-sky-500/30 flex items-center justify-center text-[#0369A1] dark:text-[#00B5F1] mb-6">
                   <Wrench className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">
+                <h3 className="text-xl font-bold text-[#0F172A] dark:text-white mb-3">
                   Dedikált Fejlesztői Keret
                 </h3>
-                <p className="text-slate-400 text-sm leading-relaxed">
+                <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
                   Kisebb szöveges vagy vizuális módosítások, új hírlevél
                   feliratkozó, vagy új funkciók? A karbantartás tartalmazza a
                   fejlesztői órákat.
                 </p>
               </div>
-              <div className="mt-6 pt-6 border-t border-slate-800/80 text-xs text-sky-400 flex items-center gap-1.5 font-semibold">
+              <div className="mt-6 pt-6 border-t border-slate-200/90 dark:border-slate-800/80 text-xs text-[#0369A1] dark:text-sky-400 flex items-center gap-1.5 font-semibold">
                 <Zap className="w-4 h-4" /> Gyors megvalósítás
               </div>
             </div>
@@ -367,13 +367,13 @@ export default function WordPressKarbantartasPage() {
       </section>
 
       {/* Pricing Section */}
-      <section id="csomagok" className="py-24 border-b border-slate-800/80">
+      <section id="csomagok" className="py-24 border-b border-slate-200/90 dark:border-slate-800/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#0F172A] dark:text-white mb-4">
               Karbantartási Csomagok & Rendszerek
             </h2>
-            <p className="text-slate-400">
+            <p className="text-slate-600 dark:text-slate-400">
               Válaszd ki az oldalad méretéhez illeszkedő konstrukciót. Egyedi
               webshopok és portálok esetén testreszabott üzemeltetési szerződést
               készítek.
@@ -385,17 +385,17 @@ export default function WordPressKarbantartasPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-24 border-b border-slate-800/80">
+      <section className="py-24 border-b border-slate-200/90 dark:border-slate-800/80">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900 border border-slate-800 text-slate-400 text-xs font-medium uppercase tracking-wider mb-4">
-              <HelpCircle className="w-3.5 h-3.5 text-[#00B5F1]" />
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 text-xs font-medium uppercase tracking-wider mb-4">
+              <HelpCircle className="w-3.5 h-3.5 text-[#0369A1] dark:text-[#00B5F1]" />
               Karbantartási GYIK
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#0F172A] dark:text-white mb-4">
               Gyakori kérdések a felügyeletről és hibajavításról
             </h2>
-            <p className="text-slate-400">
+            <p className="text-slate-600 dark:text-slate-400">
               Minden, amit a weboldalad biztonságos üzemeltetéséről tudnod kell.
             </p>
           </div>
@@ -404,15 +404,15 @@ export default function WordPressKarbantartasPage() {
             {faqs.map((faq, index) => (
               <div
                 key={index}
-                className="p-6 rounded-xl bg-slate-900/50 border border-slate-800 hover:border-slate-700 transition-colors"
+                className="p-6 rounded-xl bg-white dark:bg-slate-900/50 border border-slate-200/90 dark:border-slate-800 hover:border-slate-700 transition-colors"
               >
-                <h3 className="text-lg font-bold text-white mb-2 flex items-start gap-3">
-                  <span className="text-[#00B5F1] font-mono text-sm mt-1">
+                <h3 className="text-lg font-bold text-[#0F172A] dark:text-white mb-2 flex items-start gap-3">
+                  <span className="text-[#0369A1] dark:text-[#00B5F1] font-mono text-sm mt-1">
                     0{index + 1}.
                   </span>
                   {faq.q}
                 </h3>
-                <p className="text-slate-400 text-sm leading-relaxed pl-8">
+                <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed pl-8">
                   {faq.a}
                 </p>
               </div>
@@ -424,10 +424,10 @@ export default function WordPressKarbantartasPage() {
       {/* Bottom CTA */}
       <section className="py-20 relative overflow-hidden">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-6">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0F172A] dark:text-white mb-6">
             Hiba lépett fel, vagy megbízható karbantartást keresel?
           </h2>
-          <p className="text-slate-300 max-w-2xl mx-auto mb-8 text-lg">
+          <p className="text-slate-700 dark:text-slate-300 max-w-2xl mx-auto mb-8 text-lg">
             Írd meg a problémádat vagy az oldalad címét, és gyorsan felmérem a
             helyzetet!
           </p>

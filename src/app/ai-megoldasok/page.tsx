@@ -6,6 +6,7 @@ import AIFeatureCard from "@/components/molecules/AIFeatureCard";
 import AIFAQSection from "@/components/organisms/AIFAQSection";
 import AIBenefitsGrid from "@/components/molecules/AIBenefitsGrid";
 import DirectAnswerBlock from "@/components/molecules/DirectAnswerBlock";
+import Surface from "@/components/atoms/Surface";
 import { CANONICAL_PERSON_ENTITY, serializeJsonLd } from "@/lib/structuredData";
 
 // ─── SEO Metadata — AI Megoldások oldal (K-01 fix) ─────────────────────────
@@ -142,7 +143,7 @@ const faqData = [
 
 export default function AIMSolutionsPage() {
   return (
-    <div className="min-h-screen bg-bg-base text-text-primary">
+    <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#0B1120] text-[#0F172A] dark:text-[#F8FAFC]">
       {/* ── JSON-LD Sémák — SSOT: structuredData.ts, XSS-védetten (K-01, K-03 fix) ── */}
 
       {/* BreadcrumbList — navigációs hierarchia AI-keresők számára */}
@@ -208,32 +209,46 @@ export default function AIMSolutionsPage() {
       />
 
       {/* Hero Section with Banner */}
-      <section className="relative min-h-150 md:min-h-175 overflow-hidden">
+      <section className="relative min-h-140 md:min-h-160 overflow-hidden bg-[#F8FAFC] dark:bg-[#0B1120] border-b border-slate-200/80 dark:border-white/10 flex items-center">
         <div className="absolute inset-0 z-0">
           <Image
             src="/assets/portfolio/ai-promt-hu/ai-promt-hi-banner.webp"
             alt="Vállalati AI Automatizáció és Egyedi Prompt Tervezés"
             fill
             priority
-            className="object-cover object-center -z-20"
+            className="object-cover object-center opacity-12 dark:opacity-35"
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-bg-base/70" />
+          <div className="absolute inset-0 bg-linear-to-r from-[#F8FAFC]/92 via-[#F8FAFC]/82 to-[#F8FAFC]/70 dark:from-[#0B1120]/95 dark:via-[#0B1120]/80 dark:to-[#0B1120]/65" />
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_65%_55%_at_50%_45%,rgba(248,250,252,0.88)_0%,transparent_100%)] dark:bg-none" />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 bg-grid-mesh opacity-25 dark:opacity-35"
+          />
         </div>
 
-        <div className="relative z-10 mx-auto max-w-7xl px-6 py-20 md:py-32">
+        <div className="relative z-10 mx-auto max-w-7xl px-6 py-24 md:py-32 w-full">
           <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
+            <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/85 dark:bg-white/6 border border-[#0369A1]/25 dark:border-white/15 dark:border-t-white/25 backdrop-blur-md mb-6 shadow-[0_6px_18px_rgba(3,105,161,0.08)] dark:shadow-none">
+              <span
+                className="w-2 h-2 rounded-full bg-[#0369A1] dark:bg-[#00B5F1]"
+                aria-hidden="true"
+              />
+              <span className="eyebrow-badge text-[#0369A1] dark:text-[#00B5F1]">
+                AI & Automatizáció
+              </span>
+            </div>
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight text-[#0F172A] dark:text-white">
               Vállalati AI Automatizáció és
-              <span className="text-[#00B5F1]"> Egyedi Prompt Tervezés</span>
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#0369A1] to-[#6D28D9] dark:from-[#00B5F1] dark:to-[#A78BFA]"> Egyedi Prompt Tervezés</span>
             </h1>
-            <p className="text-xl md:text-2xl text-slate-300 mb-8 leading-relaxed">
+            <p className="text-xl md:text-2xl text-[#334155] dark:text-slate-300 mb-8 leading-relaxed">
               26 év grafikai és 16 év webfejlesztői tapasztalat. Egyedi AI
               munkafolyamatok, amelyek skálázhatóvá teszik a vállalkozásodat.
             </p>
             <Link
               href="/kapcsolat"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-linear-to-r from-[#075985] to-[#5B21B6] text-white font-bold rounded-full transition-all hover:scale-[1.02] shadow-[0_8px_24px_rgba(0,181,241,0.3)]"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-linear-to-r from-[#075985] to-[#5B21B6] hover:from-[#0369A1] hover:to-[#6D28D9] text-white font-semibold uppercase tracking-wider text-sm rounded-full transition-all hover:scale-[1.03] shadow-[0_8px_28px_rgba(7,89,133,0.4)]"
             >
               Egyedi árajánlat kérése
             </Link>
@@ -242,36 +257,38 @@ export default function AIMSolutionsPage() {
       </section>
 
       {/* GEO Direct Answer blokk — a Hero alá */}
-      <DirectAnswerBlock
-        id="ai-megoldasok-hero"
-        question="Mit csinál a WebDude AI Megoldások oldalon, kinek és milyen eredménnyel?"
-        answer="AI munkafolyamatok, egyedi AI ügynökök, üzleti automatizáció és prompt engineering KKV-knak a manuális adminisztráció kiváltására és a lead-generálás skálázására, egyedi árajánlat kérése mellett."
-      />
+      <Surface tone="night-lift" className="py-4">
+        <DirectAnswerBlock
+          id="ai-megoldasok-hero"
+          question="Mit csinál a WebDude AI Megoldások oldalon, kinek és milyen eredménnyel?"
+          answer="AI munkafolyamatok, egyedi AI ügynökök, üzleti automatizáció és prompt engineering KKV-knak a manuális adminisztráció kiváltására és a lead-generálás skálázására, egyedi árajánlat kérése mellett."
+        />
+      </Surface>
 
       {/* Benefits Section - Bento Grid */}
-      <section className="py-16 md:py-24 px-4 md:px-6">
+      <Surface tone="night" aurora className="py-24 md:py-28 px-4 md:px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-6xl font-bold mb-6">
-              Miért <span className="text-[#00B5F1]">AI Automatizáció</span>?
+            <h2 className="text-4xl md:text-6xl font-bold mb-6 text-[#0F172A] dark:text-white">
+              Miért <span className="text-[#0369A1] dark:text-[#00B5F1]">AI Automatizáció</span>?
             </h2>
-            <p className="text-slate-400 text-xl max-w-2xl mx-auto">
+            <p className="text-[#334155] dark:text-slate-300 text-xl max-w-2xl mx-auto">
               Üzleti előnyök, amelyek komoly mérhető eredményeket hoznak
             </p>
           </div>
 
           <AIBenefitsGrid benefits={benefits} />
         </div>
-      </section>
+      </Surface>
 
       {/* AI Solutions Grid */}
-      <section className="py-16 md:py-24 px-4 md:px-6 bg-linear-to-b from-bg-base to-slate-900/30">
+      <Surface tone="slate-lift" aurora grid className="py-24 md:py-28 px-4 md:px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-6xl font-bold mb-6">
-              AI <span className="text-[#00B5F1]">Megoldások</span>
+            <h2 className="text-4xl md:text-6xl font-bold mb-6 text-[#0F172A] dark:text-white">
+              AI <span className="text-[#0369A1] dark:text-[#00B5F1]">Megoldások</span>
             </h2>
-            <p className="text-slate-400 text-xl max-w-2xl mx-auto">
+            <p className="text-[#334155] dark:text-slate-300 text-xl max-w-2xl mx-auto">
               Automatizált AI rendszerek, amelyek időt és pénzt takarítanak meg
               a KKV-knak. ChatGPT, Claude és egyedi AI megoldások.
             </p>
@@ -283,45 +300,45 @@ export default function AIMSolutionsPage() {
             ))}
           </div>
         </div>
-      </section>
+      </Surface>
 
       {/* FAQ Section */}
-      <section className="py-16 md:py-24 px-4 md:px-6">
+      <Surface tone="night" aurora className="py-24 md:py-28 px-4 md:px-6">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-6xl font-bold mb-6">
-              <span className="text-[#00B5F1]">Gyakori</span> Kérdések
+            <h2 className="text-4xl md:text-6xl font-bold mb-6 text-[#0F172A] dark:text-white">
+              <span className="text-[#0369A1] dark:text-[#00B5F1]">Gyakori</span> Kérdések
             </h2>
-            <p className="text-slate-400 text-xl max-w-2xl mx-auto">
+            <p className="text-[#334155] dark:text-slate-300 text-xl max-w-2xl mx-auto">
               Minden, amit tudnod kell az AI automatizációról
             </p>
           </div>
 
           <AIFAQSection faqData={faqData} />
         </div>
-      </section>
+      </Surface>
 
       {/* CTA Section */}
-      <section className="py-16 md:py-24 px-4 md:px-6">
-        <div className="max-w-4xl mx-auto text-center">
+      <Surface tone="night-lift" aurora className="py-24 md:py-28 px-4 md:px-6">
+        <div className="max-w-4xl mx-auto text-center luminous-card p-10 md:p-14">
           <div className="space-y-8">
-            <h2 className="text-4xl md:text-6xl font-bold">
-              Készen áll az <span className="text-[#00B5F1]">AI</span>{" "}
+            <h2 className="text-4xl md:text-6xl font-bold text-[#0F172A] dark:text-white">
+              Készen állsz az <span className="text-[#0369A1] dark:text-[#00B5F1]">AI</span>{" "}
               automatizációra?
             </h2>
-            <p className="text-slate-400 text-xl max-w-2xl mx-auto">
-              Ingyenes konzultáció keretében együtt találjuk meg a legjobb AI
-              megoldást az Ön üzleti igényeire.
+            <p className="text-[#334155] dark:text-slate-300 text-xl max-w-2xl mx-auto">
+              Ingyenes konzultáció keretében közösen találjuk meg a legjobb AI
+              megoldást a vállalkozásod üzleti igényeire.
             </p>
             <Link
               href="/kapcsolat"
-              className="inline-flex items-center gap-2 px-10 py-5 bg-linear-to-r from-[#075985] to-[#5B21B6] text-white font-bold rounded-2xl transition-all hover:scale-[1.02] shadow-[0_8px_24px_rgba(0,181,241,0.3)]"
+              className="inline-flex items-center gap-2 px-10 py-4 bg-linear-to-r from-[#075985] to-[#5B21B6] hover:from-[#0369A1] hover:to-[#6D28D9] text-white font-semibold uppercase tracking-wider text-sm rounded-full transition-all hover:scale-[1.03] shadow-[0_8px_28px_rgba(7,89,133,0.4)]"
             >
               Egyedi árajánlat kérése
             </Link>
           </div>
         </div>
-      </section>
+      </Surface>
     </div>
   );
 }

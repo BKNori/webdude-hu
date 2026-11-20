@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Hero from "@/components/Hero";
+import Surface from "@/components/atoms/Surface";
 import ServiceCard from "@/components/molecules/ServiceCard";
 import { Metadata } from "next";
 import { buildBreadcrumbSchema, BreadcrumbItem } from "@/lib/breadcrumb";
@@ -277,7 +278,7 @@ export default async function ServicesPage() {
         title={
           <>
             Növelje az{" "}
-            <span className="bg-clip-text text-transparent bg-linear-to-r from-brand-primary to-cta-to italic">
+            <span className="bg-clip-text text-transparent bg-linear-to-r from-[#0369A1] to-cta-to dark:from-brand-primary dark:to-cta-to italic">
               Ügyfélszerzést
             </span>{" "}
             <br /> Weboldallal és AI-val
@@ -293,10 +294,10 @@ export default async function ServicesPage() {
       />
 
       {/* Direct Answer Block - AEO optimalizált "Szolgáltatások Áttekintése" */}
-      <section className="relative py-12 bg-bg-base border-y border-white/5">
+      <Surface tone="night-lift" className="py-12">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <p className="text-base md:text-lg text-slate-300 leading-relaxed">
-            <span className="text-[#00B5F1] font-semibold">
+          <p className="text-base md:text-lg text-slate-700 dark:text-slate-200 leading-relaxed">
+            <span className="text-[#0369A1] dark:text-[#00B5F1] font-semibold">
               WebDude digitális szolgáltatások:
             </span>{" "}
             Egyedi weboldal készítés, grafikai tervezés, AI workflow
@@ -306,72 +307,72 @@ export default async function ServicesPage() {
             kiszolgálással.
           </p>
         </div>
-      </section>
+      </Surface>
 
-      {/* Social Proof Section */}
-      <section className="py-24 bg-bg-surface border-y border-slate-700">
+      {/* Social Proof Section — Dual Theme */}
+      <Surface tone="night" aurora className="py-20 md:py-24">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
-            <div className="bg-bg-elevated border border-slate-600 rounded-2xl p-8 shadow-[0_8px_24px_rgba(15,23,42,0.3)] hover:border-brand-primary/50 hover:shadow-[0_20px_60px_rgba(0, 181, 241,0.2)] hover:-translate-y-1 transition-all duration-300 group">
-              <span className="text-6xl font-heading block mb-3 text-text-primary group-hover:text-brand-primary tracking-wide">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-8 text-center">
+            <div className="luminous-card p-8 group">
+              <span className="text-6xl font-heading block mb-3 text-[#0F172A] dark:text-white group-hover:text-[#0369A1] dark:group-hover:text-[#00B5F1] transition-colors tracking-wide">
                 26+
               </span>
-              <p className="text-xs uppercase tracking-[0.2em] font-bold text-slate-400">
+              <p className="font-mono text-xs uppercase tracking-[0.2em] font-semibold text-slate-600 dark:text-slate-300">
                 Év Tapasztalat
               </p>
             </div>
-            <div className="bg-bg-elevated border border-slate-600 rounded-2xl p-8 shadow-[0_8px_24px_rgba(15,23,42,0.3)] hover:border-brand-primary/50 hover:shadow-[0_20px_60px_rgba(0, 181, 241,0.2)] hover:-translate-y-1 transition-all duration-300 group">
-              <span className="text-6xl font-heading block mb-3 text-text-primary group-hover:text-brand-primary tracking-wide">
+            <div className="luminous-card p-8 group">
+              <span className="text-6xl font-heading block mb-3 text-[#0F172A] dark:text-white group-hover:text-[#0369A1] dark:group-hover:text-[#00B5F1] transition-colors tracking-wide">
                 200+
               </span>
-              <p className="text-xs uppercase tracking-[0.2em] font-bold text-slate-400">
+              <p className="font-mono text-xs uppercase tracking-[0.2em] font-semibold text-slate-600 dark:text-slate-300">
                 Projekt Készítve
               </p>
             </div>
-            <div className="bg-bg-elevated border border-slate-600 rounded-2xl p-8 shadow-[0_8px_24px_rgba(15,23,42,0.3)] hover:border-brand-primary/50 hover:shadow-[0_20px_60px_rgba(0, 181, 241,0.2)] hover:-translate-y-1 transition-all duration-300 group">
-              <span className="text-6xl font-heading block mb-3 text-text-primary group-hover:text-brand-primary tracking-wide">
+            <div className="luminous-card p-8 group">
+              <span className="text-6xl font-heading block mb-3 text-[#0F172A] dark:text-white group-hover:text-[#0369A1] dark:group-hover:text-[#00B5F1] transition-colors tracking-wide">
                 500+
               </span>
-              <p className="text-xs uppercase tracking-[0.2em] font-bold text-slate-400">
+              <p className="font-mono text-xs uppercase tracking-[0.2em] font-semibold text-slate-600 dark:text-slate-300">
                 Lead Generált
               </p>
             </div>
-            <div className="bg-bg-elevated border border-slate-600 rounded-2xl p-8 shadow-[0_8px_24px_rgba(15,23,42,0.3)] hover:border-brand-primary/50 hover:shadow-[0_20px_60px_rgba(0, 181, 241,0.2)] hover:-translate-y-1 transition-all duration-300 group">
-              <span className="text-6xl font-heading block mb-3 text-text-primary group-hover:text-brand-primary tracking-wide">
+            <div className="luminous-card p-8 group">
+              <span className="text-6xl font-heading block mb-3 text-[#0F172A] dark:text-white group-hover:text-[#0369A1] dark:group-hover:text-[#00B5F1] transition-colors tracking-wide">
                 95+
               </span>
-              <p className="text-xs uppercase tracking-[0.2em] font-bold text-slate-400">
+              <p className="font-mono text-xs uppercase tracking-[0.2em] font-semibold text-slate-600 dark:text-slate-300">
                 Lighthouse Score
               </p>
             </div>
           </div>
         </div>
-      </section>
+      </Surface>
 
-      <section className="py-40 bg-bg-surface relative z-10">
+      {/* Szolgáltatások Rács — Elevated Dual Theme */}
+      <Surface tone="slate-lift" aurora grid className="py-24 md:py-32">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center max-w-3xl mx-auto mb-32">
-            <div className="inline-block relative pl-6 mb-8">
-              <span className="text-xs uppercase font-black tracking-[0.3em] text-brand-primary mb-2 block">
-                Digitális Szolgáltatásaink
+          <div className="text-center max-w-3xl mx-auto mb-16 md:mb-20">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sky-500/10 border border-sky-600/25 dark:bg-[#00B5F1]/10 dark:border-[#00B5F1]/25 mb-6">
+              <span className="eyebrow-badge text-[#0369A1] dark:text-[#00B5F1]">
+                Digitális Szolgáltatásaim
               </span>
-              <div className="absolute left-0 top-0 w-1 h-6 bg-brand-primary" />
             </div>
-            <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold font-heading text-text-primary leading-tight tracking-tight">
+            <h2 className="text-4xl sm:text-5xl md:text-7xl font-heading text-[#0F172A] dark:text-white leading-tight">
               Miben tudok{" "}
-              <span className="text-brand-primary italic">segíteni</span>?
+              <span className="text-[#0369A1] dark:text-[#00B5F1] italic">segíteni</span>?
             </h2>
-            <p className="mt-6 text-lg md:text-xl text-slate-400 max-w-lg leading-relaxed mx-auto tracking-wide font-medium">
+            <p className="mt-6 text-lg md:text-xl text-slate-700 dark:text-slate-300 max-w-lg leading-relaxed mx-auto font-medium">
               KKV-k és magánvállalkozók számára tervezett szolgáltatások,
               amelyek növelik az ügyfélszerzést, automatizálják a marketinget és
               erősítik a márka jelenlétét.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((s, i) =>
               s.link ? (
-                <Link key={i} href={s.link}>
+                <Link key={i} href={s.link} className="block h-full">
                   <ServiceCard {...s} index={i} />
                 </Link>
               ) : (
@@ -380,29 +381,26 @@ export default async function ServicesPage() {
             )}
           </div>
         </div>
-      </section>
+      </Surface>
 
-      {/* Process Section */}
-      <section className="py-40 bg-bg-surface border-t border-slate-700">
+      {/* Process Section — Dual Theme */}
+      <Surface tone="night" aurora className="py-24 md:py-32">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center max-w-3xl mx-auto mb-20">
-            <div className="inline-block relative pl-6 mb-8">
-              <span className="text-xs uppercase font-black tracking-[0.3em] text-brand-primary mb-2 block">
-                Folyamat
-              </span>
-              <div className="absolute left-0 top-0 w-1 h-6 bg-brand-primary" />
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sky-500/10 border border-sky-600/25 dark:bg-brand-primary/10 dark:border-brand-primary/25 mb-6">
+              <span className="eyebrow-badge text-[#0369A1] dark:text-brand-primary">Folyamat</span>
             </div>
-            <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold font-heading text-text-primary leading-tight tracking-tight">
-              Hogyan <span className="text-brand-primary italic">dolgozom</span>
+            <h2 className="text-4xl sm:text-5xl md:text-7xl font-heading text-[#0F172A] dark:text-white leading-tight">
+              Hogyan <span className="text-[#0369A1] dark:text-brand-primary italic">dolgozom</span>
               ?
             </h2>
-            <p className="mt-6 text-lg md:text-xl text-slate-400 max-w-lg leading-relaxed mx-auto tracking-wide font-medium">
+            <p className="mt-6 text-lg md:text-xl text-slate-700 dark:text-slate-300 max-w-lg leading-relaxed mx-auto font-medium">
               Átlátható folyamat, eredményorientált megközelítés. Nincs
               projektmenedzser, közvetlen kommunikáció velem.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-8">
             {[
               {
                 step: "01",
@@ -419,7 +417,7 @@ export default async function ServicesPage() {
               {
                 step: "03",
                 title: "Fejlesztés & Implementáció",
-                description: "Elkezdöm a munkát, rendszeres frissítésekkel.",
+                description: "Elkezdem a munkát, rendszeres frissítésekkel.",
               },
               {
                 step: "04",
@@ -428,38 +426,34 @@ export default async function ServicesPage() {
                   "Átadom a kész projektet, és biztosítom a támogatást.",
               },
             ].map((item, index) => (
-              <div
-                key={index}
-                className="bg-bg-elevated border border-slate-600 rounded-2xl p-8 shadow-[0_8px_24px_rgba(15,23,42,0.3)] hover:border-brand-primary/50 hover:shadow-[0_20px_60px_rgba(0, 181, 241,0.2)] hover:-translate-y-1 transition-all duration-300 group"
-              >
-                <span className="text-7xl font-heading block mb-4 text-brand-primary/30 group-hover:text-brand-primary/50 transition-colors tracking-wide">
+              <div key={index} className="luminous-card p-8 group">
+                <span className="text-6xl font-heading block mb-4 text-[#0369A1]/45 group-hover:text-[#0369A1] dark:text-brand-primary/40 dark:group-hover:text-brand-primary transition-colors tracking-wide">
                   {item.step}
                 </span>
-                <h3 className="text-xl font-bold text-text-primary mb-3 tracking-tight">
+                <h3 className="text-xl text-[#0F172A] dark:text-white mb-3 tracking-wider">
                   {item.title}
                 </h3>
-                <p className="text-sm text-slate-400 leading-relaxed tracking-wide font-medium">
+                <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-normal">
                   {item.description}
                 </p>
               </div>
             ))}
           </div>
         </div>
-      </section>
+      </Surface>
 
-      {/* FAQ Section */}
-      <section className="py-40 bg-bg-surface border-t border-slate-800">
+      {/* FAQ Section — Dual Theme */}
+      <Surface tone="night-lift" aurora className="py-24 md:py-32">
         <div className="max-w-4xl mx-auto px-6">
-          <div className="text-center max-w-3xl mx-auto mb-20">
-            <div className="inline-block relative pl-6 mb-8">
-              <span className="text-xs uppercase font-black tracking-[0.3em] text-brand-primary mb-2 block">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sky-500/10 border border-sky-600/25 dark:bg-[#00B5F1]/10 dark:border-[#00B5F1]/25 mb-6">
+              <span className="eyebrow-badge text-[#0369A1] dark:text-[#00B5F1]">
                 Gyakori Kérdések
               </span>
-              <div className="absolute left-0 top-0 w-1 h-6 bg-brand-primary" />
             </div>
-            <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold font-heading text-text-primary leading-tight tracking-tight">
+            <h2 className="text-4xl sm:text-5xl md:text-7xl font-heading text-[#0F172A] dark:text-white leading-tight">
               Mennyibe kerül{" "}
-              <span className="text-brand-primary italic">egy weboldal</span>?
+              <span className="text-[#0369A1] dark:text-[#00B5F1] italic">egy weboldal</span>?
             </h2>
           </div>
 
@@ -494,18 +488,18 @@ export default async function ServicesPage() {
             ].map((faq, index) => (
               <details
                 key={index}
-                className="bg-slate-900/80 border border-slate-700 rounded-2xl overflow-hidden group hover:border-brand-primary/50 transition-colors"
+                className="luminous-card overflow-hidden group"
               >
-                <summary className="cursor-pointer p-6 flex items-center justify-between hover:bg-brand-primary/5 transition-colors">
-                  <span className="text-lg font-bold text-text-primary tracking-tight">
+                <summary className="cursor-pointer p-6 flex items-center justify-between hover:bg-slate-100/70 dark:hover:bg-white/5 transition-colors">
+                  <span className="text-lg font-bold text-[#0F172A] dark:text-white tracking-tight">
                     {faq.question}
                   </span>
-                  <span className="text-brand-primary text-2xl group-open:rotate-45 transition-transform duration-300">
+                  <span className="text-[#0369A1] dark:text-[#00B5F1] text-2xl font-bold group-open:rotate-45 transition-transform duration-300">
                     +
                   </span>
                 </summary>
                 <div className="px-6 pb-6 pt-0">
-                  <p className="text-slate-400 leading-relaxed tracking-wide font-medium">
+                  <p className="text-slate-700 dark:text-slate-300 leading-relaxed font-normal">
                     {faq.answer}
                   </p>
                 </div>
@@ -513,45 +507,45 @@ export default async function ServicesPage() {
             ))}
           </div>
         </div>
-      </section>
 
-      {/* GEO Direct Answer blokk — a Hero alá */}
-      <DirectAnswerBlock
-        id="szolgaltatasok-foglalkozasok"
-        question="Mit csinál a WebDude, kinek és milyen eredménnyel?"
-        answer="Egyedi Next.js és WordPress weboldal készítés, technikai SEO/AEO, AI automatizáció és grafikai tervezés KKV-knak — 26 év grafikai és 16 év fejlesztői tapasztalattal, országos online kiszolgálással, egyedi árajánlat alapján."
-      />
+        {/* GEO Direct Answer blokk — Dual Theme */}
+        <DirectAnswerBlock
+          id="szolgaltatasok-foglalkozasok"
+          question="Mit csinál a WebDude, kinek és milyen eredménnyel?"
+          answer="Egyedi Next.js és WordPress weboldal készítés, technikai SEO/AEO, AI automatizáció és grafikai tervezés KKV-knak — 26 év grafikai és 16 év fejlesztői tapasztalattal, országos online kiszolgálással, egyedi árajánlat alapján."
+        />
+      </Surface>
 
-      {/* Final CTA */}
-      <section className="py-40 text-center bg-bg-surface border-t border-slate-800 relative overflow-hidden">
+      {/* Final CTA — Elevated Dual Theme */}
+      <Surface tone="slate-lift" aurora grid className="py-24 md:py-32 text-center">
         <div className="max-w-6xl mx-auto px-6 relative z-10">
           <div className="max-w-3xl mx-auto space-y-10">
-            <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold font-heading text-text-primary leading-tight tracking-tight">
+            <h2 className="text-4xl sm:text-5xl md:text-7xl font-heading text-[#0F172A] dark:text-white leading-tight">
               Készen állsz a{" "}
-              <span className="text-brand-primary italic">következő</span>{" "}
+              <span className="text-[#0369A1] dark:text-brand-primary italic">következő</span>{" "}
               szintre?
             </h2>
-            <p className="text-lg md:text-xl text-slate-400 max-w-lg leading-relaxed mx-auto tracking-wide font-medium">
+            <p className="text-lg md:text-xl text-slate-700 dark:text-slate-300 max-w-lg leading-relaxed mx-auto font-medium">
               Ingyenes konzultáció, átlátható árazás, határidőre kész projektek.
               Nincs projektmenedzser, közvetlen kommunikáció velem.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
               <Link
                 href="/kapcsolat"
-                className="px-8 py-4 bg-linear-to-r from-brand-primary to-cta-to hover:from-cta-to hover:to-brand-primary text-slate-950 rounded-full font-bold hover:scale-105 active:scale-95 transition-transform duration-300 shadow-[0_8px_24px_rgba(0, 181, 241,0.3)] hover:shadow-[0_18px_40px_rgba(0, 181, 241,0.4)] min-h-11 min-w-11 inline-block tracking-wide"
+                className="px-8 py-4 bg-linear-to-r from-[#075985] to-[#5B21B6] hover:from-[#0369A1] hover:to-[#6D28D9] text-white rounded-full font-semibold uppercase tracking-wider text-sm hover:scale-[1.03] active:scale-95 transition-[transform,box-shadow,background-color] duration-300 shadow-[0_10px_28px_rgba(7,89,133,0.35)] min-h-11 min-w-11 inline-flex items-center justify-center"
               >
                 Ingyenes Konzultáció
               </Link>
               <Link
                 href="/munkak"
-                className="px-8 py-4 border border-slate-700 text-text-primary font-semibold rounded-full hover:border-brand-primary/50 hover:text-brand-primary bg-slate-900/50 backdrop-blur-sm transition-all duration-300 tracking-wide"
+                className="px-8 py-4 border border-slate-300 text-slate-800 bg-white/85 hover:border-[#0369A1]/60 hover:text-[#0369A1] dark:border-white/15 dark:text-slate-200 font-semibold rounded-full dark:hover:border-brand-primary/60 dark:hover:text-brand-primary dark:bg-white/5 backdrop-blur-sm transition-[color,border-color,background-color] duration-300"
               >
                 Munkák megtekintése
               </Link>
             </div>
           </div>
         </div>
-      </section>
+      </Surface>
     </div>
   );
 }

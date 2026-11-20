@@ -27,12 +27,22 @@ export default function PortfolioHero({
       {/* Content overlay - WoW effect with dramatic entrance */}
       <div className="text-center space-y-8 px-6 max-w-5xl mx-auto">
         <motion.div
-          initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, scale: 0.8, y: 50 }}
-          animate={shouldReduceMotion ? { opacity: 1 } : { opacity: 1, scale: 1, y: 0 }}
-          transition={shouldReduceMotion ? { duration: 0 } : { duration: 1, ease: "easeOut" }}
-          className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-slate-900/80 backdrop-blur-xl border border-[#00B5F1]/30 shadow-[0_0_40px_rgba(0,181,241,0.3)]"
+          initial={
+            shouldReduceMotion
+              ? { opacity: 0 }
+              : { opacity: 0, scale: 0.8, y: 50 }
+          }
+          animate={
+            shouldReduceMotion ? { opacity: 1 } : { opacity: 1, scale: 1, y: 0 }
+          }
+          transition={
+            shouldReduceMotion
+              ? { duration: 0 }
+              : { duration: 1, ease: "easeOut" }
+          }
+          className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/90 dark:bg-slate-900/80 backdrop-blur-xl border border-[#0369A1]/30 dark:border-[#00B5F1]/30 shadow-[0_10px_30px_rgba(3,105,161,0.15)] dark:shadow-[0_0_40px_rgba(0,181,241,0.3)]"
         >
-          <span className="text-sm font-bold text-[#00B5F1] uppercase tracking-widest">
+          <span className="text-sm font-bold text-[#0369A1] dark:text-[#00B5F1] uppercase tracking-widest">
             {badge}
           </span>
         </motion.div>
@@ -40,11 +50,13 @@ export default function PortfolioHero({
         <motion.h1
           initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 30 }}
           animate={shouldReduceMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
-          transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.8, delay: 0.2 }}
-          className="text-5xl sm:text-6xl md:text-8xl font-black font-heading text-white leading-tight tracking-tight"
+          transition={
+            shouldReduceMotion ? { duration: 0 } : { duration: 0.8, delay: 0.2 }
+          }
+          className="text-5xl sm:text-6xl md:text-8xl font-black font-heading text-[#0F172A] dark:text-white leading-tight tracking-tight"
         >
           {titlePrefix}
-          <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6] italic pr-4">
+          <span className="text-transparent bg-clip-text bg-linear-to-r from-[#0369A1] to-[#6D28D9] dark:from-[#00B5F1] dark:to-[#5B21B6] italic pr-4">
             {titleHighlight}
           </span>
         </motion.h1>
@@ -52,16 +64,24 @@ export default function PortfolioHero({
         <motion.p
           initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 20 }}
           animate={shouldReduceMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
-          transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.8, delay: 0.4 }}
-          className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed"
+          transition={
+            shouldReduceMotion ? { duration: 0 } : { duration: 0.8, delay: 0.4 }
+          }
+          className="text-xl md:text-2xl text-[#334155] dark:text-white/90 max-w-3xl mx-auto leading-relaxed"
         >
           {subtitle}
         </motion.p>
 
         <motion.a
-          initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, scale: 0.9 }}
-          animate={shouldReduceMotion ? { opacity: 1 } : { opacity: 1, scale: 1 }}
-          transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.8, delay: 0.6 }}
+          initial={
+            shouldReduceMotion ? { opacity: 0 } : { opacity: 0, scale: 0.9 }
+          }
+          animate={
+            shouldReduceMotion ? { opacity: 1 } : { opacity: 1, scale: 1 }
+          }
+          transition={
+            shouldReduceMotion ? { duration: 0 } : { duration: 0.8, delay: 0.6 }
+          }
           whileHover={shouldReduceMotion ? undefined : { scale: 1.05 }}
           whileTap={shouldReduceMotion ? undefined : { scale: 0.95 }}
           href={ctaHref}

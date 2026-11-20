@@ -175,24 +175,24 @@ export default async function WebshopPage() {
               ez a hero-blokk szándékosan kézi markup. */}
           <div className="max-w-6xl mx-auto px-6">
             <div className="text-center">
-              <span className="inline-block text-sm font-semibold tracking-[0.2em] uppercase text-brand-primary mb-4">
+              <span className="inline-block text-sm font-semibold tracking-[0.2em] uppercase text-[#0369A1] dark:text-brand-primary mb-4">
                 Szolgáltatás
               </span>
               <h1 className="text-[clamp(1.5rem,4vw,2.5rem)] sm:text-[clamp(1.875rem,5vw,3rem)] md:text-[clamp(2rem,5.5vw,3.5rem)] lg:text-[clamp(2.25rem,6vw,4rem)] font-extrabold tracking-tight text-text-primary mb-6 leading-tight wrap-break-word">
                 WordPress Webshop Készítés
               </h1>
-              <p className="text-lg text-slate-400 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto leading-relaxed">
                 Skálázható, konverzió-vezérelt WooCommerce és headless shop
                 megoldások gyorsan és megbízhatóan.
               </p>
             </div>
             <div className="mt-12 max-w-3xl mx-auto">
-              <p className="text-xl text-slate-400 leading-relaxed mb-8">
+              <p className="text-xl text-slate-600 dark:text-slate-400 leading-relaxed mb-8">
                 16 éves WordPress tapasztalattal olyan e-kereskedelmi
                 rendszereket építek, amelyek nem csak termékeket árulnak, hanem
                 ügyfeleket szereznek automatizált folyamattal.
               </p>
-              <ul className="space-y-4 mb-8 text-slate-400">
+              <ul className="space-y-4 mb-8 text-slate-600 dark:text-slate-400">
                 <li className="flex items-center gap-3">
                   <span className="w-2 h-2 bg-brand-primary rounded-full" />
                   <span>WooCommerce fejlesztés és optimalizálás</span>
@@ -292,16 +292,16 @@ export default async function WebshopPage() {
                 AI keresok (Perplexity, ChatGPT) a keresesi valaszukban
                 pontosan ezt a tartalmat Cite-aljak. */}
             <section
-              className="mt-24 pt-16 border-t border-slate-800/80"
+              className="mt-24 pt-16 border-t border-slate-200/90 dark:border-slate-800/80"
               aria-labelledby="wp-webshop-faq-heading"
             >
               <h2
                 id="wp-webshop-faq-heading"
-                className="text-3xl lg:text-4xl font-bold text-slate-100 text-center mb-4"
+                className="text-3xl lg:text-4xl font-bold text-[#0F172A] dark:text-slate-100 text-center mb-4"
               >
                 Gyakori kérdések a WordPress webshopokról
               </h2>
-              <p className="text-sm text-slate-400 text-center max-w-2xl mx-auto mb-12">
+              <p className="text-sm text-slate-600 dark:text-slate-400 text-center max-w-2xl mx-auto mb-12">
                 A leggyakrabban feltett kérdések az egyedi WordPress
                 webshopfejlesztésről — a válaszokat 16 éves tapasztalattal
                 adtam.
@@ -310,14 +310,14 @@ export default async function WebshopPage() {
                 {faqs.map((faq) => (
                   <details
                     key={faq.question}
-                    className="group bg-slate-950/80 backdrop-blur-xl border border-slate-800/80 hover:border-brand-primary/40 rounded-2xl transition-colors"
+                    className="group bg-white dark:bg-slate-950/80 backdrop-blur-xl border border-slate-200/90 dark:border-slate-800/80 hover:border-brand-primary/40 rounded-2xl transition-colors"
                   >
                     <summary className="flex items-center justify-between gap-4 p-6 cursor-pointer list-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary rounded-2xl">
-                      <h3 className="text-xl font-bold text-slate-100">
+                      <h3 className="text-xl font-bold text-[#0F172A] dark:text-slate-100">
                         {faq.question}
                       </h3>
                       <span
-                        className="flex-shrink-0 w-8 h-8 rounded-full border border-brand-primary/30 flex items-center justify-center text-brand-primary transition-transform duration-300 group-open:rotate-45"
+                        className="flex-shrink-0 w-8 h-8 rounded-full border border-brand-primary/30 flex items-center justify-center text-[#0369A1] dark:text-brand-primary transition-transform duration-300 group-open:rotate-45"
                         aria-hidden="true"
                       >
                         <svg
@@ -334,7 +334,7 @@ export default async function WebshopPage() {
                         </svg>
                       </span>
                     </summary>
-                    <p className="px-6 pb-6 text-sm text-slate-400 leading-relaxed">
+                    <p className="px-6 pb-6 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
                       {faq.answer}
                     </p>
                   </details>

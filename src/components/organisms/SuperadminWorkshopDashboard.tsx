@@ -110,7 +110,7 @@ export default function SuperadminWorkshopDashboard() {
         </div>
         <Link
           href="/portal"
-          className="px-6 py-3 rounded-xl bg-sky-500 text-bg-base font-bold hover:bg-violet-700 transition-colors"
+          className="px-6 py-3 rounded-xl bg-sky-500 text-bg-base font-bold hover:bg-violet-700 hover:text-white transition-colors"
         >
           Vissza a portálhoz
         </Link>

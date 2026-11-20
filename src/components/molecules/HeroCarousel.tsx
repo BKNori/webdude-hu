@@ -46,7 +46,7 @@ export default function HeroCarousel({
               className="object-cover"
               priority={index === 0}
             />
-            <div className="absolute inset-0 bg-black/40" />
+            <div className="absolute inset-0 bg-[#F8FAFC]/82 dark:bg-black/45" />
           </div>
         ))}
       </div>
@@ -65,8 +65,8 @@ export default function HeroCarousel({
             onClick={() => setCurrentIndex(index)}
             className={`w-3 h-3 rounded-full transition-all ${
               index === currentIndex
-                ? "bg-sky-500 w-8"
-                : "bg-white/30 hover:bg-white/50"
+                ? "bg-[#0369A1] dark:bg-sky-500 w-8"
+                : "bg-slate-400/60 hover:bg-slate-500 dark:bg-white/30 dark:hover:bg-white/50"
             }`}
           />
         ))}

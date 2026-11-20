@@ -108,8 +108,8 @@ export default function EnGraphicDesignPage() {
         }}
       />
 
-      <div className="min-h-screen bg-slate-950 text-text-primary relative overflow-hidden">
-        <div className="absolute inset-0 bg-linear-to-b from-[#00B5F1]/5 via-transparent to-[#5B21B6]/5" />
+      <div className="min-h-screen bg-[#F8FAFC] dark:bg-slate-950 text-[#0F172A] dark:text-text-primary relative overflow-hidden">
+        <div className="absolute inset-0 bg-linear-to-b from-[#0369A1]/5 via-transparent to-[#6D28D9]/5 dark:from-[#00B5F1]/5 dark:via-transparent dark:to-[#5B21B6]/5" />
         <div className="relative z-10">
           <Hero
             label="Service"
@@ -123,10 +123,10 @@ export default function EnGraphicDesignPage() {
           />
 
           {/* Direct Answer Block */}
-          <section className="relative py-12 bg-bg-base border-y border-white/5">
+          <section className="relative py-12 bg-[#F1F5F9] dark:bg-bg-base border-y border-slate-200/80 dark:border-white/5">
             <div className="max-w-4xl mx-auto px-6 text-center">
-              <p className="text-base md:text-lg text-slate-300 leading-relaxed">
-                <span className="text-[#00B5F1] font-semibold">
+              <p className="text-base md:text-lg text-[#334155] dark:text-slate-300 leading-relaxed">
+                <span className="text-[#0369A1] dark:text-[#00B5F1] font-semibold">
                   WebDude graphic design:
                 </span>{" "}
                 26 years of design experience: logo design, complete brand
@@ -138,47 +138,47 @@ export default function EnGraphicDesignPage() {
           </section>
 
           {/* Features */}
-          <section className="py-24 relative z-10">
+          <section className="py-24 relative z-10 bg-[#F8FAFC] dark:bg-transparent">
             <div className="max-w-6xl mx-auto px-6">
               <div className="text-center max-w-3xl mx-auto mb-16">
-                <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+                <h2 className="text-3xl md:text-5xl font-bold text-[#0F172A] dark:text-white mb-6">
                   Why Choose WebDude for Design?
                 </h2>
-                <p className="text-lg text-slate-400">
+                <p className="text-lg text-[#475569] dark:text-slate-400">
                   26 years of graphic design and 16 years of web development
                   experience. Code and design from the same hand.
                 </p>
               </div>
 
               <div className="grid md:grid-cols-3 gap-8">
-                <div className="bg-slate-900/60 backdrop-blur-xl p-8 rounded-2xl border border-slate-800/80 hover:border-[#00B5F1]/40 transition-colors duration-300">
-                  <PenTool className="w-10 h-10 text-[#00B5F1] mb-6" />
-                  <h3 className="text-xl font-bold text-white mb-3">
+                <div className="luminous-card p-8 rounded-2xl">
+                  <PenTool className="w-10 h-10 text-[#0369A1] dark:text-[#00B5F1] mb-6" />
+                  <h3 className="text-xl font-bold text-[#0F172A] dark:text-white mb-3">
                     Custom-designed UI/UX
                   </h3>
-                  <p className="text-slate-400 text-sm leading-relaxed">
+                  <p className="text-[#334155] dark:text-slate-400 text-sm leading-relaxed">
                     No dozen templates. With 26 years of visual experience,
                     every website gets pixel-perfect, brand-consistent and
                     conversion-optimised design.
                   </p>
                 </div>
-                <div className="bg-slate-900/60 backdrop-blur-xl p-8 rounded-2xl border border-slate-800/80 hover:border-[#5B21B6]/80 transition-colors duration-300">
-                  <Layers className="w-10 h-10 text-[#00B5F1] mb-6" />
-                  <h3 className="text-xl font-bold text-white mb-3">
+                <div className="luminous-card p-8 rounded-2xl">
+                  <Layers className="w-10 h-10 text-[#0369A1] dark:text-[#00B5F1] mb-6" />
+                  <h3 className="text-xl font-bold text-[#0F172A] dark:text-white mb-3">
                     Complete Brand Identity
                   </h3>
-                  <p className="text-slate-400 text-sm leading-relaxed">
+                  <p className="text-[#334155] dark:text-slate-400 text-sm leading-relaxed">
                     Logo, color palette, typography, brand guidelines and
                     applied graphics – everything you need for a consistent
                     presence.
                   </p>
                 </div>
-                <div className="bg-slate-900/60 backdrop-blur-xl p-8 rounded-2xl border border-slate-800/80 hover:border-[#00B5F1]/40 transition-colors duration-300">
-                  <ArrowRight className="w-10 h-10 text-[#00B5F1] mb-6" />
-                  <h3 className="text-xl font-bold text-white mb-3">
+                <div className="luminous-card p-8 rounded-2xl">
+                  <ArrowRight className="w-10 h-10 text-[#0369A1] dark:text-[#00B5F1] mb-6" />
+                  <h3 className="text-xl font-bold text-[#0F172A] dark:text-white mb-3">
                     Print-Ready Materials
                   </h3>
-                  <p className="text-slate-400 text-sm leading-relaxed">
+                  <p className="text-[#334155] dark:text-slate-400 text-sm leading-relaxed">
                     Flyers, business cards, brochures and promotional materials
                     ready for print with professional quality.
                   </p>
@@ -188,13 +188,13 @@ export default function EnGraphicDesignPage() {
           </section>
 
           {/* FAQ */}
-          <section className="py-24 border-t border-slate-800 relative z-10">
+          <section className="py-24 border-t border-slate-200/80 dark:border-slate-800 relative z-10 bg-[#F1F5F9] dark:bg-transparent">
             <div className="max-w-4xl mx-auto px-6">
               <div className="text-center mb-16">
-                <h2 className="text-3xl font-bold text-white mb-4">
+                <h2 className="text-3xl font-bold text-[#0F172A] dark:text-white mb-4">
                   Frequently Asked Questions
                 </h2>
-                <p className="text-slate-400">
+                <p className="text-[#475569] dark:text-slate-400">
                   Direct answers to the most important graphic design questions.
                 </p>
               </div>
@@ -203,12 +203,12 @@ export default function EnGraphicDesignPage() {
                 {faqs.map((faq, index) => (
                   <div
                     key={index}
-                    className="bg-slate-900/80 border border-white/5 rounded-2xl p-6 hover:border-[#00B5F1]/20 transition-colors"
+                    className="luminous-card rounded-2xl p-6"
                   >
-                    <h3 className="text-lg font-semibold text-[#00B5F1] mb-3">
+                    <h3 className="text-lg font-semibold text-[#0369A1] dark:text-[#00B5F1] mb-3">
                       {faq.question}
                     </h3>
-                    <p className="text-slate-400 text-sm leading-relaxed">
+                    <p className="text-[#334155] dark:text-slate-400 text-sm leading-relaxed">
                       {faq.answer}
                     </p>
                   </div>
@@ -218,13 +218,13 @@ export default function EnGraphicDesignPage() {
           </section>
 
           {/* CTA */}
-          <section className="py-32 text-center relative z-10">
+          <section className="py-24 md:py-32 text-center relative z-10 bg-[#EAF1FA] dark:bg-transparent">
             <div className="max-w-2xl mx-auto px-6">
-              <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+              <h2 className="text-3xl md:text-5xl font-bold text-[#0F172A] dark:text-white mb-6">
                 Let&apos;s create your{" "}
-                <span className="text-[#00B5F1] italic">brand identity</span>
+                <span className="text-[#0369A1] dark:text-[#00B5F1] italic">brand identity</span>
               </h2>
-              <p className="text-slate-400 mb-10 text-lg">
+              <p className="text-[#334155] dark:text-slate-400 mb-10 text-lg">
                 Request a free consultation and let&apos;s discuss your visual
                 identity needs.
               </p>

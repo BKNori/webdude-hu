@@ -2,7 +2,8 @@
 
 import ResponsiveImage from "@/components/molecules/ResponsiveImage";
 import Link from "next/link";
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
+import { useHydratedReducedMotion } from "@/hooks/useMotionPreset";
 import { Work } from "@/types/work";
 
 interface RimaiCaseStudyProps {
@@ -10,7 +11,7 @@ interface RimaiCaseStudyProps {
 }
 
 export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
-  const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = useHydratedReducedMotion();
   const fadeUp = (delay = 0) => ({
     initial: shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 20 },
     whileInView: shouldReduceMotion ? { opacity: 1 } : { opacity: 1, y: 0 },
@@ -32,8 +33,8 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
              priority
              className="object-cover"
            />
-          <div className="absolute inset-0 bg-slate-950/75 -z-10" />
-          <div className="absolute inset-0 bg-linear-to-b from-black/80 via-slate-950/60 to-bg-base" />
+          <div className="absolute inset-0 bg-[#F8FAFC]/82 dark:bg-slate-950/75 -z-10" />
+          <div className="absolute inset-0 bg-linear-to-b from-[#F8FAFC]/90 via-[#F8FAFC]/75 to-bg-base dark:from-black/80 dark:via-slate-950/60 dark:to-bg-base" />
         </div>
 
         <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
@@ -43,8 +44,8 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
             transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.8 }}
             className="space-y-8"
           >
-            <div className="inline-block px-4 py-2 bg-sky-500/10 border border-sky-500/20 rounded-full">
-              <span className="text-sky-400 text-xs font-bold uppercase tracking-wider">
+            <div className="inline-block px-4 py-2 bg-sky-500/10 border border-[#0369A1]/25 dark:border-sky-500/20 rounded-full">
+              <span className="text-[#0369A1] dark:text-sky-400 text-xs font-bold uppercase tracking-wider">
                 {project.year || new Date().getFullYear()} – {project.category}
               </span>
             </div>
@@ -53,7 +54,7 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
               {project.title}
             </h1>
 
-            <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto">
+            <p className="text-lg md:text-xl text-[#334155] dark:text-slate-300 max-w-2xl mx-auto">
               {project.description}
             </p>
 
@@ -63,34 +64,34 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
                 initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 20 }}
                 animate={shouldReduceMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
                 transition={shouldReduceMotion ? { duration: 0 } : { delay: 0.2 }}
-                className="bg-slate-900/50 backdrop-blur-sm border border-sky-500/20 rounded-2xl p-6"
+                className="bg-white/95 dark:bg-slate-900/50 shadow-[0_12px_32px_rgba(15,23,42,0.06)] backdrop-blur-sm border border-[#0369A1]/25 dark:border-sky-500/20 rounded-2xl p-6"
               >
-                <div className="text-3xl md:text-4xl font-bold text-sky-400 mb-2">
+                <div className="text-3xl md:text-4xl font-bold text-[#0369A1] dark:text-sky-400 mb-2">
                   100%
                 </div>
-                <div className="text-sm text-slate-400">Autonómia</div>
+                <div className="text-sm text-[#475569] dark:text-slate-400">Autonómia</div>
               </motion.div>
               <motion.div
                 initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 20 }}
                 animate={shouldReduceMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
                 transition={shouldReduceMotion ? { duration: 0 } : { delay: 0.3 }}
-                className="bg-slate-900/50 backdrop-blur-sm border border-sky-500/20 rounded-2xl p-6"
+                className="bg-white/95 dark:bg-slate-900/50 shadow-[0_12px_32px_rgba(15,23,42,0.06)] backdrop-blur-sm border border-[#0369A1]/25 dark:border-sky-500/20 rounded-2xl p-6"
               >
-                <div className="text-3xl md:text-4xl font-bold text-sky-400 mb-2">
+                <div className="text-3xl md:text-4xl font-bold text-[#0369A1] dark:text-sky-400 mb-2">
                   0-ról
                 </div>
-                <div className="text-sm text-slate-400">Felépítve</div>
+                <div className="text-sm text-[#475569] dark:text-slate-400">Felépítve</div>
               </motion.div>
               <motion.div
                 initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 20 }}
                 animate={shouldReduceMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
                 transition={shouldReduceMotion ? { duration: 0 } : { delay: 0.4 }}
-                className="bg-slate-900/50 backdrop-blur-sm border border-sky-500/20 rounded-2xl p-6"
+                className="bg-white/95 dark:bg-slate-900/50 shadow-[0_12px_32px_rgba(15,23,42,0.06)] backdrop-blur-sm border border-[#0369A1]/25 dark:border-sky-500/20 rounded-2xl p-6"
               >
-                <div className="text-3xl md:text-4xl font-bold text-sky-400 mb-2">
+                <div className="text-3xl md:text-4xl font-bold text-[#0369A1] dark:text-sky-400 mb-2">
                   360°
                 </div>
-                <div className="text-sm text-slate-400">Arculattervezés</div>
+                <div className="text-sm text-[#475569] dark:text-slate-400">Arculattervezés</div>
               </motion.div>
             </div>
 
@@ -119,9 +120,9 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
             className="mb-16"
           >
             <h2 className="text-3xl md:text-5xl font-bold mb-4">
-              <span className="text-sky-400">Arculat</span> és Branding
+              <span className="text-[#0369A1] dark:text-sky-400">Arculat</span> és Branding
             </h2>
-            <p className="text-slate-400 text-lg">
+            <p className="text-[#475569] dark:text-slate-400 text-lg">
               A fizikai és digitális arculat egységes megjelenítése
             </p>
           </motion.div>
@@ -183,16 +184,16 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
       </section>
 
       {/* Fejlesztés és Tartalom Szekció */}
-      <section className="py-24 px-6 bg-slate-900/30">
+      <section className="py-24 px-6 bg-[#F1F5F9] dark:bg-slate-900/30">
         <div className="max-w-6xl mx-auto">
           <motion.div
             {...fadeUp(0)}
             className="mb-16"
           >
             <h2 className="text-3xl md:text-5xl font-bold mb-4">
-              <span className="text-sky-400">Fejlesztés</span> és Tartalom
+              <span className="text-[#0369A1] dark:text-sky-400">Fejlesztés</span> és Tartalom
             </h2>
-            <p className="text-slate-400 text-lg">
+            <p className="text-[#475569] dark:text-slate-400 text-lg">
               Modern WordPress rendszer és marketing-fókuszú szövegírás
             </p>
           </motion.div>
@@ -202,19 +203,19 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
               {...fadeUp(0)}
               className="space-y-6"
             >
-              <div className="bg-slate-900/50 border border-sky-500/20 rounded-2xl p-8">
-                <h3 className="text-xl font-bold text-sky-400 mb-4">
+              <div className="bg-white/95 dark:bg-slate-900/50 shadow-[0_12px_32px_rgba(15,23,42,0.06)] border border-[#0369A1]/25 dark:border-sky-500/20 rounded-2xl p-8">
+                <h3 className="text-xl font-bold text-[#0369A1] dark:text-sky-400 mb-4">
                   A Kihívás
                 </h3>
-                <p className="text-slate-300 leading-relaxed">
+                <p className="text-[#334155] dark:text-slate-300 leading-relaxed">
                   {project.challenge}
                 </p>
               </div>
-              <div className="bg-slate-900/50 border border-sky-500/20 rounded-2xl p-8">
-                <h3 className="text-xl font-bold text-sky-400 mb-4">
+              <div className="bg-white/95 dark:bg-slate-900/50 shadow-[0_12px_32px_rgba(15,23,42,0.06)] border border-[#0369A1]/25 dark:border-sky-500/20 rounded-2xl p-8">
+                <h3 className="text-xl font-bold text-[#0369A1] dark:text-sky-400 mb-4">
                   A Megoldás
                 </h3>
-                <p className="text-slate-300 leading-relaxed">
+                <p className="text-[#334155] dark:text-slate-300 leading-relaxed">
                   {project.solution}
                 </p>
               </div>
@@ -253,9 +254,9 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
             className="mb-16"
           >
             <h2 className="text-3xl md:text-5xl font-bold mb-4">
-              <span className="text-sky-400">Galéria</span> és Hangulat
+              <span className="text-[#0369A1] dark:text-sky-400">Galéria</span> és Hangulat
             </h2>
-            <p className="text-slate-400 text-lg">
+            <p className="text-[#475569] dark:text-slate-400 text-lg">
               Építőipari gépek és munkagépek grafikái
             </p>
           </motion.div>
@@ -301,14 +302,14 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
       </section>
 
       {/* Eredmények Szekció */}
-      <section className="py-24 px-6 bg-linear-to-br from-sky-500/10 to-brand-secondary/10 border-y border-sky-500/20">
+      <section className="py-24 px-6 bg-linear-to-br from-sky-500/10 to-brand-secondary/10 border-y border-[#0369A1]/25 dark:border-sky-500/20">
         <div className="max-w-6xl mx-auto">
           <motion.div
             {...fadeUp(0)}
             className="text-center"
           >
             <h2 className="text-3xl md:text-5xl font-bold mb-12">
-              <span className="text-sky-400">Az Eredmény</span>
+              <span className="text-[#0369A1] dark:text-sky-400">Az Eredmény</span>
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
@@ -316,16 +317,16 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
                 <motion.div
                   key={index}
                   {...fadeUp(index * 0.1)}
-                  className="bg-slate-900/50 backdrop-blur-sm border border-sky-500/20 rounded-2xl p-6"
+                  className="bg-white/95 dark:bg-slate-900/50 shadow-[0_12px_32px_rgba(15,23,42,0.06)] backdrop-blur-sm border border-[#0369A1]/25 dark:border-sky-500/20 rounded-2xl p-6"
                 >
-                  <div className="text-sky-400 font-bold text-lg mb-2">
+                  <div className="text-[#0369A1] dark:text-sky-400 font-bold text-lg mb-2">
                     {result}
                   </div>
                 </motion.div>
               ))}
             </div>
 
-            <p className="text-slate-300 text-lg max-w-2xl mx-auto leading-relaxed">
+            <p className="text-[#334155] dark:text-slate-300 text-lg max-w-2xl mx-auto leading-relaxed">
               Ez a projekt tökéletes példája annak, amikor a műszaki precizitás
               (fejlesztés, szerver) és a kreatív vízió (grafika, arculat,
               szövegírás) egy kézben összpontosul, kompromisszummentes minőséget
@@ -343,10 +344,10 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
             className="space-y-8"
           >
             <h2 className="text-3xl md:text-5xl font-bold">
-              Készen állsz a <span className="text-sky-400">következő</span>{" "}
+              Készen állsz a <span className="text-[#0369A1] dark:text-sky-400">következő</span>{" "}
               szintre?
             </h2>
-            <p className="text-slate-400 text-lg">
+            <p className="text-[#475569] dark:text-slate-400 text-lg">
               Hogyan tudnám a te vállalkozásodat is a digitális élvonalba
               repíteni?
             </p>
@@ -359,7 +360,7 @@ export default function RimaiCaseStudy({ project }: RimaiCaseStudyProps) {
               </Link>
               <Link
                 href="/munkak"
-                className="px-8 py-4 border border-slate-600 hover:border-sky-500 text-slate-300 hover:text-sky-400 font-bold rounded-full transition-colors duration-300"
+                className="px-8 py-4 border border-slate-300 dark:border-slate-600 hover:border-sky-500 text-[#334155] dark:text-slate-300 hover:text-[#0369A1] dark:hover:text-sky-400 font-bold rounded-full transition-colors duration-300"
               >
                 Vissza a munkákhoz
               </Link>

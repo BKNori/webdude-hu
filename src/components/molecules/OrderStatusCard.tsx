@@ -2,7 +2,8 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
+import { useHydratedReducedMotion } from "@/hooks/useMotionPreset";
 import { CreditCard, CheckCircle2, AlertCircle } from "lucide-react";
 import { Order } from "@/types/addon";
 
@@ -13,7 +14,7 @@ interface Props {
 }
 
 export default function OrderStatusCard({ order, isAdmin, onDeliver }: Props) {
-  const shouldReduce = useReducedMotion();
+  const shouldReduce = useHydratedReducedMotion();
   const [delivering, setDelivering] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);

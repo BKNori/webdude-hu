@@ -240,7 +240,7 @@ export default function BannerWorkshopGenerator() {
               </div>
               <Link
                 href="/portal"
-                className="px-6 py-3 rounded-xl bg-sky-500 text-bg-base font-bold hover:bg-violet-700 transition-colors"
+                className="px-6 py-3 rounded-xl bg-sky-500 text-bg-base font-bold hover:bg-violet-700 hover:text-white transition-colors"
               >
                 Bejelentkezés
               </Link>
@@ -632,7 +632,7 @@ export default function BannerWorkshopGenerator() {
                       <button
                         type="submit"
                         disabled={isGenerating}
-                        className="w-full flex items-center justify-center gap-2 px-8 py-4 bg-sky-500 text-bg-base font-bold rounded-xl hover:bg-violet-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed text-sm uppercase tracking-wider border-2 border-sky-500/20 shadow-lg shadow-sky-500/10"
+                        className="w-full flex items-center justify-center gap-2 px-8 py-4 bg-sky-500 text-bg-base font-bold rounded-xl hover:bg-violet-700 hover:text-white transition-all disabled:opacity-50 disabled:cursor-not-allowed text-sm uppercase tracking-wider border-2 border-sky-500/20 shadow-lg shadow-sky-500/10"
                       >
                         {isGenerating ? (
                           <>

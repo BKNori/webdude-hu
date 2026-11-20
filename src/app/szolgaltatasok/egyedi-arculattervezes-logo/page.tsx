@@ -100,7 +100,8 @@ export default async function BrandingPage() {
         "@id": "https://webdude.hu/#person",
         name: "Balog Norbert",
         alternateName: ["Balog Norbi", "WebDude"],
-        jobTitle: "Full-Stack Webfejlesztő, Art Director & AI Automatizációs Szakértő",
+        jobTitle:
+          "Full-Stack Webfejlesztő, Art Director & AI Automatizációs Szakértő",
         description: "26 év tervezőgrafikai és 16 év webfejlesztői tapasztalat",
       },
     },
@@ -186,7 +187,7 @@ export default async function BrandingPage() {
                 className="object-cover"
                 priority
               />
-              <div className="absolute inset-0 bg-slate-950/60" />
+              <div className="absolute inset-0 bg-[#F8FAFC]/82 dark:bg-slate-950/60" />
             </div>
             <div className="relative h-full">
               <Image
@@ -196,7 +197,7 @@ export default async function BrandingPage() {
                 className="object-cover"
                 priority
               />
-              <div className="absolute inset-0 bg-slate-950/60" />
+              <div className="absolute inset-0 bg-[#F8FAFC]/82 dark:bg-slate-950/60" />
             </div>
             <div className="relative h-full">
               <Image
@@ -206,7 +207,7 @@ export default async function BrandingPage() {
                 className="object-cover"
                 priority
               />
-              <div className="absolute inset-0 bg-slate-950/60" />
+              <div className="absolute inset-0 bg-[#F8FAFC]/82 dark:bg-slate-950/60" />
             </div>
           </div>
 
@@ -234,34 +235,34 @@ export default async function BrandingPage() {
           <div className="max-w-6xl mx-auto px-6">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
               <div className="glass-card p-8 bg-transparent border border-bg-elevated rounded-2xl hover:border-[#00B5F1] transition-all duration-500 group">
-                <span className="text-6xl font-heading block mb-3 text-text-primary group-hover:text-[#00B5F1]">
+                <span className="text-6xl font-heading block mb-3 text-text-primary group-hover:text-[#0369A1] dark:group-hover:text-[#00B5F1]">
                   26+
                 </span>
-                <p className="text-xs uppercase tracking-widest font-bold text-slate-400">
+                <p className="text-xs uppercase tracking-widest font-bold text-slate-600 dark:text-slate-400">
                   Év Tapasztalat
                 </p>
               </div>
               <div className="glass-card p-8 bg-transparent border border-bg-elevated rounded-2xl hover:border-[#00B5F1] transition-all duration-500 group">
-                <span className="text-6xl font-heading block mb-3 text-text-primary group-hover:text-[#00B5F1]">
+                <span className="text-6xl font-heading block mb-3 text-text-primary group-hover:text-[#0369A1] dark:group-hover:text-[#00B5F1]">
                   150+
                 </span>
-                <p className="text-xs uppercase tracking-widest font-bold text-slate-400">
+                <p className="text-xs uppercase tracking-widest font-bold text-slate-600 dark:text-slate-400">
                   Branding Projekt
                 </p>
               </div>
               <div className="glass-card p-8 bg-transparent border border-bg-elevated rounded-2xl hover:border-[#00B5F1] transition-all duration-500 group">
-                <span className="text-6xl font-heading block mb-3 text-text-primary group-hover:text-[#00B5F1]">
+                <span className="text-6xl font-heading block mb-3 text-text-primary group-hover:text-[#0369A1] dark:group-hover:text-[#00B5F1]">
                   100%
                 </span>
-                <p className="text-xs uppercase tracking-widest font-bold text-slate-400">
+                <p className="text-xs uppercase tracking-widest font-bold text-slate-600 dark:text-slate-400">
                   Vektor Fájlok
                 </p>
               </div>
               <div className="glass-card p-8 bg-transparent border border-bg-elevated rounded-2xl hover:border-[#00B5F1] transition-all duration-500 group">
-                <span className="text-6xl font-heading block mb-3 text-text-primary group-hover:text-[#00B5F1]">
+                <span className="text-6xl font-heading block mb-3 text-text-primary group-hover:text-[#0369A1] dark:group-hover:text-[#00B5F1]">
                   95+
                 </span>
-                <p className="text-xs uppercase tracking-widest font-bold text-slate-400">
+                <p className="text-xs uppercase tracking-widest font-bold text-slate-600 dark:text-slate-400">
                   Ügyfél Elégedettség
                 </p>
               </div>
@@ -270,10 +271,10 @@ export default async function BrandingPage() {
         </section>
 
         {/* Direct Answer Block - AEO optimalizált */}
-        <section className="relative py-12 bg-bg-base border-y border-white/5">
+        <section className="relative py-12 bg-bg-base border-y border-slate-200/80 dark:border-white/5">
           <div className="max-w-4xl mx-auto px-6 text-center">
-            <p className="text-base md:text-lg text-slate-300 leading-relaxed">
-              <span className="text-[#00B5F1] font-semibold">
+            <p className="text-base md:text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
+              <span className="text-[#0369A1] dark:text-[#00B5F1] font-semibold">
                 WebDude egyedi arculattervezés:
               </span>{" "}
               Professzionális logó tervezés és teljes vállalati arculat
@@ -294,7 +295,7 @@ export default async function BrandingPage() {
             <div className="grid gap-12 md:grid-cols-2 items-start max-w-4xl mx-auto mb-24">
               <div className="space-y-6">
                 <Badge>Branding</Badge>
-                <p className="text-xl text-slate-300 leading-relaxed">
+                <p className="text-xl text-slate-700 dark:text-slate-300 leading-relaxed">
                   26 éves grafikai tapasztalattal tervezek logókat és komplett
                   vállalati arculatokat, amelyek nemcsak szépek, hanem
                   konverzió-fókuszúak és támogatják az üzleti célokat. Esküvői
@@ -312,38 +313,38 @@ export default async function BrandingPage() {
                   Szolgáltatások
                 </h2>
                 <div className="grid md:grid-cols-2 gap-6">
-                  <div className="bg-transparent border border-slate-700/60 p-6 rounded-lg">
-                    <h3 className="text-xl font-semibold text-[#00B5F1] mb-3">
+                  <div className="bg-transparent border border-slate-200/90 dark:border-slate-700/60 p-6 rounded-lg">
+                    <h3 className="text-xl font-semibold text-[#0369A1] dark:text-[#00B5F1] mb-3">
                       Logó Tervezés
                     </h3>
-                    <p className="text-slate-400">
+                    <p className="text-slate-600 dark:text-slate-400">
                       Egyedi, vektorgrafikus logó tervezés, amely időtálló és
                       skálázható minden méretben
                     </p>
                   </div>
-                  <div className="bg-transparent border border-slate-700/60 p-6 rounded-lg">
-                    <h3 className="text-xl font-semibold text-[#00B5F1] mb-3">
+                  <div className="bg-transparent border border-slate-200/90 dark:border-slate-700/60 p-6 rounded-lg">
+                    <h3 className="text-xl font-semibold text-[#0369A1] dark:text-[#00B5F1] mb-3">
                       Vállalati Arculat
                     </h3>
-                    <p className="text-slate-400">
+                    <p className="text-slate-600 dark:text-slate-400">
                       Teljes vizuális identitás: színvilág, tipográfia,
                       ikonográfia és guideline dokumentáció
                     </p>
                   </div>
-                  <div className="bg-transparent border border-slate-700/60 p-6 rounded-lg">
-                    <h3 className="text-xl font-semibold text-[#00B5F1] mb-3">
+                  <div className="bg-transparent border border-slate-200/90 dark:border-slate-700/60 p-6 rounded-lg">
+                    <h3 className="text-xl font-semibold text-[#0369A1] dark:text-[#00B5F1] mb-3">
                       Branding Stratégia
                     </h3>
-                    <p className="text-slate-400">
+                    <p className="text-slate-600 dark:text-slate-400">
                       Márka pozicionálás, target audience elemzés és vizuális
                       stratégia fejlesztés
                     </p>
                   </div>
-                  <div className="bg-transparent border border-slate-700/60 p-6 rounded-lg">
-                    <h3 className="text-xl font-semibold text-[#00B5F1] mb-3">
+                  <div className="bg-transparent border border-slate-200/90 dark:border-slate-700/60 p-6 rounded-lg">
+                    <h3 className="text-xl font-semibold text-[#0369A1] dark:text-[#00B5F1] mb-3">
                       Print és Digitális
                     </h3>
-                    <p className="text-slate-400">
+                    <p className="text-slate-600 dark:text-slate-400">
                       Névjegykártya, levélpapír, weboldal, social media és
                       minden marketing anyag
                     </p>
@@ -361,7 +362,7 @@ export default async function BrandingPage() {
                 </h2>
                 <div className="space-y-4">
                   <div className="flex items-start gap-4">
-                    <div className="shrink-0 w-8 h-8 bg-[#00B5F1] rounded-full flex items-center justify-center text-bg-base font-bold">
+                    <div className="shrink-0 w-8 h-8 bg-[#0369A1] dark:bg-[#00B5F1] rounded-full flex items-center justify-center text-white dark:text-slate-950 font-bold">
                       <Check
                         className="w-4 h-4"
                         strokeWidth={3}
@@ -372,14 +373,14 @@ export default async function BrandingPage() {
                       <h3 className="text-lg font-semibold text-text-primary">
                         26 éves grafikai tapasztalat
                       </h3>
-                      <p className="text-slate-400">
+                      <p className="text-slate-600 dark:text-slate-400">
                         Nyomdaipari és digitális grafikai rutinnal rendelkezem,
                         mindkét területet ismerem
                       </p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <div className="shrink-0 w-8 h-8 bg-[#00B5F1] rounded-full flex items-center justify-center text-bg-base font-bold">
+                    <div className="shrink-0 w-8 h-8 bg-[#0369A1] dark:bg-[#00B5F1] rounded-full flex items-center justify-center text-white dark:text-slate-950 font-bold">
                       <Check
                         className="w-4 h-4"
                         strokeWidth={3}
@@ -390,14 +391,14 @@ export default async function BrandingPage() {
                       <h3 className="text-lg font-semibold text-text-primary">
                         Vektorgrafikus alapok
                       </h3>
-                      <p className="text-slate-400">
+                      <p className="text-slate-600 dark:text-slate-400">
                         Minden design vektor formátumban kerül átadásra, így
                         korlátlanul skálázható
                       </p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <div className="shrink-0 w-8 h-8 bg-[#00B5F1] rounded-full flex items-center justify-center text-bg-base font-bold">
+                    <div className="shrink-0 w-8 h-8 bg-[#0369A1] dark:bg-[#00B5F1] rounded-full flex items-center justify-center text-white dark:text-slate-950 font-bold">
                       <Check
                         className="w-4 h-4"
                         strokeWidth={3}
@@ -408,7 +409,7 @@ export default async function BrandingPage() {
                       <h3 className="text-lg font-semibold text-text-primary">
                         Konverzió-fókuszú design
                       </h3>
-                      <p className="text-slate-400">
+                      <p className="text-slate-600 dark:text-slate-400">
                         Nem csak esztétikai, hanem üzleti szempontból is
                         optimalizált arculat tervezés
                       </p>
@@ -491,29 +492,29 @@ export default async function BrandingPage() {
                   Hogyan dolgozom?
                 </h2>
                 <div className="space-y-6">
-                  <div className="bg-transparent border border-slate-700/60 p-6 rounded-lg">
-                    <h3 className="text-lg font-semibold text-[#00B5F1] mb-2">
+                  <div className="bg-transparent border border-slate-200/90 dark:border-slate-700/60 p-6 rounded-lg">
+                    <h3 className="text-lg font-semibold text-[#0369A1] dark:text-[#00B5F1] mb-2">
                       1. Konzultáció és brief
                     </h3>
-                    <p className="text-slate-400">
+                    <p className="text-slate-600 dark:text-slate-400">
                       Konzultáció a célokról, target audience-ről és vizuális
                       preferenciákról. Specifikáció kialakítása.
                     </p>
                   </div>
-                  <div className="bg-transparent border border-slate-700/60 p-6 rounded-lg">
-                    <h3 className="text-lg font-semibold text-[#00B5F1] mb-2">
+                  <div className="bg-transparent border border-slate-200/90 dark:border-slate-700/60 p-6 rounded-lg">
+                    <h3 className="text-lg font-semibold text-[#0369A1] dark:text-[#00B5F1] mb-2">
                       2. Vázlat és konceptek
                     </h3>
-                    <p className="text-slate-400">
+                    <p className="text-slate-600 dark:text-slate-400">
                       Több koncept vázlata a választáshoz és korrekciós körök.
                       Iteratív fejlesztés.
                     </p>
                   </div>
-                  <div className="bg-transparent border border-slate-700/60 p-6 rounded-lg">
-                    <h3 className="text-lg font-semibold text-[#00B5F1] mb-2">
+                  <div className="bg-transparent border border-slate-200/90 dark:border-slate-700/60 p-6 rounded-lg">
+                    <h3 className="text-lg font-semibold text-[#0369A1] dark:text-[#00B5F1] mb-2">
                       3. Végső kivitelezés
                     </h3>
-                    <p className="text-slate-400">
+                    <p className="text-slate-600 dark:text-slate-400">
                       Véglegesítés, vektoros formátumok átadása, brand guideline
                       dokumentum és nyomdai előkészítés.
                     </p>
@@ -530,57 +531,57 @@ export default async function BrandingPage() {
                   Gyakran Kérdezett Kérdések
                 </h2>
                 <div className="space-y-4">
-                  <details className="bg-transparent border border-slate-700/60 p-6 rounded-lg group">
-                    <summary className="cursor-pointer font-semibold text-text-primary group-hover:text-[#00B5F1] transition-colors">
+                  <details className="bg-transparent border border-slate-200/90 dark:border-slate-700/60 p-6 rounded-lg group">
+                    <summary className="cursor-pointer font-semibold text-text-primary group-hover:text-[#0369A1] dark:group-hover:text-[#00B5F1] transition-colors">
                       Mennyi idő a logó tervezése?
                     </summary>
-                    <p className="mt-4 text-slate-400">
+                    <p className="mt-4 text-slate-600 dark:text-slate-400">
                       Egyszerű logó 3-5 munkanap, komplett arculat 1-2 hét attól
                       függően, hogy milyen komplexitást igényel.
                     </p>
                   </details>
-                  <details className="bg-transparent border border-slate-700/60 p-6 rounded-lg group">
-                    <summary className="cursor-pointer font-semibold text-text-primary group-hover:text-[#00B5F1] transition-colors">
+                  <details className="bg-transparent border border-slate-200/90 dark:border-slate-700/60 p-6 rounded-lg group">
+                    <summary className="cursor-pointer font-semibold text-text-primary group-hover:text-[#0369A1] dark:group-hover:text-[#00B5F1] transition-colors">
                       Milyen formátumokban kapom meg?
                     </summary>
-                    <p className="mt-4 text-slate-400">
+                    <p className="mt-4 text-slate-600 dark:text-slate-400">
                       Vektor formátumok (AI, SVG, EPS), nagy felbontású PNG, és
                       minden szükséges digitális és print formátum.
                     </p>
                   </details>
-                  <details className="bg-transparent border border-slate-700/60 p-6 rounded-lg group">
-                    <summary className="cursor-pointer font-semibold text-text-primary group-hover:text-[#00B5F1] transition-colors">
+                  <details className="bg-transparent border border-slate-200/90 dark:border-slate-700/60 p-6 rounded-lg group">
+                    <summary className="cursor-pointer font-semibold text-text-primary group-hover:text-[#0369A1] dark:group-hover:text-[#00B5F1] transition-colors">
                       Módosíthatom később a logót?
                     </summary>
-                    <p className="mt-4 text-slate-400">
+                    <p className="mt-4 text-slate-600 dark:text-slate-400">
                       Igen, a vektor fájlok lehetővé teszik a korlátlan
                       módosítást és skálázást jövőbeli igények szerint.
                     </p>
                   </details>
-                  <details className="bg-transparent border border-slate-700/60 p-6 rounded-lg group">
-                    <summary className="cursor-pointer font-semibold text-text-primary group-hover:text-[#00B5F1] transition-colors">
+                  <details className="bg-transparent border border-slate-200/90 dark:border-slate-700/60 p-6 rounded-lg group">
+                    <summary className="cursor-pointer font-semibold text-text-primary group-hover:text-[#0369A1] dark:group-hover:text-[#00B5F1] transition-colors">
                       Milyen referenciáid vannak?
                     </summary>
-                    <p className="mt-4 text-slate-400">
+                    <p className="mt-4 text-slate-600 dark:text-slate-400">
                       Esküvői dekoráció branding, Dr Nagy Albert orvosi arculat,
                       Ronch Caffé branding és több mint 150 sikeres projekt
                       különböző iparágakban.
                     </p>
                   </details>
                   <details className="bg-transparent border border-[#00B5F1]/30 p-6 rounded-lg group">
-                    <summary className="cursor-pointer font-semibold text-text-primary group-hover:text-[#00B5F1] transition-colors">
+                    <summary className="cursor-pointer font-semibold text-text-primary group-hover:text-[#0369A1] dark:group-hover:text-[#00B5F1] transition-colors">
                       Mennyibe kerül egy arculattervezés projekt?
                     </summary>
-                    <p className="mt-4 text-slate-400">
+                    <p className="mt-4 text-slate-600 dark:text-slate-400">
                       Egyedi árajánlat kérése a projekt igényei szerint.
                       Ingyenes konzultáció a pontos árhoz.
                     </p>
                   </details>
-                  <details className="bg-transparent border border-slate-700/60 p-6 rounded-lg group">
-                    <summary className="cursor-pointer font-semibold text-text-primary group-hover:text-[#00B5F1] transition-colors">
+                  <details className="bg-transparent border border-slate-200/90 dark:border-slate-700/60 p-6 rounded-lg group">
+                    <summary className="cursor-pointer font-semibold text-text-primary group-hover:text-[#0369A1] dark:group-hover:text-[#00B5F1] transition-colors">
                       Mire kell figyelni az árajánlatkérésnél?
                     </summary>
-                    <p className="mt-4 text-slate-400">
+                    <p className="mt-4 text-slate-600 dark:text-slate-400">
                       Minél pontosabb specifikációt adsz meg, annál pontosabb
                       árajánlatot tudok adni. Ha nincs design specifikációd,
                       akkor konzultációra van szükség, ami időigényes. A
@@ -595,15 +596,15 @@ export default async function BrandingPage() {
             </section>
 
             {/* Final CTA */}
-            <section className="mt-24 py-40 text-center bg-transparent border-t border-slate-700/60 relative overflow-hidden">
+            <section className="mt-24 py-24 md:py-32 text-center bg-transparent border-t border-slate-200/90 dark:border-slate-700/60 relative overflow-hidden">
               <div className="max-w-6xl mx-auto px-6 relative z-10">
                 <div className="max-w-3xl mx-auto space-y-10">
                   <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold font-heading text-text-primary leading-tight tracking-tight">
                     Készen állsz a{" "}
-                    <span className="text-[#00B5F1] italic">következő</span>{" "}
+                    <span className="text-[#0369A1] dark:text-[#00B5F1] italic">következő</span>{" "}
                     szintre?
                   </h2>
-                  <p className="text-lg md:text-xl text-slate-400 max-w-lg leading-relaxed mx-auto">
+                  <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-lg leading-relaxed mx-auto">
                     Ingyenes konzultáció, átlátható árazás, határidőre kész
                     projektek. Nincs projektmenedzser, közvetlen kommunikáció
                     velem.

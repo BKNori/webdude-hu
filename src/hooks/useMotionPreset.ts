@@ -1,4 +1,25 @@
+import { useSyncExternalStore } from "react";
 import { useReducedMotion } from "motion/react";
+
+const subscribeNoop = () => () => {};
+const getClientTrue = () => true;
+const getServerFalse = () => false;
+
+/**
+ * Hydration-safe reduced-motion hook.
+ * Returns `false` on SSR and during React hydration's first pass so `<motion.*>`
+ * attributes (`tabIndex`, `style`) always match server HTML, then switches to
+ * the OS/user preference immediately after mount.
+ */
+export function useHydratedReducedMotion(): boolean {
+  const shouldReduceMotion = useReducedMotion();
+  const isHydrated = useSyncExternalStore(
+    subscribeNoop,
+    getClientTrue,
+    getServerFalse
+  );
+  return isHydrated ? Boolean(shouldReduceMotion) : false;
+}
 
 /**
  * Motion preset hook for accessibility

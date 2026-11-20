@@ -25,10 +25,10 @@ export default function SEOAuditHeroBanner({
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-primary/10 border border-brand-primary/20"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0369A1]/10 dark:bg-brand-primary/10 border border-[#0369A1]/25 dark:border-brand-primary/20"
             >
-              <Shield className="w-4 h-4 text-brand-primary" />
-              <span className="text-xs font-bold text-brand-primary uppercase tracking-wider">
+              <Shield className="w-4 h-4 text-[#0369A1] dark:text-brand-primary" />
+              <span className="text-xs font-bold text-[#0369A1] dark:text-brand-primary uppercase tracking-wider">
                 SEO & AEO Audit Pro
               </span>
             </motion.div>
@@ -38,7 +38,7 @@ export default function SEOAuditHeroBanner({
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-4xl md:text-5xl font-bold text-white leading-tight"
+              className="text-4xl md:text-5xl font-bold text-[#0F172A] dark:text-white leading-tight"
             >
               A 26 éves tapasztalat erejével a találati listák élén
             </motion.h1>
@@ -48,7 +48,7 @@ export default function SEOAuditHeroBanner({
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-lg text-slate-400"
+              className="text-lg text-[#334155] dark:text-slate-400"
             >
               A hagyományos SEO halott. Az entitás-alapú keresőoptimalizálás és
               az AEO (Answer Engine Optimization) a jövő. Mi nem csak
@@ -62,14 +62,14 @@ export default function SEOAuditHeroBanner({
               transition={{ duration: 0.5, delay: 0.3 }}
               className="space-y-3"
             >
-              <div className="flex items-center gap-2 text-slate-300">
-                <TrendingUp className="w-4 h-4 text-emerald-500" />
+              <div className="flex items-center gap-2 text-[#334155] dark:text-slate-300">
+                <TrendingUp className="w-4 h-4 text-emerald-600 dark:text-emerald-500" />
                 <span className="text-sm">
                   95+ Lighthouse score alapú technikai alapok
                 </span>
               </div>
-              <div className="flex items-center gap-2 text-slate-300">
-                <Zap className="w-4 h-4 text-brand-primary" />
+              <div className="flex items-center gap-2 text-[#334155] dark:text-slate-300">
+                <Zap className="w-4 h-4 text-[#0369A1] dark:text-brand-primary" />
                 <span className="text-sm">
                   16 év WordPress & WooCommerce CMS szakértelem
                 </span>
@@ -81,7 +81,7 @@ export default function SEOAuditHeroBanner({
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="inline-flex items-center gap-2 px-8 py-4 bg-brand-primary text-bg-base font-bold rounded-xl hover:bg-brand-primary/90 transition-all hover:scale-105"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-linear-to-r from-[#075985] to-[#5B21B6] hover:from-[#0369A1] hover:to-[#6D28D9] text-white font-bold rounded-xl transition-all hover:scale-105"
             >
               <Shield className="w-4 h-4" />
               <span>Ingyenes Weboldal Audit</span>
@@ -96,7 +96,7 @@ export default function SEOAuditHeroBanner({
             className="relative"
           >
             {heroVisual ? (
-              <div className="aspect-video rounded-2xl overflow-hidden border border-brand-primary/20">
+              <div className="aspect-video rounded-2xl overflow-hidden border border-[#0369A1]/25 dark:border-brand-primary/20">
                 <Image
                   src={heroVisual}
                   alt="SEO & AEO Audit Pro Dashboard"
@@ -105,13 +105,13 @@ export default function SEOAuditHeroBanner({
                 />
               </div>
             ) : (
-              <div className="aspect-video rounded-2xl bg-linear-to-br from-brand-primary/20 to-transparent border border-brand-primary/20 flex items-center justify-center">
+              <div className="aspect-video rounded-2xl bg-linear-to-br from-[#0369A1]/15 to-transparent dark:from-brand-primary/20 dark:to-transparent border border-[#0369A1]/25 dark:border-brand-primary/20 flex items-center justify-center">
                 <div className="text-center space-y-4">
-                  <Shield className="w-24 h-24 text-brand-primary/50 mx-auto" />
-                  <p className="text-sm text-slate-400">
+                  <Shield className="w-24 h-24 text-[#0369A1]/50 dark:text-brand-primary/50 mx-auto" />
+                  <p className="text-sm text-[#334155] dark:text-slate-400">
                     High-end analytical dashboard interface
                   </p>
-                  <p className="text-xs text-slate-500">
+                  <p className="text-xs text-[#475569] dark:text-slate-500">
                     Midjourney v6 Master prompt alapján
                   </p>
                 </div>

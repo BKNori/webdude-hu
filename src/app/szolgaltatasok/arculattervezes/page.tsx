@@ -145,7 +145,7 @@ export default function ArculattervezesPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100">
+    <div className="min-h-screen bg-[#F8FAFC] dark:bg-slate-950 text-[#0F172A] dark:text-slate-100">
       {/* JSON-LD Schemas with XSS Protection */}
       <script
         type="application/ld+json"
@@ -161,21 +161,21 @@ export default function ArculattervezesPage() {
       />
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 overflow-hidden border-b border-slate-800/80">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,var(--tw-gradient-stops))] from-purple-900/20 via-slate-950 to-slate-950 pointer-events-none" />
+      <section className="relative pt-32 pb-20 overflow-hidden border-b border-slate-200/90 dark:border-slate-800/80">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,var(--tw-gradient-stops))] from-purple-500/10 via-[#F8FAFC] to-[#F8FAFC] dark:from-purple-900/20 dark:via-slate-950 dark:to-slate-950 pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-purple-950/80 border border-purple-500/30 text-purple-400 text-xs font-medium uppercase tracking-wider mb-6">
-              <Sparkles className="w-3.5 h-3.5 text-[#00B5F1]" />
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-violet-50 dark:bg-purple-950/80 border border-violet-200 dark:border-purple-500/30 text-[#6D28D9] dark:text-purple-400 text-xs font-medium uppercase tracking-wider mb-6">
+              <Sparkles className="w-3.5 h-3.5 text-[#0369A1] dark:text-[#00B5F1]" />
               26 Év Grafikai Tapasztalat & Márkaépítés
             </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight mb-6">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#0F172A] dark:text-white tracking-tight leading-tight mb-6">
               Arculattervezés, amely{" "}
-              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#a855f7]">
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#0369A1] to-[#6D28D9] dark:from-[#00B5F1] dark:to-[#a855f7]">
                 bizalmat ébreszt
               </span>
             </h1>
-            <p className="text-lg sm:text-xl text-slate-300 leading-relaxed mb-8">
+            <p className="text-lg sm:text-xl text-slate-700 dark:text-slate-300 leading-relaxed mb-8">
               A márkád vizuális megjelenése az első másodpercben dönt arról,
               hogy komolyan vesznek-e. 26 év tapasztalattal építek vizuális
               rendszereket, amelyek kiemelnek a tömegből.
@@ -190,7 +190,7 @@ export default function ArculattervezesPage() {
               </Link>
               <Link
                 href="#csomagok"
-                className="inline-flex items-center justify-center px-6 py-4 rounded-xl font-medium text-slate-300 bg-slate-900 border border-slate-800 hover:border-slate-700 hover:text-white transition-colors"
+                className="inline-flex items-center justify-center px-6 py-4 rounded-xl font-medium text-slate-700 bg-white border border-slate-300 hover:border-[#0369A1]/50 hover:text-[#0369A1] dark:text-slate-300 dark:bg-slate-900 dark:border-slate-800 dark:hover:border-slate-700 dark:hover:text-white transition-colors"
               >
                 Szolgáltatások és részletek
               </Link>
@@ -200,10 +200,10 @@ export default function ArculattervezesPage() {
       </section>
 
       {/* Direct Answer Block - AEO optimalizált */}
-      <section className="relative py-12 bg-bg-base border-y border-white/5">
+      <section className="relative py-12 bg-bg-base border-y border-slate-200/80 dark:border-white/5">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <p className="text-base md:text-lg text-slate-300 leading-relaxed">
-            <span className="text-[#00B5F1] font-semibold">
+          <p className="text-base md:text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
+            <span className="text-[#0369A1] dark:text-[#00B5F1] font-semibold">
               WebDude arculattervezés:
             </span>{" "}
             Egyedi arculattervezés kisvállalkozásoknak és új márkáknak országos
@@ -216,13 +216,13 @@ export default function ArculattervezesPage() {
       </section>
 
       {/* E-E-A-T & Value Pillars Bento Grid */}
-      <section className="py-24 relative border-b border-slate-800/80">
+      <section className="py-24 relative border-b border-slate-200/90 dark:border-slate-800/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#0F172A] dark:text-white mb-4">
               Miért nem elég egy egyszerű sablonlogó?
             </h2>
-            <p className="text-slate-400">
+            <p className="text-slate-600 dark:text-slate-400">
               A generált vagy sablonból vett grafikák nem tükrözik a céged
               értékeit és gyakran nyomdai hibákhoz vezetnek. Egy átgondolt
               arculat stratégiai befektetés.
@@ -231,119 +231,119 @@ export default function ArculattervezesPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Bento Card 1 */}
-            <div className="p-8 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-[#00B5F1]/50 transition-colors duration-300 flex flex-col justify-between">
+            <div className="p-8 rounded-2xl bg-white dark:bg-slate-900/60 border border-slate-200/90 dark:border-slate-800 hover:border-[#00B5F1]/50 transition-colors duration-300 flex flex-col justify-between">
               <div>
-                <div className="w-12 h-12 rounded-xl bg-purple-950/80 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-6">
+                <div className="w-12 h-12 rounded-xl bg-violet-50 dark:bg-purple-950/80 border border-violet-200 dark:border-purple-500/30 flex items-center justify-center text-[#6D28D9] dark:text-purple-400 mb-6">
                   <Award className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">
+                <h3 className="text-xl font-bold text-[#0F172A] dark:text-white mb-3">
                   26 Év Grafikai Rutin
                 </h3>
-                <p className="text-slate-400 text-sm leading-relaxed">
+                <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
                   A hagyományos ofszet és digitális nyomdai alapoktól kezdve a
                   modern UI/UX képernyődizájnig mindent átlátok. Nincsenek
                   technikai meglepetések.
                 </p>
               </div>
-              <div className="mt-6 pt-6 border-t border-slate-800/80 text-xs text-purple-400 flex items-center gap-1.5 font-semibold">
+              <div className="mt-6 pt-6 border-t border-slate-200/90 dark:border-slate-800/80 text-xs text-[#6D28D9] dark:text-purple-400 flex items-center gap-1.5 font-semibold">
                 <CheckCircle2 className="w-4 h-4" /> Prémium szintű kivitelezés
               </div>
             </div>
 
             {/* Bento Card 2 */}
-            <div className="p-8 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-[#00B5F1]/50 transition-colors duration-300 flex flex-col justify-between">
+            <div className="p-8 rounded-2xl bg-white dark:bg-slate-900/60 border border-slate-200/90 dark:border-slate-800 hover:border-[#00B5F1]/50 transition-colors duration-300 flex flex-col justify-between">
               <div>
-                <div className="w-12 h-12 rounded-xl bg-sky-950/80 border border-sky-500/30 flex items-center justify-center text-[#00B5F1] mb-6">
+                <div className="w-12 h-12 rounded-xl bg-sky-50 dark:bg-sky-950/80 border border-sky-200 dark:border-sky-500/30 flex items-center justify-center text-[#0369A1] dark:text-[#00B5F1] mb-6">
                   <Palette className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">
+                <h3 className="text-xl font-bold text-[#0F172A] dark:text-white mb-3">
                   Harmonikus Szín & Tipográfia
                 </h3>
-                <p className="text-slate-400 text-sm leading-relaxed">
+                <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
                   Pszichológiailag alátámasztott színhasználat és
                   professzionális betűkészletek, amelyek támogatják az
                   olvashatóságot és a prémium hatást.
                 </p>
               </div>
-              <div className="mt-6 pt-6 border-t border-slate-800/80 text-xs text-sky-400 flex items-center gap-1.5 font-semibold">
+              <div className="mt-6 pt-6 border-t border-slate-200/90 dark:border-slate-800/80 text-xs text-[#0369A1] dark:text-sky-400 flex items-center gap-1.5 font-semibold">
                 <CheckCircle2 className="w-4 h-4" /> Kiemelkedés a versenytársak
                 közül
               </div>
             </div>
 
             {/* Bento Card 3 */}
-            <div className="p-8 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-[#00B5F1]/50 transition-colors duration-300 flex flex-col justify-between">
+            <div className="p-8 rounded-2xl bg-white dark:bg-slate-900/60 border border-slate-200/90 dark:border-slate-800 hover:border-[#00B5F1]/50 transition-colors duration-300 flex flex-col justify-between">
               <div>
-                <div className="w-12 h-12 rounded-xl bg-purple-950/80 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-6">
+                <div className="w-12 h-12 rounded-xl bg-violet-50 dark:bg-purple-950/80 border border-violet-200 dark:border-purple-500/30 flex items-center justify-center text-[#6D28D9] dark:text-purple-400 mb-6">
                   <BookOpen className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">
+                <h3 className="text-xl font-bold text-[#0F172A] dark:text-white mb-3">
                   Arculati Kézikönyv (Brand Book)
                 </h3>
-                <p className="text-slate-400 text-sm leading-relaxed">
+                <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
                   Pontos szabályrendszer a logó védőtávolságáról, méretezéséről,
                   helyes és helytelen alkalmazásáról, hogy a márkád bárhol
                   egységes maradjon.
                 </p>
               </div>
-              <div className="mt-6 pt-6 border-t border-slate-800/80 text-xs text-purple-400 flex items-center gap-1.5 font-semibold">
+              <div className="mt-6 pt-6 border-t border-slate-200/90 dark:border-slate-800/80 text-xs text-[#6D28D9] dark:text-purple-400 flex items-center gap-1.5 font-semibold">
                 <CheckCircle2 className="w-4 h-4" /> Hosszú távú konzisztencia
               </div>
             </div>
 
             {/* Bento Card 4 (Span 2) */}
-            <div className="md:col-span-2 p-8 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-[#00B5F1]/50 transition-colors duration-300">
+            <div className="md:col-span-2 p-8 rounded-2xl bg-white dark:bg-slate-900/60 border border-slate-200/90 dark:border-slate-800 hover:border-[#00B5F1]/50 transition-colors duration-300">
               <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-4">
-                <div className="w-12 h-12 rounded-xl bg-sky-950/80 border border-sky-500/30 flex items-center justify-center text-[#00B5F1]">
+                <div className="w-12 h-12 rounded-xl bg-sky-50 dark:bg-sky-950/80 border border-sky-200 dark:border-sky-500/30 flex items-center justify-center text-[#0369A1] dark:text-[#00B5F1]">
                   <Layers className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-white">
+                  <h3 className="text-xl font-bold text-[#0F172A] dark:text-white">
                     Minden Felületen Hiteles Megjelenés
                   </h3>
-                  <p className="text-slate-400 text-sm">
+                  <p className="text-slate-600 dark:text-slate-400 text-sm">
                     A weboldaltól a névjegykártyán át az óriásplakátig.
                   </p>
                 </div>
               </div>
-              <p className="text-slate-400 text-sm leading-relaxed mb-4">
+              <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4">
                 Nem csupán egy ikont kapsz: egy komplett vizuális eszköztárat
                 hozok létre, amely kiterjed a prezentációs sablonokra, a
                 közösségi média grafikákra, a céges papírokra és a nyomdai
                 reklámeszközökre.
               </p>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-4 border-t border-slate-800/80">
-                <div className="flex items-center gap-2 text-xs text-slate-300 font-medium">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-4 border-t border-slate-200/90 dark:border-slate-800/80">
+                <div className="flex items-center gap-2 text-xs text-slate-700 dark:text-slate-300 font-medium">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-700 dark:text-emerald-400 shrink-0" />
                   <span>Vektoriális SVG & AI</span>
                 </div>
-                <div className="flex items-center gap-2 text-xs text-slate-300 font-medium">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                <div className="flex items-center gap-2 text-xs text-slate-700 dark:text-slate-300 font-medium">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-700 dark:text-emerald-400 shrink-0" />
                   <span>Nyomdai CMYK előkészítés</span>
                 </div>
-                <div className="flex items-center gap-2 text-xs text-slate-300 font-medium">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                <div className="flex items-center gap-2 text-xs text-slate-700 dark:text-slate-300 font-medium">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-700 dark:text-emerald-400 shrink-0" />
                   <span>Közösségi média sablonok</span>
                 </div>
               </div>
             </div>
 
             {/* Bento Card 5 */}
-            <div className="p-8 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-[#00B5F1]/50 transition-colors duration-300 flex flex-col justify-between">
+            <div className="p-8 rounded-2xl bg-white dark:bg-slate-900/60 border border-slate-200/90 dark:border-slate-800 hover:border-[#00B5F1]/50 transition-colors duration-300 flex flex-col justify-between">
               <div>
-                <div className="w-12 h-12 rounded-xl bg-sky-950/80 border border-sky-500/30 flex items-center justify-center text-[#00B5F1] mb-6">
+                <div className="w-12 h-12 rounded-xl bg-sky-50 dark:bg-sky-950/80 border border-sky-200 dark:border-sky-500/30 flex items-center justify-center text-[#0369A1] dark:text-[#00B5F1] mb-6">
                   <Eye className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">
+                <h3 className="text-xl font-bold text-[#0F172A] dark:text-white mb-3">
                   Azonnali Megkülönböztetés
                 </h3>
-                <p className="text-slate-400 text-sm leading-relaxed">
+                <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
                   A vevőid néhány pillanat alatt ítélnek. Olyan vizuális
                   arculatot alkotunk, amely stabilitást és magas minőséget
                   sugároz.
                 </p>
               </div>
-              <div className="mt-6 pt-6 border-t border-slate-800/80 text-xs text-sky-400 flex items-center gap-1.5 font-semibold">
+              <div className="mt-6 pt-6 border-t border-slate-200/90 dark:border-slate-800/80 text-xs text-[#0369A1] dark:text-sky-400 flex items-center gap-1.5 font-semibold">
                 <CheckCircle2 className="w-4 h-4" /> Magasabb konverzió
               </div>
             </div>
@@ -352,13 +352,13 @@ export default function ArculattervezesPage() {
       </section>
 
       {/* Pricing Table Section - Zero Fixed Price Rule */}
-      <section id="csomagok" className="py-24 border-b border-slate-800/80">
+      <section id="csomagok" className="py-24 border-b border-slate-200/90 dark:border-slate-800/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#0F172A] dark:text-white mb-4">
               Arculattervezési Csomagok & Struktúra
             </h2>
-            <p className="text-slate-400">
+            <p className="text-slate-600 dark:text-slate-400">
               Válaszd ki az üzleti céljaidnak megfelelő irányt. Egyedi igények
               alapján, rejtett költségek nélkül készítem el a személyre szabott
               ajánlatot.
@@ -370,17 +370,17 @@ export default function ArculattervezesPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-24 border-b border-slate-800/80">
+      <section className="py-24 border-b border-slate-200/90 dark:border-slate-800/80">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900 border border-slate-800 text-slate-400 text-xs font-medium uppercase tracking-wider mb-4">
-              <HelpCircle className="w-3.5 h-3.5 text-[#00B5F1]" />
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 text-xs font-medium uppercase tracking-wider mb-4">
+              <HelpCircle className="w-3.5 h-3.5 text-[#0369A1] dark:text-[#00B5F1]" />
               Gyakori kérdések
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#0F172A] dark:text-white mb-4">
               Minden, amit az arculattervezésről tudni érdemes
             </h2>
-            <p className="text-slate-400">
+            <p className="text-slate-600 dark:text-slate-400">
               Válaszok a legfontosabb kérdésekre a közös munkáról, a
               formátumokról és a jogokról.
             </p>
@@ -390,15 +390,15 @@ export default function ArculattervezesPage() {
             {faqs.map((faq, index) => (
               <div
                 key={index}
-                className="p-6 rounded-xl bg-slate-900/50 border border-slate-800 hover:border-slate-700 transition-colors"
+                className="p-6 rounded-xl bg-white dark:bg-slate-900/50 border border-slate-200/90 dark:border-slate-800 hover:border-slate-700 transition-colors"
               >
-                <h3 className="text-lg font-bold text-white mb-2 flex items-start gap-3">
-                  <span className="text-[#00B5F1] font-mono text-sm mt-1">
+                <h3 className="text-lg font-bold text-[#0F172A] dark:text-white mb-2 flex items-start gap-3">
+                  <span className="text-[#0369A1] dark:text-[#00B5F1] font-mono text-sm mt-1">
                     0{index + 1}.
                   </span>
                   {faq.q}
                 </h3>
-                <p className="text-slate-400 text-sm leading-relaxed pl-8">
+                <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed pl-8">
                   {faq.a}
                 </p>
               </div>
@@ -410,10 +410,10 @@ export default function ArculattervezesPage() {
       {/* Bottom CTA */}
       <section className="py-20 relative overflow-hidden">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-6">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0F172A] dark:text-white mb-6">
             Emeld magasabb szintre a márkád vizuális erejét!
           </h2>
-          <p className="text-slate-300 max-w-2xl mx-auto mb-8 text-lg">
+          <p className="text-slate-700 dark:text-slate-300 max-w-2xl mx-auto mb-8 text-lg">
             Kérj egyedi árajánlatot az arculatod megtervezésére vagy
             megújítására, és építsünk együtt egy emlékezetes márkát!
           </p>

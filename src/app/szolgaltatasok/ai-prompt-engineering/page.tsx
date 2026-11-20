@@ -134,7 +134,7 @@ export default async function AiPromptEngineeringPage() {
           />
 
           {/* Direct Answer Block - AEO optimalizált */}
-          <section className="relative py-12 bg-bg-base border-y border-white/5">
+          <section className="relative py-12 bg-bg-base border-y border-slate-200/80 dark:border-white/5">
             <div className="max-w-4xl mx-auto px-6 text-center">
               <DirectAnswerBlock
                 id="ai-prompt-engineering-hero"
@@ -153,7 +153,7 @@ export default async function AiPromptEngineeringPage() {
             <div className="mt-12 grid gap-12 md:grid-cols-2 items-start max-w-4xl mx-auto">
               <div className="space-y-6">
                 <Badge>AI Prompts</Badge>
-                <p className="text-xl text-slate-300 leading-relaxed">
+                <p className="text-xl text-slate-700 dark:text-slate-300 leading-relaxed">
                   Nem csak promptokat írok — teljes prompt rendszereket építek,
                   amelyek biztosítják, hogy az AI megbízható, konzisztens és
                   üzleti értékkel bíró eredményeket adjon vissza, minimalizálva
@@ -397,7 +397,7 @@ export default async function AiPromptEngineeringPage() {
                 </h2>
                 <div className="space-y-4">
                   <div className="flex items-start gap-4">
-                    <div className="shrink-0 w-8 h-8 bg-[#00B5F1] rounded-full flex items-center justify-center text-bg-base font-bold">
+                    <div className="shrink-0 w-8 h-8 bg-[#0369A1] dark:bg-[#00B5F1] rounded-full flex items-center justify-center text-white dark:text-slate-950 font-bold">
                       <Check
                         className="w-4 h-4"
                         strokeWidth={3}
@@ -408,14 +408,14 @@ export default async function AiPromptEngineeringPage() {
                       <h3 className="text-lg font-semibold text-text-primary">
                         70-90% megbízhatóság növekedés
                       </h3>
-                      <p className="text-slate-400">
+                      <p className="text-slate-600 dark:text-slate-400">
                         Professzionális promptokkal az AI eredményei sokkal
                         konzisztensebbek és megbízhatóbbak
                       </p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <div className="shrink-0 w-8 h-8 bg-[#00B5F1] rounded-full flex items-center justify-center text-bg-base font-bold">
+                    <div className="shrink-0 w-8 h-8 bg-[#0369A1] dark:bg-[#00B5F1] rounded-full flex items-center justify-center text-white dark:text-slate-950 font-bold">
                       <Check
                         className="w-4 h-4"
                         strokeWidth={3}
@@ -426,14 +426,14 @@ export default async function AiPromptEngineeringPage() {
                       <h3 className="text-lg font-semibold text-text-primary">
                         Hallucináció minimalizálása
                       </h3>
-                      <p className="text-slate-400">
+                      <p className="text-slate-600 dark:text-slate-400">
                         Strukturált promptokkal jelentősen csökkenthető az AI
                         téves információk generálása
                       </p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <div className="shrink-0 w-8 h-8 bg-[#00B5F1] rounded-full flex items-center justify-center text-bg-base font-bold">
+                    <div className="shrink-0 w-8 h-8 bg-[#0369A1] dark:bg-[#00B5F1] rounded-full flex items-center justify-center text-white dark:text-slate-950 font-bold">
                       <Check
                         className="w-4 h-4"
                         strokeWidth={3}
@@ -444,14 +444,14 @@ export default async function AiPromptEngineeringPage() {
                       <h3 className="text-lg font-semibold text-text-primary">
                         Időmegtakarítás
                       </h3>
-                      <p className="text-slate-400">
+                      <p className="text-slate-600 dark:text-slate-400">
                         Jól megírt promptokkal 40-60% kevesebb idő töltődik a
                         prompt javítgatással és újrapróbálkozással
                       </p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <div className="shrink-0 w-8 h-8 bg-[#00B5F1] rounded-full flex items-center justify-center text-bg-base font-bold">
+                    <div className="shrink-0 w-8 h-8 bg-[#0369A1] dark:bg-[#00B5F1] rounded-full flex items-center justify-center text-white dark:text-slate-950 font-bold">
                       <Check
                         className="w-4 h-4"
                         strokeWidth={3}
@@ -462,14 +462,14 @@ export default async function AiPromptEngineeringPage() {
                       <h3 className="text-lg font-semibold text-text-primary">
                         Üzleti érték
                       </h3>
-                      <p className="text-slate-400">
+                      <p className="text-slate-600 dark:text-slate-400">
                         Professzionális promptok konkrét üzleti céloknak
                         optimalizálva, nem általános megoldások
                       </p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <div className="shrink-0 w-8 h-8 bg-[#00B5F1] rounded-full flex items-center justify-center text-bg-base font-bold">
+                    <div className="shrink-0 w-8 h-8 bg-[#0369A1] dark:bg-[#00B5F1] rounded-full flex items-center justify-center text-white dark:text-slate-950 font-bold">
                       <Check
                         className="w-4 h-4"
                         strokeWidth={3}
@@ -480,7 +480,7 @@ export default async function AiPromptEngineeringPage() {
                       <h3 className="text-lg font-semibold text-text-primary">
                         Skálázhatóság
                       </h3>
-                      <p className="text-slate-400">
+                      <p className="text-slate-600 dark:text-slate-400">
                         Prompt template-ek és rendszerek, amelyek egyszerűen
                         skálázhatók a csapat és a volumen növekedésével
                       </p>
@@ -501,12 +501,12 @@ export default async function AiPromptEngineeringPage() {
                   {FAQ.map((item, i) => (
                     <div
                       key={i}
-                      className="bg-transparent border border-slate-700/60 p-6 rounded-lg"
+                      className="bg-transparent border border-slate-200/90 dark:border-slate-700/60 p-6 rounded-lg"
                     >
-                      <h3 className="text-lg font-semibold text-[#00B5F1] mb-2">
+                      <h3 className="text-lg font-semibold text-[#0369A1] dark:text-[#00B5F1] mb-2">
                         {item.q}
                       </h3>
-                      <p className="text-slate-400">{item.a}</p>
+                      <p className="text-slate-600 dark:text-slate-400">{item.a}</p>
                     </div>
                   ))}
                 </div>
@@ -517,11 +517,11 @@ export default async function AiPromptEngineeringPage() {
             <section className="mt-24 text-center relative overflow-hidden">
               <div className="absolute inset-0 bg-linear-to-b from-transparent via-[#00B5F1]/5 to-transparent" />
               <div className="relative z-10">
-                <div className="bg-transparent border border-slate-700/60 p-16 rounded-2xl">
+                <div className="bg-transparent border border-slate-200/90 dark:border-slate-700/60 p-16 rounded-2xl">
                   <h2 className="text-5xl font-bold text-text-primary mb-6">
                     Készen állsz az AI optimalizálásra?
                   </h2>
-                  <p className="text-xl text-slate-400 mb-8">
+                  <p className="text-xl text-slate-600 dark:text-slate-400 mb-8">
                     Kérj ingyenes konzultációt, és együtt találjuk meg a
                     legmegfelelőbb prompt megoldásokat a te üzleti
                     folyamataidhoz.

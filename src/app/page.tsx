@@ -6,6 +6,7 @@ import CaseStudiesBento from "@/components/organisms/CaseStudiesBento";
 import WhyChooseMeSection from "@/components/organisms/WhyChooseMeSection";
 import FaqSectionAEO from "@/components/organisms/FaqSectionAEO";
 import FinalCta from "@/components/organisms/FinalCta";
+import Surface from "@/components/atoms/Surface";
 import { Metadata } from "next";
 import { Award, Cpu, Clock } from "lucide-react";
 import { getDictionary } from "@/lib/dictionary";
@@ -91,67 +92,85 @@ export default async function Home() {
         {/* 1. Hero — ügyfélszerző H1, CTA hierarchia */}
         <HeroSectionNew content={dictionary.home.hero} />
 
-        {/* 1.5 Direct Answer Bento Grid — AEO optimalizált "Szakmai Snapshot" */}
-        {/* DESIGN NOTE: v7.0 — amber/arany TILOS, kizárólag kék-lila (#00B5F1/#5B21B6) */}
-        <section
-          aria-label="Szakmai háttér és szakterületek"
-          className="max-w-7xl mx-auto px-4 py-24 md:py-32"
+        {/* 1.5 Direct Answer Bento Grid — AEO optimalizált "Szakmai Snapshot" (Luminous Night Lift) */}
+        <Surface
+          tone="night-lift"
+          aurora
+          ariaLabel="Szakmai háttér és szakterületek"
+          className="py-20 md:py-28"
         >
-          {/* Rejtett H2 — a H1 → H2 → H3 heading-hierarchia fenntartásához */}
-          <h2 className="sr-only">{dictionary.home.snapshot.heading}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* 1. Kártya — Szakértői Háttér (Balog Norbert E-E-A-T) */}
-            <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800 hover:border-brand-primary/30 rounded-2xl p-6 transition-[border-color,box-shadow,transform] duration-300 flex flex-col justify-between">
-              <div>
-                <div className="flex items-center gap-3 mb-4">
-                  <Award
-                    className="w-8 h-8 text-brand-primary"
-                    aria-hidden="true"
-                  />
-                  <h3 className="text-xl md:text-2xl text-white tracking-wider">
-                    {dictionary.bentoGrid.expertise.title}
-                  </h3>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            {/* Rejtett H2 — a H1 → H2 → H3 heading-hierarchia fenntartásához */}
+            <h2 className="sr-only">{dictionary.home.snapshot.heading}</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {/* 1. Kártya — Szakértői Háttér (Balog Norbert E-E-A-T) */}
+              <div className="luminous-card p-7 flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-xl bg-sky-500/10 border border-sky-600/25 dark:bg-brand-primary/12 dark:border-brand-primary/25 flex items-center justify-center">
+                        <Award
+                          className="w-5 h-5 text-[#0369A1] dark:text-brand-primary"
+                          aria-hidden="true"
+                        />
+                      </div>
+                      <h3 className="text-xl md:text-2xl text-[#0F172A] dark:text-white tracking-wider">
+                        {dictionary.bentoGrid.expertise.title}
+                      </h3>
+                    </div>
+                    <span className="font-mono text-xs text-slate-600 dark:text-slate-400">01</span>
+                  </div>
+                  <p className="text-sm text-slate-700 dark:text-slate-200 leading-relaxed font-normal">
+                    {dictionary.bentoGrid.expertise.content}
+                  </p>
                 </div>
-                <p className="text-sm text-slate-300 leading-relaxed font-normal">
-                  {dictionary.bentoGrid.expertise.content}
-                </p>
               </div>
-            </div>
 
-            {/* 2. Kártya — Szakterületek (Weboldal, WordPress, SEO, Grafika) */}
-            <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800 hover:border-brand-primary/30 rounded-2xl p-6 transition-[border-color,box-shadow,transform] duration-300 flex flex-col justify-between">
-              <div>
-                <div className="flex items-center gap-3 mb-4">
-                  <Cpu className="w-8 h-8 text-brand-primary" aria-hidden="true" />
-                  <h3 className="text-xl md:text-2xl text-white tracking-wider">
-                    {dictionary.bentoGrid.techStack.title}
-                  </h3>
+              {/* 2. Kártya — Szakterületek (Weboldal, WordPress, SEO, Grafika) */}
+              <div className="luminous-card p-7 flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-xl bg-sky-500/10 border border-sky-600/25 dark:bg-brand-primary/12 dark:border-brand-primary/25 flex items-center justify-center">
+                        <Cpu className="w-5 h-5 text-[#0369A1] dark:text-brand-primary" aria-hidden="true" />
+                      </div>
+                      <h3 className="text-xl md:text-2xl text-[#0F172A] dark:text-white tracking-wider">
+                        {dictionary.bentoGrid.techStack.title}
+                      </h3>
+                    </div>
+                    <span className="font-mono text-xs text-slate-600 dark:text-slate-400">02</span>
+                  </div>
+                  <p className="text-sm text-slate-700 dark:text-slate-200 leading-relaxed font-normal">
+                    {dictionary.bentoGrid.techStack.content}
+                  </p>
                 </div>
-                <p className="text-sm text-slate-300 leading-relaxed font-normal">
-                  {dictionary.bentoGrid.techStack.content}
-                </p>
               </div>
-            </div>
 
-            {/* 3. Kártya — Projekt Időzítés & Garancia */}
-            <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800 hover:border-brand-primary/30 rounded-2xl p-6 transition-[border-color,box-shadow,transform] duration-300 flex flex-col justify-between">
-              <div>
-                <div className="flex items-center gap-3 mb-4">
-                  <Clock
-                    className="w-8 h-8 text-brand-primary"
-                    aria-hidden="true"
-                  />
-                  <h3 className="text-xl md:text-2xl text-white tracking-wider">
-                    {dictionary.bentoGrid.timeline.title}
-                  </h3>
+              {/* 3. Kártya — Projekt Időzítés & Garancia */}
+              <div className="luminous-card p-7 flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-xl bg-sky-500/10 border border-sky-600/25 dark:bg-brand-primary/12 dark:border-brand-primary/25 flex items-center justify-center">
+                        <Clock
+                          className="w-5 h-5 text-[#0369A1] dark:text-brand-primary"
+                          aria-hidden="true"
+                        />
+                      </div>
+                      <h3 className="text-xl md:text-2xl text-[#0F172A] dark:text-white tracking-wider">
+                        {dictionary.bentoGrid.timeline.title}
+                      </h3>
+                    </div>
+                    <span className="font-mono text-xs text-slate-600 dark:text-slate-400">03</span>
+                  </div>
+                  <p className="text-sm text-slate-700 dark:text-slate-200 leading-relaxed font-normal">
+                    {dictionary.bentoGrid.timeline.content}
+                  </p>
                 </div>
-                <p className="text-sm text-slate-300 leading-relaxed font-normal">
-                  {dictionary.bentoGrid.timeline.content}
-                </p>
               </div>
             </div>
           </div>
-        </section>
+        </Surface>
 
         {/* 2. Social Proof Strip — KPI statisztikák + scroll-velocity marquee */}
         <SocialProofStrip content={dictionary.home.proof} />

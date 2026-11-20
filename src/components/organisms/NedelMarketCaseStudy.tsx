@@ -15,7 +15,8 @@
 
 import ResponsiveImage from "@/components/molecules/ResponsiveImage";
 import Link from "next/link";
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
+import { useHydratedReducedMotion } from "@/hooks/useMotionPreset";
 import { Server, ShieldCheck, Search, BarChart3 } from "lucide-react";
 import NedelMarketBentoGrid from "@/components/organisms/NedelMarketBentoGrid";
 
@@ -51,7 +52,7 @@ const OVERVIEW = [
 ];
 
 export default function NedelMarketCaseStudy() {
-  const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = useHydratedReducedMotion();
 
   return (
     <div className="min-h-screen bg-bg-base text-text-primary overflow-x-hidden">
@@ -84,8 +85,8 @@ export default function NedelMarketCaseStudy() {
             transition={{ type: "spring", stiffness: 100, damping: 20 }}
             className="inline-flex items-center gap-2 rounded-full border border-brand-primary/30 bg-brand-primary/10 px-5 py-2 backdrop-blur-sm"
           >
-            <Server className="h-4 w-4 text-brand-primary" aria-hidden />
-            <span className="text-sm font-bold uppercase tracking-[0.2em] text-brand-primary">
+            <Server className="h-4 w-4 text-[#0369A1] dark:text-brand-primary" aria-hidden />
+            <span className="text-sm font-bold uppercase tracking-[0.2em] text-[#0369A1] dark:text-brand-primary">
               B2B Ökoszisztéma · Helyi Szerver
             </span>
           </motion.div>
@@ -116,7 +117,7 @@ export default function NedelMarketCaseStudy() {
               damping: 20,
               delay: shouldReduceMotion ? 0 : 0.2,
             }}
-            className="mx-auto mt-8 max-w-3xl text-lg font-light leading-relaxed text-slate-200 md:text-xl"
+            className="mx-auto mt-8 max-w-3xl text-lg font-light leading-relaxed text-[#1E293B] dark:text-slate-200 md:text-xl"
           >
             Több mint egy WooCommerce katalógus. Egy teljesen integrált rendszer,
             amely összeköti a modern online értékesítést az irodai
@@ -144,18 +145,18 @@ export default function NedelMarketCaseStudy() {
                   damping: 20,
                   delay: shouldReduceMotion ? 0 : index * 0.08,
                 }}
-                className="rounded-2xl border border-white/10 bg-slate-950/60 p-8 backdrop-blur-xl transition-colors duration-300 hover:border-brand-primary/50"
+                className="rounded-2xl border border-slate-200/80 dark:border-white/10 bg-white/95 dark:bg-slate-950/60 shadow-[0_12px_32px_rgba(15,23,42,0.06)] p-8 backdrop-blur-xl transition-colors duration-300 hover:border-brand-primary/50"
               >
                 <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl border border-brand-primary/30 bg-brand-primary/10">
-                  <Icon className="h-5 w-5 text-brand-primary" aria-hidden />
+                  <Icon className="h-5 w-5 text-[#0369A1] dark:text-brand-primary" aria-hidden />
                 </div>
                 <div className="text-xs font-bold uppercase tracking-[0.2em] text-text-secondary">
                   {item.label}
                 </div>
-                <div className="mt-2 text-xl font-bold text-brand-primary">
+                <div className="mt-2 text-xl font-bold text-[#0369A1] dark:text-brand-primary">
                   {item.value}
                 </div>
-                <div className="mt-2 text-sm leading-relaxed text-slate-400">
+                <div className="mt-2 text-sm leading-relaxed text-[#475569] dark:text-slate-400">
                   {item.sub}
                 </div>
               </motion.div>
@@ -169,7 +170,7 @@ export default function NedelMarketCaseStudy() {
 
       {/* ── 4. CTA BLOKK (ZÉRÓ FIX ÁR) ──────────────────────────────────── */}
       <section className="px-6 py-32">
-        <div className="relative mx-auto max-w-4xl overflow-hidden rounded-3xl border border-white/10 bg-linear-to-br from-cta-from/20 to-cta-to/20 p-12 text-center backdrop-blur-xl md:p-16">
+        <div className="relative mx-auto max-w-4xl overflow-hidden rounded-3xl border border-slate-200/80 dark:border-white/10 bg-linear-to-br from-cta-from/20 to-cta-to/20 p-12 text-center backdrop-blur-xl md:p-16">
           <div
             aria-hidden
             className="pointer-events-none absolute -top-24 left-1/3 h-72 w-72 rounded-full bg-brand-primary/20 blur-3xl"
@@ -186,7 +187,7 @@ export default function NedelMarketCaseStudy() {
               Hasonló, könyvelőprogrammal szinkronizált, golyóálló webes
               rendszert szeretnél a cégednek?
             </motion.h2>
-            <p className="mx-auto mt-6 max-w-2xl text-lg font-light leading-relaxed text-slate-300">
+            <p className="mx-auto mt-6 max-w-2xl text-lg font-light leading-relaxed text-[#334155] dark:text-slate-300">
               Kérj ingyenes projektfelmérést. Átvizsgálom a jelenlegi
               rendszeredet, és egyedi, értékalapú javaslattal térek vissza — fix
               árazás nélkül.
@@ -200,7 +201,7 @@ export default function NedelMarketCaseStudy() {
               </Link>
               <Link
                 href="/munkak"
-                className="rounded-full border border-slate-600 px-10 py-5 font-bold text-slate-300 transition-colors duration-300 hover:border-brand-primary hover:text-brand-primary"
+                className="rounded-full border border-slate-300 dark:border-slate-600 px-10 py-5 font-bold text-[#334155] dark:text-slate-300 transition-colors duration-300 hover:border-brand-primary hover:text-brand-primary"
               >
                 További munkák
               </Link>

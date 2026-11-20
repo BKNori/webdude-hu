@@ -4,7 +4,7 @@ import React from "react";
 import ResponsiveImage from "@/components/molecules/ResponsiveImage";
 import Link from "next/link";
 import { motion } from "motion/react";
-import { useReducedMotion } from "motion/react";
+import { useHydratedReducedMotion } from "@/hooks/useMotionPreset";
 import {
   Stethoscope,
   Calendar,
@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 
 export default function DrNagyAlbertCaseStudy() {
-  const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = useHydratedReducedMotion();
 
   const fadeInUp = shouldReduceMotion
     ? {
@@ -115,7 +115,7 @@ export default function DrNagyAlbertCaseStudy() {
             className="max-w-4xl mx-auto"
           >
             <div className="inline-block relative pl-6 mb-8">
-              <span className="text-xs uppercase font-black tracking-[0.3em] text-[#00B5F1] mb-2 block">
+              <span className="text-xs uppercase font-black tracking-[0.3em] text-[#0369A1] dark:text-[#00B5F1] mb-2 block">
                 Esettanulmány
               </span>
               <div className="absolute left-0 top-0 w-1 h-6 bg-[#00B5F1]" />
@@ -128,7 +128,7 @@ export default function DrNagyAlbertCaseStudy() {
               </span>
             </h1>
 
-            <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto mb-8 leading-relaxed">
+            <p className="text-lg md:text-xl text-[#334155] dark:text-slate-300 max-w-2xl mx-auto mb-8 leading-relaxed">
               Kecskeméti neurológus szakrendelő teljes körű digitális
               megjelenése és modern internetes fizetési rendszere: logó,
               arculat, weboldal, e-recept, távkonzultáció, SEO/AEO
@@ -140,14 +140,14 @@ export default function DrNagyAlbertCaseStudy() {
                 href="https://drnagyalbert.hu"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-linear-to-r from-[#00B5F1] to-[#5B21B6] text-white font-bold rounded-full transition-all hover:scale-[1.02] shadow-[0_8px_24px_rgba(0,181,241,0.3)]"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-linear-to-r from-[#075985] to-[#5B21B6] hover:from-[#0369A1] hover:to-[#6D28D9] text-white font-bold rounded-full transition-all hover:scale-[1.02] shadow-[0_8px_24px_rgba(0,181,241,0.3)]"
               >
                 <span>Weboldal megtekintése</span>
                 <ArrowRight className="w-5 h-5" />
               </Link>
               <Link
                 href="/munkak"
-                className="inline-flex items-center gap-2 px-8 py-4 border border-white/20 text-white font-bold rounded-full transition-all hover:bg-white/10"
+                className="inline-flex items-center gap-2 px-8 py-4 border border-slate-300 dark:border-white/20 text-[#0F172A] dark:text-white font-bold rounded-full transition-all hover:bg-slate-100 dark:hover:bg-white/10"
               >
                 <span>Vissza a referenciákhoz</span>
               </Link>
@@ -168,7 +168,7 @@ export default function DrNagyAlbertCaseStudy() {
           >
             <motion.div variants={fadeInUp}>
               <div className="inline-block relative pl-6 mb-6">
-                <span className="text-xs uppercase font-black tracking-[0.3em] text-[#00B5F1] mb-2 block">
+                <span className="text-xs uppercase font-black tracking-[0.3em] text-[#0369A1] dark:text-[#00B5F1] mb-2 block">
                   Kihívás
                 </span>
                 <div className="absolute left-0 top-0 w-1 h-6 bg-[#00B5F1]" />
@@ -180,7 +180,7 @@ export default function DrNagyAlbertCaseStudy() {
                 </span>{" "}
                 transzformáció
               </h2>
-              <p className="text-lg text-slate-400 leading-relaxed">
+              <p className="text-lg text-[#475569] dark:text-slate-400 leading-relaxed">
                 Dr. Nagy Albert, egy kecskeméti neurológus szakrendelő számára
                 teljes körű digitális megjelenést és modern internetes fizetési
                 rendszert kellett létrehoznom. A cél egy olyan prémium
@@ -215,7 +215,7 @@ export default function DrNagyAlbertCaseStudy() {
             className="text-center mb-16"
           >
             <div className="inline-block relative pl-6 mb-6">
-              <span className="text-xs uppercase font-black tracking-[0.3em] text-[#00B5F1] mb-2 block">
+              <span className="text-xs uppercase font-black tracking-[0.3em] text-[#0369A1] dark:text-[#00B5F1] mb-2 block">
                 Megoldás
               </span>
               <div className="absolute left-0 top-0 w-1 h-6 bg-[#00B5F1]" />
@@ -226,7 +226,7 @@ export default function DrNagyAlbertCaseStudy() {
                 csináltam
               </span>
             </h2>
-            <p className="text-lg text-slate-400 max-w-2xl mx-auto">
+            <p className="text-lg text-[#475569] dark:text-slate-400 max-w-2xl mx-auto">
               Komplex digitális transzformációt valósítottam meg, minden
               szükséges technológiai és vizuális elemmel
             </p>
@@ -246,18 +246,18 @@ export default function DrNagyAlbertCaseStudy() {
                   key={index}
                   variants={fadeInUp}
                   whileHover={shouldReduceMotion ? {} : { y: -4, scale: 1.02 }}
-                  className="group bg-slate-950/80 backdrop-blur-2xl ring-1 ring-white/5 rounded-3xl p-8 hover:border-[#00B5F1]/40 hover:shadow-[0_18px_40px_rgba(0,181,241,0.15)] transition-all duration-300"
+                  className="group bg-white/95 dark:bg-slate-950/80 shadow-[0_12px_32px_rgba(15,23,42,0.06)] backdrop-blur-2xl ring-1 ring-slate-200/80 dark:ring-white/5 rounded-3xl p-8 hover:border-[#00B5F1]/40 hover:shadow-[0_18px_40px_rgba(0,181,241,0.15)] transition-all duration-300"
                 >
-                  <div className="w-16 h-16 rounded-2xl bg-slate-900/60 border border-white/10 flex items-center justify-center mb-6 group-hover:border-[#00B5F1]/30 transition-colors">
+                  <div className="w-16 h-16 rounded-2xl bg-white/95 dark:bg-slate-900/60 shadow-[0_12px_32px_rgba(15,23,42,0.06)] border border-slate-200/80 dark:border-white/10 flex items-center justify-center mb-6 group-hover:border-[#00B5F1]/30 transition-colors">
                     <Icon
-                      className="w-8 h-8 text-[#00B5F1]"
+                      className="w-8 h-8 text-[#0369A1] dark:text-[#00B5F1]"
                       strokeWidth={1.5}
                     />
                   </div>
-                  <h3 className="text-xl font-bold text-slate-200 mb-3">
+                  <h3 className="text-xl font-bold text-[#1E293B] dark:text-slate-200 mb-3">
                     {service.title}
                   </h3>
-                  <p className="text-slate-400 text-base leading-relaxed">
+                  <p className="text-[#475569] dark:text-slate-400 text-base leading-relaxed">
                     {service.description}
                   </p>
                 </motion.div>
@@ -278,7 +278,7 @@ export default function DrNagyAlbertCaseStudy() {
             className="text-center mb-16"
           >
             <div className="inline-block relative pl-6 mb-6">
-              <span className="text-xs uppercase font-black tracking-[0.3em] text-[#00B5F1] mb-2 block">
+              <span className="text-xs uppercase font-black tracking-[0.3em] text-[#0369A1] dark:text-[#00B5F1] mb-2 block">
                 Galéria
               </span>
               <div className="absolute left-0 top-0 w-1 h-6 bg-[#00B5F1]" />
@@ -328,11 +328,11 @@ export default function DrNagyAlbertCaseStudy() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
-            className="bg-slate-950/80 backdrop-blur-2xl ring-1 ring-white/5 rounded-3xl p-8 md:p-12"
+            className="bg-white/95 dark:bg-slate-950/80 shadow-[0_12px_32px_rgba(15,23,42,0.06)] backdrop-blur-2xl ring-1 ring-slate-200/80 dark:ring-white/5 rounded-3xl p-8 md:p-12"
           >
             <div className="text-center mb-12">
               <div className="inline-block relative pl-6 mb-6">
-                <span className="text-xs uppercase font-black tracking-[0.3em] text-[#00B5F1] mb-2 block">
+                <span className="text-xs uppercase font-black tracking-[0.3em] text-[#0369A1] dark:text-[#00B5F1] mb-2 block">
                   Eredmények
                 </span>
                 <div className="absolute left-0 top-0 w-1 h-6 bg-[#00B5F1]" />
@@ -351,13 +351,13 @@ export default function DrNagyAlbertCaseStudy() {
                 return (
                   <div
                     key={index}
-                    className="flex items-center gap-4 p-4 bg-slate-900/60 rounded-xl border border-white/10"
+                    className="flex items-center gap-4 p-4 bg-white/95 dark:bg-slate-900/60 shadow-[0_12px_32px_rgba(15,23,42,0.06)] rounded-xl border border-slate-200/80 dark:border-white/10"
                   >
                     <Icon
-                      className="w-6 h-6 text-[#00B5F1] shrink-0"
+                      className="w-6 h-6 text-[#0369A1] dark:text-[#00B5F1] shrink-0"
                       strokeWidth={1.5}
                     />
-                    <span className="text-slate-300">{result.text}</span>
+                    <span className="text-[#334155] dark:text-slate-300">{result.text}</span>
                   </div>
                 );
               })}
@@ -383,13 +383,13 @@ export default function DrNagyAlbertCaseStudy() {
               </span>{" "}
               szintre?
             </h2>
-            <p className="text-lg md:text-xl text-slate-400 max-w-lg leading-relaxed mx-auto">
+            <p className="text-lg md:text-xl text-[#475569] dark:text-slate-400 max-w-lg leading-relaxed mx-auto">
               Hogyan tudnám a te vállalkozásodat is a digitális élvonalba
               repíteni? Beszéljük meg a részleteket!
             </p>
             <Link
               href="/kapcsolat"
-              className="inline-flex items-center gap-2 px-10 py-5 bg-linear-to-r from-[#00B5F1] to-[#5B21B6] text-white font-bold rounded-full transition-all hover:scale-[1.02] shadow-[0_8px_24px_rgba(0,181,241,0.3)]"
+              className="inline-flex items-center gap-2 px-10 py-5 bg-linear-to-r from-[#075985] to-[#5B21B6] hover:from-[#0369A1] hover:to-[#6D28D9] text-white font-bold rounded-full transition-all hover:scale-[1.02] shadow-[0_8px_24px_rgba(0,181,241,0.3)]"
             >
               <span>Ajánlatot kérek</span>
               <ArrowRight className="w-5 h-5" />

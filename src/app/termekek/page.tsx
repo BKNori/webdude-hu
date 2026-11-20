@@ -263,19 +263,19 @@ export default function ProductsPage() {
   // A /termekek katalógus 100% nyilvános konverziós landing oldal —
   // a hozzáférés-ellenőrzés a generátoroknál (allowedTools) történik.
   return (
-    <div className="min-h-screen bg-transparent">
+    <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#0B1120] text-[#0F172A] dark:text-[#F8FAFC]">
       {/* Hero Section */}
-      <section className="relative py-24 overflow-hidden bg-bg-surface">
+      <section className="relative py-24 overflow-hidden bg-[#F8FAFC] dark:bg-bg-surface">
         <div className="max-w-6xl mx-auto px-6 relative z-10">
           <div className="text-center space-y-6">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#00B5F1]/10 border border-[#00B5F1]/20"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0369A1]/10 dark:bg-[#00B5F1]/10 border border-[#0369A1]/25 dark:border-[#00B5F1]/20"
             >
-              <ShoppingBag className="w-4 h-4 text-[#00B5F1]" />
-              <span className="text-xs font-bold text-[#00B5F1] uppercase tracking-[0.2em]">
+              <ShoppingBag className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
+              <span className="text-xs font-bold text-[#0369A1] dark:text-[#00B5F1] uppercase tracking-[0.2em]">
                 AI & Automatizáció
               </span>
             </motion.div>
@@ -283,10 +283,10 @@ export default function ProductsPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-4xl md:text-6xl font-bold text-text-primary tracking-tight"
+              className="text-4xl md:text-6xl font-bold text-[#0F172A] dark:text-text-primary tracking-tight"
             >
               Prémium AI &{" "}
-              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1]/400 to-[#5B21B6]">
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#0369A1] to-[#6D28D9] dark:from-[#00B5F1] dark:to-[#A78BFA]">
                 Automatizációs Megoldások
               </span>
             </motion.h1>
@@ -294,7 +294,7 @@ export default function ProductsPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-lg text-slate-400 max-w-2xl mx-auto tracking-wide font-medium"
+              className="text-lg text-[#334155] dark:text-slate-400 max-w-2xl mx-auto tracking-wide font-medium"
             >
               Kész, azonnal integrálható AI munkafolyamatok, prompt engineering
               és automatizációs megoldások vállalkozásoknak.
@@ -311,13 +311,13 @@ export default function ProductsPage() {
       />
 
       {/* Category Filter */}
-      <section className="py-8 border-b border-slate-800 bg-bg-surface">
+      <section className="py-8 border-b border-slate-200 dark:border-slate-800 bg-[#F1F5F9] dark:bg-bg-surface">
         <div className="max-w-6xl mx-auto px-6">
           <div className="flex flex-wrap gap-3 justify-center">
             {categories.map((category) => (
               <button
                 key={category.name}
-                className="px-4 py-2 rounded-lg bg-slate-900/80 border border-slate-700 text-slate-400 hover:border-[#00B5F1]/50 hover:text-[#00B5F1] transition-all text-sm font-medium shadow-[0_4px_12px_rgba(15,23,42,0.3)]"
+                className="px-4 py-2 rounded-lg bg-white dark:bg-slate-900/80 border border-slate-300 dark:border-slate-700 text-[#334155] dark:text-slate-400 hover:border-[#0369A1]/50 dark:hover:border-[#00B5F1]/50 hover:text-[#0369A1] dark:hover:text-[#00B5F1] transition-all text-sm font-medium shadow-[0_4px_12px_rgba(15,23,42,0.06)] dark:shadow-[0_4px_12px_rgba(15,23,42,0.3)]"
               >
                 {category.name} ({category.count})
               </button>
@@ -327,7 +327,7 @@ export default function ProductsPage() {
       </section>
 
       {/* Products Grid */}
-      <section className="py-16 bg-bg-surface">
+      <section className="py-16 bg-[#F8FAFC] dark:bg-bg-surface">
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
             {products.map((product, index) => {
@@ -338,37 +338,37 @@ export default function ProductsPage() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="group bg-slate-900/80 backdrop-blur-md border border-slate-700 rounded-2xl overflow-hidden hover:border-[#00B5F1]/50 transition-all duration-300 shadow-[0_8px_24px_rgba(15,23,42,0.3)] hover:shadow-[0_18px_40px_rgba(0, 181, 241,0.2)] hover:-translate-y-1"
+                  className="group luminous-card rounded-2xl overflow-hidden"
                 >
                   <div className="p-6">
                     {/* Header */}
                     <div className="flex items-start justify-between mb-4">
-                      <div className="w-14 h-14 rounded-xl bg-linear-to-br from-[#00B5F1]/10 to-[#5B21B6]/10 border border-[#00B5F1]/20 flex items-center justify-center group-hover:border-[#00B5F1]/50 transition-colors">
-                        <ProductIcon className="w-7 h-7 text-[#00B5F1]" />
+                      <div className="w-14 h-14 rounded-xl bg-linear-to-br from-[#0369A1]/10 to-[#6D28D9]/10 dark:from-[#00B5F1]/10 dark:to-[#5B21B6]/10 border border-[#0369A1]/25 dark:border-[#00B5F1]/20 flex items-center justify-center group-hover:border-[#0369A1]/50 dark:group-hover:border-[#00B5F1]/50 transition-colors">
+                        <ProductIcon className="w-7 h-7 text-[#0369A1] dark:text-[#00B5F1]" />
                       </div>
-                      <div className="flex items-center gap-1 text-[#00B5F1]">
+                      <div className="flex items-center gap-1 text-[#0369A1] dark:text-[#00B5F1]">
                         <Star className="w-4 h-4 fill-current" />
                         <span className="text-sm font-medium">
                           {product.rating}
                         </span>
-                        <span className="text-slate-400 text-sm">
+                        <span className="text-[#475569] dark:text-slate-400 text-sm">
                           ({product.reviews})
                         </span>
                       </div>
                     </div>
 
                     {/* Category */}
-                    <span className="text-xs font-bold text-[#00B5F1] uppercase tracking-wider mb-2 block">
+                    <span className="text-xs font-bold text-[#0369A1] dark:text-[#00B5F1] uppercase tracking-wider mb-2 block">
                       {product.category}
                     </span>
 
                     {/* Title */}
-                    <h3 className="text-xl font-bold text-text-primary mb-3 group-hover:text-[#00B5F1] transition-colors">
+                    <h3 className="text-xl font-bold text-[#0F172A] dark:text-text-primary mb-3 group-hover:text-[#0369A1] dark:group-hover:text-[#00B5F1] transition-colors">
                       {product.name}
                     </h3>
 
                     {/* Description */}
-                    <p className="text-slate-400 text-sm mb-4 line-clamp-2">
+                    <p className="text-[#334155] dark:text-slate-400 text-sm mb-4 line-clamp-2">
                       {product.description}
                     </p>
 
@@ -377,9 +377,9 @@ export default function ProductsPage() {
                       {product.features.map((feature, idx) => (
                         <div
                           key={idx}
-                          className="flex items-center gap-2 text-sm text-slate-400"
+                          className="flex items-center gap-2 text-sm text-[#334155] dark:text-slate-400"
                         >
-                          <CheckCircle className="w-4 h-4 text-[#00B5F1]" />
+                          <CheckCircle className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
                           <span>{feature}</span>
                         </div>
                       ))}
@@ -387,7 +387,7 @@ export default function ProductsPage() {
 
                     {/* Price - Removed, replaced with CTA */}
                     <div className="mb-6">
-                      <p className="text-sm text-slate-400 mb-2">
+                      <p className="text-sm text-[#475569] dark:text-slate-400 mb-2">
                         Egyedi árazás a projekt igényei szerint
                       </p>
                     </div>
@@ -395,7 +395,7 @@ export default function ProductsPage() {
                     {/* CTA */}
                     <Link
                       href="/kapcsolat"
-                      className="flex items-center justify-center gap-2 w-full py-3 bg-linear-to-r from-[#00B5F1] to-[#5B21B6] text-slate-950 font-bold rounded-xl hover:shadow-[0_8px_24px_rgba(0, 181, 241,0.3)] transition-all group-hover:scale-[1.02]"
+                      className="flex items-center justify-center gap-2 w-full py-3 bg-linear-to-r from-[#075985] to-[#5B21B6] hover:from-[#0369A1] hover:to-[#6D28D9] text-white font-bold rounded-xl hover:shadow-[0_8px_24px_rgba(3,105,161,0.3)] transition-all group-hover:scale-[1.02]"
                     >
                       <span>Egyedi árajánlat kérése</span>
                       <ArrowRight className="w-4 h-4" />
@@ -409,18 +409,18 @@ export default function ProductsPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 border-t border-slate-800 bg-bg-surface">
+      <section className="py-16 border-t border-slate-200 dark:border-slate-800 bg-[#F1F5F9] dark:bg-bg-surface">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-3xl font-bold text-text-primary mb-4">
+          <h2 className="text-3xl font-bold text-[#0F172A] dark:text-text-primary mb-4">
             Keresel egyedi megoldást?
           </h2>
-          <p className="text-slate-400 mb-8">
+          <p className="text-[#334155] dark:text-slate-400 mb-8">
             Egyedi AI workflow vagy digitális eszköz fejlesztése? Lépj
             kapcsolatba, és együtt találjuk meg a legjobb megoldást!
           </p>
           <Link
             href="/kapcsolat"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-linear-to-r from-[#00B5F1] to-[#5B21B6] text-slate-950 font-bold rounded-xl hover:shadow-[0_8px_24px_rgba(0, 181, 241,0.3)] transition-all"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-linear-to-r from-[#075985] to-[#5B21B6] hover:from-[#0369A1] hover:to-[#6D28D9] text-white font-bold rounded-xl hover:shadow-[0_8px_24px_rgba(3,105,161,0.3)] transition-all"
           >
             Kapcsolatfelvétel
             <ArrowRight className="w-4 h-4" />

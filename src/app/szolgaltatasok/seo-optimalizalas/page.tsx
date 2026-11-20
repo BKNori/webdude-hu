@@ -165,7 +165,7 @@ export default async function SEOOptimizationPage() {
         }}
       />
 
-      <div className="bg-slate-950 text-text-primary relative overflow-hidden min-h-screen">
+      <div className="bg-[#F8FAFC] dark:bg-slate-950 text-text-primary relative overflow-hidden min-h-screen">
         <div className="absolute inset-0 bg-linear-to-b from-[#00B5F1]/5 via-transparent to-[#5B21B6]/5" />
 
         <div className="relative z-10">
@@ -174,7 +174,7 @@ export default async function SEOOptimizationPage() {
             title={
               <>
                 SEO optimalizálás: nem csak látogatókat, hanem{" "}
-                <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6] italic">
+                <span className="text-transparent bg-clip-text bg-linear-to-r from-[#0369A1] to-[#5B21B6] dark:from-[#00B5F1] dark:to-[#5B21B6] italic">
                   releváns érdeklődőket
                 </span>{" "}
                 hoz
@@ -190,13 +190,13 @@ export default async function SEOOptimizationPage() {
         </div>
 
         {/* Direct Answer Block - AEO optimalizált "SEO Optimalizálás Áttekintése" */}
-        <section className="relative py-12 bg-bg-base border-y border-white/5">
+        <section className="relative py-12 bg-bg-base border-y border-slate-200/80 dark:border-white/5">
           <div className="max-w-4xl mx-auto px-6 text-center">
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-[#0F172A] dark:text-white mb-4">
               SEO optimalizálás — organikus forgalom és Google-helyezés javítás
             </h2>
-            <p className="text-base md:text-lg text-slate-300 leading-relaxed">
-              <span className="text-[#00B5F1] font-semibold">
+            <p className="text-base md:text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
+              <span className="text-[#0369A1] dark:text-[#00B5F1] font-semibold">
                 WebDude SEO optimalizálás:
               </span>{" "}
               Technikai SEO audit, kulcsszó-stratégia, tartalomoptimalizálás és
@@ -212,10 +212,10 @@ export default async function SEOOptimizationPage() {
         <section className="py-24 relative overflow-hidden z-10">
           <div className="max-w-6xl mx-auto px-6">
             <div className="text-center max-w-3xl mx-auto mb-16">
-              <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+              <h2 className="text-3xl md:text-5xl font-bold text-[#0F172A] dark:text-white mb-6">
                 SEO Szolgáltatásaim KKV-knak
               </h2>
-              <p className="text-lg text-slate-400">
+              <p className="text-lg text-slate-600 dark:text-slate-400">
                 Mindent egy kézben: a technikai beállításoktól a tartalmi
                 stratégiáig.
               </p>
@@ -227,15 +227,15 @@ export default async function SEOOptimizationPage() {
                 return (
                   <div
                     key={index}
-                    className="bg-slate-900/60 backdrop-blur-md p-8 rounded-2xl border border-slate-800 hover:border-[#00B5F1]/40 transition-all duration-300 group"
+                    className="bg-white dark:bg-slate-900/60 backdrop-blur-md p-8 rounded-2xl border border-slate-200/90 dark:border-slate-800 hover:border-[#00B5F1]/40 transition-all duration-300 group"
                   >
-                    <div className="w-12 h-12 rounded-xl bg-slate-950 border border-[#00B5F1]/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                      <Icon className="w-6 h-6 text-[#00B5F1]" />
+                    <div className="w-12 h-12 rounded-xl bg-sky-50 dark:bg-slate-950 border border-[#00B5F1]/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                      <Icon className="w-6 h-6 text-[#0369A1] dark:text-[#00B5F1]" />
                     </div>
-                    <h3 className="text-xl font-bold text-white mb-3">
+                    <h3 className="text-xl font-bold text-[#0F172A] dark:text-white mb-3">
                       {feature.title}
                     </h3>
-                    <p className="text-slate-400 text-sm">
+                    <p className="text-slate-600 dark:text-slate-400 text-sm">
                       {feature.description}
                     </p>
                   </div>
@@ -246,13 +246,13 @@ export default async function SEOOptimizationPage() {
         </section>
 
         {/* ── Mikro-GYIK (AEO) ── */}
-        <section className="py-24 bg-slate-900/40 border-t border-slate-800 relative z-10">
+        <section className="py-24 bg-[#F1F5F9] dark:bg-slate-900/40 border-t border-slate-200/90 dark:border-slate-800 relative z-10">
           <div className="max-w-4xl mx-auto px-6">
             <div className="text-center mb-16">
-              <h2 className="text-3xl font-bold text-white mb-4">
+              <h2 className="text-3xl font-bold text-[#0F172A] dark:text-white mb-4">
                 Gyakori kérdések (AEO)
               </h2>
-              <p className="text-slate-400">
+              <p className="text-slate-600 dark:text-slate-400">
                 Közvetlen válaszok a legfontosabb SEO kérdésekre.
               </p>
             </div>
@@ -261,12 +261,12 @@ export default async function SEOOptimizationPage() {
               {faqs.map((faq, index) => (
                 <div
                   key={index}
-                  className="bg-slate-900/80 border border-white/5 rounded-2xl p-6 hover:border-[#00B5F1]/20 transition-colors"
+                  className="bg-white dark:bg-slate-900/80 border border-slate-200/80 dark:border-white/5 rounded-2xl p-6 hover:border-[#00B5F1]/20 transition-colors"
                 >
-                  <h3 className="text-lg font-semibold text-[#00B5F1] mb-3">
+                  <h3 className="text-lg font-semibold text-[#0369A1] dark:text-[#00B5F1] mb-3">
                     {faq.question}
                   </h3>
-                  <p className="text-slate-400 text-sm leading-relaxed">
+                  <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
                     {faq.answer}
                   </p>
                 </div>
@@ -277,17 +277,17 @@ export default async function SEOOptimizationPage() {
 
         <section className="py-32 text-center relative z-10">
           <div className="max-w-2xl mx-auto px-6">
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-              Nézzük meg a <span className="text-[#00B5F1] italic">Te</span>{" "}
+            <h2 className="text-3xl md:text-5xl font-bold text-[#0F172A] dark:text-white mb-6">
+              Nézzük meg a <span className="text-[#0369A1] dark:text-[#00B5F1] italic">Te</span>{" "}
               weboldaladat is?
             </h2>
-            <p className="text-slate-400 mb-10 text-lg">
+            <p className="text-slate-600 dark:text-slate-400 mb-10 text-lg">
               Kérj egy SEO audiot, és derítsük ki, miért nem hoz elég érdeklődőt
               az oldalad.
             </p>
             <Link
               href="/kapcsolat"
-              className="inline-flex items-center gap-3 px-8 py-4 rounded-full font-bold text-slate-950 bg-linear-to-r from-[#00B5F1] to-[#5B21B6] hover:shadow-[0_8px_32px_rgba(0,181,241,0.35)] transition-all duration-300"
+              className="inline-flex items-center gap-3 px-8 py-4 rounded-full font-bold text-white bg-linear-to-r from-[#075985] to-[#5B21B6] hover:from-[#0369A1] hover:to-[#6D28D9] hover:shadow-[0_8px_32px_rgba(0,181,241,0.35)] transition-all duration-300"
             >
               Kapcsolat <ArrowRight className="w-5 h-5" />
             </Link>

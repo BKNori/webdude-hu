@@ -12,7 +12,8 @@
  */
 
 import ResponsiveImage from "@/components/molecules/ResponsiveImage";
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
+import { useHydratedReducedMotion } from "@/hooks/useMotionPreset";
 import {
   Server,
   ShieldCheck,
@@ -79,7 +80,7 @@ const TECH_WINS: TechWin[] = [
 ];
 
 export default function NedelMarketBentoGrid() {
-  const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = useHydratedReducedMotion();
 
   return (
     <section className="px-6 py-20">

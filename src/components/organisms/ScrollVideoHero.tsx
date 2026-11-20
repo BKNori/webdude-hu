@@ -64,8 +64,8 @@ export default function ScrollVideoHero({
           </div>
         )}
 
-        {/* Dark overlay for text readability */}
-        <div className="absolute inset-0 bg-slate-900/40 pointer-events-none" />
+        {/* Dual-theme scrim overlay for text readability */}
+        <div className="absolute inset-0 bg-white/80 dark:bg-slate-900/45 backdrop-blur-[2px] dark:backdrop-blur-none pointer-events-none" />
 
         {/* Content overlay */}
         {children && (

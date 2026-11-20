@@ -1,10 +1,11 @@
 "use client";
 
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
+import { useHydratedReducedMotion } from "@/hooks/useMotionPreset";
 import { ShieldCheck, Award, Code2, type LucideIcon } from "lucide-react";
 
 export default function BtshopEeatSection() {
-  const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = useHydratedReducedMotion();
 
   const signals: {
     icon: LucideIcon;
@@ -51,15 +52,15 @@ export default function BtshopEeatSection() {
           transition={{ type: "spring", stiffness: 100, damping: 20 }}
           className="text-center mb-14"
         >
-          <span className="text-xs font-bold uppercase tracking-[0.3em] text-brand-primary">
+          <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#0369A1] dark:text-brand-primary">
             Egyetlen szerző, teljes felelősség
           </span>
           <h2
             id="btshop-eeat-heading"
-            className="mt-4 text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-text-primary"
+            className="mt-4 text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#0F172A] dark:text-text-primary"
           >
             Nem ügynökségi lánc.{" "}
-            <span className="text-transparent bg-clip-text bg-linear-to-r from-brand-primary to-brand-secondary">
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-[#0369A1] to-[#6D28D9] dark:from-brand-primary dark:to-brand-secondary">
               Közvetlen mérnöki precizitás.
             </span>
           </h2>
@@ -79,21 +80,21 @@ export default function BtshopEeatSection() {
                 damping: 20,
                 delay: index * 0.08,
               }}
-              className="group relative bg-slate-950/80 backdrop-blur-2xl border border-slate-800/80 hover:border-brand-primary/50 rounded-3xl p-8 text-center transition-colors"
+              className="group relative luminous-card rounded-3xl p-8 text-center"
             >
               <div
                 aria-hidden
-                className="absolute inset-x-8 top-0 h-px bg-linear-to-r from-transparent via-brand-primary/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
+                className="absolute inset-x-8 top-0 h-px bg-linear-to-r from-transparent via-[#0369A1]/40 dark:via-brand-primary/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
               />
               <signal.icon
-                className="w-9 h-9 text-brand-primary mx-auto mb-4"
+                className="w-9 h-9 text-[#0369A1] dark:text-brand-primary mx-auto mb-4"
                 strokeWidth={1.5}
                 aria-hidden
               />
-              <div className="text-3xl md:text-4xl font-black text-text-primary tracking-tight">
+              <div className="text-3xl md:text-4xl font-black text-[#0F172A] dark:text-text-primary tracking-tight">
                 {signal.value}
               </div>
-              <div className="mt-2 text-sm text-slate-400 leading-snug">
+              <div className="mt-2 text-sm text-[#475569] dark:text-slate-400 leading-snug">
                 {signal.label}
               </div>
             </motion.div>
@@ -106,11 +107,11 @@ export default function BtshopEeatSection() {
           whileInView={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ type: "spring", stiffness: 100, damping: 20, delay: 0.24 }}
-          className="relative bg-slate-950/80 backdrop-blur-2xl border border-slate-800/80 rounded-3xl p-10 md:p-14"
+          className="relative luminous-card rounded-3xl p-10 md:p-14"
         >
-          <p className="text-xl md:text-2xl leading-relaxed text-slate-200 text-center">
+          <p className="text-xl md:text-2xl leading-relaxed text-[#334155] dark:text-slate-200 text-center">
             26 év grafikai és 16 év komplex webfejlesztői tapasztalat.{" "}
-            <span className="text-transparent bg-clip-text bg-linear-to-r from-brand-primary to-brand-secondary font-bold">
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-[#0369A1] to-[#6D28D9] dark:from-brand-primary dark:to-brand-secondary font-bold">
               Nincs ügynökségi lánc, csak közvetlen, mérnöki precizitás.
             </span>{" "}
             A rendszerterv, az implementáció és a döntési jog ugyanannál a

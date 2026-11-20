@@ -73,6 +73,8 @@ export default async function RootLayout({ children }: RootLayoutProps) {
     <MotionConfig reducedMotion="user">
       <html
         lang="hu"
+        data-theme="light"
+        suppressHydrationWarning
         data-scroll-behavior="smooth"
         className="overflow-x-hidden"
       >
@@ -80,6 +82,12 @@ export default async function RootLayout({ children }: RootLayoutProps) {
           <meta
             name="viewport"
             content="width=device-width, initial-scale=1.0"
+          />
+          <script
+            id="webdude-theme-init"
+            dangerouslySetInnerHTML={{
+              __html: `(function(){try{var s=localStorage.getItem('webdude-theme');var t=s==='dark'?'dark':'light';document.documentElement.setAttribute('data-theme',t);document.documentElement.style.colorScheme=t;}catch(e){document.documentElement.setAttribute('data-theme','light');}})();`,
+            }}
           />
           {/* Preconnect for performance */}
           <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -123,7 +131,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
           </a>
 
           {/* Globális CSS Háttérréteg */}
-          <div className="fixed inset-0 pointer-events-none -z-10 overflow-hidden">
+          <div className="fixed inset-0 pointer-events-none -z-10 overflow-hidden opacity-35 dark:opacity-100">
             <div className="absolute top-[-10%] left-[15%] w-150 h-150 rounded-full bg-[#00B5F1]/15 blur-[140px] bg-ambient-glow-1" />
             <div className="absolute top-[40%] right-[10%] w-125 h-125 rounded-full bg-[#00B5F1]/10 blur-[150px] bg-ambient-glow-2" />
             <div className="absolute bottom-[-10%] left-[20%] w-[162.5] h-[162.5] rounded-full bg-[#00B5F1]/10 blur-[160px] bg-ambient-glow-1" />

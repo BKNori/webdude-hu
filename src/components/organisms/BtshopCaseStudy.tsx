@@ -3,12 +3,8 @@
 import ResponsiveImage from "@/components/molecules/ResponsiveImage";
 import BtshopEeatSection from "@/components/organisms/BtshopEeatSection";
 import Link from "next/link";
-import {
-  motion,
-  useScroll,
-  useTransform,
-  useReducedMotion,
-} from "motion/react";
+import { motion, useScroll, useTransform } from "motion/react";
+import { useHydratedReducedMotion } from "@/hooks/useMotionPreset";
 import { Work } from "@/types/work";
 import { useRef } from "react";
 import {
@@ -33,7 +29,7 @@ interface BtshopCaseStudyProps {
 
 export default function BtshopCaseStudy({ project }: BtshopCaseStudyProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = useHydratedReducedMotion();
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"],
@@ -69,7 +65,7 @@ export default function BtshopCaseStudy({ project }: BtshopCaseStudyProps) {
               A felső/lejtő gradiens a szöveget kontrasztossá teszi, a középső
               slate-950 réteg + backdrop-blur a képet "üveg mögé" rejti, az alsó
               lila-cián glow a brand 2%-os kiemelését adja. */}
-          <div className="absolute inset-0 bg-slate-950/50 backdrop-blur-[1px]" />
+          <div className="absolute inset-0 bg-[#F8FAFC]/78 dark:bg-slate-950/50 backdrop-blur-[1px]" />
           <div className="absolute inset-0 bg-linear-to-b from-bg-base via-bg-base/40 to-bg-base" />
           <div
             aria-hidden
@@ -99,9 +95,9 @@ export default function BtshopCaseStudy({ project }: BtshopCaseStudyProps) {
                 delay: shouldReduceMotion ? 0 : 0.2,
                 duration: shouldReduceMotion ? 0 : 0.6,
               }}
-              className="inline-block px-6 py-3 bg-sky-500/10 border border-sky-500/30 rounded-full backdrop-blur-sm"
+              className="inline-block px-6 py-3 bg-sky-500/10 border border-[#0369A1]/30 dark:border-sky-500/30 rounded-full backdrop-blur-sm"
             >
-              <span className="text-sky-400 text-sm font-bold uppercase tracking-widest">
+              <span className="text-[#0369A1] dark:text-sky-400 text-sm font-bold uppercase tracking-widest">
                 {project.year || new Date().getFullYear()} – {project.category}
               </span>
             </motion.div>
@@ -129,7 +125,7 @@ export default function BtshopCaseStudy({ project }: BtshopCaseStudyProps) {
                 delay: shouldReduceMotion ? 0 : 0.6,
                 duration: shouldReduceMotion ? 0 : 0.8,
               }}
-              className="text-xl md:text-2xl text-slate-200 max-w-3xl mx-auto font-light"
+              className="text-xl md:text-2xl text-[#1E293B] dark:text-slate-200 max-w-3xl mx-auto font-light"
             >
               Amikor a weboldal nemcsak elad, hanem a teljes céges
               infrastruktúrát mozgatja. Zéró manuális adminisztráció, saját
@@ -163,7 +159,7 @@ export default function BtshopCaseStudy({ project }: BtshopCaseStudyProps) {
                     delay: shouldReduceMotion ? 0 : 0.9 + index * 0.1,
                     duration: shouldReduceMotion ? 0 : 0.4,
                   }}
-                  className="px-4 py-2 bg-slate-800/50 border border-slate-700 rounded-full text-sm text-slate-300 backdrop-blur-sm"
+                  className="px-4 py-2 bg-white/90 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-full text-sm text-[#334155] dark:text-slate-300 backdrop-blur-sm"
                 >
                   {service}
                 </motion.span>
@@ -191,7 +187,7 @@ export default function BtshopCaseStudy({ project }: BtshopCaseStudyProps) {
       </section>
 
       {/* Kihívás és Megoldás Szekció */}
-      <section className="py-32 px-6 bg-linear-to-b from-bg-base to-slate-900/30">
+      <section className="py-32 px-6 bg-linear-to-b from-bg-base to-[#F1F5F9] dark:to-slate-900/30">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -201,7 +197,7 @@ export default function BtshopCaseStudy({ project }: BtshopCaseStudyProps) {
             className="mb-20"
           >
             <h2 className="text-4xl md:text-6xl font-bold mb-6">
-              <span className="text-sky-400">A Kihívás</span> és a Megoldás
+              <span className="text-[#0369A1] dark:text-sky-400">A Kihívás</span> és a Megoldás
             </h2>
             <div className="w-24 h-1 bg-sky-500 rounded-full" />
           </motion.div>
@@ -214,12 +210,12 @@ export default function BtshopCaseStudy({ project }: BtshopCaseStudyProps) {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="space-y-8"
             >
-              <div className="bg-slate-900/60 border border-slate-800 rounded-3xl p-10 backdrop-blur-sm">
-                <h3 className="text-2xl font-bold text-sky-400 mb-6 flex items-center gap-3">
+              <div className="bg-white/95 dark:bg-slate-900/60 shadow-[0_12px_32px_rgba(15,23,42,0.06)] border border-slate-200 dark:border-slate-800 rounded-3xl p-10 backdrop-blur-sm">
+                <h3 className="text-2xl font-bold text-[#0369A1] dark:text-sky-400 mb-6 flex items-center gap-3">
                   <span className="w-2 h-8 bg-sky-500 rounded-full" />
                   Enterprise E-commerce
                 </h3>
-                <p className="text-slate-300 leading-relaxed text-lg">
+                <p className="text-[#334155] dark:text-slate-300 leading-relaxed text-lg">
                   Egy több mint 3000 termékkel dolgozó webáruház esetében a
                   manuális készletkezelés és számlázás nem opció – az üzletmenet
                   gátja. Az ügyfél alapvető elvárása az volt, hogy a weboldal
@@ -229,12 +225,12 @@ export default function BtshopCaseStudy({ project }: BtshopCaseStudyProps) {
                 </p>
               </div>
 
-              <div className="bg-slate-900/60 border border-slate-800 rounded-3xl p-10 backdrop-blur-sm">
-                <h3 className="text-2xl font-bold text-sky-400 mb-6 flex items-center gap-3">
+              <div className="bg-white/95 dark:bg-slate-900/60 shadow-[0_12px_32px_rgba(15,23,42,0.06)] border border-slate-200 dark:border-slate-800 rounded-3xl p-10 backdrop-blur-sm">
+                <h3 className="text-2xl font-bold text-[#0369A1] dark:text-sky-400 mb-6 flex items-center gap-3">
                   <span className="w-2 h-8 bg-sky-500 rounded-full" />
                   Komplex Automatizáció
                 </h3>
-                <p className="text-slate-300 leading-relaxed text-lg">
+                <p className="text-[#334155] dark:text-slate-300 leading-relaxed text-lg">
                   A 16 éves WordPress fejlesztői rutinomat felhasználva nem
                   csupán egy WooCommerce áruházat építettem, hanem egy
                   robusztus, API-vezérelt adatközpontot. Kétirányú ERP
@@ -276,7 +272,7 @@ export default function BtshopCaseStudy({ project }: BtshopCaseStudyProps) {
       </section>
 
       {/* Technikai Szolgáltatások Szekció */}
-      <section className="py-32 px-6 bg-linear-to-b from-slate-900/30 to-sky-950/20 border-y border-sky-500/20">
+      <section className="py-32 px-6 bg-linear-to-b from-[#F1F5F9] to-[#EAF1FA] dark:from-slate-900/30 dark:to-sky-950/20 border-y border-[#0369A1]/25 dark:border-sky-500/20">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -292,7 +288,7 @@ export default function BtshopCaseStudy({ project }: BtshopCaseStudyProps) {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="inline-block px-6 py-3 bg-sky-500/20 border border-sky-500/40 rounded-full backdrop-blur-sm mb-6"
             >
-              <span className="text-sky-400 text-sm font-bold uppercase tracking-widest">
+              <span className="text-[#0369A1] dark:text-sky-400 text-sm font-bold uppercase tracking-widest">
                 <Zap
                   className="w-4 h-4 inline-block align-[-2px]"
                   aria-hidden="true"
@@ -301,9 +297,9 @@ export default function BtshopCaseStudy({ project }: BtshopCaseStudyProps) {
               </span>
             </motion.div>
             <h2 className="text-4xl md:text-6xl font-bold mb-6">
-              Technikai <span className="text-sky-400">Megoldások</span>
+              Technikai <span className="text-[#0369A1] dark:text-sky-400">Megoldások</span>
             </h2>
-            <p className="text-slate-400 text-xl max-w-3xl mx-auto">
+            <p className="text-[#475569] dark:text-slate-400 text-xl max-w-3xl mx-auto">
               Komplex API integrációk és egyedi fejlesztések az automatizációért
             </p>
           </motion.div>
@@ -343,7 +339,7 @@ export default function BtshopCaseStudy({ project }: BtshopCaseStudyProps) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="group relative bg-slate-950/80 backdrop-blur-2xl border border-slate-800/80 hover:border-brand-primary/50 rounded-3xl p-8 transition-colors duration-300"
+                className="group relative bg-white/95 dark:bg-slate-950/80 shadow-[0_12px_32px_rgba(15,23,42,0.06)] backdrop-blur-2xl border border-slate-200 dark:border-slate-800/80 hover:border-brand-primary/50 rounded-3xl p-8 transition-colors duration-300"
               >
                 {/* Top glow csík — hover-re megjelenő fényléc */}
                 <div
@@ -351,14 +347,14 @@ export default function BtshopCaseStudy({ project }: BtshopCaseStudyProps) {
                   className="absolute inset-x-8 top-0 h-px bg-linear-to-r from-transparent via-brand-primary/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
                 />
                 <service.icon
-                  className="w-10 h-10 text-brand-primary mb-5"
+                  className="w-10 h-10 text-[#0369A1] dark:text-brand-primary mb-5"
                   strokeWidth={1.5}
                   aria-hidden
                 />
                 <h3 className="text-xl font-bold text-text-primary mb-3 group-hover:text-brand-primary transition-colors">
                   {service.title}
                 </h3>
-                <p className="text-slate-400 leading-relaxed">
+                <p className="text-[#475569] dark:text-slate-400 leading-relaxed">
                   {service.description}
                 </p>
               </motion.div>
@@ -371,7 +367,7 @@ export default function BtshopCaseStudy({ project }: BtshopCaseStudyProps) {
       <BtshopEeatSection />
 
       {/* Eredmények Szekció */}
-      <section className="py-32 px-6 bg-linear-to-br from-sky-500/10 to-blue-500/10 border-y border-sky-500/20">
+      <section className="py-32 px-6 bg-linear-to-br from-sky-500/10 to-blue-500/10 border-y border-[#0369A1]/25 dark:border-sky-500/20">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -381,7 +377,7 @@ export default function BtshopCaseStudy({ project }: BtshopCaseStudyProps) {
             className="text-center"
           >
             <h2 className="text-4xl md:text-6xl font-bold mb-12">
-              <span className="text-sky-400">Az Eredmény</span>
+              <span className="text-[#0369A1] dark:text-sky-400">Az Eredmény</span>
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
@@ -397,12 +393,12 @@ export default function BtshopCaseStudy({ project }: BtshopCaseStudyProps) {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true, margin: "-100px" }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="bg-slate-900/60 backdrop-blur-sm border border-sky-500/30 rounded-3xl p-8"
+                  className="bg-white/95 dark:bg-slate-900/60 shadow-[0_12px_32px_rgba(15,23,42,0.06)] backdrop-blur-sm border border-[#0369A1]/30 dark:border-sky-500/30 rounded-3xl p-8"
                 >
-                  <div className="text-5xl md:text-6xl font-bold text-sky-400 mb-3">
+                  <div className="text-5xl md:text-6xl font-bold text-[#0369A1] dark:text-sky-400 mb-3">
                     {stat.value}
                   </div>
-                  <div className="text-slate-300 font-medium">{stat.label}</div>
+                  <div className="text-[#334155] dark:text-slate-300 font-medium">{stat.label}</div>
                 </motion.div>
               ))}
             </div>
@@ -415,16 +411,16 @@ export default function BtshopCaseStudy({ project }: BtshopCaseStudyProps) {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true, margin: "-100px" }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="bg-slate-900/60 backdrop-blur-sm border border-sky-500/30 rounded-3xl p-8"
+                  className="bg-white/95 dark:bg-slate-900/60 shadow-[0_12px_32px_rgba(15,23,42,0.06)] backdrop-blur-sm border border-[#0369A1]/30 dark:border-sky-500/30 rounded-3xl p-8"
                 >
-                  <div className="text-sky-400 font-bold text-xl mb-3">
+                  <div className="text-[#0369A1] dark:text-sky-400 font-bold text-xl mb-3">
                     {result}
                   </div>
                 </motion.div>
               ))}
             </div>
 
-            <p className="text-slate-200 text-xl max-w-3xl mx-auto leading-relaxed">
+            <p className="text-[#1E293B] dark:text-slate-200 text-xl max-w-3xl mx-auto leading-relaxed">
               A BTShop.hu projekt tökéletes példája annak, amikor a nagy
               volumenű e-commerce és a legmodernebb API technológiák egy kézben
               összpontosul. Az eredmény egy teljesen automatizált, robusztus
@@ -446,10 +442,10 @@ export default function BtshopCaseStudy({ project }: BtshopCaseStudyProps) {
             className="space-y-10"
           >
             <h2 className="text-4xl md:text-6xl font-bold">
-              Készen állsz a <span className="text-sky-400">következő</span>{" "}
+              Készen állsz a <span className="text-[#0369A1] dark:text-sky-400">következő</span>{" "}
               szintre?
             </h2>
-            <p className="text-slate-400 text-xl max-w-2xl mx-auto">
+            <p className="text-[#475569] dark:text-slate-400 text-xl max-w-2xl mx-auto">
               Hogyan tudnám a te vállalkozásodat is a digitális élvonalba
               repíteni enterprise e-commerce megoldásokkal?
             </p>
@@ -462,7 +458,7 @@ export default function BtshopCaseStudy({ project }: BtshopCaseStudyProps) {
               </Link>
               <Link
                 href="/munkak"
-                className="px-10 py-5 border border-slate-600 hover:border-sky-500 text-slate-300 hover:text-sky-400 font-bold rounded-full transition-all duration-300"
+                className="px-10 py-5 border border-slate-300 dark:border-slate-600 hover:border-sky-500 text-[#334155] dark:text-slate-300 hover:text-[#0369A1] dark:hover:text-sky-400 font-bold rounded-full transition-all duration-300"
               >
                 Vissza a munkákhoz
               </Link>

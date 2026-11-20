@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion } from "motion/react";
+import { useHydratedReducedMotion } from "@/hooks/useMotionPreset";
 
 interface TimelineEvent {
   year: string;
@@ -11,6 +12,7 @@ interface TimelineEvent {
 }
 
 export default function Timeline() {
+  const shouldReduceMotion = useHydratedReducedMotion();
   const basicYears: TimelineEvent[] = [
     {
       year: "1981 - 1989",
@@ -84,39 +86,51 @@ export default function Timeline() {
   return (
     <div className="relative py-10 px-4 max-w-4xl mx-auto">
       {/* Central Neon Line */}
-      <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-[#00B5F1] opacity-20 transform md:-translate-x-1/2" />
+      <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-[#0369A1] dark:bg-[#00B5F1] opacity-25 dark:opacity-20 transform md:-translate-x-1/2" />
 
       {/* 1. Alapozó évek (Rövidítve) */}
       <div className="mb-20">
         <motion.h3
-          initial={{ opacity: 0, y: 20 }}
+          initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center text-2xl md:text-3xl font-heading mb-10 text-text-primary"
+          transition={
+            shouldReduceMotion
+              ? { duration: 0 }
+              : { type: "spring", stiffness: 100, damping: 20 }
+          }
+          className="text-center text-2xl md:text-3xl font-heading mb-10 text-[#0F172A] dark:text-text-primary"
         >
           Alapozó évek
         </motion.h3>
-        <div className="space-y-10 opacity-70">
+        <div className="space-y-10 opacity-90 dark:opacity-85">
           {basicYears.map((e, i) => (
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
+              initial={
+                shouldReduceMotion ? { opacity: 1 } : { opacity: 0, scale: 0.95 }
+              }
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, margin: "-50px" }}
+              transition={
+                shouldReduceMotion
+                  ? { duration: 0 }
+                  : { type: "spring", stiffness: 100, damping: 20 }
+              }
               key={i}
               className={`relative flex flex-col md:flex-row items-center gap-6 group ${i % 2 === 0 ? "" : "md:flex-row-reverse"}`}
             >
-              <div className="absolute left-8 md:left-1/2 w-4 h-4 bg-bg-base border-2 border-slate-700 rounded-full transform -translate-x-1/2 z-10 group-hover:border-[#00B5F1] transition-colors" />
+              <div className="absolute left-8 md:left-1/2 w-4 h-4 bg-[#F8FAFC] dark:bg-[#0B1120] border-2 border-slate-400 dark:border-slate-600 rounded-full transform -translate-x-1/2 z-10 group-hover:border-[#0369A1] dark:group-hover:border-[#00B5F1] transition-colors" />
               <div
                 className={`w-full md:w-1/2 pl-16 md:pl-0 ${i % 2 === 0 ? "md:pr-10 md:text-right" : "md:pl-10"}`}
               >
-                <span className="text-xs font-bold tracking-widest block mb-1 text-slate-400">
+                <span className="text-xs font-bold tracking-widest block mb-1 text-[#334155] dark:text-slate-300">
                   {e.year}
                 </span>
-                <h4 className="text-lg font-bold text-text-primary leading-tight">
+                <h4 className="text-lg font-bold text-[#0F172A] dark:text-white leading-tight">
                   {e.title}
                 </h4>
                 {e.location && (
-                  <span className="text-[10px] uppercase text-slate-400">
+                  <span className="text-[10px] uppercase text-[#475569] dark:text-slate-400">
                     {e.location}
                   </span>
                 )}
@@ -130,41 +144,51 @@ export default function Timeline() {
       {/* 2. Szakmai alapkövek */}
       <div className="pt-10">
         <motion.h3
-          initial={{ opacity: 0, y: 20 }}
+          initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center text-4xl md:text-5xl font-heading mb-16 text-text-primary"
+          transition={
+            shouldReduceMotion
+              ? { duration: 0 }
+              : { type: "spring", stiffness: 100, damping: 20 }
+          }
+          className="text-center text-4xl md:text-5xl font-heading mb-16 text-[#0F172A] dark:text-white"
         >
-          Szakmai <span className="text-[#00B5F1]">alapkövek</span>
+          Szakmai <span className="text-[#0369A1] dark:text-[#00B5F1]">alapkövek</span>
         </motion.h3>
         <div className="space-y-20">
           {proYears.map((e, i) => (
             <motion.div
-              initial={{ opacity: 0, y: 40 }}
+              initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 32 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
+              transition={
+                shouldReduceMotion
+                  ? { duration: 0 }
+                  : { type: "spring", stiffness: 100, damping: 20 }
+              }
               key={i}
               className={`relative flex flex-col md:flex-row items-center gap-12 group ${i % 2 === 0 ? "" : "md:flex-row-reverse"}`}
             >
               {/* Animated Dot */}
-              <div className="absolute left-8 md:left-1/2 w-8 h-8 bg-bg-base border-4 border-[#00B5F1] rounded-full transform -translate-x-1/2 z-10 transition-all duration-500 shadow-[0_0_15px_rgba(0, 181, 241,0.2)] group-hover:scale-125 group-hover:bg-[#00B5F1]" />
+              <div className="absolute left-8 md:left-1/2 w-8 h-8 bg-[#F8FAFC] dark:bg-[#0B1120] border-4 border-[#0369A1] dark:border-[#00B5F1] rounded-full transform -translate-x-1/2 z-10 transition-all duration-500 shadow-[0_0_15px_rgba(3,105,161,0.2)] dark:shadow-[0_0_15px_rgba(0,181,241,0.2)] group-hover:scale-125 group-hover:bg-[#0369A1] dark:group-hover:bg-[#00B5F1]" />
 
               <div
                 className={`w-full md:w-1/2 pl-16 md:pl-0 ${i % 2 === 0 ? "md:pr-16 md:text-right" : "md:pl-16"}`}
               >
-                <div className="glass-card p-8 bg-bg-surface/90 hover:-translate-y-2 transition-transform duration-500 border border-slate-700/60 shadow-[0_8px_24px_rgba(0, 181, 241,0.06)] hover:border-[#00B5F1]/50 hover:shadow-[0_18px_40px_rgba(0, 181, 241,0.15)] rounded-2xl">
-                  <span className="text-[#00B5F1] font-black text-sm tracking-[0.2em] block mb-2 uppercase">
+                <div className="luminous-card p-8">
+                  <span className="text-[#0369A1] dark:text-[#00B5F1] font-mono font-bold text-sm tracking-[0.2em] block mb-2 uppercase">
                     {e.year}
                   </span>
-                  <h4 className="text-2xl md:text-3xl font-bold mb-4 text-text-primary leading-tight">
+                  <h4 className="text-2xl md:text-3xl font-bold mb-4 text-[#0F172A] dark:text-white leading-tight">
                     {e.title}
                   </h4>
-                  <p className="text-slate-400 text-base leading-relaxed">
+                  <p className="text-[#334155] dark:text-slate-300 text-base leading-relaxed">
                     {e.desc}
                   </p>
                   {e.location && (
                     <div
-                      className={`mt-6 flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-slate-400 ${i % 2 === 0 ? "justify-end" : "justify-start"}`}
+                      className={`mt-6 flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-[#475569] dark:text-slate-400 ${i % 2 === 0 ? "justify-end" : "justify-start"}`}
                     >
                       {e.location}
                     </div>
@@ -180,12 +204,17 @@ export default function Timeline() {
 
       {/* 3. Összegzés */}
       <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
+        initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, scale: 0.95 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
-        className="mt-32 text-center max-w-2xl mx-auto glass-card p-10 relative overflow-hidden bg-bg-surface/80 border border-slate-700/60 rounded-3xl shadow-[0_10px_30px_rgba(0, 181, 241,0.08)] hover:border-[#00B5F1]/30 transition-all text-text-primary"
+        transition={
+          shouldReduceMotion
+            ? { duration: 0 }
+            : { type: "spring", stiffness: 100, damping: 20 }
+        }
+        className="luminous-card mt-32 text-center max-w-2xl mx-auto p-10 relative overflow-hidden text-[#0F172A] dark:text-white"
       >
-        <p className="text-xl md:text-2xl font-sans italic relative z-10 leading-relaxed text-text-primary">
+        <p className="text-xl md:text-2xl font-sans italic relative z-10 leading-relaxed text-[#1E293B] dark:text-slate-100">
           {
             '"A nyomdaipari és informatikai tanulmányaim alapozták meg a grafikai és webes szakértelmemet, amit ma WebDude-ként kamatoztatok."'
           }

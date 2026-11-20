@@ -104,7 +104,7 @@ export default function QuoteRequestForm() {
 
   if (isSubmitted) {
     return (
-      <div className="bg-[#0f172a]/30 border border-sky-500/30 backdrop-blur-md rounded-2xl p-8 md:p-12 text-center max-w-2xl mx-auto shadow-[0_0_50px_rgba(0, 181, 241,0.15)] animate-fade-in animate-duration-500">
+      <div className="luminous-card border-sky-500/30 p-8 md:p-12 text-center max-w-2xl mx-auto shadow-[0_0_50px_rgba(0,181,241,0.15)] animate-fade-in animate-duration-500">
         <div className="w-16 h-16 bg-sky-500/10 border border-sky-500/30 rounded-full flex items-center justify-center mx-auto mb-6">
           <svg
             className="w-8 h-8 text-sky-500"
@@ -120,10 +120,10 @@ export default function QuoteRequestForm() {
             />
           </svg>
         </div>
-        <h3 className="text-3xl font-bold text-text-primary mb-4">
+        <h3 className="text-3xl font-bold text-[#0F172A] dark:text-text-primary mb-4">
           Sikeres Igényfelmérés!
         </h3>
-        <p className="text-slate-400 mb-8 leading-relaxed">
+        <p className="text-[#334155] dark:text-slate-300 mb-8 leading-relaxed">
           Köszönöm az ajánlatkérést! Norbi 24 órán belül személyesen jelentkezik
           a megadott e-mail címen egy átfogó javaslattal.
         </p>
@@ -132,7 +132,7 @@ export default function QuoteRequestForm() {
             setIsSubmitted(false);
             setStep(1);
           }}
-          className="px-8 py-3 bg-sky-500 hover:bg-violet-700 text-[#020617] font-semibold uppercase tracking-wider rounded-xl transition-all"
+          className="px-8 py-3 bg-linear-to-r from-[#075985] to-[#5B21B6] hover:from-[#0369A1] hover:to-[#6D28D9] text-white font-semibold uppercase tracking-wider rounded-xl transition-all"
         >
           Új Ajánlatkérés Indítása
         </button>
@@ -141,16 +141,16 @@ export default function QuoteRequestForm() {
   }
 
   return (
-    <div className="bg-[#0f172a]/30 border border-slate-800/50 backdrop-blur-md rounded-2xl p-8 max-w-3xl mx-auto hover:border-sky-500/10 transition-all duration-300">
+    <div className="luminous-card p-8 max-w-3xl mx-auto">
       {/* Progress Bar */}
       <div className="mb-8">
-        <div className="flex justify-between items-center text-xs uppercase tracking-widest text-slate-500 font-bold mb-3">
+        <div className="flex justify-between items-center text-xs uppercase tracking-widest text-[#475569] dark:text-slate-400 font-bold mb-3">
           <span>{step}. lépés a 3-ból</span>
           <span>{Math.round((step / 3) * 100)}% Kész</span>
         </div>
-        <div className="w-full bg-slate-900/50 h-1.5 rounded-full overflow-hidden border border-slate-800/20">
+        <div className="w-full bg-slate-200 dark:bg-slate-900/50 h-1.5 rounded-full overflow-hidden border border-slate-300/60 dark:border-slate-800/20">
           <div
-            className="bg-sky-500 h-full rounded-full transition-all duration-500"
+            className="bg-[#0369A1] dark:bg-sky-500 h-full rounded-full transition-all duration-500"
             style={{ width: `${(step / 3) * 100}%` }}
           ></div>
         </div>
@@ -159,18 +159,18 @@ export default function QuoteRequestForm() {
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
         {step === 1 && (
           <div className="space-y-6 animate-fade-in">
-            <h3 className="text-xl font-bold text-text-primary mb-2">
+            <h3 className="text-xl font-bold text-[#0F172A] dark:text-text-primary mb-2">
               Mutatkozz be kérlek!
             </h3>
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">
+              <label className="block text-xs font-bold uppercase tracking-wider text-[#475569] dark:text-slate-400 mb-2">
                 Teljes Neved
               </label>
               <input
                 type="text"
                 {...register("name")}
                 placeholder="Pl. Kovács Gábor"
-                className="w-full bg-[#1e293b]/30 border border-slate-800 focus:border-sky-500/50 rounded-xl px-4 py-3 text-text-primary outline-none transition-all"
+                className="w-full bg-white dark:bg-[#1e293b]/40 border border-slate-300 dark:border-slate-800 focus:border-[#0369A1] dark:focus:border-sky-500/50 rounded-xl px-4 py-3 text-[#0F172A] dark:text-text-primary placeholder:text-slate-400 dark:placeholder:text-slate-500 outline-none transition-all"
               />
               {errors.name && (
                 <p className="text-red-500 text-sm mt-1">
@@ -180,14 +180,14 @@ export default function QuoteRequestForm() {
             </div>
 
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">
+              <label className="block text-xs font-bold uppercase tracking-wider text-[#475569] dark:text-slate-400 mb-2">
                 E-mail Címed
               </label>
               <input
                 type="email"
                 {...register("email")}
                 placeholder="gabor@kovacs.hu"
-                className="w-full bg-[#1e293b]/30 border border-slate-800 focus:border-sky-500/50 rounded-xl px-4 py-3 text-text-primary outline-none transition-all"
+                className="w-full bg-white dark:bg-[#1e293b]/40 border border-slate-300 dark:border-slate-800 focus:border-[#0369A1] dark:focus:border-sky-500/50 rounded-xl px-4 py-3 text-[#0F172A] dark:text-text-primary placeholder:text-slate-400 dark:placeholder:text-slate-500 outline-none transition-all"
               />
               {errors.email && (
                 <p className="text-red-500 text-sm mt-1">
@@ -201,7 +201,7 @@ export default function QuoteRequestForm() {
                 type="button"
                 onClick={nextStep}
                 disabled={!watchedValues.name || !watchedValues.email}
-                className="px-8 py-3 bg-sky-500 hover:bg-violet-700 disabled:opacity-50 text-[#020617] font-bold uppercase tracking-wider rounded-xl transition-all"
+                className="px-8 py-3 bg-linear-to-r from-[#075985] to-[#5B21B6] hover:from-[#0369A1] hover:to-[#6D28D9] disabled:opacity-50 text-white font-bold uppercase tracking-wider rounded-xl transition-all"
               >
                 Tovább
               </button>
@@ -211,29 +211,29 @@ export default function QuoteRequestForm() {
 
         {step === 2 && (
           <div className="space-y-6 animate-fade-in">
-            <h3 className="text-xl font-bold text-text-primary mb-2">
+            <h3 className="text-xl font-bold text-[#0F172A] dark:text-text-primary mb-2">
               Projekt adatok
             </h3>
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">
+              <label className="block text-xs font-bold uppercase tracking-wider text-[#475569] dark:text-slate-400 mb-2">
                 Projekt Típusa
               </label>
               <select
                 {...register("projectType")}
-                className="w-full bg-[#1e293b]/50 border border-slate-800 focus:border-sky-500/50 rounded-xl px-4 py-3 text-text-primary outline-none transition-all"
+                className="w-full bg-white dark:bg-[#1e293b]/50 border border-slate-300 dark:border-slate-800 focus:border-[#0369A1] dark:focus:border-sky-500/50 rounded-xl px-4 py-3 text-[#0F172A] dark:text-text-primary outline-none transition-all"
               >
-                <option value="">-- Válassz típust --</option>
-                <option value="webdevelopment">
+                <option value="" className="bg-white dark:bg-[#0F172A] text-[#0F172A] dark:text-slate-100">-- Válassz típust --</option>
+                <option value="webdevelopment" className="bg-white dark:bg-[#0F172A] text-[#0F172A] dark:text-slate-100">
                   Egyedi Next.js Webfejlesztés
                 </option>
-                <option value="wordpress">
+                <option value="wordpress" className="bg-white dark:bg-[#0F172A] text-[#0F172A] dark:text-slate-100">
                   WordPress / WooCommerce Webshop
                 </option>
-                <option value="ai-automation">
+                <option value="ai-automation" className="bg-white dark:bg-[#0F172A] text-[#0F172A] dark:text-slate-100">
                   AI Automatizáció & Chatbot
                 </option>
-                <option value="design">Grafika & Komplett Arculat</option>
-                <option value="other">Egyéb egyedi megkeresés</option>
+                <option value="design" className="bg-white dark:bg-[#0F172A] text-[#0F172A] dark:text-slate-100">Grafika & Komplett Arculat</option>
+                <option value="other" className="bg-white dark:bg-[#0F172A] text-[#0F172A] dark:text-slate-100">Egyéb egyedi megkeresés</option>
               </select>
               {errors.projectType && (
                 <p className="text-red-500 text-sm mt-1">
@@ -243,18 +243,18 @@ export default function QuoteRequestForm() {
             </div>
 
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">
+              <label className="block text-xs font-bold uppercase tracking-wider text-[#475569] dark:text-slate-400 mb-2">
                 Hozzávetőleges Költségkeret
               </label>
               <select
                 {...register("budget")}
-                className="w-full bg-[#1e293b]/50 border border-slate-800 focus:border-sky-500/50 rounded-xl px-4 py-3 text-text-primary outline-none transition-all"
+                className="w-full bg-white dark:bg-[#1e293b]/50 border border-slate-300 dark:border-slate-800 focus:border-[#0369A1] dark:focus:border-sky-500/50 rounded-xl px-4 py-3 text-[#0F172A] dark:text-text-primary outline-none transition-all"
               >
-                <option value="">-- Válassz keretet --</option>
-                <option value="150k-300k">150 000 – 300 000</option>
-                <option value="300k-600k">300 000 – 600 000</option>
-                <option value="600k-1.5m">600 000 – 1 500 000</option>
-                <option value="1.5m+">1 500 000 felett</option>
+                <option value="" className="bg-white dark:bg-[#0F172A] text-[#0F172A] dark:text-slate-100">-- Válassz keretet --</option>
+                <option value="150k-300k" className="bg-white dark:bg-[#0F172A] text-[#0F172A] dark:text-slate-100">150 000 – 300 000</option>
+                <option value="300k-600k" className="bg-white dark:bg-[#0F172A] text-[#0F172A] dark:text-slate-100">300 000 – 600 000</option>
+                <option value="600k-1.5m" className="bg-white dark:bg-[#0F172A] text-[#0F172A] dark:text-slate-100">600 000 – 1 500 000</option>
+                <option value="1.5m+" className="bg-white dark:bg-[#0F172A] text-[#0F172A] dark:text-slate-100">1 500 000 felett</option>
               </select>
               {errors.budget && (
                 <p className="text-red-500 text-sm mt-1">
@@ -267,7 +267,7 @@ export default function QuoteRequestForm() {
               <button
                 type="button"
                 onClick={prevStep}
-                className="px-8 py-3 bg-[#1e293b]/50 hover:bg-[#1e293b] border border-slate-800 text-slate-300 font-bold uppercase tracking-wider rounded-xl transition-all"
+                className="px-8 py-3 bg-slate-100 hover:bg-slate-200 dark:bg-[#1e293b]/50 dark:hover:bg-[#1e293b] border border-slate-300 dark:border-slate-800 text-[#334155] dark:text-slate-300 font-bold uppercase tracking-wider rounded-xl transition-all"
               >
                 Vissza
               </button>
@@ -275,7 +275,7 @@ export default function QuoteRequestForm() {
                 type="button"
                 onClick={nextStep}
                 disabled={!watchedValues.projectType || !watchedValues.budget}
-                className="px-8 py-3 bg-sky-500 hover:bg-violet-700 disabled:opacity-50 text-[#020617] font-bold uppercase tracking-wider rounded-xl transition-all"
+                className="px-8 py-3 bg-linear-to-r from-[#075985] to-[#5B21B6] hover:from-[#0369A1] hover:to-[#6D28D9] disabled:opacity-50 text-white font-bold uppercase tracking-wider rounded-xl transition-all"
               >
                 Tovább
               </button>
@@ -285,18 +285,18 @@ export default function QuoteRequestForm() {
 
         {step === 3 && (
           <div className="space-y-6 animate-fade-in">
-            <h3 className="text-xl font-bold text-text-primary mb-2">
+            <h3 className="text-xl font-bold text-[#0F172A] dark:text-text-primary mb-2">
               Rövid összefoglaló
             </h3>
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">
+              <label className="block text-xs font-bold uppercase tracking-wider text-[#475569] dark:text-slate-400 mb-2">
                 Írd le röviden a céljaidat
               </label>
               <textarea
                 {...register("summary")}
                 rows={5}
                 placeholder="Pl. szeretnék egy modern Next.js weboldalt kecskeméti kkv vállalkozásomnak, ami automatikusan gyűjti az ajánlatkéréseket..."
-                className="w-full bg-[#1e293b]/30 border border-slate-800 focus:border-sky-500/50 rounded-xl px-4 py-3 text-text-primary outline-none transition-all resize-none"
+                className="w-full bg-white dark:bg-[#1e293b]/40 border border-slate-300 dark:border-slate-800 focus:border-[#0369A1] dark:focus:border-sky-500/50 rounded-xl px-4 py-3 text-[#0F172A] dark:text-text-primary placeholder:text-slate-400 dark:placeholder:text-slate-500 outline-none transition-all resize-none"
               />
               {errors.summary && (
                 <p className="text-red-500 text-sm mt-1">
@@ -310,17 +310,17 @@ export default function QuoteRequestForm() {
                 type="button"
                 onClick={prevStep}
                 disabled={isSubmitting}
-                className="px-8 py-3 bg-[#1e293b]/50 hover:bg-[#1e293b] border border-slate-800 text-slate-300 font-bold uppercase tracking-wider rounded-xl transition-all"
+                className="px-8 py-3 bg-slate-100 hover:bg-slate-200 dark:bg-[#1e293b]/50 dark:hover:bg-[#1e293b] border border-slate-300 dark:border-slate-800 text-[#334155] dark:text-slate-300 font-bold uppercase tracking-wider rounded-xl transition-all"
               >
                 Vissza
               </button>
               <button
                 type="submit"
                 disabled={isSubmitting || !watchedValues.summary}
-                className={`px-8 py-3 text-[#020617] font-bold uppercase tracking-wider rounded-xl transition-all duration-300 ${
+                className={`px-8 py-3 text-white font-bold uppercase tracking-wider rounded-xl transition-all duration-300 ${
                   isSubmitting
-                    ? "bg-sky-500/30 cursor-not-allowed"
-                    : "bg-sky-500 hover:bg-violet-700 animate-pulse shadow-[0_0_30px_rgba(0, 181, 241,0.6)]"
+                    ? "bg-[#075985]/40 cursor-not-allowed"
+                    : "bg-linear-to-r from-[#075985] to-[#5B21B6] hover:from-[#0369A1] hover:to-[#6D28D9] shadow-[0_0_30px_rgba(0,181,241,0.35)]"
                 }`}
               >
                 {isSubmitting ? "Beküldés..." : "Ajánlatkérés Elküldése"}

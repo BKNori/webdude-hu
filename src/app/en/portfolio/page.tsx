@@ -30,7 +30,7 @@ export default async function EnPortfolioPage() {
   };
 
   return (
-    <div className="bg-bg-base text-text-primary">
+    <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#0B1120] text-[#0F172A] dark:text-[#F8FAFC]">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -51,7 +51,9 @@ export default async function EnPortfolioPage() {
         ctaLabel="Request a custom quote →"
         ctaHref="/en/contact"
       />
-      <PortfolioGrid projects={staticWorks} />
+      <div className="max-w-6xl mx-auto px-6 py-20">
+        <PortfolioGrid projects={staticWorks} />
+      </div>
     </div>
   );
 }

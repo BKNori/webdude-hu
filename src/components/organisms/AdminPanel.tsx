@@ -239,7 +239,7 @@ export default function AdminPanel({
           <button
             type="submit"
             disabled={isPendingRegister}
-            className="w-full py-4 px-6 rounded-xl bg-sky-500 hover:bg-violet-700 disabled:bg-sky-500/30 text-bg-base font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-[#00B5F1] focus:ring-offset-2 focus:ring-offset-bg-base"
+            className="w-full py-4 px-6 rounded-xl bg-sky-500 hover:bg-violet-700 hover:text-white disabled:bg-sky-500/30 text-bg-base font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-[#00B5F1] focus:ring-offset-2 focus:ring-offset-bg-base"
           >
             {isPendingRegister ? "Mentés folyamatban..." : "Ügyfél Létrehozása"}
           </button>
@@ -312,7 +312,7 @@ export default function AdminPanel({
           <button
             type="submit"
             disabled={isPendingAssign}
-            className="w-full py-4 px-6 rounded-xl bg-sky-500 hover:bg-violet-700 disabled:bg-sky-500/30 text-bg-base font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2"
+            className="w-full py-4 px-6 rounded-xl bg-sky-500 hover:bg-violet-700 hover:text-white disabled:bg-sky-500/30 text-bg-base font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2"
           >
             {isPendingAssign
               ? "Hozzárendelés folyamatban..."
@@ -398,7 +398,7 @@ export default function AdminPanel({
           <button
             type="submit"
             disabled={isPendingTools}
-            className="w-full py-4 px-6 rounded-xl bg-sky-500 hover:bg-violet-700 disabled:bg-sky-500/30 text-bg-base font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2"
+            className="w-full py-4 px-6 rounded-xl bg-sky-500 hover:bg-violet-700 hover:text-white disabled:bg-sky-500/30 text-bg-base font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2"
           >
             {isPendingTools
               ? "Frissítés folyamatban..."

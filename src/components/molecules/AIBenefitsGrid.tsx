@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "motion/react";
-import { useReducedMotion } from "motion/react";
+import { useHydratedReducedMotion } from "@/hooks/useMotionPreset";
 import { CheckCircle2 } from "lucide-react";
 
 interface BenefitItem {
@@ -15,7 +15,7 @@ interface AIBenefitsGridProps {
 }
 
 export default function AIBenefitsGrid({ benefits }: AIBenefitsGridProps) {
-  const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = useHydratedReducedMotion();
 
   const containerVariants = {
     hidden: {},
@@ -53,19 +53,19 @@ export default function AIBenefitsGrid({ benefits }: AIBenefitsGridProps) {
           key={index}
           variants={itemVariants}
           whileHover={shouldReduceMotion ? {} : { y: -4, scale: 1.02 }}
-          className="group bg-slate-950/80 backdrop-blur-2xl ring-1 ring-white/5 rounded-3xl p-6 md:p-8 hover:border-[#00B5F1]/40 hover:shadow-[0_18px_40px_rgba(0,181,241,0.15)] transition-all duration-300"
+          className="luminous-card group p-6 md:p-8"
         >
-          <div className="w-16 h-16 rounded-2xl bg-slate-900/60 border border-white/10 flex items-center justify-center mb-6 group-hover:border-[#00B5F1]/30 transition-colors group">
+          <div className="w-16 h-16 rounded-2xl bg-[#0369A1]/10 dark:bg-[#00B5F1]/12 border border-[#0369A1]/25 dark:border-[#00B5F1]/25 flex items-center justify-center mb-6 group-hover:border-[#0369A1]/50 dark:group-hover:border-[#00B5F1]/50 transition-colors">
             <CheckCircle2
-              className="w-8 h-8 text-brand-primary"
+              className="w-8 h-8 text-[#0369A1] dark:text-brand-primary"
               strokeWidth={1.5}
               aria-hidden="true"
             />
           </div>
-          <h3 className="text-xl font-bold text-slate-200 mb-3">
+          <h3 className="text-xl font-bold text-[#0F172A] dark:text-white mb-3">
             {benefit.title}
           </h3>
-          <p className="text-slate-400 text-base leading-relaxed">
+          <p className="text-[#334155] dark:text-slate-300 text-base leading-relaxed">
             {benefit.description}
           </p>
         </motion.div>

@@ -58,7 +58,10 @@ export default function PortalDashboard() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-bg-base flex flex-col items-center justify-center space-y-4">
+      <div
+        data-theme="dark"
+        className="min-h-screen bg-bg-base flex flex-col items-center justify-center space-y-4"
+      >
         <Loader2 className="w-8 h-8 animate-spin text-brand-primary" />
         <p className="text-sm text-text-secondary font-sans">
           Biztonságos ügyfélkapu betöltése...
@@ -74,6 +77,7 @@ export default function PortalDashboard() {
   return (
     <div
       id="portal-layout"
+      data-theme="dark"
       className="min-h-screen bg-bg-base text-text-primary"
     >
       <PortalHeader user={user} isAdmin={isAdmin} onLogout={handleLogout} />

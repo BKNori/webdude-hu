@@ -202,7 +202,7 @@ export default function ServicesSection() {
           >
             <Link
               href="/szolgaltatasok"
-              className="inline-flex items-center gap-2 px-8 py-3 rounded-xl bg-sky-500 text-bg-base font-bold hover:bg-sky-500/90 transition-all duration-300 shadow-lg shadow-sky-500/20"
+              className="inline-flex items-center gap-2 px-8 py-3 rounded-xl bg-[#0369A1] dark:bg-sky-500 text-white dark:text-slate-950 font-bold hover:bg-[#075985] dark:hover:bg-sky-400 transition-all duration-300 shadow-lg shadow-sky-500/20"
             >
               Összes Szolgáltatás
               <ArrowRight className="w-4 h-4" />

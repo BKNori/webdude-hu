@@ -2,12 +2,8 @@
 
 import ResponsiveImage from "@/components/molecules/ResponsiveImage";
 import Link from "next/link";
-import {
-  motion,
-  useScroll,
-  useTransform,
-  useReducedMotion,
-} from "motion/react";
+import { motion, useScroll, useTransform } from "motion/react";
+import { useHydratedReducedMotion } from "@/hooks/useMotionPreset";
 import { Work } from "@/types/work";
 import { useRef } from "react";
 import {
@@ -26,7 +22,7 @@ interface ClassiCoCaseStudyProps {
 
 export default function ClassiCoCaseStudy({ project }: ClassiCoCaseStudyProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = useHydratedReducedMotion();
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"],
@@ -52,14 +48,14 @@ export default function ClassiCoCaseStudy({ project }: ClassiCoCaseStudyProps) {
       >
         <motion.div style={{ y, opacity }} className="absolute inset-0">
           <ResponsiveImage
-             src="/assets/portfolio/classi-co/szeged-terkovezes3-scopy.webp"
-             alt="Classi-Co Kft. - Térkövezés és Beton Kivitelezés"
-             sizes="100vw"
-             priority
-             className="object-cover"
-           />
-          <div className="absolute inset-0 bg-slate-950/75 -z-10" />
-          <div className="absolute inset-0 bg-linear-to-b from-black/85 via-slate-950/70 to-bg-base" />
+            src="/assets/portfolio/classi-co/szeged-terkovezes3-scopy.webp"
+            alt="Classi-Co Kft. - Térkövezés és Beton Kivitelezés"
+            sizes="100vw"
+            priority
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-[#F8FAFC]/82 dark:bg-slate-950/75 -z-10" />
+          <div className="absolute inset-0 bg-linear-to-b from-[#F8FAFC]/90 via-[#F8FAFC]/75 to-bg-base dark:from-black/85 dark:via-slate-950/70 dark:to-bg-base" />
         </motion.div>
 
         <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
@@ -79,9 +75,9 @@ export default function ClassiCoCaseStudy({ project }: ClassiCoCaseStudyProps) {
                 delay: shouldReduceMotion ? 0 : 0.2,
                 duration: shouldReduceMotion ? 0 : 0.6,
               }}
-              className="inline-block px-6 py-3 bg-emerald-500/10 border border-emerald-500/30 rounded-full backdrop-blur-sm"
+              className="inline-block px-6 py-3 bg-emerald-500/10 border border-emerald-600/30 dark:border-emerald-500/30 rounded-full backdrop-blur-sm"
             >
-              <span className="text-emerald-400 text-sm font-bold uppercase tracking-widest">
+              <span className="text-emerald-700 dark:text-emerald-400 text-sm font-bold uppercase tracking-widest">
                 {project.year || new Date().getFullYear()} – {project.category}
               </span>
             </motion.div>
@@ -105,7 +101,7 @@ export default function ClassiCoCaseStudy({ project }: ClassiCoCaseStudyProps) {
                 delay: shouldReduceMotion ? 0 : 0.6,
                 duration: shouldReduceMotion ? 0 : 0.8,
               }}
-              className="text-xl md:text-2xl text-slate-200 max-w-3xl mx-auto font-light"
+              className="text-xl md:text-2xl text-[#1E293B] dark:text-slate-200 max-w-3xl mx-auto font-light"
             >
               {project.description}
             </motion.p>
@@ -136,7 +132,7 @@ export default function ClassiCoCaseStudy({ project }: ClassiCoCaseStudyProps) {
                     delay: shouldReduceMotion ? 0 : 0.9 + index * 0.1,
                     duration: shouldReduceMotion ? 0 : 0.4,
                   }}
-                  className="px-4 py-2 bg-slate-800/50 border border-slate-700 rounded-full text-sm text-slate-300 backdrop-blur-sm"
+                  className="px-4 py-2 bg-white/90 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-full text-sm text-[#334155] dark:text-slate-300 backdrop-blur-sm"
                 >
                   {service}
                 </motion.span>
@@ -164,7 +160,7 @@ export default function ClassiCoCaseStudy({ project }: ClassiCoCaseStudyProps) {
       </section>
 
       {/* Logó és Branding Szekció */}
-      <section className="py-32 px-6 bg-linear-to-b from-bg-base to-slate-900/30">
+      <section className="py-32 px-6 bg-linear-to-b from-bg-base to-[#F1F5F9] dark:to-slate-900/30">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -174,9 +170,12 @@ export default function ClassiCoCaseStudy({ project }: ClassiCoCaseStudyProps) {
             className="text-center mb-20"
           >
             <h2 className="text-4xl md:text-6xl font-bold mb-6">
-              <span className="text-emerald-400">Arculat</span> és Branding
+              <span className="text-emerald-700 dark:text-emerald-400">
+                Arculat
+              </span>{" "}
+              és Branding
             </h2>
-            <p className="text-slate-400 text-xl max-w-2xl mx-auto">
+            <p className="text-[#475569] dark:text-slate-400 text-xl max-w-2xl mx-auto">
               Határozott, iparághoz illő vizuális identitás és logótervezés
             </p>
           </motion.div>
@@ -187,14 +186,14 @@ export default function ClassiCoCaseStudy({ project }: ClassiCoCaseStudyProps) {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.8 }}
-              className="relative aspect-square rounded-3xl overflow-hidden bg-slate-900/60 border border-slate-800 flex items-center justify-center p-12"
+              className="relative aspect-square rounded-3xl overflow-hidden bg-white/95 dark:bg-slate-900/60 shadow-[0_12px_32px_rgba(15,23,42,0.06)] border border-slate-200 dark:border-slate-800 flex items-center justify-center p-12"
             >
               <ResponsiveImage
-             src="/assets/portfolio/classi-co/classi-co-logo-h100.webp"
-             alt="Classi-Co Logo"
-             sizes="(max-width: 768px) 100vw, 50vw"
-             className="object-contain"
-           />
+                src="/assets/portfolio/classi-co/classi-co-logo-h100.webp"
+                alt="Classi-Co Logo"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-contain"
+              />
             </motion.div>
 
             <motion.div
@@ -204,12 +203,12 @@ export default function ClassiCoCaseStudy({ project }: ClassiCoCaseStudyProps) {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="space-y-6"
             >
-              <div className="bg-slate-900/60 border border-slate-800 rounded-3xl p-8 backdrop-blur-sm">
-                <h3 className="text-2xl font-bold text-emerald-400 mb-4 flex items-center gap-3">
+              <div className="bg-white/95 dark:bg-slate-900/60 shadow-[0_12px_32px_rgba(15,23,42,0.06)] border border-slate-200 dark:border-slate-800 rounded-3xl p-8 backdrop-blur-sm">
+                <h3 className="text-2xl font-bold text-emerald-700 dark:text-emerald-400 mb-4 flex items-center gap-3">
                   <span className="w-2 h-8 bg-emerald-500 rounded-full" />
                   Komplex Arculattervezés
                 </h3>
-                <p className="text-slate-300 leading-relaxed text-lg">
+                <p className="text-[#334155] dark:text-slate-300 leading-relaxed text-lg">
                   A Classi-Co Kft. számára egy határozott, iparághoz illő
                   vizuális identitást és logót terveztem. A térkövezés és beton
                   kivitelezés területén működő cég arculata a stabilitást, a
@@ -218,12 +217,12 @@ export default function ClassiCoCaseStudy({ project }: ClassiCoCaseStudyProps) {
                 </p>
               </div>
 
-              <div className="bg-slate-900/60 border border-slate-800 rounded-3xl p-8 backdrop-blur-sm">
-                <h3 className="text-2xl font-bold text-emerald-400 mb-4 flex items-center gap-3">
+              <div className="bg-white/95 dark:bg-slate-900/60 shadow-[0_12px_32px_rgba(15,23,42,0.06)] border border-slate-200 dark:border-slate-800 rounded-3xl p-8 backdrop-blur-sm">
+                <h3 className="text-2xl font-bold text-emerald-700 dark:text-emerald-400 mb-4 flex items-center gap-3">
                   <span className="w-2 h-8 bg-emerald-500 rounded-full" />
                   Offline Branding
                 </h3>
-                <p className="text-slate-300 leading-relaxed text-lg">
+                <p className="text-[#334155] dark:text-slate-300 leading-relaxed text-lg">
                   Prémium minőségű névjegykártya tervezése a fizikai
                   találkozásokhoz. A névjegykártyák és offline marketing anyagok
                   tökéletes szinergiában vannak a digitális arculattal, egységes
@@ -236,7 +235,7 @@ export default function ClassiCoCaseStudy({ project }: ClassiCoCaseStudyProps) {
       </section>
 
       {/* Videó Showcase Szekció - WOW FAKTOR */}
-      <section className="py-32 px-6 bg-linear-to-b from-slate-900/30 to-emerald-950/20 border-y border-emerald-500/20">
+      <section className="py-32 px-6 bg-linear-to-b from-[#F1F5F9] to-emerald-50/70 dark:from-slate-900/30 dark:to-emerald-950/20 border-y border-emerald-600/25 dark:border-emerald-500/20">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -252,7 +251,7 @@ export default function ClassiCoCaseStudy({ project }: ClassiCoCaseStudyProps) {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="inline-block px-6 py-3 bg-emerald-500/20 border border-emerald-500/40 rounded-full backdrop-blur-sm mb-6"
             >
-              <span className="text-emerald-400 text-sm font-bold uppercase tracking-widest">
+              <span className="text-emerald-700 dark:text-emerald-400 text-sm font-bold uppercase tracking-widest">
                 <Flame
                   className="w-4 h-4 inline-block align-[-2px]"
                   aria-hidden="true"
@@ -261,10 +260,13 @@ export default function ClassiCoCaseStudy({ project }: ClassiCoCaseStudyProps) {
               </span>
             </motion.div>
             <h2 className="text-4xl md:text-6xl font-bold mb-6">
-              Dinamikus <span className="text-emerald-400">Weboldal</span>{" "}
+              Dinamikus{" "}
+              <span className="text-emerald-700 dark:text-emerald-400">
+                Weboldal
+              </span>{" "}
               Bemutató
             </h2>
-            <p className="text-slate-400 text-xl max-w-3xl mx-auto">
+            <p className="text-[#475569] dark:text-slate-400 text-xl max-w-3xl mx-auto">
               A Classi-Co weboldal működése eszközökön - MacBook és iPhone
             </p>
           </motion.div>
@@ -276,7 +278,7 @@ export default function ClassiCoCaseStudy({ project }: ClassiCoCaseStudyProps) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative aspect-video rounded-3xl overflow-hidden bg-slate-900/80 border-2 border-slate-700 shadow-2xl"
+              className="relative aspect-video rounded-3xl overflow-hidden bg-white/95 dark:bg-slate-900/80 shadow-[0_12px_32px_rgba(15,23,42,0.06)] border-2 border-slate-200 dark:border-slate-700 shadow-2xl"
             >
               <video
                 autoPlay
@@ -303,7 +305,7 @@ export default function ClassiCoCaseStudy({ project }: ClassiCoCaseStudyProps) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="relative aspect-9/16 rounded-3xl overflow-hidden bg-slate-900/80 border-2 border-slate-700 shadow-2xl"
+              className="relative aspect-9/16 rounded-3xl overflow-hidden bg-white/95 dark:bg-slate-900/80 shadow-[0_12px_32px_rgba(15,23,42,0.06)] border-2 border-slate-200 dark:border-slate-700 shadow-2xl"
             >
               <video
                 autoPlay
@@ -338,10 +340,13 @@ export default function ClassiCoCaseStudy({ project }: ClassiCoCaseStudyProps) {
             className="text-center mb-20"
           >
             <h2 className="text-4xl md:text-6xl font-bold mb-6">
-              Teljes Körű <span className="text-emerald-400">Digitális</span>{" "}
+              Teljes Körű{" "}
+              <span className="text-emerald-700 dark:text-emerald-400">
+                Digitális
+              </span>{" "}
               Megoldás
             </h2>
-            <p className="text-slate-400 text-xl max-w-2xl mx-auto">
+            <p className="text-[#475569] dark:text-slate-400 text-xl max-w-2xl mx-auto">
               Minden, ami egy megbízható online jelenlét felépítéséhez szükséges
             </p>
           </motion.div>
@@ -391,17 +396,17 @@ export default function ClassiCoCaseStudy({ project }: ClassiCoCaseStudyProps) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-slate-900/60 border border-slate-800 rounded-3xl p-8 hover:border-emerald-500/50 transition-colors duration-300 group"
+                className="bg-white/95 dark:bg-slate-900/60 shadow-[0_12px_32px_rgba(15,23,42,0.06)] border border-slate-200 dark:border-slate-800 rounded-3xl p-8 hover:border-emerald-500/50 transition-colors duration-300 group"
               >
                 <service.icon
-                  className="w-10 h-10 text-emerald-400 mb-4"
+                  className="w-10 h-10 text-emerald-700 dark:text-emerald-400 mb-4"
                   strokeWidth={1.5}
                   aria-hidden="true"
                 />
-                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-emerald-400 transition-colors">
+                <h3 className="text-xl font-bold text-[#0F172A] dark:text-white mb-3 group-hover:text-emerald-400 transition-colors">
                   {service.title}
                 </h3>
-                <p className="text-slate-400 leading-relaxed">
+                <p className="text-[#475569] dark:text-slate-400 leading-relaxed">
                   {service.description}
                 </p>
               </motion.div>
@@ -411,7 +416,7 @@ export default function ClassiCoCaseStudy({ project }: ClassiCoCaseStudyProps) {
       </section>
 
       {/* Galéria és Showcase Szekció */}
-      <section className="py-32 px-6 bg-linear-to-b from-slate-900/30 to-bg-base">
+      <section className="py-32 px-6 bg-linear-to-b from-[#F1F5F9] dark:from-slate-900/30 to-bg-base">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -421,9 +426,12 @@ export default function ClassiCoCaseStudy({ project }: ClassiCoCaseStudyProps) {
             className="mb-20"
           >
             <h2 className="text-4xl md:text-6xl font-bold mb-6">
-              <span className="text-emerald-400">Vizuális</span> Galéria
+              <span className="text-emerald-700 dark:text-emerald-400">
+                Vizuális
+              </span>{" "}
+              Galéria
             </h2>
-            <p className="text-slate-400 text-xl">
+            <p className="text-[#475569] dark:text-slate-400 text-xl">
               A Classi-Co Kft. branding és weboldal vizuális elemei
             </p>
           </motion.div>
@@ -472,7 +480,7 @@ export default function ClassiCoCaseStudy({ project }: ClassiCoCaseStudyProps) {
                 </motion.div>
               ))
             ) : (
-              <p className="text-slate-400 col-span-4 text-center py-12">
+              <p className="text-[#475569] dark:text-slate-400 col-span-4 text-center py-12">
                 Nincs elérhető galéria kép.
               </p>
             )}
@@ -481,7 +489,7 @@ export default function ClassiCoCaseStudy({ project }: ClassiCoCaseStudyProps) {
       </section>
 
       {/* Eredmények Szekció */}
-      <section className="py-32 px-6 bg-linear-to-br from-emerald-500/10 to-teal-500/10 border-y border-emerald-500/20">
+      <section className="py-32 px-6 bg-linear-to-br from-emerald-500/10 to-teal-500/10 border-y border-emerald-600/25 dark:border-emerald-500/20">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -491,7 +499,9 @@ export default function ClassiCoCaseStudy({ project }: ClassiCoCaseStudyProps) {
             className="text-center"
           >
             <h2 className="text-4xl md:text-6xl font-bold mb-12">
-              <span className="text-emerald-400">Az Eredmény</span>
+              <span className="text-emerald-700 dark:text-emerald-400">
+                Az Eredmény
+              </span>
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
@@ -507,12 +517,14 @@ export default function ClassiCoCaseStudy({ project }: ClassiCoCaseStudyProps) {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true, margin: "-100px" }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="bg-slate-900/60 backdrop-blur-sm border border-emerald-500/30 rounded-3xl p-8"
+                  className="bg-white/95 dark:bg-slate-900/60 shadow-[0_12px_32px_rgba(15,23,42,0.06)] backdrop-blur-sm border border-emerald-600/30 dark:border-emerald-500/30 rounded-3xl p-8"
                 >
-                  <div className="text-5xl md:text-6xl font-bold text-emerald-400 mb-3">
+                  <div className="text-5xl md:text-6xl font-bold text-emerald-700 dark:text-emerald-400 mb-3">
                     {stat.value}
                   </div>
-                  <div className="text-slate-300 font-medium">{stat.label}</div>
+                  <div className="text-[#334155] dark:text-slate-300 font-medium">
+                    {stat.label}
+                  </div>
                 </motion.div>
               ))}
             </div>
@@ -525,16 +537,16 @@ export default function ClassiCoCaseStudy({ project }: ClassiCoCaseStudyProps) {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true, margin: "-100px" }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="bg-slate-900/60 backdrop-blur-sm border border-emerald-500/30 rounded-3xl p-8"
+                  className="bg-white/95 dark:bg-slate-900/60 shadow-[0_12px_32px_rgba(15,23,42,0.06)] backdrop-blur-sm border border-emerald-600/30 dark:border-emerald-500/30 rounded-3xl p-8"
                 >
-                  <div className="text-emerald-400 font-bold text-xl mb-3">
+                  <div className="text-emerald-700 dark:text-emerald-400 font-bold text-xl mb-3">
                     {result}
                   </div>
                 </motion.div>
               ))}
             </div>
 
-            <p className="text-slate-200 text-xl max-w-3xl mx-auto leading-relaxed">
+            <p className="text-[#1E293B] dark:text-slate-200 text-xl max-w-3xl mx-auto leading-relaxed">
               A Classi-Co Kft. projekt tökéletes példája annak, amikor a
               hagyományos ipari vállalkozás és a modern digitális megoldások egy
               kézben összpontosul. Az eredmény egy megbízható, prémium online
@@ -556,10 +568,13 @@ export default function ClassiCoCaseStudy({ project }: ClassiCoCaseStudyProps) {
             className="space-y-10"
           >
             <h2 className="text-4xl md:text-6xl font-bold">
-              Készen állsz a <span className="text-emerald-400">következő</span>{" "}
+              Készen állsz a{" "}
+              <span className="text-emerald-700 dark:text-emerald-400">
+                következő
+              </span>{" "}
               szintre?
             </h2>
-            <p className="text-slate-400 text-xl max-w-2xl mx-auto">
+            <p className="text-[#475569] dark:text-slate-400 text-xl max-w-2xl mx-auto">
               Hogyan tudnám a te vállalkozásodat is a digitális élvonalba
               repíteni megbízható, prémium megoldásokkal?
             </p>
@@ -572,7 +587,7 @@ export default function ClassiCoCaseStudy({ project }: ClassiCoCaseStudyProps) {
               </Link>
               <Link
                 href="/munkak"
-                className="px-10 py-5 border border-slate-600 hover:border-emerald-500 text-slate-300 hover:text-emerald-400 font-bold rounded-full transition-all duration-300"
+                className="px-10 py-5 border border-slate-300 dark:border-slate-600 hover:border-emerald-500 text-[#334155] dark:text-slate-300 hover:text-emerald-700 dark:hover:text-emerald-400 font-bold rounded-full transition-all duration-300"
               >
                 Vissza a munkákhoz
               </Link>

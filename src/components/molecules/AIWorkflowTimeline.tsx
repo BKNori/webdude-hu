@@ -63,7 +63,7 @@ export default function AIWorkflowTimeline() {
         <h3 className="text-3xl md:text-4xl font-extrabold text-text-primary mb-4 tracking-tight">
           AI Workflow Timeline
         </h3>
-        <p className="text-slate-400 text-sm max-w-2xl mx-auto">
+        <p className="text-[#475569] dark:text-slate-400 text-sm max-w-2xl mx-auto">
           5 lépésben a konzultációtól az átadásig. Norbi 26 éves grafikai és 16
           éves fejlesztői tapasztalatával.
         </p>
@@ -71,7 +71,7 @@ export default function AIWorkflowTimeline() {
 
       <div className="relative">
         {/* Timeline line */}
-        <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-linear-to-b from-[#00B5F1]/50 via-[#00B5F1]/20 to-transparent transform md:-translate-x-1/2" />
+        <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-linear-to-b from-[#0369A1]/40 dark:from-[#00B5F1]/50 via-[#0369A1]/15 dark:via-[#00B5F1]/20 to-transparent transform md:-translate-x-1/2" />
 
         <div className="space-y-16">
           {workflowSteps.map((step, index) => (
@@ -91,23 +91,25 @@ export default function AIWorkflowTimeline() {
               <div
                 className={`w-full md:w-1/2 pl-20 md:pl-0 ${index % 2 === 0 ? "md:pr-12 md:text-right" : "md:pl-12"}`}
               >
-                <div className="bg-bg-surface/90 backdrop-blur-xl border border-slate-700/80 rounded-2xl p-6 shadow-xl hover:border-[#00B5F1]/50 hover:shadow-[0_0_25px_rgba(0, 181, 241,0.15)] transition-all duration-300 group-hover:scale-[1.02]">
-                  <div className={`flex items-center gap-3 mb-3 ${index % 2 === 0 ? "md:justify-end" : "md:justify-start"}`}>
-                    <div className="w-10 h-10 rounded-xl bg-[#00B5F1]/10 border border-[#00B5F1]/20 flex items-center justify-center group-hover:bg-[#00B5F1]/20 transition-colors">
-                      <step.icon className="w-5 h-5 text-[#00B5F1]" />
+                <div className="luminous-card backdrop-blur-xl border border-slate-200 dark:border-slate-700/80 rounded-2xl p-6 shadow-xl hover:border-[#0369A1]/50 dark:hover:border-[#00B5F1]/50 hover:shadow-[0_0_25px_rgba(3,105,161,0.12)] dark:hover:shadow-[0_0_25px_rgba(0,181,241,0.15)] transition-all duration-300 group-hover:scale-[1.02]">
+                  <div
+                    className={`flex items-center gap-3 mb-3 ${index % 2 === 0 ? "md:justify-end" : "md:justify-start"}`}
+                  >
+                    <div className="w-10 h-10 rounded-xl bg-[#0369A1]/10 dark:bg-[#00B5F1]/10 border border-[#0369A1]/25 dark:border-[#00B5F1]/20 flex items-center justify-center group-hover:bg-[#0369A1]/15 dark:group-hover:bg-[#00B5F1]/20 transition-colors">
+                      <step.icon className="w-5 h-5 text-[#0369A1] dark:text-[#00B5F1]" />
                     </div>
-                    <h4 className="text-lg font-bold text-text-primary">
+                    <h4 className="text-lg font-bold text-[#0F172A] dark:text-text-primary">
                       {step.title}
                     </h4>
                   </div>
-                  <p className="text-sm text-slate-400 leading-relaxed">
+                  <p className="text-sm text-[#334155] dark:text-slate-400 leading-relaxed">
                     {step.description}
                   </p>
                 </div>
               </div>
 
               {/* Badge/Dot */}
-              <div className="absolute left-8 md:left-1/2 w-14 h-14 bg-bg-base border-2 border-[#00B5F1]/40 rounded-full flex items-center justify-center text-[#00B5F1] font-bold text-lg z-10 transform -translate-x-1/2 shadow-[0_0_20px_rgba(0, 181, 241,0.2)] group-hover:border-[#00B5F1] group-hover:shadow-[0_0_30px_rgba(0, 181, 241,0.4)] transition-all duration-300">
+              <div className="absolute left-8 md:left-1/2 w-14 h-14 bg-white dark:bg-bg-base border-2 border-[#0369A1]/40 dark:border-[#00B5F1]/40 rounded-full flex items-center justify-center text-[#0369A1] dark:text-[#00B5F1] font-bold text-lg z-10 transform -translate-x-1/2 shadow-[0_0_20px_rgba(3,105,161,0.15)] dark:shadow-[0_0_20px_rgba(0,181,241,0.2)] group-hover:border-[#0369A1] dark:group-hover:border-[#00B5F1] group-hover:shadow-[0_0_30px_rgba(3,105,161,0.28)] dark:group-hover:shadow-[0_0_30px_rgba(0,181,241,0.4)] transition-all duration-300">
                 {step.id}
               </div>
 
@@ -128,7 +130,7 @@ export default function AIWorkflowTimeline() {
       >
         <Link
           href="/kapcsolat"
-          className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#00B5F1]/10 border border-[#00B5F1]/20 text-[#00B5F1] text-sm font-semibold hover:bg-[#00B5F1]/20 transition-colors cursor-pointer"
+          className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#0369A1]/10 dark:bg-[#00B5F1]/10 border border-[#0369A1]/25 dark:border-[#00B5F1]/20 text-[#0369A1] dark:text-[#00B5F1] text-sm font-semibold hover:bg-[#0369A1]/20 dark:hover:bg-[#00B5F1]/20 transition-colors cursor-pointer"
         >
           <span>Konzultáció kérése</span>
           <ArrowRight className="w-4 h-4" />

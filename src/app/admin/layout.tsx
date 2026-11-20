@@ -87,7 +87,10 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#0a0a0f] flex items-center justify-center">
+      <div
+        data-theme="dark"
+        className="min-h-screen bg-[#0a0a0f] flex items-center justify-center"
+      >
         <div className="text-[#00B5F1] text-xl">Betöltés...</div>
       </div>
     );
@@ -152,6 +155,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
   return (
     <div
       id="admin-layout"
+      data-theme="dark"
       className="min-h-screen bg-[#0a0a0f] text-gray-100 flex"
     >
       {/* Sidebar — fixed, full height, z-40 (a főoldali Header z-50 alatt) */}

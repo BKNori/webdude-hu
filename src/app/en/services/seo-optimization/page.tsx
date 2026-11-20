@@ -130,8 +130,8 @@ export default function EnSeoOptimizationPage() {
         }}
       />
 
-      <div className="bg-slate-950 text-text-primary relative overflow-hidden min-h-screen">
-        <div className="absolute inset-0 bg-linear-to-b from-[#00B5F1]/5 via-transparent to-[#5B21B6]/5" />
+      <div className="bg-[#F8FAFC] dark:bg-slate-950 text-[#0F172A] dark:text-text-primary relative overflow-hidden min-h-screen">
+        <div className="absolute inset-0 bg-linear-to-b from-[#0369A1]/5 via-transparent to-[#6D28D9]/5 dark:from-[#00B5F1]/5 dark:via-transparent dark:to-[#5B21B6]/5" />
 
         <div className="relative z-10">
           <Hero
@@ -139,12 +139,12 @@ export default function EnSeoOptimizationPage() {
             title={
               <>
                 SEO that brings not just visitors, but{" "}
-                <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6] italic">
+                <span className="text-transparent bg-clip-text bg-linear-to-r from-[#0369A1] to-[#6D28D9] dark:from-[#00B5F1] dark:to-[#5B21B6] italic">
                   relevant leads
                 </span>
               </>
             }
-            subtitle="SEO is not just placing a few keywords. I examine your website&apos;s technical state, content structure, search intent and conversion paths, then create a prioritised improvement plan."
+            subtitle="SEO is not just placing a few keywords. I examine your website's technical state, content structure, search intent and conversion paths, then create a prioritised improvement plan."
             cta1="Free SEO consultation"
             cta1Link="/en#contact"
             cta2="View my work"
@@ -154,10 +154,10 @@ export default function EnSeoOptimizationPage() {
         </div>
 
         {/* Direct Answer Block - AEO optimised "SEO Optimisation Overview" */}
-        <section className="relative py-12 bg-bg-base border-y border-white/5">
+        <section className="relative py-12 bg-[#F1F5F9] dark:bg-bg-base border-y border-slate-200/80 dark:border-white/5">
           <div className="max-w-4xl mx-auto px-6 text-center">
-            <p className="text-base md:text-lg text-slate-300 leading-relaxed">
-              <span className="text-[#00B5F1] font-semibold">
+            <p className="text-base md:text-lg text-[#334155] dark:text-slate-300 leading-relaxed">
+              <span className="text-[#0369A1] dark:text-[#00B5F1] font-semibold">
                 WebDude SEO optimisation:
               </span>{" "}
               Technical SEO audit, keyword strategy, content optimisation and
@@ -168,13 +168,13 @@ export default function EnSeoOptimizationPage() {
           </div>
         </section>
 
-        <section className="py-24 relative overflow-hidden z-10">
+        <section className="py-24 relative overflow-hidden z-10 bg-[#F8FAFC] dark:bg-transparent">
           <div className="max-w-6xl mx-auto px-6">
             <div className="text-center max-w-3xl mx-auto mb-16">
-              <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+              <h2 className="text-3xl md:text-5xl font-bold text-[#0F172A] dark:text-white mb-6">
                 SEO Services for SMEs
               </h2>
-              <p className="text-lg text-slate-400">
+              <p className="text-lg text-[#475569] dark:text-slate-400">
                 Everything in one hand: from technical settings to content strategy.
               </p>
             </div>
@@ -185,15 +185,15 @@ export default function EnSeoOptimizationPage() {
                 return (
                   <div
                     key={index}
-                    className="bg-slate-900/60 backdrop-blur-xl p-8 rounded-2xl border border-slate-800/80 hover:border-[#00B5F1]/40 transition-colors duration-300 group"
+                    className="luminous-card p-8 rounded-2xl group"
                   >
-                    <div className="w-12 h-12 rounded-xl bg-slate-950 border border-[#00B5F1]/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                      <Icon className="w-6 h-6 text-[#00B5F1]" />
+                    <div className="w-12 h-12 rounded-xl bg-[#0369A1]/10 dark:bg-slate-950 border border-[#0369A1]/25 dark:border-[#00B5F1]/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                      <Icon className="w-6 h-6 text-[#0369A1] dark:text-[#00B5F1]" />
                     </div>
-                    <h3 className="text-xl font-bold text-white mb-3">
+                    <h3 className="text-xl font-bold text-[#0F172A] dark:text-white mb-3">
                       {feature.title}
                     </h3>
-                    <p className="text-slate-400 text-sm">
+                    <p className="text-[#334155] dark:text-slate-400 text-sm">
                       {feature.description}
                     </p>
                   </div>
@@ -204,13 +204,13 @@ export default function EnSeoOptimizationPage() {
         </section>
 
         {/* ── Micro-FAQ (AEO) ── */}
-        <section className="py-24 bg-slate-900/40 border-t border-slate-800 relative z-10">
+        <section className="py-24 bg-[#F1F5F9] dark:bg-slate-900/40 border-t border-slate-200/80 dark:border-slate-800 relative z-10">
           <div className="max-w-4xl mx-auto px-6">
             <div className="text-center mb-16">
-              <h2 className="text-3xl font-bold text-white mb-4">
+              <h2 className="text-3xl font-bold text-[#0F172A] dark:text-white mb-4">
                 Frequently Asked Questions (AEO)
               </h2>
-              <p className="text-slate-400">
+              <p className="text-[#475569] dark:text-slate-400">
                 Direct answers to the most important SEO questions.
               </p>
             </div>
@@ -219,12 +219,12 @@ export default function EnSeoOptimizationPage() {
               {faqs.map((faq, index) => (
                 <div
                   key={index}
-                  className="bg-slate-900/80 border border-white/5 rounded-2xl p-6 hover:border-[#00B5F1]/20 transition-colors"
+                  className="luminous-card rounded-2xl p-6"
                 >
-                  <h3 className="text-lg font-semibold text-[#00B5F1] mb-3">
+                  <h3 className="text-lg font-semibold text-[#0369A1] dark:text-[#00B5F1] mb-3">
                     {faq.question}
                   </h3>
-                  <p className="text-slate-400 text-sm leading-relaxed">
+                  <p className="text-[#334155] dark:text-slate-400 text-sm leading-relaxed">
                     {faq.answer}
                   </p>
                 </div>
@@ -233,13 +233,13 @@ export default function EnSeoOptimizationPage() {
           </div>
         </section>
 
-        <section className="py-32 text-center relative z-10">
+        <section className="py-24 md:py-32 text-center relative z-10 bg-[#EAF1FA] dark:bg-transparent">
           <div className="max-w-2xl mx-auto px-6">
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+            <h2 className="text-3xl md:text-5xl font-bold text-[#0F172A] dark:text-white mb-6">
               Let&apos;s examine{" "}
-              <span className="text-[#00B5F1] italic">your</span> website too?
+              <span className="text-[#0369A1] dark:text-[#00B5F1] italic">your</span> website too?
             </h2>
-            <p className="text-slate-400 mb-10 text-lg">
+            <p className="text-[#334155] dark:text-slate-400 mb-10 text-lg">
               Request an SEO audit and find out why your website isn&apos;t bringing
               enough leads.
             </p>

@@ -1,7 +1,8 @@
 "use client";
 
 import React from "react";
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
+import { useHydratedReducedMotion } from "@/hooks/useMotionPreset";
 import Image, { type StaticImageData } from "next/image";
 import ResponsiveImage from "@/components/molecules/ResponsiveImage";
 
@@ -26,7 +27,7 @@ export default function BentoCard({
   image,
   imageAlt,
 }: BentoCardProps) {
-  const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = useHydratedReducedMotion();
 
   return (
     <motion.div
@@ -38,7 +39,7 @@ export default function BentoCard({
           ? { duration: 0 }
           : { type: "spring", stiffness: 100, damping: 20 }
       }
-      className={`group relative overflow-hidden bg-slate-900/60 backdrop-blur-xl border border-slate-800/80 rounded-3xl p-8 shadow-[0_8px_24px_rgba(15,23,42,0.3)] hover:border-[#00B5F1]/40 hover:shadow-[0_18px_40px_rgba(0,181,241,0.2)] hover:-translate-y-1 transition-[border-color,box-shadow,transform] duration-300 ${className}`}
+      className={`group relative overflow-hidden bg-white dark:bg-slate-900/60 backdrop-blur-xl border border-slate-200/90 dark:border-slate-800/80 rounded-3xl p-8 shadow-[0_8px_24px_rgba(15,23,42,0.06)] dark:shadow-[0_8px_24px_rgba(15,23,42,0.3)] hover:border-[#0369A1]/40 dark:hover:border-[#00B5F1]/40 hover:shadow-[0_18px_40px_rgba(3,105,161,0.12)] dark:hover:shadow-[0_18px_40px_rgba(0,181,241,0.2)] hover:-translate-y-1 transition-[border-color,box-shadow,transform] duration-300 ${className}`}
     >
       {/* Gradient overlay */}
       <div className="absolute inset-0 bg-linear-to-br from-[#00B5F1]/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -64,18 +65,18 @@ export default function BentoCard({
 
       <div className="relative z-10 space-y-5">
         {metric ? (
-          <p className="text-5xl font-bold bg-clip-text text-transparent bg-linear-to-r from-[#00B5F1] to-[#5B21B6] group-hover:scale-110 transition-transform duration-300 tracking-tight">
+          <p className="text-5xl font-bold bg-clip-text text-transparent bg-linear-to-r from-[#0369A1] to-[#5B21B6] dark:from-[#00B5F1] dark:to-[#5B21B6] group-hover:scale-110 transition-transform duration-300 tracking-tight">
             {metric}
           </p>
         ) : null}
-        <h3 className="text-2xl md:text-3xl font-bold text-text-primary group-hover:text-[#00B5F1] transition-colors duration-300 tracking-tight leading-tight">
+        <h3 className="text-2xl md:text-3xl font-bold text-[#0F172A] dark:text-text-primary group-hover:text-[#0369A1] dark:group-hover:text-[#00B5F1] transition-colors duration-300 tracking-tight leading-tight">
           {title}
         </h3>
-        <p className="text-base md:text-lg leading-relaxed text-slate-400 tracking-wide font-medium">
+        <p className="text-base md:text-lg leading-relaxed text-slate-600 dark:text-slate-400 tracking-wide font-medium">
           {description}
         </p>
         {highlight ? (
-          <p className="text-sm md:text-base font-semibold bg-clip-text text-transparent bg-linear-to-r from-[#00B5F1] to-[#5B21B6] group-hover:from-[#5B21B6] group-hover:to-[#5B21B6] transition-colors duration-300 tracking-wide">
+          <p className="text-sm md:text-base font-semibold bg-clip-text text-transparent bg-linear-to-r from-[#0369A1] to-[#5B21B6] dark:from-[#00B5F1] dark:to-[#5B21B6] group-hover:from-[#5B21B6] group-hover:to-[#5B21B6] transition-colors duration-300 tracking-wide">
             {highlight}
           </p>
         ) : null}

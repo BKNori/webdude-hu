@@ -3,6 +3,8 @@
 import React from "react";
 import Link from "next/link";
 import { motion } from "motion/react";
+import { useHydratedReducedMotion } from "@/hooks/useMotionPreset";
+import Surface from "@/components/atoms/Surface";
 import {
   Globe,
   Bot,
@@ -80,9 +82,10 @@ const PRIMARY_SERVICE_DEFAULTS = [
       "Mikor lesznek SEO eredmények? 3–6 hónapon belül mérhető organikus forgalom-növekedés.",
     tags: ["Technikai SEO", "Kulcsszó stratégia", "AEO / AI Search"],
     href: "/szolgaltatasok/seo-optimalizalas",
-    color: "#a78bfa",
-    bgGlow: "rgba(167,139,250,0.08)",
-    accent: "from-[#a78bfa]/15 to-transparent",
+    color: "#A78BFA",
+    isViolet: true,
+    bgGlow: "rgba(124, 58, 237, 0.12)",
+    accent: "from-[#7C3AED]/15 to-transparent",
     large: false,
     features: [
       { icon: BarChart3, text: "+40–180% organikus forgalom (mért)" },
@@ -100,9 +103,10 @@ const PRIMARY_SERVICE_DEFAULTS = [
     tags: ["Logó & Arculat", "UI/UX Design", "Nyomdai anyagok"],
     href: "/munkak",
     color: "#00B5F1",
-    bgGlow: "rgba(0, 181, 241,0.08)",
-    accent: "from-brand-primary/15 to-transparent",
-    large: false,
+    isViolet: false,
+    bgGlow: "rgba(0, 181, 241, 0.12)",
+    accent: "from-[#00B5F1]/12 to-transparent",
+    large: true,
     features: [
       { icon: Brush, text: "26 év grafikai rutin" },
       { icon: FileImage, text: "Nyomtatásra kész anyagok" },
@@ -124,12 +128,14 @@ const SECONDARY_SERVICE_DEFAULTS = {
     "Kinek ajánlott az AI automatizáció? Olyan vállalkozásoknak, akik ismétlődő folyamataikat szeretnék hatékonyabbá tenni.",
   tags: ["GPT-4 integráció", "Chatbot", "CRM automatizáció"],
   href: "/szolgaltatasok/ai-prompt-engineering",
-  color: "#a78bfa",
+  color: "#A78BFA",
 };
 
 export default function FeaturedServicesNew({
   content,
 }: FeaturedServicesNewProps) {
+  const shouldReduceMotion = useHydratedReducedMotion();
+
   // Nyelvi szövegek a szótárból; a HU vizuális tokenek (ikon, szín) maradnak.
   const primaryServices = PRIMARY_SERVICE_DEFAULTS.map((item, index) => {
     const override = content.primary[index];
@@ -160,46 +166,43 @@ export default function FeaturedServicesNew({
   };
 
   return (
-    <section
+    <Surface
+      tone="slate-lift"
+      aurora
+      grid
       id="services"
-      className="relative py-24 md:py-32 bg-bg-surface/30 overflow-hidden"
-      aria-label={content.ariaLabel}
+      ariaLabel={content.ariaLabel}
+      className="py-24 md:py-32"
     >
-      {/* Háttér dot pattern */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        aria-hidden="true"
-        style={{
-          backgroundImage: `radial-gradient(rgba(0, 181, 241,0.04) 1px, transparent 1px)`,
-          backgroundSize: "32px 32px",
-        }}
-      />
-
       <div className="max-w-360 mx-auto px-6 lg:px-12 xl:px-16">
         {/* Szekció fejléc */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ type: "spring", stiffness: 80, damping: 20 }}
+          transition={
+            shouldReduceMotion
+              ? { duration: 0 }
+              : { type: "spring", stiffness: 100, damping: 20 }
+          }
           className="mb-12 md:mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-primary/10 border border-brand-primary/20 mb-6">
-            <span className="text-brand-primary text-xs font-bold uppercase tracking-widest">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/90 border border-slate-200/90 shadow-2xs dark:shadow-none dark:bg-white/6 dark:border-white/15 dark:border-t-white/25 backdrop-blur-md mb-6">
+            <span className="eyebrow-badge text-[#0369A1] dark:text-[#00B5F1]">
               {content.eyebrow}
             </span>
           </div>
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
-            <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-white leading-tight max-w-2xl">
+            <h2 className="text-3xl md:text-5xl text-[#0F172A] dark:text-white leading-tight max-w-2xl">
               {content.title.prefix}{" "}
-              <span className="text-transparent bg-clip-text bg-linear-to-r from-brand-primary to-brand-secondary">
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#0369A1] to-[#6D28D9] dark:from-[#00B5F1] dark:to-[#A78BFA]">
                 {content.title.highlight}
               </span>
               {content.title.suffix}
             </h2>
             <Link
               href={content.allServicesHref}
-              className="inline-flex items-center gap-2 text-slate-400 hover:text-brand-primary text-sm font-semibold transition-colors duration-200 group focus:outline-none focus:ring-2 focus:ring-brand-primary rounded-lg px-2 py-1"
+              className="inline-flex items-center gap-2 text-slate-700 hover:text-[#0369A1] dark:text-slate-300 dark:hover:text-[#00B5F1] text-sm font-semibold transition-colors duration-200 group focus:outline-none focus:ring-2 focus:ring-[#0369A1] dark:focus:ring-[#00B5F1] rounded-lg px-2 py-1"
               aria-label={content.allServicesLabel}
             >
               {content.allServicesLabel}
@@ -211,53 +214,58 @@ export default function FeaturedServicesNew({
           </div>
         </motion.div>
 
-        {/* ── 4 FŐ SZOLGÁLTATÁS BENTO GRID ──────────────────────────────────── */}
-        {/* Layout: [Weboldal készítés 2-col] [WordPress] + [SEO] [Grafika] */}
+        {/* ── 4 FŐ SZOLGÁLTATÁS BENTO GRID (2+1 / 1+2 aszimmetrikus) ─────────── */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 mb-10">
           {primaryServices.map((service, idx) => {
             const Icon = service.icon;
+            const isViolet = "isViolet" in service && service.isViolet;
+            const accentText = isViolet
+              ? "text-[#6D28D9] dark:text-[#A78BFA]"
+              : "text-[#0369A1] dark:text-[#00B5F1]";
+            const accentBox = isViolet
+              ? "bg-violet-500/10 border-violet-600/25 text-[#6D28D9] dark:bg-[#7C3AED]/15 dark:border-[#A78BFA]/30 dark:text-[#A78BFA]"
+              : "bg-sky-500/10 border-sky-600/25 text-[#0369A1] dark:bg-[#00B5F1]/12 dark:border-[#00B5F1]/25 dark:text-[#00B5F1]";
+            const accentTag = isViolet
+              ? "border-violet-300 bg-violet-50 text-[#5B21B6] dark:border-[#A78BFA]/30 dark:bg-[#7C3AED]/15 dark:text-[#DDD6FE]"
+              : "border-sky-300 bg-sky-50 text-[#0369A1] dark:border-[#00B5F1]/25 dark:bg-[#00B5F1]/10 dark:text-[#00B5F1]";
+            const accentBorderL = isViolet
+              ? "border-l-[#6D28D9] dark:border-l-[#A78BFA]"
+              : "border-l-[#0369A1] dark:border-l-[#00B5F1]";
+
             return (
               <motion.div
                 key={service.id}
-                initial={{ opacity: 0, y: 40 }}
+                initial={
+                  shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 36 }
+                }
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
-                transition={{
-                  type: "spring",
-                  stiffness: 100,
-                  damping: 20,
-                  delay: idx * 0.1,
-                }}
+                transition={
+                  shouldReduceMotion
+                    ? { duration: 0 }
+                    : {
+                        type: "spring",
+                        stiffness: 100,
+                        damping: 20,
+                        delay: idx * 0.08,
+                      }
+                }
                 className={service.large ? "lg:col-span-2" : "lg:col-span-1"}
               >
                 <motion.div
-                  whileHover={{
-                    y: -4,
-                    scale: 1.02,
-                    boxShadow: `0 24px 64px ${service.bgGlow}`,
-                  }}
-                  transition={{
-                    type: "spring",
-                    stiffness: 100,
-                    damping: 20,
-                  }}
-                  className="group h-full flex flex-col p-8 rounded-3xl border border-white/8 hover:border-sky-500/50 relative overflow-hidden cursor-pointer transition-colors duration-300"
-                  style={{
-                    background:
-                      "linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)",
-                    boxShadow: "0 8px 32px rgba(0,0,0,0.3)",
-                  }}
+                  whileHover={
+                    shouldReduceMotion ? undefined : { y: -4, scale: 1.01 }
+                  }
+                  transition={
+                    shouldReduceMotion
+                      ? { duration: 0 }
+                      : { type: "spring", stiffness: 100, damping: 20 }
+                  }
+                  className="luminous-card group h-full flex flex-col p-8 relative overflow-hidden"
                 >
-                  {/* Glow overlay — hover-re megjelenik */}
+                  {/* Hover gradient fény */}
                   <div
                     className={`absolute inset-0 bg-linear-to-br ${service.accent} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
-                    aria-hidden="true"
-                  />
-
-                  {/* Sarok dísz */}
-                  <div
-                    className="absolute top-0 right-0 w-40 h-40 rounded-bl-full opacity-10"
-                    style={{ background: service.bgGlow }}
                     aria-hidden="true"
                   />
 
@@ -266,28 +274,19 @@ export default function FeaturedServicesNew({
                     <div className="flex items-start justify-between mb-6">
                       <div>
                         <span
-                          className="text-xs font-bold uppercase tracking-widest mb-2 block"
-                          style={{ color: service.color }}
+                          className={`eyebrow-badge ${accentText} mb-2 block`}
                         >
                           {service.eyebrow}
                         </span>
                         <div
-                          className="w-14 h-14 rounded-2xl border flex items-center justify-center"
-                          style={{
-                            borderColor: `${service.color}30`,
-                            background: `${service.color}12`,
-                          }}
+                          className={`w-14 h-14 rounded-2xl border flex items-center justify-center ${accentBox}`}
                         >
-                          <Icon
-                            className="w-7 h-7"
-                            style={{ color: service.color }}
-                            aria-hidden="true"
-                          />
+                          <Icon className="w-7 h-7" aria-hidden="true" />
                         </div>
                       </div>
                       <Link
                         href={service.href}
-                        className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-slate-500 hover:text-white hover:border-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-sky-500"
+                        className="w-10 h-10 rounded-full border border-slate-200 bg-slate-100/80 text-slate-700 group-hover:bg-[#0369A1] group-hover:text-white group-hover:border-[#0369A1] dark:border-white/15 dark:bg-white/5 dark:text-slate-300 dark:group-hover:bg-[#00B5F1] dark:group-hover:text-slate-950 dark:group-hover:border-[#00B5F1] flex items-center justify-center transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#0369A1] dark:focus:ring-[#00B5F1]"
                         aria-label={`${service.title} ${content.detailsAriaSuffix}`}
                         tabIndex={0}
                       >
@@ -296,25 +295,18 @@ export default function FeaturedServicesNew({
                     </div>
 
                     {/* Cím és leírás */}
-                    <h3 className="text-xl md:text-2xl text-white mb-3 tracking-wider">
+                    <h3 className="text-xl md:text-2xl text-[#0F172A] dark:text-white mb-3 tracking-wider">
                       {service.title}
                     </h3>
-                    <p className="text-slate-300 text-sm leading-relaxed mb-4 flex-1 font-normal">
+                    <p className="text-slate-700 dark:text-slate-300 text-sm leading-relaxed mb-4 flex-1 font-normal">
                       {service.description}
                     </p>
 
                     {/* AEO Mikro-GYIK blokk — Direct Answer ChatGPT/Perplexity számára */}
                     <div
-                      className="mb-4 px-4 py-3 rounded-xl border-l-2 text-xs text-slate-300 leading-relaxed italic font-normal"
-                      style={{
-                        borderColor: `${service.color}50`,
-                        background: `${service.color}06`,
-                      }}
+                      className={`mb-4 px-4 py-3 rounded-xl border border-slate-200/90 dark:border-white/8 border-l-4 ${accentBorderL} bg-[#F8FAFC] dark:bg-[#0B1120]/70 text-xs text-slate-700 dark:text-slate-300 leading-relaxed font-normal`}
                     >
-                      <span
-                        className="font-semibold not-italic"
-                        style={{ color: service.color }}
-                      >
+                      <span className={`font-semibold ${accentText}`}>
                         {content.quickAnswerLabel}
                       </span>{" "}
                       {service.microFaq}
@@ -328,11 +320,10 @@ export default function FeaturedServicesNew({
                           return (
                             <li
                               key={feat.text}
-                              className="flex items-center gap-2 text-xs text-slate-400"
+                              className="flex items-center gap-2 text-xs text-slate-700 dark:text-slate-200 font-medium"
                             >
                               <FIcon
-                                className="w-3.5 h-3.5 shrink-0"
-                                style={{ color: service.color }}
+                                className={`w-3.5 h-3.5 shrink-0 ${accentText}`}
                                 aria-hidden="true"
                               />
                               {feat.text}
@@ -347,12 +338,7 @@ export default function FeaturedServicesNew({
                       {service.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="px-3 py-1 rounded-full text-xs font-medium border"
-                          style={{
-                            color: service.color,
-                            borderColor: `${service.color}25`,
-                            background: `${service.color}10`,
-                          }}
+                          className={`px-3 py-1 rounded-full text-xs font-semibold border ${accentTag}`}
                         >
                           {tag}
                         </span>
@@ -365,67 +351,55 @@ export default function FeaturedServicesNew({
           })}
         </div>
 
-        {/* ── MÁSODLAGOS SZEKCIÓ — AI Automatizáció (vizuálisan hátrébb tolva) ── */}
+        {/* ── MÁSODLAGOS SZEKCIÓ — AI Automatizáció ─────────────────────────── */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
-          transition={{ type: "spring", stiffness: 80, damping: 20, delay: 0.2 }}
+          transition={
+            shouldReduceMotion
+              ? { duration: 0 }
+              : { type: "spring", stiffness: 100, damping: 20, delay: 0.15 }
+          }
         >
           {/* Elválasztó felirat */}
           <div className="flex items-center gap-4 mb-6">
-            <div className="flex-1 h-px bg-white/6" aria-hidden="true" />
-            <span className="text-slate-400 text-xs uppercase tracking-widest font-semibold">
+            <div className="flex-1 h-px bg-slate-300/80 dark:bg-white/12" aria-hidden="true" />
+            <span className="eyebrow-badge text-slate-600 dark:text-slate-300">
               {content.secondary.dividerLabel}
             </span>
-            <div className="flex-1 h-px bg-white/6" aria-hidden="true" />
+            <div className="flex-1 h-px bg-slate-300/80 dark:bg-white/12" aria-hidden="true" />
           </div>
 
-          {/* AI kártya — vízszintes, kisebb, halványabb */}
+          {/* AI kártya — vízszintes Dual Theme kártya */}
           <motion.div
-            whileHover={{ y: -2, boxShadow: "0 12px 48px rgba(167,139,250,0.1)" }}
-            transition={{ type: "spring", stiffness: 200, damping: 20 }}
-            className="flex flex-col md:flex-row items-start md:items-center gap-6 p-6 rounded-2xl border border-white/6 hover:border-violet-400/30 transition-colors duration-300"
-            style={{
-              background:
-                "linear-gradient(135deg, rgba(167,139,250,0.04) 0%, rgba(255,255,255,0.02) 100%)",
-            }}
+            whileHover={shouldReduceMotion ? undefined : { y: -2 }}
+            transition={
+              shouldReduceMotion
+                ? { duration: 0 }
+                : { type: "spring", stiffness: 100, damping: 20 }
+            }
+            className="luminous-card flex flex-col md:flex-row items-start md:items-center gap-6 p-6 md:p-8"
           >
             {/* Ikon */}
-            <div
-              className="w-12 h-12 rounded-xl border flex items-center justify-center shrink-0"
-              style={{
-                borderColor: `${secondaryService.color}30`,
-                background: `${secondaryService.color}10`,
-              }}
-            >
-              <secondaryService.icon
-                className="w-6 h-6"
-                style={{ color: secondaryService.color }}
-                aria-hidden="true"
-              />
+            <div className="w-12 h-12 rounded-xl border border-violet-600/25 bg-violet-500/10 text-[#6D28D9] dark:border-[#A78BFA]/30 dark:bg-[#7C3AED]/15 flex items-center justify-center shrink-0 dark:text-[#A78BFA]">
+              <secondaryService.icon className="w-6 h-6" aria-hidden="true" />
             </div>
 
             {/* Szöveg */}
             <div className="flex-1 min-w-0">
-              <span
-                className="text-xs font-bold uppercase tracking-widest mb-1 block"
-                style={{ color: secondaryService.color }}
-              >
+              <span className="eyebrow-badge text-[#6D28D9] dark:text-[#A78BFA] mb-1 block">
                 {secondaryService.eyebrow}
               </span>
-              <h3 className="text-xl md:text-2xl text-white mb-1 tracking-wider">
+              <h3 className="text-xl md:text-2xl text-[#0F172A] dark:text-white mb-1 tracking-wider">
                 {secondaryService.title}
               </h3>
-              <p className="text-slate-300 text-sm leading-relaxed mb-2 font-normal">
+              <p className="text-slate-700 dark:text-slate-300 text-sm leading-relaxed mb-2 font-normal">
                 {secondaryService.description}
               </p>
               {/* AEO Mikro-GYIK */}
-              <p className="text-xs text-slate-300 italic font-normal">
-                <span
-                  className="font-semibold not-italic"
-                  style={{ color: `${secondaryService.color}80` }}
-                >
+              <p className="text-xs text-slate-700 dark:text-slate-300 font-normal">
+                <span className="font-semibold text-[#6D28D9] dark:text-[#A78BFA]">
                   {content.quickAnswerLabel}
                 </span>{" "}
                 {secondaryService.microFaq}
@@ -438,12 +412,7 @@ export default function FeaturedServicesNew({
                 {secondaryService.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="px-2.5 py-1 rounded-full text-xs font-medium border"
-                    style={{
-                      color: secondaryService.color,
-                      borderColor: `${secondaryService.color}25`,
-                      background: `${secondaryService.color}08`,
-                    }}
+                    className="px-2.5 py-1 rounded-full text-xs font-semibold border border-violet-300 bg-violet-50 text-[#5B21B6] dark:border-[#A78BFA]/30 dark:bg-[#7C3AED]/15 dark:text-[#DDD6FE]"
                   >
                     {tag}
                   </span>
@@ -451,8 +420,7 @@ export default function FeaturedServicesNew({
               </div>
               <Link
                 href={secondaryService.href}
-                className="inline-flex items-center gap-1.5 text-xs font-semibold transition-colors duration-200 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400 rounded"
-                style={{ color: secondaryService.color }}
+                className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#6D28D9] hover:text-[#0F172A] dark:text-[#A78BFA] dark:hover:text-white transition-colors duration-200 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#6D28D9] dark:focus-visible:ring-[#A78BFA] rounded"
                 aria-label={`${secondaryService.title} ${content.detailsAriaSuffix}`}
               >
                 {content.secondary.detailsLabel}
@@ -462,6 +430,6 @@ export default function FeaturedServicesNew({
           </motion.div>
         </motion.div>
       </div>
-    </section>
+    </Surface>
   );
 }

@@ -79,8 +79,8 @@ export default function LeanperialCaseStudy() {
 
         <div className="relative z-10 mx-auto max-w-4xl text-center">
           <div className="inline-flex items-center gap-2 rounded-full border border-brand-primary/30 bg-brand-primary/10 px-5 py-2 backdrop-blur-sm">
-            <Gauge className="h-4 w-4 text-brand-primary" aria-hidden />
-            <span className="text-sm font-bold uppercase tracking-[0.2em] text-brand-primary">
+            <Gauge className="h-4 w-4 text-[#0369A1] dark:text-brand-primary" aria-hidden />
+            <span className="text-sm font-bold uppercase tracking-[0.2em] text-[#0369A1] dark:text-brand-primary">
               Quiet Luxury · Executive Search
             </span>
           </div>
@@ -92,7 +92,7 @@ export default function LeanperialCaseStudy() {
             </span>
           </h1>
 
-          <p className="mx-auto mt-8 max-w-2xl text-lg font-light leading-relaxed text-slate-200 md:text-xl">
+          <p className="mx-auto mt-8 max-w-2xl text-lg font-light leading-relaxed text-[#1E293B] dark:text-slate-200 md:text-xl">
             Egy nemzetközi luxusmárka-tanácsadó számára építettem prémium,
             diszkréciót közvetítő weboldalt: kártevőmentesítés, egyedi
             WordPress + Kadence fejlesztés és technikai SEO-tökéletesítés
@@ -109,7 +109,7 @@ export default function LeanperialCaseStudy() {
             </Link>
             <Link
               href="/munkak"
-              className="rounded-full border border-slate-600 px-8 py-4 font-bold text-slate-300 transition-colors duration-300 hover:border-brand-primary hover:text-brand-primary"
+              className="rounded-full border border-slate-300 dark:border-slate-600 px-8 py-4 font-bold text-[#334155] dark:text-slate-300 transition-colors duration-300 hover:border-brand-primary hover:text-brand-primary"
             >
               Vissza a munkákhoz
             </Link>
@@ -123,15 +123,15 @@ export default function LeanperialCaseStudy() {
           {OVERVIEW.map((item) => (
             <div
               key={item.label}
-              className="rounded-2xl border border-white/10 bg-slate-950/60 p-8 backdrop-blur-xl transition-colors duration-300 hover:border-brand-primary/50"
+              className="rounded-2xl border border-slate-200/80 dark:border-white/10 bg-white/95 dark:bg-slate-950/60 shadow-[0_12px_32px_rgba(15,23,42,0.06)] p-8 backdrop-blur-xl transition-colors duration-300 hover:border-brand-primary/50"
             >
               <div className="text-xs font-bold uppercase tracking-[0.2em] text-text-secondary">
                 {item.label}
               </div>
-              <div className="mt-3 text-2xl font-bold text-brand-primary">
+              <div className="mt-3 text-2xl font-bold text-[#0369A1] dark:text-brand-primary">
                 {item.value}
               </div>
-              <div className="mt-2 text-sm leading-relaxed text-slate-400">
+              <div className="mt-2 text-sm leading-relaxed text-[#475569] dark:text-slate-400">
                 {item.sub}
               </div>
             </div>
@@ -144,7 +144,7 @@ export default function LeanperialCaseStudy() {
 
       {/* ── 4. CTA BLOKK (ZÉRÓ FIX ÁR) ──────────────────────────────────── */}
       <section className="px-6 py-32">
-        <div className="relative mx-auto max-w-4xl overflow-hidden rounded-3xl border border-white/10 bg-linear-to-br from-cta-from/20 to-cta-to/20 p-12 text-center backdrop-blur-xl md:p-16">
+        <div className="relative mx-auto max-w-4xl overflow-hidden rounded-3xl border border-slate-200/80 dark:border-white/10 bg-linear-to-br from-cta-from/20 to-cta-to/20 p-12 text-center backdrop-blur-xl md:p-16">
           <div
             aria-hidden
             className="pointer-events-none absolute -top-24 left-1/3 h-72 w-72 rounded-full bg-brand-primary/20 blur-3xl"
@@ -158,7 +158,7 @@ export default function LeanperialCaseStudy() {
               </span>{" "}
               weboldalt szeretnél?
             </h2>
-            <p className="mx-auto mt-6 max-w-2xl text-lg font-light leading-relaxed text-slate-300">
+            <p className="mx-auto mt-6 max-w-2xl text-lg font-light leading-relaxed text-[#334155] dark:text-slate-300">
               Kérj ingyenes konzultációt. Átvizsgálom a jelenlegi oldalad
               biztonságát és teljesítményét, majd egyedi, értékalapú
               javaslattal térek vissza — fix árazás nélkül.
@@ -172,7 +172,7 @@ export default function LeanperialCaseStudy() {
               </Link>
               <Link
                 href="/munkak"
-                className="rounded-full border border-slate-600 px-10 py-5 font-bold text-slate-300 transition-colors duration-300 hover:border-brand-primary hover:text-brand-primary"
+                className="rounded-full border border-slate-300 dark:border-slate-600 px-10 py-5 font-bold text-[#334155] dark:text-slate-300 transition-colors duration-300 hover:border-brand-primary hover:text-brand-primary"
               >
                 További munkák
               </Link>

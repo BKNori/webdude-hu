@@ -90,7 +90,7 @@ export default function AIWorkshopCollection() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-bg-base flex flex-col items-center justify-center space-y-4">
+      <div data-theme="dark" className="min-h-screen bg-[#020617] text-[#e2e8f0] flex flex-col items-center justify-center space-y-4">
         <div className="relative">
           <div className="absolute inset-0 rounded-full bg-sky-500/20 blur-md animate-ping" />
           <Loader2 className="w-10 h-10 animate-spin text-sky-500 relative" />
@@ -103,7 +103,7 @@ export default function AIWorkshopCollection() {
   }
 
   return (
-    <div className="min-h-screen bg-bg-base text-text-primary">
+    <div data-theme="dark" className="min-h-screen bg-[#020617] text-[#e2e8f0]">
       <header className="border-b border-slate-800 bg-slate-900/80 backdrop-blur-xl sticky top-0 z-50">
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">

@@ -126,10 +126,10 @@ export default async function AiWorkflowPage() {
           />
 
           {/* Direct Answer Block - AEO optimalizált "AI workflow áttekintés" */}
-          <section className="relative py-12 bg-bg-base border-y border-white/5">
+          <section className="relative py-12 bg-bg-base border-y border-slate-200/80 dark:border-white/5">
             <div className="max-w-4xl mx-auto px-6 text-center">
-              <p className="text-base md:text-lg text-slate-300 leading-relaxed">
-                <span className="text-[#00B5F1] font-semibold">
+              <p className="text-base md:text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
+                <span className="text-[#0369A1] dark:text-[#00B5F1] font-semibold">
                   AI workflow automatizálás:
                 </span>{" "}
                 ChatGPT, Claude és egyedi AI eszközök integrációja,
@@ -144,7 +144,7 @@ export default async function AiWorkflowPage() {
             <div className="mt-12 grid gap-12 md:grid-cols-2 items-start max-w-4xl mx-auto">
               <div className="space-y-6">
                 <Badge>AI Automatizálás</Badge>
-                <p className="text-xl text-slate-300 leading-relaxed">
+                <p className="text-xl text-slate-700 dark:text-slate-300 leading-relaxed">
                   Nem csak AI eszközöket telepítek — teljes workflow
                   rendszereket építek, amelyek automatizálják a megismétlődő
                   feladatokat, optimalizálják a döntéshozatalt, és 40-70%
@@ -160,9 +160,9 @@ export default async function AiWorkflowPage() {
                 </div>
               </div>
 
-              <div className="rounded-2xl overflow-hidden border border-slate-700/60">
+              <div className="rounded-2xl overflow-hidden border border-slate-200/90 dark:border-slate-700/60">
                 <div className="bg-linear-to-br from-[#00B5F1]/20 to-[#00B5F1]/5 p-12 flex items-center justify-center min-h-100">
-                  <p className="text-2xl text-[#00B5F1] font-semibold text-center">
+                  <p className="text-2xl text-[#0369A1] dark:text-[#00B5F1] font-semibold text-center">
                     AI Workflow Architektúra
                   </p>
                 </div>
@@ -177,29 +177,29 @@ export default async function AiWorkflowPage() {
                   Szolgáltatások
                 </h2>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  <div className="bg-transparent border border-slate-700/60 p-6 rounded-lg">
-                    <h3 className="text-xl font-semibold text-[#00B5F1] mb-3">
+                  <div className="bg-transparent border border-slate-200/90 dark:border-slate-700/60 p-6 rounded-lg">
+                    <h3 className="text-xl font-semibold text-[#0369A1] dark:text-[#00B5F1] mb-3">
                       ChatGPT Konfiguráció
                     </h3>
-                    <p className="text-slate-400">
+                    <p className="text-slate-600 dark:text-slate-400">
                       Custom GPT-k, API integrációk, prompt engineering és
                       vállalati rendszer összekapcsolás
                     </p>
                   </div>
-                  <div className="bg-transparent border border-slate-700/60 p-6 rounded-lg">
-                    <h3 className="text-xl font-semibold text-[#00B5F1] mb-3">
+                  <div className="bg-transparent border border-slate-200/90 dark:border-slate-700/60 p-6 rounded-lg">
+                    <h3 className="text-xl font-semibold text-[#0369A1] dark:text-[#00B5F1] mb-3">
                       Claude Integráció
                     </h3>
-                    <p className="text-slate-400">
+                    <p className="text-slate-600 dark:text-slate-400">
                       Anthropic Claude API integráció, dokumentáció-elemzés és
                       tartalomgenerálás automatizálása
                     </p>
                   </div>
-                  <div className="bg-transparent border border-slate-700/60 p-6 rounded-lg">
-                    <h3 className="text-xl font-semibold text-[#00B5F1] mb-3">
+                  <div className="bg-transparent border border-slate-200/90 dark:border-slate-700/60 p-6 rounded-lg">
+                    <h3 className="text-xl font-semibold text-[#0369A1] dark:text-[#00B5F1] mb-3">
                       Egyedi AI Pipeline
                     </h3>
-                    <p className="text-slate-400">
+                    <p className="text-slate-600 dark:text-slate-400">
                       Testreszabott AI workflow-ok automatikus
                       adatfeldolgozásra, elemzésre és döntéshozatalra
                     </p>
@@ -279,7 +279,7 @@ export default async function AiWorkflowPage() {
                 </h2>
                 <div className="space-y-4">
                   <div className="flex items-start gap-4">
-                    <div className="shrink-0 w-8 h-8 bg-[#00B5F1] rounded-full flex items-center justify-center text-bg-base font-bold">
+                    <div className="shrink-0 w-8 h-8 bg-[#0369A1] dark:bg-[#00B5F1] rounded-full flex items-center justify-center text-white dark:text-slate-950 font-bold">
                       <Check
                         className="w-4 h-4"
                         strokeWidth={3}
@@ -290,14 +290,14 @@ export default async function AiWorkflowPage() {
                       <h3 className="text-lg font-semibold text-text-primary">
                         40-70% időmegtakarítás
                       </h3>
-                      <p className="text-slate-400">
+                      <p className="text-slate-600 dark:text-slate-400">
                         Megismétlődő feladatok automatizálása: dokumentáció,
                         email kezelés, adatbevitel, döntéshozatal
                       </p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <div className="shrink-0 w-8 h-8 bg-[#00B5F1] rounded-full flex items-center justify-center text-bg-base font-bold">
+                    <div className="shrink-0 w-8 h-8 bg-[#0369A1] dark:bg-[#00B5F1] rounded-full flex items-center justify-center text-white dark:text-slate-950 font-bold">
                       <Check
                         className="w-4 h-4"
                         strokeWidth={3}
@@ -308,14 +308,14 @@ export default async function AiWorkflowPage() {
                       <h3 className="text-lg font-semibold text-text-primary">
                         Skálázható és eredményorientált
                       </h3>
-                      <p className="text-slate-400">
+                      <p className="text-slate-600 dark:text-slate-400">
                         A workflow-k automatikusan skálázódnak a növekvő
                         igényekkel, megbízható és konzisztens eredményekkel
                       </p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <div className="shrink-0 w-8 h-8 bg-[#00B5F1] rounded-full flex items-center justify-center text-bg-base font-bold">
+                    <div className="shrink-0 w-8 h-8 bg-[#0369A1] dark:bg-[#00B5F1] rounded-full flex items-center justify-center text-white dark:text-slate-950 font-bold">
                       <Check
                         className="w-4 h-4"
                         strokeWidth={3}
@@ -326,14 +326,14 @@ export default async function AiWorkflowPage() {
                       <h3 className="text-lg font-semibold text-text-primary">
                         Költséghatékony integráció
                       </h3>
-                      <p className="text-slate-400">
+                      <p className="text-slate-600 dark:text-slate-400">
                         A meglévő rendszerekkel való zökkenőmentes
                         összekapcsolás minimális zavarással és gyors ROI-val
                       </p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <div className="shrink-0 w-8 h-8 bg-[#00B5F1] rounded-full flex items-center justify-center text-bg-base font-bold">
+                    <div className="shrink-0 w-8 h-8 bg-[#0369A1] dark:bg-[#00B5F1] rounded-full flex items-center justify-center text-white dark:text-slate-950 font-bold">
                       <Check
                         className="w-4 h-4"
                         strokeWidth={3}
@@ -344,14 +344,14 @@ export default async function AiWorkflowPage() {
                       <h3 className="text-lg font-semibold text-text-primary">
                         Adatvédelem és biztonság
                       </h3>
-                      <p className="text-slate-400">
+                      <p className="text-slate-600 dark:text-slate-400">
                         Titkosított kapcsolatok, szigorú access control és
                         GDPR-kompatibilis folyamatok
                       </p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <div className="shrink-0 w-8 h-8 bg-[#00B5F1] rounded-full flex items-center justify-center text-bg-base font-bold">
+                    <div className="shrink-0 w-8 h-8 bg-[#0369A1] dark:bg-[#00B5F1] rounded-full flex items-center justify-center text-white dark:text-slate-950 font-bold">
                       <Check
                         className="w-4 h-4"
                         strokeWidth={3}
@@ -362,7 +362,7 @@ export default async function AiWorkflowPage() {
                       <h3 className="text-lg font-semibold text-text-primary">
                         Folyamatos optimalizálás
                       </h3>
-                      <p className="text-slate-400">
+                      <p className="text-slate-600 dark:text-slate-400">
                         Figyelő és adaptív AI rendszerek, amelyek tanulnak és
                         optimalizálódnak a használat során
                       </p>
@@ -380,38 +380,38 @@ export default async function AiWorkflowPage() {
                   Felhasználási esetek
                 </h2>
                 <div className="space-y-6">
-                  <div className="bg-transparent border border-slate-700/60 p-6 rounded-lg">
-                    <h3 className="text-lg font-semibold text-[#00B5F1] mb-2">
+                  <div className="bg-transparent border border-slate-200/90 dark:border-slate-700/60 p-6 rounded-lg">
+                    <h3 className="text-lg font-semibold text-[#0369A1] dark:text-[#00B5F1] mb-2">
                       Dokumentáció és Tartalom
                     </h3>
-                    <p className="text-slate-400">
+                    <p className="text-slate-600 dark:text-slate-400">
                       Automatikus dokumentációgenerálás, blog bejegyzések, email
                       sablonok és marketing szövegek AI-val
                     </p>
                   </div>
-                  <div className="bg-transparent border border-slate-700/60 p-6 rounded-lg">
-                    <h3 className="text-lg font-semibold text-[#00B5F1] mb-2">
+                  <div className="bg-transparent border border-slate-200/90 dark:border-slate-700/60 p-6 rounded-lg">
+                    <h3 className="text-lg font-semibold text-[#0369A1] dark:text-[#00B5F1] mb-2">
                       Ügyfélszolgálat és Kommunikáció
                     </h3>
-                    <p className="text-slate-400">
+                    <p className="text-slate-600 dark:text-slate-400">
                       AI-powered chatbot-k, automatikus válaszgenerálás, ticket
                       prioritizálás és ügyfél-kommunikáció
                     </p>
                   </div>
-                  <div className="bg-transparent border border-slate-700/60 p-6 rounded-lg">
-                    <h3 className="text-lg font-semibold text-[#00B5F1] mb-2">
+                  <div className="bg-transparent border border-slate-200/90 dark:border-slate-700/60 p-6 rounded-lg">
+                    <h3 className="text-lg font-semibold text-[#0369A1] dark:text-[#00B5F1] mb-2">
                       Adatfeldolgozás és Elemzés
                     </h3>
-                    <p className="text-slate-400">
+                    <p className="text-slate-600 dark:text-slate-400">
                       Automatikus adatbevitel, mintázatfelismerés,
                       riportgenerálás és döntéshozatali támogatás
                     </p>
                   </div>
-                  <div className="bg-transparent border border-slate-700/60 p-6 rounded-lg">
-                    <h3 className="text-lg font-semibold text-[#00B5F1] mb-2">
+                  <div className="bg-transparent border border-slate-200/90 dark:border-slate-700/60 p-6 rounded-lg">
+                    <h3 className="text-lg font-semibold text-[#0369A1] dark:text-[#00B5F1] mb-2">
                       Projektmenedzsment és Koordináció
                     </h3>
-                    <p className="text-slate-400">
+                    <p className="text-slate-600 dark:text-slate-400">
                       Feladatok automatikus hozzárendelése, haladás-követés és
                       erőforrás-optimalizálás AI-val
                     </p>
@@ -428,38 +428,38 @@ export default async function AiWorkflowPage() {
                   Működési folyamat
                 </h2>
                 <div className="space-y-6">
-                  <div className="bg-transparent border border-slate-700/60 p-6 rounded-lg">
-                    <h3 className="text-lg font-semibold text-[#00B5F1] mb-2">
+                  <div className="bg-transparent border border-slate-200/90 dark:border-slate-700/60 p-6 rounded-lg">
+                    <h3 className="text-lg font-semibold text-[#0369A1] dark:text-[#00B5F1] mb-2">
                       1. Követelményelemzés és Design
                     </h3>
-                    <p className="text-slate-400">
+                    <p className="text-slate-600 dark:text-slate-400">
                       Vállalati folyamatok átvizsgálása, automatizálási
                       lehetőségek azonosítása és workflow design tervezés
                     </p>
                   </div>
-                  <div className="bg-transparent border border-slate-700/60 p-6 rounded-lg">
-                    <h3 className="text-lg font-semibold text-[#00B5F1] mb-2">
+                  <div className="bg-transparent border border-slate-200/90 dark:border-slate-700/60 p-6 rounded-lg">
+                    <h3 className="text-lg font-semibold text-[#0369A1] dark:text-[#00B5F1] mb-2">
                       2. Konfiguráció és Integráció
                     </h3>
-                    <p className="text-slate-400">
+                    <p className="text-slate-600 dark:text-slate-400">
                       AI eszközök konfigurálása (ChatGPT, Claude), API
                       integrációk és meglévő rendszerek összekapcsolása
                     </p>
                   </div>
-                  <div className="bg-transparent border border-slate-700/60 p-6 rounded-lg">
-                    <h3 className="text-lg font-semibold text-[#00B5F1] mb-2">
+                  <div className="bg-transparent border border-slate-200/90 dark:border-slate-700/60 p-6 rounded-lg">
+                    <h3 className="text-lg font-semibold text-[#0369A1] dark:text-[#00B5F1] mb-2">
                       3. Tesztelés és Deploy
                     </h3>
-                    <p className="text-slate-400">
+                    <p className="text-slate-600 dark:text-slate-400">
                       Comprehensive tesztelés, felhasználói training és éles
                       rendszer bevezetés ütemezett launch-sal
                     </p>
                   </div>
-                  <div className="bg-transparent border border-slate-700/60 p-6 rounded-lg">
-                    <h3 className="text-lg font-semibold text-[#00B5F1] mb-2">
+                  <div className="bg-transparent border border-slate-200/90 dark:border-slate-700/60 p-6 rounded-lg">
+                    <h3 className="text-lg font-semibold text-[#0369A1] dark:text-[#00B5F1] mb-2">
                       4. Monitoring és Optimalizálás
                     </h3>
-                    <p className="text-slate-400">
+                    <p className="text-slate-600 dark:text-slate-400">
                       Folyamatos performance monitoring, finomhangolás és
                       skálázás az eredmények alapján
                     </p>
@@ -479,12 +479,12 @@ export default async function AiWorkflowPage() {
                   {FAQ.map((f, index) => (
                     <details
                       key={index}
-                      className="bg-transparent border border-slate-700/60 p-6 rounded-lg group"
+                      className="bg-transparent border border-slate-200/90 dark:border-slate-700/60 p-6 rounded-lg group"
                     >
-                      <summary className="font-semibold text-text-primary cursor-pointer group-hover:text-[#00B5F1] transition-colors">
+                      <summary className="font-semibold text-text-primary cursor-pointer group-hover:text-[#0369A1] dark:group-hover:text-[#00B5F1] transition-colors">
                         {f.q}
                       </summary>
-                      <p className="mt-3 text-slate-400">{f.a}</p>
+                      <p className="mt-3 text-slate-600 dark:text-slate-400">{f.a}</p>
                     </details>
                   ))}
                 </div>
@@ -497,7 +497,7 @@ export default async function AiWorkflowPage() {
                 <h2 className="text-5xl font-bold text-text-primary mb-4">
                   Kész automatizálni a vállalati folyamatokat?
                 </h2>
-                <p className="text-lg text-slate-400 mb-8">
+                <p className="text-lg text-slate-600 dark:text-slate-400 mb-8">
                   Ingyenes konzultáció és személyre szabott AI workflow tervezés
                 </p>
                 <Button

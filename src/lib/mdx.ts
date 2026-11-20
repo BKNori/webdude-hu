@@ -336,3 +336,87 @@ export async function getPostBySlugCombined(
 
   return null;
 }
+
+function escapeHtmlAttr(str: string): string {
+  return str.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
+}
+
+function formatTableCellInline(cell: string): string {
+  return cell
+    .trim()
+    .replace(/`([^`]+)`/g, "<code>$1</code>")
+    .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
+    .replace(/\*([^*]+)\*/g, "<em>$1</em>")
+    .replace(
+      /\[([^\]]+)\]\(([^)]+)\)/g,
+      (_m, text, url) => `<a href="${escapeHtmlAttr(url)}">${text}</a>`
+    );
+}
+
+/**
+ * Konvertálja a GFM Markdown pipe táblázatokat (`| ... |`) standard HTML
+ * `<table><thead>...</thead><tbody>...</tbody></table>` elemekké, megőrizve
+ * a kódblokkok tartalmát (nincs szükség külső remark-gfm pluginra).
+ */
+export function normalizeMdxTables(markdown: string): string {
+  const lines = markdown.split(/\r?\n/);
+  const output: string[] = [];
+  let inCodeBlock = false;
+  let i = 0;
+
+  const isTableRow = (line: string) => {
+    const t = line.trim();
+    return t.startsWith("|") && t.endsWith("|") && t.slice(1, -1).includes("|");
+  };
+
+  const isSeparatorRow = (line: string) => {
+    const t = line.trim();
+    if (!t.startsWith("|") || !t.endsWith("|")) return false;
+    const cells = t.slice(1, -1).split("|").map((c) => c.trim());
+    return cells.length > 0 && cells.every((c) => /^:?-{3,}:?$/.test(c));
+  };
+
+  const splitCells = (line: string) =>
+    line
+      .trim()
+      .slice(1, -1)
+      .split("|")
+      .map((c) => formatTableCellInline(c));
+
+  while (i < lines.length) {
+    const line = lines[i];
+    if (line.trim().startsWith("```")) {
+      inCodeBlock = !inCodeBlock;
+      output.push(line);
+      i++;
+      continue;
+    }
+
+    if (
+      !inCodeBlock &&
+      i + 1 < lines.length &&
+      isTableRow(lines[i]) &&
+      isSeparatorRow(lines[i + 1])
+    ) {
+      const headers = splitCells(lines[i]);
+      i += 2;
+      const bodyRows: string[][] = [];
+      while (i < lines.length && isTableRow(lines[i])) {
+        bodyRows.push(splitCells(lines[i]));
+        i++;
+      }
+
+      const theadHtml = `<thead><tr>${headers.map((h) => `<th>${h}</th>`).join("")}</tr></thead>`;
+      const tbodyHtml = `<tbody>${bodyRows
+        .map((row) => `<tr>${row.map((cell) => `<td>${cell}</td>`).join("")}</tr>`)
+        .join("")}</tbody>`;
+      output.push(`<div className="article-table-wrap"><table>${theadHtml}${tbodyHtml}</table></div>`);
+      continue;
+    }
+
+    output.push(line);
+    i++;
+  }
+
+  return output.join("\n");
+}

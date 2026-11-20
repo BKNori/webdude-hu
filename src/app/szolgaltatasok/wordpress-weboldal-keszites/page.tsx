@@ -171,7 +171,7 @@ export default function WordPressWeboldalKeszitesPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100">
+    <div className="min-h-screen bg-[#F8FAFC] dark:bg-slate-950 text-[#0F172A] dark:text-slate-100">
       <BreadcrumbSchema
         items={[
           { name: "Főoldal", item: "https://webdude.hu" },
@@ -194,18 +194,18 @@ export default function WordPressWeboldalKeszitesPage() {
       />
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 overflow-hidden border-b border-slate-800/80">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,var(--tw-gradient-stops))] from-sky-900/20 via-slate-950 to-slate-950 pointer-events-none" />
+      <section className="relative pt-32 pb-20 overflow-hidden border-b border-slate-200/90 dark:border-slate-800/80">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,var(--tw-gradient-stops))] from-sky-500/10 via-[#F8FAFC] to-[#F8FAFC] dark:from-sky-900/20 dark:via-slate-950 dark:to-slate-950 pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sky-950/80 border border-sky-500/30 text-sky-400 text-xs font-medium uppercase tracking-wider mb-6">
-              <Sparkles className="w-3.5 h-3.5 text-brand-primary" />
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sky-50 dark:bg-sky-950/80 border border-sky-200 dark:border-sky-500/30 text-[#0369A1] dark:text-sky-400 text-xs font-medium uppercase tracking-wider mb-6">
+              <Sparkles className="w-3.5 h-3.5 text-[#0369A1] dark:text-brand-primary" />
               WordPress Szakértelem & Egyedi Fejlesztés
             </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight mb-6">
-              WordPress weboldal készítés, <span className="text-transparent bg-clip-text bg-linear-to-r from-brand-primary to-[#a855f7]">kompromisszumok nélkül</span>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#0F172A] dark:text-white tracking-tight leading-tight mb-6">
+              WordPress weboldal készítés, <span className="text-transparent bg-clip-text bg-linear-to-r from-[#0369A1] to-[#6D28D9] dark:from-brand-primary dark:to-[#a855f7]">kompromisszumok nélkül</span>
             </h1>
-            <p className="text-lg sm:text-xl text-slate-300 leading-relaxed mb-8">
+            <p className="text-lg sm:text-xl text-slate-700 dark:text-slate-300 leading-relaxed mb-8">
               Ha könnyen szerkeszthető, mégis professzionális weboldalra van szükséged, a WordPress jó alap lehet. Egyedi megjelenést, átgondolt struktúrát, technikai SEO-beállításokat és olyan adminfelületet kapsz, amelyet később önállóan is tudsz használni.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
@@ -218,7 +218,7 @@ export default function WordPressWeboldalKeszitesPage() {
               </Link>
               <Link
                 href="#csomagok"
-                className="inline-flex items-center justify-center px-6 py-4 rounded-xl font-medium text-slate-300 bg-slate-900 border border-slate-800 hover:border-slate-700 hover:text-white transition-colors"
+                className="inline-flex items-center justify-center px-6 py-4 rounded-xl font-medium text-slate-700 bg-white border border-slate-300 hover:border-[#0369A1]/50 hover:text-[#0369A1] dark:text-slate-300 dark:bg-slate-900 dark:border-slate-800 dark:hover:border-slate-700 dark:hover:text-white transition-colors"
               >
                 Csomagok és részletek
               </Link>
@@ -241,108 +241,108 @@ export default function WordPressWeboldalKeszitesPage() {
       />
 
       {/* E-E-A-T Bento Grid Section */}
-      <section className="py-24 relative border-b border-slate-800/80">
+      <section className="py-24 relative border-b border-slate-200/90 dark:border-slate-800/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#0F172A] dark:text-white mb-4">
               Nem egy sablonos oldal — Valódi digitális érték
             </h2>
-            <p className="text-slate-400">
+            <p className="text-slate-600 dark:text-slate-400">
               A legtöbb WordPress oldal elbukik a lassúságon és a túlméretezett bővítményeken. Én a tiszta architektúrában és a fenntartható kódban hiszek.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Bento Card 1 */}
-            <div className="p-8 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-brand-primary/50 transition-colors duration-300 flex flex-col justify-between">
+            <div className="p-8 rounded-2xl bg-white dark:bg-slate-900/60 border border-slate-200/90 dark:border-slate-800 hover:border-brand-primary/50 transition-colors duration-300 flex flex-col justify-between">
               <div>
-                <div className="w-12 h-12 rounded-xl bg-sky-950/80 border border-sky-500/30 flex items-center justify-center text-brand-primary mb-6">
+                <div className="w-12 h-12 rounded-xl bg-sky-50 dark:bg-sky-950/80 border border-sky-200 dark:border-sky-500/30 flex items-center justify-center text-[#0369A1] dark:text-brand-primary mb-6">
                   <Gauge className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">Maximális Betöltési Sebesség</h3>
-                <p className="text-slate-400 text-sm leading-relaxed">
+                <h3 className="text-xl font-bold text-[#0F172A] dark:text-white mb-3">Maximális Betöltési Sebesség</h3>
+                <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
                   Optimalizált képek, minifikált scriptek, modern webp/avif formátumok és minimális DOM-méret. Nem terhelem a weboldaladat 40 felesleges pluginnel.
                 </p>
               </div>
-              <div className="mt-6 pt-6 border-t border-slate-800/80 text-xs text-sky-400 flex items-center gap-1.5 font-semibold">
+              <div className="mt-6 pt-6 border-t border-slate-200/90 dark:border-slate-800/80 text-xs text-[#0369A1] dark:text-sky-400 flex items-center gap-1.5 font-semibold">
                 <CheckCircle2 className="w-4 h-4" /> 90+ PageSpeed elvárás
               </div>
             </div>
 
             {/* Bento Card 2 */}
-            <div className="p-8 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-brand-primary/50 transition-colors duration-300 flex flex-col justify-between">
+            <div className="p-8 rounded-2xl bg-white dark:bg-slate-900/60 border border-slate-200/90 dark:border-slate-800 hover:border-brand-primary/50 transition-colors duration-300 flex flex-col justify-between">
               <div>
-                <div className="w-12 h-12 rounded-xl bg-purple-950/80 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-6">
+                <div className="w-12 h-12 rounded-xl bg-violet-50 dark:bg-purple-950/80 border border-violet-200 dark:border-purple-500/30 flex items-center justify-center text-[#6D28D9] dark:text-purple-400 mb-6">
                   <Settings2 className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">Könnyen Kezelhető Admin</h3>
-                <p className="text-slate-400 text-sm leading-relaxed">
+                <h3 className="text-xl font-bold text-[#0F172A] dark:text-white mb-3">Könnyen Kezelhető Admin</h3>
+                <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
                   Gutenberg blokkokkal és egyedi mezőkkel felvértezett vezérlőpult. Úgy formázhatod a szövegeket és tölthetsz fel új tartalmakat, hogy a dizájn nem esik szét.
                 </p>
               </div>
-              <div className="mt-6 pt-6 border-t border-slate-800/80 text-xs text-purple-400 flex items-center gap-1.5 font-semibold">
+              <div className="mt-6 pt-6 border-t border-slate-200/90 dark:border-slate-800/80 text-xs text-[#6D28D9] dark:text-purple-400 flex items-center gap-1.5 font-semibold">
                 <CheckCircle2 className="w-4 h-4" /> Nulla kódolási igény átadás után
               </div>
             </div>
 
             {/* Bento Card 3 */}
-            <div className="p-8 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-brand-primary/50 transition-colors duration-300 flex flex-col justify-between">
+            <div className="p-8 rounded-2xl bg-white dark:bg-slate-900/60 border border-slate-200/90 dark:border-slate-800 hover:border-brand-primary/50 transition-colors duration-300 flex flex-col justify-between">
               <div>
-                <div className="w-12 h-12 rounded-xl bg-sky-950/80 border border-sky-500/30 flex items-center justify-center text-brand-primary mb-6">
+                <div className="w-12 h-12 rounded-xl bg-sky-50 dark:bg-sky-950/80 border border-sky-200 dark:border-sky-500/30 flex items-center justify-center text-[#0369A1] dark:text-brand-primary mb-6">
                   <ShieldCheck className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">Védelmi Szint & Stabilitás</h3>
-                <p className="text-slate-400 text-sm leading-relaxed">
+                <h3 className="text-xl font-bold text-[#0F172A] dark:text-white mb-3">Védelmi Szint & Stabilitás</h3>
+                <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
                   Keményített konfiguráció a leggyakoribb sebezhetőségek (SQL injection, XSS, Brute-Force) ellen. Rendszeres biztonsági másolatok és naprakész komponensek.
                 </p>
               </div>
-              <div className="mt-6 pt-6 border-t border-slate-800/80 text-xs text-sky-400 flex items-center gap-1.5 font-semibold">
+              <div className="mt-6 pt-6 border-t border-slate-200/90 dark:border-slate-800/80 text-xs text-[#0369A1] dark:text-sky-400 flex items-center gap-1.5 font-semibold">
                 <CheckCircle2 className="w-4 h-4" /> Nyugodt üzemeltetés
               </div>
             </div>
 
             {/* Bento Card 4 (Span 2) */}
-            <div className="md:col-span-2 p-8 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-brand-primary/50 transition-colors duration-300">
+            <div className="md:col-span-2 p-8 rounded-2xl bg-white dark:bg-slate-900/60 border border-slate-200/90 dark:border-slate-800 hover:border-brand-primary/50 transition-colors duration-300">
               <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-4">
-                <div className="w-12 h-12 rounded-xl bg-sky-950/80 border border-sky-500/30 flex items-center justify-center text-brand-primary">
+                <div className="w-12 h-12 rounded-xl bg-sky-50 dark:bg-sky-950/80 border border-sky-200 dark:border-sky-500/30 flex items-center justify-center text-[#0369A1] dark:text-brand-primary">
                   <Search className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-white">Technikai SEO & Keresőoptimalizálás Alapok</h3>
-                  <p className="text-slate-400 text-sm">Hogy ne csak létezzen a weboldalad, de megtalálják az ügyfeleid is.</p>
+                  <h3 className="text-xl font-bold text-[#0F172A] dark:text-white">Technikai SEO & Keresőoptimalizálás Alapok</h3>
+                  <p className="text-slate-600 dark:text-slate-400 text-sm">Hogy ne csak létezzen a weboldalad, de megtalálják az ügyfeleid is.</p>
                 </div>
               </div>
-              <p className="text-slate-400 text-sm leading-relaxed mb-4">
+              <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4">
                 Tiszta HTML5 struktúra, helyes H1-H3 hierarchia, automatikus XML webhelytérkép generálás, canonical címkék és modern Schema.org strukturált adatok beépítése a legmagasabb szintű Google és AI Answer Engine megfelelésért.
               </p>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-4 border-t border-slate-800/80">
-                <div className="flex items-center gap-2 text-xs text-slate-300 font-medium">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-4 border-t border-slate-200/90 dark:border-slate-800/80">
+                <div className="flex items-center gap-2 text-xs text-slate-700 dark:text-slate-300 font-medium">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-700 dark:text-emerald-400 shrink-0" />
                   <span>Strukturált adatok</span>
                 </div>
-                <div className="flex items-center gap-2 text-xs text-slate-300 font-medium">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                <div className="flex items-center gap-2 text-xs text-slate-700 dark:text-slate-300 font-medium">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-700 dark:text-emerald-400 shrink-0" />
                   <span>Keresőbarát URL-ek</span>
                 </div>
-                <div className="flex items-center gap-2 text-xs text-slate-300 font-medium">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                <div className="flex items-center gap-2 text-xs text-slate-700 dark:text-slate-300 font-medium">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-700 dark:text-emerald-400 shrink-0" />
                   <span>OpenGraph közösségi kártyák</span>
                 </div>
               </div>
             </div>
 
             {/* Bento Card 5 */}
-            <div className="p-8 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-brand-primary/50 transition-colors duration-300 flex flex-col justify-between">
+            <div className="p-8 rounded-2xl bg-white dark:bg-slate-900/60 border border-slate-200/90 dark:border-slate-800 hover:border-brand-primary/50 transition-colors duration-300 flex flex-col justify-between">
               <div>
-                <div className="w-12 h-12 rounded-xl bg-purple-950/80 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-6">
+                <div className="w-12 h-12 rounded-xl bg-violet-50 dark:bg-purple-950/80 border border-violet-200 dark:border-purple-500/30 flex items-center justify-center text-[#6D28D9] dark:text-purple-400 mb-6">
                   <Code2 className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">Egyedi Fejlesztés & Bővíthetőség</h3>
-                <p className="text-slate-400 text-sm leading-relaxed">
+                <h3 className="text-xl font-bold text-[#0F172A] dark:text-white mb-3">Egyedi Fejlesztés & Bővíthetőség</h3>
+                <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
                   Ha nem találsz kész plugint a folyamataidra, megírom az egyedi logikát. Webshop, külső API kapcsolat vagy automatizált adatfolyamok.
                 </p>
               </div>
-              <div className="mt-6 pt-6 border-t border-slate-800/80 text-xs text-purple-400 flex items-center gap-1.5 font-semibold">
+              <div className="mt-6 pt-6 border-t border-slate-200/90 dark:border-slate-800/80 text-xs text-[#6D28D9] dark:text-purple-400 flex items-center gap-1.5 font-semibold">
                 <Layers className="w-4 h-4" /> Korlátlan növekedési potenciál
               </div>
             </div>
@@ -351,13 +351,13 @@ export default function WordPressWeboldalKeszitesPage() {
       </section>
 
       {/* Pricing Table Section - Zero Fixed Price Rule */}
-      <section id="csomagok" className="py-24 border-b border-slate-800/80">
+      <section id="csomagok" className="py-24 border-b border-slate-200/90 dark:border-slate-800/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#0F172A] dark:text-white mb-4">
               Szolgáltatási Csomagok & Struktúra
             </h2>
-            <p className="text-slate-400">
+            <p className="text-slate-600 dark:text-slate-400">
               Minden vállalkozás és webes igény egyedi. Nincsenek rejtett költségek: a pontos igényfelmérés után személyre szabott, kötöttségek nélküli ajánlatot készítek.
             </p>
           </div>
@@ -367,17 +367,17 @@ export default function WordPressWeboldalKeszitesPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-24 border-b border-slate-800/80">
+      <section className="py-24 border-b border-slate-200/90 dark:border-slate-800/80">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900 border border-slate-800 text-slate-400 text-xs font-medium uppercase tracking-wider mb-4">
-              <HelpCircle className="w-3.5 h-3.5 text-brand-primary" />
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 text-xs font-medium uppercase tracking-wider mb-4">
+              <HelpCircle className="w-3.5 h-3.5 text-[#0369A1] dark:text-brand-primary" />
               Gyakori kérdések
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#0F172A] dark:text-white mb-4">
               Minden, amit a WordPress fejlesztésről tudni érdemes
             </h2>
-            <p className="text-slate-400">
+            <p className="text-slate-600 dark:text-slate-400">
               Válaszok a leggyakoribb felmerülő kérdésekre a tervezéstől a későbbi karbantartásig.
             </p>
           </div>
@@ -386,13 +386,13 @@ export default function WordPressWeboldalKeszitesPage() {
             {faqs.map((faq, index) => (
               <div 
                 key={index}
-                className="p-6 rounded-xl bg-slate-900/50 border border-slate-800 hover:border-slate-700 transition-colors"
+                className="p-6 rounded-xl bg-white dark:bg-slate-900/50 border border-slate-200/90 dark:border-slate-800 hover:border-slate-700 transition-colors"
               >
-                <h3 className="text-lg font-bold text-white mb-2 flex items-start gap-3">
-                  <span className="text-brand-primary font-mono text-sm mt-1">0{index + 1}.</span>
+                <h3 className="text-lg font-bold text-[#0F172A] dark:text-white mb-2 flex items-start gap-3">
+                  <span className="text-[#0369A1] dark:text-brand-primary font-mono text-sm mt-1">0{index + 1}.</span>
                   {faq.q}
                 </h3>
-                <p className="text-slate-400 text-sm leading-relaxed pl-8">
+                <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed pl-8">
                   {faq.a}
                 </p>
               </div>
@@ -404,10 +404,10 @@ export default function WordPressWeboldalKeszitesPage() {
       {/* Bottom CTA */}
       <section className="py-20 relative overflow-hidden">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-6">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0F172A] dark:text-white mb-6">
             Készen állsz egy modern, gyors és biztonságos WordPress weboldalra?
           </h2>
-          <p className="text-slate-300 max-w-2xl mx-auto mb-8 text-lg">
+          <p className="text-slate-700 dark:text-slate-300 max-w-2xl mx-auto mb-8 text-lg">
             Írd meg az elképzeléseidet, és 24 órán belül felveszem veled a kapcsolatot a részletekkel és a megoldási javaslatokkal!
           </p>
           <Link

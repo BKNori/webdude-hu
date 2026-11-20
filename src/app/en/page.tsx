@@ -6,6 +6,7 @@ import CaseStudiesBento from "@/components/organisms/CaseStudiesBento";
 import WhyChooseMeSection from "@/components/organisms/WhyChooseMeSection";
 import FaqSectionAEO from "@/components/organisms/FaqSectionAEO";
 import FinalCta from "@/components/organisms/FinalCta";
+import Surface from "@/components/atoms/Surface";
 import { Award, Cpu, Clock } from "lucide-react";
 import { getDictionary } from "@/lib/dictionary";
 
@@ -29,35 +30,45 @@ export default async function EnHomePage() {
       {/* 1. Hero — conversion H1, CTA hierarchy */}
       <HeroSectionNew content={dictionary.home.hero} />
 
-      {/* 1.5 Direct Answer Bento Grid — AEO optimized professional snapshot */}
-      {/* DESIGN NOTE: v7.0 — amber/gold FORBIDDEN, blue-violet only (#00B5F1/#5B21B6) */}
-      <section
-        aria-label={dictionary.home.snapshot.ariaLabel}
-        className="max-w-7xl mx-auto px-4 py-24 md:py-32"
+      {/* 1.5 Direct Answer Bento Grid — AEO optimized professional snapshot (Luminous Night Lift) */}
+      <Surface
+        tone="night-lift"
+        aurora
+        ariaLabel={dictionary.home.snapshot.ariaLabel}
+        className="py-20 md:py-28"
       >
-        {/* Hidden H2 — maintains the H1 → H2 → H3 heading hierarchy */}
-        <h2 className="sr-only">{dictionary.home.snapshot.heading}</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {snapshotCards.map(({ icon: Icon, title, content }) => (
-            <div
-              key={title}
-              className="bg-slate-900/60 backdrop-blur-xl border border-slate-800 hover:border-[#00B5F1]/30 rounded-2xl p-6 transition-[border-color,box-shadow,transform] duration-300 flex flex-col justify-between"
-            >
-              <div>
-                <div className="flex items-center gap-3 mb-4">
-                  <Icon className="w-8 h-8 text-[#00B5F1]" aria-hidden="true" />
-                  <h3 className="text-xl md:text-2xl text-white tracking-wider">
-                    {title}
-                  </h3>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Hidden H2 — maintains the H1 → H2 → H3 heading hierarchy */}
+          <h2 className="sr-only">{dictionary.home.snapshot.heading}</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {snapshotCards.map(({ icon: Icon, title, content }, idx) => (
+              <div
+                key={title}
+                className="luminous-card p-7 flex flex-col justify-between"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-xl bg-sky-500/10 border border-sky-600/25 dark:bg-brand-primary/12 dark:border-brand-primary/25 flex items-center justify-center">
+                        <Icon className="w-5 h-5 text-[#0369A1] dark:text-[#00B5F1]" aria-hidden="true" />
+                      </div>
+                      <h3 className="text-xl md:text-2xl text-[#0F172A] dark:text-white tracking-wider">
+                        {title}
+                      </h3>
+                    </div>
+                    <span className="font-mono text-xs text-slate-600 dark:text-slate-400">
+                      0{idx + 1}
+                    </span>
+                  </div>
+                  <p className="text-slate-700 dark:text-slate-200 text-sm leading-relaxed font-normal">
+                    {content}
+                  </p>
                 </div>
-                <p className="text-slate-300 text-sm leading-relaxed font-normal">
-                  {content}
-                </p>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </section>
+      </Surface>
 
       {/* 2. Social Proof Strip — KPI statistics + scroll-velocity marquee */}
       <SocialProofStrip content={dictionary.home.proof} />

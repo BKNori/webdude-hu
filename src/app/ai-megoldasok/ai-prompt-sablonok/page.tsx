@@ -396,26 +396,26 @@ export default function AIPromptSablonokPage() {
             transition={{ duration: 0.5 }}
             className="bg-bg-card border border-bg-elevated/40 rounded-2xl p-8 text-center"
           >
-            <div className="w-16 h-16 rounded-full bg-[#00B5F1]/10 border border-[#00B5F1]/20 flex items-center justify-center mx-auto mb-6">
-              <Lock className="w-8 h-8 text-[#00B5F1]" />
+            <div className="w-16 h-16 rounded-full bg-[#0369A1]/10 dark:bg-[#00B5F1]/10 border border-[#0369A1]/25 dark:border-[#00B5F1]/20 flex items-center justify-center mx-auto mb-6">
+              <Lock className="w-8 h-8 text-[#0369A1] dark:text-[#00B5F1]" />
             </div>
-            <h2 className="text-2xl font-bold text-white mb-4">
+            <h2 className="text-2xl font-bold text-[#0F172A] dark:text-white mb-4">
               Hozzáférés Korlátozott
             </h2>
-            <p className="text-slate-400 mb-6">
+            <p className="text-[#475569] dark:text-slate-400 mb-6">
               Az AI prompt sablonok csak regisztrált felhasználók számára
               elérhetők. Jelentkezz be vagy regisztrálj a hozzáféréshez.
             </p>
             <div className="space-y-3">
               <Link
                 href="/bejelentkezes"
-                className="block w-full py-3 bg-[#00B5F1] text-white font-bold rounded-xl hover:bg-[#5B21B6] transition-all"
+                className="block w-full py-3 bg-linear-to-r from-[#075985] to-[#5B21B6] text-white font-bold rounded-xl hover:from-[#0369A1] hover:to-[#6D28D9] transition-all"
               >
                 Bejelentkezés
               </Link>
               <Link
                 href="/regisztracio"
-                className="block w-full py-3 border border-[#00B5F1] text-[#00B5F1] font-semibold rounded-xl hover:bg-[#00B5F1]/10 transition-all"
+                className="block w-full py-3 border border-[#0369A1] dark:border-[#00B5F1] text-[#0369A1] dark:text-[#00B5F1] font-semibold rounded-xl hover:bg-[#0369A1]/10 dark:hover:bg-[#00B5F1]/10 transition-all"
               >
                 Regisztráció
               </Link>
@@ -427,10 +427,10 @@ export default function AIPromptSablonokPage() {
   }
 
   return (
-    <div className="min-h-screen bg-transparent text-text-primary">
+    <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#0B1120] text-[#0F172A] dark:text-text-primary">
       {/* Hero Section */}
       <section className="relative py-20 lg:py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-linear-to-b from-[#00B5F1]/5 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-b from-[#0369A1]/5 dark:from-[#00B5F1]/5 via-transparent to-transparent" />
         <div className="max-w-6xl mx-auto px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -438,18 +438,20 @@ export default function AIPromptSablonokPage() {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#00B5F1]/10 border border-[#00B5F1]/20 mb-6">
-              <Sparkles className="w-4 h-4 text-[#00B5F1]" />
-              <span className="text-xs font-bold text-[#00B5F1] uppercase tracking-wider">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0369A1]/10 dark:bg-[#00B5F1]/10 border border-[#0369A1]/25 dark:border-[#00B5F1]/20 mb-6">
+              <Sparkles className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
+              <span className="text-xs font-bold text-[#0369A1] dark:text-[#00B5F1] uppercase tracking-wider">
                 AI Prompt Sablonok
               </span>
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#0F172A] dark:text-white mb-6 leading-tight">
               Grafikai AI Prompt
               <br />
-              <span className="text-[#00B5F1]">Sablonok</span>
+              <span className="text-[#0369A1] dark:text-[#00B5F1]">
+                Sablonok
+              </span>
             </h1>
-            <p className="text-lg md:text-xl text-white/70 max-w-3xl mx-auto mb-8 leading-relaxed">
+            <p className="text-lg md:text-xl text-[#334155] dark:text-white/70 max-w-3xl mx-auto mb-8 leading-relaxed">
               Professzionális, tesztelt prompt sablonok Midjourney, DALL-E és
               más AI képgenerálókhoz. Másold, használd, és hozz létre lenyűgöző
               grafikákat másodpercek alatt.
@@ -457,7 +459,7 @@ export default function AIPromptSablonokPage() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
                 href="/szolgaltatasok/ai-prompt-engineering"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-[#00B5F1] text-white font-bold rounded-xl hover:bg-[#5B21B6] transition-all shadow-lg shadow-[#00B5F1]/20"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-linear-to-r from-[#075985] to-[#5B21B6] text-white font-bold rounded-xl hover:from-[#0369A1] hover:to-[#6D28D9] transition-all shadow-lg shadow-[#00B5F1]/20"
               >
                 <span>AI Prompt Engineering Szolgáltatás</span>
                 <ArrowRight className="w-4 h-4" />
@@ -466,7 +468,7 @@ export default function AIPromptSablonokPage() {
                 href="https://ai-prompt.hu"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-8 py-4 border border-white/20 text-white font-semibold rounded-xl hover:border-[#00B5F1]/50 hover:text-[#00B5F1] transition-all"
+                className="inline-flex items-center gap-2 px-8 py-4 border border-slate-300 dark:border-white/20 text-[#0F172A] dark:text-white font-semibold rounded-xl hover:border-[#0369A1]/50 dark:hover:border-[#00B5F1]/50 hover:text-[#0369A1] dark:hover:text-[#00B5F1] transition-all"
               >
                 <span>AI-Prompt.hu</span>
                 <ArrowRight className="w-4 h-4" />
@@ -484,18 +486,18 @@ export default function AIPromptSablonokPage() {
       />
 
       {/* Category Filter */}
-      <section className="py-8 border-t border-bg-elevated/20">
+      <section className="py-8 border-t border-slate-200 dark:border-bg-elevated/20">
         <div className="max-w-6xl mx-auto px-6">
           <div className="flex flex-wrap items-center gap-3 justify-center">
-            <Filter className="w-5 h-5 text-[#00B5F1]" />
+            <Filter className="w-5 h-5 text-[#0369A1] dark:text-[#00B5F1]" />
             {categories.map((category) => (
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                   selectedCategory === category
-                    ? "bg-[#00B5F1] text-white"
-                    : "bg-bg-card border border-bg-elevated/40 text-white/70 hover:text-[#00B5F1] hover:border-[#00B5F1]/30"
+                    ? "bg-[#0369A1] dark:bg-[#00B5F1] text-white dark:text-slate-950 font-semibold"
+                    : "bg-white dark:bg-bg-card border border-slate-200 dark:border-bg-elevated/40 text-[#334155] dark:text-slate-200 hover:text-[#0369A1] dark:hover:text-[#00B5F1] hover:border-[#0369A1]/40 dark:hover:border-[#00B5F1]/30"
                 }`}
               >
                 {category}
@@ -517,34 +519,34 @@ export default function AIPromptSablonokPage() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="group bg-bg-card border border-bg-elevated/40 rounded-2xl overflow-hidden hover:border-[#00B5F1]/50 transition-all duration-300"
+                  className="group luminous-card rounded-2xl overflow-hidden hover:border-[#0369A1]/50 dark:hover:border-[#00B5F1]/50 transition-all duration-300"
                 >
                   {/* Header */}
-                  <div className="p-6 border-b border-bg-elevated/20">
+                  <div className="p-6 border-b border-slate-200 dark:border-bg-elevated/20">
                     <div className="flex items-start justify-between mb-4">
-                      <div className="w-12 h-12 rounded-xl bg-linear-to-br from-gray-800 to-gray-900 border border-bg-elevated/40 flex items-center justify-center group-hover:border-[#00B5F1]/30 transition-colors">
-                        <Icon className="w-6 h-6 text-[#00B5F1]" />
+                      <div className="w-12 h-12 rounded-xl bg-slate-100 dark:bg-linear-to-br dark:from-gray-800 dark:to-gray-900 border border-slate-200 dark:border-bg-elevated/40 flex items-center justify-center group-hover:border-[#0369A1]/40 dark:group-hover:border-[#00B5F1]/30 transition-colors">
+                        <Icon className="w-6 h-6 text-[#0369A1] dark:text-[#00B5F1]" />
                       </div>
-                      <span className="text-xs font-bold text-[#00B5F1] uppercase tracking-wider">
+                      <span className="text-xs font-bold text-[#0369A1] dark:text-[#00B5F1] uppercase tracking-wider">
                         {template.category}
                       </span>
                     </div>
-                    <h3 className="text-xl font-bold text-white mb-2 group-hover:text-[#00B5F1] transition-colors">
+                    <h3 className="text-xl font-bold text-[#0F172A] dark:text-white mb-2 group-hover:text-[#0369A1] dark:group-hover:text-[#00B5F1] transition-colors">
                       {template.title}
                     </h3>
-                    <p className="text-sm text-white/60">
+                    <p className="text-sm text-[#475569] dark:text-white/60">
                       {template.description}
                     </p>
                   </div>
 
                   {/* Prompt Content */}
-                  <div className="p-6 bg-bg-surface/30">
+                  <div className="p-6 bg-slate-50/70 dark:bg-bg-surface/30">
                     {/* Variables Input */}
                     {template.variables && template.variables.length > 0 && (
                       <div className="mb-4 space-y-3">
                         {template.variables.map((variable) => (
                           <div key={variable.name}>
-                            <label className="block text-xs font-bold text-[#00B5F1] uppercase tracking-wider mb-1">
+                            <label className="block text-xs font-bold text-[#0369A1] dark:text-[#00B5F1] uppercase tracking-wider mb-1">
                               {variable.label}
                             </label>
                             <input
@@ -561,7 +563,7 @@ export default function AIPromptSablonokPage() {
                                   e.target.value
                                 )
                               }
-                              className="w-full text-sm text-white/80 font-mono bg-bg-card border border-bg-elevated/40 rounded-lg p-3 focus:outline-none focus:border-[#00B5F1]/50 transition-colors"
+                              className="w-full text-sm text-[#0F172A] dark:text-slate-100 font-mono bg-white dark:bg-bg-card border border-slate-300 dark:border-bg-elevated/40 rounded-lg p-3 focus:outline-none focus:border-[#0369A1] dark:focus:border-[#00B5F1]/50 transition-colors"
                             />
                           </div>
                         ))}
@@ -572,12 +574,12 @@ export default function AIPromptSablonokPage() {
                       <textarea
                         value={replaceVariables(template.prompt, template.id)}
                         readOnly
-                        className="w-full text-sm text-white/80 leading-relaxed mb-4 font-mono bg-bg-card border border-bg-elevated/40 rounded-lg p-4 focus:outline-none focus:border-[#00B5F1]/50 transition-colors resize-none"
+                        className="w-full text-sm text-[#1E293B] dark:text-slate-200 leading-relaxed mb-4 font-mono bg-white dark:bg-bg-card border border-slate-300 dark:border-bg-elevated/40 rounded-lg p-4 focus:outline-none focus:border-[#0369A1] dark:focus:border-[#00B5F1]/50 transition-colors resize-none"
                         rows={6}
                       />
                       <button
                         onClick={() => copyToClipboard(template.id)}
-                        className="absolute top-2 right-2 p-2 rounded-lg bg-bg-card border border-bg-elevated/40 hover:bg-[#00B5F1] hover:text-white hover:border-[#00B5F1] transition-all"
+                        className="absolute top-2 right-2 p-2 rounded-lg bg-white dark:bg-bg-card border border-slate-300 dark:border-bg-elevated/40 text-[#0F172A] dark:text-white hover:bg-[#0369A1] dark:hover:bg-[#00B5F1] hover:text-white dark:hover:text-slate-950 hover:border-[#0369A1] dark:hover:border-[#00B5F1] transition-all"
                       >
                         {copiedId === template.id ? (
                           <Check className="w-4 h-4" />
@@ -592,7 +594,7 @@ export default function AIPromptSablonokPage() {
                       {template.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="px-3 py-1 rounded-full bg-bg-card border border-bg-elevated/40 text-xs text-white/60"
+                          className="px-3 py-1 rounded-full bg-white dark:bg-bg-card border border-slate-200 dark:border-bg-elevated/40 text-xs text-[#475569] dark:text-slate-300"
                         >
                           {tag}
                         </span>
@@ -607,18 +609,18 @@ export default function AIPromptSablonokPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 border-t border-bg-elevated/20">
+      <section className="py-16 border-t border-slate-200 dark:border-bg-elevated/20">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-3xl font-bold text-white mb-4">
+          <h2 className="text-3xl font-bold text-[#0F172A] dark:text-white mb-4">
             Egyedi Prompt Engineering Szükséged Van?
           </h2>
-          <p className="text-white/70 mb-8 max-w-2xl mx-auto">
+          <p className="text-[#334155] dark:text-white/70 mb-8 max-w-2xl mx-auto">
             Ha speciális igényeid vannak, segítek egyedi promptok
             kidolgozásában, amelyek pontosan az üzleti céljaidhoz illeszkednek.
           </p>
           <Link
             href="/kapcsolat"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-[#00B5F1] text-white font-bold rounded-xl hover:bg-[#5B21B6] transition-all shadow-lg shadow-[#00B5F1]/20"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-linear-to-r from-[#075985] to-[#5B21B6] text-white font-bold rounded-xl hover:from-[#0369A1] hover:to-[#6D28D9] transition-all shadow-lg shadow-[#00B5F1]/20"
           >
             <span>Konzultáció Kérése</span>
             <ArrowRight className="w-4 h-4" />

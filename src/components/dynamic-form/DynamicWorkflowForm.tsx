@@ -3,7 +3,8 @@
 import { useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
+import { useHydratedReducedMotion } from "@/hooks/useMotionPreset";
 import { Copy, Check, AlertCircle, Lock } from "lucide-react";
 import { WorkflowUISchema } from "@/types/workflow";
 import {
@@ -32,7 +33,7 @@ export function DynamicWorkflowForm({
   isProUser,
   dailyLimitReached,
 }: DynamicWorkflowFormProps) {
-  const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = useHydratedReducedMotion();
   const [showProUpsell, setShowProUpsell] = useState(false);
   const [copied, setCopied] = useState(false);
 
@@ -163,7 +164,7 @@ export function DynamicWorkflowForm({
 
         <motion.button
           whileHover={shouldReduceMotion ? undefined : { scale: 1.02 }}
-          whileTap={shouldReduceMotion ? undefined : { scale: 0.98 }}
+          whileTap={shouldReduceMotion ? { scale: 1 } : { scale: 0.98 }}
           type="submit"
           className="w-full px-8 py-4 bg-linear-to-r from-[#075985] to-[#5B21B6] text-white font-bold rounded-xl hover:shadow-[0_8px_32px_rgba(91,33,182,0.45)] transition-shadow"
         >

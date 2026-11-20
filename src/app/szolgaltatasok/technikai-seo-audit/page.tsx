@@ -146,7 +146,7 @@ export default function TechnikaiSeoAuditPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100">
+    <div className="min-h-screen bg-[#F8FAFC] dark:bg-slate-950 text-[#0F172A] dark:text-slate-100">
       {/* JSON-LD Schemas with XSS Protection */}
       <script
         type="application/ld+json"
@@ -162,21 +162,21 @@ export default function TechnikaiSeoAuditPage() {
       />
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 overflow-hidden border-b border-slate-800/80">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,var(--tw-gradient-stops))] from-sky-900/20 via-slate-950 to-slate-950 pointer-events-none" />
+      <section className="relative pt-32 pb-20 overflow-hidden border-b border-slate-200/90 dark:border-slate-800/80">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,var(--tw-gradient-stops))] from-sky-500/10 via-[#F8FAFC] to-[#F8FAFC] dark:from-sky-900/20 dark:via-slate-950 dark:to-slate-950 pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sky-950/80 border border-sky-500/30 text-sky-400 text-xs font-medium uppercase tracking-wider mb-6">
-              <Search className="w-3.5 h-3.5 text-[#00B5F1]" />
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sky-50 dark:bg-sky-950/80 border border-sky-200 dark:border-sky-500/30 text-[#0369A1] dark:text-sky-400 text-xs font-medium uppercase tracking-wider mb-6">
+              <Search className="w-3.5 h-3.5 text-[#0369A1] dark:text-[#00B5F1]" />
               Adatalapú Keresőoptimalizálás & Diagnosztika
             </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight text-balance mb-6">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#0F172A] dark:text-white tracking-tight leading-tight text-balance mb-6">
               Tudd meg, mi fogja vissza a weboldaladat a{" "}
-              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#a855f7]">
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#0369A1] to-[#6D28D9] dark:from-[#00B5F1] dark:to-[#a855f7]">
                 Google-ben
               </span>
             </h1>
-            <p className="text-lg sm:text-xl text-slate-300 leading-relaxed mb-8">
+            <p className="text-lg sm:text-xl text-slate-700 dark:text-slate-300 leading-relaxed mb-8">
               A SEO nem varázslat vagy véletlenek játéka, hanem precíz mérnöki
               munka. Feltárom az indexelési akadályokat, a technikai hibákat és
               a hiányzó strukturált adatokat, amelyek gátolják a
@@ -192,7 +192,7 @@ export default function TechnikaiSeoAuditPage() {
               </Link>
               <Link
                 href="#csomagok"
-                className="inline-flex items-center justify-center px-6 py-4 rounded-xl font-medium text-slate-300 bg-slate-900 border border-slate-800 hover:border-slate-700 hover:text-white transition-colors"
+                className="inline-flex items-center justify-center px-6 py-4 rounded-xl font-medium text-slate-700 bg-white border border-slate-300 hover:border-[#0369A1]/50 hover:text-[#0369A1] dark:text-slate-300 dark:bg-slate-900 dark:border-slate-800 dark:hover:border-slate-700 dark:hover:text-white transition-colors"
               >
                 Audit csomagok
               </Link>
@@ -202,10 +202,10 @@ export default function TechnikaiSeoAuditPage() {
       </section>
 
       {/* Direct Answer Block - AEO optimalizált */}
-      <section className="relative py-12 bg-bg-base border-y border-white/5">
+      <section className="relative py-12 bg-bg-base border-y border-slate-200/80 dark:border-white/5">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <p className="text-base md:text-lg text-slate-300 leading-relaxed">
-            <span className="text-[#00B5F1] font-semibold">
+          <p className="text-base md:text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
+            <span className="text-[#0369A1] dark:text-[#00B5F1] font-semibold">
               WebDude technikai SEO audit:
             </span>{" "}
             Átfogó technikai SEO audit és priorizált javítási terv a láthatóság
@@ -218,125 +218,125 @@ export default function TechnikaiSeoAuditPage() {
       </section>
 
       {/* SEO Pillars Bento Grid */}
-      <section className="py-24 relative border-b border-slate-800/80">
+      <section className="py-24 relative border-b border-slate-200/90 dark:border-slate-800/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#0F172A] dark:text-white mb-4">
               Milyen területeket vizsgálok át az audit során?
             </h2>
-            <p className="text-slate-400">
+            <p className="text-slate-600 dark:text-slate-400">
               A láthatatlan technikai részletektől a modern AI válaszmotorok
               (AEO) által megkövetelt strukturált adatokig.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="p-8 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-[#00B5F1]/50 transition-colors duration-300 flex flex-col justify-between">
+            <div className="p-8 rounded-2xl bg-white dark:bg-slate-900/60 border border-slate-200/90 dark:border-slate-800 hover:border-[#00B5F1]/50 transition-colors duration-300 flex flex-col justify-between">
               <div>
-                <div className="w-12 h-12 rounded-xl bg-sky-950/80 border border-sky-500/30 flex items-center justify-center text-[#00B5F1] mb-6">
+                <div className="w-12 h-12 rounded-xl bg-sky-50 dark:bg-sky-950/80 border border-sky-200 dark:border-sky-500/30 flex items-center justify-center text-[#0369A1] dark:text-[#00B5F1] mb-6">
                   <FileSearch className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">
+                <h3 className="text-xl font-bold text-[#0F172A] dark:text-white mb-3">
                   Indexelés & Feltérképezés
                 </h3>
-                <p className="text-slate-400 text-sm leading-relaxed">
+                <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
                   Robots.txt, XML sitemap, noindex direktívák, canonical címkék
                   és szerver hibakódok (404, 500) tüzetes vizsgálata.
                 </p>
               </div>
-              <div className="mt-6 pt-6 border-t border-slate-800/80 text-xs text-sky-400 flex items-center gap-1.5 font-semibold">
+              <div className="mt-6 pt-6 border-t border-slate-200/90 dark:border-slate-800/80 text-xs text-[#0369A1] dark:text-sky-400 flex items-center gap-1.5 font-semibold">
                 <CheckCircle2 className="w-4 h-4" /> Hibátlan bejárhatóság
               </div>
             </div>
 
-            <div className="p-8 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-[#00B5F1]/50 transition-colors duration-300 flex flex-col justify-between">
+            <div className="p-8 rounded-2xl bg-white dark:bg-slate-900/60 border border-slate-200/90 dark:border-slate-800 hover:border-[#00B5F1]/50 transition-colors duration-300 flex flex-col justify-between">
               <div>
-                <div className="w-12 h-12 rounded-xl bg-purple-950/80 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-6">
+                <div className="w-12 h-12 rounded-xl bg-violet-50 dark:bg-purple-950/80 border border-violet-200 dark:border-purple-500/30 flex items-center justify-center text-[#6D28D9] dark:text-purple-400 mb-6">
                   <Code2 className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">
+                <h3 className="text-xl font-bold text-[#0F172A] dark:text-white mb-3">
                   Strukturált Adatok & AEO
                 </h3>
-                <p className="text-slate-400 text-sm leading-relaxed">
+                <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
                   Schema.org JSON-LD jelölések a Google Rich Snippets és a
                   mesterséges intelligencia keresők (Perplexity, ChatGPT)
                   számára.
                 </p>
               </div>
-              <div className="mt-6 pt-6 border-t border-slate-800/80 text-xs text-purple-400 flex items-center gap-1.5 font-semibold">
+              <div className="mt-6 pt-6 border-t border-slate-200/90 dark:border-slate-800/80 text-xs text-[#6D28D9] dark:text-purple-400 flex items-center gap-1.5 font-semibold">
                 <CheckCircle2 className="w-4 h-4" /> AI válaszmotor készenlét
               </div>
             </div>
 
-            <div className="p-8 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-[#00B5F1]/50 transition-colors duration-300 flex flex-col justify-between">
+            <div className="p-8 rounded-2xl bg-white dark:bg-slate-900/60 border border-slate-200/90 dark:border-slate-800 hover:border-[#00B5F1]/50 transition-colors duration-300 flex flex-col justify-between">
               <div>
-                <div className="w-12 h-12 rounded-xl bg-sky-950/80 border border-sky-500/30 flex items-center justify-center text-[#00B5F1] mb-6">
+                <div className="w-12 h-12 rounded-xl bg-sky-50 dark:bg-sky-950/80 border border-sky-200 dark:border-sky-500/30 flex items-center justify-center text-[#0369A1] dark:text-[#00B5F1] mb-6">
                   <Share2 className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">
+                <h3 className="text-xl font-bold text-[#0F172A] dark:text-white mb-3">
                   Belső Linkarchitektúra
                 </h3>
-                <p className="text-slate-400 text-sm leading-relaxed">
+                <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
                   Átgondolt siló-struktúra kialakítása, hogy a linkérték és az
                   autoritás a legfontosabb bevételtermelő aloldalakra áramoljon.
                 </p>
               </div>
-              <div className="mt-6 pt-6 border-t border-slate-800/80 text-xs text-sky-400 flex items-center gap-1.5 font-semibold">
+              <div className="mt-6 pt-6 border-t border-slate-200/90 dark:border-slate-800/80 text-xs text-[#0369A1] dark:text-sky-400 flex items-center gap-1.5 font-semibold">
                 <CheckCircle2 className="w-4 h-4" /> Optimális belső linkelés
               </div>
             </div>
 
-            <div className="md:col-span-2 p-8 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-[#00B5F1]/50 transition-colors duration-300">
+            <div className="md:col-span-2 p-8 rounded-2xl bg-white dark:bg-slate-900/60 border border-slate-200/90 dark:border-slate-800 hover:border-[#00B5F1]/50 transition-colors duration-300">
               <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-4">
-                <div className="w-12 h-12 rounded-xl bg-sky-950/80 border border-sky-500/30 flex items-center justify-center text-[#00B5F1]">
+                <div className="w-12 h-12 rounded-xl bg-sky-50 dark:bg-sky-950/80 border border-sky-200 dark:border-sky-500/30 flex items-center justify-center text-[#0369A1] dark:text-[#00B5F1]">
                   <BarChart3 className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-white">
+                  <h3 className="text-xl font-bold text-[#0F172A] dark:text-white">
                     Versenytárs & Kulcsszó Réshasáb Elemzés
                   </h3>
-                  <p className="text-slate-400 text-sm">
+                  <p className="text-slate-600 dark:text-slate-400 text-sm">
                     Derítsük ki, miben járnak előtted a versenytársaid és hogyan
                     előzheted meg őket.
                   </p>
                 </div>
               </div>
-              <p className="text-slate-400 text-sm leading-relaxed mb-4">
+              <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4">
                 Megkeressük azokat a releváns kifejezéseket, amelyekre van
                 kereslet a piacon, de a te oldaladon még nincs rájuk célzott
                 válasz. Megszüntetjük a tartalmi kannibalizációt, amikor több
                 aloldalad versenyez egymással.
               </p>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-4 border-t border-slate-800/80">
-                <div className="flex items-center gap-2 text-xs text-slate-300 font-medium">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-4 border-t border-slate-200/90 dark:border-slate-800/80">
+                <div className="flex items-center gap-2 text-xs text-slate-700 dark:text-slate-300 font-medium">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-700 dark:text-emerald-400 shrink-0" />
                   <span>Keresési szándék (Search Intent)</span>
                 </div>
-                <div className="flex items-center gap-2 text-xs text-slate-300 font-medium">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                <div className="flex items-center gap-2 text-xs text-slate-700 dark:text-slate-300 font-medium">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-700 dark:text-emerald-400 shrink-0" />
                   <span>Versenytárs audit</span>
                 </div>
-                <div className="flex items-center gap-2 text-xs text-slate-300 font-medium">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                <div className="flex items-center gap-2 text-xs text-slate-700 dark:text-slate-300 font-medium">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-700 dark:text-emerald-400 shrink-0" />
                   <span>Priorizált javítási terv</span>
                 </div>
               </div>
             </div>
 
-            <div className="p-8 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-[#00B5F1]/50 transition-colors duration-300 flex flex-col justify-between">
+            <div className="p-8 rounded-2xl bg-white dark:bg-slate-900/60 border border-slate-200/90 dark:border-slate-800 hover:border-[#00B5F1]/50 transition-colors duration-300 flex flex-col justify-between">
               <div>
-                <div className="w-12 h-12 rounded-xl bg-purple-950/80 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-6">
+                <div className="w-12 h-12 rounded-xl bg-violet-50 dark:bg-purple-950/80 border border-violet-200 dark:border-purple-500/30 flex items-center justify-center text-[#6D28D9] dark:text-purple-400 mb-6">
                   <Target className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">
+                <h3 className="text-xl font-bold text-[#0F172A] dark:text-white mb-3">
                   Konverzió & Kattintási Arány (CTR)
                 </h3>
-                <p className="text-slate-400 text-sm leading-relaxed">
+                <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
                   Nem elég megjelenni a találati listán: kattintásra ösztönző
                   címeket és snippeteket készítünk a látogatószám növeléséhez.
                 </p>
               </div>
-              <div className="mt-6 pt-6 border-t border-slate-800/80 text-xs text-purple-400 flex items-center gap-1.5 font-semibold">
+              <div className="mt-6 pt-6 border-t border-slate-200/90 dark:border-slate-800/80 text-xs text-[#6D28D9] dark:text-purple-400 flex items-center gap-1.5 font-semibold">
                 <Sparkles className="w-4 h-4" /> Magasabb CTR
               </div>
             </div>
@@ -345,13 +345,13 @@ export default function TechnikaiSeoAuditPage() {
       </section>
 
       {/* Pricing Section */}
-      <section id="csomagok" className="py-24 border-b border-slate-800/80">
+      <section id="csomagok" className="py-24 border-b border-slate-200/90 dark:border-slate-800/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#0F172A] dark:text-white mb-4">
               SEO Audit Csomagok & Formátum
             </h2>
-            <p className="text-slate-400">
+            <p className="text-slate-600 dark:text-slate-400">
               Válaszd ki a céged jelenlegi helyzetéhez leginkább passzoló
               auditot. Személyre szabott ajánlattal dolgozom.
             </p>
@@ -362,17 +362,17 @@ export default function TechnikaiSeoAuditPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-24 border-b border-slate-800/80">
+      <section className="py-24 border-b border-slate-200/90 dark:border-slate-800/80">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900 border border-slate-800 text-slate-400 text-xs font-medium uppercase tracking-wider mb-4">
-              <HelpCircle className="w-3.5 h-3.5 text-[#00B5F1]" />
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 text-xs font-medium uppercase tracking-wider mb-4">
+              <HelpCircle className="w-3.5 h-3.5 text-[#0369A1] dark:text-[#00B5F1]" />
               SEO Audit GYIK
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#0F172A] dark:text-white mb-4">
               Gyakori kérdések a technikai SEO auditról
             </h2>
-            <p className="text-slate-400">
+            <p className="text-slate-600 dark:text-slate-400">
               Minden, amit a feltárásról, a jelentésről és a hibajavításról
               tudni érdemes.
             </p>
@@ -382,15 +382,15 @@ export default function TechnikaiSeoAuditPage() {
             {faqs.map((faq, index) => (
               <div
                 key={index}
-                className="p-6 rounded-xl bg-slate-900/50 border border-slate-800 hover:border-slate-700 transition-colors"
+                className="p-6 rounded-xl bg-white dark:bg-slate-900/50 border border-slate-200/90 dark:border-slate-800 hover:border-slate-700 transition-colors"
               >
-                <h3 className="text-lg font-bold text-white mb-2 flex items-start gap-3">
-                  <span className="text-[#00B5F1] font-mono text-sm mt-1">
+                <h3 className="text-lg font-bold text-[#0F172A] dark:text-white mb-2 flex items-start gap-3">
+                  <span className="text-[#0369A1] dark:text-[#00B5F1] font-mono text-sm mt-1">
                     0{index + 1}.
                   </span>
                   {faq.q}
                 </h3>
-                <p className="text-slate-400 text-sm leading-relaxed pl-8">
+                <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed pl-8">
                   {faq.a}
                 </p>
               </div>
@@ -402,10 +402,10 @@ export default function TechnikaiSeoAuditPage() {
       {/* Bottom CTA */}
       <section className="py-20 relative overflow-hidden">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-6">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0F172A] dark:text-white mb-6">
             Szeretnéd tudni, miért nem hoz vevőket a weboldalad?
           </h2>
-          <p className="text-slate-300 max-w-2xl mx-auto mb-8 text-lg">
+          <p className="text-slate-700 dark:text-slate-300 max-w-2xl mx-auto mb-8 text-lg">
             Kérj auditot most, és tárd fel a weboldalad rejtett forgalomnövelési
             lehetőségeit!
           </p>

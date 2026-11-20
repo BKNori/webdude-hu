@@ -48,7 +48,7 @@ export default function WorkCard({ work }: WorkCardProps) {
               </div>
             )}
             {work.featured && (
-              <div className="absolute top-4 right-4 bg-sky-500 text-bg-base px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+              <div className="absolute top-4 right-4 bg-[#0369A1] dark:bg-sky-500 text-white dark:text-slate-950 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
                 Kiemelt
               </div>
             )}

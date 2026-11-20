@@ -1,11 +1,12 @@
 "use client";
 
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
+import { useHydratedReducedMotion } from "@/hooks/useMotionPreset";
 import Button from "@/components/atoms/Button";
 import SectionTitle from "@/components/atoms/SectionTitle";
 
 export default function ProblemSectionClient() {
-  const shouldReduce = useReducedMotion();
+  const shouldReduce = useHydratedReducedMotion();
 
   const problems = [
     {

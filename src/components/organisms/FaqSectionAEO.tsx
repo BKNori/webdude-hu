@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "motion/react";
+import { useHydratedReducedMotion } from "@/hooks/useMotionPreset";
 import { ChevronDown, HelpCircle } from "lucide-react";
 import { FaqContent } from "@/types/dictionary";
 
@@ -79,48 +80,56 @@ interface AccordionItemProps {
 }
 
 function AccordionItem({ item, index, isOpen, onToggle }: AccordionItemProps) {
+  const shouldReduceMotion = useHydratedReducedMotion();
+
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
-      transition={{
-        type: "spring",
-        stiffness: 100,
-        damping: 20,
-        delay: index * 0.05,
-      }}
-      className="border border-white/8 rounded-2xl overflow-hidden"
-      style={{
-        background: isOpen
-          ? "linear-gradient(135deg, rgba(0, 181, 241,0.06) 0%, rgba(255,255,255,0.03) 100%)"
-          : "linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%)",
-        transition: "background 0.3s ease",
-      }}
+      transition={
+        shouldReduceMotion
+          ? { duration: 0 }
+          : {
+              type: "spring",
+              stiffness: 100,
+              damping: 20,
+              delay: index * 0.05,
+            }
+      }
+      className={`border rounded-2xl overflow-hidden transition-[background-color,border-color,box-shadow] duration-300 ${
+        isOpen
+          ? "border-[#0369A1]/40 border-t-[#0369A1]/55 bg-white shadow-[0_8px_28px_rgba(3,105,161,0.08)] dark:border-[#00B5F1]/40 dark:border-t-[#00B5F1]/55 dark:bg-[#0B1120]/95 dark:shadow-[0_8px_30px_rgba(0,181,241,0.1)]"
+          : "border-slate-200/90 bg-white/85 hover:border-slate-300 dark:border-white/10 dark:border-t-white/15 dark:bg-[#0B1120]/75 dark:hover:border-white/20"
+      }`}
     >
       <button
         onClick={onToggle}
         aria-expanded={isOpen}
-        className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left focus:outline-none focus:ring-2 focus:ring-[#00B5F1] focus:ring-inset"
+        className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left focus:outline-none focus:ring-2 focus:ring-[#0369A1] dark:focus:ring-[#00B5F1] focus:ring-inset"
         id={`faq-btn-${index}`}
         aria-controls={`faq-answer-${index}`}
       >
         <span className="flex items-center gap-3">
           <HelpCircle
-            className="w-4 h-4 shrink-0 text-[#00B5F1] opacity-60"
+            className="w-4 h-4 shrink-0 text-[#0369A1] dark:text-[#00B5F1] opacity-80"
             aria-hidden="true"
           />
-          <span className="text-white font-semibold text-sm md:text-base leading-snug">
+          <span className="text-[#0F172A] dark:text-white font-semibold text-sm md:text-base leading-snug">
             {item.question}
           </span>
         </span>
         <motion.div
           animate={isOpen ? { rotate: 180 } : { rotate: 0 }}
-          transition={{ type: "spring", stiffness: 300, damping: 25 }}
+          transition={
+            shouldReduceMotion
+              ? { duration: 0 }
+              : { type: "spring", stiffness: 100, damping: 20 }
+          }
           className="shrink-0"
           aria-hidden="true"
         >
-          <ChevronDown className="w-5 h-5 text-slate-500" />
+          <ChevronDown className="w-5 h-5 text-slate-600 dark:text-slate-400" />
         </motion.div>
       </button>
 
@@ -131,15 +140,23 @@ function AccordionItem({ item, index, isOpen, onToggle }: AccordionItemProps) {
             role="region"
             aria-labelledby={`faq-btn-${index}`}
             key="answer"
-            initial={{ height: 0, opacity: 0 }}
+            initial={
+              shouldReduceMotion ? { opacity: 1 } : { height: 0, opacity: 0 }
+            }
             animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            exit={
+              shouldReduceMotion ? { opacity: 0 } : { height: 0, opacity: 0 }
+            }
+            transition={
+              shouldReduceMotion
+                ? { duration: 0 }
+                : { duration: 0.3, ease: [0.22, 1, 0.36, 1] }
+            }
             className="overflow-hidden"
           >
             <div className="px-6 pb-6 pt-1">
-              <div className="border-t border-white/6 pt-4">
-                <p className="text-slate-300 text-sm leading-relaxed font-normal">
+              <div className="border-t border-slate-200/80 dark:border-white/10 pt-4">
+                <p className="text-slate-700 dark:text-slate-300 text-sm leading-relaxed font-normal">
                   {item.answer}
                 </p>
               </div>
@@ -166,6 +183,7 @@ export default function FaqSectionAEO({
   renderSchema = true,
 }: FaqSectionAEOProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const shouldReduceMotion = useHydratedReducedMotion();
 
   // Nyelvi szövegek a szótárból; a HU alapértékek a fallback.
   const faqs = FAQ_DEFAULTS.map((faq, index) => ({
@@ -191,7 +209,7 @@ export default function FaqSectionAEO({
   return (
     <section
       id="faq"
-      className="relative py-24 md:py-32 bg-bg-surface/30 overflow-hidden"
+      className="relative py-24 md:py-32 bg-[#F8FAFC] dark:bg-[#0F172A] border-y border-slate-200/80 dark:border-white/8 overflow-hidden"
       aria-label={content.ariaLabel}
     >
       {/* JSON-LD AEO Schema — XSS védelem: .replace(/</g, '\u003c') */}
@@ -211,37 +229,41 @@ export default function FaqSectionAEO({
         aria-hidden="true"
         style={{
           background:
-            "radial-gradient(ellipse 60% 50% at 50% 0%, rgba(0, 181, 241,0.04) 0%, transparent 70%)",
+            "radial-gradient(ellipse 65% 50% at 50% 0%, rgba(0, 181, 241, 0.08) 0%, transparent 70%)",
         }}
       />
 
-      <div className="max-w-360 mx-auto px-6 lg:px-12 xl:px-16">
+      <div className="relative z-10 max-w-360 mx-auto px-6 lg:px-12 xl:px-16">
         <div className="max-w-3xl mx-auto">
           {/* Szekció fejléc */}
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
+            initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ type: "spring", stiffness: 80, damping: 20 }}
+            transition={
+              shouldReduceMotion
+                ? { duration: 0 }
+                : { type: "spring", stiffness: 100, damping: 20 }
+            }
             className="text-center mb-12 md:mb-16"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#00B5F1]/10 border border-[#00B5F1]/20 mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sky-500/10 border border-sky-600/25 dark:bg-[#00B5F1]/10 dark:border-[#00B5F1]/25 mb-6">
               <HelpCircle
-                className="w-3.5 h-3.5 text-[#00B5F1]"
+                className="w-3.5 h-3.5 text-[#0369A1] dark:text-[#00B5F1]"
                 aria-hidden="true"
               />
-              <span className="text-[#00B5F1] text-xs font-bold uppercase tracking-widest">
+              <span className="eyebrow-badge text-[#0369A1] dark:text-[#00B5F1]">
                 {content.eyebrow}
               </span>
             </div>
-            <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-white mb-4 leading-tight">
+            <h2 className="text-3xl md:text-5xl text-[#0F172A] dark:text-white mb-4 leading-tight">
               {content.title.prefix}
-              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6]">
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#0369A1] to-[#5B21B6] dark:from-[#00B5F1] dark:to-[#5B21B6]">
                 {content.title.highlight}
               </span>
               {content.title.suffix}
             </h2>
-            <p className="text-slate-400 text-lg leading-relaxed">
+            <p className="text-slate-700 dark:text-slate-300 text-lg leading-relaxed">
               {content.subtitle}
             </p>
           </motion.div>
@@ -264,16 +286,18 @@ export default function FaqSectionAEO({
 
           {/* CTA szöveg */}
           <motion.p
-            initial={{ opacity: 0 }}
+            initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.4 }}
-            className="text-center text-slate-500 text-sm mt-10"
+            transition={
+              shouldReduceMotion ? { duration: 0 } : { delay: 0.2 }
+            }
+            className="text-center text-slate-600 dark:text-slate-400 text-sm mt-10"
           >
             {content.footerQuestion}{" "}
             <Link
               href={content.footerCtaHref}
-              className="text-[#00B5F1] font-semibold hover:underline focus:outline-none focus:ring-2 focus:ring-[#00B5F1] rounded"
+              className="text-[#0369A1] dark:text-[#00B5F1] font-semibold hover:underline focus:outline-none focus:ring-2 focus:ring-[#0369A1] dark:focus:ring-[#00B5F1] rounded"
             >
               {content.footerCta}
             </Link>

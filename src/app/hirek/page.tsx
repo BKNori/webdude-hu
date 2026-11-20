@@ -103,7 +103,7 @@ export default async function HirekPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#020617] text-[#e2e8f0]">
+    <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#0B1120] text-[#0F172A] dark:text-[#e2e8f0]">
       {/* Sémák RSC inline scriptként XSS védelemmel */}
       <script
         type="application/ld+json"
@@ -119,7 +119,7 @@ export default async function HirekPage() {
         title={
           <>
             Szakmai{" "}
-            <span className="bg-clip-text text-transparent bg-linear-to-r from-[#00B5F1] to-[#5B21B6] italic">
+            <span className="bg-clip-text text-transparent bg-linear-to-r from-[#0369A1] to-[#6D28D9] dark:from-[#00B5F1] dark:to-[#A78BFA] italic">
               Hírek & Tudásbázis
             </span>
           </>
@@ -130,13 +130,13 @@ export default async function HirekPage() {
       />
 
       {/* AEO Direct Answer Blokk — a H1 alatt és a cikklista felett */}
-      <section className="relative py-12 bg-[#020617] border-y border-white/5">
+      <section className="relative py-12 bg-[#F1F5F9] dark:bg-[#111C33] border-y border-slate-200/80 dark:border-white/10">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-xl md:text-2xl font-bold text-white mb-3">
+          <h2 className="text-xl md:text-2xl font-bold text-[#0F172A] dark:text-white mb-3">
             WebDude Szakmai Tudásbázis
           </h2>
-          <p className="text-base md:text-lg text-slate-300 leading-relaxed">
-            <span className="text-[#00B5F1] font-semibold">
+          <p className="text-base md:text-lg text-[#334155] dark:text-slate-300 leading-relaxed">
+            <span className="text-[#0369A1] dark:text-[#00B5F1] font-semibold">
               Webfejlesztés, SEO és AI automatizáció:
             </span>{" "}
             Ebben a tudásbázisban Balog Norbert (WebDude) 26 év grafikai és 16
@@ -154,7 +154,7 @@ export default async function HirekPage() {
 
         {blogPosts.length === 0 && (
           <div className="text-center py-20">
-            <p className="text-2xl font-sans opacity-50 text-slate-400">
+            <p className="text-2xl font-sans opacity-60 text-[#475569] dark:text-slate-400">
               Jelenleg nincs publikált bejegyzés.
             </p>
           </div>

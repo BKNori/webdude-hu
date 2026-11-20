@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
+import { useHydratedReducedMotion } from "@/hooks/useMotionPreset";
 import {
   Activity,
   Calendar,
@@ -89,7 +90,7 @@ export default function TimelineMilestoneItem({
   total,
   className,
 }: TimelineMilestoneItemProps) {
-  const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = useHydratedReducedMotion();
 
   const StatusIcon = STATUS_ICONS[milestone.status];
   const NodeIcon = milestone.phaseKey

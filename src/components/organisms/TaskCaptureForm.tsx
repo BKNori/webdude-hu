@@ -155,7 +155,7 @@ export default function TaskCaptureForm() {
         <button
           type="submit"
           disabled={loading}
-          className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-sky-500 hover:bg-violet-700 disabled:bg-sky-500/50 text-black font-bold rounded-lg transition-colors"
+          className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-sky-500 hover:bg-violet-700 hover:text-white disabled:bg-sky-500/50 text-black font-bold rounded-lg transition-colors"
         >
           {loading ? (
             <>

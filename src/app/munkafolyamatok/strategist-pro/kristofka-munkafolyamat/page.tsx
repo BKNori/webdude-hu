@@ -19,13 +19,13 @@ export const metadata: Metadata = {
 
 export default function KristofkaWorkflowPage() {
   return (
-    <div className="min-h-screen bg-bg-base">
+    <div className="min-h-screen bg-[#F8FAFC] dark:bg-bg-base text-[#0F172A] dark:text-[#F8FAFC]">
       {/* Header */}
-      <header className="border-b border-bg-elevated/20">
+      <header className="border-b border-slate-200 dark:border-bg-elevated/20">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <Link
             href="/"
-            className="text-[#00B5F1] font-mono font-bold text-sm"
+            className="text-[#0369A1] dark:text-[#00B5F1] font-mono font-bold text-sm"
           >
             WebDude.hu
           </Link>
@@ -35,15 +35,15 @@ export default function KristofkaWorkflowPage() {
       {/* Hero Section */}
       <section className="py-24 px-6">
         <div className="max-w-4xl mx-auto text-center space-y-6">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#00B5F1]/10 border border-[#00B5F1]/20 rounded-full text-[#00B5F1] text-xs font-mono font-bold uppercase tracking-widest">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#0369A1]/10 dark:bg-[#00B5F1]/10 border border-[#0369A1]/25 dark:border-[#00B5F1]/20 rounded-full text-[#0369A1] dark:text-[#00B5F1] text-xs font-mono font-bold uppercase tracking-widest">
             <Building2 className="w-4 h-4" />
             Strategist-Pro
           </div>
-          <h1 className="text-5xl md:text-6xl font-bold text-white leading-tight">
+          <h1 className="text-5xl md:text-6xl font-bold text-[#0F172A] dark:text-white leading-tight">
             Kristófka Munkafolyamat: Nyers Ipari Ingatlanokból Prémium
             Befektetési Portfólió
           </h1>
-          <p className="text-xl text-slate-400 max-w-2xl mx-auto">
+          <p className="text-xl text-[#334155] dark:text-slate-400 max-w-2xl mx-auto">
             A fejlett AI-alapú eszköz, amellyel ipari épületeid átalakítási
             potenciálját befektetői szintű narratívává formálod. Feltöltés,
             kiválasztás, prezentáció.
@@ -61,12 +61,12 @@ export default function KristofkaWorkflowPage() {
       </section>
 
       {/* Problem Section */}
-      <section className="py-16 px-6 bg-bg-surface/30">
+      <section className="py-16 px-6 bg-[#F1F5F9] dark:bg-bg-surface/30">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-white mb-6">
+          <h2 className="text-3xl font-bold text-[#0F172A] dark:text-white mb-6">
             Miért vesznek el a legjobb ajánlatok is a papírok között?
           </h2>
-          <p className="text-lg text-slate-400 leading-relaxed">
+          <p className="text-lg text-[#334155] dark:text-slate-400 leading-relaxed">
             Egy elavult ipari csarnok alaprajza vagy egy homályos fotó önmagában
             csak egy raktár. A befektetők nem épületet, hanem víziót és hozamot
             vásárolnak. Ha nem tudod a &ldquo;miért&rdquo; kérdést
@@ -78,38 +78,42 @@ export default function KristofkaWorkflowPage() {
       {/* Solution Section */}
       <section className="py-24 px-6">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-white mb-12 text-center">
+          <h2 className="text-3xl font-bold text-[#0F172A] dark:text-white mb-12 text-center">
             Így válik a PDF-ed befektetői memorandummá
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-bg-surface/40 border border-bg-elevated/50 rounded-2xl p-6 space-y-4">
-              <div className="w-12 h-12 rounded-xl bg-[#00B5F1]/10 border border-[#00B5F1]/20 flex items-center justify-center text-[#00B5F1]">
+            <div className="luminous-card rounded-2xl p-6 space-y-4">
+              <div className="w-12 h-12 rounded-xl bg-[#0369A1]/10 dark:bg-[#00B5F1]/10 border border-[#0369A1]/25 dark:border-[#00B5F1]/20 flex items-center justify-center text-[#0369A1] dark:text-[#00B5F1]">
                 <Upload className="w-6 h-6" />
               </div>
-              <h3 className="text-lg font-bold text-white">Feltöltés</h3>
-              <p className="text-slate-400 text-sm">
+              <h3 className="text-lg font-bold text-[#0F172A] dark:text-white">
+                Feltöltés
+              </h3>
+              <p className="text-[#334155] dark:text-slate-400 text-sm">
                 Húzd be a PDF alaprajzokat és a helyszíni fotókat.
               </p>
             </div>
-            <div className="bg-bg-surface/40 border border-bg-elevated/50 rounded-2xl p-6 space-y-4">
-              <div className="w-12 h-12 rounded-xl bg-[#00B5F1]/10 border border-[#00B5F1]/20 flex items-center justify-center text-[#00B5F1]">
+            <div className="luminous-card rounded-2xl p-6 space-y-4">
+              <div className="w-12 h-12 rounded-xl bg-[#0369A1]/10 dark:bg-[#00B5F1]/10 border border-[#0369A1]/25 dark:border-[#00B5F1]/20 flex items-center justify-center text-[#0369A1] dark:text-[#00B5F1]">
                 <Target className="w-6 h-6" />
               </div>
-              <h3 className="text-lg font-bold text-white">
+              <h3 className="text-lg font-bold text-[#0F172A] dark:text-white">
                 Kontextus választás
               </h3>
-              <p className="text-slate-400 text-sm">
+              <p className="text-[#334155] dark:text-slate-400 text-sm">
                 Válaszd ki a célközönséget (pl. kockázati tőke, magánbefektető)
                 és az élethelyzetet (pl. loft-átalakítás, fenntartható közösségi
                 központ).
               </p>
             </div>
-            <div className="bg-bg-surface/40 border border-bg-elevated/50 rounded-2xl p-6 space-y-4">
-              <div className="w-12 h-12 rounded-xl bg-[#00B5F1]/10 border border-[#00B5F1]/20 flex items-center justify-center text-[#00B5F1]">
+            <div className="luminous-card rounded-2xl p-6 space-y-4">
+              <div className="w-12 h-12 rounded-xl bg-[#0369A1]/10 dark:bg-[#00B5F1]/10 border border-[#0369A1]/25 dark:border-[#00B5F1]/20 flex items-center justify-center text-[#0369A1] dark:text-[#00B5F1]">
                 <Sparkles className="w-6 h-6" />
               </div>
-              <h3 className="text-lg font-bold text-white">Generálás</h3>
-              <p className="text-slate-400 text-sm">
+              <h3 className="text-lg font-bold text-[#0F172A] dark:text-white">
+                Generálás
+              </h3>
+              <p className="text-[#334155] dark:text-slate-400 text-sm">
                 A rendszer 30 másodperc alatt elkészíti a professzionális
                 befektetői pitch-et, kiemelve az ingatlan egyedi értékajánlatát
                 (UVP).
@@ -120,27 +124,27 @@ export default function KristofkaWorkflowPage() {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-24 px-6 bg-bg-surface/30">
+      <section className="py-24 px-6 bg-[#F1F5F9] dark:bg-bg-surface/30">
         <div className="max-w-4xl mx-auto space-y-12">
-          <h2 className="text-3xl font-bold text-white text-center">
+          <h2 className="text-3xl font-bold text-[#0F172A] dark:text-white text-center">
             Miért a Kristófka?
           </h2>
           <div className="space-y-8">
-            <div className="border-l-4 border-[#00B5F1] pl-6">
-              <h3 className="text-xl font-bold text-white mb-2">
+            <div className="border-l-4 border-[#0369A1] dark:border-[#00B5F1] pl-6">
+              <h3 className="text-xl font-bold text-[#0F172A] dark:text-white mb-2">
                 Iparági Terminológia
               </h3>
-              <p className="text-slate-400">
+              <p className="text-[#334155] dark:text-slate-400">
                 Az anyag automatikusan tartalmazza azokat a kifejezéseket,
                 amiket a nagyok használnak: IRR (belső megtérülési ráta),
                 hozamprémium, konverziós költségek, exit stratégia.
               </p>
             </div>
-            <div className="border-l-4 border-[#00B5F1] pl-6">
-              <h3 className="text-xl font-bold text-white mb-2">
+            <div className="border-l-4 border-[#0369A1] dark:border-[#00B5F1] pl-6">
+              <h3 className="text-xl font-bold text-[#0F172A] dark:text-white mb-2">
                 Adaptív Narratíva
               </h3>
-              <p className="text-slate-400">
+              <p className="text-[#334155] dark:text-slate-400">
                 Ugyanaz az épület más nyelvezetet igényel egy banki
                 hitelbírálónál, mint egy dizájn-fókuszú magánbefektetőnél. A
                 munkafolyamat ezt a váltást egyetlen kattintással kezeli.
@@ -153,10 +157,10 @@ export default function KristofkaWorkflowPage() {
       {/* CTA Section */}
       <section className="py-24 px-6">
         <div className="max-w-4xl mx-auto text-center space-y-6">
-          <h2 className="text-3xl font-bold text-white">
+          <h2 className="text-3xl font-bold text-[#0F172A] dark:text-white">
             Készen állsz a következő nagy dobásra?
           </h2>
-          <p className="text-lg text-slate-400 max-w-2xl mx-auto">
+          <p className="text-lg text-[#334155] dark:text-slate-400 max-w-2xl mx-auto">
             Ne hagyd, hogy az ingatlanjaidban rejlő érték a fiókban maradjon.
             Próbáld ki a Kristófka munkafolyamatot, és nyűgözd le a
             befektetőidet egy professzionális, adatalapú prezentációval.
@@ -172,8 +176,8 @@ export default function KristofkaWorkflowPage() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-bg-elevated/20 py-8 px-6">
-        <div className="max-w-7xl mx-auto text-center text-slate-400 text-sm">
+      <footer className="border-t border-slate-200 dark:border-bg-elevated/20 py-8 px-6">
+        <div className="max-w-7xl mx-auto text-center text-[#475569] dark:text-slate-400 text-sm">
           <p>© 2026 WebDude.hu. Minden jog fenntartva.</p>
         </div>
       </footer>

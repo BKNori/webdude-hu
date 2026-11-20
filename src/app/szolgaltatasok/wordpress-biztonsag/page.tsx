@@ -168,7 +168,7 @@ export default function WordPressBiztonsagPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100">
+    <div className="min-h-screen bg-[#F8FAFC] dark:bg-slate-950 text-[#0F172A] dark:text-slate-100">
       {/* BreadcrumbList JSON-LD */}
       <BreadcrumbSchema
         items={[
@@ -206,21 +206,21 @@ export default function WordPressBiztonsagPage() {
         ]}
       />
 
-      <section className="relative pt-32 pb-20 overflow-hidden border-b border-slate-800/80">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,var(--tw-gradient-stops))] from-sky-900/20 via-slate-950 to-slate-950 pointer-events-none" />
+      <section className="relative pt-32 pb-20 overflow-hidden border-b border-slate-200/90 dark:border-slate-800/80">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,var(--tw-gradient-stops))] from-sky-500/10 via-[#F8FAFC] to-[#F8FAFC] dark:from-sky-900/20 dark:via-slate-950 dark:to-slate-950 pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-red-950/80 border border-red-500/30 text-red-400 text-xs font-medium uppercase tracking-wider mb-6">
-              <Flame className="w-3.5 h-3.5 text-red-400" />
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-red-50 dark:bg-red-950/80 border border-red-200 dark:border-red-500/30 text-red-700 dark:text-red-400 text-xs font-medium uppercase tracking-wider mb-6">
+              <Flame className="w-3.5 h-3.5 text-red-700 dark:text-red-400" />
               Azonnali Vírusirtás & Sebezhetőség Zárás
             </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight mb-6">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#0F172A] dark:text-white tracking-tight leading-tight mb-6">
               Feltört WordPress weboldal helyreállítása és{" "}
-              <span className="text-transparent bg-clip-text bg-linear-to-r from-brand-primary to-[#a855f7]">
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#0369A1] to-[#6D28D9] dark:from-brand-primary dark:to-[#a855f7]">
                 maximális biztonság
               </span>
             </h1>
-            <p className="text-lg sm:text-xl text-slate-300 leading-relaxed mb-8">
+            <p className="text-lg sm:text-xl text-slate-700 dark:text-slate-300 leading-relaxed mb-8">
               A feltört weboldal azonnali presztízs- és bevételkiesést okoz, a
               Google pedig napokon belül kitilthatja a keresőből. Ne ess
               pánikba: kigyomlálom a kártevőket, helyreállítom a működést, és
@@ -236,7 +236,7 @@ export default function WordPressBiztonsagPage() {
               </Link>
               <Link
                 href="#csomagok"
-                className="inline-flex items-center justify-center px-6 py-4 rounded-xl font-medium text-slate-300 bg-slate-900 border border-slate-800 hover:border-slate-700 hover:text-white transition-colors"
+                className="inline-flex items-center justify-center px-6 py-4 rounded-xl font-medium text-slate-700 bg-white border border-slate-300 hover:border-[#0369A1]/50 hover:text-[#0369A1] dark:text-slate-300 dark:bg-slate-900 dark:border-slate-800 dark:hover:border-slate-700 dark:hover:text-white transition-colors"
               >
                 Biztonsági csomagok
               </Link>
@@ -246,13 +246,13 @@ export default function WordPressBiztonsagPage() {
       </section>
 
       {/* Security Pillars Bento Grid */}
-      <section className="py-24 relative border-b border-slate-800/80">
+      <section className="py-24 relative border-b border-slate-200/90 dark:border-slate-800/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#0F172A] dark:text-white mb-4">
               Miért nem elég egy egyszerű vírusirtó plugin letöltése?
             </h2>
-            <p className="text-slate-400">
+            <p className="text-slate-600 dark:text-slate-400">
               Az ingyenes bővítmények gyakran átlépnek a mélyen elrejtett
               backdoorokon és nem javítják meg a sérült fájlokat. A profi
               biztonság kézi kódvizsgálatot igényel.
@@ -260,115 +260,115 @@ export default function WordPressBiztonsagPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="p-8 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-brand-primary/50 transition-colors duration-300 flex flex-col justify-between">
+            <div className="p-8 rounded-2xl bg-white dark:bg-slate-900/60 border border-slate-200/90 dark:border-slate-800 hover:border-brand-primary/50 transition-colors duration-300 flex flex-col justify-between">
               <div>
-                <div className="w-12 h-12 rounded-xl bg-red-950/80 border border-red-500/30 flex items-center justify-center text-red-400 mb-6">
+                <div className="w-12 h-12 rounded-xl bg-red-50 dark:bg-red-950/80 border border-red-200 dark:border-red-500/30 flex items-center justify-center text-red-700 dark:text-red-400 mb-6">
                   <ShieldAlert className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">
+                <h3 className="text-xl font-bold text-[#0F172A] dark:text-white mb-3">
                   Rejtett Backdoorok Irtása
                 </h3>
-                <p className="text-slate-400 text-sm leading-relaxed">
+                <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
                   A hackerek hátsó ajtókat hagynak a fájlrendszerben, hogy
                   hetekkel később újra feltörhessék az oldalt. Minden gyanús
                   kódrészletet felderítek és törlök.
                 </p>
               </div>
-              <div className="mt-6 pt-6 border-t border-slate-800/80 text-xs text-red-400 flex items-center gap-1.5 font-semibold">
+              <div className="mt-6 pt-6 border-t border-slate-200/90 dark:border-slate-800/80 text-xs text-red-700 dark:text-red-400 flex items-center gap-1.5 font-semibold">
                 <CheckCircle2 className="w-4 h-4" /> 100%-os kódfertőtlenítés
               </div>
             </div>
 
-            <div className="p-8 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-brand-primary/50 transition-colors duration-300 flex flex-col justify-between">
+            <div className="p-8 rounded-2xl bg-white dark:bg-slate-900/60 border border-slate-200/90 dark:border-slate-800 hover:border-brand-primary/50 transition-colors duration-300 flex flex-col justify-between">
               <div>
-                <div className="w-12 h-12 rounded-xl bg-sky-950/80 border border-sky-500/30 flex items-center justify-center text-brand-primary mb-6">
+                <div className="w-12 h-12 rounded-xl bg-sky-50 dark:bg-sky-950/80 border border-sky-200 dark:border-sky-500/30 flex items-center justify-center text-[#0369A1] dark:text-brand-primary mb-6">
                   <Lock className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">
+                <h3 className="text-xl font-bold text-[#0F172A] dark:text-white mb-3">
                   Rendszerkeményítés (Hardening)
                 </h3>
-                <p className="text-slate-400 text-sm leading-relaxed">
+                <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
                   wp-config védelme, .htaccess szabályok szigorítása,
                   fájlfuttatási tiltások a feltöltési könyvtárakban és
                   brute-force elleni korlátozás.
                 </p>
               </div>
-              <div className="mt-6 pt-6 border-t border-slate-800/80 text-xs text-sky-400 flex items-center gap-1.5 font-semibold">
+              <div className="mt-6 pt-6 border-t border-slate-200/90 dark:border-slate-800/80 text-xs text-[#0369A1] dark:text-sky-400 flex items-center gap-1.5 font-semibold">
                 <CheckCircle2 className="w-4 h-4" /> Behatolásvédelem
               </div>
             </div>
 
-            <div className="p-8 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-brand-primary/50 transition-colors duration-300 flex flex-col justify-between">
+            <div className="p-8 rounded-2xl bg-white dark:bg-slate-900/60 border border-slate-200/90 dark:border-slate-800 hover:border-brand-primary/50 transition-colors duration-300 flex flex-col justify-between">
               <div>
-                <div className="w-12 h-12 rounded-xl bg-purple-950/80 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-6">
+                <div className="w-12 h-12 rounded-xl bg-violet-50 dark:bg-purple-950/80 border border-violet-200 dark:border-purple-500/30 flex items-center justify-center text-[#6D28D9] dark:text-purple-400 mb-6">
                   <Search className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">
+                <h3 className="text-xl font-bold text-[#0F172A] dark:text-white mb-3">
                   Google Feketelista Feloldás
                 </h3>
-                <p className="text-slate-400 text-sm leading-relaxed">
+                <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
                   Ha a Google vagy a vírusirtók megjelölték az oldaladat,
                   hivatalos felülvizsgálati kérelmet nyújtok be a tiszta állapot
                   bizonyításával.
                 </p>
               </div>
-              <div className="mt-6 pt-6 border-t border-slate-800/80 text-xs text-purple-400 flex items-center gap-1.5 font-semibold">
+              <div className="mt-6 pt-6 border-t border-slate-200/90 dark:border-slate-800/80 text-xs text-[#6D28D9] dark:text-purple-400 flex items-center gap-1.5 font-semibold">
                 <CheckCircle2 className="w-4 h-4" /> Piros figyelmeztetés
                 törlése
               </div>
             </div>
 
-            <div className="md:col-span-2 p-8 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-brand-primary/50 transition-colors duration-300">
+            <div className="md:col-span-2 p-8 rounded-2xl bg-white dark:bg-slate-900/60 border border-slate-200/90 dark:border-slate-800 hover:border-brand-primary/50 transition-colors duration-300">
               <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-4">
-                <div className="w-12 h-12 rounded-xl bg-sky-950/80 border border-sky-500/30 flex items-center justify-center text-brand-primary">
+                <div className="w-12 h-12 rounded-xl bg-sky-50 dark:bg-sky-950/80 border border-sky-200 dark:border-sky-500/30 flex items-center justify-center text-[#0369A1] dark:text-brand-primary">
                   <FileCode className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-white">
+                  <h3 className="text-xl font-bold text-[#0F172A] dark:text-white">
                     Biztonságos Adatbázis- és Fájlhelyreállítás
                   </h3>
-                  <p className="text-slate-400 text-sm">
+                  <p className="text-slate-600 dark:text-slate-400 text-sm">
                     Adatvesztés nélküli helyreállítási folyamat tiszta
                     forrásokból.
                   </p>
                 </div>
               </div>
-              <p className="text-slate-400 text-sm leading-relaxed mb-4">
+              <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4">
                 Soha nem írom felül felelőtlenül az adataidat. Először teljes
                 nyers mentést készítek a jelenlegi állapotról, majd izolált
                 környezetben analizálom az adatbázist és a kódokat, hogy
                 egyetlen megrendelés vagy blogbejegyzés se vesszen kárba.
               </p>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-4 border-t border-slate-800/80">
-                <div className="flex items-center gap-2 text-xs text-slate-300 font-medium">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-4 border-t border-slate-200/90 dark:border-slate-800/80">
+                <div className="flex items-center gap-2 text-xs text-slate-700 dark:text-slate-300 font-medium">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-700 dark:text-emerald-400 shrink-0" />
                   <span>Nulla adatvesztés</span>
                 </div>
-                <div className="flex items-center gap-2 text-xs text-slate-300 font-medium">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                <div className="flex items-center gap-2 text-xs text-slate-700 dark:text-slate-300 font-medium">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-700 dark:text-emerald-400 shrink-0" />
                   <span>Kódintegritás ellenőrzés</span>
                 </div>
-                <div className="flex items-center gap-2 text-xs text-slate-300 font-medium">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                <div className="flex items-center gap-2 text-xs text-slate-700 dark:text-slate-300 font-medium">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-700 dark:text-emerald-400 shrink-0" />
                   <span>Új jelszavak & sók</span>
                 </div>
               </div>
             </div>
 
-            <div className="p-8 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-brand-primary/50 transition-colors duration-300 flex flex-col justify-between">
+            <div className="p-8 rounded-2xl bg-white dark:bg-slate-900/60 border border-slate-200/90 dark:border-slate-800 hover:border-brand-primary/50 transition-colors duration-300 flex flex-col justify-between">
               <div>
-                <div className="w-12 h-12 rounded-xl bg-emerald-950/80 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mb-6">
+                <div className="w-12 h-12 rounded-xl bg-emerald-50 dark:bg-emerald-950/80 border border-emerald-200 dark:border-emerald-500/30 flex items-center justify-center text-emerald-700 dark:text-emerald-400 mb-6">
                   <ShieldCheck className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">
+                <h3 className="text-xl font-bold text-[#0F172A] dark:text-white mb-3">
                   Megelőzés: Olcsóbb mint a Kár
                 </h3>
-                <p className="text-slate-400 text-sm leading-relaxed">
+                <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
                   A proaktív biztonsági beállítások töredékébe kerülnek annak,
                   mint amikor napokig áll az üzleted egy zsarolóvírus miatt.
                 </p>
               </div>
-              <div className="mt-6 pt-6 border-t border-slate-800/80 text-xs text-emerald-400 flex items-center gap-1.5 font-semibold">
+              <div className="mt-6 pt-6 border-t border-slate-200/90 dark:border-slate-800/80 text-xs text-emerald-700 dark:text-emerald-400 flex items-center gap-1.5 font-semibold">
                 <Sparkles className="w-4 h-4" /> Hosszú távú nyugalom
               </div>
             </div>
@@ -377,13 +377,13 @@ export default function WordPressBiztonsagPage() {
       </section>
 
       {/* Pricing Section */}
-      <section id="csomagok" className="py-24 border-b border-slate-800/80">
+      <section id="csomagok" className="py-24 border-b border-slate-200/90 dark:border-slate-800/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#0F172A] dark:text-white mb-4">
               Biztonsági Szintek & Beavatkozások
             </h2>
-            <p className="text-slate-400">
+            <p className="text-slate-600 dark:text-slate-400">
               Válaszd az akut vészhelyzet elhárítását vagy az előrelátó,
               megelőző védelmi felügyeletet.
             </p>
@@ -394,17 +394,17 @@ export default function WordPressBiztonsagPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-24 border-b border-slate-800/80">
+      <section className="py-24 border-b border-slate-200/90 dark:border-slate-800/80">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900 border border-slate-800 text-slate-400 text-xs font-medium uppercase tracking-wider mb-4">
-              <HelpCircle className="w-3.5 h-3.5 text-brand-primary" />
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 text-xs font-medium uppercase tracking-wider mb-4">
+              <HelpCircle className="w-3.5 h-3.5 text-[#0369A1] dark:text-brand-primary" />
               Biztonsági GYIK
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#0F172A] dark:text-white mb-4">
               Gyakori kérdések a feltört oldalakról és vírusirtásról
             </h2>
-            <p className="text-slate-400">
+            <p className="text-slate-600 dark:text-slate-400">
               Minden lényeges információ a helyreállításról és a megelőzésről.
             </p>
           </div>
@@ -413,15 +413,15 @@ export default function WordPressBiztonsagPage() {
             {faqs.map((faq, index) => (
               <div
                 key={index}
-                className="p-6 rounded-xl bg-slate-900/50 border border-slate-800 hover:border-slate-700 transition-colors"
+                className="p-6 rounded-xl bg-white dark:bg-slate-900/50 border border-slate-200/90 dark:border-slate-800 hover:border-slate-700 transition-colors"
               >
-                <h3 className="text-lg font-bold text-white mb-2 flex items-start gap-3">
-                  <span className="text-brand-primary font-mono text-sm mt-1">
+                <h3 className="text-lg font-bold text-[#0F172A] dark:text-white mb-2 flex items-start gap-3">
+                  <span className="text-[#0369A1] dark:text-brand-primary font-mono text-sm mt-1">
                     0{index + 1}.
                   </span>
                   {faq.q}
                 </h3>
-                <p className="text-slate-400 text-sm leading-relaxed pl-8">
+                <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed pl-8">
                   {faq.a}
                 </p>
               </div>
@@ -433,10 +433,10 @@ export default function WordPressBiztonsagPage() {
       {/* Bottom CTA */}
       <section className="py-20 relative overflow-hidden">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-6">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0F172A] dark:text-white mb-6">
             Feltörték a weboldalad, vagy védelemre van szükséged?
           </h2>
-          <p className="text-slate-300 max-w-2xl mx-auto mb-8 text-lg">
+          <p className="text-slate-700 dark:text-slate-300 max-w-2xl mx-auto mb-8 text-lg">
             Írj azonnal, add meg a címet, és gyorsan megkezdem a diagnosztikát
             és a védelmet!
           </p>

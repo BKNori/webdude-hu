@@ -292,7 +292,7 @@ export default async function AddonsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-transparent text-slate-300 relative overflow-hidden py-24 md:py-32">
+    <div className="min-h-screen bg-transparent text-slate-700 dark:text-slate-300 relative overflow-hidden py-24 md:py-32">
       <BreadcrumbSchema
         items={[
           { name: "Főoldal", item: "https://webdude.hu" },
@@ -322,18 +322,18 @@ export default async function AddonsPage() {
       />
         {/* HERO SECTION */}
         <section className="text-center max-w-4xl mx-auto mb-20 md:mb-28 pt-8">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] uppercase font-mono tracking-widest font-bold text-[#00B5F1] bg-[#00B5F1]/5 border border-[#00B5F1]/20 mb-6 animate-pulse">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] uppercase font-mono tracking-widest font-bold text-[#0369A1] dark:text-[#00B5F1] bg-[#00B5F1]/5 border border-[#00B5F1]/20 mb-6 animate-pulse">
             <Sparkles className="w-3.5 h-3.5" />
             KIEGÉSZÍTŐ SZOLGÁLTATÁSOK
           </span>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black font-heading text-white tracking-tight leading-tight mb-8">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black font-heading text-[#0F172A] dark:text-white tracking-tight leading-tight mb-8">
             Azonnali Kiegészítő Szolgáltatások{" "}
             <br className="hidden md:inline" />
-            <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1]/400 to-[#5B21B6]">
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-[#0369A1] to-[#5B21B6] dark:from-[#00B5F1] dark:to-[#5B21B6]">
               Vállalkozásod Növekedéséért
             </span>
           </h1>
-          <p className="text-base sm:text-lg text-slate-400 leading-relaxed mb-10 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-10 max-w-2xl mx-auto">
             Termékesített mikromegoldások egyedi árajánlattal, a
             <strong> 26 éves tervezőgrafikusi</strong> és{" "}
             <strong>16 éves webfejlesztői</strong> tapasztalatomra építve,
@@ -342,14 +342,14 @@ export default async function AddonsPage() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
               href="#catalog"
-              className="px-8 py-4 bg-[#00B5F1] hover:bg-[#5B21B6] text-bg-base font-bold rounded-xl uppercase tracking-wider text-xs transition-all duration-300 shadow-lg shadow-[#00B5F1]/10 hover:scale-102 flex items-center gap-2 cursor-pointer"
+              className="px-8 py-4 bg-linear-to-r from-[#075985] to-[#5B21B6] hover:from-[#0369A1] hover:to-[#6D28D9] text-white font-bold rounded-xl uppercase tracking-wider text-xs transition-[transform,background-color,color,box-shadow] duration-300 shadow-lg shadow-[#00B5F1]/10 hover:scale-102 flex items-center gap-2 cursor-pointer"
             >
               Böngéssz az Add-onok között
               <ArrowDown className="w-4 h-4 animate-bounce" />
             </a>
             <Link
               href="/portal"
-              className="px-8 py-4 bg-transparent border border-slate-800 hover:border-slate-700 text-slate-300 hover:text-white font-bold rounded-xl uppercase tracking-wider text-xs transition-all duration-300"
+              className="px-8 py-4 bg-transparent border border-slate-200/90 dark:border-slate-800 hover:border-slate-700 text-slate-700 dark:text-slate-300 hover:text-[#0F172A] dark:hover:text-white font-bold rounded-xl uppercase tracking-wider text-xs transition-all duration-300"
             >
               Belépés a Kliens Portálra
             </Link>
@@ -360,15 +360,15 @@ export default async function AddonsPage() {
         <section id="catalog" className="scroll-mt-28 mb-24 md:mb-32">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
             <div>
-              <h2 className="text-2xl md:text-3xl font-black text-white tracking-tight font-mono">
+              <h2 className="text-2xl md:text-3xl font-black text-[#0F172A] dark:text-white tracking-tight font-mono">
                 TERMÉKKATALÓGUS
               </h2>
-              <p className="text-xs text-slate-400 font-mono mt-2 uppercase tracking-widest">
+              <p className="text-xs text-slate-600 dark:text-slate-400 font-mono mt-2 uppercase tracking-widest">
                 Kattints a megrendelésre az indításhoz
               </p>
             </div>
-            <div className="mt-4 md:mt-0 flex items-center gap-2 text-xs font-mono text-slate-400 bg-transparent border border-white/5 px-4 py-2 rounded-xl">
-              <Clock className="w-4 h-4 text-[#00B5F1]" />
+            <div className="mt-4 md:mt-0 flex items-center gap-2 text-xs font-mono text-slate-600 dark:text-slate-400 bg-transparent border border-slate-200/80 dark:border-white/5 px-4 py-2 rounded-xl">
+              <Clock className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
               <span>Garantált aszinkron teljesítés</span>
             </div>
           </div>
@@ -390,7 +390,7 @@ export default async function AddonsPage() {
               return (
                 <div
                   key={addon.id}
-                  className={`glass-card glass-card-hover p-8 relative overflow-hidden group border border-white/5 flex flex-col justify-between ${colSpan}`}
+                  className={`glass-card glass-card-hover p-8 relative overflow-hidden group border border-slate-200/80 dark:border-white/5 flex flex-col justify-between ${colSpan}`}
                 >
                   {/* Decorative faint glow on hover */}
                   <div className="absolute -top-10 -right-10 w-32 h-32 bg-[#00B5F1]/3 rounded-full blur-2xl group-hover:bg-[#00B5F1]/5 transition-all duration-300" />
@@ -398,19 +398,19 @@ export default async function AddonsPage() {
                   <div>
                     {/* Category & Icon */}
                     <div className="flex items-center justify-between">
-                      <span className="text-[10px] uppercase font-mono tracking-widest font-bold text-[#00B5F1]/80 bg-[#00B5F1]/5 border border-[#00B5F1]/10 px-3 py-1 rounded-full">
+                      <span className="text-[10px] uppercase font-mono tracking-widest font-bold text-[#0369A1] dark:text-[#00B5F1]/80 bg-[#00B5F1]/5 border border-[#00B5F1]/10 px-3 py-1 rounded-full">
                         {addon.category}
                       </span>
-                      <div className="w-10 h-10 rounded-xl bg-transparent border border-white/5 flex items-center justify-center text-slate-400 group-hover:text-[#00B5F1] transition-colors">
+                      <div className="w-10 h-10 rounded-xl bg-transparent border border-slate-200/80 dark:border-white/5 flex items-center justify-center text-slate-600 dark:text-slate-400 group-hover:text-[#0369A1] dark:group-hover:text-[#00B5F1] transition-colors">
                         <Icon className="w-5 h-5" strokeWidth={1.5} />
                       </div>
                     </div>
 
                     {/* Title & Desc */}
-                    <h3 className="text-xl font-bold text-white tracking-tight mt-6 font-mono">
+                    <h3 className="text-xl font-bold text-[#0F172A] dark:text-white tracking-tight mt-6 font-mono">
                       {addon.title}
                     </h3>
-                    <p className="text-sm text-slate-400 leading-relaxed mt-3">
+                    <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mt-3">
                       {addon.description}
                     </p>
 
@@ -419,7 +419,7 @@ export default async function AddonsPage() {
                       {addon.features.map((feature, idx) => (
                         <li
                           key={idx}
-                          className="flex items-start gap-2.5 text-xs text-slate-400"
+                          className="flex items-start gap-2.5 text-xs text-slate-600 dark:text-slate-400"
                         >
                           <Check
                             className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"
@@ -432,18 +432,18 @@ export default async function AddonsPage() {
                   </div>
 
                   {/* Pricing & CTA */}
-                  <div className="mt-8 pt-6 border-t border-white/5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                  <div className="mt-8 pt-6 border-t border-slate-200/80 dark:border-white/5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                     <div>
-                      <span className="text-[10px] text-slate-400 uppercase font-mono block">
+                      <span className="text-[10px] text-slate-600 dark:text-slate-400 uppercase font-mono block">
                         Egyszeri díj
                       </span>
-                      <span className="text-2xl font-black text-[#00B5F1] font-mono tracking-wider">
+                      <span className="text-2xl font-black text-[#0369A1] dark:text-[#00B5F1] font-mono tracking-wider">
                         Egyedi árajánlat
                       </span>
                     </div>
                     <Link
                       href="/kapcsolat"
-                      className="px-6 py-3 bg-[#00B5F1] hover:bg-[#5B21B6] text-bg-base hover:text-white font-bold rounded-xl uppercase tracking-wider text-xs transition-all duration-300 text-center flex items-center justify-center gap-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B5F1] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base"
+                      className="px-6 py-3 bg-linear-to-r from-[#075985] to-[#5B21B6] hover:from-[#0369A1] hover:to-[#6D28D9] text-white font-bold rounded-xl uppercase tracking-wider text-xs transition-all duration-300 text-center flex items-center justify-center gap-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B5F1] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base"
                     >
                       <CreditCard className="w-4 h-4" />
                       Egyedi árajánlat kérése
@@ -456,31 +456,31 @@ export default async function AddonsPage() {
         </section>
 
         {/* AEO-OPTIMIZED FAQ SECTION */}
-        <section className="max-w-4xl mx-auto border-t border-slate-800/60 pt-20">
+        <section className="max-w-4xl mx-auto border-t border-slate-200/80 dark:border-slate-800/60 pt-20">
           <div className="text-center mb-12">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] uppercase font-mono tracking-widest font-bold text-slate-400 bg-transparent border border-slate-800/80 mb-4">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] uppercase font-mono tracking-widest font-bold text-slate-600 dark:text-slate-400 bg-transparent border border-slate-200/90 dark:border-slate-800/80 mb-4">
               <HelpCircle className="w-3.5 h-3.5" />
               KÉRDÉSEK ÉS VÁLASZOK
             </span>
-            <h2 className="text-2xl md:text-3xl font-black text-white tracking-tight font-mono">
+            <h2 className="text-2xl md:text-3xl font-black text-[#0F172A] dark:text-white tracking-tight font-mono">
               GYAKRAN ISMÉTELT KÉRDÉSEK
             </h2>
-            <p className="text-xs text-slate-400 font-mono mt-2 uppercase tracking-widest">
+            <p className="text-xs text-slate-600 dark:text-slate-400 font-mono mt-2 uppercase tracking-widest">
               Minden, amit az azonnali kiegészítőkről tudni érdemes
             </p>
           </div>
 
           <div className="space-y-4">
-            <details className="group border border-slate-800 bg-transparent rounded-2xl overflow-hidden [&_summary::-webkit-details-marker]:hidden">
-              <summary className="flex items-center justify-between gap-4 p-6 cursor-pointer select-none text-slate-200 hover:text-white transition-colors">
+            <details className="group border border-slate-200/90 dark:border-slate-800 bg-transparent rounded-2xl overflow-hidden [&_summary::-webkit-details-marker]:hidden">
+              <summary className="flex items-center justify-between gap-4 p-6 cursor-pointer select-none text-slate-800 dark:text-slate-200 hover:text-[#0F172A] dark:hover:text-white transition-colors">
                 <span className="font-bold text-sm md:text-base font-mono">
                   Mi az az Add-on Áruház és hogyan működik?
                 </span>
-                <span className="transition-transform duration-300 group-open:-rotate-180 text-[#00B5F1]">
+                <span className="transition-transform duration-300 group-open:-rotate-180 text-[#0369A1] dark:text-[#00B5F1]">
                   <ArrowDown className="w-4 h-4" />
                 </span>
               </summary>
-              <div className="px-6 pb-6 text-sm text-slate-400 leading-relaxed border-t border-slate-800/40 pt-4">
+              <div className="px-6 pb-6 text-sm text-slate-600 dark:text-slate-400 leading-relaxed border-t border-slate-200/70 dark:border-slate-800/40 pt-4">
                 <p>
                   Az Add-on Áruház termékesített kiegészítő
                   mikro-szolgáltatásokat kínál egyedi árajánlattal. Kiválasztod
@@ -492,16 +492,16 @@ export default async function AddonsPage() {
               </div>
             </details>
 
-            <details className="group border border-slate-800 bg-transparent rounded-2xl overflow-hidden [&_summary::-webkit-details-marker]:hidden">
-              <summary className="flex items-center justify-between gap-4 p-6 cursor-pointer select-none text-slate-200 hover:text-white transition-colors">
+            <details className="group border border-slate-200/90 dark:border-slate-800 bg-transparent rounded-2xl overflow-hidden [&_summary::-webkit-details-marker]:hidden">
+              <summary className="flex items-center justify-between gap-4 p-6 cursor-pointer select-none text-slate-800 dark:text-slate-200 hover:text-[#0F172A] dark:hover:text-white transition-colors">
                 <span className="font-bold text-sm md:text-base font-mono">
                   Hogyan történik az aszinkron onboarding és adatgyűjtés?
                 </span>
-                <span className="transition-transform duration-300 group-open:-rotate-180 text-[#00B5F1]">
+                <span className="transition-transform duration-300 group-open:-rotate-180 text-[#0369A1] dark:text-[#00B5F1]">
                   <ArrowDown className="w-4 h-4" />
                 </span>
               </summary>
-              <div className="px-6 pb-6 text-sm text-slate-400 leading-relaxed border-t border-slate-800/40 pt-4">
+              <div className="px-6 pb-6 text-sm text-slate-600 dark:text-slate-400 leading-relaxed border-t border-slate-200/70 dark:border-slate-800/40 pt-4">
                 <p>
                   A megrendelés kifizetése után a Kliens Portálodban
                   automatikusan megjelenik egy dedikált onboarding adatlap. Itt
@@ -514,16 +514,16 @@ export default async function AddonsPage() {
               </div>
             </details>
 
-            <details className="group border border-slate-800 bg-transparent rounded-2xl overflow-hidden [&_summary::-webkit-details-marker]:hidden">
-              <summary className="flex items-center justify-between gap-4 p-6 cursor-pointer select-none text-slate-200 hover:text-white transition-colors">
+            <details className="group border border-slate-200/90 dark:border-slate-800 bg-transparent rounded-2xl overflow-hidden [&_summary::-webkit-details-marker]:hidden">
+              <summary className="flex items-center justify-between gap-4 p-6 cursor-pointer select-none text-slate-800 dark:text-slate-200 hover:text-[#0F172A] dark:hover:text-white transition-colors">
                 <span className="font-bold text-sm md:text-base font-mono">
                   Mikor és hogyan kapom meg a kész teljesítést?
                 </span>
-                <span className="transition-transform duration-300 group-open:-rotate-180 text-[#00B5F1]">
+                <span className="transition-transform duration-300 group-open:-rotate-180 text-[#0369A1] dark:text-[#00B5F1]">
                   <ArrowDown className="w-4 h-4" />
                 </span>
               </summary>
-              <div className="px-6 pb-6 text-sm text-slate-400 leading-relaxed border-t border-slate-800/40 pt-4">
+              <div className="px-6 pb-6 text-sm text-slate-600 dark:text-slate-400 leading-relaxed border-t border-slate-200/70 dark:border-slate-800/40 pt-4">
                 <p>
                   Minden kiegészítő szolgáltatáshoz fix, garantált teljesítési
                   határidő tartozik (pl. a videós roast esetében az adatok

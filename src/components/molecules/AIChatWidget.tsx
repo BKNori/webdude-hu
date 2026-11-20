@@ -52,18 +52,23 @@ export default function AIChatWidget() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: 20 }}
             transition={{ duration: 0.3 }}
-            className="fixed bottom-20 right-4 sm:bottom-40 sm:right-6 w-[calc(100vw-2rem)] sm:w-80 max-w-[calc(100vw-2rem)] sm:max-w-[calc(100vw-3rem)] bg-bg-surface/95 backdrop-blur-xl border border-[#00B5F1]/30 rounded-2xl shadow-[0_8px_32px_rgba(0,181,241,0.15)] z-50"
+            className="fixed bottom-20 right-4 sm:bottom-40 sm:right-6 w-[calc(100vw-2rem)] sm:w-80 max-w-[calc(100vw-2rem)] sm:max-w-[calc(100vw-3rem)] bg-white/95 dark:bg-bg-surface/95 backdrop-blur-xl border border-slate-200 dark:border-[#00B5F1]/30 rounded-2xl shadow-[0_12px_36px_rgba(15,23,42,0.14)] dark:shadow-[0_8px_32px_rgba(0,181,241,0.15)] z-50"
           >
-            <div className="p-4 border-b border-bg-elevated">
+            <div className="p-4 border-b border-slate-200 dark:border-bg-elevated">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <Bot className="w-5 h-5 text-[#00B5F1]" aria-hidden="true" />
-                  <span className="font-semibold text-white">WebDude AI</span>
+                  <Bot
+                    className="w-5 h-5 text-[#0369A1] dark:text-[#00B5F1]"
+                    aria-hidden="true"
+                  />
+                  <span className="font-semibold text-[#0F172A] dark:text-white">
+                    WebDude AI
+                  </span>
                 </div>
                 <button
                   onClick={() => setIsOpen(false)}
                   aria-label="Chat bezárása"
-                  className="text-text-secondary hover:text-white transition-colors"
+                  className="text-[#475569] dark:text-slate-300 hover:text-[#0F172A] dark:hover:text-white transition-colors"
                 >
                   <X className="w-4 h-4" aria-hidden="true" />
                 </button>
@@ -81,8 +86,8 @@ export default function AIChatWidget() {
                   <div
                     className={`max-w-[80%] p-3 rounded-lg ${
                       msg.role === "user"
-                        ? "bg-[#00B5F1] text-white"
-                        : "bg-bg-elevated text-text-primary"
+                        ? "bg-[#0369A1] dark:bg-[#00B5F1] text-white dark:text-slate-950"
+                        : "bg-slate-100 dark:bg-bg-elevated text-[#0F172A] dark:text-text-primary"
                     }`}
                   >
                     {msg.text}
@@ -91,7 +96,7 @@ export default function AIChatWidget() {
               ))}
             </div>
 
-            <div className="p-4 border-t border-bg-elevated">
+            <div className="p-4 border-t border-slate-200 dark:border-bg-elevated">
               <div className="flex gap-2">
                 <input
                   type="text"
@@ -99,11 +104,11 @@ export default function AIChatWidget() {
                   onChange={(e) => setInput(e.target.value)}
                   onKeyPress={(e) => e.key === "Enter" && handleSend()}
                   placeholder="Írj üzenetet..."
-                  className="flex-1 bg-transparent border border-bg-elevated rounded-lg px-3 py-2 text-white placeholder-text-secondary focus:outline-none focus:border-[#00B5F1]"
+                  className="flex-1 bg-white dark:bg-transparent border border-slate-300 dark:border-bg-elevated rounded-lg px-3 py-2 text-[#0F172A] dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-400 focus:outline-none focus:border-[#0369A1] dark:focus:border-[#00B5F1]"
                 />
                 <button
                   onClick={handleSend}
-                  className="bg-[#00B5F1] hover:bg-[#5B21B6] text-white px-4 py-2 rounded-lg transition-colors"
+                  className="bg-linear-to-r from-[#075985] to-[#5B21B6] hover:from-[#0369A1] hover:to-[#6D28D9] text-white px-4 py-2 rounded-lg transition-colors"
                 >
                   Küldés
                 </button>

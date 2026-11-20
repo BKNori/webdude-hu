@@ -168,7 +168,7 @@ export default async function WooCommercePage() {
             <div className="mt-12 grid gap-12 md:grid-cols-2 items-start max-w-4xl mx-auto">
               <div className="space-y-6">
                 <Badge>WooCommerce</Badge>
-                <p className="text-xl text-slate-300 leading-relaxed">
+                <p className="text-xl text-slate-700 dark:text-slate-300 leading-relaxed">
                   Nem csak webshopot építek — olyan e-kereskedelmi rendszereket
                   készítek, amelyek konkrétan növelik a konverziót és
                   maximalizálják az online értékesítést. A WooCommerce erejével
@@ -184,9 +184,9 @@ export default async function WooCommercePage() {
                 </div>
               </div>
 
-              <div className="rounded-2xl overflow-hidden border border-slate-700/60">
+              <div className="rounded-2xl overflow-hidden border border-slate-200/90 dark:border-slate-700/60">
                 <div className="bg-linear-to-br from-brand-primary/20 to-brand-primary/5 p-12 flex items-center justify-center min-h-100">
-                  <p className="text-2xl text-brand-primary font-semibold text-center">
+                  <p className="text-2xl text-[#0369A1] dark:text-brand-primary font-semibold text-center">
                     WooCommerce Webshop Archetktúra
                   </p>
                 </div>
@@ -201,29 +201,29 @@ export default async function WooCommercePage() {
                   Szolgáltatások
                 </h2>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  <div className="bg-transparent border border-slate-700/60 p-6 rounded-lg">
-                    <h3 className="text-xl font-semibold text-brand-primary mb-3">
+                  <div className="bg-transparent border border-slate-200/90 dark:border-slate-700/60 p-6 rounded-lg">
+                    <h3 className="text-xl font-semibold text-[#0369A1] dark:text-brand-primary mb-3">
                       Webshop Fejlesztés
                     </h3>
-                    <p className="text-slate-400">
+                    <p className="text-slate-600 dark:text-slate-400">
                       Teljes WooCommerce webshop építés, termékoldalak, kosár és
                       checkout rendszer konfiguráció
                     </p>
                   </div>
-                  <div className="bg-transparent border border-slate-700/60 p-6 rounded-lg">
-                    <h3 className="text-xl font-semibold text-brand-primary mb-3">
+                  <div className="bg-transparent border border-slate-200/90 dark:border-slate-700/60 p-6 rounded-lg">
+                    <h3 className="text-xl font-semibold text-[#0369A1] dark:text-brand-primary mb-3">
                       Fizetési Integráció
                     </h3>
-                    <p className="text-slate-400">
+                    <p className="text-slate-600 dark:text-slate-400">
                       Barion, SimplePay, Stripe, PayPal integrációk, bankkártyás
                       fizetés és utánvét beállítása
                     </p>
                   </div>
-                  <div className="bg-transparent border border-slate-700/60 p-6 rounded-lg">
-                    <h3 className="text-xl font-semibold text-brand-primary mb-3">
+                  <div className="bg-transparent border border-slate-200/90 dark:border-slate-700/60 p-6 rounded-lg">
+                    <h3 className="text-xl font-semibold text-[#0369A1] dark:text-brand-primary mb-3">
                       Performance Optimalizálás
                     </h3>
-                    <p className="text-slate-400">
+                    <p className="text-slate-600 dark:text-slate-400">
                       Betöltési sebesség optimalizálás, gyorsítótárazás és CDN
                       konfiguráció a max konverzióhoz
                     </p>
@@ -305,7 +305,7 @@ export default async function WooCommercePage() {
                 </h2>
                 <div className="space-y-4">
                   <div className="flex items-start gap-4">
-                    <div className="shrink-0 w-8 h-8 bg-brand-primary rounded-full flex items-center justify-center text-bg-base font-bold">
+                    <div className="shrink-0 w-8 h-8 bg-[#0369A1] dark:bg-brand-primary rounded-full flex items-center justify-center text-white dark:text-slate-950 font-bold">
                       <Check
                         className="w-4 h-4"
                         strokeWidth={3}
@@ -316,14 +316,14 @@ export default async function WooCommercePage() {
                       <h3 className="text-lg font-semibold text-text-primary">
                         WordPress alapú rugalmasság
                       </h3>
-                      <p className="text-slate-400">
+                      <p className="text-slate-600 dark:text-slate-400">
                         A WooCommerce a WordPress erejét használja, így
                         bármilyen plugin és témával integrálható
                       </p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <div className="shrink-0 w-8 h-8 bg-brand-primary rounded-full flex items-center justify-center text-bg-base font-bold">
+                    <div className="shrink-0 w-8 h-8 bg-[#0369A1] dark:bg-brand-primary rounded-full flex items-center justify-center text-white dark:text-slate-950 font-bold">
                       <Check
                         className="w-4 h-4"
                         strokeWidth={3}
@@ -334,14 +334,14 @@ export default async function WooCommercePage() {
                       <h3 className="text-lg font-semibold text-text-primary">
                         Skálázható bármilyen méretre
                       </h3>
-                      <p className="text-slate-400">
+                      <p className="text-slate-600 dark:text-slate-400">
                         Kezdő webshoptól nagy e-kereskedelmi rendszerig, a
                         WooCommerce bármikor skálázható
                       </p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <div className="shrink-0 w-8 h-8 bg-brand-primary rounded-full flex items-center justify-center text-bg-base font-bold">
+                    <div className="shrink-0 w-8 h-8 bg-[#0369A1] dark:bg-brand-primary rounded-full flex items-center justify-center text-white dark:text-slate-950 font-bold">
                       <Check
                         className="w-4 h-4"
                         strokeWidth={3}
@@ -352,14 +352,14 @@ export default async function WooCommercePage() {
                       <h3 className="text-lg font-semibold text-text-primary">
                         Ökoszisztéma és plugin-ekosztéma
                       </h3>
-                      <p className="text-slate-400">
+                      <p className="text-slate-600 dark:text-slate-400">
                         Több ezer plugin és bővítmény áll rendelkezésre, minden
                         funkció könnyen kiegészíthető
                       </p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <div className="shrink-0 w-8 h-8 bg-brand-primary rounded-full flex items-center justify-center text-bg-base font-bold">
+                    <div className="shrink-0 w-8 h-8 bg-[#0369A1] dark:bg-brand-primary rounded-full flex items-center justify-center text-white dark:text-slate-950 font-bold">
                       <Check
                         className="w-4 h-4"
                         strokeWidth={3}
@@ -370,14 +370,14 @@ export default async function WooCommercePage() {
                       <h3 className="text-lg font-semibold text-text-primary">
                         Költséghatékony és jövedelmező
                       </h3>
-                      <p className="text-slate-400">
+                      <p className="text-slate-600 dark:text-slate-400">
                         Alacsony indulási költségek, nincsenek havi platform
                         díjak, csak a hosting és tranzakciós költségek
                       </p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <div className="shrink-0 w-8 h-8 bg-brand-primary rounded-full flex items-center justify-center text-bg-base font-bold">
+                    <div className="shrink-0 w-8 h-8 bg-[#0369A1] dark:bg-brand-primary rounded-full flex items-center justify-center text-white dark:text-slate-950 font-bold">
                       <Check
                         className="w-4 h-4"
                         strokeWidth={3}
@@ -388,7 +388,7 @@ export default async function WooCommercePage() {
                       <h3 className="text-lg font-semibold text-text-primary">
                         SEO-barát és gyors
                       </h3>
-                      <p className="text-slate-400">
+                      <p className="text-slate-600 dark:text-slate-400">
                         Beépített SEO funkciók, gyors betöltés és
                         keresőoptimalizált termékoldalak a Google rangsoroláshoz
                       </p>
@@ -406,47 +406,47 @@ export default async function WooCommercePage() {
                   Főbb Funkciók
                 </h2>
                 <div className="space-y-6">
-                  <div className="bg-transparent border border-slate-700/60 p-6 rounded-lg">
-                    <h3 className="text-lg font-semibold text-brand-primary mb-2">
+                  <div className="bg-transparent border border-slate-200/90 dark:border-slate-700/60 p-6 rounded-lg">
+                    <h3 className="text-lg font-semibold text-[#0369A1] dark:text-brand-primary mb-2">
                       Termékkezelés és Változatok
                     </h3>
-                    <p className="text-slate-400">
+                    <p className="text-slate-600 dark:text-slate-400">
                       Komplex termékkezelés, változatok (méret, szín, stb.),
                       készletfigyelés és automatikus raktárkezelés
                     </p>
                   </div>
-                  <div className="bg-transparent border border-slate-700/60 p-6 rounded-lg">
-                    <h3 className="text-lg font-semibold text-brand-primary mb-2">
+                  <div className="bg-transparent border border-slate-200/90 dark:border-slate-700/60 p-6 rounded-lg">
+                    <h3 className="text-lg font-semibold text-[#0369A1] dark:text-brand-primary mb-2">
                       Kosár és Checkout Rendszer
                     </h3>
-                    <p className="text-slate-400">
+                    <p className="text-slate-600 dark:text-slate-400">
                       Optimalizált kosárrendszer, egyszerű checkout folyamat,
                       vendégrendelés és felhasználói fiókok
                     </p>
                   </div>
-                  <div className="bg-transparent border border-slate-700/60 p-6 rounded-lg">
-                    <h3 className="text-lg font-semibold text-brand-primary mb-2">
+                  <div className="bg-transparent border border-slate-200/90 dark:border-slate-700/60 p-6 rounded-lg">
+                    <h3 className="text-lg font-semibold text-[#0369A1] dark:text-brand-primary mb-2">
                       Szállítási és Fizetési Konfiguráció
                     </h3>
-                    <p className="text-slate-400">
+                    <p className="text-slate-600 dark:text-slate-400">
                       Szállítási módok, ingyenes szállítás küszöbök, több
                       fizetési mód és automatikus rendeléskezelés
                     </p>
                   </div>
-                  <div className="bg-transparent border border-slate-700/60 p-6 rounded-lg">
-                    <h3 className="text-lg font-semibold text-brand-primary mb-2">
+                  <div className="bg-transparent border border-slate-200/90 dark:border-slate-700/60 p-6 rounded-lg">
+                    <h3 className="text-lg font-semibold text-[#0369A1] dark:text-brand-primary mb-2">
                       Marketing és Akciók
                     </h3>
-                    <p className="text-slate-400">
+                    <p className="text-slate-600 dark:text-slate-400">
                       Kuponrendszer, akciók, bónusz pontok, hírlevél integráció
                       és remarketing eszközök
                     </p>
                   </div>
-                  <div className="bg-transparent border border-slate-700/60 p-6 rounded-lg">
-                    <h3 className="text-lg font-semibold text-brand-primary mb-2">
+                  <div className="bg-transparent border border-slate-200/90 dark:border-slate-700/60 p-6 rounded-lg">
+                    <h3 className="text-lg font-semibold text-[#0369A1] dark:text-brand-primary mb-2">
                       Analitika és RIporting
                     </h3>
-                    <p className="text-slate-400">
+                    <p className="text-slate-600 dark:text-slate-400">
                       Részletes eladási statisztikák, konverziókövetés, GA4
                       integráció és üzleti intelligencia funkciók
                     </p>
@@ -463,38 +463,38 @@ export default async function WooCommercePage() {
                   Működési folyamat
                 </h2>
                 <div className="space-y-6">
-                  <div className="bg-transparent border border-slate-700/60 p-6 rounded-lg">
-                    <h3 className="text-lg font-semibold text-brand-primary mb-2">
+                  <div className="bg-transparent border border-slate-200/90 dark:border-slate-700/60 p-6 rounded-lg">
+                    <h3 className="text-lg font-semibold text-[#0369A1] dark:text-brand-primary mb-2">
                       1. Konzultáció és Stratégia
                     </h3>
-                    <p className="text-slate-400">
+                    <p className="text-slate-600 dark:text-slate-400">
                       Üzleti célok meghatározása, termékkatalogus áttekintése és
                       webshop stratégia tervezés
                     </p>
                   </div>
-                  <div className="bg-transparent border border-slate-700/60 p-6 rounded-lg">
-                    <h3 className="text-lg font-semibold text-brand-primary mb-2">
+                  <div className="bg-transparent border border-slate-200/90 dark:border-slate-700/60 p-6 rounded-lg">
+                    <h3 className="text-lg font-semibold text-[#0369A1] dark:text-brand-primary mb-2">
                       2. Design és Fejlesztés
                     </h3>
-                    <p className="text-slate-400">
+                    <p className="text-slate-600 dark:text-slate-400">
                       UI/UX design, webshop fejlesztés, termékkatalógus
                       beállítás és checkout konfiguráció
                     </p>
                   </div>
-                  <div className="bg-transparent border border-slate-700/60 p-6 rounded-lg">
-                    <h3 className="text-lg font-semibold text-brand-primary mb-2">
+                  <div className="bg-transparent border border-slate-200/90 dark:border-slate-700/60 p-6 rounded-lg">
+                    <h3 className="text-lg font-semibold text-[#0369A1] dark:text-brand-primary mb-2">
                       3. Integráció és Tesztelés
                     </h3>
-                    <p className="text-slate-400">
+                    <p className="text-slate-600 dark:text-slate-400">
                       Fizetési integrációk, szállítási beállítások, teljes
                       tesztelés és biztonsági audit
                     </p>
                   </div>
-                  <div className="bg-transparent border border-slate-700/60 p-6 rounded-lg">
-                    <h3 className="text-lg font-semibold text-brand-primary mb-2">
+                  <div className="bg-transparent border border-slate-200/90 dark:border-slate-700/60 p-6 rounded-lg">
+                    <h3 className="text-lg font-semibold text-[#0369A1] dark:text-brand-primary mb-2">
                       4. Élesítés és Támogatás
                     </h3>
-                    <p className="text-slate-400">
+                    <p className="text-slate-600 dark:text-slate-400">
                       Webshop launch, bevezetési training és folyamatos support
                     </p>
                   </div>
@@ -513,12 +513,12 @@ export default async function WooCommercePage() {
                   {FAQ.map((f, index) => (
                     <details
                       key={index}
-                      className="bg-transparent border border-slate-700/60 p-6 rounded-lg group"
+                      className="bg-transparent border border-slate-200/90 dark:border-slate-700/60 p-6 rounded-lg group"
                     >
-                      <summary className="font-semibold text-text-primary cursor-pointer group-hover:text-brand-primary transition-colors">
+                      <summary className="font-semibold text-text-primary cursor-pointer group-hover:text-[#0369A1] dark:group-hover:text-brand-primary transition-colors">
                         {f.q}
                       </summary>
-                      <p className="mt-3 text-slate-400">{f.a}</p>
+                      <p className="mt-3 text-slate-600 dark:text-slate-400">{f.a}</p>
                     </details>
                   ))}
                 </div>
@@ -531,7 +531,7 @@ export default async function WooCommercePage() {
                 <h2 className="text-5xl font-bold text-text-primary mb-4">
                   Kész elindítani az online értékesítést?
                 </h2>
-                <p className="text-lg text-slate-400 mb-8">
+                <p className="text-lg text-slate-600 dark:text-slate-400 mb-8">
                   Ingyenes konzultáció és személyre szabott webshop stratégia
                   kérés
                 </p>

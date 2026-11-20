@@ -173,7 +173,7 @@ export default function WebshopDevPage() {
         }}
       />
 
-      <div className="bg-slate-950 text-text-primary relative overflow-hidden min-h-screen">
+      <div className="bg-[#F8FAFC] dark:bg-slate-950 text-text-primary relative overflow-hidden min-h-screen">
         <div className="absolute inset-0 bg-linear-to-b from-[#00B5F1]/5 via-transparent to-[#5B21B6]/5" />
 
         <div className="relative z-10">
@@ -182,7 +182,7 @@ export default function WebshopDevPage() {
             title={
               <>
                 WooCommerce webshop készítés, ami{" "}
-                <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6] italic">
+                <span className="text-transparent bg-clip-text bg-linear-to-r from-[#0369A1] to-[#5B21B6] dark:from-[#00B5F1] dark:to-[#5B21B6] italic">
                   ténylegesen elad
                 </span>
               </>
@@ -197,13 +197,13 @@ export default function WebshopDevPage() {
         </div>
 
         {/* Direct Answer Block - AEO optimalizált */}
-        <section className="relative py-12 bg-bg-base border-y border-white/5">
+        <section className="relative py-12 bg-bg-base border-y border-slate-200/80 dark:border-white/5">
           <div className="max-w-4xl mx-auto px-6 text-center">
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-[#0F172A] dark:text-white mb-4">
               WooCommerce webshop készítés és fejlesztés
             </h2>
-            <p className="text-base md:text-lg text-slate-300 leading-relaxed">
-              <span className="text-[#00B5F1] font-semibold">
+            <p className="text-base md:text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
+              <span className="text-[#0369A1] dark:text-[#00B5F1] font-semibold">
                 WebDude WooCommerce webshop készítés:
               </span>{" "}
               WooCommerce és egyedi webshop készítés, konverzió-optimalizált
@@ -220,10 +220,10 @@ export default function WebshopDevPage() {
         <section className="py-24 relative z-10">
           <div className="max-w-6xl mx-auto px-6">
             <div className="text-center max-w-3xl mx-auto mb-16">
-              <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
+              <h2 className="text-3xl md:text-5xl font-bold text-[#0F172A] dark:text-white mb-4">
                 Nem elég felrakni a termékeket
               </h2>
-              <p className="text-slate-400 text-lg">
+              <p className="text-slate-600 dark:text-slate-400 text-lg">
                 A vásárlók 53%-a elhagyja az oldalt, ha az 3 másodpercnél
                 lassabban tölt be. A bizalom és a sebesség kritikus. Ezt
                 nyújtom:
@@ -231,34 +231,34 @@ export default function WebshopDevPage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-2xl p-8 hover:border-[#00B5F1]/50 transition-all duration-300">
-                <ShoppingCart className="w-10 h-10 text-[#00B5F1] mb-6" />
-                <h3 className="text-xl font-bold text-white mb-3">
+              <div className="bg-white dark:bg-slate-900/60 backdrop-blur-xl border border-slate-200/90 dark:border-slate-800 rounded-2xl p-8 hover:border-[#00B5F1]/50 transition-all duration-300">
+                <ShoppingCart className="w-10 h-10 text-[#0369A1] dark:text-[#00B5F1] mb-6" />
+                <h3 className="text-xl font-bold text-[#0F172A] dark:text-white mb-3">
                   Zökkenőmentes Pénztár
                 </h3>
-                <p className="text-slate-400 text-sm leading-relaxed">
+                <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
                   A checkout folyamatot a lehető legrövidebbre és
                   legegyszerűbbre szabom (egyoldalas pénztár), hogy
                   minimalizáljuk a kosárelhagyások számát.
                 </p>
               </div>
-              <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-2xl p-8 hover:border-[#5B21B6]/80 transition-all duration-300">
-                <Zap className="w-10 h-10 text-[#00B5F1] mb-6" />
-                <h3 className="text-xl font-bold text-white mb-3">
+              <div className="bg-white dark:bg-slate-900/60 backdrop-blur-xl border border-slate-200/90 dark:border-slate-800 rounded-2xl p-8 hover:border-[#5B21B6]/80 transition-all duration-300">
+                <Zap className="w-10 h-10 text-[#0369A1] dark:text-[#00B5F1] mb-6" />
+                <h3 className="text-xl font-bold text-[#0F172A] dark:text-white mb-3">
                   Betöltési Sebesség
                 </h3>
-                <p className="text-slate-400 text-sm leading-relaxed">
+                <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
                   Optimalizált adatbázis lekérdezések, modern képformátumok
                   (WebP), és szerverszintű gyorsítótárazás a villámgyors
                   termékböngészésért.
                 </p>
               </div>
-              <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-2xl p-8 hover:border-[#00B5F1]/50 transition-all duration-300">
-                <CreditCard className="w-10 h-10 text-[#00B5F1] mb-6" />
-                <h3 className="text-xl font-bold text-white mb-3">
+              <div className="bg-white dark:bg-slate-900/60 backdrop-blur-xl border border-slate-200/90 dark:border-slate-800 rounded-2xl p-8 hover:border-[#00B5F1]/50 transition-all duration-300">
+                <CreditCard className="w-10 h-10 text-[#0369A1] dark:text-[#00B5F1] mb-6" />
+                <h3 className="text-xl font-bold text-[#0F172A] dark:text-white mb-3">
                   Biztonság & Fizetés
                 </h3>
-                <p className="text-slate-400 text-sm leading-relaxed">
+                <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
                   Teljes SSL támogatás, sebezhetőség elleni védelem és stabil
                   bankkártyás (SimplePay, Stripe, Barion) infrastruktúra, hogy a
                   vevők bízzanak benned.
@@ -269,13 +269,13 @@ export default function WebshopDevPage() {
         </section>
 
         {/* ── Csomagok (Zéró Fix Ár) ── */}
-        <section className="py-24 bg-slate-900/40 relative z-10">
+        <section className="py-24 bg-[#F1F5F9] dark:bg-slate-900/40 relative z-10">
           <div className="max-w-7xl mx-auto px-6">
             <div className="text-center max-w-3xl mx-auto mb-16">
-              <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+              <h2 className="text-3xl md:text-5xl font-bold text-[#0F172A] dark:text-white mb-6">
                 Webshop Funkciócsomagok
               </h2>
-              <p className="text-slate-400 text-lg">
+              <p className="text-slate-600 dark:text-slate-400 text-lg">
                 Találd meg a készletszámodhoz és marketing terveidhez leginkább
                 illő funkcionalitást.
               </p>
@@ -286,13 +286,13 @@ export default function WebshopDevPage() {
         </section>
 
         {/* ── Mikro-GYIK (AEO) ── */}
-        <section className="py-24 border-t border-slate-800 relative z-10">
+        <section className="py-24 border-t border-slate-200/90 dark:border-slate-800 relative z-10">
           <div className="max-w-4xl mx-auto px-6">
             <div className="text-center mb-16">
-              <h2 className="text-3xl font-bold text-white mb-4">
+              <h2 className="text-3xl font-bold text-[#0F172A] dark:text-white mb-4">
                 E-kereskedelmi GYIK
               </h2>
-              <p className="text-slate-400">
+              <p className="text-slate-600 dark:text-slate-400">
                 A webáruház készítéssel kapcsolatos leggyakoribb kérdések.
               </p>
             </div>
@@ -301,12 +301,12 @@ export default function WebshopDevPage() {
               {faqs.map((faq, index) => (
                 <div
                   key={index}
-                  className="bg-slate-900/80 backdrop-blur-md border border-white/5 rounded-2xl p-6 hover:border-[#00B5F1]/30 transition-colors"
+                  className="bg-white dark:bg-slate-900/80 backdrop-blur-md border border-slate-200/80 dark:border-white/5 rounded-2xl p-6 hover:border-[#00B5F1]/30 transition-colors"
                 >
-                  <h3 className="text-lg font-semibold text-[#00B5F1] mb-3">
+                  <h3 className="text-lg font-semibold text-[#0369A1] dark:text-[#00B5F1] mb-3">
                     {faq.question}
                   </h3>
-                  <p className="text-slate-400 text-sm leading-relaxed">
+                  <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
                     {faq.answer}
                   </p>
                 </div>
@@ -318,17 +318,17 @@ export default function WebshopDevPage() {
         {/* ── CTA ── */}
         <section className="py-32 text-center relative z-10">
           <div className="max-w-2xl mx-auto px-6">
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+            <h2 className="text-3xl md:text-5xl font-bold text-[#0F172A] dark:text-white mb-6">
               Ideje növelni a{" "}
-              <span className="text-[#00B5F1] italic">bevételedet!</span>
+              <span className="text-[#0369A1] dark:text-[#00B5F1] italic">bevételedet!</span>
             </h2>
-            <p className="text-slate-400 mb-10 text-lg">
+            <p className="text-slate-600 dark:text-slate-400 mb-10 text-lg">
               Kérj árajánlatot, és tervezzük meg együtt a piacvezető
               e-kereskedelmi rendszeredet.
             </p>
             <Link
               href="/kapcsolat"
-              className="inline-flex items-center gap-3 px-8 py-4 rounded-full font-bold text-slate-950 bg-linear-to-r from-[#00B5F1] to-[#5B21B6] hover:shadow-[0_8px_32px_rgba(0,181,241,0.35)] hover:scale-105 transition-all duration-300"
+              className="inline-flex items-center gap-3 px-8 py-4 rounded-full font-bold text-white bg-linear-to-r from-[#075985] to-[#5B21B6] hover:from-[#0369A1] hover:to-[#6D28D9] hover:shadow-[0_8px_32px_rgba(0,181,241,0.35)] hover:scale-105 transition-all duration-300"
             >
               Egyedi árajánlat kérése <ArrowRight className="w-5 h-5" />
             </Link>

@@ -159,28 +159,26 @@ export default function Page() {
 
 > Vizuális módosítás előtt kötelező: `_docs/DESIGN_SYSTEM.md` elolvasása.
 
-**WebDude Kék-Lila v7.0 színrendszer:**
+**WebDude Kék-Lila v7.2 — Dual Theme: Luminous Daylight (Default) + Luminous Slate (Dark) (DDR-006):**
 
-90% sötét alap, 8% üveg / slate felület, legfeljebb 2% kék-lila kiemelés. CTA gombokon (`#075985` → `#5B21B6`, akcentus `#7C3AED`) KÖTELEZŐEN `text-white` felirat (WCAG AAA); áttetsző háttér és hover esetén külön kontrasztellenőrzés kötelező. Arany/amber brand akcentusként TILOS.
+100%-ban koherens két-témás színrendszer (`localStorage` kulcs: `webdude-theme`, alapértelmezett `light`, zero-FOUC `<head>` scripttel és `@custom-variant dark` variánssal), fekete–fehér zebra-hatás nélkül:
+- **Luminous Daylight (`light`, Default):** `#F8FAFC` (`night`) ↔ `#F1F5F9` (`night-lift` / `slate`) ↔ `#EAF1FA` (`slate-lift`), `#FFFFFF` kártyák (`border-[#E2E8F0]` + többrétegű lágy árnyék), `#0F172A` címsorok, `#334155` / `#475569` szöveg, `#0369A1` cián és `#6D28D9` lila akcentus (`#00B5F1` szövegként TILOS világosban).
+- **Luminous Slate (`dark`, `v7.69.0`):** `#0B1120` ↔ `#111C33` ↔ `#16223B`, `.luminous-card` (`#16223B/80` / `#1E293B/75`, `border-t-white/20`), `#00B5F1` / `#A78BFA` akcentusok, `text-white` / `text-slate-300`.
+- **Admin (`#admin-layout`) & Portál (`#portal-layout`):** fix `data-theme="dark"` izolációban.
+CTA gombokon (`#075985` → `#5B21B6`, akcentus `#7C3AED`) mindkét módban KÖTELEZŐEN `text-white` felirat (WCAG AAA). Arany/amber brand akcentusként TILOS.
 
 ```
-Háttér:           #020617  →  bg-[#020617] (bg-bg-base)
-Kártya/panel:     #0f172a  →  bg-[#0f172a] (bg-bg-surface)
-Kiemelt felület:  #1e293b  →  bg-[#1e293b] (bg-bg-elevated)
-Fő szöveg:        #e2e8f0  →  text-[#e2e8f0] (text-text-primary)
-Muted szöveg:     #94a3b8  →  text-slate-400 (text-text-secondary)
-Brand (Cián):     #00B5F1  →  brand-primary (text-brand-primary / bg-brand-primary)
-Gradiens kezdet:  #075985  →  cta-from (from-cta-from)
-Gradiens vége:    #5B21B6  →  cta-to (to-cta-to)
-Brand Hover:      #6d28d9  →  cta-hover (hover:bg-cta-hover)
-Siker:            #10b981  →  text-emerald-500
-Hiba:             #ef4444  →  text-red-500
+Luminous Daylight (Default): #F8FAFC ↔ #F1F5F9 ↔ #EAF1FA · kártya: #FFFFFF · szöveg: #0F172A / #334155 / #475569 · akcentus: #0369A1 / #6D28D9
+Luminous Slate (Dark):       #0B1120 ↔ #111C33 ↔ #16223B · kártya: #16223B/80 · szöveg: #F8FAFC / #CBD5E1 / #94A3B8 · akcentus: #00B5F1 / #A78BFA
+Gradiens CTA (mindkét mód):  #075985 → #5B21B6  →  from-cta-from to-cta-to (text-white kötelező)
+Brand Hover / Siker / Hiba:  #6d28d9 | #10b981 / #ef4444
 ```
 
 **Duál Tipográfia (Bebas Neue + Plus Jakarta Sans):**
 
 - **Címsorok (H1–H6):** `Bebas Neue` (`font-heading`), szigorúan `font-weight: 400 !important` (a böngésző szintetikus vastagítása / faux-bold tiltott).
 - **Folyószöveg és UI (gombok, navigáció, kártyaleírások):** `Plus Jakarta Sans` (`font-sans`, súlyok: `400`, `500`, `600`, `latin-ext` támogatással).
+- **Eyebrow tech-badge-ek:** `font-mono` (`.eyebrow-badge`).
 
 **Spacing — szigorú 8px Grid:**
 
@@ -195,7 +193,7 @@ Random pixelértékek (pl. 13px, 27px): TILOS
 sm: 640px  |  md: 768px  |  lg: 1024px  |  xl: 1280px
 ```
 
-**Szigorúan tilos:** Fehér/világos háttér főfelületeken, serif betűtípus, indokolatlan gradiens, div-leves (felesleges wrapper div-ek), lassú (>400ms) animáció főelemeken.
+**Szigorúan tilos:** Fekete–fehér zebra-hatás, kontraszttalan `#00B5F1` vagy `slate-400` szöveg világos (`light`) módban, arany/amber akcentus, serif betűtípus, nehéz WebGL a Hero-ban, div-leves, `useReducedMotion` nélküli mozgó főanimáció.
 
 **Tartalom és Kommunikáció Szabályok:**
 
@@ -477,17 +475,17 @@ Biztonság > Teljesítmény > SEO/AEO > UX > Vizuális Design
 
 ## ⚠️ 15. ISMERT BUKTATÓK ÉS MEGOLDÁSOK
 
-| Hiba                            | Ok                                          | Megoldás                                                        |
-| ------------------------------- | ------------------------------------------- | --------------------------------------------------------------- |
-| Hydration mismatch              | Szerver/kliens render eltér (dátum, window) | `useEffect` halasztás vagy `dynamic({ ssr: false })`            |
-| Firebase infinite read loop     | Instabil `useEffect` dependency             | `useCallback`, primitív dependency, egyszeri fetch              |
-| TypeScript `any` típus          | Gyors megoldás kísértése                    | Explicit típus vagy `unknown` + type guard                      |
-| `"use client"` page.tsx-en      | SEO és LCP romlik                           | Kiszervezni legkisebb Client Component-be                       |
-| Motion animáció SSR hiba        | `motion` Server Componenten                 | `"use client"` a motion komponensre + metadata export layout-ba |
-| Sötét felirat kék-lila CTA-n | Elégtelen kontraszt | `text-white` kötelező (`#075985`/`#5B21B6`/`#7C3AED` alapon AAA); gradiens és hover külön ellenőrzendő |
-| Tailwind osztály JIT miss       | Dinamikus class string                      | `safelist` vagy statikus konkatenáció                           |
-| Firebase cold start (Functions) | Hidegindítás                                | Minimális bundle, warm-up stratégia                             |
-| ISR stale data                  | `revalidate` érték túl magas                | Webhookos `revalidatePath()` admin felületről                   |
+| Hiba                            | Ok                                          | Megoldás                                                                                               |
+| ------------------------------- | ------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| Hydration mismatch              | Szerver/kliens render eltér (dátum, window) | `useEffect` halasztás vagy `dynamic({ ssr: false })`                                                   |
+| Firebase infinite read loop     | Instabil `useEffect` dependency             | `useCallback`, primitív dependency, egyszeri fetch                                                     |
+| TypeScript `any` típus          | Gyors megoldás kísértése                    | Explicit típus vagy `unknown` + type guard                                                             |
+| `"use client"` page.tsx-en      | SEO és LCP romlik                           | Kiszervezni legkisebb Client Component-be                                                              |
+| Motion animáció SSR hiba        | `motion` Server Componenten                 | `"use client"` a motion komponensre + metadata export layout-ba                                        |
+| Sötét felirat kék-lila CTA-n    | Elégtelen kontraszt                         | `text-white` kötelező (`#075985`/`#5B21B6`/`#7C3AED` alapon AAA); gradiens és hover külön ellenőrzendő |
+| Tailwind osztály JIT miss       | Dinamikus class string                      | `safelist` vagy statikus konkatenáció                                                                  |
+| Firebase cold start (Functions) | Hidegindítás                                | Minimális bundle, warm-up stratégia                                                                    |
+| ISR stale data                  | `revalidate` érték túl magas                | Webhookos `revalidatePath()` admin felületről                                                          |
 
 ---
 

@@ -4,13 +4,8 @@ import ResponsiveImage from "@/components/molecules/ResponsiveImage";
 import Link from "next/link";
 import { useRef } from "react";
 import type { MouseEvent } from "react";
-import {
-  motion,
-  useReducedMotion,
-  useMotionValue,
-  useSpring,
-  useMotionTemplate,
-} from "motion/react";
+import { motion, useMotionValue, useSpring, useMotionTemplate } from "motion/react";
+import { useHydratedReducedMotion } from "@/hooks/useMotionPreset";
 import { ArrowUpRight } from "lucide-react";
 import { Work } from "@/types/work";
 
@@ -25,7 +20,7 @@ interface PortfolioCardProps {
  * A `featured: true` projektek a Bento Gridben kétszeres szélességet kapnak.
  */
 function PortfolioCard({ project, index }: PortfolioCardProps) {
-  const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = useHydratedReducedMotion();
   const cardRef = useRef<HTMLElement>(null);
 
   // Pointer-követő fényfolt (spotlight) pozíció
@@ -94,7 +89,7 @@ function PortfolioCard({ project, index }: PortfolioCardProps) {
           ? undefined
           : { rotateX, rotateY, transformPerspective: 1200 }
       }
-      className={`group relative flex overflow-hidden rounded-3xl border border-slate-800/80 bg-slate-900/60 backdrop-blur-xl ring-1 ring-white/5 transition-colors duration-300 hover:border-[#00B5F1]/50 hover:shadow-[0_0_30px_rgba(0,181,241,0.2)] ${
+      className={`group relative flex overflow-hidden rounded-3xl border border-slate-200/90 dark:border-white/10 dark:border-t-white/20 bg-white dark:bg-[#16223B]/80 backdrop-blur-xl shadow-[0_10px_30px_-10px_rgba(15,23,42,0.08),0_4px_12px_-2px_rgba(15,23,42,0.04)] dark:shadow-[0_12px_36px_rgba(2,6,23,0.35)] transition-[border-color,box-shadow] duration-300 hover:border-[#0369A1]/50 dark:hover:border-[#00B5F1]/50 hover:shadow-[0_18px_40px_rgba(3,105,161,0.14)] dark:hover:shadow-[0_18px_48px_rgba(0,181,241,0.18)] ${
         isHero
           ? "col-span-1 md:col-span-2 lg:col-span-2 flex-col md:flex-row"
           : "col-span-1 flex-col"
@@ -108,7 +103,7 @@ function PortfolioCard({ project, index }: PortfolioCardProps) {
       />
 
       <div
-        className={`relative z-10 overflow-hidden border-slate-800/80 ${
+        className={`relative z-10 overflow-hidden border-slate-200/80 dark:border-white/10 ${
           isHero
             ? "aspect-video w-full md:aspect-auto md:min-h-80 md:w-1/2 md:border-r"
             : "aspect-video w-full border-b"
@@ -139,26 +134,26 @@ function PortfolioCard({ project, index }: PortfolioCardProps) {
       >
         <div>
           <div className="mb-4 flex items-start justify-between gap-4">
-            <span className="text-[11px] font-bold uppercase tracking-widest text-[#00B5F1]">
+            <span className="eyebrow-badge text-[#0369A1] dark:text-[#00B5F1]">
               {project.category}
             </span>
             {project.year && (
-              <span className="shrink-0 text-[11px] font-semibold text-slate-500">
+              <span className="shrink-0 font-mono text-[11px] font-semibold text-[#475569] dark:text-slate-400">
                 {project.year}
               </span>
             )}
           </div>
 
-          <h3 className="mb-3 text-xl font-bold text-slate-100 transition-colors group-hover:text-[#00B5F1] md:text-2xl">
+          <h3 className="mb-3 text-xl font-bold text-[#0F172A] dark:text-white transition-colors group-hover:text-[#0369A1] dark:group-hover:text-[#00B5F1] md:text-2xl">
             <Link
               href={`/munkak/${project.slug}`}
-              className="before:absolute before:inset-0 before:z-10 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00B5F1] focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+              className="before:absolute before:inset-0 before:z-10 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0369A1] dark:focus-visible:ring-[#00B5F1] focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-slate-950"
             >
               {project.title}
             </Link>
           </h3>
 
-          <p className="line-clamp-3 text-sm leading-relaxed text-slate-400">
+          <p className="line-clamp-3 text-sm leading-relaxed text-[#334155] dark:text-slate-300">
             {project.description}
           </p>
         </div>
@@ -168,18 +163,18 @@ function PortfolioCard({ project, index }: PortfolioCardProps) {
             {project.tags.slice(0, isFeatured ? 4 : 3).map((tag) => (
               <span
                 key={`${project.id}-${tag}`}
-                className="rounded-md border border-slate-700/50 bg-slate-800/50 px-2 py-1 text-[10px] font-bold uppercase tracking-widest text-slate-300"
+                className="rounded-md border border-slate-200 dark:border-white/12 bg-slate-100 dark:bg-[#0B1120]/70 px-2 py-1 text-[10px] font-bold uppercase tracking-widest text-[#334155] dark:text-slate-200"
               >
                 {tag}
               </span>
             ))}
           </div>
 
-          <div className="flex items-center justify-between gap-4 border-t border-slate-800/80 pt-4">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#00B5F1] transition-colors group-hover:text-sky-400">
+          <div className="flex items-center justify-between gap-4 border-t border-slate-200/80 dark:border-white/10 pt-4">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#0369A1] dark:text-[#00B5F1] transition-colors group-hover:text-[#6D28D9] dark:group-hover:text-sky-400">
               {kpiHighlight}
             </span>
-            <span className="inline-flex shrink-0 items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-400 transition-colors group-hover:text-[#00B5F1]">
+            <span className="inline-flex shrink-0 items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#334155] dark:text-slate-300 transition-colors group-hover:text-[#0369A1] dark:group-hover:text-[#00B5F1]">
               Esettanulmány
               <ArrowUpRight
                 aria-hidden="true"

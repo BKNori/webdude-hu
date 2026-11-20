@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Hero from "@/components/Hero";
+import Surface from "@/components/atoms/Surface";
 import ServiceCard from "@/components/molecules/ServiceCard";
 import { buildBreadcrumbSchema, BreadcrumbItem } from "@/lib/breadcrumb";
 import { getDictionary } from "@/lib/dictionary";
@@ -233,7 +234,7 @@ export default async function EnServicesPage() {
         title={
           <>
             Increase{" "}
-            <span className="bg-clip-text text-transparent bg-linear-to-r from-brand-primary to-cta-to italic">
+            <span className="bg-clip-text text-transparent bg-linear-to-r from-[#0369A1] to-cta-to dark:from-brand-primary dark:to-cta-to italic">
               Client Acquisition
             </span>{" "}
             <br /> with Website and AI
@@ -249,78 +250,78 @@ export default async function EnServicesPage() {
       />
 
       {/* Direct Answer Block - AEO optimised "Services Overview" */}
-      <section className="relative py-12 bg-bg-base border-y border-white/5">
+      <Surface tone="night-lift" className="py-12">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <p className="text-base md:text-lg text-slate-300 leading-relaxed">
-            <span className="text-[#00B5F1] font-semibold">
+          <p className="text-base md:text-lg text-slate-700 dark:text-slate-200 leading-relaxed">
+            <span className="text-[#0369A1] dark:text-[#00B5F1] font-semibold">
               WebDude digital services:
             </span>{" "}
             {dictionary.services.page.directAnswer}
           </p>
         </div>
-      </section>
+      </Surface>
 
-      {/* Social Proof Section */}
-      <section className="py-24 bg-bg-surface border-y border-slate-700">
+      {/* Social Proof Section — Dual Theme */}
+      <Surface tone="night" aurora className="py-20 md:py-24">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
-            <div className="bg-bg-elevated border border-slate-600 rounded-2xl p-8 shadow-[0_8px_24px_rgba(15,23,42,0.3)] hover:border-brand-primary/50 hover:shadow-[0_20px_60px_rgba(0,181,241,0.2)] hover:-translate-y-1 transition-[border-color,box-shadow,transform] duration-300 group">
-              <span className="text-6xl font-heading block mb-3 text-text-primary group-hover:text-brand-primary tracking-wide">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-8 text-center">
+            <div className="luminous-card p-8 group">
+              <span className="text-6xl font-heading block mb-3 text-[#0F172A] dark:text-white group-hover:text-[#0369A1] dark:group-hover:text-[#00B5F1] transition-colors tracking-wide">
                 26+
               </span>
-              <p className="text-xs uppercase tracking-[0.2em] font-bold text-slate-400">
+              <p className="font-mono text-xs uppercase tracking-[0.2em] font-semibold text-slate-600 dark:text-slate-300">
                 Years Experience
               </p>
             </div>
-            <div className="bg-bg-elevated border border-slate-600 rounded-2xl p-8 shadow-[0_8px_24px_rgba(15,23,42,0.3)] hover:border-brand-primary/50 hover:shadow-[0_20px_60px_rgba(0,181,241,0.2)] hover:-translate-y-1 transition-[border-color,box-shadow,transform] duration-300 group">
-              <span className="text-6xl font-heading block mb-3 text-text-primary group-hover:text-brand-primary tracking-wide">
+            <div className="luminous-card p-8 group">
+              <span className="text-6xl font-heading block mb-3 text-[#0F172A] dark:text-white group-hover:text-[#0369A1] dark:group-hover:text-[#00B5F1] transition-colors tracking-wide">
                 200+
               </span>
-              <p className="text-xs uppercase tracking-[0.2em] font-bold text-slate-400">
+              <p className="font-mono text-xs uppercase tracking-[0.2em] font-semibold text-slate-600 dark:text-slate-300">
                 Projects Delivered
               </p>
             </div>
-            <div className="bg-bg-elevated border border-slate-600 rounded-2xl p-8 shadow-[0_8px_24px_rgba(15,23,42,0.3)] hover:border-brand-primary/50 hover:shadow-[0_20px_60px_rgba(0,181,241,0.2)] hover:-translate-y-1 transition-[border-color,box-shadow,transform] duration-300 group">
-              <span className="text-6xl font-heading block mb-3 text-text-primary group-hover:text-brand-primary tracking-wide">
+            <div className="luminous-card p-8 group">
+              <span className="text-6xl font-heading block mb-3 text-[#0F172A] dark:text-white group-hover:text-[#0369A1] dark:group-hover:text-[#00B5F1] transition-colors tracking-wide">
                 500+
               </span>
-              <p className="text-xs uppercase tracking-[0.2em] font-bold text-slate-400">
+              <p className="font-mono text-xs uppercase tracking-[0.2em] font-semibold text-slate-600 dark:text-slate-300">
                 Leads Generated
               </p>
             </div>
-            <div className="bg-bg-elevated border border-slate-600 rounded-2xl p-8 shadow-[0_8px_24px_rgba(15,23,42,0.3)] hover:border-brand-primary/50 hover:shadow-[0_20px_60px_rgba(0,181,241,0.2)] hover:-translate-y-1 transition-[border-color,box-shadow,transform] duration-300 group">
-              <span className="text-6xl font-heading block mb-3 text-text-primary group-hover:text-brand-primary tracking-wide">
+            <div className="luminous-card p-8 group">
+              <span className="text-6xl font-heading block mb-3 text-[#0F172A] dark:text-white group-hover:text-[#0369A1] dark:group-hover:text-[#00B5F1] transition-colors tracking-wide">
                 95+
               </span>
-              <p className="text-xs uppercase tracking-[0.2em] font-bold text-slate-400">
+              <p className="font-mono text-xs uppercase tracking-[0.2em] font-semibold text-slate-600 dark:text-slate-300">
                 Lighthouse Score
               </p>
             </div>
           </div>
         </div>
-      </section>
+      </Surface>
 
-      <section className="py-40 bg-bg-surface relative z-10">
+      {/* Services Grid — Elevated Dual Theme */}
+      <Surface tone="slate-lift" aurora grid className="py-24 md:py-32">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center max-w-3xl mx-auto mb-32">
-            <div className="inline-block relative pl-6 mb-8">
-              <span className="text-xs uppercase font-black tracking-[0.3em] text-brand-primary mb-2 block">
+          <div className="text-center max-w-3xl mx-auto mb-16 md:mb-20">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sky-500/10 border border-sky-600/25 dark:bg-[#00B5F1]/10 dark:border-[#00B5F1]/25 mb-6">
+              <span className="eyebrow-badge text-[#0369A1] dark:text-[#00B5F1]">
                 {dictionary.services.page.sectionTitle}
               </span>
-              <div className="absolute left-0 top-0 w-1 h-6 bg-brand-primary" />
             </div>
-            <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold font-heading text-text-primary leading-tight tracking-tight">
+            <h2 className="text-4xl sm:text-5xl md:text-7xl font-heading text-[#0F172A] dark:text-white leading-tight">
               {dictionary.services.page.sectionSubtitle}
             </h2>
-            <p className="mt-6 text-lg md:text-xl text-slate-400 max-w-lg leading-relaxed mx-auto tracking-wide font-medium">
+            <p className="mt-6 text-lg md:text-xl text-slate-700 dark:text-slate-300 max-w-lg leading-relaxed mx-auto font-medium">
               {dictionary.services.page.sectionDescription}
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((s, i) =>
               s.link ? (
-                <Link key={i} href={s.link}>
+                <Link key={i} href={s.link} className="block h-full">
                   <ServiceCard {...s} index={i} />
                 </Link>
               ) : (
@@ -329,27 +330,26 @@ export default async function EnServicesPage() {
             )}
           </div>
         </div>
-      </section>
+      </Surface>
 
-      {/* Process Section */}
-      <section className="py-40 bg-bg-surface border-t border-slate-700">
+      {/* Process Section — Dual Theme */}
+      <Surface tone="night" aurora className="py-24 md:py-32">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center max-w-3xl mx-auto mb-20">
-            <div className="inline-block relative pl-6 mb-8">
-              <span className="text-xs uppercase font-black tracking-[0.3em] text-brand-primary mb-2 block">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sky-500/10 border border-sky-600/25 dark:bg-brand-primary/10 dark:border-brand-primary/25 mb-6">
+              <span className="eyebrow-badge text-[#0369A1] dark:text-brand-primary">
                 {dictionary.services.page.processTitle}
               </span>
-              <div className="absolute left-0 top-0 w-1 h-6 bg-brand-primary" />
             </div>
-            <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold font-heading text-text-primary leading-tight tracking-tight">
+            <h2 className="text-4xl sm:text-5xl md:text-7xl font-heading text-[#0F172A] dark:text-white leading-tight">
               {dictionary.services.page.processTitle}
             </h2>
-            <p className="mt-6 text-lg md:text-xl text-slate-400 max-w-lg leading-relaxed mx-auto tracking-wide font-medium">
+            <p className="mt-6 text-lg md:text-xl text-slate-700 dark:text-slate-300 max-w-lg leading-relaxed mx-auto font-medium">
               {dictionary.services.page.processDescription}
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-8">
             {[
               {
                 step: "01",
@@ -374,38 +374,32 @@ export default async function EnServicesPage() {
                   "I deliver the completed project and ensure support.",
               },
             ].map((item, index) => (
-              <div
-                key={index}
-                className="bg-bg-elevated border border-slate-600 rounded-2xl p-8 shadow-[0_8px_24px_rgba(15,23,42,0.3)] hover:border-brand-primary/50 hover:shadow-[0_20px_60px_rgba(0,181,241,0.2)] hover:-translate-y-1 transition-[border-color,box-shadow,transform] duration-300 group"
-              >
-                <span className="text-7xl font-heading block mb-4 text-brand-primary/30 group-hover:text-brand-primary/50 transition-colors tracking-wide">
+              <div key={index} className="luminous-card p-8 group">
+                <span className="text-6xl font-heading block mb-4 text-[#0369A1]/45 group-hover:text-[#0369A1] dark:text-brand-primary/40 dark:group-hover:text-brand-primary transition-colors tracking-wide">
                   {item.step}
                 </span>
-                <h3 className="text-xl font-bold text-text-primary mb-3 tracking-tight">
+                <h3 className="text-xl text-[#0F172A] dark:text-white mb-3 tracking-wider">
                   {item.title}
                 </h3>
-                <p className="text-sm text-slate-400 leading-relaxed tracking-wide font-medium">
+                <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-normal">
                   {item.description}
                 </p>
               </div>
             ))}
           </div>
         </div>
-      </section>
+      </Surface>
 
-      {/* FAQ Section */}
-      <section className="py-40 bg-bg-surface border-t border-slate-800">
+      {/* FAQ Section — Dual Theme */}
+      <Surface tone="night-lift" aurora className="py-24 md:py-32">
         <div className="max-w-4xl mx-auto px-6">
-          <div className="text-center max-w-3xl mx-auto mb-20">
-            <div className="inline-block relative pl-6 mb-8">
-              <span className="text-xs uppercase font-black tracking-[0.3em] text-brand-primary mb-2 block">
-                FAQ
-              </span>
-              <div className="absolute left-0 top-0 w-1 h-6 bg-brand-primary" />
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sky-500/10 border border-sky-600/25 dark:bg-[#00B5F1]/10 dark:border-[#00B5F1]/25 mb-6">
+              <span className="eyebrow-badge text-[#0369A1] dark:text-[#00B5F1]">FAQ</span>
             </div>
-            <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold font-heading text-text-primary leading-tight tracking-tight">
+            <h2 className="text-4xl sm:text-5xl md:text-7xl font-heading text-[#0F172A] dark:text-white leading-tight">
               How much does a{" "}
-              <span className="text-brand-primary italic">website cost</span>?
+              <span className="text-[#0369A1] dark:text-[#00B5F1] italic">website cost</span>?
             </h2>
           </div>
 
@@ -437,21 +431,18 @@ export default async function EnServicesPage() {
                   "WordPress, WooCommerce, Next.js, React, Node.js, Firebase. Technology adapts to the project. Every project is modern and secure.",
               },
             ].map((faq, index) => (
-              <div
-                key={index}
-                className="bg-bg-elevated border border-slate-600 rounded-2xl p-6 hover:border-brand-primary/50 transition-colors duration-300"
-              >
-                <h3 className="text-lg font-bold text-text-primary mb-2 tracking-tight">
+              <div key={index} className="luminous-card p-6 md:p-8">
+                <h3 className="text-lg font-bold text-[#0F172A] dark:text-white mb-2 tracking-tight">
                   {faq.question}
                 </h3>
-                <p className="text-slate-400 leading-relaxed tracking-wide font-medium">
+                <p className="text-slate-700 dark:text-slate-300 leading-relaxed font-normal">
                   {faq.answer}
                 </p>
               </div>
             ))}
           </div>
         </div>
-      </section>
+      </Surface>
     </div>
   );
 }

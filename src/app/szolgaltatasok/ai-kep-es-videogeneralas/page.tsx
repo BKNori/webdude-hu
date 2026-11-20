@@ -154,10 +154,10 @@ export default async function AiMediaPage() {
         </HeroCarousel>
 
         {/* Direct Answer Block - AEO optimalizált */}
-        <section className="relative py-12 bg-bg-base border-y border-white/5">
+        <section className="relative py-12 bg-bg-base border-y border-slate-200/80 dark:border-white/5">
           <div className="max-w-4xl mx-auto px-6 text-center">
-            <p className="text-base md:text-lg text-slate-300 leading-relaxed">
-              <span className="text-[#00B5F1] font-semibold">
+            <p className="text-base md:text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
+              <span className="text-[#0369A1] dark:text-[#00B5F1] font-semibold">
                 WebDude AI asset pipeline:
               </span>{" "}
               Generatív AI megoldások marketing assetek automatikus
@@ -177,7 +177,7 @@ export default async function AiMediaPage() {
             <div className="mt-12 grid gap-12 md:grid-cols-2 items-start max-w-4xl mx-auto">
               <div className="space-y-6">
                 <Badge>Generatív AI</Badge>
-                <p className="text-xl text-slate-400 leading-relaxed">
+                <p className="text-xl text-slate-600 dark:text-slate-400 leading-relaxed">
                   A hagyományos grafikai tervezés helyett AI-vezérelt asset
                   pipeline-eket építek, amelyek automatikusan előállítanak
                   marketing anyagokat: termékképek, bannerek, szociális média
@@ -213,29 +213,29 @@ export default async function AiMediaPage() {
                   Szolgáltatások
                 </h2>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  <div className="bg-slate-900/80 backdrop-blur-md border border-slate-700 p-6 rounded-lg hover:border-[#00B5F1]/50 transition-colors">
-                    <h3 className="text-xl font-semibold text-[#00B5F1] mb-3">
+                  <div className="bg-white dark:bg-slate-900/80 backdrop-blur-md border border-slate-200/90 dark:border-slate-700 p-6 rounded-lg hover:border-[#00B5F1]/50 transition-colors">
+                    <h3 className="text-xl font-semibold text-[#0369A1] dark:text-[#00B5F1] mb-3">
                       AI Kép Generálás
                     </h3>
-                    <p className="text-slate-400">
+                    <p className="text-slate-600 dark:text-slate-400">
                       Termékképek, bannerek, szociális média grafikák, blog
                       képek és minden vizuális asset automatizálva
                     </p>
                   </div>
-                  <div className="bg-slate-900/80 backdrop-blur-md border border-slate-700 p-6 rounded-lg hover:border-[#00B5F1]/50 transition-colors">
-                    <h3 className="text-xl font-semibold text-[#00B5F1] mb-3">
+                  <div className="bg-white dark:bg-slate-900/80 backdrop-blur-md border border-slate-200/90 dark:border-slate-700 p-6 rounded-lg hover:border-[#00B5F1]/50 transition-colors">
+                    <h3 className="text-xl font-semibold text-[#0369A1] dark:text-[#00B5F1] mb-3">
                       AI Videó Generálás
                     </h3>
-                    <p className="text-slate-400">
+                    <p className="text-slate-600 dark:text-slate-400">
                       Hirdetési videók, termékvideók, animációk és sztori
                       tartalmak automatikusan generálva
                     </p>
                   </div>
-                  <div className="bg-slate-900/80 backdrop-blur-md border border-slate-700 p-6 rounded-lg hover:border-[#00B5F1]/50 transition-colors">
-                    <h3 className="text-xl font-semibold text-[#00B5F1] mb-3">
+                  <div className="bg-white dark:bg-slate-900/80 backdrop-blur-md border border-slate-200/90 dark:border-slate-700 p-6 rounded-lg hover:border-[#00B5F1]/50 transition-colors">
+                    <h3 className="text-xl font-semibold text-[#0369A1] dark:text-[#00B5F1] mb-3">
                       Asset Pipeline Automatizálás
                     </h3>
-                    <p className="text-slate-400">
+                    <p className="text-slate-600 dark:text-slate-400">
                       Teljes workflow automatizálás: prompt engineering,
                       generálás, utómunka és változatok készítése
                     </p>
@@ -248,18 +248,18 @@ export default async function AiMediaPage() {
             <section className="mt-24 max-w-6xl mx-auto relative overflow-hidden">
               <div className="absolute inset-0 bg-linear-to-b from-transparent via-[#00B5F1]/5 to-transparent" />
               <div className="relative z-10">
-                <div className="bg-slate-900/80 backdrop-blur-md border border-slate-700 p-12 rounded-3xl text-center">
+                <div className="bg-white dark:bg-slate-900/80 backdrop-blur-md border border-slate-200/90 dark:border-slate-700 p-12 rounded-3xl text-center">
                   <h2 className="text-4xl font-bold text-text-primary mb-4">
                     Egyedi AI Workflow Tervezés
                   </h2>
-                  <p className="text-lg text-slate-400 mb-8">
+                  <p className="text-lg text-slate-600 dark:text-slate-400 mb-8">
                     Minden AI projekt egyedi. Ingyenes konzultáció és személyre
                     szabott árajánlat a pontos specifikáció alapján.
                   </p>
                   <Button
                     variant="primary"
                     href="/kapcsolat"
-                    className="px-8 py-4 bg-linear-to-r from-[#00B5F1] to-blue-600 hover:from-purple-600 hover:to-blue-700 text-slate-950 rounded-full font-bold hover:scale-105 active:scale-95 transition-transform duration-300 shadow-[0_8px_24px_rgba(168,85,247,0.3)] hover:shadow-[0_18px_40px_rgba(168,85,247,0.4)] min-h-11 min-w-11 inline-block"
+                    className="px-8 py-4 bg-linear-to-r from-[#075985] to-[#5B21B6] hover:from-[#0369A1] hover:to-[#6D28D9] text-white rounded-full font-bold hover:scale-105 active:scale-95 transition-transform duration-300 shadow-[0_8px_24px_rgba(168,85,247,0.3)] hover:shadow-[0_18px_40px_rgba(168,85,247,0.4)] min-h-11 min-w-11 inline-block"
                   >
                     Egyedi árajánlat kérése
                   </Button>
@@ -276,7 +276,7 @@ export default async function AiMediaPage() {
                 </h2>
                 <div className="space-y-4">
                   <div className="flex items-start gap-4">
-                    <div className="shrink-0 w-8 h-8 bg-linear-to-r from-[#00B5F1] to-sky-500 rounded-full flex items-center justify-center text-slate-950 font-bold">
+                    <div className="shrink-0 w-8 h-8 bg-[#0369A1] dark:bg-[#00B5F1] rounded-full flex items-center justify-center text-white dark:text-slate-950 font-bold">
                       <Check
                         className="w-4 h-4"
                         strokeWidth={3}
@@ -287,14 +287,14 @@ export default async function AiMediaPage() {
                       <h3 className="text-lg font-semibold text-text-primary">
                         60-90% gyorsabb előállítás
                       </h3>
-                      <p className="text-slate-400">
+                      <p className="text-slate-600 dark:text-slate-400">
                         Hagyományos tervezés helyett AI-vezérelt folyamatokkal
                         asseteket készítek percek helyett napok alatt
                       </p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <div className="shrink-0 w-8 h-8 bg-linear-to-r from-[#00B5F1] to-sky-500 rounded-full flex items-center justify-center text-slate-950 font-bold">
+                    <div className="shrink-0 w-8 h-8 bg-[#0369A1] dark:bg-[#00B5F1] rounded-full flex items-center justify-center text-white dark:text-slate-950 font-bold">
                       <Check
                         className="w-4 h-4"
                         strokeWidth={3}
@@ -305,14 +305,14 @@ export default async function AiMediaPage() {
                       <h3 className="text-lg font-semibold text-text-primary">
                         Költséghatékony skálázás
                       </h3>
-                      <p className="text-slate-400">
+                      <p className="text-slate-600 dark:text-slate-400">
                         Heti 5-10 asset helyett 50-100 assetet állíthatok elő
                         ugyanabban a költségkeretben
                       </p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <div className="shrink-0 w-8 h-8 bg-linear-to-r from-[#00B5F1] to-sky-500 rounded-full flex items-center justify-center text-slate-950 font-bold">
+                    <div className="shrink-0 w-8 h-8 bg-[#0369A1] dark:bg-[#00B5F1] rounded-full flex items-center justify-center text-white dark:text-slate-950 font-bold">
                       <Check
                         className="w-4 h-4"
                         strokeWidth={3}
@@ -323,7 +323,7 @@ export default async function AiMediaPage() {
                       <h3 className="text-lg font-semibold text-text-primary">
                         Márkakonzisztencia garantálva
                       </h3>
-                      <p className="text-slate-400">
+                      <p className="text-slate-600 dark:text-slate-400">
                         Egyedi márkai training modellekkel biztosítom, hogy
                         minden asset vizuálisan illeszkedjen a brand
                         identity-hez
@@ -331,7 +331,7 @@ export default async function AiMediaPage() {
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <div className="shrink-0 w-8 h-8 bg-linear-to-r from-[#00B5F1] to-sky-500 rounded-full flex items-center justify-center text-slate-950 font-bold">
+                    <div className="shrink-0 w-8 h-8 bg-[#0369A1] dark:bg-[#00B5F1] rounded-full flex items-center justify-center text-white dark:text-slate-950 font-bold">
                       <Check
                         className="w-4 h-4"
                         strokeWidth={3}
@@ -342,14 +342,14 @@ export default async function AiMediaPage() {
                       <h3 className="text-lg font-semibold text-text-primary">
                         A/B tesztelés támogatott
                       </h3>
-                      <p className="text-slate-400">
+                      <p className="text-slate-600 dark:text-slate-400">
                         Automatikus változatok készítése, hogy A/B teszteléssel
                         optimalizálhassa a konverziót
                       </p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <div className="shrink-0 w-8 h-8 bg-linear-to-r from-[#00B5F1] to-sky-500 rounded-full flex items-center justify-center text-slate-950 font-bold">
+                    <div className="shrink-0 w-8 h-8 bg-[#0369A1] dark:bg-[#00B5F1] rounded-full flex items-center justify-center text-white dark:text-slate-950 font-bold">
                       <Check
                         className="w-4 h-4"
                         strokeWidth={3}
@@ -360,7 +360,7 @@ export default async function AiMediaPage() {
                       <h3 className="text-lg font-semibold text-text-primary">
                         Teljes kontroll és minőség
                       </h3>
-                      <p className="text-slate-400">
+                      <p className="text-slate-600 dark:text-slate-400">
                         A generálás mellett kézi review és utómunka garantálja a
                         professzionális minőséget
                       </p>
@@ -378,30 +378,30 @@ export default async function AiMediaPage() {
                   Működési folyamat
                 </h2>
                 <div className="space-y-6">
-                  <div className="bg-slate-900/80 backdrop-blur-md border border-slate-700 p-6 rounded-lg hover:border-[#00B5F1]/50 transition-colors">
-                    <h3 className="text-lg font-semibold text-[#00B5F1] mb-2">
+                  <div className="bg-white dark:bg-slate-900/80 backdrop-blur-md border border-slate-200/90 dark:border-slate-700 p-6 rounded-lg hover:border-[#00B5F1]/50 transition-colors">
+                    <h3 className="text-lg font-semibold text-[#0369A1] dark:text-[#00B5F1] mb-2">
                       1. Konfiguráció és Prompt Engineering
                     </h3>
-                    <p className="text-slate-400">
+                    <p className="text-slate-600 dark:text-slate-400">
                       Brand guide alapján egyedi promptokat és
                       stílus-beállítások készítése, márkai training modellek
                       építése
                     </p>
                   </div>
-                  <div className="bg-slate-900/80 backdrop-blur-md border border-slate-700 p-6 rounded-lg hover:border-[#00B5F1]/50 transition-colors">
-                    <h3 className="text-lg font-semibold text-[#00B5F1] mb-2">
+                  <div className="bg-white dark:bg-slate-900/80 backdrop-blur-md border border-slate-200/90 dark:border-slate-700 p-6 rounded-lg hover:border-[#00B5F1]/50 transition-colors">
+                    <h3 className="text-lg font-semibold text-[#0369A1] dark:text-[#00B5F1] mb-2">
                       2. Generálás és Pipeline Automatizálás
                     </h3>
-                    <p className="text-slate-400">
+                    <p className="text-slate-600 dark:text-slate-400">
                       AI eszközökkel automatikus asset előállítás, változatok
                       készítése és skálázható folyamatok kiépítése
                     </p>
                   </div>
-                  <div className="bg-slate-900/80 backdrop-blur-md border border-slate-700 p-6 rounded-lg hover:border-[#00B5F1]/50 transition-colors">
-                    <h3 className="text-lg font-semibold text-[#00B5F1] mb-2">
+                  <div className="bg-white dark:bg-slate-900/80 backdrop-blur-md border border-slate-200/90 dark:border-slate-700 p-6 rounded-lg hover:border-[#00B5F1]/50 transition-colors">
+                    <h3 className="text-lg font-semibold text-[#0369A1] dark:text-[#00B5F1] mb-2">
                       3. Review, Utómunka és Átadás
                     </h3>
-                    <p className="text-slate-400">
+                    <p className="text-slate-600 dark:text-slate-400">
                       Kézi review, retusálás, utómunka és a kész assetek átadása
                       webes felhasználásra és nyomdai anyagokhoz
                     </p>
@@ -418,22 +418,22 @@ export default async function AiMediaPage() {
                   Használt AI Eszközök
                 </h2>
                 <div className="grid md:grid-cols-2 gap-6">
-                  <div className="bg-slate-900/80 backdrop-blur-md border border-slate-700 p-6 rounded-lg hover:border-[#00B5F1]/50 transition-colors">
-                    <h3 className="text-xl font-semibold text-[#00B5F1] mb-3">
+                  <div className="bg-white dark:bg-slate-900/80 backdrop-blur-md border border-slate-200/90 dark:border-slate-700 p-6 rounded-lg hover:border-[#00B5F1]/50 transition-colors">
+                    <h3 className="text-xl font-semibold text-[#0369A1] dark:text-[#00B5F1] mb-3">
                       Kép Generálás
                     </h3>
-                    <ul className="text-slate-400 space-y-2">
+                    <ul className="text-slate-600 dark:text-slate-400 space-y-2">
                       <li>• Midjourney (V6)</li>
                       <li>• DALL-E 3</li>
                       <li>• Stable Diffusion XL</li>
                       <li>• Adobe Firefly</li>
                     </ul>
                   </div>
-                  <div className="bg-slate-900/80 backdrop-blur-md border border-slate-700 p-6 rounded-lg hover:border-[#00B5F1]/50 transition-colors">
-                    <h3 className="text-xl font-semibold text-[#00B5F1] mb-3">
+                  <div className="bg-white dark:bg-slate-900/80 backdrop-blur-md border border-slate-200/90 dark:border-slate-700 p-6 rounded-lg hover:border-[#00B5F1]/50 transition-colors">
+                    <h3 className="text-xl font-semibold text-[#0369A1] dark:text-[#00B5F1] mb-3">
                       Videó Generálás
                     </h3>
-                    <ul className="text-slate-400 space-y-2">
+                    <ul className="text-slate-600 dark:text-slate-400 space-y-2">
                       <li>• Runway (Gen-2)</li>
                       <li>• Pika Labs</li>
                       <li>• Sora (Google)</li>
@@ -455,12 +455,12 @@ export default async function AiMediaPage() {
                   {FAQ.map((f, index) => (
                     <details
                       key={index}
-                      className="bg-slate-900/80 backdrop-blur-md border border-slate-700 p-6 rounded-lg group hover:border-[#00B5F1]/50 transition-colors"
+                      className="bg-white dark:bg-slate-900/80 backdrop-blur-md border border-slate-200/90 dark:border-slate-700 p-6 rounded-lg group hover:border-[#00B5F1]/50 transition-colors"
                     >
-                      <summary className="font-semibold text-text-primary cursor-pointer group-hover:text-[#00B5F1] transition-colors">
+                      <summary className="font-semibold text-text-primary cursor-pointer group-hover:text-[#0369A1] dark:group-hover:text-[#00B5F1] transition-colors">
                         {f.q}
                       </summary>
-                      <p className="mt-3 text-slate-400">{f.a}</p>
+                      <p className="mt-3 text-slate-600 dark:text-slate-400">{f.a}</p>
                     </details>
                   ))}
                 </div>
@@ -468,18 +468,18 @@ export default async function AiMediaPage() {
             </section>
 
             {/* CTA Section */}
-            <section className="mt-24 bg-linear-to-r from-[#00B5F1]/10 to-sky-500/5 border border-purple-500/30 p-12 rounded-3xl text-center max-w-4xl mx-auto relative overflow-hidden">
+            <section className="mt-24 bg-linear-to-r from-[#00B5F1]/10 to-sky-500/5 border border-violet-200 dark:border-purple-500/30 p-12 rounded-3xl text-center max-w-4xl mx-auto relative overflow-hidden">
               <div className="relative z-10">
                 <h2 className="text-5xl font-bold text-text-primary mb-4">
                   Kész automatizálni a marketing asseteket?
                 </h2>
-                <p className="text-lg text-slate-400 mb-8">
+                <p className="text-lg text-slate-600 dark:text-slate-400 mb-8">
                   Ingyenes konzultáció és személyre szabott AI workflow tervezés
                 </p>
                 <Button
                   variant="primary"
                   href="/kapcsolat"
-                  className="text-lg px-8 py-4 bg-linear-to-r from-[#00B5F1] to-sky-500 hover:from-purple-600 hover:to-violet-700"
+                  className="text-lg px-8 py-4 bg-linear-to-r from-[#075985] to-[#5B21B6] hover:from-[#0369A1] hover:to-[#6D28D9] text-white"
                 >
                   Kérj ingyenes konzultációt
                 </Button>
@@ -497,21 +497,21 @@ export default async function AiMediaPage() {
                   <Button
                     variant="secondary"
                     href="/szolgaltatasok/grafikai-tervezes"
-                    className="border-slate-700 text-slate-400 hover:text-[#00B5F1] hover:border-[#00B5F1]/50"
+                    className="border-slate-200/90 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:text-[#0369A1] dark:hover:text-[#00B5F1] hover:border-[#00B5F1]/50"
                   >
                     Grafikai Tervezés
                   </Button>
                   <Button
                     variant="secondary"
                     href="/szolgaltatasok/wordpress-webshop-keszites"
-                    className="border-slate-700 text-slate-400 hover:text-[#00B5F1] hover:border-[#00B5F1]/50"
+                    className="border-slate-200/90 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:text-[#0369A1] dark:hover:text-[#00B5F1] hover:border-[#00B5F1]/50"
                   >
                     WordPress Webshop Készítés
                   </Button>
                   <Button
                     variant="secondary"
                     href="/munkak"
-                    className="border-slate-700 text-slate-400 hover:text-[#00B5F1] hover:border-[#00B5F1]/50"
+                    className="border-slate-200/90 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:text-[#0369A1] dark:hover:text-[#00B5F1] hover:border-[#00B5F1]/50"
                   >
                     Portfólió
                   </Button>

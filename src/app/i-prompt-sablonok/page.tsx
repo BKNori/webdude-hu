@@ -240,19 +240,19 @@ Deliver a phased launch roadmap:
 
 export default function PromptTemplatesPage() {
   return (
-    <div className="min-h-screen bg-bg-base text-text-primary">
+    <div className="min-h-screen bg-[#F8FAFC] dark:bg-bg-base text-[#0F172A] dark:text-text-primary">
       {/* Hero Section */}
-      <section className="relative py-24 md:py-32 bg-bg-base border-b border-slate-800">
+      <section className="relative py-24 md:py-32 bg-[#F8FAFC] dark:bg-bg-base border-b border-slate-200 dark:border-slate-800">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight text-[#0F172A] dark:text-white">
               AI{" "}
-              <span className="text-transparent bg-clip-text bg-linear-to-r from-brand-primary to-brand-secondary">
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#0369A1] to-[#6D28D9] dark:from-brand-primary dark:to-brand-secondary">
                 Prompt
               </span>{" "}
               Sablonok
             </h1>
-            <p className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto">
+            <p className="text-lg md:text-xl text-[#334155] dark:text-slate-400 max-w-2xl mx-auto">
               Professzionális AI prompt sablonok gyűjteménye.
             </p>
           </div>
@@ -260,19 +260,19 @@ export default function PromptTemplatesPage() {
       </section>
 
       {/* Templates Section */}
-      <section className="relative py-24 bg-bg-base">
+      <section className="relative py-24 bg-[#F1F5F9] dark:bg-bg-base">
         <div className="max-w-4xl mx-auto px-6">
           <div className="space-y-8">
             {promptTemplates.map((template) => (
               <div
                 key={template.id}
-                className="bg-slate-900/80 backdrop-blur-xl rounded-2xl border border-slate-700/80 p-8 hover:border-brand-primary/50 transition-all duration-300"
+                className="luminous-card rounded-2xl p-8 transition-all duration-300"
               >
-                <h2 className="text-2xl font-bold text-text-primary mb-4">
+                <h2 className="text-2xl font-bold text-[#0F172A] dark:text-text-primary mb-4">
                   {template.title}
                 </h2>
                 <div className="relative">
-                  <pre className="bg-slate-950/50 rounded-xl p-6 text-sm text-slate-300 overflow-x-auto whitespace-pre-wrap break-words border border-slate-800">
+                  <pre className="bg-slate-900 dark:bg-slate-950/50 rounded-xl p-6 text-sm text-slate-200 overflow-x-auto whitespace-pre-wrap break-words border border-slate-800">
                     {template.prompt}
                   </pre>
                   <CopyButton text={template.prompt} />

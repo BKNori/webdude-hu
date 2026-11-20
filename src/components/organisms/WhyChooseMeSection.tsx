@@ -2,6 +2,8 @@
 
 import React from "react";
 import { motion } from "motion/react";
+import { useHydratedReducedMotion } from "@/hooks/useMotionPreset";
+import Surface from "@/components/atoms/Surface";
 import {
   Award,
   Users,
@@ -123,6 +125,8 @@ interface WhyChooseMeProps {
 }
 
 export default function WhyChooseMeSection({ content }: WhyChooseMeProps) {
+  const shouldReduceMotion = useHydratedReducedMotion();
+
   // Nyelvi szövegek a szótárból; a HU vizuális tokenek (ikon, szín) maradnak.
   const advantages = ADVANTAGE_DEFAULTS.map((item, index) => ({
     ...item,
@@ -134,98 +138,99 @@ export default function WhyChooseMeSection({ content }: WhyChooseMeProps) {
   }));
 
   return (
-    <motion.section
+    <Surface
+      tone="night-lift"
+      aurora
       id="about"
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.8 }}
-      className="py-24 md:py-32 bg-transparent relative overflow-hidden"
-      aria-label={content.ariaLabel}
+      ariaLabel={content.ariaLabel}
+      className="py-24 md:py-32"
     >
-      {/* Háttér effektek */}
-      <div className="absolute inset-0 bg-linear-to-b from-brand-primary/5 via-transparent to-brand-primary/5" />
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-primary/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-brand-secondary/10 rounded-full blur-3xl" />
-
       <div className="px-6 lg:px-8 max-w-7xl mx-auto relative z-10">
         {/* ── SZEKCIÓ FEJLÉC — E-E-A-T: Balog Norbert személyes entitás ──────── */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={
+            shouldReduceMotion
+              ? { duration: 0 }
+              : { type: "spring", stiffness: 100, damping: 20 }
+          }
           className="text-center mb-16"
         >
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-primary/10 border border-brand-primary/20 mb-6"
-          >
-            <Sparkles className="w-4 h-4 text-brand-primary" aria-hidden="true" />
-            <span className="text-xs font-bold text-brand-primary uppercase tracking-wider">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/90 border border-slate-200/90 shadow-2xs dark:shadow-none dark:bg-white/6 dark:border-white/15 dark:border-t-white/25 backdrop-blur-md mb-6">
+            <Sparkles className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" aria-hidden="true" />
+            <span className="eyebrow-badge text-[#0369A1] dark:text-[#00B5F1]">
               {content.eyebrow}
             </span>
-          </motion.div>
+          </div>
 
           {/* H2 — WebDude explicit E-E-A-T hivatkozással */}
-          <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+          <h2 className="text-4xl md:text-6xl text-[#0F172A] dark:text-white mb-6">
             {content.title.prefix}
-            <span className="text-transparent bg-clip-text bg-linear-to-r from-brand-primary to-brand-secondary">
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-[#0369A1] to-[#6D28D9] dark:from-[#00B5F1] dark:to-[#A78BFA]">
               {content.title.highlight}
             </span>
             {content.title.suffix}
           </h2>
-          <p className="text-slate-400 text-lg max-w-3xl mx-auto leading-relaxed">
+          <p className="text-slate-700 dark:text-slate-300 text-lg max-w-3xl mx-auto leading-relaxed">
             {content.subtitle}
           </p>
         </motion.div>
 
-        {/* ── 6 ELŐNY GRID ──────────────────────────────────────────────────── */}
+        {/* ── 6 ELŐNY GRID (Dual Theme kártyák) ─────────────────────────── */}
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mb-16">
           {advantages.map((advantage, idx) => (
             <motion.div
               key={advantage.title}
-              initial={{ opacity: 0, y: 30 }}
+              initial={
+                shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 28 }
+              }
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              transition={
+                shouldReduceMotion
+                  ? { duration: 0 }
+                  : {
+                      type: "spring",
+                      stiffness: 100,
+                      damping: 20,
+                      delay: idx * 0.08,
+                    }
+              }
             >
               <motion.div
-                whileHover={{ y: -4, scale: 1.02 }}
-                transition={{ duration: 0.3 }}
-                className="group h-full bg-slate-900/80 backdrop-blur-md border border-slate-700/80 rounded-3xl p-8 hover:border-brand-primary/50 transition-all duration-500 shadow-xl shadow-slate-950/50 hover:shadow-brand-primary/20 relative overflow-hidden"
+                whileHover={
+                  shouldReduceMotion ? undefined : { y: -4, scale: 1.01 }
+                }
+                transition={
+                  shouldReduceMotion
+                    ? { duration: 0 }
+                    : { type: "spring", stiffness: 100, damping: 20 }
+                }
+                className="luminous-card group h-full p-8 relative overflow-hidden"
               >
-                {/* Background Gradient */}
-                <motion.div
-                  className={`absolute inset-0 bg-linear-to-br ${advantage.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
-                />
-
                 {/* Content */}
                 <div className="relative z-10 h-full flex flex-col">
                   <div className="flex items-start justify-between mb-6">
-                    <div
-                      className={`w-16 h-16 rounded-2xl bg-linear-to-br ${advantage.color} border border-white/10 flex items-center justify-center ${advantage.iconColor} group-hover:scale-110 transition-transform duration-300`}
-                    >
-                      <advantage.icon className="w-8 h-8" aria-hidden="true" />
+                    <div className="w-14 h-14 rounded-2xl bg-sky-500/10 border border-sky-600/25 text-[#0369A1] dark:bg-[#00B5F1]/12 dark:border-[#00B5F1]/25 flex items-center justify-center dark:text-[#00B5F1] group-hover:scale-105 transition-transform duration-300">
+                      <advantage.icon className="w-7 h-7" aria-hidden="true" />
                     </div>
                     <div className="text-right">
-                      <div className="text-3xl font-bold text-white">
+                      <div className="text-3xl font-extrabold text-[#0369A1] dark:text-[#00B5F1] tabular-nums">
                         {advantage.stat}
                       </div>
-                      <div className="text-xs text-slate-400 uppercase tracking-wider">
+                      <div className="font-mono text-xs text-slate-600 dark:text-slate-300 font-semibold uppercase tracking-wider">
                         {advantage.statLabel}
                       </div>
                     </div>
                   </div>
 
-                  <h3 className="text-2xl text-white mb-4 tracking-wider group-hover:text-cyan-300 transition-colors">
+                  <h3 className="text-2xl text-[#0F172A] dark:text-white mb-3 tracking-wider group-hover:text-[#0369A1] dark:group-hover:text-[#00B5F1] transition-colors">
                     {advantage.title}
                   </h3>
 
-                  <p className="text-slate-300 text-sm leading-relaxed grow font-normal">
+                  <p className="text-slate-700 dark:text-slate-300 text-sm leading-relaxed grow font-normal">
                     {advantage.description}
                   </p>
                 </div>
@@ -236,17 +241,20 @@ export default function WhyChooseMeSection({ content }: WhyChooseMeProps) {
 
         {/* ── AMI TÉNYLEG MEGKÜLÖNBÖZTET ────────────────────────────────────── */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="bg-slate-900/60 border border-brand-primary/20 rounded-3xl p-12 backdrop-blur-md relative overflow-hidden mb-12"
+          transition={
+            shouldReduceMotion
+              ? { duration: 0 }
+              : { type: "spring", stiffness: 100, damping: 20, delay: 0.2 }
+          }
+          className="luminous-card p-8 md:p-12 bg-linear-to-br from-white via-[#F8FAFC] to-[#EEF2FF]/70 dark:from-[#16223B]/90 dark:via-[#111C33]/90 dark:to-[#1E1B4B]/40 relative overflow-hidden mb-12"
         >
-          <div className="absolute inset-0 bg-linear-to-r from-brand-primary/5 to-brand-secondary/5" />
           <div className="relative z-10">
-            <h3 className="text-3xl md:text-4xl text-white text-center mb-12 tracking-wider">
+            <h3 className="text-3xl md:text-4xl text-[#0F172A] dark:text-white text-center mb-12 tracking-wider">
               {content.benefitsTitle.prefix}
-              <span className="text-transparent bg-clip-text bg-linear-to-r from-brand-primary to-brand-secondary">
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#0369A1] to-[#6D28D9] dark:from-[#00B5F1] dark:to-[#A78BFA]">
                 {content.benefitsTitle.highlight}
               </span>
               {content.benefitsTitle.suffix}
@@ -255,19 +263,32 @@ export default function WhyChooseMeSection({ content }: WhyChooseMeProps) {
               {benefits.map((benefit, idx) => (
                 <motion.div
                   key={benefit.title}
-                  initial={{ opacity: 0, scale: 0.9 }}
+                  initial={
+                    shouldReduceMotion
+                      ? { opacity: 1 }
+                      : { opacity: 0, scale: 0.95 }
+                  }
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: idx * 0.1 }}
+                  transition={
+                    shouldReduceMotion
+                      ? { duration: 0 }
+                      : {
+                          type: "spring",
+                          stiffness: 100,
+                          damping: 20,
+                          delay: idx * 0.08,
+                        }
+                  }
                   className="text-center"
                 >
-                  <div className="w-16 h-16 rounded-2xl bg-brand-primary/10 border border-brand-primary/20 flex items-center justify-center text-brand-primary mx-auto mb-4">
-                    <benefit.icon className="w-8 h-8" aria-hidden="true" />
+                  <div className="w-14 h-14 rounded-2xl bg-sky-500/10 border border-sky-600/25 text-[#0369A1] dark:bg-[#00B5F1]/12 dark:border-[#00B5F1]/25 flex items-center justify-center dark:text-[#00B5F1] mx-auto mb-4">
+                    <benefit.icon className="w-7 h-7" aria-hidden="true" />
                   </div>
-                  <h4 className="text-xl text-white mb-2 tracking-wider">
+                  <h4 className="text-xl text-[#0F172A] dark:text-white mb-2 tracking-wider">
                     {benefit.title}
                   </h4>
-                  <p className="text-slate-300 text-sm leading-relaxed font-normal">
+                  <p className="text-slate-700 dark:text-slate-300 text-sm leading-relaxed font-normal">
                     {benefit.description}
                   </p>
                 </motion.div>
@@ -276,17 +297,21 @@ export default function WhyChooseMeSection({ content }: WhyChooseMeProps) {
           </div>
         </motion.div>
 
-        {/* ── CTA ────────────────────────────────────────────────────────────── */}
+        {/* ── CTA (WCAG AAA fehér szöveg sötét kék-lila gradiensen) ─────────── */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.6 }}
+          transition={
+            shouldReduceMotion
+              ? { duration: 0 }
+              : { type: "spring", stiffness: 100, damping: 20, delay: 0.3 }
+          }
           className="text-center"
         >
           <Link
             href={content.cta.href}
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-linear-to-r from-brand-primary to-brand-secondary text-slate-950 font-bold hover:shadow-lg hover:shadow-brand-primary/30 transition-all duration-300 shadow-lg shadow-brand-primary/20 hover:scale-105"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-linear-to-r from-[#075985] to-[#5B21B6] hover:from-[#0369A1] hover:to-[#6D28D9] text-white font-semibold uppercase tracking-wider shadow-[0_10px_28px_rgba(7,89,133,0.3)] hover:shadow-[0_14px_36px_rgba(109,40,217,0.38)] transition-[transform,box-shadow,background-color] duration-300 hover:scale-[1.03]"
             aria-label={content.cta.label}
           >
             <span>{content.cta.label}</span>
@@ -294,6 +319,6 @@ export default function WhyChooseMeSection({ content }: WhyChooseMeProps) {
           </Link>
         </motion.div>
       </div>
-    </motion.section>
+    </Surface>
   );
 }

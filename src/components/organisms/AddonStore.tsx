@@ -185,7 +185,7 @@ export default function AddonStore({ idToken }: AddonStoreProps) {
                 ) : (
                   <Link
                     href="/kapcsolat"
-                    className="w-full py-3 rounded-xl bg-sky-500 text-bg-base font-bold text-xs uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-1.5 cursor-pointer hover:bg-violet-700"
+                    className="w-full py-3 rounded-xl bg-sky-500 text-bg-base font-bold text-xs uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-1.5 cursor-pointer hover:bg-violet-700 hover:text-white"
                   >
                     <CreditCard className="w-4 h-4" />
                     Egyedi árajánlat kérése

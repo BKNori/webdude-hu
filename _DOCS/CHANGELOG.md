@@ -1,5 +1,72 @@
 # Changelog
 
+## [7.70.1] — 2026-11-20 — Hírek Editorial Tipográfia & Táblázatok + React Hydration Javítás
+
+- **Hírek Cikkoldal Editorial Tipográfia & Táblázatok (`/hirek/[slug]`):**
+  - [src/app/globals.css](file:///c:/CLI-PROJECTS/webdude-hu/src/app/globals.css): Új `.article-prose` szabályrendszer Mindkét Témához (`Luminous Daylight` + `Luminous Slate`), `max-width: 70ch`, `17px` / `1.85` bekezdés-sorköz, elválasztott `h2` fejezetcímek (`mt-14`, felső elválasztó vonal), `#0369A1`/`#00B5F1` `h3` alcímek, egyedi cián lista-jelölők (`ul`/`ol`), kiemelt `strong`, `.article-prose blockquote`, inline `code`, valamint `.article-prose > div:has(> table)` / `.article-table-wrap` reszponzív (`min-width: 640px`, `overflow-x: auto`, `thead`, `th`/`td` cellaközök, páros sorminta) táblázatstílusok.
+  - [src/components/mdx/MDXComponents.tsx](file:///c:/CLI-PROJECTS/webdude-hu/src/components/mdx/MDXComponents.tsx) & [src/lib/mdx.ts](file:///c:/CLI-PROJECTS/webdude-hu/src/lib/mdx.ts): Teljes Markdown/MDX elemleképezés (`h1–h4`, `p`, `a`, `ul`, `ol`, `li`, `strong`, `blockquote`, `hr`, `code`, `pre`, `table`/`thead`/`tbody`/`tr`/`th`/`td`, `img`) + `normalizeMdxTables()` GFM pipe-táblázat HTML-konverter külső plugin nélkül.
+  - [src/app/hirek/[slug]/page.tsx](file:///c:/CLI-PROJECTS/webdude-hu/src/app/hirek/%5Bslug%5D/page.tsx): Működésképtelen `prose` osztályok lecserélve `.article-prose max-w-[70ch] mx-auto`-ra, `components={mdxComponents}` bekötve az `<MDXRemote>` hívásba, TL;DR doboz `bg-sky-50/70 dark:bg-[#16223B]/90` stílusra egységesítve.
+
+- **React Hydration Error Megszüntetése (`useMotionRef` / `tabIndex="0"` / `style={{}}`):**
+  - [src/hooks/useMotionPreset.ts](file:///c:/CLI-PROJECTS/webdude-hu/src/hooks/useMotionPreset.ts): Létrehozva a `useHydratedReducedMotion()` hook (`useSyncExternalStore` alapú mount-igazított SSR/kliens szinkronizációval), amely megakadályozza a `useReducedMotion()` `null` (SSR) vs. `true` (kliens első pass) eltérésből fakadó `tabIndex="0"` és inline `style` hydration mismatch hibát.
+  - [src/components/atoms/ThemeToggle.tsx](file:///c:/CLI-PROJECTS/webdude-hu/src/components/atoms/ThemeToggle.tsx), [src/components/atoms/Button.tsx](file:///c:/CLI-PROJECTS/webdude-hu/src/components/atoms/Button.tsx), [src/components/molecules/BlogGrid.tsx](file:///c:/CLI-PROJECTS/webdude-hu/src/components/molecules/BlogGrid.tsx) és további 45 motion komponens átállítva `useHydratedReducedMotion()`-ra, állandó `whileTap` prop-pal (`tabIndex` ugrás nélkül).
+
+## [7.70.0] — 2026-11-20 — Dual Theme: Luminous Daylight (Default) + Luminous Slate (Dark) (DDR-006)
+
+- **SSOT & Dual-Theme Alaprendszer (Batch 1):**
+  - `_docs/DESIGN_SYSTEM.md`, `AGENTS.md`, `src/app/globals.css`, `src/app/layout.tsx`, `src/components/atoms/Surface.tsx`: Bevezetve a `v7.2` **Dual Theme (Luminous Daylight alapértelmezett + Luminous Slate sötét)** színrendszer zero-FOUC `<head>` scripttel (`localStorage` kulcs: `webdude-theme`, alapértelmezés: `"light"`, nem írja felül az OS `prefers-color-scheme`) és `@custom-variant dark` variánssal.
+  - **Luminous Daylight (`data-theme="light"`):** `#F8FAFC` ↔ `#F1F5F9` ↔ `#EAF1FA` gyöngyház-fehér ritmus, `.luminous-card` fehér akril/üveg kártyák (`#FFFFFF`, `border-[#E2E8F0]`), `#0F172A` címsorok, `#334155`/`#475569` folyószöveg, `#0369A1` cián és `#6D28D9` lila akcentusok (WCAG AA/AAA).
+  - **Luminous Slate (`data-theme="dark"`):** A `v7.69.0` sötét dizájn (`#0B1120` ↔ `#111C33` ↔ `#16223B`, `.luminous-card` navy üveg kártyák, `#00B5F1` / `#A78BFA`) hiánytalanul megőrizve. `#admin-layout` és `#portal-layout` (valamint az `AIWorkshopCollection`) rögzített `data-theme="dark"` izolációban maradt.
+  - **Új/frissített közös komponensek:** `ThemeToggle.tsx` (hydration-biztos `useSyncExternalStore` + `spring 100/20` kapszula és mobil `44×44px` ikon), `HeaderNavClient.tsx`, `Footer.tsx`, `Button.tsx`, `Badge.tsx`, `DirectAnswerBlock.tsx`, `LanguageSwitcher.tsx`, `AuthStatusBadge.tsx`, `WebDudeChat.tsx`, `AIChatWidget.tsx`.
+
+- **Batch 2–4 — Teljes Publikus Oldalportfólió Dual Theme Migráció & Kontraszt Javítások:**
+  - **Főoldal (`/`, `/en`) & Hero:** `HeroSectionNew.tsx`, `HeroBackgroundLayers.tsx`, `HeroDashboardMockup.tsx`, `SocialProofStrip.tsx`, `SystemShowcase.tsx`, `FeaturedServicesNew.tsx`, `CaseStudiesBento.tsx`, `WhyChooseMeSection.tsx`, `FaqSectionAEO.tsx`, `FinalCta.tsx`.
+  - **Szolgáltatások (`/szolgaltatasok`, `/en/services` & aloldalak):** `Hero.tsx`, `ServiceCard.tsx`, `PricingTable.tsx`, valamint mind a 23 `src/app/szolgaltatasok/*/page.tsx` és 4 angol aloldal (`en/services/*`).
+  - **Portfólió, AI, Rólam, Kapcsolat, Hírek & Termékek:** `/munkak` (`PortfolioHero`, `PortfolioGrid`, `MunkakFaqSection`, `ScrollVideoHero`, `/munkak/[slug]`, `/en/portfolio`), `/ai-megoldasok` (`AIBenefitsGrid`, `AIFeatureCard`, `AIFAQSection`, `ai-prompt-sablonok`, `i-prompt-sablonok`), `/szia-norbi-vagyok` (`AboutContentClient`, `Timeline`) & `/norbi`, `/kapcsolat` (`ContactFormWrapper`, `ContactForm`, `QuoteRequestForm`, `/en/contact`), `/hirek` (`BlogGrid`, `MDXComponents`, `/hirek/[slug]`), `/termekek` és 12 `*CaseStudy.tsx` esettanulmány-komponens, `weboldal-keszites-kecskemet`, jogi oldalak és `not-found.tsx`.
+  - **Admin/Portál & Összes Button Kontraszt Fix:** 27 rögzített sötét admin/portál/műhely fájl 44 gombján pótolva a `hover:text-white` (`hover:bg-violet-700`/`hover:bg-[#5B21B6]` hoverre), javítva az `admin/portal-kezelo/page.tsx`, `AuthStatusBadge.tsx` (`text-red-700` Light hover), `WorkCard.tsx`, `ServicesSection.tsx` és `AIWorkflowTimeline.tsx` kontrasztja.
+  - **Dual-Theme Audit Szkript (`scripts/audit-contrast.js`):** Bővítve `LIGHT_PALETTE` és `DARK_PALETTE` ellenőrzéssel, rögzített sötét konténerek kezelésével és `dark:bg-*` átlátszó/gradiens override követéssel.
+
+- **Záró QA Gate & Kettős Playwright Ellenőrzés:**
+  - `npx tsc --noEmit` → **0 hiba (`TSC: 0`)**
+  - `npm run lint -- --max-warnings 0` → **0 error, 0 warning (`LINT: 0`)**
+  - `npx jest --no-coverage` → **5/5 suite, 51/51 teszt PASS (`JEST: 0`)**
+  - `node scripts/audit-contrast.js` → **370 vizsgált fájl, 0 WCAG AA kontraszt-probléma (`AUDIT: 0`)**
+  - `npm run build` → **sikeres produkciós build, 179/179 statikus/SSG útvonal (`BUILD: 0`)**
+  - **Élő Playwright Dual-Theme QA (`/`, `/szolgaltatasok`, `/munkak`, `/ai-megoldasok`, `/szia-norbi-vagyok`, `/kapcsolat` @ `1440×900` és `390×844` Light + Dark módban):** `data-theme="light"` alapértelmezett (`rgb(248, 250, 252)`), `ThemeToggle` váltás és `localStorage` perzisztencia (`"dark"`, `rgb(2, 6, 23)`) igazolva, `consoleIssuesCount: 0`, `pageErrorsCount: 0`, `h1Count === 1`, `overflowX === false`, `brokenImages: []` minden ellenőrzött nézetben.
+
+## [7.69.0] — 2026-11-20 — WebDesign Audit & Egységes „Luminous Slate” (DDR-006) Modernizáció (Batch 1–4)
+
+- **SSOT & Token Rendszer (`_docs/DESIGN_SYSTEM.md`, `AGENTS.md`, `globals.css`, `Surface.tsx`):**
+  - Bevezetve a `v7.2` **Egységes „Luminous Slate” (DDR-006)** dizájnrendszer: `#0B1120` (`night`) ↔ `#111C33` (`night-lift` / `slate`) ↔ `#16223B` (`slate-lift`) szekcióritmus, `.luminous-card` (`#16223B/80`, `#1E293B/75`, `border-t-white/20` üveg-fényperemmel), **0% vakító fehér szekcióháttér** a fekete–fehér zebra-hatás elkerülésére.
+  - `src/components/atoms/Surface.tsx`: `<Surface>` Server Component `night`, `night-lift`, `slate`, `slate-lift` (valamint `paper`/`paper-alt` kompatibilitási) tónusokkal és CSS aurora/mesh rétegekkel.
+  - `src/components/molecules/HeaderNavClient.tsx`: `/assets/logos/webdude-logo.webp` (`255×255`) méretezés javítva (`width={48} height={48}` / `h-12 w-12` és mobil fiók `width={28} height={28}` / `h-7 w-7`), megszüntetve a Next.js `<Image>` képarány konzol-figyelmeztetést.
+  - `src/components/atoms/Button.tsx`, `src/components/molecules/DirectAnswerBlock.tsx` & `src/components/organisms/Footer.tsx`: `useReducedMotion` + `spring (stiffness: 100, damping: 20)` egységesítés, felső aurora fénycsík a Footerben, egységes Luminous Slate kontraszt.
+
+- **Batch 2 — Főoldal (`/`, `/en`) & Hero Optimalizáció:**
+  - `src/components/organisms/HeroSectionNew.tsx`, `HeroBackgroundLayers.tsx` & `src/components/molecules/HeroDashboardMockup.tsx`: `#0B1120` Luminous Night + aurora, csökkentett `390px` mobil függőleges térközök (`pt-24 pb-14`, `min-h-0`, külső badge-eken `hidden sm:block`).
+  - `SocialProofStrip.tsx`, `SystemShowcase.tsx`, `FeaturedServicesNew.tsx` (2+1 / 1+2 Bento Grid), `CaseStudiesBento.tsx`, `WhyChooseMeSection.tsx`, `FaqSectionAEO.tsx` & `FinalCta.tsx` (tiszta CSS aurora háttér videó helyett) egységes Luminous Slate stílusban, `useReducedMotion` védelemmel.
+
+- **Batch 3 — Szolgáltatások (`/szolgaltatasok`, `/en/services`) & Közös Komponensek:**
+  - `src/components/Hero.tsx`: háttérkép láthatóság csökkentve `opacity-30`-ra, kiegészítve középső radial sötétítéssel a H1 olvashatóság védelmére.
+  - `ServiceCard.tsx`, `PricingTable.tsx` (hibás `text-[bg-transparent]` „Népszerű” badge javítva), `Badge.tsx`.
+  - `src/app/szolgaltatasok/page.tsx`, `src/app/en/services/page.tsx`, `weboldal-keszites/page.tsx`, `marketing-lead-generalas/page.tsx`, `egyedi-arculattervezes-logo/page.tsx`, `add-onok/page.tsx`, `csomagolas-tervezes/page.tsx`, `logo-tervezes/page.tsx`, `szorolap-tervezes/page.tsx`: `py-40` eltávolítva, Luminous Slate `<Surface>` ritmus és WCAG AA/AAA CTA kontrasztok beállítva.
+
+- **Batch 4 — Portfólió, AI, Rólam & Kapcsolat:**
+  - `/munkak`: `src/app/munkak/page.tsx`, `PortfolioGrid.tsx`, `MunkakFaqSection.tsx`.
+  - `/ai-megoldasok`: `src/app/ai-megoldasok/page.tsx`, `AIBenefitsGrid.tsx`, `AIFeatureCard.tsx`, `AIFAQSection.tsx`, valamint `src/app/ai-megoldasok/ai-prompt-sablonok/page.tsx` (4 kontraszt-hiba javítva).
+  - `/szia-norbi-vagyok` & `src/app/norbi/page.tsx`: `AboutContentClient.tsx` (`useReducedMotion` + `<Surface>`), `Timeline.tsx`, utolsó `py-40` és CTA javítva `norbi/page.tsx`-ben.
+  - `/kapcsolat`: `src/app/kapcsolat/page.tsx`, `ContactFormWrapper.tsx`, `ContactForm.tsx`, `QuoteRequestForm.tsx` (3 gomb kontraszt-hibája és küldés gomb javítva).
+
+- **Záró QA Gate & Élő Playwright Ellenőrzés:**
+  - `npx tsc --noEmit` → **0 hiba (`TSC EXIT: 0`)**
+  - `npm run lint -- --max-warnings 0` → **0 error, 0 warning (`LINT EXIT: 0`)**
+  - `npx jest --no-coverage` → **5/5 suite, 51/51 teszt PASS (`JEST EXIT: 0`)**
+  - `node scripts/audit-contrast.js` → **384 vizsgált fájl, 39 találat (55-ről csökkentve; minden Batch 1–4 során érintett fájlban 0 hiba)**
+  - `npm run build` → **BUILD EXIT: 0 (`179/179` statikus/dinamikus oldal)**
+  - Élő Playwright (`1440px` & `390px` `/`, `/szolgaltatasok`, plusz `/munkak`, `/ai-megoldasok`, `/szia-norbi-vagyok`, `/kapcsolat`) → **`CONSOLE_WARNINGS_AND_ERRORS_COUNT: 0`**, `badgeError: "false"`, `h1Count: 1`, `overflowX: false`
+
+---
+
 ## [7.68.0] — 2026-11-20 — Átfogó SEO / AIO / AEO / GEO & Schema.org Audit (Batch #1–#4)
 
 - **Batch #1 — SSOT Tudásgráf & Kritikus Schema Javítások:**

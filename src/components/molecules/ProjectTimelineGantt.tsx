@@ -1,7 +1,8 @@
 "use client";
 
 import { useMemo } from "react";
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
+import { useHydratedReducedMotion } from "@/hooks/useMotionPreset";
 import { Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { resolveTimelineMilestones, summarizeTimeline } from "@/lib/timeline";
@@ -38,7 +39,7 @@ export default function ProjectTimelineGantt({
   subtitle,
   className,
 }: ProjectTimelineGanttProps) {
-  const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = useHydratedReducedMotion();
 
   const items = useMemo(
     () => resolveTimelineMilestones(milestones, workflow),

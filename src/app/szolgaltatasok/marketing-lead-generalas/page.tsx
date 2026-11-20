@@ -60,7 +60,8 @@ export default async function MarketingLeadGenerationPage() {
         "@id": "https://webdude.hu/#person",
         name: "Balog Norbert",
         alternateName: ["Balog Norbi", "WebDude"],
-        jobTitle: "Full-Stack Webfejlesztő, Art Director & AI Automatizációs Szakértő",
+        jobTitle:
+          "Full-Stack Webfejlesztő, Art Director & AI Automatizációs Szakértő",
         description: "26 év tervezőgrafikai és 16 év webfejlesztői tapasztalat",
       },
     },
@@ -166,7 +167,7 @@ export default async function MarketingLeadGenerationPage() {
             title={
               <>
                 Automatizált{" "}
-                <span className="text-[#00B5F1] italic">Ügyfélszerzés</span>{" "}
+                <span className="text-[#0369A1] dark:text-[#00B5F1] italic">Ügyfélszerzés</span>{" "}
                 <br /> KKV-knak
               </>
             }
@@ -180,10 +181,10 @@ export default async function MarketingLeadGenerationPage() {
         </div>
 
         {/* Direct Answer Block - AEO optimalizált */}
-        <section className="relative py-12 bg-bg-base border-y border-white/5">
+        <section className="relative py-12 bg-bg-base border-y border-slate-200/80 dark:border-white/5">
           <div className="max-w-4xl mx-auto px-6 text-center">
-            <p className="text-base md:text-lg text-slate-300 leading-relaxed">
-              <span className="text-[#00B5F1] font-semibold">
+            <p className="text-base md:text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
+              <span className="text-[#0369A1] dark:text-[#00B5F1] font-semibold">
                 WebDude marketing lead generálás:
               </span>{" "}
               Konverzió-optimalizált landing oldalak, lead magnet stratégia,
@@ -194,7 +195,7 @@ export default async function MarketingLeadGenerationPage() {
           </div>
         </section>
 
-        <section className="py-32 md:py-40 relative overflow-hidden">
+        <section className="py-24 md:py-32 relative overflow-hidden">
           <div className="absolute inset-0 bg-linear-to-b from-transparent via-[#00B5F1]/5 to-transparent" />
           <div className="relative z-10">
             <div className="max-w-6xl mx-auto px-6">
@@ -202,7 +203,7 @@ export default async function MarketingLeadGenerationPage() {
                 <h2 className="text-5xl md:text-6xl font-bold text-text-primary mb-6">
                   Marketing Lead Generálás Szolgáltatásaink
                 </h2>
-                <p className="text-xl text-slate-400">
+                <p className="text-xl text-slate-600 dark:text-slate-400">
                   Komplett megoldások az ügyfélszerzés automatizálására
                 </p>
               </div>
@@ -211,7 +212,7 @@ export default async function MarketingLeadGenerationPage() {
                 {features.map((feature, index) => (
                   <div
                     key={index}
-                    className="bg-transparent/60 backdrop-blur-md p-8 rounded-2xl border border-slate-700/60 hover:border-[#00B5F1]/40 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#00B5F1]/5 transition-all duration-300"
+                    className="bg-transparent/60 backdrop-blur-md p-8 rounded-2xl border border-slate-200/90 dark:border-slate-700/60 hover:border-[#00B5F1]/40 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#00B5F1]/5 transition-all duration-300"
                   >
                     <div className="w-12 h-12 rounded-xl bg-transparent border border-[#00B5F1]/10 flex items-center justify-center mb-6">
                       <LucideIcon name={feature.icon} className="w-5 h-5" />
@@ -219,7 +220,7 @@ export default async function MarketingLeadGenerationPage() {
                     <h3 className="text-xl font-bold text-text-primary mb-3">
                       {feature.title}
                     </h3>
-                    <p className="text-slate-400">{feature.description}</p>
+                    <p className="text-slate-600 dark:text-slate-400">{feature.description}</p>
                   </div>
                 ))}
               </div>
@@ -227,7 +228,7 @@ export default async function MarketingLeadGenerationPage() {
           </div>
         </section>
 
-        <section className="py-32 md:py-40 bg-transparent relative overflow-hidden">
+        <section className="py-24 md:py-32 bg-transparent relative overflow-hidden">
           <div className="absolute inset-0 bg-linear-to-b from-transparent via-[#00B5F1]/5 to-transparent" />
           <div className="relative z-10">
             <div className="max-w-6xl mx-auto px-6">
@@ -295,15 +296,15 @@ export default async function MarketingLeadGenerationPage() {
         </section>
 
         {/* GYIK szekció — AEO & FAQPage schema */}
-        <section className="py-24 relative overflow-hidden border-t border-slate-800/60">
+        <section className="py-24 relative overflow-hidden border-t border-slate-200/80 dark:border-slate-800/60">
           <div className="absolute inset-0 bg-linear-to-b from-transparent via-[#00B5F1]/5 to-transparent" />
           <div className="relative z-10">
             <div className="max-w-4xl mx-auto px-6">
               <div className="text-center mb-12">
-                <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+                <h2 className="text-3xl sm:text-4xl font-bold text-[#0F172A] dark:text-white mb-4">
                   Gyakori kérdések a lead generálásról
                 </h2>
-                <p className="text-slate-400">
+                <p className="text-slate-600 dark:text-slate-400">
                   Minden lényeges információ az ügyfélszerzés automatizálásáról.
                 </p>
               </div>
@@ -311,14 +312,14 @@ export default async function MarketingLeadGenerationPage() {
                 {faqs.map((faq, index) => (
                   <details
                     key={index}
-                    className="group border border-slate-800 bg-transparent rounded-2xl overflow-hidden [&_summary::-webkit-details-marker]:hidden"
+                    className="group border border-slate-200/90 dark:border-slate-800 bg-transparent rounded-2xl overflow-hidden [&_summary::-webkit-details-marker]:hidden"
                   >
-                    <summary className="flex items-center justify-between gap-4 p-6 cursor-pointer select-none text-slate-200 hover:text-white transition-colors">
+                    <summary className="flex items-center justify-between gap-4 p-6 cursor-pointer select-none text-slate-800 dark:text-slate-200 hover:text-[#0F172A] dark:hover:text-white transition-colors">
                       <span className="font-bold text-sm md:text-base">
                         {faq.q}
                       </span>
                     </summary>
-                    <div className="px-6 pb-6 text-sm text-slate-400 leading-relaxed border-t border-slate-800/40 pt-4">
+                    <div className="px-6 pb-6 text-sm text-slate-600 dark:text-slate-400 leading-relaxed border-t border-slate-200/70 dark:border-slate-800/40 pt-4">
                       <p>{faq.a}</p>
                     </div>
                   </details>
@@ -328,18 +329,18 @@ export default async function MarketingLeadGenerationPage() {
           </div>
         </section>
 
-        <section className="py-32 md:py-40 text-center relative overflow-hidden">
+        <section className="py-24 md:py-32 text-center relative overflow-hidden">
           <div className="absolute inset-0 bg-linear-to-b from-transparent via-[#00B5F1]/5 to-transparent" />
           <div className="relative z-10">
             <div className="max-w-6xl mx-auto px-6">
               <h2 className="text-5xl md:text-7xl font-bold text-text-primary mb-8">
                 Készen áll az{" "}
-                <span className="text-[#00B5F1] italic">ügyfélszerzés</span>{" "}
+                <span className="text-[#0369A1] dark:text-[#00B5F1] italic">ügyfélszerzés</span>{" "}
                 automatizálására?
               </h2>
               <Link
                 href="/kapcsolat"
-                className="inline-block px-12 py-6 bg-[#00B5F1] hover:bg-[#5B21B6] text-bg-base font-bold rounded-xl uppercase tracking-wider transition-all duration-300"
+                className="inline-block px-12 py-6 bg-linear-to-r from-[#075985] to-[#5B21B6] hover:from-[#0369A1] hover:to-[#6D28D9] text-white font-semibold rounded-xl uppercase tracking-wider transition-[transform,box-shadow,background-color] duration-300 shadow-[0_8px_28px_rgba(7,89,133,0.35)]"
               >
                 Ingyenes Konzultáció
               </Link>

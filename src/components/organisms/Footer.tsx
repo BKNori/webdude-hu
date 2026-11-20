@@ -4,6 +4,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "motion/react";
+import { useHydratedReducedMotion } from "@/hooks/useMotionPreset";
 import SocialMediaIcons from "@/components/molecules/SocialMediaIcons";
 import FooterLinks from "@/components/molecules/FooterLinks";
 import FooterContact from "@/components/molecules/FooterContact";
@@ -20,6 +21,11 @@ interface FooterProps {
 
 export default function Footer({ dictionary }: FooterProps) {
   const currentYear = new Date().getFullYear();
+  const shouldReduceMotion = useHydratedReducedMotion();
+  const colTransition = (delay: number) =>
+    shouldReduceMotion
+      ? { duration: 0 }
+      : { type: "spring" as const, stiffness: 100, damping: 20, delay };
 
   const fallbackServicesLinks = [
     {
@@ -121,6 +127,20 @@ export default function Footer({ dictionary }: FooterProps) {
 
   return (
     <footer className="public-footer bg-bg-base border-t border-slate-800 mt-0 relative overflow-hidden">
+      {/* Top luminous aurora fényvonal + lágy glow */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-[#00B5F1]/50 to-transparent"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 h-48 w-[60%] rounded-full blur-[100px]"
+        style={{
+          background:
+            "radial-gradient(ellipse, rgba(0, 181, 241, 0.1) 0%, rgba(124, 58, 237, 0.06) 50%, transparent 75%)",
+        }}
+      />
+
       {/* Laser Effect Background */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-1/4 w-px h-full bg-linear-to-b from-transparent via-[#00B5F1]/20 to-transparent animate-pulse" />
@@ -133,18 +153,18 @@ export default function Footer({ dictionary }: FooterProps) {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
           {/* Brand Section */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            transition={colTransition(0)}
             className="md:col-span-2 lg:col-span-1"
           >
             <Link href="/" className="inline-block mb-4 group">
-              <span className="text-3xl font-heading tracking-wider text-text-primary group-hover:text-[#00B5F1] transition-colors duration-300">
-                <span className="text-[#00B5F1]">Web</span>Dude
+              <span className="text-3xl font-heading tracking-wider text-text-primary group-hover:text-[#0369A1] dark:group-hover:text-[#00B5F1] transition-colors duration-300">
+                <span className="text-[#00B5F1] footer-brand-web">Web</span>Dude
               </span>
             </Link>
-            <p className="text-slate-400 text-sm leading-relaxed mb-6">
+            <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-6">
               {dictionary?.description ||
                 "Prémium webfejlesztés, grafikai tervezés és AI automatizáció országosan."}
             </p>
@@ -153,10 +173,10 @@ export default function Footer({ dictionary }: FooterProps) {
 
           {/* Services Links */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
+            transition={colTransition(0.08)}
             className="md:col-span-2 lg:col-span-2"
           >
             <div className="md:col-span-2 lg:col-span-2">
@@ -169,7 +189,7 @@ export default function Footer({ dictionary }: FooterProps) {
                     <li key={link.name}>
                       <Link
                         href={link.href}
-                        className="text-slate-400 hover:text-[#00B5F1] transition-all duration-300 text-sm hover:translate-x-1 transform inline-block focus:outline-none focus:ring-2 focus:ring-[#00B5F1] focus:ring-offset-2 focus:ring-offset-bg-base rounded-lg"
+                        className="text-slate-600 dark:text-slate-400 hover:text-[#0369A1] dark:hover:text-[#00B5F1] transition-[color,transform] duration-300 text-sm hover:translate-x-1 transform inline-block focus:outline-none focus:ring-2 focus:ring-[#00B5F1] focus:ring-offset-2 focus:ring-offset-bg-base rounded-lg"
                       >
                         {link.name}
                       </Link>
@@ -181,7 +201,7 @@ export default function Footer({ dictionary }: FooterProps) {
                     <li key={link.name}>
                       <Link
                         href={link.href}
-                        className="text-slate-400 hover:text-[#00B5F1] transition-all duration-300 text-sm hover:translate-x-1 transform inline-block focus:outline-none focus:ring-2 focus:ring-[#00B5F1] focus:ring-offset-2 focus:ring-offset-bg-base rounded-lg"
+                        className="text-slate-600 dark:text-slate-400 hover:text-[#0369A1] dark:hover:text-[#00B5F1] transition-[color,transform] duration-300 text-sm hover:translate-x-1 transform inline-block focus:outline-none focus:ring-2 focus:ring-[#00B5F1] focus:ring-offset-2 focus:ring-offset-bg-base rounded-lg"
                       >
                         {link.name}
                       </Link>
@@ -194,10 +214,10 @@ export default function Footer({ dictionary }: FooterProps) {
 
           {/* Quick Links */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            transition={colTransition(0.16)}
             className="md:col-span-1 lg:col-span-1"
           >
             <FooterLinks
@@ -209,17 +229,17 @@ export default function Footer({ dictionary }: FooterProps) {
 
           {/* Contact Info */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.3 }}
+            transition={colTransition(0.24)}
             className="md:col-span-1 lg:col-span-1"
           >
             <FooterContact
               title={dictionary?.contact ?? "Elérhetőség"}
               address={dictionary?.address ?? "Kecskemét, Magyarország"}
             />
-            <div className="mt-6 pt-4 border-t border-slate-700">
+            <div className="mt-6 pt-4 border-t border-slate-200 dark:border-white/10">
               <a
                 href="https://ai-promt.hu"
                 target="_blank"
@@ -231,7 +251,7 @@ export default function Footer({ dictionary }: FooterProps) {
                     src="/assets/logos/ai-promt_logo.webp"
                     alt="AI-Prompt.hu"
                     fill
-                    className="object-contain transition-all duration-300 brightness-0 invert group-hover:brightness-100 group-hover:invert-0 group-hover:scale-110"
+                    className="object-contain transition-transform duration-300 dark:brightness-0 dark:invert dark:group-hover:brightness-0 dark:group-hover:invert group-hover:scale-110"
                   />
                 </div>
               </a>
@@ -241,7 +261,7 @@ export default function Footer({ dictionary }: FooterProps) {
       </div>
 
       {/* AI Logó Csík */}
-      <div className="border-t border-slate-800 bg-slate-900/80 backdrop-blur-md">
+      <div className="border-t border-slate-200/90 dark:border-white/10 bg-slate-100/90 dark:bg-[#0B1120]/90 backdrop-blur-md">
         <div className="relative">
           <div className="flex flex-row flex-nowrap items-center justify-center lg:justify-between lg:max-w-6xl lg:mx-auto overflow-x-auto lg:overflow-x-visible hide-scrollbar gap-3 md:gap-4 px-4 lg:px-0 py-4">
             {[
@@ -579,7 +599,7 @@ export default function Footer({ dictionary }: FooterProps) {
                 target="_blank"
                 rel="noopener noreferrer"
                 initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 0.4, scale: 1 }}
+                whileInView={{ opacity: 0.7, scale: 1 }}
                 whileHover={{ opacity: 1, scale: 1.15 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.3 }}
@@ -588,7 +608,7 @@ export default function Footer({ dictionary }: FooterProps) {
                 <div className="w-4 h-4 flex items-center justify-center group-hover/item:scale-110 transition-transform duration-500">
                   {ai.icon}
                 </div>
-                <span className="text-[8px] font-black text-white leading-tight hidden lg:block uppercase tracking-widest">
+                <span className="text-[8px] font-black text-slate-700 dark:text-white leading-tight hidden lg:block uppercase tracking-widest">
                   {ai.name}
                 </span>
               </motion.a>
@@ -607,20 +627,20 @@ export default function Footer({ dictionary }: FooterProps) {
       >
         <div className="px-6 lg:px-8 py-6 max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-slate-500 text-xs">
+            <p className="text-slate-600 dark:text-slate-500 text-xs">
               &copy; {currentYear} WebDude.hu.{" "}
               {dictionary?.rightsReserved ?? "Minden jog fenntartva."}
             </p>
             <div className="flex items-center gap-6 text-xs">
               <Link
                 href="/adatvedelmi-szabalyzat"
-                className="text-slate-400 hover:text-sky-500 transition-colors hover:translate-x-1 transform duration-300 inline-block"
+                className="text-slate-600 dark:text-slate-400 hover:text-[#0369A1] dark:hover:text-sky-500 transition-colors hover:translate-x-1 transform duration-300 inline-block"
               >
                 {dictionary?.privacyPolicy ?? "Adatvédelmi nyilatkozat"}
               </Link>
               <Link
                 href="/felhasznalasi-feltetelek"
-                className="text-slate-400 hover:text-sky-500 transition-colors hover:translate-x-1 transform duration-300 inline-block"
+                className="text-slate-600 dark:text-slate-400 hover:text-[#0369A1] dark:hover:text-sky-500 transition-colors hover:translate-x-1 transform duration-300 inline-block"
               >
                 {dictionary?.termsOfService ?? "Felhasználási feltételek"}
               </Link>

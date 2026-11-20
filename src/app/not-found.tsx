@@ -29,24 +29,24 @@ export default function NotFound() {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8 py-20 relative overflow-hidden">
+    <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#0B1120] text-[#0F172A] dark:text-slate-100 flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8 py-20 relative overflow-hidden">
       {/* Background glow effects */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-linear-to-br from-[#00B5F1]/15 to-purple-600/15 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-linear-to-br from-[#0369A1]/10 to-purple-600/10 dark:from-[#00B5F1]/15 dark:to-purple-600/15 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-3xl w-full text-center relative z-10">
         {/* Error badge */}
-        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sky-950/80 border border-sky-500/30 text-[#00B5F1] text-xs font-mono font-bold tracking-wider mb-6">
+        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#0369A1]/10 dark:bg-sky-950/80 border border-[#0369A1]/25 dark:border-sky-500/30 text-[#0369A1] dark:text-[#00B5F1] text-xs font-mono font-bold tracking-wider mb-6">
           HIBAKÓD: 404
         </div>
 
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight mb-4">
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#0F172A] dark:text-white tracking-tight mb-4">
           Ezt az oldalt nem találjuk, de a Te weboldaladat{" "}
-          <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6]">
+          <span className="text-transparent bg-clip-text bg-linear-to-r from-[#0369A1] to-[#6D28D9] dark:from-[#00B5F1] dark:to-[#5B21B6]">
             rendbe tudjuk tenni!
           </span>
         </h1>
 
-        <p className="text-lg text-slate-300 max-w-xl mx-auto mb-10 leading-relaxed">
+        <p className="text-lg text-[#334155] dark:text-slate-300 max-w-xl mx-auto mb-10 leading-relaxed">
           Úgy tűnik, a keresett link megszűnt vagy elgépelted a címet. Ne menj el üres kézzel: nézd meg, miben tudok segíteni a vállalkozásodnak!
         </p>
 
@@ -58,15 +58,15 @@ export default function NotFound() {
               <Link
                 key={service.title}
                 href={service.href}
-                className="p-5 rounded-2xl bg-slate-900/70 border border-slate-800 hover:border-[#00B5F1]/50 transition-all duration-300 group hover:-translate-y-1"
+                className="luminous-card p-5 rounded-2xl transition-all duration-300 group hover:-translate-y-1"
               >
-                <div className="w-10 h-10 rounded-xl bg-sky-950/80 border border-sky-500/30 flex items-center justify-center text-[#00B5F1] mb-3 group-hover:scale-110 transition-transform">
+                <div className="w-10 h-10 rounded-xl bg-[#0369A1]/10 dark:bg-sky-950/80 border border-[#0369A1]/25 dark:border-sky-500/30 flex items-center justify-center text-[#0369A1] dark:text-[#00B5F1] mb-3 group-hover:scale-110 transition-transform">
                   <Icon className="w-5 h-5" />
                 </div>
-                <h2 className="text-base font-bold text-white mb-1 group-hover:text-[#00B5F1] transition-colors">
+                <h2 className="text-base font-bold text-[#0F172A] dark:text-white mb-1 group-hover:text-[#0369A1] dark:group-hover:text-[#00B5F1] transition-colors">
                   {service.title}
                 </h2>
-                <p className="text-xs text-slate-400 leading-relaxed">
+                <p className="text-xs text-[#475569] dark:text-slate-400 leading-relaxed">
                   {service.desc}
                 </p>
               </Link>
@@ -78,14 +78,14 @@ export default function NotFound() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Link
             href="/kapcsolat"
-            className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-semibold text-white bg-linear-to-r from-cta-from to-[#5B21B6] hover:from-[#0369a1] hover:to-[#6d28d9] shadow-xl shadow-sky-950/60 transition-all duration-300 group w-full sm:w-auto"
+            className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-semibold text-white bg-linear-to-r from-cta-from to-[#5B21B6] hover:from-[#0369a1] hover:to-[#6d28d9] shadow-xl shadow-sky-950/50 transition-all duration-300 group w-full sm:w-auto"
           >
             Egyedi árajánlat kérése
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
           </Link>
           <Link
             href="/"
-            className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl font-medium text-slate-300 bg-slate-900 border border-slate-800 hover:border-slate-700 hover:text-white transition-colors w-full sm:w-auto"
+            className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl font-medium text-[#334155] dark:text-slate-300 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-800 hover:border-[#0369A1]/50 dark:hover:border-slate-700 hover:text-[#0369A1] dark:hover:text-white transition-colors w-full sm:w-auto"
           >
             <ArrowLeft className="w-4 h-4" />
             Vissza a főoldalra

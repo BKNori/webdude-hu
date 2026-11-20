@@ -5,13 +5,14 @@ import Image from "next/image";
 import { Metadata } from "next";
 import { ArrowRight, Clock, Calendar, User, Sparkles } from "lucide-react";
 import { buildBreadcrumbSchema, BreadcrumbItem } from "@/lib/breadcrumb";
-import { getCombinedBlogPosts, getPostBySlugCombined } from "@/lib/mdx";
+import { getCombinedBlogPosts, getPostBySlugCombined, normalizeMdxTables } from "@/lib/mdx";
 import {
   CANONICAL_ORGANIZATION_ENTITY,
   CANONICAL_PERSON_ENTITY,
   serializeJsonLd,
 } from "@/lib/structuredData";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import { mdxComponents } from "@/components/mdx/MDXComponents";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -175,15 +176,15 @@ export default async function BlogPost({ params }: PageProps) {
         />
       )}
 
-      <div className="min-h-screen bg-[#020617] text-[#e2e8f0] pt-32 pb-24">
+      <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#0B1120] text-[#0F172A] dark:text-[#e2e8f0] pt-32 pb-24">
         {/* Háttérfények */}
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#00B5F1]/5 rounded-full blur-[140px] pointer-events-none" />
-        <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-[#5B21B6]/5 rounded-full blur-[160px] pointer-events-none" />
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#0369A1]/5 dark:bg-[#00B5F1]/5 rounded-full blur-[140px] pointer-events-none" />
+        <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-[#6D28D9]/5 dark:bg-[#5B21B6]/5 rounded-full blur-[160px] pointer-events-none" />
 
         <div className="max-w-4xl mx-auto px-6 relative z-10">
           <Link
             href="/hirek"
-            className="inline-flex items-center gap-2 text-sm text-[#00B5F1] hover:text-sky-300 font-semibold mb-8 group transition-colors"
+            className="inline-flex items-center gap-2 text-sm text-[#0369A1] dark:text-[#00B5F1] hover:text-[#6D28D9] dark:hover:text-sky-300 font-semibold mb-8 group transition-colors"
           >
             <span className="group-hover:-translate-x-1 transition-transform">
               ←
@@ -195,38 +196,38 @@ export default async function BlogPost({ params }: PageProps) {
             {/* Fejléc */}
             <header className="space-y-6">
               <div className="flex flex-wrap items-center gap-3 text-xs sm:text-sm">
-                <span className="font-bold uppercase tracking-widest text-[#00B5F1] bg-[#00B5F1]/10 px-3 py-1 rounded-full border border-[#00B5F1]/20">
+                <span className="font-bold uppercase tracking-widest text-[#0369A1] dark:text-[#00B5F1] bg-[#0369A1]/10 dark:bg-[#00B5F1]/10 px-3 py-1 rounded-full border border-[#0369A1]/25 dark:border-[#00B5F1]/20">
                   {post.category || "Webfejlesztés"}
                 </span>
-                <span className="text-slate-500">•</span>
-                <span className="flex items-center gap-1.5 text-slate-400">
+                <span className="text-slate-400 dark:text-slate-500">•</span>
+                <span className="flex items-center gap-1.5 text-[#475569] dark:text-slate-400">
                   <Calendar className="w-4 h-4 text-slate-500" />
                   {formattedDate}
                 </span>
-                <span className="text-slate-500">•</span>
-                <span className="flex items-center gap-1.5 text-slate-400">
+                <span className="text-slate-400 dark:text-slate-500">•</span>
+                <span className="flex items-center gap-1.5 text-[#475569] dark:text-slate-400">
                   <Clock className="w-4 h-4 text-slate-500" />
                   {post.readingTime || "4 perc"}
                 </span>
-                <span className="text-slate-500">•</span>
-                <span className="flex items-center gap-1.5 text-slate-400">
+                <span className="text-slate-400 dark:text-slate-500">•</span>
+                <span className="flex items-center gap-1.5 text-[#475569] dark:text-slate-400">
                   <User className="w-4 h-4 text-slate-500" />
                   {post.author || "Balog Norbert"}
                 </span>
               </div>
 
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white leading-tight tracking-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#0F172A] dark:text-white leading-tight tracking-tight">
                 {post.title}
               </h1>
 
               {/* GEO / AEO TL;DR Direct Answer doboz a keresőmotorok és AI ágensek számára */}
               {(post.tldr || post.excerpt) && (
-                <div className="bg-[#0f172a] border border-[#00B5F1]/30 rounded-2xl p-6 sm:p-8 shadow-[0_4px_24px_rgba(0,181,241,0.08)] relative overflow-hidden">
-                  <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#00B5F1] mb-3">
-                    <Sparkles className="w-4 h-4 text-[#00B5F1]" />
+                <div className="bg-sky-50/70 dark:bg-[#16223B]/90 border border-sky-200/80 dark:border-[#00B5F1]/25 rounded-2xl p-6 mb-10 shadow-[0_8px_24px_rgba(3,105,161,0.06)] dark:shadow-[0_4px_24px_rgba(0,181,241,0.08)] relative overflow-hidden">
+                  <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#0369A1] dark:text-[#00B5F1] mb-3">
+                    <Sparkles className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
                     Gyors összefoglaló (TL;DR)
                   </div>
-                  <p className="text-base sm:text-lg text-slate-200 leading-relaxed font-medium">
+                  <p className="text-base sm:text-lg text-[#1E293B] dark:text-slate-200 leading-relaxed font-medium">
                     {post.tldr || post.excerpt}
                   </p>
                 </div>
@@ -235,7 +236,7 @@ export default async function BlogPost({ params }: PageProps) {
 
             {/* Kiemelt borítókép */}
             {post.coverImage && (
-              <div className="relative w-full aspect-video rounded-3xl overflow-hidden border border-slate-800 shadow-2xl bg-slate-900">
+              <div className="relative w-full aspect-video rounded-3xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-2xl bg-slate-100 dark:bg-slate-900">
                 <Image
                   src={post.coverImage}
                   alt={post.title}
@@ -247,19 +248,24 @@ export default async function BlogPost({ params }: PageProps) {
               </div>
             )}
 
-            {/* Cikk szövegtartalma */}
-            <div className="prose prose-invert prose-lg max-w-none prose-headings:font-bold prose-headings:text-white prose-headings:tracking-tight prose-h2:text-2xl sm:prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6 prose-h3:text-xl sm:prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-4 prose-p:text-slate-300 prose-p:leading-relaxed prose-p:mb-6 prose-a:text-[#00B5F1] prose-a:no-underline hover:prose-a:underline prose-strong:text-white prose-ul:text-slate-300 prose-ul:mb-6 prose-li:mb-2 prose-blockquote:border-l-4 prose-blockquote:border-[#00B5F1] prose-blockquote:bg-slate-900/40 prose-blockquote:py-2 prose-blockquote:px-6 prose-blockquote:rounded-r-xl prose-blockquote:italic prose-blockquote:text-slate-300 prose-img:rounded-2xl prose-img:border prose-img:border-slate-800 prose-code:bg-slate-900 prose-code:text-[#00B5F1] prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm prose-pre:bg-slate-900 prose-pre:border prose-pre:border-slate-800 prose-pre:rounded-2xl prose-table:border prose-table:border-slate-800 prose-th:bg-slate-900 prose-th:p-3 prose-td:p-3 prose-td:border-t prose-td:border-slate-800">
+            {/* Cikk szövegtartalma — prémium editorial tipográfia (70ch) */}
+            <div className="article-prose max-w-[70ch] mx-auto">
               {post.content ? (
-                <MDXRemote source={post.content} />
+                <MDXRemote
+                  source={normalizeMdxTables(post.content)}
+                  components={mdxComponents}
+                />
               ) : (
-                <p className="text-slate-400">A tartalom hamarosan frissül.</p>
+                <p className="text-[#475569] dark:text-slate-400">
+                  A tartalom hamarosan frissül.
+                </p>
               )}
             </div>
           </article>
 
           {/* Szerzői E-E-A-T blokk */}
-          <section className="mt-16 p-8 rounded-3xl bg-slate-900/60 border border-slate-800 flex flex-col sm:flex-row items-center gap-6">
-            <div className="relative w-20 h-20 rounded-full overflow-hidden shrink-0 border-2 border-[#00B5F1]/40">
+          <section className="mt-16 p-8 rounded-3xl luminous-card flex flex-col sm:flex-row items-center gap-6">
+            <div className="relative w-20 h-20 rounded-full overflow-hidden shrink-0 border-2 border-[#0369A1]/40 dark:border-[#00B5F1]/40">
               <Image
                 src="/assets/personal/webdude-kep.webp"
                 alt="Balog Norbert - WebDude"
@@ -270,12 +276,12 @@ export default async function BlogPost({ params }: PageProps) {
             </div>
             <div className="space-y-2 text-center sm:text-left">
               <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2">
-                <h3 className="text-lg font-bold text-white">Balog Norbert</h3>
-                <span className="text-xs px-2.5 py-0.5 rounded-full bg-sky-950 border border-sky-500/30 text-[#00B5F1] font-semibold">
+                <h3 className="text-lg font-bold text-[#0F172A] dark:text-white">Balog Norbert</h3>
+                <span className="text-xs px-2.5 py-0.5 rounded-full bg-[#0369A1]/10 dark:bg-sky-950 border border-[#0369A1]/25 dark:border-sky-500/30 text-[#0369A1] dark:text-[#00B5F1] font-semibold">
                   WebDude
                 </span>
               </div>
-              <p className="text-sm text-slate-300 leading-relaxed">
+              <p className="text-sm text-[#334155] dark:text-slate-300 leading-relaxed">
                 26 év grafikai tervezési és 16 év webfejlesztői tapasztalattal
                 rendelkező szakember. Modern Next.js rendszereket, stabil
                 WordPress weboldalakat és AI automatizációkat építek hazai
@@ -283,7 +289,7 @@ export default async function BlogPost({ params }: PageProps) {
               </p>
               <Link
                 href="/szia-norbi-vagyok"
-                className="inline-flex items-center gap-1.5 text-xs text-[#00B5F1] hover:text-sky-300 font-semibold"
+                className="inline-flex items-center gap-1.5 text-xs text-[#0369A1] dark:text-[#00B5F1] hover:text-[#6D28D9] dark:hover:text-sky-300 font-semibold"
               >
                 Tudj meg többet rólam és a tapasztalatomról →
               </Link>
@@ -292,13 +298,13 @@ export default async function BlogPost({ params }: PageProps) {
 
           {/* CRO Konverziós CTA kártya (Zéró Fix Ár szabállyal) */}
           <section className="mt-12">
-            <div className="bg-linear-to-b from-slate-900 to-slate-950 border border-slate-800 hover:border-[#00B5F1]/40 rounded-3xl p-8 sm:p-12 text-center relative overflow-hidden transition-all duration-300 shadow-2xl">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-[#00B5F1]/10 rounded-full blur-3xl pointer-events-none" />
+            <div className="luminous-card p-8 sm:p-12 text-center relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-[#0369A1]/10 dark:bg-[#00B5F1]/10 rounded-full blur-3xl pointer-events-none" />
               <div className="relative z-10 max-w-xl mx-auto space-y-6">
-                <h2 className="text-2xl sm:text-3xl font-extrabold text-white">
+                <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0F172A] dark:text-white">
                   Szeretnél hasonló eredményeket a céged weboldalán?
                 </h2>
-                <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
+                <p className="text-[#334155] dark:text-slate-300 text-sm sm:text-base leading-relaxed">
                   Legyen szó meglévő oldal gyorsításáról, WordPress
                   karbantartásról, SEO helyezés javításról vagy új weboldalról,
                   közvetlenül velem egyeztetsz, közvetítők nélkül.

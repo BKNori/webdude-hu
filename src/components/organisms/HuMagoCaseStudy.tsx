@@ -2,12 +2,8 @@
 
 import ResponsiveImage from "@/components/molecules/ResponsiveImage";
 import Link from "next/link";
-import {
-  motion,
-  useScroll,
-  useTransform,
-  useReducedMotion,
-} from "motion/react";
+import { motion, useScroll, useTransform } from "motion/react";
+import { useHydratedReducedMotion } from "@/hooks/useMotionPreset";
 import { Work } from "@/types/work";
 import { useRef } from "react";
 import {
@@ -26,7 +22,7 @@ interface HuMagoCaseStudyProps {
 
 export default function HuMagoCaseStudy({ project }: HuMagoCaseStudyProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = useHydratedReducedMotion();
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"],
@@ -58,8 +54,8 @@ export default function HuMagoCaseStudy({ project }: HuMagoCaseStudyProps) {
              priority
              className="object-cover"
            />
-          <div className="absolute inset-0 bg-slate-950/75 -z-10" />
-          <div className="absolute inset-0 bg-linear-to-b from-black/85 via-slate-950/70 to-bg-base" />
+          <div className="absolute inset-0 bg-[#F8FAFC]/82 dark:bg-slate-950/75 -z-10" />
+          <div className="absolute inset-0 bg-linear-to-b from-[#F8FAFC]/90 via-[#F8FAFC]/75 to-bg-base dark:from-black/85 dark:via-slate-950/70 dark:to-bg-base" />
         </motion.div>
 
         <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
@@ -79,9 +75,9 @@ export default function HuMagoCaseStudy({ project }: HuMagoCaseStudyProps) {
                 delay: shouldReduceMotion ? 0 : 0.2,
                 duration: shouldReduceMotion ? 0 : 0.6,
               }}
-              className="inline-block px-6 py-3 bg-indigo-500/10 border border-indigo-500/30 rounded-full backdrop-blur-sm"
+              className="inline-block px-6 py-3 bg-indigo-500/10 border border-indigo-600/30 dark:border-indigo-500/30 rounded-full backdrop-blur-sm"
             >
-              <span className="text-indigo-400 text-sm font-bold uppercase tracking-widest">
+              <span className="text-indigo-700 dark:text-indigo-400 text-sm font-bold uppercase tracking-widest">
                 {project.year || new Date().getFullYear()} – {project.category}
               </span>
             </motion.div>
@@ -105,7 +101,7 @@ export default function HuMagoCaseStudy({ project }: HuMagoCaseStudyProps) {
                 delay: shouldReduceMotion ? 0 : 0.6,
                 duration: shouldReduceMotion ? 0 : 0.8,
               }}
-              className="text-xl md:text-2xl text-slate-200 max-w-3xl mx-auto font-light"
+              className="text-xl md:text-2xl text-[#1E293B] dark:text-slate-200 max-w-3xl mx-auto font-light"
             >
               {project.description}
             </motion.p>
@@ -136,7 +132,7 @@ export default function HuMagoCaseStudy({ project }: HuMagoCaseStudyProps) {
                     delay: shouldReduceMotion ? 0 : 0.9 + index * 0.1,
                     duration: shouldReduceMotion ? 0 : 0.4,
                   }}
-                  className="px-4 py-2 bg-slate-800/50 border border-slate-700 rounded-full text-sm text-slate-300 backdrop-blur-sm"
+                  className="px-4 py-2 bg-white/90 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-full text-sm text-[#334155] dark:text-slate-300 backdrop-blur-sm"
                 >
                   {service}
                 </motion.span>
@@ -154,7 +150,7 @@ export default function HuMagoCaseStudy({ project }: HuMagoCaseStudyProps) {
                 href={project.website}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-10 py-5 bg-indigo-500 hover:bg-indigo-400 text-white font-bold rounded-full transition-all duration-300 hover:scale-105 shadow-lg shadow-indigo-500/25"
+                className="inline-flex items-center gap-2 px-10 py-5 bg-indigo-700 hover:bg-indigo-600 text-white font-bold rounded-full transition-all duration-300 hover:scale-105 shadow-lg shadow-indigo-500/25"
               >
                 Weboldal megtekintése →
               </motion.a>
@@ -164,7 +160,7 @@ export default function HuMagoCaseStudy({ project }: HuMagoCaseStudyProps) {
       </section>
 
       {/* A Kihívás és Megoldás Szekció */}
-      <section className="py-32 px-6 bg-linear-to-b from-bg-base to-slate-900/30">
+      <section className="py-32 px-6 bg-linear-to-b from-bg-base to-[#F1F5F9] dark:to-slate-900/30">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -174,7 +170,7 @@ export default function HuMagoCaseStudy({ project }: HuMagoCaseStudyProps) {
             className="mb-20"
           >
             <h2 className="text-4xl md:text-6xl font-bold mb-6">
-              <span className="text-indigo-400">A Kihívás</span> és a Megoldás
+              <span className="text-indigo-700 dark:text-indigo-400">A Kihívás</span> és a Megoldás
             </h2>
             <div className="w-24 h-1 bg-indigo-500 rounded-full" />
           </motion.div>
@@ -187,12 +183,12 @@ export default function HuMagoCaseStudy({ project }: HuMagoCaseStudyProps) {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="space-y-8"
             >
-              <div className="bg-slate-900/60 border border-slate-800 rounded-3xl p-10 backdrop-blur-sm">
-                <h3 className="text-2xl font-bold text-indigo-400 mb-6 flex items-center gap-3">
+              <div className="bg-white/95 dark:bg-slate-900/60 shadow-[0_12px_32px_rgba(15,23,42,0.06)] border border-slate-200 dark:border-slate-800 rounded-3xl p-10 backdrop-blur-sm">
+                <h3 className="text-2xl font-bold text-indigo-700 dark:text-indigo-400 mb-6 flex items-center gap-3">
                   <span className="w-2 h-8 bg-indigo-500 rounded-full" />
                   Hagyományos vs. Innováció
                 </h3>
-                <p className="text-slate-300 leading-relaxed text-lg">
+                <p className="text-[#334155] dark:text-slate-300 leading-relaxed text-lg">
                   A HU-MÁGÓ Kft. számára egy komplex digitális transzformációs
                   projektet valósítottam meg. A hagyományos ipari
                   gépkereskedelem területén működő vállalat modern,
@@ -203,12 +199,12 @@ export default function HuMagoCaseStudy({ project }: HuMagoCaseStudyProps) {
                 </p>
               </div>
 
-              <div className="bg-slate-900/60 border border-slate-800 rounded-3xl p-10 backdrop-blur-sm">
-                <h3 className="text-2xl font-bold text-indigo-400 mb-6 flex items-center gap-3">
+              <div className="bg-white/95 dark:bg-slate-900/60 shadow-[0_12px_32px_rgba(15,23,42,0.06)] border border-slate-200 dark:border-slate-800 rounded-3xl p-10 backdrop-blur-sm">
+                <h3 className="text-2xl font-bold text-indigo-700 dark:text-indigo-400 mb-6 flex items-center gap-3">
                   <span className="w-2 h-8 bg-indigo-500 rounded-full" />
                   Stratégiai Megközelítés
                 </h3>
-                <p className="text-slate-300 leading-relaxed text-lg">
+                <p className="text-[#334155] dark:text-slate-300 leading-relaxed text-lg">
                   A projekt során egy komplex ökoszisztémát építettem fel:
                   WooCommerce alapú e-kereskedelmi rendszert, stratégiai SEO
                   infrastruktúrát, GDPR-kompatibilis adatkezelést, prémium
@@ -251,7 +247,7 @@ export default function HuMagoCaseStudy({ project }: HuMagoCaseStudyProps) {
       </section>
 
       {/* AI Innováció Szekció - Kiemelt */}
-      <section className="py-32 px-6 bg-linear-to-b from-slate-900/30 to-indigo-950/20 border-y border-indigo-500/20">
+      <section className="py-32 px-6 bg-linear-to-b from-[#F1F5F9] to-indigo-50/70 dark:from-slate-900/30 dark:to-indigo-950/20 border-y border-indigo-600/25 dark:border-indigo-500/20">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -267,7 +263,7 @@ export default function HuMagoCaseStudy({ project }: HuMagoCaseStudyProps) {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="inline-block px-6 py-3 bg-indigo-500/20 border border-indigo-500/40 rounded-full backdrop-blur-sm mb-6"
             >
-              <span className="text-indigo-400 text-sm font-bold uppercase tracking-widest">
+              <span className="text-indigo-700 dark:text-indigo-400 text-sm font-bold uppercase tracking-widest">
                 <Rocket
                   className="w-4 h-4 inline-block align-[-2px]"
                   aria-hidden="true"
@@ -277,9 +273,9 @@ export default function HuMagoCaseStudy({ project }: HuMagoCaseStudyProps) {
             </motion.div>
             <h2 className="text-4xl md:text-6xl font-bold mb-6">
               AI Prompt{" "}
-              <span className="text-indigo-400">Reklám Generátor</span>
+              <span className="text-indigo-700 dark:text-indigo-400">Reklám Generátor</span>
             </h2>
-            <p className="text-slate-400 text-xl max-w-3xl mx-auto">
+            <p className="text-[#475569] dark:text-slate-400 text-xl max-w-3xl mx-auto">
               Egyedi fejlesztésű mesterséges intelligencia alapú marketing
               automatizáció
             </p>
@@ -290,14 +286,14 @@ export default function HuMagoCaseStudy({ project }: HuMagoCaseStudyProps) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="bg-indigo-950/30 border border-indigo-500/30 rounded-3xl p-12 backdrop-blur-sm shadow-2xl shadow-indigo-500/10"
+            className="bg-indigo-950/30 border border-indigo-600/30 dark:border-indigo-500/30 rounded-3xl p-12 backdrop-blur-sm shadow-2xl shadow-indigo-500/10"
           >
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div className="space-y-6">
-                <h3 className="text-3xl font-bold text-white mb-4">
+                <h3 className="text-3xl font-bold text-[#0F172A] dark:text-white mb-4">
                   Forradalmasítsd a Marketinget AI-val
                 </h3>
-                <p className="text-slate-300 leading-relaxed text-lg">
+                <p className="text-[#334155] dark:text-slate-300 leading-relaxed text-lg">
                   A HU-MÁGÓ Kft. számára egy egyedi, mesterséges intelligenciára
                   épülő &quot;AI prompt reklám generátort&quot; fejlesztettem.
                   Ez az innovatív megoldás automatizálja a hirdetési kreatívok
@@ -320,12 +316,12 @@ export default function HuMagoCaseStudy({ project }: HuMagoCaseStudyProps) {
                       className="flex items-center gap-3"
                     >
                       <div className="w-2 h-2 bg-indigo-500 rounded-full" />
-                      <span className="text-slate-200">{feature}</span>
+                      <span className="text-[#1E293B] dark:text-slate-200">{feature}</span>
                     </motion.div>
                   ))}
                 </div>
               </div>
-              <div className="relative aspect-4/3 rounded-2xl overflow-hidden bg-linear-to-br from-indigo-500/20 to-purple-500/20 backdrop-blur-sm border border-indigo-500/30">
+              <div className="relative aspect-4/3 rounded-2xl overflow-hidden bg-linear-to-br from-indigo-500/20 to-purple-500/20 backdrop-blur-sm border border-indigo-600/30 dark:border-indigo-500/30">
                 <div className="absolute inset-0 flex items-center justify-center">
                   <motion.div
                     initial={{ opacity: 0, scale: 0.8 }}
@@ -335,14 +331,14 @@ export default function HuMagoCaseStudy({ project }: HuMagoCaseStudyProps) {
                     className="text-center"
                   >
                     <Bot
-                      className="w-16 h-16 text-indigo-400 mx-auto mb-4"
+                      className="w-16 h-16 text-indigo-700 dark:text-indigo-400 mx-auto mb-4"
                       strokeWidth={1.5}
                       aria-hidden="true"
                     />
-                    <div className="text-indigo-400 font-bold text-xl">
+                    <div className="text-indigo-700 dark:text-indigo-400 font-bold text-xl">
                       AI Powered
                     </div>
-                    <div className="text-slate-400 text-sm mt-2">
+                    <div className="text-[#475569] dark:text-slate-400 text-sm mt-2">
                       Marketing Automation
                     </div>
                   </motion.div>
@@ -364,10 +360,10 @@ export default function HuMagoCaseStudy({ project }: HuMagoCaseStudyProps) {
             className="text-center mb-20"
           >
             <h2 className="text-4xl md:text-6xl font-bold mb-6">
-              Teljes Körű <span className="text-indigo-400">Digitális</span>{" "}
+              Teljes Körű <span className="text-indigo-700 dark:text-indigo-400">Digitális</span>{" "}
               Transzformáció
             </h2>
-            <p className="text-slate-400 text-xl max-w-2xl mx-auto">
+            <p className="text-[#475569] dark:text-slate-400 text-xl max-w-2xl mx-auto">
               Minden, ami egy modern ipari vállalat digitális ökoszisztémájához
               szükséges
             </p>
@@ -418,17 +414,17 @@ export default function HuMagoCaseStudy({ project }: HuMagoCaseStudyProps) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-slate-900/60 border border-slate-800 rounded-3xl p-8 hover:border-indigo-500/50 transition-colors duration-300 group"
+                className="bg-white/95 dark:bg-slate-900/60 shadow-[0_12px_32px_rgba(15,23,42,0.06)] border border-slate-200 dark:border-slate-800 rounded-3xl p-8 hover:border-indigo-500/50 transition-colors duration-300 group"
               >
                 <service.icon
-                  className="w-10 h-10 text-indigo-400 mb-4"
+                  className="w-10 h-10 text-indigo-700 dark:text-indigo-400 mb-4"
                   strokeWidth={1.5}
                   aria-hidden="true"
                 />
-                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-indigo-400 transition-colors">
+                <h3 className="text-xl font-bold text-[#0F172A] dark:text-white mb-3 group-hover:text-indigo-400 transition-colors">
                   {service.title}
                 </h3>
-                <p className="text-slate-400 leading-relaxed">
+                <p className="text-[#475569] dark:text-slate-400 leading-relaxed">
                   {service.description}
                 </p>
               </motion.div>
@@ -438,7 +434,7 @@ export default function HuMagoCaseStudy({ project }: HuMagoCaseStudyProps) {
       </section>
 
       {/* Galéria és Showcase Szekció */}
-      <section className="py-32 px-6 bg-linear-to-b from-slate-900/30 to-bg-base">
+      <section className="py-32 px-6 bg-linear-to-b from-[#F1F5F9] dark:from-slate-900/30 to-bg-base">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -448,9 +444,9 @@ export default function HuMagoCaseStudy({ project }: HuMagoCaseStudyProps) {
             className="mb-20"
           >
             <h2 className="text-4xl md:text-6xl font-bold mb-6">
-              <span className="text-indigo-400">Vizuális</span> Galéria
+              <span className="text-indigo-700 dark:text-indigo-400">Vizuális</span> Galéria
             </h2>
-            <p className="text-slate-400 text-xl">
+            <p className="text-[#475569] dark:text-slate-400 text-xl">
               A HU-MÁGÓ Kft. branding és digitális megjelenés vizuális elemei
             </p>
           </motion.div>
@@ -557,7 +553,7 @@ export default function HuMagoCaseStudy({ project }: HuMagoCaseStudyProps) {
       </section>
 
       {/* Eredmények Szekció */}
-      <section className="py-32 px-6 bg-linear-to-br from-indigo-500/10 to-purple-500/10 border-y border-indigo-500/20">
+      <section className="py-32 px-6 bg-linear-to-br from-indigo-500/10 to-purple-500/10 border-y border-indigo-600/25 dark:border-indigo-500/20">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -567,7 +563,7 @@ export default function HuMagoCaseStudy({ project }: HuMagoCaseStudyProps) {
             className="text-center"
           >
             <h2 className="text-4xl md:text-6xl font-bold mb-12">
-              <span className="text-indigo-400">Az Eredmény</span>
+              <span className="text-indigo-700 dark:text-indigo-400">Az Eredmény</span>
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
@@ -583,12 +579,12 @@ export default function HuMagoCaseStudy({ project }: HuMagoCaseStudyProps) {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true, margin: "-100px" }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="bg-slate-900/60 backdrop-blur-sm border border-indigo-500/30 rounded-3xl p-8"
+                  className="bg-white/95 dark:bg-slate-900/60 shadow-[0_12px_32px_rgba(15,23,42,0.06)] backdrop-blur-sm border border-indigo-600/30 dark:border-indigo-500/30 rounded-3xl p-8"
                 >
-                  <div className="text-5xl md:text-6xl font-bold text-indigo-400 mb-3">
+                  <div className="text-5xl md:text-6xl font-bold text-indigo-700 dark:text-indigo-400 mb-3">
                     {stat.value}
                   </div>
-                  <div className="text-slate-300 font-medium">{stat.label}</div>
+                  <div className="text-[#334155] dark:text-slate-300 font-medium">{stat.label}</div>
                 </motion.div>
               ))}
             </div>
@@ -601,16 +597,16 @@ export default function HuMagoCaseStudy({ project }: HuMagoCaseStudyProps) {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true, margin: "-100px" }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="bg-slate-900/60 backdrop-blur-sm border border-indigo-500/30 rounded-3xl p-8"
+                  className="bg-white/95 dark:bg-slate-900/60 shadow-[0_12px_32px_rgba(15,23,42,0.06)] backdrop-blur-sm border border-indigo-600/30 dark:border-indigo-500/30 rounded-3xl p-8"
                 >
-                  <div className="text-indigo-400 font-bold text-xl mb-3">
+                  <div className="text-indigo-700 dark:text-indigo-400 font-bold text-xl mb-3">
                     {result}
                   </div>
                 </motion.div>
               ))}
             </div>
 
-            <p className="text-slate-200 text-xl max-w-3xl mx-auto leading-relaxed">
+            <p className="text-[#1E293B] dark:text-slate-200 text-xl max-w-3xl mx-auto leading-relaxed">
               A HU-MÁGÓ Kft. projekt tökéletes példája annak, amikor a
               hagyományos ipari innováció és a legmodernebb AI technológia egy
               kézben összpontosul. Az eredmény egy komplex, jogilag biztonságos
@@ -632,23 +628,23 @@ export default function HuMagoCaseStudy({ project }: HuMagoCaseStudyProps) {
             className="space-y-10"
           >
             <h2 className="text-4xl md:text-6xl font-bold">
-              Készen állsz a <span className="text-indigo-400">következő</span>{" "}
+              Készen állsz a <span className="text-indigo-700 dark:text-indigo-400">következő</span>{" "}
               szintre?
             </h2>
-            <p className="text-slate-400 text-xl max-w-2xl mx-auto">
+            <p className="text-[#475569] dark:text-slate-400 text-xl max-w-2xl mx-auto">
               Hogyan tudnám a te vállalkozásodat is a digitális élvonalba
               repíteni AI technológiával és prémium brandinggel?
             </p>
             <div className="flex flex-wrap justify-center gap-6">
               <Link
                 href="/kapcsolat"
-                className="px-10 py-5 bg-indigo-500 hover:bg-indigo-400 text-white font-bold rounded-full transition-all duration-300 hover:scale-105 shadow-lg shadow-indigo-500/25"
+                className="px-10 py-5 bg-indigo-700 hover:bg-indigo-600 text-white font-bold rounded-full transition-all duration-300 hover:scale-105 shadow-lg shadow-indigo-500/25"
               >
                 Ajánlatot kérek →
               </Link>
               <Link
                 href="/munkak"
-                className="px-10 py-5 border border-slate-600 hover:border-indigo-500 text-slate-300 hover:text-indigo-400 font-bold rounded-full transition-all duration-300"
+                className="px-10 py-5 border border-slate-300 dark:border-slate-600 hover:border-indigo-500 text-[#334155] dark:text-slate-300 hover:text-indigo-700 dark:hover:text-indigo-400 font-bold rounded-full transition-all duration-300"
               >
                 Vissza a munkákhoz
               </Link>

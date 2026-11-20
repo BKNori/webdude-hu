@@ -24,6 +24,7 @@ import {
 } from "lucide-react";
 import LanguageSwitcher from "./LanguageSwitcher";
 import AuthStatusBadge from "./AuthStatusBadge";
+import ThemeToggle from "@/components/atoms/ThemeToggle";
 import { Language } from "@/types/dictionary";
 import { getLanguageFromPathname } from "@/lib/dictionary";
 import { Dictionary } from "@/types/dictionary";
@@ -233,13 +234,13 @@ export default function HeaderNavClient({
       );
 
       return (
-        <div className="rounded-2xl border border-slate-800/60 bg-slate-950/70 p-5 shadow-2xl backdrop-blur-xl sm:p-6">
+        <div className="rounded-2xl border border-slate-200/90 dark:border-white/10 dark:border-t-white/20 bg-white/98 dark:bg-[#0F172A]/95 p-5 shadow-[0_20px_50px_rgba(15,23,42,0.14)] dark:shadow-[0_20px_50px_rgba(2,6,23,0.65)] backdrop-blur-2xl sm:p-6">
           <div className="grid grid-cols-2 gap-2 sm:gap-3 lg:grid-cols-4">
             {/* 1. Os.col: Web & Webshop */}
             <div className="flex flex-col gap-2.5">
-              <div className="flex items-center gap-2 pb-2.5 border-b border-slate-800/60">
-                <span className="flex h-2 w-2 rounded-full bg-[#00B5F1] shadow-[0_0_8px_rgba(0,181,241,0.5)]" />
-                <span className="text-[11px] font-bold uppercase tracking-widest text-slate-500">
+              <div className="flex items-center gap-2 pb-2.5 border-b border-slate-200/80 dark:border-white/10">
+                <span className="flex h-2 w-2 rounded-full bg-[#0369A1] dark:bg-[#00B5F1] shadow-[0_0_8px_rgba(0,181,241,0.5)]" />
+                <span className="eyebrow-badge text-slate-600 dark:text-slate-400">
                   Web & Webshop
                 </span>
               </div>
@@ -255,24 +256,24 @@ export default function HeaderNavClient({
                     <Link
                       href={sub.href}
                       aria-current={isCurrent ? "page" : undefined}
-                      className={`flex items-center gap-3 rounded-xl border p-3 text-sm transition-all duration-300 outline-none ${FOCUS_RING} ${isCurrent ? "border-brand-primary/40 bg-brand-primary/5 shadow-[0_0_20px_rgba(0,181,241,0.12)]" : "border-brand-primary/10 bg-linear-to-b from-slate-900/50 to-slate-900/70 hover:border-brand-primary/30 hover:bg-linear-to-b hover:from-slate-900/70 hover:to-slate-900/80 hover:shadow-[0_0_14px_rgba(0,181,241,0.08)]"}`}
+                      className={`flex items-center gap-3 rounded-xl border p-3 text-sm transition-all duration-300 outline-none ${FOCUS_RING} ${isCurrent ? "border-[#0369A1]/40 dark:border-brand-primary/40 bg-sky-50/80 dark:bg-brand-primary/5 shadow-[0_0_20px_rgba(0,181,241,0.12)]" : "border-slate-200/80 dark:border-brand-primary/10 bg-slate-50/90 hover:bg-sky-50/70 hover:border-[#0369A1]/35 dark:bg-linear-to-b dark:from-slate-900/50 dark:to-slate-900/70 dark:hover:border-brand-primary/30 dark:hover:from-slate-900/70 dark:hover:to-slate-900/80 dark:hover:shadow-[0_0_14px_rgba(0,181,241,0.08)]"}`}
                       style={{ animation: isCurrent ? "neon-flicker 3s ease-in-out infinite" : "neon-flicker 7s ease-in-out infinite" }}
                     >
                       {sub.icon && (
-                        <sub.icon className={`w-4 h-4 shrink-0 ${isCurrent ? "text-[#00B5F1] glow-cyan" : "text-[#00B5F1]/60"}`} />
+                        <sub.icon className={`w-4 h-4 shrink-0 ${isCurrent ? "text-[#0369A1] dark:text-[#00B5F1] glow-cyan" : "text-[#0369A1]/75 dark:text-[#00B5F1]/60"}`} />
                       )}
                       <div className="min-w-0 flex-1">
-                        <span className={`block font-medium leading-tight truncate ${isCurrent ? "text-[#00B5F1]" : "text-slate-200"}`}>
+                        <span className={`block font-medium leading-tight truncate ${isCurrent ? "text-[#0369A1] dark:text-[#00B5F1]" : "text-slate-800 dark:text-slate-200"}`}>
                           {sub.name}
                         </span>
                         {sub.description && (
-                          <span className="block truncate text-[11px] text-slate-500">
+                          <span className="block truncate text-[11px] text-slate-600 dark:text-slate-400">
                             {sub.description}
                           </span>
                         )}
                       </div>
                       {isCurrent && (
-                        <span className="flex h-1.5 w-1.5 shrink-0 rounded-full bg-[#00B5F1] shadow-[0_0_6px_rgba(0,181,241,0.6)]" />
+                        <span className="flex h-1.5 w-1.5 shrink-0 rounded-full bg-[#0369A1] dark:bg-[#00B5F1] shadow-[0_0_6px_rgba(0,181,241,0.6)]" />
                       )}
                     </Link>
                   </motion.div>
@@ -282,9 +283,9 @@ export default function HeaderNavClient({
 
             {/* 2. Os.col: SEO & Marketing */}
             <div className="flex flex-col gap-2.5">
-              <div className="flex items-center gap-2 pb-2.5 border-b border-slate-800/60">
-                <span className="flex h-2 w-2 rounded-full bg-[#00B5F1] shadow-[0_0_8px_rgba(0,181,241,0.5)]" />
-                <span className="text-[11px] font-bold uppercase tracking-widest text-slate-500">
+              <div className="flex items-center gap-2 pb-2.5 border-b border-slate-200/80 dark:border-white/10">
+                <span className="flex h-2 w-2 rounded-full bg-[#0369A1] dark:bg-[#00B5F1] shadow-[0_0_8px_rgba(0,181,241,0.5)]" />
+                <span className="eyebrow-badge text-slate-600 dark:text-slate-400">
                   SEO & Marketing
                 </span>
               </div>
@@ -300,24 +301,24 @@ export default function HeaderNavClient({
                     <Link
                       href={sub.href}
                       aria-current={isCurrent ? "page" : undefined}
-                      className={`flex items-center gap-3 rounded-xl border p-3 text-sm transition-all duration-300 outline-none ${FOCUS_RING} ${isCurrent ? "border-brand-primary/40 bg-brand-primary/5 shadow-[0_0_20px_rgba(0,181,241,0.12)]" : "border-brand-primary/10 bg-linear-to-b from-slate-900/50 to-slate-900/70 hover:border-brand-primary/30 hover:bg-linear-to-b hover:from-slate-900/70 hover:to-slate-900/80 hover:shadow-[0_0_14px_rgba(0,181,241,0.08)]"}`}
+                      className={`flex items-center gap-3 rounded-xl border p-3 text-sm transition-all duration-300 outline-none ${FOCUS_RING} ${isCurrent ? "border-[#0369A1]/40 dark:border-brand-primary/40 bg-sky-50/80 dark:bg-brand-primary/5 shadow-[0_0_20px_rgba(0,181,241,0.12)]" : "border-slate-200/80 dark:border-brand-primary/10 bg-slate-50/90 hover:bg-sky-50/70 hover:border-[#0369A1]/35 dark:bg-linear-to-b dark:from-slate-900/50 dark:to-slate-900/70 dark:hover:border-brand-primary/30 dark:hover:from-slate-900/70 dark:hover:to-slate-900/80 dark:hover:shadow-[0_0_14px_rgba(0,181,241,0.08)]"}`}
                       style={{ animation: isCurrent ? "neon-flicker 3s ease-in-out infinite" : "neon-flicker 7s ease-in-out infinite" }}
                     >
                       {sub.icon && (
-                        <sub.icon className={`w-4 h-4 shrink-0 ${isCurrent ? "text-[#00B5F1] glow-cyan" : "text-[#00B5F1]/60"}`} />
+                        <sub.icon className={`w-4 h-4 shrink-0 ${isCurrent ? "text-[#0369A1] dark:text-[#00B5F1] glow-cyan" : "text-[#0369A1]/75 dark:text-[#00B5F1]/60"}`} />
                       )}
                       <div className="min-w-0 flex-1">
-                        <span className={`block font-medium leading-tight truncate ${isCurrent ? "text-[#00B5F1]" : "text-slate-200"}`}>
+                        <span className={`block font-medium leading-tight truncate ${isCurrent ? "text-[#0369A1] dark:text-[#00B5F1]" : "text-slate-800 dark:text-slate-200"}`}>
                           {sub.name}
                         </span>
                         {sub.description && (
-                          <span className="block truncate text-[11px] text-slate-500">
+                          <span className="block truncate text-[11px] text-slate-600 dark:text-slate-400">
                             {sub.description}
                           </span>
                         )}
                       </div>
                       {isCurrent && (
-                        <span className="flex h-1.5 w-1.5 shrink-0 rounded-full bg-[#00B5F1] shadow-[0_0_6px_rgba(0,181,241,0.6)]" />
+                        <span className="flex h-1.5 w-1.5 shrink-0 rounded-full bg-[#0369A1] dark:bg-[#00B5F1] shadow-[0_0_6px_rgba(0,181,241,0.6)]" />
                       )}
                     </Link>
                   </motion.div>
@@ -327,9 +328,9 @@ export default function HeaderNavClient({
 
             {/* 3. Os.col: Design & Karbantartás */}
             <div className="flex flex-col gap-2.5">
-              <div className="flex items-center gap-2 pb-2.5 border-b border-slate-800/60">
-                <span className="flex h-2 w-2 rounded-full bg-[#7C3AED] shadow-[0_0_8px_rgba(124,58,237,0.5)]" />
-                <span className="text-[11px] font-bold uppercase tracking-widest text-slate-500">
+              <div className="flex items-center gap-2 pb-2.5 border-b border-slate-200/80 dark:border-white/10">
+                <span className="flex h-2 w-2 rounded-full bg-[#6D28D9] dark:bg-[#7C3AED] shadow-[0_0_8px_rgba(124,58,237,0.5)]" />
+                <span className="eyebrow-badge text-slate-600 dark:text-slate-400">
                   Design & Karbantartás
                 </span>
               </div>
@@ -345,24 +346,24 @@ export default function HeaderNavClient({
                     <Link
                       href={sub.href}
                       aria-current={isCurrent ? "page" : undefined}
-                      className={`flex items-center gap-3 rounded-xl border p-3 text-sm transition-all duration-300 outline-none ${FOCUS_RING} ${isCurrent ? "border-brand-secondary/40 bg-brand-secondary/5 shadow-[0_0_20px_rgba(124,58,237,0.12)]" : "border-brand-secondary/10 bg-linear-to-b from-slate-900/50 to-slate-900/70 hover:border-brand-secondary/30 hover:bg-linear-to-b hover:from-slate-900/70 hover:to-slate-900/80 hover:shadow-[0_0_14px_rgba(124,58,237,0.08)]"}`}
+                      className={`flex items-center gap-3 rounded-xl border p-3 text-sm transition-all duration-300 outline-none ${FOCUS_RING} ${isCurrent ? "border-[#6D28D9]/40 dark:border-brand-secondary/40 bg-violet-50/80 dark:bg-brand-secondary/5 shadow-[0_0_20px_rgba(124,58,237,0.12)]" : "border-slate-200/80 dark:border-brand-secondary/10 bg-slate-50/90 hover:bg-violet-50/70 hover:border-[#6D28D9]/35 dark:bg-linear-to-b dark:from-slate-900/50 dark:to-slate-900/70 dark:hover:border-brand-secondary/30 dark:hover:from-slate-900/70 dark:hover:to-slate-900/80 dark:hover:shadow-[0_0_14px_rgba(124,58,237,0.08)]"}`}
                       style={{ animation: isCurrent ? "neon-flicker 3s ease-in-out infinite" : "neon-flicker 7s ease-in-out infinite" }}
                     >
                       {sub.icon && (
-                        <sub.icon className={`w-4 h-4 shrink-0 ${isCurrent ? "text-[#7C3AED] glow-violet" : "text-[#7C3AED]/60"}`} />
+                        <sub.icon className={`w-4 h-4 shrink-0 ${isCurrent ? "text-[#6D28D9] dark:text-[#7C3AED] glow-violet" : "text-[#6D28D9]/75 dark:text-[#7C3AED]/60"}`} />
                       )}
                       <div className="min-w-0 flex-1">
-                        <span className={`block font-medium leading-tight truncate ${isCurrent ? "text-[#7C3AED]" : "text-slate-200"}`}>
+                        <span className={`block font-medium leading-tight truncate ${isCurrent ? "text-[#6D28D9] dark:text-[#7C3AED]" : "text-slate-800 dark:text-slate-200"}`}>
                           {sub.name}
                         </span>
                         {sub.description && (
-                          <span className="block truncate text-[11px] text-slate-500">
+                          <span className="block truncate text-[11px] text-slate-600 dark:text-slate-400">
                             {sub.description}
                           </span>
                         )}
                       </div>
                       {isCurrent && (
-                        <span className="flex h-1.5 w-1.5 shrink-0 rounded-full bg-[#7C3AED] shadow-[0_0_6px_rgba(124,58,237,0.6)]" />
+                        <span className="flex h-1.5 w-1.5 shrink-0 rounded-full bg-[#6D28D9] dark:bg-[#7C3AED] shadow-[0_0_6px_rgba(124,58,237,0.6)]" />
                       )}
                     </Link>
                   </motion.div>
@@ -372,9 +373,9 @@ export default function HeaderNavClient({
 
             {/* 4. Os.col: Karbantartás & AI */}
             <div className="flex flex-col gap-2.5">
-              <div className="flex items-center gap-2 pb-2.5 border-b border-slate-800/60">
-                <span className="flex h-2 w-2 rounded-full bg-[#5B21B6] shadow-[0_0_8px_rgba(91,33,182,0.5)]" />
-                <span className="text-[11px] font-bold uppercase tracking-widest text-slate-500">
+              <div className="flex items-center gap-2 pb-2.5 border-b border-slate-200/80 dark:border-white/10">
+                <span className="flex h-2 w-2 rounded-full bg-[#6D28D9] dark:bg-[#5B21B6] shadow-[0_0_8px_rgba(91,33,182,0.5)]" />
+                <span className="eyebrow-badge text-slate-600 dark:text-slate-400">
                   Karbantartás & AI
                 </span>
               </div>
@@ -390,24 +391,24 @@ export default function HeaderNavClient({
                     <Link
                       href={sub.href}
                       aria-current={isCurrent ? "page" : undefined}
-                      className={`flex items-center gap-3 rounded-xl border p-3 text-sm transition-all duration-300 outline-none ${FOCUS_RING} ${isCurrent ? "border-brand-primary/40 bg-brand-primary/5 shadow-[0_0_20px_rgba(0,181,241,0.12)]" : "border-brand-primary/10 bg-linear-to-b from-slate-900/50 to-slate-900/70 hover:border-brand-primary/30 hover:bg-linear-to-b hover:from-slate-900/70 hover:to-slate-900/80 hover:shadow-[0_0_14px_rgba(0,181,241,0.08)]"}`}
+                      className={`flex items-center gap-3 rounded-xl border p-3 text-sm transition-all duration-300 outline-none ${FOCUS_RING} ${isCurrent ? "border-[#0369A1]/40 dark:border-brand-primary/40 bg-sky-50/80 dark:bg-brand-primary/5 shadow-[0_0_20px_rgba(0,181,241,0.12)]" : "border-slate-200/80 dark:border-brand-primary/10 bg-slate-50/90 hover:bg-sky-50/70 hover:border-[#0369A1]/35 dark:bg-linear-to-b dark:from-slate-900/50 dark:to-slate-900/70 dark:hover:border-brand-primary/30 dark:hover:from-slate-900/70 dark:hover:to-slate-900/80 dark:hover:shadow-[0_0_14px_rgba(0,181,241,0.08)]"}`}
                       style={{ animation: isCurrent ? "neon-flicker 3s ease-in-out infinite" : "neon-flicker 7s ease-in-out infinite" }}
                     >
                       {sub.icon && (
-                        <sub.icon className={`w-4 h-4 shrink-0 ${isCurrent ? "text-[#00B5F1] glow-cyan" : "text-[#00B5F1]/60"}`} />
+                        <sub.icon className={`w-4 h-4 shrink-0 ${isCurrent ? "text-[#0369A1] dark:text-[#00B5F1] glow-cyan" : "text-[#0369A1]/75 dark:text-[#00B5F1]/60"}`} />
                       )}
                       <div className="min-w-0 flex-1">
-                        <span className={`block font-medium leading-tight truncate ${isCurrent ? "text-[#00B5F1]" : "text-slate-200"}`}>
+                        <span className={`block font-medium leading-tight truncate ${isCurrent ? "text-[#0369A1] dark:text-[#00B5F1]" : "text-slate-800 dark:text-slate-200"}`}>
                           {sub.name}
                         </span>
                         {sub.description && (
-                          <span className="block truncate text-[11px] text-slate-500">
+                          <span className="block truncate text-[11px] text-slate-600 dark:text-slate-400">
                             {sub.description}
                           </span>
                         )}
                       </div>
                       {isCurrent && (
-                        <span className="flex h-1.5 w-1.5 shrink-0 rounded-full bg-[#00B5F1] shadow-[0_0_6px_rgba(0,181,241,0.6)]" />
+                        <span className="flex h-1.5 w-1.5 shrink-0 rounded-full bg-[#0369A1] dark:bg-[#00B5F1] shadow-[0_0_6px_rgba(0,181,241,0.6)]" />
                       )}
                     </Link>
                   </motion.div>
@@ -432,16 +433,16 @@ export default function HeaderNavClient({
             <Link
               href={sub.href}
               aria-current={pathname === sub.href ? "page" : undefined}
-              className={`block px-4 py-3 rounded-lg text-slate-200 hover:text-[#00B5F1] hover:bg-[#00B5F1]/10 transition-all duration-300 text-sm font-medium ${FOCUS_RING}`}
+              className={`block px-4 py-3 rounded-lg text-slate-800 dark:text-slate-200 hover:text-[#0369A1] dark:hover:text-[#00B5F1] hover:bg-sky-50/80 dark:hover:bg-[#00B5F1]/10 transition-all duration-300 text-sm font-medium ${FOCUS_RING}`}
             >
               <div className="flex items-center gap-3">
                 {sub.icon && (
-                  <sub.icon className="w-5 h-5 text-[#00B5F1] shrink-0" />
+                  <sub.icon className="w-5 h-5 text-[#0369A1] dark:text-[#00B5F1] shrink-0" />
                 )}
                 <div className="flex-1 min-w-0">
                   <span className="block">{sub.name}</span>
                   {sub.description && (
-                    <span className="text-xs text-slate-400 block truncate mt-0.5">
+                    <span className="text-xs text-slate-600 dark:text-slate-400 block truncate mt-0.5">
                       {sub.description}
                     </span>
                   )}
@@ -465,37 +466,23 @@ export default function HeaderNavClient({
           duration: 0.4,
           ease: [0.22, 1, 0.36, 1],
         }}
-        className={`fixed top-0 left-0 w-full z-40 transition-all duration-300 backdrop-blur-xl border-b ${
+        className={`fixed top-0 left-0 w-full z-40 transition-[background-color,border-color,box-shadow] duration-300 backdrop-blur-xl border-b ${
           isScrolled
-            ? "bg-slate-950/90 border-slate-800/80 shadow-lg shadow-black/20"
-            : "bg-slate-950/60 border-slate-800/30"
+            ? "bg-white/92 dark:bg-[#0B1120]/90 border-slate-200/90 dark:border-white/10 shadow-[0_8px_30px_rgba(15,23,42,0.07)] dark:shadow-[0_8px_32px_rgba(2,6,23,0.45)]"
+            : "bg-white/82 dark:bg-[#0B1120]/75 border-slate-200/70 dark:border-white/8"
         }`}
       >
         {/* ── TOP BAR ──────────────────────────────────────────────────
-              Vékony, sötét sáv a fejléc legtetején: a „Hírek" és az
-              „Ügyfélportál" linkjeivel. `text-xs` méret + diszkrét
-              `lucide-react` ikonok, hogy ne vonják el a figyelmet a
-              fő CTA-król.
-
-              **A `bg-bg-base/60` üveghatás** a Kék-Lila v7.0
-              glassmorphism nyelvét követi (a fejléc többi részéhez
-              igazodva). Nincs saját z-indexe → sosem takarhatja el
-              a cookie bannert vagy a modálokat.
-
-              **Mobilon (`hidden lg:flex`) nem látszik** — a keskeny
-              kijelzőn a hamburger menü tartalmazza ezeket is. */}
+              Vékony, diszkrét sáv a fejléc legtetején: a „Hírek" és az
+              „Ügyfélportál" linkjeivel. */}
         <div
-          className={`hidden lg:block transition-all duration-300 ease-in-out overflow-hidden border-b ${
+          className={`hidden lg:block transition-[max-height,opacity,border-color] duration-300 ease-in-out overflow-hidden border-b ${
             showTopBar
-              ? "max-h-9 opacity-100 border-slate-800/50 bg-slate-950/80"
+              ? "max-h-9 opacity-100 border-slate-200/80 dark:border-white/8 bg-slate-100/90 dark:bg-[#070C1A]/85"
               : "max-h-0 opacity-0 border-transparent bg-transparent pointer-events-none"
           }`}
         >
           <div className="max-w-7xl mx-auto px-4 md:px-6 h-9 flex items-center justify-end gap-6">
-            {/* Az AuthStatusBadge a Topbarban már megjeleníti a
-                be-/kijelentkezett állapotot — a statikus „Ügyfélportál"
-                topbar link kivétele elkerüli a duplikációt. A badge
-                kijelentkezett állapotban is a /portal-ra mutat. */}
             {topBarItems
               .filter((item) => item.href !== "/portal")
               .map((item) => {
@@ -508,8 +495,8 @@ export default function HeaderNavClient({
                   aria-current={isActive ? "page" : undefined}
                   className={`group flex items-center gap-1.5 text-xs font-sans font-medium tracking-wide transition-colors duration-200 ${FOCUS_RING} ${
                     isActive
-                      ? "text-[#00B5F1]"
-                      : "text-slate-400 hover:text-[#00B5F1]"
+                      ? "text-[#0369A1] dark:text-[#00B5F1]"
+                      : "text-slate-600 dark:text-slate-400 hover:text-[#0369A1] dark:hover:text-[#00B5F1]"
                   }`}
                 >
                   <Icon className="w-3.5 h-3.5 opacity-70 group-hover:opacity-100 transition-opacity" />
@@ -533,9 +520,9 @@ export default function HeaderNavClient({
                 <NextImage
                   src="/assets/logos/webdude-logo.webp"
                   alt="WebDude — Prémium webfejlesztés és AI automatizáció"
-                  width={130}
+                  width={48}
                   height={48}
-                  className="h-12 w-auto object-contain relative z-50 transition-all duration-300 brightness-0 invert group-hover:brightness-100 group-hover:invert-0 group-hover:drop-shadow-[0_0_12px_#00B5F1]"
+                  className="h-12 w-12 object-contain relative z-50 transition-all duration-300 brightness-0 dark:invert group-hover:brightness-100 group-hover:invert-0 group-hover:drop-shadow-[0_0_12px_#00B5F1]"
                   priority
                 />
               </div>
@@ -567,7 +554,7 @@ export default function HeaderNavClient({
                     aria-haspopup="true"
                     aria-expanded={activeDropdown === item.name}
                     aria-current={pathname === item.href ? "page" : undefined}
-                    className={`flex items-center gap-2 text-sm font-semibold transition-all duration-300 px-3 py-2 rounded-lg ${FOCUS_RING} ${pathname === item.href ? "text-[#00B5F1]" : "text-slate-200 hover:text-[#00B5F1]"}`}
+                    className={`flex items-center gap-2 text-sm font-semibold transition-all duration-300 px-3 py-2 rounded-lg ${FOCUS_RING} ${pathname === item.href ? "text-[#0369A1] dark:text-[#00B5F1]" : "text-slate-700 dark:text-slate-200 hover:text-[#0369A1] dark:hover:text-[#00B5F1]"}`}
                   >
                     {item.name}{" "}
                     <motion.span
@@ -588,7 +575,7 @@ export default function HeaderNavClient({
                     <Link
                       href={item.href}
                       aria-current={pathname === item.href ? "page" : undefined}
-                      className={`text-sm font-semibold transition-all duration-300 px-3 py-2 rounded-lg ${FOCUS_RING} ${pathname === item.href ? "text-[#00B5F1]" : "text-slate-200 hover:text-[#00B5F1]"}`}
+                      className={`text-sm font-semibold transition-all duration-300 px-3 py-2 rounded-lg ${FOCUS_RING} ${pathname === item.href ? "text-[#0369A1] dark:text-[#00B5F1]" : "text-slate-700 dark:text-slate-200 hover:text-[#0369A1] dark:hover:text-[#00B5F1]"}`}
                     >
                       {item.name}
                     </Link>
@@ -603,10 +590,10 @@ export default function HeaderNavClient({
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
                       transition={{ duration: 0.22, ease: "easeOut" }}
-                      className={`absolute top-full mt-2 bg-slate-950/95 backdrop-blur-2xl border border-[#00B5F1]/20 rounded-2xl shadow-2xl overflow-hidden z-40 ${
+                      className={`absolute top-full mt-2 bg-white/98 dark:bg-slate-950/95 backdrop-blur-2xl border border-slate-200/90 dark:border-[#00B5F1]/20 rounded-2xl shadow-2xl overflow-hidden z-40 ${
                         item.name === "Szolgáltatások"
                           ? "fixed left-4 right-4 sm:right-auto sm:absolute sm:left-1/2 sm:-translate-x-1/2 sm:w-[92vw] sm:max-w-3xl lg:w-200"
-                          : "left-1/2 -translate-x-1/2 w-full lg:min-w-72 lg:max-w-80 border-slate-800/80"
+                          : "left-1/2 -translate-x-1/2 w-full lg:min-w-72 lg:max-w-80 dark:border-slate-800/80"
                       }`}
                       onMouseEnter={() => handleDropdownEnter(item.name)}
                       onMouseLeave={handleDropdownLeave}
@@ -618,10 +605,6 @@ export default function HeaderNavClient({
               </motion.div>
             ))}
 
-            {/* A bejelentkezési állapotjelző CSAK a felső Topbarban
-                és a mobilmenüben jelenik meg — az asztali fő navigációs
-                sávban kivettük, hogy ne duplikálódjon a Topbar-pillével. */}
-
             {/* Language Switcher */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
@@ -631,6 +614,9 @@ export default function HeaderNavClient({
               <LanguageSwitcher currentLang={actualLang} />
             </motion.div>
 
+            {/* Dual Theme Toggle (Luminous Daylight / Luminous Slate) */}
+            <ThemeToggle variant="capsule" lang={actualLang} />
+
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -638,12 +624,7 @@ export default function HeaderNavClient({
             >
               <Link
                 href={labels.contactHref}
-                className={`relative px-6 py-2.5 rounded-full font-bold text-sm text-white transition-all duration-300 transform hover:scale-105 ${FOCUS_RING}`}
-                style={{
-                  background:
-                    "linear-gradient(135deg, #00B5F1 0%, #5B21B6 100%)",
-                  boxShadow: "0 8px 24px rgba(0, 181, 241,0.35)",
-                }}
+                className={`relative px-6 py-2.5 rounded-full font-bold text-sm text-white bg-linear-to-r from-[#075985] to-[#5B21B6] hover:from-[#0369A1] hover:to-[#6D28D9] shadow-[0_8px_24px_rgba(7,89,133,0.3)] transition-all duration-300 transform hover:scale-105 ${FOCUS_RING}`}
                 aria-label={labels.contact}
               >
                 <span className="relative z-10">{labels.contactLabel}</span>
@@ -651,43 +632,46 @@ export default function HeaderNavClient({
             </motion.div>
           </div>
 
-          {/* MOBILE TOGGLE – hamburger / X gomb */}
-          <motion.button
-            ref={toggleButtonRef}
-            type="button"
-            className={`lg:hidden text-slate-200 p-3 rounded-xl hover:bg-slate-800/80 transition-colors min-w-11 min-h-11 flex items-center justify-center border border-transparent hover:border-slate-700/50 ${FOCUS_RING}`}
-            onClick={() => setIsOpen((prev) => !prev)}
-            whileTap={{ scale: 0.92 }}
-            aria-label={isOpen ? labels.closeMenu : labels.openMenu}
-            aria-expanded={isOpen}
-            aria-controls="mobile-nav-menu"
-          >
-            <AnimatePresence mode="wait">
-              {isOpen ? (
-                <motion.div
-                  key="close"
-                  aria-hidden="true"
-                  initial={{ rotate: -90, opacity: 0 }}
-                  animate={{ rotate: 0, opacity: 1 }}
-                  exit={{ rotate: 90, opacity: 0 }}
-                  transition={{ duration: 0.15 }}
-                >
-                  <X className="w-5 h-5" />
-                </motion.div>
-              ) : (
-                <motion.div
-                  key="menu"
-                  aria-hidden="true"
-                  initial={{ rotate: 90, opacity: 0 }}
-                  animate={{ rotate: 0, opacity: 1 }}
-                  exit={{ rotate: -90, opacity: 0 }}
-                  transition={{ duration: 0.15 }}
-                >
-                  <Menu className="w-5 h-5" />
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </motion.button>
+          {/* MOBILE RIGHT ACTIONS: kompakt témakapcsoló + hamburger / X gomb */}
+          <div className="flex items-center gap-2 lg:hidden">
+            <ThemeToggle variant="icon" lang={actualLang} />
+            <motion.button
+              ref={toggleButtonRef}
+              type="button"
+              className={`text-slate-700 dark:text-slate-200 p-3 rounded-xl hover:bg-slate-200/70 dark:hover:bg-slate-800/80 transition-colors min-w-11 min-h-11 flex items-center justify-center border border-transparent hover:border-slate-300 dark:hover:border-slate-700/50 ${FOCUS_RING}`}
+              onClick={() => setIsOpen((prev) => !prev)}
+              whileTap={{ scale: 0.92 }}
+              aria-label={isOpen ? labels.closeMenu : labels.openMenu}
+              aria-expanded={isOpen}
+              aria-controls="mobile-nav-menu"
+            >
+              <AnimatePresence mode="wait">
+                {isOpen ? (
+                  <motion.div
+                    key="close"
+                    aria-hidden="true"
+                    initial={{ rotate: -90, opacity: 0 }}
+                    animate={{ rotate: 0, opacity: 1 }}
+                    exit={{ rotate: 90, opacity: 0 }}
+                    transition={{ duration: 0.15 }}
+                  >
+                    <X className="w-5 h-5" />
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="menu"
+                    aria-hidden="true"
+                    initial={{ rotate: 90, opacity: 0 }}
+                    animate={{ rotate: 0, opacity: 1 }}
+                    exit={{ rotate: -90, opacity: 0 }}
+                    transition={{ duration: 0.15 }}
+                  >
+                    <Menu className="w-5 h-5" />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.button>
+          </div>
         </div>
       </motion.nav>
 
@@ -704,14 +688,10 @@ export default function HeaderNavClient({
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "100%" }}
             transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-0 z-50 flex flex-col h-dvh max-h-dvh w-full max-w-[100vw] overflow-y-auto overscroll-contain bg-slate-950/98 backdrop-blur-2xl lg:hidden"
-            style={{
-              background:
-                "radial-gradient(ellipse 80% 50% at 90% 0%, rgba(0, 181, 241, 0.06) 0%, transparent 70%), radial-gradient(ellipse 60% 40% at 10% 100%, rgba(91, 33, 182, 0.06) 0%, transparent 70%), #020617",
-            }}
+            className="mobile-drawer-surface fixed inset-0 z-50 flex flex-col h-dvh max-h-dvh w-full max-w-[100vw] overflow-y-auto overscroll-contain bg-[#F8FAFC]/98 dark:bg-[#020617]/98 backdrop-blur-2xl lg:hidden"
           >
             {/* Fejléc sáv: logó + X gomb */}
-            <div className="flex items-center justify-between px-5 h-16 border-b border-white/5 shrink-0">
+            <div className="flex items-center justify-between px-5 h-16 border-b border-slate-200 dark:border-white/5 shrink-0">
               <Link
                 href={isEn ? "/en" : "/"}
                 onClick={closeMenu}
@@ -721,9 +701,9 @@ export default function HeaderNavClient({
                 <NextImage
                   src="/assets/logos/webdude-logo.webp"
                   alt="WebDude logó"
-                  width={110}
+                  width={28}
                   height={28}
-                  className="h-7 w-auto object-contain transition-all duration-300 group-hover:drop-shadow-[0_0_10px_#00B5F1]"
+                  className="h-7 w-7 object-contain transition-all duration-300 brightness-0 dark:invert group-hover:brightness-100 group-hover:invert-0 group-hover:drop-shadow-[0_0_10px_#00B5F1]"
                 />
               </Link>
 
@@ -731,7 +711,7 @@ export default function HeaderNavClient({
                 type="button"
                 onClick={closeMenu}
                 aria-label={labels.closeMenu}
-                className={`text-slate-300 p-2.5 rounded-xl hover:bg-slate-800/80 border border-slate-700/40 hover:border-slate-600/60 transition-all min-w-11 min-h-11 flex items-center justify-center ${FOCUS_RING}`}
+                className={`text-slate-700 dark:text-slate-300 p-2.5 rounded-xl hover:bg-slate-200/70 dark:hover:bg-slate-800/80 border border-slate-300/60 dark:border-slate-700/40 hover:border-slate-400 dark:hover:border-slate-600/60 transition-all min-w-11 min-h-11 flex items-center justify-center ${FOCUS_RING}`}
               >
                 <X className="w-5 h-5" aria-hidden="true" />
               </button>
@@ -765,8 +745,8 @@ export default function HeaderNavClient({
                         <div
                           className={`rounded-2xl overflow-hidden border transition-all duration-300 ${
                             isSectionOpen
-                              ? "border-[#00B5F1]/20 bg-slate-900/60"
-                              : "border-slate-800/40 bg-transparent"
+                              ? "border-[#0369A1]/30 dark:border-[#00B5F1]/20 bg-white dark:bg-slate-900/60 shadow-xs dark:shadow-none"
+                              : "border-slate-200/80 dark:border-slate-800/40 bg-transparent"
                           }`}
                         >
                           {/* Fő sor: ikon + link + chevron gomb */}
@@ -774,7 +754,7 @@ export default function HeaderNavClient({
                             {/* Aktív indikátor vonal */}
                             <div
                               className={`self-stretch w-0.5 rounded-r-full transition-all duration-300 shrink-0 ${
-                                isActive ? "bg-[#00B5F1]" : "bg-transparent"
+                                isActive ? "bg-[#0369A1] dark:bg-[#00B5F1]" : "bg-transparent"
                               }`}
                             />
 
@@ -787,16 +767,16 @@ export default function HeaderNavClient({
                               }
                               className={`flex-1 flex items-center gap-3.5 px-4 py-4 min-h-14 transition-colors ${FOCUS_RING} ${
                                 isActive
-                                  ? "text-[#00B5F1]"
-                                  : "text-slate-100 hover:text-[#00B5F1]"
+                                  ? "text-[#0369A1] dark:text-[#00B5F1]"
+                                  : "text-slate-800 dark:text-slate-100 hover:text-[#0369A1] dark:hover:text-[#00B5F1]"
                               }`}
                             >
                               {IconComponent && (
                                 <span
                                   className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 transition-all duration-300 ${
                                     isActive
-                                      ? "bg-[#00B5F1]/15 text-[#00B5F1]"
-                                      : "bg-slate-800/60 text-slate-400"
+                                      ? "bg-sky-100 dark:bg-[#00B5F1]/15 text-[#0369A1] dark:text-[#00B5F1]"
+                                      : "bg-slate-100 dark:bg-slate-800/60 text-slate-600 dark:text-slate-400"
                                   }`}
                                 >
                                   <IconComponent className="w-4.5 h-4.5" />
@@ -818,7 +798,7 @@ export default function HeaderNavClient({
                                 item.name,
                                 isSectionOpen
                               )}
-                              className={`shrink-0 w-12 h-14 flex items-center justify-center text-slate-400 hover:text-[#00B5F1] transition-colors ${FOCUS_RING}`}
+                              className={`shrink-0 w-12 h-14 flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-[#0369A1] dark:hover:text-[#00B5F1] transition-colors ${FOCUS_RING}`}
                             >
                               <motion.span
                                 animate={{ rotate: isSectionOpen ? 180 : 0 }}
@@ -849,7 +829,7 @@ export default function HeaderNavClient({
                                 }}
                                 className="overflow-hidden"
                               >
-                                <div className="px-3 pb-3 pt-1 border-t border-white/5">
+                                <div className="px-3 pb-3 pt-1 border-t border-slate-200/80 dark:border-white/5">
                                   {/* Kategóriák szerint csoportosítva */}
                                   {(() => {
                                     const categories: Record<
@@ -895,16 +875,16 @@ export default function HeaderNavClient({
                                                   }
                                                   className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm transition-all duration-200 min-h-11 ${FOCUS_RING} ${
                                                     isSubActive
-                                                      ? "bg-[#00B5F1]/10 text-[#00B5F1]"
-                                                      : "text-slate-300 hover:bg-slate-800/60 hover:text-slate-100"
+                                                      ? "bg-sky-50 dark:bg-[#00B5F1]/10 text-[#0369A1] dark:text-[#00B5F1]"
+                                                      : "text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/60 hover:text-slate-900 dark:hover:text-slate-100"
                                                   }`}
                                                 >
                                                   {sub.icon && (
                                                     <span
                                                       className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${
                                                         isSubActive
-                                                          ? "bg-[#00B5F1]/20 text-[#00B5F1]"
-                                                          : "bg-slate-700/50 text-slate-400"
+                                                          ? "bg-sky-100 dark:bg-[#00B5F1]/20 text-[#0369A1] dark:text-[#00B5F1]"
+                                                          : "bg-slate-100 dark:bg-slate-700/50 text-slate-600 dark:text-slate-400"
                                                       }`}
                                                     >
                                                       <sub.icon className="w-3.5 h-3.5" />
@@ -915,13 +895,13 @@ export default function HeaderNavClient({
                                                       {sub.name}
                                                     </span>
                                                     {sub.description && (
-                                                      <span className="text-xs text-slate-500 block truncate leading-tight mt-0.5">
+                                                      <span className="text-xs text-slate-600 dark:text-slate-400 block truncate leading-tight mt-0.5">
                                                         {sub.description}
                                                       </span>
                                                     )}
                                                   </div>
                                                   {isSubActive && (
-                                                    <ArrowRight className="w-3.5 h-3.5 text-[#00B5F1] shrink-0" />
+                                                    <ArrowRight className="w-3.5 h-3.5 text-[#0369A1] dark:text-[#00B5F1] shrink-0" />
                                                   )}
                                                 </Link>
                                               </motion.div>
@@ -941,14 +921,14 @@ export default function HeaderNavClient({
                         <div
                           className={`flex items-center rounded-2xl border transition-all duration-300 ${
                             isActive
-                              ? "border-[#00B5F1]/20 bg-slate-900/60"
-                              : "border-transparent hover:border-slate-800/40 hover:bg-slate-900/30"
+                              ? "border-[#0369A1]/30 dark:border-[#00B5F1]/20 bg-white dark:bg-slate-900/60 shadow-xs dark:shadow-none"
+                              : "border-transparent hover:border-slate-200 dark:hover:border-slate-800/40 hover:bg-white/70 dark:hover:bg-slate-900/30"
                           }`}
                         >
                           {/* Aktív indikátor vonal */}
                           <div
                             className={`self-stretch w-0.5 rounded-r-full transition-all duration-300 shrink-0 ${
-                              isActive ? "bg-[#00B5F1]" : "bg-transparent"
+                              isActive ? "bg-[#0369A1] dark:bg-[#00B5F1]" : "bg-transparent"
                             }`}
                           />
                           <Link
@@ -959,16 +939,16 @@ export default function HeaderNavClient({
                             }
                             className={`flex-1 flex items-center gap-3.5 px-4 py-4 min-h-14 transition-colors ${FOCUS_RING} ${
                               isActive
-                                ? "text-[#00B5F1]"
-                                : "text-slate-100 hover:text-[#00B5F1]"
+                                ? "text-[#0369A1] dark:text-[#00B5F1]"
+                                : "text-slate-800 dark:text-slate-100 hover:text-[#0369A1] dark:hover:text-[#00B5F1]"
                             }`}
                           >
                             {IconComponent && (
                               <span
                                 className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 transition-all duration-300 ${
                                   isActive
-                                    ? "bg-[#00B5F1]/15 text-[#00B5F1]"
-                                    : "bg-slate-800/60 text-slate-400"
+                                    ? "bg-sky-100 dark:bg-[#00B5F1]/15 text-[#0369A1] dark:text-[#00B5F1]"
+                                    : "bg-slate-100 dark:bg-slate-800/60 text-slate-600 dark:text-slate-400"
                                 }`}
                               >
                                 <IconComponent className="w-4.5 h-4.5" />
@@ -991,23 +971,18 @@ export default function HeaderNavClient({
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: 0.25 }}
-              className="shrink-0 px-4 pt-3 pb-6 border-t border-white/5"
-              style={{
-                background:
-                  "linear-gradient(to top, #020617 60%, transparent 100%)",
-              }}
+              className="shrink-0 px-4 pt-3 pb-6 border-t border-slate-200/80 dark:border-white/5 bg-white/95 dark:bg-[#020617]/95 backdrop-blur-md"
             >
-              <div className="mb-4">
-                <AuthStatusBadge variant="mobile" />
+              <div className="mb-4 flex items-center justify-between gap-3">
+                <div className="flex-1 min-w-0">
+                  <AuthStatusBadge variant="mobile" />
+                </div>
+                <ThemeToggle variant="capsule" lang={actualLang} />
               </div>
               <Link
                 href={labels.contactHref}
                 onClick={closeMenu}
-                className={`block w-full py-4 rounded-2xl font-bold text-center text-white text-base transition-all hover:scale-[1.02] active:scale-[0.98] shadow-[0_4px_24px_rgba(0,181,241,0.3)] ${FOCUS_RING}`}
-                style={{
-                  background:
-                    "linear-gradient(135deg, #00B5F1 0%, #5B21B6 100%)",
-                }}
+                className={`block w-full py-4 rounded-2xl font-bold text-center text-white text-base bg-linear-to-r from-[#075985] to-[#5B21B6] hover:from-[#0369A1] hover:to-[#6D28D9] transition-all hover:scale-[1.02] active:scale-[0.98] shadow-[0_8px_24px_rgba(7,89,133,0.3)] ${FOCUS_RING}`}
                 aria-label={labels.contact}
               >
                 {labels.contactCtaLabel}

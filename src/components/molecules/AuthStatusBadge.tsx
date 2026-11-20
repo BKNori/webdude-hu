@@ -105,9 +105,9 @@ export default function AuthStatusBadge({
   // Mount-ig semleges placeholder (hydration safety).
   if (!mounted || !auth) {
     if (variant === "topbar") {
-      return <span className="inline-block h-4 w-20 animate-pulse rounded bg-slate-800/60" />;
+      return <span className="inline-block h-4 w-20 animate-pulse rounded bg-slate-200/80 dark:bg-slate-800/60" />;
     }
-    return <span className="inline-block h-9 w-28 animate-pulse rounded-full bg-slate-800/60" />;
+    return <span className="inline-block h-9 w-28 animate-pulse rounded-full bg-slate-200/80 dark:bg-slate-800/60" />;
   }
 
   const displayName =
@@ -121,7 +121,7 @@ export default function AuthStatusBadge({
       return (
         <Link
           href="/portal"
-          className={`group flex items-center gap-1.5 text-xs font-sans font-medium tracking-wide transition-colors duration-200 text-slate-400 hover:text-[#00B5F1] ${FOCUS_RING}`}
+          className={`group flex items-center gap-1.5 text-xs font-sans font-medium tracking-wide transition-colors duration-200 text-slate-600 dark:text-slate-400 hover:text-[#0369A1] dark:hover:text-[#00B5F1] ${FOCUS_RING}`}
         >
           <User className="w-3.5 h-3.5 opacity-70 group-hover:opacity-100 transition-opacity" />
           <span>Belépés</span>
@@ -132,9 +132,9 @@ export default function AuthStatusBadge({
       return (
         <Link
           href="/portal"
-          className={`flex items-center gap-3.5 px-4 py-4 min-h-14 rounded-2xl border border-slate-800/40 hover:border-[#00B5F1]/30 hover:bg-slate-900/30 transition-all text-slate-100 ${FOCUS_RING}`}
+          className={`flex items-center gap-3.5 px-4 py-4 min-h-14 rounded-2xl border border-slate-200/90 dark:border-slate-800/40 hover:border-[#0369A1]/40 dark:hover:border-[#00B5F1]/30 hover:bg-slate-100 dark:hover:bg-slate-900/30 transition-all text-slate-800 dark:text-slate-100 ${FOCUS_RING}`}
         >
-          <span className="w-9 h-9 rounded-xl bg-slate-800/60 text-slate-400 flex items-center justify-center shrink-0">
+          <span className="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800/60 text-slate-600 dark:text-slate-400 flex items-center justify-center shrink-0">
             <User className="w-4.5 h-4.5" />
           </span>
           <span className="font-semibold text-base">Ügyfélportál / Belépés</span>
@@ -144,7 +144,7 @@ export default function AuthStatusBadge({
     return (
       <Link
         href="/portal"
-        className={`flex items-center gap-2 px-4 py-2 rounded-full border border-slate-700/60 text-slate-300 hover:text-[#00B5F1] hover:border-[#00B5F1]/40 text-xs font-bold uppercase tracking-wider transition-all ${FOCUS_RING}`}
+        className={`flex items-center gap-2 px-4 py-2 rounded-full border border-slate-300 dark:border-slate-700/60 text-slate-700 dark:text-slate-300 hover:text-[#0369A1] dark:hover:text-[#00B5F1] hover:border-[#0369A1]/50 dark:hover:border-[#00B5F1]/40 text-xs font-bold uppercase tracking-wider transition-all ${FOCUS_RING}`}
       >
         <User className="w-3.5 h-3.5" />
         <span className="hidden md:inline">Ügyfélportál</span>
@@ -158,13 +158,13 @@ export default function AuthStatusBadge({
     <>
       <span className="relative flex h-2 w-2">
         <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
-        <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+        <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500 dark:bg-emerald-400" />
       </span>
-      <span className="truncate max-w-28 font-semibold text-slate-200">
+      <span className="truncate max-w-28 font-semibold text-slate-800 dark:text-slate-200">
         {displayName}
       </span>
       {isAdmin && (
-        <span className="hidden sm:inline-flex items-center gap-1 px-1.5 py-0.5 rounded-md bg-[#7C3AED]/20 border border-[#7C3AED]/40 text-[#a78bfa] text-[9px] font-black uppercase tracking-wider">
+        <span className="hidden sm:inline-flex items-center gap-1 px-1.5 py-0.5 rounded-md bg-violet-100 dark:bg-[#7C3AED]/20 border border-violet-300 dark:border-[#7C3AED]/40 text-[#6D28D9] dark:text-[#a78bfa] text-[9px] font-black uppercase tracking-wider">
           <ShieldCheck className="w-2.5 h-2.5" />
           Szuperadmin
         </span>
@@ -210,7 +210,7 @@ export default function AuthStatusBadge({
         aria-label={
           isAdmin ? "Portálkezelő megnyitása" : "Ügyfélportál megnyitása"
         }
-        className={`flex items-center gap-2 rounded-l-full border border-r-0 border-[#00B5F1]/40 bg-slate-900/90 backdrop-blur-xl ${variant === "topbar" ? "py-1 pl-3 pr-2" : "py-1.5 pl-3 pr-2"} text-xs transition-all hover:border-[#00B5F1]/70 hover:shadow-[0_0_16px_rgba(0,181,241,0.25)] ${FOCUS_RING}`}
+        className={`flex items-center gap-2 rounded-l-full border border-r-0 border-[#0369A1]/40 dark:border-[#00B5F1]/40 bg-white/95 dark:bg-slate-900/90 backdrop-blur-xl ${variant === "topbar" ? "py-1 pl-3 pr-2" : "py-1.5 pl-3 pr-2"} text-xs transition-all hover:border-[#0369A1]/70 dark:hover:border-[#00B5F1]/70 hover:shadow-[0_0_16px_rgba(3,105,161,0.18)] ${FOCUS_RING}`}
       >
         {pill}
       </Link>
@@ -220,7 +220,7 @@ export default function AuthStatusBadge({
         aria-expanded={menuOpen}
         aria-haspopup="menu"
         aria-label={`Fiók menü — ${displayName}`}
-        className={`flex items-center rounded-r-full border border-[#00B5F1]/40 bg-slate-900/90 backdrop-blur-xl ${variant === "topbar" ? "py-1 px-1.5" : "py-1.5 px-2"} text-slate-400 hover:text-[#00B5F1] hover:border-[#00B5F1]/70 transition-all ${FOCUS_RING}`}
+        className={`flex items-center rounded-r-full border border-[#0369A1]/40 dark:border-[#00B5F1]/40 bg-white/95 dark:bg-slate-900/90 backdrop-blur-xl ${variant === "topbar" ? "py-1 px-1.5" : "py-1.5 px-2"} text-slate-500 dark:text-slate-400 hover:text-[#0369A1] dark:hover:text-[#00B5F1] hover:border-[#0369A1]/70 dark:hover:border-[#00B5F1]/70 transition-all ${FOCUS_RING}`}
       >
         <ChevronDown
           className={`w-3 h-3 transition-transform duration-200 ${menuOpen ? "rotate-180" : ""}`}
@@ -235,10 +235,10 @@ export default function AuthStatusBadge({
             exit={{ opacity: 0, y: -6, scale: 0.97 }}
             transition={{ duration: 0.18, ease: "easeOut" }}
             role="menu"
-            className="absolute right-0 top-full mt-2 w-52 rounded-2xl border border-slate-800/80 bg-slate-950/95 backdrop-blur-2xl shadow-2xl overflow-hidden z-50"
+            className="absolute right-0 top-full mt-2 w-52 rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-white/98 dark:bg-slate-950/95 backdrop-blur-2xl shadow-2xl overflow-hidden z-50"
           >
-            <div className="px-4 py-3 border-b border-slate-800/60">
-              <p className="text-xs font-bold text-slate-200 truncate">
+            <div className="px-4 py-3 border-b border-slate-200 dark:border-slate-800/60">
+              <p className="text-xs font-bold text-slate-900 dark:text-slate-200 truncate">
                 {displayName}
               </p>
               {user.email && (
@@ -247,7 +247,7 @@ export default function AuthStatusBadge({
                 </p>
               )}
               {isAdmin && (
-                <p className="mt-1 text-[9px] font-black uppercase tracking-widest text-[#a78bfa]">
+                <p className="mt-1 text-[9px] font-black uppercase tracking-widest text-[#6D28D9] dark:text-[#a78bfa]">
                   Szuperadmin hozzáférés aktív
                 </p>
               )}
@@ -259,9 +259,9 @@ export default function AuthStatusBadge({
                   href={item.href}
                   role="menuitem"
                   onClick={() => setMenuOpen(false)}
-                  className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-slate-300 hover:text-[#00B5F1] hover:bg-[#00B5F1]/10 transition-colors ${FOCUS_RING}`}
+                  className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-slate-700 dark:text-slate-300 hover:text-[#0369A1] dark:hover:text-[#00B5F1] hover:bg-sky-50 dark:hover:bg-[#00B5F1]/10 transition-colors ${FOCUS_RING}`}
                 >
-                  <item.icon className="w-4 h-4 text-[#00B5F1] shrink-0" />
+                  <item.icon className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1] shrink-0" />
                   {item.label}
                 </Link>
               ))}
@@ -269,7 +269,7 @@ export default function AuthStatusBadge({
                 type="button"
                 role="menuitem"
                 onClick={handleLogout}
-                className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-red-400 hover:bg-red-500/10 transition-colors ${FOCUS_RING}`}
+                className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-red-700 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-500/10 transition-colors ${FOCUS_RING}`}
               >
                 <LogOut className="w-4 h-4 shrink-0" />
                 Kijelentkezés
