@@ -93,6 +93,7 @@ export const BILINGUAL_ROUTE_PAIRS: ReadonlyArray<
   ["/szolgaltatasok/seo-optimalizalas", "/en/services/seo-optimization"],
   ["/szolgaltatasok/grafikai-tervezes", "/en/services/graphic-design"],
   ["/munkak", "/en/portfolio"],
+  ["/hirek", "/en/insights"],
   ["/kapcsolat", "/en/contact"],
   ["/adatvedelmi-szabalyzat", "/en/privacy-policy"],
   ["/felhasznalasi-feltetelek", "/en/terms"],

@@ -1,14 +1,27 @@
 import Link from "next/link";
 import { ArrowRight, Gauge, Sparkles } from "lucide-react";
 
+interface SeoQuickCheckBannerProps {
+  /** Nyelvi variáns — alapértelmezetten magyar (`/hirek/[slug]`), `"en"` az `/en/insights/[slug]` számára. */
+  locale?: "hu" | "en";
+}
+
 /**
  * Alacsony küszöbű lead-mágnes CTA kártya a szakcikkek végére (Server Component).
  * A cikkek olvasóit az ingyenes 10 pontos SEO & AI-készségi gyorsellenőrzőre tereli.
  */
-export default function SeoQuickCheckBanner() {
+export default function SeoQuickCheckBanner({
+  locale = "hu",
+}: SeoQuickCheckBannerProps = {}) {
+  const isEn = locale === "en";
+
   return (
     <section
-      aria-label="Ingyenes SEO és AI-készségi gyorsellenőrző"
+      aria-label={
+        isEn
+          ? "Free SEO & AI Readiness Quick Checker"
+          : "Ingyenes SEO és AI-készségi gyorsellenőrző"
+      }
       className="mt-12"
     >
       <div className="luminous-card p-7 sm:p-9 border-[#0369A1]/30 dark:border-[#00B5F1]/30 relative overflow-hidden">
@@ -20,25 +33,27 @@ export default function SeoQuickCheckBanner() {
           <div className="space-y-2.5 max-w-xl">
             <span className="eyebrow-badge text-[#0369A1] dark:text-[#00B5F1] inline-flex items-center gap-2">
               <Sparkles className="w-3.5 h-3.5" aria-hidden="true" />
-              Ingyenes 10 pontos diagnosztika
+              {isEn ? "Free 10-Point Diagnostic" : "Ingyenes 10 pontos diagnosztika"}
             </span>
             <h2 className="text-2xl sm:text-3xl font-heading text-[#0F172A] dark:text-white leading-tight">
-              Kíváncsi vagy, mit látnak a weboldaladból a Google és az AI keresők?
+              {isEn
+                ? "Want to see how Google and AI Search engines read your website?"
+                : "Kíváncsi vagy, mit látnak a weboldaladból a Google és az AI keresők?"}
             </h2>
             <p className="text-sm text-[#334155] dark:text-slate-300 leading-relaxed">
-              Teszteld le másodpercek alatt a saját domained HTTPS/TTFB sebességét,
-              Schema.org AEO entitásait, a robots.txt AI-bot szabályait és az
-              llms.txt meglétét.
+              {isEn
+                ? "Inspect your domain's HTTPS/TTFB speed, Schema.org AEO entities, robots.txt AI-bot rules, and llms.txt availability in seconds."
+                : "Teszteld le másodpercek alatt a saját domained HTTPS/TTFB sebességét, Schema.org AEO entitásait, a robots.txt AI-bot szabályait és az llms.txt meglétét."}
             </p>
           </div>
 
           <div className="shrink-0">
             <Link
-              href="/ingyenes-seo-aeo-elemzes"
+              href={isEn ? "/en/free-seo-aeo-checker" : "/ingyenes-seo-aeo-elemzes"}
               className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full font-semibold uppercase tracking-wider text-xs sm:text-sm text-white bg-linear-to-r from-[#075985] to-[#5B21B6] hover:from-[#0369A1] hover:to-[#6D28D9] shadow-[0_8px_24px_rgba(7,89,133,0.35)] hover:scale-[1.02] active:scale-95 transition-all"
             >
               <Gauge className="w-4 h-4" aria-hidden="true" />
-              Ingyenes SEO &amp; AI Ellenőrzés
+              {isEn ? "Run Free SEO & AI Check" : "Ingyenes SEO & AI Ellenőrzés"}
               <ArrowRight className="w-4 h-4" aria-hidden="true" />
             </Link>
           </div>

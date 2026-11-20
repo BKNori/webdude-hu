@@ -684,8 +684,16 @@
         "href": "/en/services"
       },
       {
+        "label": "Insights",
+        "href": "/en/insights"
+      },
+      {
         "label": "Free SEO & AI Checker",
         "href": "/en/free-seo-aeo-checker"
+      },
+      {
+        "label": "Free Video Audit",
+        "href": "/en/free-website-audit"
       },
       {
         "label": "Contact",

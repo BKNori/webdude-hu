@@ -13,6 +13,7 @@
 const fs = require("fs");
 const path = require("path");
 const vm = require("vm");
+const ts = require("typescript");
 const matter = require("gray-matter");
 
 const ROOT = path.resolve(__dirname, "..");
@@ -34,6 +35,19 @@ function loadWorks() {
   const sandbox = { works: [] };
   vm.runInNewContext(jsSource, sandbox);
   return Array.isArray(sandbox.works) ? sandbox.works : [];
+}
+
+function loadEnInsights() {
+  const raw = fs.readFileSync(path.join(ROOT, "src/data/enInsights.ts"), "utf8");
+  const { outputText } = ts.transpileModule(raw, {
+    compilerOptions: {
+      module: ts.ModuleKind.CommonJS,
+      target: ts.ScriptTarget.ES2020,
+    },
+  });
+  const mod = { exports: {} };
+  vm.runInNewContext(outputText, { exports: mod.exports, module: mod });
+  return Array.isArray(mod.exports.EN_INSIGHTS) ? mod.exports.EN_INSIGHTS : [];
 }
 
 function extractFaqFromMdx(rawFaq, content) {
@@ -125,6 +139,7 @@ function main() {
     fs.readFileSync(path.join(ROOT, "src/dictionaries/en.json"), "utf8")
   );
   const works = loadWorks();
+  const enInsights = loadEnInsights();
   const posts = loadIndexablePosts();
 
   const lines = [];
@@ -145,6 +160,7 @@ function main() {
   lines.push("- **Weboldal (HU):** https://webdude.hu");
   lines.push("- **Weboldal (EN):** https://webdude.hu/en");
   lines.push("- **Rólam (HU / EN):** https://webdude.hu/szia-norbi-vagyok | https://webdude.hu/en/about");
+  lines.push("- **Tudásbázis / Szakmai Cikkek (HU / EN):** https://webdude.hu/hirek | https://webdude.hu/en/insights");
   lines.push("- **Ingyenes SEO & AI-Készség Ellenőrző (HU / EN):** https://webdude.hu/ingyenes-seo-aeo-elemzes | https://webdude.hu/en/free-seo-aeo-checker");
   lines.push("- **Ingyenes 10 Perces Videós UX & SEO Audit (HU / EN):** https://webdude.hu/ingyenes-weboldal-elemzes | https://webdude.hu/en/free-website-audit");
   lines.push("- **Kapcsolat (HU / EN):** https://webdude.hu/kapcsolat | https://webdude.hu/en/contact");
@@ -228,6 +244,23 @@ function main() {
     if (post.faqs.length > 0) {
       for (const f of post.faqs.slice(0, 3)) {
         lines.push(`  - *GYIK — ${f.question}* ${f.answer}`);
+      }
+    }
+    lines.push("");
+  }
+
+  // Angol Tudásbázis (/en/insights)
+  lines.push(`## English Cornerstone Insights (${enInsights.length} guides)`);
+  lines.push("");
+  for (const guide of enInsights) {
+    lines.push(`### ${guide.title}`);
+    lines.push(
+      `- **URL:** ${SITE_URL}/en/insights/${guide.slug} | **Category:** ${guide.category} | **Updated:** ${guide.updatedAt}`
+    );
+    lines.push(`- **TL;DR:** ${stripMarkdown(guide.tldr)}`);
+    if (Array.isArray(guide.faq)) {
+      for (const f of guide.faq.slice(0, 3)) {
+        lines.push(`  - *FAQ — ${f.q}* ${f.a}`);
       }
     }
     lines.push("");

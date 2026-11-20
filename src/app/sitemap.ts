@@ -1,5 +1,6 @@
 import { MetadataRoute } from "next";
 import { works } from "@/data/works";
+import { EN_INSIGHTS } from "@/data/enInsights";
 import { posts as fallbackPosts } from "@/data/posts";
 import { getCombinedBlogPosts } from "@/lib/mdx";
 
@@ -215,7 +216,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: BUILD_DATE,
       changeFrequency: "weekly" as const,
       priority: 0.8,
-      alternates: buildHuOnlyAlternates(`${BASE_URL}/hirek`),
+      alternates: buildBilingualAlternates(
+        `${BASE_URL}/hirek`,
+        `${BASE_URL}/en/insights`
+      ),
+    },
+    {
+      url: `${BASE_URL}/en/insights`,
+      lastModified: BUILD_DATE,
+      changeFrequency: "weekly" as const,
+      priority: 0.85,
+      alternates: buildBilingualAlternates(
+        `${BASE_URL}/hirek`,
+        `${BASE_URL}/en/insights`
+      ),
     },
     {
       url: `${BASE_URL}/kapcsolat`,
@@ -584,11 +598,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }));
 
+  const enInsightPages: MetadataRoute.Sitemap = EN_INSIGHTS.map((post) => ({
+    url: `${BASE_URL}/en/insights/${post.slug}`,
+    lastModified: new Date(post.updatedAt || post.date),
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+  }));
+
   return [
     ...staticPages,
     ...projectPages,
     ...enProjectPages,
     ...blogPages,
+    ...enInsightPages,
     ...productPages,
   ];
 }

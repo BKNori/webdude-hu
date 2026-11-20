@@ -20,7 +20,7 @@ export default defineConfig({
   // A hálózati érzékeny smoke teszteknél 1 retry sok churnt okoz;
   // a CI-ben 2, ahol a flakiness valódi regressziót takarhat.
   retries: process.env.CI ? 2 : 0,
-  workers: process.env.CI ? 1 : undefined,
+  workers: process.env.CI ? 1 : 2,
   // Smoke: gyors szöveges riport a CI logban, HTML csak helyben.
   reporter: process.env.CI ? [["list"], ["html", { open: "never" }]] : "list",
   /**

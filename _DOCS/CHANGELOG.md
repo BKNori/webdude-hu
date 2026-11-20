@@ -1,5 +1,13 @@
 # Changelog
 
+## [7.82.0] — 2026-11-21 — Nemzetközi Tudásbázis (`/en/insights` + 3 Angol BOFU/GEO Szakcikk) & Playwright Stabilizálás
+
+### Added & Changed
+- **Playwright Lokális Stabilizálás (`playwright.config.ts`):** `workers: process.env.CI ? 1 : 2` beállítás, így lokális futáskor sem terheli túl a Chromium az egyetlen `next start` szervert.
+- **Angol Tudásbázis Adatréteg (`src/data/enInsights.ts`):** 3 mély BOFU/GEO szakcikk (`ai-search-geo-aeo-guide-for-businesses`, `nextjs-vs-custom-wordpress-2026`, `senior-freelancer-vs-digital-agency`) 40–60 szavas TL;DR kivonattal, összehasonlító táblázattal, 6 pontos checklisttel, 3-3 angol GYIK-kal, E-E-A-T hivatkozással és Zéró Fix Ár megfeleléssel.
+- **Új Angol Tudásbázis Oldalak (`src/app/en/insights/page.tsx`, `src/app/en/insights/[slug]/page.tsx`) & `SeoQuickCheckBanner` i18n (`src/components/molecules/SeoQuickCheckBanner.tsx`):** `SubpageHero` + `DirectAnswerBlock`, 3 cikk-kártya, statikus `generateStaticParams()`, Dual Theme HTML `<table>`, `CollectionPage`/`ItemList`/`TechArticle`/`FAQPage`/`BreadcrumbList` JSON-LD (`serializeJsonLd`), valamint kétirányú `hreflang` szinkron a magyar `src/app/hirek/page.tsx`-szel.
+- **Navigáció, Sitemap, LLM Indexek & E2E (`src/config/navigation.en.ts`, `src/dictionaries/en.json`, `src/dictionaries/hu.json`, `src/lib/i18n.ts`, `src/app/sitemap.ts`, `public/llms.txt`, `scripts/generate-llms-full.js`, `e2e/v782-en-insights.spec.ts`):** Az `/hirek` ↔ `/en/insights` és a 3 angol cikk bekötve a navigációba, footer gyorslinkekbe (100% i18n kulcs-paritás), nyelvváltóba, sitemapba és LLM kontextus-indexekbe.
+
 ## [7.81.0] — 2026-11-20 — BOFU Cikk-Finomítás (JSX Táblázatok + Egyedi Borítók) & Ingyenes 10 Perces Videós Audit Landing (HU + EN)
 
 ### Added & Changed

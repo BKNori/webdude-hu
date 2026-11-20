@@ -680,12 +680,20 @@
         "href": "/munkak"
       },
       {
+        "label": "Szolgáltatások",
+        "href": "/szolgaltatasok"
+      },
+      {
         "label": "Hírek",
         "href": "/hirek"
       },
       {
         "label": "Ingyenes SEO & AI Ellenőrző",
         "href": "/ingyenes-seo-aeo-elemzes"
+      },
+      {
+        "label": "Ingyenes Videós Audit",
+        "href": "/ingyenes-weboldal-elemzes"
       },
       {
         "label": "Kapcsolat",

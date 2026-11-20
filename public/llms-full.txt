@@ -11,6 +11,7 @@
 - **Weboldal (HU):** https://webdude.hu
 - **Weboldal (EN):** https://webdude.hu/en
 - **Rólam (HU / EN):** https://webdude.hu/szia-norbi-vagyok | https://webdude.hu/en/about
+- **Tudásbázis / Szakmai Cikkek (HU / EN):** https://webdude.hu/hirek | https://webdude.hu/en/insights
 - **Ingyenes SEO & AI-Készség Ellenőrző (HU / EN):** https://webdude.hu/ingyenes-seo-aeo-elemzes | https://webdude.hu/en/free-seo-aeo-checker
 - **Ingyenes 10 Perces Videós UX & SEO Audit (HU / EN):** https://webdude.hu/ingyenes-weboldal-elemzes | https://webdude.hu/en/free-website-audit
 - **Kapcsolat (HU / EN):** https://webdude.hu/kapcsolat | https://webdude.hu/en/contact
@@ -351,3 +352,26 @@
   - *GYIK — Milyen gyakran javaslom a WordPress karbantartási feladatok elvégzését?* Nálam a kritikus biztonsági mentések és az uptime-figyelés naponta automatikusan futnak, a bővítmények és a WordPress mag frissítését pedig hetente, tesztelt lépésekben végzem el a leállások elkerülésére.
   - *GYIK — Mi történhet, ha elmarad a rendszeres WordPress frissítés és karbantartás?* Elavult bővítményeknél megnő a biztonsági rések és a feltörések kockázata, felhalmozódik az adatbázis-hulladék, és lassul a betöltés, ami rontja a Google-helyezéseket és a látogatói bizalmat.
   - *GYIK — Vállalok-e folyamatos, egyedi WordPress karbantartást meglévő weboldalakra?* Igen, egyedi árajánlat alapján személyesen kezelem a biztonsági mentéseket, frissítéseket, adatbázis-tisztítást és sebességoptimalizálást közvetlen kommunikációval.
+
+## English Cornerstone Insights (3 guides)
+
+### AI Search Optimization (GEO & AEO) Guide: How to Get Cited by ChatGPT, Perplexity & Google AI Overviews
+- **URL:** https://webdude.hu/en/insights/ai-search-geo-aeo-guide-for-businesses | **Category:** AI Search & GEO | **Updated:** 2026-11-21
+- **TL;DR:** Generative Engine Optimization (GEO) and Answer Engine Optimization (AEO) ensure your business is cited by ChatGPT, Perplexity, and Google AI Overviews. Instead of keyword stuffing, I pair fast Server-Side Rendered HTML with connected Schema.org JSON-LD entities, direct-answer blocks, clean robots.txt AI crawler rules, and machine-readable llms.txt documentation.
+  - *FAQ — How quickly can a website start appearing in AI answers after GEO & AEO optimization?* Technical crawlability, Schema.org entity graphs, and llms.txt indexing are picked up within days to a few weeks depending on crawl frequency, while competitive citation authority compounds steadily as your cornerstone guides and case studies are referenced.
+  - *FAQ — Do I need an expensive custom CMS overhaul to become AI-search ready?* Not always. If your existing platform outputs slow bloated HTML or blocks bots, I first diagnose whether targeted structural refactoring fixes the bottleneck or whether migrating key pages to Next.js delivers higher long-term ROI.
+  - *FAQ — How can I check right now if my domain is visible to ChatGPT and Perplexity?* You can test any public URL in seconds with my free 10-point SEO & AI Readiness Checker, which inspects HTTPS speed, Schema.org entities, Open Graph tags, robots.txt AI-bot policies, and llms.txt availability.
+
+### Next.js vs. Custom WordPress: Choosing the Right Architecture for Speed, SEO & Conversions
+- **URL:** https://webdude.hu/en/insights/nextjs-vs-custom-wordpress-2026 | **Category:** Architecture & Speed | **Updated:** 2026-11-21
+- **TL;DR:** Next.js App Router delivers unmatched Core Web Vitals, zero plugin attack surface, and instantaneous UX for high-growth SaaS, B2B lead engines, and custom portals. Custom lean WordPress — engineered without heavy visual page builders — remains practical when marketing teams need familiar editorial publishing or WooCommerce inventory workflows.
+  - *FAQ — Can you migrate an existing WordPress site to Next.js without losing SEO rankings?* Yes. I map every historical URL, configure strict 301 redirects, preserve canonical metadata and structured data parity, and verify index coverage before and after launch so organic equity transfers cleanly.
+  - *FAQ — If we build in Next.js, how will my team edit text and publish blog articles?* I pair Next.js with structured MDX workflows or lightweight authenticated admin dashboards tailored to exactly what your team updates, avoiding cluttered controls that break layout integrity.
+  - *FAQ — Do you work exclusively on Next.js, or do you still rescue slow WordPress sites?* I do both. Many clients come to me with a sluggish or compromised WordPress build that can be cleaned, hardened, and accelerated rapidly, while others launch greenfield Next.js flagship platforms.
+
+### Hiring a Senior Full-Stack Freelancer vs. a Digital Agency: Direct Accountability, Speed & ROI
+- **URL:** https://webdude.hu/en/insights/senior-freelancer-vs-digital-agency | **Category:** Strategy & ROI | **Updated:** 2026-11-21
+- **TL;DR:** Working directly with a senior solo specialist removes account-manager telephone games, agency overhead, and handoff friction between brand design and engineering. With 26+ years of graphic design and 16+ years of web development experience, I personally design, code, optimize SEO/AEO, and take end-to-end accountability for your launch.
+  - *FAQ — Is there continuity risk when working with a solo specialist instead of an agency?* I eliminate black-box lock-in by writing clean, documented Next.js, TypeScript, or standard WordPress code hosted in your own repositories and cloud accounts, so any competent engineer can understand it immediately.
+  - *FAQ — Can one person really deliver high-end brand design, full-stack code, and technical SEO?* Yes — precisely because I have spent 26+ years in graphic design and 16+ years in web development. Combining both disciplines prevents the disjointed compromises typical when separate specialists work in silos.
+  - *FAQ — How do we start a project and determine investment scope?* Because no two businesses have identical architecture needs, I never use rigid cookie-cutter price lists. Request a free 10-minute video audit or message me with your goals and I will prepare a tailored custom quote.

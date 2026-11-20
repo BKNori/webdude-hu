@@ -13,6 +13,11 @@ export const metadata: Metadata = {
     "Gyakorlati esettanulmányok, WordPress fejlesztés, technikai SEO, webshop optimalizálás és AI automatizációs útmutatók Balog Norbert 26 év tapasztalatával.",
   alternates: {
     canonical: "https://webdude.hu/hirek",
+    languages: {
+      "hu-HU": "https://webdude.hu/hirek",
+      "en-US": "https://webdude.hu/en/insights",
+      "x-default": "https://webdude.hu/hirek",
+    },
   },
   openGraph: {
     title: "Szakmai Hírek, SEO és Webfejlesztés Tudásbázis | WebDude",
