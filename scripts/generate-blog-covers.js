@@ -91,6 +91,33 @@ const CATEGORY_THEMES = {
     badgeText: "#67e8f9",
     glowColor: "rgba(6, 182, 212, 0.35)",
   },
+  "Üzlet & Stratégia": {
+    badge: "ÜZLET & STRATÉGIA",
+    primary: "#00B5F1",
+    secondary: "#7C3AED",
+    badgeBg: "rgba(0, 181, 241, 0.16)",
+    badgeBorder: "rgba(124, 58, 237, 0.45)",
+    badgeText: "#38bdf8",
+    glowColor: "rgba(0, 181, 241, 0.38)",
+  },
+  "WordPress & Biztonság": {
+    badge: "WORDPRESS & BIZTONSÁG",
+    primary: "#00B5F1",
+    secondary: "#5B21B6",
+    badgeBg: "rgba(0, 181, 241, 0.15)",
+    badgeBorder: "rgba(0, 181, 241, 0.45)",
+    badgeText: "#38bdf8",
+    glowColor: "rgba(0, 181, 241, 0.35)",
+  },
+  "Webshop & Automatizáció": {
+    badge: "WEBSHOP & ERP",
+    primary: "#10b981",
+    secondary: "#00B5F1",
+    badgeBg: "rgba(16, 185, 129, 0.15)",
+    badgeBorder: "rgba(16, 185, 129, 0.45)",
+    badgeText: "#6ee7b7",
+    glowColor: "rgba(16, 185, 129, 0.35)",
+  },
 };
 
 function escapeXml(unsafe) {

@@ -28,10 +28,16 @@ test.describe("Ügyfélportál (/portal) — auth-fal", () => {
     // A `PageWrapper` `#main-content` területe a DOM-ban van.
     await expect(page.locator("#main-content")).toBeAttached();
 
-    // Pontosan egy H1 van az oldalon (akár sr-only az akadálymentesítésért és SEO-ért)
+    // Pontosan egy H1 van az oldalon: vagy a /portal .sr-only címsora, vagy az /admin/login átirányítás utáni „WebDude Portál” H1
     const h1 = page.locator("h1");
     await expect(h1).toHaveCount(1);
-    await expect(h1).toHaveClass(/sr-only/);
+    await expect
+      .poll(async () => {
+        const cls = (await h1.first().getAttribute("class")) ?? "";
+        const txt = (await h1.first().innerText()).trim();
+        return /sr-only/.test(cls) || txt.includes("WebDude Portál");
+      })
+      .toBe(true);
 
     // A portálnak van látható tartalma (nem üres oldal).
     const text = (await page.locator("body").innerText()).trim();

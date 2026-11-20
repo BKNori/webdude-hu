@@ -164,6 +164,26 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       ),
     },
     {
+      url: `${BASE_URL}/ingyenes-weboldal-elemzes`,
+      lastModified: BUILD_DATE,
+      changeFrequency: "monthly" as const,
+      priority: 0.85,
+      alternates: buildBilingualAlternates(
+        `${BASE_URL}/ingyenes-weboldal-elemzes`,
+        `${BASE_URL}/en/free-website-audit`
+      ),
+    },
+    {
+      url: `${BASE_URL}/en/free-website-audit`,
+      lastModified: BUILD_DATE,
+      changeFrequency: "monthly" as const,
+      priority: 0.85,
+      alternates: buildBilingualAlternates(
+        `${BASE_URL}/ingyenes-weboldal-elemzes`,
+        `${BASE_URL}/en/free-website-audit`
+      ),
+    },
+    {
       url: `${BASE_URL}/munkak`,
       lastModified: BUILD_DATE,
       changeFrequency: "weekly" as const,

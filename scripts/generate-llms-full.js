@@ -146,6 +146,7 @@ function main() {
   lines.push("- **Weboldal (EN):** https://webdude.hu/en");
   lines.push("- **Rólam (HU / EN):** https://webdude.hu/szia-norbi-vagyok | https://webdude.hu/en/about");
   lines.push("- **Ingyenes SEO & AI-Készség Ellenőrző (HU / EN):** https://webdude.hu/ingyenes-seo-aeo-elemzes | https://webdude.hu/en/free-seo-aeo-checker");
+  lines.push("- **Ingyenes 10 Perces Videós UX & SEO Audit (HU / EN):** https://webdude.hu/ingyenes-weboldal-elemzes | https://webdude.hu/en/free-website-audit");
   lines.push("- **Kapcsolat (HU / EN):** https://webdude.hu/kapcsolat | https://webdude.hu/en/contact");
   lines.push("- **Jogi oldalak (HU / EN):** https://webdude.hu/adatvedelmi-szabalyzat | https://webdude.hu/en/privacy-policy | https://webdude.hu/felhasznalasi-feltetelek | https://webdude.hu/en/terms");
   lines.push("- **Email:** hello@webdude.hu | **Telefon:** +36 70 323 8003");

@@ -8,8 +8,8 @@ excerpt: "Lassú vagy feltört WordPress weboldal javítása lépésről lépés
 tldr: "Egy lassú vagy kártevővel fertőzött WordPress weboldal azonnal rontja a Google-helyezéseket és elriasztja a vásárlókat. Súlyos hibánál nem a tüneti bővítmény-telepítés segít, hanem a tiszta forenzikus kármentesítés, a sebezhetőségek lezárása és a Core Web Vitals alapú optimalizálás, amelyet közvetlenül én végzek el egyedi árajánlat alapján."
 noindex: false
 tags: ["WordPress biztonság", "Sebességoptimalizálás", "Malware tisztítás", "Core Web Vitals", "SEO"]
-image: "/assets/blog/covers/2023-05-01-wordpress-oldalak-feltoresenek-lehetseges-modja.webp"
-coverImage: "/assets/blog/covers/2023-05-01-wordpress-oldalak-feltoresenek-lehetseges-modja.webp"
+image: "/assets/blog/covers/2026-11-20-lassu-vagy-feltort-wordpress-weboldal-javitasa.webp"
+coverImage: "/assets/blog/covers/2026-11-20-lassu-vagy-feltort-wordpress-weboldal-javitasa.webp"
 ---
 
 ## Honnan ismered fel, hogy a WordPress weboldalad már bajban van?
@@ -20,12 +20,39 @@ Egy cégvezető sokszor csak akkor szembesül a problémával, amikor egy ügyf�
 
 ## WordPress Diagnosztika: Lassulás vs. Biztonsági Incidens
 
-| Tünet a weboldalon | Valószínű technikai ok | Nálam alkalmazott javítási lépés |
-| :--- | :--- | :--- |
-| **3+ másodperces betöltés (rossz TTFB)** | Túlterhelt adatbázis, bloat bővítmények, hiányzó cache | Szerveroldali cache, autoload tisztítás, SQL indexelés |
-| **Ismeretlen japán vagy gyógyszer-linkek a Google-ben** | Rejtett PHP backdoor vagy ZIP-alapú SEO hack | Kézi fájl-összevetés, fertőzött kód és cron feladat törlése |
-| **Magas CLS és lassú LCP mobilon** | Optimalizálatlan PNG/JPG képek, blokkoló JS/CSS | WebP/AVIF konverzió, CSS/JS halasztás, layout fixálás |
-| **Gyanús admin belépések vagy átirányítás** | Kiszivárgott admin jelszó, nyitott `xmlrpc.php` | Összes jelszó + WP salt csere, tűzfal és 2FA bevezetése |
+<div className="overflow-x-auto my-8">
+  <table className="w-full text-left border-collapse text-sm">
+    <thead>
+      <tr>
+        <th>Tünet a weboldalon</th>
+        <th>Valószínű technikai ok</th>
+        <th>Nálam alkalmazott javítási lépés</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>3+ másodperces betöltés (rossz TTFB)</strong></td>
+        <td>Túlterhelt adatbázis, bloat bővítmények, hiányzó cache</td>
+        <td>Szerveroldali cache, autoload tisztítás, SQL indexelés</td>
+      </tr>
+      <tr>
+        <td><strong>Ismeretlen japán vagy gyógyszer-linkek a Google-ben</strong></td>
+        <td>Rejtett PHP backdoor vagy ZIP-alapú SEO hack</td>
+        <td>Kézi fájl-összevetés, fertőzött kód és cron feladat törlése</td>
+      </tr>
+      <tr>
+        <td><strong>Magas CLS és lassú LCP mobilon</strong></td>
+        <td>Optimalizálatlan PNG/JPG képek, blokkoló JS/CSS</td>
+        <td>WebP/AVIF konverzió, CSS/JS halasztás, layout fixálás</td>
+      </tr>
+      <tr>
+        <td><strong>Gyanús admin belépések vagy átirányítás</strong></td>
+        <td>Kiszivárgott admin jelszó, nyitott <code>xmlrpc.php</code></td>
+        <td>Összes jelszó + WP salt csere, tűzfal és 2FA bevezetése</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 ## Hogyan állítom helyre a fertőzött WordPress oldalakat véglegesen?
 

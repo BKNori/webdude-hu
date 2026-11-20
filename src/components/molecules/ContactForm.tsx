@@ -39,9 +39,15 @@ type ContactFormData = {
 
 interface ContactFormProps {
   dictionary?: ContactFormContent;
+  initialProjectType?: string;
+  initialMessage?: string;
 }
 
-export default function ContactForm({ dictionary }: ContactFormProps) {
+export default function ContactForm({
+  dictionary,
+  initialProjectType = "",
+  initialMessage = "",
+}: ContactFormProps) {
   const contactSchema = React.useMemo(
     () => buildContactSchema(dictionary?.validation),
     [dictionary?.validation]
@@ -58,6 +64,12 @@ export default function ContactForm({ dictionary }: ContactFormProps) {
     getValues,
   } = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      projectType: initialProjectType,
+      message: initialMessage,
+    },
   });
 
   useEffect(() => {

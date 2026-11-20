@@ -8,8 +8,8 @@ excerpt: "WooCommerce webshop ERP, raktárkészlet és számlázás automatizál
 tldr: "Amikor egy WooCommerce webshop eléri a napi több tucat rendelést vagy a több ezres termékszámot, a kézi készletfrissítés és számlázás komoly hibaforrássá válik. Valós ügyfélprojekteken (mint a 3200+ termékes btshop.hu) bizonyított módon építek kétirányú ERP-szinkront, futárszolgálati API-kat és automatizált számlázást egyedi árajánlat alapján."
 noindex: false
 tags: ["WooCommerce", "ERP integráció", "Kulcs-Soft", "Számlázz.hu", "Webshop automatizálás"]
-image: "/assets/blog/covers/2026-11-17-b2b-woocommerce-webshop-erp-szerver-integracio.webp"
-coverImage: "/assets/blog/covers/2026-11-17-b2b-woocommerce-webshop-erp-szerver-integracio.webp"
+image: "/assets/blog/covers/2026-11-20-woocommerce-erp-es-szamlazas-automatizalas.webp"
+coverImage: "/assets/blog/covers/2026-11-20-woocommerce-erp-es-szamlazas-automatizalas.webp"
 ---
 
 ## Hol törik el leggyakrabban egy növekvő webáruház napi folyamata?
@@ -20,12 +20,39 @@ A [3200+ termékes BTShop.hu esettanulmányban](/munkak/btshop) pontosan ezt a p
 
 ## Az automatizált WooCommerce ökoszisztéma 4 alappillére
 
-| Automatizált réteg | Tipikus integrált rendszerek | Mit szüntet meg a gyakorlatban? |
-| :--- | :--- | :--- |
-| **Készlet & Árszinkron (ERP)** | Kulcs-Soft, Billingo, egyedi lokális vagy felhős ERP / XML-CSV | Túladott készletet, elavult árakat, kézi CSV feltöltést |
-| **Automata Számlázás** | Számlázz.hu, Billingo API (előleg, végszámla, sztornó) | Kézi számlaírást és adószám-elgépeléseket |
-| **Logisztika & Címke** | Foxpost, MPL, GLS, Packeta API | Címadatok átmásolását és sorban állást |
-| **Marketing Feed & SEO** | Google Merchant Center XML, GA4, egyedi SEO plugin | Elutasított hirdetéseket és hibás termékstátuszokat |
+<div className="overflow-x-auto my-8">
+  <table className="w-full text-left border-collapse text-sm">
+    <thead>
+      <tr>
+        <th>Automatizált réteg</th>
+        <th>Tipikus integrált rendszerek</th>
+        <th>Mit szüntet meg a gyakorlatban?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Készlet &amp; Árszinkron (ERP)</strong></td>
+        <td>Kulcs-Soft, Billingo, egyedi lokális vagy felhős ERP / XML-CSV</td>
+        <td>Túladott készletet, elavult árakat, kézi CSV feltöltést</td>
+      </tr>
+      <tr>
+        <td><strong>Automata Számlázás</strong></td>
+        <td>Számlázz.hu, Billingo API (előleg, végszámla, sztornó)</td>
+        <td>Kézi számlaírást és adószám-elgépeléseket</td>
+      </tr>
+      <tr>
+        <td><strong>Logisztika &amp; Címke</strong></td>
+        <td>Foxpost, MPL, GLS, Packeta API</td>
+        <td>Címadatok átmásolását és sorban állást</td>
+      </tr>
+      <tr>
+        <td><strong>Marketing Feed &amp; SEO</strong></td>
+        <td>Google Merchant Center XML, GA4, egyedi SEO plugin</td>
+        <td>Elutasított hirdetéseket és hibás termékstátuszokat</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 ## Mire figyelek az egyedi WooCommerce webshop fejlesztésénél?
 

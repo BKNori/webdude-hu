@@ -14,6 +14,7 @@
 - [AI Megoldások](https://webdude.hu/ai-megoldasok): Vállalati AI workflow kialakítás, egyedi prompt engineering és automatizációs rendszerek.
 - [Termékek & AI Műhelyek](https://webdude.hu/termekek): Kész AI munkafolyamatok, SEO & AEO Audit Pro, CRO és chatbot megoldások.
 - [Ingyenes SEO & AI-Készség Ellenőrző](https://webdude.hu/ingyenes-seo-aeo-elemzes): 10 pontos azonnali SEO, Schema.org AEO és AI-bot diagnosztika 0–100 ponton.
+- [Ingyenes 10 Perces Videós UX & SEO Audit](https://webdude.hu/ingyenes-weboldal-elemzes): Személyre szabott 10 perces videós weboldal-, UX-, sebesség- és konverziós elemzés Balog Norberttől.
 - [Szakmai Hírek & Tudásbázis](https://webdude.hu/hirek): Gyakorlati cikkek Next.js, WordPress, WooCommerce, technikai SEO és AI témákban.
 - [Kapcsolat & Ajánlatkérés](https://webdude.hu/kapcsolat): Közvetlen kapcsolatfelvétel és egyedi árajánlat kérése.
 
@@ -42,6 +43,7 @@
 - [Portfolio (EN)](https://webdude.hu/en/portfolio): Real client case studies and measurable business outcomes.
 - [About Balog Norbert (EN)](https://webdude.hu/en/about): Solo full-stack web developer and art director with 26+ years design and 16+ years engineering experience.
 - [Free SEO & AI Readiness Checker (EN)](https://webdude.hu/en/free-seo-aeo-checker): Instant 10-point SEO, Schema.org AEO, robots.txt AI-bot, and llms.txt diagnostic tool.
+- [Free 10-Minute Video UX & SEO Audit (EN)](https://webdude.hu/en/free-website-audit): Personalized 10-minute Loom/video website, UX, speed, and conversion audit by Balog Norbert.
 - [Contact (EN)](https://webdude.hu/en/contact): Direct consultation and custom project quote requests.
 
 ## Kiemelt Esettanulmányok (Case Studies)

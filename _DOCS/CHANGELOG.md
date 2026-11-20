@@ -1,5 +1,13 @@
 # Changelog
 
+## [7.81.0] — 2026-11-20 — BOFU Cikk-Finomítás (JSX Táblázatok + Egyedi Borítók) & Ingyenes 10 Perces Videós Audit Landing (HU + EN)
+
+### Added & Changed
+- **BOFU Cikk-Finomítás (`src/content/blog/2026-11-20-*.mdx` & `scripts/generate-blog-covers.js`):** Mindhárom új BOFU szakcikk Markdown pipe-táblázata Dual Theme kompatibilis JSX `<table>` szerkezetre alakítva, a `CATEGORY_THEMES` bővítve az új kategóriákkal (`Üzlet & Stratégia`, `WordPress & Biztonság`, `Webshop & Automatizáció`), és mind a 31 indexelhető cikk egyedi `1200x630` `.webp` borítója + reszponzív képvariánsai legenerálva.
+- **ContactForm Prefill Propok (`src/components/molecules/ContactForm.tsx`):** Opcionális `initialProjectType` és `initialMessage` propok hozzáadva (megőrizve az URL query alapú előtöltést).
+- **Ingyenes 10 Perces Videós UX & SEO Audit Landing (`src/app/ingyenes-weboldal-elemzes/page.tsx` & `src/app/en/free-website-audit/page.tsx`):** Dedikált, kétnyelvű konverziós oldalpár `SubpageHero`-val, `<DirectAnswerBlock />`-kal, 4 kártyás "Mit kapsz a videóban?" Bento résszel, 3 lépéses folyamattal, előre kitöltött `ContactForm`-mal + másodlagos átjáróval az automata SEO/AEO gyorsellenőrzőre, 4 elemű GYIK-kal, kétirányú `hreflang`-gal, valamint `Service`, `FAQPage` és `BreadcrumbList` JSON-LD sémákkal.
+- **Navigáció, Sitemap, LLM Index & E2E (`src/lib/i18n.ts`, `src/app/sitemap.ts`, `public/llms.txt`, `scripts/generate-llms-full.js`, `e2e/v781-video-audit.spec.ts`):** Az új `/ingyenes-weboldal-elemzes` ↔ `/en/free-website-audit` útvonalpár bekötve a dinamikus nyelvváltóba, a sitemapba és az AI crawler indexekbe; új Playwright E2E teszt az audit landingekre, a nyelvváltásra és a BOFU JSX táblázatra + egyedi borítóra.
+
 ## [7.80.0] — 2026-11-20 — Lead-Mágnes Navigációs Aktiválás & 3 BOFU Ügyfélszerző Szakcikk
 
 ### Hozzáadva
