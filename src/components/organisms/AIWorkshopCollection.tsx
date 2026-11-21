@@ -213,6 +213,29 @@ export default function AIWorkshopCollection() {
           </div>
         )}
 
+        {filteredTools.length === 0 ? (
+          <div className="rounded-3xl border border-[#00B5F1]/25 bg-slate-900/80 p-10 text-center max-w-2xl mx-auto space-y-4 shadow-[0_12px_36px_rgba(0,181,241,0.08)]">
+            <div className="w-12 h-12 rounded-2xl bg-[#00B5F1]/10 border border-[#00B5F1]/30 text-[#00B5F1] flex items-center justify-center mx-auto">
+              <Layers className="w-6 h-6" aria-hidden="true" />
+            </div>
+            <span className="inline-block text-[11px] font-mono font-bold uppercase tracking-widest text-[#a78bfa]">
+              Pro Prompt Stúdió · {activeCategory !== "all" ? CATEGORY_LABELS[activeCategory] : ""}
+            </span>
+            <h2 className="text-xl font-bold text-white font-mono">
+              Építés alatt — hamarosan érkezik a következő stúdió-frissítéssel
+            </h2>
+            <p className="text-sm text-slate-300 leading-relaxed font-sans">
+              Ezen az új szakmai pilléren már aktívan dolgozom. Addig válassz egyet a többi működő stúdiókategória közül azonnali tervezéshez.
+            </p>
+            <button
+              type="button"
+              onClick={() => setActiveCategory("all")}
+              className="inline-flex items-center justify-center rounded-full px-6 py-2.5 text-xs font-bold uppercase tracking-wider text-white bg-linear-to-r from-[#075985] to-[#5B21B6] hover:from-[#0369A1] hover:to-[#6D28D9] transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B5F1]"
+            >
+              Összes eszköz megjelenítése
+            </button>
+          </div>
+        ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredTools.map((tool) => {
             const hasAccess = isAdmin || allowedTools.includes(tool.id);
@@ -308,6 +331,7 @@ export default function AIWorkshopCollection() {
             );
           })}
         </div>
+        )}
       </div>
     </div>
   );

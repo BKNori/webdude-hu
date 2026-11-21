@@ -1,5 +1,14 @@
 # Changelog
 
+## [7.86.0] — 2026-11-21 — Pro Prompt Stúdió Alapmotor & 5-Pilléres Katalógus (1/6. Fázis)
+
+### Added & Changed
+- **Determinisztikus Pro Prompt Engine (`src/lib/prompt-engine/{types,builders,presets,index}.ts`):** 0 ms-os szintaxis-fordító 5 vizuális (`midjourney-v7`, `flux-1-1-pro`, `ideogram-3`, `recraft-v3-svg`, `video-motion`) és 4 strukturált LLM célmotorhoz (`claude-xml`, `chatgpt-markdown`, `gemini-multimodal`, `perplexity-research`), pontos karakter/szó/token-becsléssel (`estimatePromptStats`) és újrahasznosítható chip-készletekkel (a `src/lib/workshop-presets.ts` törése nélkül).
+- **Közös AI Finomító Server Action (`src/actions/prompt-studio-refine.ts`):** `refinePromptStudioAction(input, idToken)` IP rate-limittel, `verifyUserToken` hitelesítéssel, Zod be-/kimeneti validációval, `<untrusted_user_brief>` prompt-injection izolációval, Groq `openai/gpt-oss-120b` JSON generálással (1 mester-prompt + 3 variáció + magyar szakértői tippek) és `ai_generations` Firestore mentéssel (`prompt_studio_<domain>`).
+- **Élő Előnézeti Molekula (`src/components/molecules/LivePromptPreviewCard.tsx`):** Dual Theme + Kék-Lila v7.0 sticky kártya élő karakter/szó/~token számlálóval, 1-kattintásos másolással (`aria-live="polite"`), negatív/guardrail blokkal és opcionális "AI Finomítás & 3 Variáció" vezérlővel (`useReducedMotion`).
+- **5-Pilléres Katalógus (`src/data/ai-workshop-collection-config.ts`, `src/components/organisms/AIWorkshopCollection.tsx`):** Szűrők átszervezve az 5 pillérre (`Online Grafika & Vizuál`, `Offline & Nyomda`, `Ruha & Textil`, `Web & Architektúra`, `Elemzés, SEO & Stratégia`), mind a 18 meglévő generátor besorolva törés nélkül, plusz Kék-Lila „Építés alatt” üres állapot kártya.
+- **Egységtesztek (`src/lib/prompt-engine/__tests__/builders.test.ts`):** Minden vizuális és LLM motor szintaxisa, Flux flag-mentessége, Ideogram idézőjeles szövege, Claude XML blokkjai és a tokenbecslő tesztelve.
+
 ## [7.85.0] — 2026-11-21 — `@sentry/nextjs` Eltávolítása & Fájlok Tisztítása
 
 ### Removed & Changed

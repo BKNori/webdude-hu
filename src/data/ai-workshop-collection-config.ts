@@ -31,7 +31,13 @@ export type ToolType =
   | "project_scope_ai_muhely"
   | "signage_ai_muhely";
 
-export type ToolCategory = "visual" | "web" | "seo" | "strategy" | "all";
+export type ToolCategory =
+  | "online-graphics"
+  | "offline-print"
+  | "apparel-merch"
+  | "software-arch"
+  | "analysis-seo"
+  | "all";
 
 export interface ToolItem {
   id: ToolType;
@@ -44,17 +50,19 @@ export interface ToolItem {
 }
 
 export const CATEGORY_LABELS: Record<Exclude<ToolCategory, "all">, string> = {
-  visual: "Vizuális & Grafika",
-  web: "Web & UI/UX",
-  seo: "SEO & Marketing",
-  strategy: "Stratégia",
+  "online-graphics": "Online Grafika & Vizuál",
+  "offline-print": "Offline & Nyomda",
+  "apparel-merch": "Ruha & Textil",
+  "software-arch": "Web & Architektúra",
+  "analysis-seo": "Elemzés, SEO & Stratégia",
 };
 
 export const CATEGORY_ORDER: Exclude<ToolCategory, "all">[] = [
-  "visual",
-  "web",
-  "seo",
-  "strategy",
+  "online-graphics",
+  "offline-print",
+  "apparel-merch",
+  "software-arch",
+  "analysis-seo",
 ];
 
 export const ADMIN_DEFAULT_ALLOWED_TOOLS: string[] = [
@@ -83,7 +91,7 @@ export const generatorTools: ToolItem[] = [
     description:
       "Fotórealisztikus, 3D renderelt vagy minimalista illusztrációs promptok készítése 2026-os motorokkal.",
     icon: Sparkles,
-    category: "visual",
+    category: "online-graphics",
     features: [
       "Motorválasztó: Midjourney v6.1/v7, Flux.1 Pro, Ideogram 2.0, Recraft v3",
       "8 modern stílusirányzat + optikai preset chipek (85mm, tilt-shift, chiaroscuro)",
@@ -98,7 +106,7 @@ export const generatorTools: ToolItem[] = [
     description:
       "Közösségi média és webáruház bannerek teljes elrendezési terve és promptjai.",
     icon: Layout,
-    category: "visual",
+    category: "online-graphics",
     features: [
       "Elrendezési hierarchia leírása",
       "Pszichológiai színpaletta (HEX)",
@@ -112,7 +120,7 @@ export const generatorTools: ToolItem[] = [
     description:
       "Vektorgrafikus logótervek, modern app ikonok és arculati elemek promptjai.",
     icon: Palette,
-    category: "visual",
+    category: "online-graphics",
     features: [
       "3 különböző design koncepció",
       "Flat vector és letisztult vonalak promptok",
@@ -125,7 +133,7 @@ export const generatorTools: ToolItem[] = [
     name: "UI/UX Wireframe mockup",
     description: "Weboldal szekciók elrendezése és Midjourney UI mockup promptok.",
     icon: Laptop,
-    category: "web",
+    category: "online-graphics",
     features: [
       "Szekciónkénti landing wireframe",
       "Mikro-interakció javaslatok",
@@ -139,7 +147,7 @@ export const generatorTools: ToolItem[] = [
     description:
       "Szezonális akciók kampánygrafikáinak stílusa, hangulata és promptjai.",
     icon: Calendar,
-    category: "visual",
+    category: "online-graphics",
     features: [
       "Szezonális hangulat és vibe leírás",
       "Tematikus színkódok (HEX)",
@@ -153,7 +161,7 @@ export const generatorTools: ToolItem[] = [
     description:
       "Ingatlanbefektetői pitch generálás PDF alaprajzokból és kontextus paraméterekből.",
     icon: Sparkles,
-    category: "strategy",
+    category: "analysis-seo",
     features: [
       "PDF alaprajz elemzés",
       "Strategist-Pro AI workflow",
@@ -168,7 +176,7 @@ export const generatorTools: ToolItem[] = [
     description:
       "Konverziófókuszú banner tervezés Midjourney v6.1/v7 és Flux Pro promptokkal.",
     icon: Layout,
-    category: "visual",
+    category: "online-graphics",
     features: [
       "Midjourney v6.1/v7 és Flux Pro promptok",
       "90/8/2 színarány szabály",
@@ -183,7 +191,7 @@ export const generatorTools: ToolItem[] = [
     description:
       "Egyedi arculattervezés és logo generálás Midjourney v6.1/v7 és Flux Pro promptokkal.",
     icon: Palette,
-    category: "visual",
+    category: "online-graphics",
     features: [
       "Midjourney v6.1/v7 és Flux Pro promptok",
       "Egyedi arculattervezés",
@@ -198,7 +206,7 @@ export const generatorTools: ToolItem[] = [
     description:
       "Milliméter-pontos prepress szórólap- és hajtogatott prospektus tervezés: vágási/kifutós zónák, hajtási mechanika és panelenkénti copywriting.",
     icon: Printer,
-    category: "visual",
+    category: "offline-print",
     features: [
       "8 nyomdai formátum (A5–DL, göngyölt, Z-fold, bi-fold)",
       "Prepress műszaki rajz: bleed, safe zone, TAC, Rich Black",
@@ -213,7 +221,7 @@ export const generatorTools: ToolItem[] = [
     description:
       "FEFCO dobozok, hajtogatott kartonok, rigid box, doypack és palackcímkék: stancrajz-specifikációk, EU compliance és panelenkénti termékterv.",
     icon: Box,
-    category: "visual",
+    category: "offline-print",
     features: [
       "8 ipari struktúra (FEFCO 0427/0201, rigid box, doypack, zsugorfólia)",
       "Dieline & prepress: vágósík, hajtósáv, ragasztófül, szálirány",
@@ -228,7 +236,7 @@ export const generatorTools: ToolItem[] = [
     description:
       "Nyers ügyfél-briefből teljes oldaltérkép, SEO/AEO architektúra, 3 csomagszint és kész árajánlat-kísérőlevél — zéró fix árral.",
     icon: ClipboardList,
-    category: "strategy",
+    category: "software-arch",
     features: [
       "6 projekttípus + 5 technológiai stack + integrációs chipek",
       "6-10 oldalas sitemap H1/Sekció/Schema/AEO specifikációval",
@@ -243,7 +251,7 @@ export const generatorTools: ToolItem[] = [
     description:
       "Nagyformátumú dekoráció- és LFP tervező: méretarányos DPI, dead-zone térképek, RAL/Oracal kódok és távolsági olvashatóság.",
     icon: MonitorPlay,
-    category: "visual",
+    category: "offline-print",
     features: [
       "8 formátum (roll-up, OWV kirakat, autówrap, molinó, sajtófal, dibond)",
       "LFP mérnöki spec: skálamegfeleltetés, holttér, CutContour, fehér tinta",
@@ -258,7 +266,7 @@ export const generatorTools: ToolItem[] = [
     description:
       "Midjourney v6.1/v7 és Flux.1 Pro integráció prémium vizuálokhoz.",
     icon: Sparkles,
-    category: "visual",
+    category: "online-graphics",
     features: [
       "Midjourney v6.1/v7 és Flux.1 Pro",
       "85mm G-Master optika",
@@ -272,7 +280,7 @@ export const generatorTools: ToolItem[] = [
     name: "SEO Audit AI Műhely",
     description: "SEO és AEO audit vizualizáció AI eszközökkel.",
     icon: Laptop,
-    category: "seo",
+    category: "analysis-seo",
     features: [
       "SEO audit vizualizáció",
       "Lighthouse score tracking",
@@ -286,7 +294,7 @@ export const generatorTools: ToolItem[] = [
     name: "Szezonalis AI Műhely",
     description: "Szezonalis grafikai kampányok AI eszközökkel.",
     icon: Calendar,
-    category: "visual",
+    category: "online-graphics",
     features: [
       "Szezonális kampányok",
       "Ünnepi vizuálok",
@@ -300,7 +308,7 @@ export const generatorTools: ToolItem[] = [
     name: "Tartalomtervező AI Műhely",
     description: "Tartalom és vizuális tervezés AI eszközökkel.",
     icon: Layout,
-    category: "seo",
+    category: "analysis-seo",
     features: [
       "Tartalom generálás",
       "Vizuális tervezés",
@@ -314,7 +322,7 @@ export const generatorTools: ToolItem[] = [
     name: "UI/UX AI Műhely",
     description: "UI/UX design és wireframe generálás AI eszközökkel.",
     icon: Laptop,
-    category: "web",
+    category: "online-graphics",
     features: [
       "UI/UX design generálás",
       "Wireframe tervezés",
@@ -328,7 +336,7 @@ export const generatorTools: ToolItem[] = [
     name: "Versenytárs Elemző AI Műhely",
     description: "Versenytárs vizuális elemzés AI eszközökkel.",
     icon: Sparkles,
-    category: "strategy",
+    category: "analysis-seo",
     features: [
       "Versenytárs vizuális elemzés",
       "Design audit",

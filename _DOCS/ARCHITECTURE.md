@@ -1,7 +1,7 @@
 # ARCHITECTURE.md — WebDude Rendszerarchitektúra
 
 **webdude.hu | Next.js 16 · React 19 · TypeScript · Firebase**
-**Utolsó frissítés: 2026-11-21 (7.85.0: `@sentry/nextjs` eltávolítása & `/admin/login` `noindex` layout megőrzése)**
+**Utolsó frissítés: 2026-11-21 (7.86.0: Pro Prompt Stúdió Alapmotor `src/lib/prompt-engine/`, `LivePromptPreviewCard` & 5-Pilléres Katalógus)**
 
 > **7.74.0 (2026-11-20):** Additív SEO / AIO / AEO / GEO & Schema.org Tudásgráf Bővítés:
 >
@@ -549,6 +549,11 @@ Firebase Hosting átirányítás a `firebase.json`-ban:
 
 - **Döntés:** A `@sentry/nextjs` csomag, az `src/instrumentation*.ts`, `sentry.*.config.ts`, `src/lib/sentry.ts` és a hibahatár-fájlok (`src/app/global-error.tsx`, `src/app/error.tsx`) eltávolítása; a `next.config.js`, `src/lib/logger.ts` és `.env.example` visszaállítása a Sentry előtti állapotra. A `src/app/admin/login/layout.tsx` (`robots: { index: false, follow: false }`) SEO védelem szándékosan megmarad.
 - **Indok:** A Sentry hibakövetésre nincs szükség, a strukturált JSON naplózás (`src/lib/logger.ts`) és Firebase Analytics önmagában elegendő.
+
+### ADR-008: Pro Prompt Stúdió Közös Motor & 5-Pilléres Katalógus (`v7.86.0`)
+
+- **Döntés:** Moduláris, 0 ms-os determinisztikus prompt-fordító (`src/lib/prompt-engine/{types,builders,presets,index}.ts`), közös `<LivePromptPreviewCard />` (`src/components/molecules/LivePromptPreviewCard.tsx`) és Groq `openai/gpt-oss-120b` alapú `refinePromptStudioAction` (`src/actions/prompt-studio-refine.ts`) létrehozása `<untrusted_user_brief>` elhatárolással; a `/portal/ai-muhely` katalógus 5 szakmai pillérbe (`online-graphics`, `offline-print`, `apparel-merch`, `software-arch`, `analysis-seo`) rendezése a meglévő 18 generátor `ToolType` kulcsainak és útvonalainak törése nélkül.
+- **Indok:** A tervezett 5 dedikált stúdióoldal közös determinisztikus motorra, token-előnézetre és egységes biztonságos finomító actionre épüljön kódduplikáció nélkül.
 
 ---
 
