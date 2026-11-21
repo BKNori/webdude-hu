@@ -1,5 +1,13 @@
 # Changelog
 
+## [7.84.0] — 2026-11-21 — Produkciós `@sentry/nextjs` Hibakövetés Bekötése
+
+### Added & Changed
+- **`@sentry/nextjs` Integráció (`next.config.js`, `sentry.server.config.ts`, `sentry.edge.config.ts`, `src/instrumentation.ts`, `src/instrumentation-client.ts`):** Next.js 16 kompatibilis kliens-, Node.js szerver- és Edge-inicializálás `onRequestError` (`Sentry.captureRequestError`) és `onRouterTransitionStart` (`Sentry.captureRouterTransitionStart`) hookokkal; a `withSentryConfig` build-time source map feltöltése `SENTRY_AUTH_TOKEN` + `SENTRY_ORG` + `SENTRY_PROJECT` hiányában biztonságosan kikapcsol (`sourcemaps.disable: true`), így a `next build --webpack` / `deploy.bat` 0 hibával fut.
+- **Adatvédelem, PII-Szűrés & Kvótavédelem (`src/lib/sentry.ts`, `.env.example`):** Különválasztott publikus (`NEXT_PUBLIC_SENTRY_DSN`) és szerveroldali (`SENTRY_DSN`, `SENTRY_AUTH_TOKEN`, `SENTRY_ORG`, `SENTRY_PROJECT`) konfiguráció; üres/hiányzó DSN esetén `enabled: false` csendes inaktivitás, `tracesSampleRate: 0.1` produkcióban, `sendDefaultPii: false`, valamint `beforeSend` szűrő a zajos böngészőhibák (`ResizeObserver`, `AbortError`, extension stackek) és érzékeny kulcsok/tokenek/Auth fejlécek/email PII kimaszkolására.
+- **Hibahatárok & Központi Logger (`src/app/global-error.tsx`, `src/app/error.tsx`, `src/lib/logger.ts`, `src/app/admin/login/layout.tsx`):** Gyökér- és útvonalszintű React hibahatárok (`Sentry.captureException(error)` + Dual Theme / Kék-Lila v7.0 fallback UI), a `logger.error` biztonságos összekapcsolása a Sentryvel szanitizált kontextussal (a Firebase Analytics és a strukturált JSON konzolnaplózás változatlan), valamint az `/admin/login` `noindex, nofollow` metaadat pótlása.
+- **Egységtesztek (`src/lib/__tests__/sentry.test.ts`):** DSN nélküli inaktivitás, PII/secret maszkolás, `beforeSend` zaj- és fejléc-szűrés, valamint `logger.error` biztonságos futás tesztelve.
+
 ## [7.83.0] — 2026-11-21 — Önellenzőrzés, Dedikált Angol Cikk-Borítók & Repo-Sterilitás
 
 ### Added & Changed

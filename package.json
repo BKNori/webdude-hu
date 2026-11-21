@@ -22,6 +22,7 @@
     "@ai-sdk/openai": "^3.0.71",
     "@ai-sdk/react": "^3.0.206",
     "@hookform/resolvers": "^3.10.0",
+    "@sentry/nextjs": "^11.16.0",
     "@supabase/supabase-js": "^2.110.5",
     "ai": "^6.0.204",
     "firebase": "^12.14.0",
