@@ -1,5 +1,13 @@
 # Changelog
 
+## [7.88.0] — 2026-11-21 — Offline & Nyomdai Prepress Pro Prompt Stúdió (3/6. Fázis)
+
+### Added & Changed
+- **Nyomdai Prepress Konfiguráció & Dupla Fordító (`src/data/offline-print-studio-config.ts`):** Dupla kimeneti mód (`2d-print-artwork` vs. `3d-print-mockup`), 6 db 1-kattintásos nyomdai preset, 10 kiadvány- és terméktípus (Névjegykártya, Szórólap, A4→LA4 göngyölt 97-100-100 mm prospektus, PUR/Irka katalógus, B1/Citylight plakát, FEFCO stancrajz, tekercses címke, Roll-up 150 mm alsó kazetta-holttérrel, LFP molinó/OWV/autódekor, kreatív papíros étlap/meghívó), 4 CMYK ICC profil (FOGRA39/51/52 + LFP), Rich Black + 100% K Overprint, 7 technikai Spot réteg, 6 hordozó, 6 finishing (0% arany/amber), valamint `compileOfflinePrintPrompt()` és `buildPrepressSpecSummary()` függvények.
+- **Moduláris Prepress Stúdió UI (`src/components/organisms/offline-print-studio/OfflinePrintTechPanel.tsx`, `OfflinePrintForm.tsx`, `src/components/organisms/OfflinePrintPromptStudio.tsx`):** Mindhárom komponens szigorúan <300 sor alatt; élő másolható PDF/X-4 műszaki adatlap kártya + sticky `<LivePromptPreviewCard domain="offline-print" />` és `ToolAccessLock` (`offline_print_prompt_studio`).
+- **Új Portál Route & Katalógus Regisztráció (`src/app/portal/ai-muhely/nyomda-prepress-prompt-studio/page.tsx`, `src/data/ai-workshop-collection-config.ts`, `src/lib/portalConfig.ts`):** Bekötve az `offline-print` pillér élére `PRO PROMPT` jelöléssel.
+- **Egységtesztek (`src/data/__tests__/offline-print-studio-config.test.ts`):** A 6 preset, a 2D vs. 3D mód, a Roll-up 150 mm holttér / Tri-fold 97-100-100 mm / FOGRA52 260% TAC szabályok, a `buildPrepressSpecSummary` és a Flux flag-mentesség tesztelve.
+
 ## [7.87.0] — 2026-11-21 — Online Grafika & Kampány Pro Prompt Stúdió (2/6. Fázis)
 
 ### Added & Changed

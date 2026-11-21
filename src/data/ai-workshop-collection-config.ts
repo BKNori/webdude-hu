@@ -13,6 +13,7 @@ import {
 
 export type ToolType =
   | "online_graphics_prompt_studio"
+  | "offline_print_prompt_studio"
   | "midjourney_prompt"
   | "banner_concept"
   | "logo_designer"
@@ -69,6 +70,8 @@ export const CATEGORY_ORDER: Exclude<ToolCategory, "all">[] = [
 export const ADMIN_DEFAULT_ALLOWED_TOOLS: string[] = [
   "online_graphics_prompt_studio",
   "online-grafika-prompt-studio",
+  "offline_print_prompt_studio",
+  "nyomda-prepress-prompt-studio",
   "banner-ai-muhely",
   "cip-ai-muhely",
   "content-ai-muhely",
@@ -215,6 +218,21 @@ export const generatorTools: ToolItem[] = [
       "Egyedi arculattervezés",
       "Logo generálás",
       "Brand szimbólumok",
+    ],
+  },
+  {
+    id: "offline_print_prompt_studio",
+    slug: "nyomda-prepress-prompt-studio",
+    name: "Offline & Nyomdai Prepress Pro Prompt Stúdió [PRO PROMPT]",
+    description:
+      "Dupla módú (2D nyomdakész grafika + 3D print mockup) prepress stúdió: 10 kiadványtípus, FOGRA39/51/52 TAC, FEFCO stanc, Roll-up holttér és spot rétegek.",
+    icon: Printer,
+    category: "offline-print",
+    features: [
+      "PRO PROMPT: 2D nyomdakész grafikai alap vs. 3D ügyfélprezentációs print mockup",
+      "10 formátum (névjegy, göngyölt 97-100-100 mm, FEFCO stanc, Roll-up 150 mm holttér)",
+      "FOGRA39/51/52 ICC & TAC limit, Rich Black, 100% K Overprint és 7 Spot réteg",
+      "Másolható PDF/X-4 műszaki adatlap + 0 ms élő prompt + Groq 3 variáció",
     ],
   },
   {
