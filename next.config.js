@@ -1,6 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/no-require-imports
-const { withSentryConfig } = require("@sentry/nextjs/config");
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: "standalone", // Enable standalone build for deployment
@@ -138,23 +135,4 @@ const nextConfig = {
   },
 };
 
-const hasSentryUploadConfig = Boolean(
-  process.env.SENTRY_AUTH_TOKEN &&
-  process.env.SENTRY_ORG &&
-  process.env.SENTRY_PROJECT
-);
-
-module.exports = withSentryConfig(nextConfig, {
-  org: process.env.SENTRY_ORG,
-  project: process.env.SENTRY_PROJECT,
-  authToken: process.env.SENTRY_AUTH_TOKEN,
-  silent: !process.env.CI,
-  widenClientFileUpload: true,
-  sourcemaps: {
-    disable: !hasSentryUploadConfig,
-    deleteSourcemapsAfterUpload: true,
-  },
-  bundleSizeOptimizations: {
-    excludeDebugStatements: true,
-  },
-});
+module.exports = nextConfig;

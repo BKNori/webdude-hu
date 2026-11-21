@@ -4,12 +4,8 @@
  * 5 réteg: ServerActions | ApiRoutes | ClientComponents | ErrorHandling | Firestore
  * 4 szint: info | debug (prod-ban elnémítva) | warn | error
  *
- * JSON-alapú strukturált kimenet — Incident Response, Anti-Drain Policy
- * és produkciós Sentry hibakövetés (ha DSN konfigurált) támogatásával.
+ * JSON-alapú strukturált kimenet — Incident Response és Anti-Drain Policy támogatáshoz.
  */
-
-import * as Sentry from '@sentry/nextjs';
-import { getSentryDsn, sanitizeRecord, scrubSensitiveString } from '@/lib/sentry';
 
 type LogLevel = 'info' | 'debug' | 'warn' | 'error';
 
@@ -64,58 +60,20 @@ class Logger {
     error?: unknown,
     options: LogOptions = { layer: 'ErrorHandling' }
   ): void {
-    const safeMeta = options.meta ? sanitizeRecord(options.meta) : undefined;
-    const rawErrorMessage =
-      error instanceof Error ? error.message : error !== undefined ? String(error) : undefined;
     const errorMessage =
-      rawErrorMessage !== undefined ? scrubSensitiveString(rawErrorMessage) : undefined;
-    const stack =
-      error instanceof Error && error.stack
-        ? scrubSensitiveString(error.stack)
-        : undefined;
+      error instanceof Error ? error.message : error !== undefined ? String(error) : undefined;
+    const stack = error instanceof Error ? error.stack : undefined;
 
     console.error(
-      this.formatMessage('error', scrubSensitiveString(message), {
+      this.formatMessage('error', message, {
         ...options,
         meta: {
-          ...safeMeta,
+          ...options.meta,
           ...(errorMessage !== undefined ? { error: errorMessage } : {}),
           ...(stack !== undefined ? { stack } : {}),
         },
       })
     );
-
-    const isServer = typeof window === 'undefined';
-    if (!getSentryDsn(isServer)) {
-      return;
-    }
-
-    try {
-      Sentry.withScope((scope) => {
-        scope.setTag('logger.layer', options.layer);
-        if (safeMeta && Object.keys(safeMeta).length > 0) {
-          scope.setContext('logger_meta', safeMeta);
-        }
-
-        const safeMessage = scrubSensitiveString(message);
-        let capturedError: Error;
-        if (error instanceof Error) {
-          capturedError = new Error(errorMessage ?? safeMessage);
-          capturedError.name = error.name;
-          if (stack) {
-            capturedError.stack = stack;
-          }
-        } else {
-          capturedError = new Error(
-            errorMessage ? `${safeMessage}: ${errorMessage}` : safeMessage
-          );
-        }
-
-        Sentry.captureException(capturedError);
-      });
-    } catch {
-      // A Sentry telemetria hibája sosem akaszthatja meg az alkalmazás naplózását.
-    }
   }
 }
 

@@ -1,5 +1,12 @@
 # Changelog
 
+## [7.85.0] — 2026-11-21 — `@sentry/nextjs` Eltávolítása & Fájlok Tisztítása
+
+### Removed & Changed
+- **Csomag & Konfigurációk eltávolítva:** `npm uninstall @sentry/nextjs`, valamint törölve a `src/lib/sentry.ts`, `sentry.server.config.ts`, `sentry.edge.config.ts`, `src/instrumentation.ts`, `src/instrumentation-client.ts`, `src/app/global-error.tsx`, `src/app/error.tsx` és `src/lib/__tests__/sentry.test.ts` fájlok.
+- **Visszaállított fájlok (`next.config.js`, `src/lib/logger.ts`, `.env.example`):** Eltávolítva a `withSentryConfig` csomagolás, a Sentry híváskövető réteg és a Sentry env sablonváltozók.
+- **Megtartott SEO fix (`src/app/admin/login/layout.tsx`):** Az `/admin/login` útvonal `robots: { index: false, follow: false }` Server Component layout védelme szándékosan megmaradt.
+
 ## [7.84.0] — 2026-11-21 — Produkciós `@sentry/nextjs` Hibakövetés Bekötése
 
 ### Added & Changed

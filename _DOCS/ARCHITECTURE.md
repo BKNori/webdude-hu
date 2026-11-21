@@ -1,7 +1,7 @@
 # ARCHITECTURE.md — WebDude Rendszerarchitektúra
 
 **webdude.hu | Next.js 16 · React 19 · TypeScript · Firebase**
-**Utolsó frissítés: 2026-11-21 (7.84.0: Produkciós `@sentry/nextjs` Hibakövetés, PII/Secret Szűrés & Global Error Boundary)**
+**Utolsó frissítés: 2026-11-21 (7.85.0: `@sentry/nextjs` eltávolítása & `/admin/login` `noindex` layout megőrzése)**
 
 > **7.74.0 (2026-11-20):** Additív SEO / AIO / AEO / GEO & Schema.org Tudásgráf Bővítés:
 >
@@ -369,7 +369,6 @@ Firebase Auth      Felhasználói hitelesítés (aszinkron, loading state kezel�
 Firestore          NoSQL adatbázis, optimalizált single-fetch vagy célzott onSnapshot
 Server Actions     src/actions/portfolio.ts, src/actions/portal.ts, src/actions/ai.ts, src/actions/vault.ts (portfólió CRUD, zárt portál műveletek, élő AI generálás, ügyfélszéf fájlregisztráció)
 Firebase Hosting   Statikus + SSR hosting, firebase.json routing
-Sentry (`@sentry/nextjs`) Hibakövetés (Client + Node + Edge, PII-szűréssel, opcionális DSN & Auth Token mellett csendes fallbackkel)
 deploy.bat         Élesítési szkript – kizárólag a fejlesztő futtatja
 ```
 
@@ -546,11 +545,10 @@ Firebase Hosting átirányítás a `firebase.json`-ban:
 - **Indok:** cacheLife() csak "use cache" függvényen belül hívható, new Date() hívások Server Component-ekben tiltottak, build hibák
 - **Következmény:** 'use cache' direktíva és cacheLife() hívások eltávolítva minden fájlból, build sikeresen lefutott 42/42 oldallal
 
-### ADR-007: Produkciós `@sentry/nextjs` Hibakövetés PII-Szűréssel & Build-Védelemmel (`v7.84.0`)
+### ADR-007: `@sentry/nextjs` Eltávolítása & `/admin/login` `noindex` Megőrzése (`v7.85.0`)
 
-- **Döntés:** `@sentry/nextjs` v11 integráció Next.js 16 natív `src/instrumentation.ts` (`onRequestError`) + `src/instrumentation-client.ts` (`onRouterTransitionStart`) réteggel, `sentry.server.config.ts` és `sentry.edge.config.ts` inicializálással, valamint közös `src/lib/sentry.ts` (`sentryBeforeSend`, `sanitizeRecord`) és `src/lib/logger.ts` (`logger.error`) bekötéssel, illetve `src/app/global-error.tsx` és `src/app/error.tsx` hibahatárokkal.
-- **Indok:** Központi hibakövetés a kliensoldali React hibákhoz és szerveroldali API/Server Action kivételekhez a meglévő Firebase Analytics és `logger.ts` mellett, érzékeny tokenek/PII kiszivárgása nélkül (`sendDefaultPii: false`, `tracesSampleRate: 0.1` produkcióban).
-- **Következmény:** Hiányzó `NEXT_PUBLIC_SENTRY_DSN` / `SENTRY_DSN` esetén a Sentry csendesen inaktív (`enabled: false`), hiányzó `SENTRY_AUTH_TOKEN`/`SENTRY_ORG`/`SENTRY_PROJECT` esetén pedig a `next.config.js` `sourcemaps.disable: true` beállítása garantálja a hibátlan lokális, CI és `deploy.bat` `next build --webpack` futást.
+- **Döntés:** A `@sentry/nextjs` csomag, az `src/instrumentation*.ts`, `sentry.*.config.ts`, `src/lib/sentry.ts` és a hibahatár-fájlok (`src/app/global-error.tsx`, `src/app/error.tsx`) eltávolítása; a `next.config.js`, `src/lib/logger.ts` és `.env.example` visszaállítása a Sentry előtti állapotra. A `src/app/admin/login/layout.tsx` (`robots: { index: false, follow: false }`) SEO védelem szándékosan megmarad.
+- **Indok:** A Sentry hibakövetésre nincs szükség, a strukturált JSON naplózás (`src/lib/logger.ts`) és Firebase Analytics önmagában elegendő.
 
 ---
 
