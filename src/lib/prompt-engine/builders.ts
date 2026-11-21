@@ -79,11 +79,21 @@ export function buildVisualPrompt(
   const baseNegative = normalizeTerms(input.negativeItems, input.customNegative);
   const hexLock = buildHexLockClause(input.brandColorsHex);
 
+  const materialClause =
+    input.materials && input.materials.length > 0
+      ? `Materiality & surface textures: ${input.materials.map((m) => m.trim()).filter(Boolean).join(", ")}`
+      : undefined;
+
   const coreClauses = [
     input.subject.trim(),
     input.styleNotes?.trim(),
     input.composition?.trim(),
+    input.copySpace?.trim(),
+    input.readingPattern?.trim(),
+    input.safeZoneNote?.trim(),
     input.opticsAndLighting?.trim(),
+    materialClause,
+    input.typographyNote?.trim(),
     input.colorPalette?.trim(),
     hexLock,
   ].filter((part): part is string => Boolean(part && part.length > 0));

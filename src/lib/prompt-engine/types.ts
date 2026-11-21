@@ -36,6 +36,11 @@ export interface VisualPromptBuildInput {
   styleNotes?: string;
   opticsAndLighting?: string;
   composition?: string;
+  safeZoneNote?: string;
+  copySpace?: string;
+  readingPattern?: string;
+  typographyNote?: string;
+  materials?: string[];
   colorPalette?: string;
   brandColorsHex?: string[];
   aspectRatio?: string;

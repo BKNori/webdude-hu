@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 
 export type ToolType =
+  | "online_graphics_prompt_studio"
   | "midjourney_prompt"
   | "banner_concept"
   | "logo_designer"
@@ -66,6 +67,8 @@ export const CATEGORY_ORDER: Exclude<ToolCategory, "all">[] = [
 ];
 
 export const ADMIN_DEFAULT_ALLOWED_TOOLS: string[] = [
+  "online_graphics_prompt_studio",
+  "online-grafika-prompt-studio",
   "banner-ai-muhely",
   "cip-ai-muhely",
   "content-ai-muhely",
@@ -84,6 +87,21 @@ export const ADMIN_DEFAULT_ALLOWED_TOOLS: string[] = [
 ];
 
 export const generatorTools: ToolItem[] = [
+  {
+    id: "online_graphics_prompt_studio",
+    slug: "online-grafika-prompt-studio",
+    name: "Online Grafika & Kampány Pro Prompt Stúdió [PRO PROMPT]",
+    description:
+      "5-motoros (Midjourney v7, Flux 1.1 Pro, Ideogram 3.0, Recraft v3 SVG, Videó/Motion) kampány-, hero-, 9:16 Reels safe-zone és ad-prompt tervező élő előnézettel.",
+    icon: Sparkles,
+    category: "online-graphics",
+    features: [
+      "PRO PROMPT: 6 db 1-kattintásos kampány preset + 0 ms élő szintaxis-fordító",
+      "7 platform formátum (16:9 Hero, OG, 4:5 Feed, 9:16 Reels UI safe-zone, YouTube)",
+      "Copy-space, F/Z-pattern tekintetvezetés, WCAG AA kontraszt-zóna és optika",
+      "Anti-AI-Slop negatív szűrő + Kék-Lila HEX paletta-zár + Groq 3 variáció",
+    ],
+  },
   {
     id: "midjourney_prompt",
     slug: "midjourney",

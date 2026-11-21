@@ -79,6 +79,7 @@ export const categoryMap: Record<string, "cro" | "tech" | "ai" | "design"> = {
  * Normál klienseknél a users/{uid}.allowedTools mező dönt.
  */
 export const SUPERADMIN_TOOLS: readonly string[] = [
+  "online_graphics_prompt_studio",
   "product_desc",
   "review_assistant",
   "social_matrix",

@@ -1,5 +1,13 @@
 # Changelog
 
+## [7.87.0] — 2026-11-21 — Online Grafika & Kampány Pro Prompt Stúdió (2/6. Fázis)
+
+### Added & Changed
+- **Online Grafika & Kampány Stúdió Konfiguráció & Mapper (`src/data/online-graphics-studio-config.ts`, `src/lib/prompt-engine/{types,builders}.ts`):** 6 db 1-kattintásos kampány preset (SaaS Web Hero, Reels/TikTok 9:16 Hook, 4:5 Termékreklám, YouTube Thumbnail + felirat, Flat Vektor Szett, Motion 0–3s Hook), 7 platform & safe-zone formátum (9:16 esetén kötelező felső 14% / alsó 22% UI safe-zone védelemmel), copy-space, F/Z-pattern tekintetvezetés, mélységélesség, 8 vizuális stílus, optika, fényfizika, anyagtextúrák, WCAG AA kontraszt-zóna kapcsoló, Anti-AI-Slop szűrő és `compileOnlineGraphicsPrompt()` mapper.
+- **Moduláris Stúdió UI (`src/components/organisms/online-graphics-studio/OnlineGraphicsEnginePanel.tsx`, `OnlineGraphicsForm.tsx`, `src/components/organisms/OnlineGraphicsPromptStudio.tsx`):** Mindhárom komponens <300 sor alatt; motor-specifikus haladó vezérlők (Midjourney `--stylize`/`--chaos`/`--weird`/`--sref`/`--oref`/`--tile`/`--draft`, Ideogram idézőjeles szöveg, Recraft színszám-korlát, Video kamera + 0–3s hook), `ToolAccessLock` (`online_graphics_prompt_studio`), 2-oszlopos Kék-Lila v7.0 Dual Theme elrendezés sticky `<LivePromptPreviewCard />` előnézettel.
+- **Új Portál Route & Katalógus Regisztráció (`src/app/portal/ai-muhely/online-grafika-prompt-studio/page.tsx`, `src/data/ai-workshop-collection-config.ts`, `src/lib/portalConfig.ts`):** Bekötve az `online-graphics` pillér élére `PRO PROMPT` jelöléssel és Superadmin alapértelmezett hozzáféréssel.
+- **Egységtesztek (`src/data/__tests__/online-graphics-studio-config.test.ts`):** A 6 preset, a 9:16 UI safe-zone, a copy-space + WCAG kontraszt, a Midjourney haladó flagek és a Flux flag-mentesség tesztelve.
+
 ## [7.86.0] — 2026-11-21 — Pro Prompt Stúdió Alapmotor & 5-Pilléres Katalógus (1/6. Fázis)
 
 ### Added & Changed
