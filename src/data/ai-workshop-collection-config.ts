@@ -11,6 +11,7 @@ import {
   MonitorPlay,
   Shirt,
   Cpu,
+  SearchCheck,
 } from "lucide-react";
 
 export type ToolType =
@@ -18,6 +19,7 @@ export type ToolType =
   | "offline_print_prompt_studio"
   | "apparel_merch_prompt_studio"
   | "software_arch_prompt_studio"
+  | "analysis_audit_prompt_studio"
   | "midjourney_prompt"
   | "banner_concept"
   | "logo_designer"
@@ -80,6 +82,8 @@ export const ADMIN_DEFAULT_ALLOWED_TOOLS: string[] = [
   "ruha-ai-muhely",
   "software_arch_prompt_studio",
   "szoftver-architektura-ai-muhely",
+  "analysis_audit_prompt_studio",
+  "elemzes-prompt-studio",
   "banner-ai-muhely",
   "cip-ai-muhely",
   "content-ai-muhely",
@@ -181,6 +185,21 @@ export const generatorTools: ToolItem[] = [
       "Szezonális hangulat és vibe leírás",
       "Tematikus színkódok (HEX)",
       "Termék flatlay asset prompt sablon",
+    ],
+  },
+  {
+    id: "analysis_audit_prompt_studio",
+    slug: "elemzes-prompt-studio",
+    name: "Profi Elemzés & Audit Pro Prompt Stúdió [PRO PROMPT]",
+    description:
+      "8-szakterületes bizonyíték-alapú audit stúdió: SEO+AEO+GEO láthatósági elemzés, 7-lépcsős UX/UI & CRO Landing Roast, versenytárs-benchmark, OWASP/CWV kódaudit és GA4/GSC CSV elemzés.",
+    icon: SearchCheck,
+    category: "analysis-seo",
+    features: [
+      "PRO PROMPT: 8 audit terület (SEO/AEO/GEO, 7-Layer UX Roast, Piaci Benchmark, OWASP/CWV, Funnel, Copy, CSV)",
+      "4 prioritási modell (P0–P3 súlyosság, ICE 1–10, RICE, 48h Quick Wins vs. 30–90 nap)",
+      "Kötelező [Bizonyíték → Probléma → Hatás → Javítás] séma + [ELLENŐRIZENDŐ] anti-hallucináció",
+      "<untrusted_audit_asset> prompt-injection védelem + másolható Audit Adatlap + Groq 3 variáció",
     ],
   },
   {

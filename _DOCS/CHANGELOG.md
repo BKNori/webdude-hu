@@ -1,5 +1,13 @@
 # Changelog
 
+## [7.91.0] — 2026-11-21 — Profi Elemzés & Audit Pro Prompt Stúdió + Sablontár Szinkron & Záró E2E (6/6. Fázis)
+
+### Added & Changed
+- **Elemzés & Audit Adatmodulok & Fordítók (`src/data/analysis-studio-options.ts`, `src/data/analysis-studio-config.ts`):** 8 elemzési szakterület (`seo-aeo-geo` különválasztott SEO + AEO + GEO láthatósági rétegekkel, `ux-ui-cro` 7-lépcsős prémium webdesign stack / Landing Roast, `competitor-market` piaci benchmark, `code-security-audit` OWASP ASVS/AISVS & <=300 sor kódaudit, `cwv-performance` LCP/CLS/INP, `campaign-roi-funnel` hirdetés-tölcsér, `copy-ai-slop` AI-klisé kiszűrés, `data-analytics-csv` GA4/GSC CSV elemzés), 5 bemeneti forrás, 4 prioritási keretrendszer (`P0–P3`, `ICE`, `RICE`, `48h Quick Wins vs. 30–90 nap`), 4 workflow/láncolás mód, 8 bizonyíték-kényszer & anti-hallucináció guardrail (`[ELLENŐRIZENDŐ]`, `<untrusted_audit_asset>` izoláció), 6 db 1-kattintásos preset, `compileAnalysisPrompt()` és `buildAuditBriefSummary()`.
+- **Moduláris Stúdió UI (`src/components/organisms/analysis-studio/AnalysisForm.tsx`, `AnalysisTechPanel.tsx`, `src/components/organisms/AnalysisPromptStudio.tsx`):** Mindhárom komponens szigorúan <300 sor alatt; élő másolható Audit Specifikációs Adatlap kártya + `<LivePromptPreviewCard domain="analysis-audit" />` és `ToolAccessLock` (`analysis_audit_prompt_studio`).
+- **Új Portál Route, Katalógus & Sablontár Szinkron (`src/app/portal/ai-muhely/elemzes-prompt-studio/page.tsx`, `src/data/ai-workshop-collection-config.ts`, `src/lib/portalConfig.ts`, `src/app/portal/prompt-sablonok/PromptTemplatesClient.tsx`):** Bekötve az `analysis-seo` kategória élére `PRO PROMPT` jelöléssel, valamint a `/portal/prompt-sablonok` oldal tetejére bekerült az 5-pilléres Pro Prompt Stúdió gyorsindító sáv.
+- **Egységtesztek & Playwright E2E (`src/data/__tests__/analysis-studio-config.test.ts`, `e2e/v791-pro-prompt-studios.spec.ts`):** A 8 szakterület, a SEO/AEO/GEO rétegek, a 7-lépcsős UX roast, az `<untrusted_audit_asset>` és `[ELLENŐRIZENDŐ]` szabályok unit tesztelve; mind az 5 Pro Prompt Stúdió route HTTP 200, `noindex` és `0 pageerror` E2E füstteszttel lefedve.
+
 ## [7.90.0] — 2026-11-21 — Webes & Szoftver-Architektúra & AI Coding Agent Pro Prompt Stúdió (5/6. Fázis)
 
 ### Added & Changed

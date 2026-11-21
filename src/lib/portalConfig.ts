@@ -83,6 +83,7 @@ export const SUPERADMIN_TOOLS: readonly string[] = [
   "offline_print_prompt_studio",
   "apparel_merch_prompt_studio",
   "software_arch_prompt_studio",
+  "analysis_audit_prompt_studio",
   "product_desc",
   "review_assistant",
   "social_matrix",

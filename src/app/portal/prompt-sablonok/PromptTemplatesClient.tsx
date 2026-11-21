@@ -6,7 +6,45 @@ import Link from "next/link";
 import { onAuthStateChanged, signOut, User } from "firebase/auth";
 import { auth } from "@/lib/firebase";
 import { verifyUserToken, getClientUserProfileAction } from "@/actions/portal";
-import { Copy } from "lucide-react";
+import { ArrowRight, Copy, Cpu, Printer, SearchCheck, Shirt, Sparkles } from "lucide-react";
+
+const proPromptStudios = [
+  {
+    slug: "/portal/ai-muhely/online-grafika-prompt-studio",
+    badge: "1. PILLÉR · ONLINE",
+    title: "Online Grafika & Kampány Stúdió",
+    desc: "Midjourney v7, Flux 1.1 Pro, Ideogram 3, Recraft SVG, 9:16 Reels safe-zone.",
+    Icon: Sparkles,
+  },
+  {
+    slug: "/portal/ai-muhely/nyomda-prepress-prompt-studio",
+    badge: "2. PILLÉR · PREPRESS",
+    title: "Offline & Nyomdai Prepress Stúdió",
+    desc: "2D nyomdakész grafika + 3D mockup, FOGRA39/51/52 TAC, FEFCO stanc, PDF/X-4.",
+    Icon: Printer,
+  },
+  {
+    slug: "/portal/ai-muhely/ruha-ai-muhely",
+    badge: "3. PILLÉR · APPAREL",
+    title: "Ruha, Textil & Merch Stúdió",
+    desc: "DTF halo-védelem, 45–55 LPI szita, 3D puff hímzés, 2D CAD Tech Pack + BOM.",
+    Icon: Shirt,
+  },
+  {
+    slug: "/portal/ai-muhely/szoftver-architektura-ai-muhely",
+    badge: "4. PILLÉR · ARCH & AGENTS",
+    title: "Web & Szoftver-Architektúra Stúdió",
+    desc: "C4 Mermaid, PRD/ADR, Firestore/RLS, OWASP AISVS 2026, Coding Agent Sprint.",
+    Icon: Cpu,
+  },
+  {
+    slug: "/portal/ai-muhely/elemzes-prompt-studio",
+    badge: "5. PILLÉR · AUDIT",
+    title: "Profi Elemzés & Audit Stúdió",
+    desc: "SEO+AEO+GEO, 7-lépcsős UX/CRO Roast, Piaci Benchmark, ICE/RICE/P0–P3.",
+    Icon: SearchCheck,
+  },
+] as const;
 
 const promptTemplates = [
   {
@@ -386,9 +424,59 @@ export default function PromptTemplatesClient() {
       </section>
 
       {/* Templates Section */}
-      <section className="relative py-24 bg-bg-base">
-        <div className="max-w-4xl mx-auto px-6">
-          <div className="space-y-8">
+      <section className="relative py-16 md:py-24 bg-bg-base">
+        <div className="max-w-6xl mx-auto px-6 space-y-16">
+          {/* Interaktív Pro Prompt Stúdiók (5 Pillér) Gyorsindító */}
+          <div className="rounded-3xl border border-[#0369A1]/30 dark:border-[#00B5F1]/30 bg-bg-card/90 backdrop-blur-xl p-6 md:p-8 space-y-5">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#00B5F1]">
+                  PRO PROMPT STÚDIÓK · 5 SZAKMAI PILLÉR
+                </span>
+                <h2 className="text-2xl md:text-3xl font-heading text-text-primary mt-1">
+                  Interaktív Pro Prompt Tervezőstúdiók (0 ms élő szintaxis-fordító + Groq 3 variáció)
+                </h2>
+              </div>
+              <Link
+                href="/portal/ai-muhely"
+                className="inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-xs font-semibold text-white bg-linear-to-r from-[#075985] to-[#5B21B6] hover:from-[#0369A1] hover:to-[#6D28D9] transition-all"
+              >
+                Teljes AI Műhely Katalógus
+                <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
+              </Link>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+              {proPromptStudios.map(({ slug, badge, title, desc, Icon }) => (
+                <Link
+                  key={slug}
+                  href={slug}
+                  className="group rounded-2xl border border-slate-700/80 hover:border-[#00B5F1] bg-bg-base/70 p-4 flex flex-col justify-between gap-3 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B5F1]"
+                >
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between gap-2">
+                      <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#00B5F1]">
+                        {badge}
+                      </span>
+                      <Icon className="w-4 h-4 text-[#00B5F1] shrink-0" aria-hidden="true" />
+                    </div>
+                    <h3 className="text-sm font-bold text-text-primary group-hover:text-[#00B5F1] transition-colors">
+                      {title}
+                    </h3>
+                    <p className="text-xs text-text-secondary leading-relaxed">
+                      {desc}
+                    </p>
+                  </div>
+                  <span className="inline-flex items-center gap-1 text-[11px] font-mono font-semibold text-[#00B5F1]">
+                    Stúdió megnyitása
+                    <ArrowRight className="w-3 h-3" aria-hidden="true" />
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <div className="max-w-4xl mx-auto space-y-8">
             {promptTemplates.map((template) => (
               <div
                 key={template.id}
