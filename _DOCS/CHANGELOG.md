@@ -1,5 +1,13 @@
 # Changelog
 
+## [7.90.0] — 2026-11-21 — Webes & Szoftver-Architektúra & AI Coding Agent Pro Prompt Stúdió (5/6. Fázis)
+
+### Added & Changed
+- **Szoftver-Architektúra & Coding Agent Adatmodulok & Fordítók (`src/data/software-arch-studio-options.ts`, `src/data/software-arch-studio-config.ts`):** 7 architektúra fázis (`system-design-c4` C4 Mermaid, `prd-adr` PRD & ADR trade-off mátrix, `data-security` Firestore/PostgreSQL ERD & RBAC/RLS, `api-ai-agent` OWASP ASVS + OWASP AISVS 2026 `<untrusted_data>` izoláció, `frontend-cwv` Atomic Design <=300 sor & CWV/WCAG AA, `coding-agent-sprint` 5-pilléres AI Coding Agent Sprint & `AGENTS.md`, `refactor-migration` 301 migráció & monolit bontás), 6 db 1-kattintásos mérnöki preset, 4 cél-LLM szintaxis (`claude-xml`, `chatgpt-markdown`, `gemini-multimodal`, `perplexity-research`), 14 stack chip, 10 mérnöki guardrail, 5 kimeneti formátum, 3 szigorúsági szint, `compileSoftwareArchPrompt()` és `buildArchBlueprintChecklist()`.
+- **Moduláris Stúdió UI (`src/components/organisms/software-arch-studio/SoftwareArchForm.tsx`, `SoftwareArchTechPanel.tsx`, `src/components/organisms/SoftwareArchPromptStudio.tsx`):** Mindhárom komponens szigorúan <300 sor alatt; élő másolható Architektúra & QA Műszaki Adatlap kártya + `<LivePromptPreviewCard domain="software-arch" />` és `ToolAccessLock` (`software_arch_prompt_studio`).
+- **Új Portál Route & Katalógus Regisztráció (`src/app/portal/ai-muhely/szoftver-architektura-ai-muhely/page.tsx`, `src/data/ai-workshop-collection-config.ts`, `src/lib/portalConfig.ts`):** Bekötve a `software-arch` (`Web & Architektúra`) kategória élére `PRO PROMPT` jelöléssel.
+- **Egységtesztek (`src/data/__tests__/software-arch-studio-config.test.ts`):** A 7 mód, a 6 preset, a `claude-xml` XML blokkok vs. `chatgpt-markdown` / `perplexity-research`, az OWASP AISVS `<untrusted_data>` és `5 clarifying questions` discovery guardrail, a műszaki adatlap és a 0% arany/amber szabály tesztelve.
+
 ## [7.89.0] — 2026-11-21 — Ruha Készítés, Divat, Textil & Merch Pro Prompt Stúdió (4/6. Fázis)
 
 ### Added & Changed

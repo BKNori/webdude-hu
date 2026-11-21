@@ -10,12 +10,14 @@ import {
   ClipboardList,
   MonitorPlay,
   Shirt,
+  Cpu,
 } from "lucide-react";
 
 export type ToolType =
   | "online_graphics_prompt_studio"
   | "offline_print_prompt_studio"
   | "apparel_merch_prompt_studio"
+  | "software_arch_prompt_studio"
   | "midjourney_prompt"
   | "banner_concept"
   | "logo_designer"
@@ -76,6 +78,8 @@ export const ADMIN_DEFAULT_ALLOWED_TOOLS: string[] = [
   "nyomda-prepress-prompt-studio",
   "apparel_merch_prompt_studio",
   "ruha-ai-muhely",
+  "software_arch_prompt_studio",
+  "szoftver-architektura-ai-muhely",
   "banner-ai-muhely",
   "cip-ai-muhely",
   "content-ai-muhely",
@@ -282,6 +286,21 @@ export const generatorTools: ToolItem[] = [
       "Dieline & prepress: vágósík, hajtósáv, ragasztófül, szálirány",
       "Panelenkénti másolat + kötelező EU/jogi szimbólumok",
       "AI packshot/unboxing promptok + 8 pontos prepress checklist",
+    ],
+  },
+  {
+    id: "software_arch_prompt_studio",
+    slug: "szoftver-architektura-ai-muhely",
+    name: "Webes & Szoftver-Architektúra Pro Prompt Stúdió [PRO PROMPT]",
+    description:
+      "7-fázisú szoftvermérnöki és AI Coding Agent stúdió: C4 Mermaid rendszerterv, PRD & ADR döntési mátrix, Firestore/PostgreSQL RBAC, OWASP AISVS 2026 és 5-pilléres Coding Agent Sprint.",
+    icon: Cpu,
+    category: "software-arch",
+    features: [
+      "PRO PROMPT: 7 mérnöki fázis (C4 Mermaid, PRD/ADR, DB/RBAC, OWASP AISVS, CWV, Coding Agent Sprint, Migráció)",
+      "4 Cél-LLM szintaxis (Claude XML, ChatGPT/Codex/Cursor, Gemini/Antigravity, Perplexity Research)",
+      "14 stack chip + 10 mérnöki guardrail (<untrusted_data>, 0 any, <=300 sor, QA Gate, Rollback)",
+      "Élő másolható Architektúra & QA Műszaki Adatlap + Groq 3 variáció",
     ],
   },
   {
