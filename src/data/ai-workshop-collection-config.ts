@@ -9,11 +9,13 @@ import {
   Box,
   ClipboardList,
   MonitorPlay,
+  Shirt,
 } from "lucide-react";
 
 export type ToolType =
   | "online_graphics_prompt_studio"
   | "offline_print_prompt_studio"
+  | "apparel_merch_prompt_studio"
   | "midjourney_prompt"
   | "banner_concept"
   | "logo_designer"
@@ -72,6 +74,8 @@ export const ADMIN_DEFAULT_ALLOWED_TOOLS: string[] = [
   "online-grafika-prompt-studio",
   "offline_print_prompt_studio",
   "nyomda-prepress-prompt-studio",
+  "apparel_merch_prompt_studio",
+  "ruha-ai-muhely",
   "banner-ai-muhely",
   "cip-ai-muhely",
   "content-ai-muhely",
@@ -218,6 +222,21 @@ export const generatorTools: ToolItem[] = [
       "Egyedi arculattervezés",
       "Logo generálás",
       "Brand szimbólumok",
+    ],
+  },
+  {
+    id: "apparel_merch_prompt_studio",
+    slug: "ruha-ai-muhely",
+    name: "Ruha Készítés, Textil & Merch Pro Prompt Stúdió [PRO PROMPT]",
+    description:
+      "3-módú textilipari stúdió: izolált 2D nyomatgrafika (DTF, 45–55 LPI Szita, 3D Hímzés, AOP --tile), 2D CAD Tech Pack szabásrajz + BOM és Lookbook/Ghost Mannequin mockup.",
+    icon: Shirt,
+    category: "apparel-merch",
+    features: [
+      "PRO PROMPT: Textilnyomtatási Grafika vs. 2D CAD Tech Pack vs. Lookbook Mockup",
+      "6 technológia gyártási korlátokkal (DTF halo-védelem, Szita LPI/choke, Hímzés 1.2mm/5mm)",
+      "10 ruhadarab + 6 GSM alapanyag + 5 mosás + 8 konstrukciós/BOM trim",
+      "Sötét alapanyag White Underbase védelem + másolható Tech Pack BOM adatlap",
     ],
   },
   {

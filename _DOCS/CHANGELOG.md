@@ -1,5 +1,13 @@
 # Changelog
 
+## [7.89.0] — 2026-11-21 — Ruha Készítés, Divat, Textil & Merch Pro Prompt Stúdió (4/6. Fázis)
+
+### Added & Changed
+- **Textil, Apparel & Merch Adatmodulok & Fordítók (`src/data/apparel-studio-options.ts`, `src/data/apparel-studio-config.ts`):** 3 szakmai mód (`print-artwork` izolált nyomatgrafika, `garment-tech-pack` 2D CAD Technical Flat Sketch + BOM, `lookbook-mockup` Ghost Mannequin/Flat-Lay/Streetwear/Macro), 6 db 1-kattintásos preset, 6 nyomtatási technológia gyártási szabályokkal (DTF no-glow/no-smoke halo-védelem, DTG knock-out, Szitanyomás 45–55 LPI + 0.25 mm white underbase choke, Hímzés min. 1.2–1.5 mm vonal & 5 mm betű + no-gradient, Szublimáció `--tile`, Flex/Flock), 7 elhelyezési zóna, 10 ruhadarab, 6 GSM anyag, 5 mosás, 8 konstrukciós trim, sötét alapszín white-underbase figyelmeztetés, `compileApparelPrompt()` és `buildApparelSpecSummary()`.
+- **Moduláris Stúdió UI (`src/components/organisms/apparel-studio/ApparelForm.tsx`, `ApparelTechPanel.tsx`, `src/components/organisms/ApparelPromptStudio.tsx`):** Mindhárom komponens <300 sor alatt; élő másolható Textil / Tech Pack BOM adatlap kártya + `<LivePromptPreviewCard domain="apparel-merch" />` és `ToolAccessLock` (`apparel_merch_prompt_studio`).
+- **Új Portál Route & Katalógus Regisztráció (`src/app/portal/ai-muhely/ruha-ai-muhely/page.tsx`, `src/data/ai-workshop-collection-config.ts`, `src/lib/portalConfig.ts`):** Bekötve az `apparel-merch` (`Ruha & Textil`) kategória élére `PRO PROMPT` jelöléssel.
+- **Egységtesztek (`src/data/__tests__/apparel-studio-config.test.ts`):** A 6 preset, a 3 mód, a DTF / Hímzés / Szita / AOP `--tile` gyártási szabályok, a sötét alapú white-underbase figyelmeztetés, a BOM adatlap és a Flux flag-mentesség tesztelve.
+
 ## [7.88.0] — 2026-11-21 — Offline & Nyomdai Prepress Pro Prompt Stúdió (3/6. Fázis)
 
 ### Added & Changed

@@ -81,6 +81,7 @@ export const categoryMap: Record<string, "cro" | "tech" | "ai" | "design"> = {
 export const SUPERADMIN_TOOLS: readonly string[] = [
   "online_graphics_prompt_studio",
   "offline_print_prompt_studio",
+  "apparel_merch_prompt_studio",
   "product_desc",
   "review_assistant",
   "social_matrix",
