@@ -152,7 +152,7 @@ JSON Structure:
   }
 }
 
-All text content must be in Hungarian. Apply WebDude Cyber-Gold identity. Focus on design system best practices, Tailwind CSS v4 integration, and component library architecture. Midjourney prompts must include --v 6.0 --style raw parameters with appropriate aspect ratio (--ar).`;
+All text content must be in Hungarian. Apply WebDude Kék-Lila v7.2 Dual Theme identity. Focus on design system best practices, Tailwind CSS v4 integration, and component library architecture. Midjourney prompts must include --v 6.0 --style raw parameters with appropriate aspect ratio (--ar).`;
 
   // 6. Build User Prompt
   const systemScopeDescriptions: Record<string, string> = {
@@ -181,7 +181,7 @@ Brand Colors: ${validatedInput.brandColors?.join(", ") || "None"}
 Components: ${validatedInput.requiredComponents?.join(", ") || "None"}
 Requirements: ${validatedInput.additionalRequirements || "None"}
 
-Return valid JSON only. Hungarian language. Apply WebDude Cyber-Gold identity. Focus on design system best practices and Tailwind CSS v4 integration.`;
+Return valid JSON only. Hungarian language. Apply WebDude Kék-Lila v7.2 Dual Theme identity. Focus on design system best practices and Tailwind CSS v4 integration.`;
 
   try {
     // 7. Call Groq API

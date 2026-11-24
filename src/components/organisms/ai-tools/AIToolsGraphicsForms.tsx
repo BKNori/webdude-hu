@@ -179,7 +179,7 @@ export default function AIToolsGraphicsForms({
                 className="w-full bg-transparent border border-bg-elevated/80 rounded-xl px-4 py-2.5 text-slate-200 focus:outline-none focus:border-brand-primary transition-colors text-xs font-mono"
                 disabled={loading}
               >
-                <option value="cyber_gold">
+                <option value="kek_lila_dual_theme">
                   Kék-Lila v7.0 (Cyber-Dark / Electric Cyan & Violet)
                 </option>
                 <option value="clean_minimalist">

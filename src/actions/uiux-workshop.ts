@@ -115,7 +115,7 @@ export async function addUiUxWorkshopAction(
 - Section layout optimization
 - Visual hierarchy and spacing principles
 - Color theory and typography selection
-- Cyber-Gold identity integration (90% dark/graphite background, max 2% Cyber-Gold focus)
+- WebDude Kék‑Lila v7.2 Dual Theme integration (balanced dark/light visual balance)
 
 **Web Development:**
 - Next.js 16 and React 19 best practices
@@ -137,7 +137,7 @@ export async function addUiUxWorkshopAction(
 - Hungarian language optimization
 - Professional yet accessible design
 - Conversion-focused layouts
-- Cyber-Gold visual identity
+- Kék-Lila v7.2 Dual Theme visual identity
 - Mobile-first responsive design
 - WCAG AA accessibility compliance
 
@@ -181,7 +181,7 @@ Generate a comprehensive UI/UX plan with the following structure:
    - trustSignals (array of 3-5 trust signal ideas)
    - socialProof (array of 3-5 social proof elements)
 
-Provide the output in structured JSON format with these exact keys. All Figma prompts should be detailed and actionable for designers. Apply WebDude Cyber-Gold identity principles and Hungarian language optimization.`;
+Provide the output in structured JSON format with these exact keys. All Figma prompts should be detailed and actionable for designers. Apply WebDude Kék-Lila v7.2 Dual Theme identity principles and Hungarian language optimization.`;
 
   // 6. Build User Prompt
   const projectTypeDescriptions: Record<string, string> = {

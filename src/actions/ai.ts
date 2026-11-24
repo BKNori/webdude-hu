@@ -185,7 +185,13 @@ export async function generateAIContentAction(
   } else if (validatedCategory === "banner_concept") {
     const topic = validatedInputs.bannerTopic || "";
     const platform = validatedInputs.bannerPlatform || "Facebook Cover";
-    const brandVibe = validatedInputs.bannerBrandVibe || "cyber_gold";
+    const LEGACY_BRAND_VIBE_ALIAS = "cyber_gold"; // LEGACY_BRAND_VIBE_ALIAS
+    const requestedVibe =
+      validatedInputs.bannerBrandVibe || "kek_lila_dual_theme";
+    const brandVibe =
+      requestedVibe === LEGACY_BRAND_VIBE_ALIAS
+        ? "kek_lila_dual_theme"
+        : requestedVibe;
 
     systemPrompt =
       "You are an Elite CRO (Conversion Rate Optimization) Art Director. Based on the user's business type and campaign goal, design a complete high-converting banner concept (e.g., Facebook Cover, Instagram Post, LinkedIn Banner, Webshop Hero).\nYour output must contain:\n1. **Vizuális Elrendezés (Layout Hierarchy):** Detailed description of the element placements (where the text goes, where the button goes, where the main subject is placed for optimal eye-tracking).\n2. **Konverziós Színpaletta (HEX):** 3-4 specific hex codes (Base, Surface, Accent/CTA, Text) that drive action based on color psychology.\n3. **Copywriting Javaslatok (Magyarul):\n- Primary Headline (Max 5-7 words, high emotional impact)\n- Secondary Subtitle (Supporting value proposition)\n- CTA Button Text (Action-oriented, e.g., 'Kérem a kedvezményt!')\n4. **Képgeneráló Prompt (DALL-E 3 / Midjourney):** A detailed English prompt to generate the perfect background image that fits this banner layout.";
@@ -203,7 +209,7 @@ export async function generateAIContentAction(
     const pageType = validatedInputs.uiPageType || "";
 
     systemPrompt =
-      "You are a Senior UI/UX Designer. Based on the user's target audience and webpage type, outline a conversion-optimized wireframe.\nOutput must contain:\n1. **Szekcióról-szekcióra haladó felépítés:** A step-by-step wireframe structure (from Hero to Footer) detailing what content goes where.\n2. **Interaktivitási Javaslatok:** Micro-interactions, hover effects, and scroll-driven animation ideas.\n3. **UI Mockup Prompt:** A professional English Midjourney prompt to generate a beautiful, modern UI screen concept (e.g., 'premium dark mode web UI, SaaS dashboard, cyber-gold accents, clean grid, Figma design style --ar 16:9').";
+      "You are a Senior UI/UX Designer. Based on the user's target audience and webpage type, outline a conversion-optimized wireframe.\nOutput must contain:\n1. **Szekcióról-szekcióra haladó felépítés:** A step-by-step wireframe structure (from Hero to Footer) detailing what content goes where.\n2. **Interaktivitási Javaslatok:** Micro-interactions, hover effects, and scroll-driven animation ideas.\n3. **UI Mockup Prompt:** A professional English Midjourney prompt to generate a beautiful, modern UI screen concept (e.g., 'premium dark mode web UI, SaaS dashboard, blue-violet (#00B5F1 / #5B21B6) accents, clean grid, Figma design style --ar 16:9').";
     userPrompt = `Design UI wireframe & mockup concept for:\nPage Type: ${pageType}\nTarget Audience: ${targetAudience}`;
   } else if (validatedCategory === "seasonal_campaign_designer") {
     const season = validatedInputs.campaignSeason || "";

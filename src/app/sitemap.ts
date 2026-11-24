@@ -5,6 +5,7 @@ import { CATALOG_PRODUCTS } from "@/data/products-catalog";
 import { getAllPosts, getCombinedBlogPosts } from "@/lib/mdx";
 
 export const BASE_URL = "https://webdude.hu";
+const BASE_ORIGIN = new URL(BASE_URL).origin;
 
 type ChangeFreq = NonNullable<MetadataRoute.Sitemap[number]["changeFrequency"]>;
 
@@ -54,6 +55,8 @@ const EXCLUDED_EXACT_PATHS = new Set<string>([
   "/szolgaltatasok/weboldal-keszites-kecskemet",
   "/szolgaltatasok/wordpress-weboldal-keszites-kecskemet",
   "/szolgaltatasok/wordpress-virusirtas-es-biztonsag",
+  // Régi elírás: 301 → /termekek/versenytars-elemzo-ai-muhely (next.config.js redirects).
+  // A helyes, létező termékoldal (versenytars-...) NEM kizárt.
   "/termekek/versenytares-elemzo-ai-muhely",
 ]);
 
@@ -269,14 +272,17 @@ export function sanitizeSitemapEntries(
   const uniqueByUrl = new Map<string, MetadataRoute.Sitemap[number]>();
 
   for (const entry of entries) {
+    let parsed: URL;
+    try {
+      parsed = new URL(entry.url);
+    } catch {
+      continue;
+    }
+    if (parsed.origin !== BASE_ORIGIN || parsed.protocol !== "https:") continue;
+
     const normalizedUrl =
-      entry.url === `${BASE_URL}/`
-        ? BASE_URL
-        : entry.url.replace(/\/+$/, "");
-
-    if (!normalizedUrl.startsWith(BASE_URL)) continue;
-
-    const pathname = normalizedUrl.slice(BASE_URL.length) || "/";
+      parsed.pathname === "/" ? BASE_URL : `${BASE_URL}${parsed.pathname.replace(/\/+$/, "")}`;
+    const pathname = parsed.pathname.replace(/\/+$/, "") || "/";
     const isDisallowedPrefix = DISALLOWED_PATH_PREFIXES.some(
       (prefix) => pathname === prefix || pathname.startsWith(`${prefix}/`)
     );

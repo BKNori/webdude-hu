@@ -1,5 +1,17 @@
 # Changelog
 
+## [7.97.0] — 2026-11-24 — P1 SSRF-védelem, Cyber-Gold prompt-tisztítás, Sitemap origin-hardening
+
+### Security
+- **SSRF-védelem (`src/lib/safe-fetch.ts`, `src/lib/ai-tools.ts`):** Új, 0 függőséges `safeFetchText()` — minden hopon (max 3, `redirect: "manual"`) kizárólag http/https, credential- és localhost/.local/.internal-mentes URL; `dns.lookup({ all: true })` utáni IPv4 (`>>> 0` maszkolás) és teljes 128-bites BigInt IPv6 ellenőrzés (::, ::1, fc00::/7, fe80::/10, ff00::/8, IPv4-mapped, NAT64); `AbortSignal.timeout(8000)`; streamelt, 1 MiB-ra korlátozott body. A `fetchUrlContent` ezt hívja (SEO-audit, versenytárselemzés).
+
+### Changed
+- **Elavult Cyber-Gold / Cyber-Arany promptok** közvetlen átírása Kék-Lila v7.2 Dual Theme irányelvre (`src/actions/*.ts`, `src/lib/ai-tools.ts`); `bannerBrandVibe` alapértelmezés: `kek_lila_dual_theme` (a régi `cyber_gold` csak visszafelé kompatibilis input-alias).
+- **Sitemap (`src/app/sitemap.ts`):** pontos `new URL()` origin + https ellenőrzés a `startsWith` helyett; a `versenytares-...` 301-es elírás kizárása dokumentálva (a helyes `versenytars-...` termék indexelt marad).
+
+### Tests
+- `safe-fetch.test.ts`, `prompt-brand-consistency.test.ts`, `jsonld-xss.test.ts`, `sitemap-redirects.test.ts` (100% offline); sitemap minimum 130 URL.
+
 ## [7.96.0] — 2026-11-24 — `/portal/ai-muhely` & Összes AI Műhely Aloldal Egységes Fejléc (0 Dupla Header) + Teljes DDR-006 v7.2 Dual Theme Konszolidáció
 
 ### Fixed & Changed

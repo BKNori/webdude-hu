@@ -1,3 +1,5 @@
+import { safeFetchText } from "./safe-fetch";
+
 /**
  * AI Tools Utility Library
  * Centralized logic for AI-powered SEO audit, content planning, and competitor analysis tools.
@@ -66,18 +68,12 @@ export interface CompetitorAnalysisResult {
  */
 export async function fetchUrlContent(url: string): Promise<string> {
   try {
-    const response = await fetch(url, {
+    return await safeFetchText(url, {
       headers: {
         "User-Agent":
           "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
       },
     });
-
-    if (!response.ok) {
-      throw new Error(`Failed to fetch URL: ${response.status}`);
-    }
-
-    return await response.text();
   } catch (error) {
     throw new Error(
       `URL fetch error: ${error instanceof Error ? error.message : "Unknown error"}`
@@ -337,7 +333,7 @@ Válaszodat strukturált JSON formátumban add meg:
   "suggestedKeywords": ["kulcsszó1", ...]
 }
 
-A tartalmak legyenek a "Cyber-Arany" stílusban: prémium, szakmai, de közvetlen hangnemben.
+A tartalmak legyenek a "Kék-Lila v7.2 Dual Theme" stílusban: prémium, szakmai, de közvetlen hangnemben.
 `;
 }
 

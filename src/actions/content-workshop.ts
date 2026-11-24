@@ -114,7 +114,7 @@ export async function addContentWorkshopAction(
 - Color theory and palette selection
 - Typography and readability optimization
 - Image selection and visual storytelling
-- Cyber-Gold identity integration (90% dark/graphite background, max 2% Cyber-Gold focus)
+- Kék-Lila v7.2 Dual Theme integration (Luminous Daylight + Luminous Slate; accents #0369A1 / #00B5F1 / #5B21B6)
 
 **Content Types:**
 - Blog posts and articles
@@ -134,7 +134,7 @@ export async function addContentWorkshopAction(
 - Hungarian language optimization
 - Professional yet accessible tone
 - Conversion-focused CTAs
-- Cyber-Gold visual identity
+- Kék-Lila v7.2 Dual Theme visual identity
 - Mobile-first content structure
 
 **Output Requirements:**
@@ -177,7 +177,7 @@ Generate a comprehensive content plan with the following structure:
    - contentTypes (array of content type suggestions)
    - distributionChannels (array of recommended channels)
 
-Provide the output in structured JSON format with these exact keys. All content should be in Hungarian, tailored to the WebDude Cyber-Gold identity, and optimized for conversions.`;
+Provide the output in structured JSON format with these exact keys. All content should be in Hungarian, tailored to the WebDude Kék-Lila v7.2 Dual Theme identity, and optimized for conversions.`;
 
   // 6. Build User Prompt
   const contentTypeDescriptions: Record<string, string> = {
@@ -218,7 +218,7 @@ Keywords: ${validatedInput.keywords}
 Call to Action: ${validatedInput.callToAction || "None specified"}
 Additional Requirements: ${validatedInput.additionalRequirements || "None"}
 
-Apply Norbi's 16+ years content strategy and visual design expertise with focus on structured content and visual design planning. Optimize for WebDude Cyber-Gold identity and Hungarian language.`;
+Apply Norbi's 16+ years content strategy and visual design expertise with focus on structured content and visual design planning. Optimize for WebDude Kék-Lila v7.2 Dual Theme identity and Hungarian language.`;
 
   try {
     // 7. Call Groq API

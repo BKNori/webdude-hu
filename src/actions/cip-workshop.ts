@@ -171,7 +171,7 @@ JSON Structure:
   }
 }
 
-All text content must be in Hungarian. Apply WebDude Cyber-Gold identity. Focus on print-ready specifications (CMYK, bleed, safe zone) and professional corporate identity standards. Midjourney prompts must include --v 6.0 --style raw parameters with appropriate aspect ratio (--ar).`;
+All text content must be in Hungarian. Apply WebDude Kék-Lila v7.2 Dual Theme identity. Focus on print-ready specifications (CMYK, bleed, safe zone) and professional corporate identity standards. Midjourney prompts must include --v 6.0 --style raw parameters with appropriate aspect ratio (--ar).`;
 
   // 6. Build User Prompt
   const cipElementDescriptions: Record<string, string> = {
@@ -204,7 +204,7 @@ Brand Colors: ${validatedInput.brandColors?.join(", ") || "None"}
 Required Elements: ${JSON.stringify(validatedInput.requiredElements)}
 Requirements: ${validatedInput.additionalRequirements || "None"}
 
-Return valid JSON only. Hungarian language. Apply WebDude Cyber-Gold identity. Focus on professional corporate identity standards and print-ready specifications.`;
+Return valid JSON only. Hungarian language. Apply WebDude Kék-Lila v7.2 Dual Theme identity. Focus on professional corporate identity standards and print-ready specifications.`;
 
   try {
     // 7. Call Groq API

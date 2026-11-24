@@ -123,7 +123,7 @@ export async function addSeasonalWorkshopAction(
 - Seasonal color palettes and imagery
 - Mood board creation
 - Composition and layout optimization
-- Cyber-Gold identity integration (90% dark/graphite background, max 2% Cyber-Gold focus)
+- Kék-Lila v7.2 Dual Theme integration (Luminous Daylight + Luminous Slate; accents #0369A1 / #00B5F1 / #5B21B6)
 - Midjourney prompt engineering for seasonal visuals
 
 **Copywriting:**
@@ -151,7 +151,7 @@ export async function addSeasonalWorkshopAction(
 - Hungarian language optimization
 - Professional yet engaging tone
 - Conversion-focused campaigns
-- Cyber-Gold visual identity
+- Kék-Lila v7.2 Dual Theme visual identity
 - Mobile-first approach
 - Seasonal urgency and FOMO tactics
 
@@ -197,7 +197,7 @@ Generate a comprehensive seasonal campaign plan with the following structure:
    - launch (array of 3-5 launch day activities)
    - postLaunch (array of 3-5 post-launch follow-ups)
 
-Provide the output in structured JSON format with these exact keys. All content should be in Hungarian, tailored to the WebDude Cyber-Gold identity, and optimized for conversions. Apply seasonal urgency and engagement tactics.`;
+Provide the output in structured JSON format with these exact keys. All content should be in Hungarian, tailored to the WebDude Kék-Lila v7.2 Dual Theme identity, and optimized for conversions. Apply seasonal urgency and engagement tactics.`;
 
   // 6. Build User Prompt
   const seasonDescriptions: Record<string, string> = {

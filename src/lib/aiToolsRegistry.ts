@@ -71,7 +71,7 @@ export const DEFAULT_AI_TOOL_FORM_VALUES: ClientAIToolFormValues = {
   imgMood: "dramatic",
   bannerTopic: "",
   bannerPlatform: "Facebook Cover",
-  bannerBrandVibe: "cyber_gold",
+  bannerBrandVibe: "kek_lila_dual_theme",
   logoBrandName: "",
   logoIndustry: "",
   logoCoreValues: "",
@@ -195,7 +195,7 @@ export const graphicsTemplates: Record<ToolType, TemplateDef[]> = {
       values: {
         bannerTopic: "Black Friday 50% off on all AI services",
         bannerPlatform: "Facebook Cover",
-        bannerBrandVibe: "cyber_gold",
+        bannerBrandVibe: "kek_lila_dual_theme",
       },
     },
     {

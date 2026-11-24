@@ -73,7 +73,7 @@ describe("SSOT Sitemap (src/app/sitemap.ts) — v7.94.0 regressziós teszt", () 
     const urlSet = new Set(urls);
 
     // 1. Legalább 100+ egyedi URL (konkrétan 130), 0 duplikáció
-    expect(entries.length).toBeGreaterThanOrEqual(115);
+    expect(entries.length).toBeGreaterThanOrEqual(130);
     expect(urlSet.size).toBe(entries.length);
 
     for (const url of urls) {

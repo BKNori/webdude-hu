@@ -58,7 +58,7 @@ const bannerWorkshopSchema = z.object({
 /**
  * Server Action to generate Banner AI Műhely content using Groq API.
  * Implements Norbi's 26-year graphic design and conversion vision:
- * 90% dark/graphite background, maximum 2% Cyber-Gold focus, perfect typographic contrast.
+ * 90% dark/graphite background, maximum 2% Kék-Lila v7.2 Dual Theme focus, perfect typographic contrast.
  */
 export async function addBannerGenerationAction(
   idToken: string,
@@ -180,7 +180,7 @@ MIDJOURNEY PARAMETERS (v6.0):
 - Lighting: --volumetric, --cinematic, --golden-hour
 - Focus: --depth of field, --macro, --wide-angle
 
-All text content must be in Hungarian. Apply WebDude Cyber-Gold identity (90% dark background, max 2% gold focus). Focus on conversion optimization and visual hierarchy. Midjourney prompts MUST include: --v 6.0 --style raw --ar [aspect_ratio] --quality 2 --stylize 250 --volumetric lighting parameters.`;
+All text content must be in Hungarian. Apply WebDude Kék-Lila v7.2 Dual Theme identity (90% dark background, max 2% gold focus). Focus on conversion optimization and visual hierarchy. Midjourney prompts MUST include: --v 6.0 --style raw --ar [aspect_ratio] --quality 2 --stylize 250 --volumetric lighting parameters.`;
 
   // 6. Build User Prompt
   const platformDescriptions: Record<string, string> = {

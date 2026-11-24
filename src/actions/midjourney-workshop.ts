@@ -125,8 +125,8 @@ export async function addMidjourneyGenerationAction(
 - Recraft v3: tiszta vektoros SVG stílus, skálázható, nyomdai minőség
 
 **Visual Design Philosophy:**
-- WebDude Cyber-Gold identity integration
-- 90% dark/graphite background, maximum 2% Cyber-Gold focus
+- WebDude Kék-Lila v7.2 Dual Theme identity integration
+- Luminous Daylight + Luminous Slate surfaces, accents #0369A1 / #00B5F1 / #5B21B6
 - Perfect typographic contrast (WCAG AA compliant)
 - Professional visual hierarchy
 

@@ -18,7 +18,7 @@ export async function sendWelcomeEmailAction(
     };
   }
 
-  // Create Cyber-Arany HTML template
+  // Create Kék-Lila HTML template
   const htmlContent = `
 <!DOCTYPE html>
 <html>
