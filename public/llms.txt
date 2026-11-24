@@ -32,6 +32,23 @@
 - [AI Prompt Engineering](https://webdude.hu/szolgaltatasok/ai-prompt-engineering): Megbízható, strukturált LLM munkafolyamatok üzleti folyamatokra.
 - [Weboldal készítés Kecskeméten](https://webdude.hu/weboldal-keszites-kecskemet): Helyi fókuszú webfejlesztés és személyes konzultáció Kecskeméten és Bács-Kiskun vármegyében.
 
+## Termékek & Prémium AI Műhelyek (HU)
+
+- [AI Műhely Katalógus](https://webdude.hu/termekek/ai-muhely): Ötpilléres prémium AI tervezőstúdió online grafikához, nyomdai prepresshez, textilhez, architektúrához és SEO/AEO elemzéshez.
+- [AI Workflow Starter Pack](https://webdude.hu/termekek/ai-workflow-starter-pack): Testreszabható vállalati AI munkafolyamatok email kampányok, lead-minősítés és marketinganyagok automatizálásához.
+- [SEO & AEO Audit Pro](https://webdude.hu/termekek/seo-audit-pro): Szakértői technikai SEO, Core Web Vitals, Schema.org és AI válaszmotor (ChatGPT, Perplexity, Gemini) diagnosztika.
+- [CRO Booster Kit](https://webdude.hu/termekek/cro-booster-kit): Konverzió-optimalizáló rendszer A/B teszteléssel, hőtérképes elemzéssel és ügyfélút-tervezéssel.
+- [AI Chatbot Starter](https://webdude.hu/termekek/ai-chatbot-starter): Saját céges tudásbázisra tanított, magyar nyelvű 24/7 ügyfélszolgálati és lead-minősítő AI chatbot.
+- [Kristófka Munkafolyamat](https://webdude.hu/termekek/kristofka-munkafolyamat): Többágenses Strategist-Pro AI workflow PDF alaprajzok elemzéséhez és befektetői pitch készítéséhez.
+- [Logo AI Műhely](https://webdude.hu/termekek/logo-ai-muhely): Egyedi arculattervezés és Midjourney v6 Master logó-koncepció generátor nyomdakész kivitelhez.
+- [Banner AI Műhely](https://webdude.hu/termekek/banner-ai-muhely): Konverziófókuszú webes és social kampánybanner tervezés 90/8/2 színhierarchiával és 4K kimenettel.
+- [Midjourney AI Műhely](https://webdude.hu/termekek/midjourney-ai-muhely): Fotórealisztikus termékfotó és márkavizuál prompt-stúdió 85mm G-Master optikával és chiaroscuro fényeléssel.
+- [SEO Audit AI Műhely](https://webdude.hu/termekek/seo-audit-ai-muhely): Technikai SEO, Core Web Vitals és AEO/GEO diagnosztikai prompt-generátor modul.
+- [Szezonális AI Műhely](https://webdude.hu/termekek/szezonalis-ai-muhely): Karácsonyi, Black Friday és szezonnyitó kampányvizuálok tervezése Midjourney v6 Master promptokkal.
+- [Tartalomtervező AI Műhely](https://webdude.hu/termekek/tartalomtervezo-ai-muhely): SEO- és AEO-optimalizált blogposztok, landing oldalak és social media tartalmak előkészítése.
+- [UI/UX AI Műhely](https://webdude.hu/termekek/ui-ux-ai-muhely): Konverziófókuszú reszponzív wireframe és felületi koncepció tervezés WCAG AA ergonómiával.
+- [Versenytárs Elemző AI Műhely](https://webdude.hu/termekek/versenytars-elemzo-ai-muhely): Vizuális, UX és CRO benchmarking piaci versenytársak ellen akcióképes stratégiával.
+
 ## English Pages (EN)
 
 - [WebDude English Home](https://webdude.hu/en): Custom Next.js 16 web development, AI workflow automation, SEO/AEO and graphic design by Balog Norbert (26+ years design, 16+ years dev).

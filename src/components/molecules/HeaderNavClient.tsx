@@ -477,10 +477,10 @@ export default function HeaderNavClient({
               Vékony, diszkrét sáv a fejléc legtetején: a „Hírek" és az
               „Ügyfélportál" linkjeivel. */}
         <div
-          className={`hidden lg:block transition-[max-height,opacity,border-color] duration-300 ease-in-out overflow-hidden border-b ${
+          className={`hidden lg:block transition-[max-height,opacity,border-color] duration-300 ease-in-out border-b ${
             showTopBar
-              ? "max-h-9 opacity-100 border-slate-200/80 dark:border-white/8 bg-slate-100/90 dark:bg-[#070C1A]/85"
-              : "max-h-0 opacity-0 border-transparent bg-transparent pointer-events-none"
+              ? "relative z-50 overflow-visible max-h-12 opacity-100 border-slate-200/80 dark:border-white/8 bg-slate-100/90 dark:bg-[#070C1A]/85"
+              : "overflow-hidden max-h-0 opacity-0 border-transparent bg-transparent pointer-events-none"
           }`}
         >
           <div className="max-w-7xl mx-auto px-4 md:px-6 h-9 flex items-center justify-end gap-6">
@@ -976,7 +976,7 @@ export default function HeaderNavClient({
             >
               <div className="mb-4 flex items-center justify-between gap-3">
                 <div className="flex-1 min-w-0">
-                  <AuthStatusBadge variant="mobile" />
+                  <AuthStatusBadge variant="mobile" onNavigate={closeMenu} />
                 </div>
                 <ThemeToggle variant="capsule" lang={actualLang} />
               </div>

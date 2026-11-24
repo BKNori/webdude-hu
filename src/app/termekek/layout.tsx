@@ -1,10 +1,28 @@
 import type { Metadata } from "next";
-import { buildBreadcrumbSchema } from "@/lib/breadcrumb";
 
+/**
+ * `/termekek` metaadat réteg (Server Layout).
+ * - Title: 55 karakter (50–60 kar. tartomány)
+ * - Description: 151 karakter (150–160 kar. tartomány)
+ * - Országos/online fókusz a látható meta szövegekben, Zéró Fix Ár.
+ * - A gyűjtőoldal JSON-LD sémái (`CollectionPage`, `ItemList`, `BreadcrumbList`,
+ *   `FAQPage`) a `src/app/termekek/page.tsx`-ben renderelődnek, hogy ne
+ *   öröklődjenek le duplikátumként a `/termekek/<slug>` gyermekoldalakra.
+ */
 export const metadata: Metadata = {
-  title: "Prémium AI & Automatizációs Megoldások | WebDude",
+  title: "Prémium AI Eszközök, Műhelyek & Automatizáció | WebDude",
   description:
     "Prémium AI munkafolyamatok, automatizációs eszközök, CRO megoldások és AI műhely modulok KKV-knak. Egyedi árajánlat kérése a projekted igényei szerint.",
+  keywords: [
+    "AI megoldások vállalkozásoknak",
+    "AI munkafolyamat automatizáció",
+    "WebDude AI Műhely",
+    "SEO és AEO audit",
+    "CRO optimalizálás",
+    "magyar AI chatbot",
+    "Midjourney prompt generátor",
+    "vállalati AI eszközök online",
+  ],
   robots: {
     index: true,
     follow: true,
@@ -13,7 +31,7 @@ export const metadata: Metadata = {
     canonical: "https://webdude.hu/termekek",
   },
   openGraph: {
-    title: "Prémium AI & Automatizációs Megoldások | WebDude",
+    title: "Prémium AI Eszközök, Műhelyek & Automatizáció | WebDude",
     description:
       "Prémium AI munkafolyamatok, automatizációs eszközök, CRO megoldások és AI műhely modulok KKV-knak. Egyedi árajánlat kérése a projekted igényei szerint.",
     url: "https://webdude.hu/termekek",
@@ -23,7 +41,7 @@ export const metadata: Metadata = {
         url: "/og/webdude-og.jpg",
         width: 1200,
         height: 630,
-        alt: "Prémium AI & Automatizációs Megoldások",
+        alt: "Prémium AI Eszközök, Műhelyek és Automatizáció — WebDude",
       },
     ],
     locale: "hu_HU",
@@ -31,59 +49,17 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Prémium AI & Automatizációs Megoldások | WebDude",
+    title: "Prémium AI Eszközök, Műhelyek & Automatizáció | WebDude",
     description:
       "Prémium AI munkafolyamatok, automatizációs eszközök, CRO megoldások és AI műhely modulok KKV-knak. Egyedi árajánlat kérése a projekted igényei szerint.",
     images: ["/og/webdude-og.jpg"],
   },
 };
 
-const collectionPageJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "CollectionPage",
-  name: "Prémium AI & Automatizációs Megoldások",
-  description:
-    "Prémium AI munkafolyamatok, automatizációs eszközök, CRO megoldások és AI műhely modulok KKV-knak. Egyedi árajánlat kérése a projekted igényei szerint.",
-  url: "https://webdude.hu/termekek",
-  publisher: {
-    "@type": "Organization",
-    "@id": "https://webdude.hu/#organization",
-    name: "WebDude",
-    foundingDate: "2009",
-    telephone: "+36 70 323 8003",
-    email: "hello@webdude.hu",
-  },
-  about: {
-    "@type": "Thing",
-    name: "AI Automatizáció",
-  },
-} as const;
-
-const breadcrumbSchema = buildBreadcrumbSchema([
-  { name: "Főoldal", url: "/" },
-  { name: "Termékek", url: "/termekek" },
-]);
-
 export default function TermekekLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(collectionPageJsonLd).replace(/</g, "\\u003c"),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema).replace(/</g, "\\u003c"),
-        }}
-      />
-      {children}
-    </>
-  );
+  return <>{children}</>;
 }

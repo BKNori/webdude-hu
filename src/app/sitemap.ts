@@ -1,6 +1,7 @@
 import { MetadataRoute } from "next";
 import { works } from "@/data/works";
 import { EN_INSIGHTS } from "@/data/enInsights";
+import { CATALOG_PRODUCTS } from "@/data/products-catalog";
 import { posts as fallbackPosts } from "@/data/posts";
 import { getCombinedBlogPosts } from "@/lib/mdx";
 
@@ -573,30 +574,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }));
 
-  // 3. Products pages
-  const products = [
-    "ai-workflow-starter-pack",
-    "seo-audit-pro",
-    "ai-chatbot-starter",
-    "cro-booster-kit",
-    "kristofka-munkafolyamat",
-    "ai-muhely",
-    "banner-ai-muhely",
-    "logo-ai-muhely",
-    "midjourney-ai-muhely",
-    "seo-audit-ai-muhely",
-    "szezonalis-ai-muhely",
-    "tartalomtervezo-ai-muhely",
-    "ui-ux-ai-muhely",
-    "versenytars-elemzo-ai-muhely",
-  ];
-
-  const productPages = products.map((slug) => ({
-    url: `${BASE_URL}/termekek/${slug}`,
-    lastModified: BUILD_DATE,
-    changeFrequency: "monthly" as const,
-    priority: 0.7,
-  }));
+  // 3. Products pages (SSOT: CATALOG_PRODUCTS — mind a 14 /termekek/<slug> aloldal)
+  const productPages: MetadataRoute.Sitemap = CATALOG_PRODUCTS.map(
+    (product) => ({
+      url: `${BASE_URL}${product.href}`,
+      lastModified: BUILD_DATE,
+      changeFrequency: "monthly" as const,
+      priority: 0.75,
+      alternates: buildHuOnlyAlternates(`${BASE_URL}${product.href}`),
+    })
+  );
 
   const enInsightPages: MetadataRoute.Sitemap = EN_INSIGHTS.map((post) => ({
     url: `${BASE_URL}/en/insights/${post.slug}`,
