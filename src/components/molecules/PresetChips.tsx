@@ -18,8 +18,7 @@ interface PresetChipsProps {
 }
 
 /**
- * Kattintható preset chip-csoport a generátor űrlapokhoz.
- * Egyszeres vagy többszörös választással, opcionális szín-jelzésekkel.
+ * Kattintható preset chip-csoport a generátor űrlapokhoz (DDR-006 v7.2 Dual Theme).
  */
 export default function PresetChips({
   label,
@@ -46,7 +45,7 @@ export default function PresetChips({
   return (
     <div className="space-y-2">
       {label && (
-        <p className="text-xs font-bold text-slate-300 uppercase tracking-wider">
+        <p className="text-xs font-bold text-slate-700 dark:text-slate-200 uppercase tracking-wider">
           {label}
         </p>
       )}
@@ -62,8 +61,8 @@ export default function PresetChips({
               title={hintFor ? hintFor(opt.id) : opt.promptHint}
               className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold border transition-all cursor-pointer ${FOCUS_RING} ${
                 active
-                  ? "bg-[#00B5F1]/15 border-[#00B5F1]/60 text-[#00B5F1] shadow-[0_0_12px_rgba(0,181,241,0.15)]"
-                  : "bg-slate-900/60 border-slate-800 text-slate-400 hover:border-[#00B5F1]/30 hover:text-slate-200"
+                  ? "bg-[#0369A1] dark:bg-[#00B5F1] border-transparent text-white dark:text-slate-950 shadow-xs"
+                  : "bg-white dark:bg-[#0F172A] border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:border-[#0369A1] dark:hover:border-[#00B5F1]"
               }`}
             >
               {opt.colors && (
@@ -71,7 +70,7 @@ export default function PresetChips({
                   {opt.colors.map((c) => (
                     <span
                       key={c}
-                      className="w-2.5 h-2.5 rounded-full border border-slate-950"
+                      className="w-2.5 h-2.5 rounded-full border border-slate-300 dark:border-slate-900"
                       style={{ backgroundColor: c }}
                     />
                   ))}

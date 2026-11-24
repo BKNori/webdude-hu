@@ -5,21 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { motion } from "motion/react";
-import {
-  Layout,
-  Copy,
-  Check,
-  Sparkles,
-  Loader2,
-  ArrowLeft,
-  Palette,
-  Type,
-  Layers,
-  Target,
-  Sun,
-  Moon,
-  Presentation,
-} from "lucide-react";
+import { Layout, Copy, Check, Sparkles, Loader2, Palette, Type, Layers, Target, Sun, Moon, Presentation } from "lucide-react";
 import Link from "next/link";
 import ToolAccessLock from "@/components/molecules/ToolAccessLock";
 import { auth } from "@/lib/firebase";
@@ -187,12 +173,12 @@ export default function PresentationWorkshopGenerator() {
   }
 
   return (
-    <div className="min-h-screen bg-transparent text-text-primary">
+    <div className="text-[#0F172A] dark:text-[#F8FAFC]">
       {/* Loading State */}
       {loading && (
-        <div className="min-h-screen bg-transparent flex flex-col items-center justify-center space-y-4">
-          <Loader2 className="w-8 h-8 animate-spin text-sky-500" />
-          <p className="text-xs font-mono text-slate-400 uppercase tracking-widest animate-pulse font-bold">
+        <div className="min-h-[50vh] bg-transparent flex flex-col items-center justify-center space-y-4">
+          <Loader2 className="w-8 h-8 animate-spin text-[#0369A1] dark:text-[#00B5F1]" />
+          <p className="text-xs font-mono text-slate-600 dark:text-slate-400 uppercase tracking-widest animate-pulse font-bold">
             Generátor betöltése...
           </p>
         </div>
@@ -202,64 +188,35 @@ export default function PresentationWorkshopGenerator() {
         <>
           {/* Authentication Check */}
           {!auth || !auth.currentUser ? (
-            <div className="min-h-screen bg-transparent flex flex-col items-center justify-center space-y-6 px-6">
-              <div className="bg-red-500/5 border border-red-500/40 backdrop-blur-xl shadow-[0_0_24px_rgba(239,68,68,0.15)] text-red-400 px-6 py-4 rounded-2xl text-sm flex items-center gap-3 font-mono max-w-md text-center">
+            <div className="min-h-[50vh] bg-transparent flex flex-col items-center justify-center space-y-6 px-6">
+              <div className="bg-red-500/5 border border-red-500/40 backdrop-blur-xl shadow-[0_0_24px_rgba(239,68,68,0.15)] text-red-600 dark:text-red-400 px-6 py-4 rounded-2xl text-sm flex items-center gap-3 font-mono max-w-md text-center">
                 <Sparkles className="w-5 h-5" />
                 {error || "Kérlek, jelentkezz be a használatához!"}
               </div>
               <Link
                 href="/portal"
-                className="px-6 py-3 rounded-xl bg-sky-500 text-bg-base font-bold hover:bg-violet-700 hover:text-white transition-colors"
+                className="px-6 py-3 rounded-xl bg-linear-to-r from-[#075985] to-[#5B21B6] text-white font-bold hover:from-[#0369A1] hover:to-[#6D28D9] transition-colors"
               >
                 Bejelentkezés
               </Link>
             </div>
           ) : (
             <>
-              {/* Header */}
-              <header className="border-b border-bg-elevated/40 bg-transparent backdrop-blur-xl sticky top-0 z-50">
-                <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <Link
-                      href="/portal/ai-muhely"
-                      className="w-10 h-10 rounded-xl bg-linear-to-br from-sky-400 to-violet-700 flex items-center justify-center shadow-lg shadow-sky-500/10 cursor-pointer"
-                    >
-                      <Layers className="w-5 h-5 text-bg-base" />
-                    </Link>
-                    <div>
-                      <span className="text-xs uppercase font-black tracking-widest text-sky-500 block">
-                        WebDude AI Studio
-                      </span>
-                      <span className="text-sm font-bold text-white block -mt-0.5">
-                        Presentation AI Műhely
-                      </span>
-                    </div>
-                  </div>
-
-                  <Link
-                    href="/portal/ai-muhely"
-                    className="flex items-center gap-2 px-4 py-2 rounded-xl border border-gray-800 hover:border-sky-500/30 text-slate-400 hover:text-white transition-colors text-xs font-bold uppercase tracking-wider cursor-pointer"
-                  >
-                    <ArrowLeft className="w-4 h-4" />
-                    Vissza
-                  </Link>
-                </div>
-              </header>
 
               {/* Main Container */}
-              <div className="max-w-7xl mx-auto px-6 py-12">
+              <div className="py-2">
                 <div className="grid lg:grid-cols-2 gap-8">
                   {/* Input Form */}
                   <div className="space-y-6">
                     <div className="space-y-2 relative">
                       <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 rounded-full bg-sky-500/5 blur-3xl pointer-events-none" />
-                      <span className="text-xs font-mono font-black uppercase tracking-widest text-sky-500">
+                      <span className="text-xs font-mono font-black uppercase tracking-widest text-[#0369A1] dark:text-[#00B5F1]">
                         Presentation Generátor
                       </span>
-                      <h1 className="text-3xl md:text-4xl font-extrabold text-white tracking-tight leading-none font-mono">
+                      <h1 className="text-3xl md:text-4xl font-extrabold text-[#0F172A] dark:text-[#F8FAFC] tracking-tight leading-none font-mono">
                         Pitch Deck & Prezentáció
                       </h1>
-                      <p className="text-slate-400 text-sm max-w-2xl leading-relaxed">
+                      <p className="text-slate-600 dark:text-slate-400 text-sm max-w-2xl leading-relaxed">
                         Generálj professzionális prezentációkat Norbi 26 éves
                         grafikai és prezentációtervező szakértelmével. Pitch
                         deck, sales prezentáció, investor deck narratív
@@ -268,7 +225,7 @@ export default function PresentationWorkshopGenerator() {
                     </div>
 
                     {error && (
-                      <div className="bg-red-500/5 border border-red-500/40 backdrop-blur-xl shadow-[0_0_24px_rgba(239,68,68,0.15)] text-red-400 px-4 py-3 rounded-2xl text-xs flex items-center gap-2.5 font-mono">
+                      <div className="bg-red-500/5 border border-red-500/40 backdrop-blur-xl shadow-[0_0_24px_rgba(239,68,68,0.15)] text-red-600 dark:text-red-400 px-4 py-3 rounded-2xl text-xs flex items-center gap-2.5 font-mono">
                         <Sparkles className="w-4 h-4" />
                         {error}
                       </div>
@@ -280,18 +237,18 @@ export default function PresentationWorkshopGenerator() {
                     >
                       {/* Presentation Purpose */}
                       <div className="space-y-2">
-                        <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <Target className="w-4 h-4 text-sky-500" />
+                        <label className="flex items-center gap-2 text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+                          <Target className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
                           Prezentáció Célja
                         </label>
                         <textarea
                           {...register("presentationPurpose")}
                           placeholder="Példa: Befektetés szerzés, termék bemutatása, partneri kapcsolat építés..."
-                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-bg-elevated text-white placeholder-slate-500 focus:border-sky-500/50 focus:outline-none focus:ring-2 focus:ring-sky-500/10 transition-all text-sm resize-none"
+                          className="w-full px-4 py-3 rounded-xl bg-white dark:bg-[#0B1120] border border-slate-300 dark:border-slate-700 text-[#0F172A] dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:border-[#0369A1] dark:focus:border-[#00B5F1] focus:outline-none focus:ring-2 focus:ring-sky-500/10 transition-all text-sm resize-none"
                           rows={3}
                         />
                         {errors.presentationPurpose && (
-                          <p className="text-red-400 text-xs">
+                          <p className="text-red-600 dark:text-red-400 text-xs">
                             {errors.presentationPurpose.message}
                           </p>
                         )}
@@ -299,18 +256,18 @@ export default function PresentationWorkshopGenerator() {
 
                       {/* Target Audience */}
                       <div className="space-y-2">
-                        <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <Type className="w-4 h-4 text-sky-500" />
+                        <label className="flex items-center gap-2 text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+                          <Type className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
                           Célközönség
                         </label>
                         <textarea
                           {...register("targetAudience")}
                           placeholder="Példa: Befektetők, potenciális ügyfelek, partnerek..."
-                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-bg-elevated text-white placeholder-slate-500 focus:border-sky-500/50 focus:outline-none focus:ring-2 focus:ring-sky-500/10 transition-all text-sm resize-none"
+                          className="w-full px-4 py-3 rounded-xl bg-white dark:bg-[#0B1120] border border-slate-300 dark:border-slate-700 text-[#0F172A] dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:border-[#0369A1] dark:focus:border-[#00B5F1] focus:outline-none focus:ring-2 focus:ring-sky-500/10 transition-all text-sm resize-none"
                           rows={3}
                         />
                         {errors.targetAudience && (
-                          <p className="text-red-400 text-xs">
+                          <p className="text-red-600 dark:text-red-400 text-xs">
                             {errors.targetAudience.message}
                           </p>
                         )}
@@ -318,8 +275,8 @@ export default function PresentationWorkshopGenerator() {
 
                       {/* Presentation Type */}
                       <div className="space-y-2">
-                        <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <Presentation className="w-4 h-4 text-sky-500" />
+                        <label className="flex items-center gap-2 text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+                          <Presentation className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
                           Prezentáció Típus
                         </label>
                         <div className="grid grid-cols-3 gap-2">
@@ -341,8 +298,8 @@ export default function PresentationWorkshopGenerator() {
                                 value={option.value}
                                 className="sr-only peer"
                               />
-                              <div className="px-3 py-2 rounded-xl bg-bg-elevated/50 border border-bg-elevated peer-checked:border-sky-500/50 peer-checked:bg-sky-500/10 text-center transition-all">
-                                <span className="text-xs font-bold text-slate-300 peer-checked:text-sky-500">
+                              <div className="px-3 py-2 rounded-xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:border-[#0369A1] dark:hover:border-[#00B5F1] peer-checked:bg-[#0369A1] dark:peer-checked:bg-[#00B5F1] peer-checked:text-white dark:peer-checked:text-slate-950 peer-checked:border-transparent font-semibold text-center transition-all shadow-2xs dark:shadow-none">
+                                <span className="text-xs font-bold text-current">
                                   {option.label}
                                 </span>
                               </div>
@@ -350,7 +307,7 @@ export default function PresentationWorkshopGenerator() {
                           ))}
                         </div>
                         {errors.presentationType && (
-                          <p className="text-red-400 text-xs">
+                          <p className="text-red-600 dark:text-red-400 text-xs">
                             {errors.presentationType.message}
                           </p>
                         )}
@@ -358,8 +315,8 @@ export default function PresentationWorkshopGenerator() {
 
                       {/* Slide Count */}
                       <div className="space-y-2">
-                        <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <Layout className="w-4 h-4 text-sky-500" />
+                        <label className="flex items-center gap-2 text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+                          <Layout className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
                           Dia Szám
                         </label>
                         <input
@@ -368,10 +325,10 @@ export default function PresentationWorkshopGenerator() {
                           min={5}
                           max={50}
                           placeholder="12"
-                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-bg-elevated text-white placeholder-slate-500 focus:border-sky-500/50 focus:outline-none focus:ring-2 focus:ring-sky-500/10 transition-all text-sm"
+                          className="w-full px-4 py-3 rounded-xl bg-white dark:bg-[#0B1120] border border-slate-300 dark:border-slate-700 text-[#0F172A] dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:border-[#0369A1] dark:focus:border-[#00B5F1] focus:outline-none focus:ring-2 focus:ring-sky-500/10 transition-all text-sm"
                         />
                         {errors.slideCount && (
-                          <p className="text-red-400 text-xs">
+                          <p className="text-red-600 dark:text-red-400 text-xs">
                             {errors.slideCount.message}
                           </p>
                         )}
@@ -379,8 +336,8 @@ export default function PresentationWorkshopGenerator() {
 
                       {/* Design Style */}
                       <div className="space-y-2">
-                        <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <Palette className="w-4 h-4 text-sky-500" />
+                        <label className="flex items-center gap-2 text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+                          <Palette className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
                           Dizájn Stílus
                         </label>
                         <div className="grid grid-cols-3 gap-2">
@@ -402,8 +359,8 @@ export default function PresentationWorkshopGenerator() {
                                 value={option.value}
                                 className="sr-only peer"
                               />
-                              <div className="px-3 py-2 rounded-xl bg-bg-elevated/50 border border-bg-elevated peer-checked:border-sky-500/50 peer-checked:bg-sky-500/10 text-center transition-all">
-                                <span className="text-xs font-bold text-slate-300 peer-checked:text-sky-500">
+                              <div className="px-3 py-2 rounded-xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:border-[#0369A1] dark:hover:border-[#00B5F1] peer-checked:bg-[#0369A1] dark:peer-checked:bg-[#00B5F1] peer-checked:text-white dark:peer-checked:text-slate-950 peer-checked:border-transparent font-semibold text-center transition-all shadow-2xs dark:shadow-none">
+                                <span className="text-xs font-bold text-current">
                                   {option.label}
                                 </span>
                               </div>
@@ -411,7 +368,7 @@ export default function PresentationWorkshopGenerator() {
                           ))}
                         </div>
                         {errors.designStyle && (
-                          <p className="text-red-400 text-xs">
+                          <p className="text-red-600 dark:text-red-400 text-xs">
                             {errors.designStyle.message}
                           </p>
                         )}
@@ -419,52 +376,52 @@ export default function PresentationWorkshopGenerator() {
 
                       {/* Brand Colors */}
                       <div className="space-y-2">
-                        <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <Palette className="w-4 h-4 text-sky-500" />
+                        <label className="flex items-center gap-2 text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+                          <Palette className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
                           Brand Színek (Opcionális)
                         </label>
                         <input
                           {...register("brandColors")}
                           placeholder="Példa: #00B5F1, #020617, #e2e8f0 (vesszővel elválasztva)"
-                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-bg-elevated text-white placeholder-slate-500 focus:border-sky-500/50 focus:outline-none focus:ring-2 focus:ring-sky-500/10 transition-all text-sm"
+                          className="w-full px-4 py-3 rounded-xl bg-white dark:bg-[#0B1120] border border-slate-300 dark:border-slate-700 text-[#0F172A] dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:border-[#0369A1] dark:focus:border-[#00B5F1] focus:outline-none focus:ring-2 focus:ring-sky-500/10 transition-all text-sm"
                         />
                       </div>
 
                       {/* Required Content */}
                       <div className="space-y-4">
-                        <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <Type className="w-4 h-4 text-sky-500" />
+                        <label className="flex items-center gap-2 text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+                          <Type className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
                           Kötelező Tartalom (Opcionális)
                         </label>
                         <div className="space-y-3">
                           <input
                             {...register("requiredContent.keyPoints")}
                             placeholder="Kulcspontok (vesszővel elválasztva)"
-                            className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-bg-elevated text-white placeholder-slate-500 focus:border-sky-500/50 focus:outline-none focus:ring-2 focus:ring-sky-500/10 transition-all text-sm"
+                            className="w-full px-4 py-3 rounded-xl bg-white dark:bg-[#0B1120] border border-slate-300 dark:border-slate-700 text-[#0F172A] dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:border-[#0369A1] dark:focus:border-[#00B5F1] focus:outline-none focus:ring-2 focus:ring-sky-500/10 transition-all text-sm"
                           />
                           <input
                             {...register("requiredContent.dataPoints")}
                             placeholder="Adatok (vesszővel elválasztva)"
-                            className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-bg-elevated text-white placeholder-slate-500 focus:border-sky-500/50 focus:outline-none focus:ring-2 focus:ring-sky-500/10 transition-all text-sm"
+                            className="w-full px-4 py-3 rounded-xl bg-white dark:bg-[#0B1120] border border-slate-300 dark:border-slate-700 text-[#0F172A] dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:border-[#0369A1] dark:focus:border-[#00B5F1] focus:outline-none focus:ring-2 focus:ring-sky-500/10 transition-all text-sm"
                           />
                           <input
                             {...register("requiredContent.testimonials")}
                             placeholder="Visszajelések (vesszővel elválasztva)"
-                            className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-bg-elevated text-white placeholder-slate-500 focus:border-sky-500/50 focus:outline-none focus:ring-2 focus:ring-sky-500/10 transition-all text-sm"
+                            className="w-full px-4 py-3 rounded-xl bg-white dark:bg-[#0B1120] border border-slate-300 dark:border-slate-700 text-[#0F172A] dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:border-[#0369A1] dark:focus:border-[#00B5F1] focus:outline-none focus:ring-2 focus:ring-sky-500/10 transition-all text-sm"
                           />
                         </div>
                       </div>
 
                       {/* Additional Requirements */}
                       <div className="space-y-2">
-                        <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <Type className="w-4 h-4 text-sky-500" />
+                        <label className="flex items-center gap-2 text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+                          <Type className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
                           További Követelmények (Opcionális)
                         </label>
                         <textarea
                           {...register("additionalRequirements")}
                           placeholder="Bármilyen egyéb követelmény vagy specifikáció..."
-                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-bg-elevated text-white placeholder-slate-500 focus:border-sky-500/50 focus:outline-none focus:ring-2 focus:ring-sky-500/10 transition-all text-sm resize-none"
+                          className="w-full px-4 py-3 rounded-xl bg-white dark:bg-[#0B1120] border border-slate-300 dark:border-slate-700 text-[#0F172A] dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:border-[#0369A1] dark:focus:border-[#00B5F1] focus:outline-none focus:ring-2 focus:ring-sky-500/10 transition-all text-sm resize-none"
                           rows={2}
                         />
                       </div>
@@ -473,7 +430,7 @@ export default function PresentationWorkshopGenerator() {
                       <button
                         type="submit"
                         disabled={isGenerating}
-                        className="w-full flex items-center justify-center gap-2 px-8 py-4 bg-sky-500 text-bg-base font-bold rounded-xl hover:bg-violet-700 hover:text-white transition-all disabled:opacity-50 disabled:cursor-not-allowed text-sm uppercase tracking-wider"
+                        className="w-full flex items-center justify-center gap-2 px-8 py-4 bg-linear-to-r from-[#075985] to-[#5B21B6] text-white font-bold rounded-xl hover:from-[#0369A1] hover:to-[#6D28D9] transition-all disabled:opacity-50 disabled:cursor-not-allowed text-sm uppercase tracking-wider"
                       >
                         {isGenerating ? (
                           <>
@@ -502,26 +459,26 @@ export default function PresentationWorkshopGenerator() {
                         <motion.div
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
-                          className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
+                          className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none border border-slate-200 dark:border-slate-800 rounded-2xl p-6 space-y-4"
                         >
-                          <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <Presentation className="w-4 h-4 text-sky-500" />
+                          <h3 className="text-sm font-bold text-[#0F172A] dark:text-[#F8FAFC] uppercase tracking-wider flex items-center gap-2">
+                            <Presentation className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
                             Prezentáció Koncepció
                           </h3>
                           <div className="space-y-3">
                             <div>
-                              <p className="text-xs text-slate-400 mb-1">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Stílus
                               </p>
-                              <p className="text-sm text-white">
+                              <p className="text-sm text-[#0F172A] dark:text-[#F8FAFC]">
                                 {generatedOutput.presentationConcept.style}
                               </p>
                             </div>
                             <div>
-                              <p className="text-xs text-slate-400 mb-1">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Leírás
                               </p>
-                              <p className="text-sm text-white">
+                              <p className="text-sm text-[#0F172A] dark:text-[#F8FAFC]">
                                 {
                                   generatedOutput.presentationConcept
                                     .description
@@ -529,7 +486,7 @@ export default function PresentationWorkshopGenerator() {
                               </p>
                             </div>
                             <div>
-                              <p className="text-xs text-slate-400 mb-1">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Kulcselemek
                               </p>
                               <div className="flex flex-wrap gap-2">
@@ -537,7 +494,7 @@ export default function PresentationWorkshopGenerator() {
                                   (element, index) => (
                                     <span
                                       key={index}
-                                      className="px-2 py-1 rounded bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs"
+                                      className="px-2 py-1 rounded bg-sky-500/10 border border-slate-200 dark:border-slate-800 text-[#0369A1] dark:text-[#00B5F1] text-xs"
                                     >
                                       {element}
                                     </span>
@@ -553,15 +510,15 @@ export default function PresentationWorkshopGenerator() {
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: 0.1 }}
-                          className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
+                          className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none border border-slate-200 dark:border-slate-800 rounded-2xl p-6 space-y-4"
                         >
-                          <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <Layout className="w-4 h-4 text-sky-500" />
+                          <h3 className="text-sm font-bold text-[#0F172A] dark:text-[#F8FAFC] uppercase tracking-wider flex items-center gap-2">
+                            <Layout className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
                             Struktúra
                           </h3>
                           <div className="space-y-3">
                             <div>
-                              <p className="text-xs text-slate-400 mb-1">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Dia Vázlat
                               </p>
                               <div className="space-y-2">
@@ -569,9 +526,9 @@ export default function PresentationWorkshopGenerator() {
                                   (slide, index) => (
                                     <div
                                       key={index}
-                                      className="bg-bg-base/50 rounded-lg p-2 border border-gray-800"
+                                      className="bg-slate-50 dark:bg-[#0B1120] rounded-lg p-2 border border-slate-200 dark:border-slate-800"
                                     >
-                                      <p className="text-xs text-white">
+                                      <p className="text-xs text-[#0F172A] dark:text-[#F8FAFC]">
                                         {index + 1}. {slide}
                                       </p>
                                     </div>
@@ -580,18 +537,18 @@ export default function PresentationWorkshopGenerator() {
                               </div>
                             </div>
                             <div>
-                              <p className="text-xs text-slate-400 mb-1">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Narratív Folyamat
                               </p>
-                              <p className="text-sm text-white">
+                              <p className="text-sm text-[#0F172A] dark:text-[#F8FAFC]">
                                 {generatedOutput.structure.narrativeFlow}
                               </p>
                             </div>
                             <div>
-                              <p className="text-xs text-slate-400 mb-1">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Tempó
                               </p>
-                              <p className="text-sm text-white">
+                              <p className="text-sm text-[#0F172A] dark:text-[#F8FAFC]">
                                 {generatedOutput.structure.pacing}
                               </p>
                             </div>
@@ -603,19 +560,19 @@ export default function PresentationWorkshopGenerator() {
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: 0.2 }}
-                          className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
+                          className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none border border-slate-200 dark:border-slate-800 rounded-2xl p-6 space-y-4"
                         >
-                          <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <Target className="w-4 h-4 text-sky-500" />
+                          <h3 className="text-sm font-bold text-[#0F172A] dark:text-[#F8FAFC] uppercase tracking-wider flex items-center gap-2">
+                            <Target className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
                             Specifikációk
                           </h3>
                           <div className="space-y-3">
                             <div className="grid grid-cols-3 gap-3">
-                              <div className="bg-bg-base/50 rounded-xl p-3 border border-gray-800">
-                                <p className="text-xs text-slate-400 mb-1">
+                              <div className="bg-slate-50 dark:bg-[#0B1120] rounded-xl p-3 border border-slate-200 dark:border-slate-800">
+                                <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                   Szélesség
                                 </p>
-                                <p className="text-sm font-bold text-white">
+                                <p className="text-sm font-bold text-[#0F172A] dark:text-[#F8FAFC]">
                                   {
                                     generatedOutput.specifications.dimensions
                                       .width
@@ -623,11 +580,11 @@ export default function PresentationWorkshopGenerator() {
                                   px
                                 </p>
                               </div>
-                              <div className="bg-bg-base/50 rounded-xl p-3 border border-gray-800">
-                                <p className="text-xs text-slate-400 mb-1">
+                              <div className="bg-slate-50 dark:bg-[#0B1120] rounded-xl p-3 border border-slate-200 dark:border-slate-800">
+                                <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                   Magasság
                                 </p>
-                                <p className="text-sm font-bold text-white">
+                                <p className="text-sm font-bold text-[#0F172A] dark:text-[#F8FAFC]">
                                   {
                                     generatedOutput.specifications.dimensions
                                       .height
@@ -635,11 +592,11 @@ export default function PresentationWorkshopGenerator() {
                                   px
                                 </p>
                               </div>
-                              <div className="bg-bg-base/50 rounded-xl p-3 border border-gray-800">
-                                <p className="text-xs text-slate-400 mb-1">
+                              <div className="bg-slate-50 dark:bg-[#0B1120] rounded-xl p-3 border border-slate-200 dark:border-slate-800">
+                                <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                   Formátum
                                 </p>
-                                <p className="text-sm font-bold text-white">
+                                <p className="text-sm font-bold text-[#0F172A] dark:text-[#F8FAFC]">
                                   {
                                     generatedOutput.specifications.dimensions
                                       .format
@@ -648,18 +605,18 @@ export default function PresentationWorkshopGenerator() {
                               </div>
                             </div>
                             <div>
-                              <p className="text-xs text-slate-400 mb-1">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Méretarány
                               </p>
-                              <p className="text-sm text-white">
+                              <p className="text-sm text-[#0F172A] dark:text-[#F8FAFC]">
                                 {generatedOutput.specifications.aspectRatio}
                               </p>
                             </div>
                             <div>
-                              <p className="text-xs text-slate-400 mb-1">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Safe Zone
                               </p>
-                              <p className="text-sm text-white">
+                              <p className="text-sm text-[#0F172A] dark:text-[#F8FAFC]">
                                 {generatedOutput.specifications.safeZone}
                               </p>
                             </div>
@@ -671,88 +628,88 @@ export default function PresentationWorkshopGenerator() {
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: 0.3 }}
-                          className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
+                          className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none border border-slate-200 dark:border-slate-800 rounded-2xl p-6 space-y-4"
                         >
-                          <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <Palette className="w-4 h-4 text-sky-500" />
+                          <h3 className="text-sm font-bold text-[#0F172A] dark:text-[#F8FAFC] uppercase tracking-wider flex items-center gap-2">
+                            <Palette className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
                             Szín Paletta
                           </h3>
                           <div className="grid grid-cols-5 gap-3">
                             <div className="text-center">
                               <div
-                                className="w-12 h-12 rounded-lg border border-gray-800 shadow-lg mx-auto mb-2"
+                                className="w-12 h-12 rounded-lg border border-slate-200 dark:border-slate-800 shadow-lg mx-auto mb-2"
                                 style={{
                                   backgroundColor:
                                     generatedOutput.colorPalette.primary,
                                 }}
                               />
-                              <p className="text-xs text-slate-400">Primary</p>
-                              <p className="text-xs font-mono text-white">
+                              <p className="text-xs text-slate-600 dark:text-slate-400">Primary</p>
+                              <p className="text-xs font-mono text-[#0F172A] dark:text-[#F8FAFC]">
                                 {generatedOutput.colorPalette.primary}
                               </p>
                             </div>
                             <div className="text-center">
                               <div
-                                className="w-12 h-12 rounded-lg border border-gray-800 shadow-lg mx-auto mb-2"
+                                className="w-12 h-12 rounded-lg border border-slate-200 dark:border-slate-800 shadow-lg mx-auto mb-2"
                                 style={{
                                   backgroundColor:
                                     generatedOutput.colorPalette.secondary,
                                 }}
                               />
-                              <p className="text-xs text-slate-400">
+                              <p className="text-xs text-slate-600 dark:text-slate-400">
                                 Secondary
                               </p>
-                              <p className="text-xs font-mono text-white">
+                              <p className="text-xs font-mono text-[#0F172A] dark:text-[#F8FAFC]">
                                 {generatedOutput.colorPalette.secondary}
                               </p>
                             </div>
                             <div className="text-center">
                               <div
-                                className="w-12 h-12 rounded-lg border border-gray-800 shadow-lg mx-auto mb-2"
+                                className="w-12 h-12 rounded-lg border border-slate-200 dark:border-slate-800 shadow-lg mx-auto mb-2"
                                 style={{
                                   backgroundColor:
                                     generatedOutput.colorPalette.accent,
                                 }}
                               />
-                              <p className="text-xs text-slate-400">Accent</p>
-                              <p className="text-xs font-mono text-white">
+                              <p className="text-xs text-slate-600 dark:text-slate-400">Accent</p>
+                              <p className="text-xs font-mono text-[#0F172A] dark:text-[#F8FAFC]">
                                 {generatedOutput.colorPalette.accent}
                               </p>
                             </div>
                             <div className="text-center">
                               <div
-                                className="w-12 h-12 rounded-lg border border-gray-800 shadow-lg mx-auto mb-2"
+                                className="w-12 h-12 rounded-lg border border-slate-200 dark:border-slate-800 shadow-lg mx-auto mb-2"
                                 style={{
                                   backgroundColor:
                                     generatedOutput.colorPalette.background,
                                 }}
                               />
-                              <p className="text-xs text-slate-400">
+                              <p className="text-xs text-slate-600 dark:text-slate-400">
                                 Background
                               </p>
-                              <p className="text-xs font-mono text-white">
+                              <p className="text-xs font-mono text-[#0F172A] dark:text-[#F8FAFC]">
                                 {generatedOutput.colorPalette.background}
                               </p>
                             </div>
                             <div className="text-center">
                               <div
-                                className="w-12 h-12 rounded-lg border border-gray-800 shadow-lg mx-auto mb-2"
+                                className="w-12 h-12 rounded-lg border border-slate-200 dark:border-slate-800 shadow-lg mx-auto mb-2"
                                 style={{
                                   backgroundColor:
                                     generatedOutput.colorPalette.text,
                                 }}
                               />
-                              <p className="text-xs text-slate-400">Text</p>
-                              <p className="text-xs font-mono text-white">
+                              <p className="text-xs text-slate-600 dark:text-slate-400">Text</p>
+                              <p className="text-xs font-mono text-[#0F172A] dark:text-[#F8FAFC]">
                                 {generatedOutput.colorPalette.text}
                               </p>
                             </div>
                           </div>
                           <div>
-                            <p className="text-xs text-slate-400 mb-1">
+                            <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                               Indoklás
                             </p>
-                            <p className="text-xs text-white">
+                            <p className="text-xs text-[#0F172A] dark:text-[#F8FAFC]">
                               {generatedOutput.colorPalette.rationale}
                             </p>
                           </div>
@@ -763,60 +720,60 @@ export default function PresentationWorkshopGenerator() {
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: 0.4 }}
-                          className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
+                          className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none border border-slate-200 dark:border-slate-800 rounded-2xl p-6 space-y-4"
                         >
-                          <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <Type className="w-4 h-4 text-sky-500" />
+                          <h3 className="text-sm font-bold text-[#0F172A] dark:text-[#F8FAFC] uppercase tracking-wider flex items-center gap-2">
+                            <Type className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
                             Tipográfia
                           </h3>
                           <div className="space-y-3">
                             <div className="grid grid-cols-2 gap-3">
                               <div>
-                                <p className="text-xs text-slate-400 mb-1">
+                                <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                   Cím Font
                                 </p>
-                                <p className="text-sm text-white">
+                                <p className="text-sm text-[#0F172A] dark:text-[#F8FAFC]">
                                   {generatedOutput.typography.titleFont}
                                 </p>
                               </div>
                               <div>
-                                <p className="text-xs text-slate-400 mb-1">
+                                <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                   Szövegtörzs Font
                                 </p>
-                                <p className="text-sm text-white">
+                                <p className="text-sm text-[#0F172A] dark:text-[#F8FAFC]">
                                   {generatedOutput.typography.bodyFont}
                                 </p>
                               </div>
                             </div>
                             <div>
-                              <p className="text-xs text-slate-400 mb-1">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Font Méretek
                               </p>
                               <div className="grid grid-cols-4 gap-2 text-xs">
-                                <div className="bg-bg-base/50 rounded-lg p-2 border border-gray-800">
-                                  <p className="text-slate-400">Cím</p>
-                                  <p className="text-white">
+                                <div className="bg-slate-50 dark:bg-[#0B1120] rounded-lg p-2 border border-slate-200 dark:border-slate-800">
+                                  <p className="text-slate-600 dark:text-slate-400">Cím</p>
+                                  <p className="text-[#0F172A] dark:text-[#F8FAFC]">
                                     {generatedOutput.typography.fontSizes.title}
                                   </p>
                                 </div>
-                                <div className="bg-bg-base/50 rounded-lg p-2 border border-gray-800">
-                                  <p className="text-slate-400">Alcím</p>
-                                  <p className="text-white">
+                                <div className="bg-slate-50 dark:bg-[#0B1120] rounded-lg p-2 border border-slate-200 dark:border-slate-800">
+                                  <p className="text-slate-600 dark:text-slate-400">Alcím</p>
+                                  <p className="text-[#0F172A] dark:text-[#F8FAFC]">
                                     {
                                       generatedOutput.typography.fontSizes
                                         .subtitle
                                     }
                                   </p>
                                 </div>
-                                <div className="bg-bg-base/50 rounded-lg p-2 border border-gray-800">
-                                  <p className="text-slate-400">Szöveg</p>
-                                  <p className="text-white">
+                                <div className="bg-slate-50 dark:bg-[#0B1120] rounded-lg p-2 border border-slate-200 dark:border-slate-800">
+                                  <p className="text-slate-600 dark:text-slate-400">Szöveg</p>
+                                  <p className="text-[#0F172A] dark:text-[#F8FAFC]">
                                     {generatedOutput.typography.fontSizes.body}
                                   </p>
                                 </div>
-                                <div className="bg-bg-base/50 rounded-lg p-2 border border-gray-800">
-                                  <p className="text-slate-400">Caption</p>
-                                  <p className="text-white">
+                                <div className="bg-slate-50 dark:bg-[#0B1120] rounded-lg p-2 border border-slate-200 dark:border-slate-800">
+                                  <p className="text-slate-600 dark:text-slate-400">Caption</p>
+                                  <p className="text-[#0F172A] dark:text-[#F8FAFC]">
                                     {
                                       generatedOutput.typography.fontSizes
                                         .caption
@@ -833,42 +790,42 @@ export default function PresentationWorkshopGenerator() {
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: 0.5 }}
-                          className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
+                          className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none border border-slate-200 dark:border-slate-800 rounded-2xl p-6 space-y-4"
                         >
-                          <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <Layout className="w-4 h-4 text-sky-500" />
+                          <h3 className="text-sm font-bold text-[#0F172A] dark:text-[#F8FAFC] uppercase tracking-wider flex items-center gap-2">
+                            <Layout className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
                             Elrendezés
                           </h3>
                           <div className="space-y-3">
                             <div>
-                              <p className="text-xs text-slate-400 mb-1">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Grid Rendszer
                               </p>
-                              <p className="text-sm text-white">
+                              <p className="text-sm text-[#0F172A] dark:text-[#F8FAFC]">
                                 {generatedOutput.layout.gridSystem}
                               </p>
                             </div>
                             <div>
-                              <p className="text-xs text-slate-400 mb-1">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Vizuális Hierarchia
                               </p>
-                              <p className="text-sm text-white">
+                              <p className="text-sm text-[#0F172A] dark:text-[#F8FAFC]">
                                 {generatedOutput.layout.visualHierarchy}
                               </p>
                             </div>
                             <div>
-                              <p className="text-xs text-slate-400 mb-1">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Elem Elhelyezés
                               </p>
-                              <p className="text-sm text-white">
+                              <p className="text-sm text-[#0F172A] dark:text-[#F8FAFC]">
                                 {generatedOutput.layout.elementPlacement}
                               </p>
                             </div>
                             <div>
-                              <p className="text-xs text-slate-400 mb-1">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Whitespace
                               </p>
-                              <p className="text-sm text-white">
+                              <p className="text-sm text-[#0F172A] dark:text-[#F8FAFC]">
                                 {generatedOutput.layout.whitespace}
                               </p>
                             </div>
@@ -880,42 +837,42 @@ export default function PresentationWorkshopGenerator() {
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: 0.6 }}
-                          className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
+                          className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none border border-slate-200 dark:border-slate-800 rounded-2xl p-6 space-y-4"
                         >
-                          <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <Presentation className="w-4 h-4 text-sky-500" />
+                          <h3 className="text-sm font-bold text-[#0F172A] dark:text-[#F8FAFC] uppercase tracking-wider flex items-center gap-2">
+                            <Presentation className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
                             Dia Sablonok
                           </h3>
                           <div className="space-y-3">
-                            <div className="bg-bg-base/50 rounded-xl p-4 border border-gray-800">
-                              <p className="text-xs text-slate-400 mb-1">
+                            <div className="bg-slate-50 dark:bg-[#0B1120] rounded-xl p-4 border border-slate-200 dark:border-slate-800">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Cím Dia
                               </p>
-                              <p className="text-sm text-white">
+                              <p className="text-sm text-[#0F172A] dark:text-[#F8FAFC]">
                                 {generatedOutput.slideTemplates.titleSlide}
                               </p>
                             </div>
-                            <div className="bg-bg-base/50 rounded-xl p-4 border border-gray-800">
-                              <p className="text-xs text-slate-400 mb-1">
+                            <div className="bg-slate-50 dark:bg-[#0B1120] rounded-xl p-4 border border-slate-200 dark:border-slate-800">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Tartalom Dia
                               </p>
-                              <p className="text-sm text-white">
+                              <p className="text-sm text-[#0F172A] dark:text-[#F8FAFC]">
                                 {generatedOutput.slideTemplates.contentSlide}
                               </p>
                             </div>
-                            <div className="bg-bg-base/50 rounded-xl p-4 border border-gray-800">
-                              <p className="text-xs text-slate-400 mb-1">
+                            <div className="bg-slate-50 dark:bg-[#0B1120] rounded-xl p-4 border border-slate-200 dark:border-slate-800">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Adat Dia
                               </p>
-                              <p className="text-sm text-white">
+                              <p className="text-sm text-[#0F172A] dark:text-[#F8FAFC]">
                                 {generatedOutput.slideTemplates.dataSlide}
                               </p>
                             </div>
-                            <div className="bg-bg-base/50 rounded-xl p-4 border border-gray-800">
-                              <p className="text-xs text-slate-400 mb-1">
+                            <div className="bg-slate-50 dark:bg-[#0B1120] rounded-xl p-4 border border-slate-200 dark:border-slate-800">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Záró Dia
                               </p>
-                              <p className="text-sm text-white">
+                              <p className="text-sm text-[#0F172A] dark:text-[#F8FAFC]">
                                 {generatedOutput.slideTemplates.closingSlide}
                               </p>
                             </div>
@@ -927,34 +884,34 @@ export default function PresentationWorkshopGenerator() {
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: 0.7 }}
-                          className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
+                          className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none border border-slate-200 dark:border-slate-800 rounded-2xl p-6 space-y-4"
                         >
-                          <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <Target className="w-4 h-4 text-sky-500" />
+                          <h3 className="text-sm font-bold text-[#0F172A] dark:text-[#F8FAFC] uppercase tracking-wider flex items-center gap-2">
+                            <Target className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
                             Tartalom Irányelvek
                           </h3>
                           <div className="space-y-3">
                             <div>
-                              <p className="text-xs text-slate-400 mb-1">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Szöveg Sűrűség
                               </p>
-                              <p className="text-sm text-white">
+                              <p className="text-sm text-[#0F172A] dark:text-[#F8FAFC]">
                                 {generatedOutput.contentGuidelines.textDensity}
                               </p>
                             </div>
                             <div>
-                              <p className="text-xs text-slate-400 mb-1">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Vizuális Arány
                               </p>
-                              <p className="text-sm text-white">
+                              <p className="text-sm text-[#0F172A] dark:text-[#F8FAFC]">
                                 {generatedOutput.contentGuidelines.visualRatio}
                               </p>
                             </div>
                             <div>
-                              <p className="text-xs text-slate-400 mb-1">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Animáció Szint
                               </p>
-                              <p className="text-sm text-white">
+                              <p className="text-sm text-[#0F172A] dark:text-[#F8FAFC]">
                                 {
                                   generatedOutput.contentGuidelines
                                     .animationLevel
@@ -962,7 +919,7 @@ export default function PresentationWorkshopGenerator() {
                               </p>
                             </div>
                             <div>
-                              <p className="text-xs text-slate-400 mb-1">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Ne Tedd
                               </p>
                               <ul className="space-y-1">
@@ -970,7 +927,7 @@ export default function PresentationWorkshopGenerator() {
                                   (dont, index) => (
                                     <li
                                       key={index}
-                                      className="text-xs text-white"
+                                      className="text-xs text-[#0F172A] dark:text-[#F8FAFC]"
                                     >
                                       {dont}
                                     </li>
@@ -986,16 +943,16 @@ export default function PresentationWorkshopGenerator() {
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: 0.8 }}
-                          className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
+                          className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none border border-slate-200 dark:border-slate-800 rounded-2xl p-6 space-y-4"
                         >
-                          <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <Sparkles className="w-4 h-4 text-sky-500" />
+                          <h3 className="text-sm font-bold text-[#0F172A] dark:text-[#F8FAFC] uppercase tracking-wider flex items-center gap-2">
+                            <Sparkles className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
                             Midjourney Promptok
                           </h3>
                           <div className="space-y-3">
-                            <div className="bg-bg-base/50 rounded-xl p-4 border border-gray-800">
+                            <div className="bg-slate-50 dark:bg-[#0B1120] rounded-xl p-4 border border-slate-200 dark:border-slate-800">
                               <div className="flex items-center justify-between mb-2">
-                                <p className="text-xs text-slate-400">
+                                <p className="text-xs text-slate-600 dark:text-slate-400">
                                   Primary
                                 </p>
                                 <button
@@ -1005,7 +962,7 @@ export default function PresentationWorkshopGenerator() {
                                       "mj-primary"
                                     )
                                   }
-                                  className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-mono hover:bg-sky-500/20 transition-colors"
+                                  className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-sky-500/10 border border-slate-200 dark:border-slate-800 text-[#0369A1] dark:text-[#00B5F1] text-xs font-mono hover:bg-sky-500/20 transition-colors"
                                 >
                                   {copiedStates["mj-primary"] ? (
                                     <>
@@ -1020,13 +977,13 @@ export default function PresentationWorkshopGenerator() {
                                   )}
                                 </button>
                               </div>
-                              <p className="text-xs text-white font-mono leading-relaxed whitespace-pre-wrap">
+                              <p className="text-xs text-[#0F172A] dark:text-[#F8FAFC] font-mono leading-relaxed whitespace-pre-wrap">
                                 {generatedOutput.midjourneyPrompts.primary}
                               </p>
                             </div>
-                            <div className="bg-bg-base/50 rounded-xl p-4 border border-gray-800">
+                            <div className="bg-slate-50 dark:bg-[#0B1120] rounded-xl p-4 border border-slate-200 dark:border-slate-800">
                               <div className="flex items-center justify-between mb-2">
-                                <p className="text-xs text-slate-400">
+                                <p className="text-xs text-slate-600 dark:text-slate-400">
                                   Alternative 1
                                 </p>
                                 <button
@@ -1037,7 +994,7 @@ export default function PresentationWorkshopGenerator() {
                                       "mj-alt1"
                                     )
                                   }
-                                  className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-mono hover:bg-sky-500/20 transition-colors"
+                                  className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-sky-500/10 border border-slate-200 dark:border-slate-800 text-[#0369A1] dark:text-[#00B5F1] text-xs font-mono hover:bg-sky-500/20 transition-colors"
                                 >
                                   {copiedStates["mj-alt1"] ? (
                                     <>
@@ -1052,13 +1009,13 @@ export default function PresentationWorkshopGenerator() {
                                   )}
                                 </button>
                               </div>
-                              <p className="text-xs text-white font-mono leading-relaxed whitespace-pre-wrap">
+                              <p className="text-xs text-[#0F172A] dark:text-[#F8FAFC] font-mono leading-relaxed whitespace-pre-wrap">
                                 {generatedOutput.midjourneyPrompts.alternative1}
                               </p>
                             </div>
-                            <div className="bg-bg-base/50 rounded-xl p-4 border border-gray-800">
+                            <div className="bg-slate-50 dark:bg-[#0B1120] rounded-xl p-4 border border-slate-200 dark:border-slate-800">
                               <div className="flex items-center justify-between mb-2">
-                                <p className="text-xs text-slate-400">
+                                <p className="text-xs text-slate-600 dark:text-slate-400">
                                   Alternative 2
                                 </p>
                                 <button
@@ -1069,7 +1026,7 @@ export default function PresentationWorkshopGenerator() {
                                       "mj-alt2"
                                     )
                                   }
-                                  className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-mono hover:bg-sky-500/20 transition-colors"
+                                  className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-sky-500/10 border border-slate-200 dark:border-slate-800 text-[#0369A1] dark:text-[#00B5F1] text-xs font-mono hover:bg-sky-500/20 transition-colors"
                                 >
                                   {copiedStates["mj-alt2"] ? (
                                     <>
@@ -1084,7 +1041,7 @@ export default function PresentationWorkshopGenerator() {
                                   )}
                                 </button>
                               </div>
-                              <p className="text-xs text-white font-mono leading-relaxed whitespace-pre-wrap">
+                              <p className="text-xs text-[#0F172A] dark:text-[#F8FAFC] font-mono leading-relaxed whitespace-pre-wrap">
                                 {generatedOutput.midjourneyPrompts.alternative2}
                               </p>
                             </div>
@@ -1096,32 +1053,32 @@ export default function PresentationWorkshopGenerator() {
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: 0.9 }}
-                          className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
+                          className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none border border-slate-200 dark:border-slate-800 rounded-2xl p-6 space-y-4"
                         >
-                          <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <Layers className="w-4 h-4 text-sky-500" />
+                          <h3 className="text-sm font-bold text-[#0F172A] dark:text-[#F8FAFC] uppercase tracking-wider flex items-center gap-2">
+                            <Layers className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
                             Export Formátumok
                           </h3>
                           <div className="space-y-3">
-                            <div className="bg-bg-base/50 rounded-xl p-4 border border-gray-800">
-                              <p className="text-xs text-slate-400 mb-1">
+                            <div className="bg-slate-50 dark:bg-[#0B1120] rounded-xl p-4 border border-slate-200 dark:border-slate-800">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Prezentáció
                               </p>
-                              <p className="text-xs text-white">
+                              <p className="text-xs text-[#0F172A] dark:text-[#F8FAFC]">
                                 {generatedOutput.exportFormats.presentation}
                               </p>
                             </div>
-                            <div className="bg-bg-base/50 rounded-xl p-4 border border-gray-800">
-                              <p className="text-xs text-slate-400 mb-1">PDF</p>
-                              <p className="text-xs text-white">
+                            <div className="bg-slate-50 dark:bg-[#0B1120] rounded-xl p-4 border border-slate-200 dark:border-slate-800">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">PDF</p>
+                              <p className="text-xs text-[#0F172A] dark:text-[#F8FAFC]">
                                 {generatedOutput.exportFormats.pdf}
                               </p>
                             </div>
-                            <div className="bg-bg-base/50 rounded-xl p-4 border border-gray-800">
-                              <p className="text-xs text-slate-400 mb-1">
+                            <div className="bg-slate-50 dark:bg-[#0B1120] rounded-xl p-4 border border-slate-200 dark:border-slate-800">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Képek
                               </p>
-                              <p className="text-xs text-white">
+                              <p className="text-xs text-[#0F172A] dark:text-[#F8FAFC]">
                                 {generatedOutput.exportFormats.images}
                               </p>
                             </div>
@@ -1133,41 +1090,41 @@ export default function PresentationWorkshopGenerator() {
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: 1.0 }}
-                          className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
+                          className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none border border-slate-200 dark:border-slate-800 rounded-2xl p-6 space-y-4"
                         >
-                          <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <Layers className="w-4 h-4 text-sky-500" />
+                          <h3 className="text-sm font-bold text-[#0F172A] dark:text-[#F8FAFC] uppercase tracking-wider flex items-center gap-2">
+                            <Layers className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
                             Változatok
                           </h3>
                           <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-                            <div className="bg-bg-base/50 rounded-xl p-4 border border-gray-800">
+                            <div className="bg-slate-50 dark:bg-[#0B1120] rounded-xl p-4 border border-slate-200 dark:border-slate-800">
                               <div className="flex items-center gap-2 mb-2">
-                                <Sun className="w-3 h-3 text-sky-500" />
-                                <p className="text-xs text-slate-400">
+                                <Sun className="w-3 h-3 text-[#0369A1] dark:text-[#00B5F1]" />
+                                <p className="text-xs text-slate-600 dark:text-slate-400">
                                   Light Mode
                                 </p>
                               </div>
-                              <p className="text-xs text-white leading-relaxed">
+                              <p className="text-xs text-[#0F172A] dark:text-[#F8FAFC] leading-relaxed">
                                 {generatedOutput.variations.lightMode}
                               </p>
                             </div>
-                            <div className="bg-bg-base/50 rounded-xl p-4 border border-gray-800">
+                            <div className="bg-slate-50 dark:bg-[#0B1120] rounded-xl p-4 border border-slate-200 dark:border-slate-800">
                               <div className="flex items-center gap-2 mb-2">
-                                <Moon className="w-3 h-3 text-sky-500" />
-                                <p className="text-xs text-slate-400">
+                                <Moon className="w-3 h-3 text-[#0369A1] dark:text-[#00B5F1]" />
+                                <p className="text-xs text-slate-600 dark:text-slate-400">
                                   Dark Mode
                                 </p>
                               </div>
-                              <p className="text-xs text-white leading-relaxed">
+                              <p className="text-xs text-[#0F172A] dark:text-[#F8FAFC] leading-relaxed">
                                 {generatedOutput.variations.darkMode}
                               </p>
                             </div>
-                            <div className="bg-bg-base/50 rounded-xl p-4 border border-gray-800">
+                            <div className="bg-slate-50 dark:bg-[#0B1120] rounded-xl p-4 border border-slate-200 dark:border-slate-800">
                               <div className="flex items-center gap-2 mb-2">
-                                <Target className="w-3 h-3 text-sky-500" />
-                                <p className="text-xs text-slate-400">Print</p>
+                                <Target className="w-3 h-3 text-[#0369A1] dark:text-[#00B5F1]" />
+                                <p className="text-xs text-slate-600 dark:text-slate-400">Print</p>
                               </div>
-                              <p className="text-xs text-white leading-relaxed">
+                              <p className="text-xs text-[#0F172A] dark:text-[#F8FAFC] leading-relaxed">
                                 {generatedOutput.variations.print}
                               </p>
                             </div>
@@ -1175,15 +1132,15 @@ export default function PresentationWorkshopGenerator() {
                         </motion.div>
                       </motion.div>
                     ) : (
-                      <div className="bg-bg-elevated/30 backdrop-blur-xl border border-bg-elevated/80 rounded-2xl p-12 flex flex-col items-center justify-center space-y-4 text-center">
-                        <div className="w-16 h-16 rounded-2xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center">
-                          <Layout className="w-8 h-8 text-sky-500" />
+                      <div className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none backdrop-blur-xl border border-slate-200 dark:border-slate-800 rounded-2xl p-12 flex flex-col items-center justify-center space-y-4 text-center">
+                        <div className="w-16 h-16 rounded-2xl bg-sky-500/10 border border-slate-200 dark:border-slate-800 flex items-center justify-center">
+                          <Layout className="w-8 h-8 text-[#0369A1] dark:text-[#00B5F1]" />
                         </div>
                         <div className="space-y-2">
-                          <h3 className="text-lg font-bold text-white">
+                          <h3 className="text-lg font-bold text-[#0F172A] dark:text-[#F8FAFC]">
                             Várakozás a generálásra
                           </h3>
-                          <p className="text-sm text-slate-400">
+                          <p className="text-sm text-slate-600 dark:text-slate-400">
                             Töltsd ki az űrlapot a bal oldalon, és kattints a
                             &ldquo;Prezentáció Generálása&rdquo; gombra.
                           </p>

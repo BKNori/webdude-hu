@@ -8,8 +8,9 @@ interface CopyButtonProps {
 export function CopyButton({ copied, onClick }: CopyButtonProps) {
   return (
     <button
+      type="button"
       onClick={onClick}
-      className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-mono hover:bg-sky-500/20 transition-colors"
+      className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#0369A1]/10 dark:bg-[#00B5F1]/10 border border-[#0369A1]/25 dark:border-[#00B5F1]/25 text-[#0369A1] dark:text-[#00B5F1] text-xs font-mono font-semibold hover:bg-[#0369A1]/20 dark:hover:bg-[#00B5F1]/20 transition-colors cursor-pointer"
     >
       {copied ? (
         <>

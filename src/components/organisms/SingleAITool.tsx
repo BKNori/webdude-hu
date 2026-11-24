@@ -221,12 +221,12 @@ export default function SingleAITool({
   }
 
   return (
-    <div className="bg-bg-surface/30 border border-slate-800/50 backdrop-blur-md rounded-2xl p-8 max-w-4xl mx-auto hover:border-sky-500/10 transition-all duration-300">
+    <div className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none border border-slate-200 dark:border-slate-800 backdrop-blur-md rounded-2xl p-8 max-w-4xl mx-auto hover:border-sky-500/10 transition-all duration-300">
       <div className="mb-6">
         <h2 className="text-2xl font-bold text-text-primary mb-2">
           {effectiveToolName}
         </h2>
-        <p className="text-slate-400 text-sm leading-relaxed">
+        <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
           {effectiveDescription}
         </p>
       </div>
@@ -235,14 +235,14 @@ export default function SingleAITool({
         {/* Paraméterező Űrlap */}
         <form onSubmit={handleSubmit(onGenerate)} className="space-y-6">
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">
+            <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-2">
               Téma vagy Kulcsszó
             </label>
             <input
               type="text"
               {...register("topic")}
               placeholder="Pl. prémium bútor webshop akciók"
-              className="w-full bg-bg-elevated/30 border border-slate-800 focus:border-sky-500/50 rounded-xl px-4 py-3 text-text-primary outline-none transition-all"
+              className="w-full bg-white dark:bg-[#0B1120] border border-slate-300 dark:border-slate-700 focus:border-[#0369A1] dark:focus:border-[#00B5F1] rounded-xl px-4 py-3 text-[#0F172A] dark:text-slate-100 outline-none transition-all"
             />
             {errors.topic && (
               <p className="text-red-500 text-sm mt-1">
@@ -252,12 +252,12 @@ export default function SingleAITool({
           </div>
 
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">
+            <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-2">
               Márkahangvétel (Tone)
             </label>
             <select
               {...register("tone")}
-              className="w-full bg-bg-elevated/50 border border-slate-800 focus:border-sky-500/50 rounded-xl px-4 py-3 text-text-primary outline-none transition-all"
+              className="w-full bg-white dark:bg-[#0B1120] border border-slate-300 dark:border-slate-700 focus:border-[#0369A1] dark:focus:border-[#00B5F1] rounded-xl px-4 py-3 text-[#0F172A] dark:text-slate-100 outline-none transition-all"
             >
               <option value="">-- Válassz hangnemet --</option>
               <option value="professional">Szakmai és hiteles (E-E-A-T)</option>
@@ -271,21 +271,21 @@ export default function SingleAITool({
           </div>
 
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">
+            <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-2">
               Negatív vagy Kötelező Kulcsszavak (Opcionális)
             </label>
             <input
               type="text"
               {...register("keywords")}
               placeholder="Pl. ingyenes szállítás, limitált darabszám"
-              className="w-full bg-bg-elevated/30 border border-slate-800 focus:border-sky-500/50 rounded-xl px-4 py-3 text-text-primary outline-none transition-all"
+              className="w-full bg-white dark:bg-[#0B1120] border border-slate-300 dark:border-slate-700 focus:border-[#0369A1] dark:focus:border-[#00B5F1] rounded-xl px-4 py-3 text-[#0F172A] dark:text-slate-100 outline-none transition-all"
             />
           </div>
 
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full py-4 px-6 rounded-xl bg-sky-500 hover:bg-violet-700 hover:text-white disabled:bg-sky-500/30 text-bg-base font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2"
+            className="w-full py-4 px-6 rounded-xl bg-linear-to-r from-[#075985] to-[#5B21B6] hover:from-[#0369A1] hover:to-[#6D28D9] disabled:bg-linear-to-r from-[#075985] to-[#5B21B6]/30 text-white font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2"
           >
             {isSubmitting ? (
               <span className="flex items-center gap-2">
@@ -299,21 +299,21 @@ export default function SingleAITool({
         </form>
 
         {/* Generált kimenet (Typing effect) */}
-        <div className="bg-bg-surface/40 border border-slate-800 rounded-2xl p-6 relative flex flex-col justify-between min-h-75">
+        <div className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none border border-slate-200 dark:border-slate-800 rounded-2xl p-6 relative flex flex-col justify-between min-h-75">
           <div>
-            <div className="flex justify-between items-center pb-4 mb-4 border-b border-slate-800/50">
-              <span className="text-xs uppercase tracking-widest text-slate-500 font-bold">
+            <div className="flex justify-between items-center pb-4 mb-4 border-b border-slate-200 dark:border-slate-800">
+              <span className="text-xs uppercase tracking-widest text-slate-500 dark:text-slate-400 font-bold">
                 Kimenet
               </span>
               {displayedText && !isSubmitting && (
                 <button
                   type="button"
                   onClick={handleCopyToClipboard}
-                  className="inline-flex items-center gap-1.5 text-xs text-brand-primary hover:text-violet-400 font-bold uppercase tracking-wider transition-colors"
+                  className="inline-flex items-center gap-1.5 text-xs text-[#0369A1] dark:text-[#00B5F1] hover:text-violet-400 font-bold uppercase tracking-wider transition-colors"
                 >
                   {isCopied ? (
                     <>
-                      <Check className="w-3.5 h-3.5 text-emerald-400" />
+                      <Check className="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-400" />
                       <span>Másolva!</span>
                     </>
                   ) : (
@@ -336,7 +336,7 @@ export default function SingleAITool({
                   {displayedText}
                 </span>
               ) : (
-                <span className="text-slate-400 italic">
+                <span className="text-slate-600 dark:text-slate-400 italic">
                   Add meg a paramétereket bal oldalon a generáláshoz...
                 </span>
               )}
@@ -346,7 +346,7 @@ export default function SingleAITool({
           {generatedText &&
             displayedText.length >= generatedText.length &&
             !isSubmitting && (
-              <div className="pt-4 border-t border-slate-800/50 mt-4 flex flex-col sm:flex-row gap-4 animate-fade-in">
+              <div className="pt-4 border-t border-slate-200 dark:border-slate-800 mt-4 flex flex-col sm:flex-row gap-4 animate-fade-in">
                 <button
                   type="button"
                   onClick={handleSaveToProject}
@@ -359,7 +359,7 @@ export default function SingleAITool({
 
           {saveStatus && !isSubmitting && (
             <div
-              className={`mt-4 p-3 rounded-xl border text-xs text-center ${saveStatus.success ? "bg-emerald-500/10 border-emerald-500/30 text-emerald-400" : "bg-red-500/10 border-red-500/30 text-red-400"}`}
+              className={`mt-4 p-3 rounded-xl border text-xs text-center${saveStatus.success ? "bg-emerald-500/10 border-emerald-500/30 text-emerald-700 dark:text-emerald-400" : "bg-red-500/10 border-red-500/30 text-red-600 dark:text-red-400"}`}
             >
               {saveStatus.message}
             </div>

@@ -3,8 +3,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Loader2, ArrowLeft } from "lucide-react";
-import Link from "next/link";
+import { Loader2 } from "lucide-react";
 import ToolAccessLock from "@/components/molecules/ToolAccessLock";
 import { auth } from "@/lib/firebase";
 import { addSignageGenerationAction } from "@/actions/signage-workshop";
@@ -130,7 +129,7 @@ export default function SignageWorkshopGenerator() {
     return (
       <div className="min-h-[60vh] flex flex-col items-center justify-center space-y-4">
         <Loader2 className="w-8 h-8 animate-spin text-[#00B5F1]" />
-        <p className="text-xs font-mono text-slate-400 uppercase tracking-widest">
+        <p className="text-xs font-mono text-slate-600 dark:text-slate-400 uppercase tracking-widest">
           Dekor Stúdió betöltése...
         </p>
       </div>
@@ -145,29 +144,20 @@ export default function SignageWorkshopGenerator() {
   return (
     <div className="space-y-8">
       {/* Fejléc */}
-      <div className="flex items-center justify-between gap-4">
-        <Link
-          href="/portal/ai-muhely"
-          className="flex items-center gap-2 text-xs font-mono text-slate-400 hover:text-[#00B5F1] transition-colors"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          Vissza a Műhelybe
-        </Link>
-        {isAdmin && (
+      <div className="flex items-center justify-end gap-4">{isAdmin && (
           <span className="text-[10px] font-black uppercase tracking-widest text-[#a78bfa] border border-[#7C3AED]/40 bg-[#7C3AED]/10 px-2 py-1 rounded-full">
             Szuperadmin
           </span>
-        )}
-      </div>
+        )}</div>
 
       <div className="space-y-2">
         <span className="text-[10px] font-black uppercase tracking-widest text-[#00B5F1]">
           LFP & Dekoratőr Stúdió
         </span>
-        <h2 className="text-3xl md:text-4xl font-extrabold text-white tracking-tight">
+        <h2 className="text-3xl md:text-4xl font-extrabold text-[#0F172A] dark:text-[#F8FAFC] tracking-tight">
           Roll-up, Kirakat, Molinó & Autódekor
         </h2>
-        <p className="text-slate-400 text-sm max-w-2xl">
+        <p className="text-slate-600 dark:text-slate-400 text-sm max-w-2xl">
           Nagyformátumú dekorációk távolsági olvashatósággal: méretarányos DPI,
           dead-zone térképek, RAL/Oracal kódok és 8 pontos LFP checklist.
         </p>

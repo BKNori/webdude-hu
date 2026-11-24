@@ -85,9 +85,9 @@ export default function SuperadminWorkshopDashboard() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-transparent flex flex-col items-center justify-center space-y-4">
+      <div className="-mt-20 min-h-screen bg-[#F8FAFC] dark:bg-[#0B1120] pt-28 flex flex-col items-center justify-center space-y-4">
         <div className="w-8 h-8 rounded-full border-2 border-sky-500 border-t-transparent animate-spin" />
-        <p className="text-xs font-mono text-slate-400 uppercase tracking-widest animate-pulse font-bold">
+        <p className="text-xs font-mono text-slate-600 dark:text-slate-400 uppercase tracking-widest animate-pulse font-bold">
           Dashboard betöltése...
         </p>
       </div>
@@ -96,21 +96,21 @@ export default function SuperadminWorkshopDashboard() {
 
   if (!isAdmin) {
     return (
-      <div className="min-h-screen bg-transparent flex flex-col items-center justify-center space-y-6 px-6">
+      <div className="-mt-20 min-h-screen bg-[#F8FAFC] dark:bg-[#0B1120] pt-28 flex flex-col items-center justify-center space-y-6 px-6">
         <div className="w-16 h-16 rounded-2xl bg-red-500/10 border border-red-500/30 flex items-center justify-center">
-          <Shield className="w-8 h-8 text-red-400" />
+          <Shield className="w-8 h-8 text-red-600 dark:text-red-400" />
         </div>
         <div className="space-y-2 text-center">
-          <h3 className="text-lg font-bold text-white">
+          <h3 className="text-lg font-bold text-[#0F172A] dark:text-[#F8FAFC]">
             Hozzáférés megtagadva
           </h3>
-          <p className="text-sm text-slate-400">
+          <p className="text-sm text-slate-600 dark:text-slate-400">
             Ez a Szuperadmin Kreatív Stúdió csak admin jogosultsággal érhető el.
           </p>
         </div>
         <Link
           href="/portal"
-          className="px-6 py-3 rounded-xl bg-sky-500 text-bg-base font-bold hover:bg-violet-700 hover:text-white transition-colors"
+          className="px-6 py-3 rounded-xl bg-linear-to-r from-[#075985] to-[#5B21B6] text-white font-bold hover:from-[#0369A1] hover:to-[#6D28D9] transition-colors"
         >
           Vissza a portálhoz
         </Link>
@@ -119,7 +119,7 @@ export default function SuperadminWorkshopDashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-transparent text-text-primary">
+    <div className="-mt-20 min-h-screen bg-[#F8FAFC] dark:bg-[#0B1120] text-[#0F172A] dark:text-[#F8FAFC] pt-28 md:pt-32 pb-16">
       {/* Header */}
       <div className="max-w-7xl mx-auto px-6 py-8">
         <div className="flex items-center justify-between mb-8">
@@ -128,22 +128,22 @@ export default function SuperadminWorkshopDashboard() {
               <Sparkles className="w-6 h-6 text-bg-base" />
             </div>
             <div>
-              <span className="text-xs uppercase font-black tracking-widest text-sky-500 block">
+              <span className="text-xs uppercase font-black tracking-widest text-[#0369A1] dark:text-[#00B5F1] block">
                 Szuperadmin
               </span>
-              <span className="text-2xl font-extrabold text-white tracking-tight leading-none font-mono">
+              <span className="text-2xl font-extrabold text-[#0F172A] dark:text-[#F8FAFC] tracking-tight leading-none font-mono">
                 Kreatív Stúdió
               </span>
             </div>
           </div>
           <div className="flex items-center gap-3">
-            <div className="px-4 py-2 rounded-xl bg-green-500/10 border border-green-500/20 text-green-400 text-xs font-bold uppercase tracking-wider flex items-center gap-2">
+            <div className="px-4 py-2 rounded-xl bg-green-500/10 border border-green-500/20 text-emerald-700 dark:text-emerald-400 text-xs font-bold uppercase tracking-wider flex items-center gap-2">
               <Shield className="w-4 h-4" />
               Admin Hozzáférés
             </div>
             <Link
               href="/portal"
-              className="px-4 py-2 rounded-xl border border-gray-800 hover:border-sky-500/30 text-slate-400 hover:text-white transition-colors text-xs font-bold uppercase tracking-wider flex items-center gap-2"
+              className="px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-sky-500/30 text-slate-600 dark:text-slate-400 hover:text-[#0369A1] dark:hover:text-white transition-colors text-xs font-bold uppercase tracking-wider flex items-center gap-2"
             >
               <LogOut className="w-4 h-4" />
               Kilépés
@@ -153,43 +153,43 @@ export default function SuperadminWorkshopDashboard() {
 
         {/* Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-          <div className="bg-bg-elevated/30 border border-gray-800 rounded-xl p-4">
+          <div className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none border border-slate-200 dark:border-slate-800 rounded-xl p-4">
             <div className="flex items-center gap-2 mb-2">
-              <Activity className="w-4 h-4 text-sky-500" />
-              <p className="text-xs text-slate-400">Összes Modul</p>
+              <Activity className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
+              <p className="text-xs text-slate-600 dark:text-slate-400">Összes Modul</p>
             </div>
-            <p className="text-2xl font-bold text-white">14</p>
+            <p className="text-2xl font-bold text-[#0F172A] dark:text-[#F8FAFC]">14</p>
           </div>
-          <div className="bg-bg-elevated/30 border border-gray-800 rounded-xl p-4">
+          <div className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none border border-slate-200 dark:border-slate-800 rounded-xl p-4">
             <div className="flex items-center gap-2 mb-2">
               <Users className="w-4 h-4 text-blue-500" />
-              <p className="text-xs text-slate-400">Aktív Felhasználók</p>
+              <p className="text-xs text-slate-600 dark:text-slate-400">Aktív Felhasználók</p>
             </div>
-            <p className="text-2xl font-bold text-white">--</p>
+            <p className="text-2xl font-bold text-[#0F172A] dark:text-[#F8FAFC]">--</p>
           </div>
-          <div className="bg-bg-elevated/30 border border-gray-800 rounded-xl p-4">
+          <div className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none border border-slate-200 dark:border-slate-800 rounded-xl p-4">
             <div className="flex items-center gap-2 mb-2">
               <Zap className="w-4 h-4 text-green-500" />
-              <p className="text-xs text-slate-400">Generálások</p>
+              <p className="text-xs text-slate-600 dark:text-slate-400">Generálások</p>
             </div>
-            <p className="text-2xl font-bold text-white">--</p>
+            <p className="text-2xl font-bold text-[#0F172A] dark:text-[#F8FAFC]">--</p>
           </div>
-          <div className="bg-bg-elevated/30 border border-gray-800 rounded-xl p-4">
+          <div className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none border border-slate-200 dark:border-slate-800 rounded-xl p-4">
             <div className="flex items-center gap-2 mb-2">
               <Settings className="w-4 h-4 text-purple-500" />
-              <p className="text-xs text-slate-400">Rendszer Státusz</p>
+              <p className="text-xs text-slate-600 dark:text-slate-400">Rendszer Státusz</p>
             </div>
-            <p className="text-2xl font-bold text-green-400">Online</p>
+            <p className="text-2xl font-bold text-emerald-700 dark:text-emerald-400">Online</p>
           </div>
         </div>
 
         {/* Workshop Grid */}
         <div className="space-y-6">
           <div className="flex items-center justify-between">
-            <h2 className="text-lg font-bold text-white">AI Műhely Modulok</h2>
+            <h2 className="text-lg font-bold text-[#0F172A] dark:text-[#F8FAFC]">AI Műhely Modulok</h2>
             <Link
               href="/portal/ai-muhely"
-              className="flex items-center gap-2 px-4 py-2 rounded-xl border border-gray-800 hover:border-sky-500/30 text-slate-400 hover:text-white transition-colors text-xs font-bold uppercase tracking-wider"
+              className="flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-sky-500/30 text-slate-600 dark:text-slate-400 hover:text-[#0369A1] dark:hover:text-white transition-colors text-xs font-bold uppercase tracking-wider"
             >
               <ExternalLink className="w-4 h-4" />
               Nyilvános Nézet
@@ -210,7 +210,7 @@ export default function SuperadminWorkshopDashboard() {
                 >
                   <Link
                     href={workshop.route}
-                    className="block bg-bg-elevated/30 border border-gray-800 rounded-xl p-4 hover:border-sky-500/30 transition-all group"
+                    className="block bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none border border-slate-200 dark:border-slate-800 rounded-xl p-4 hover:border-sky-500/30 transition-all group"
                   >
                     <div className="flex items-start justify-between mb-3">
                       <div className="flex items-center gap-3">
@@ -218,35 +218,35 @@ export default function SuperadminWorkshopDashboard() {
                           <IconComponent className="w-4 h-4 text-bg-base" />
                         </div>
                         <div>
-                          <h3 className="text-sm font-bold text-white leading-tight">
+                          <h3 className="text-sm font-bold text-[#0F172A] dark:text-[#F8FAFC] leading-tight">
                             {workshop.name}
                           </h3>
                           <span
-                            className={`inline-block px-2 py-0.5 rounded text-xs font-mono border ${categoryColor}`}
+                            className={`inline-block px-2 py-0.5 rounded text-xs font-mono border${categoryColor}`}
                           >
                             {categoryLabels[workshop.category]}
                           </span>
                         </div>
                       </div>
                       {workshop.isPro && (
-                        <div className="flex items-center gap-1 px-2 py-0.5 rounded bg-sky-500/10 border border-sky-500/20">
-                          <Star className="w-3 h-3 text-sky-400 fill-sky-400" />
-                          <span className="text-xs font-bold text-sky-400">
+                        <div className="flex items-center gap-1 px-2 py-0.5 rounded bg-sky-500/10 border border-slate-200 dark:border-slate-800">
+                          <Star className="w-3 h-3 text-[#0369A1] dark:text-[#00B5F1] fill-sky-400" />
+                          <span className="text-xs font-bold text-[#0369A1] dark:text-[#00B5F1]">
                             PRO
                           </span>
                         </div>
                       )}
                     </div>
 
-                    <p className="text-xs text-slate-400 leading-relaxed line-clamp-2 mb-3">
+                    <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed line-clamp-2 mb-3">
                       {workshop.description}
                     </p>
 
-                    <div className="flex items-center justify-between pt-3 border-t border-gray-800">
-                      <p className="text-xs font-bold text-sky-400">
+                    <div className="flex items-center justify-between pt-3 border-t border-slate-200 dark:border-slate-800">
+                      <p className="text-xs font-bold text-[#0369A1] dark:text-[#00B5F1]">
                         Egyedi árajánlat alapján
                       </p>
-                      <div className="flex items-center gap-1 text-sky-500 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <div className="flex items-center gap-1 text-[#0369A1] dark:text-[#00B5F1] opacity-0 group-hover:opacity-100 transition-opacity">
                         <span className="text-xs font-bold uppercase tracking-wider">
                           Megnyitás
                         </span>
@@ -262,50 +262,50 @@ export default function SuperadminWorkshopDashboard() {
 
         {/* Quick Actions */}
         <div className="mt-8 space-y-4">
-          <h2 className="text-lg font-bold text-white">Gyors Műveletek</h2>
+          <h2 className="text-lg font-bold text-[#0F172A] dark:text-[#F8FAFC]">Gyors Műveletek</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <Link
               href="/admin/super-control"
-              className="bg-bg-elevated/30 border border-gray-800 rounded-xl p-4 hover:border-sky-500/30 transition-all flex items-center gap-3"
+              className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none border border-slate-200 dark:border-slate-800 rounded-xl p-4 hover:border-sky-500/30 transition-all flex items-center gap-3"
             >
               <div className="w-10 h-10 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center">
                 <Settings className="w-5 h-5 text-blue-400" />
               </div>
               <div>
-                <p className="text-sm font-bold text-white">
+                <p className="text-sm font-bold text-[#0F172A] dark:text-[#F8FAFC]">
                   Rendszer Beállítások
                 </p>
-                <p className="text-xs text-slate-400">
+                <p className="text-xs text-slate-600 dark:text-slate-400">
                   Konfiguráció és maintenance
                 </p>
               </div>
             </Link>
             <Link
               href="/admin/portal-kezelo"
-              className="bg-bg-elevated/30 border border-gray-800 rounded-xl p-4 hover:border-sky-500/30 transition-all flex items-center gap-3"
+              className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none border border-slate-200 dark:border-slate-800 rounded-xl p-4 hover:border-sky-500/30 transition-all flex items-center gap-3"
             >
               <div className="w-10 h-10 rounded-lg bg-green-500/10 border border-green-500/20 flex items-center justify-center">
-                <Users className="w-5 h-5 text-green-400" />
+                <Users className="w-5 h-5 text-emerald-700 dark:text-emerald-400" />
               </div>
               <div>
-                <p className="text-sm font-bold text-white">
+                <p className="text-sm font-bold text-[#0F172A] dark:text-[#F8FAFC]">
                   Felhasználó Kezelő
                 </p>
-                <p className="text-xs text-slate-400">
+                <p className="text-xs text-slate-600 dark:text-slate-400">
                   Jogosultságok és workflow
                 </p>
               </div>
             </Link>
             <Link
               href="/admin/work-log"
-              className="bg-bg-elevated/30 border border-gray-800 rounded-xl p-4 hover:border-sky-500/30 transition-all flex items-center gap-3"
+              className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none border border-slate-200 dark:border-slate-800 rounded-xl p-4 hover:border-sky-500/30 transition-all flex items-center gap-3"
             >
               <div className="w-10 h-10 rounded-lg bg-purple-500/10 border border-purple-500/20 flex items-center justify-center">
                 <Activity className="w-5 h-5 text-purple-400" />
               </div>
               <div>
-                <p className="text-sm font-bold text-white">Munkanapló</p>
-                <p className="text-xs text-slate-400">
+                <p className="text-sm font-bold text-[#0F172A] dark:text-[#F8FAFC]">Munkanapló</p>
+                <p className="text-xs text-slate-600 dark:text-slate-400">
                   Generálási statisztikák
                 </p>
               </div>

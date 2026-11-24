@@ -1,8 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
-import Link from "next/link";
-import { ArrowLeft, Loader2, Sparkles } from "lucide-react";
+import { Loader2, Sparkles } from "lucide-react";
 import ToolAccessLock from "@/components/molecules/ToolAccessLock";
 import LivePromptPreviewCard from "@/components/molecules/LivePromptPreviewCard";
 import OnlineGraphicsEnginePanel from "@/components/organisms/online-graphics-studio/OnlineGraphicsEnginePanel";
@@ -98,18 +97,9 @@ export default function OnlineGraphicsPromptStudio() {
   }
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#0B1120] text-[#0F172A] dark:text-[#F8FAFC] py-10 px-6">
-      <div className="max-w-7xl mx-auto space-y-8">
-        <div className="flex flex-wrap items-center justify-between gap-4">
-          <Link
-            href="/portal/ai-muhely"
-            className="inline-flex items-center gap-2 text-xs font-mono text-[#0369A1] dark:text-[#00B5F1] hover:underline"
-          >
-            <ArrowLeft className="w-4 h-4" aria-hidden="true" />
-            Vissza az AI Tervezőműhelybe
-          </Link>
-
-          <div className="flex items-center gap-2">
+    <div className="space-y-8">
+      <div className="space-y-8">
+        <div className="flex flex-wrap items-center justify-end gap-4"><div className="flex items-center gap-2">
             <span className="rounded-full bg-[#0369A1]/10 dark:bg-[#00B5F1]/15 border border-[#0369A1]/30 dark:border-[#00B5F1]/30 px-3 py-1 text-[10px] font-mono font-bold uppercase tracking-widest text-[#0369A1] dark:text-[#00B5F1]">
               PRO PROMPT · 1. PILLÉR
             </span>
@@ -118,8 +108,7 @@ export default function OnlineGraphicsPromptStudio() {
                 Szuperadmin
               </span>
             )}
-          </div>
-        </div>
+          </div></div>
 
         <header className="space-y-2 max-w-3xl">
           <span className="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-widest text-[#0369A1] dark:text-[#00B5F1]">

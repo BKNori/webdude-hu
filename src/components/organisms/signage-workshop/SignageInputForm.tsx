@@ -138,9 +138,9 @@ export const SIGNAGE_PRESETS: Array<{
 ];
 
 const inputClass =
-  "w-full px-4 py-3 rounded-xl bg-slate-950/80 border border-slate-700/60 text-slate-200 text-sm placeholder:text-slate-600 backdrop-blur-md focus:outline-none focus:ring-2 focus:ring-brand-primary/50 focus:border-brand-primary/40 transition-all";
+  "w-full px-4 py-3 rounded-xl bg-white dark:bg-[#0B1120] border border-slate-300 dark:border-slate-700 text-[#0F172A] dark:text-slate-100 text-sm placeholder:text-slate-400 dark:placeholder:text-slate-500 backdrop-blur-md focus:outline-none focus:ring-2 focus:ring-brand-primary/50 focus:border-[#0369A1] dark:focus:border-[#00B5F1] transition-all";
 const labelClass =
-  "block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5";
+  "block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1.5";
 
 interface SignageInputFormProps {
   register: UseFormRegister<SignageFormValues>;
@@ -179,7 +179,7 @@ export default function SignageInputForm({
             key={preset.label}
             type="button"
             onClick={() => onLoadPreset(preset)}
-            className="px-4 py-3 rounded-xl border border-brand-primary/25 bg-brand-primary/5 text-left text-xs font-bold text-brand-primary hover:bg-brand-primary/15 hover:border-brand-primary/50 transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary"
+            className="px-4 py-3 rounded-xl border border-brand-primary/25 bg-brand-primary/5 text-left text-xs font-bold text-[#0369A1] dark:text-[#00B5F1] hover:bg-brand-primary/15 hover:border-brand-primary/50 transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary"
           >
             {preset.label}
           </button>
@@ -187,33 +187,33 @@ export default function SignageInputForm({
       </div>
 
       <form onSubmit={onSubmit} className="space-y-8">
-        <div className="bg-slate-950/90 backdrop-blur-2xl border border-slate-800/60 rounded-3xl p-6 md:p-8 space-y-5">
-          <h3 className="text-sm font-black uppercase tracking-widest text-slate-300 flex items-center gap-2">
-            <MonitorPlay className="w-4 h-4 text-brand-primary" />
+        <div className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none backdrop-blur-2xl border border-slate-200 dark:border-slate-800 rounded-3xl p-6 md:p-8 space-y-5">
+          <h3 className="text-sm font-black uppercase tracking-widest text-slate-700 dark:text-slate-300 flex items-center gap-2">
+            <MonitorPlay className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
             Üzenet & Márka
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="md:col-span-2">
               <label className={labelClass}>Fő üzenet / Kampány / Szolgáltatás neve *</label>
               <input {...register("campaignOrHeadline")} placeholder="Pl. Weboldal Készítés 7 Nap Alatt — Ingyenes Audit" className={inputClass} />
-              {errors.campaignOrHeadline && <p className="text-red-400 text-xs mt-1">{errors.campaignOrHeadline.message}</p>}
+              {errors.campaignOrHeadline && <p className="text-red-600 dark:text-red-400 text-xs mt-1">{errors.campaignOrHeadline.message}</p>}
             </div>
             <div>
               <label className={labelClass}>Márka / Cégnév *</label>
               <input {...register("brandName")} placeholder="Pl. WebDude" className={inputClass} />
-              {errors.brandName && <p className="text-red-400 text-xs mt-1">{errors.brandName.message}</p>}
+              {errors.brandName && <p className="text-red-600 dark:text-red-400 text-xs mt-1">{errors.brandName.message}</p>}
             </div>
             <div>
               <label className={labelClass}>Iparág *</label>
               <input {...register("industry")} placeholder="Pl. Webfejlesztés és digitális marketing ügynökség" className={inputClass} />
-              {errors.industry && <p className="text-red-400 text-xs mt-1">{errors.industry.message}</p>}
+              {errors.industry && <p className="text-red-600 dark:text-red-400 text-xs mt-1">{errors.industry.message}</p>}
             </div>
           </div>
         </div>
 
-        <div className="bg-slate-950/90 backdrop-blur-2xl border border-slate-800/60 rounded-3xl p-6 md:p-8 space-y-6">
-          <h3 className="text-sm font-black uppercase tracking-widest text-slate-300 flex items-center gap-2">
-            <Ruler className="w-4 h-4 text-brand-primary" />
+        <div className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none backdrop-blur-2xl border border-slate-200 dark:border-slate-800 rounded-3xl p-6 md:p-8 space-y-6">
+          <h3 className="text-sm font-black uppercase tracking-widest text-slate-700 dark:text-slate-300 flex items-center gap-2">
+            <Ruler className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
             Formátum, Méret & Hordozó
           </h3>
           <PresetChips
@@ -225,7 +225,7 @@ export default function SignageInputForm({
           <div>
             <label className={labelClass}>Pontos befoglaló méret</label>
             <input {...register("dimensionsAndScale")} placeholder="Pl. 85 × 200 cm vagy Kirakat: 320 × 240 cm" className={inputClass} />
-            {errors.dimensionsAndScale && <p className="text-red-400 text-xs mt-1">{errors.dimensionsAndScale.message}</p>}
+            {errors.dimensionsAndScale && <p className="text-red-600 dark:text-red-400 text-xs mt-1">{errors.dimensionsAndScale.message}</p>}
           </div>
           <PresetChips
             label="Hordozó és fólia technológia"
@@ -241,9 +241,9 @@ export default function SignageInputForm({
           />
         </div>
 
-        <div className="bg-slate-950/90 backdrop-blur-2xl border border-slate-800/60 rounded-3xl p-6 md:p-8 space-y-5">
-          <h3 className="text-sm font-black uppercase tracking-widest text-slate-300 flex items-center gap-2">
-            <Palette className="w-4 h-4 text-brand-primary" />
+        <div className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none backdrop-blur-2xl border border-slate-200 dark:border-slate-800 rounded-3xl p-6 md:p-8 space-y-5">
+          <h3 className="text-sm font-black uppercase tracking-widest text-slate-700 dark:text-slate-300 flex items-center gap-2">
+            <Palette className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
             Stílus, Színek & Kapcsolat
           </h3>
           <PresetChips
@@ -265,7 +265,7 @@ export default function SignageInputForm({
         </div>
 
         {error && (
-          <div className="bg-red-500/5 border border-red-500/40 backdrop-blur-xl shadow-[0_0_24px_rgba(239,68,68,0.15)] text-red-400 px-4 py-3 rounded-xl text-sm flex items-center gap-2">
+          <div className="bg-red-500/5 border border-red-500/40 backdrop-blur-xl shadow-[0_0_24px_rgba(239,68,68,0.15)] text-red-600 dark:text-red-400 px-4 py-3 rounded-xl text-sm flex items-center gap-2">
             <AlertTriangle className="w-4 h-4" />
             {error}
           </div>

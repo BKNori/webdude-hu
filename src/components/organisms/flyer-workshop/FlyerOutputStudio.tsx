@@ -28,20 +28,20 @@ export default function FlyerOutputStudio({
       className="space-y-8 pt-4"
     >
       {/* Koncepció */}
-      <div className="bg-slate-950/90 backdrop-blur-2xl border border-slate-800/60 rounded-3xl p-6 md:p-8 space-y-3">
-        <h3 className="text-lg font-bold text-white">
+      <div className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none backdrop-blur-2xl border border-slate-200 dark:border-slate-800 rounded-3xl p-6 md:p-8 space-y-3">
+        <h3 className="text-lg font-bold text-[#0F172A] dark:text-[#F8FAFC]">
           {generatedOutput.conceptOverview.title}
         </h3>
-        <p className="text-sm text-slate-300">
+        <p className="text-sm text-slate-700 dark:text-slate-300">
           {generatedOutput.conceptOverview.creativeDirection}
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
-          <p className="text-slate-400 leading-relaxed bg-slate-950/50 rounded-xl p-3 border border-slate-800/60">
-            <strong className="text-brand-primary">Tekintetvezetés: </strong>
+          <p className="text-slate-600 dark:text-slate-400 leading-relaxed bg-slate-50 dark:bg-[#0B1120] rounded-xl p-3 border border-slate-200 dark:border-slate-800">
+            <strong className="text-[#0369A1] dark:text-[#00B5F1]">Tekintetvezetés: </strong>
             {generatedOutput.conceptOverview.eyeTrackingStrategy}
           </p>
-          <p className="text-slate-400 leading-relaxed bg-slate-950/50 rounded-xl p-3 border border-slate-800/60">
-            <strong className="text-brand-primary">Konverziós pszichológia: </strong>
+          <p className="text-slate-600 dark:text-slate-400 leading-relaxed bg-slate-50 dark:bg-[#0B1120] rounded-xl p-3 border border-slate-200 dark:border-slate-800">
+            <strong className="text-[#0369A1] dark:text-[#00B5F1]">Konverziós pszichológia: </strong>
             {generatedOutput.conceptOverview.conversionPsychology}
           </p>
         </div>
@@ -49,9 +49,9 @@ export default function FlyerOutputStudio({
 
       {/* Prepress Műszaki Rajz */}
       {specs && (
-        <div className="bg-slate-950/90 backdrop-blur-2xl border border-slate-800/60 rounded-3xl p-6 md:p-8 space-y-4">
-          <h3 className="text-lg font-bold text-white flex items-center gap-2">
-            <Ruler className="w-5 h-5 text-brand-primary" />
+        <div className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none backdrop-blur-2xl border border-slate-200 dark:border-slate-800 rounded-3xl p-6 md:p-8 space-y-4">
+          <h3 className="text-lg font-bold text-[#0F172A] dark:text-[#F8FAFC] flex items-center gap-2">
+            <Ruler className="w-5 h-5 text-[#0369A1] dark:text-[#00B5F1]" />
             Prepress & Hajtási Műszaki Rajz
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
@@ -69,28 +69,28 @@ export default function FlyerOutputStudio({
             ).map(([label, value]) => (
               <div
                 key={label}
-                className="rounded-xl border border-slate-800 bg-slate-950/50 p-3"
+                className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-[#0B1120] p-3"
               >
-                <p className="text-[10px] font-black uppercase tracking-widest text-slate-500">
+                <p className="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400">
                   {label}
                 </p>
-                <p className="text-xs font-mono font-bold text-white mt-1">
+                <p className="text-xs font-mono font-bold text-[#0F172A] dark:text-[#F8FAFC] mt-1">
                   {value}
                 </p>
               </div>
             ))}
           </div>
           <div className="space-y-2 text-xs">
-            <p className="text-slate-300 leading-relaxed">
-              <strong className="text-brand-primary">Hajtási mechanika: </strong>
+            <p className="text-slate-700 dark:text-slate-300 leading-relaxed">
+              <strong className="text-[#0369A1] dark:text-[#00B5F1]">Hajtási mechanika: </strong>
               {specs.foldingMechanics}
             </p>
-            <p className="text-slate-300 leading-relaxed">
-              <strong className="text-brand-primary">Papír: </strong>
+            <p className="text-slate-700 dark:text-slate-300 leading-relaxed">
+              <strong className="text-[#0369A1] dark:text-[#00B5F1]">Papír: </strong>
               {specs.paperRecommendation}
             </p>
-            <p className="text-slate-300 leading-relaxed">
-              <strong className="text-brand-primary">Fekete szöveg szabály: </strong>
+            <p className="text-slate-700 dark:text-slate-300 leading-relaxed">
+              <strong className="text-[#0369A1] dark:text-[#00B5F1]">Fekete szöveg szabály: </strong>
               {specs.bodyTextBlackRule}
             </p>
           </div>
@@ -99,22 +99,22 @@ export default function FlyerOutputStudio({
 
       {/* Panelenkénti Zónaterv & Copy */}
       <div className="space-y-4">
-        <h3 className="text-lg font-bold text-white flex items-center gap-2">
-          <Layers className="w-5 h-5 text-brand-primary" />
+        <h3 className="text-lg font-bold text-[#0F172A] dark:text-[#F8FAFC] flex items-center gap-2">
+          <Layers className="w-5 h-5 text-[#0369A1] dark:text-[#00B5F1]" />
           Panelenkénti Zónaterv & Kész Szövegek
         </h3>
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
           {generatedOutput.panelBreakdown.map((panel, idx) => (
             <div
               key={idx}
-              className="bg-slate-950/90 backdrop-blur-2xl border border-slate-800/60 rounded-3xl p-5 space-y-3"
+              className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none backdrop-blur-2xl border border-slate-200 dark:border-slate-800 rounded-3xl p-5 space-y-3"
             >
               <div className="flex items-start justify-between gap-2">
                 <div>
-                  <p className="text-[10px] font-black uppercase tracking-widest text-brand-primary">
+                  <p className="text-[10px] font-black uppercase tracking-widest text-[#0369A1] dark:text-[#00B5F1]">
                     {panel.sizeMm}
                   </p>
-                  <h4 className="text-sm font-black text-white">
+                  <h4 className="text-sm font-black text-[#0F172A] dark:text-[#F8FAFC]">
                     {panel.panelName}
                   </h4>
                 </div>
@@ -123,29 +123,29 @@ export default function FlyerOutputStudio({
                   label="Panel másolása"
                 />
               </div>
-              <p className="text-[11px] text-slate-500 leading-relaxed">
+              <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed">
                 {panel.visualZonePlan}
               </p>
               <div className="space-y-1.5">
-                <p className="text-sm font-bold text-white">{panel.headline}</p>
-                <p className="text-xs text-brand-primary font-semibold">
+                <p className="text-sm font-bold text-[#0F172A] dark:text-[#F8FAFC]">{panel.headline}</p>
+                <p className="text-xs text-[#0369A1] dark:text-[#00B5F1] font-semibold">
                   {panel.subheadline}
                 </p>
                 <ul className="space-y-1">
                   {panel.bodyPoints.map((point, i) => (
                     <li
                       key={i}
-                      className="text-xs text-slate-400 flex items-start gap-2"
+                      className="text-xs text-slate-600 dark:text-slate-400 flex items-start gap-2"
                     >
-                      <span className="text-brand-primary mt-0.5">•</span>
+                      <span className="text-[#0369A1] dark:text-[#00B5F1] mt-0.5">•</span>
                       {point}
                     </li>
                   ))}
                 </ul>
-                <p className="text-xs font-bold text-emerald-400 pt-1">
+                <p className="text-xs font-bold text-emerald-700 dark:text-emerald-400 pt-1">
                   {panel.ctaOrElement}
                 </p>
-                <p className="text-[11px] text-slate-500 italic">
+                <p className="text-[11px] text-slate-500 dark:text-slate-400 italic">
                   {panel.layoutTip}
                 </p>
               </div>
@@ -156,9 +156,9 @@ export default function FlyerOutputStudio({
 
       {/* Színrendszer + Tipográfia */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        <div className="bg-slate-950/90 backdrop-blur-2xl border border-slate-800/60 rounded-3xl p-6 space-y-4">
-          <h3 className="text-lg font-bold text-white flex items-center gap-2">
-            <Palette className="w-5 h-5 text-brand-primary" />
+        <div className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none backdrop-blur-2xl border border-slate-200 dark:border-slate-800 rounded-3xl p-6 space-y-4">
+          <h3 className="text-lg font-bold text-[#0F172A] dark:text-[#F8FAFC] flex items-center gap-2">
+            <Palette className="w-5 h-5 text-[#0369A1] dark:text-[#00B5F1]" />
             CMYK + Pantone + HEX Színek
           </h3>
           <div className="space-y-3">
@@ -168,20 +168,20 @@ export default function FlyerOutputStudio({
                 type="button"
                 onClick={() => navigator.clipboard.writeText(color.hex)}
                 title="Kattintás: HEX másolása"
-                className="w-full flex items-center gap-3 rounded-xl border border-slate-800 p-3 hover:border-brand-primary/40 transition-all cursor-pointer text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary"
+                className="w-full flex items-center gap-3 rounded-xl border border-slate-200 dark:border-slate-800 p-3 hover:border-brand-primary/40 transition-all cursor-pointer text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary"
               >
                 <span
-                  className="w-10 h-10 rounded-lg border border-slate-700 shrink-0"
+                  className="w-10 h-10 rounded-lg border border-slate-200 dark:border-slate-800 shrink-0"
                   style={{ backgroundColor: color.hex }}
                 />
                 <span className="min-w-0">
-                  <span className="block text-xs font-bold text-white truncate">
+                  <span className="block text-xs font-bold text-[#0F172A] dark:text-[#F8FAFC] truncate">
                     {color.name} — {color.hex}
                   </span>
-                  <span className="block text-[10px] font-mono text-slate-500">
+                  <span className="block text-[10px] font-mono text-slate-500 dark:text-slate-400">
                     {color.cmyk} • {color.pantone}
                   </span>
-                  <span className="block text-[10px] text-slate-400">
+                  <span className="block text-[10px] text-slate-600 dark:text-slate-400">
                     {color.printUsage}
                   </span>
                 </span>
@@ -190,22 +190,22 @@ export default function FlyerOutputStudio({
           </div>
         </div>
 
-        <div className="bg-slate-950/90 backdrop-blur-2xl border border-slate-800/60 rounded-3xl p-6 space-y-4">
-          <h3 className="text-lg font-bold text-white flex items-center gap-2">
-            <Type className="w-5 h-5 text-brand-primary" />
+        <div className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none backdrop-blur-2xl border border-slate-200 dark:border-slate-800 rounded-3xl p-6 space-y-4">
+          <h3 className="text-lg font-bold text-[#0F172A] dark:text-[#F8FAFC] flex items-center gap-2">
+            <Type className="w-5 h-5 text-[#0369A1] dark:text-[#00B5F1]" />
             Nyomdai Tipográfiai Skála
           </h3>
           <div className="space-y-2 text-xs">
-            <p className="text-slate-300">
-              <strong className="text-white">Főcím: </strong>
+            <p className="text-slate-700 dark:text-slate-300">
+              <strong className="text-[#0F172A] dark:text-[#F8FAFC]">Főcím: </strong>
               {generatedOutput.typographyHierarchy.headlineFont}
             </p>
-            <p className="text-slate-300">
-              <strong className="text-white">Szövegtörzs: </strong>
+            <p className="text-slate-700 dark:text-slate-300">
+              <strong className="text-[#0F172A] dark:text-[#F8FAFC]">Szövegtörzs: </strong>
               {generatedOutput.typographyHierarchy.bodyFont}
             </p>
-            <p className="text-slate-300">
-              <strong className="text-white">Kiemelés: </strong>
+            <p className="text-slate-700 dark:text-slate-300">
+              <strong className="text-[#0F172A] dark:text-[#F8FAFC]">Kiemelés: </strong>
               {generatedOutput.typographyHierarchy.accentFont}
             </p>
             <div className="grid grid-cols-2 gap-2 pt-2">
@@ -219,18 +219,18 @@ export default function FlyerOutputStudio({
               ).map(([label, value]) => (
                 <div
                   key={label}
-                  className="rounded-lg border border-slate-800 bg-slate-950/50 p-2"
+                  className="rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-[#0B1120] p-2"
                 >
-                  <p className="text-[9px] font-black uppercase tracking-widest text-slate-500">
+                  <p className="text-[9px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400">
                     {label}
                   </p>
-                  <p className="text-xs font-mono font-bold text-brand-primary">
+                  <p className="text-xs font-mono font-bold text-[#0369A1] dark:text-[#00B5F1]">
                     {value} pt
                   </p>
                 </div>
               ))}
             </div>
-            <p className="text-slate-400 leading-relaxed pt-1">
+            <p className="text-slate-600 dark:text-slate-400 leading-relaxed pt-1">
               {generatedOutput.typographyHierarchy.kerningAndLeadingTips}
             </p>
           </div>
@@ -238,14 +238,14 @@ export default function FlyerOutputStudio({
       </div>
 
       {/* AI Promptok */}
-      <div className="bg-slate-950/90 backdrop-blur-2xl border border-slate-800/60 rounded-3xl p-6 md:p-8 space-y-4">
-        <h3 className="text-lg font-bold text-white flex items-center gap-2">
-          <Bot className="w-5 h-5 text-brand-primary" />
+      <div className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none backdrop-blur-2xl border border-slate-200 dark:border-slate-800 rounded-3xl p-6 md:p-8 space-y-4">
+        <h3 className="text-lg font-bold text-[#0F172A] dark:text-[#F8FAFC] flex items-center gap-2">
+          <Bot className="w-5 h-5 text-[#0369A1] dark:text-[#00B5F1]" />
           AI Generáló Promptok
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-          <div className="rounded-2xl border border-slate-800 p-4 space-y-2">
-            <p className="text-[10px] font-black uppercase tracking-widest text-brand-primary">
+          <div className="rounded-2xl border border-slate-200 dark:border-slate-800 p-4 space-y-2">
+            <p className="text-[10px] font-black uppercase tracking-widest text-[#0369A1] dark:text-[#00B5F1]">
               Hero Key Visual (MJ v6.1 / Flux)
             </p>
             <CopyButton
@@ -253,8 +253,8 @@ export default function FlyerOutputStudio({
               label="Prompt másolása"
             />
           </div>
-          <div className="rounded-2xl border border-slate-800 p-4 space-y-2">
-            <p className="text-[10px] font-black uppercase tracking-widest text-brand-primary">
+          <div className="rounded-2xl border border-slate-200 dark:border-slate-800 p-4 space-y-2">
+            <p className="text-[10px] font-black uppercase tracking-widest text-[#0369A1] dark:text-[#00B5F1]">
               Layout Inspiráció (Ideogram 2.0)
             </p>
             <CopyButton
@@ -262,8 +262,8 @@ export default function FlyerOutputStudio({
               label="Prompt másolása"
             />
           </div>
-          <div className="rounded-2xl border border-slate-800 p-4 space-y-2">
-            <p className="text-[10px] font-black uppercase tracking-widest text-brand-primary">
+          <div className="rounded-2xl border border-slate-200 dark:border-slate-800 p-4 space-y-2">
+            <p className="text-[10px] font-black uppercase tracking-widest text-[#0369A1] dark:text-[#00B5F1]">
               3D Print Mockup
             </p>
             <CopyButton
@@ -275,18 +275,18 @@ export default function FlyerOutputStudio({
       </div>
 
       {/* Prepress Checklist */}
-      <div className="bg-slate-950/90 backdrop-blur-2xl border border-slate-800/60 rounded-3xl p-6 md:p-8 space-y-4">
-        <h3 className="text-lg font-bold text-white flex items-center gap-2">
-          <CheckCircle2 className="w-5 h-5 text-emerald-400" />
+      <div className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none backdrop-blur-2xl border border-slate-200 dark:border-slate-800 rounded-3xl p-6 md:p-8 space-y-4">
+        <h3 className="text-lg font-bold text-[#0F172A] dark:text-[#F8FAFC] flex items-center gap-2">
+          <CheckCircle2 className="w-5 h-5 text-emerald-700 dark:text-emerald-400" />
           Prepress Ellenőrzőlista (8 pont)
         </h3>
         <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
           {generatedOutput.prepressChecklist.map((item, i) => (
             <li
               key={i}
-              className="flex items-start gap-2 text-xs text-slate-300 bg-slate-950/50 rounded-xl p-3 border border-slate-800/60"
+              className="flex items-start gap-2 text-xs text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-[#0B1120] rounded-xl p-3 border border-slate-200 dark:border-slate-800"
             >
-              <span className="w-5 h-5 rounded-full bg-emerald-500/15 text-emerald-400 flex items-center justify-center text-[10px] font-black shrink-0">
+              <span className="w-5 h-5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 flex items-center justify-center text-[10px] font-black shrink-0">
                 {i + 1}
               </span>
               {item}

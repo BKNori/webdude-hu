@@ -91,13 +91,13 @@ export default function PosterInputForm({
     <div className="space-y-6">
       <div className="space-y-2 relative">
         <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 rounded-full bg-brand-primary/5 blur-3xl pointer-events-none" />
-        <span className="text-xs font-mono font-bold uppercase tracking-widest text-brand-primary">
+        <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#0369A1] dark:text-[#00B5F1]">
           Poster Generátor
         </span>
-        <h1 className="text-3xl md:text-4xl font-heading font-normal uppercase text-white tracking-wide leading-none">
+        <h1 className="text-3xl md:text-4xl font-heading font-normal uppercase text-[#0F172A] dark:text-[#F8FAFC] tracking-wide leading-none">
           Nyomdai Kész Poszter
         </h1>
-        <p className="text-slate-400 text-sm max-w-2xl leading-relaxed">
+        <p className="text-slate-600 dark:text-slate-400 text-sm max-w-2xl leading-relaxed">
           Generálj print-ready poszter koncepciókat Norbi 26 éves grafikai és
           nyomdai szakértelmével. CMYK színértékek, bleed, safe zone és crop
           marks irányelvekkel.
@@ -107,7 +107,7 @@ export default function PosterInputForm({
       {error && (
         <div
           role="alert"
-          className="bg-red-500/5 border border-red-500/40 backdrop-blur-xl shadow-[0_0_24px_rgba(239,68,68,0.15)] text-red-400 px-4 py-3 rounded-2xl text-xs flex items-center gap-2.5 font-mono"
+          className="bg-red-500/5 border border-red-500/40 backdrop-blur-xl shadow-[0_0_24px_rgba(239,68,68,0.15)] text-red-600 dark:text-red-400 px-4 py-3 rounded-2xl text-xs flex items-center gap-2.5 font-mono"
         >
           <Sparkles className="w-4 h-4 shrink-0" />
           {error}
@@ -117,18 +117,18 @@ export default function PosterInputForm({
       <form onSubmit={onSubmit} className="space-y-6">
         {/* Poster Purpose */}
         <div className="space-y-2">
-          <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-            <Target className="w-4 h-4 text-brand-primary" />
+          <label className="flex items-center gap-2 text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+            <Target className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
             Poszter Célja
           </label>
           <textarea
             {...register("posterPurpose")}
             placeholder="Példa: Esemény promóció, termék bevezetés, kiállítás, konferencia..."
-            className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-bg-elevated text-white placeholder-slate-500 focus:border-brand-primary/50 focus:outline-none focus:ring-2 focus:ring-brand-primary/10 transition-all text-sm resize-none"
+            className="w-full px-4 py-3 rounded-xl bg-white dark:bg-[#0B1120] border border-slate-300 dark:border-slate-700 text-[#0F172A] dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:border-[#0369A1] dark:focus:border-[#00B5F1] focus:outline-none focus:ring-2 focus:ring-brand-primary/10 transition-all text-sm resize-none"
             rows={3}
           />
           {errors.posterPurpose && (
-            <p className="text-red-400 text-xs">
+            <p className="text-red-600 dark:text-red-400 text-xs">
               {errors.posterPurpose.message}
             </p>
           )}
@@ -136,18 +136,18 @@ export default function PosterInputForm({
 
         {/* Target Audience */}
         <div className="space-y-2">
-          <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-            <Type className="w-4 h-4 text-brand-primary" />
+          <label className="flex items-center gap-2 text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+            <Type className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
             Célközönség
           </label>
           <textarea
             {...register("targetAudience")}
             placeholder="Példa: 25-35 éves szakemberek, diákok, helyi lakosok..."
-            className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-bg-elevated text-white placeholder-slate-500 focus:border-brand-primary/50 focus:outline-none focus:ring-2 focus:ring-brand-primary/10 transition-all text-sm resize-none"
+            className="w-full px-4 py-3 rounded-xl bg-white dark:bg-[#0B1120] border border-slate-300 dark:border-slate-700 text-[#0F172A] dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:border-[#0369A1] dark:focus:border-[#00B5F1] focus:outline-none focus:ring-2 focus:ring-brand-primary/10 transition-all text-sm resize-none"
             rows={3}
           />
           {errors.targetAudience && (
-            <p className="text-red-400 text-xs">
+            <p className="text-red-600 dark:text-red-400 text-xs">
               {errors.targetAudience.message}
             </p>
           )}
@@ -155,8 +155,8 @@ export default function PosterInputForm({
 
         {/* Poster Size */}
         <div className="space-y-2">
-          <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-            <Layout className="w-4 h-4 text-brand-primary" />
+          <label className="flex items-center gap-2 text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+            <Layout className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
             Poszter Méret
           </label>
           <div className="grid grid-cols-5 gap-2">
@@ -168,8 +168,8 @@ export default function PosterInputForm({
                   value={option.value}
                   className="sr-only peer"
                 />
-                <div className="px-3 py-2 rounded-xl bg-bg-elevated/50 border border-bg-elevated peer-checked:border-brand-primary/50 peer-checked:bg-brand-primary/10 text-center transition-all">
-                  <span className="text-xs font-bold text-slate-300 peer-checked:text-brand-primary">
+                <div className="px-3 py-2 rounded-xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:border-[#0369A1] dark:hover:border-[#00B5F1] peer-checked:bg-[#0369A1] dark:peer-checked:bg-[#00B5F1] peer-checked:text-white dark:peer-checked:text-slate-950 peer-checked:border-transparent font-semibold text-center transition-all shadow-2xs dark:shadow-none">
+                  <span className="text-xs font-bold text-current">
                     {option.label}
                   </span>
                 </div>
@@ -177,14 +177,14 @@ export default function PosterInputForm({
             ))}
           </div>
           {errors.posterSize && (
-            <p className="text-red-400 text-xs">{errors.posterSize.message}</p>
+            <p className="text-red-600 dark:text-red-400 text-xs">{errors.posterSize.message}</p>
           )}
         </div>
 
         {/* Poster Style */}
         <div className="space-y-2">
-          <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-            <Palette className="w-4 h-4 text-brand-primary" />
+          <label className="flex items-center gap-2 text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+            <Palette className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
             Poszter Stílus
           </label>
           <div className="grid grid-cols-4 gap-2">
@@ -196,8 +196,8 @@ export default function PosterInputForm({
                   value={option.value}
                   className="sr-only peer"
                 />
-                <div className="px-3 py-2 rounded-xl bg-bg-elevated/50 border border-bg-elevated peer-checked:border-brand-primary/50 peer-checked:bg-brand-primary/10 text-center transition-all">
-                  <span className="text-xs font-bold text-slate-300 peer-checked:text-brand-primary">
+                <div className="px-3 py-2 rounded-xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:border-[#0369A1] dark:hover:border-[#00B5F1] peer-checked:bg-[#0369A1] dark:peer-checked:bg-[#00B5F1] peer-checked:text-white dark:peer-checked:text-slate-950 peer-checked:border-transparent font-semibold text-center transition-all shadow-2xs dark:shadow-none">
+                  <span className="text-xs font-bold text-current">
                     {option.label}
                   </span>
                 </div>
@@ -205,14 +205,14 @@ export default function PosterInputForm({
             ))}
           </div>
           {errors.posterStyle && (
-            <p className="text-red-400 text-xs">{errors.posterStyle.message}</p>
+            <p className="text-red-600 dark:text-red-400 text-xs">{errors.posterStyle.message}</p>
           )}
         </div>
 
         {/* Print Specs */}
         <div className="space-y-2">
-          <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-            <Printer className="w-4 h-4 text-brand-primary" />
+          <label className="flex items-center gap-2 text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+            <Printer className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
             Nyomdai Specifikációk
           </label>
           <div className="grid grid-cols-4 gap-2">
@@ -224,8 +224,8 @@ export default function PosterInputForm({
                   value={option.value}
                   className="sr-only peer"
                 />
-                <div className="px-3 py-2 rounded-xl bg-bg-elevated/50 border border-bg-elevated peer-checked:border-brand-primary/50 peer-checked:bg-brand-primary/10 text-center transition-all">
-                  <span className="text-xs font-bold text-slate-300 peer-checked:text-brand-primary">
+                <div className="px-3 py-2 rounded-xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:border-[#0369A1] dark:hover:border-[#00B5F1] peer-checked:bg-[#0369A1] dark:peer-checked:bg-[#00B5F1] peer-checked:text-white dark:peer-checked:text-slate-950 peer-checked:border-transparent font-semibold text-center transition-all shadow-2xs dark:shadow-none">
+                  <span className="text-xs font-bold text-current">
                     {option.label}
                   </span>
                 </div>
@@ -233,69 +233,69 @@ export default function PosterInputForm({
             ))}
           </div>
           {errors.printSpecs && (
-            <p className="text-red-400 text-xs">{errors.printSpecs.message}</p>
+            <p className="text-red-600 dark:text-red-400 text-xs">{errors.printSpecs.message}</p>
           )}
         </div>
 
         {/* Brand Colors */}
         <div className="space-y-2">
-          <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-            <Palette className="w-4 h-4 text-brand-primary" />
+          <label className="flex items-center gap-2 text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+            <Palette className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
             Brand Színek (Opcionális)
           </label>
           <input
             {...register("brandColors")}
             placeholder="Példa: #00B5F1, #020617, #e2e8f0 (vesszővel elválasztva)"
-            className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-bg-elevated text-white placeholder-slate-500 focus:border-brand-primary/50 focus:outline-none focus:ring-2 focus:ring-brand-primary/10 transition-all text-sm"
+            className="w-full px-4 py-3 rounded-xl bg-white dark:bg-[#0B1120] border border-slate-300 dark:border-slate-700 text-[#0F172A] dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:border-[#0369A1] dark:focus:border-[#00B5F1] focus:outline-none focus:ring-2 focus:ring-brand-primary/10 transition-all text-sm"
           />
         </div>
 
         {/* Required Texts */}
         <div className="space-y-4">
-          <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-            <Type className="w-4 h-4 text-brand-primary" />
+          <label className="flex items-center gap-2 text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+            <Type className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
             Kötelező Szövegek (Opcionális)
           </label>
           <div className="space-y-3">
             <input
               {...register("requiredTexts.headline")}
               placeholder="Főcím (opcionális)"
-              className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-bg-elevated text-white placeholder-slate-500 focus:border-brand-primary/50 focus:outline-none focus:ring-2 focus:ring-brand-primary/10 transition-all text-sm"
+              className="w-full px-4 py-3 rounded-xl bg-white dark:bg-[#0B1120] border border-slate-300 dark:border-slate-700 text-[#0F172A] dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:border-[#0369A1] dark:focus:border-[#00B5F1] focus:outline-none focus:ring-2 focus:ring-brand-primary/10 transition-all text-sm"
             />
             <input
               {...register("requiredTexts.subheadline")}
               placeholder="Alcím (opcionális)"
-              className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-bg-elevated text-white placeholder-slate-500 focus:border-brand-primary/50 focus:outline-none focus:ring-2 focus:ring-brand-primary/10 transition-all text-sm"
+              className="w-full px-4 py-3 rounded-xl bg-white dark:bg-[#0B1120] border border-slate-300 dark:border-slate-700 text-[#0F172A] dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:border-[#0369A1] dark:focus:border-[#00B5F1] focus:outline-none focus:ring-2 focus:ring-brand-primary/10 transition-all text-sm"
             />
             <textarea
               {...register("requiredTexts.bodyText")}
               placeholder="Szövegtörzs (opcionális)"
-              className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-bg-elevated text-white placeholder-slate-500 focus:border-brand-primary/50 focus:outline-none focus:ring-2 focus:ring-brand-primary/10 transition-all text-sm resize-none"
+              className="w-full px-4 py-3 rounded-xl bg-white dark:bg-[#0B1120] border border-slate-300 dark:border-slate-700 text-[#0F172A] dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:border-[#0369A1] dark:focus:border-[#00B5F1] focus:outline-none focus:ring-2 focus:ring-brand-primary/10 transition-all text-sm resize-none"
               rows={2}
             />
             <input
               {...register("requiredTexts.cta")}
               placeholder="CTA gomb szöveg (opcionális)"
-              className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-bg-elevated text-white placeholder-slate-500 focus:border-brand-primary/50 focus:outline-none focus:ring-2 focus:ring-brand-primary/10 transition-all text-sm"
+              className="w-full px-4 py-3 rounded-xl bg-white dark:bg-[#0B1120] border border-slate-300 dark:border-slate-700 text-[#0F172A] dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:border-[#0369A1] dark:focus:border-[#00B5F1] focus:outline-none focus:ring-2 focus:ring-brand-primary/10 transition-all text-sm"
             />
             <input
               {...register("requiredTexts.eventDetails")}
               placeholder="Esemény részletek (opcionális)"
-              className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-bg-elevated text-white placeholder-slate-500 focus:border-brand-primary/50 focus:outline-none focus:ring-2 focus:ring-brand-primary/10 transition-all text-sm"
+              className="w-full px-4 py-3 rounded-xl bg-white dark:bg-[#0B1120] border border-slate-300 dark:border-slate-700 text-[#0F172A] dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:border-[#0369A1] dark:focus:border-[#00B5F1] focus:outline-none focus:ring-2 focus:ring-brand-primary/10 transition-all text-sm"
             />
           </div>
         </div>
 
         {/* Additional Requirements */}
         <div className="space-y-2">
-          <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-            <Type className="w-4 h-4 text-brand-primary" />
+          <label className="flex items-center gap-2 text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+            <Type className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
             További Követelmények (Opcionális)
           </label>
           <textarea
             {...register("additionalRequirements")}
             placeholder="Bármilyen egyéb követelmény vagy specifikáció..."
-            className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-bg-elevated text-white placeholder-slate-500 focus:border-brand-primary/50 focus:outline-none focus:ring-2 focus:ring-brand-primary/10 transition-all text-sm resize-none"
+            className="w-full px-4 py-3 rounded-xl bg-white dark:bg-[#0B1120] border border-slate-300 dark:border-slate-700 text-[#0F172A] dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:border-[#0369A1] dark:focus:border-[#00B5F1] focus:outline-none focus:ring-2 focus:ring-brand-primary/10 transition-all text-sm resize-none"
             rows={2}
           />
         </div>

@@ -155,12 +155,12 @@ ${result.roi}
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h4 className="text-sm font-bold text-white font-mono">
+        <h4 className="text-sm font-bold text-[#0F172A] dark:text-[#F8FAFC] font-mono">
           Generált Befektetői Pitch
         </h4>
         <button
           onClick={onReset}
-          className="text-xs text-slate-400 hover:text-white transition-colors"
+          className="text-xs text-slate-600 dark:text-slate-400 hover:text-[#0369A1] dark:hover:text-white transition-colors"
         >
           Új generálás
         </button>
@@ -169,20 +169,20 @@ ${result.roi}
       {cards.map((card) => (
         <div
           key={card.title}
-          className="bg-bg-base/50 border border-bg-elevated/50 rounded-xl p-4 space-y-2"
+          className="bg-slate-50 dark:bg-[#0B1120] border border-slate-200 dark:border-slate-800 rounded-xl p-4 space-y-2"
         >
           <div className="flex items-center justify-between">
-            <h5 className="text-xs font-bold text-sky-500 font-mono">
+            <h5 className="text-xs font-bold text-[#0369A1] dark:text-[#00B5F1] font-mono">
               {card.title}
             </h5>
             <button
               onClick={() => handleCopy(card.content)}
-              className="p-1.5 hover:bg-bg-elevated/50 text-slate-400 hover:text-white rounded-lg transition-colors"
+              className="p-1.5 hover:bg-slate-50 dark:bg-[#0B1120] text-slate-600 dark:text-slate-400 hover:text-[#0369A1] dark:hover:text-white rounded-lg transition-colors"
             >
               <Copy className="w-3.5 h-3.5" />
             </button>
           </div>
-          <p className="text-xs text-slate-300 leading-relaxed font-mono">
+          <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed font-mono">
             {card.content}
           </p>
         </div>
@@ -190,7 +190,7 @@ ${result.roi}
 
       <button
         onClick={handleTxtDownload}
-        className="w-full py-3 bg-bg-elevated/50 hover:bg-bg-elevated/80 text-white text-sm font-bold rounded-xl transition-all duration-300 flex items-center justify-center gap-2"
+        className="w-full py-3 bg-slate-50 dark:bg-[#0B1120] hover:bg-bg-elevated/80 text-[#0F172A] dark:text-[#F8FAFC] text-sm font-bold rounded-xl transition-all duration-300 flex items-center justify-center gap-2"
       >
         <Download className="w-4 h-4" />
         Teljes Pitch Letöltése
@@ -199,28 +199,28 @@ ${result.roi}
       <div className="flex gap-3">
         <button
           onClick={handlePDFExport}
-          className="flex-1 py-3 bg-bg-base border border-bg-elevated/50 rounded-xl text-xs font-bold text-white hover:border-sky-500/50 transition-colors flex items-center justify-center gap-2"
+          className="flex-1 py-3 bg-bg-base border border-slate-200 dark:border-slate-800 rounded-xl text-xs font-bold text-[#0F172A] dark:text-[#F8FAFC] hover:border-sky-500/50 transition-colors flex items-center justify-center gap-2"
         >
           <Download className="w-4 h-4" />
           PDF Letöltés
         </button>
         <button
           onClick={handleNotebookLMExport}
-          className="flex-1 py-3 bg-bg-base border border-bg-elevated/50 rounded-xl text-xs font-bold text-white hover:border-sky-500/50 transition-colors flex items-center justify-center gap-2"
+          className="flex-1 py-3 bg-bg-base border border-slate-200 dark:border-slate-800 rounded-xl text-xs font-bold text-[#0F172A] dark:text-[#F8FAFC] hover:border-sky-500/50 transition-colors flex items-center justify-center gap-2"
         >
           <BookOpen className="w-4 h-4" />
           NotebookLM Adatcsomag
         </button>
       </div>
 
-      <div className="bg-sky-500/5 border border-sky-500/20 rounded-xl p-4 space-y-3">
+      <div className="bg-sky-500/5 border border-slate-200 dark:border-slate-800 rounded-xl p-4 space-y-3">
         <div className="flex items-center gap-2">
-          <BookOpen className="w-4 h-4 text-sky-500" />
-          <h5 className="text-xs font-bold text-sky-500 font-mono">
+          <BookOpen className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
+          <h5 className="text-xs font-bold text-[#0369A1] dark:text-[#00B5F1] font-mono">
             NotebookLM Használati Instrukció
           </h5>
         </div>
-        <ol className="text-xs text-slate-300 leading-relaxed space-y-2 list-decimal list-inside">
+        <ol className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed space-y-2 list-decimal list-inside">
           <li>
             Töltsd fel a forrásfájljaidat (alaprajzok, dokumentumok) a
             NotebookLM-be.

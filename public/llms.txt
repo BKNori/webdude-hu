@@ -1,94 +1,159 @@
-# WebDude
+# WebDude — Balog Norbert
 
-> Balog Norbert (WebDude) egyéni webfejlesztői, grafikai és AI-automatizációs gyakorlata: 26+ év tervezőgrafikai és 16+ év full-stack webfejlesztői tapasztalattal (Next.js 16, React 19, TypeScript, Tailwind CSS v4, WordPress / WooCommerce, Firebase). Közvetlen kivitelezés ügynökségi közvetítők nélkül — országosan magyarul és távmunkában nemzetközi ügyfeleknek angolul. Minden projekt egyedi árajánlat alapján indul.
+> Én vagyok Balog Norbert (WebDude) — egyéni full-stack webfejlesztő, art director és AI-automatizációs szakértő 26+ év tervezőgrafikai és 16+ év webfejlesztői tapasztalattal. Országosan magyar nyelven (`https://webdude.hu`) és nemzetközileg angol nyelven (`https://webdude.hu/en`), ügynökségi közvetítők nélkül tervezek és fejlesztek Next.js 16, WordPress/WooCommerce, technikai SEO/AEO/GEO, vállalati AI-automatizációs (AI Műhely) és prémium arculati rendszereket. Minden projekt egyedi árajánlat alapján indul (Zéró Fix Ár elv).
 >
-> Teljes, strukturált AI kontextus (szolgáltatások, esettanulmány-eredmények, szakcikk-kivonatok és GYIK-ek): https://webdude.hu/llms-full.txt
-> RSS 2.0 tudásbázis feed: https://webdude.hu/feed.xml
+> Teljes mélykontextus AI rendszereknek: https://webdude.hu/llms-full.txt | Kanonikus oldaltérkép (130 URL): https://webdude.hu/sitemap.xml | RSS 2.0 tudásbázis feed: https://webdude.hu/feed.xml
 
-## Fő Magyar Oldalak (HU)
+## Core Pages & Free Tools (HU & EN)
 
-- [Főoldal](https://webdude.hu): Next.js 16 webfejlesztés, WordPress rendszerek, grafikai tervezés és vállalati AI automatizáció egy kézből.
-- [Szolgáltatások](https://webdude.hu/szolgaltatasok): Teljes körű webfejlesztési, webshop, SEO/AEO, grafikai és AI automatizációs szolgáltatások.
-- [Portfólió / Munkáim](https://webdude.hu/munkak): Valós ügyfél-esettanulmányok mérhető konverziós és teljesítményeredményekkel.
-- [Szia, Norbi vagyok](https://webdude.hu/szia-norbi-vagyok): Balog Norbert szakmai bemutatkozása, 26 év grafikai és 16 év webfejlesztői múltja.
-- [AI Megoldások](https://webdude.hu/ai-megoldasok): Vállalati AI workflow kialakítás, egyedi prompt engineering és automatizációs rendszerek.
-- [Termékek & AI Műhelyek](https://webdude.hu/termekek): Kész AI munkafolyamatok, SEO & AEO Audit Pro, CRO és chatbot megoldások.
-- [Ingyenes SEO & AI-Készség Ellenőrző](https://webdude.hu/ingyenes-seo-aeo-elemzes): 10 pontos azonnali SEO, Schema.org AEO és AI-bot diagnosztika 0–100 ponton.
-- [Ingyenes 10 Perces Videós UX & SEO Audit](https://webdude.hu/ingyenes-weboldal-elemzes): Személyre szabott 10 perces videós weboldal-, UX-, sebesség- és konverziós elemzés Balog Norberttől.
-- [Szakmai Hírek & Tudásbázis](https://webdude.hu/hirek): Gyakorlati cikkek Next.js, WordPress, WooCommerce, technikai SEO és AI témákban.
-- [Kapcsolat & Ajánlatkérés](https://webdude.hu/kapcsolat): Közvetlen kapcsolatfelvétel és egyedi árajánlat kérése.
+- [WebDude Főoldal (HU)](https://webdude.hu): Egyéni prémium Next.js 16 és WordPress webfejlesztés, grafikai tervezés, SEO/AEO és AI-automatizáció Balog Norberttől.
+- [WebDude Home (EN)](https://webdude.hu/en): Bespoke Next.js 16 web engineering, WooCommerce, technical SEO/AEO, brand design, and AI workflow automation delivered remotely worldwide.
+- [Szia, Norbi vagyok — Rólam (HU)](https://webdude.hu/szia-norbi-vagyok): Balog Norbert szakmai bemutatkozása, 26+ év grafikai és 16+ év webfejlesztői életútja és közvetlen munkamódszere.
+- [About Balog Norbert (EN)](https://webdude.hu/en/about): Solo full-stack web architect and art director combining 26+ years of graphic design with 16+ years of web engineering.
+- [Kapcsolat & Egyedi Árajánlat (HU)](https://webdude.hu/kapcsolat): Közvetlen kapcsolatfelvétel, projektfelmérés és személyre szabott árajánlat kérése.
+- [Contact & Custom Quote (EN)](https://webdude.hu/en/contact): Direct project consultation and tailored scope proposal requests with Balog Norbert.
+- [Ingyenes SEO & AI-Készség Ellenőrző (HU)](https://webdude.hu/ingyenes-seo-aeo-elemzes): Azonnali 10 pontos technikai SEO, Schema.org AEO, AI-crawler és llms.txt diagnosztikai eszköz 0–100 pontos értékeléssel.
+- [Free SEO & AI Readiness Checker (EN)](https://webdude.hu/en/free-seo-aeo-checker): Instant 10-point technical SEO, Schema.org entity, AI crawler governance, and llms.txt readiness diagnostic tool.
+- [Ingyenes 10 Perces Videós UX & SEO Audit (HU)](https://webdude.hu/ingyenes-weboldal-elemzes): Személyre szabott, képernyőfelvételes weboldal-, sebesség-, UX- és konverziós elemzés Balog Norberttől.
+- [Free 10-Minute Video UX & SEO Audit (EN)](https://webdude.hu/en/free-website-audit): Personalized 10-minute screen-recorded UX, Core Web Vitals, and SEO/AEO review recorded personally by Balog Norbert.
 
-## Kiemelt Szolgáltatások (HU)
+## Services (HU)
 
-- [Weboldal készítés](https://webdude.hu/szolgaltatasok/weboldal-keszites): Egyedi Next.js és WordPress weboldalak 95+ Lighthouse teljesítménnyel.
-- [Webshop fejlesztés](https://webdude.hu/szolgaltatasok/webshop-fejlesztes): Konverzió-optimalizált webáruházak és ERP integrációk.
-- [WooCommerce webshop készítés](https://webdude.hu/szolgaltatasok/woocommerce-webshop-keszites): Skálázható WooCommerce rendszerek fizetési és számlázási integrációval.
-- [WordPress fejlesztés](https://webdude.hu/szolgaltatasok/wordpress-fejlesztes): Egyedi sablonok, biztonságos bővítmény-architektúra és gyorsítás.
-- [SEO & AEO optimalizálás](https://webdude.hu/szolgaltatasok/seo-optimalizalas): Technikai SEO, Schema.org tudásgráf és AI keresőkre optimalizálás.
-- [Technikai SEO audit](https://webdude.hu/szolgaltatasok/technikai-seo-audit): Core Web Vitals, crawlability és strukturált adat vizsgálat.
-- [Grafikai tervezés](https://webdude.hu/szolgaltatasok/grafikai-tervezes): Logó, teljes arculat, csomagolás és digitális UI/UX tervezés.
-- [Arculattervezés](https://webdude.hu/szolgaltatasok/arculattervezes): Egységes vizuális márkaidentitás és arculati kézikönyv.
-- [AI Workflow kialakítás](https://webdude.hu/szolgaltatasok/ai-workflow-kialakitas): ChatGPT, Claude és egyedi vállalati automatizációs pipeline-ok.
-- [AI Prompt Engineering](https://webdude.hu/szolgaltatasok/ai-prompt-engineering): Megbízható, strukturált LLM munkafolyamatok üzleti folyamatokra.
-- [Weboldal készítés Kecskeméten](https://webdude.hu/weboldal-keszites-kecskemet): Helyi fókuszú webfejlesztés és személyes konzultáció Kecskeméten és Bács-Kiskun vármegyében.
+- [Szolgáltatások Áttekintése](https://webdude.hu/szolgaltatasok): Teljes körű webfejlesztési, e-kereskedelmi, technikai SEO/AEO, arculattervezési és AI-automatizációs szolgáltatások egy kézből.
+- [Kiegészítő Szolgáltatások — Egyedi Árajánlattal](https://webdude.hu/szolgaltatasok/add-onok): Termékesített mikroszolgáltatások KKV-knak: weboldal audit, SEO cikk, Lighthouse gyorsítás, banner csomag és Schema integráció 26 év tapasztalattal, egyedi árajánlattal.
+- [AI Kép és Videógenerálás országos szolgáltatással](https://webdude.hu/szolgaltatasok/ai-kep-es-videogeneralas): Generatív AI megoldások marketing assetek automatikus előállításához országos szolgáltatással: képek, videók, grafikák és kreatív anyagok skálázható, gyors és költséghatékony folyamatokkal.
+- [AI Prompt Engineering országos szolgáltatással](https://webdude.hu/szolgaltatasok/ai-prompt-engineering): AI prompt engineering szolgáltatás: ChatGPT és Claude promptok fejlesztése, optimalizálása és tesztelése országos szolgáltatással. Megbízható AI rendszerek egyedi igényekre.
+- [AI Workflow Automatizálás és Kialakítás](https://webdude.hu/szolgaltatasok/ai-workflow-kialakitas): AI-powered workflow automatizálás vállalkozások számára: ChatGPT, Claude, és egyedi AI eszközök integrációja, konfigurációja és testreszabása a hatékonyság növeléséhez.
+- [Arculattervezés vállalkozásoknak országos szolgáltatással](https://webdude.hu/szolgaltatasok/arculattervezes): Egyedi arculattervezés KKV-knak és új márkáknak országosan. Logó, színpaletta, tipográfia és arculati kézikönyv egységes, konverziófókuszú rendszerben.
+- [Professzionális Csomagolás Tervezés országos szolgáltatással](https://webdude.hu/szolgaltatasok/csomagolas-tervezes): Egyedi csomagolás, label és doboz tervezés nyomdai előkészítéssel és 3D mockupokkal: 26 év grafikai tapasztalat, shelf-ready rendererek. Egyedi árajánlat.
+- [Egyedi Arculattervezés & Logó – Branding Szolgáltatás](https://webdude.hu/szolgaltatasok/egyedi-arculattervezes-logo): Professzionális logó tervezés és teljes vállalati arculat kialakítása.
+- [Grafikai tervezés és arculattervezés országosan](https://webdude.hu/szolgaltatasok/grafikai-tervezes): Logó, arculat, marketinganyagok és digitális grafikai tervezés egységes vizuális rendszerben. 26 év grafikai tapasztalat a WebDude-tól.
+- [Helyi SEO Szakember országos szolgáltatással](https://webdude.hu/szolgaltatasok/helyi-seo): Helyi SEO szolgáltatás vállalkozásoknak országosan. Kerülj a Google Térkép és a helyi találatok élére, optimalizált cégprofillal és több környékbeli ügyféllel.
+- [Professzionális Logó Tervezés országos szolgáltatással](https://webdude.hu/szolgaltatasok/logo-tervezes): Egyedi logó tervezés és teljes arculattervezés KKV-knak: vektoros forrásfájlok, nyomdai előkészítés, 26 év grafikai tapasztalat. Egyedi árajánlat kérése.
+- [Marketing Lead Generálás országos szolgáltatással](https://webdude.hu/szolgaltatasok/marketing-lead-generalas): Stratégiai marketing lead generálás és konverzió-optimalizált landing oldalak KKV-knak országosan. Automatizált ügyfélszerzés és mérhető üzleti növekedés.
+- [SEO optimalizálás — Technikai SEO és tartalomstratégia](https://webdude.hu/szolgaltatasok/seo-optimalizalas): SEO optimalizálás KKV-knak országosan: technikai audit, kulcsszókutatás, tartalomstratégia és Core Web Vitals javítás 26 év szakmai tapasztalattal.
+- [Professzionális Szórólap Tervezés országos szolgáltatással](https://webdude.hu/szolgaltatasok/szorolap-tervezes): Egyedi szórólap, molinó és marketing anyag tervezés nyomdai előkészítéssel: CMYK optimalizálás, kifutó tervezés, 26 év grafikai tapasztalat. Egyedi árajánlat.
+- [Technikai SEO Audit országos szolgáltatással](https://webdude.hu/szolgaltatasok/technikai-seo-audit): Miért nem találják a weboldalad a Google-ben? Átfogó technikai SEO audit és priorizált javítási terv a láthatóság növeléséhez országos szolgáltatással.
+- [Weboldal Felújítás és Modernizálás országos szolgáltatással](https://webdude.hu/szolgaltatasok/weboldal-felujitas): Lassú, elavult, vagy nem hoz ügyfelet a régi weboldalad? Weboldal felújítás, modernizálás és konverzió-optimalizálás KKV-knak országos szolgáltatással.
+- [Weboldal készítés vállalkozásoknak](https://webdude.hu/szolgaltatasok/weboldal-keszites): Gyors, modern és keresőbarát weboldal készítés kis- és középvállalkozásoknak. Egyedi design, fejlesztés, SEO és személyes kommunikáció a WebDude-tól.
+- [Weboldal Sebességoptimalizálás országos szolgáltatással](https://webdude.hu/szolgaltatasok/weboldal-sebessegoptimalizalas): Lassú a weboldalad? A látogatók és a Google is bünteti. Adatalapú weboldal gyorsítás és Core Web Vitals optimalizálás országos szolgáltatással.
+- [WooCommerce webshop készítés és fejlesztés](https://webdude.hu/szolgaltatasok/webshop-fejlesztes): WooCommerce webshop készítés és fejlesztés KKV-knak: konverzió-optimalizált, villámgyors online áruház SimplePay, Barion és számlázó integrációval.
+- [WooCommerce webshop készítés és fejlesztés](https://webdude.hu/szolgaltatasok/woocommerce-webshop-keszites): 16 év tapasztalattal WooCommerce webshop készítés, fejlesztés és optimalizálás. Konverzió-fókuszú e-kereskedelmi rendszerek, fizetési integrációk és teljes körű támogatás.
+- [Feltört WordPress Helyreállítás és Biztonság](https://webdude.hu/szolgaltatasok/wordpress-biztonsag): Feltörték a weboldalad? Ne ess pánikba! Azonnali WordPress vírusirtás, helyreállítás, és megelőző biztonsági beállítások vállalkozásoknak.
+- [WordPress fejlesztő és WordPress karbantartás](https://webdude.hu/szolgaltatasok/wordpress-fejlesztes): WordPress fejlesztés KKV-knak: hibajavítás, egyedi funkciók, sebességoptimalizálás, biztonság és karbantartás Balog Norbert 16 év CMS tapasztalatával.
+- [WordPress Karbantartás és Hibajavítás országos szolgáltatással](https://webdude.hu/szolgaltatasok/wordpress-karbantartas): Feltört, lassú vagy elavult WordPress weboldalak szakszerű javítása és havi karbantartása KKV-knak országosan. Biztonság, sebesség és nyugalom.
+- [WordPress weboldal készítés](https://webdude.hu/szolgaltatasok/wordpress-weboldal-keszites): Egyedi WordPress weboldal készítés, felújítás és fejlesztés vállalkozásoknak. Gyors, biztonságos, könnyen kezelhető és SEO-barát megoldások.
+- [WordPress Webshop Készítés](https://webdude.hu/szolgaltatasok/wordpress-webshop-keszites): Testreszabott WordPress webshopok, gyors checkout és SEO-optimalizált struktúra WooCommerce alapú e-kereskedelmi megoldásokhoz.
 
-## Termékek & Prémium AI Műhelyek (HU)
+## Services (EN)
 
-- [AI Műhely Katalógus](https://webdude.hu/termekek/ai-muhely): Ötpilléres prémium AI tervezőstúdió online grafikához, nyomdai prepresshez, textilhez, architektúrához és SEO/AEO elemzéshez.
-- [AI Workflow Starter Pack](https://webdude.hu/termekek/ai-workflow-starter-pack): Testreszabható vállalati AI munkafolyamatok email kampányok, lead-minősítés és marketinganyagok automatizálásához.
-- [SEO & AEO Audit Pro](https://webdude.hu/termekek/seo-audit-pro): Szakértői technikai SEO, Core Web Vitals, Schema.org és AI válaszmotor (ChatGPT, Perplexity, Gemini) diagnosztika.
-- [CRO Booster Kit](https://webdude.hu/termekek/cro-booster-kit): Konverzió-optimalizáló rendszer A/B teszteléssel, hőtérképes elemzéssel és ügyfélút-tervezéssel.
-- [AI Chatbot Starter](https://webdude.hu/termekek/ai-chatbot-starter): Saját céges tudásbázisra tanított, magyar nyelvű 24/7 ügyfélszolgálati és lead-minősítő AI chatbot.
-- [Kristófka Munkafolyamat](https://webdude.hu/termekek/kristofka-munkafolyamat): Többágenses Strategist-Pro AI workflow PDF alaprajzok elemzéséhez és befektetői pitch készítéséhez.
-- [Logo AI Műhely](https://webdude.hu/termekek/logo-ai-muhely): Egyedi arculattervezés és Midjourney v6 Master logó-koncepció generátor nyomdakész kivitelhez.
-- [Banner AI Műhely](https://webdude.hu/termekek/banner-ai-muhely): Konverziófókuszú webes és social kampánybanner tervezés 90/8/2 színhierarchiával és 4K kimenettel.
-- [Midjourney AI Műhely](https://webdude.hu/termekek/midjourney-ai-muhely): Fotórealisztikus termékfotó és márkavizuál prompt-stúdió 85mm G-Master optikával és chiaroscuro fényeléssel.
-- [SEO Audit AI Műhely](https://webdude.hu/termekek/seo-audit-ai-muhely): Technikai SEO, Core Web Vitals és AEO/GEO diagnosztikai prompt-generátor modul.
-- [Szezonális AI Műhely](https://webdude.hu/termekek/szezonalis-ai-muhely): Karácsonyi, Black Friday és szezonnyitó kampányvizuálok tervezése Midjourney v6 Master promptokkal.
-- [Tartalomtervező AI Műhely](https://webdude.hu/termekek/tartalomtervezo-ai-muhely): SEO- és AEO-optimalizált blogposztok, landing oldalak és social media tartalmak előkészítése.
-- [UI/UX AI Műhely](https://webdude.hu/termekek/ui-ux-ai-muhely): Konverziófókuszú reszponzív wireframe és felületi koncepció tervezés WCAG AA ergonómiával.
-- [Versenytárs Elemző AI Műhely](https://webdude.hu/termekek/versenytars-elemzo-ai-muhely): Vizuális, UX és CRO benchmarking piaci versenytársak ellen akcióképes stratégiával.
+- [Services Overview (EN)](https://webdude.hu/en/services): End-to-end custom web development, WooCommerce engineering, technical SEO/AEO, and brand identity design for international clients.
+- [Graphic Design and Brand Identity Nationwide](https://webdude.hu/en/services/graphic-design): Logo, brand identity, marketing materials and digital graphic design in a unified visual system. 26 years of graphic design experience from WebDude.
+- [SEO Specialist](https://webdude.hu/en/services/seo-optimization): Technical SEO audit, keyword research, content strategy and local SEO for businesses. Find out what is preventing your website from ranking better on Google.
+- [Web Development for Businesses](https://webdude.hu/en/services/web-development): Fast, modern and search-friendly website development for SMEs. Custom design, development, SEO and personal communication from WebDude.
+- [WooCommerce Development & E-commerce](https://webdude.hu/en/services/woocommerce-development): 16 years of experience in WooCommerce development and optimisation. Conversion-focused e-commerce systems, payment integrations and full support.
 
-## English Pages (EN)
+## Products & AI Workshops
 
-- [WebDude English Home](https://webdude.hu/en): Custom Next.js 16 web development, AI workflow automation, SEO/AEO and graphic design by Balog Norbert (26+ years design, 16+ years dev).
-- [Services (EN)](https://webdude.hu/en/services): Full-stack web development, WooCommerce, SEO/AEO and graphic design delivered remotely worldwide.
-- [Web Development (EN)](https://webdude.hu/en/services/web-development): High-speed Next.js 16 and custom WordPress business websites.
-- [WooCommerce Development (EN)](https://webdude.hu/en/services/woocommerce-development): Conversion-focused e-commerce systems with secure payment and ERP integrations.
-- [SEO & AEO Optimization (EN)](https://webdude.hu/en/services/seo-optimization): Technical SEO, structured data knowledge graphs and answer engine visibility.
-- [Graphic Design & Brand Identity (EN)](https://webdude.hu/en/services/graphic-design): Logos, visual brand systems and digital product UI/UX.
-- [Portfolio (EN)](https://webdude.hu/en/portfolio): Real client case studies and measurable business outcomes.
-- [Insights — Technical Guides (EN)](https://webdude.hu/en/insights): In-depth English guides on AI Search (GEO/AEO), Next.js vs. WordPress architecture, and senior full-stack ROI.
-- [About Balog Norbert (EN)](https://webdude.hu/en/about): Solo full-stack web developer and art director with 26+ years design and 16+ years engineering experience.
-- [Free SEO & AI Readiness Checker (EN)](https://webdude.hu/en/free-seo-aeo-checker): Instant 10-point SEO, Schema.org AEO, robots.txt AI-bot, and llms.txt diagnostic tool.
-- [Free 10-Minute Video UX & SEO Audit (EN)](https://webdude.hu/en/free-website-audit): Personalized 10-minute Loom/video website, UX, speed, and conversion audit by Balog Norbert.
-- [Contact (EN)](https://webdude.hu/en/contact): Direct consultation and custom project quote requests.
+- [Termékek & AI Műhelyek Gyűjtőoldal](https://webdude.hu/termekek): Prémium vállalati AI munkafolyamatok, SEO/CRO rendszerek és dedikált AI Műhely modulok egyedi árajánlattal.
+- [AI Műhely Katalógus](https://webdude.hu/termekek/ai-muhely): Ötpilléres prémium AI tervezőműhely online grafikához, nyomdai prepresshez, ruha- és merch gyártáshoz, szoftver-architektúrához és SEO/AEO elemzéshez.
+- [AI Workflow Starter Pack](https://webdude.hu/termekek/ai-workflow-starter-pack): Spórolj heti 15 órát manuális munkával. Automatizáld az email kampányokat, a lead-generálást és az ügyfélszolgálatot testreszabható AI munkafolyamatokkal.
+- [SEO & AEO Audit Pro](https://webdude.hu/termekek/seo-audit-pro): Teljes körű technikai SEO és AEO audit Core Web Vitals méréssel, kulcsszó-stratégiával, Schema.org tudásgráffal és AI válaszmotor optimalizálással.
+- [CRO Booster Kit](https://webdude.hu/termekek/cro-booster-kit): Növeld a weboldalad konverziós rátáját adatvezérelt A/B teszteléssel, hőtérképes viselkedéselemzéssel és súrlódásmentes ügyfélút-optimalizációval.
+- [AI Chatbot Starter](https://webdude.hu/termekek/ai-chatbot-starter): Saját céges tudásbázisra tanított, magyar nyelvű 24/7 AI ügyfélszolgálati és lead-minősítő asszisztens Next.js és WordPress weboldalakra.
+- [Kristófka Munkafolyamat](https://webdude.hu/termekek/kristofka-munkafolyamat): Ingatlanbefektetői pitch generálás PDF alaprajzokból és kontextus-paraméterekből. Többágenses Strategist-Pro AI workflow mért ügyfél-eredményekkel.
+- [Logo AI Műhely](https://webdude.hu/termekek/logo-ai-muhely): Egyedi arculattervezés és logó-koncepció generálás Midjourney v6 Master promptokkal, vektoros kidolgozáshoz és 300 DPI nyomdakész kivitelhez.
+- [Banner AI Műhely](https://webdude.hu/termekek/banner-ai-muhely): Konverziófókuszú webes és social kampánybanner tervezés Midjourney v6 Master promptokkal, 90/8/2 Kék-Lila színhierarchiával és 4K kimenettel.
+- [Midjourney AI Műhely](https://webdude.hu/termekek/midjourney-ai-muhely): Midjourney v6 prompt-rendszer fotórealisztikus termékfotókhoz és márkavizuálokhoz 85mm G-Master optikával és chiaroscuro fényeléssel.
+- [SEO Audit AI Műhely](https://webdude.hu/termekek/seo-audit-ai-muhely): Technikai SEO, Core Web Vitals és AEO/GEO diagnosztikai prompt-tervező Lighthouse teljesítménykövetéssel és entitás-alapú kulcsszó-stratégiával.
+- [Szezonális AI Műhely](https://webdude.hu/termekek/szezonalis-ai-muhely): Szezonális marketingkampányok tervezése AI eszközökkel: Karácsony, Black Friday, tavaszi és nyári kampányvizuálok Midjourney v6 Master promptokkal.
+- [Tartalomtervező AI Műhely](https://webdude.hu/termekek/tartalomtervezo-ai-muhely): Stratégiai tartalomtervezés AI támogatással: SEO- és AEO-optimalizált blogposztok, értékesítési landing oldalak és social media tartalmak előkészítése.
+- [UI/UX AI Műhely](https://webdude.hu/termekek/ui-ux-ai-muhely): Konverziófókuszú UI/UX és wireframe tervezés AI eszközökkel: reszponzív felületi koncepciók, WCAG AA kontraszt és Figma-kompatibilis felépítés.
+- [Versenytárs Elemző AI Műhely](https://webdude.hu/termekek/versenytars-elemzo-ai-muhely): Versenytárs vizuális, UX és CRO benchmarking AI eszközökkel: értékajánlat-összevetés, design audit, piaci rés-elemzés és pozicionálási stratégia.
+- [AI Megoldások Vállalkozásoknak](https://webdude.hu/ai-megoldasok): Egyedi LLM munkafolyamatok, vállalati AI-integrációk és automatizációs architektúrák tervezése.
+- [AI Műhely Áttekintő](https://webdude.hu/ai-megoldasok/ai-muhely): A 14 modulos AI Műhely ökoszisztéma és a Strategist-Pro munkafolyamatok szakmai bemutatása.
+- [AI Prompt Sablonok Könyvtár](https://webdude.hu/ai-megoldasok/ai-prompt-sablonok): Produkciós szintű grafikai, arculati és marketing AI prompt-architektúrák gyűjteménye.
+- [Strategist-Pro — Kristófka Munkafolyamat](https://webdude.hu/munkafolyamatok/strategist-pro/kristofka-munkafolyamat): Nyers ipari alaprajzokból és ingatlanadatokból befektetői prezentációt építő AI munkafolyamat.
 
-## Kiemelt Esettanulmányok (Case Studies)
+## Case Studies & Portfolio (HU & EN)
 
-- [BTShop.hu — B2B E-commerce & ERP](https://webdude.hu/munkak/btshop) ([EN](https://webdude.hu/en/portfolio/btshop)): 3200+ termékes webáruház Next.js migrációja és UI/UX újratervezése (+40% konverzió).
-- [Nedel Market — B2B WooCommerce & Szerver Integráció](https://webdude.hu/munkak/nedelmarket) ([EN](https://webdude.hu/en/portfolio/nedelmarket)): Helyi irodai szerver és könyvelőrendszer valós idejű összekötése.
-- [Leanperial — Quiet Luxury Weboldal](https://webdude.hu/munkak/leanperial) ([EN](https://webdude.hu/en/portfolio/leanperial)): Nemzetközi executive search platform 100/100 SEO alappal.
-- [AI-Prompt.hu — AI Prompt Platform](https://webdude.hu/munkak/ai-prompt-hu) ([EN](https://webdude.hu/en/portfolio/ai-prompt-hu)): Egyedi Next.js AI ökoszisztéma és prompt-optimalizáló rendszer.
-- [Go-Box Kft. — Arculat, Weboldal & Webshop](https://webdude.hu/munkak/go-box-kft) ([EN](https://webdude.hu/en/portfolio/go-box-kft)): Teljes ipari márkaépítés és digitális értékesítési rendszer.
-- [Dr. Nagy Albert — Orvosi Arculat & Weboldal](https://webdude.hu/munkak/dr-nagy-albert) ([EN](https://webdude.hu/en/portfolio/dr-nagy-albert)): Prémium egészségügyi digitális jelenlét és páciens-élmény.
+- [Portfólió & Referenciák (HU)](https://webdude.hu/munkak): Valós hazai és nemzetközi webfejlesztési, e-kereskedelmi, arculati és AI esettanulmányok mérhető eredményekkel.
+- [Portfolio & Case Studies (EN)](https://webdude.hu/en/portfolio): Verified B2B e-commerce, custom WordPress, Next.js SaaS, and brand identity case studies with measurable outcomes.
+- [Nedel Market: Komplett B2B Kereskedelmi Ökoszisztéma és Helyi Szerver Integráció (HU)](https://webdude.hu/munkak/nedelmarket): Több mint egy WooCommerce katalógus. Egy teljesen integrált rendszer, amely összeköti a modern online értékesítést az irodai könyvelőprogrammal és egy egyedileg épített, tükörmentett helyi szerverkörnyezettel…
+- [Leanperial — Quiet Luxury Weboldal Fejlesztése & Kártevőmentesítés (HU)](https://webdude.hu/munkak/leanperial): Egy nemzetközi luxusmárka-tanácsadó számára építettem prémium „Quiet Luxury” weboldalt egyedi WordPress + Kadence alapon: teljes kártevőirtás, DNS- és SSL-újjáépítés, SMTP-hitelesítés, valamint technikai SEO-t…
+- [btshop.hu — 3200 termékes E-commerce Nagyhatalom & Kulcs-Soft Integráció (HU)](https://webdude.hu/munkak/btshop): Teljes körű WooCommerce automatizációt építettem a btshop.hu számára: valós idejű Kulcs-Soft könyvelőprogram-szinkronizációt, Google Merchant Center feed motort és egy egyedi fejlesztésű SEO plugint készítette…
+- [Classi-Co Kft. – Térkövezés és Beton Kivitelezés Komplex Digitális Megjelenés (HU)](https://webdude.hu/munkak/classi-co): Megbízható, klasszikus építőipari vállalkozás teljes körű digitális transzformációja: arculattervezés, WordPress weboldal, SEO, tartalomírás és Google Cégprofil optimalizálás.
+- [Rimai Útépítő Kft. – Teljes Körű Digitális és Vizuális Arculatépítés (HU)](https://webdude.hu/munkak/rimai-utepito-kft-teljes-koru-digitalis-es-vizualis-arculatepites): Egyedi, marketing szemléletű weboldalt és teljes arculatot terveztem a Rimai Útépítő Kft. számára. Fókuszban a gyorsaság, a vizuális minőség és az A-tól Z-ig tartó megoldás állt.
+- [Dr. Danyi – Fogászati és Implantológiai Klinika Digitális Identitás (HU)](https://webdude.hu/munkak/dr-danyi): Prémium orvosi arculatot és weboldalt készítettem a szegedi fogászati és implantológiai szakrendelés számára. A klinika modern, empatikus vizuális identitását én terveztem meg.
+- [Bor és Garnéla – Premium Food Truck Branding és Weboldal (HU)](https://webdude.hu/munkak/bor-es-garnela): Komplex prémium food truck branding és teljes körű digitális megjelenítés: Eros Pista Fesztivál branding, arculattervezés, weboldal fejlesztés, SEO, étlap design és marketing anyagok.
+- [HU-MAGO Kft. – Ipari Gépkereskedelem Digitális Transzformáció és AI Tech (HU)](https://webdude.hu/munkak/hu-mago-kft): Komplex digitális transzformációs projekt: e-kereskedelem, SEO, GDPR, prémium branding és innovatív AI prompt reklám generátor fejlesztés.
+- [Go-Box Kft. – Dobozgyár Teljes Körű Digitális Transzformáció & B2B Webáruház (HU)](https://webdude.hu/munkak/go-box-kft): Komplett digitális megjelenés egy dobozgyár és dobozkereskedelmi vállalkozás számára: modern ipari arculattervezés logóval és teljes identitással, prémium weboldal a szolgáltatások bemutatásával, valamint egy…
+- [Marina Homes Lakópark – Real Estate Branding és Weboldal (HU)](https://webdude.hu/munkak/marina-homes): A Marina Homes lakópark számára modern, prémium ingatlanos arculatot terveztem és weboldalt fejlesztettem a teljes online jelenléttel együtt.
+- [Chamomprex – Névjegy és Kirakat Arculattervezés (HU)](https://webdude.hu/munkak/chamomprex): Egyedi névjegyet és kirakatgrafikát terveztem a Chamomprex számára, teljes nyomdai előkészítéssel és valósághű mockup vizualizációval.
+- [Dr. Nagy Albert – Neurológus Digitális Megjelenés és Internetes Fizetési Rendszer (HU)](https://webdude.hu/munkak/dr-nagy-albert): Teljes körű digitális transzformáció egy kecskeméti neurológus szakrendelő számára: logó, arculat, névjegykártya, molinók, reklámok, weboldal, internetes fizetés (e-recept és távkonzultáció), Search Console és…
+- [Lengyel Helga – Esküvői Dekoráció Virágkötész Branding és Weboldal (HU)](https://webdude.hu/munkak/lengyel-helga-eskuvodekoracio): Teljes körű branding és digitális megjelenés Lengyel Helga tehetséges esküvői dekoratőr és virágkötész számára: logó, arculat, névjegykártya, molinók, reklámok, WooCommerce webshop, SEO és AEO optimalizáció.
+- [AI-Prompt.hu – AI Prompt Optimalizáló Platform (HU)](https://webdude.hu/munkak/ai-prompt-hu): Saját fejlesztésű AI prompt optimalizáló platform: intelligens prompt engineering, struktúrált kimenetek és prompt sablon kezelés rendszer.
+- [Nedel Market — B2B E-Commerce Ecosystem & Local Server Sync (EN)](https://webdude.hu/en/portfolio/nedelmarket): Bridging a high-volume WooCommerce B2B catalog with an on-premise accounting system and automated mirror backups.
+- [Leanperial — Quiet Luxury Website & Malware Recovery (EN)](https://webdude.hu/en/portfolio/leanperial): Full malware cleanup, DNS/SSL reconstruction, and a bespoke Quiet Luxury WordPress platform achieving a 100/100 SEO score.
+- [BTShop.hu — 3,200+ Product E-Commerce & ERP Automation (EN)](https://webdude.hu/en/portfolio/btshop): Automated WooCommerce platform integrated with Kulcs-Soft ERP, custom SEO plugin, Merchant feeds, and courier APIs.
+- [Classi-Co Kft. — Construction Brand & WordPress Platform (EN)](https://webdude.hu/en/portfolio/classi-co): From-scratch digital transformation for a paving and concrete contractor with bespoke WordPress UX, copywriting, and SEO.
+- [Rimai Road Construction — 360° Visual Identity & Web Platform (EN)](https://webdude.hu/en/portfolio/rimai-utepito-kft-teljes-koru-digitalis-es-vizualis-arculatepites): Turnkey infrastructure, corporate branding, print materials, bespoke WordPress development, and marketing copy from zero.
+- [Dr. Danyi Clinic — Dental & Implantology Brand & Web UX (EN)](https://webdude.hu/en/portfolio/dr-danyi): Empathetic medical brand identity, SEO-ready WordPress platform, and streamlined patient booking experience.
+- [Bor és Garnéla — Gourmet Food Truck Branding & Website (EN)](https://webdude.hu/en/portfolio/bor-es-garnela): Distinctive culinary branding, festival booth graphics, printed menus, and a responsive WordPress showcase.
+- [HU-MAGO Kft. — Industrial Machinery E-Commerce & AI Ad Tool (EN)](https://webdude.hu/en/portfolio/hu-mago-kft): Industrial B2B transformation combining WooCommerce, GDPR compliance, offline print branding, and a custom AI ad generator.
+- [Go-Box Kft. — Packaging Manufacturer Branding & B2B Webshop (EN)](https://webdude.hu/en/portfolio/go-box-kft): Industrial brand identity, corporate site, and fast WooCommerce B2B box-ordering store with custom quote forms and SEO/AEO.
+- [Marina Homes — Premium Real Estate Brand & Property Site (EN)](https://webdude.hu/en/portfolio/marina-homes): Elevated architectural branding, residential development logo suite, and WordPress showcase website.
+- [Chamomprex — Storefront Window Graphics & Business Stationery (EN)](https://webdude.hu/en/portfolio/chamomprex): Print-ready storefront window branding, bespoke business cards, and photorealistic pre-production mockups.
+- [Dr. Nagy Albert — Neurology Practice Branding & Online Payment Platform (EN)](https://webdude.hu/en/portfolio/dr-nagy-albert): Complete healthcare brand identity, patient website, e-prescription & teleconsultation checkout, and SEO/AEO infrastructure.
+- [Lengyel Helga — Luxury Floral & Wedding Decor Brand + Webshop (EN)](https://webdude.hu/en/portfolio/lengyel-helga-eskuvodekoracio): Elegant visual identity, print and campaign assets, and a structured WooCommerce catalog optimized for organic discovery.
+- [AI-Prompt.hu — Proprietary AI Prompt Engineering SaaS Platform (EN)](https://webdude.hu/en/portfolio/ai-prompt-hu): Full-stack Next.js, TypeScript, and Firebase AI SaaS integrating OpenAI, Anthropic, and Google AI with structured outputs.
 
-## Kiemelt Tudásbázis Cikkek (Blog)
+## Knowledge Base & Insights (HU & EN)
 
-- [Next.js 16 vs. WordPress Weboldal Fejlesztés 2026](https://webdude.hu/hirek/2026-11-17-nextjs-16-vs-wordpress-weboldal-fejlesztes-2026): Architekturális és üzleti összehasonlítás magyar KKV-knak.
-- [AI Keresőoptimalizálás (GEO & AEO) Útmutató Cégeknek](https://webdude.hu/hirek/2026-11-17-ai-keresooptimalizalas-geo-aeo-utmutato-cegeknek): Hogyan idézzenek a ChatGPT, Perplexity és Gemini válaszmotorok.
-- [B2B WooCommerce Webshop & ERP Szerver Integráció](https://webdude.hu/hirek/2026-11-17-b2b-woocommerce-webshop-erp-szerver-integracio): Valós idejű készlet- és számlaszinkronizáció a gyakorlatban.
-- [Kristófka Workflow Születése](https://webdude.hu/hirek/2026-07-14-kristofka-workflow-szuletese-amikor-a-26-eves-tervezoi-rutin-talalkozik-az-ai-val): Amikor a 26 éves tervezői rutin találkozik az AI automatizációval.
+- [Szakmai Hírek & Tudásbázis (HU)](https://webdude.hu/hirek): Gyakorlati mérnöki útmutatók Next.js 16, WordPress, WooCommerce ERP, technikai SEO/AEO/GEO és AI témákban.
+- [Technical Insights & Guides (EN)](https://webdude.hu/en/insights): In-depth English guides covering AI Search (GEO/AEO), Next.js vs. WordPress architecture, and senior solo engineering ROI.
+- [Lassú vagy Feltört WordPress Weboldal Javítása: Diagnosztika, Vírusirtás és Sebességoptimalizálás](https://webdude.hu/hirek/2026-11-20-lassu-vagy-feltort-wordpress-weboldal-javitasa): Lassú vagy feltört WordPress weboldal javítása lépésről lépésre: malware-tisztítás, DNS/SSL helyreállítás és Core Web Vitals gyorsítás egyedi szakértőtől.
+- [Ügynökség vs. Senior Szabadúszó Webfejlesztő: Melyiket Válaszd Cégvezetőként 2026-ban?](https://webdude.hu/hirek/2026-11-20-ugynokseg-vs-senior-szabaduszo-webfejleszto): Ügynökség vagy senior szabadúszó webfejlesztő a jobb döntés? Valós szempontok: közvetlen kommunikáció, sebesség, minőség és egyedi felelősség.
+- [WooCommerce ERP, Raktárkészlet- és Számlázás-Automatizálás: Így Spórolsz Napi Több Óra Kézi Munkát](https://webdude.hu/hirek/2026-11-20-woocommerce-erp-es-szamlazas-automatizalas): WooCommerce webshop ERP, raktárkészlet és számlázás automatizálás a gyakorlatban: Kulcs-Soft szinkron, XML feedek, Billingo/Számlázz.hu és futár API.
+- [AI Keresőoptimalizálás (GEO, AEO és AIO) 2026-ban: Így szerezz ügyfeleket a ChatGPT és Google AI válaszokból](https://webdude.hu/hirek/2026-11-17-ai-keresooptimalizalas-geo-aeo-utmutato-cegeknek): Hogyan szerezz ügyfeleket a ChatGPT, Perplexity és Google AI válaszokból 2026-ban? Gyakorlati GEO, AEO, AIO és Schema.org tudásgráf útmutató cégeknek.
+- [B2B WooCommerce Webshop és Könyvelőprogram / ERP Integráció: Automatizált Készlet és Nullázott Adminisztráció](https://webdude.hu/hirek/2026-11-17-b2b-woocommerce-webshop-erp-szerver-integracio): Hogyan szünteti meg a kézi adatrögzítést a B2B WooCommerce webshop és ERP / helyi szerver integráció? Valós szinkron, biztonság és automatizált logisztika.
+- [Next.js 16 vagy Egyedi WordPress? Weboldal Architektúra Döntési Útmutató Cégvezetőknek (2026)](https://webdude.hu/hirek/2026-11-17-nextjs-16-vs-wordpress-weboldal-fejlesztes-2026): Next.js 16 (React 19) vagy egyedi WordPress weboldal fejlesztés 2026-ban? Architektúra döntési útmutató sebesség, biztonság, SEO és AI integráció alapján.
+- [A Kristófka Workflow Születése: Amikor a 26 Éves Tervezői Rutin Találkozik az AI-val](https://webdude.hu/hirek/2026-07-14-kristofka-workflow-szuletese-amikor-a-26-eves-tervezoi-rutin-talalkozik-az-ai-val): Hogyan építettem egy dedikált AI-stratégát, ami a WebDude 26 éves szakmai tapasztalatát használja döntéstámogatásra? Technikai háttér és üzleti eredmények.
+- [Miért Kerülnek a WooCommerce Levelek a Promóciók vagy Spam Mappába? (És Hogyan Javítsd Ki!)](https://webdude.hu/hirek/2026-02-24-woocommerce-levelek-promociok-mappaba): Nem érkeznek meg a WooCommerce rendelés-visszaigazoló levelek a vásárlókhoz? SMTP beállítás, SPF, DKIM és DMARC hitelesítés a hibátlan kézbesítésért.
+- [WooCommerce XML Rendelésletöltés Engedélyezése a Felhasználói Fiókban (Account Page)](https://webdude.hu/hirek/2025-01-18-wordpress-ben-xml-ben-torteno-rendelesletoltes-engedelyezese-regisztralt-felhasznaloknak-az-account-page-en): Hogyan engedélyezhető az automatikus XML rendelésletöltés a regisztrált vásárlóknak a WooCommerce fiókoldalon? Részletes fejlesztői és bővítményes megoldás.
+- [100+ Lenyűgöző AI Prompt Példa Vállalkozóknak és Marketingeseknek](https://webdude.hu/hirek/2025-01-13-100-lenyugozo-ai-pelda-amelyet-mindenki-hasznalhat): Átfogó prompt gyűjtemény a mindennapi üzletmenethez: hírlevél tárgysorok, blogcikk vázlatok, közösségi posztok és értékesítési szövegek generálása ChatGPT-vel.
+- [25 Legjobb AI Művészeti Prompt és Kreatív Koncepció Midjourney és DALL-E Modellekhez](https://webdude.hu/hirek/2025-01-07-a-25-legjobb-mesterseges-intelligencia-muveszeti-otlet-a-kreativitas-felkeltesehez-ai-art-prompt-ideas): Inspiráló AI művészeti koncepciók és tesztelt promptok digitális művészeknek: szürrealizmus, cyberpunk látványtervek, konceptuális illusztrációk és textúrák.
+- [WordPress Menüikonok Beállítása: 2 Egyszerű Módszer CSS és Bővítmény Segítségével](https://webdude.hu/hirek/2025-01-05-wordpress-menuikonok-2-modszer): Hogyan teheted látványosabbá és felhasználóbarátabbá a weboldalad navigációját menüikonokkal? Részletes útmutató Font Awesome kódolással és bővítményes megoldással.
+- [AI Képalkotás Kulcsszavak: Művészi Stílusok, Fények és Paraméterek Midjourney-hez](https://webdude.hu/hirek/2024-12-30-hasznos-ai-kepalkotas-kulcsszavak-egy-jo-promthoz-a-kepalkotashoz): Milyen kulcsszavakkal érhetsz el fotorealisztikus eredményeket az AI képgenerálásban? Részletes stílus-, kompozíciós és világítási szótár Midjourney és DALL-E promptokhoz.
+- [Ingatlanhirdetések Kezelése WordPress Alapon: MLS On The Fly™ Integráció](https://webdude.hu/hirek/2024-12-26-emelje-fel-hirdeteseit-mls-on-the-fly-talalkozasa-a-wordpressel): Hogyan automatizálhatók az ingatlanhirdetések WordPress oldalakon? Az MLS On The Fly™ és a modern ingatlanközvetítő témák (Houzez) összekapcsolása.
+- [40+ Alap AI Prompt Grafikai Tervezéshez: Logó, Banner és Social Media Sablonok](https://webdude.hu/hirek/2024-09-21-40-alap-ai-promt-a-grafikai-tervezeshez): Gyakorlati ChatGPT és Midjourney prompt sablonok grafikai tervezéshez: logóötletek, közösségimédia-posztok, szórólapok és arculati koncepciók generálása.
+- [Font Awesome 6 Ikonlista és Ikonkereső: Webfejlesztői Útmutató](https://webdude.hu/hirek/2024-09-16-font-awesome-6-ikonlista-ikon-kereses): Gyors és egyszerű Font Awesome 6 ikonkeresés webfejlesztőknek: osztálynevek, SVG beillesztés, CDN integráció és a legnépszerűbb UI ikonok gyűjteménye.
+- [WordPress Rendszergazda (Admin) Hozzáadása phpMyAdmin Adatbázisból](https://webdude.hu/hirek/2024-09-12-adjon-hozza-wordpress-rendszergazdai-felhasznalot-a-phpmyadmin-segitsegevel): Nem tudsz belépni a WordPress admin felületre? Útmutató új rendszergazdai fiók létrehozásához közvetlenül a MySQL/MariaDB adatbázisból phpMyAdmin segítségével.
+- [Melyik a Legjobb Ingyenes WordPress SEO Bővítmény? Rank Math vs Yoast vs AIOSEO](https://webdude.hu/hirek/2024-09-06-melyik-a-legjobb-ingyenes-seo-megoldas-a-wordpress-weboldalakhoz-es-miert): A 3 legnépszerűbb ingyenes WordPress keresőoptimalizáló bővítmény összehasonlítása: funkciók, sebesség, Schema strukturált adatok és AEO-felkészültség.
+- [Google Értékelés Törlése 2026: Saját és Mások Által Írt Vélemények Kezelése](https://webdude.hu/hirek/2024-07-16-google-ertekeles-torlese): Frissített útmutató a Google vélemények kezeléséhez: hogyan törölhetsz saját értékelést, és miként távolíttathatsz el szabályzatsértő, valótlan negatív kritikákat.
+- [23 Ingyenes Mesterséges Intelligencia Eszköz Munkafolyamatok Automatizálásához](https://webdude.hu/hirek/2024-06-19-23-olyan-ingyenes-mesterseges-intelligencia-eszkoz-amelyet-nem-fogsz-elhinni): A legújabb és leghatékonyabb ingyenes AI eszközök listája kreatívoknak és vállalkozóknak: 3D modellezés, zene- és videógyártás, kutatás és szövegírás.
+- [GDPR Magyarul: A 4 Legjobb WordPress Adatvédelmi és Süti (Cookie) Bővítmény](https://webdude.hu/hirek/2024-01-18-gdpr-magyarul-adatvedelmi-bovitmeny-wordpress-hez-4-plugin): Hogyan tehető egy WordPress weboldal 100%-ban GDPR-kompatibilissé? A 4 legmegbízhatóbb süti (cookie consent) bővítmény összehasonlítása magyar vállalkozóknak.
+- [Közösségi Média Marketingterv Létrehozása a Semmiből: Útmutató Kezdőknek](https://webdude.hu/hirek/2023-10-27-utmutato-kezdoknek-kozossegimedia-marketingterv-letrehozasahoz-a-semmibol): Lépésről lépésre útmutató a működő közösségimédia-stratégia felépítéséhez: csatornaválasztás, tartalomnaptár, vizuális branding és organikus elérés növelése.
+- [Bútorwebáruház Értékesítés Növelése: 7 Lépéses Gyakorlati Útmutató](https://webdude.hu/hirek/2023-10-18-4421-2): Hogyan növelhetők az eladások a bútorértékesítés és lakberendezés piacán? 7 bevált marketing és webshop stratégia a vevőszerzéstől a prémium kosárértékig.
+- [Google Értékelés Törlése és Kifogásolása Tulajdonosként: Lépésről Lépésre](https://webdude.hu/hirek/2023-09-04-hogy-lehet-kifogasolni-es-torolni-egy-google-bussines-ertekelest-tulajdonoskent-google-ertekeles-torlese): Hogyan távolíttatható el egy jogsértő vagy hamis negatív vélemény a Google Cégprofilról? Hivatalos jogorvoslati és moderációs lépések cégtulajdonosoknak.
+- [WordPress Japán SEO Hack: Felismerés, Elemzés és Végleges Kármentesítés](https://webdude.hu/hirek/2023-05-22-a-wordpress-hack-kodot-bont-ki-japan-seo-hack-es-futtat-a-feltoltott-zip-fajlbol): Hogyan ismerhető fel és távolítható el a japán kulcsszavas SEO spam hack a WordPress oldalakról? Részletes esettanulmány a ZIP-ből kibontott kódokról és a helyreállításról.
+- [Biztonságos API Hitelesítés: Szolgáltatási API Kulcsok Kezelése](https://webdude.hu/hirek/2023-05-16-api-hitelesites-szolgaltatasi-ugyfel-api-kulcsok-letrehozasa): Hogyan hozzunk létre és tároljunk biztonságosan API kulcsokat a modern webfejlesztésben? Részletes útmutató fejlesztőknek a hash-elésről, rotációról és jogosultságokról.
+- [Mi az a Márkaépítés (Branding) és Miért Kulcsfontosságú a Vállalkozásodnak?](https://webdude.hu/hirek/2023-05-16-mi-az-a-markaepites-miert-fontos): A hatékony márkaépítés nem csupán egy szép logó: ez az az érzelmi és racionális kapcsolat, ami megkülönbözteti cégedet a versenytársaktól és hűséges ügyfeleket szerez.
+- [Google Cégprofil Regisztráció és Hitelesítés Lépésről Lépésre](https://webdude.hu/hirek/2023-05-11-regisztracio-a-cegprofilra): Teljes útmutató a Google Cégprofil (Google Business Profile) létrehozásához, tulajdonjogának igazolásához és a helyi SEO rangsorolás maximalizálásához.
+- [Márkaidentitás Kialakítása Lépésről Lépésre: Útmutató Vállalkozóknak](https://webdude.hu/hirek/2023-05-06-utmutato-lepesrol-lepesre-lenyugozo-markaidentitas-letrehozasahoz): Hogyan építs fel vonzó, egységes márkaidentitást vállalkozásod számára? Gyakorlati útmutató a logótervezéstől a színpalettán át a komplett arculati kézikönyvig.
+- [WordPress Karbantartás: 13 Kötelező Feladat a Stabil Működéshez](https://webdude.hu/hirek/2023-05-01-wordpress-karbantartas-webhely-karbantartas-13-kotelezo-feladat-2023-ban): A rendszeres WordPress karbantartás elengedhetetlen a gyors betöltéshez, az adatbiztonsághoz és a magas Google helyezésekhez. Íme a 13 legfontosabb ellenőrzési lépés.
+- [WordPress Oldalak Feltörésének Módjai és Hatékony Védelmi Módszerek](https://webdude.hu/hirek/2023-05-01-wordpress-oldalak-feltoresenek-lehetseges-modja): Milyen biztonsági réseken keresztül törik fel leggyakrabban a WordPress oldalakat? Részletes technikai áttekintés a támadási felületekről és a megelőzés lépéseiről.
+- [AI Search Optimization (GEO & AEO) Guide: How to Get Cited by ChatGPT, Perplexity & Google AI Overviews (EN)](https://webdude.hu/en/insights/ai-search-geo-aeo-guide-for-businesses): Discover how I optimize websites for ChatGPT, Perplexity, and Google AI Overviews using Schema.org entities, llms.txt, and semantic HTML structure.
+- [Next.js vs. Custom WordPress: Choosing the Right Architecture for Speed, SEO & Conversions (EN)](https://webdude.hu/en/insights/nextjs-vs-custom-wordpress-2026): Comparing Next.js App Router and bespoke WordPress engineering on Core Web Vitals, technical SEO, security, maintenance, and conversion ROI.
+- [Hiring a Senior Full-Stack Freelancer vs. a Digital Agency: Direct Accountability, Speed & ROI (EN)](https://webdude.hu/en/insights/senior-freelancer-vs-digital-agency): Why working directly with me — bringing 26+ years of graphic design and 16+ years of web engineering — outperforms traditional multi-layer digital agencies.
 
-## English Cornerstone Guides (Insights)
+## Optional
 
-- [AI Search Optimization (GEO & AEO) Guide](https://webdude.hu/en/insights/ai-search-geo-aeo-guide-for-businesses): How to structure Schema.org entities, robots.txt, llms.txt, and SSR HTML so ChatGPT, Perplexity, and Google AI Overviews cite your brand.
-- [Next.js vs. Custom WordPress Architecture Guide](https://webdude.hu/en/insights/nextjs-vs-custom-wordpress-2026): Commercial engineering comparison across Core Web Vitals, security surface, editorial workflows, and ROI.
-- [Senior Full-Stack Freelancer vs. Digital Agency](https://webdude.hu/en/insights/senior-freelancer-vs-digital-agency): Direct accountability, speed, design-to-code fidelity, and zero agency overhead.
-
-## Optional / Legal
-
-- [Adatvédelmi Szabályzat (HU)](https://webdude.hu/adatvedelmi-szabalyzat)
-- [Felhasználási Feltételek (HU)](https://webdude.hu/felhasznalasi-feltetelek)
-- [Privacy Policy (EN)](https://webdude.hu/en/privacy-policy)
-- [Terms of Service (EN)](https://webdude.hu/en/terms)
+- [Weboldal készítés Kecskeméten](https://webdude.hu/weboldal-keszites-kecskemet): Dedikált helyi webfejlesztési és személyes konzultációs oldal Kecskemét és Bács-Kiskun vármegye vállalkozásainak.
+- [Adatvédelmi Szabályzat (HU)](https://webdude.hu/adatvedelmi-szabalyzat): GDPR-kompatibilis adatkezelési tájékoztató magyar nyelven.
+- [Felhasználási Feltételek (HU)](https://webdude.hu/felhasznalasi-feltetelek): Általános szerződési és igénybevételi feltételek egyedi árajánlat alapú projektekhez.
+- [Privacy Policy (EN)](https://webdude.hu/en/privacy-policy): GDPR-compliant data protection and privacy notice in English.
+- [Terms of Service (EN)](https://webdude.hu/en/terms): Service terms and custom project engagement conditions in English.
+- [XML Sitemap](https://webdude.hu/sitemap.xml): Kanonikus, kétnyelvű hreflang jelölésekkel ellátott 130 URL-es XML oldaltérkép keresőmotoroknak.
+- [RSS 2.0 Feed](https://webdude.hu/feed.xml): Géppel olvasható RSS csatorna a legfrissebb szakmai cikkekkel.
+- [Teljes AI Tudásbázis (llms-full.txt)](https://webdude.hu/llms-full.txt): Részletes entitásprofil, szolgáltatás-leírások, 14 termék, 14 esettanulmány, 34 cikk-összefoglaló és GYIK-ek egyetlen fájlban.

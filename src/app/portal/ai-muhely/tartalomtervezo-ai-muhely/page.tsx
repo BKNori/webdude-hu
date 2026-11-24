@@ -5,7 +5,7 @@ import ContentWorkshopGenerator from "@/components/organisms/ContentWorkshopGene
 export const metadata: Metadata = {
   title: "Tartalomtervező AI Műhely | WebDude",
   description:
-    "Professzionális tartalomtervezés Norbi 16+ éves tartalomstratégiai és vizuális tervezési szakértelmével. SEO optimalizált, konverziófókuszú és Cyber-Arany dizájn.",
+    "Professzionális tartalomtervezés Norbi 16+ éves tartalomstratégiai és vizuális tervezési szakértelmével. SEO optimalizált, konverziófókuszú és Kék-Lila v7.2 Dual Theme dizájn.",
 };
 
 export default function ContentToolPage() {

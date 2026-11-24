@@ -130,7 +130,7 @@ export default function KristofkaWorkflow() {
   if (accessLoading) {
     return (
       <div className="min-h-[40vh] flex items-center justify-center">
-        <Loader2 className="w-8 h-8 animate-spin text-sky-500" />
+        <Loader2 className="w-8 h-8 animate-spin text-[#0369A1] dark:text-[#00B5F1]" />
       </div>
     );
   }
@@ -145,7 +145,7 @@ export default function KristofkaWorkflow() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.7 }}
-      className="bg-bg-surface/40 backdrop-blur-xl border border-bg-elevated/80 rounded-3xl p-6 md:p-8 shadow-2xl relative overflow-hidden space-y-6 hover:border-sky-500/50 hover:shadow-sky-500/10 transition-all duration-300"
+      className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none backdrop-blur-xl border border-slate-200 dark:border-slate-800 rounded-3xl p-6 md:p-8 shadow-2xl relative overflow-hidden space-y-6 hover:border-sky-500/50 hover:shadow-sky-500/10 transition-all duration-300"
     >
       <div className="absolute -left-24 -bottom-24 w-48 h-48 rounded-full bg-sky-500/5 blur-3xl pointer-events-none" />
 
@@ -154,16 +154,16 @@ export default function KristofkaWorkflow() {
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="flex items-center gap-3 border-b border-bg-elevated/40 pb-4"
+        className="flex items-center gap-3 border-b border-slate-200 dark:border-slate-800 pb-4"
       >
-        <div className="w-10 h-10 rounded-xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-500 hover:bg-sky-500/20 transition-colors">
+        <div className="w-10 h-10 rounded-xl bg-sky-500/10 border border-slate-200 dark:border-slate-800 flex items-center justify-center text-[#0369A1] dark:text-[#00B5F1] hover:bg-sky-500/20 transition-colors">
           <Building2 className="w-5 h-5" />
         </div>
         <div>
-          <span className="text-[10px] uppercase font-black tracking-widest text-sky-500 block">
+          <span className="text-[10px] uppercase font-black tracking-widest text-[#0369A1] dark:text-[#00B5F1] block">
             Strategist-Pro
           </span>
-          <h3 className="text-lg font-bold text-white font-mono -mt-0.5">
+          <h3 className="text-lg font-bold text-[#0F172A] dark:text-[#F8FAFC] font-mono -mt-0.5">
             Kristófka Munkafolyamat
           </h3>
         </div>
@@ -174,7 +174,7 @@ export default function KristofkaWorkflow() {
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.1 }}
-        className="text-xs text-slate-400 leading-relaxed font-mono border-l-2 border-sky-500/30 pl-3"
+        className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed font-mono border-l-2 border-sky-500/30 pl-3"
       >
         Az ipari ingatlanok hasznosításának és befektetői prezentációjának
         mesterműve. Nyers alaprajzokból professzionális befektetői pitch
@@ -182,14 +182,14 @@ export default function KristofkaWorkflow() {
       </motion.p>
 
       {error && (
-        <div className="bg-red-500/10 border border-red-500/30 text-red-400 px-4 py-3 rounded-xl text-xs flex items-center gap-2.5 font-mono">
+        <div className="bg-red-500/10 border border-red-500/30 text-red-600 dark:text-red-400 px-4 py-3 rounded-xl text-xs flex items-center gap-2.5 font-mono">
           <AlertCircle className="w-4 h-4 shrink-0" />
           <span>{error}</span>
         </div>
       )}
 
       {success && (
-        <div className="bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 px-4 py-3 rounded-xl text-xs flex items-center gap-2.5 font-mono">
+        <div className="bg-emerald-500/10 border border-emerald-500/30 text-emerald-700 dark:text-emerald-400 px-4 py-3 rounded-xl text-xs flex items-center gap-2.5 font-mono">
           <CheckCircle2 className="w-4 h-4 shrink-0" />
           <span>{success}</span>
         </div>

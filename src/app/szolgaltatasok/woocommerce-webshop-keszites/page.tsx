@@ -17,6 +17,13 @@ export async function generateMetadata(): Promise<Metadata> {
     alternates: {
       canonical:
         "https://webdude.hu/szolgaltatasok/woocommerce-webshop-keszites",
+      languages: {
+        "hu-HU":
+          "https://webdude.hu/szolgaltatasok/woocommerce-webshop-keszites",
+        "en-US": "https://webdude.hu/en/services/woocommerce-development",
+        "x-default":
+          "https://webdude.hu/szolgaltatasok/woocommerce-webshop-keszites",
+      },
     },
     openGraph: {
       title: "WooCommerce webshop készítés és fejlesztés | WebDude",

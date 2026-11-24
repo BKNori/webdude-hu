@@ -88,7 +88,7 @@ export default function ContentPlanner() {
   if (accessStatus === "loading") {
     return (
       <div className="min-h-[40vh] flex items-center justify-center">
-        <Loader2 className="w-8 h-8 animate-spin text-sky-500" />
+        <Loader2 className="w-8 h-8 animate-spin text-[#0369A1] dark:text-[#00B5F1]" />
       </div>
     );
   }
@@ -109,10 +109,10 @@ export default function ContentPlanner() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sky-500/10 border border-sky-500/20"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sky-500/10 border border-slate-200 dark:border-slate-800"
         >
-          <Calendar className="w-4 h-4 text-sky-500" />
-          <span className="text-xs font-mono font-bold uppercase tracking-widest text-sky-500">
+          <Calendar className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
+          <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#0369A1] dark:text-[#00B5F1]">
             AI Tartalomtervező
           </span>
         </motion.div>
@@ -121,7 +121,7 @@ export default function ContentPlanner() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="text-4xl md:text-5xl font-bold text-white"
+          className="text-4xl md:text-5xl font-bold text-[#0F172A] dark:text-[#F8FAFC]"
         >
           3 Hónapos Tartalomnaptár
         </motion.h1>
@@ -130,7 +130,7 @@ export default function ContentPlanner() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="text-slate-400 max-w-2xl mx-auto"
+          className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto"
         >
           AI-alapú tartalomtervezés a Llama 3.3-70b modellel. Generáljunk blog
           témákat, LinkedIn posztokat és hírlevél témákat a célcsoportodra
@@ -147,18 +147,18 @@ export default function ContentPlanner() {
       >
         <div className="glass-card p-6 space-y-4">
           <div className="space-y-2">
-            <label className="text-sm font-bold text-slate-300">Iparág</label>
+            <label className="text-sm font-bold text-slate-700 dark:text-slate-300">Iparág</label>
             <input
               type="text"
               value={industry}
               onChange={(e) => setIndustry(e.target.value)}
               placeholder="pl. E-kereskedelem, SaaS, Szolgáltatás"
-              className="w-full px-4 py-3 bg-bg-surface border border-bg-elevated rounded-xl text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all"
+              className="w-full px-4 py-3 bg-white dark:bg-[#0B1120] border border-slate-300 dark:border-slate-700 rounded-xl text-[#0F172A] dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all"
             />
           </div>
 
           <div className="space-y-2">
-            <label className="text-sm font-bold text-slate-300">
+            <label className="text-sm font-bold text-slate-700 dark:text-slate-300">
               Célcsoport
             </label>
             <input
@@ -166,12 +166,12 @@ export default function ContentPlanner() {
               value={targetAudience}
               onChange={(e) => setTargetAudience(e.target.value)}
               placeholder="pl. 25-45 éves vállalkozók, IT döntéshozók"
-              className="w-full px-4 py-3 bg-bg-surface border border-bg-elevated rounded-xl text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all"
+              className="w-full px-4 py-3 bg-white dark:bg-[#0B1120] border border-slate-300 dark:border-slate-700 rounded-xl text-[#0F172A] dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all"
             />
           </div>
 
           <div className="space-y-2">
-            <label className="text-sm font-bold text-slate-300">
+            <label className="text-sm font-bold text-slate-700 dark:text-slate-300">
               Fő Termék/Szolgáltatás
             </label>
             <input
@@ -179,7 +179,7 @@ export default function ContentPlanner() {
               value={mainProduct}
               onChange={(e) => setMainProduct(e.target.value)}
               placeholder="pl. Webfejlesztés, CRM szoftver, Online tanácsadás"
-              className="w-full px-4 py-3 bg-bg-surface border border-bg-elevated rounded-xl text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all"
+              className="w-full px-4 py-3 bg-white dark:bg-[#0B1120] border border-slate-300 dark:border-slate-700 rounded-xl text-[#0F172A] dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all"
             />
           </div>
 
@@ -193,7 +193,7 @@ export default function ContentPlanner() {
           <button
             onClick={handleGenerate}
             disabled={loading}
-            className="w-full px-6 py-3 bg-sky-500 hover:bg-violet-700 hover:text-white text-bg-base font-bold rounded-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            className="w-full px-6 py-3 bg-linear-to-r from-[#075985] to-[#5B21B6] hover:from-[#0369A1] hover:to-[#6D28D9] text-white font-bold rounded-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
           >
             {loading ? (
               <>
@@ -220,14 +220,14 @@ export default function ContentPlanner() {
         >
           {/* Blog Topics */}
           <div className="glass-card p-6 space-y-4">
-            <h3 className="text-xl font-bold text-white flex items-center gap-2">
-              <FileText className="w-5 h-5 text-sky-500" />
+            <h3 className="text-xl font-bold text-[#0F172A] dark:text-[#F8FAFC] flex items-center gap-2">
+              <FileText className="w-5 h-5 text-[#0369A1] dark:text-[#00B5F1]" />
               Blog Témák (10 db)
             </h3>
             <ul className="space-y-3">
               {result.blogTopics.map((topic, i) => (
-                <li key={i} className="flex items-start gap-3 text-slate-300">
-                  <span className="w-6 h-6 rounded-full bg-sky-500/20 text-sky-500 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">
+                <li key={i} className="flex items-start gap-3 text-slate-700 dark:text-slate-300">
+                  <span className="w-6 h-6 rounded-full bg-sky-500/20 text-[#0369A1] dark:text-[#00B5F1] flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">
                     {i + 1}
                   </span>
                   {topic}
@@ -238,13 +238,13 @@ export default function ContentPlanner() {
 
           {/* LinkedIn Posts */}
           <div className="glass-card p-6 space-y-4">
-            <h3 className="text-xl font-bold text-white flex items-center gap-2">
+            <h3 className="text-xl font-bold text-[#0F172A] dark:text-[#F8FAFC] flex items-center gap-2">
               <Link className="w-5 h-5 text-blue-500" />
               LinkedIn Posztok (8 db)
             </h3>
             <ul className="space-y-3">
               {result.linkedinPosts.map((post, i) => (
-                <li key={i} className="flex items-start gap-3 text-slate-300">
+                <li key={i} className="flex items-start gap-3 text-slate-700 dark:text-slate-300">
                   <span className="w-6 h-6 rounded-full bg-blue-500/20 text-blue-500 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">
                     {i + 1}
                   </span>
@@ -256,13 +256,13 @@ export default function ContentPlanner() {
 
           {/* Newsletter Topics */}
           <div className="glass-card p-6 space-y-4">
-            <h3 className="text-xl font-bold text-white flex items-center gap-2">
+            <h3 className="text-xl font-bold text-[#0F172A] dark:text-[#F8FAFC] flex items-center gap-2">
               <Mail className="w-5 h-5 text-emerald-500" />
               Hírlevél Témák (5 db)
             </h3>
             <ul className="space-y-3">
               {result.newsletterTopics.map((topic, i) => (
-                <li key={i} className="flex items-start gap-3 text-slate-300">
+                <li key={i} className="flex items-start gap-3 text-slate-700 dark:text-slate-300">
                   <span className="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-500 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">
                     {i + 1}
                   </span>
@@ -274,7 +274,7 @@ export default function ContentPlanner() {
 
           {/* Suggested Keywords */}
           <div className="glass-card p-6 space-y-4">
-            <h3 className="text-xl font-bold text-white flex items-center gap-2">
+            <h3 className="text-xl font-bold text-[#0F172A] dark:text-[#F8FAFC] flex items-center gap-2">
               <Hash className="w-5 h-5 text-purple-500" />
               Javasolt Kulcsszavak (10 db)
             </h3>
@@ -282,7 +282,7 @@ export default function ContentPlanner() {
               {result.suggestedKeywords.map((keyword, i) => (
                 <span
                   key={i}
-                  className="px-4 py-2 bg-bg-elevated rounded-full text-sm text-slate-300 border border-sky-500/20"
+                  className="px-4 py-2 bg-bg-elevated rounded-full text-sm text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800"
                 >
                   {keyword}
                 </span>
@@ -297,17 +297,17 @@ export default function ContentPlanner() {
             className="glass-card p-8 border border-sky-500/30 bg-linear-to-br from-sky-500/5 to-transparent text-center"
           >
             <div className="space-y-4">
-              <h3 className="text-2xl font-bold text-white">
+              <h3 className="text-2xl font-bold text-[#0F172A] dark:text-[#F8FAFC]">
                 Nincs időd megírni a tartalmakat?
               </h3>
-              <p className="text-slate-300">
+              <p className="text-slate-700 dark:text-slate-300">
                 Hagyd a tartalomgyártást a WebDude-ra! AI+Emberi Blogcikk
                 csomagunkkal professzionális, SEO-optimalizált tartalmakat
                 kapsz, amik azonnal konvertálnak.
               </p>
               <button
                 onClick={() => (window.location.href = "/kapcsolat")}
-                className="px-8 py-4 bg-sky-500 hover:bg-violet-700 hover:text-white text-bg-base font-bold rounded-xl transition-all duration-300 flex items-center justify-center gap-2 mx-auto"
+                className="px-8 py-4 bg-linear-to-r from-[#075985] to-[#5B21B6] hover:from-[#0369A1] hover:to-[#6D28D9] text-white font-bold rounded-xl transition-all duration-300 flex items-center justify-center gap-2 mx-auto"
               >
                 Rendeld meg a WebDude AI+Emberi Blogcikk Csomagot
                 <ArrowRight className="w-5 h-5" />

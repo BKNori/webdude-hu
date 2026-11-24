@@ -13,28 +13,28 @@ export function PosterLayout({ layout, delay = 0 }: PosterLayoutProps) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay }}
-      className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
+      className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none border border-slate-200 dark:border-slate-800 rounded-2xl p-6 space-y-4"
     >
-      <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-        <Layout className="w-4 h-4 text-sky-500" />
+      <h3 className="text-sm font-bold text-[#0F172A] dark:text-[#F8FAFC] uppercase tracking-wider flex items-center gap-2">
+        <Layout className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
         Elrendezés
       </h3>
       <div className="space-y-3">
         <div>
-          <p className="text-xs text-slate-400 mb-1">Grid Rendszer</p>
-          <p className="text-sm text-white">{layout.gridSystem}</p>
+          <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">Grid Rendszer</p>
+          <p className="text-sm text-[#0F172A] dark:text-[#F8FAFC]">{layout.gridSystem}</p>
         </div>
         <div>
-          <p className="text-xs text-slate-400 mb-1">Vizuális Hierarchia</p>
-          <p className="text-sm text-white">{layout.visualHierarchy}</p>
+          <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">Vizuális Hierarchia</p>
+          <p className="text-sm text-[#0F172A] dark:text-[#F8FAFC]">{layout.visualHierarchy}</p>
         </div>
         <div>
-          <p className="text-xs text-slate-400 mb-1">Elem Elhelyezés</p>
-          <p className="text-sm text-white">{layout.elementPlacement}</p>
+          <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">Elem Elhelyezés</p>
+          <p className="text-sm text-[#0F172A] dark:text-[#F8FAFC]">{layout.elementPlacement}</p>
         </div>
         <div>
-          <p className="text-xs text-slate-400 mb-1">Whitespace</p>
-          <p className="text-sm text-white">{layout.whitespace}</p>
+          <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">Whitespace</p>
+          <p className="text-sm text-[#0F172A] dark:text-[#F8FAFC]">{layout.whitespace}</p>
         </div>
       </div>
     </motion.div>

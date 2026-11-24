@@ -5,21 +5,7 @@ import { useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { motion } from "motion/react";
-import {
-  Sparkles,
-  Loader2,
-  ArrowLeft,
-  Calendar,
-  Target,
-  Users,
-  MessageSquare,
-  TrendingUp,
-  Palette,
-  FileText,
-  Mail,
-  Image as ImageIcon,
-  Clock,
-} from "lucide-react";
+import { Sparkles, Loader2, Calendar, Target, Users, MessageSquare, TrendingUp, Palette, FileText, Mail, Image as ImageIcon, Clock } from "lucide-react";
 import Link from "next/link";
 import ToolAccessLock from "@/components/molecules/ToolAccessLock";
 import PresetChips from "@/components/molecules/PresetChips";
@@ -192,12 +178,12 @@ export default function SeasonalWorkshopGenerator() {
   }
 
   return (
-    <div className="min-h-screen bg-transparent text-text-primary">
+    <div className="text-[#0F172A] dark:text-[#F8FAFC]">
       {/* Loading State */}
       {loading && (
-        <div className="min-h-screen bg-transparent flex flex-col items-center justify-center space-y-4">
-          <Loader2 className="w-8 h-8 animate-spin text-sky-500" />
-          <p className="text-xs font-mono text-slate-400 uppercase tracking-widest animate-pulse font-bold">
+        <div className="min-h-[50vh] bg-transparent flex flex-col items-center justify-center space-y-4">
+          <Loader2 className="w-8 h-8 animate-spin text-[#0369A1] dark:text-[#00B5F1]" />
+          <p className="text-xs font-mono text-slate-600 dark:text-slate-400 uppercase tracking-widest animate-pulse font-bold">
             Generátor betöltése...
           </p>
         </div>
@@ -207,64 +193,35 @@ export default function SeasonalWorkshopGenerator() {
         <>
           {/* Authentication Check */}
           {!auth || !auth.currentUser ? (
-            <div className="min-h-screen bg-transparent flex flex-col items-center justify-center space-y-6 px-6">
-              <div className="bg-red-500/5 border border-red-500/40 backdrop-blur-xl shadow-[0_0_24px_rgba(239,68,68,0.15)] text-red-400 px-6 py-4 rounded-2xl text-sm flex items-center gap-3 font-mono max-w-md text-center">
+            <div className="min-h-[50vh] bg-transparent flex flex-col items-center justify-center space-y-6 px-6">
+              <div className="bg-red-500/5 border border-red-500/40 backdrop-blur-xl shadow-[0_0_24px_rgba(239,68,68,0.15)] text-red-600 dark:text-red-400 px-6 py-4 rounded-2xl text-sm flex items-center gap-3 font-mono max-w-md text-center">
                 <Sparkles className="w-5 h-5" />
                 {error || "Kérlek, jelentkezz be a használatához!"}
               </div>
               <Link
                 href="/portal"
-                className="px-6 py-3 rounded-xl bg-sky-500 text-bg-base font-bold hover:bg-violet-700 hover:text-white transition-colors"
+                className="px-6 py-3 rounded-xl bg-linear-to-r from-[#075985] to-[#5B21B6] text-white font-bold hover:from-[#0369A1] hover:to-[#6D28D9] transition-colors"
               >
                 Bejelentkezés
               </Link>
             </div>
           ) : (
             <>
-              {/* Header */}
-              <header className="border-b border-bg-elevated/40 bg-transparent backdrop-blur-xl sticky top-0 z-50">
-                <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <Link
-                      href="/portal/ai-muhely"
-                      className="w-10 h-10 rounded-xl bg-linear-to-br from-sky-400 to-violet-700 flex items-center justify-center shadow-lg shadow-sky-500/10 cursor-pointer"
-                    >
-                      <Calendar className="w-5 h-5 text-bg-base" />
-                    </Link>
-                    <div>
-                      <span className="text-xs uppercase font-black tracking-widest text-sky-500 block">
-                        WebDude AI Studio
-                      </span>
-                      <span className="text-sm font-bold text-white block -mt-0.5">
-                        Szezonalis AI Műhely
-                      </span>
-                    </div>
-                  </div>
-
-                  <Link
-                    href="/portal/ai-muhely"
-                    className="flex items-center gap-2 px-4 py-2 rounded-xl border border-gray-800 hover:border-sky-500/30 text-slate-400 hover:text-white transition-colors text-xs font-bold uppercase tracking-wider cursor-pointer"
-                  >
-                    <ArrowLeft className="w-4 h-4" />
-                    Vissza
-                  </Link>
-                </div>
-              </header>
 
               {/* Main Container */}
-              <div className="max-w-7xl mx-auto px-6 py-12">
+              <div className="py-2">
                 <div className="grid lg:grid-cols-2 gap-8">
                   {/* Input Form */}
                   <div className="space-y-6">
                     <div className="space-y-2 relative">
                       <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 rounded-full bg-sky-500/5 blur-3xl pointer-events-none" />
-                      <span className="text-xs font-mono font-black uppercase tracking-widest text-sky-500">
+                      <span className="text-xs font-mono font-black uppercase tracking-widest text-[#0369A1] dark:text-[#00B5F1]">
                         Szezonalis Generátor
                       </span>
-                      <h1 className="text-3xl md:text-4xl font-extrabold text-white tracking-tight leading-none font-mono">
+                      <h1 className="text-3xl md:text-4xl font-extrabold text-[#0F172A] dark:text-[#F8FAFC] tracking-tight leading-none font-mono">
                         Szezonalis Kampány
                       </h1>
-                      <p className="text-slate-400 text-sm max-w-2xl leading-relaxed">
+                      <p className="text-slate-600 dark:text-slate-400 text-sm max-w-2xl leading-relaxed">
                         Generálj professzionális szezonális kampányokat Norbi
                         16+ éves marketing és vizuális tervezési szakértelmével.
                         Kampánygrafikák, hangulatok és promóciós szövegek.
@@ -272,7 +229,7 @@ export default function SeasonalWorkshopGenerator() {
                     </div>
 
                     {error && (
-                      <div className="bg-red-500/5 border border-red-500/40 backdrop-blur-xl shadow-[0_0_24px_rgba(239,68,68,0.15)] text-red-400 px-4 py-3 rounded-2xl text-xs flex items-center gap-2.5 font-mono">
+                      <div className="bg-red-500/5 border border-red-500/40 backdrop-blur-xl shadow-[0_0_24px_rgba(239,68,68,0.15)] text-red-600 dark:text-red-400 px-4 py-3 rounded-2xl text-xs flex items-center gap-2.5 font-mono">
                         <Sparkles className="w-4 h-4" />
                         {error}
                       </div>
@@ -284,13 +241,13 @@ export default function SeasonalWorkshopGenerator() {
                     >
                       {/* Season */}
                       <div className="space-y-2">
-                        <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <Calendar className="w-4 h-4 text-sky-500" />
+                        <label className="flex items-center gap-2 text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+                          <Calendar className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
                           Szezon
                         </label>
                         <select
                           {...register("season")}
-                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-sky-500/50 focus:ring-2 focus:ring-sky-500/10 text-white transition-all text-sm"
+                          className="w-full px-4 py-3 rounded-xl bg-white dark:bg-[#0B1120] border border-slate-300 dark:border-slate-700 focus:border-[#0369A1] dark:focus:border-[#00B5F1] focus:ring-2 focus:ring-sky-500/10 text-[#0F172A] dark:text-slate-100 transition-all text-sm"
                         >
                           <option value="christmas">Karácsony</option>
                           <option value="new-year">Újév</option>
@@ -308,27 +265,27 @@ export default function SeasonalWorkshopGenerator() {
                       {/* Custom Season */}
                       {selectedSeason === "custom" && (
                         <div className="space-y-2">
-                          <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                            <Calendar className="w-4 h-4 text-sky-500" />
+                          <label className="flex items-center gap-2 text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+                            <Calendar className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
                             Egyedi Szezon
                           </label>
                           <input
                             {...register("customSeason")}
                             placeholder="Pl. Anyák napja, Apák napja..."
-                            className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-sky-500/50 focus:ring-2 focus:ring-sky-500/10 text-white placeholder-slate-500 transition-all text-sm"
+                            className="w-full px-4 py-3 rounded-xl bg-white dark:bg-[#0B1120] border border-slate-300 dark:border-slate-700 focus:border-[#0369A1] dark:focus:border-[#00B5F1] focus:ring-2 focus:ring-sky-500/10 text-[#0F172A] dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 transition-all text-sm"
                           />
                         </div>
                       )}
 
                       {/* Campaign Type */}
                       <div className="space-y-2">
-                        <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <Target className="w-4 h-4 text-sky-500" />
+                        <label className="flex items-center gap-2 text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+                          <Target className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
                           Kampány Típus
                         </label>
                         <select
                           {...register("campaignType")}
-                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-sky-500/50 focus:ring-2 focus:ring-sky-500/10 text-white transition-all text-sm"
+                          className="w-full px-4 py-3 rounded-xl bg-white dark:bg-[#0B1120] border border-slate-300 dark:border-slate-700 focus:border-[#0369A1] dark:focus:border-[#00B5F1] focus:ring-2 focus:ring-sky-500/10 text-[#0F172A] dark:text-slate-100 transition-all text-sm"
                         >
                           <option value="social-media">Social media</option>
                           <option value="email">Email kampány</option>
@@ -343,17 +300,17 @@ export default function SeasonalWorkshopGenerator() {
 
                       {/* Target Audience */}
                       <div className="space-y-2">
-                        <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <Users className="w-4 h-4 text-sky-500" />
+                        <label className="flex items-center gap-2 text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+                          <Users className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
                           Célközönség
                         </label>
                         <input
                           {...register("targetAudience")}
                           placeholder="Kis- és középvállalkozások, startupok"
-                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-sky-500/50 focus:ring-2 focus:ring-sky-500/10 text-white placeholder-slate-500 transition-all text-sm"
+                          className="w-full px-4 py-3 rounded-xl bg-white dark:bg-[#0B1120] border border-slate-300 dark:border-slate-700 focus:border-[#0369A1] dark:focus:border-[#00B5F1] focus:ring-2 focus:ring-sky-500/10 text-[#0F172A] dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 transition-all text-sm"
                         />
                         {errors.targetAudience && (
-                          <p className="text-red-400 text-xs font-mono">
+                          <p className="text-red-600 dark:text-red-400 text-xs font-mono">
                             {errors.targetAudience.message}
                           </p>
                         )}
@@ -361,13 +318,13 @@ export default function SeasonalWorkshopGenerator() {
 
                       {/* Brand Voice */}
                       <div className="space-y-2">
-                        <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <MessageSquare className="w-4 h-4 text-sky-500" />
+                        <label className="flex items-center gap-2 text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+                          <MessageSquare className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
                           Márka Hang
                         </label>
                         <select
                           {...register("brandVoice")}
-                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-sky-500/50 focus:ring-2 focus:ring-sky-500/10 text-white transition-all text-sm"
+                          className="w-full px-4 py-3 rounded-xl bg-white dark:bg-[#0B1120] border border-slate-300 dark:border-slate-700 focus:border-[#0369A1] dark:focus:border-[#00B5F1] focus:ring-2 focus:ring-sky-500/10 text-[#0F172A] dark:text-slate-100 transition-all text-sm"
                         >
                           <option value="professional">Professzionális</option>
                           <option value="friendly">Barátságos</option>
@@ -380,13 +337,13 @@ export default function SeasonalWorkshopGenerator() {
 
                       {/* Primary Goal */}
                       <div className="space-y-2">
-                        <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <TrendingUp className="w-4 h-4 text-sky-500" />
+                        <label className="flex items-center gap-2 text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+                          <TrendingUp className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
                           Elsődleges Cél
                         </label>
                         <select
                           {...register("primaryGoal")}
-                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-sky-500/50 focus:ring-2 focus:ring-sky-500/10 text-white transition-all text-sm"
+                          className="w-full px-4 py-3 rounded-xl bg-white dark:bg-[#0B1120] border border-slate-300 dark:border-slate-700 focus:border-[#0369A1] dark:focus:border-[#00B5F1] focus:ring-2 focus:ring-sky-500/10 text-[#0F172A] dark:text-slate-100 transition-all text-sm"
                         >
                           <option value="sales">Eladás növelés</option>
                           <option value="brand-awareness">
@@ -403,7 +360,7 @@ export default function SeasonalWorkshopGenerator() {
                       </div>
 
                       {/* Design Irányzat & Színpaletta Preset Chipek */}
-                      <div className="space-y-4 rounded-2xl border border-slate-800/60 bg-slate-900/40 p-4">
+                      <div className="space-y-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-[#0B1120] p-4">
                         <PresetChips
                           label="Design Irányzat (2026)"
                           options={DESIGN_STYLE_PRESETS}
@@ -420,15 +377,15 @@ export default function SeasonalWorkshopGenerator() {
 
                       {/* Additional Requirements */}
                       <div className="space-y-2">
-                        <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <Sparkles className="w-4 h-4 text-sky-500" />
+                        <label className="flex items-center gap-2 text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+                          <Sparkles className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
                           További Követelmények (opcionális)
                         </label>
                         <textarea
                           {...register("additionalRequirements")}
                           rows={3}
-                          placeholder="Pl. Fókusz a Cyber-Gold identitásra, Kecskemét régió..."
-                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-sky-500/50 focus:ring-2 focus:ring-sky-500/10 text-white placeholder-slate-500 transition-all text-sm resize-none"
+                          placeholder="Pl. Fókusz a Kék-Lila v7.2 márkaidentitásra, országos B2B kampány..."
+                          className="w-full px-4 py-3 rounded-xl bg-white dark:bg-[#0B1120] border border-slate-300 dark:border-slate-700 focus:border-[#0369A1] dark:focus:border-[#00B5F1] focus:ring-2 focus:ring-sky-500/10 text-[#0F172A] dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 transition-all text-sm resize-none"
                         />
                       </div>
 
@@ -438,7 +395,7 @@ export default function SeasonalWorkshopGenerator() {
                         whileTap={{ scale: 0.98 }}
                         type="submit"
                         disabled={isGenerating}
-                        className="w-full px-6 py-4 rounded-xl bg-linear-to-r from-sky-500 to-violet-700 text-bg-base font-bold text-sm uppercase tracking-wider hover:from-violet-700 hover:to-sky-800 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg shadow-sky-500/20"
+                        className="w-full px-6 py-4 rounded-xl bg-linear-to-r from-sky-500 to-violet-700 text-white font-bold text-sm uppercase tracking-wider hover:from-violet-700 hover:to-sky-800 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg shadow-sky-500/20"
                       >
                         {isGenerating ? (
                           <>
@@ -458,14 +415,14 @@ export default function SeasonalWorkshopGenerator() {
                   {/* Output Section */}
                   <div className="space-y-6">
                     {!generatedOutput && (
-                      <div className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-8 flex flex-col items-center justify-center min-h-100">
+                      <div className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none border border-slate-200 dark:border-slate-800 rounded-2xl p-8 flex flex-col items-center justify-center min-h-100">
                         <div className="w-16 h-16 rounded-full bg-sky-500/10 flex items-center justify-center mb-4">
-                          <Calendar className="w-8 h-8 text-sky-500" />
+                          <Calendar className="w-8 h-8 text-[#0369A1] dark:text-[#00B5F1]" />
                         </div>
-                        <h3 className="text-lg font-bold text-white mb-2">
+                        <h3 className="text-lg font-bold text-[#0F172A] dark:text-[#F8FAFC] mb-2">
                           Szezonalis Kampány Terv
                         </h3>
-                        <p className="text-sm text-slate-400 text-center max-w-md">
+                        <p className="text-sm text-slate-600 dark:text-slate-400 text-center max-w-md">
                           Töltsd ki az űrlapot a bal oldalon, és kattints a
                           &ldquo;Szezonalis Kampány Generálása&rdquo; gombra.
                         </p>
@@ -478,33 +435,33 @@ export default function SeasonalWorkshopGenerator() {
                         <motion.div
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
-                          className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
+                          className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none border border-slate-200 dark:border-slate-800 rounded-2xl p-6 space-y-4"
                         >
                           <div className="flex items-center justify-between">
-                            <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                              <Target className="w-4 h-4 text-sky-500" />
+                            <h3 className="text-sm font-bold text-[#0F172A] dark:text-[#F8FAFC] uppercase tracking-wider flex items-center gap-2">
+                              <Target className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
                               Kampány Stratégia
                             </h3>
                           </div>
                           <div className="space-y-3">
                             <div>
-                              <p className="text-xs text-slate-400 mb-1">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Téma
                               </p>
-                              <p className="text-sm text-white">
+                              <p className="text-sm text-[#0F172A] dark:text-[#F8FAFC]">
                                 {generatedOutput.campaignStrategy.theme}
                               </p>
                             </div>
                             <div>
-                              <p className="text-xs text-slate-400 mb-1">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Hangulat
                               </p>
-                              <p className="text-sm text-white">
+                              <p className="text-sm text-[#0F172A] dark:text-[#F8FAFC]">
                                 {generatedOutput.campaignStrategy.mood}
                               </p>
                             </div>
                             <div>
-                              <p className="text-xs text-slate-400 mb-1">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Kulcs Üzenetek
                               </p>
                               <ul className="space-y-1">
@@ -512,7 +469,7 @@ export default function SeasonalWorkshopGenerator() {
                                   (message, index) => (
                                     <li
                                       key={index}
-                                      className="text-xs text-white"
+                                      className="text-xs text-[#0F172A] dark:text-[#F8FAFC]"
                                     >
                                       {message}
                                     </li>
@@ -521,10 +478,10 @@ export default function SeasonalWorkshopGenerator() {
                               </ul>
                             </div>
                             <div>
-                              <p className="text-xs text-slate-400 mb-1">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Időzítés
                               </p>
-                              <p className="text-sm text-white">
+                              <p className="text-sm text-[#0F172A] dark:text-[#F8FAFC]">
                                 {generatedOutput.campaignStrategy.timing}
                               </p>
                             </div>
@@ -536,15 +493,15 @@ export default function SeasonalWorkshopGenerator() {
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: 0.1 }}
-                          className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
+                          className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none border border-slate-200 dark:border-slate-800 rounded-2xl p-6 space-y-4"
                         >
-                          <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <Palette className="w-4 h-4 text-sky-500" />
+                          <h3 className="text-sm font-bold text-[#0F172A] dark:text-[#F8FAFC] uppercase tracking-wider flex items-center gap-2">
+                            <Palette className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
                             Vizuális Irányelvek
                           </h3>
                           <div className="space-y-3">
                             <div>
-                              <p className="text-xs text-slate-400 mb-1">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Szín Paletta
                               </p>
                               <div className="flex flex-wrap gap-2">
@@ -552,7 +509,7 @@ export default function SeasonalWorkshopGenerator() {
                                   (color, index) => (
                                     <span
                                       key={index}
-                                      className="px-2 py-1 rounded bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-mono"
+                                      className="px-2 py-1 rounded bg-sky-500/10 border border-slate-200 dark:border-slate-800 text-[#0369A1] dark:text-[#00B5F1] text-xs font-mono"
                                     >
                                       {color}
                                     </span>
@@ -561,7 +518,7 @@ export default function SeasonalWorkshopGenerator() {
                               </div>
                             </div>
                             <div>
-                              <p className="text-xs text-slate-400 mb-1">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Képek
                               </p>
                               <ul className="space-y-1">
@@ -569,7 +526,7 @@ export default function SeasonalWorkshopGenerator() {
                                   (image, index) => (
                                     <li
                                       key={index}
-                                      className="text-xs text-white"
+                                      className="text-xs text-[#0F172A] dark:text-[#F8FAFC]"
                                     >
                                       {image}
                                     </li>
@@ -585,15 +542,15 @@ export default function SeasonalWorkshopGenerator() {
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: 0.2 }}
-                          className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
+                          className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none border border-slate-200 dark:border-slate-800 rounded-2xl p-6 space-y-4"
                         >
-                          <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <FileText className="w-4 h-4 text-sky-500" />
+                          <h3 className="text-sm font-bold text-[#0F172A] dark:text-[#F8FAFC] uppercase tracking-wider flex items-center gap-2">
+                            <FileText className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
                             Szövegírás
                           </h3>
                           <div className="space-y-3">
                             <div>
-                              <p className="text-xs text-slate-400 mb-1">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Címsorok
                               </p>
                               <ul className="space-y-1">
@@ -601,7 +558,7 @@ export default function SeasonalWorkshopGenerator() {
                                   (headline, index) => (
                                     <li
                                       key={index}
-                                      className="text-xs text-white font-bold"
+                                      className="text-xs text-[#0F172A] dark:text-[#F8FAFC] font-bold"
                                     >
                                       {headline}
                                     </li>
@@ -610,7 +567,7 @@ export default function SeasonalWorkshopGenerator() {
                               </ul>
                             </div>
                             <div>
-                              <p className="text-xs text-slate-400 mb-1">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Hashtagek
                               </p>
                               <div className="flex flex-wrap gap-2">
@@ -618,7 +575,7 @@ export default function SeasonalWorkshopGenerator() {
                                   (tag, index) => (
                                     <span
                                       key={index}
-                                      className="px-2 py-1 rounded bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-mono"
+                                      className="px-2 py-1 rounded bg-sky-500/10 border border-slate-200 dark:border-slate-800 text-[#0369A1] dark:text-[#00B5F1] text-xs font-mono"
                                     >
                                       {tag}
                                     </span>
@@ -634,34 +591,34 @@ export default function SeasonalWorkshopGenerator() {
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: 0.3 }}
-                          className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
+                          className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none border border-slate-200 dark:border-slate-800 rounded-2xl p-6 space-y-4"
                         >
-                          <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <MessageSquare className="w-4 h-4 text-sky-500" />
+                          <h3 className="text-sm font-bold text-[#0F172A] dark:text-[#F8FAFC] uppercase tracking-wider flex items-center gap-2">
+                            <MessageSquare className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
                             Social Media Tartalom
                           </h3>
                           <div className="space-y-3">
-                            <div className="bg-bg-base/50 rounded-lg p-3 border border-gray-800">
-                              <p className="text-xs text-slate-400 mb-1">
+                            <div className="bg-slate-50 dark:bg-[#0B1120] rounded-lg p-3 border border-slate-200 dark:border-slate-800">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Instagram
                               </p>
-                              <p className="text-xs text-white">
+                              <p className="text-xs text-[#0F172A] dark:text-[#F8FAFC]">
                                 {generatedOutput.socialMediaContent.instagram}
                               </p>
                             </div>
-                            <div className="bg-bg-base/50 rounded-lg p-3 border border-gray-800">
-                              <p className="text-xs text-slate-400 mb-1">
+                            <div className="bg-slate-50 dark:bg-[#0B1120] rounded-lg p-3 border border-slate-200 dark:border-slate-800">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Facebook
                               </p>
-                              <p className="text-xs text-white">
+                              <p className="text-xs text-[#0F172A] dark:text-[#F8FAFC]">
                                 {generatedOutput.socialMediaContent.facebook}
                               </p>
                             </div>
-                            <div className="bg-bg-base/50 rounded-lg p-3 border border-gray-800">
-                              <p className="text-xs text-slate-400 mb-1">
+                            <div className="bg-slate-50 dark:bg-[#0B1120] rounded-lg p-3 border border-slate-200 dark:border-slate-800">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 LinkedIn
                               </p>
-                              <p className="text-xs text-white">
+                              <p className="text-xs text-[#0F172A] dark:text-[#F8FAFC]">
                                 {generatedOutput.socialMediaContent.linkedin}
                               </p>
                             </div>
@@ -673,15 +630,15 @@ export default function SeasonalWorkshopGenerator() {
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: 0.4 }}
-                          className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
+                          className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none border border-slate-200 dark:border-slate-800 rounded-2xl p-6 space-y-4"
                         >
-                          <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <Mail className="w-4 h-4 text-sky-500" />
+                          <h3 className="text-sm font-bold text-[#0F172A] dark:text-[#F8FAFC] uppercase tracking-wider flex items-center gap-2">
+                            <Mail className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
                             Email Kampány
                           </h3>
                           <div className="space-y-3">
                             <div>
-                              <p className="text-xs text-slate-400 mb-1">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Tárgy Sorok
                               </p>
                               <ul className="space-y-1">
@@ -689,7 +646,7 @@ export default function SeasonalWorkshopGenerator() {
                                   (subject, index) => (
                                     <li
                                       key={index}
-                                      className="text-xs text-white"
+                                      className="text-xs text-[#0F172A] dark:text-[#F8FAFC]"
                                     >
                                       {subject}
                                     </li>
@@ -705,26 +662,26 @@ export default function SeasonalWorkshopGenerator() {
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: 0.5 }}
-                          className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
+                          className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none border border-slate-200 dark:border-slate-800 rounded-2xl p-6 space-y-4"
                         >
-                          <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <ImageIcon className="w-4 h-4 text-sky-500" />
+                          <h3 className="text-sm font-bold text-[#0F172A] dark:text-[#F8FAFC] uppercase tracking-wider flex items-center gap-2">
+                            <ImageIcon className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
                             Midjourney Promptok
                           </h3>
                           <div className="space-y-3">
-                            <div className="bg-bg-base/50 rounded-lg p-3 border border-gray-800">
-                              <p className="text-xs text-slate-400 mb-1">
+                            <div className="bg-slate-50 dark:bg-[#0B1120] rounded-lg p-3 border border-slate-200 dark:border-slate-800">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Hero Kép
                               </p>
-                              <p className="text-xs text-white">
+                              <p className="text-xs text-[#0F172A] dark:text-[#F8FAFC]">
                                 {generatedOutput.midjourneyPrompts.heroImage}
                               </p>
                             </div>
-                            <div className="bg-bg-base/50 rounded-lg p-3 border border-gray-800">
-                              <p className="text-xs text-slate-400 mb-1">
+                            <div className="bg-slate-50 dark:bg-[#0B1120] rounded-lg p-3 border border-slate-200 dark:border-slate-800">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Termék Fotó
                               </p>
-                              <p className="text-xs text-white">
+                              <p className="text-xs text-[#0F172A] dark:text-[#F8FAFC]">
                                 {generatedOutput.midjourneyPrompts.productShot}
                               </p>
                             </div>
@@ -736,15 +693,15 @@ export default function SeasonalWorkshopGenerator() {
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: 0.6 }}
-                          className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
+                          className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none border border-slate-200 dark:border-slate-800 rounded-2xl p-6 space-y-4"
                         >
-                          <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <Clock className="w-4 h-4 text-sky-500" />
+                          <h3 className="text-sm font-bold text-[#0F172A] dark:text-[#F8FAFC] uppercase tracking-wider flex items-center gap-2">
+                            <Clock className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
                             Promóciós Naptár
                           </h3>
                           <div className="space-y-3">
                             <div>
-                              <p className="text-xs text-slate-400 mb-1">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Indulás Előtt
                               </p>
                               <ul className="space-y-1">
@@ -752,7 +709,7 @@ export default function SeasonalWorkshopGenerator() {
                                   (activity, index) => (
                                     <li
                                       key={index}
-                                      className="text-xs text-white"
+                                      className="text-xs text-[#0F172A] dark:text-[#F8FAFC]"
                                     >
                                       {activity}
                                     </li>
@@ -761,7 +718,7 @@ export default function SeasonalWorkshopGenerator() {
                               </ul>
                             </div>
                             <div>
-                              <p className="text-xs text-slate-400 mb-1">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Indulás Nap
                               </p>
                               <ul className="space-y-1">
@@ -769,7 +726,7 @@ export default function SeasonalWorkshopGenerator() {
                                   (activity, index) => (
                                     <li
                                       key={index}
-                                      className="text-xs text-white"
+                                      className="text-xs text-[#0F172A] dark:text-[#F8FAFC]"
                                     >
                                       {activity}
                                     </li>

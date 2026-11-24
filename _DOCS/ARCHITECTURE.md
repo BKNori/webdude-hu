@@ -1,7 +1,7 @@
 # ARCHITECTURE.md — WebDude Rendszerarchitektúra
 
 **webdude.hu | Next.js 16 · React 19 · TypeScript · Firebase**
-**Utolsó frissítés: 2026-11-24 (7.93.0: Portalozott `AuthStatusBadge` Profil Menü + `/termekek` 14 Saját Aloldal Linkek & 2026 SEO/AIO/AEO/GEO Audit)**
+**Utolsó frissítés: 2026-11-24 (7.96.0: `/portal/ai-muhely` Egységes `WorkshopSubnav` + 64 Fájlos DDR-006 v7.2 Dual Theme Konszolidáció)**
 
 > **7.74.0 (2026-11-20):** Additív SEO / AIO / AEO / GEO & Schema.org Tudásgráf Bővítés:
 >
@@ -139,6 +139,7 @@ atoms  →  molecules  →  organisms  →  pages
 | `AdminExportToolbar`      | `src/components/molecules/AdminExportToolbar.tsx`          | Egységesített Admin Export vezérlősáv (Leadek CSV, Projektek CSV, Tranzakciók CSV, KPI Riport PDF) `Loader2` töltésjelzővel, `aria-label` attribútumokkal és Kék-Lila v7.0 glassmorphism stílussal (`src/lib/admin-kpi-pdf.ts` dinamikus jsPDF helperrel) [7.64.0]                                                                                                                                                                                                                                                                                                                                                                       | `"use client"`                |
 | `HeroBackdrop`            | `src/components/molecules/HeroBackdrop.tsx`                | [7.72.0] Egységes, 0 JS-es Hero háttérréteg (`ResponsiveImage` `sizes="100vw"` + `priority`, `.hero-parallax-img` CSS Scroll-Driven Parallax, `opacity-50 dark:opacity-60`, irányított balról-jobbra + alulról-felfelé Dual Theme scrim)                                                                                                                                                                                                                                                                                                                                                                                                     | Server Component              |
 | `LivePromptPreviewCard`   | `src/components/molecules/LivePromptPreviewCard.tsx`       | [7.86.0] Megosztott Pro Prompt Stúdió élő előnézeti molekula (264 sor): Dual Theme + Kék-Lila v7.0 sticky panel, 0 ms-os karakter/szó/~token számláló, 1-kattintásos másolás (`aria-live="polite"`), negatív/guardrail blokk és opcionális Groq `refinePromptStudioAction` (1 mester-prompt + 3 variáció + magyar szakértői tippek) `useReducedMotion()` támogatással                                                                                                                                                                                                                                                                     | `"use client"` (motion/react) |
+| `WorkshopSubnav`          | `src/components/molecules/WorkshopSubnav.tsx`              | [7.96.0] Közös, nem-sticky Dual Theme alnavigációs / breadcrumb molekula a `/portal/ai-muhely` és `/portal/ai-muhely/*` útvonalakhoz (`src/app/portal/ai-muhely/layout.tsx` alatt): vissza-link (`/portal` ill. `/portal/ai-muhely`), aktuális modulnév és `Projektek` gyorslink — duplikált email/szerepkör/kijelentkezés nélkül | `"use client"`                |
 
 ### 2.3 Organisms
 

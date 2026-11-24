@@ -31,15 +31,15 @@ export default function PosterOutputPanel({
 }: PosterOutputPanelProps) {
   if (!generatedOutput) {
     return (
-      <div className="bg-bg-elevated/30 backdrop-blur-xl border border-bg-elevated/80 rounded-2xl p-12 flex flex-col items-center justify-center space-y-4 text-center">
+      <div className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none backdrop-blur-xl border border-slate-200 dark:border-slate-800 rounded-2xl p-12 flex flex-col items-center justify-center space-y-4 text-center">
         <div className="w-16 h-16 rounded-2xl bg-brand-primary/10 border border-brand-primary/20 flex items-center justify-center">
-          <Layout className="w-8 h-8 text-brand-primary" />
+          <Layout className="w-8 h-8 text-[#0369A1] dark:text-[#00B5F1]" />
         </div>
         <div className="space-y-2">
-          <h3 className="text-lg font-heading font-normal uppercase tracking-wide text-white">
+          <h3 className="text-lg font-heading font-normal uppercase tracking-wide text-[#0F172A] dark:text-[#F8FAFC]">
             Várakozás a generálásra
           </h3>
-          <p className="text-sm text-slate-400">
+          <p className="text-sm text-slate-600 dark:text-slate-400">
             Töltsd ki az űrlapot a bal oldalon, és kattints a &ldquo;Poszter
             Generálása&rdquo; gombra.
           </p>

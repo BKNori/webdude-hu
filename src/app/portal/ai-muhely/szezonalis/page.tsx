@@ -40,9 +40,9 @@ export default function SeasonalToolPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-transparent flex flex-col items-center justify-center space-y-4">
+      <div className="min-h-[45vh] bg-transparent flex flex-col items-center justify-center space-y-4">
         <Loader2 className="w-8 h-8 animate-spin text-[#00B5F1]" />
-        <p className="text-xs font-mono text-slate-400 uppercase tracking-widest animate-pulse font-bold">
+        <p className="text-xs font-mono text-slate-600 dark:text-slate-400 uppercase tracking-widest animate-pulse font-bold">
           Generátor betöltése...
         </p>
       </div>
@@ -50,8 +50,8 @@ export default function SeasonalToolPage() {
   }
 
   return (
-    <div className="min-h-screen bg-transparent text-slate-200 py-12">
-      <div className="max-w-6xl mx-auto px-6">
+    <div>
+      <div>
         <SingleAITool
           toolId="seasonal_campaign_designer"
           allowedTools={allowedTools}

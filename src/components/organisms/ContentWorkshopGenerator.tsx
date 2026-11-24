@@ -5,22 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { motion } from "motion/react";
-import {
-  Sparkles,
-  Loader2,
-  ArrowLeft,
-  FileText,
-  Target,
-  Users,
-  MessageSquare,
-  Share2,
-  Search,
-  Lightbulb,
-  Palette,
-  Layout,
-  Calendar,
-  Zap,
-} from "lucide-react";
+import { Sparkles, Loader2, FileText, Target, Users, MessageSquare, Share2, Search, Lightbulb, Palette, Layout, Calendar, Zap } from "lucide-react";
 import Link from "next/link";
 import ToolAccessLock from "@/components/molecules/ToolAccessLock";
 import CopyButton from "@/components/atoms/CopyButton";
@@ -189,12 +174,12 @@ export default function ContentWorkshopGenerator() {
   }
 
   return (
-    <div className="min-h-screen bg-transparent text-text-primary">
+    <div className="text-[#0F172A] dark:text-[#F8FAFC]">
       {/* Loading State */}
       {loading && (
-        <div className="min-h-screen bg-transparent flex flex-col items-center justify-center space-y-4">
-          <Loader2 className="w-8 h-8 animate-spin text-sky-500" />
-          <p className="text-xs font-mono text-slate-400 uppercase tracking-widest animate-pulse font-bold">
+        <div className="min-h-[50vh] bg-transparent flex flex-col items-center justify-center space-y-4">
+          <Loader2 className="w-8 h-8 animate-spin text-[#0369A1] dark:text-[#00B5F1]" />
+          <p className="text-xs font-mono text-slate-600 dark:text-slate-400 uppercase tracking-widest animate-pulse font-bold">
             Generátor betöltése...
           </p>
         </div>
@@ -204,73 +189,44 @@ export default function ContentWorkshopGenerator() {
         <>
           {/* Authentication Check */}
           {!auth || !auth.currentUser ? (
-            <div className="min-h-screen bg-transparent flex flex-col items-center justify-center space-y-6 px-6">
-              <div className="bg-red-500/5 border border-red-500/40 backdrop-blur-xl shadow-[0_0_24px_rgba(239,68,68,0.15)] text-red-400 px-6 py-4 rounded-2xl text-sm flex items-center gap-3 font-mono max-w-md text-center">
+            <div className="min-h-[50vh] bg-transparent flex flex-col items-center justify-center space-y-6 px-6">
+              <div className="bg-red-500/5 border border-red-500/40 backdrop-blur-xl shadow-[0_0_24px_rgba(239,68,68,0.15)] text-red-600 dark:text-red-400 px-6 py-4 rounded-2xl text-sm flex items-center gap-3 font-mono max-w-md text-center">
                 <Sparkles className="w-5 h-5" />
                 {error || "Kérlek, jelentkezz be a használatához!"}
               </div>
               <Link
                 href="/portal"
-                className="px-6 py-3 rounded-xl bg-sky-500 text-bg-base font-bold hover:bg-violet-700 hover:text-white transition-colors"
+                className="px-6 py-3 rounded-xl bg-linear-to-r from-[#075985] to-[#5B21B6] text-white font-bold hover:from-[#0369A1] hover:to-[#6D28D9] transition-colors"
               >
                 Bejelentkezés
               </Link>
             </div>
           ) : (
             <>
-              {/* Header */}
-              <header className="border-b border-bg-elevated/40 bg-transparent backdrop-blur-xl sticky top-0 z-50">
-                <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <Link
-                      href="/portal/ai-muhely"
-                      className="w-10 h-10 rounded-xl bg-linear-to-br from-sky-400 to-violet-700 flex items-center justify-center shadow-lg shadow-sky-500/10 cursor-pointer"
-                    >
-                      <FileText className="w-5 h-5 text-bg-base" />
-                    </Link>
-                    <div>
-                      <span className="text-xs uppercase font-black tracking-widest text-sky-500 block">
-                        WebDude AI Studio
-                      </span>
-                      <span className="text-sm font-bold text-white block -mt-0.5">
-                        Tartalomtervező AI Műhely
-                      </span>
-                    </div>
-                  </div>
-
-                  <Link
-                    href="/portal/ai-muhely"
-                    className="flex items-center gap-2 px-4 py-2 rounded-xl border border-gray-800 hover:border-sky-500/30 text-slate-400 hover:text-white transition-colors text-xs font-bold uppercase tracking-wider cursor-pointer"
-                  >
-                    <ArrowLeft className="w-4 h-4" />
-                    Vissza
-                  </Link>
-                </div>
-              </header>
 
               {/* Main Container */}
-              <div className="max-w-7xl mx-auto px-6 py-12">
+              <div className="py-2">
                 <div className="grid lg:grid-cols-2 gap-8">
                   {/* Input Form */}
                   <div className="space-y-6">
                     <div className="space-y-2 relative">
                       <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 rounded-full bg-sky-500/5 blur-3xl pointer-events-none" />
-                      <span className="text-xs font-mono font-black uppercase tracking-widest text-sky-500">
+                      <span className="text-xs font-mono font-black uppercase tracking-widest text-[#0369A1] dark:text-[#00B5F1]">
                         Tartalom Generátor
                       </span>
-                      <h1 className="text-3xl md:text-4xl font-extrabold text-white tracking-tight leading-none font-mono">
+                      <h1 className="text-3xl md:text-4xl font-extrabold text-[#0F172A] dark:text-[#F8FAFC] tracking-tight leading-none font-mono">
                         Strukturált Tartalom
                       </h1>
-                      <p className="text-slate-400 text-sm max-w-2xl leading-relaxed">
+                      <p className="text-slate-600 dark:text-slate-400 text-sm max-w-2xl leading-relaxed">
                         Generálj professzionális tartalmat Norbi 16+ éves
                         tartalomstratégiai és vizuális tervezési szakértelmével.
-                        SEO optimalizált, konverziófókuszú és Cyber-Arany
+                        SEO optimalizált, konverziófókuszú és Kék-Lila v7.2
                         dizájn.
                       </p>
                     </div>
 
                     {error && (
-                      <div className="bg-red-500/5 border border-red-500/40 backdrop-blur-xl shadow-[0_0_24px_rgba(239,68,68,0.15)] text-red-400 px-4 py-3 rounded-2xl text-xs flex items-center gap-2.5 font-mono">
+                      <div className="bg-red-500/5 border border-red-500/40 backdrop-blur-xl shadow-[0_0_24px_rgba(239,68,68,0.15)] text-red-600 dark:text-red-400 px-4 py-3 rounded-2xl text-xs flex items-center gap-2.5 font-mono">
                         <Sparkles className="w-4 h-4" />
                         {error}
                       </div>
@@ -282,18 +238,18 @@ export default function ContentWorkshopGenerator() {
                     >
                       {/* Topic */}
                       <div className="space-y-2">
-                        <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <Target className="w-4 h-4 text-sky-500" />
+                        <label className="flex items-center gap-2 text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+                          <Target className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
                           Téma
                         </label>
                         <textarea
                           {...register("topic")}
                           rows={3}
                           placeholder="Pl. Webfejlesztés trendek 2026-ban..."
-                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-sky-500/50 focus:ring-2 focus:ring-sky-500/10 text-white placeholder-slate-500 transition-all text-sm resize-none"
+                          className="w-full px-4 py-3 rounded-xl bg-white dark:bg-[#0B1120] border border-slate-300 dark:border-slate-700 focus:border-[#0369A1] dark:focus:border-[#00B5F1] focus:ring-2 focus:ring-sky-500/10 text-[#0F172A] dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 transition-all text-sm resize-none"
                         />
                         {errors.topic && (
-                          <p className="text-red-400 text-xs font-mono">
+                          <p className="text-red-600 dark:text-red-400 text-xs font-mono">
                             {errors.topic.message}
                           </p>
                         )}
@@ -301,13 +257,13 @@ export default function ContentWorkshopGenerator() {
 
                       {/* Content Type */}
                       <div className="space-y-2">
-                        <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <FileText className="w-4 h-4 text-sky-500" />
+                        <label className="flex items-center gap-2 text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+                          <FileText className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
                           Tartalom Típus
                         </label>
                         <select
                           {...register("contentType")}
-                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-sky-500/50 focus:ring-2 focus:ring-sky-500/10 text-white transition-all text-sm"
+                          className="w-full px-4 py-3 rounded-xl bg-white dark:bg-[#0B1120] border border-slate-300 dark:border-slate-700 focus:border-[#0369A1] dark:focus:border-[#00B5F1] focus:ring-2 focus:ring-sky-500/10 text-[#0F172A] dark:text-slate-100 transition-all text-sm"
                         >
                           <option value="blog-post">Blog bejegyzés</option>
                           <option value="social-media">Social media</option>
@@ -322,17 +278,17 @@ export default function ContentWorkshopGenerator() {
 
                       {/* Target Audience */}
                       <div className="space-y-2">
-                        <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <Users className="w-4 h-4 text-sky-500" />
+                        <label className="flex items-center gap-2 text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+                          <Users className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
                           Célközönség
                         </label>
                         <input
                           {...register("targetAudience")}
                           placeholder="Kis- és középvállalkozások, startupok"
-                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-sky-500/50 focus:ring-2 focus:ring-sky-500/10 text-white placeholder-slate-500 transition-all text-sm"
+                          className="w-full px-4 py-3 rounded-xl bg-white dark:bg-[#0B1120] border border-slate-300 dark:border-slate-700 focus:border-[#0369A1] dark:focus:border-[#00B5F1] focus:ring-2 focus:ring-sky-500/10 text-[#0F172A] dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 transition-all text-sm"
                         />
                         {errors.targetAudience && (
-                          <p className="text-red-400 text-xs font-mono">
+                          <p className="text-red-600 dark:text-red-400 text-xs font-mono">
                             {errors.targetAudience.message}
                           </p>
                         )}
@@ -340,13 +296,13 @@ export default function ContentWorkshopGenerator() {
 
                       {/* Tone */}
                       <div className="space-y-2">
-                        <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <MessageSquare className="w-4 h-4 text-sky-500" />
+                        <label className="flex items-center gap-2 text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+                          <MessageSquare className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
                           Hangnem
                         </label>
                         <select
                           {...register("tone")}
-                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-sky-500/50 focus:ring-2 focus:ring-sky-500/10 text-white transition-all text-sm"
+                          className="w-full px-4 py-3 rounded-xl bg-white dark:bg-[#0B1120] border border-slate-300 dark:border-slate-700 focus:border-[#0369A1] dark:focus:border-[#00B5F1] focus:ring-2 focus:ring-sky-500/10 text-[#0F172A] dark:text-slate-100 transition-all text-sm"
                         >
                           <option value="professional">Professzionális</option>
                           <option value="casual">Lazább</option>
@@ -359,13 +315,13 @@ export default function ContentWorkshopGenerator() {
 
                       {/* Platform */}
                       <div className="space-y-2">
-                        <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <Share2 className="w-4 h-4 text-sky-500" />
+                        <label className="flex items-center gap-2 text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+                          <Share2 className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
                           Platform
                         </label>
                         <select
                           {...register("platform")}
-                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-sky-500/50 focus:ring-2 focus:ring-sky-500/10 text-white transition-all text-sm"
+                          className="w-full px-4 py-3 rounded-xl bg-white dark:bg-[#0B1120] border border-slate-300 dark:border-slate-700 focus:border-[#0369A1] dark:focus:border-[#00B5F1] focus:ring-2 focus:ring-sky-500/10 text-[#0F172A] dark:text-slate-100 transition-all text-sm"
                         >
                           <option value="website">Weboldal</option>
                           <option value="linkedin">LinkedIn</option>
@@ -379,17 +335,17 @@ export default function ContentWorkshopGenerator() {
 
                       {/* Keywords */}
                       <div className="space-y-2">
-                        <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <Search className="w-4 h-4 text-sky-500" />
+                        <label className="flex items-center gap-2 text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+                          <Search className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
                           Kulcsszavak
                         </label>
                         <input
                           {...register("keywords")}
                           placeholder="webfejlesztés, AI automatizáció, Next.js"
-                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-sky-500/50 focus:ring-2 focus:ring-sky-500/10 text-white placeholder-slate-500 transition-all text-sm"
+                          className="w-full px-4 py-3 rounded-xl bg-white dark:bg-[#0B1120] border border-slate-300 dark:border-slate-700 focus:border-[#0369A1] dark:focus:border-[#00B5F1] focus:ring-2 focus:ring-sky-500/10 text-[#0F172A] dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 transition-all text-sm"
                         />
                         {errors.keywords && (
-                          <p className="text-red-400 text-xs font-mono">
+                          <p className="text-red-600 dark:text-red-400 text-xs font-mono">
                             {errors.keywords.message}
                           </p>
                         )}
@@ -397,28 +353,28 @@ export default function ContentWorkshopGenerator() {
 
                       {/* Call to Action */}
                       <div className="space-y-2">
-                        <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <Zap className="w-4 h-4 text-sky-500" />
+                        <label className="flex items-center gap-2 text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+                          <Zap className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
                           Call to Action (opcionális)
                         </label>
                         <input
                           {...register("callToAction")}
                           placeholder="Kérj ingyenes auditot"
-                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-sky-500/50 focus:ring-2 focus:ring-sky-500/10 text-white placeholder-slate-500 transition-all text-sm"
+                          className="w-full px-4 py-3 rounded-xl bg-white dark:bg-[#0B1120] border border-slate-300 dark:border-slate-700 focus:border-[#0369A1] dark:focus:border-[#00B5F1] focus:ring-2 focus:ring-sky-500/10 text-[#0F172A] dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 transition-all text-sm"
                         />
                       </div>
 
                       {/* Additional Requirements */}
                       <div className="space-y-2">
-                        <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <Lightbulb className="w-4 h-4 text-sky-500" />
+                        <label className="flex items-center gap-2 text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+                          <Lightbulb className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
                           További Követelmények (opcionális)
                         </label>
                         <textarea
                           {...register("additionalRequirements")}
                           rows={3}
                           placeholder="Pl. Fókusz a helyi SEO-ra, Kecskemét régió..."
-                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-gray-800 focus:border-sky-500/50 focus:ring-2 focus:ring-sky-500/10 text-white placeholder-slate-500 transition-all text-sm resize-none"
+                          className="w-full px-4 py-3 rounded-xl bg-white dark:bg-[#0B1120] border border-slate-300 dark:border-slate-700 focus:border-[#0369A1] dark:focus:border-[#00B5F1] focus:ring-2 focus:ring-sky-500/10 text-[#0F172A] dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 transition-all text-sm resize-none"
                         />
                       </div>
 
@@ -426,7 +382,7 @@ export default function ContentWorkshopGenerator() {
                       <button
                         type="button"
                         onClick={loadExample}
-                        className="w-full px-6 py-3 rounded-xl border border-sky-500/30 bg-sky-500/5 text-sky-400 text-xs font-bold uppercase tracking-wider hover:bg-sky-500/15 transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B5F1]"
+                        className="w-full px-6 py-3 rounded-xl border border-sky-500/30 bg-sky-500/5 text-[#0369A1] dark:text-[#00B5F1] text-xs font-bold uppercase tracking-wider hover:bg-sky-500/15 transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B5F1]"
                       >
                         Példa Tartalom Betöltése (1 kattintás)
                       </button>
@@ -437,7 +393,7 @@ export default function ContentWorkshopGenerator() {
                         whileTap={{ scale: 0.98 }}
                         type="submit"
                         disabled={isGenerating}
-                        className="w-full px-6 py-4 rounded-xl bg-linear-to-r from-sky-500 to-violet-700 text-bg-base font-bold text-sm uppercase tracking-wider hover:from-violet-700 hover:to-sky-800 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg shadow-sky-500/20"
+                        className="w-full px-6 py-4 rounded-xl bg-linear-to-r from-sky-500 to-violet-700 text-white font-bold text-sm uppercase tracking-wider hover:from-violet-700 hover:to-sky-800 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg shadow-sky-500/20"
                       >
                         {isGenerating ? (
                           <>
@@ -457,14 +413,14 @@ export default function ContentWorkshopGenerator() {
                   {/* Output Section */}
                   <div className="space-y-6">
                     {!generatedOutput && (
-                      <div className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-8 flex flex-col items-center justify-center min-h-100">
+                      <div className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none border border-slate-200 dark:border-slate-800 rounded-2xl p-8 flex flex-col items-center justify-center min-h-100">
                         <div className="w-16 h-16 rounded-full bg-sky-500/10 flex items-center justify-center mb-4">
-                          <FileText className="w-8 h-8 text-sky-500" />
+                          <FileText className="w-8 h-8 text-[#0369A1] dark:text-[#00B5F1]" />
                         </div>
-                        <h3 className="text-lg font-bold text-white mb-2">
+                        <h3 className="text-lg font-bold text-[#0F172A] dark:text-[#F8FAFC] mb-2">
                           Tartalom Terv
                         </h3>
-                        <p className="text-sm text-slate-400 text-center max-w-md">
+                        <p className="text-sm text-slate-600 dark:text-slate-400 text-center max-w-md">
                           Töltsd ki az űrlapot a bal oldalon, és kattints a
                           &ldquo;Tartalom Generálása&rdquo; gombra.
                         </p>
@@ -484,36 +440,36 @@ export default function ContentWorkshopGenerator() {
                         <motion.div
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
-                          className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
+                          className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none border border-slate-200 dark:border-slate-800 rounded-2xl p-6 space-y-4"
                         >
                           <div className="flex items-center justify-between">
-                            <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                              <Target className="w-4 h-4 text-sky-500" />
+                            <h3 className="text-sm font-bold text-[#0F172A] dark:text-[#F8FAFC] uppercase tracking-wider flex items-center gap-2">
+                              <Target className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
                               Tartalom Stratégia
                             </h3>
                           </div>
                           <div className="space-y-3">
                             <div>
-                              <p className="text-xs text-slate-400 mb-1">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Megközelítés
                               </p>
-                              <p className="text-sm text-white">
+                              <p className="text-sm text-[#0F172A] dark:text-[#F8FAFC]">
                                 {generatedOutput.contentStrategy.angle}
                               </p>
                             </div>
                             <div>
-                              <p className="text-xs text-slate-400 mb-1">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Horog
                               </p>
-                              <p className="text-sm text-white font-mono">
+                              <p className="text-sm text-[#0F172A] dark:text-[#F8FAFC] font-mono">
                                 {generatedOutput.contentStrategy.hook}
                               </p>
                             </div>
                             <div>
-                              <p className="text-xs text-slate-400 mb-1">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Értékajánlat
                               </p>
-                              <p className="text-sm text-white">
+                              <p className="text-sm text-[#0F172A] dark:text-[#F8FAFC]">
                                 {
                                   generatedOutput.contentStrategy
                                     .valueProposition
@@ -521,7 +477,7 @@ export default function ContentWorkshopGenerator() {
                               </p>
                             </div>
                             <div>
-                              <p className="text-xs text-slate-400 mb-1">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Kulcsüzenetek
                               </p>
                               <div className="flex flex-wrap gap-2">
@@ -529,7 +485,7 @@ export default function ContentWorkshopGenerator() {
                                   (message, index) => (
                                     <span
                                       key={index}
-                                      className="px-3 py-1 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-mono"
+                                      className="px-3 py-1 rounded-lg bg-sky-500/10 border border-slate-200 dark:border-slate-800 text-[#0369A1] dark:text-[#00B5F1] text-xs font-mono"
                                     >
                                       {message}
                                     </span>
@@ -545,23 +501,23 @@ export default function ContentWorkshopGenerator() {
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: 0.1 }}
-                          className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
+                          className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none border border-slate-200 dark:border-slate-800 rounded-2xl p-6 space-y-4"
                         >
-                          <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <Layout className="w-4 h-4 text-sky-500" />
+                          <h3 className="text-sm font-bold text-[#0F172A] dark:text-[#F8FAFC] uppercase tracking-wider flex items-center gap-2">
+                            <Layout className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
                             Tartalom Struktúra
                           </h3>
                           <div className="space-y-3">
                             <div>
-                              <p className="text-xs text-slate-400 mb-1">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Címsor
                               </p>
-                              <p className="text-sm text-white font-bold font-mono">
+                              <p className="text-sm text-[#0F172A] dark:text-[#F8FAFC] font-bold font-mono">
                                 {generatedOutput.contentStructure.headline}
                               </p>
                             </div>
                             <div>
-                              <p className="text-xs text-slate-400 mb-1">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Alcímek
                               </p>
                               <ul className="space-y-1">
@@ -569,7 +525,7 @@ export default function ContentWorkshopGenerator() {
                                   (sub, index) => (
                                     <li
                                       key={index}
-                                      className="text-xs text-white"
+                                      className="text-xs text-[#0F172A] dark:text-[#F8FAFC]"
                                     >
                                       {sub}
                                     </li>
@@ -578,7 +534,7 @@ export default function ContentWorkshopGenerator() {
                               </ul>
                             </div>
                             <div>
-                              <p className="text-xs text-slate-400 mb-1">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Szakaszok
                               </p>
                               <ul className="space-y-2">
@@ -586,12 +542,12 @@ export default function ContentWorkshopGenerator() {
                                   (section, index) => (
                                     <li
                                       key={index}
-                                      className="bg-bg-base/50 rounded-lg p-3 border border-gray-800"
+                                      className="bg-slate-50 dark:bg-[#0B1120] rounded-lg p-3 border border-slate-200 dark:border-slate-800"
                                     >
-                                      <p className="text-xs text-white font-medium mb-1">
+                                      <p className="text-xs text-[#0F172A] dark:text-[#F8FAFC] font-medium mb-1">
                                         {section.heading}
                                       </p>
-                                      <p className="text-xs text-slate-400">
+                                      <p className="text-xs text-slate-600 dark:text-slate-400">
                                         {section.wordCount} szó
                                       </p>
                                     </li>
@@ -607,15 +563,15 @@ export default function ContentWorkshopGenerator() {
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: 0.2 }}
-                          className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
+                          className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none border border-slate-200 dark:border-slate-800 rounded-2xl p-6 space-y-4"
                         >
-                          <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <Palette className="w-4 h-4 text-sky-500" />
+                          <h3 className="text-sm font-bold text-[#0F172A] dark:text-[#F8FAFC] uppercase tracking-wider flex items-center gap-2">
+                            <Palette className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
                             Vizuális Irányelvek
                           </h3>
                           <div className="space-y-3">
                             <div>
-                              <p className="text-xs text-slate-400 mb-1">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Kép Javaslatok
                               </p>
                               <ul className="space-y-1">
@@ -623,7 +579,7 @@ export default function ContentWorkshopGenerator() {
                                   (suggestion, index) => (
                                     <li
                                       key={index}
-                                      className="text-xs text-white"
+                                      className="text-xs text-[#0F172A] dark:text-[#F8FAFC]"
                                     >
                                       {suggestion}
                                     </li>
@@ -632,7 +588,7 @@ export default function ContentWorkshopGenerator() {
                               </ul>
                             </div>
                             <div>
-                              <p className="text-xs text-slate-400 mb-1">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Szín Paletta
                               </p>
                               <div className="flex flex-wrap gap-2">
@@ -640,7 +596,7 @@ export default function ContentWorkshopGenerator() {
                                   (color, index) => (
                                     <span
                                       key={index}
-                                      className="px-3 py-1 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-mono"
+                                      className="px-3 py-1 rounded-lg bg-sky-500/10 border border-slate-200 dark:border-slate-800 text-[#0369A1] dark:text-[#00B5F1] text-xs font-mono"
                                     >
                                       {color}
                                     </span>
@@ -656,23 +612,23 @@ export default function ContentWorkshopGenerator() {
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: 0.3 }}
-                          className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
+                          className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none border border-slate-200 dark:border-slate-800 rounded-2xl p-6 space-y-4"
                         >
-                          <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <Search className="w-4 h-4 text-sky-500" />
+                          <h3 className="text-sm font-bold text-[#0F172A] dark:text-[#F8FAFC] uppercase tracking-wider flex items-center gap-2">
+                            <Search className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
                             SEO Optimalizáció
                           </h3>
                           <div className="space-y-3">
                             <div>
-                              <p className="text-xs text-slate-400 mb-1">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Elsődleges Kulcsszó
                               </p>
-                              <p className="text-sm text-white font-mono">
+                              <p className="text-sm text-[#0F172A] dark:text-[#F8FAFC] font-mono">
                                 {generatedOutput.seoOptimization.primaryKeyword}
                               </p>
                             </div>
                             <div>
-                              <p className="text-xs text-slate-400 mb-1">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Másodlagos Kulcsszavak
                               </p>
                               <div className="flex flex-wrap gap-2">
@@ -680,7 +636,7 @@ export default function ContentWorkshopGenerator() {
                                   (keyword, index) => (
                                     <span
                                       key={index}
-                                      className="px-2 py-1 rounded bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-mono"
+                                      className="px-2 py-1 rounded bg-sky-500/10 border border-slate-200 dark:border-slate-800 text-[#0369A1] dark:text-[#00B5F1] text-xs font-mono"
                                     >
                                       {keyword}
                                     </span>
@@ -689,10 +645,10 @@ export default function ContentWorkshopGenerator() {
                               </div>
                             </div>
                             <div>
-                              <p className="text-xs text-slate-400 mb-1">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Meta Leírás
                               </p>
-                              <p className="text-xs text-white">
+                              <p className="text-xs text-[#0F172A] dark:text-[#F8FAFC]">
                                 {
                                   generatedOutput.seoOptimization
                                     .metaDescription
@@ -707,37 +663,37 @@ export default function ContentWorkshopGenerator() {
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: 0.4 }}
-                          className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
+                          className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none border border-slate-200 dark:border-slate-800 rounded-2xl p-6 space-y-4"
                         >
-                          <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <Share2 className="w-4 h-4 text-sky-500" />
+                          <h3 className="text-sm font-bold text-[#0F172A] dark:text-[#F8FAFC] uppercase tracking-wider flex items-center gap-2">
+                            <Share2 className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
                             Social Media Változatok
                           </h3>
                           <div className="space-y-3">
-                            <div className="bg-bg-base/50 rounded-lg p-3 border border-gray-800">
-                              <p className="text-xs text-slate-400 mb-1">
+                            <div className="bg-slate-50 dark:bg-[#0B1120] rounded-lg p-3 border border-slate-200 dark:border-slate-800">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 LinkedIn
                               </p>
-                              <p className="text-xs text-white">
+                              <p className="text-xs text-[#0F172A] dark:text-[#F8FAFC]">
                                 {generatedOutput.socialMediaVariations.linkedin}
                               </p>
                             </div>
-                            <div className="bg-bg-base/50 rounded-lg p-3 border border-gray-800">
-                              <p className="text-xs text-slate-400 mb-1">
+                            <div className="bg-slate-50 dark:bg-[#0B1120] rounded-lg p-3 border border-slate-200 dark:border-slate-800">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Instagram
                               </p>
-                              <p className="text-xs text-white">
+                              <p className="text-xs text-[#0F172A] dark:text-[#F8FAFC]">
                                 {
                                   generatedOutput.socialMediaVariations
                                     .instagram
                                 }
                               </p>
                             </div>
-                            <div className="bg-bg-base/50 rounded-lg p-3 border border-gray-800">
-                              <p className="text-xs text-slate-400 mb-1">
+                            <div className="bg-slate-50 dark:bg-[#0B1120] rounded-lg p-3 border border-slate-200 dark:border-slate-800">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Twitter
                               </p>
-                              <p className="text-xs text-white">
+                              <p className="text-xs text-[#0F172A] dark:text-[#F8FAFC]">
                                 {generatedOutput.socialMediaVariations.twitter}
                               </p>
                             </div>
@@ -749,37 +705,37 @@ export default function ContentWorkshopGenerator() {
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: 0.5 }}
-                          className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
+                          className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none border border-slate-200 dark:border-slate-800 rounded-2xl p-6 space-y-4"
                         >
-                          <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <Zap className="w-4 h-4 text-sky-500" />
+                          <h3 className="text-sm font-bold text-[#0F172A] dark:text-[#F8FAFC] uppercase tracking-wider flex items-center gap-2">
+                            <Zap className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
                             Call to Action Változatok
                           </h3>
                           <div className="space-y-3">
-                            <div className="bg-bg-base/50 rounded-lg p-3 border border-gray-800">
-                              <p className="text-xs text-slate-400 mb-1">
+                            <div className="bg-slate-50 dark:bg-[#0B1120] rounded-lg p-3 border border-slate-200 dark:border-slate-800">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Elsődleges
                               </p>
-                              <p className="text-sm text-white font-bold">
+                              <p className="text-sm text-[#0F172A] dark:text-[#F8FAFC] font-bold">
                                 {generatedOutput.callToActionVariations.primary}
                               </p>
                             </div>
-                            <div className="bg-bg-base/50 rounded-lg p-3 border border-gray-800">
-                              <p className="text-xs text-slate-400 mb-1">
+                            <div className="bg-slate-50 dark:bg-[#0B1120] rounded-lg p-3 border border-slate-200 dark:border-slate-800">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Másodlagos
                               </p>
-                              <p className="text-sm text-white">
+                              <p className="text-sm text-[#0F172A] dark:text-[#F8FAFC]">
                                 {
                                   generatedOutput.callToActionVariations
                                     .secondary
                                 }
                               </p>
                             </div>
-                            <div className="bg-bg-base/50 rounded-lg p-3 border border-gray-800">
-                              <p className="text-xs text-slate-400 mb-1">
+                            <div className="bg-slate-50 dark:bg-[#0B1120] rounded-lg p-3 border border-slate-200 dark:border-slate-800">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Harmadlagos
                               </p>
-                              <p className="text-sm text-white">
+                              <p className="text-sm text-[#0F172A] dark:text-[#F8FAFC]">
                                 {
                                   generatedOutput.callToActionVariations
                                     .tertiary
@@ -794,18 +750,18 @@ export default function ContentWorkshopGenerator() {
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: 0.6 }}
-                          className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
+                          className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none border border-slate-200 dark:border-slate-800 rounded-2xl p-6 space-y-4"
                         >
-                          <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <Calendar className="w-4 h-4 text-sky-500" />
+                          <h3 className="text-sm font-bold text-[#0F172A] dark:text-[#F8FAFC] uppercase tracking-wider flex items-center gap-2">
+                            <Calendar className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
                             Tartalom Naptár
                           </h3>
                           <div className="space-y-3">
                             <div>
-                              <p className="text-xs text-slate-400 mb-1">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Közzétételi Ütemterv
                               </p>
-                              <p className="text-sm text-white">
+                              <p className="text-sm text-[#0F172A] dark:text-[#F8FAFC]">
                                 {
                                   generatedOutput.contentCalendar
                                     .publishingSchedule
@@ -813,7 +769,7 @@ export default function ContentWorkshopGenerator() {
                               </p>
                             </div>
                             <div>
-                              <p className="text-xs text-slate-400 mb-1">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Tartalom Típusok
                               </p>
                               <div className="flex flex-wrap gap-2">
@@ -821,7 +777,7 @@ export default function ContentWorkshopGenerator() {
                                   (type, index) => (
                                     <span
                                       key={index}
-                                      className="px-2 py-1 rounded bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-mono"
+                                      className="px-2 py-1 rounded bg-sky-500/10 border border-slate-200 dark:border-slate-800 text-[#0369A1] dark:text-[#00B5F1] text-xs font-mono"
                                     >
                                       {type}
                                     </span>
@@ -830,7 +786,7 @@ export default function ContentWorkshopGenerator() {
                               </div>
                             </div>
                             <div>
-                              <p className="text-xs text-slate-400 mb-1">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Disztribúciós Csatornák
                               </p>
                               <div className="flex flex-wrap gap-2">
@@ -838,7 +794,7 @@ export default function ContentWorkshopGenerator() {
                                   (channel, index) => (
                                     <span
                                       key={index}
-                                      className="px-2 py-1 rounded bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-mono"
+                                      className="px-2 py-1 rounded bg-sky-500/10 border border-slate-200 dark:border-slate-800 text-[#0369A1] dark:text-[#00B5F1] text-xs font-mono"
                                     >
                                       {channel}
                                     </span>

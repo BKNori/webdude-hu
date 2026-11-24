@@ -16,8 +16,7 @@ interface CopyButtonProps {
 }
 
 /**
- * Egyszerű, újrahasználható „Másolás vágólapra" gomb.
- * 2 másodpercig „Másolva" állapotot mutat sikeres másolás után.
+ * Egyszerű, újrahasználható „Másolás vágólapra" gomb (DDR-006 v7.2 Dual Theme).
  */
 export default function CopyButton({
   text,
@@ -41,7 +40,7 @@ export default function CopyButton({
     <button
       type="button"
       onClick={handleCopy}
-      className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-mono hover:bg-sky-500/20 transition-colors cursor-pointer ${FOCUS_RING} ${className}`}
+      className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#0369A1]/10 dark:bg-[#00B5F1]/10 border border-[#0369A1]/25 dark:border-[#00B5F1]/25 text-[#0369A1] dark:text-[#00B5F1] text-xs font-mono font-semibold hover:bg-[#0369A1]/20 dark:hover:bg-[#00B5F1]/20 transition-colors cursor-pointer ${FOCUS_RING} ${className}`}
     >
       {copied ? <Check className="w-3 h-3" /> : <Copy className="w-3 h-3" />}
       {copied ? copiedLabel : label}

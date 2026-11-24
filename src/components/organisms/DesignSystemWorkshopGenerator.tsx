@@ -5,21 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { motion } from "motion/react";
-import {
-  Layout,
-  Copy,
-  Check,
-  Sparkles,
-  Loader2,
-  ArrowLeft,
-  Palette,
-  Type,
-  Layers,
-  Target,
-  Sun,
-  Moon,
-  Settings,
-} from "lucide-react";
+import { Layout, Copy, Check, Sparkles, Loader2, Palette, Type, Layers, Target, Sun, Moon, Settings } from "lucide-react";
 import Link from "next/link";
 import ToolAccessLock from "@/components/molecules/ToolAccessLock";
 import { auth } from "@/lib/firebase";
@@ -173,12 +159,12 @@ export default function DesignSystemWorkshopGenerator() {
   }
 
   return (
-    <div className="min-h-screen bg-transparent text-text-primary">
+    <div className="text-[#0F172A] dark:text-[#F8FAFC]">
       {/* Loading State */}
       {loading && (
-        <div className="min-h-screen bg-transparent flex flex-col items-center justify-center space-y-4">
-          <Loader2 className="w-8 h-8 animate-spin text-sky-500" />
-          <p className="text-xs font-mono text-slate-400 uppercase tracking-widest animate-pulse font-bold">
+        <div className="min-h-[50vh] bg-transparent flex flex-col items-center justify-center space-y-4">
+          <Loader2 className="w-8 h-8 animate-spin text-[#0369A1] dark:text-[#00B5F1]" />
+          <p className="text-xs font-mono text-slate-600 dark:text-slate-400 uppercase tracking-widest animate-pulse font-bold">
             Generátor betöltése...
           </p>
         </div>
@@ -188,64 +174,35 @@ export default function DesignSystemWorkshopGenerator() {
         <>
           {/* Authentication Check */}
           {!auth || !auth.currentUser ? (
-            <div className="min-h-screen bg-transparent flex flex-col items-center justify-center space-y-6 px-6">
-              <div className="bg-red-500/5 border border-red-500/40 backdrop-blur-xl shadow-[0_0_24px_rgba(239,68,68,0.15)] text-red-400 px-6 py-4 rounded-2xl text-sm flex items-center gap-3 font-mono max-w-md text-center">
+            <div className="min-h-[50vh] bg-transparent flex flex-col items-center justify-center space-y-6 px-6">
+              <div className="bg-red-500/5 border border-red-500/40 backdrop-blur-xl shadow-[0_0_24px_rgba(239,68,68,0.15)] text-red-600 dark:text-red-400 px-6 py-4 rounded-2xl text-sm flex items-center gap-3 font-mono max-w-md text-center">
                 <Sparkles className="w-5 h-5" />
                 {error || "Kérlek, jelentkezz be a használatához!"}
               </div>
               <Link
                 href="/portal"
-                className="px-6 py-3 rounded-xl bg-sky-500 text-bg-base font-bold hover:bg-violet-700 hover:text-white transition-colors"
+                className="px-6 py-3 rounded-xl bg-linear-to-r from-[#075985] to-[#5B21B6] text-white font-bold hover:from-[#0369A1] hover:to-[#6D28D9] transition-colors"
               >
                 Bejelentkezés
               </Link>
             </div>
           ) : (
             <>
-              {/* Header */}
-              <header className="border-b border-bg-elevated/40 bg-transparent backdrop-blur-xl sticky top-0 z-50">
-                <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <Link
-                      href="/portal/ai-muhely"
-                      className="w-10 h-10 rounded-xl bg-linear-to-br from-sky-400 to-violet-700 flex items-center justify-center shadow-lg shadow-sky-500/10 cursor-pointer"
-                    >
-                      <Layers className="w-5 h-5 text-bg-base" />
-                    </Link>
-                    <div>
-                      <span className="text-xs uppercase font-black tracking-widest text-sky-500 block">
-                        WebDude AI Studio
-                      </span>
-                      <span className="text-sm font-bold text-white block -mt-0.5">
-                        Design System AI Műhely
-                      </span>
-                    </div>
-                  </div>
-
-                  <Link
-                    href="/portal/ai-muhely"
-                    className="flex items-center gap-2 px-4 py-2 rounded-xl border border-gray-800 hover:border-sky-500/30 text-slate-400 hover:text-white transition-colors text-xs font-bold uppercase tracking-wider cursor-pointer"
-                  >
-                    <ArrowLeft className="w-4 h-4" />
-                    Vissza
-                  </Link>
-                </div>
-              </header>
 
               {/* Main Container */}
-              <div className="max-w-7xl mx-auto px-6 py-12">
+              <div className="py-2">
                 <div className="grid lg:grid-cols-2 gap-8">
                   {/* Input Form */}
                   <div className="space-y-6">
                     <div className="space-y-2 relative">
                       <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 rounded-full bg-sky-500/5 blur-3xl pointer-events-none" />
-                      <span className="text-xs font-mono font-black uppercase tracking-widest text-sky-500">
+                      <span className="text-xs font-mono font-black uppercase tracking-widest text-[#0369A1] dark:text-[#00B5F1]">
                         Design System Generátor
                       </span>
-                      <h1 className="text-3xl md:text-4xl font-extrabold text-white tracking-tight leading-none font-mono">
+                      <h1 className="text-3xl md:text-4xl font-extrabold text-[#0F172A] dark:text-[#F8FAFC] tracking-tight leading-none font-mono">
                         Design Tokens & Komponensek
                       </h1>
-                      <p className="text-slate-400 text-sm max-w-2xl leading-relaxed">
+                      <p className="text-slate-600 dark:text-slate-400 text-sm max-w-2xl leading-relaxed">
                         Generálj teljes design rendszereket Norbi 26 éves
                         grafikai és design system szakértelmével. Design tokens,
                         komponens könyvtár, Tailwind CSS v4 integráció és Zod
@@ -254,7 +211,7 @@ export default function DesignSystemWorkshopGenerator() {
                     </div>
 
                     {error && (
-                      <div className="bg-red-500/5 border border-red-500/40 backdrop-blur-xl shadow-[0_0_24px_rgba(239,68,68,0.15)] text-red-400 px-4 py-3 rounded-2xl text-xs flex items-center gap-2.5 font-mono">
+                      <div className="bg-red-500/5 border border-red-500/40 backdrop-blur-xl shadow-[0_0_24px_rgba(239,68,68,0.15)] text-red-600 dark:text-red-400 px-4 py-3 rounded-2xl text-xs flex items-center gap-2.5 font-mono">
                         <Sparkles className="w-4 h-4" />
                         {error}
                       </div>
@@ -266,18 +223,18 @@ export default function DesignSystemWorkshopGenerator() {
                     >
                       {/* System Purpose */}
                       <div className="space-y-2">
-                        <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <Target className="w-4 h-4 text-sky-500" />
+                        <label className="flex items-center gap-2 text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+                          <Target className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
                           Rendszer Célja
                         </label>
                         <textarea
                           {...register("systemPurpose")}
                           placeholder="Példa: Webalkalmazás UI, mobil app, e-commerce platform..."
-                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-bg-elevated text-white placeholder-slate-500 focus:border-sky-500/50 focus:outline-none focus:ring-2 focus:ring-sky-500/10 transition-all text-sm resize-none"
+                          className="w-full px-4 py-3 rounded-xl bg-white dark:bg-[#0B1120] border border-slate-300 dark:border-slate-700 text-[#0F172A] dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:border-[#0369A1] dark:focus:border-[#00B5F1] focus:outline-none focus:ring-2 focus:ring-sky-500/10 transition-all text-sm resize-none"
                           rows={3}
                         />
                         {errors.systemPurpose && (
-                          <p className="text-red-400 text-xs">
+                          <p className="text-red-600 dark:text-red-400 text-xs">
                             {errors.systemPurpose.message}
                           </p>
                         )}
@@ -285,18 +242,18 @@ export default function DesignSystemWorkshopGenerator() {
 
                       {/* Target Audience */}
                       <div className="space-y-2">
-                        <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <Type className="w-4 h-4 text-sky-500" />
+                        <label className="flex items-center gap-2 text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+                          <Type className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
                           Célközönség
                         </label>
                         <textarea
                           {...register("targetAudience")}
                           placeholder="Példa: Fejlesztők, dizájnerek, végfelhasználók..."
-                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-bg-elevated text-white placeholder-slate-500 focus:border-sky-500/50 focus:outline-none focus:ring-2 focus:ring-sky-500/10 transition-all text-sm resize-none"
+                          className="w-full px-4 py-3 rounded-xl bg-white dark:bg-[#0B1120] border border-slate-300 dark:border-slate-700 text-[#0F172A] dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:border-[#0369A1] dark:focus:border-[#00B5F1] focus:outline-none focus:ring-2 focus:ring-sky-500/10 transition-all text-sm resize-none"
                           rows={3}
                         />
                         {errors.targetAudience && (
-                          <p className="text-red-400 text-xs">
+                          <p className="text-red-600 dark:text-red-400 text-xs">
                             {errors.targetAudience.message}
                           </p>
                         )}
@@ -304,8 +261,8 @@ export default function DesignSystemWorkshopGenerator() {
 
                       {/* System Scope */}
                       <div className="space-y-2">
-                        <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <Settings className="w-4 h-4 text-sky-500" />
+                        <label className="flex items-center gap-2 text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+                          <Settings className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
                           Rendszer Hatókör
                         </label>
                         <div className="grid grid-cols-3 gap-2">
@@ -329,8 +286,8 @@ export default function DesignSystemWorkshopGenerator() {
                                 value={option.value}
                                 className="sr-only peer"
                               />
-                              <div className="px-3 py-2 rounded-xl bg-bg-elevated/50 border border-bg-elevated peer-checked:border-sky-500/50 peer-checked:bg-sky-500/10 text-center transition-all">
-                                <span className="text-xs font-bold text-slate-300 peer-checked:text-sky-500">
+                              <div className="px-3 py-2 rounded-xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:border-[#0369A1] dark:hover:border-[#00B5F1] peer-checked:bg-[#0369A1] dark:peer-checked:bg-[#00B5F1] peer-checked:text-white dark:peer-checked:text-slate-950 peer-checked:border-transparent font-semibold text-center transition-all shadow-2xs dark:shadow-none">
+                                <span className="text-xs font-bold text-current">
                                   {option.label}
                                 </span>
                               </div>
@@ -338,7 +295,7 @@ export default function DesignSystemWorkshopGenerator() {
                           ))}
                         </div>
                         {errors.systemScope && (
-                          <p className="text-red-400 text-xs">
+                          <p className="text-red-600 dark:text-red-400 text-xs">
                             {errors.systemScope.message}
                           </p>
                         )}
@@ -346,8 +303,8 @@ export default function DesignSystemWorkshopGenerator() {
 
                       {/* Design Style */}
                       <div className="space-y-2">
-                        <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <Palette className="w-4 h-4 text-sky-500" />
+                        <label className="flex items-center gap-2 text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+                          <Palette className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
                           Dizájn Stílus
                         </label>
                         <div className="grid grid-cols-3 gap-2">
@@ -369,8 +326,8 @@ export default function DesignSystemWorkshopGenerator() {
                                 value={option.value}
                                 className="sr-only peer"
                               />
-                              <div className="px-3 py-2 rounded-xl bg-bg-elevated/50 border border-bg-elevated peer-checked:border-sky-500/50 peer-checked:bg-sky-500/10 text-center transition-all">
-                                <span className="text-xs font-bold text-slate-300 peer-checked:text-sky-500">
+                              <div className="px-3 py-2 rounded-xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:border-[#0369A1] dark:hover:border-[#00B5F1] peer-checked:bg-[#0369A1] dark:peer-checked:bg-[#00B5F1] peer-checked:text-white dark:peer-checked:text-slate-950 peer-checked:border-transparent font-semibold text-center transition-all shadow-2xs dark:shadow-none">
+                                <span className="text-xs font-bold text-current">
                                   {option.label}
                                 </span>
                               </div>
@@ -378,7 +335,7 @@ export default function DesignSystemWorkshopGenerator() {
                           ))}
                         </div>
                         {errors.designStyle && (
-                          <p className="text-red-400 text-xs">
+                          <p className="text-red-600 dark:text-red-400 text-xs">
                             {errors.designStyle.message}
                           </p>
                         )}
@@ -386,40 +343,40 @@ export default function DesignSystemWorkshopGenerator() {
 
                       {/* Brand Colors */}
                       <div className="space-y-2">
-                        <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <Palette className="w-4 h-4 text-sky-500" />
+                        <label className="flex items-center gap-2 text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+                          <Palette className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
                           Brand Színek (Opcionális)
                         </label>
                         <input
                           {...register("brandColors")}
                           placeholder="Példa: #00B5F1, #020617, #e2e8f0 (vesszővel elválasztva)"
-                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-bg-elevated text-white placeholder-slate-500 focus:border-sky-500/50 focus:outline-none focus:ring-2 focus:ring-sky-500/10 transition-all text-sm"
+                          className="w-full px-4 py-3 rounded-xl bg-white dark:bg-[#0B1120] border border-slate-300 dark:border-slate-700 text-[#0F172A] dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:border-[#0369A1] dark:focus:border-[#00B5F1] focus:outline-none focus:ring-2 focus:ring-sky-500/10 transition-all text-sm"
                         />
                       </div>
 
                       {/* Required Components */}
                       <div className="space-y-2">
-                        <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <Type className="w-4 h-4 text-sky-500" />
+                        <label className="flex items-center gap-2 text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+                          <Type className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
                           Kötelező Komponensek (Opcionális)
                         </label>
                         <input
                           {...register("requiredComponents")}
                           placeholder="Példa: button, input, card, modal (vesszővel elválasztva)"
-                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-bg-elevated text-white placeholder-slate-500 focus:border-sky-500/50 focus:outline-none focus:ring-2 focus:ring-sky-500/10 transition-all text-sm"
+                          className="w-full px-4 py-3 rounded-xl bg-white dark:bg-[#0B1120] border border-slate-300 dark:border-slate-700 text-[#0F172A] dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:border-[#0369A1] dark:focus:border-[#00B5F1] focus:outline-none focus:ring-2 focus:ring-sky-500/10 transition-all text-sm"
                         />
                       </div>
 
                       {/* Additional Requirements */}
                       <div className="space-y-2">
-                        <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                          <Type className="w-4 h-4 text-sky-500" />
+                        <label className="flex items-center gap-2 text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+                          <Type className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
                           További Követelmények (Opcionális)
                         </label>
                         <textarea
                           {...register("additionalRequirements")}
                           placeholder="Bármilyen egyéb követelmény vagy specifikáció..."
-                          className="w-full px-4 py-3 rounded-xl bg-bg-elevated/50 border border-bg-elevated text-white placeholder-slate-500 focus:border-sky-500/50 focus:outline-none focus:ring-2 focus:ring-sky-500/10 transition-all text-sm resize-none"
+                          className="w-full px-4 py-3 rounded-xl bg-white dark:bg-[#0B1120] border border-slate-300 dark:border-slate-700 text-[#0F172A] dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:border-[#0369A1] dark:focus:border-[#00B5F1] focus:outline-none focus:ring-2 focus:ring-sky-500/10 transition-all text-sm resize-none"
                           rows={2}
                         />
                       </div>
@@ -428,7 +385,7 @@ export default function DesignSystemWorkshopGenerator() {
                       <button
                         type="submit"
                         disabled={isGenerating}
-                        className="w-full flex items-center justify-center gap-2 px-8 py-4 bg-sky-500 text-bg-base font-bold rounded-xl hover:bg-violet-700 hover:text-white transition-all disabled:opacity-50 disabled:cursor-not-allowed text-sm uppercase tracking-wider"
+                        className="w-full flex items-center justify-center gap-2 px-8 py-4 bg-linear-to-r from-[#075985] to-[#5B21B6] text-white font-bold rounded-xl hover:from-[#0369A1] hover:to-[#6D28D9] transition-all disabled:opacity-50 disabled:cursor-not-allowed text-sm uppercase tracking-wider"
                       >
                         {isGenerating ? (
                           <>
@@ -457,31 +414,31 @@ export default function DesignSystemWorkshopGenerator() {
                         <motion.div
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
-                          className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
+                          className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none border border-slate-200 dark:border-slate-800 rounded-2xl p-6 space-y-4"
                         >
-                          <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <Settings className="w-4 h-4 text-sky-500" />
+                          <h3 className="text-sm font-bold text-[#0F172A] dark:text-[#F8FAFC] uppercase tracking-wider flex items-center gap-2">
+                            <Settings className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
                             Rendszer Koncepció
                           </h3>
                           <div className="space-y-3">
                             <div>
-                              <p className="text-xs text-slate-400 mb-1">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Stílus
                               </p>
-                              <p className="text-sm text-white">
+                              <p className="text-sm text-[#0F172A] dark:text-[#F8FAFC]">
                                 {generatedOutput.systemConcept.style}
                               </p>
                             </div>
                             <div>
-                              <p className="text-xs text-slate-400 mb-1">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Leírás
                               </p>
-                              <p className="text-sm text-white">
+                              <p className="text-sm text-[#0F172A] dark:text-[#F8FAFC]">
                                 {generatedOutput.systemConcept.description}
                               </p>
                             </div>
                             <div>
-                              <p className="text-xs text-slate-400 mb-1">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Kulcselemek
                               </p>
                               <div className="flex flex-wrap gap-2">
@@ -489,7 +446,7 @@ export default function DesignSystemWorkshopGenerator() {
                                   (element, index) => (
                                     <span
                                       key={index}
-                                      className="px-2 py-1 rounded bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs"
+                                      className="px-2 py-1 rounded bg-sky-500/10 border border-slate-200 dark:border-slate-800 text-[#0369A1] dark:text-[#00B5F1] text-xs"
                                     >
                                       {element}
                                     </span>
@@ -505,15 +462,15 @@ export default function DesignSystemWorkshopGenerator() {
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: 0.1 }}
-                          className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
+                          className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none border border-slate-200 dark:border-slate-800 rounded-2xl p-6 space-y-4"
                         >
-                          <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <Palette className="w-4 h-4 text-sky-500" />
+                          <h3 className="text-sm font-bold text-[#0F172A] dark:text-[#F8FAFC] uppercase tracking-wider flex items-center gap-2">
+                            <Palette className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
                             Design Tokens
                           </h3>
                           <div className="space-y-3">
                             <div>
-                              <p className="text-xs text-slate-400 mb-2">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-2">
                                 Színek
                               </p>
                               <div className="grid grid-cols-4 gap-2">
@@ -522,13 +479,13 @@ export default function DesignSystemWorkshopGenerator() {
                                 ).map(([key, value]) => (
                                   <div key={key} className="text-center">
                                     <div
-                                      className="w-10 h-10 rounded-lg border border-gray-800 shadow-lg mx-auto mb-1"
+                                      className="w-10 h-10 rounded-lg border border-slate-200 dark:border-slate-800 shadow-lg mx-auto mb-1"
                                       style={{ backgroundColor: value }}
                                     />
-                                    <p className="text-xs text-slate-400">
+                                    <p className="text-xs text-slate-600 dark:text-slate-400">
                                       {key}
                                     </p>
-                                    <p className="text-xs font-mono text-white">
+                                    <p className="text-xs font-mono text-[#0F172A] dark:text-[#F8FAFC]">
                                       {value}
                                     </p>
                                   </div>
@@ -536,7 +493,7 @@ export default function DesignSystemWorkshopGenerator() {
                               </div>
                             </div>
                             <div>
-                              <p className="text-xs text-slate-400 mb-2">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-2">
                                 Spacing
                               </p>
                               <div className="grid grid-cols-3 gap-2 text-xs">
@@ -545,16 +502,16 @@ export default function DesignSystemWorkshopGenerator() {
                                 ).map(([key, value]) => (
                                   <div
                                     key={key}
-                                    className="bg-bg-base/50 rounded-lg p-2 border border-gray-800"
+                                    className="bg-slate-50 dark:bg-[#0B1120] rounded-lg p-2 border border-slate-200 dark:border-slate-800"
                                   >
-                                    <p className="text-slate-400">{key}</p>
-                                    <p className="text-white">{value}</p>
+                                    <p className="text-slate-600 dark:text-slate-400">{key}</p>
+                                    <p className="text-[#0F172A] dark:text-[#F8FAFC]">{value}</p>
                                   </div>
                                 ))}
                               </div>
                             </div>
                             <div>
-                              <p className="text-xs text-slate-400 mb-2">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-2">
                                 Border Radius
                               </p>
                               <div className="grid grid-cols-3 gap-2 text-xs">
@@ -563,10 +520,10 @@ export default function DesignSystemWorkshopGenerator() {
                                 ).map(([key, value]) => (
                                   <div
                                     key={key}
-                                    className="bg-bg-base/50 rounded-lg p-2 border border-gray-800"
+                                    className="bg-slate-50 dark:bg-[#0B1120] rounded-lg p-2 border border-slate-200 dark:border-slate-800"
                                   >
-                                    <p className="text-slate-400">{key}</p>
-                                    <p className="text-white">{value}</p>
+                                    <p className="text-slate-600 dark:text-slate-400">{key}</p>
+                                    <p className="text-[#0F172A] dark:text-[#F8FAFC]">{value}</p>
                                   </div>
                                 ))}
                               </div>
@@ -579,16 +536,16 @@ export default function DesignSystemWorkshopGenerator() {
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: 0.2 }}
-                          className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
+                          className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none border border-slate-200 dark:border-slate-800 rounded-2xl p-6 space-y-4"
                         >
-                          <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <Settings className="w-4 h-4 text-sky-500" />
+                          <h3 className="text-sm font-bold text-[#0F172A] dark:text-[#F8FAFC] uppercase tracking-wider flex items-center gap-2">
+                            <Settings className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
                             Tailwind Config
                           </h3>
                           <div className="space-y-3">
-                            <div className="bg-bg-base/50 rounded-xl p-4 border border-gray-800">
+                            <div className="bg-slate-50 dark:bg-[#0B1120] rounded-xl p-4 border border-slate-200 dark:border-slate-800">
                               <div className="flex items-center justify-between mb-2">
-                                <p className="text-xs text-slate-400">
+                                <p className="text-xs text-slate-600 dark:text-slate-400">
                                   Theme Extension
                                 </p>
                                 <button
@@ -599,7 +556,7 @@ export default function DesignSystemWorkshopGenerator() {
                                       "tailwind-theme"
                                     )
                                   }
-                                  className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-mono hover:bg-sky-500/20 transition-colors"
+                                  className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-sky-500/10 border border-slate-200 dark:border-slate-800 text-[#0369A1] dark:text-[#00B5F1] text-xs font-mono hover:bg-sky-500/20 transition-colors"
                                 >
                                   {copiedStates["tailwind-theme"] ? (
                                     <>
@@ -614,12 +571,12 @@ export default function DesignSystemWorkshopGenerator() {
                                   )}
                                 </button>
                               </div>
-                              <p className="text-xs text-white font-mono leading-relaxed whitespace-pre-wrap">
+                              <p className="text-xs text-[#0F172A] dark:text-[#F8FAFC] font-mono leading-relaxed whitespace-pre-wrap">
                                 {generatedOutput.tailwindConfig.themeExtension}
                               </p>
                             </div>
                             <div>
-                              <p className="text-xs text-slate-400 mb-1">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Custom Utilities
                               </p>
                               <div className="flex flex-wrap gap-2">
@@ -627,7 +584,7 @@ export default function DesignSystemWorkshopGenerator() {
                                   (utility, index) => (
                                     <span
                                       key={index}
-                                      className="px-2 py-1 rounded bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs"
+                                      className="px-2 py-1 rounded bg-sky-500/10 border border-slate-200 dark:border-slate-800 text-[#0369A1] dark:text-[#00B5F1] text-xs"
                                     >
                                       {utility}
                                     </span>
@@ -643,18 +600,18 @@ export default function DesignSystemWorkshopGenerator() {
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: 0.3 }}
-                          className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
+                          className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none border border-slate-200 dark:border-slate-800 rounded-2xl p-6 space-y-4"
                         >
-                          <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <Layers className="w-4 h-4 text-sky-500" />
+                          <h3 className="text-sm font-bold text-[#0F172A] dark:text-[#F8FAFC] uppercase tracking-wider flex items-center gap-2">
+                            <Layers className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
                             Komponens Könyvtár
                           </h3>
                           <div className="space-y-3">
                             <div>
-                              <p className="text-xs text-slate-400 mb-1">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Nevezési Konvenció
                               </p>
-                              <p className="text-sm text-white">
+                              <p className="text-sm text-[#0F172A] dark:text-[#F8FAFC]">
                                 {
                                   generatedOutput.componentLibrary
                                     .namingConvention
@@ -662,15 +619,15 @@ export default function DesignSystemWorkshopGenerator() {
                               </p>
                             </div>
                             <div>
-                              <p className="text-xs text-slate-400 mb-1">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Fájl Struktúra
                               </p>
-                              <p className="text-sm text-white">
+                              <p className="text-sm text-[#0F172A] dark:text-[#F8FAFC]">
                                 {generatedOutput.componentLibrary.fileStructure}
                               </p>
                             </div>
                             <div>
-                              <p className="text-xs text-slate-400 mb-1">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Komponensek
                               </p>
                               <div className="space-y-2 max-h-48 overflow-y-auto">
@@ -678,17 +635,17 @@ export default function DesignSystemWorkshopGenerator() {
                                   (component, index) => (
                                     <div
                                       key={index}
-                                      className="bg-bg-base/50 rounded-lg p-3 border border-gray-800"
+                                      className="bg-slate-50 dark:bg-[#0B1120] rounded-lg p-3 border border-slate-200 dark:border-slate-800"
                                     >
-                                      <p className="text-xs font-bold text-white mb-1">
+                                      <p className="text-xs font-bold text-[#0F172A] dark:text-[#F8FAFC] mb-1">
                                         {component.name}
                                       </p>
-                                      <p className="text-xs text-slate-400 mb-1">
+                                      <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                         {component.description}
                                       </p>
                                       <div className="flex gap-2 mt-2">
                                         <div>
-                                          <p className="text-xs text-slate-400">
+                                          <p className="text-xs text-slate-600 dark:text-slate-400">
                                             Props
                                           </p>
                                           <div className="flex flex-wrap gap-1">
@@ -703,7 +660,7 @@ export default function DesignSystemWorkshopGenerator() {
                                           </div>
                                         </div>
                                         <div>
-                                          <p className="text-xs text-slate-400">
+                                          <p className="text-xs text-slate-600 dark:text-slate-400">
                                             Variants
                                           </p>
                                           <div className="flex flex-wrap gap-1">
@@ -711,7 +668,7 @@ export default function DesignSystemWorkshopGenerator() {
                                               (variant, i) => (
                                                 <span
                                                   key={i}
-                                                  className="px-1 py-0.5 rounded bg-green-500/10 border border-green-500/20 text-green-400 text-xs"
+                                                  className="px-1 py-0.5 rounded bg-green-500/10 border border-green-500/20 text-emerald-700 dark:text-emerald-400 text-xs"
                                                 >
                                                   {variant}
                                                 </span>
@@ -733,23 +690,23 @@ export default function DesignSystemWorkshopGenerator() {
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: 0.4 }}
-                          className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
+                          className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none border border-slate-200 dark:border-slate-800 rounded-2xl p-6 space-y-4"
                         >
-                          <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <Target className="w-4 h-4 text-sky-500" />
+                          <h3 className="text-sm font-bold text-[#0F172A] dark:text-[#F8FAFC] uppercase tracking-wider flex items-center gap-2">
+                            <Target className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
                             Dokumentáció
                           </h3>
                           <div className="space-y-3">
                             <div>
-                              <p className="text-xs text-slate-400 mb-1">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Struktúra
                               </p>
-                              <p className="text-sm text-white">
+                              <p className="text-sm text-[#0F172A] dark:text-[#F8FAFC]">
                                 {generatedOutput.documentation.structure}
                               </p>
                             </div>
                             <div>
-                              <p className="text-xs text-slate-400 mb-1">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Példák
                               </p>
                               <div className="space-y-1">
@@ -757,7 +714,7 @@ export default function DesignSystemWorkshopGenerator() {
                                   (example, index) => (
                                     <li
                                       key={index}
-                                      className="text-xs text-white"
+                                      className="text-xs text-[#0F172A] dark:text-[#F8FAFC]"
                                     >
                                       {example}
                                     </li>
@@ -766,7 +723,7 @@ export default function DesignSystemWorkshopGenerator() {
                               </div>
                             </div>
                             <div>
-                              <p className="text-xs text-slate-400 mb-1">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Irányelvek
                               </p>
                               <div className="space-y-1">
@@ -774,7 +731,7 @@ export default function DesignSystemWorkshopGenerator() {
                                   (guideline, index) => (
                                     <li
                                       key={index}
-                                      className="text-xs text-white"
+                                      className="text-xs text-[#0F172A] dark:text-[#F8FAFC]"
                                     >
                                       {guideline}
                                     </li>
@@ -783,7 +740,7 @@ export default function DesignSystemWorkshopGenerator() {
                               </div>
                             </div>
                             <div>
-                              <p className="text-xs text-slate-400 mb-1">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 Ne Tedd
                               </p>
                               <div className="space-y-1">
@@ -791,7 +748,7 @@ export default function DesignSystemWorkshopGenerator() {
                                   (dont, index) => (
                                     <li
                                       key={index}
-                                      className="text-xs text-white"
+                                      className="text-xs text-[#0F172A] dark:text-[#F8FAFC]"
                                     >
                                       {dont}
                                     </li>
@@ -807,16 +764,16 @@ export default function DesignSystemWorkshopGenerator() {
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: 0.5 }}
-                          className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
+                          className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none border border-slate-200 dark:border-slate-800 rounded-2xl p-6 space-y-4"
                         >
-                          <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <Sparkles className="w-4 h-4 text-sky-500" />
+                          <h3 className="text-sm font-bold text-[#0F172A] dark:text-[#F8FAFC] uppercase tracking-wider flex items-center gap-2">
+                            <Sparkles className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
                             Midjourney Promptok
                           </h3>
                           <div className="space-y-3">
-                            <div className="bg-bg-base/50 rounded-xl p-4 border border-gray-800">
+                            <div className="bg-slate-50 dark:bg-[#0B1120] rounded-xl p-4 border border-slate-200 dark:border-slate-800">
                               <div className="flex items-center justify-between mb-2">
-                                <p className="text-xs text-slate-400">
+                                <p className="text-xs text-slate-600 dark:text-slate-400">
                                   Primary
                                 </p>
                                 <button
@@ -826,7 +783,7 @@ export default function DesignSystemWorkshopGenerator() {
                                       "mj-primary"
                                     )
                                   }
-                                  className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-mono hover:bg-sky-500/20 transition-colors"
+                                  className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-sky-500/10 border border-slate-200 dark:border-slate-800 text-[#0369A1] dark:text-[#00B5F1] text-xs font-mono hover:bg-sky-500/20 transition-colors"
                                 >
                                   {copiedStates["mj-primary"] ? (
                                     <>
@@ -841,13 +798,13 @@ export default function DesignSystemWorkshopGenerator() {
                                   )}
                                 </button>
                               </div>
-                              <p className="text-xs text-white font-mono leading-relaxed whitespace-pre-wrap">
+                              <p className="text-xs text-[#0F172A] dark:text-[#F8FAFC] font-mono leading-relaxed whitespace-pre-wrap">
                                 {generatedOutput.midjourneyPrompts.primary}
                               </p>
                             </div>
-                            <div className="bg-bg-base/50 rounded-xl p-4 border border-gray-800">
+                            <div className="bg-slate-50 dark:bg-[#0B1120] rounded-xl p-4 border border-slate-200 dark:border-slate-800">
                               <div className="flex items-center justify-between mb-2">
-                                <p className="text-xs text-slate-400">
+                                <p className="text-xs text-slate-600 dark:text-slate-400">
                                   Alternative 1
                                 </p>
                                 <button
@@ -858,7 +815,7 @@ export default function DesignSystemWorkshopGenerator() {
                                       "mj-alt1"
                                     )
                                   }
-                                  className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-mono hover:bg-sky-500/20 transition-colors"
+                                  className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-sky-500/10 border border-slate-200 dark:border-slate-800 text-[#0369A1] dark:text-[#00B5F1] text-xs font-mono hover:bg-sky-500/20 transition-colors"
                                 >
                                   {copiedStates["mj-alt1"] ? (
                                     <>
@@ -873,13 +830,13 @@ export default function DesignSystemWorkshopGenerator() {
                                   )}
                                 </button>
                               </div>
-                              <p className="text-xs text-white font-mono leading-relaxed whitespace-pre-wrap">
+                              <p className="text-xs text-[#0F172A] dark:text-[#F8FAFC] font-mono leading-relaxed whitespace-pre-wrap">
                                 {generatedOutput.midjourneyPrompts.alternative1}
                               </p>
                             </div>
-                            <div className="bg-bg-base/50 rounded-xl p-4 border border-gray-800">
+                            <div className="bg-slate-50 dark:bg-[#0B1120] rounded-xl p-4 border border-slate-200 dark:border-slate-800">
                               <div className="flex items-center justify-between mb-2">
-                                <p className="text-xs text-slate-400">
+                                <p className="text-xs text-slate-600 dark:text-slate-400">
                                   Alternative 2
                                 </p>
                                 <button
@@ -890,7 +847,7 @@ export default function DesignSystemWorkshopGenerator() {
                                       "mj-alt2"
                                     )
                                   }
-                                  className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-mono hover:bg-sky-500/20 transition-colors"
+                                  className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-sky-500/10 border border-slate-200 dark:border-slate-800 text-[#0369A1] dark:text-[#00B5F1] text-xs font-mono hover:bg-sky-500/20 transition-colors"
                                 >
                                   {copiedStates["mj-alt2"] ? (
                                     <>
@@ -905,7 +862,7 @@ export default function DesignSystemWorkshopGenerator() {
                                   )}
                                 </button>
                               </div>
-                              <p className="text-xs text-white font-mono leading-relaxed whitespace-pre-wrap">
+                              <p className="text-xs text-[#0F172A] dark:text-[#F8FAFC] font-mono leading-relaxed whitespace-pre-wrap">
                                 {generatedOutput.midjourneyPrompts.alternative2}
                               </p>
                             </div>
@@ -917,16 +874,16 @@ export default function DesignSystemWorkshopGenerator() {
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: 0.6 }}
-                          className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
+                          className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none border border-slate-200 dark:border-slate-800 rounded-2xl p-6 space-y-4"
                         >
-                          <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <Layers className="w-4 h-4 text-sky-500" />
+                          <h3 className="text-sm font-bold text-[#0F172A] dark:text-[#F8FAFC] uppercase tracking-wider flex items-center gap-2">
+                            <Layers className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
                             Export Formátumok
                           </h3>
                           <div className="space-y-3">
-                            <div className="bg-bg-base/50 rounded-xl p-4 border border-gray-800">
+                            <div className="bg-slate-50 dark:bg-[#0B1120] rounded-xl p-4 border border-slate-200 dark:border-slate-800">
                               <div className="flex items-center justify-between mb-2">
-                                <p className="text-xs text-slate-400">
+                                <p className="text-xs text-slate-600 dark:text-slate-400">
                                   Tailwind Config
                                 </p>
                                 <button
@@ -937,7 +894,7 @@ export default function DesignSystemWorkshopGenerator() {
                                       "export-tailwind"
                                     )
                                   }
-                                  className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-mono hover:bg-sky-500/20 transition-colors"
+                                  className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-sky-500/10 border border-slate-200 dark:border-slate-800 text-[#0369A1] dark:text-[#00B5F1] text-xs font-mono hover:bg-sky-500/20 transition-colors"
                                 >
                                   {copiedStates["export-tailwind"] ? (
                                     <>
@@ -952,23 +909,23 @@ export default function DesignSystemWorkshopGenerator() {
                                   )}
                                 </button>
                               </div>
-                              <p className="text-xs text-white font-mono leading-relaxed whitespace-pre-wrap">
+                              <p className="text-xs text-[#0F172A] dark:text-[#F8FAFC] font-mono leading-relaxed whitespace-pre-wrap">
                                 {generatedOutput.exportFormats.tailwindConfig}
                               </p>
                             </div>
-                            <div className="bg-bg-base/50 rounded-xl p-4 border border-gray-800">
-                              <p className="text-xs text-slate-400 mb-1">
+                            <div className="bg-slate-50 dark:bg-[#0B1120] rounded-xl p-4 border border-slate-200 dark:border-slate-800">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 CSS Variables
                               </p>
-                              <p className="text-xs text-white">
+                              <p className="text-xs text-[#0F172A] dark:text-[#F8FAFC]">
                                 {generatedOutput.exportFormats.cssVariables}
                               </p>
                             </div>
-                            <div className="bg-bg-base/50 rounded-xl p-4 border border-gray-800">
-                              <p className="text-xs text-slate-400 mb-1">
+                            <div className="bg-slate-50 dark:bg-[#0B1120] rounded-xl p-4 border border-slate-200 dark:border-slate-800">
+                              <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                                 JSON Tokens
                               </p>
-                              <p className="text-xs text-white">
+                              <p className="text-xs text-[#0F172A] dark:text-[#F8FAFC]">
                                 {generatedOutput.exportFormats.jsonTokens}
                               </p>
                             </div>
@@ -980,43 +937,43 @@ export default function DesignSystemWorkshopGenerator() {
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: 0.7 }}
-                          className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
+                          className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none border border-slate-200 dark:border-slate-800 rounded-2xl p-6 space-y-4"
                         >
-                          <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <Layers className="w-4 h-4 text-sky-500" />
+                          <h3 className="text-sm font-bold text-[#0F172A] dark:text-[#F8FAFC] uppercase tracking-wider flex items-center gap-2">
+                            <Layers className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
                             Változatok
                           </h3>
                           <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-                            <div className="bg-bg-base/50 rounded-xl p-4 border border-gray-800">
+                            <div className="bg-slate-50 dark:bg-[#0B1120] rounded-xl p-4 border border-slate-200 dark:border-slate-800">
                               <div className="flex items-center gap-2 mb-2">
-                                <Sun className="w-3 h-3 text-sky-500" />
-                                <p className="text-xs text-slate-400">
+                                <Sun className="w-3 h-3 text-[#0369A1] dark:text-[#00B5F1]" />
+                                <p className="text-xs text-slate-600 dark:text-slate-400">
                                   Light Mode
                                 </p>
                               </div>
-                              <p className="text-xs text-white leading-relaxed">
+                              <p className="text-xs text-[#0F172A] dark:text-[#F8FAFC] leading-relaxed">
                                 {generatedOutput.variations.lightMode}
                               </p>
                             </div>
-                            <div className="bg-bg-base/50 rounded-xl p-4 border border-gray-800">
+                            <div className="bg-slate-50 dark:bg-[#0B1120] rounded-xl p-4 border border-slate-200 dark:border-slate-800">
                               <div className="flex items-center gap-2 mb-2">
-                                <Moon className="w-3 h-3 text-sky-500" />
-                                <p className="text-xs text-slate-400">
+                                <Moon className="w-3 h-3 text-[#0369A1] dark:text-[#00B5F1]" />
+                                <p className="text-xs text-slate-600 dark:text-slate-400">
                                   Dark Mode
                                 </p>
                               </div>
-                              <p className="text-xs text-white leading-relaxed">
+                              <p className="text-xs text-[#0F172A] dark:text-[#F8FAFC] leading-relaxed">
                                 {generatedOutput.variations.darkMode}
                               </p>
                             </div>
-                            <div className="bg-bg-base/50 rounded-xl p-4 border border-gray-800">
+                            <div className="bg-slate-50 dark:bg-[#0B1120] rounded-xl p-4 border border-slate-200 dark:border-slate-800">
                               <div className="flex items-center gap-2 mb-2">
-                                <Target className="w-3 h-3 text-sky-500" />
-                                <p className="text-xs text-slate-400">
+                                <Target className="w-3 h-3 text-[#0369A1] dark:text-[#00B5F1]" />
+                                <p className="text-xs text-slate-600 dark:text-slate-400">
                                   Custom Theme
                                 </p>
                               </div>
-                              <p className="text-xs text-white leading-relaxed">
+                              <p className="text-xs text-[#0F172A] dark:text-[#F8FAFC] leading-relaxed">
                                 {generatedOutput.variations.customTheme}
                               </p>
                             </div>
@@ -1024,15 +981,15 @@ export default function DesignSystemWorkshopGenerator() {
                         </motion.div>
                       </motion.div>
                     ) : (
-                      <div className="bg-bg-elevated/30 backdrop-blur-xl border border-bg-elevated/80 rounded-2xl p-12 flex flex-col items-center justify-center space-y-4 text-center">
-                        <div className="w-16 h-16 rounded-2xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center">
-                          <Layout className="w-8 h-8 text-sky-500" />
+                      <div className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none backdrop-blur-xl border border-slate-200 dark:border-slate-800 rounded-2xl p-12 flex flex-col items-center justify-center space-y-4 text-center">
+                        <div className="w-16 h-16 rounded-2xl bg-sky-500/10 border border-slate-200 dark:border-slate-800 flex items-center justify-center">
+                          <Layout className="w-8 h-8 text-[#0369A1] dark:text-[#00B5F1]" />
                         </div>
                         <div className="space-y-2">
-                          <h3 className="text-lg font-bold text-white">
+                          <h3 className="text-lg font-bold text-[#0F172A] dark:text-[#F8FAFC]">
                             Várakozás a generálásra
                           </h3>
-                          <p className="text-sm text-slate-400">
+                          <p className="text-sm text-slate-600 dark:text-slate-400">
                             Töltsd ki az űrlapot a bal oldalon, és kattints a
                             &ldquo;Design System Generálása&rdquo; gombra.
                           </p>

@@ -23,52 +23,52 @@ export function Copywriting({
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay }}
-      className="bg-bg-elevated/30 border border-gray-800 rounded-2xl p-6 space-y-4"
+      className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none border border-slate-200 dark:border-slate-800 rounded-2xl p-6 space-y-4"
     >
-      <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-        <Type className="w-4 h-4 text-sky-500" />
+      <h3 className="text-sm font-bold text-[#0F172A] dark:text-[#F8FAFC] uppercase tracking-wider flex items-center gap-2">
+        <Type className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
         Copywriting
       </h3>
       <div className="space-y-3">
-        <div className="bg-bg-base/50 rounded-xl p-4 border border-gray-800">
+        <div className="bg-slate-50 dark:bg-[#0B1120] rounded-xl p-4 border border-slate-200 dark:border-slate-800">
           <div className="flex items-center justify-between mb-2">
-            <p className="text-xs text-slate-400">Főcím</p>
+            <p className="text-xs text-slate-600 dark:text-slate-400">Főcím</p>
             <CopyButton
               copied={!!copiedStates["headline"]}
               onClick={() => onCopy(copywriting.headline, "headline")}
             />
           </div>
-          <p className="text-sm font-bold text-white">{copywriting.headline}</p>
+          <p className="text-sm font-bold text-[#0F172A] dark:text-[#F8FAFC]">{copywriting.headline}</p>
         </div>
-        <div className="bg-bg-base/50 rounded-xl p-4 border border-gray-800">
+        <div className="bg-slate-50 dark:bg-[#0B1120] rounded-xl p-4 border border-slate-200 dark:border-slate-800">
           <div className="flex items-center justify-between mb-2">
-            <p className="text-xs text-slate-400">Alcím</p>
+            <p className="text-xs text-slate-600 dark:text-slate-400">Alcím</p>
             <CopyButton
               copied={!!copiedStates["subheadline"]}
               onClick={() => onCopy(copywriting.subheadline, "subheadline")}
             />
           </div>
-          <p className="text-sm text-white">{copywriting.subheadline}</p>
+          <p className="text-sm text-[#0F172A] dark:text-[#F8FAFC]">{copywriting.subheadline}</p>
         </div>
-        <div className="bg-bg-base/50 rounded-xl p-4 border border-gray-800">
+        <div className="bg-slate-50 dark:bg-[#0B1120] rounded-xl p-4 border border-slate-200 dark:border-slate-800">
           <div className="flex items-center justify-between mb-2">
-            <p className="text-xs text-slate-400">Szövegtörzs</p>
+            <p className="text-xs text-slate-600 dark:text-slate-400">Szövegtörzs</p>
             <CopyButton
               copied={!!copiedStates["body"]}
               onClick={() => onCopy(copywriting.bodyText, "body")}
             />
           </div>
-          <p className="text-sm text-white">{copywriting.bodyText}</p>
+          <p className="text-sm text-[#0F172A] dark:text-[#F8FAFC]">{copywriting.bodyText}</p>
         </div>
-        <div className="bg-bg-base/50 rounded-xl p-4 border border-gray-800">
+        <div className="bg-slate-50 dark:bg-[#0B1120] rounded-xl p-4 border border-slate-200 dark:border-slate-800">
           <div className="flex items-center justify-between mb-2">
-            <p className="text-xs text-slate-400">CTA</p>
+            <p className="text-xs text-slate-600 dark:text-slate-400">CTA</p>
             <CopyButton
               copied={!!copiedStates["cta"]}
               onClick={() => onCopy(copywriting.cta, "cta")}
             />
           </div>
-          <p className="text-sm font-bold text-sky-500">{copywriting.cta}</p>
+          <p className="text-sm font-bold text-[#0369A1] dark:text-[#00B5F1]">{copywriting.cta}</p>
         </div>
       </div>
     </motion.div>

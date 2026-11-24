@@ -5,21 +5,7 @@ import { useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { motion } from "motion/react";
-import {
-  AlertTriangle,
-  Loader2,
-  ArrowLeft,
-  ClipboardList,
-  Layers,
-  Map,
-  Package,
-  Route,
-  ShieldCheck,
-  Mail,
-  CheckCircle2,
-  Bot,
-} from "lucide-react";
-import Link from "next/link";
+import { AlertTriangle, Loader2, ClipboardList, Layers, Map, Package, Route, ShieldCheck, Mail, CheckCircle2, Bot } from "lucide-react";
 import ToolAccessLock from "@/components/molecules/ToolAccessLock";
 import PresetChips from "@/components/molecules/PresetChips";
 import CopyButton from "@/components/atoms/CopyButton";
@@ -190,9 +176,9 @@ const PROJECT_PRESETS: Array<{
 ];
 
 const inputClass =
-  "w-full px-4 py-3 rounded-xl bg-slate-950/80 border border-slate-700/60 text-slate-200 text-sm placeholder:text-slate-600 backdrop-blur-md focus:outline-none focus:ring-2 focus:ring-[#00B5F1]/50 focus:border-[#00B5F1]/40 transition-all";
+  "w-full px-4 py-3 rounded-xl bg-white dark:bg-[#0B1120] border border-slate-300 dark:border-slate-700 text-[#0F172A] dark:text-slate-100 text-sm placeholder:text-slate-400 dark:placeholder:text-slate-500 backdrop-blur-md focus:outline-none focus:ring-2 focus:ring-[#00B5F1]/50 focus:border-[#0369A1] dark:focus:border-[#00B5F1] transition-all";
 const labelClass =
-  "block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5";
+  "block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1.5";
 
 export default function ProjectScopeWorkshopGenerator() {
   const [isGenerating, setIsGenerating] = useState(false);
@@ -310,7 +296,7 @@ export default function ProjectScopeWorkshopGenerator() {
     return (
       <div className="min-h-[60vh] flex flex-col items-center justify-center space-y-4">
         <Loader2 className="w-8 h-8 animate-spin text-[#00B5F1]" />
-        <p className="text-xs font-mono text-slate-400 uppercase tracking-widest">
+        <p className="text-xs font-mono text-slate-600 dark:text-slate-400 uppercase tracking-widest">
           Projekttervező betöltése...
         </p>
       </div>
@@ -325,29 +311,20 @@ export default function ProjectScopeWorkshopGenerator() {
   return (
     <div className="space-y-8">
       {/* Fejléc */}
-      <div className="flex items-center justify-between gap-4">
-        <Link
-          href="/portal/ai-muhely"
-          className="flex items-center gap-2 text-xs font-mono text-slate-400 hover:text-[#00B5F1] transition-colors"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          Vissza a Műhelybe
-        </Link>
-        {isAdmin && (
+      <div className="flex items-center justify-end gap-4">{isAdmin && (
           <span className="text-[10px] font-black uppercase tracking-widest text-[#a78bfa] border border-[#7C3AED]/40 bg-[#7C3AED]/10 px-2 py-1 rounded-full">
             Szuperadmin
           </span>
-        )}
-      </div>
+        )}</div>
 
       <div className="space-y-2">
         <span className="text-[10px] font-black uppercase tracking-widest text-[#00B5F1]">
           Brief → Architektúra → Sitemap → Árajánlat Stúdió
         </span>
-        <h2 className="text-3xl md:text-4xl font-extrabold text-white tracking-tight">
+        <h2 className="text-3xl md:text-4xl font-extrabold text-[#0F172A] dark:text-[#F8FAFC] tracking-tight">
           Weboldal & Webshop Projekttervező
         </h2>
-        <p className="text-slate-400 text-sm max-w-2xl">
+        <p className="text-slate-600 dark:text-slate-400 text-sm max-w-2xl">
           Nyers ügyfél-briefből teljes oldaltérkép, SEO/AEO architektúra, 3
           csomagszint és kész árajánlat-kísérőlevél — zéró fix árral.
         </p>
@@ -369,8 +346,8 @@ export default function ProjectScopeWorkshopGenerator() {
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
         {/* Ügyfél + Brief */}
-        <div className="bg-slate-950/90 backdrop-blur-2xl border border-slate-800/60 rounded-3xl p-6 md:p-8 space-y-5">
-          <h3 className="text-sm font-black uppercase tracking-widest text-slate-300 flex items-center gap-2">
+        <div className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none backdrop-blur-2xl border border-slate-200 dark:border-slate-800 rounded-3xl p-6 md:p-8 space-y-5">
+          <h3 className="text-sm font-black uppercase tracking-widest text-slate-700 dark:text-slate-300 flex items-center gap-2">
             <ClipboardList className="w-4 h-4 text-[#00B5F1]" />
             Ügyfél & Nyers Brief
           </h3>
@@ -383,7 +360,7 @@ export default function ProjectScopeWorkshopGenerator() {
                 className={inputClass}
               />
               {errors.clientName && (
-                <p className="text-red-400 text-xs mt-1">
+                <p className="text-red-600 dark:text-red-400 text-xs mt-1">
                   {errors.clientName.message}
                 </p>
               )}
@@ -396,7 +373,7 @@ export default function ProjectScopeWorkshopGenerator() {
                 className={inputClass}
               />
               {errors.industry && (
-                <p className="text-red-400 text-xs mt-1">
+                <p className="text-red-600 dark:text-red-400 text-xs mt-1">
                   {errors.industry.message}
                 </p>
               )}
@@ -409,10 +386,10 @@ export default function ProjectScopeWorkshopGenerator() {
                 {...register("rawClientBrief")}
                 rows={6}
                 placeholder="Illeszd be az ügyfél e-mailjét vagy igénylistáját: funkciók, integrációk, határidő, elvárások..."
-                className={`${inputClass} resize-y`}
+                className={`${inputClass}resize-y`}
               />
               {errors.rawClientBrief && (
-                <p className="text-red-400 text-xs mt-1">
+                <p className="text-red-600 dark:text-red-400 text-xs mt-1">
                   {errors.rawClientBrief.message}
                 </p>
               )}
@@ -421,8 +398,8 @@ export default function ProjectScopeWorkshopGenerator() {
         </div>
 
         {/* Projekttípus & Stack */}
-        <div className="bg-slate-950/90 backdrop-blur-2xl border border-slate-800/60 rounded-3xl p-6 md:p-8 space-y-6">
-          <h3 className="text-sm font-black uppercase tracking-widest text-slate-300 flex items-center gap-2">
+        <div className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none backdrop-blur-2xl border border-slate-200 dark:border-slate-800 rounded-3xl p-6 md:p-8 space-y-6">
+          <h3 className="text-sm font-black uppercase tracking-widest text-slate-700 dark:text-slate-300 flex items-center gap-2">
             <Layers className="w-4 h-4 text-[#00B5F1]" />
             Projekttípus & Technológia
           </h3>
@@ -449,8 +426,8 @@ export default function ProjectScopeWorkshopGenerator() {
         </div>
 
         {/* Integrációk */}
-        <div className="bg-slate-950/90 backdrop-blur-2xl border border-slate-800/60 rounded-3xl p-6 md:p-8 space-y-4">
-          <h3 className="text-sm font-black uppercase tracking-widest text-slate-300 flex items-center gap-2">
+        <div className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none backdrop-blur-2xl border border-slate-200 dark:border-slate-800 rounded-3xl p-6 md:p-8 space-y-4">
+          <h3 className="text-sm font-black uppercase tracking-widest text-slate-700 dark:text-slate-300 flex items-center gap-2">
             <Bot className="w-4 h-4 text-[#00B5F1]" />
             Integrációk & Fókuszok
           </h3>
@@ -465,10 +442,10 @@ export default function ProjectScopeWorkshopGenerator() {
                   key={chip}
                   type="button"
                   onClick={() => toggleIntegration(chip)}
-                  className={`px-3 py-1.5 rounded-full text-[11px] font-bold border transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B5F1] ${
+                  className={`px-3 py-1.5 rounded-full text-[11px] font-bold border transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B5F1]${
                     active
                       ? "bg-[#00B5F1]/15 border-[#00B5F1]/60 text-[#00B5F1]"
-                      : "bg-slate-950/50 border-slate-800 text-slate-400 hover:border-[#00B5F1]/40 hover:text-slate-200"
+                      : "bg-slate-50 dark:bg-[#0B1120] border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:border-[#00B5F1]/40 hover:text-slate-200"
                   }`}
                 >
                   {chip}
@@ -487,7 +464,7 @@ export default function ProjectScopeWorkshopGenerator() {
         </div>
 
         {error && (
-          <div className="bg-red-500/5 border border-red-500/40 backdrop-blur-xl shadow-[0_0_24px_rgba(239,68,68,0.15)] text-red-400 px-4 py-3 rounded-xl text-sm flex items-center gap-2">
+          <div className="bg-red-500/5 border border-red-500/40 backdrop-blur-xl shadow-[0_0_24px_rgba(239,68,68,0.15)] text-red-600 dark:text-red-400 px-4 py-3 rounded-xl text-sm flex items-center gap-2">
             <AlertTriangle className="w-4 h-4" />
             {error}
           </div>
@@ -496,7 +473,7 @@ export default function ProjectScopeWorkshopGenerator() {
         <button
           type="submit"
           disabled={isGenerating}
-          className="w-full py-4 rounded-xl bg-linear-to-r from-[#075985] to-[#5B21B6] text-white font-bold text-sm uppercase tracking-wider hover:opacity-90 transition-all disabled:opacity-50 flex items-center justify-center gap-2 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B5F1]"
+          className="w-full py-4 rounded-xl bg-linear-to-r from-[#075985] to-[#5B21B6] text-[#0F172A] dark:text-[#F8FAFC] font-bold text-sm uppercase tracking-wider hover:opacity-90 transition-all disabled:opacity-50 flex items-center justify-center gap-2 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B5F1]"
         >
           {isGenerating ? (
             <>
@@ -520,8 +497,8 @@ export default function ProjectScopeWorkshopGenerator() {
           className="space-y-8 pt-4"
         >
           {/* Vezetői összefoglaló */}
-          <div className="bg-slate-950/90 backdrop-blur-2xl border border-slate-800/60 rounded-3xl p-6 md:p-8 space-y-4">
-            <h3 className="text-lg font-bold text-white">
+          <div className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none backdrop-blur-2xl border border-slate-200 dark:border-slate-800 rounded-3xl p-6 md:p-8 space-y-4">
+            <h3 className="text-lg font-bold text-[#0F172A] dark:text-[#F8FAFC]">
               {generatedOutput.executiveSummary.projectTitle}
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
@@ -534,7 +511,7 @@ export default function ProjectScopeWorkshopGenerator() {
               ).map(([label, text]) => (
                 <p
                   key={label}
-                  className="text-slate-400 leading-relaxed bg-slate-950/50 rounded-xl p-3 border border-slate-800/60"
+                  className="text-slate-600 dark:text-slate-400 leading-relaxed bg-slate-50 dark:bg-[#0B1120] rounded-xl p-3 border border-slate-200 dark:border-slate-800"
                 >
                   <strong className="text-[#00B5F1]">{label}: </strong>
                   {text}
@@ -546,15 +523,15 @@ export default function ProjectScopeWorkshopGenerator() {
                 (b, i) => (
                   <div
                     key={i}
-                    className="rounded-xl border border-slate-800 bg-slate-950/50 p-3"
+                    className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-[#0B1120] p-3"
                   >
-                    <p className="text-[10px] font-black uppercase tracking-widest text-slate-500">
+                    <p className="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400">
                       Technológia
                     </p>
-                    <p className="text-xs font-bold text-white mt-0.5">
+                    <p className="text-xs font-bold text-[#0F172A] dark:text-[#F8FAFC] mt-0.5">
                       {b.technology}
                     </p>
-                    <p className="text-[11px] text-slate-400 mt-1">
+                    <p className="text-[11px] text-slate-600 dark:text-slate-400 mt-1">
                       {b.clientBenefit}
                     </p>
                   </div>
@@ -565,7 +542,7 @@ export default function ProjectScopeWorkshopGenerator() {
 
           {/* Sitemap & SEO/AEO architektúra */}
           <div className="space-y-4">
-            <h3 className="text-lg font-bold text-white flex items-center gap-2">
+            <h3 className="text-lg font-bold text-[#0F172A] dark:text-[#F8FAFC] flex items-center gap-2">
               <Map className="w-5 h-5 text-[#00B5F1]" />
               Oldaltérkép & SEO/AEO Architektúra
             </h3>
@@ -573,17 +550,17 @@ export default function ProjectScopeWorkshopGenerator() {
               {generatedOutput.sitemapAndSeoArchitecture.map((page, idx) => (
                 <div
                   key={idx}
-                  className="bg-slate-950/90 backdrop-blur-2xl border border-slate-800/60 rounded-3xl p-5 space-y-3"
+                  className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none backdrop-blur-2xl border border-slate-200 dark:border-slate-800 rounded-3xl p-5 space-y-3"
                 >
                   <div className="flex items-start justify-between gap-2">
                     <div>
                       <p className="text-[10px] font-mono text-[#00B5F1] font-bold">
                         {page.urlSlug}
                       </p>
-                      <h4 className="text-sm font-black text-white">
+                      <h4 className="text-sm font-black text-[#0F172A] dark:text-[#F8FAFC]">
                         {page.pageName}
                       </h4>
-                      <p className="text-[10px] text-slate-500">
+                      <p className="text-[10px] text-slate-500 dark:text-slate-400">
                         {page.pagePurpose}
                       </p>
                     </div>
@@ -592,7 +569,7 @@ export default function ProjectScopeWorkshopGenerator() {
                       label="Oldal másolása"
                     />
                   </div>
-                  <p className="text-xs text-slate-300">
+                  <p className="text-xs text-slate-700 dark:text-slate-300">
                     <strong className="text-[#00B5F1]">H1: </strong>
                     {page.recommendedH1}
                   </p>
@@ -606,11 +583,11 @@ export default function ProjectScopeWorkshopGenerator() {
                       </span>
                     ))}
                   </div>
-                  <p className="text-[10px] text-slate-500">
-                    <strong className="text-slate-400">Szekciók: </strong>
+                  <p className="text-[10px] text-slate-500 dark:text-slate-400">
+                    <strong className="text-slate-600 dark:text-slate-400">Szekciók: </strong>
                     {page.keySections.join(" • ")}
                   </p>
-                  <p className="text-[11px] text-slate-500 italic">
+                  <p className="text-[11px] text-slate-500 dark:text-slate-400 italic">
                     AEO: {page.aeoDirectAnswerFocus}
                   </p>
                 </div>
@@ -620,7 +597,7 @@ export default function ProjectScopeWorkshopGenerator() {
 
           {/* 3 szintű csomag */}
           <div className="space-y-4">
-            <h3 className="text-lg font-bold text-white flex items-center gap-2">
+            <h3 className="text-lg font-bold text-[#0F172A] dark:text-[#F8FAFC] flex items-center gap-2">
               <Package className="w-5 h-5 text-[#00B5F1]" />
               Ajánlati Csomagok (3 szint)
             </h3>
@@ -630,14 +607,14 @@ export default function ProjectScopeWorkshopGenerator() {
                 return (
                   <div
                     key={idx}
-                    className={`rounded-3xl border p-6 space-y-4 ${
+                    className={`rounded-3xl border p-6 space-y-4${
                       isPro
-                        ? "border-[#00B5F1]/50 bg-slate-900/80 ring-1 ring-[#00B5F1]/30"
-                        : "border-slate-800 bg-slate-900/60"
+                        ? "border-[#00B5F1]/50 bg-slate-50 dark:bg-[#0B1120] ring-1 ring-[#00B5F1]/30"
+                        : "border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-[#0B1120]"
                     }`}
                   >
                     <div className="flex items-center justify-between">
-                      <h4 className="text-sm font-black text-white">
+                      <h4 className="text-sm font-black text-[#0F172A] dark:text-[#F8FAFC]">
                         {tier.tierName}
                       </h4>
                       {tier.badge && (
@@ -646,28 +623,28 @@ export default function ProjectScopeWorkshopGenerator() {
                         </span>
                       )}
                     </div>
-                    <p className="text-[11px] text-slate-400">
+                    <p className="text-[11px] text-slate-600 dark:text-slate-400">
                       {tier.idealFor}
                     </p>
                     <ul className="space-y-1.5">
                       {tier.deliverables.map((d, i) => (
                         <li
                           key={i}
-                          className="text-xs text-slate-300 flex items-start gap-2"
+                          className="text-xs text-slate-700 dark:text-slate-300 flex items-start gap-2"
                         >
-                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 mt-0.5 shrink-0" />
+                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-400 mt-0.5 shrink-0" />
                           {d}
                         </li>
                       ))}
                     </ul>
-                    <p className="text-[10px] text-slate-500">
-                      <strong className="text-slate-400">Integrációk: </strong>
+                    <p className="text-[10px] text-slate-500 dark:text-slate-400">
+                      <strong className="text-slate-600 dark:text-slate-400">Integrációk: </strong>
                       {tier.includedIntegrations.join(", ")}
                     </p>
-                    <p className="text-[10px] font-mono text-slate-400">
+                    <p className="text-[10px] font-mono text-slate-600 dark:text-slate-400">
                       {tier.estimatedWeeks}
                     </p>
-                    <p className="text-xs font-bold text-white">
+                    <p className="text-xs font-bold text-[#0F172A] dark:text-[#F8FAFC]">
                       {tier.priceLabel}
                     </p>
                     <CopyButton
@@ -685,7 +662,7 @@ export default function ProjectScopeWorkshopGenerator() {
 
           {/* Roadmap */}
           <div className="space-y-4">
-            <h3 className="text-lg font-bold text-white flex items-center gap-2">
+            <h3 className="text-lg font-bold text-[#0F172A] dark:text-[#F8FAFC] flex items-center gap-2">
               <Route className="w-5 h-5 text-[#00B5F1]" />
               5 Fázisú Mérföldkő & Ütemterv
             </h3>
@@ -693,17 +670,17 @@ export default function ProjectScopeWorkshopGenerator() {
               {generatedOutput.milestoneRoadmap.map((phase) => (
                 <div
                   key={phase.phaseNumber}
-                  className="bg-slate-950/90 backdrop-blur-2xl border border-slate-800/60 rounded-2xl p-5 flex gap-4"
+                  className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none backdrop-blur-2xl border border-slate-200 dark:border-slate-800 rounded-2xl p-5 flex gap-4"
                 >
                   <div className="w-10 h-10 rounded-xl bg-[#00B5F1]/10 border border-[#00B5F1]/30 text-[#00B5F1] flex items-center justify-center font-black text-sm shrink-0">
                     {phase.phaseNumber}
                   </div>
                   <div className="flex-1 space-y-2">
                     <div className="flex items-center justify-between gap-2">
-                      <h4 className="text-sm font-black text-white">
+                      <h4 className="text-sm font-black text-[#0F172A] dark:text-[#F8FAFC]">
                         {phase.phaseTitle}
                       </h4>
-                      <span className="text-[10px] font-mono text-slate-500">
+                      <span className="text-[10px] font-mono text-slate-500 dark:text-slate-400">
                         {phase.durationWeeks}
                       </span>
                     </div>
@@ -711,14 +688,14 @@ export default function ProjectScopeWorkshopGenerator() {
                       {phase.tasks.map((t, i) => (
                         <li
                           key={i}
-                          className="text-[11px] text-slate-400 flex items-start gap-2"
+                          className="text-[11px] text-slate-600 dark:text-slate-400 flex items-start gap-2"
                         >
                           <span className="text-[#00B5F1] mt-0.5">•</span>
                           {t}
                         </li>
                       ))}
                     </ul>
-                    <p className="text-[10px] text-emerald-400 font-semibold">
+                    <p className="text-[10px] text-emerald-700 dark:text-emerald-400 font-semibold">
                       Ügyfélnek: {phase.clientDeliverable}
                     </p>
                   </div>
@@ -728,8 +705,8 @@ export default function ProjectScopeWorkshopGenerator() {
           </div>
 
           {/* Kockázatok */}
-          <div className="bg-slate-950/90 backdrop-blur-2xl border border-slate-800/60 rounded-3xl p-6 md:p-8 space-y-4">
-            <h3 className="text-lg font-bold text-white flex items-center gap-2">
+          <div className="bg-white dark:bg-[#0F172A]/90 shadow-sm dark:shadow-none backdrop-blur-2xl border border-slate-200 dark:border-slate-800 rounded-3xl p-6 md:p-8 space-y-4">
+            <h3 className="text-lg font-bold text-[#0F172A] dark:text-[#F8FAFC] flex items-center gap-2">
               <ShieldCheck className="w-5 h-5 text-[#00B5F1]" />
               Kockázatok & Előfeltételek
             </h3>
@@ -737,7 +714,7 @@ export default function ProjectScopeWorkshopGenerator() {
               {generatedOutput.riskAndPreconditions.map((item, i) => (
                 <li
                   key={i}
-                  className="flex items-start gap-2 text-xs text-slate-300 bg-slate-950/50 rounded-xl p-3 border border-slate-800/60"
+                  className="flex items-start gap-2 text-xs text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-[#0B1120] rounded-xl p-3 border border-slate-200 dark:border-slate-800"
                 >
                   <span className="w-5 h-5 rounded-full bg-[#00B5F1]/15 text-[#00B5F1] flex items-center justify-center text-[10px] font-black shrink-0">
                     {i + 1}
@@ -749,13 +726,13 @@ export default function ProjectScopeWorkshopGenerator() {
           </div>
 
           {/* Ügyfél levél */}
-          <div className="bg-slate-900/60 backdrop-blur-xl border border-[#00B5F1]/30 rounded-3xl p-6 md:p-8 space-y-4">
-            <h3 className="text-lg font-bold text-white flex items-center gap-2">
+          <div className="bg-slate-50 dark:bg-[#0B1120] backdrop-blur-xl border border-[#00B5F1]/30 rounded-3xl p-6 md:p-8 space-y-4">
+            <h3 className="text-lg font-bold text-[#0F172A] dark:text-[#F8FAFC] flex items-center gap-2">
               <Mail className="w-5 h-5 text-[#00B5F1]" />
               Kész Árajánlat-Kísérőlevél (Balog Norbert)
             </h3>
-            <div className="rounded-2xl border border-slate-800 bg-slate-950/60 p-5">
-              <pre className="whitespace-pre-wrap text-sm text-slate-300 font-sans leading-relaxed">
+            <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-[#0B1120] p-5">
+              <pre className="whitespace-pre-wrap text-sm text-slate-700 dark:text-slate-300 font-sans leading-relaxed">
                 {generatedOutput.clientProposalEmail}
               </pre>
             </div>
