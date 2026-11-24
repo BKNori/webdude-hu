@@ -1,17 +1,21 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import { buildBreadcrumbSchema } from "@/lib/breadcrumb";
 
 export const metadata: Metadata = {
   title: "Midjourney AI Műhely | WebDude",
   description:
-    "Professzionális Midjourney prompt generáló eszköz. Hozz létre lenyűgöző képeket AI-vel, marketing assetekhez és vizuális tartalomhoz. Cinematic, photorealistic és artistic stílusok. Egyedi árajánlat kérése.",
+    "Professzionális Midjourney v6 képgeneráló prompt-stúdió 85mm optikával és chiaroscuro fényeléssel márkavizuálokhoz. Egyedi árajánlat kérése közvetlenül.",
+  robots: {
+    index: true,
+    follow: true,
+  },
   alternates: {
     canonical: "https://webdude.hu/termekek/midjourney-ai-muhely",
   },
   openGraph: {
     title: "Midjourney AI Műhely | WebDude",
     description:
-      "Professzionális Midjourney prompt generáló eszköz. Hozz létre lenyűgöző képeket AI-vel, marketing assetekhez és vizuális tartalomhoz. Cinematic, photorealistic és artistic stílusok. Egyedi árajánlat kérése.",
+      "Professzionális Midjourney v6 képgeneráló prompt-stúdió 85mm optikával és chiaroscuro fényeléssel márkavizuálokhoz. Egyedi árajánlat kérése közvetlenül.",
     url: "https://webdude.hu/termekek/midjourney-ai-muhely",
     siteName: "WebDude",
     images: [
@@ -29,7 +33,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Midjourney AI Műhely | WebDude",
     description:
-      "Professzionális Midjourney prompt generáló eszköz. Hozz létre lenyűgöző képeket AI-vel, marketing assetekhez és vizuális tartalomhoz. Cinematic, photorealistic és artistic stílusok. Egyedi árajánlat kérése.",
+      "Professzionális Midjourney v6 képgeneráló prompt-stúdió 85mm optikával és chiaroscuro fényeléssel márkavizuálokhoz. Egyedi árajánlat kérése közvetlenül.",
     images: ["/og/webdude-og.jpg"],
   },
 };
@@ -39,7 +43,7 @@ const productJsonLd = {
   "@type": "Product",
   name: "Midjourney AI Műhely",
   description:
-    "Professzionális Midjourney prompt generáló eszköz. Hozz létre lenyűgöző képeket AI-vel, marketing assetekhez és vizuális tartalomhoz. Cinematic, photorealistic és artistic stílusok.",
+    "Professzionális Midjourney v6 képgeneráló prompt-stúdió 85mm optikával és chiaroscuro fényeléssel márkavizuálokhoz. Egyedi árajánlat kérése közvetlenül.",
   image: "https://webdude.hu/og/webdude-og.jpg",
   brand: {
     "@type": "Brand",
@@ -81,7 +85,11 @@ const breadcrumbSchema = buildBreadcrumbSchema([
   { name: "Midjourney AI Műhely", url: "/termekek/midjourney-ai-muhely" },
 ]);
 
-export default function MidjourneyAIMuhelyLayout({ children }: { children: React.ReactNode }) {
+export default function ProductRouteLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <>
       <script

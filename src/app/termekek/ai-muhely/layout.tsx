@@ -1,54 +1,39 @@
-import React from "react";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { buildBreadcrumbSchema } from "@/lib/breadcrumb";
 
 export const metadata: Metadata = {
   title: "AI Műhely Katalógus | WebDude",
   description:
-    "Teljes 14 modulos AI Műhely arzenál plusz Kristófka munkafolyamat. Professzionális eszközök branding, tartalom, dizájn, technikai és workflow feladatokhoz.",
-  keywords: [
-    "AI Műhely",
-    "Logo AI Műhely",
-    "Midjourney AI Műhely",
-    "SEO Audit AI Műhely",
-    "Tartalomtervező AI Műhely",
-    "UI/UX AI Műhely",
-    "Szezonalis AI Műhely",
-    "Banner AI Műhely",
-    "Poster AI Műhely",
-    "Social Media AI Műhely",
-    "CIP AI Műhely",
-    "Presentation AI Műhely",
-    "Icon Design AI Műhely",
-    "Design System AI Műhely",
-    "Kristófka Munkafolyamat",
-    "WebDude AI Studio",
-  ],
+    "Ötpilléres WebDude AI Műhely katalógus: arculat, kampánygrafika, nyomdai prepress, architektúra és SEO/AEO modulok cégeknek. Egyedi árajánlat kérése most.",
+  robots: {
+    index: true,
+    follow: true,
+  },
   alternates: {
     canonical: "https://webdude.hu/termekek/ai-muhely",
   },
   openGraph: {
     title: "AI Műhely Katalógus | WebDude",
     description:
-      "Teljes 14 modulos AI Műhely arzenál plusz Kristófka munkafolyamat. Professzionális eszközök branding, tartalom, dizájn, technikai és workflow feladatokhoz.",
-    type: "website",
+      "Ötpilléres WebDude AI Műhely katalógus: arculat, kampánygrafika, nyomdai prepress, architektúra és SEO/AEO modulok cégeknek. Egyedi árajánlat kérése most.",
     url: "https://webdude.hu/termekek/ai-muhely",
+    siteName: "WebDude",
     images: [
       {
         url: "/og/ai-muhely.jpg",
         width: 1200,
         height: 630,
-        alt: "WebDude AI Műhely Katalógus",
+        alt: "AI Műhely Katalógus",
       },
     ],
     locale: "hu_HU",
-    siteName: "WebDude",
+    type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "AI Műhely Katalógus | WebDude",
     description:
-      "Teljes 14 modulos AI Műhely arzenál plusz Kristófka munkafolyamat. Professzionális eszközök branding, tartalom, dizájn, technikai és workflow feladatokhoz.",
+      "Ötpilléres WebDude AI Műhely katalógus: arculat, kampánygrafika, nyomdai prepress, architektúra és SEO/AEO modulok cégeknek. Egyedi árajánlat kérése most.",
     images: ["/og/ai-muhely.jpg"],
   },
 };
@@ -58,7 +43,7 @@ const productJsonLd = {
   "@type": "Product",
   name: "AI Műhely Katalógus",
   description:
-    "Teljes 14 modulos AI Műhely arzenál plusz Kristófka munkafolyamat. Professzionális eszközök branding, tartalom, dizájn, technikai és workflow feladatokhoz.",
+    "Ötpilléres WebDude AI Műhely katalógus: arculat, kampánygrafika, nyomdai prepress, architektúra és SEO/AEO modulok cégeknek. Egyedi árajánlat kérése most.",
   image: "https://webdude.hu/og/ai-muhely.jpg",
   brand: {
     "@type": "Brand",
@@ -100,7 +85,7 @@ const breadcrumbSchema = buildBreadcrumbSchema([
   { name: "AI Műhely Katalógus", url: "/termekek/ai-muhely" },
 ]);
 
-export default function AiWorkshopLayout({
+export default function ProductRouteLayout({
   children,
 }: {
   children: React.ReactNode;

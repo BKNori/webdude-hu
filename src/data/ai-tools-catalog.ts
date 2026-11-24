@@ -6,7 +6,7 @@
  * függetlenül 100% bypass hozzáféréssel rendelkezik.
  *
  * Használat: `/admin/portal-kezelo` jogosultság-panel checkboxai,
- * AdminPanel eszközlista, dokumentáció.
+ * AdminPanel eszközlista, `ToolAccessGate`, `authorizeToolAccess`.
  */
 export interface AiToolOption {
   id: string;
@@ -14,6 +14,12 @@ export interface AiToolOption {
 }
 
 export const AI_TOOL_CATALOG: AiToolOption[] = [
+  // --- Pro Prompt Stúdiók (5 szakmai pillér) ---
+  { id: "online_graphics_prompt_studio", name: "Online Grafika & Kampány Pro Prompt Stúdió" },
+  { id: "offline_print_prompt_studio", name: "Offline & Nyomdai Prepress Pro Prompt Stúdió" },
+  { id: "apparel_merch_prompt_studio", name: "Ruha, Textil & Merch Pro Prompt Stúdió" },
+  { id: "software_arch_prompt_studio", name: "Web & Szoftver-Architektúra Pro Prompt Stúdió" },
+  { id: "analysis_audit_prompt_studio", name: "Profi Elemzés & Audit Pro Prompt Stúdió" },
   // --- ClientAITools / SingleAITool (általános AI tartalom eszközök) ---
   { id: "product_desc", name: "Termékleírás & AEO" },
   { id: "review_assistant", name: "Ügyfélszolgálati Válasz" },
@@ -25,7 +31,7 @@ export const AI_TOOL_CATALOG: AiToolOption[] = [
   { id: "ui_ux_designer", name: "UI/UX Wireframe" },
   { id: "seasonal_campaign_designer", name: "Szezonális Vizuál" },
   { id: "kristofka_workflow", name: "Kristófka Munkafolyamat" },
-  // --- Workshop generátorok (portal/ai-muhely/*) ---
+  // --- Workshop generátorok (portal/ai-muhely/* & termekek/*) ---
   { id: "banner_ai_muhely", name: "Banner AI Műhely" },
   { id: "logo_ai_muhely", name: "Logó AI Műhely" },
   { id: "flyer_ai_muhely", name: "Szórólap AI Műhely" },

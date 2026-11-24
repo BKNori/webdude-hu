@@ -1,17 +1,21 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import { buildBreadcrumbSchema } from "@/lib/breadcrumb";
 
 export const metadata: Metadata = {
   title: "Logo AI Műhely | WebDude",
   description:
-    "Egyedi arculattervezés és logo generálás Midjourney v6 Master promptokkal. Prémium vizuális identitás kialakítása. Egyedi árajánlat kérése.",
+    "Egyedi arculattervezés és logó generálás Midjourney v6 Master promptokkal, vektoros és 300 DPI nyomdakész kivitelhez. Egyedi árajánlat kérése közvetlenül.",
+  robots: {
+    index: true,
+    follow: true,
+  },
   alternates: {
     canonical: "https://webdude.hu/termekek/logo-ai-muhely",
   },
   openGraph: {
     title: "Logo AI Műhely | WebDude",
     description:
-      "Egyedi arculattervezés és logo generálás Midjourney v6 Master promptokkal. Prémium vizuális identitás kialakítása. Egyedi árajánlat kérése.",
+      "Egyedi arculattervezés és logó generálás Midjourney v6 Master promptokkal, vektoros és 300 DPI nyomdakész kivitelhez. Egyedi árajánlat kérése közvetlenül.",
     url: "https://webdude.hu/termekek/logo-ai-muhely",
     siteName: "WebDude",
     images: [
@@ -29,7 +33,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Logo AI Műhely | WebDude",
     description:
-      "Egyedi arculattervezés és logo generálás Midjourney v6 Master promptokkal. Prémium vizuális identitás kialakítása. Egyedi árajánlat kérése.",
+      "Egyedi arculattervezés és logó generálás Midjourney v6 Master promptokkal, vektoros és 300 DPI nyomdakész kivitelhez. Egyedi árajánlat kérése közvetlenül.",
     images: ["/og/webdude-og.jpg"],
   },
 };
@@ -39,7 +43,7 @@ const productJsonLd = {
   "@type": "Product",
   name: "Logo AI Műhely",
   description:
-    "Professzionális AI logó tervező eszköz. Generálj egyedi logókat AI-vel, minimalistától a luxusig. Vektoros outputok, branding guideline-k és teljes identity rendszer.",
+    "Egyedi arculattervezés és logó generálás Midjourney v6 Master promptokkal, vektoros és 300 DPI nyomdakész kivitelhez. Egyedi árajánlat kérése közvetlenül.",
   image: "https://webdude.hu/og/webdude-og.jpg",
   brand: {
     "@type": "Brand",
@@ -81,7 +85,11 @@ const breadcrumbSchema = buildBreadcrumbSchema([
   { name: "Logo AI Műhely", url: "/termekek/logo-ai-muhely" },
 ]);
 
-export default function LogoAIMuhelyLayout({ children }: { children: React.ReactNode }) {
+export default function ProductRouteLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <>
       <script

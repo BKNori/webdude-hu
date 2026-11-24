@@ -1,495 +1,134 @@
-"use client";
+import Link from "next/link";
+import { Calendar, Gift, Sun, Star, ArrowRight, Sparkles } from "lucide-react";
+import DirectAnswerBlock from "@/components/molecules/DirectAnswerBlock";
+import ProductFaqSection from "@/components/molecules/ProductFaqSection";
+import ProductPortalCta from "@/components/molecules/ProductPortalCta";
+import ToolAccessGate from "@/components/molecules/ToolAccessGate";
+import SeasonalPromptGenerator from "@/components/organisms/SeasonalPromptGenerator";
 
-import { useState } from "react";
-import { motion } from "motion/react";
-import {
-  Sparkles,
-  Calendar,
-  Gift,
-  Sun,
-  Zap,
-  ArrowRight,
-  Copy,
-  RefreshCw,
-  Star
-} from "lucide-react";
+/**
+ * /termekek/szezonalis-ai-muhely — PUBLIKUS, statikusan prerenderelt SEO/AEO/GEO landing.
+ * A generátor kizárólag `ToolAccessGate` mögött (allowedTools: "szezonalis_ai_muhely"
+ * vagy Szuperadmin) mountolódik.
+ */
 
-const seasonalCampaigns = [
-  {
-    id: "christmas",
-    name: "Karácsony",
-    description: "Ünnepi karácsonyi kampány",
-    prompt:
-      "Christmas campaign visual, holiday festive atmosphere, warm colors, decorative elements, seasonal marketing, premium holiday aesthetic",
-    color: "from-red-500 to-green-500"
-  },
-  {
-    id: "easter",
-    name: "Húsvét",
-    description: "Tavaszi húsvéti kampány",
-    prompt:
-      "Easter campaign visual, spring fresh colors, pastel tones, seasonal elements, festive spring aesthetic",
-    color: "from-pink-500 to-brand-secondary"
-  },
-  {
-    id: "summer",
-    name: "Nyár",
-    description: "Nyári szezonális kampány",
-    prompt:
-      "Summer campaign visual, bright warm colors, beach vibes, energetic atmosphere, seasonal summer aesthetic",
-    color: "from-brand-secondary to-brand-primary"
-  },
-  {
-    id: "autumn",
-    name: "Ősz",
-    description: "Őszi szezonális kampány",
-    prompt:
-      "Autumn campaign visual, warm earth tones, falling leaves, cozy atmosphere, seasonal autumn aesthetic",
-    color: "from-[#00B5F1] to-brand-secondary"
-  },
-  {
-    id: "blackfriday",
-    name: "Black Friday",
-    description: "Akciós kampány",
-    prompt:
-      "Black Friday campaign visual, bold urgent colors, promotional elements, sale atmosphere, high-contrast marketing aesthetic",
-    color: "from-purple-500 to-red-500"
-  },
-  {
-    id: "newyear",
-    name: "Újév",
-    description: "Újévi kampány",
-    prompt:
-      "New Year campaign visual, celebration atmosphere, fireworks, fresh start aesthetic, premium holiday design",
-    color: "from-blue-500 to-purple-500"
-  }
-];
+const features = [
+  { icon: Calendar, title: "Szezonális Kampányok", description: "Éves ünnepi és szezonnyitó marketingkampányok tervezése" },
+  { icon: Gift, title: "Ünnepi Vizuálok", description: "Karácsonyi, Black Friday, tavaszi és nyári kreatívok" },
+  { icon: Sun, title: "Midjourney v6 Master", description: "Egységes márkaesztétikát tartó prompt sablonok" },
+  { icon: Star, title: "Gyors Kampányindítás", description: "Rövidebb előkészítési idő, következetes 4K kimenetek" },
+] as const;
 
-const eventTypes = [
-  { id: "birthday", name: "Születésnap", description: "Születésnapi ünnep" },
-  { id: "anniversary", name: "Évforduló", description: "Évforduló ünnep" },
-  { id: "valentine", name: "Valentin-nap", description: "Szerelmi ünnep" },
-  { id: "halloween", name: "Halloween", description: "Őszi ünnep" }
-];
-
-const visualStyles = [
-  { id: "festive", name: "Ünnepi", description: "Díszes, ünnepi" },
+const faqs = [
   {
-    id: "minimalist",
-    name: "Minimalista",
-    description: "Egyszerű, letisztult"
+    question: "Milyen kampányokhoz használható a Szezonális AI Műhely?",
+    answer:
+      "Karácsonyi, Black Friday, húsvéti, nyári, őszi és évindító kampányokhoz készít Midjourney v6 vizuális promptokat, a márkád stílusához és az aktuális ajánlat üzenetéhez igazítva.",
   },
-  { id: "modern", name: "Modern", description: "Kortárs, stílusos" },
   {
-    id: "traditional",
-    name: "Hagyományos",
-    description: "Klasszikus, hagyományos"
-  }
-];
+    question: "Ki férhet hozzá a Szezonális AI Műhely generátorhoz?",
+    answer:
+      "A generátor zárt prémium AI modul: kizárólag bejelentkezett, jóváhagyott ügyfeleim használhatják, akiknek a fiókjához engedélyeztem a modult. Hozzáférést a kapcsolat oldalon igényelhetsz.",
+  },
+  {
+    question: "Mennyibe kerül a Szezonális AI Műhely hozzáférés?",
+    answer:
+      "Minden kampánytervezési csomag és portál-hozzáférés egyedi árajánlat alapján érhető el, az éves kampánynaptáradhoz és kreatívigényeidhez szabva.",
+  },
+] as const;
 
 export default function SzezonalisAIMuhelyPage() {
-  const [selectedCampaign, setSelectedCampaign] = useState(
-    seasonalCampaigns[0]
-  );
-  const [selectedEvent, setSelectedEvent] = useState(eventTypes[0]);
-  const [selectedStyle, setSelectedStyle] = useState(visualStyles[0]);
-  const [generatedPrompt, setGeneratedPrompt] = useState("");
-  const [isGenerating, setIsGenerating] = useState(false);
-  const [campaignGoal, setCampaignGoal] = useState("");
-  const [targetAudience, setTargetAudience] = useState("");
-  const [promotion, setPromotion] = useState("");
-  const [customInstructions, setCustomInstructions] = useState("");
-
-  const generatePrompt = () => {
-    setIsGenerating(true);
-    setTimeout(() => {
-      let prompt = `Seasonal campaign for ${selectedCampaign.name}, ${selectedCampaign.description}, ${selectedEvent.name} (${selectedEvent.description}), ${selectedStyle.name} (${selectedStyle.description}), ${selectedCampaign.prompt}, Midjourney v6 Master prompt, 90/8/2 color ratio rule, professional seasonal design, commercial quality`;
-
-      if (campaignGoal) {
-        prompt += `, campaign goal: ${campaignGoal}`;
-      }
-      if (targetAudience) {
-        prompt += `, target audience: ${targetAudience}`;
-      }
-      if (promotion) {
-        prompt += `, promotion: ${promotion}`;
-      }
-      if (customInstructions) {
-        prompt += `, custom requirements: ${customInstructions}`;
-      }
-
-      setGeneratedPrompt(prompt);
-      setIsGenerating(false);
-    }, 1500);
-  };
-
-  const copyPrompt = () => {
-    navigator.clipboard.writeText(generatedPrompt);
-  };
-
   return (
-    <>
-        <div className="min-h-screen bg-bg-base">
-          {/* Hero Section */}
-          <section className="relative py-24 overflow-hidden">
-            <div className="absolute inset-0 bg-linear-to-b from-[#00B5F1]/5 via-transparent to-transparent" />
-            <div className="max-w-6xl mx-auto px-6 relative z-10">
-              <div className="text-center space-y-6">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5 }}
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0369A1]/10 dark:bg-[#00B5F1]/10 border border-[#0369A1]/25 dark:border-[#00B5F1]/20"
-                >
-                  <Sparkles className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
-                  <span className="text-xs font-bold text-[#0369A1] dark:text-[#00B5F1] uppercase tracking-[0.2em]">
-                    AI Műhely
-                  </span>
-                </motion.div>
-                <motion.h1
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.1 }}
-                  className="text-4xl md:text-6xl font-bold text-text-primary tracking-tight"
-                >
-                  Szezonalis AI{" "}
-                  <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6]">
-                    Műhely
-                  </span>
-                </motion.h1>
-                <motion.p
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
-                  className="text-lg text-text-secondary max-w-2xl mx-auto tracking-wide font-medium"
-                >
-                  Szezonalis grafikai kampányok AI eszközökkel. Ünnepi és
-                  szezonális vizuálok generálása Midjourney v6 Master
-                  promptokkal. 4.2x szezonális konverzió, 78% kampány idő
-                  megtakarítás, 4K felbontású outputok.
-                </motion.p>
-              </div>
+    <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#0B1120] text-[#0F172A] dark:text-[#F8FAFC]">
+      <section className="relative py-24 md:py-32 overflow-hidden">
+        <div className="absolute inset-0 bg-linear-to-b from-[#0369A1]/5 dark:from-[#00B5F1]/5 via-transparent to-transparent pointer-events-none" />
+        <div className="max-w-6xl mx-auto px-6 relative z-10">
+          <div className="text-center space-y-6">
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0369A1]/10 dark:bg-[#00B5F1]/10 border border-[#0369A1]/25 dark:border-[#00B5F1]/20">
+              <Sparkles className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" aria-hidden="true" />
+              <span className="text-xs font-bold text-[#0369A1] dark:text-[#00B5F1] uppercase tracking-[0.2em]">
+                AI Műhely
+              </span>
+            </span>
+            <h1 className="text-5xl md:text-7xl text-[#0F172A] dark:text-white tracking-tight">
+              Szezonális AI{" "}
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#0369A1] to-[#6D28D9] dark:from-[#00B5F1] dark:to-[#A78BFA]">
+                Műhely
+              </span>
+            </h1>
+            <p className="text-lg text-[#334155] dark:text-slate-300 max-w-2xl mx-auto leading-relaxed">
+              Szezonális grafikai kampányok tervezése AI eszközökkel. Ünnepi, Black Friday és szezonnyitó
+              vizuálok előkészítése Midjourney v6 Master promptokkal, 4K felbontású kimenetekhez.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+              <Link
+                href="/kapcsolat"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-linear-to-r from-[#075985] to-[#5B21B6] hover:from-[#0369A1] hover:to-[#6D28D9] text-white font-bold rounded-full uppercase tracking-wider text-sm transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2"
+              >
+                Egyedi árajánlat kérése
+                <ArrowRight className="w-4 h-4" aria-hidden="true" />
+              </Link>
             </div>
-          </section>
-
-          {/* AI Generator Section */}
-          <section className="py-16 border-t border-bg-elevated">
-            <div className="max-w-6xl mx-auto px-6">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="bg-bg-surface border border-bg-elevated rounded-2xl p-8 shadow-[0_8px_32px_rgba(0,0,0,0.4)]"
-              >
-                <div className="flex items-center gap-3 mb-8">
-                  <div className="w-12 h-12 rounded-xl bg-linear-to-br from-[#00B5F1]/10 to-[#5B21B6]/10 border border-[#0369A1]/25 dark:border-[#00B5F1]/20 flex items-center justify-center">
-                    <Calendar className="w-6 h-6 text-[#0369A1] dark:text-[#00B5F1]" />
-                  </div>
-                  <div>
-                    <h2 className="text-2xl font-bold text-text-primary">
-                      AI Szezonalis Generator
-                    </h2>
-                    <p className="text-sm text-text-secondary">
-                      Szezonalis kampány prompt generálás
-                    </p>
-                  </div>
-                </div>
-
-                {/* Seasonal Campaign Selection */}
-                <div className="mb-8">
-                  <label className="text-sm font-bold text-[#0369A1] dark:text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
-                    Szezonális kampány
-                  </label>
-                  <div className="grid md:grid-cols-3 gap-4">
-                    {seasonalCampaigns.map((campaign) => (
-                      <motion.button
-                        key={campaign.id}
-                        onClick={() => setSelectedCampaign(campaign)}
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                        className={`p-4 rounded-xl border-2 transition-all ${
-                          selectedCampaign.id === campaign.id
-                            ? "border-[#00B5F1] bg-[#0369A1]/10 dark:bg-[#00B5F1]/10"
-                            : "border-bg-elevated bg-bg-surface hover:border-[#00B5F1]/50"
-                        }`}
-                      >
-                        <div className="w-8 h-8 rounded-lg bg-linear-to-br ${campaign.color} mb-3" />
-                        <h3 className="text-base font-bold text-text-primary mb-1">
-                          {campaign.name}
-                        </h3>
-                        <p className="text-xs text-text-secondary">
-                          {campaign.description}
-                        </p>
-                      </motion.button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Event Type & Visual Style */}
-                <div className="grid md:grid-cols-2 gap-6 mb-8">
-                  <div>
-                    <label className="text-sm font-bold text-[#0369A1] dark:text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
-                      Esemény típus
-                    </label>
-                    <div className="space-y-2">
-                      {eventTypes.map((event) => (
-                        <button
-                          key={event.id}
-                          onClick={() => setSelectedEvent(event)}
-                          className={`w-full p-3 rounded-lg border-2 transition-all flex items-center justify-between ${
-                            selectedEvent.id === event.id
-                              ? "border-[#00B5F1] bg-[#0369A1]/10 dark:bg-[#00B5F1]/10"
-                              : "border-bg-elevated bg-bg-surface hover:border-[#00B5F1]/50"
-                          }`}
-                        >
-                          <span className="text-sm font-medium text-text-primary">
-                            {event.name}
-                          </span>
-                          <span className="text-xs text-text-secondary">
-                            {event.description}
-                          </span>
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="text-sm font-bold text-[#0369A1] dark:text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
-                      Vizuális stílus
-                    </label>
-                    <div className="space-y-2">
-                      {visualStyles.map((style) => (
-                        <button
-                          key={style.id}
-                          onClick={() => setSelectedStyle(style)}
-                          className={`w-full p-3 rounded-lg border-2 transition-all ${
-                            selectedStyle.id === style.id
-                              ? "border-[#00B5F1] bg-[#0369A1]/10 dark:bg-[#00B5F1]/10"
-                              : "border-bg-elevated bg-bg-surface hover:border-[#00B5F1]/50"
-                          }`}
-                        >
-                          <div className="flex items-center justify-between">
-                            <span className="text-sm font-medium text-text-primary">
-                              {style.name}
-                            </span>
-                            <span className="text-xs text-text-secondary">
-                              {style.description}
-                            </span>
-                          </div>
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Text Input Fields */}
-                <div className="space-y-6 mb-8">
-                  <div>
-                    <label className="text-sm font-bold text-[#0369A1] dark:text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
-                      Kampány cél (opcionális)
-                    </label>
-                    <input
-                      type="text"
-                      value={campaignGoal}
-                      onChange={(e) => setCampaignGoal(e.target.value)}
-                      placeholder="pl. eladás növelése, márka építés, új termék bevezetés"
-                      className="w-full p-3 rounded-lg border-2 border-bg-elevated bg-bg-base text-text-primary placeholder:text-text-secondary focus:border-[#00B5F1] focus:outline-none transition-all"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="text-sm font-bold text-[#0369A1] dark:text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
-                      Célközönség (opcionális)
-                    </label>
-                    <input
-                      type="text"
-                      value={targetAudience}
-                      onChange={(e) => setTargetAudience(e.target.value)}
-                      placeholder="pl. fiatal felnőttek, üzleti döntéshozók, szülők"
-                      className="w-full p-3 rounded-lg border-2 border-bg-elevated bg-bg-base text-text-primary placeholder:text-text-secondary focus:border-[#00B5F1] focus:outline-none transition-all"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="text-sm font-bold text-[#0369A1] dark:text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
-                      Promóció / Ajánlat (opcionális)
-                    </label>
-                    <input
-                      type="text"
-                      value={promotion}
-                      onChange={(e) => setPromotion(e.target.value)}
-                      placeholder="pl. 50% kedvezmény, Buy 1 Get 1 Free, Ingyenes szállítás"
-                      className="w-full p-3 rounded-lg border-2 border-bg-elevated bg-bg-base text-text-primary placeholder:text-text-secondary focus:border-[#00B5F1] focus:outline-none transition-all"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="text-sm font-bold text-[#0369A1] dark:text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
-                      Egyedi utasítások (opcionális)
-                    </label>
-                    <textarea
-                      value={customInstructions}
-                      onChange={(e) => setCustomInstructions(e.target.value)}
-                      placeholder="pl. hangsúly a konverzióra, ünnepi hangulat, prémium megjelenés"
-                      rows={3}
-                      className="w-full p-3 rounded-lg border-2 border-bg-elevated bg-bg-base text-text-primary placeholder:text-text-secondary focus:border-[#00B5F1] focus:outline-none transition-all resize-none"
-                    />
-                  </div>
-                </div>
-
-                {/* Generate Button */}
-                <motion.button
-                  onClick={generatePrompt}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  disabled={isGenerating}
-                  className="w-full py-4 bg-linear-to-r from-[#075985] to-[#5B21B6] hover:from-[#0369A1] hover:to-[#6D28D9] text-white font-bold rounded-xl hover:shadow-[0_8px_32px_rgba(0, 181, 241,0.4)] transition-all flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {isGenerating ? (
-                    <>
-                      <RefreshCw className="w-5 h-5 animate-spin" />
-                      <span>Generálás folyamatban...</span>
-                    </>
-                  ) : (
-                    <>
-                      <Zap className="w-5 h-5" />
-                      <span>Midjourney Prompt Generálás</span>
-                    </>
-                  )}
-                </motion.button>
-
-                {/* Generated Prompt */}
-                {generatedPrompt && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
-                    className="mt-8 p-6 bg-bg-base border border-bg-elevated rounded-xl"
-                  >
-                    <div className="flex items-center justify-between mb-4">
-                      <h3 className="text-lg font-bold text-text-primary">
-                        Generált Prompt
-                      </h3>
-                      <div className="flex gap-2">
-                        <motion.button
-                          onClick={copyPrompt}
-                          whileHover={{ scale: 1.1 }}
-                          whileTap={{ scale: 0.9 }}
-                          className="p-2 rounded-lg bg-[#0369A1]/10 dark:bg-[#00B5F1]/10 border border-[#0369A1]/25 dark:border-[#00B5F1]/20 text-[#0369A1] dark:text-[#00B5F1] hover:bg-[#00B5F1]/20 transition-all"
-                        >
-                          <Copy className="w-4 h-4" />
-                        </motion.button>
-                      </div>
-                    </div>
-                    <p className="text-sm text-text-secondary leading-relaxed">
-                      {generatedPrompt}
-                    </p>
-                  </motion.div>
-                )}
-              </motion.div>
-            </div>
-          </section>
-
-          {/* Features Section */}
-          <section className="py-16 border-t border-bg-elevated">
-            <div className="max-w-6xl mx-auto px-6">
-              <motion.h2
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="text-3xl font-bold text-text-primary mb-8 text-center tracking-tight"
-              >
-                Funkciók és{" "}
-                <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6]">
-                  Előnyök
-                </span>
-              </motion.h2>
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                {[
-                  {
-                    icon: Calendar,
-                    title: "Szezonalis Kampányok",
-                    description: "Szezonális marketing kampányok"
-                  },
-                  {
-                    icon: Gift,
-                    title: "Ünnepi Vizuálok",
-                    description: "Ünnepi grafikák generálása"
-                  },
-                  {
-                    icon: Sun,
-                    title: "Midjourney v6 Master",
-                    description: "Prémium prompt sablonok"
-                  },
-                  {
-                    icon: Star,
-                    title: "Automatikus Generálás",
-                    description: "Automatikus vizuál generálás"
-                  }
-                ].map((feature, index) => {
-                  const FeatureIcon = feature.icon;
-                  return (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: index * 0.1 }}
-                      className="bg-bg-surface border border-bg-elevated rounded-xl p-6 hover:border-[#00B5F1]/50 transition-all group"
-                    >
-                      <div className="w-12 h-12 rounded-xl bg-linear-to-br from-[#00B5F1]/10 to-[#5B21B6]/10 border border-[#0369A1]/25 dark:border-[#00B5F1]/20 flex items-center justify-center mb-4 group-hover:border-[#00B5F1]/50 transition-colors">
-                        <FeatureIcon className="w-6 h-6 text-[#0369A1] dark:text-[#00B5F1]" />
-                      </div>
-                      <h3 className="text-lg font-bold text-text-primary mb-2">
-                        {feature.title}
-                      </h3>
-                      <p className="text-sm text-text-secondary">
-                        {feature.description}
-                      </p>
-                    </motion.div>
-                  );
-                })}
-              </div>
-            </div>
-          </section>
-
-          {/* CTA Section */}
-          <section className="py-16 border-t border-bg-elevated">
-            <div className="max-w-4xl mx-auto px-6 text-center">
-              <motion.h2
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="text-3xl font-bold text-text-primary mb-4 tracking-tight"
-              >
-                Készen állsz a{" "}
-                <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6]">
-                  Szezonalis Kampányokra
-                </span>
-                ?
-              </motion.h2>
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                className="text-text-secondary mb-8"
-              >
-                Próbáld ki az AI Szezonalis Generátort és hozz létre lenyűgöző
-                szezonális kampányokat percek alatt!
-              </motion.p>
-              <motion.button
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="inline-flex items-center gap-2 px-8 py-4 bg-linear-to-r from-[#075985] to-[#5B21B6] hover:from-[#0369A1] hover:to-[#6D28D9] text-white font-bold rounded-xl hover:shadow-[0_8px_32px_rgba(0, 181, 241,0.4)] transition-all"
-              >
-                Kezdés most
-                <ArrowRight className="w-4 h-4" />
-              </motion.button>
-            </div>
-          </section>
+          </div>
         </div>
-    </>
+      </section>
+
+      <DirectAnswerBlock
+        id="szezonalis-ai-muhely-direct-answer"
+        question="Hogyan gyorsítja fel a kampányindítást a Szezonális AI Műhely?"
+        answer="A Szezonális AI Műhely ünnepi és időszakos marketingkampányokhoz (Karácsony, Black Friday, szezonváltás) állít össze egységes Midjourney v6 vizuális promptokat. 26 év tervezőgrafikai és 16 év webfejlesztői tapasztalattal segít hetek helyett órák alatt kampánykész látványvilágot építeni — egyedi árajánlat alapján."
+      />
+
+      <section aria-labelledby="seasonal-generator-heading" className="py-16 border-t border-slate-200 dark:border-slate-800/80">
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 id="seasonal-generator-heading" className="text-3xl md:text-4xl text-center mb-8 tracking-tight">
+            AI Szezonális Generátor
+          </h2>
+          <ToolAccessGate toolId="szezonalis_ai_muhely" toolName="Szezonális AI Műhely">
+            <SeasonalPromptGenerator />
+          </ToolAccessGate>
+        </div>
+      </section>
+
+      <section className="py-16 border-t border-slate-200 dark:border-slate-800/80 bg-[#F1F5F9] dark:bg-transparent">
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 className="text-3xl md:text-4xl mb-8 text-center tracking-tight">Funkciók és Előnyök</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {features.map((feature) => {
+              const FeatureIcon = feature.icon;
+              return (
+                <div key={feature.title} className="luminous-card rounded-3xl p-6">
+                  <div className="w-12 h-12 rounded-xl bg-linear-to-br from-[#00B5F1]/10 to-[#5B21B6]/10 border border-[#0369A1]/25 dark:border-[#00B5F1]/20 flex items-center justify-center mb-4">
+                    <FeatureIcon className="w-6 h-6 text-[#0369A1] dark:text-[#00B5F1]" aria-hidden="true" />
+                  </div>
+                  <h3 className="text-xl text-[#0F172A] dark:text-white mb-2">{feature.title}</h3>
+                  <p className="text-sm text-[#334155] dark:text-slate-300">{feature.description}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <ProductFaqSection id="szezonalis-ai-muhely-faq" faqs={faqs} />
+
+      <section className="py-16 border-t border-slate-200 dark:border-slate-800/80">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <h2 className="text-3xl md:text-4xl mb-4 tracking-tight">Készen állsz a Szezonális Kampányokra?</h2>
+          <p className="text-[#334155] dark:text-slate-300 mb-8">
+            Igényelj hozzáférést a Szezonális AI Műhelyhez, vagy kérj egyedi árajánlatot következő kampányodra.
+          </p>
+          <Link
+            href="/kapcsolat"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-linear-to-r from-[#075985] to-[#5B21B6] hover:from-[#0369A1] hover:to-[#6D28D9] text-white font-bold rounded-full uppercase tracking-wider text-sm transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2"
+          >
+            Hozzáférés igénylése
+            <ArrowRight className="w-4 h-4" aria-hidden="true" />
+          </Link>
+        </div>
+      </section>
+
+      <ProductPortalCta productName="Szezonális AI Műhely" />
+    </div>
   );
 }

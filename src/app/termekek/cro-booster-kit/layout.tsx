@@ -4,14 +4,18 @@ import { buildBreadcrumbSchema } from "@/lib/breadcrumb";
 export const metadata: Metadata = {
   title: "CRO Booster Kit | WebDude",
   description:
-    "Konverzió optimalizáló eszközök és sablonok. Növeld a konverziós rátádat 2.5x-re A/B teszteléssel, heatmap analitikával és konverzió-optimalizált landing page sablonokkal. Egyedi árajánlat kérése.",
+    "Konverzió-optimalizáló rendszer A/B teszteléssel, hőtérképes viselkedéselemzéssel és súrlódásmentes ügyfélút-tervezéssel. Egyedi árajánlat kérése most.",
+  robots: {
+    index: true,
+    follow: true,
+  },
   alternates: {
     canonical: "https://webdude.hu/termekek/cro-booster-kit",
   },
   openGraph: {
     title: "CRO Booster Kit | WebDude",
     description:
-      "Konverzió optimalizáló eszközök és sablonok. Növeld a konverziós rátádat 2.5x-re A/B teszteléssel, heatmap analitikával és konverzió-optimalizált landing page sablonokkal. Egyedi árajánlat kérése.",
+      "Konverzió-optimalizáló rendszer A/B teszteléssel, hőtérképes viselkedéselemzéssel és súrlódásmentes ügyfélút-tervezéssel. Egyedi árajánlat kérése most.",
     url: "https://webdude.hu/termekek/cro-booster-kit",
     siteName: "WebDude",
     images: [
@@ -29,7 +33,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "CRO Booster Kit | WebDude",
     description:
-      "Konverzió optimalizáló eszközök és sablonok. Növeld a konverziós rátádat 2.5x-re A/B teszteléssel, heatmap analitikával és konverzió-optimalizált landing page sablonokkal. Egyedi árajánlat kérése.",
+      "Konverzió-optimalizáló rendszer A/B teszteléssel, hőtérképes viselkedéselemzéssel és súrlódásmentes ügyfélút-tervezéssel. Egyedi árajánlat kérése most.",
     images: ["/og/webdude-og.jpg"],
   },
 };
@@ -39,7 +43,7 @@ const productJsonLd = {
   "@type": "Product",
   name: "CRO Booster Kit",
   description:
-    "Konverzió optimalizáló eszközök és sablonok. Növeld a konverziós rátádat 2.5x-re A/B teszteléssel, heatmap analitikával és konverzió-optimalizált landing page sablonokkal. 2.8x hirdetési ROI, 45% bounce rate csökkenés.",
+    "Konverzió-optimalizáló rendszer A/B teszteléssel, hőtérképes viselkedéselemzéssel és súrlódásmentes ügyfélút-tervezéssel. Egyedi árajánlat kérése most.",
   image: "https://webdude.hu/og/webdude-og.jpg",
   brand: {
     "@type": "Brand",
@@ -81,30 +85,11 @@ const breadcrumbSchema = buildBreadcrumbSchema([
   { name: "CRO Booster Kit", url: "/termekek/cro-booster-kit" },
 ]);
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "Milyen típusú oldalaknál alkalmazható a CRO Booster Kit?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "WooCommerce webáruházaknál, Next.js landing oldalaknál és B2B szolgáltatási értékesítési tölcséreknél egyaránt hatékony.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Mikor láthatók az első mérhető konverziós eredmények?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Az első A/B tesztek és CTA/checkout finomítások után jellemzően 14–30 napon belül mérhető az elmozdulás a GA4 konverziókban.",
-      },
-    },
-  ],
-};
-
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default function ProductRouteLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <>
       <script
@@ -117,12 +102,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(breadcrumbSchema).replace(/</g, "\\u003c"),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(faqSchema).replace(/</g, "\\u003c"),
         }}
       />
       {children}

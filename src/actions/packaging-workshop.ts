@@ -3,7 +3,7 @@
 import { z } from "zod";
 import { headers } from "next/headers";
 import { checkRateLimit, getClientIdentifier } from "@/lib/rate-limit";
-import { verifyUserToken } from "./portal";
+import { authorizeToolAccess } from "@/lib/tool-access";
 import { saveAiGeneration } from "@/lib/ai-generation-store";
 import type {
   PackagingWorkshopInput,
@@ -72,13 +72,12 @@ export async function addPackagingGenerationAction(
   }
 
   // 2. Auth Verification
-  const user = await verifyUserToken(idToken);
-  if (!user) {
-    return {
-      success: false,
-      error: "Jogosulatlan hozzáférés. Kérlek, jelentkezz be újra!",
-    };
+  // Auth + RBAC: érvényes idToken ÉS (Szuperadmin VAGY allowedTools ∋ "packaging_ai_muhely")
+  const access = await authorizeToolAccess(idToken, "packaging_ai_muhely");
+  if (!access.ok) {
+    return { success: false, error: access.error };
   }
+  const user = access.user;
 
   // 3. Schema Validation
   const validation = packagingGenerationSchema.safeParse(input);

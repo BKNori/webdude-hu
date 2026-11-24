@@ -1,17 +1,21 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import { buildBreadcrumbSchema } from "@/lib/breadcrumb";
 
 export const metadata: Metadata = {
-  title: "Szezonalis AI Műhely | WebDude",
+  title: "Szezonális AI Műhely | WebDude",
   description:
-    "Szezonális marketing kampányok AI-generált eszközökkel. Karácsony, Black Friday, Nyár, Őszi és egyedi szezonokhoz komplett kampány sablonok és vizuális tartalom. Egyedi árajánlat kérése.",
+    "Szezonális marketingkampányok tervezése Midjourney v6 Master promptokkal: Karácsony, Black Friday és szezonnyitó vizuálok. Egyedi árajánlat kérése most.",
+  robots: {
+    index: true,
+    follow: true,
+  },
   alternates: {
     canonical: "https://webdude.hu/termekek/szezonalis-ai-muhely",
   },
   openGraph: {
-    title: "Szezonalis AI Műhely | WebDude",
+    title: "Szezonális AI Műhely | WebDude",
     description:
-      "Szezonális marketing kampányok AI-generált eszközökkel. Karácsony, Black Friday, Nyár, Őszi és egyedi szezonokhoz komplett kampány sablonok és vizuális tartalom. Egyedi árajánlat kérése.",
+      "Szezonális marketingkampányok tervezése Midjourney v6 Master promptokkal: Karácsony, Black Friday és szezonnyitó vizuálok. Egyedi árajánlat kérése most.",
     url: "https://webdude.hu/termekek/szezonalis-ai-muhely",
     siteName: "WebDude",
     images: [
@@ -19,7 +23,7 @@ export const metadata: Metadata = {
         url: "/og/webdude-og.jpg",
         width: 1200,
         height: 630,
-        alt: "Szezonalis AI Műhely",
+        alt: "Szezonális AI Műhely",
       },
     ],
     locale: "hu_HU",
@@ -27,9 +31,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Szezonalis AI Műhely | WebDude",
+    title: "Szezonális AI Műhely | WebDude",
     description:
-      "Szezonális marketing kampányok AI-generált eszközökkel. Karácsony, Black Friday, Nyár, Őszi és egyedi szezonokhoz komplett kampány sablonok és vizuális tartalom. Egyedi árajánlat kérése.",
+      "Szezonális marketingkampányok tervezése Midjourney v6 Master promptokkal: Karácsony, Black Friday és szezonnyitó vizuálok. Egyedi árajánlat kérése most.",
     images: ["/og/webdude-og.jpg"],
   },
 };
@@ -37,9 +41,9 @@ export const metadata: Metadata = {
 const productJsonLd = {
   "@context": "https://schema.org",
   "@type": "Product",
-  name: "Szezonalis AI Műhely",
+  name: "Szezonális AI Műhely",
   description:
-    "Szezonális marketing kampányok AI-generált eszközökkel. Karácsony, Black Friday, Nyár, Őszi és egyedi szezonokhoz komplett kampány sablonok és vizuális tartalom.",
+    "Szezonális marketingkampányok tervezése Midjourney v6 Master promptokkal: Karácsony, Black Friday és szezonnyitó vizuálok. Egyedi árajánlat kérése most.",
   image: "https://webdude.hu/og/webdude-og.jpg",
   brand: {
     "@type": "Brand",
@@ -78,10 +82,14 @@ const productJsonLd = {
 const breadcrumbSchema = buildBreadcrumbSchema([
   { name: "Főoldal", url: "/" },
   { name: "Termékek", url: "/termekek" },
-  { name: "Szezonalis AI Műhely", url: "/termekek/szezonalis-ai-muhely" },
+  { name: "Szezonális AI Műhely", url: "/termekek/szezonalis-ai-muhely" },
 ]);
 
-export default function SzezonalisAIMuhelLayout({ children }: { children: React.ReactNode }) {
+export default function ProductRouteLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <>
       <script

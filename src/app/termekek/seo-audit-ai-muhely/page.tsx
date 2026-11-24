@@ -1,486 +1,134 @@
-"use client";
+import Link from "next/link";
+import { Search, TrendingUp, BarChart3, Target, ArrowRight, Sparkles } from "lucide-react";
+import DirectAnswerBlock from "@/components/molecules/DirectAnswerBlock";
+import ProductFaqSection from "@/components/molecules/ProductFaqSection";
+import ProductPortalCta from "@/components/molecules/ProductPortalCta";
+import ToolAccessGate from "@/components/molecules/ToolAccessGate";
+import SeoAuditPromptGenerator from "@/components/organisms/SeoAuditPromptGenerator";
 
-import { useState } from "react";
-import { motion } from "motion/react";
-import {
-  Sparkles,
-  Search,
-  TrendingUp,
-  BarChart3,
-  Zap,
-  ArrowRight,
-  Copy,
-  RefreshCw,
-  Target
-} from "lucide-react";
+/**
+ * /termekek/seo-audit-ai-muhely — PUBLIKUS, statikusan prerenderelt SEO/AEO/GEO landing.
+ * A generátor kizárólag `ToolAccessGate` mögött (allowedTools: "seo_audit_ai_muhely"
+ * vagy Szuperadmin) mountolódik.
+ */
 
-const auditTypes = [
-  {
-    id: "technical",
-    name: "Technikai SEO",
-    description: "Technikai elemzés",
-    prompt:
-      "technical SEO audit, site speed analysis, mobile optimization, crawlability, indexability, technical performance review",
-    color: "from-blue-500 to-sky-500"
-  },
-  {
-    id: "content",
-    name: "Tartalom SEO",
-    description: "Tartalom elemzés",
-    prompt:
-      "content SEO audit, keyword analysis, content quality, duplicate content, content structure optimization",
-    color: "from-purple-500 to-pink-500"
-  },
-  {
-    id: "aeo",
-    name: "AEO Optimalizáció",
-    description: "AI válasz motor",
-    prompt:
-      "AEO optimization, AI answer engine optimization, schema.org implementation, structured data, featured snippets",
-    color: "from-[#00B5F1] to-brand-secondary"
-  },
-  {
-    id: "local",
-    name: "Local SEO",
-    description: "Helyi keresés",
-    prompt:
-      "local SEO audit, Google Business Profile optimization, local citations, NAP consistency, local search ranking",
-    color: "from-green-500 to-emerald-500"
-  },
-  {
-    id: "performance",
-    name: "Teljesítmény",
-    description: "Lighthouse score",
-    prompt:
-      "performance SEO audit, Lighthouse score optimization, Core Web Vitals, page speed, loading time analysis",
-    color: "from-brand-secondary to-brand-primary"
-  },
-  {
-    id: "backlink",
-    name: "Backlink Profil",
-    description: "Link profil elemzés",
-    prompt:
-      "backlink profile audit, link quality analysis, toxic links, domain authority, link building strategy",
-    color: "from-indigo-500 to-blue-500"
-  }
-];
+const features = [
+  { icon: Search, title: "SEO Audit Struktúra", description: "Priorizált technikai és indexelési ellenőrzési terv" },
+  { icon: TrendingUp, title: "Lighthouse 95+ Fókusz", description: "Core Web Vitals (LCP, CLS, INP) diagnosztikai szempontok" },
+  { icon: BarChart3, title: "Kulcsszó Stratégia", description: "Keresési szándék és entitás-alapú tématervezés" },
+  { icon: Target, title: "AEO & GEO Optimalizáció", description: "AI válaszmotorokban való idézhetőség felépítése" },
+] as const;
 
-const focusAreas = [
-  { id: "keywords", name: "Kulcsszók", description: "Kulcsszó stratégia" },
+const faqs = [
   {
-    id: "competitors",
-    name: "Versenytársak",
-    description: "Versenytárs elemzés"
+    question: "Miben segít az SEO Audit AI Műhely?",
+    answer:
+      "Technikai SEO, tartalmi szemantika, Core Web Vitals és AEO/GEO (AI keresőoptimalizálás) szempontrendszer szerint állít össze mély elemző promptokat, hogy gyorsan feltárhasd a weboldalad rangsorolási és konverziós tartalékait.",
   },
-  { id: "technical", name: "Technikai", description: "Technikai SEO" },
-  { id: "content", name: "Tartalom", description: "Tartalom optimalizáció" }
-];
-
-const depthLevels = [
-  { id: "basic", name: "Alap", description: "Gyors áttekintés" },
-  { id: "detailed", name: "Részletes", description: "Mélyreható elemzés" },
-  { id: "comprehensive", name: "Komplex", description: "Teljes körű audit" }
-];
+  {
+    question: "Ki használhatja az SEO Audit AI Műhely generátort?",
+    answer:
+      "A generátor zárt prémium AI modul: kizárólag bejelentkezett, jóváhagyott ügyfeleim számára érhető el, akiknek a fiókjához engedélyeztem a modult. Hozzáférést a kapcsolat oldalon igényelhetsz.",
+  },
+  {
+    question: "Kérhetek teljes, szakértői SEO és AEO auditot is?",
+    answer:
+      "Igen: 26 év tervezői és 16 év webfejlesztői tapasztalattal kézzel ellenőrzött technikai SEO, Schema.org és AEO akciótervet is készítek, egyedi árajánlat alapján.",
+  },
+] as const;
 
 export default function SEOAuditAIMuhelyPage() {
-  const [selectedAudit, setSelectedAudit] = useState(auditTypes[0]);
-  const [selectedFocus, setSelectedFocus] = useState(focusAreas[0]);
-  const [selectedDepth, setSelectedDepth] = useState(depthLevels[0]);
-  const [generatedPrompt, setGeneratedPrompt] = useState("");
-  const [isGenerating, setIsGenerating] = useState(false);
-  const [websiteUrl, setWebsiteUrl] = useState("");
-  const [targetKeywords, setTargetKeywords] = useState("");
-  const [businessGoals, setBusinessGoals] = useState("");
-  const [customInstructions, setCustomInstructions] = useState("");
-
-  const generatePrompt = () => {
-    setIsGenerating(true);
-    setTimeout(() => {
-      let prompt = `SEO audit for ${selectedAudit.name}, ${selectedAudit.description}, ${selectedFocus.name} (${selectedFocus.description}), ${selectedDepth.name} (${selectedDepth.description}), ${selectedAudit.prompt}, Lighthouse score tracking, keyword strategy, AI answer engine optimization, comprehensive analysis`;
-
-      if (websiteUrl) {
-        prompt += `, website: ${websiteUrl}`;
-      }
-      if (targetKeywords) {
-        prompt += `, target keywords: ${targetKeywords}`;
-      }
-      if (businessGoals) {
-        prompt += `, business goals: ${businessGoals}`;
-      }
-      if (customInstructions) {
-        prompt += `, custom requirements: ${customInstructions}`;
-      }
-
-      setGeneratedPrompt(prompt);
-      setIsGenerating(false);
-    }, 1500);
-  };
-
-  const copyPrompt = () => {
-    navigator.clipboard.writeText(generatedPrompt);
-  };
-
   return (
-    <>
-      <div className="min-h-screen bg-bg-base">
-        {/* Hero Section */}
-        <section className="relative py-24 overflow-hidden">
-          <div className="absolute inset-0 bg-linear-to-b from-[#00B5F1]/5 via-transparent to-transparent" />
-          <div className="max-w-6xl mx-auto px-6 relative z-10">
-            <div className="text-center space-y-6">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0369A1]/10 dark:bg-[#00B5F1]/10 border border-[#0369A1]/25 dark:border-[#00B5F1]/20"
+    <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#0B1120] text-[#0F172A] dark:text-[#F8FAFC]">
+      <section className="relative py-24 md:py-32 overflow-hidden">
+        <div className="absolute inset-0 bg-linear-to-b from-[#0369A1]/5 dark:from-[#00B5F1]/5 via-transparent to-transparent pointer-events-none" />
+        <div className="max-w-6xl mx-auto px-6 relative z-10">
+          <div className="text-center space-y-6">
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0369A1]/10 dark:bg-[#00B5F1]/10 border border-[#0369A1]/25 dark:border-[#00B5F1]/20">
+              <Sparkles className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" aria-hidden="true" />
+              <span className="text-xs font-bold text-[#0369A1] dark:text-[#00B5F1] uppercase tracking-[0.2em]">
+                AI Műhely
+              </span>
+            </span>
+            <h1 className="text-5xl md:text-7xl text-[#0F172A] dark:text-white tracking-tight">
+              SEO Audit AI{" "}
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#0369A1] to-[#6D28D9] dark:from-[#00B5F1] dark:to-[#A78BFA]">
+                Műhely
+              </span>
+            </h1>
+            <p className="text-lg text-[#334155] dark:text-slate-300 max-w-2xl mx-auto leading-relaxed">
+              Technikai SEO, Core Web Vitals és AEO/GEO audit tervezés AI támogatással. Lighthouse teljesítményfókusz,
+              kulcsszó-stratégia és AI válaszmotor optimalizáció egyetlen rendszerben.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+              <Link
+                href="/kapcsolat"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-linear-to-r from-[#075985] to-[#5B21B6] hover:from-[#0369A1] hover:to-[#6D28D9] text-white font-bold rounded-full uppercase tracking-wider text-sm transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2"
               >
-                <Sparkles className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
-                <span className="text-xs font-bold text-[#0369A1] dark:text-[#00B5F1] uppercase tracking-[0.2em]">
-                  AI Műhely
-                </span>
-              </motion.div>
-              <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                className="text-4xl md:text-6xl font-bold text-text-primary tracking-tight"
-              >
-                SEO Audit AI{" "}
-                <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6]">
-                  Műhely
-                </span>
-              </motion.h1>
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="text-lg text-text-secondary max-w-2xl mx-auto tracking-wide font-medium"
-              >
-                SEO és AEO audit vizualizáció AI eszközökkel. Lighthouse score
-                tracking, kulcsszó stratégia és AI válasz motor optimalizáció.
-              </motion.p>
+                Egyedi árajánlat kérése
+                <ArrowRight className="w-4 h-4" aria-hidden="true" />
+              </Link>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* AI Generator Section */}
-        <section className="py-16 border-t border-bg-elevated">
-          <div className="max-w-6xl mx-auto px-6">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="bg-bg-surface border border-bg-elevated rounded-2xl p-8 shadow-[0_8px_32px_rgba(0,0,0,0.4)]"
-            >
-              <div className="flex items-center gap-3 mb-8">
-                <div className="w-12 h-12 rounded-xl bg-linear-to-br from-[#00B5F1]/10 to-[#5B21B6]/10 border border-[#0369A1]/25 dark:border-[#00B5F1]/20 flex items-center justify-center">
-                  <Search className="w-6 h-6 text-[#0369A1] dark:text-[#00B5F1]" />
-                </div>
-                <div>
-                  <h2 className="text-2xl font-bold text-text-primary">
-                    AI SEO Audit Generator
-                  </h2>
-                  <p className="text-sm text-text-secondary">
-                    SEO/AEO audit prompt generálás
-                  </p>
-                </div>
-              </div>
+      <DirectAnswerBlock
+        id="seo-audit-ai-muhely-direct-answer"
+        question="Mit vizsgál az SEO Audit AI Műhely egy vállalati weboldalon?"
+        answer="Az SEO Audit AI Műhely technikai indexelhetőségre, Core Web Vitals sebességre, Schema.org entitásokra és AI válaszmotor (ChatGPT, Perplexity, Gemini) láthatóságra épülő diagnosztikai promptokat állít elő. 26 év tervezőgrafikai és 16 év webfejlesztői tapasztalattal támogatja az organikus növekedést — egyedi árajánlat alapján."
+      />
 
-              {/* Audit Type Selection */}
-              <div className="mb-8">
-                <label className="text-sm font-bold text-[#0369A1] dark:text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
-                  Audit típus
-                </label>
-                <div className="grid md:grid-cols-3 gap-4">
-                  {auditTypes.map((audit) => (
-                    <motion.button
-                      key={audit.id}
-                      onClick={() => setSelectedAudit(audit)}
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      className={`p-4 rounded-xl border-2 transition-all ${
-                        selectedAudit.id === audit.id
-                          ? "border-[#00B5F1] bg-[#0369A1]/10 dark:bg-[#00B5F1]/10"
-                          : "border-bg-elevated bg-bg-surface hover:border-[#00B5F1]/50"
-                      }`}
-                    >
-                      <div className="w-8 h-8 rounded-lg bg-linear-to-br ${audit.color} mb-3" />
-                      <h3 className="text-base font-bold text-text-primary mb-1">
-                        {audit.name}
-                      </h3>
-                      <p className="text-xs text-text-secondary">
-                        {audit.description}
-                      </p>
-                    </motion.button>
-                  ))}
-                </div>
-              </div>
+      <section aria-labelledby="seo-generator-heading" className="py-16 border-t border-slate-200 dark:border-slate-800/80">
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 id="seo-generator-heading" className="text-3xl md:text-4xl text-center mb-8 tracking-tight">
+            AI SEO Audit Generátor
+          </h2>
+          <ToolAccessGate toolId="seo_audit_ai_muhely" toolName="SEO Audit AI Műhely">
+            <SeoAuditPromptGenerator />
+          </ToolAccessGate>
+        </div>
+      </section>
 
-              {/* Focus Area & Depth */}
-              <div className="grid md:grid-cols-2 gap-6 mb-8">
-                <div>
-                  <label className="text-sm font-bold text-[#0369A1] dark:text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
-                    Fókusz terület
-                  </label>
-                  <div className="space-y-2">
-                    {focusAreas.map((focus) => (
-                      <button
-                        key={focus.id}
-                        onClick={() => setSelectedFocus(focus)}
-                        className={`w-full p-3 rounded-lg border-2 transition-all flex items-center justify-between ${
-                          selectedFocus.id === focus.id
-                            ? "border-[#00B5F1] bg-[#0369A1]/10 dark:bg-[#00B5F1]/10"
-                            : "border-bg-elevated bg-bg-surface hover:border-[#00B5F1]/50"
-                        }`}
-                      >
-                        <span className="text-sm font-medium text-text-primary">
-                          {focus.name}
-                        </span>
-                        <span className="text-xs text-text-secondary">
-                          {focus.description}
-                        </span>
-                      </button>
-                    ))}
+      <section className="py-16 border-t border-slate-200 dark:border-slate-800/80 bg-[#F1F5F9] dark:bg-transparent">
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 className="text-3xl md:text-4xl mb-8 text-center tracking-tight">Funkciók és Előnyök</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {features.map((feature) => {
+              const FeatureIcon = feature.icon;
+              return (
+                <div key={feature.title} className="luminous-card rounded-3xl p-6">
+                  <div className="w-12 h-12 rounded-xl bg-linear-to-br from-[#00B5F1]/10 to-[#5B21B6]/10 border border-[#0369A1]/25 dark:border-[#00B5F1]/20 flex items-center justify-center mb-4">
+                    <FeatureIcon className="w-6 h-6 text-[#0369A1] dark:text-[#00B5F1]" aria-hidden="true" />
                   </div>
+                  <h3 className="text-xl text-[#0F172A] dark:text-white mb-2">{feature.title}</h3>
+                  <p className="text-sm text-[#334155] dark:text-slate-300">{feature.description}</p>
                 </div>
-
-                <div>
-                  <label className="text-sm font-bold text-[#0369A1] dark:text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
-                    Audit mélység
-                  </label>
-                  <div className="space-y-2">
-                    {depthLevels.map((depth) => (
-                      <button
-                        key={depth.id}
-                        onClick={() => setSelectedDepth(depth)}
-                        className={`w-full p-3 rounded-lg border-2 transition-all ${
-                          selectedDepth.id === depth.id
-                            ? "border-[#00B5F1] bg-[#0369A1]/10 dark:bg-[#00B5F1]/10"
-                            : "border-bg-elevated bg-bg-surface hover:border-[#00B5F1]/50"
-                        }`}
-                      >
-                        <div className="flex items-center justify-between">
-                          <span className="text-sm font-medium text-text-primary">
-                            {depth.name}
-                          </span>
-                          <span className="text-xs text-text-secondary">
-                            {depth.description}
-                          </span>
-                        </div>
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* Text Input Fields */}
-              <div className="space-y-6 mb-8">
-                <div>
-                  <label className="text-sm font-bold text-[#0369A1] dark:text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
-                    Weboldal URL (opcionális)
-                  </label>
-                  <input
-                    type="text"
-                    value={websiteUrl}
-                    onChange={(e) => setWebsiteUrl(e.target.value)}
-                    placeholder="pl. https://example.com"
-                    className="w-full p-3 rounded-lg border-2 border-bg-elevated bg-bg-base text-text-primary placeholder:text-text-secondary focus:border-[#00B5F1] focus:outline-none transition-all"
-                  />
-                </div>
-
-                <div>
-                  <label className="text-sm font-bold text-[#0369A1] dark:text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
-                    Cél kulcsszavak (opcionális)
-                  </label>
-                  <input
-                    type="text"
-                    value={targetKeywords}
-                    onChange={(e) => setTargetKeywords(e.target.value)}
-                    placeholder="pl. webfejlesztés, SEO, marketing"
-                    className="w-full p-3 rounded-lg border-2 border-bg-elevated bg-bg-base text-text-primary placeholder:text-text-secondary focus:border-[#00B5F1] focus:outline-none transition-all"
-                  />
-                </div>
-
-                <div>
-                  <label className="text-sm font-bold text-[#0369A1] dark:text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
-                    Üzleti célok (opcionális)
-                  </label>
-                  <input
-                    type="text"
-                    value={businessGoals}
-                    onChange={(e) => setBusinessGoals(e.target.value)}
-                    placeholder="pl. organikus forgalom növelése, konverzió optimalizálás"
-                    className="w-full p-3 rounded-lg border-2 border-bg-elevated bg-bg-base text-text-primary placeholder:text-text-secondary focus:border-[#00B5F1] focus:outline-none transition-all"
-                  />
-                </div>
-
-                <div>
-                  <label className="text-sm font-bold text-[#0369A1] dark:text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
-                    Egyedi utasítások (opcionális)
-                  </label>
-                  <textarea
-                    value={customInstructions}
-                    onChange={(e) => setCustomInstructions(e.target.value)}
-                    placeholder="pl. hangsúly a technikai SEO-ra, helyi keresés optimalizálás, AEO fókusz"
-                    rows={3}
-                    className="w-full p-3 rounded-lg border-2 border-bg-elevated bg-bg-base text-text-primary placeholder:text-text-secondary focus:border-[#00B5F1] focus:outline-none transition-all resize-none"
-                  />
-                </div>
-              </div>
-
-              {/* Generate Button */}
-              <motion.button
-                onClick={generatePrompt}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                disabled={isGenerating}
-                className="w-full py-4 bg-linear-to-r from-[#075985] to-[#5B21B6] hover:from-[#0369A1] hover:to-[#6D28D9] text-white font-bold rounded-xl hover:shadow-[0_8px_32px_rgba(0, 181, 241,0.4)] transition-all flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {isGenerating ? (
-                  <>
-                    <RefreshCw className="w-5 h-5 animate-spin" />
-                    <span>Generálás folyamatban...</span>
-                  </>
-                ) : (
-                  <>
-                    <Zap className="w-5 h-5" />
-                    <span>SEO Audit Prompt Generálás</span>
-                  </>
-                )}
-              </motion.button>
-
-              {/* Generated Prompt */}
-              {generatedPrompt && (
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5 }}
-                  className="mt-8 p-6 bg-bg-base border border-bg-elevated rounded-xl"
-                >
-                  <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-lg font-bold text-text-primary">
-                      Generált Prompt
-                    </h3>
-                    <div className="flex gap-2">
-                      <motion.button
-                        onClick={copyPrompt}
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                        className="p-2 rounded-lg bg-[#0369A1]/10 dark:bg-[#00B5F1]/10 border border-[#0369A1]/25 dark:border-[#00B5F1]/20 text-[#0369A1] dark:text-[#00B5F1] hover:bg-[#00B5F1]/20 transition-all"
-                      >
-                        <Copy className="w-4 h-4" />
-                      </motion.button>
-                    </div>
-                  </div>
-                  <p className="text-sm text-text-secondary leading-relaxed">
-                    {generatedPrompt}
-                  </p>
-                </motion.div>
-              )}
-            </motion.div>
+              );
+            })}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Features Section */}
-        <section className="py-16 border-t border-bg-elevated">
-          <div className="max-w-6xl mx-auto px-6">
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="text-3xl font-bold text-text-primary mb-8 text-center tracking-tight"
-            >
-              Funkciók és{" "}
-              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6]">
-                Előnyök
-              </span>
-            </motion.h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {[
-                {
-                  icon: Search,
-                  title: "SEO Audit Vizualizáció",
-                  description: "Automatikus audit elemzés"
-                },
-                {
-                  icon: TrendingUp,
-                  title: "Lighthouse Score Tracking",
-                  description: "Teljesítmény követés"
-                },
-                {
-                  icon: BarChart3,
-                  title: "Kulcsszó Stratégia",
-                  description: "AI kulcsszó elemzés"
-                },
-                {
-                  icon: Target,
-                  title: "AI Válasz Motor Optimalizáció",
-                  description: "AEO optimalizáció"
-                }
-              ].map((feature, index) => {
-                const FeatureIcon = feature.icon;
-                return (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="bg-bg-surface border border-bg-elevated rounded-xl p-6 hover:border-[#00B5F1]/50 transition-all group"
-                  >
-                    <div className="w-12 h-12 rounded-xl bg-linear-to-br from-[#00B5F1]/10 to-[#5B21B6]/10 border border-[#0369A1]/25 dark:border-[#00B5F1]/20 flex items-center justify-center mb-4 group-hover:border-[#00B5F1]/50 transition-colors">
-                      <FeatureIcon className="w-6 h-6 text-[#0369A1] dark:text-[#00B5F1]" />
-                    </div>
-                    <h3 className="text-lg font-bold text-text-primary mb-2">
-                      {feature.title}
-                    </h3>
-                    <p className="text-sm text-text-secondary">
-                      {feature.description}
-                    </p>
-                  </motion.div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
+      <ProductFaqSection id="seo-audit-ai-muhely-faq" faqs={faqs} />
 
-        {/* CTA Section */}
-        <section className="py-16 border-t border-bg-elevated">
-          <div className="max-w-4xl mx-auto px-6 text-center">
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="text-3xl font-bold text-text-primary mb-4 tracking-tight"
-            >
-              Készen állsz az{" "}
-              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6]">
-                SEO Auditra
-              </span>
-              ?
-            </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-text-secondary mb-8"
-            >
-              Próbáld ki az AI SEO Audit Generátort és optimalizáld weboldalad
-              percek alatt!
-            </motion.p>
-            <motion.button
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center gap-2 px-8 py-4 bg-linear-to-r from-[#075985] to-[#5B21B6] hover:from-[#0369A1] hover:to-[#6D28D9] text-white font-bold rounded-xl hover:shadow-[0_8px_32px_rgba(0, 181, 241,0.4)] transition-all"
-            >
-              Kezdés most
-              <ArrowRight className="w-4 h-4" />
-            </motion.button>
-          </div>
-        </section>
-      </div>
-    </>
+      <section className="py-16 border-t border-slate-200 dark:border-slate-800/80">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <h2 className="text-3xl md:text-4xl mb-4 tracking-tight">Készen állsz az SEO & AEO Auditra?</h2>
+          <p className="text-[#334155] dark:text-slate-300 mb-8">
+            Igényelj hozzáférést az SEO Audit AI Műhelyhez, vagy kérj személyre szabott szakértői weboldal-diagnosztikát.
+          </p>
+          <Link
+            href="/kapcsolat"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-linear-to-r from-[#075985] to-[#5B21B6] hover:from-[#0369A1] hover:to-[#6D28D9] text-white font-bold rounded-full uppercase tracking-wider text-sm transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2"
+          >
+            Hozzáférés igénylése
+            <ArrowRight className="w-4 h-4" aria-hidden="true" />
+          </Link>
+        </div>
+      </section>
+
+      <ProductPortalCta productName="SEO Audit AI Műhely" />
+    </div>
   );
 }

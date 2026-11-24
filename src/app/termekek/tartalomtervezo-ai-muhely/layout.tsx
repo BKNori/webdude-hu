@@ -1,17 +1,21 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import { buildBreadcrumbSchema } from "@/lib/breadcrumb";
 
 export const metadata: Metadata = {
   title: "Tartalomtervező AI Műhely | WebDude",
   description:
-    "Professzionális tartalomtervező eszköz AI-vel. Blog bejegyzések, social media tartalom, landing page szövegek és teljes tartalom kalendár generálása. SEO-optimalizált, konverzióra fókuszált. Egyedi árajánlat kérése.",
+    "Stratégiai tartalomtervező AI modul: SEO- és AEO-optimalizált blogcikkek, landing oldalak és social posztok előkészítése. Egyedi árajánlat kérése most.",
+  robots: {
+    index: true,
+    follow: true,
+  },
   alternates: {
     canonical: "https://webdude.hu/termekek/tartalomtervezo-ai-muhely",
   },
   openGraph: {
     title: "Tartalomtervező AI Műhely | WebDude",
     description:
-      "Professzionális tartalomtervező eszköz AI-vel. Blog bejegyzések, social media tartalom, landing page szövegek és teljes tartalom kalendár generálása. SEO-optimalizált, konverzióra fókuszált. Egyedi árajánlat kérése.",
+      "Stratégiai tartalomtervező AI modul: SEO- és AEO-optimalizált blogcikkek, landing oldalak és social posztok előkészítése. Egyedi árajánlat kérése most.",
     url: "https://webdude.hu/termekek/tartalomtervezo-ai-muhely",
     siteName: "WebDude",
     images: [
@@ -29,7 +33,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Tartalomtervező AI Műhely | WebDude",
     description:
-      "Professzionális tartalomtervező eszköz AI-vel. Blog bejegyzések, social media tartalom, landing page szövegek és teljes tartalom kalendár generálása. SEO-optimalizált, konverzióra fókuszált. Egyedi árajánlat kérése.",
+      "Stratégiai tartalomtervező AI modul: SEO- és AEO-optimalizált blogcikkek, landing oldalak és social posztok előkészítése. Egyedi árajánlat kérése most.",
     images: ["/og/webdude-og.jpg"],
   },
 };
@@ -39,7 +43,7 @@ const productJsonLd = {
   "@type": "Product",
   name: "Tartalomtervező AI Műhely",
   description:
-    "Professzionális tartalomtervező eszköz AI-vel. Blog bejegyzések, social media tartalom, landing page szövegek és teljes tartalom kalendár generálása. SEO-optimalizált, konverzióra fókuszált.",
+    "Stratégiai tartalomtervező AI modul: SEO- és AEO-optimalizált blogcikkek, landing oldalak és social posztok előkészítése. Egyedi árajánlat kérése most.",
   image: "https://webdude.hu/og/webdude-og.jpg",
   brand: {
     "@type": "Brand",
@@ -81,7 +85,11 @@ const breadcrumbSchema = buildBreadcrumbSchema([
   { name: "Tartalomtervező AI Műhely", url: "/termekek/tartalomtervezo-ai-muhely" },
 ]);
 
-export default function TartalomtervezoAIMuhelLayout({ children }: { children: React.ReactNode }) {
+export default function ProductRouteLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <>
       <script

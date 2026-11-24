@@ -1,17 +1,21 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import { buildBreadcrumbSchema } from "@/lib/breadcrumb";
 
 export const metadata: Metadata = {
   title: "UI/UX AI Műhely | WebDude",
   description:
-    "Professzionális UI/UX tervező eszköz AI-vel. Landing page tervezés, mobil alkalmazás tervezés, weboldal interface generálás és teljes design system létrehozása. Konverzióra optimalizált, prémium esztétika. Egyedi árajánlat kérése.",
+    "Konverziófókuszú UI/UX és reszponzív wireframe tervezés AI támogatással, WCAG AA kontraszttal és Figma-kész felépítéssel. Egyedi árajánlat kérése most.",
+  robots: {
+    index: true,
+    follow: true,
+  },
   alternates: {
     canonical: "https://webdude.hu/termekek/ui-ux-ai-muhely",
   },
   openGraph: {
     title: "UI/UX AI Műhely | WebDude",
     description:
-      "Professzionális UI/UX tervező eszköz AI-vel. Landing page tervezés, mobil alkalmazás tervezés, weboldal interface generálás és teljes design system létrehozása. Konverzióra optimalizált, prémium esztétika. Egyedi árajánlat kérése.",
+      "Konverziófókuszú UI/UX és reszponzív wireframe tervezés AI támogatással, WCAG AA kontraszttal és Figma-kész felépítéssel. Egyedi árajánlat kérése most.",
     url: "https://webdude.hu/termekek/ui-ux-ai-muhely",
     siteName: "WebDude",
     images: [
@@ -29,7 +33,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "UI/UX AI Műhely | WebDude",
     description:
-      "Professzionális UI/UX tervező eszköz AI-vel. Landing page tervezés, mobil alkalmazás tervezés, weboldal interface generálás és teljes design system létrehozása. Konverzióra optimalizált, prémium esztétika. Egyedi árajánlat kérése.",
+      "Konverziófókuszú UI/UX és reszponzív wireframe tervezés AI támogatással, WCAG AA kontraszttal és Figma-kész felépítéssel. Egyedi árajánlat kérése most.",
     images: ["/og/webdude-og.jpg"],
   },
 };
@@ -39,7 +43,7 @@ const productJsonLd = {
   "@type": "Product",
   name: "UI/UX AI Műhely",
   description:
-    "Professzionális UI/UX tervező eszköz AI-vel. Landing page tervezés, mobil alkalmazás tervezés, weboldal interface generálás és teljes design system létrehozása. Konverzióra optimalizált, prémium esztétika.",
+    "Konverziófókuszú UI/UX és reszponzív wireframe tervezés AI támogatással, WCAG AA kontraszttal és Figma-kész felépítéssel. Egyedi árajánlat kérése most.",
   image: "https://webdude.hu/og/webdude-og.jpg",
   brand: {
     "@type": "Brand",
@@ -81,7 +85,11 @@ const breadcrumbSchema = buildBreadcrumbSchema([
   { name: "UI/UX AI Műhely", url: "/termekek/ui-ux-ai-muhely" },
 ]);
 
-export default function UIUXAIMuhelLayout({ children }: { children: React.ReactNode }) {
+export default function ProductRouteLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <>
       <script

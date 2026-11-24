@@ -3,6 +3,7 @@
 import { motion } from "motion/react";
 import { Shield, TrendingUp, Zap } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import HeroBackdrop from "@/components/molecules/HeroBackdrop";
 import ResponsiveImage from "@/components/molecules/ResponsiveImage";
 
@@ -54,8 +55,8 @@ export default function SEOAuditHeroBanner({
               className="text-lg text-[#334155] dark:text-slate-400"
             >
               A hagyományos SEO halott. Az entitás-alapú keresőoptimalizálás és
-              az AEO (Answer Engine Optimization) a jövő. Mi nem csak
-              rangsorolunk, mi domináljuk a válaszokat.
+              az AEO (Answer Engine Optimization) a jövő. Én nem csak
+              rangsorolok, hanem dominálom a válaszokat.
             </motion.p>
 
             {/* Authority Badges */}
@@ -80,15 +81,15 @@ export default function SEOAuditHeroBanner({
             </motion.div>
 
             {/* CTA Button */}
-            <motion.button
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              className="inline-flex items-center gap-2 px-8 py-4 bg-linear-to-r from-[#075985] to-[#5B21B6] hover:from-[#0369A1] hover:to-[#6D28D9] text-white font-bold rounded-xl transition-all hover:scale-105"
-            >
-              <Shield className="w-4 h-4" />
-              <span>Ingyenes Weboldal Audit</span>
-            </motion.button>
+            <div>
+              <Link
+                href="/kapcsolat"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-linear-to-r from-[#075985] to-[#5B21B6] hover:from-[#0369A1] hover:to-[#6D28D9] text-white font-bold rounded-full uppercase tracking-wider text-sm transition-all hover:scale-[1.02] focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500"
+              >
+                <Shield className="w-4 h-4" aria-hidden="true" />
+                <span>Egyedi árajánlat kérése</span>
+              </Link>
+            </div>
           </div>
 
           {/* Right Content - Hero Visual */}

@@ -1,17 +1,21 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import { buildBreadcrumbSchema } from "@/lib/breadcrumb";
 
 export const metadata: Metadata = {
   title: "SEO Audit AI Műhely | WebDude",
   description:
-    "SEO és AEO audit vizualizáció AI eszközökkel. Lighthouse score tracking, kulcsszó stratégia és AI válasz motor optimalizáció. Technikai SEO, tartalom SEO, AEO optimalizáció. Egyedi árajánlat kérése.",
+    "Technikai SEO, Core Web Vitals és AEO/GEO audit tervezés AI támogatással, Lighthouse 95+ fókusszal és kulcsszó-stratégiával. Egyedi árajánlat kérése most.",
+  robots: {
+    index: true,
+    follow: true,
+  },
   alternates: {
     canonical: "https://webdude.hu/termekek/seo-audit-ai-muhely",
   },
   openGraph: {
     title: "SEO Audit AI Műhely | WebDude",
     description:
-      "SEO és AEO audit vizualizáció AI eszközökkel. Lighthouse score tracking, kulcsszó stratégia és AI válasz motor optimalizáció. Technikai SEO, tartalom SEO, AEO optimalizáció. Egyedi árajánlat kérése.",
+      "Technikai SEO, Core Web Vitals és AEO/GEO audit tervezés AI támogatással, Lighthouse 95+ fókusszal és kulcsszó-stratégiával. Egyedi árajánlat kérése most.",
     url: "https://webdude.hu/termekek/seo-audit-ai-muhely",
     siteName: "WebDude",
     images: [
@@ -29,7 +33,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "SEO Audit AI Műhely | WebDude",
     description:
-      "SEO és AEO audit vizualizáció AI eszközökkel. Lighthouse score tracking, kulcsszó stratégia és AI válasz motor optimalizáció. Technikai SEO, tartalom SEO, AEO optimalizáció. Egyedi árajánlat kérése.",
+      "Technikai SEO, Core Web Vitals és AEO/GEO audit tervezés AI támogatással, Lighthouse 95+ fókusszal és kulcsszó-stratégiával. Egyedi árajánlat kérése most.",
     images: ["/og/webdude-og.jpg"],
   },
 };
@@ -39,7 +43,7 @@ const productJsonLd = {
   "@type": "Product",
   name: "SEO Audit AI Műhely",
   description:
-    "SEO és AEO audit vizualizáció AI eszközökkel. Lighthouse score tracking, kulcsszó stratégia és AI válasz motor optimalizáció. Technikai SEO, tartalom SEO, AEO optimalizáció.",
+    "Technikai SEO, Core Web Vitals és AEO/GEO audit tervezés AI támogatással, Lighthouse 95+ fókusszal és kulcsszó-stratégiával. Egyedi árajánlat kérése most.",
   image: "https://webdude.hu/og/webdude-og.jpg",
   brand: {
     "@type": "Brand",
@@ -81,7 +85,11 @@ const breadcrumbSchema = buildBreadcrumbSchema([
   { name: "SEO Audit AI Műhely", url: "/termekek/seo-audit-ai-muhely" },
 ]);
 
-export default function SEOAuditAIMuhelLayout({ children }: { children: React.ReactNode }) {
+export default function ProductRouteLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <>
       <script

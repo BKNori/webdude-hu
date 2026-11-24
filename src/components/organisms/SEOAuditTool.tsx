@@ -13,8 +13,11 @@ import {
 import { auth } from "@/lib/firebase";
 import { performSEOAuditAction } from "@/actions/ai";
 import { SEOAuditResult } from "@/lib/ai-tools";
+import ToolAccessLock from "@/components/molecules/ToolAccessLock";
+import { useToolAccess } from "@/hooks/useToolAccess";
 
 export default function SEOAuditTool() {
+  const accessStatus = useToolAccess("seo_audit_ai_muhely");
   const [url, setUrl] = useState("");
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<SEOAuditResult | null>(null);
@@ -70,6 +73,18 @@ export default function SEOAuditTool() {
     if (score >= 60) return "bg-sky-500/10 border-sky-500/20";
     return "bg-red-500/10 border-red-500/20";
   };
+
+  if (accessStatus === "loading") {
+    return (
+      <div className="min-h-[40vh] flex items-center justify-center">
+        <Loader2 className="w-8 h-8 animate-spin text-sky-500" />
+      </div>
+    );
+  }
+
+  if (accessStatus !== "granted") {
+    return <ToolAccessLock toolName="SEO Audit AI Műhely" variant={accessStatus} />;
+  }
 
   return (
     <div className="space-y-8">

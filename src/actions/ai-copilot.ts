@@ -1,10 +1,19 @@
 "use server";
 
+import { z } from "zod";
+import { headers } from "next/headers";
+import { verifyUserToken } from "./portal";
+import { checkRateLimit, getClientIdentifier } from "@/lib/rate-limit";
 import {
   getProjectContextAction,
   getAIKnowledgeBaseAction,
 } from "./context-engine";
 import { tavilySearchAction } from "./tavily";
+
+const copilotInputSchema = z.object({
+  workflowId: z.string().trim().min(1).max(128),
+  userMessage: z.string().trim().min(1).max(4000),
+});
 
 interface AIResponse {
   success: boolean;
@@ -21,7 +30,40 @@ export async function generateAICopilotResponseAction(
   idToken?: string
 ): Promise<AIResponse> {
   try {
-    const contextRes = await getProjectContextAction(workflowId, idToken);
+    if (!idToken || !idToken.trim()) {
+      return {
+        success: false,
+        error: "Jogosulatlan hozzáférés. Kérlek, jelentkezz be újra!",
+      };
+    }
+
+    const user = await verifyUserToken(idToken);
+    if (!user) {
+      return {
+        success: false,
+        error: "Jogosulatlan hozzáférés. Kérlek, jelentkezz be újra!",
+      };
+    }
+
+    const headersList = await headers();
+    const req = { headers: headersList } as unknown as Request;
+    const rate = checkRateLimit(`copilot:${user.uid}:${getClientIdentifier(req)}`, 25, 3600000);
+    if (!rate.success) {
+      return {
+        success: false,
+        error: "Túl sok üzenet érkezett. Kérlek, várj kicsit az újabb kérdés előtt!",
+      };
+    }
+
+    const parsed = copilotInputSchema.safeParse({ workflowId, userMessage });
+    if (!parsed.success) {
+      return {
+        success: false,
+        error: "Érvénytelen üzenet vagy projekt-azonosító.",
+      };
+    }
+
+    const contextRes = await getProjectContextAction(parsed.data.workflowId, idToken);
     if (!contextRes.success || !contextRes.context) {
       return {
         success: false,

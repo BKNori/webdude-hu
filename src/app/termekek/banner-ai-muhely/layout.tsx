@@ -1,17 +1,21 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import { buildBreadcrumbSchema } from "@/lib/breadcrumb";
 
 export const metadata: Metadata = {
   title: "Banner AI Műhely | WebDude",
   description:
-    "Konverziófókuszú banner tervezés Midjourney v6 Master promptokkal. 90/8/2 színarány és prémium optikai beállítások. Egyedi árajánlat kérése.",
+    "Konverziófókuszú webes és social banner tervezés Midjourney v6 Master promptokkal, 90/8/2 színaránnyal és 4K kimenettel. Egyedi árajánlat kérése most.",
+  robots: {
+    index: true,
+    follow: true,
+  },
   alternates: {
     canonical: "https://webdude.hu/termekek/banner-ai-muhely",
   },
   openGraph: {
     title: "Banner AI Műhely | WebDude",
     description:
-      "Konverziófókuszú banner tervezés Midjourney v6 Master promptokkal. 90/8/2 színarány és prémium optikai beállítások. Egyedi árajánlat kérése.",
+      "Konverziófókuszú webes és social banner tervezés Midjourney v6 Master promptokkal, 90/8/2 színaránnyal és 4K kimenettel. Egyedi árajánlat kérése most.",
     url: "https://webdude.hu/termekek/banner-ai-muhely",
     siteName: "WebDude",
     images: [
@@ -29,7 +33,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Banner AI Műhely | WebDude",
     description:
-      "Konverziófókuszú banner tervezés Midjourney v6 Master promptokkal. 90/8/2 színarány és prémium optikai beállítások. Egyedi árajánlat kérése.",
+      "Konverziófókuszú webes és social banner tervezés Midjourney v6 Master promptokkal, 90/8/2 színaránnyal és 4K kimenettel. Egyedi árajánlat kérése most.",
     images: ["/og/webdude-og.jpg"],
   },
 };
@@ -39,7 +43,7 @@ const productJsonLd = {
   "@type": "Product",
   name: "Banner AI Műhely",
   description:
-    "Professzionális banner tervező eszköz AI-vel. Minimalista, modern, elegáns és playful stílusú bannerek generálása. Social media és weboldal bannerek másodpercek alatt.",
+    "Konverziófókuszú webes és social banner tervezés Midjourney v6 Master promptokkal, 90/8/2 színaránnyal és 4K kimenettel. Egyedi árajánlat kérése most.",
   image: "https://webdude.hu/og/webdude-og.jpg",
   brand: {
     "@type": "Brand",
@@ -81,7 +85,11 @@ const breadcrumbSchema = buildBreadcrumbSchema([
   { name: "Banner AI Műhely", url: "/termekek/banner-ai-muhely" },
 ]);
 
-export default function BannerAIMuhelyLayout({ children }: { children: React.ReactNode }) {
+export default function ProductRouteLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <>
       <script

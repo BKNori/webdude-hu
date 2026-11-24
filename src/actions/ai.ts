@@ -4,6 +4,7 @@ import { z } from "zod";
 import { headers } from "next/headers";
 import { checkRateLimit, getClientIdentifier } from "@/lib/rate-limit";
 import { verifyUserToken } from "./portal";
+import { authorizeToolAccess } from "@/lib/tool-access";
 import {
   fetchUrlContent,
   extractMetaTags,
@@ -18,19 +19,60 @@ import {
   generateKristofkaPitchPrompt,
 } from "@/lib/ai-tools";
 
+const aiCategoryEnum = z.enum([
+  "product_desc",
+  "review_assistant",
+  "social_matrix",
+  "cart_recovery",
+  "midjourney_prompt",
+  "banner_concept",
+  "logo_designer",
+  "ui_ux_designer",
+  "seasonal_campaign_designer",
+]);
+
 const aiGenerationSchema = z.object({
-  category: z.enum([
-    "product_desc",
-    "review_assistant",
-    "social_matrix",
-    "cart_recovery",
-    "midjourney_prompt",
-    "banner_concept",
-    "logo_designer",
-    "ui_ux_designer",
-    "seasonal_campaign_designer",
-  ]),
+  category: aiCategoryEnum,
   inputs: z.record(z.string(), z.string()),
+});
+
+const seoAuditInputSchema = z.object({
+  url: z.string().trim().url("Érvénytelen URL formátum.").max(2048),
+});
+
+const competitorAnalysisInputSchema = z.object({
+  targetUrl: z.string().trim().url("Érvénytelen URL formátum.").max(2048),
+  competitorUrls: z
+    .array(z.string().trim().url("Érvénytelen URL formátum.").max(2048))
+    .min(1, "Legalább egy versenytárs URL megadása kötelező.")
+    .max(10),
+});
+
+const contentPlanInputSchema = z.object({
+  industry: z
+    .string()
+    .trim()
+    .min(1, "Minden mező kitöltése kötelező!")
+    .max(300),
+  targetAudience: z
+    .string()
+    .trim()
+    .min(1, "Minden mező kitöltése kötelező!")
+    .max(500),
+  mainProduct: z
+    .string()
+    .trim()
+    .min(1, "Minden mező kitöltése kötelező!")
+    .max(500),
+});
+
+const kristofkaPitchInputSchema = z.object({
+  fileUrl: z.string().trim().min(1).max(2048),
+  fileName: z.string().trim().min(1).max(300),
+  targetAudience: z.string().trim().min(1).max(600),
+  narrative: z.string().trim().min(1).max(2000),
+  tone: z.string().trim().min(1).max(200),
+  energetikaiBesorolas: z.string().trim().max(120).optional(),
 });
 
 /**
@@ -56,12 +98,16 @@ export async function generateAIContentAction(
     };
   }
 
-  // 2. Auth Verification
-  const user = await verifyUserToken(idToken);
-  if (!user) {
+  // 2. Auth + RBAC Verification (idToken + Szuperadmin vagy allowedTools)
+  const categoryParsed = aiCategoryEnum.safeParse(category);
+  const access = await authorizeToolAccess(
+    idToken,
+    categoryParsed.success ? categoryParsed.data : []
+  );
+  if (!access.ok) {
     return {
       success: false,
-      error: "Jogosulatlan hozzáférés. Kérlek, jelentkezz be újra!",
+      error: access.error,
     };
   }
 
@@ -693,19 +739,19 @@ export async function performSEOAuditAction(idToken: string, url: string) {
     };
   }
 
-  // 2. Auth Verification
-  const user = await verifyUserToken(idToken);
-  if (!user) {
+  // 2. Auth + RBAC Verification
+  const access = await authorizeToolAccess(idToken, "seo_audit_ai_muhely");
+  if (!access.ok) {
     return {
       success: false,
-      error: "Jogosulatlan hozzáférés. Kérlek, jelentkezz be újra!",
+      error: access.error,
     };
   }
+  const user = access.user;
 
-  // 3. URL Validation
-  try {
-    new URL(url);
-  } catch {
+  // 3. Zod URL Validation
+  const parsedUrl = seoAuditInputSchema.safeParse({ url });
+  if (!parsedUrl.success) {
     return { success: false, error: "Érvénytelen URL formátum." };
   }
 
@@ -908,20 +954,24 @@ export async function analyzeCompetitorsAction(
     };
   }
 
-  // 2. Auth Verification
-  const user = await verifyUserToken(idToken);
-  if (!user) {
+  // 2. Auth + RBAC Verification
+  const access = await authorizeToolAccess(
+    idToken,
+    "versenytars_elemzo_ai_muhely"
+  );
+  if (!access.ok) {
     return {
       success: false,
-      error: "Jogosulatlan hozzáférés. Kérlek, jelentkezz be újra!",
+      error: access.error,
     };
   }
 
-  // 3. URL Validation
-  try {
-    new URL(targetUrl);
-    competitorUrls.forEach((url) => new URL(url));
-  } catch {
+  // 3. Zod URL Validation
+  const parsedUrls = competitorAnalysisInputSchema.safeParse({
+    targetUrl,
+    competitorUrls,
+  });
+  if (!parsedUrls.success) {
     return { success: false, error: "Érvénytelen URL formátum." };
   }
 
@@ -1096,17 +1146,25 @@ export async function generateContentPlanAction(
     };
   }
 
-  // 2. Auth Verification
-  const user = await verifyUserToken(idToken);
-  if (!user) {
+  // 2. Auth + RBAC Verification
+  const access = await authorizeToolAccess(idToken, [
+    "tartalomtervezo_ai_muhely",
+    "content_workshop_ai_muhely",
+  ]);
+  if (!access.ok) {
     return {
       success: false,
-      error: "Jogosulatlan hozzáférés. Kérlek, jelentkezz be újra!",
+      error: access.error,
     };
   }
 
-  // 3. Input Validation
-  if (!industry.trim() || !targetAudience.trim() || !mainProduct.trim()) {
+  // 3. Zod Input Validation
+  const parsedPlan = contentPlanInputSchema.safeParse({
+    industry,
+    targetAudience,
+    mainProduct,
+  });
+  if (!parsedPlan.success) {
     return { success: false, error: "Minden mező kitöltése kötelező!" };
   }
 
@@ -1222,9 +1280,17 @@ export async function generateKristofkaPitchAction(
     energetikaiBesorolas?: string;
   }
 ) {
-  const user = await verifyUserToken(idToken);
-  if (!user) {
-    return { success: false, error: "Jogosulatlan hozzáférés." };
+  const access = await authorizeToolAccess(idToken, "kristofka_workflow");
+  if (!access.ok) {
+    return { success: false, error: access.error };
+  }
+
+  const parsedPitch = kristofkaPitchInputSchema.safeParse(params);
+  if (!parsedPitch.success) {
+    return {
+      success: false,
+      error: "Validációs hiba történt. Ellenőrizd a beviteli mezőket!",
+    };
   }
 
   // Rate limiting: 5 pitch/óra
@@ -1232,7 +1298,7 @@ export async function generateKristofkaPitchAction(
   const identifier = getClientIdentifier(
     new Request("https://dummy", { headers: headersList })
   );
-  const rateLimitResult = await checkRateLimit(identifier, 5, 3600);
+  const rateLimitResult = checkRateLimit(identifier, 5, 3600000);
   if (!rateLimitResult.success) {
     return {
       success: false,

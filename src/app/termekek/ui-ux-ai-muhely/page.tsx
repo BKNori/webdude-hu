@@ -1,496 +1,134 @@
-"use client";
+import Link from "next/link";
+import { Layout, Smartphone, Monitor, Layers, ArrowRight, Sparkles } from "lucide-react";
+import DirectAnswerBlock from "@/components/molecules/DirectAnswerBlock";
+import ProductFaqSection from "@/components/molecules/ProductFaqSection";
+import ProductPortalCta from "@/components/molecules/ProductPortalCta";
+import ToolAccessGate from "@/components/molecules/ToolAccessGate";
+import UiUxPromptGenerator from "@/components/organisms/UiUxPromptGenerator";
 
-import { useState } from "react";
-import { motion } from "motion/react";
-import {
-  Sparkles,
-  Layout,
-  Smartphone,
-  Monitor,
-  Zap,
-  ArrowRight,
-  Copy,
-  RefreshCw,
-  Layers
-} from "lucide-react";
+/**
+ * /termekek/ui-ux-ai-muhely — PUBLIKUS, statikusan prerenderelt SEO/AEO/GEO landing.
+ * A generátor kizárólag `ToolAccessGate` mögött (allowedTools: "ui_ux_ai_muhely"
+ * vagy Szuperadmin) mountolódik.
+ */
 
-const designStyles = [
-  {
-    id: "minimalist",
-    name: "Minimalista",
-    description: "Tiszta, egyszerű",
-    prompt:
-      "minimalist UI/UX design, clean interface, ample white space, modern typography, professional aesthetic, user-friendly",
-    color: "from-blue-500 to-sky-500"
-  },
-  {
-    id: "modern",
-    name: "Modern",
-    description: "Kortárs, innovatív",
-    prompt:
-      "modern UI/UX design, contemporary aesthetic, bold typography, dynamic layout, innovative user experience",
-    color: "from-purple-500 to-pink-500"
-  },
-  {
-    id: "corporate",
-    name: "Corporate",
-    description: "Professzionális, üzleti",
-    prompt:
-      "corporate UI/UX design, professional business aesthetic, trustworthy colors, clean interface, established UX patterns",
-    color: "from-[#00B5F1] to-brand-secondary"
-  },
-  {
-    id: "creative",
-    name: "Kreatív",
-    description: "Színes, dinamikus",
-    prompt:
-      "creative UI/UX design, vibrant colors, artistic elements, unique composition, eye-catching interface",
-    color: "from-green-500 to-emerald-500"
-  },
-  {
-    id: "luxury",
-    name: "Luxus",
-    description: "Elegáns, prémium",
-    prompt:
-      "luxury UI/UX design, elegant aesthetic, premium feel, sophisticated colors, high-end user experience",
-    color: "from-brand-secondary to-brand-primary"
-  },
-  {
-    id: "tech",
-    name: "Tech",
-    description: "Modern, innovatív",
-    prompt:
-      "tech UI/UX design, modern innovation aesthetic, digital elements, futuristic but professional, clean tech style",
-    color: "from-indigo-500 to-blue-500"
-  }
-];
+const features = [
+  { icon: Layout, title: "UI/UX Koncepciók", description: "Átlátható komponens-hierarchia és 8px-es rácsrendszer" },
+  { icon: Smartphone, title: "Mobile First Wireframe", description: "Reszponzív mobil, tablet és asztali nézetek tervezése" },
+  { icon: Monitor, title: "Konverziófókuszú UI", description: "Tudatos CTA elhelyezés és súrlódásmentes ügyfélút" },
+  { icon: Layers, title: "WCAG AA Kontraszt", description: "Akadálymentes olvashatóság világos és sötét témában" },
+] as const;
 
-const deviceTypes = [
-  { id: "desktop", name: "Desktop", description: "Asztali interface" },
-  { id: "mobile", name: "Mobile", description: "Mobil interface" },
-  { id: "responsive", name: "Responsive", description: "Reszponzív design" },
-  { id: "tablet", name: "Tablet", description: "Tablet interface" }
-];
-
-const uxFocus = [
+const faqs = [
   {
-    id: "conversion",
-    name: "Konverzió",
-    description: "Konverzió optimalizált"
+    question: "Mire használható az UI/UX AI Műhely?",
+    answer:
+      "Landing oldalak, webáruházak és SaaS felületek vizuális koncepcióihoz és wireframe-terveihez állít össze strukturált promptokat eszközméret, designstílus és UX-prioritás alapján.",
   },
   {
-    id: "accessibility",
-    name: "Akadálymentesítés",
-    description: "WCAG kompatibilis"
+    question: "Ki férhet hozzá az UI/UX AI Műhely generátorhoz?",
+    answer:
+      "A generátor zárt prémium AI modul: kizárólag bejelentkezett, jóváhagyott ügyfeleim használhatják, akiknek a fiókjához engedélyeztem a modult. Hozzáférést a kapcsolat oldalon igényelhetsz.",
   },
-  { id: "speed", name: "Sebesség", description: "Gyors betöltés" },
   {
-    id: "engagement",
-    name: "Elköteleződés",
-    description: "Felhasználói élmény"
-  }
-];
+    question: "Vállalsz teljes UI/UX tervezést és Next.js kivitelezést is?",
+    answer:
+      "Igen: a koncepciótól a Figma rendszeren át a produkciós Next.js 16 vagy egyedi WordPress fejlesztésig egy kézben viszem végig a projektet, egyedi árajánlat alapján.",
+  },
+] as const;
 
 export default function UIUXAIMuhelyPage() {
-  const [selectedStyle, setSelectedStyle] = useState(designStyles[0]);
-  const [selectedDevice, setSelectedDevice] = useState(deviceTypes[0]);
-  const [selectedFocus, setSelectedFocus] = useState(uxFocus[0]);
-  const [generatedPrompt, setGeneratedPrompt] = useState("");
-  const [isGenerating, setIsGenerating] = useState(false);
-  const [projectType, setProjectType] = useState("");
-  const [targetAudience, setTargetAudience] = useState("");
-  const [brandGuidelines, setBrandGuidelines] = useState("");
-  const [customInstructions, setCustomInstructions] = useState("");
-
-  const generatePrompt = () => {
-    setIsGenerating(true);
-    setTimeout(() => {
-      let prompt = `UI/UX design for ${selectedStyle.name} style, ${selectedStyle.description}, ${selectedDevice.name} (${selectedDevice.description}), ${selectedFocus.name} (${selectedFocus.description}), ${selectedStyle.prompt}, wireframe design, user experience optimization, conversion-focused interface, professional design, commercial quality`;
-
-      if (projectType) {
-        prompt += `, project type: ${projectType}`;
-      }
-      if (targetAudience) {
-        prompt += `, target audience: ${targetAudience}`;
-      }
-      if (brandGuidelines) {
-        prompt += `, brand guidelines: ${brandGuidelines}`;
-      }
-      if (customInstructions) {
-        prompt += `, custom requirements: ${customInstructions}`;
-      }
-
-      setGeneratedPrompt(prompt);
-      setIsGenerating(false);
-    }, 1500);
-  };
-
-  const copyPrompt = () => {
-    navigator.clipboard.writeText(generatedPrompt);
-  };
-
   return (
-    <>
-        <div className="min-h-screen bg-bg-base">
-          {/* Hero Section */}
-          <section className="relative py-24 overflow-hidden">
-            <div className="absolute inset-0 bg-linear-to-b from-[#00B5F1]/5 via-transparent to-transparent" />
-            <div className="max-w-6xl mx-auto px-6 relative z-10">
-              <div className="text-center space-y-6">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5 }}
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0369A1]/10 dark:bg-[#00B5F1]/10 border border-[#0369A1]/25 dark:border-[#00B5F1]/20"
-                >
-                  <Sparkles className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
-                  <span className="text-xs font-bold text-[#0369A1] dark:text-[#00B5F1] uppercase tracking-[0.2em]">
-                    AI Műhely
-                  </span>
-                </motion.div>
-                <motion.h1
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.1 }}
-                  className="text-4xl md:text-6xl font-bold text-text-primary tracking-tight"
-                >
-                  UI/UX AI{" "}
-                  <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6]">
-                    Műhely
-                  </span>
-                </motion.h1>
-                <motion.p
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
-                  className="text-lg text-text-secondary max-w-2xl mx-auto tracking-wide font-medium"
-                >
-                  UI/UX tervezés AI eszközökkel. Felhasználói élmény
-                  optimalizálás és vizuális tervezés. 4.1x UX konverzió, 73%
-                  design idő megtakarítás, Figma kompatibilis outputok.
-                </motion.p>
-              </div>
+    <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#0B1120] text-[#0F172A] dark:text-[#F8FAFC]">
+      <section className="relative py-24 md:py-32 overflow-hidden">
+        <div className="absolute inset-0 bg-linear-to-b from-[#0369A1]/5 dark:from-[#00B5F1]/5 via-transparent to-transparent pointer-events-none" />
+        <div className="max-w-6xl mx-auto px-6 relative z-10">
+          <div className="text-center space-y-6">
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0369A1]/10 dark:bg-[#00B5F1]/10 border border-[#0369A1]/25 dark:border-[#00B5F1]/20">
+              <Sparkles className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" aria-hidden="true" />
+              <span className="text-xs font-bold text-[#0369A1] dark:text-[#00B5F1] uppercase tracking-[0.2em]">
+                AI Műhely
+              </span>
+            </span>
+            <h1 className="text-5xl md:text-7xl text-[#0F172A] dark:text-white tracking-tight">
+              UI/UX AI{" "}
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#0369A1] to-[#6D28D9] dark:from-[#00B5F1] dark:to-[#A78BFA]">
+                Műhely
+              </span>
+            </h1>
+            <p className="text-lg text-[#334155] dark:text-slate-300 max-w-2xl mx-auto leading-relaxed">
+              Konverziófókuszú UI/UX és wireframe tervezés AI támogatással. Felhasználói élmény optimalizálás,
+              WCAG AA akadálymentesítés és Figma-kompatibilis felületi koncepciók.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+              <Link
+                href="/kapcsolat"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-linear-to-r from-[#075985] to-[#5B21B6] hover:from-[#0369A1] hover:to-[#6D28D9] text-white font-bold rounded-full uppercase tracking-wider text-sm transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2"
+              >
+                Egyedi árajánlat kérése
+                <ArrowRight className="w-4 h-4" aria-hidden="true" />
+              </Link>
             </div>
-          </section>
-
-          {/* AI Generator Section */}
-          <section className="py-16 border-t border-bg-elevated">
-            <div className="max-w-6xl mx-auto px-6">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="bg-bg-surface border border-bg-elevated rounded-2xl p-8 shadow-[0_8px_32px_rgba(0,0,0,0.4)]"
-              >
-                <div className="flex items-center gap-3 mb-8">
-                  <div className="w-12 h-12 rounded-xl bg-linear-to-br from-[#00B5F1]/10 to-[#5B21B6]/10 border border-[#0369A1]/25 dark:border-[#00B5F1]/20 flex items-center justify-center">
-                    <Layout className="w-6 h-6 text-[#0369A1] dark:text-[#00B5F1]" />
-                  </div>
-                  <div>
-                    <h2 className="text-2xl font-bold text-text-primary">
-                      AI UI/UX Generator
-                    </h2>
-                    <p className="text-sm text-text-secondary">
-                      Midjourney v6 Master prompt generálás
-                    </p>
-                  </div>
-                </div>
-
-                {/* Design Style Selection */}
-                <div className="mb-8">
-                  <label className="text-sm font-bold text-[#0369A1] dark:text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
-                    Design stílus
-                  </label>
-                  <div className="grid md:grid-cols-3 gap-4">
-                    {designStyles.map((style) => (
-                      <motion.button
-                        key={style.id}
-                        onClick={() => setSelectedStyle(style)}
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                        className={`p-4 rounded-xl border-2 transition-all ${
-                          selectedStyle.id === style.id
-                            ? "border-[#00B5F1] bg-[#0369A1]/10 dark:bg-[#00B5F1]/10"
-                            : "border-bg-elevated bg-bg-surface hover:border-[#00B5F1]/50"
-                        }`}
-                      >
-                        <div className="w-8 h-8 rounded-lg bg-linear-to-br ${style.color} mb-3" />
-                        <h3 className="text-base font-bold text-text-primary mb-1">
-                          {style.name}
-                        </h3>
-                        <p className="text-xs text-text-secondary">
-                          {style.description}
-                        </p>
-                      </motion.button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Device Type & UX Focus */}
-                <div className="grid md:grid-cols-2 gap-6 mb-8">
-                  <div>
-                    <label className="text-sm font-bold text-[#0369A1] dark:text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
-                      Eszköz típus
-                    </label>
-                    <div className="space-y-2">
-                      {deviceTypes.map((device) => (
-                        <button
-                          key={device.id}
-                          onClick={() => setSelectedDevice(device)}
-                          className={`w-full p-3 rounded-lg border-2 transition-all flex items-center justify-between ${
-                            selectedDevice.id === device.id
-                              ? "border-[#00B5F1] bg-[#0369A1]/10 dark:bg-[#00B5F1]/10"
-                              : "border-bg-elevated bg-bg-surface hover:border-[#00B5F1]/50"
-                          }`}
-                        >
-                          <span className="text-sm font-medium text-text-primary">
-                            {device.name}
-                          </span>
-                          <span className="text-xs text-text-secondary">
-                            {device.description}
-                          </span>
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="text-sm font-bold text-[#0369A1] dark:text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
-                      UX fókusz
-                    </label>
-                    <div className="space-y-2">
-                      {uxFocus.map((focus) => (
-                        <button
-                          key={focus.id}
-                          onClick={() => setSelectedFocus(focus)}
-                          className={`w-full p-3 rounded-lg border-2 transition-all ${
-                            selectedFocus.id === focus.id
-                              ? "border-[#00B5F1] bg-[#0369A1]/10 dark:bg-[#00B5F1]/10"
-                              : "border-bg-elevated bg-bg-surface hover:border-[#00B5F1]/50"
-                          }`}
-                        >
-                          <div className="flex items-center justify-between">
-                            <span className="text-sm font-medium text-text-primary">
-                              {focus.name}
-                            </span>
-                            <span className="text-xs text-text-secondary">
-                              {focus.description}
-                            </span>
-                          </div>
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Text Input Fields */}
-                <div className="space-y-6 mb-8">
-                  <div>
-                    <label className="text-sm font-bold text-[#0369A1] dark:text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
-                      Projekt típus (opcionális)
-                    </label>
-                    <input
-                      type="text"
-                      value={projectType}
-                      onChange={(e) => setProjectType(e.target.value)}
-                      placeholder="pl. e-kereskedelmi oldal, SaaS dashboard, mobil app"
-                      className="w-full p-3 rounded-lg border-2 border-bg-elevated bg-bg-base text-text-primary placeholder:text-text-secondary focus:border-[#00B5F1] focus:outline-none transition-all"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="text-sm font-bold text-[#0369A1] dark:text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
-                      Célközönség (opcionális)
-                    </label>
-                    <input
-                      type="text"
-                      value={targetAudience}
-                      onChange={(e) => setTargetAudience(e.target.value)}
-                      placeholder="pl. fiatal felnőttek, üzleti felhasználók, idősek"
-                      className="w-full p-3 rounded-lg border-2 border-bg-elevated bg-bg-base text-text-primary placeholder:text-text-secondary focus:border-[#00B5F1] focus:outline-none transition-all"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="text-sm font-bold text-[#0369A1] dark:text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
-                      Brand irányelvek (opcionális)
-                    </label>
-                    <input
-                      type="text"
-                      value={brandGuidelines}
-                      onChange={(e) => setBrandGuidelines(e.target.value)}
-                      placeholder="pl. minimalista, modern, prémium, barátságos"
-                      className="w-full p-3 rounded-lg border-2 border-bg-elevated bg-bg-base text-text-primary placeholder:text-text-secondary focus:border-[#00B5F1] focus:outline-none transition-all"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="text-sm font-bold text-[#0369A1] dark:text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
-                      Egyedi utasítások (opcionális)
-                    </label>
-                    <textarea
-                      value={customInstructions}
-                      onChange={(e) => setCustomInstructions(e.target.value)}
-                      placeholder="pl. hangsúly a konverzióra, akadálymentesítés, gyors betöltés"
-                      rows={3}
-                      className="w-full p-3 rounded-lg border-2 border-bg-elevated bg-bg-base text-text-primary placeholder:text-text-secondary focus:border-[#00B5F1] focus:outline-none transition-all resize-none"
-                    />
-                  </div>
-                </div>
-
-                {/* Generate Button */}
-                <motion.button
-                  onClick={generatePrompt}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  disabled={isGenerating}
-                  className="w-full py-4 bg-linear-to-r from-[#075985] to-[#5B21B6] hover:from-[#0369A1] hover:to-[#6D28D9] text-white font-bold rounded-xl hover:shadow-[0_8px_32px_rgba(0, 181, 241,0.4)] transition-all flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {isGenerating ? (
-                    <>
-                      <RefreshCw className="w-5 h-5 animate-spin" />
-                      <span>Generálás folyamatban...</span>
-                    </>
-                  ) : (
-                    <>
-                      <Zap className="w-5 h-5" />
-                      <span>Midjourney Prompt Generálás</span>
-                    </>
-                  )}
-                </motion.button>
-
-                {/* Generated Prompt */}
-                {generatedPrompt && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
-                    className="mt-8 p-6 bg-bg-base border border-bg-elevated rounded-xl"
-                  >
-                    <div className="flex items-center justify-between mb-4">
-                      <h3 className="text-lg font-bold text-text-primary">
-                        Generált Prompt
-                      </h3>
-                      <div className="flex gap-2">
-                        <motion.button
-                          onClick={copyPrompt}
-                          whileHover={{ scale: 1.1 }}
-                          whileTap={{ scale: 0.9 }}
-                          className="p-2 rounded-lg bg-[#0369A1]/10 dark:bg-[#00B5F1]/10 border border-[#0369A1]/25 dark:border-[#00B5F1]/20 text-[#0369A1] dark:text-[#00B5F1] hover:bg-[#00B5F1]/20 transition-all"
-                        >
-                          <Copy className="w-4 h-4" />
-                        </motion.button>
-                      </div>
-                    </div>
-                    <p className="text-sm text-text-secondary leading-relaxed">
-                      {generatedPrompt}
-                    </p>
-                  </motion.div>
-                )}
-              </motion.div>
-            </div>
-          </section>
-
-          {/* Features Section */}
-          <section className="py-16 border-t border-bg-elevated">
-            <div className="max-w-6xl mx-auto px-6">
-              <motion.h2
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="text-3xl font-bold text-text-primary mb-8 text-center tracking-tight"
-              >
-                Funkciók és{" "}
-                <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6]">
-                  Előnyök
-                </span>
-              </motion.h2>
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                {[
-                  {
-                    icon: Layout,
-                    title: "UI/UX Design Generálás",
-                    description: "Automatikus UI/UX design"
-                  },
-                  {
-                    icon: Smartphone,
-                    title: "Wireframe Tervezés",
-                    description: "Wireframe generálás"
-                  },
-                  {
-                    icon: Monitor,
-                    title: "Konverziófókuszú Interface",
-                    description: "Konverzió optimalizált design"
-                  },
-                  {
-                    icon: Layers,
-                    title: "UX Optimalizáció",
-                    description: "User experience optimalizáció"
-                  }
-                ].map((feature, index) => {
-                  const FeatureIcon = feature.icon;
-                  return (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: index * 0.1 }}
-                      className="bg-bg-surface border border-bg-elevated rounded-xl p-6 hover:border-[#00B5F1]/50 transition-all group"
-                    >
-                      <div className="w-12 h-12 rounded-xl bg-linear-to-br from-[#00B5F1]/10 to-[#5B21B6]/10 border border-[#0369A1]/25 dark:border-[#00B5F1]/20 flex items-center justify-center mb-4 group-hover:border-[#00B5F1]/50 transition-colors">
-                        <FeatureIcon className="w-6 h-6 text-[#0369A1] dark:text-[#00B5F1]" />
-                      </div>
-                      <h3 className="text-lg font-bold text-text-primary mb-2">
-                        {feature.title}
-                      </h3>
-                      <p className="text-sm text-text-secondary">
-                        {feature.description}
-                      </p>
-                    </motion.div>
-                  );
-                })}
-              </div>
-            </div>
-          </section>
-
-          {/* CTA Section */}
-          <section className="py-16 border-t border-bg-elevated">
-            <div className="max-w-4xl mx-auto px-6 text-center">
-              <motion.h2
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="text-3xl font-bold text-text-primary mb-4 tracking-tight"
-              >
-                Készen állsz az{" "}
-                <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6]">
-                  UI/UX Tervezésre
-                </span>
-                ?
-              </motion.h2>
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                className="text-text-secondary mb-8"
-              >
-                Próbáld ki az AI UI/UX Generátort és hozz létre lenyűgöző
-                interface-eket percek alatt!
-              </motion.p>
-              <motion.button
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="inline-flex items-center gap-2 px-8 py-4 bg-linear-to-r from-[#075985] to-[#5B21B6] hover:from-[#0369A1] hover:to-[#6D28D9] text-white font-bold rounded-xl hover:shadow-[0_8px_32px_rgba(0, 181, 241,0.4)] transition-all"
-              >
-                Kezdés most
-                <ArrowRight className="w-4 h-4" />
-              </motion.button>
-            </div>
-          </section>
+          </div>
         </div>
-    </>
+      </section>
+
+      <DirectAnswerBlock
+        id="ui-ux-ai-muhely-direct-answer"
+        question="Hogyan támogatja a weboldaltervezést az UI/UX AI Műhely?"
+        answer="Az UI/UX AI Műhely asztali és mobil felületekhez állít össze konverziófókuszú wireframe- és interface-promptokat. 26 év tervezőgrafikai és 16 év webfejlesztői tapasztalattal ötvözi az akadálymentes WCAG AA ergonómiát és a modern Bento elrendezéseket — egyedi árajánlat alapján."
+      />
+
+      <section aria-labelledby="uiux-generator-heading" className="py-16 border-t border-slate-200 dark:border-slate-800/80">
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 id="uiux-generator-heading" className="text-3xl md:text-4xl text-center mb-8 tracking-tight">
+            AI UI/UX Generátor
+          </h2>
+          <ToolAccessGate toolId="ui_ux_ai_muhely" toolName="UI/UX AI Műhely">
+            <UiUxPromptGenerator />
+          </ToolAccessGate>
+        </div>
+      </section>
+
+      <section className="py-16 border-t border-slate-200 dark:border-slate-800/80 bg-[#F1F5F9] dark:bg-transparent">
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 className="text-3xl md:text-4xl mb-8 text-center tracking-tight">Funkciók és Előnyök</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {features.map((feature) => {
+              const FeatureIcon = feature.icon;
+              return (
+                <div key={feature.title} className="luminous-card rounded-3xl p-6">
+                  <div className="w-12 h-12 rounded-xl bg-linear-to-br from-[#00B5F1]/10 to-[#5B21B6]/10 border border-[#0369A1]/25 dark:border-[#00B5F1]/20 flex items-center justify-center mb-4">
+                    <FeatureIcon className="w-6 h-6 text-[#0369A1] dark:text-[#00B5F1]" aria-hidden="true" />
+                  </div>
+                  <h3 className="text-xl text-[#0F172A] dark:text-white mb-2">{feature.title}</h3>
+                  <p className="text-sm text-[#334155] dark:text-slate-300">{feature.description}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <ProductFaqSection id="ui-ux-ai-muhely-faq" faqs={faqs} />
+
+      <section className="py-16 border-t border-slate-200 dark:border-slate-800/80">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <h2 className="text-3xl md:text-4xl mb-4 tracking-tight">Készen állsz az UI/UX Tervezésre?</h2>
+          <p className="text-[#334155] dark:text-slate-300 mb-8">
+            Igényelj hozzáférést az UI/UX AI Műhelyhez, vagy kérj egyedi árajánlatot weboldalad újratervezésére.
+          </p>
+          <Link
+            href="/kapcsolat"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-linear-to-r from-[#075985] to-[#5B21B6] hover:from-[#0369A1] hover:to-[#6D28D9] text-white font-bold rounded-full uppercase tracking-wider text-sm transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2"
+          >
+            Hozzáférés igénylése
+            <ArrowRight className="w-4 h-4" aria-hidden="true" />
+          </Link>
+        </div>
+      </section>
+
+      <ProductPortalCta productName="UI/UX AI Műhely" />
+    </div>
   );
 }

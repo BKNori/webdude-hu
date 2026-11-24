@@ -114,9 +114,17 @@ export async function createGeneration(
     }
 
     const userData = userDoc.data();
-    const hasProductAccess = userData?.hasProductAccess === true;
+    const allowedTools = Array.isArray(userData?.allowedTools)
+      ? (userData.allowedTools as string[])
+      : [];
+    const isAdmin =
+      decodedToken.email === "hello@webdude.hu" || userData?.role === "admin";
+    const hasAccess =
+      isAdmin ||
+      userData?.hasProductAccess === true ||
+      allowedTools.includes(validInput.workflowId);
 
-    if (!hasProductAccess && decodedToken.email !== "hello@webdude.hu") {
+    if (!hasAccess) {
       return { success: false, error: "Nincs jogosultságod a generáláshoz" };
     }
 

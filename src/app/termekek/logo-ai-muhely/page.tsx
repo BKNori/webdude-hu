@@ -1,506 +1,138 @@
-﻿"use client";
+import Link from "next/link";
+import { PenTool, Palette, Layers, Hexagon, ArrowRight, Sparkles } from "lucide-react";
+import DirectAnswerBlock from "@/components/molecules/DirectAnswerBlock";
+import ProductFaqSection from "@/components/molecules/ProductFaqSection";
+import ProductPortalCta from "@/components/molecules/ProductPortalCta";
+import ToolAccessGate from "@/components/molecules/ToolAccessGate";
+import LogoPromptGenerator from "@/components/organisms/LogoPromptGenerator";
 
-import { useState } from "react";
-import { motion } from "motion/react";
-import {
-  Sparkles,
-  PenTool,
-  Palette,
-  Layers,
-  Zap,
-  ArrowRight,
-  Copy,
-  RefreshCw,
-  Hexagon
-} from "lucide-react";
+/**
+ * /termekek/logo-ai-muhely — PUBLIKUS, statikusan prerenderelt SEO/AEO/GEO landing.
+ * A generátor kizárólag `ToolAccessGate` mögött (allowedTools: "logo_ai_muhely"
+ * vagy Szuperadmin) mountolódik; a landing tartalom bejelentkezés nélkül indexelhető.
+ */
 
-const logoStyles = [
-  {
-    id: "minimalist",
-    name: "Minimalista",
-    description: "Tiszta, egyszerĹ± vonalvezetĂ©s",
-    prompt:
-      "minimalist logo design, clean lines, geometric shapes, modern typography, professional aesthetic, scalable vector style",
-    color: "from-[#00B5F1] to-sky-500"
-  },
-  {
-    id: "modern",
-    name: "Modern",
-    description: "KortĂˇrs, innovatĂ­v",
-    prompt:
-      "modern logo design, contemporary aesthetic, bold typography, dynamic shapes, innovative visual identity",
-    color: "from-purple-500 to-pink-500"
-  },
-  {
-    id: "corporate",
-    name: "Corporate",
-    description: "ProfesszionĂˇlis, ĂĽzleti",
-    prompt:
-      "corporate logo design, professional business aesthetic, trustworthy colors, clean typography, established brand feel",
-    color: "from-[#00B5F1] to-[#5B21B6]"
-  },
-  {
-    id: "creative",
-    name: "KreatĂ­v",
-    description: "SzĂ­nes, dinamikus",
-    prompt:
-      "creative logo design, vibrant colors, artistic elements, unique composition, eye-catching visual",
-    color: "from-green-500 to-emerald-500"
-  },
-  {
-    id: "luxury",
-    name: "Luxus",
-    description: "ElegĂˇns, prĂ©mium",
-    prompt:
-      "luxury logo design, elegant aesthetic, premium feel, sophisticated colors, high-end visual identity",
-    color: "from-brand-secondary to-brand-primary"
-  },
-  {
-    id: "tech",
-    name: "Tech",
-    description: "Modern, innovatĂ­v",
-    prompt:
-      "tech logo design, modern innovation aesthetic, digital elements, futuristic but professional, clean tech style",
-    color: "from-indigo-500 to-blue-500"
-  }
-];
+const features = [
+  { icon: PenTool, title: "Midjourney v6 Master", description: "Prémium prompt sablonok a legjobb eredményekhez" },
+  { icon: Palette, title: "Egyedi Arculattervezés", description: "Személyre szabott vizuális identitás" },
+  { icon: Layers, title: "Logo Generálás", description: "Promptok több logó-stílusban és típusban" },
+  { icon: Hexagon, title: "Brand Szimbólumok", description: "Márka szimbólum tervezés és optimalizálás" },
+] as const;
 
-const logoTypes = [
-  { id: "wordmark", name: "Wordmark", description: "SzĂ¶veg alapĂş logo" },
-  { id: "symbol", name: "SzimbĂłlum", description: "Ikon alapĂş logo" },
-  { id: "combination", name: "KombinĂˇlt", description: "SzĂ¶veg + ikon" },
-  { id: "emblem", name: "EmblĂ©ma", description: "Pajzs alapĂş" }
-];
-
-const colorSchemes = [
+const faqs = [
   {
-    id: "9082",
-    name: "90/8/2 (Cyber-Arany)",
-    description: "90% sĂ¶tĂ©t, 8% arany, 2% kiemelĹ‘"
+    question: "Mire használható a Logo AI Műhely?",
+    answer:
+      "Strukturált, Midjourney v6 kompatibilis logó-promptokat állít össze stílus, logótípus, színséma és márkaadatok alapján. Az eredmény kiindulópont a vektoros, nyomdakész arculattervezéshez, amit 26 év tervezőgrafikai tapasztalattal véglegesítek.",
   },
   {
-    id: "monochrome",
-    name: "MonokrĂłm",
-    description: "Fekete-fehĂ©r Ăˇrnyalatok"
+    question: "Ki férhet hozzá a Logo AI Műhely generátorhoz?",
+    answer:
+      "A generátor prémium AI modul: kizárólag bejelentkezett, jóváhagyott ügyfeleim használhatják, akiknek a fiókjához engedélyeztem a modult. Hozzáférést a kapcsolat oldalon igényelhetsz.",
   },
-  { id: "gradient", name: "Gradiens", description: "SzĂ­nĂˇtmenetes" },
-  { id: "duotone", name: "DuotĂłn", description: "KĂ©tszĂ­nĹ±" }
-];
+  {
+    question: "Mennyibe kerül a Logo AI Műhely használata?",
+    answer:
+      "Nincs dobozos csomag: a hozzáférés és az arculattervezési munka egyedi árajánlat alapján történik, a projekt méretéhez és céljaihoz igazítva.",
+  },
+] as const;
 
 export default function LogoAIMuhelyPage() {
-  const [selectedStyle, setSelectedStyle] = useState(logoStyles[0]);
-  const [selectedType, setSelectedType] = useState(logoTypes[0]);
-  const [selectedScheme, setSelectedScheme] = useState(colorSchemes[0]);
-  const [generatedPrompt, setGeneratedPrompt] = useState("");
-  const [isGenerating, setIsGenerating] = useState(false);
-  const [companyName, setCompanyName] = useState("");
-  const [industry, setIndustry] = useState("");
-  const [slogan, setSlogan] = useState("");
-  const [colorPreferences, setColorPreferences] = useState("");
-  const [customInstructions, setCustomInstructions] = useState("");
-
-  const generatePrompt = () => {
-    setIsGenerating(true);
-    setTimeout(() => {
-      let prompt = `Logo design for ${selectedStyle.name} style, ${selectedStyle.description}, ${selectedType.name} (${selectedType.description}), ${selectedScheme.description}, ${selectedStyle.prompt}, 90/8/2 color ratio rule, professional vector graphics, scalable design, commercial quality, brand identity`;
-
-      if (companyName) {
-        prompt += `, company name: "${companyName}"`;
-      }
-      if (industry) {
-        prompt += `, industry: ${industry}`;
-      }
-      if (slogan) {
-        prompt += `, slogan: "${slogan}"`;
-      }
-      if (colorPreferences) {
-        prompt += `, color preferences: ${colorPreferences}`;
-      }
-      if (customInstructions) {
-        prompt += `, custom requirements: ${customInstructions}`;
-      }
-
-      setGeneratedPrompt(prompt);
-      setIsGenerating(false);
-    }, 1500);
-  };
-
-  const copyPrompt = () => {
-    navigator.clipboard.writeText(generatedPrompt);
-  };
-
   return (
-    <>
-        <div className="min-h-screen bg-bg-base">
-          {/* Hero Section */}
-          <section className="relative py-24 overflow-hidden">
-            <div className="absolute inset-0 bg-linear-to-b from-[#00B5F1]/5 via-transparent to-transparent" />
-            <div className="max-w-6xl mx-auto px-6 relative z-10">
-              <div className="text-center space-y-6">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5 }}
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0369A1]/10 dark:bg-[#00B5F1]/10 border border-[#0369A1]/25 dark:border-[#00B5F1]/20"
-                >
-                  <Sparkles className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
-                  <span className="text-xs font-bold text-[#0369A1] dark:text-[#00B5F1] uppercase tracking-[0.2em]">
-                    AI MĹ±hely
-                  </span>
-                </motion.div>
-                <motion.h1
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.1 }}
-                  className="text-4xl md:text-6xl font-bold text-text-primary tracking-tight"
-                >
-                  Logo AI{" "}
-                  <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6]">
-                    MĹ±hely
-                  </span>
-                </motion.h1>
-                <p className="text-lg text-[#475569] dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
-                  Egyedi arculattervezĂ©s Ă©s logo generĂˇlĂˇs Midjourney v6 Master
-                  promptokkal. PrĂ©mium vizuĂˇlis identitĂˇs kialakĂ­tĂˇsa. 4.5x
-                  brand felismerĂ©s, 89% design konzisztencia, 300 DPI nyomdakĂ©sz
-                  outputok.
-                </p>
-              </div>
+    <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#0B1120] text-[#0F172A] dark:text-[#F8FAFC]">
+      {/* Hero */}
+      <section className="relative py-24 md:py-32 overflow-hidden">
+        <div className="absolute inset-0 bg-linear-to-b from-[#0369A1]/5 dark:from-[#00B5F1]/5 via-transparent to-transparent pointer-events-none" />
+        <div className="max-w-6xl mx-auto px-6 relative z-10">
+          <div className="text-center space-y-6">
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0369A1]/10 dark:bg-[#00B5F1]/10 border border-[#0369A1]/25 dark:border-[#00B5F1]/20">
+              <Sparkles className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" aria-hidden="true" />
+              <span className="text-xs font-bold text-[#0369A1] dark:text-[#00B5F1] uppercase tracking-[0.2em]">
+                AI Műhely
+              </span>
+            </span>
+            <h1 className="text-5xl md:text-7xl text-[#0F172A] dark:text-white tracking-tight">
+              Logo AI{" "}
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#0369A1] to-[#6D28D9] dark:from-[#00B5F1] dark:to-[#A78BFA]">
+                Műhely
+              </span>
+            </h1>
+            <p className="text-lg text-[#334155] dark:text-slate-300 max-w-2xl mx-auto leading-relaxed">
+              Egyedi arculattervezés és logó generálás Midjourney v6 Master promptokkal. Prémium vizuális
+              identitás kialakítása, következetes márkaelemek és 300 DPI nyomdakész outputok.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+              <Link
+                href="/kapcsolat"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-linear-to-r from-[#075985] to-[#5B21B6] hover:from-[#0369A1] hover:to-[#6D28D9] text-white font-bold rounded-full uppercase tracking-wider text-sm transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2"
+              >
+                Egyedi árajánlat kérése
+                <ArrowRight className="w-4 h-4" aria-hidden="true" />
+              </Link>
             </div>
-          </section>
-
-          {/* AI Generator Section */}
-          <section className="py-16 border-t border-bg-elevated">
-            <div className="max-w-6xl mx-auto px-6">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="bg-bg-surface border border-bg-elevated rounded-2xl p-8 shadow-[0_8px_32px_rgba(0,0,0,0.4)]"
-              >
-                <div className="flex items-center gap-3 mb-8">
-                  <div className="w-12 h-12 rounded-xl bg-linear-to-br from-[#00B5F1]/10 to-[#5B21B6]/10 border border-[#0369A1]/25 dark:border-[#00B5F1]/20 flex items-center justify-center">
-                    <PenTool className="w-6 h-6 text-[#0369A1] dark:text-[#00B5F1]" />
-                  </div>
-                  <div>
-                    <h2 className="text-2xl font-bold text-text-primary">
-                      AI Logo Generator
-                    </h2>
-                    <p className="text-sm text-text-secondary">
-                      Midjourney v6 Master prompt generĂˇlĂˇs
-                    </p>
-                  </div>
-                </div>
-
-                {/* Style Selection */}
-                <div className="mb-8">
-                  <label className="text-sm font-bold text-[#0369A1] dark:text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
-                    StĂ­lus vĂˇlasztĂˇs
-                  </label>
-                  <div className="grid md:grid-cols-3 gap-4">
-                    {logoStyles.map((style) => (
-                      <motion.button
-                        key={style.id}
-                        onClick={() => setSelectedStyle(style)}
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                        className={`p-4 rounded-xl border-2 transition-all ${
-                          selectedStyle.id === style.id
-                            ? "border-[#00B5F1] bg-[#0369A1]/10 dark:bg-[#00B5F1]/10"
-                            : "border-bg-elevated bg-bg-surface hover:border-[#00B5F1]/50"
-                        }`}
-                      >
-                        <div className="w-8 h-8 rounded-lg bg-linear-to-br ${style.color} mb-3" />
-                        <h3 className="text-base font-bold text-text-primary mb-1">
-                          {style.name}
-                        </h3>
-                        <p className="text-xs text-text-secondary">
-                          {style.description}
-                        </p>
-                      </motion.button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Logo Type & Color Scheme */}
-                <div className="grid md:grid-cols-2 gap-6 mb-8">
-                  <div>
-                    <label className="text-sm font-bold text-[#0369A1] dark:text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
-                      Logo tĂ­pus
-                    </label>
-                    <div className="space-y-2">
-                      {logoTypes.map((type) => (
-                        <button
-                          key={type.id}
-                          onClick={() => setSelectedType(type)}
-                          className={`w-full p-3 rounded-lg border-2 transition-all flex items-center justify-between ${
-                            selectedType.id === type.id
-                              ? "border-[#00B5F1] bg-[#0369A1]/10 dark:bg-[#00B5F1]/10"
-                              : "border-bg-elevated bg-bg-surface hover:border-[#00B5F1]/50"
-                          }`}
-                        >
-                          <span className="text-sm font-medium text-text-primary">
-                            {type.name}
-                          </span>
-                          <span className="text-xs text-text-secondary">
-                            {type.description}
-                          </span>
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="text-sm font-bold text-[#0369A1] dark:text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
-                      SzĂ­n sĂ©ma
-                    </label>
-                    <div className="space-y-2">
-                      {colorSchemes.map((scheme) => (
-                        <button
-                          key={scheme.id}
-                          onClick={() => setSelectedScheme(scheme)}
-                          className={`w-full p-3 rounded-lg border-2 transition-all ${
-                            selectedScheme.id === scheme.id
-                              ? "border-[#00B5F1] bg-[#0369A1]/10 dark:bg-[#00B5F1]/10"
-                              : "border-bg-elevated bg-bg-surface hover:border-[#00B5F1]/50"
-                          }`}
-                        >
-                          <div className="flex items-center justify-between">
-                            <span className="text-sm font-medium text-text-primary">
-                              {scheme.name}
-                            </span>
-                            <span className="text-xs text-text-secondary">
-                              {scheme.description}
-                            </span>
-                          </div>
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Text Input Fields */}
-                <div className="space-y-6 mb-8">
-                  <div>
-                    <label className="text-sm font-bold text-[#0369A1] dark:text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
-                      CĂ©gnĂ©v (opcionĂˇlis)
-                    </label>
-                    <input
-                      type="text"
-                      value={companyName}
-                      onChange={(e) => setCompanyName(e.target.value)}
-                      placeholder="pl. WebDude, TechStart, Innovate"
-                      className="w-full p-3 rounded-lg border-2 border-bg-elevated bg-bg-base text-text-primary placeholder:text-text-secondary focus:border-[#00B5F1] focus:outline-none transition-all"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="text-sm font-bold text-[#0369A1] dark:text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
-                      IparĂˇg (opcionĂˇlis)
-                    </label>
-                    <input
-                      type="text"
-                      value={industry}
-                      onChange={(e) => setIndustry(e.target.value)}
-                      placeholder="pl. webfejlesztĂ©s, e-kereskedelem, pĂ©nzĂĽgy"
-                      className="w-full p-3 rounded-lg border-2 border-bg-elevated bg-bg-base text-text-primary placeholder:text-text-secondary focus:border-[#00B5F1] focus:outline-none transition-all"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="text-sm font-bold text-[#0369A1] dark:text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
-                      Szlogen (opcionĂˇlis)
-                    </label>
-                    <input
-                      type="text"
-                      value={slogan}
-                      onChange={(e) => setSlogan(e.target.value)}
-                      placeholder="pl. InnovĂˇciĂł a jĂ¶vĹ‘ben, MinĹ‘sĂ©g mindenek felett"
-                      className="w-full p-3 rounded-lg border-2 border-bg-elevated bg-bg-base text-text-primary placeholder:text-text-secondary focus:border-[#00B5F1] focus:outline-none transition-all"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="text-sm font-bold text-[#0369A1] dark:text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
-                      SzĂ­n preferenciĂˇk (opcionĂˇlis)
-                    </label>
-                    <input
-                      type="text"
-                      value={colorPreferences}
-                      onChange={(e) => setColorPreferences(e.target.value)}
-                      placeholder="pl. kĂ©k Ă©s narancs, monokrĂłm, pasztell szĂ­nek"
-                      className="w-full p-3 rounded-lg border-2 border-bg-elevated bg-bg-base text-text-primary placeholder:text-text-secondary focus:border-[#00B5F1] focus:outline-none transition-all"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="text-sm font-bold text-[#0369A1] dark:text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
-                      Egyedi utasĂ­tĂˇsok (opcionĂˇlis)
-                    </label>
-                    <textarea
-                      value={customInstructions}
-                      onChange={(e) => setCustomInstructions(e.target.value)}
-                      placeholder="pl. minimalista design, geometrikus formĂˇk, modern tipogrĂˇfia"
-                      rows={3}
-                      className="w-full p-3 rounded-lg border-2 border-bg-elevated bg-bg-base text-text-primary placeholder:text-text-secondary focus:border-[#00B5F1] focus:outline-none transition-all resize-none"
-                    />
-                  </div>
-                </div>
-
-                {/* Generate Button */}
-                <motion.button
-                  onClick={generatePrompt}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  disabled={isGenerating}
-                  className="w-full py-4 bg-linear-to-r from-[#075985] to-[#5B21B6] hover:from-[#0369A1] hover:to-[#6D28D9] text-white font-bold rounded-xl hover:shadow-[0_8px_32px_rgba(0, 181, 241,0.4)] transition-all flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {isGenerating ? (
-                    <>
-                      <RefreshCw className="w-5 h-5 animate-spin" />
-                      <span>GenerĂˇlĂˇs folyamatban...</span>
-                    </>
-                  ) : (
-                    <>
-                      <Zap className="w-5 h-5" />
-                      <span>Midjourney Prompt GenerĂˇlĂˇs</span>
-                    </>
-                  )}
-                </motion.button>
-
-                {/* Generated Prompt */}
-                {generatedPrompt && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
-                    className="mt-8 p-6 bg-bg-base border border-bg-elevated rounded-xl"
-                  >
-                    <div className="flex items-center justify-between mb-4">
-                      <h3 className="text-lg font-bold text-text-primary">
-                        GenerĂˇlt Prompt
-                      </h3>
-                      <div className="flex gap-2">
-                        <motion.button
-                          onClick={copyPrompt}
-                          whileHover={{ scale: 1.1 }}
-                          whileTap={{ scale: 0.9 }}
-                          className="p-2 rounded-lg bg-[#0369A1]/10 dark:bg-[#00B5F1]/10 border border-[#0369A1]/25 dark:border-[#00B5F1]/20 text-[#0369A1] dark:text-[#00B5F1] hover:bg-[#00B5F1]/20 transition-all"
-                        >
-                          <Copy className="w-4 h-4" />
-                        </motion.button>
-                      </div>
-                    </div>
-                    <p className="text-sm text-text-secondary leading-relaxed">
-                      {generatedPrompt}
-                    </p>
-                  </motion.div>
-                )}
-              </motion.div>
-            </div>
-          </section>
-
-          {/* Features Section */}
-          <section className="py-16 border-t border-bg-elevated">
-            <div className="max-w-6xl mx-auto px-6">
-              <motion.h2
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="text-3xl font-bold text-text-primary mb-8 text-center tracking-tight"
-              >
-                FunkciĂłk Ă©s{" "}
-                <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6]">
-                  ElĹ‘nyĂ¶k
-                </span>
-              </motion.h2>
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                {[
-                  {
-                    icon: PenTool,
-                    title: "Midjourney v6 Master",
-                    description:
-                      "PrĂ©mium prompt sablonok a legjobb eredmĂ©nyekhez"
-                  },
-                  {
-                    icon: Palette,
-                    title: "Egyedi ArculattervezĂ©s",
-                    description: "SzemĂ©lyre szabott vizuĂˇlis identitĂˇs"
-                  },
-                  {
-                    icon: Layers,
-                    title: "Logo GenerĂˇlĂˇs",
-                    description: "Automatikus logo generĂˇlĂˇs tĂ¶bb stĂ­lusban"
-                  },
-                  {
-                    icon: Hexagon,
-                    title: "Brand SzimbĂłlumok",
-                    description: "MĂˇrka szimbĂłlum tervezĂ©s Ă©s optimalizĂˇlĂˇs"
-                  }
-                ].map((feature, index) => {
-                  const FeatureIcon = feature.icon;
-                  return (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: index * 0.1 }}
-                      className="bg-bg-surface border border-bg-elevated rounded-xl p-6 hover:border-[#00B5F1]/50 transition-all group"
-                    >
-                      <div className="w-12 h-12 rounded-xl bg-linear-to-br from-[#00B5F1]/10 to-[#5B21B6]/10 border border-[#0369A1]/25 dark:border-[#00B5F1]/20 flex items-center justify-center mb-4 group-hover:border-[#00B5F1]/50 transition-colors">
-                        <FeatureIcon className="w-6 h-6 text-[#0369A1] dark:text-[#00B5F1]" />
-                      </div>
-                      <h3 className="text-lg font-bold text-text-primary mb-2">
-                        {feature.title}
-                      </h3>
-                      <p className="text-sm text-text-secondary">
-                        {feature.description}
-                      </p>
-                    </motion.div>
-                  );
-                })}
-              </div>
-            </div>
-          </section>
-
-          {/* CTA Section */}
-          <section className="py-16 border-t border-bg-elevated">
-            <div className="max-w-4xl mx-auto px-6 text-center">
-              <motion.h2
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="text-3xl font-bold text-text-primary mb-4 tracking-tight"
-              >
-                KĂ©szen Ăˇllsz az{" "}
-                <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6]">
-                  ArculattervezĂ©sre
-                </span>
-                ?
-              </motion.h2>
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                className="text-text-secondary mb-8"
-              >
-                PrĂłbĂˇld ki az AI Logo GenerĂˇtort Ă©s hozz lĂ©tre lenyĹ±gĂ¶zĹ‘ logĂłkat
-                percek alatt!
-              </motion.p>
-              <motion.button
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="inline-flex items-center gap-2 px-8 py-4 bg-linear-to-r from-[#075985] to-[#5B21B6] hover:from-[#0369A1] hover:to-[#6D28D9] text-white font-bold rounded-xl hover:shadow-[0_8px_32px_rgba(0, 181, 241,0.4)] transition-all"
-              >
-                KezdĂ©s most
-                <ArrowRight className="w-4 h-4" />
-              </motion.button>
-            </div>
-          </section>
+          </div>
         </div>
-    </>
+      </section>
+
+      <DirectAnswerBlock
+        id="logo-ai-muhely-direct-answer"
+        question="Mi az a Logo AI Műhely, és kinek ajánlott?"
+        answer="A Logo AI Műhely egy prémium AI arculattervező modul, amely stílus, logótípus és színséma alapján Midjourney v6 Master promptokat állít össze. Vállalkozásoknak ajánlott, akik gyorsan szeretnének több logókoncepciót látni, majd 26 év tervezőgrafikai tapasztalattal véglegesített, vektoros, nyomdakész arculatot kapni — egyedi árajánlat alapján."
+      />
+
+      {/* Védett AI generátor */}
+      <section aria-labelledby="logo-generator-heading" className="py-16 border-t border-slate-200 dark:border-slate-800/80">
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 id="logo-generator-heading" className="text-3xl md:text-4xl text-center mb-8 tracking-tight">
+            AI Logo Generátor
+          </h2>
+          <ToolAccessGate toolId="logo_ai_muhely" toolName="Logo AI Műhely">
+            <LogoPromptGenerator />
+          </ToolAccessGate>
+        </div>
+      </section>
+
+      {/* Funkciók */}
+      <section className="py-16 border-t border-slate-200 dark:border-slate-800/80 bg-[#F1F5F9] dark:bg-transparent">
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 className="text-3xl md:text-4xl mb-8 text-center tracking-tight">Funkciók és Előnyök</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {features.map((feature) => {
+              const FeatureIcon = feature.icon;
+              return (
+                <div key={feature.title} className="luminous-card rounded-3xl p-6">
+                  <div className="w-12 h-12 rounded-xl bg-linear-to-br from-[#00B5F1]/10 to-[#5B21B6]/10 border border-[#0369A1]/25 dark:border-[#00B5F1]/20 flex items-center justify-center mb-4">
+                    <FeatureIcon className="w-6 h-6 text-[#0369A1] dark:text-[#00B5F1]" aria-hidden="true" />
+                  </div>
+                  <h3 className="text-xl text-[#0F172A] dark:text-white mb-2">{feature.title}</h3>
+                  <p className="text-sm text-[#334155] dark:text-slate-300">{feature.description}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <ProductFaqSection id="logo-ai-muhely-faq" faqs={faqs} />
+
+      {/* Erős CTA */}
+      <section className="py-16 border-t border-slate-200 dark:border-slate-800/80">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <h2 className="text-3xl md:text-4xl mb-4 tracking-tight">Készen állsz az Arculattervezésre?</h2>
+          <p className="text-[#334155] dark:text-slate-300 mb-8">
+            Igényelj hozzáférést a Logo AI Műhelyhez, vagy kérj egyedi árajánlatot a teljes arculatra.
+          </p>
+          <Link
+            href="/kapcsolat"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-linear-to-r from-[#075985] to-[#5B21B6] hover:from-[#0369A1] hover:to-[#6D28D9] text-white font-bold rounded-full uppercase tracking-wider text-sm transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2"
+          >
+            Hozzáférés igénylése
+            <ArrowRight className="w-4 h-4" aria-hidden="true" />
+          </Link>
+        </div>
+      </section>
+
+      <ProductPortalCta productName="Logo AI Műhely" />
+    </div>
   );
 }

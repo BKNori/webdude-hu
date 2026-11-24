@@ -1,4 +1,4 @@
-﻿import { Metadata } from "next";
+import { Metadata } from "next";
 import PromptTemplatesClient from "./PromptTemplatesClient";
 
 export const metadata: Metadata = {

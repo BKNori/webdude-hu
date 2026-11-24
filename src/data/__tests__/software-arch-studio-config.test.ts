@@ -76,5 +76,22 @@ describe("software-arch-studio-config", () => {
     expect(summary).toContain("5-Pilléres AI Coding Agent Sprint");
     expect(summary).toContain("claude-xml");
     expect(summary).toContain("npx tsc --noEmit");
+
+    const emptyState = {
+      ...DEFAULT_SOFTWARE_ARCH_STATE,
+      projectName: "",
+      objectiveBrief: "",
+      ssotFiles: "",
+      risksAndConstraints: "Strict GDPR isolation",
+      customAntiPatterns: "Never use any",
+      stackIds: [],
+      guardrailIds: [],
+    };
+    const fallbackCompiled = compileSoftwareArchPrompt(emptyState);
+    const fallbackSummary = buildArchBlueprintChecklist(emptyState);
+    expect(fallbackCompiled.primaryPrompt).toContain("WebDude Digital Platform");
+    expect(fallbackCompiled.primaryPrompt).toContain("CUSTOM ANTI-PATTERNS TO AVOID: Never use any");
+    expect(fallbackSummary).toContain("Névtelen rendszer");
+    expect(fallbackSummary).toContain("Alapértelmezett stack");
   });
 });

@@ -4,14 +4,18 @@ import { buildBreadcrumbSchema } from "@/lib/breadcrumb";
 export const metadata: Metadata = {
   title: "Kristófka Munkafolyamat | WebDude",
   description:
-    "Az exkluzív 6-ágensű multi-agent AI workflow rendszer. Kristófka: 26 éves grafikai rutin + 16 év webfejlesztői tapasztalat találkozik a legújabb AI technológiákkal. Egyedi árajánlat kérése.",
+    "Többágenses Strategist-Pro AI munkafolyamat PDF alaprajzok és projektparaméterek elemzéséhez, gyors befektetői pitch készítéssel. Egyedi árajánlat most.",
+  robots: {
+    index: true,
+    follow: true,
+  },
   alternates: {
     canonical: "https://webdude.hu/termekek/kristofka-munkafolyamat",
   },
   openGraph: {
     title: "Kristófka Munkafolyamat | WebDude",
     description:
-      "Az exkluzív 6-ágensű multi-agent AI workflow rendszer. Kristófka: 26 éves grafikai rutin + 16 év webfejlesztői tapasztalat találkozik a legújabb AI technológiákkal. Egyedi árajánlat kérése.",
+      "Többágenses Strategist-Pro AI munkafolyamat PDF alaprajzok és projektparaméterek elemzéséhez, gyors befektetői pitch készítéssel. Egyedi árajánlat most.",
     url: "https://webdude.hu/termekek/kristofka-munkafolyamat",
     siteName: "WebDude",
     images: [
@@ -29,7 +33,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Kristófka Munkafolyamat | WebDude",
     description:
-      "Az exkluzív 6-ágensű multi-agent AI workflow rendszer. Kristófka: 26 éves grafikai rutin + 16 év webfejlesztői tapasztalat találkozik a legújabb AI technológiákkal. Egyedi árajánlat kérése.",
+      "Többágenses Strategist-Pro AI munkafolyamat PDF alaprajzok és projektparaméterek elemzéséhez, gyors befektetői pitch készítéssel. Egyedi árajánlat most.",
     images: ["/og/webdude-og.jpg"],
   },
 };
@@ -39,7 +43,7 @@ const productJsonLd = {
   "@type": "Product",
   name: "Kristófka Munkafolyamat",
   description:
-    "Az exkluzív 6-ágensű multi-agent AI workflow rendszer. Kristófka: 26 éves grafikai rutin + 16 év webfejlesztői tapasztalat találkozik a legújabb AI technológiákkal.",
+    "Többágenses Strategist-Pro AI munkafolyamat PDF alaprajzok és projektparaméterek elemzéséhez, gyors befektetői pitch készítéssel. Egyedi árajánlat most.",
   image: "https://webdude.hu/og/webdude-og.jpg",
   brand: {
     "@type": "Brand",
@@ -81,30 +85,11 @@ const breadcrumbSchema = buildBreadcrumbSchema([
   { name: "Kristófka Munkafolyamat", url: "/termekek/kristofka-munkafolyamat" },
 ]);
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "Mire használható a Kristófka Munkafolyamat?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Ingatlanfejlesztési és befektetési projektekhez generál strukturált befektetői pitch anyagot PDF alaprajzokból és kontextus-paraméterekből, 72%-kal csökkentve az előkészítési időt.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Testreszabható más iparágakra is ez a Strategist-Pro workflow?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Igen, a többlépcsős dokumentum-elemző és ajánlatgeneráló AI pipeline bármilyen B2B tanácsadói vagy projektalapú iparágra adaptálható egyedi árajánlat alapján.",
-      },
-    },
-  ],
-};
-
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default function ProductRouteLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <>
       <script
@@ -117,12 +102,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(breadcrumbSchema).replace(/</g, "\\u003c"),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(faqSchema).replace(/</g, "\\u003c"),
         }}
       />
       {children}

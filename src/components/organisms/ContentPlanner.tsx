@@ -14,6 +14,13 @@ import {
 } from "lucide-react";
 import { auth } from "@/lib/firebase";
 import { generateContentPlanAction } from "@/actions/ai";
+import ToolAccessLock from "@/components/molecules/ToolAccessLock";
+import { useToolAccess } from "@/hooks/useToolAccess";
+
+const CONTENT_PLANNER_TOOLS = [
+  "tartalomtervezo_ai_muhely",
+  "content_workshop_ai_muhely",
+] as const;
 
 interface ContentPlan {
   industry: string;
@@ -26,6 +33,7 @@ interface ContentPlan {
 }
 
 export default function ContentPlanner() {
+  const accessStatus = useToolAccess(CONTENT_PLANNER_TOOLS);
   const [industry, setIndustry] = useState("");
   const [targetAudience, setTargetAudience] = useState("");
   const [mainProduct, setMainProduct] = useState("");
@@ -76,6 +84,23 @@ export default function ContentPlanner() {
       setLoading(false);
     }
   };
+
+  if (accessStatus === "loading") {
+    return (
+      <div className="min-h-[40vh] flex items-center justify-center">
+        <Loader2 className="w-8 h-8 animate-spin text-sky-500" />
+      </div>
+    );
+  }
+
+  if (accessStatus !== "granted") {
+    return (
+      <ToolAccessLock
+        toolName="Tartalomtervező AI Műhely"
+        variant={accessStatus}
+      />
+    );
+  }
 
   return (
     <div className="space-y-8">

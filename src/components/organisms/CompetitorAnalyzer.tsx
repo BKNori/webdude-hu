@@ -190,14 +190,14 @@ export default function CompetitorAnalyzer() {
           </span>
         </motion.div>
 
-        <motion.h1
+        <motion.h2
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="text-4xl md:text-5xl font-bold text-white"
+          className="text-4xl md:text-5xl text-white"
         >
           Konverziós Benchmarking
-        </motion.h1>
+        </motion.h2>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}

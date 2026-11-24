@@ -3,7 +3,7 @@
 import { z } from "zod";
 import { headers } from "next/headers";
 import { checkRateLimit, getClientIdentifier } from "@/lib/rate-limit";
-import { verifyUserToken } from "./portal";
+import { authorizeToolAccess } from "@/lib/tool-access";
 import { saveAiGeneration } from "@/lib/ai-generation-store";
 import type {
   PromptRefinementInput,
@@ -96,14 +96,29 @@ export async function refinePromptStudioAction(
     };
   }
 
-  const user = await verifyUserToken(idToken);
-  if (!user) {
+  const domainCheck = domainSchema.safeParse(input?.domain);
+  const domainToolMap: Record<z.infer<typeof domainSchema>, string> = {
+    "online-graphics": "online_graphics_prompt_studio",
+    "offline-print": "offline_print_prompt_studio",
+    "apparel-merch": "apparel_merch_prompt_studio",
+    "software-arch": "software_arch_prompt_studio",
+    "analysis-audit": "analysis_audit_prompt_studio",
+  };
+
+  // 1. Auth + RBAC: érvényes idToken ÉS (Szuperadmin VAGY allowedTools ∋ stúdió ID)
+  const access = await authorizeToolAccess(
+    idToken,
+    domainCheck.success ? domainToolMap[domainCheck.data] : []
+  );
+  if (!access.ok) {
     return {
       success: false,
-      error: "Jogosulatlan hozzáférés. Kérlek, jelentkezz be újra!",
+      error: access.error,
     };
   }
+  const user = access.user;
 
+  // 2. Zod input validáció
   const validation = refineInputSchema.safeParse(input);
   if (!validation.success) {
     return {

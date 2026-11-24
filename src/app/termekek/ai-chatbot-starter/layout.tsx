@@ -4,14 +4,18 @@ import { buildBreadcrumbSchema } from "@/lib/breadcrumb";
 export const metadata: Metadata = {
   title: "AI Chatbot Starter | WebDude",
   description:
-    "Magyar nyelvű AI chatbot rendszer 24/7 ügyfélszolgálathoz. Azonnal integrálható bármilyen weboldalra. 85% support költség csökkenés, 3.2x ügyfél elégedettség. Egyedi árajánlat kérése.",
+    "Saját tudásbázisra tanított, magyar nyelvű 24/7 AI ügyfélszolgálati és lead-minősítő chatbot Next.js és WordPress oldalakra. Egyedi árajánlat kérése most.",
+  robots: {
+    index: true,
+    follow: true,
+  },
   alternates: {
     canonical: "https://webdude.hu/termekek/ai-chatbot-starter",
   },
   openGraph: {
     title: "AI Chatbot Starter | WebDude",
     description:
-      "Magyar nyelvű AI chatbot rendszer 24/7 ügyfélszolgálathoz. Azonnal integrálható bármilyen weboldalra. 85% support költség csökkenés, 3.2x ügyfél elégedettség. Egyedi árajánlat kérése.",
+      "Saját tudásbázisra tanított, magyar nyelvű 24/7 AI ügyfélszolgálati és lead-minősítő chatbot Next.js és WordPress oldalakra. Egyedi árajánlat kérése most.",
     url: "https://webdude.hu/termekek/ai-chatbot-starter",
     siteName: "WebDude",
     images: [
@@ -29,7 +33,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "AI Chatbot Starter | WebDude",
     description:
-      "Magyar nyelvű AI chatbot rendszer 24/7 ügyfélszolgálathoz. Azonnal integrálható bármilyen weboldalra. 85% support költség csökkenés, 3.2x ügyfél elégedettség. Egyedi árajánlat kérése.",
+      "Saját tudásbázisra tanított, magyar nyelvű 24/7 AI ügyfélszolgálati és lead-minősítő chatbot Next.js és WordPress oldalakra. Egyedi árajánlat kérése most.",
     images: ["/og/webdude-og.jpg"],
   },
 };
@@ -39,7 +43,7 @@ const productJsonLd = {
   "@type": "Product",
   name: "AI Chatbot Starter",
   description:
-    "Válaszolj azonnal minden ügyfélkérésre 24/7. Magyar nyelvű AI chatbot rendszer, amely azonnal integrálható bármilyen weboldalra. 85% support költség csökkenés, 3.2x ügyfél elégedettség.",
+    "Saját tudásbázisra tanított, magyar nyelvű 24/7 AI ügyfélszolgálati és lead-minősítő chatbot Next.js és WordPress oldalakra. Egyedi árajánlat kérése most.",
   image: "https://webdude.hu/og/webdude-og.jpg",
   brand: {
     "@type": "Brand",
@@ -81,30 +85,11 @@ const breadcrumbSchema = buildBreadcrumbSchema([
   { name: "AI Chatbot Starter", url: "/termekek/ai-chatbot-starter" },
 ]);
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "Milyen rendszerekbe integrálható az AI Chatbot Starter?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Next.js, WordPress, WooCommerce és bármilyen egyedi weboldalba percek alatt beilleszthető, saját céges tudásbázisra tanítva.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Mennyibe kerül a bevezetése?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Minden projekt egyedi árajánlat alapján készül a tudásbázis méretétől és a kívánt CRM/lead integrációtól függően.",
-      },
-    },
-  ],
-};
-
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default function ProductRouteLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <>
       <script
@@ -117,12 +102,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(breadcrumbSchema).replace(/</g, "\\u003c"),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(faqSchema).replace(/</g, "\\u003c"),
         }}
       />
       {children}

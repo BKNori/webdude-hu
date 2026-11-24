@@ -1,491 +1,134 @@
-﻿"use client";
+import Link from "next/link";
+import { Image as ImageIcon, Camera, Sun, Layers, ArrowRight, Sparkles } from "lucide-react";
+import DirectAnswerBlock from "@/components/molecules/DirectAnswerBlock";
+import ProductFaqSection from "@/components/molecules/ProductFaqSection";
+import ProductPortalCta from "@/components/molecules/ProductPortalCta";
+import ToolAccessGate from "@/components/molecules/ToolAccessGate";
+import MidjourneyPromptGenerator from "@/components/organisms/MidjourneyPromptGenerator";
 
-import { useState } from "react";
-import { motion } from "motion/react";
-import {
-  Sparkles,
-  Image as ImageIcon,
-  Camera,
-  Sun,
-  Zap,
-  ArrowRight,
-  Copy,
-  RefreshCw,
-  Layers
-} from "lucide-react";
+/**
+ * /termekek/midjourney-ai-muhely — PUBLIKUS, statikusan prerenderelt SEO/AEO/GEO landing.
+ * A generátor kizárólag `ToolAccessGate` mögött (allowedTools: "midjourney_ai_muhely"
+ * vagy Szuperadmin) mountolódik.
+ */
 
-const visualStyles = [
-  {
-    id: "photorealistic",
-    name: "FotĂłrealisztikus",
-    description: "ValĂłsĂˇghĹ±, rĂ©szletes",
-    prompt:
-      "photorealistic visual, hyper-detailed, realistic lighting, 85mm G-Master optics, professional photography aesthetic",
-    color: "from-blue-500 to-sky-500"
-  },
-  {
-    id: "cyberpunk",
-    name: "Cyberpunk",
-    description: "Futurisztikus, neon",
-    prompt:
-      "cyberpunk visual, neon lights, futuristic aesthetic, dark background with vibrant colors, tech-inspired, Cyber-Dark aesthetic",
-    color: "from-purple-500 to-pink-500"
-  },
-  {
-    id: "minimalist",
-    name: "Minimalista",
-    description: "Tiszta, egyszerĹ±",
-    prompt:
-      "minimalist visual, clean composition, ample negative space, modern aesthetic, professional simplicity",
-    color: "from-[#00B5F1] to-brand-secondary"
-  },
-  {
-    id: "artistic",
-    name: "MĹ±vĂ©szi",
-    description: "KreatĂ­v, expresszĂ­v",
-    prompt:
-      "artistic visual, creative expression, dynamic composition, artistic elements, unique aesthetic",
-    color: "from-green-500 to-emerald-500"
-  },
-  {
-    id: "cinematic",
-    name: "Cinematic",
-    description: "Filmes, drĂˇmai",
-    prompt:
-      "cinematic visual, dramatic lighting, chiaroscuro, film grain aesthetic, movie-like composition",
-    color: "from-brand-secondary to-brand-primary"
-  },
-  {
-    id: "abstract",
-    name: "Absztrakt",
-    description: "KoncepcionĂˇlis",
-    prompt:
-      "abstract visual, conceptual design, geometric shapes, modern art aesthetic, creative interpretation",
-    color: "from-indigo-500 to-blue-500"
-  }
-];
+const features = [
+  { icon: ImageIcon, title: "Midjourney v6 Integráció", description: "Naprakész paraméterezés fotórealisztikus és kreatív képekhez" },
+  { icon: Camera, title: "85mm G-Master Optika", description: "Professzionális lencse- és mélységélesség-beállítások" },
+  { icon: Sun, title: "Chiaroscuro Fényelés", description: "Stúdió- és természetes fény-árnyék kontroll" },
+  { icon: Layers, title: "Prémium Vizuálok", description: "Egységes márkaesztétika webes és nyomdai felhasználásra" },
+] as const;
 
-const lightingOptions = [
+const faqs = [
   {
-    id: "chiaroscuro",
-    name: "Chiaroscuro",
-    description: "FĂ©ny-ĂˇrnyĂ©k kontraszt"
-  },
-  { id: "golden", name: "Golden Hour", description: "AranyĂłrĂˇ fĂ©ny" },
-  { id: "studio", name: "Studio Lighting", description: "StĂşdiĂł fĂ©nyek" },
-  { id: "natural", name: "Natural Light", description: "TermĂ©szetes fĂ©ny" }
-];
-
-const qualitySettings = [
-  { id: "ultra", name: "Ultra HD", description: "8K felbontĂˇs, max rĂ©szlet" },
-  {
-    id: "high",
-    name: "High Quality",
-    description: "4K felbontĂˇs, magas rĂ©szlet"
+    question: "Mit nyújt a Midjourney AI Műhely?",
+    answer:
+      "Fotórealisztikus termékfotókhoz, kampányképekhez és illusztrációkhoz állít össze pontosan paraméterezett Midjourney v6 promptokat optikai, fényelési és minőségi beállításokkal, elkerülve a tipikus mesterséges képhibákat.",
   },
   {
-    id: "standard",
-    name: "Standard",
-    description: "2K felbontĂˇs, standard rĂ©szlet"
-  }
-];
+    question: "Ki férhet hozzá a Midjourney AI Műhely generátorhoz?",
+    answer:
+      "A generátor zárt prémium AI modul: kizárólag bejelentkezett, jóváhagyott ügyfeleim érhetik el, akiknek a fiókjához engedélyeztem a modult. Hozzáférést a kapcsolat oldalon igényelhetsz.",
+  },
+  {
+    question: "Hogyan kérhetek hozzáférést vagy egyedi képgenerálást?",
+    answer:
+      "A kapcsolat oldalon kérhetsz egyedi árajánlatot a saját portál-hozzáférésre vagy kulcsrakész vizuális tartalomgyártásra — rejtett költségek és dobozos sablonok nélkül.",
+  },
+] as const;
 
 export default function MidjourneyAIMuhelyPage() {
-  const [selectedStyle, setSelectedStyle] = useState(visualStyles[0]);
-  const [selectedLighting, setSelectedLighting] = useState(lightingOptions[0]);
-  const [selectedQuality, setSelectedQuality] = useState(qualitySettings[0]);
-  const [generatedPrompt, setGeneratedPrompt] = useState("");
-  const [isGenerating, setIsGenerating] = useState(false);
-  const [visualDescription, setVisualDescription] = useState("");
-  const [subject, setSubject] = useState("");
-  const [stylePreferences, setStylePreferences] = useState("");
-  const [customInstructions, setCustomInstructions] = useState("");
-
-  const generatePrompt = () => {
-    setIsGenerating(true);
-    setTimeout(() => {
-      let prompt = `Midjourney v6 ${selectedStyle.name} visual, ${selectedStyle.description}, ${selectedLighting.name} (${selectedLighting.description}), ${selectedQuality.name} (${selectedQuality.description}), ${selectedStyle.prompt}, 90/8/2 color ratio rule, 85mm G-Master optics, professional photography aesthetic, commercial quality, high resolution`;
-
-      if (subject) {
-        prompt += `, subject: ${subject}`;
-      }
-      if (visualDescription) {
-        prompt += `, visual description: ${visualDescription}`;
-      }
-      if (stylePreferences) {
-        prompt += `, style preferences: ${stylePreferences}`;
-      }
-      if (customInstructions) {
-        prompt += `, custom requirements: ${customInstructions}`;
-      }
-
-      setGeneratedPrompt(prompt);
-      setIsGenerating(false);
-    }, 1500);
-  };
-
-  const copyPrompt = () => {
-    navigator.clipboard.writeText(generatedPrompt);
-  };
-
   return (
-    <>
-        <div className="min-h-screen bg-bg-base">
-          {/* Hero Section */}
-          <section className="relative py-24 overflow-hidden">
-            <div className="absolute inset-0 bg-linear-to-b from-[#00B5F1]/5 via-transparent to-transparent" />
-            <div className="max-w-6xl mx-auto px-6 relative z-10">
-              <div className="text-center space-y-6">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5 }}
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0369A1]/10 dark:bg-[#00B5F1]/10 border border-[#0369A1]/25 dark:border-[#00B5F1]/20"
-                >
-                  <Sparkles className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" />
-                  <span className="text-xs font-bold text-[#0369A1] dark:text-[#00B5F1] uppercase tracking-[0.2em]">
-                    AI MĹ±hely
-                  </span>
-                </motion.div>
-                <motion.h1
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.1 }}
-                  className="text-4xl md:text-6xl font-bold text-text-primary tracking-tight"
-                >
-                  Midjourney AI{" "}
-                  <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6]">
-                    MĹ±hely
-                  </span>
-                </motion.h1>
-                <p className="text-lg text-[#475569] dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
-                  Midjourney v6 integrĂˇciĂł prĂ©mium vizuĂˇlokhoz. 85mm G-Master
-                  optika, chiaroscuro lighting Ă©s Cyber-Dark aesthetic. 5.2x
-                  vizuĂˇlis minĹ‘sĂ©g, 94% social engagement, 8K felbontĂˇsĂş
-                  outputok.
-                </p>
-              </div>
+    <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#0B1120] text-[#0F172A] dark:text-[#F8FAFC]">
+      <section className="relative py-24 md:py-32 overflow-hidden">
+        <div className="absolute inset-0 bg-linear-to-b from-[#0369A1]/5 dark:from-[#00B5F1]/5 via-transparent to-transparent pointer-events-none" />
+        <div className="max-w-6xl mx-auto px-6 relative z-10">
+          <div className="text-center space-y-6">
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0369A1]/10 dark:bg-[#00B5F1]/10 border border-[#0369A1]/25 dark:border-[#00B5F1]/20">
+              <Sparkles className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" aria-hidden="true" />
+              <span className="text-xs font-bold text-[#0369A1] dark:text-[#00B5F1] uppercase tracking-[0.2em]">
+                AI Műhely
+              </span>
+            </span>
+            <h1 className="text-5xl md:text-7xl text-[#0F172A] dark:text-white tracking-tight">
+              Midjourney AI{" "}
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#0369A1] to-[#6D28D9] dark:from-[#00B5F1] dark:to-[#A78BFA]">
+                Műhely
+              </span>
+            </h1>
+            <p className="text-lg text-[#334155] dark:text-slate-300 max-w-2xl mx-auto leading-relaxed">
+              Midjourney v6 prompt-rendszer prémium márkavizuálokhoz. 85mm G-Master optika, chiaroscuro fényelés
+              és nagy felbontású marketing assetek egységes vizuális minőségben.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+              <Link
+                href="/kapcsolat"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-linear-to-r from-[#075985] to-[#5B21B6] hover:from-[#0369A1] hover:to-[#6D28D9] text-white font-bold rounded-full uppercase tracking-wider text-sm transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2"
+              >
+                Egyedi árajánlat kérése
+                <ArrowRight className="w-4 h-4" aria-hidden="true" />
+              </Link>
             </div>
-          </section>
-
-          {/* AI Generator Section */}
-          <section className="py-16 border-t border-bg-elevated">
-            <div className="max-w-6xl mx-auto px-6">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="bg-bg-surface border border-bg-elevated rounded-2xl p-8 shadow-[0_8px_32px_rgba(0,0,0,0.4)]"
-              >
-                <div className="flex items-center gap-3 mb-8">
-                  <div className="w-12 h-12 rounded-xl bg-linear-to-br from-[#00B5F1]/10 to-[#5B21B6]/10 border border-[#0369A1]/25 dark:border-[#00B5F1]/20 flex items-center justify-center">
-                    <ImageIcon className="w-6 h-6 text-[#0369A1] dark:text-[#00B5F1]" />
-                  </div>
-                  <div>
-                    <h2 className="text-2xl font-bold text-text-primary">
-                      AI Midjourney Generator
-                    </h2>
-                    <p className="text-sm text-text-secondary">
-                      Midjourney v6 Master prompt generĂˇlĂˇs
-                    </p>
-                  </div>
-                </div>
-
-                {/* Visual Style Selection */}
-                <div className="mb-8">
-                  <label className="text-sm font-bold text-[#0369A1] dark:text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
-                    VizuĂˇlis stĂ­lus
-                  </label>
-                  <div className="grid md:grid-cols-3 gap-4">
-                    {visualStyles.map((style) => (
-                      <motion.button
-                        key={style.id}
-                        onClick={() => setSelectedStyle(style)}
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                        className={`p-4 rounded-xl border-2 transition-all ${
-                          selectedStyle.id === style.id
-                            ? "border-[#00B5F1] bg-[#0369A1]/10 dark:bg-[#00B5F1]/10"
-                            : "border-bg-elevated bg-bg-surface hover:border-[#00B5F1]/50"
-                        }`}
-                      >
-                        <div className="w-8 h-8 rounded-lg bg-linear-to-br ${style.color} mb-3" />
-                        <h3 className="text-base font-bold text-text-primary mb-1">
-                          {style.name}
-                        </h3>
-                        <p className="text-xs text-text-secondary">
-                          {style.description}
-                        </p>
-                      </motion.button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Lighting & Quality */}
-                <div className="grid md:grid-cols-2 gap-6 mb-8">
-                  <div>
-                    <label className="text-sm font-bold text-[#0369A1] dark:text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
-                      FĂ©nyezĂ©s
-                    </label>
-                    <div className="space-y-2">
-                      {lightingOptions.map((lighting) => (
-                        <button
-                          key={lighting.id}
-                          onClick={() => setSelectedLighting(lighting)}
-                          className={`w-full p-3 rounded-lg border-2 transition-all flex items-center justify-between ${
-                            selectedLighting.id === lighting.id
-                              ? "border-[#00B5F1] bg-[#0369A1]/10 dark:bg-[#00B5F1]/10"
-                              : "border-bg-elevated bg-bg-surface hover:border-[#00B5F1]/50"
-                          }`}
-                        >
-                          <span className="text-sm font-medium text-text-primary">
-                            {lighting.name}
-                          </span>
-                          <span className="text-xs text-text-secondary">
-                            {lighting.description}
-                          </span>
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="text-sm font-bold text-[#0369A1] dark:text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
-                      MinĹ‘sĂ©g
-                    </label>
-                    <div className="space-y-2">
-                      {qualitySettings.map((quality) => (
-                        <button
-                          key={quality.id}
-                          onClick={() => setSelectedQuality(quality)}
-                          className={`w-full p-3 rounded-lg border-2 transition-all flex items-center justify-between ${
-                            selectedQuality.id === quality.id
-                              ? "border-[#00B5F1] bg-[#0369A1]/10 dark:bg-[#00B5F1]/10"
-                              : "border-bg-elevated bg-bg-surface hover:border-[#00B5F1]/50"
-                          }`}
-                        >
-                          <div className="flex items-center justify-between">
-                            <span className="text-sm font-medium text-text-primary">
-                              {quality.name}
-                            </span>
-                            <span className="text-xs text-text-secondary">
-                              {quality.description}
-                            </span>
-                          </div>
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Text Input Fields */}
-                <div className="space-y-6 mb-8">
-                  <div>
-                    <label className="text-sm font-bold text-[#0369A1] dark:text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
-                      TĂ©ma / TĂˇrgy (opcionĂˇlis)
-                    </label>
-                    <input
-                      type="text"
-                      value={subject}
-                      onChange={(e) => setSubject(e.target.value)}
-                      placeholder="pl. portrĂ©, tĂˇjkĂ©p, termĂ©k fotĂł, Ă©pĂĽlet"
-                      className="w-full p-3 rounded-lg border-2 border-bg-elevated bg-bg-base text-text-primary placeholder:text-text-secondary focus:border-[#00B5F1] focus:outline-none transition-all"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="text-sm font-bold text-[#0369A1] dark:text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
-                      VizuĂˇlis leĂ­rĂˇs (opcionĂˇlis)
-                    </label>
-                    <input
-                      type="text"
-                      value={visualDescription}
-                      onChange={(e) => setVisualDescription(e.target.value)}
-                      placeholder="pl. modern irodai kĂ¶rnyezet, termĂ©szetes fĂ©ny, absztrakt hĂˇttĂ©r"
-                      className="w-full p-3 rounded-lg border-2 border-bg-elevated bg-bg-base text-text-primary placeholder:text-text-secondary focus:border-[#00B5F1] focus:outline-none transition-all"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="text-sm font-bold text-[#0369A1] dark:text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
-                      StĂ­lus preferenciĂˇk (opcionĂˇlis)
-                    </label>
-                    <input
-                      type="text"
-                      value={stylePreferences}
-                      onChange={(e) => setStylePreferences(e.target.value)}
-                      placeholder="pl. minimalista, drĂˇmai, szĂ­nes, monokrĂłm"
-                      className="w-full p-3 rounded-lg border-2 border-bg-elevated bg-bg-base text-text-primary placeholder:text-text-secondary focus:border-[#00B5F1] focus:outline-none transition-all"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="text-sm font-bold text-[#0369A1] dark:text-[#00B5F1] uppercase tracking-[0.2em] mb-4 block">
-                      Egyedi utasĂ­tĂˇsok (opcionĂˇlis)
-                    </label>
-                    <textarea
-                      value={customInstructions}
-                      onChange={(e) => setCustomInstructions(e.target.value)}
-                      placeholder="pl. hangsĂşly a rĂ©szletekre, drĂˇmai kontraszt, prĂ©mium megjelenĂ©s"
-                      rows={3}
-                      className="w-full p-3 rounded-lg border-2 border-bg-elevated bg-bg-base text-text-primary placeholder:text-text-secondary focus:border-[#00B5F1] focus:outline-none transition-all resize-none"
-                    />
-                  </div>
-                </div>
-
-                {/* Generate Button */}
-                <motion.button
-                  onClick={generatePrompt}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  disabled={isGenerating}
-                  className="w-full py-4 bg-linear-to-r from-[#075985] to-[#5B21B6] hover:from-[#0369A1] hover:to-[#6D28D9] text-white font-bold rounded-xl hover:shadow-[0_8px_32px_rgba(0, 181, 241,0.4)] transition-all flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {isGenerating ? (
-                    <>
-                      <RefreshCw className="w-5 h-5 animate-spin" />
-                      <span>GenerĂˇlĂˇs folyamatban...</span>
-                    </>
-                  ) : (
-                    <>
-                      <Zap className="w-5 h-5" />
-                      <span>Midjourney Prompt GenerĂˇlĂˇs</span>
-                    </>
-                  )}
-                </motion.button>
-
-                {/* Generated Prompt */}
-                {generatedPrompt && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
-                    className="mt-8 p-6 bg-bg-base border border-bg-elevated rounded-xl"
-                  >
-                    <div className="flex items-center justify-between mb-4">
-                      <h3 className="text-lg font-bold text-text-primary">
-                        GenerĂˇlt Prompt
-                      </h3>
-                      <div className="flex gap-2">
-                        <motion.button
-                          onClick={copyPrompt}
-                          whileHover={{ scale: 1.1 }}
-                          whileTap={{ scale: 0.9 }}
-                          className="p-2 rounded-lg bg-[#0369A1]/10 dark:bg-[#00B5F1]/10 border border-[#0369A1]/25 dark:border-[#00B5F1]/20 text-[#0369A1] dark:text-[#00B5F1] hover:bg-[#00B5F1]/20 transition-all"
-                        >
-                          <Copy className="w-4 h-4" />
-                        </motion.button>
-                      </div>
-                    </div>
-                    <p className="text-sm text-text-secondary leading-relaxed">
-                      {generatedPrompt}
-                    </p>
-                  </motion.div>
-                )}
-              </motion.div>
-            </div>
-          </section>
-
-          {/* Features Section */}
-          <section className="py-16 border-t border-bg-elevated">
-            <div className="max-w-6xl mx-auto px-6">
-              <motion.h2
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="text-3xl font-bold text-text-primary mb-8 text-center tracking-tight"
-              >
-                FunkciĂłk Ă©s{" "}
-                <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6]">
-                  ElĹ‘nyĂ¶k
-                </span>
-              </motion.h2>
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                {[
-                  {
-                    icon: ImageIcon,
-                    title: "Midjourney v6 IntegrĂˇciĂł",
-                    description: "LegĂşjabb Midjourney verziĂł"
-                  },
-                  {
-                    icon: Camera,
-                    title: "85mm G-Master Optika",
-                    description: "ProfesszionĂˇlis optikai beĂˇllĂ­tĂˇsok"
-                  },
-                  {
-                    icon: Sun,
-                    title: "Chiaroscuro Lighting",
-                    description: "FĂ©ny-ĂˇrnyĂ©k kontraszt"
-                  },
-                  {
-                    icon: Layers,
-                    title: "PrĂ©mium VizuĂˇlok",
-                    description: "Cyber-Dark aesthetic"
-                  }
-                ].map((feature, index) => {
-                  const FeatureIcon = feature.icon;
-                  return (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: index * 0.1 }}
-                      className="bg-bg-surface border border-bg-elevated rounded-xl p-6 hover:border-[#00B5F1]/50 transition-all group"
-                    >
-                      <div className="w-12 h-12 rounded-xl bg-linear-to-br from-[#00B5F1]/10 to-[#5B21B6]/10 border border-[#0369A1]/25 dark:border-[#00B5F1]/20 flex items-center justify-center mb-4 group-hover:border-[#00B5F1]/50 transition-colors">
-                        <FeatureIcon className="w-6 h-6 text-[#0369A1] dark:text-[#00B5F1]" />
-                      </div>
-                      <h3 className="text-lg font-bold text-text-primary mb-2">
-                        {feature.title}
-                      </h3>
-                      <p className="text-sm text-text-secondary">
-                        {feature.description}
-                      </p>
-                    </motion.div>
-                  );
-                })}
-              </div>
-            </div>
-          </section>
-
-          {/* CTA Section */}
-          <section className="py-16 border-t border-bg-elevated">
-            <div className="max-w-4xl mx-auto px-6 text-center">
-              <motion.h2
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="text-3xl font-bold text-text-primary mb-4 tracking-tight"
-              >
-                KĂ©szen Ăˇllsz a{" "}
-                <span className="text-transparent bg-clip-text bg-linear-to-r from-[#00B5F1] to-[#5B21B6]">
-                  VizuĂˇlis TervezĂ©sre
-                </span>
-                ?
-              </motion.h2>
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                className="text-text-secondary mb-8"
-              >
-                PrĂłbĂˇld ki az AI Midjourney GenerĂˇtort Ă©s hozz lĂ©tre lenyĹ±gĂ¶zĹ‘
-                vizuĂˇlokat percek alatt!
-              </motion.p>
-              <motion.button
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="inline-flex items-center gap-2 px-8 py-4 bg-linear-to-r from-[#075985] to-[#5B21B6] hover:from-[#0369A1] hover:to-[#6D28D9] text-white font-bold rounded-xl hover:shadow-[0_8px_32px_rgba(0, 181, 241,0.4)] transition-all"
-              >
-                KezdĂ©s most
-                <ArrowRight className="w-4 h-4" />
-              </motion.button>
-            </div>
-          </section>
+          </div>
         </div>
-    </>
+      </section>
+
+      <DirectAnswerBlock
+        id="midjourney-ai-muhely-direct-answer"
+        question="Mire való a Midjourney AI Műhely vállalati marketingben?"
+        answer="A Midjourney AI Műhely egy professzionális képgeneráló prompt-stúdió, amely fotós optikai, fényelési és kompozíciós szabályokkal állít össze Midjourney v6 utasításokat. 26 év tervezőgrafikai és 16 év webfejlesztői tapasztalattal segít egyedi, stock-mentes kampányképeket készíteni — egyedi árajánlat alapján."
+      />
+
+      <section aria-labelledby="midjourney-generator-heading" className="py-16 border-t border-slate-200 dark:border-slate-800/80">
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 id="midjourney-generator-heading" className="text-3xl md:text-4xl text-center mb-8 tracking-tight">
+            AI Midjourney Generátor
+          </h2>
+          <ToolAccessGate toolId="midjourney_ai_muhely" toolName="Midjourney AI Műhely">
+            <MidjourneyPromptGenerator />
+          </ToolAccessGate>
+        </div>
+      </section>
+
+      <section className="py-16 border-t border-slate-200 dark:border-slate-800/80 bg-[#F1F5F9] dark:bg-transparent">
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 className="text-3xl md:text-4xl mb-8 text-center tracking-tight">Funkciók és Előnyök</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {features.map((feature) => {
+              const FeatureIcon = feature.icon;
+              return (
+                <div key={feature.title} className="luminous-card rounded-3xl p-6">
+                  <div className="w-12 h-12 rounded-xl bg-linear-to-br from-[#00B5F1]/10 to-[#5B21B6]/10 border border-[#0369A1]/25 dark:border-[#00B5F1]/20 flex items-center justify-center mb-4">
+                    <FeatureIcon className="w-6 h-6 text-[#0369A1] dark:text-[#00B5F1]" aria-hidden="true" />
+                  </div>
+                  <h3 className="text-xl text-[#0F172A] dark:text-white mb-2">{feature.title}</h3>
+                  <p className="text-sm text-[#334155] dark:text-slate-300">{feature.description}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <ProductFaqSection id="midjourney-ai-muhely-faq" faqs={faqs} />
+
+      <section className="py-16 border-t border-slate-200 dark:border-slate-800/80">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <h2 className="text-3xl md:text-4xl mb-4 tracking-tight">Készen állsz a Vizuális Tervezésre?</h2>
+          <p className="text-[#334155] dark:text-slate-300 mb-8">
+            Igényelj hozzáférést a Midjourney AI Műhelyhez, vagy kérj egyedi árajánlatot márkád vizuális anyagaira.
+          </p>
+          <Link
+            href="/kapcsolat"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-linear-to-r from-[#075985] to-[#5B21B6] hover:from-[#0369A1] hover:to-[#6D28D9] text-white font-bold rounded-full uppercase tracking-wider text-sm transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2"
+          >
+            Hozzáférés igénylése
+            <ArrowRight className="w-4 h-4" aria-hidden="true" />
+          </Link>
+        </div>
+      </section>
+
+      <ProductPortalCta productName="Midjourney AI Műhely" />
+    </div>
   );
 }

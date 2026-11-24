@@ -1,17 +1,21 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import { buildBreadcrumbSchema } from "@/lib/breadcrumb";
 
 export const metadata: Metadata = {
   title: "Versenytárs Elemző AI Műhely | WebDude",
   description:
-    "Versenytárs Elemző AI Műhely: Versenytárs vizuális elemzés AI eszközökkel. Design audit, trend elemzés és versenytárs strategia kialakítás. Egydi árajánlat kérése.",
+    "Versenytárs vizuális, UX és CRO benchmarking AI eszközökkel: design audit, piaci rés-elemzés és pozicionálási stratégia. Egyedi árajánlat kérése most.",
+  robots: {
+    index: true,
+    follow: true,
+  },
   alternates: {
     canonical: "https://webdude.hu/termekek/versenytars-elemzo-ai-muhely",
   },
   openGraph: {
     title: "Versenytárs Elemző AI Műhely | WebDude",
     description:
-      "Versenytárs Elemző AI Műhely: Versenytárs vizuális elemzés AI eszközökkel. Design audit, trend elemzés és versenytárs stratégia kialakítás. Egydi árajánlat kérése.",
+      "Versenytárs vizuális, UX és CRO benchmarking AI eszközökkel: design audit, piaci rés-elemzés és pozicionálási stratégia. Egyedi árajánlat kérése most.",
     url: "https://webdude.hu/termekek/versenytars-elemzo-ai-muhely",
     siteName: "WebDude",
     images: [
@@ -29,7 +33,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Versenytárs Elemző AI Műhely | WebDude",
     description:
-      "Versenytárs Elemző AI Műhely: Versenytárs vizuális elemzés AI eszközökkel. Design audit, trend elemzés és versenytárs strategia kialakítás. Egydi árajánlat kérése.",
+      "Versenytárs vizuális, UX és CRO benchmarking AI eszközökkel: design audit, piaci rés-elemzés és pozicionálási stratégia. Egyedi árajánlat kérése most.",
     images: ["/og/webdude-og.jpg"],
   },
 };
@@ -39,7 +43,7 @@ const productJsonLd = {
   "@type": "Product",
   name: "Versenytárs Elemző AI Műhely",
   description:
-    "Versenytárs vizuális elemzés AI eszközökkel. Design audit, trend elemzés és versenytárs stratégia kialakítás. Egyedi árajánlat kérése.",
+    "Versenytárs vizuális, UX és CRO benchmarking AI eszközökkel: design audit, piaci rés-elemzés és pozicionálási stratégia. Egyedi árajánlat kérése most.",
   image: "https://webdude.hu/og/webdude-og.jpg",
   brand: {
     "@type": "Brand",
@@ -81,7 +85,11 @@ const breadcrumbSchema = buildBreadcrumbSchema([
   { name: "Versenytárs Elemző AI Műhely", url: "/termekek/versenytars-elemzo-ai-muhely" },
 ]);
 
-export default function VersenytarsElemzoAIMuhelyLayout({ children }: { children: React.ReactNode }) {
+export default function ProductRouteLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <>
       <script

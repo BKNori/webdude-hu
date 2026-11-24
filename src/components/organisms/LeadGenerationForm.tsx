@@ -217,7 +217,7 @@ export default function LeadGenerationForm({
 
             {/* Privacy Note */}
             <p className="text-xs text-slate-500 text-center">
-              Az adataidat kizárólag az audit elvégzéséhez használjuk fel. A
+              Az adataidat kizárólag az audit elvégzéséhez használom fel. A
               WebDude.hu GDPR kompatibilis.
             </p>
           </form>

@@ -4,14 +4,18 @@ import { buildBreadcrumbSchema } from "@/lib/breadcrumb";
 export const metadata: Metadata = {
   title: "Prémium AI & Automatizációs Megoldások | WebDude",
   description:
-    "Prémium AI munkafolyamatok, automatizációs eszközök, CRO megoldások és AI műhely sablonok KKV-knak. Egyedi árajánlat kérése a projekt igényei alapján.",
+    "Prémium AI munkafolyamatok, automatizációs eszközök, CRO megoldások és AI műhely modulok KKV-knak. Egyedi árajánlat kérése a projekted igényei szerint.",
+  robots: {
+    index: true,
+    follow: true,
+  },
   alternates: {
     canonical: "https://webdude.hu/termekek",
   },
   openGraph: {
     title: "Prémium AI & Automatizációs Megoldások | WebDude",
     description:
-      "Prémium AI munkafolyamatok, automatizációs eszközök, CRO megoldások és AI műhely sablonok KKV-knak. Egyedi árajánlat kérése a projekt igényei alapján.",
+      "Prémium AI munkafolyamatok, automatizációs eszközök, CRO megoldások és AI műhely modulok KKV-knak. Egyedi árajánlat kérése a projekted igényei szerint.",
     url: "https://webdude.hu/termekek",
     siteName: "WebDude",
     images: [
@@ -29,7 +33,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Prémium AI & Automatizációs Megoldások | WebDude",
     description:
-      "Prémium AI munkafolyamatok, automatizációs eszközök, CRO megoldások és AI műhely sablonok KKV-knak. Egyedi árajánlat kérése a projekt igényei alapján.",
+      "Prémium AI munkafolyamatok, automatizációs eszközök, CRO megoldások és AI műhely modulok KKV-knak. Egyedi árajánlat kérése a projekted igényei szerint.",
     images: ["/og/webdude-og.jpg"],
   },
 };
@@ -39,7 +43,7 @@ const collectionPageJsonLd = {
   "@type": "CollectionPage",
   name: "Prémium AI & Automatizációs Megoldások",
   description:
-    "Prémium AI munkafolyamatok, automatizációs eszközök, CRO megoldások és AI műhely sablonok KKV-knak. Egyedi árajánlat kérése a projekt igényei alapján.",
+    "Prémium AI munkafolyamatok, automatizációs eszközök, CRO megoldások és AI műhely modulok KKV-knak. Egyedi árajánlat kérése a projekted igényei szerint.",
   url: "https://webdude.hu/termekek",
   publisher: {
     "@type": "Organization",
