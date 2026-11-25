@@ -47,7 +47,7 @@ export default function HeroSectionNew({ content }: HeroSectionNewProps) {
     if (isPaused) return;
     const timer = setInterval(() => {
       nextSlide();
-    }, 6000);
+    }, 12000);
     return () => clearInterval(timer);
   }, [isPaused, nextSlide]);
 
@@ -78,9 +78,9 @@ export default function HeroSectionNew({ content }: HeroSectionNewProps) {
       {/* Fő tartalom konténer */}
       <div className="relative z-10 w-full max-w-360 mx-auto px-6 lg:px-12 xl:px-16 pt-24 pb-14 lg:pt-40 lg:pb-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-          {/* BAL OLDAL — Animált Dia Tartalom */}
+          {/* BAL OLDAL — Animált Dia Tartalom (initial={false}: 0ms SSR LCP festés!) */}
           <div className="relative min-h-0 lg:min-h-130 flex items-center">
-            <AnimatePresence mode="wait" custom={direction}>
+            <AnimatePresence initial={false} mode="wait" custom={direction}>
               <motion.div
                 key={slide.id}
                 custom={direction}

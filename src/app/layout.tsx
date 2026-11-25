@@ -14,15 +14,19 @@ import "./globals.css";
 const bebasNeue = Bebas_Neue({
   weight: "400",
   subsets: ["latin", "latin-ext"],
-  variable: "--font-heading",
+  variable: "--font-bebas",
   display: "swap",
+  preload: true,
+  adjustFontFallback: true,
 });
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   weight: ["400", "500", "600"],
   subsets: ["latin", "latin-ext"],
-  variable: "--font-sans",
+  variable: "--font-jakarta",
   display: "swap",
+  preload: true,
+  adjustFontFallback: true,
 });
 
 export const metadata = {
@@ -94,26 +98,11 @@ export default async function RootLayout({ children }: RootLayoutProps) {
         className="overflow-x-hidden"
       >
         <head>
-          <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0"
-          />
           <script
             id="webdude-theme-init"
             dangerouslySetInnerHTML={{
               __html: `(function(){try{var s=localStorage.getItem('webdude-theme');var t=s==='dark'?'dark':'light';document.documentElement.setAttribute('data-theme',t);document.documentElement.style.colorScheme=t;}catch(e){document.documentElement.setAttribute('data-theme','light');}})();`,
             }}
-          />
-          {/* Preconnect for performance */}
-          <link rel="preconnect" href="https://fonts.googleapis.com" />
-          <link
-            rel="preconnect"
-            href="https://fonts.gstatic.com"
-            crossOrigin="anonymous"
-          />
-          <link
-            rel="preconnect"
-            href="https://firebasestorage.googleapis.com"
           />
           <link
             rel="alternate"
@@ -131,7 +120,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
             process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID && (
               <Script
                 id="clarity"
-                strategy="afterInteractive"
+                strategy="lazyOnload"
                 dangerouslySetInnerHTML={{
                   __html: getClarityScript(
                     process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID

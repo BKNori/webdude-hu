@@ -23,9 +23,13 @@ import {
   Box,
   Gauge,
 } from "lucide-react";
+import dynamic from "next/dynamic";
 import LanguageSwitcher from "./LanguageSwitcher";
-import AuthStatusBadge from "./AuthStatusBadge";
 import ThemeToggle from "@/components/atoms/ThemeToggle";
+
+const LazyAuthStatusBadge = dynamic(() => import("./AuthStatusBadge"), {
+  ssr: false,
+});
 import { Dictionary, GlobalDictionary, Language } from "@/types/dictionary";
 import { localeFromPathname } from "@/lib/i18n";
 
@@ -91,6 +95,7 @@ export default function HeaderNavClient({
   );
   const [isScrolled, setIsScrolled] = useState(false);
   const [showTopBar, setShowTopBar] = useState(true);
+  const [desktopAuthReady, setDesktopAuthReady] = useState(false);
   const pathname = usePathname();
   const detectedLang = localeFromPathname(pathname);
   const actualLang = currentLang || detectedLang;
@@ -186,6 +191,36 @@ export default function HeaderNavClient({
     // Initialize state on mount
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Desktop (>=1024px) Topbar Auth modul késleltetett betöltése idle időben:
+  // mobilon a Topbar rejtett (hidden lg:block), így mobil látogatónál 0 KB Firebase töltődik le.
+  useEffect(() => {
+    const desktopQuery = window.matchMedia("(min-width: 1024px)");
+    let idleId: number | null = null;
+    let timerId: ReturnType<typeof setTimeout> | null = null;
+
+    const scheduleAuthLoad = () => {
+      if (!desktopQuery.matches) return;
+      if (typeof window.requestIdleCallback === "function") {
+        idleId = window.requestIdleCallback(
+          () => setDesktopAuthReady(true),
+          { timeout: 1200 }
+        );
+      } else {
+        timerId = setTimeout(() => setDesktopAuthReady(true), 800);
+      }
+    };
+
+    scheduleAuthLoad();
+    desktopQuery.addEventListener("change", scheduleAuthLoad);
+    return () => {
+      desktopQuery.removeEventListener("change", scheduleAuthLoad);
+      if (idleId !== null && typeof window.cancelIdleCallback === "function") {
+        window.cancelIdleCallback(idleId);
+      }
+      if (timerId !== null) clearTimeout(timerId);
+    };
   }, []);
 
   // Desktop töréspontra váltáskor a mobil menü bezárul.
@@ -505,7 +540,17 @@ export default function HeaderNavClient({
                 </Link>
               );
             })}
-            <AuthStatusBadge variant="topbar" />
+            {desktopAuthReady ? (
+              <LazyAuthStatusBadge variant="topbar" />
+            ) : (
+              <Link
+                href="/portal"
+                className={`group flex items-center gap-1.5 text-xs font-sans font-medium tracking-wide transition-colors duration-200 text-slate-600 dark:text-slate-400 hover:text-[#0369A1] dark:hover:text-[#00B5F1] ${FOCUS_RING}`}
+              >
+                <User className="w-3.5 h-3.5 opacity-70 group-hover:opacity-100 transition-opacity" />
+                <span>{isEn ? "Login" : "Belépés"}</span>
+              </Link>
+            )}
           </div>
         </div>
 
@@ -524,7 +569,7 @@ export default function HeaderNavClient({
                   width={48}
                   height={48}
                   className="h-12 w-12 object-contain relative z-50 transition-all duration-300 brightness-0 dark:invert group-hover:brightness-100 group-hover:invert-0 group-hover:drop-shadow-[0_0_12px_#00B5F1]"
-                  priority
+                  loading="eager"
                 />
               </div>
             </Link>
@@ -532,13 +577,10 @@ export default function HeaderNavClient({
 
           {/* DESKTOP NAV */}
           <div className="hidden lg:flex items-center gap-4">
-            {navItems.map((item, index) => (
-              <motion.div
+            {navItems.map((item) => (
+              <div
                 key={item.name}
                 className="relative"
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: index * 0.05 }}
                 onMouseEnter={() => handleDropdownEnter(item.name)}
                 onMouseLeave={handleDropdownLeave}
                 onFocus={() => handleDropdownEnter(item.name)}
@@ -603,26 +645,18 @@ export default function HeaderNavClient({
                     </motion.div>
                   )}
                 </AnimatePresence>
-              </motion.div>
+              </div>
             ))}
 
             {/* Language Switcher */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.3, delay: 0.35 }}
-            >
+            <div>
               <LanguageSwitcher currentLang={actualLang} />
-            </motion.div>
+            </div>
 
             {/* Dual Theme Toggle (Luminous Daylight / Luminous Slate) */}
             <ThemeToggle variant="capsule" lang={actualLang} />
 
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.3, delay: 0.4 }}
-            >
+            <div>
               <Link
                 href={labels.contactHref}
                 className={`relative px-6 py-2.5 rounded-full font-bold text-sm text-white bg-linear-to-r from-[#075985] to-[#5B21B6] hover:from-[#0369A1] hover:to-[#6D28D9] shadow-[0_8px_24px_rgba(7,89,133,0.3)] transition-all duration-300 transform hover:scale-105 ${FOCUS_RING}`}
@@ -630,7 +664,7 @@ export default function HeaderNavClient({
               >
                 <span className="relative z-10">{labels.contactLabel}</span>
               </Link>
-            </motion.div>
+            </div>
           </div>
 
           {/* MOBILE RIGHT ACTIONS: kompakt témakapcsoló + hamburger / X gomb */}
@@ -976,7 +1010,7 @@ export default function HeaderNavClient({
             >
               <div className="mb-4 flex items-center justify-between gap-3">
                 <div className="flex-1 min-w-0">
-                  <AuthStatusBadge variant="mobile" onNavigate={closeMenu} />
+                  <LazyAuthStatusBadge variant="mobile" onNavigate={closeMenu} />
                 </div>
                 <ThemeToggle variant="capsule" lang={actualLang} />
               </div>

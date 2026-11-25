@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { motion } from "motion/react";
 import Button from "@/components/atoms/Button";
 import type { CookieConsentContent } from "@/types/dictionary";
 
@@ -10,130 +9,146 @@ interface CookieConsentProps {
   dictionary?: CookieConsentContent;
 }
 
+const CONSENT_STORAGE_KEY = "cookieConsent";
+const SHOW_DELAY_MS = 900;
+
 export default function CookieConsent({ dictionary }: CookieConsentProps) {
   const [showConsent, setShowConsent] = useState(false);
-  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setMounted(true);
-      const consent = localStorage.getItem("cookieConsent");
-      if (!consent) {
-        setShowConsent(true);
+    let cancelled = false;
+    let idleId: number | null = null;
+
+    const revealIfUnset = () => {
+      if (cancelled) return;
+      try {
+        if (!localStorage.getItem(CONSENT_STORAGE_KEY)) {
+          setShowConsent(true);
+        }
+      } catch {
+        // Storage blocked (pl. inkognitó korlátozás) -> ne blokkolja az oldalt
       }
-    }, 0);
-    return () => clearTimeout(timer);
+    };
+
+    const timerId = setTimeout(() => {
+      if (typeof window.requestIdleCallback === "function") {
+        idleId = window.requestIdleCallback(revealIfUnset, { timeout: 600 });
+      } else {
+        revealIfUnset();
+      }
+    }, SHOW_DELAY_MS);
+
+    return () => {
+      cancelled = true;
+      clearTimeout(timerId);
+      if (idleId !== null && typeof window.cancelIdleCallback === "function") {
+        window.cancelIdleCallback(idleId);
+      }
+    };
   }, []);
 
   const handleAccept = () => {
-    localStorage.setItem("cookieConsent", "accepted");
+    try {
+      localStorage.setItem(CONSENT_STORAGE_KEY, "accepted");
+    } catch {
+      // Ignore storage write errors
+    }
     setShowConsent(false);
-    // Load Google Analytics scripts dynamically
+
     if (
       typeof window !== "undefined" &&
       process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID
     ) {
-      // Load GA scripts
-      const script1 = document.createElement("script");
-      script1.src = `https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`;
-      script1.async = true;
-      document.head.appendChild(script1);
+      const measurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+      const injectGa = () => {
+        const script1 = document.createElement("script");
+        script1.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
+        script1.async = true;
+        document.head.appendChild(script1);
 
-      const script2 = document.createElement("script");
-      script2.textContent = `
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', '${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}', {
-          'anonymize_ip': true,
-          'cookie_flags': 'SameSite=None;Secure'
-        });
-      `;
-      script2.setAttribute("data-ga", "true");
-      document.head.appendChild(script2);
+        const script2 = document.createElement("script");
+        script2.textContent = `
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', '${measurementId}', {
+            'anonymize_ip': true,
+            'cookie_flags': 'SameSite=None;Secure'
+          });
+        `;
+        script2.setAttribute("data-ga", "true");
+        document.head.appendChild(script2);
+      };
+
+      if (typeof window.requestIdleCallback === "function") {
+        window.requestIdleCallback(injectGa, { timeout: 1500 });
+      } else {
+        setTimeout(injectGa, 0);
+      }
     }
   };
 
   const handleDecline = () => {
-    localStorage.setItem("cookieConsent", "declined");
+    try {
+      localStorage.setItem(CONSENT_STORAGE_KEY, "declined");
+    } catch {
+      // Ignore storage write errors
+    }
     setShowConsent(false);
-    // Remove GA scripts if they were loaded
+
     if (typeof window !== "undefined") {
-      const gaScript = document.querySelector(
-        'script[src*="googletagmanager"]'
-      );
-      if (gaScript) {
-        gaScript.remove();
-      }
-      const gaDataScript = document.querySelector("script[data-ga]");
-      if (gaDataScript) {
-        gaDataScript.remove();
-      }
+      document.querySelector('script[src*="googletagmanager"]')?.remove();
+      document.querySelector("script[data-ga]")?.remove();
     }
   };
 
-  if (!mounted || !showConsent) {
+  if (!showConsent) {
     return null;
   }
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 100 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
+    <div
       /**
-       * **z-index: a banner a header (`z-40`) ALATT van.**
-       *
-       * A korábbi `z-50` miatt a banner a fix fejléc fölött lebegett,
-       * és mobilon (390×844) az „Elfogadom"/„Elutasítom" gombok
-       * fedték a hamburger menüt — a gomb kattinthatatlan volt, amíg
-       * a visitor nem döntött a sütikről. Ez a 7.19.0 smoke suite
-       * diagnosztikájában derült ki.
-       *
-       * A z-index skála: `z-0` alap · `z-10` badge · `z-40` header/
-       * overlay · `z-50` modál. A consent banner nem modál, ezért
-       * `z-30`-ot kap — így **soha nem tudja fedni a headert**.
-       *
-       * Emellett a panel `max-h`-gel korlátozott és belsőleg
-       * görgethető: nagyon rövid viewporton (pl. fekvő telefon) sem
-       * nyeli el a teljes képernyőt.
+       * z-index: a banner a header (`z-40`) ALATT marad (`z-30`),
+       * így soha nem fedi el a fejlécet vagy a mobil hamburger menüt.
+       * `fixed` pozíció + késleltetett megjelenítés -> CLS = 0, és nem
+       * rabolja el az LCP mérést a Hero H1 / háttérkép elől.
        */
-      className="fixed bottom-4 left-4 right-4 md:left-8 md:right-8 z-30 pointer-events-none"
+      className="fixed bottom-3 left-3 right-3 sm:bottom-4 sm:left-4 sm:right-4 md:left-8 md:right-8 z-30 pointer-events-none cookie-banner-enter"
       role="dialog"
       aria-label={dictionary?.ariaLabel ?? "Cookie-k és analitika beállítások"}
     >
-      <div className="max-h-[70vh] overflow-y-auto overscroll-contain bg-bg-surface border border-sky-500/50 rounded-2xl p-6 md:p-8 shadow-2xl backdrop-blur-xl bg-opacity-95 pointer-events-auto">
-        <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6">
-          <div className="flex-1">
-            <h2 className="text-lg font-bold text-text-primary mb-2">
+      <div className="max-w-4xl mx-auto max-h-[45vh] overflow-y-auto overscroll-contain bg-bg-surface/95 border border-slate-200 dark:border-sky-500/40 rounded-2xl p-3.5 sm:p-5 shadow-2xl backdrop-blur-xl pointer-events-auto">
+        <div className="flex flex-col md:flex-row items-start md:items-center gap-2.5 sm:gap-4 md:gap-6">
+          <div className="flex-1 min-w-0">
+            <p className="text-sm sm:text-base font-sans font-bold text-text-primary leading-snug mb-0.5 sm:mb-1">
               {dictionary?.title ?? "Cookie-k és Analitika"}
-            </h2>
-            <p className="text-sm text-text-secondary mb-2">
-              {dictionary?.description ??
-                "Sütiket használok a felhasználói élmény javításához és a weboldal forgalmának elemzéséhez. Az adatok segítenek jobb szolgáltatást nyújtani."}
             </p>
-            <p className="text-xs text-text-muted">
-              {dictionary?.moreInfo ?? "További információ:"}{" "}
+            <p className="text-xs sm:text-sm text-text-secondary leading-snug">
+              <span className="line-clamp-2 sm:line-clamp-none">
+                {dictionary?.description ??
+                  "Sütiket használok a felhasználói élmény javításához és a forgalom elemzéséhez."}
+              </span>{" "}
               <Link
                 href={dictionary?.privacyHref ?? "/adatvedelmi-szabalyzat"}
-                className="text-[#0369A1] dark:text-sky-400 hover:text-violet-700 dark:hover:text-violet-300 underline"
+                className="inline text-xs font-semibold text-[#0369A1] dark:text-sky-400 hover:text-violet-700 dark:hover:text-violet-300 underline whitespace-nowrap"
               >
                 {dictionary?.privacyPolicy ?? "Adatvédelmi Szabályzat"}
               </Link>
             </p>
           </div>
-          <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+          <div className="grid grid-cols-2 sm:flex sm:flex-row gap-2 sm:gap-3 w-full md:w-auto shrink-0">
             <Button
               onClick={handleAccept}
               variant="primary"
-              className="flex-1 md:flex-none"
+              className="px-3.5 py-2 sm:px-5 sm:py-2.5 text-xs sm:text-sm"
             >
               {dictionary?.accept ?? "Elfogadom"}
             </Button>
             <Button
               onClick={handleDecline}
               variant="secondary"
-              className="flex-1 md:flex-none"
+              className="px-3.5 py-2 sm:px-5 sm:py-2.5 text-xs sm:text-sm"
               analyticsEvent="cookie_consent_declined"
             >
               {dictionary?.decline ?? "Elutasítom"}
@@ -141,6 +156,6 @@ export default function CookieConsent({ dictionary }: CookieConsentProps) {
           </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }

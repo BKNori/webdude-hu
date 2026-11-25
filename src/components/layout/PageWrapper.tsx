@@ -1,12 +1,16 @@
 "use client";
 
 import React from "react";
+import dynamic from "next/dynamic";
 import { usePathname } from "next/navigation";
 import HeaderNavClient from "../molecules/HeaderNavClient";
 import Footer from "../organisms/Footer";
-import WebDudeChat from "../organisms/WebDudeChat";
-import CookieConsent from "../organisms/CookieConsent";
+import WebDudeChatLauncher from "../organisms/WebDudeChatLauncher";
 import type { GlobalDictionary, Language } from "@/types/dictionary";
+
+const CookieConsent = dynamic(() => import("../organisms/CookieConsent"), {
+  ssr: false,
+});
 
 interface PageWrapperProps {
   children: React.ReactNode;
@@ -38,7 +42,7 @@ export default function PageWrapper({
         {children}
       </main>
       <Footer dictionary={globalDict.footer} />
-      <WebDudeChat dictionary={globalDict.chat} locale={currentLang} />
+      <WebDudeChatLauncher dictionary={globalDict.chat} locale={currentLang} />
       <CookieConsent dictionary={globalDict.cookie} />
     </div>
   );

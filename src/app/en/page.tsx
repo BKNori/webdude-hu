@@ -1,14 +1,30 @@
+import ReactDOM from "react-dom";
+import dynamic from "next/dynamic";
 import HeroSectionNew from "@/components/organisms/HeroSectionNew";
-import SocialProofStrip from "@/components/organisms/SocialProofStrip";
-import SystemShowcase from "@/components/organisms/SystemShowcase";
-import FeaturedServicesNew from "@/components/organisms/FeaturedServicesNew";
-import CaseStudiesBento from "@/components/organisms/CaseStudiesBento";
-import WhyChooseMeSection from "@/components/organisms/WhyChooseMeSection";
-import FaqSectionAEO from "@/components/organisms/FaqSectionAEO";
-import FinalCta from "@/components/organisms/FinalCta";
 import Surface from "@/components/atoms/Surface";
 import { Award, Cpu, Clock } from "lucide-react";
 import { getDictionary } from "@/lib/dictionary";
+import { getResponsiveImageVariants } from "@/data/responsiveImages";
+
+const SocialProofStrip = dynamic(
+  () => import("@/components/organisms/SocialProofStrip")
+);
+const SystemShowcase = dynamic(
+  () => import("@/components/organisms/SystemShowcase")
+);
+const FeaturedServicesNew = dynamic(
+  () => import("@/components/organisms/FeaturedServicesNew")
+);
+const CaseStudiesBento = dynamic(
+  () => import("@/components/organisms/CaseStudiesBento")
+);
+const WhyChooseMeSection = dynamic(
+  () => import("@/components/organisms/WhyChooseMeSection")
+);
+const FaqSectionAEO = dynamic(
+  () => import("@/components/organisms/FaqSectionAEO")
+);
+const FinalCta = dynamic(() => import("@/components/organisms/FinalCta"));
 
 /**
  * English homepage (/en) — Server Component.
@@ -24,6 +40,19 @@ export default async function EnHomePage() {
     { icon: Cpu, ...dictionary.bentoGrid.techStack },
     { icon: Clock, ...dictionary.bentoGrid.timeline },
   ];
+  const heroBgSrc =
+    dictionary.home.hero.slides[0]?.bgImage ??
+    "/assets/banners/webdude-hero.webp";
+  const heroVariants = getResponsiveImageVariants(heroBgSrc);
+  if (heroVariants) {
+    ReactDOM.preload(heroVariants.fallback, {
+      as: "image",
+      type: "image/avif",
+      imageSrcSet: heroVariants.avif,
+      imageSizes: "100vw",
+      fetchPriority: "high",
+    });
+  }
 
   return (
     <div className="grow">
@@ -50,7 +79,10 @@ export default async function EnHomePage() {
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 rounded-xl bg-sky-500/10 border border-sky-600/25 dark:bg-brand-primary/12 dark:border-brand-primary/25 flex items-center justify-center">
-                        <Icon className="w-5 h-5 text-[#0369A1] dark:text-[#00B5F1]" aria-hidden="true" />
+                        <Icon
+                          className="w-5 h-5 text-[#0369A1] dark:text-[#00B5F1]"
+                          aria-hidden="true"
+                        />
                       </div>
                       <h3 className="text-xl md:text-2xl text-[#0F172A] dark:text-white tracking-wider">
                         {title}

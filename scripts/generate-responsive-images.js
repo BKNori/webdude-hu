@@ -50,7 +50,7 @@ const OUTPUT_ROOTS = [
 const GROUPS = [
   {
     name: "hero",
-    widths: [640, 1024, 1600, 2000],
+    widths: [480, 640, 768, 1024, 1600, 2000],
     // A bannerek derivatĂ­vumai eddig is itt vannak â€” a cĂ©lĂşt vĂˇltozatlan.
     out: (publicKey, width, ext) => {
       const base = path.basename(publicKey, path.extname(publicKey));

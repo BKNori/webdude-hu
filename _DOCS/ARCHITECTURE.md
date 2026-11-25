@@ -181,8 +181,9 @@ atoms  →  molecules  →  organisms  →  pages
 | `FinalCta` | `src/components/organisms/FinalCta.tsx` | Erőteljes záró CTA teljes képernyős szerű blokkal (Soft Premium) | Server Component |
 | `Header` | ~~`src/components/organisms/Header.tsx`~~ **ARCHIVALT** (`_mentesek/2026-09-21-legacy-cleanup/`) | Navigáció, logo, mobilmenü (LEGACY - NavigationNew váltotta) | `"use client"` (mobilmenü toggle) |
 | `Footer` | `src/components/organisms/Footer.tsx` | Oldallábléc, szerzői jogok, Soft Premium dizájn | Server Component (nincs direktíva) |
-| `WebDudeChat` | `src/components/organisms/WebDudeChat.tsx` | Intelligens chat asszisztens és lead-minősítő widget | `"use client"` (Vercel AI SDK, motion) |
-| `CookieConsent` | `src/components/organisms/CookieConsent.tsx` | GDPR kompatibilis cookie consent banner (localStorage alapú beleegyezés, dinamikus GA betöltés) | `"use client"` (motion/react) |
+| `WebDudeChat` | `src/components/organisms/WebDudeChat.tsx` | Intelligens chat asszisztens és lead-minősítő widget (`defaultOpen` + `initialMessage` támogatással a lazy indítóhoz) | `"use client"` (Vercel AI SDK, motion) |
+| `WebDudeChatLauncher` | `src/components/organisms/WebDudeChatLauncher.tsx` | [7.98.0] Pehelykönnyű (0 AI SDK / 0 Zod / 0 Motion) lebegő `#chat-trigger-btn` indítógomb: a nehéz `WebDudeChat` modult kizárólag kattintáskor vagy `open-webdude-chat` eseményre tölti be dinamikusan | `"use client"` |
+| `CookieConsent` | `src/components/organisms/CookieConsent.tsx` | [7.98.0] Mobil-kompakt (`p-3.5 sm:p-5`, 2 gomb 1 sorban, `z-30`), késleltetett (`requestIdleCallback` / `900ms`, `CLS = 0`) GDPR cookie consent banner dinamikus GA4 betöltéssel | `"use client"` |
 | `AdminSidebar` | `src/app/admin/layout.tsx` | Admin felület oldalsó navigáció (Dashboard, Leadek, Portfólió, Email Sablonok, Statisztikák, Beállítások menüpontok, Notification Center Bell ikonnal, dropdown menüvel, unread jelöléssel, kijelentkezés) | `"use client"` (Firebase Auth) |
 | `QuoteRequestForm` | `src/components/organisms/QuoteRequestForm.tsx` | Több lépcsős interaktív ajánlatkérő űrlap (Bento grid, Zod validáció) | `"use client"` |
 | `ContactFormWrapper` | `src/components/organisms/ContactFormWrapper.tsx` | Hibrid ajánlatkérő és gyors kapcsolatfelvételi űrlap wrapper | `"use client"` |

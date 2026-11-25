@@ -33,13 +33,18 @@ const defaultQuickReplies = [
 interface WebDudeChatProps {
   dictionary?: ChatContent;
   locale?: Language;
+  defaultOpen?: boolean;
+  initialMessage?: string;
 }
 
 export default function WebDudeChat({
   dictionary,
   locale = "hu",
+  defaultOpen = false,
+  initialMessage,
 }: WebDudeChatProps) {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(defaultOpen);
+  const initialMessageSentRef = useRef(false);
   const [input, setInput] = useState("");
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const chatContainerRef = useRef<HTMLDivElement>(null);
@@ -87,6 +92,24 @@ export default function WebDudeChat({
     messagesRef.current = messages;
     isLoadingRef.current = isLoading;
   }, [messages, isLoading]);
+
+  // Ha a lazy launcher már nyitva és kezdőüzenettel mountolta a panelt
+  useEffect(() => {
+    if (
+      initialMessage &&
+      !initialMessageSentRef.current &&
+      messagesRef.current.length === 0 &&
+      !isLoadingRef.current
+    ) {
+      initialMessageSentRef.current = true;
+      const timer = setTimeout(() => {
+        sendMessage({ text: initialMessage }).catch(() => {
+          // Error handled by useChat error state
+        });
+      }, 250);
+      return () => clearTimeout(timer);
+    }
+  }, [initialMessage, sendMessage]);
 
   // Handle custom window event to open chat and trigger custom initial text/message
   useEffect(() => {

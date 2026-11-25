@@ -7,6 +7,7 @@ const nextConfig = {
     // kerül -> drasztikusan csökken az OOM (AlignedAlloc / Zone Allocation)
     // esélye a build során.
     webpackBuildWorker: true,
+    optimizePackageImports: ["lucide-react"],
   },
   turbopack: {}, // Enable Turbopack
   images: {
@@ -53,6 +54,28 @@ const nextConfig = {
       };
     }
     return config;
+  },
+  async headers() {
+    const immutableCache = [
+      {
+        key: "Cache-Control",
+        value: "public, max-age=31536000, immutable",
+      },
+    ];
+    return [
+      {
+        source: "/assets/:path*",
+        headers: immutableCache,
+      },
+      {
+        source: "/og/:path*",
+        headers: immutableCache,
+      },
+      {
+        source: "/_next/static/:path*",
+        headers: immutableCache,
+      },
+    ];
   },
   async redirects() {
     return [

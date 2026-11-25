@@ -1,8 +1,4 @@
-"use client";
-
 import React from "react";
-import { motion } from "motion/react";
-import { useHydratedReducedMotion } from "@/hooks/useMotionPreset";
 import type { HeroDashboardContent } from "@/types/dictionary";
 import {
   ArrowUpRight,
@@ -17,12 +13,10 @@ import {
 } from "lucide-react";
 
 /**
- * HeroDashboardMockup — lebegő Bento dashboard előnézet
+ * HeroDashboardMockup — lebegő Bento dashboard előnézet (0 ms SSR festés, 0 JS animációs késleltetés)
  *
- * Soft Premium 2026 szabályok:
- * - Felület: bg-surface (#0f172a) + glassmorphism (backdrop-blur-md)
- * - Amber (#00B5F1) kizárólag fémjelzés: hover szegély + micro badge
- * - Nincs WebGL: tiszta CSS mesh grid, fénygömbök, glass kártyák
+ * - Minden elem azonnal `opacity: 1` állapotban renderelődik SSR-kor (LCP / Speed Index védelem)
+ * - Lebegés tiszta GPU-kompozitált CSS-ből (`.hero-float-main`, `.hero-float-delayed`, `.hero-float-sub`)
  */
 
 interface KpiCard {
@@ -68,11 +62,16 @@ const DEFAULT_DASHBOARD_CARDS: KpiCard[] = [
 ];
 
 const BADGE_ICONS = [Globe, Code2, Bot, Palette];
-const DEFAULT_BADGE_LABELS = ["Next.js 16", "React 19", "AI Automation", "Grafika"];
+const DEFAULT_BADGE_LABELS = [
+  "Next.js 16",
+  "React 19",
+  "AI Automation",
+  "Grafika",
+];
 
-export default function HeroDashboardMockup({ content }: HeroDashboardMockupProps) {
-  const shouldReduceMotion = useHydratedReducedMotion();
-
+export default function HeroDashboardMockup({
+  content,
+}: HeroDashboardMockupProps) {
   const dashboardCards: KpiCard[] = content?.cards?.length
     ? content.cards.map((c) => ({
         ...c,
@@ -89,16 +88,7 @@ export default function HeroDashboardMockup({ content }: HeroDashboardMockupProp
   }));
 
   return (
-    <motion.div
-      initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, x: 48 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={
-        shouldReduceMotion
-          ? { duration: 0 }
-          : { type: "spring", stiffness: 100, damping: 20, delay: 0.25 }
-      }
-      className="relative flex flex-col items-center justify-center lg:items-end"
-    >
+    <div className="relative flex flex-col items-center justify-center lg:items-end">
       {/* Főpanel — Dual Theme glassmorphism (Crisp Daylight + Luminous Slate) */}
       <div className="relative w-full max-w-sm lg:max-w-md rounded-3xl overflow-hidden border border-slate-200/90 border-t-white bg-white/92 shadow-[0_20px_60px_rgba(15,23,42,0.10)] dark:border-white/12 dark:border-t-white/25 dark:bg-[#0F172A]/85 backdrop-blur-xl hero-float-main transition-colors duration-300 hover:border-[#0369A1]/45 dark:hover:border-sky-500/50 dark:shadow-[0_24px_70px_rgba(2,6,23,0.55)]">
         {/* Panel header */}
@@ -134,25 +124,11 @@ export default function HeroDashboardMockup({ content }: HeroDashboardMockupProp
 
         {/* KPI kártyák */}
         <div className="p-4 sm:p-6 grid grid-cols-1 gap-2.5 sm:gap-4">
-          {dashboardCards.map((card, idx) => {
+          {dashboardCards.map((card) => {
             const Icon = card.icon;
             return (
-              <motion.div
+              <div
                 key={card.id}
-                initial={
-                  shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 20 }
-                }
-                animate={{ opacity: 1, y: 0 }}
-                transition={
-                  shouldReduceMotion
-                    ? { duration: 0 }
-                    : {
-                        type: "spring",
-                        stiffness: 100,
-                        damping: 20,
-                        delay: 0.4 + idx * 0.1,
-                      }
-                }
                 className="flex items-center justify-between p-3 sm:p-4 rounded-2xl bg-[#F8FAFC] border border-slate-200/90 hover:border-[#0369A1]/40 dark:bg-[#0B1120]/80 dark:border-white/10 dark:border-t-white/15 dark:hover:border-brand-primary/40 transition-colors duration-300"
               >
                 <div className="flex items-center gap-3">
@@ -174,7 +150,7 @@ export default function HeroDashboardMockup({ content }: HeroDashboardMockupProp
                 <div className="text-xl font-extrabold tabular-nums text-[#0369A1] dark:text-[#00B5F1]">
                   {card.value}
                 </div>
-              </motion.div>
+              </div>
             );
           })}
         </div>
@@ -188,7 +164,10 @@ export default function HeroDashboardMockup({ content }: HeroDashboardMockupProp
                 key={badge.label}
                 className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100 border border-slate-200/90 text-slate-700 dark:bg-white/6 dark:border-white/12 dark:text-slate-300 text-xs font-medium"
               >
-                <Icon className="w-3 h-3 text-[#0369A1] dark:text-[#00B5F1]" aria-hidden="true" />
+                <Icon
+                  className="w-3 h-3 text-[#0369A1] dark:text-[#00B5F1]"
+                  aria-hidden="true"
+                />
                 {badge.label}
               </div>
             );
@@ -197,42 +176,21 @@ export default function HeroDashboardMockup({ content }: HeroDashboardMockupProp
       </div>
 
       {/* Fémjelzés — jobb fent */}
-      <motion.div
-        initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, scale: 0.85 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={
-          shouldReduceMotion
-            ? { duration: 0 }
-            : {
-                delay: 0.65,
-                type: "spring",
-                stiffness: 100,
-                damping: 20,
-              }
-        }
+      <div
         className="hidden sm:block absolute -top-6 -right-4 lg:-right-8 z-10 hero-float-delayed"
         aria-hidden="true"
       >
         <div className="px-4 py-3 rounded-2xl border border-sky-300 bg-white/95 text-[#0369A1] shadow-[0_8px_28px_rgba(3,105,161,0.14)] dark:border-sky-500/40 dark:border-t-white/25 dark:bg-[#0F172A]/90 backdrop-blur-md dark:text-sky-300 text-xs font-bold flex items-center gap-2 dark:shadow-[0_8px_32px_rgba(0,181,241,0.18)]">
-          <CheckCircle2 className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]" aria-hidden="true" />
+          <CheckCircle2
+            className="w-4 h-4 text-[#0369A1] dark:text-[#00B5F1]"
+            aria-hidden="true"
+          />
           {content?.floatingTopText ?? "Lighthouse 97/100"}
         </div>
-      </motion.div>
+      </div>
 
       {/* Fémjelzés — bal lent */}
-      <motion.div
-        initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, scale: 0.85 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={
-          shouldReduceMotion
-            ? { duration: 0 }
-            : {
-                delay: 0.8,
-                type: "spring",
-                stiffness: 100,
-                damping: 20,
-              }
-        }
+      <div
         className="hidden sm:block absolute -bottom-6 -left-4 lg:-left-8 z-10 hero-float-sub"
         aria-hidden="true"
       >
@@ -240,7 +198,7 @@ export default function HeroDashboardMockup({ content }: HeroDashboardMockupProp
           <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
           {content?.floatingBottomText ?? "Új lead érkezett"}
         </div>
-      </motion.div>
-    </motion.div>
+      </div>
+    </div>
   );
 }

@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import "tailwindcss" source("..");
 
 /* ── Tailwind v4 Design Tokens (SSOT: DESIGN_SYSTEM.md v7.2 Dual Theme) ────── */
 @theme {
@@ -44,8 +44,8 @@
 
   /* ── Tipográfia Design Tokens (SSOT: Bebas Neue + Plus Jakarta Sans) ────────── */
   --font-sans:
-    var(--font-sans), "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
-  --font-heading: var(--font-heading), "Bebas Neue", sans-serif;
+    var(--font-jakarta), "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-heading: var(--font-bebas), "Bebas Neue", sans-serif;
 }
 
 /* Tailwind v4 class/attribute-alapú sötét mód variáns (OS preferencia figyelmen kívül hagyása) */
@@ -1341,10 +1341,26 @@ body:has(#portal-layout) #chat-trigger-btn {
   border-bottom: none;
 }
 
+@keyframes cookieSlideUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 16px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.cookie-banner-enter {
+  animation: cookieSlideUp 0.28s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
 /* ── Motion akadálymentesítés: dekoratív animációk leállítása ───────────── */
 @media (prefers-reduced-motion: reduce) {
   body::before,
   body::after,
+  .cookie-banner-enter,
   .bg-ambient-glow-1,
   .bg-ambient-glow-2,
   .animate-blob-1,
