@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     siteName: "WebDude",
     images: [
       {
-        url: "/og/webdude-portfolio-og.jpg",
+        url: "/og/webdude-og.jpg",
         width: 1200,
         height: 630,
         alt: "WebDude referenciák és esettanulmányok - Next.js webfejlesztés",
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     title: "Webfejlesztő Referenciák & Esettanulmányok | WebDude.hu",
     description:
       "Konverzió-optimalizált Next.js weboldalak, webshopok és arculatok. 26 év tapasztalat, mérhető növekedés.",
-    images: ["/og/webdude-portfolio-og.jpg"],
+    images: ["/og/webdude-og.jpg"],
   },
 };
 

@@ -1,30 +1,10 @@
 import React from "react";
 import Link from "next/link";
-import { Metadata } from "next";
 import { PenTool, Layers, ArrowRight } from "lucide-react";
 import Hero from "@/components/Hero";
 import DirectAnswerBlock from "@/components/molecules/DirectAnswerBlock";
 import { buildBreadcrumbSchema, BreadcrumbItem } from "@/lib/breadcrumb";
 import { withLocale } from "@/lib/i18n";
-
-export const metadata: Metadata = {
-  title: "Graphic Design and Brand Identity Nationwide | WebDude",
-  description:
-    "Logo, brand identity, marketing materials and digital graphic design in a unified visual system. 26 years of graphic design experience from WebDude.",
-  keywords:
-    "graphic design, brand identity, logo design, webdesign, UI/UX design, marketing graphics, nationwide",
-  alternates: {
-    canonical: "https://webdude.hu/en/services/graphic-design",
-  },
-  openGraph: {
-    title: "Graphic Design and Brand Identity Nationwide | WebDude",
-    description:
-      "Logo, brand identity, marketing materials and digital graphic design in a unified visual system.",
-    type: "website",
-    locale: "en_US",
-    siteName: "WebDude",
-  },
-};
 
 export const revalidate = 3600;
 

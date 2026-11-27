@@ -1,5 +1,25 @@
 # Changelog
 
+## [7.99.0] — 2026-11-27 — Teljes Körű Technikai SEO + CI/CD Hibajavítás (GSC, Semrush, GA4 Consent Mode v2 & `verify` Kapu)
+
+### Fixed & Changed
+- **GitHub Actions CI/CD (`verify` job — `.github/workflows/ci.yml`, `KristofkaPitchOutput.tsx`, `next.config.js`):** A `verify` job `node-version: 20`-ról `node-version: 24`-re frissítve (mivel a `firebase-admin@14.1.0` `>=22` és a `@supabase/*@2.110.5` `>=22.0.0` Node motort igényel), a `npx jest --no-coverage` lecserélve teljes `npx jest`-re (80% coverage-kapu), a `KristofkaPitchOutput.tsx:180` hover kontrasztja (`dark:hover:bg-slate-800`) javítva (`audit-contrast.js`: 0 hiba), és a `next.config.js`-ből eltávolítva a build warningot okozó kézi `/_next/static/:path*` `Cache-Control` felülírás.
+- **Google Search Console Indexelés, Redirect & Sitemap (`next.config.js`, `src/app/sitemap.ts`, `src/app/layout.tsx`, `AdminLayoutShell.tsx`):**
+  - Eltávolítva a gyökér `src/app/layout.tsx` `metadata.alternates.canonical` és `languages` mezője, így aloldalak nem örökölhetik a főoldal kanonikus URL-jét.
+  - Bővítve a `next.config.js` `redirects()` permanens átirányításokkal (`/i-prompt-sablonok`, `/webfejlesztes`, `/karbantartas`, `/ai-automatizacio`, `/seo-audit`, `/ux-audit`, `/bejelentkezes`, `/regisztracio`), a `/bejelentkezes` és `/regisztracio` kizárva a `sitemap.ts`-ben is.
+  - Eltávolítva a duplikált/hiányos `metadata` exportok a szülő layoutokból (`szia-norbi-vagyok`, `munkak`, `kapcsolat`, `ai-megoldasok`) és a két EN szolgáltatás `page.tsx`-ből (`woocommerce-development`, `graphic-design`); pótolva a `canonical` + `hreflang` a `kristofka-munkafolyamat`, `hirek/[slug]` és `en/insights/[slug]` oldalakon.
+  - Kijavítva a 404-es belső linkek (`ai-prompt-sablonok` `/bejelentkezes` → `/portal`, `/regisztracio` → `/kapcsolat`), a 301-lánc (`woocommerce-webshop-keszites` → `/szolgaltatasok/wordpress-biztonsag`), valamint 6 nem létező OG/Twitter kép útvonal (`/og/webdude-og.jpg`, `/assets/banners/wordpress-weboldalak-keszitese-grafikai-tervezes.webp`).
+  - Az `/admin/**` útvonalak teljes `noindex, nofollow` védelmet kaptak a Server Component `src/app/admin/layout.tsx` + `AdminLayoutShell.tsx` szétválasztásával (és `admin/settings/page.tsx` frissítésével).
+  - Dekorációs háttérvideók (`Hero.tsx`, `ScrollVideoHero.tsx`) `aria-hidden="true"` és `tabIndex={-1}` jelölést kaptak (0 felesleges `VideoObject` JSON-LD).
+- **Semrush JSON-LD & GA4 Consent Mode v2 (`src/lib/structuredData.ts`, EN layoutok, `en/contact/page.tsx`, 6 HU szolgáltatásoldal, `src/lib/analytics.ts`, `src/app/layout.tsx`, `CookieConsent.tsx`):**
+  - A főoldali `buildEnJsonLd` áthelyezve `src/app/en/layout.tsx`-ből a `src/app/en/page.tsx`-be, és eltávolítva mind a 8 EN aloldal layoutjából (0 duplikált `FAQPage` / `BreadcrumbList`); `/en/contact` saját `ContactPage` + `BreadcrumbList` sémát kapott; javítva a `personSchema.url` (`/en/about`) és az EN `founder.jobTitle`.
+  - Eltávolítva a hibás `/search?q=` `SearchAction` (`munkak/layout.tsx`) és a duplikált `LocalBusiness` `@id` konfliktus (`kapcsolat/layout.tsx`); `BreadcrumbSchema` pótolva a 6 hiányzó HU szolgáltatásoldalon (`arculattervezes`, `helyi-seo`, `technikai-seo-audit`, `weboldal-felujitas`, `weboldal-sebessegoptimalizalas`, `wordpress-karbantartas`).
+  - GA4 Consent Mode v2 bekötve a `RootLayout`-ba (`isValidGaMeasurementId`, `buildGaConsentInitScript`, `updateAnalyticsConsent`) és szinkronizálva a `CookieConsent` komponenssel visszatérő elfogadó látogatókhoz is.
+
+### Tests
+- Frissítve: `analytics.test.ts`, `CookieConsent.test.tsx`.
+- Új regressziós teszt: `src/lib/__tests__/seo-technical-audit.test.ts`.
+
 ## [7.98.0] — 2026-11-25 — Mobil PageSpeed FCP/LCP Optimalizálás (`opacity: 1` SSR Hero, `480w`/`768w` AVIF Preload, Kompakt Cookie Banner & `-607 KB` Kezdeti JS)
 
 ### Performance & Fixed

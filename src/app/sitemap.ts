@@ -58,6 +58,8 @@ const EXCLUDED_EXACT_PATHS = new Set<string>([
   // Régi elírás: 301 → /termekek/versenytars-elemzo-ai-muhely (next.config.js redirects).
   // A helyes, létező termékoldal (versenytars-...) NEM kizárt.
   "/termekek/versenytares-elemzo-ai-muhely",
+  "/bejelentkezes",
+  "/regisztracio",
 ]);
 
 /** 14 kétnyelvű (HU ↔ EN) statikus oldalpár (28 URL, garantáltan szimmetrikus hreflang). */

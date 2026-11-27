@@ -16,7 +16,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
           cache: 'npm'
 
       - name: Install dependencies
@@ -32,7 +32,7 @@ jobs:
         run: npm run lint -- --max-warnings 0
 
       - name: Run Jest Unit Tests
-        run: npx jest --no-coverage
+        run: npx jest
 
       - name: Run WCAG Contrast Audit
         run: node scripts/audit-contrast.js

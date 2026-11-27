@@ -1,13 +1,10 @@
 import { Metadata } from "next";
-import { getDictionary } from "@/lib/dictionary";
-import { buildEnJsonLd, serializeJsonLd } from "@/lib/structuredData";
 import { SITE_URL } from "@/lib/i18n";
 
 const PAGE_URL = `${SITE_URL}/en/portfolio`;
 
 /**
- * EN portfolio szerveroldali layout — a metaadatok és a JSON-LD sémák
- * kizárólag itt élnek (AEO szabály: kliens komponensből tilos exportálni).
+ * EN portfolio szerveroldali layout — kizárólag a metaadatok élnek itt.
  */
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -32,7 +29,7 @@ export async function generateMetadata(): Promise<Metadata> {
       siteName: "WebDude",
       images: [
         {
-          url: `${SITE_URL}/og/webdude-portfolio-og.jpg`,
+          url: `${SITE_URL}/og/webdude-og.jpg`,
           width: 1200,
           height: 630,
           alt: "WebDude portfolio and case studies",
@@ -46,30 +43,15 @@ export async function generateMetadata(): Promise<Metadata> {
       title: "Portfolio & Case Studies | WebDude",
       description:
         "Real client results, conversion-optimised Next.js websites and custom digital systems. 26 years of experience, measurable growth.",
-      images: [`${SITE_URL}/og/webdude-portfolio-og.jpg`],
+      images: [`${SITE_URL}/og/webdude-og.jpg`],
     },
   };
 }
 
-export default async function EnPortfolioLayout({
+export default function EnPortfolioLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const dictionary = await getDictionary("en");
-  const schemas = buildEnJsonLd(dictionary);
-
-  return (
-    <>
-      {/* EN JSON-LD sémák — XSS-védetten serializálva (AEO / E-E-A-T) */}
-      {schemas.map((schema, index) => (
-        <script
-          key={index}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: serializeJsonLd(schema) }}
-        />
-      ))}
-      {children}
-    </>
-  );
+  return <>{children}</>;
 }

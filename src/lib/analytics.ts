@@ -1,5 +1,5 @@
-// Analytics utility for Google Analytics 4 event tracking
-// This file provides type-safe gtag functions for event tracking
+// Analytics utility for Google Analytics 4 event tracking and Consent Mode v2
+// This file provides type-safe gtag functions for event tracking and consent initialization
 
 declare global {
   interface Window {
@@ -15,6 +15,38 @@ declare global {
 export interface AnalyticsEvent {
   eventName: string;
   params?: Record<string, string | number | boolean>;
+}
+
+const GA_MEASUREMENT_ID_PATTERN = /^(G|GT|AW)-[A-Z0-9]+$/i;
+
+/**
+ * Validate a GA4 / Google Tag measurement ID to prevent script injection.
+ */
+export function isValidGaMeasurementId(
+  id: string | undefined
+): id is string {
+  if (!id) return false;
+  return GA_MEASUREMENT_ID_PATTERN.test(id.trim());
+}
+
+/**
+ * Build an inline Consent Mode v2 + GA4 config script for public routes.
+ * Skips /admin and /portal private paths.
+ */
+export function buildGaConsentInitScript(measurementId: string): string {
+  const safeId = measurementId.trim();
+  return `(function(){try{var p=window.location.pathname||'';if(p.indexOf('/admin')===0||p.indexOf('/portal')===0){return;}var accepted=false;try{accepted=localStorage.getItem('cookieConsent')==='accepted';}catch(e){}window.dataLayer=window.dataLayer||[];window.gtag=window.gtag||function(){window.dataLayer.push(arguments);};window.gtag('consent','default',{analytics_storage:accepted?'granted':'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',wait_for_update:500});window.gtag('js',new Date());window.gtag('config','${safeId}',{anonymize_ip:true,cookie_flags:'SameSite=None;Secure'});}catch(e){}})();`;
+}
+
+/**
+ * Update GA4 Consent Mode v2 analytics_storage status at runtime.
+ */
+export function updateAnalyticsConsent(status: "granted" | "denied"): void {
+  if (typeof window !== "undefined" && typeof window.gtag === "function") {
+    window.gtag("consent", "update", {
+      analytics_storage: status,
+    });
+  }
 }
 
 /**

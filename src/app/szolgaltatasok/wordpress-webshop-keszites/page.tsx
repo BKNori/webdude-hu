@@ -24,7 +24,7 @@ export async function generateMetadata(): Promise<Metadata> {
       siteName: "WebDude",
       images: [
         {
-          url: "/banners/wordpress-weboldalak-keszitese-grafikai-tervezes.webp",
+          url: "/assets/banners/wordpress-weboldalak-keszitese-grafikai-tervezes.webp",
           width: 1920,
           height: 1080,
           alt: "WordPress webshop készítés WebDude",
@@ -37,7 +37,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description:
         "Testreszabott WordPress webshopok, gyors checkout és SEO-optimalizált struktúra WooCommerce alapú e-kereskedelmi megoldásokhoz.",
       images: [
-        "/banners/wordpress-weboldalak-keszitese-grafikai-tervezes.webp",
+        "/assets/banners/wordpress-weboldalak-keszitese-grafikai-tervezes.webp",
       ],
     },
   };

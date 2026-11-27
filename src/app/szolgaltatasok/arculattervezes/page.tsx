@@ -16,6 +16,7 @@ import PricingTable, {
   type PricingTier,
 } from "@/components/molecules/PricingTable";
 import DirectAnswerBlock from "@/components/molecules/DirectAnswerBlock";
+import BreadcrumbSchema from "@/components/molecules/BreadcrumbSchema";
 
 export const metadata: Metadata = {
   title:
@@ -148,6 +149,16 @@ export default function ArculattervezesPage() {
 
   return (
     <div className="min-h-screen bg-[#F8FAFC] dark:bg-slate-950 text-[#0F172A] dark:text-slate-100">
+      <BreadcrumbSchema
+        items={[
+          { name: "Főoldal", item: "https://webdude.hu" },
+          { name: "Szolgáltatások", item: "https://webdude.hu/szolgaltatasok" },
+          {
+            name: "Arculattervezés",
+            item: "https://webdude.hu/szolgaltatasok/arculattervezes",
+          },
+        ]}
+      />
       {/* JSON-LD Schemas with XSS Protection */}
       <script
         type="application/ld+json"

@@ -1,6 +1,4 @@
 import { Metadata } from "next";
-import { getDictionary } from "@/lib/dictionary";
-import { buildEnJsonLd, serializeJsonLd } from "@/lib/structuredData";
 import { SITE_URL } from "@/lib/i18n";
 
 const PAGE_URL = `${SITE_URL}/en/services/graphic-design`;
@@ -36,27 +34,20 @@ export async function generateMetadata(): Promise<Metadata> {
       locale: "en_US",
       type: "website",
     },
+    twitter: {
+      card: "summary_large_image",
+      title: "Graphic Design and Brand Identity Nationwide | WebDude",
+      description:
+        "Logo, brand identity, marketing materials and digital graphic design in a unified visual system.",
+      images: [`${SITE_URL}/og/webdude-og.jpg`],
+    },
   };
 }
 
-export default async function EnGraphicDesignLayout({
+export default function EnGraphicDesignLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const dictionary = await getDictionary("en");
-  const schemas = buildEnJsonLd(dictionary);
-
-  return (
-    <>
-      {schemas.map((schema, index) => (
-        <script
-          key={index}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: serializeJsonLd(schema) }}
-        />
-      ))}
-      {children}
-    </>
-  );
+  return <>{children}</>;
 }

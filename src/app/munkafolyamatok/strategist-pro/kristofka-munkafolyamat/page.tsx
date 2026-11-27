@@ -8,11 +8,28 @@ export const metadata: Metadata = {
     "Kristófka Munkafolyamat | Professzionális Ingatlanfejlesztési Pitch & Üzleti Terv",
   description:
     "Alakítsd át nyers ipari alaprajzaidat profi befektetői prezentációvá a Kristófka munkafolyamattal. Automatizált, célzott, és megtérülésre fókuszáló ingatlanfejlesztési narratívák.",
+  alternates: {
+    canonical:
+      "https://webdude.hu/munkafolyamatok/strategist-pro/kristofka-munkafolyamat",
+    languages: {
+      "hu-HU":
+        "https://webdude.hu/munkafolyamatok/strategist-pro/kristofka-munkafolyamat",
+      "x-default":
+        "https://webdude.hu/munkafolyamatok/strategist-pro/kristofka-munkafolyamat",
+    },
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
   openGraph: {
     title:
       "Kristófka Munkafolyamat | Professzionális Ingatlanfejlesztési Pitch & Üzleti Terv",
     description:
       "Alakítsd át nyers ipari alaprajzaidat profi befektetői prezentációvá a Kristófka munkafolyamattal. Automatizált, célzott, és megtérülésre fókuszáló ingatlanfejlesztési narratívák.",
+    url: "https://webdude.hu/munkafolyamatok/strategist-pro/kristofka-munkafolyamat",
+    siteName: "WebDude",
+    locale: "hu_HU",
     type: "website",
   },
 };

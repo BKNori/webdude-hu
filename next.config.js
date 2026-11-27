@@ -71,10 +71,6 @@ const nextConfig = {
         source: "/og/:path*",
         headers: immutableCache,
       },
-      {
-        source: "/_next/static/:path*",
-        headers: immutableCache,
-      },
     ];
   },
   async redirects() {
@@ -152,6 +148,47 @@ const nextConfig = {
       {
         source: "/termekek/versenytares-elemzo-ai-muhely",
         destination: "/termekek/versenytars-elemzo-ai-muhely",
+        permanent: true,
+      },
+      // ── PHASE 2: GSC indexelés & 307/404 konszolidáció (2026-11-27) ────────
+      {
+        source: "/i-prompt-sablonok",
+        destination: "/ai-megoldasok/ai-prompt-sablonok",
+        permanent: true,
+      },
+      {
+        source: "/webfejlesztes",
+        destination: "/szolgaltatasok/weboldal-keszites",
+        permanent: true,
+      },
+      {
+        source: "/karbantartas",
+        destination: "/szolgaltatasok/wordpress-karbantartas",
+        permanent: true,
+      },
+      {
+        source: "/ai-automatizacio",
+        destination: "/ai-megoldasok",
+        permanent: true,
+      },
+      {
+        source: "/seo-audit",
+        destination: "/szolgaltatasok/technikai-seo-audit",
+        permanent: true,
+      },
+      {
+        source: "/ux-audit",
+        destination: "/ingyenes-weboldal-elemzes",
+        permanent: true,
+      },
+      {
+        source: "/bejelentkezes",
+        destination: "/portal",
+        permanent: true,
+      },
+      {
+        source: "/regisztracio",
+        destination: "/kapcsolat",
         permanent: true,
       },
     ];

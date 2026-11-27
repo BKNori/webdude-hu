@@ -1,4 +1,7 @@
 import {
+  isValidGaMeasurementId,
+  buildGaConsentInitScript,
+  updateAnalyticsConsent,
   trackEvent,
   trackFormSubmit,
   trackCTAClick,
@@ -7,21 +10,52 @@ import {
 
 describe("Analytics utilities", () => {
   const gtagMock = jest.fn();
-  beforeAll(() => {
-    // Ensure window object exists (jsdom) and mock gtag
-    if (typeof window === "undefined") {
-      (global as unknown as { window?: unknown }).window = {} as unknown;
-    }
+
+  beforeEach(() => {
     (window as unknown as { gtag?: unknown }).gtag = gtagMock;
+    gtagMock.mockClear();
   });
 
   afterAll(() => {
-    // Clean up gtag mock
     delete (window as unknown as { gtag?: unknown }).gtag;
   });
 
-  afterEach(() => {
+  test("isValidGaMeasurementId accepts valid GA4/GT/AW IDs and rejects invalid ones", () => {
+    expect(isValidGaMeasurementId("G-ABC123XYZ")).toBe(true);
+    expect(isValidGaMeasurementId(" G-123456 ")).toBe(true);
+    expect(isValidGaMeasurementId("GT-999AA")).toBe(true);
+    expect(isValidGaMeasurementId("AW-12345")).toBe(true);
+    expect(isValidGaMeasurementId(undefined)).toBe(false);
+    expect(isValidGaMeasurementId("")).toBe(false);
+    expect(isValidGaMeasurementId("G-123';alert(1)//")).toBe(false);
+    expect(isValidGaMeasurementId("INVALID")).toBe(false);
+  });
+
+  test("buildGaConsentInitScript skips admin/portal paths and sets Consent Mode v2", () => {
+    const script = buildGaConsentInitScript("G-TEST1234");
+    expect(script).toContain("/admin");
+    expect(script).toContain("/portal");
+    expect(script).toContain("cookieConsent");
+    expect(script).toContain("window.gtag('consent','default'");
+    expect(script).toContain("G-TEST1234");
+  });
+
+  test("updateAnalyticsConsent calls gtag consent update when available", () => {
+    updateAnalyticsConsent("granted");
+    expect(gtagMock).toHaveBeenCalledWith("consent", "update", {
+      analytics_storage: "granted",
+    });
+
     gtagMock.mockClear();
+    updateAnalyticsConsent("denied");
+    expect(gtagMock).toHaveBeenCalledWith("consent", "update", {
+      analytics_storage: "denied",
+    });
+
+    delete (window as unknown as { gtag?: unknown }).gtag;
+    gtagMock.mockClear();
+    updateAnalyticsConsent("granted");
+    expect(gtagMock).not.toHaveBeenCalled();
   });
 
   test("trackEvent calls gtag with proper args", () => {
@@ -54,8 +88,8 @@ describe("Analytics utilities", () => {
       page_title: "Test Page",
     });
   });
+
   test("trackEvent does nothing when gtag is undefined", () => {
-    // Remove gtag mock
     delete (window as unknown as { gtag?: unknown }).gtag;
     gtagMock.mockClear();
     trackEvent("no_gtag");
@@ -63,7 +97,6 @@ describe("Analytics utilities", () => {
   });
 
   test("trackPageView does nothing when gtag is undefined", () => {
-    // Ensure gtag is undefined
     delete (window as unknown as { gtag?: unknown }).gtag;
     gtagMock.mockClear();
     trackPageView("/no-gtag", "No Gtag");

@@ -45,7 +45,17 @@ export async function generateMetadata({
   const meta: Metadata = {
     title: `${post.title} | WebDude`,
     description,
-    alternates: { canonical: canonicalUrl },
+    alternates: {
+      canonical: canonicalUrl,
+      ...(post.noindex === true
+        ? {}
+        : {
+            languages: {
+              "hu-HU": canonicalUrl,
+              "x-default": canonicalUrl,
+            },
+          }),
+    },
     openGraph: {
       type: "article",
       title: `${post.title} | WebDude`,

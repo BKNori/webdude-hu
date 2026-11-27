@@ -408,16 +408,16 @@ export default function AIPromptSablonokPage() {
             </p>
             <div className="space-y-3">
               <Link
-                href="/bejelentkezes"
+                href="/portal"
                 className="block w-full py-3 bg-linear-to-r from-[#075985] to-[#5B21B6] text-white font-bold rounded-xl hover:from-[#0369A1] hover:to-[#6D28D9] transition-all"
               >
                 Bejelentkezés
               </Link>
               <Link
-                href="/regisztracio"
+                href="/kapcsolat"
                 className="block w-full py-3 border border-[#0369A1] dark:border-[#00B5F1] text-[#0369A1] dark:text-[#00B5F1] font-semibold rounded-xl hover:bg-[#0369A1]/10 dark:hover:bg-[#00B5F1]/10 transition-all"
               >
-                Regisztráció
+                Hozzáférés igénylése
               </Link>
             </div>
           </motion.div>

@@ -16,6 +16,7 @@ import {
 import PricingTable, {
   type PricingTier,
 } from "@/components/molecules/PricingTable";
+import BreadcrumbSchema from "@/components/molecules/BreadcrumbSchema";
 
 export const metadata: Metadata = {
   title:
@@ -149,6 +150,16 @@ export default function WeboldalSebessegoptimalizalasPage() {
 
   return (
     <div className="min-h-screen bg-[#F8FAFC] dark:bg-slate-950 text-[#0F172A] dark:text-slate-100">
+      <BreadcrumbSchema
+        items={[
+          { name: "Főoldal", item: "https://webdude.hu" },
+          { name: "Szolgáltatások", item: "https://webdude.hu/szolgaltatasok" },
+          {
+            name: "Weboldal Sebességoptimalizálás",
+            item: "https://webdude.hu/szolgaltatasok/weboldal-sebessegoptimalizalas",
+          },
+        ]}
+      />
       {/* JSON-LD Schemas with XSS Protection */}
       <script
         type="application/ld+json"

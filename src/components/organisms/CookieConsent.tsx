@@ -1,8 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import Button from "@/components/atoms/Button";
+import {
+  isValidGaMeasurementId,
+  updateAnalyticsConsent,
+} from "@/lib/analytics";
 import type { CookieConsentContent } from "@/types/dictionary";
 
 interface CookieConsentProps {
@@ -15,9 +19,78 @@ const SHOW_DELAY_MS = 900;
 export default function CookieConsent({ dictionary }: CookieConsentProps) {
   const [showConsent, setShowConsent] = useState(false);
 
+  const ensureGaLoaded = useCallback(() => {
+    if (typeof window === "undefined") return;
+    const rawId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+    if (!isValidGaMeasurementId(rawId)) return;
+    const measurementId = rawId.trim();
+
+    if (document.querySelector('script[src*="googletagmanager.com/gtag/js"]')) {
+      updateAnalyticsConsent("granted");
+      return;
+    }
+
+    const script1 = document.createElement("script");
+    script1.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
+    script1.async = true;
+    document.head.appendChild(script1);
+
+    const script2 = document.createElement("script");
+    script2.textContent = `
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = window.gtag || function(){window.dataLayer.push(arguments);};
+      window.gtag('consent', 'default', {
+        'analytics_storage': 'granted',
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied'
+      });
+      window.gtag('js', new Date());
+      window.gtag('config', '${measurementId}', {
+        'anonymize_ip': true,
+        'cookie_flags': 'SameSite=None;Secure'
+      });
+    `;
+    script2.setAttribute("data-ga", "true");
+    document.head.appendChild(script2);
+    updateAnalyticsConsent("granted");
+  }, []);
+
   useEffect(() => {
     let cancelled = false;
     let idleId: number | null = null;
+    let storedConsent: string | null = null;
+
+    try {
+      storedConsent = localStorage.getItem(CONSENT_STORAGE_KEY);
+    } catch {
+      // Storage blocked (pl. inkognitó korlátozás) -> ne blokkolja az oldalt
+      return;
+    }
+
+    if (storedConsent === "accepted") {
+      const scheduleGa = () => {
+        if (!cancelled) ensureGaLoaded();
+      };
+      if (typeof window.requestIdleCallback === "function") {
+        idleId = window.requestIdleCallback(scheduleGa, { timeout: 1500 });
+        return () => {
+          cancelled = true;
+          if (idleId !== null && typeof window.cancelIdleCallback === "function") {
+            window.cancelIdleCallback(idleId);
+          }
+        };
+      }
+      const gaTimerId = setTimeout(scheduleGa, 0);
+      return () => {
+        cancelled = true;
+        clearTimeout(gaTimerId);
+      };
+    }
+
+    if (storedConsent) {
+      return;
+    }
 
     const revealIfUnset = () => {
       if (cancelled) return;
@@ -26,7 +99,7 @@ export default function CookieConsent({ dictionary }: CookieConsentProps) {
           setShowConsent(true);
         }
       } catch {
-        // Storage blocked (pl. inkognitó korlátozás) -> ne blokkolja az oldalt
+        // Ignore storage read errors
       }
     };
 
@@ -45,7 +118,7 @@ export default function CookieConsent({ dictionary }: CookieConsentProps) {
         window.cancelIdleCallback(idleId);
       }
     };
-  }, []);
+  }, [ensureGaLoaded]);
 
   const handleAccept = () => {
     try {
@@ -55,35 +128,11 @@ export default function CookieConsent({ dictionary }: CookieConsentProps) {
     }
     setShowConsent(false);
 
-    if (
-      typeof window !== "undefined" &&
-      process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID
-    ) {
-      const measurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
-      const injectGa = () => {
-        const script1 = document.createElement("script");
-        script1.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
-        script1.async = true;
-        document.head.appendChild(script1);
-
-        const script2 = document.createElement("script");
-        script2.textContent = `
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', '${measurementId}', {
-            'anonymize_ip': true,
-            'cookie_flags': 'SameSite=None;Secure'
-          });
-        `;
-        script2.setAttribute("data-ga", "true");
-        document.head.appendChild(script2);
-      };
-
+    if (typeof window !== "undefined") {
       if (typeof window.requestIdleCallback === "function") {
-        window.requestIdleCallback(injectGa, { timeout: 1500 });
+        window.requestIdleCallback(ensureGaLoaded, { timeout: 1500 });
       } else {
-        setTimeout(injectGa, 0);
+        setTimeout(ensureGaLoaded, 0);
       }
     }
   };
@@ -95,6 +144,7 @@ export default function CookieConsent({ dictionary }: CookieConsentProps) {
       // Ignore storage write errors
     }
     setShowConsent(false);
+    updateAnalyticsConsent("denied");
 
     if (typeof window !== "undefined") {
       document.querySelector('script[src*="googletagmanager"]')?.remove();

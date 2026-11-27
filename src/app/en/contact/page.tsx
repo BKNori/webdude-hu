@@ -3,11 +3,52 @@ import Hero from "@/components/Hero";
 import DirectAnswerBlock from "@/components/molecules/DirectAnswerBlock";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { getDictionary } from "@/lib/dictionary";
+import { buildBreadcrumbSchema } from "@/lib/breadcrumb";
+import { serializeJsonLd } from "@/lib/structuredData";
+
+const breadcrumbSchema = buildBreadcrumbSchema([
+  { name: "Home", url: "/en" },
+  { name: "Contact", url: "/en/contact" },
+]);
+
+const contactPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  inLanguage: "en-US",
+  name: "Contact & Consultation | WebDude",
+  description:
+    "Request a quote directly from Norbi! No project manager layer: 26 years of experience in designing and developing Next.js systems as a remote partner.",
+  url: "https://webdude.hu/en/contact",
+  mainEntity: {
+    "@type": "LocalBusiness",
+    "@id": "https://webdude.hu/#localbusiness",
+    name: "WebDude",
+    url: "https://webdude.hu",
+    telephone: "+36 70 323 8003",
+    email: "hello@webdude.hu",
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: "+36 70 323 8003",
+      contactType: "customer service",
+      email: "hello@webdude.hu",
+      availableLanguage: ["English", "Hungarian"],
+    },
+  },
+};
 
 export default async function EnContactPage() {
   const dictionary = await getDictionary("en");
   return (
-    <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#0B1120] text-[#0F172A] dark:text-[#F8FAFC]">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(contactPageSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumbSchema) }}
+      />
+      <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#0B1120] text-[#0F172A] dark:text-[#F8FAFC]">
       <Hero
         label="Contact"
         title={
@@ -124,6 +165,7 @@ export default async function EnContactPage() {
           </div>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 }

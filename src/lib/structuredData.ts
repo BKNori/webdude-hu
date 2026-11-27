@@ -172,7 +172,7 @@ export function buildEnJsonLd(dictionary: Dictionary): JsonLdSchema[] {
     alternateName: ["Balog Norbi", "WebDude"],
     jobTitle: "Web Developer, SEO Expert & Graphic Designer",
     description: `Balog Norbert is a web developer and graphic designer with ${E_E_A_T}. Premium Next.js web development, AI automation, SEO and design — delivered as a remote partner to international clients.`,
-    url: `${SITE_URL}/szia-norbi-vagyok`,
+    url: `${SITE_URL}/en/about`,
     knowsAbout: [
       "Web Development",
       "Next.js",
@@ -222,7 +222,7 @@ export function buildEnJsonLd(dictionary: Dictionary): JsonLdSchema[] {
       "@id": `${SITE_URL}/#person`,
       name: "Balog Norbert",
       alternateName: ["Balog Norbi", "WebDude"],
-      jobTitle: "Full-Stack Webfejlesztő, Art Director & AI Automatizációs Szakértő",
+      jobTitle: "Full-Stack Web Developer, Art Director & AI Automation Specialist",
     },
     contactPoint: {
       "@type": "ContactPoint",

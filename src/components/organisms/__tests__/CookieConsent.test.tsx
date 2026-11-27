@@ -8,9 +8,14 @@ describe("CookieConsent (mobil-kompakt, késleltetett LCP-barát banner)", () =>
   beforeEach(() => {
     jest.useFakeTimers();
     localStorage.clear();
-    document.querySelectorAll('script[src*="googletagmanager"], script[data-ga]').forEach((el) => el.remove());
-    delete (window as unknown as { requestIdleCallback?: unknown }).requestIdleCallback;
-    delete (window as unknown as { cancelIdleCallback?: unknown }).cancelIdleCallback;
+    document
+      .querySelectorAll('script[src*="googletagmanager"], script[data-ga]')
+      .forEach((el) => el.remove());
+    delete (window as unknown as { requestIdleCallback?: unknown })
+      .requestIdleCallback;
+    delete (window as unknown as { cancelIdleCallback?: unknown })
+      .cancelIdleCallback;
+    (window as unknown as { gtag?: unknown }).gtag = undefined;
   });
 
   afterEach(() => {
@@ -20,7 +25,6 @@ describe("CookieConsent (mobil-kompakt, késleltetett LCP-barát banner)", () =>
 
   it("nem renderelődik blokkolóan az első LCP festés pillanatában, majd késleltetés után z-30 dialógusként megjelenik", () => {
     const { container } = render(<CookieConsent />);
-    // Azonnali renderelésnél 0 DOM elem (nem rabolja el az LCP-t a Hero elől)
     expect(container.firstChild).toBeNull();
 
     act(() => {
@@ -37,26 +41,65 @@ describe("CookieConsent (mobil-kompakt, késleltetett LCP-barát banner)", () =>
     ).toHaveAttribute("href", "/adatvedelmi-szabalyzat");
   });
 
-  it("nem jelenik meg, ha már van mentett cookieConsent döntés", () => {
+  it("visszatérő accepted látogatónál banner nélkül biztosítja a GA4 betöltését és granted consentet", () => {
+    process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID = "G-RET9999";
+    const gtagMock = jest.fn();
+    (window as unknown as { gtag?: unknown }).gtag = gtagMock;
     localStorage.setItem("cookieConsent", "accepted");
+
     const { container } = render(<CookieConsent />);
     act(() => {
       jest.advanceTimersByTime(1500);
     });
+
     expect(container.firstChild).toBeNull();
+    expect(document.querySelector('script[src*="G-RET9999"]')).not.toBeNull();
+    expect(gtagMock).toHaveBeenCalledWith("consent", "update", {
+      analytics_storage: "granted",
+    });
+  });
+
+  it("ha már be van töltve a gtag.js (RootLayoutból), nem duplikál scriptet hanem consent update-et hív", () => {
+    process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID = "G-EXISTING1";
+    const gtagMock = jest.fn();
+    (window as unknown as { gtag?: unknown }).gtag = gtagMock;
+
+    const existingScript = document.createElement("script");
+    existingScript.src =
+      "https://www.googletagmanager.com/gtag/js?id=G-EXISTING1";
+    document.head.appendChild(existingScript);
+
+    render(<CookieConsent />);
+    act(() => {
+      jest.advanceTimersByTime(1000);
+    });
+
+    fireEvent.click(screen.getByRole("button", { name: "Elfogadom" }));
+    act(() => {
+      jest.advanceTimersByTime(50);
+    });
+
+    expect(
+      document.querySelectorAll('script[src*="googletagmanager.com/gtag/js"]')
+        .length
+    ).toBe(1);
+    expect(gtagMock).toHaveBeenCalledWith("consent", "update", {
+      analytics_storage: "granted",
+    });
   });
 
   it("támogatja a requestIdleCallback ütemezést, az elfogadást (GA4 betöltéssel) és az elutasítást", () => {
     process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID = "G-TEST1234";
     const cancelMock = jest.fn();
-    (window as unknown as { requestIdleCallback: (cb: () => void) => number }).requestIdleCallback = (
-      cb
-    ) => {
+    (
+      window as unknown as { requestIdleCallback: (cb: () => void) => number }
+    ).requestIdleCallback = (cb) => {
       cb();
       return 42;
     };
-    (window as unknown as { cancelIdleCallback: (id: number) => void }).cancelIdleCallback =
-      cancelMock;
+    (
+      window as unknown as { cancelIdleCallback: (id: number) => void }
+    ).cancelIdleCallback = cancelMock;
 
     const { unmount } = render(
       <CookieConsent
@@ -91,7 +134,10 @@ describe("CookieConsent (mobil-kompakt, késleltetett LCP-barát banner)", () =>
     unmount();
   });
 
-  it("elutasításkor menti a declined értéket és eltávolítja az esetleges GA scripteket", () => {
+  it("elutasításkor menti a declined értéket, denied consentet küld és eltávolítja a GA scripteket", () => {
+    const gtagMock = jest.fn();
+    (window as unknown as { gtag?: unknown }).gtag = gtagMock;
+
     const fakeGa = document.createElement("script");
     fakeGa.src = "https://www.googletagmanager.com/gtag/js?id=G-OLD";
     document.head.appendChild(fakeGa);
@@ -106,6 +152,9 @@ describe("CookieConsent (mobil-kompakt, késleltetett LCP-barát banner)", () =>
 
     fireEvent.click(screen.getByRole("button", { name: "Elutasítom" }));
     expect(localStorage.getItem("cookieConsent")).toBe("declined");
+    expect(gtagMock).toHaveBeenCalledWith("consent", "update", {
+      analytics_storage: "denied",
+    });
     expect(document.querySelector('script[src*="googletagmanager"]')).toBeNull();
     expect(document.querySelector("script[data-ga]")).toBeNull();
   });

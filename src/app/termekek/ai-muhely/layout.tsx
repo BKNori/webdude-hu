@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     siteName: "WebDude",
     images: [
       {
-        url: "/og/ai-muhely.jpg",
+        url: "/og/webdude-og.jpg",
         width: 1200,
         height: 630,
         alt: "AI Műhely Katalógus",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     title: "AI Műhely Katalógus | WebDude",
     description:
       "Ötpilléres WebDude AI Műhely katalógus: arculat, kampánygrafika, nyomdai prepress, architektúra és SEO/AEO modulok cégeknek. Egyedi árajánlat kérése most.",
-    images: ["/og/ai-muhely.jpg"],
+    images: ["/og/webdude-og.jpg"],
   },
 };
 
@@ -44,7 +44,7 @@ const productJsonLd = {
   name: "AI Műhely Katalógus",
   description:
     "Ötpilléres WebDude AI Műhely katalógus: arculat, kampánygrafika, nyomdai prepress, architektúra és SEO/AEO modulok cégeknek. Egyedi árajánlat kérése most.",
-  image: "https://webdude.hu/og/ai-muhely.jpg",
+  image: "https://webdude.hu/og/webdude-og.jpg",
   brand: {
     "@type": "Brand",
     "@id": "https://webdude.hu/#organization",

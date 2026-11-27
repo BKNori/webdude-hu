@@ -3,6 +3,10 @@ import { MotionConfig } from "motion/react";
 import PageWrapper from "../components/layout/PageWrapper";
 import Script from "next/script";
 import { getClarityScript } from "@/lib/clarity";
+import {
+  buildGaConsentInitScript,
+  isValidGaMeasurementId,
+} from "@/lib/analytics";
 import { getDictionary, pickGlobalDictionary } from "@/lib/dictionary";
 import {
   CANONICAL_LOCALBUSINESS_ENTITY,
@@ -35,12 +39,6 @@ export const metadata = {
   description:
     "Full-stack webfejlesztés, AI workflow és agent rendszerek — egy kézből. 26 év grafikai és 16 év webfejlesztői rutin, országos online szolgáltatással.",
   alternates: {
-    canonical: "https://webdude.hu",
-    languages: {
-      "hu-HU": "https://webdude.hu",
-      "en-US": "https://webdude.hu/en",
-      "x-default": "https://webdude.hu",
-    },
     types: {
       "application/rss+xml": [
         {
@@ -87,6 +85,11 @@ export default async function RootLayout({ children }: RootLayoutProps) {
     hu: pickGlobalDictionary(huDict),
     en: pickGlobalDictionary(enDict),
   };
+  const gaMeasurementId = isValidGaMeasurementId(
+    process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID
+  )
+    ? process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID.trim()
+    : null;
 
   return (
     <MotionConfig reducedMotion="user">
@@ -116,6 +119,23 @@ export default async function RootLayout({ children }: RootLayoutProps) {
               __html: serializeJsonLd(CANONICAL_LOCALBUSINESS_ENTITY),
             }}
           />
+          {gaMeasurementId && (
+            <>
+              <Script
+                id="ga4-config"
+                data-ga="true"
+                strategy="afterInteractive"
+                dangerouslySetInnerHTML={{
+                  __html: buildGaConsentInitScript(gaMeasurementId),
+                }}
+              />
+              <Script
+                id="ga4-gtag"
+                src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
+                strategy="afterInteractive"
+              />
+            </>
+          )}
           {process.env.NODE_ENV === "production" &&
             process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID && (
               <Script

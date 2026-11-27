@@ -1,13 +1,10 @@
 import { Metadata } from "next";
-import { getDictionary } from "@/lib/dictionary";
-import { buildEnJsonLd, serializeJsonLd } from "@/lib/structuredData";
 import { SITE_URL } from "@/lib/i18n";
 
 const PAGE_URL = `${SITE_URL}/en/contact`;
 
 /**
- * EN contact szerveroldali layout — a metaadatok és a JSON-LD sémák
- * kizárólag itt élnek (AEO szabály: kliens komponensből tilos exportálni).
+ * EN contact szerveroldali layout — kizárólag a metaadatok élnek itt.
  */
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -30,7 +27,7 @@ export async function generateMetadata(): Promise<Metadata> {
       siteName: "WebDude",
       images: [
         {
-          url: "/banners/wordpress-weboldalak-keszitese-grafikai-tervezes.webp",
+          url: "/assets/banners/wordpress-weboldalak-keszitese-grafikai-tervezes.webp",
           width: 1920,
           height: 1080,
           alt: "WebDude contact - web development and graphic design",
@@ -39,28 +36,22 @@ export async function generateMetadata(): Promise<Metadata> {
       locale: "en_US",
       type: "website",
     },
+    twitter: {
+      card: "summary_large_image",
+      title: "Contact & Consultation | WebDude | Direct Discussion",
+      description:
+        "Request a quote directly from Norbi! No project manager layer: 26 years of experience in designing and developing Next.js systems as a remote partner.",
+      images: [
+        "/assets/banners/wordpress-weboldalak-keszitese-grafikai-tervezes.webp",
+      ],
+    },
   };
 }
 
-export default async function EnContactLayout({
+export default function EnContactLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const dictionary = await getDictionary("en");
-  const schemas = buildEnJsonLd(dictionary);
-
-  return (
-    <>
-      {/* EN JSON-LD sémák — XSS-védetten serializálva (AEO / E-E-A-T) */}
-      {schemas.map((schema, index) => (
-        <script
-          key={index}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: serializeJsonLd(schema) }}
-        />
-      ))}
-      {children}
-    </>
-  );
+  return <>{children}</>;
 }

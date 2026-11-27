@@ -46,6 +46,8 @@ export default function Hero({
             loop
             muted
             playsInline
+            aria-hidden="true"
+            tabIndex={-1}
             className={`w-full h-full object-cover ${noOverlay ? "opacity-100" : "opacity-60"}`}
             style={noOverlay ? {} : { mixBlendMode: "screen" }}
           >

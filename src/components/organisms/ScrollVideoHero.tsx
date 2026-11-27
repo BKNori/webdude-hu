@@ -53,6 +53,8 @@ export default function ScrollVideoHero({
           loop
           preload="auto"
           disablePictureInPicture
+          aria-hidden="true"
+          tabIndex={-1}
           className="absolute inset-0 w-full h-full object-cover"
           style={{ pointerEvents: "none" }}
         />

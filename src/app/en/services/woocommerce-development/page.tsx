@@ -1,29 +1,8 @@
 import Hero from "@/components/Hero";
 import Link from "next/link";
 import DirectAnswerBlock from "@/components/molecules/DirectAnswerBlock";
-import { Metadata } from "next";
 import { buildBreadcrumbSchema, BreadcrumbItem } from "@/lib/breadcrumb";
 import { withLocale } from "@/lib/i18n";
-
-export async function generateMetadata(): Promise<Metadata> {
-  return {
-    title: "WooCommerce Development & E-commerce | WebDude",
-    description:
-      "16 years of experience in WooCommerce development and optimisation. Conversion-focused e-commerce systems, payment integrations and full support.",
-    keywords:
-      "WooCommerce webshop, WooCommerce development, e-commerce system, web development, WooCommerce optimisation, WordPress webshop",
-    alternates: {
-      canonical: "https://webdude.hu/en/services/woocommerce-development",
-    },
-    openGraph: {
-      title: "WooCommerce Development & E-commerce | WebDude",
-      description:
-        "16 years of experience in WooCommerce webshop development and optimisation.",
-      url: "https://webdude.hu/en/services/woocommerce-development",
-      siteName: "WebDude",
-    },
-  };
-}
 
 const FAQ = [
   {

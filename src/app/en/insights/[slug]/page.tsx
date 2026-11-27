@@ -51,6 +51,10 @@ export async function generateMetadata({
     keywords: post.keywords,
     alternates: {
       canonical: canonicalUrl,
+      languages: {
+        "en-US": canonicalUrl,
+        "x-default": canonicalUrl,
+      },
     },
     openGraph: {
       title: post.seoTitle,

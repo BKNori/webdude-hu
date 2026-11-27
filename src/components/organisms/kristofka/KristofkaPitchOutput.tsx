@@ -177,7 +177,7 @@ ${result.roi}
             </h5>
             <button
               onClick={() => handleCopy(card.content)}
-              className="p-1.5 hover:bg-slate-50 dark:bg-[#0B1120] text-slate-600 dark:text-slate-400 hover:text-[#0369A1] dark:hover:text-white rounded-lg transition-colors"
+              className="p-1.5 hover:bg-slate-50 dark:bg-[#0B1120] dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-[#0369A1] dark:hover:text-white rounded-lg transition-colors"
             >
               <Copy className="w-3.5 h-3.5" />
             </button>

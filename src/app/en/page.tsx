@@ -5,6 +5,7 @@ import Surface from "@/components/atoms/Surface";
 import { Award, Cpu, Clock } from "lucide-react";
 import { getDictionary } from "@/lib/dictionary";
 import { getResponsiveImageVariants } from "@/data/responsiveImages";
+import { buildEnJsonLd, serializeJsonLd } from "@/lib/structuredData";
 
 const SocialProofStrip = dynamic(
   () => import("@/components/organisms/SocialProofStrip")
@@ -35,6 +36,7 @@ const FinalCta = dynamic(() => import("@/components/organisms/FinalCta"));
  */
 export default async function EnHomePage() {
   const dictionary = await getDictionary("en");
+  const jsonLdSchemas = buildEnJsonLd(dictionary);
   const snapshotCards = [
     { icon: Award, ...dictionary.bentoGrid.expertise },
     { icon: Cpu, ...dictionary.bentoGrid.techStack },
@@ -55,7 +57,17 @@ export default async function EnHomePage() {
   }
 
   return (
-    <div className="grow">
+    <>
+      {/* EN JSON-LD schemas — serialized with XSS protection (AEO / E-E-A-T) */}
+      {jsonLdSchemas.map((schema, index) => (
+        <script
+          key={index}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(schema) }}
+        />
+      ))}
+
+      <div className="grow">
       {/* 1. Hero — conversion H1, CTA hierarchy */}
       <HeroSectionNew content={dictionary.home.hero} />
 
@@ -117,11 +129,12 @@ export default async function EnHomePage() {
       {/* 6. Why Choose Me — Balog Norbert E-E-A-T advantages */}
       <WhyChooseMeSection content={dictionary.home.why} />
 
-      {/* 7. FAQ AEO — accordion; JSON-LD rendered server-side in en/layout.tsx */}
+      {/* 7. FAQ AEO — accordion; JSON-LD rendered server-side above */}
       <FaqSectionAEO content={dictionary.home.faq} renderSchema={false} />
 
       {/* 8. Final CTA */}
       <FinalCta content={dictionary.home.finalCta} />
-    </div>
+      </div>
+    </>
   );
 }

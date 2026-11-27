@@ -569,7 +569,7 @@ export default async function WooCommercePage() {
                   </Button>
                   <Button
                     variant="secondary"
-                    href="/szolgaltatasok/wordpress-virusirtas-es-biztonsag"
+                    href="/szolgaltatasok/wordpress-biztonsag"
                   >
                     WordPress Biztonság és Karbantartás
                   </Button>

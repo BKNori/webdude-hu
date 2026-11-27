@@ -1,7 +1,12 @@
 # ARCHITECTURE.md — WebDude Rendszerarchitektúra
 
 **webdude.hu | Next.js 16 · React 19 · TypeScript · Firebase**
-**Utolsó frissítés: 2026-11-24 (7.96.0: `/portal/ai-muhely` Egységes `WorkshopSubnav` + 64 Fájlos DDR-006 v7.2 Dual Theme Konszolidáció)**
+**Utolsó frissítés: 2026-11-27 (7.99.0: Teljes Körű Technikai SEO + CI/CD Hibajavítás, GA4 Consent Mode v2, EN JSON-LD Deduplikáció & `AdminLayoutShell` `noindex`)**
+
+> **7.99.0 (2026-11-27):** Technikai SEO, GSC Indexelés, Semrush & CI/CD `verify` Javítás:
+>
+> - `.github/workflows/ci.yml`: `node-version: 24` (`firebase-admin` / `@supabase/*` `>=22` engine követelményhez) + teljes `npx jest` coverage-kapuval; `KristofkaPitchOutput.tsx` `dark:hover:bg-slate-800` kontrasztjavítás (`audit-contrast.js` 0 hiba).
+> - `src/components/organisms/AdminLayoutShell.tsx` & `src/app/admin/layout.tsx`: Server Component layout `robots: { index: false, follow: false }` direktívával, `src/app/layout.tsx` öröklődő `canonical`/`languages` eltávolítva, EN aloldali layoutokból `buildEnJsonLd` duplikációk kiszedve, 6 HU szolgáltatásoldalra `BreadcrumbSchema` pótolva, GA4 Consent Mode v2 (`src/lib/analytics.ts`, `layout.tsx`, `CookieConsent.tsx`) bekötve.
 
 > **7.74.0 (2026-11-20):** Additív SEO / AIO / AEO / GEO & Schema.org Tudásgráf Bővítés:
 >
@@ -184,7 +189,8 @@ atoms  →  molecules  →  organisms  →  pages
 | `WebDudeChat` | `src/components/organisms/WebDudeChat.tsx` | Intelligens chat asszisztens és lead-minősítő widget (`defaultOpen` + `initialMessage` támogatással a lazy indítóhoz) | `"use client"` (Vercel AI SDK, motion) |
 | `WebDudeChatLauncher` | `src/components/organisms/WebDudeChatLauncher.tsx` | [7.98.0] Pehelykönnyű (0 AI SDK / 0 Zod / 0 Motion) lebegő `#chat-trigger-btn` indítógomb: a nehéz `WebDudeChat` modult kizárólag kattintáskor vagy `open-webdude-chat` eseményre tölti be dinamikusan | `"use client"` |
 | `CookieConsent` | `src/components/organisms/CookieConsent.tsx` | [7.98.0] Mobil-kompakt (`p-3.5 sm:p-5`, 2 gomb 1 sorban, `z-30`), késleltetett (`requestIdleCallback` / `900ms`, `CLS = 0`) GDPR cookie consent banner dinamikus GA4 betöltéssel | `"use client"` |
-| `AdminSidebar` | `src/app/admin/layout.tsx` | Admin felület oldalsó navigáció (Dashboard, Leadek, Portfólió, Email Sablonok, Statisztikák, Beállítások menüpontok, Notification Center Bell ikonnal, dropdown menüvel, unread jelöléssel, kijelentkezés) | `"use client"` (Firebase Auth) |
+| `AdminSidebar` | `src/app/admin/layout.tsx` | **7.99.0** – Tiszta Server Component `robots: { index: false, follow: false }` burkoló az `AdminLayoutShell` köré | Server Component |
+| `AdminLayoutShell` | `src/components/organisms/AdminLayoutShell.tsx` | **7.99.0** – Az `/admin` felület oldalsó navigációja, értesítésközpontja és Firebase Auth őrszeme (kiszervezve `src/app/admin/layout.tsx`-ből a `noindex` metadata export miatt) | `"use client"` (Firebase Auth) |
 | `QuoteRequestForm` | `src/components/organisms/QuoteRequestForm.tsx` | Több lépcsős interaktív ajánlatkérő űrlap (Bento grid, Zod validáció) | `"use client"` |
 | `ContactFormWrapper` | `src/components/organisms/ContactFormWrapper.tsx` | Hibrid ajánlatkérő és gyors kapcsolatfelvételi űrlap wrapper | `"use client"` |
 | `PortalDashboard` | `src/components/organisms/PortalDashboard.tsx` | **126 sor (7.56.0)** – vékony karmester komponens: a munkamenetet a `usePortalSession`, az adatokat és akciókat a `usePortalData` hook szolgáltatja, a megjelenítést pedig teljes egészében a `portal/*` al-komponensek (`PortalHeader`, `PortalHeroAndTabs`, `PortalAlerts`, `PortalClientWorkspace`, `PortalWorkflowGrid`, `PortalWorkflowCard`, `PortalOnboardingSection`, `PortalOrdersSection`) és az `AdminPanel` végzi. | `"use client"` |
